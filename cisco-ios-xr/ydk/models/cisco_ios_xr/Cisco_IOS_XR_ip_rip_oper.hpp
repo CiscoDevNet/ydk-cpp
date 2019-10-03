@@ -1397,6 +1397,15 @@ class RipRouteOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf rip_rt_org_intsummary;
         static const ydk::Enum::YLeaf rip_rt_org_unused;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rip-rt-org-runover") return 0;
+            if (name == "rip-rt-org-redist") return 1;
+            if (name == "rip-rt-org-auto-summary") return 2;
+            if (name == "rip-rt-org-rip") return 3;
+            if (name == "rip-rt-org-intsummary") return 4;
+            if (name == "rip-rt-org-unused") return 5;
+            return -1;
+        }
 };
 
 class InterfaceState : public ydk::Enum
@@ -1407,6 +1416,13 @@ class InterfaceState : public ydk::Enum
         static const ydk::Enum::YLeaf interface_up;
         static const ydk::Enum::YLeaf interface_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-none") return 0;
+            if (name == "interface-down") return 1;
+            if (name == "interface-up") return 2;
+            if (name == "interface-unknown") return 3;
+            return -1;
+        }
 };
 
 

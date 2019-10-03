@@ -160,6 +160,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHash
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -658,6 +659,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSourc
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1428,6 +1430,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2927,6 +2930,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "mib-database";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3825,6 +3829,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-old-format";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4102,6 +4107,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-address-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4419,6 +4425,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4813,6 +4820,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "group-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5918,6 +5926,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6589,6 +6598,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList
 {
     std::ostringstream path_buffer;
     path_buffer << "pim-bsr-crp-bag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7257,6 +7267,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAcce
 {
     std::ostringstream path_buffer;
     path_buffer << "crp-access";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8293,6 +8304,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePol
 {
     std::ostringstream path_buffer;
     path_buffer << "route-policy-test";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9810,6 +9822,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10712,6 +10725,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "bidir-df-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11292,6 +11306,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Topologies::Topology::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "topology";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13049,6 +13064,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface
 {
     std::ostringstream path_buffer;
     path_buffer << "outgoing-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13662,6 +13678,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14588,6 +14605,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "group-map-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16339,6 +16357,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-queue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16811,6 +16830,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "group-map-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18864,6 +18884,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::
 {
     std::ostringstream path_buffer;
     path_buffer << "gre-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19349,6 +19370,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "bidir-df-winner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19873,6 +19895,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::TableContexts::TableContext::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "table-context";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22974,6 +22997,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Context::ExportRouteTarget::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "export-route-target";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23136,6 +23160,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Context::ImportRouteTarget::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "import-route-target";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23288,6 +23313,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Context::AnycastRpRange::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "anycast-rp-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23975,6 +24001,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::Re
 {
     std::ostringstream path_buffer;
     path_buffer << "redirect-route-database";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24363,6 +24390,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::Re
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24739,6 +24767,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleIn
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

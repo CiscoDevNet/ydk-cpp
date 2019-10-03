@@ -206,6 +206,15 @@ class CISCOIETFPWENETMIB::CpwVcEnetTable::CpwVcEnetEntry::CpwVcEnetVlanMode : pu
         static const ydk::Enum::YLeaf addVlan;
         static const ydk::Enum::YLeaf removeVlan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 0;
+            if (name == "portBased") return 1;
+            if (name == "noChange") return 2;
+            if (name == "changeVlan") return 3;
+            if (name == "addVlan") return 4;
+            if (name == "removeVlan") return 5;
+            return -1;
+        }
 };
 
 

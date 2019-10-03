@@ -141,6 +141,17 @@ class NbrStateType : public ydk::Enum
         static const ydk::Enum::YLeaf Loading;
         static const ydk::Enum::YLeaf Full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Down") return 1;
+            if (name == "Attempt") return 2;
+            if (name == "Init") return 3;
+            if (name == "2-Way") return 4;
+            if (name == "ExStart") return 5;
+            if (name == "Exchange") return 6;
+            if (name == "Loading") return 7;
+            if (name == "Full") return 8;
+            return -1;
+        }
 };
 
 class IfStateType : public ydk::Enum
@@ -154,6 +165,16 @@ class IfStateType : public ydk::Enum
         static const ydk::Enum::YLeaf BDR;
         static const ydk::Enum::YLeaf DR_Other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Down") return 1;
+            if (name == "Loopback") return 2;
+            if (name == "Waiting") return 3;
+            if (name == "Point-to-Point") return 4;
+            if (name == "DR") return 5;
+            if (name == "BDR") return 6;
+            if (name == "DR-Other") return 7;
+            return -1;
+        }
 };
 
 class PacketType : public ydk::Enum
@@ -165,6 +186,14 @@ class PacketType : public ydk::Enum
         static const ydk::Enum::YLeaf Link_State_Update;
         static const ydk::Enum::YLeaf Link_State_Ack;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Hello") return 1;
+            if (name == "Database-Descripton") return 2;
+            if (name == "Link-State-Request") return 3;
+            if (name == "Link-State-Update") return 4;
+            if (name == "Link-State-Ack") return 5;
+            return -1;
+        }
 };
 
 class RestartExitReasonType : public ydk::Enum
@@ -176,6 +205,14 @@ class RestartExitReasonType : public ydk::Enum
         static const ydk::Enum::YLeaf TimedOut;
         static const ydk::Enum::YLeaf TopologyChanged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "None") return 1;
+            if (name == "InProgress") return 2;
+            if (name == "Completed") return 3;
+            if (name == "TimedOut") return 4;
+            if (name == "TopologyChanged") return 5;
+            return -1;
+        }
 };
 
 class NssaTranslatorStateType : public ydk::Enum
@@ -185,6 +222,12 @@ class NssaTranslatorStateType : public ydk::Enum
         static const ydk::Enum::YLeaf Elected;
         static const ydk::Enum::YLeaf Disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Enabled") return 1;
+            if (name == "Elected") return 2;
+            if (name == "Disabled") return 3;
+            return -1;
+        }
 };
 
 class RestartHelperStatusType : public ydk::Enum
@@ -193,6 +236,11 @@ class RestartHelperStatusType : public ydk::Enum
         static const ydk::Enum::YLeaf Not_Helping;
         static const ydk::Enum::YLeaf Helping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Not-Helping") return 1;
+            if (name == "Helping") return 2;
+            return -1;
+        }
 };
 
 class RestartStatusType : public ydk::Enum
@@ -202,6 +250,12 @@ class RestartStatusType : public ydk::Enum
         static const ydk::Enum::YLeaf Planned_Restart;
         static const ydk::Enum::YLeaf Unplanned_Restart;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Not-Restarting") return 1;
+            if (name == "Planned-Restart") return 2;
+            if (name == "Unplanned-Restart") return 3;
+            return -1;
+        }
 };
 
 

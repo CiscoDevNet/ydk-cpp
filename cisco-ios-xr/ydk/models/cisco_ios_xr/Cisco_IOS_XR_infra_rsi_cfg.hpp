@@ -64,13 +64,13 @@ class Vrfs::Vrf : public ydk::Entity
         ydk::YLeaf description; //type: string
         class VpnId; //type: Vrfs::Vrf::VpnId
         class Afs; //type: Vrfs::Vrf::Afs
-        class BgpGlobal; //type: Vrfs::Vrf::BgpGlobal
         class MulticastHost; //type: Vrfs::Vrf::MulticastHost
+        class BgpGlobal; //type: Vrfs::Vrf::BgpGlobal
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::VpnId> vpn_id; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs> afs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::BgpGlobal> bgp_global;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::MulticastHost> multicast_host;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::BgpGlobal> bgp_global;
         
 }; // Vrfs::Vrf
 
@@ -509,55 +509,6 @@ class Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy : public ydk::Entity
 }; // Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy
 
 
-class Vrfs::Vrf::BgpGlobal : public ydk::Entity
-{
-    public:
-        BgpGlobal();
-        ~BgpGlobal();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class RouteDistinguisher; //type: Vrfs::Vrf::BgpGlobal::RouteDistinguisher
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::BgpGlobal::RouteDistinguisher> route_distinguisher;
-        
-}; // Vrfs::Vrf::BgpGlobal
-
-
-class Vrfs::Vrf::BgpGlobal::RouteDistinguisher : public ydk::Entity
-{
-    public:
-        RouteDistinguisher();
-        ~RouteDistinguisher();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf type; //type: BgpGlobalRouteDistinguisher
-        ydk::YLeaf as_xx; //type: uint32
-        ydk::YLeaf as; //type: uint32
-        ydk::YLeaf as_index; //type: uint32
-        ydk::YLeaf address; //type: string
-        ydk::YLeaf address_index; //type: uint32
-
-}; // Vrfs::Vrf::BgpGlobal::RouteDistinguisher
-
-
 class Vrfs::Vrf::MulticastHost : public ydk::Entity
 {
     public:
@@ -623,6 +574,55 @@ class Vrfs::Vrf::MulticastHost::Ipv6 : public ydk::Entity
         ydk::YLeaf interface; //type: string
 
 }; // Vrfs::Vrf::MulticastHost::Ipv6
+
+
+class Vrfs::Vrf::BgpGlobal : public ydk::Entity
+{
+    public:
+        BgpGlobal();
+        ~BgpGlobal();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RouteDistinguisher; //type: Vrfs::Vrf::BgpGlobal::RouteDistinguisher
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::BgpGlobal::RouteDistinguisher> route_distinguisher;
+        
+}; // Vrfs::Vrf::BgpGlobal
+
+
+class Vrfs::Vrf::BgpGlobal::RouteDistinguisher : public ydk::Entity
+{
+    public:
+        RouteDistinguisher();
+        ~RouteDistinguisher();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: BgpGlobalRouteDistinguisher
+        ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf as_index; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf address_index; //type: uint32
+
+}; // Vrfs::Vrf::BgpGlobal::RouteDistinguisher
 
 class GlobalAf : public ydk::Entity
 {
@@ -1704,6 +1704,11 @@ class VrfAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class SrlgPriority : public ydk::Enum
@@ -1715,6 +1720,14 @@ class SrlgPriority : public ydk::Enum
         static const ydk::Enum::YLeaf low;
         static const ydk::Enum::YLeaf very_low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "high") return 1;
+            if (name == "default") return 2;
+            if (name == "low") return 3;
+            if (name == "very-low") return 4;
+            return -1;
+        }
 };
 
 class VrfSubAddressFamily : public ydk::Enum
@@ -1724,6 +1737,12 @@ class VrfSubAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf flow_spec;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            if (name == "flow-spec") return 133;
+            return -1;
+        }
 };
 
 

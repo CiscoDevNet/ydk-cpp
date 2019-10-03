@@ -8,10 +8,99 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_l2vpn_oper_27.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_3.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_4.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
+
+
+class L2vpnv2::Nodes::Node::Pwr::Summary::RdConfigured::TwoByteAs : public ydk::Entity
+{
+    public:
+        TwoByteAs();
+        ~TwoByteAs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
+
+}; // L2vpnv2::Nodes::Node::Pwr::Summary::RdConfigured::TwoByteAs
+
+
+class L2vpnv2::Nodes::Node::Pwr::Summary::RdConfigured::FourByteAs : public ydk::Entity
+{
+    public:
+        FourByteAs();
+        ~FourByteAs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
+
+}; // L2vpnv2::Nodes::Node::Pwr::Summary::RdConfigured::FourByteAs
+
+
+class L2vpnv2::Nodes::Node::Pwr::Summary::RdConfigured::V4Addr : public ydk::Entity
+{
+    public:
+        V4Addr();
+        ~V4Addr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
+
+}; // L2vpnv2::Nodes::Node::Pwr::Summary::RdConfigured::V4Addr
+
+
+class L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces : public ydk::Entity
+{
+    public:
+        XconnectMp2mpCe2ces();
+        ~XconnectMp2mpCe2ces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class XconnectMp2mpCe2ce; //type: L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce
+
+        ydk::YList xconnect_mp2mp_ce2ce;
+        
+}; // L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces
 
 
 class L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce : public ydk::Entity
@@ -3832,94 +3921,6 @@ class L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::A
         ydk::YLeaf byte_counts; //type: uint64
 
 }; // L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat
-
-
-class L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop : public ydk::Entity
-{
-    public:
-        ImpositionMtuDrop();
-        ~ImpositionMtuDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_counts; //type: uint64
-        ydk::YLeaf byte_counts; //type: uint64
-
-}; // L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop
-
-
-class L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop : public ydk::Entity
-{
-    public:
-        ImpostionTailDrop();
-        ~ImpostionTailDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_counts; //type: uint64
-        ydk::YLeaf byte_counts; //type: uint64
-
-}; // L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop
-
-
-class L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop : public ydk::Entity
-{
-    public:
-        L2fsbiDrop();
-        ~L2fsbiDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_counts; //type: uint64
-        ydk::YLeaf byte_counts; //type: uint64
-
-}; // L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop
-
-
-class L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::Multicast : public ydk::Entity
-{
-    public:
-        Multicast();
-        ~Multicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_counts; //type: uint64
-        ydk::YLeaf byte_counts; //type: uint64
-
-}; // L2vpnv2::Nodes::Node::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1::AttachmentCircuit::Statistics::ImpostionStats::Multicast
 
 
 }

@@ -589,6 +589,12 @@ class DfBit : public ydk::Enum
         static const ydk::Enum::YLeaf reflect;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "reflect") return 1;
+            if (name == "set") return 2;
+            return -1;
+        }
 };
 
 class Option : public ydk::Enum
@@ -599,6 +605,13 @@ class Option : public ydk::Enum
         static const ydk::Enum::YLeaf dead_cache;
         static const ydk::Enum::YLeaf tunnel_drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 1;
+            if (name == "user") return 2;
+            if (name == "dead-cache") return 8;
+            if (name == "tunnel-drop") return 16;
+            return -1;
+        }
 };
 
 

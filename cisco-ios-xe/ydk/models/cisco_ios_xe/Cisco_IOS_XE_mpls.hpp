@@ -15,6 +15,10 @@ class LdpDiscoveryAddressType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf interface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface") return 0;
+            return -1;
+        }
 };
 
 class MplsTeTiebreakerType : public ydk::Enum
@@ -24,6 +28,12 @@ class MplsTeTiebreakerType : public ydk::Enum
         static const ydk::Enum::YLeaf min_fill;
         static const ydk::Enum::YLeaf random;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "max-fill") return 0;
+            if (name == "min-fill") return 1;
+            if (name == "random") return 2;
+            return -1;
+        }
 };
 
 

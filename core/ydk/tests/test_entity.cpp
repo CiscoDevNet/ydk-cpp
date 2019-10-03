@@ -461,7 +461,7 @@ TEST_CASE("test_ylist")
     REQUIRE(ylist_0.len() == 2);
 
     auto keys = ylist_0.keys();
-    REQUIRE(vector_to_string(keys) == R"("1000000", "1000001")");
+    REQUIRE(vector_to_string(keys) == R"("1000001", "1000002")");
 
     auto ep = ylist_0.pop(1);
     REQUIRE(ep != nullptr);
@@ -499,25 +499,29 @@ TEST_CASE("test_ylist")
 
     ep = ylist_1.pop("test1");
     REQUIRE(ep == nullptr);
+
+    delete list_holder;
 }
 
-//TODO Test for issue #800 to be resolved
-//TEST_CASE("test_ylist_race")
-//{
-//	TestEntity* list_holder = new TestEntity();
-//
-//    YList ylist = YList(list_holder, {"name"});
-//
-//    // Append test1 to the YList before key value is defined
-//    auto test1 = std::make_shared<TestEntity>();
-//    ylist.append(test1);
-//
-//    ylist[0]->name = "test1";
-//    ylist[0]->enabled = true;
-//
-//    auto keys = ylist.keys();
-//    REQUIRE(vector_to_string(keys) == R"("test1")");
-//
-//    auto ep = ylist["test1"];
-//    REQUIRE(ep != nullptr);
-//}
+TEST_CASE("test_ylist_race")
+{
+    TestEntity* list_holder = new TestEntity();
+
+    YList ylist = YList(list_holder, {"name"});
+
+    // Append test1 to the YList before key value is defined
+    auto test1 = std::make_shared<TestEntity>();
+    ylist.append(test1);
+
+    test1->name = "test1";
+    test1->enabled = true;
+    ylist.review(test1);
+
+    auto keys = ylist.keys();
+    REQUIRE(vector_to_string(keys) == R"("test1")");
+
+    auto ep = ylist["test1"];
+    REQUIRE(ep != nullptr);
+
+    delete list_holder;
+}

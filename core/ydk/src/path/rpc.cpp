@@ -37,7 +37,8 @@ ydk::path::Rpc::~Rpc()
 ////////////////////////////////////////////////////////////////////////////////
 
 
-ydk::path::RpcImpl::RpcImpl(SchemaNodeImpl& sn, struct ly_ctx* ctx, const std::shared_ptr<RepositoryPtr> & repo) : schema_node{sn}, m_priv_repo{repo}
+ydk::path::RpcImpl::RpcImpl(SchemaNodeImpl& sn, struct ly_ctx* ctx, const std::shared_ptr<RepositoryPtr> & repo) :
+ schema_node(sn), m_priv_repo(repo)
 {
 
     struct lyd_node* dnode = lyd_new_path(nullptr, ctx, sn.get_path().c_str(), (void*)"", LYD_ANYDATA_SXML, 0);
@@ -81,7 +82,9 @@ static bool is_output(lys_node* node)
 
 bool ydk::path::RpcImpl::has_output_node() const
 {
-    std::string node_path = lys_path( data_node->m_node->schema);
+    char* path = lys_path( data_node->m_node->schema);
+    std::string node_path {path};
+    free(path);
     std::string search_path = node_path + "//*";	// Patterns includes only descendants of the node
 
     ly_verb(LY_LLSILENT); //turn off libyang logging at the beginning
@@ -101,6 +104,7 @@ bool ydk::path::RpcImpl::has_output_node() const
             }
         }
     }
+    if (result_set) ly_set_free(result_set);
     return result;
 }
 

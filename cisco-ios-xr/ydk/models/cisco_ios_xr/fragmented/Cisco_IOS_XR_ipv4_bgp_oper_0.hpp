@@ -163,6 +163,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         ydk::YLeaf entity_type; //type: BgpEntity
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf entity_name; //type: string
+        ydk::YLeaf length; //type: uint32
         ydk::YLeaf group_name; //type: string
         ydk::YLeaf configuration_type; //type: BgpEntities
         ydk::YLeaf address_family_identifier; //type: uint8
@@ -4138,6 +4139,15 @@ class BgpSrpolicyReqState : public ydk::Enum
         static const ydk::Enum::YLeaf marked_stale;
         static const ydk::Enum::YLeaf marked_disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "request-pending") return 0;
+            if (name == "requested") return 1;
+            if (name == "notified-up") return 2;
+            if (name == "notified-down") return 4;
+            if (name == "marked-stale") return 8;
+            if (name == "marked-disable") return 16;
+            return -1;
+        }
 };
 
 class BgpBfdState : public ydk::Enum
@@ -4153,6 +4163,18 @@ class BgpBfdState : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_bfd_state_nbr_not_configured;
         static const ydk::Enum::YLeaf bgp_bfd_state_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-bfd-state-not-configured") return 0;
+            if (name == "bgp-bfd-state-admin-down") return 1;
+            if (name == "bgp-bfd-state-not-supported") return 2;
+            if (name == "bgp-bfd-state-not-created") return 3;
+            if (name == "bgp-bfd-state-created") return 4;
+            if (name == "bgp-bfd-state-up") return 5;
+            if (name == "bgp-bfd-state-down") return 6;
+            if (name == "bgp-bfd-state-nbr-not-configured") return 7;
+            if (name == "bgp-bfd-state-none") return 8;
+            return -1;
+        }
 };
 
 class BgpEntities : public ydk::Enum
@@ -4163,6 +4185,13 @@ class BgpEntities : public ydk::Enum
         static const ydk::Enum::YLeaf neighbor_group;
         static const ydk::Enum::YLeaf neighbor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "af-group") return 0;
+            if (name == "session-group") return 1;
+            if (name == "neighbor-group") return 2;
+            if (name == "neighbor") return 3;
+            return -1;
+        }
 };
 
 class BgpNhValidate : public ydk::Enum
@@ -4172,6 +4201,12 @@ class BgpNhValidate : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_nh_validate_async;
         static const ydk::Enum::YLeaf bgp_nh_validate_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-nh-validate-sync") return 0;
+            if (name == "bgp-nh-validate-async") return 1;
+            if (name == "bgp-nh-validate-none") return 2;
+            return -1;
+        }
 };
 
 class BgpDsConnState : public ydk::Enum
@@ -4185,6 +4220,16 @@ class BgpDsConnState : public ydk::Enum
         static const ydk::Enum::YLeaf disconnect_fail;
         static const ydk::Enum::YLeaf disconnect_done;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "connect-init") return 1;
+            if (name == "connect-fail") return 2;
+            if (name == "connect-estb") return 3;
+            if (name == "disconnect-init") return 4;
+            if (name == "disconnect-fail") return 5;
+            if (name == "disconnect-done") return 6;
+            return -1;
+        }
 };
 
 class BgpRpkiState : public ydk::Enum
@@ -4194,6 +4239,12 @@ class BgpRpkiState : public ydk::Enum
         static const ydk::Enum::YLeaf attempt_connect;
         static const ydk::Enum::YLeaf connected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 0;
+            if (name == "attempt-connect") return 1;
+            if (name == "connected") return 2;
+            return -1;
+        }
 };
 
 class BgpPeerResetReasonIndex : public ydk::Enum
@@ -4206,6 +4257,15 @@ class BgpPeerResetReasonIndex : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_sock_select_failed;
         static const ydk::Enum::YLeaf bgp_peer_reset_reason_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-read-remote-closed") return 1;
+            if (name == "bgp-read-failed") return 2;
+            if (name == "bgp-write-failed") return 3;
+            if (name == "bgp-sock-disconnected") return 4;
+            if (name == "bgp-sock-select-failed") return 5;
+            if (name == "bgp-peer-reset-reason-none") return 6;
+            return -1;
+        }
 };
 
 class BgpScopedSyncState : public ydk::Enum
@@ -4217,6 +4277,14 @@ class BgpScopedSyncState : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_scope_sync_state_add_list;
         static const ydk::Enum::YLeaf bgp_scope_sync_state_batch_acitve;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-scope-sync-state-none") return 0;
+            if (name == "bgp-scope-sync-state-not-nsr-ready") return 1;
+            if (name == "bgp-scope-sync-state-timer-start") return 2;
+            if (name == "bgp-scope-sync-state-add-list") return 3;
+            if (name == "bgp-scope-sync-state-batch-acitve") return 4;
+            return -1;
+        }
 };
 
 class BgpEbgpSendDmzEnableMode : public ydk::Enum
@@ -4226,6 +4294,12 @@ class BgpEbgpSendDmzEnableMode : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_dflt;
         static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_cumulative;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-ebgp-send-dmz-disable") return 0;
+            if (name == "bgp-ebgp-send-dmz-dflt") return 1;
+            if (name == "bgp-ebgp-send-dmz-cumulative") return 2;
+            return -1;
+        }
 };
 
 class BgpBagUpdErrAction : public ydk::Enum
@@ -4240,6 +4314,17 @@ class BgpBagUpdErrAction : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_bag_upd_err_action_local_repair;
         static const ydk::Enum::YLeaf bgp_bag_upd_err_action_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-bag-upd-err-action-none") return 0;
+            if (name == "bgp-bag-upd-err-action-discard-msg") return 1;
+            if (name == "bgp-bag-upd-err-action-reset") return 2;
+            if (name == "bgp-bag-upd-err-action-wdr-or-reset") return 3;
+            if (name == "bgp-bag-upd-err-action-wdr") return 4;
+            if (name == "bgp-bag-upd-err-action-discard-attr") return 5;
+            if (name == "bgp-bag-upd-err-action-local-repair") return 6;
+            if (name == "bgp-bag-upd-err-action-max") return 7;
+            return -1;
+        }
 };
 
 class BgpRpkiPstate : public ydk::Enum
@@ -4253,6 +4338,16 @@ class BgpRpkiPstate : public ydk::Enum
         static const ydk::Enum::YLeaf data_start;
         static const ydk::Enum::YLeaf data_end;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-started") return 0;
+            if (name == "reset") return 1;
+            if (name == "refresh") return 2;
+            if (name == "reset-query-sent") return 3;
+            if (name == "serial-query-sent") return 4;
+            if (name == "data-start") return 5;
+            if (name == "data-end") return 6;
+            return -1;
+        }
 };
 
 class BgpRoute1 : public ydk::Enum
@@ -4266,6 +4361,16 @@ class BgpRoute1 : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_route_type_aggregate;
         static const ydk::Enum::YLeaf bgp_route_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-route-type-used") return 0;
+            if (name == "bgp-route-type-rcvd-only") return 1;
+            if (name == "bgp-route-type-safi-label-ed-ucast-used") return 2;
+            if (name == "bgp-route-type-safi-label-ed-ucast-rcvd-only") return 3;
+            if (name == "bgp-route-type-rib") return 4;
+            if (name == "bgp-route-type-aggregate") return 5;
+            if (name == "bgp-route-type-max") return 6;
+            return -1;
+        }
 };
 
 class BgpBagUpdFilterAction : public ydk::Enum
@@ -4275,6 +4380,12 @@ class BgpBagUpdFilterAction : public ydk::Enum
         static const ydk::Enum::YLeaf withdraw;
         static const ydk::Enum::YLeaf attribute_discard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "withdraw") return 1;
+            if (name == "attribute-discard") return 2;
+            return -1;
+        }
 };
 
 class BgpRpkiEdmAf : public ydk::Enum
@@ -4283,6 +4394,11 @@ class BgpRpkiEdmAf : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 2;
+            if (name == "ipv6") return 10;
+            return -1;
+        }
 };
 
 class BgpBpStage : public ydk::Enum
@@ -4314,6 +4430,34 @@ class BgpBpStage : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_bp_comp_mismatch;
         static const ydk::Enum::YLeaf bgp_bp_comp_persistence;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-bp-comp-not-compared") return 0;
+            if (name == "bgp-bp-comp-imulti-path") return 1;
+            if (name == "bgp-bp-comp-emulti-path") return 2;
+            if (name == "bgp-bp-comp-eimulti-path") return 3;
+            if (name == "bgp-bp-invalid-path") return 4;
+            if (name == "bgp-bp-comp-pre-cost-comm") return 5;
+            if (name == "bgp-bp-comp-weight") return 6;
+            if (name == "bgp-bp-comp-locpref") return 7;
+            if (name == "bgp-bp-comp-rpki") return 8;
+            if (name == "bgp-bp-comp-aigp") return 9;
+            if (name == "bgp-bp-comp-local") return 10;
+            if (name == "bgp-bp-comp-local-rib") return 11;
+            if (name == "bgp-bp-comp-as-path-len") return 12;
+            if (name == "bgp-bp-comp-origin") return 13;
+            if (name == "bgp-bp-comp-med") return 14;
+            if (name == "bgp-bp-comp-ebgp") return 15;
+            if (name == "bgp-bp-comp-ao") return 16;
+            if (name == "bgp-bp-comp-igp-metric") return 17;
+            if (name == "bgp-bp-comp-igp-cost-comm") return 18;
+            if (name == "bgp-bp-comp-rtr-id") return 19;
+            if (name == "bgp-bp-comp-clstr-len") return 20;
+            if (name == "bgp-bp-comp-nbr-addr") return 21;
+            if (name == "bgp-bp-comp-suppressed") return 22;
+            if (name == "bgp-bp-comp-mismatch") return 23;
+            if (name == "bgp-bp-comp-persistence") return 24;
+            return -1;
+        }
 };
 
 class BgpNhEvent : public ydk::Enum
@@ -4323,6 +4467,12 @@ class BgpNhEvent : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_nh_event_non_crit_not_f;
         static const ydk::Enum::YLeaf bgp_nh_event_registration;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-nh-event-crit-not-f") return 0;
+            if (name == "bgp-nh-event-non-crit-not-f") return 1;
+            if (name == "bgp-nh-event-registration") return 2;
+            return -1;
+        }
 };
 
 class BgpNhUpdate : public ydk::Enum
@@ -4338,6 +4488,18 @@ class BgpNhUpdate : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_nh_update_non_crit_rib_conv;
         static const ydk::Enum::YLeaf bgp_nh_update_non_crit_table_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-nh-update-none") return 0;
+            if (name == "bgp-nh-update-crit-not-f") return 1;
+            if (name == "bgp-nh-update-crit-sync") return 2;
+            if (name == "bgp-nh-update-crit-rib-conv") return 3;
+            if (name == "bgp-nh-update-crit-table-down") return 4;
+            if (name == "bgp-nh-update-non-crit-not-f") return 5;
+            if (name == "bgp-nh-update-non-crit-sync") return 6;
+            if (name == "bgp-nh-update-non-crit-rib-conv") return 7;
+            if (name == "bgp-nh-update-non-crit-table-down") return 8;
+            return -1;
+        }
 };
 
 class BgpRpkiPerror : public ydk::Enum
@@ -4353,6 +4515,18 @@ class BgpRpkiPerror : public ydk::Enum
         static const ydk::Enum::YLeaf no_response;
         static const ydk::Enum::YLeaf error_report;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "message-version") return 1;
+            if (name == "message-type") return 2;
+            if (name == "message-length") return 3;
+            if (name == "nonce-mismatch") return 4;
+            if (name == "bad-prefix") return 5;
+            if (name == "fsm") return 6;
+            if (name == "no-response") return 7;
+            if (name == "error-report") return 8;
+            return -1;
+        }
 };
 
 class BgpBfdEnableMode : public ydk::Enum
@@ -4362,6 +4536,12 @@ class BgpBfdEnableMode : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_bfd_enable_mode_def;
         static const ydk::Enum::YLeaf bgp_bfd_enable_mode_strict;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-bfd-enable-mode-disable") return 0;
+            if (name == "bgp-bfd-enable-mode-def") return 1;
+            if (name == "bgp-bfd-enable-mode-strict") return 2;
+            return -1;
+        }
 };
 
 class BgpRnhAddrLen : public ydk::Enum
@@ -4372,6 +4552,13 @@ class BgpRnhAddrLen : public ydk::Enum
         static const ydk::Enum::YLeaf mac;
         static const ydk::Enum::YLeaf v6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "v4") return 4;
+            if (name == "mac") return 6;
+            if (name == "v6") return 16;
+            return -1;
+        }
 };
 
 class BgpTcpMode : public ydk::Enum
@@ -4381,6 +4568,12 @@ class BgpTcpMode : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_tcp_mode_type_active_only;
         static const ydk::Enum::YLeaf bgp_tcp_mode_type_passive_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-tcp-mode-type-either") return 0;
+            if (name == "bgp-tcp-mode-type-active-only") return 1;
+            if (name == "bgp-tcp-mode-type-passive-only") return 2;
+            return -1;
+        }
 };
 
 class BgpBmpState : public ydk::Enum
@@ -4391,6 +4584,13 @@ class BgpBmpState : public ydk::Enum
         static const ydk::Enum::YLeaf established;
         static const ydk::Enum::YLeaf closing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "connecting") return 1;
+            if (name == "established") return 2;
+            if (name == "closing") return 3;
+            return -1;
+        }
 };
 
 class BgpIsmConnState : public ydk::Enum
@@ -4399,6 +4599,11 @@ class BgpIsmConnState : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf connect_done;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "connect-done") return 1;
+            return -1;
+        }
 };
 
 class BgpOpenCheckErr : public ydk::Enum
@@ -4438,6 +4643,42 @@ class BgpOpenCheckErr : public ydk::Enum
         static const ydk::Enum::YLeaf local_neighbor;
         static const ydk::Enum::YLeaf multi_hop_neighbor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "neighbor-down") return 1;
+            if (name == "no-update-group-set") return 2;
+            if (name == "no-af-config") return 3;
+            if (name == "update-group-pending") return 4;
+            if (name == "low-memory") return 5;
+            if (name == "neighbor-shutdown") return 6;
+            if (name == "ebgp-neighbor-remote") return 7;
+            if (name == "update-source-interface-null") return 8;
+            if (name == "no-ipv6-address") return 9;
+            if (name == "first-hop-interface-null") return 10;
+            if (name == "no-ipv6ll-address") return 11;
+            if (name == "no-update-source-config") return 12;
+            if (name == "no-router-id") return 13;
+            if (name == "update-source-interface-get-failed") return 14;
+            if (name == "update-source-interface-state-get-failed") return 15;
+            if (name == "update-source-interface-down") return 16;
+            if (name == "update-source-interface-ll-get-failed") return 17;
+            if (name == "update-source-interface-address-get-failed") return 18;
+            if (name == "source-address-af-invalid") return 19;
+            if (name == "no-update-source-ll-peering") return 20;
+            if (name == "local-address-get-failed") return 21;
+            if (name == "no-best-local-address") return 22;
+            if (name == "neighbor-address-equals-local-address") return 23;
+            if (name == "neighbor-closing") return 24;
+            if (name == "neighbor-pending-reset") return 25;
+            if (name == "out-interface-set-failed") return 26;
+            if (name == "local-address-mismatch") return 27;
+            if (name == "neighbor-active-only") return 28;
+            if (name == "socket-init-failed") return 29;
+            if (name == "socket-operation-failed") return 30;
+            if (name == "local-neighbor") return 31;
+            if (name == "multi-hop-neighbor") return 32;
+            return -1;
+        }
 };
 
 class BgpRoute : public ydk::Enum
@@ -4450,6 +4691,15 @@ class BgpRoute : public ydk::Enum
         static const ydk::Enum::YLeaf rib;
         static const ydk::Enum::YLeaf aggregate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "used") return 0;
+            if (name == "received-only") return 1;
+            if (name == "safi-labeled-unicast-used") return 2;
+            if (name == "safi-labeled-unicast-received-only") return 3;
+            if (name == "rib") return 4;
+            if (name == "aggregate") return 5;
+            return -1;
+        }
 };
 
 class BgpConnState : public ydk::Enum
@@ -4465,6 +4715,18 @@ class BgpConnState : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_st_closing;
         static const ydk::Enum::YLeaf bgp_st_closing_sync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-st-dont-care") return 0;
+            if (name == "bgp-st-idle") return 1;
+            if (name == "bgp-st-connect") return 2;
+            if (name == "bgp-st-active") return 3;
+            if (name == "bgp-st-open-sent") return 4;
+            if (name == "bgp-st-open-confirm") return 5;
+            if (name == "bgp-st-estab") return 6;
+            if (name == "bgp-st-closing") return 7;
+            if (name == "bgp-st-closing-sync") return 8;
+            return -1;
+        }
 };
 
 class SrSid : public ydk::Enum
@@ -4474,6 +4736,12 @@ class SrSid : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "label") return 1;
+            if (name == "ipv4") return 2;
+            if (name == "ipv6") return 3;
+            return -1;
+        }
 };
 
 class BgpEntity : public ydk::Enum
@@ -4484,6 +4752,13 @@ class BgpEntity : public ydk::Enum
         static const ydk::Enum::YLeaf neighbor_group;
         static const ydk::Enum::YLeaf neighbor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "af-group") return 0;
+            if (name == "session-group") return 1;
+            if (name == "neighbor-group") return 2;
+            if (name == "neighbor") return 3;
+            return -1;
+        }
 };
 
 class BgpTunnel : public ydk::Enum
@@ -4494,6 +4769,13 @@ class BgpTunnel : public ydk::Enum
         static const ydk::Enum::YLeaf sr_policy;
         static const ydk::Enum::YLeaf odn_policy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tunnel-none") return 0;
+            if (name == "attrset") return 1;
+            if (name == "sr-policy") return 2;
+            if (name == "odn-policy") return 4;
+            return -1;
+        }
 };
 
 class BgpRpkiCreason : public ydk::Enum
@@ -4511,6 +4793,20 @@ class BgpRpkiCreason : public ydk::Enum
         static const ydk::Enum::YLeaf ssh_died;
         static const ydk::Enum::YLeaf tcp_died;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-close-reason") return 0;
+            if (name == "read-error") return 1;
+            if (name == "write-error") return 2;
+            if (name == "proto-error") return 3;
+            if (name == "config-shutdown") return 4;
+            if (name == "config-removed") return 5;
+            if (name == "config-changed") return 6;
+            if (name == "nsr-disabled") return 7;
+            if (name == "user-clear") return 8;
+            if (name == "ssh-died") return 9;
+            if (name == "tcp-died") return 10;
+            return -1;
+        }
 };
 
 class BgpV4V6Len : public ydk::Enum
@@ -4520,6 +4816,12 @@ class BgpV4V6Len : public ydk::Enum
         static const ydk::Enum::YLeaf gwipv4;
         static const ydk::Enum::YLeaf gwipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "gwnone") return 0;
+            if (name == "gwipv4") return 4;
+            if (name == "gwipv6") return 16;
+            return -1;
+        }
 };
 
 class BgpSyncNbrNsrState : public ydk::Enum
@@ -4532,6 +4834,15 @@ class BgpSyncNbrNsrState : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_nbr_nsr_st_bgp_init_sync;
         static const ydk::Enum::YLeaf bgp_nbr_nsr_st_nsr_ready;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-nbr-nsr-st-none") return 0;
+            if (name == "bgp-nbr-nsr-st-oper-down") return 1;
+            if (name == "bgp-nbr-nsr-st-tcp-init-sync") return 2;
+            if (name == "bgp-nbr-nsr-st-tcp-phase-two") return 3;
+            if (name == "bgp-nbr-nsr-st-bgp-init-sync") return 4;
+            if (name == "bgp-nbr-nsr-st-nsr-ready") return 5;
+            return -1;
+        }
 };
 
 class BgpPrefixSid : public ydk::Enum
@@ -4542,6 +4853,13 @@ class BgpPrefixSid : public ydk::Enum
         static const ydk::Enum::YLeaf prefix_sid_origin_at_or_srgb;
         static const ydk::Enum::YLeaf prefix_sid_srv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix-sid-label-index") return 1;
+            if (name == "prefix-sid-ipv6-sid") return 2;
+            if (name == "prefix-sid-origin-at-or-srgb") return 3;
+            if (name == "prefix-sid-srv6") return 4;
+            return -1;
+        }
 };
 
 class BgpAfi : public ydk::Enum
@@ -4575,6 +4893,36 @@ class BgpAfi : public ydk::Enum
         static const ydk::Enum::YLeaf no_address_family;
         static const ydk::Enum::YLeaf all_address_families;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv4-multicast") return 1;
+            if (name == "ipv4-labeled") return 2;
+            if (name == "ipv4-tunnel") return 3;
+            if (name == "vpnv4") return 4;
+            if (name == "ipv6") return 5;
+            if (name == "ipv6-multicast") return 6;
+            if (name == "ipv6-labeled") return 7;
+            if (name == "vpnv6") return 8;
+            if (name == "ipv4-mdt") return 9;
+            if (name == "l2vpn-vpls") return 10;
+            if (name == "rt-constraint") return 11;
+            if (name == "ipv4-mvpn") return 12;
+            if (name == "ipv6-mvpn") return 13;
+            if (name == "l2vpn-evpn") return 14;
+            if (name == "ls-ls") return 15;
+            if (name == "vpnv4-multicast") return 16;
+            if (name == "vpnv6-multicast") return 17;
+            if (name == "ipv4-flowspec") return 18;
+            if (name == "ipv6-flowspec") return 19;
+            if (name == "vpnv4-flowspec") return 20;
+            if (name == "vpnv6-flowspec") return 21;
+            if (name == "l2vpn-mspw") return 22;
+            if (name == "ipv4-sr-policy") return 23;
+            if (name == "ipv6-sr-policy") return 24;
+            if (name == "no-address-family") return 25;
+            if (name == "all-address-families") return 26;
+            return -1;
+        }
 };
 
 class BgpBindingSid : public ydk::Enum
@@ -4584,6 +4932,12 @@ class BgpBindingSid : public ydk::Enum
         static const ydk::Enum::YLeaf label;
         static const ydk::Enum::YLeaf v6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "label") return 1;
+            if (name == "v6") return 2;
+            return -1;
+        }
 };
 
 class BgpRpkiAf : public ydk::Enum
@@ -4592,6 +4946,11 @@ class BgpRpkiAf : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 2;
+            if (name == "ipv6") return 26;
+            return -1;
+        }
 };
 
 class BgpResetReasonIndex : public ydk::Enum
@@ -4642,6 +5001,53 @@ class BgpResetReasonIndex : public ydk::Enum
         static const ydk::Enum::YLeaf cap_suppress_all_changed;
         static const ydk::Enum::YLeaf next_hop_changed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-none") return 0;
+            if (name == "bgp-init") return 1;
+            if (name == "bgp-no-memory") return 2;
+            if (name == "not-received") return 3;
+            if (name == "not-sent") return 4;
+            if (name == "conn-collision") return 5;
+            if (name == "peer-closed") return 6;
+            if (name == "max-prefix-exceeded") return 7;
+            if (name == "interface-flap") return 8;
+            if (name == "neighbor-deleted") return 9;
+            if (name == "admin-shutdown") return 10;
+            if (name == "af-activated") return 11;
+            if (name == "af-deactivated") return 12;
+            if (name == "protocol-error") return 13;
+            if (name == "listen-closed") return 14;
+            if (name == "rib-failed") return 15;
+            if (name == "user-clear") return 16;
+            if (name == "user-clear-gr") return 17;
+            if (name == "router-id-changed") return 18;
+            if (name == "remote-as-changed") return 19;
+            if (name == "orf-changed") return 20;
+            if (name == "rr-client-changed") return 21;
+            if (name == "legacy-pe-rt-changed") return 22;
+            if (name == "softre-config-changed") return 23;
+            if (name == "local-as-changed") return 24;
+            if (name == "low-memory") return 25;
+            if (name == "bfd-down") return 26;
+            if (name == "allow-as-in-changed") return 27;
+            if (name == "recv-dmz-cfg") return 28;
+            if (name == "cap-4byteas-changed") return 29;
+            if (name == "tcp-oper-down") return 30;
+            if (name == "scoped-sync-retry") return 31;
+            if (name == "cluster-id-changed") return 32;
+            if (name == "rr-disable-changed") return 33;
+            if (name == "aigp-changed") return 34;
+            if (name == "signalling-changed") return 35;
+            if (name == "open-check-s-failed") return 36;
+            if (name == "ao-changed") return 37;
+            if (name == "llgr-staletime-changed") return 38;
+            if (name == "llgr-capable-changed") return 39;
+            if (name == "nbr-local-addr-changed") return 40;
+            if (name == "internal-vpn-client-changed") return 41;
+            if (name == "cap-suppress-all-changed") return 42;
+            if (name == "next-hop-changed") return 43;
+            return -1;
+        }
 };
 
 class BgpRtrState : public ydk::Enum
@@ -4656,6 +5062,17 @@ class BgpRtrState : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_router_read_write;
         static const ydk::Enum::YLeaf bgp_router_mode_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-router-read-only") return 0;
+            if (name == "bgp-router-do-best-path") return 1;
+            if (name == "bgp-router-do-tunnel-update") return 2;
+            if (name == "bgp-router-do-import") return 3;
+            if (name == "bgp-router-do-label-alloc") return 4;
+            if (name == "bgp-router-do-ribupd") return 5;
+            if (name == "bgp-router-read-write") return 6;
+            if (name == "bgp-router-mode-count") return 7;
+            return -1;
+        }
 };
 
 class BgpLabelRpfInstall : public ydk::Enum
@@ -4664,6 +5081,11 @@ class BgpLabelRpfInstall : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_label_rpf_install_rib;
         static const ydk::Enum::YLeaf bgp_label_rpf_install_lsd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-label-rpf-install-rib") return 0;
+            if (name == "bgp-label-rpf-install-lsd") return 1;
+            return -1;
+        }
 };
 
 class BgpBmpUpdMode : public ydk::Enum
@@ -4673,6 +5095,12 @@ class BgpBmpUpdMode : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_bmp_upd_route_mon;
         static const ydk::Enum::YLeaf bgp_bmp_upd_route_mirr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-bmp-upd-n-either") return 0;
+            if (name == "bgp-bmp-upd-route-mon") return 1;
+            if (name == "bgp-bmp-upd-route-mirr") return 2;
+            return -1;
+        }
 };
 
 

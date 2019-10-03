@@ -3358,6 +3358,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "rcvd-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3436,6 +3437,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "l2vpn-circuit-status-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3514,6 +3516,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "mvpn-pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3592,6 +3595,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3681,6 +3685,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "local-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4563,6 +4568,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5445,6 +5451,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "best-path-orr-bitfield";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6327,6 +6334,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "add-path-orr-bitfield";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8599,6 +8607,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-sid-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9204,6 +9213,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-list";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9308,6 +9318,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "segment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9419,6 +9430,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9497,6 +9509,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9575,6 +9588,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9653,6 +9667,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "cluster";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9731,6 +9746,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv3-cookie";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9809,6 +9825,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "connector-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9887,6 +9904,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9965,6 +9983,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "ls-attr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10046,6 +10065,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-distinguisher-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10141,6 +10161,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "large-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11183,6 +11204,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-sid-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11788,6 +11810,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-list";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11892,6 +11915,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "segment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12003,6 +12027,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12081,6 +12106,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12159,6 +12185,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12237,6 +12264,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "cluster";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12315,6 +12343,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv3-cookie";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12393,6 +12422,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "connector-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12471,6 +12501,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12549,6 +12580,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "ls-attr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12630,6 +12662,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-distinguisher-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12725,6 +12758,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathUs
 {
     std::ostringstream path_buffer;
     path_buffer << "large-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14560,6 +14594,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::RpcSet
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16336,6 +16371,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::Global
 {
     std::ostringstream path_buffer;
     path_buffer << "syncgrp-version";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16390,6 +16426,7 @@ Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::GlobalAfProcessInf
     :
     table_is_active{YType::boolean, "table-is-active"},
     table_id{YType::uint32, "table-id"},
+    def_orig_enabled{YType::boolean, "def-orig-enabled"},
     table_version{YType::uint32, "table-version"},
     rd_version{YType::uint32, "rd-version"},
     rib_version{YType::uint32, "rib-version"},
@@ -16430,6 +16467,7 @@ bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::GlobalAfProce
     if (is_presence_container) return true;
     return table_is_active.is_set
 	|| table_id.is_set
+	|| def_orig_enabled.is_set
 	|| table_version.is_set
 	|| rd_version.is_set
 	|| rib_version.is_set
@@ -16463,6 +16501,7 @@ bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::GlobalAfProce
     return is_set(yfilter)
 	|| ydk::is_set(table_is_active.yfilter)
 	|| ydk::is_set(table_id.yfilter)
+	|| ydk::is_set(def_orig_enabled.yfilter)
 	|| ydk::is_set(table_version.yfilter)
 	|| ydk::is_set(rd_version.yfilter)
 	|| ydk::is_set(rib_version.yfilter)
@@ -16504,6 +16543,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
     if (table_is_active.is_set || is_set(table_is_active.yfilter)) leaf_name_data.push_back(table_is_active.get_name_leafdata());
     if (table_id.is_set || is_set(table_id.yfilter)) leaf_name_data.push_back(table_id.get_name_leafdata());
+    if (def_orig_enabled.is_set || is_set(def_orig_enabled.yfilter)) leaf_name_data.push_back(def_orig_enabled.get_name_leafdata());
     if (table_version.is_set || is_set(table_version.yfilter)) leaf_name_data.push_back(table_version.get_name_leafdata());
     if (rd_version.is_set || is_set(rd_version.yfilter)) leaf_name_data.push_back(rd_version.get_name_leafdata());
     if (rib_version.is_set || is_set(rib_version.yfilter)) leaf_name_data.push_back(rib_version.get_name_leafdata());
@@ -16560,6 +16600,12 @@ void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::GlobalAfProce
         table_id = value;
         table_id.value_namespace = name_space;
         table_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "def-orig-enabled")
+    {
+        def_orig_enabled = value;
+        def_orig_enabled.value_namespace = name_space;
+        def_orig_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "table-version")
     {
@@ -16729,6 +16775,10 @@ void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::GlobalAfProce
     {
         table_id.yfilter = yfilter;
     }
+    if(value_path == "def-orig-enabled")
+    {
+        def_orig_enabled.yfilter = yfilter;
+    }
     if(value_path == "table-version")
     {
         table_version.yfilter = yfilter;
@@ -16837,7 +16887,7 @@ void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::GlobalAfProce
 
 bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::GlobalAfProcessInfo::Vrf_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "table-is-active" || name == "table-id" || name == "table-version" || name == "rd-version" || name == "rib-version" || name == "nsr-conv-version" || name == "nsr-is-conv" || name == "client-reflection-enabled" || name == "dampening-enabled" || name == "ebgp-distance" || name == "ibgp-distance" || name == "aggregates-distance" || name == "dynamic-med-enabled" || name == "dynamic-med-interval" || name == "dynamic-med-timer-running" || name == "dynamic-med-timer-value" || name == "dynamic-med-periodic-timer-running" || name == "dynamic-med-periodic-timer-value" || name == "rib-has-converged" || name == "rib-convergence-version" || name == "is-rib-table-full" || name == "rib-table-full-version" || name == "nexthop-resolution-minimum-prefix-length-configured" || name == "nexthop-resolution-minimum-prefix-length" || name == "selective-ebgp-multipath-enabled" || name == "selective-ibgp-multipath-enabled" || name == "selective-eibgp-multipath-enabled" || name == "rib-acked-table-version")
+    if(name == "table-is-active" || name == "table-id" || name == "def-orig-enabled" || name == "table-version" || name == "rd-version" || name == "rib-version" || name == "nsr-conv-version" || name == "nsr-is-conv" || name == "client-reflection-enabled" || name == "dampening-enabled" || name == "ebgp-distance" || name == "ibgp-distance" || name == "aggregates-distance" || name == "dynamic-med-enabled" || name == "dynamic-med-interval" || name == "dynamic-med-timer-running" || name == "dynamic-med-timer-value" || name == "dynamic-med-periodic-timer-running" || name == "dynamic-med-periodic-timer-value" || name == "rib-has-converged" || name == "rib-convergence-version" || name == "is-rib-table-full" || name == "rib-table-full-version" || name == "nexthop-resolution-minimum-prefix-length-configured" || name == "nexthop-resolution-minimum-prefix-length" || name == "selective-ebgp-multipath-enabled" || name == "selective-ibgp-multipath-enabled" || name == "selective-eibgp-multipath-enabled" || name == "rib-acked-table-version")
         return true;
     return false;
 }
@@ -17024,6 +17074,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::Advert
 {
     std::ostringstream path_buffer;
     path_buffer << "advertised-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22283,6 +22334,7 @@ Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPathXr::
     is_tunnel_up{YType::boolean, "is-tunnel-up"},
     is_tunnel_info_stale{YType::boolean, "is-tunnel-info-stale"},
     is_tunnel_registered{YType::boolean, "is-tunnel-registered"},
+    is_bgp_te_registered{YType::boolean, "is-bgp-te-registered"},
     tunnel_v6_required{YType::boolean, "tunnel-v6-required"},
     tunnel_v6_enabled{YType::boolean, "tunnel-v6-enabled"},
     tunnel_notif_first_rcvd{YType::boolean, "tunnel-notif-first-rcvd"},
@@ -22292,7 +22344,8 @@ Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPathXr::
     last_tunnel_update{YType::uint32, "last-tunnel-update"},
     tunnel_color{YType::uint32, "tunnel-color"},
     is_tunnel_color_only{YType::boolean, "is-tunnel-color-only"},
-    tunnel_endpoint_afi{YType::enumeration, "tunnel-endpoint-afi"}
+    tunnel_endpoint_afi{YType::enumeration, "tunnel-endpoint-afi"},
+    flags{YType::uint32, "flags"}
 {
 
     yang_name = "nh-tunnel"; yang_parent_name = "path-information"; is_top_level_class = false; has_list_ancestor = true; 
@@ -22310,6 +22363,7 @@ bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
 	|| is_tunnel_up.is_set
 	|| is_tunnel_info_stale.is_set
 	|| is_tunnel_registered.is_set
+	|| is_bgp_te_registered.is_set
 	|| tunnel_v6_required.is_set
 	|| tunnel_v6_enabled.is_set
 	|| tunnel_notif_first_rcvd.is_set
@@ -22319,7 +22373,8 @@ bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
 	|| last_tunnel_update.is_set
 	|| tunnel_color.is_set
 	|| is_tunnel_color_only.is_set
-	|| tunnel_endpoint_afi.is_set;
+	|| tunnel_endpoint_afi.is_set
+	|| flags.is_set;
 }
 
 bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel::has_operation() const
@@ -22330,6 +22385,7 @@ bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
 	|| ydk::is_set(is_tunnel_up.yfilter)
 	|| ydk::is_set(is_tunnel_info_stale.yfilter)
 	|| ydk::is_set(is_tunnel_registered.yfilter)
+	|| ydk::is_set(is_bgp_te_registered.yfilter)
 	|| ydk::is_set(tunnel_v6_required.yfilter)
 	|| ydk::is_set(tunnel_v6_enabled.yfilter)
 	|| ydk::is_set(tunnel_notif_first_rcvd.yfilter)
@@ -22339,7 +22395,8 @@ bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
 	|| ydk::is_set(last_tunnel_update.yfilter)
 	|| ydk::is_set(tunnel_color.yfilter)
 	|| ydk::is_set(is_tunnel_color_only.yfilter)
-	|| ydk::is_set(tunnel_endpoint_afi.yfilter);
+	|| ydk::is_set(tunnel_endpoint_afi.yfilter)
+	|| ydk::is_set(flags.yfilter);
 }
 
 std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel::get_segment_path() const
@@ -22358,6 +22415,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (is_tunnel_up.is_set || is_set(is_tunnel_up.yfilter)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
     if (is_tunnel_info_stale.is_set || is_set(is_tunnel_info_stale.yfilter)) leaf_name_data.push_back(is_tunnel_info_stale.get_name_leafdata());
     if (is_tunnel_registered.is_set || is_set(is_tunnel_registered.yfilter)) leaf_name_data.push_back(is_tunnel_registered.get_name_leafdata());
+    if (is_bgp_te_registered.is_set || is_set(is_bgp_te_registered.yfilter)) leaf_name_data.push_back(is_bgp_te_registered.get_name_leafdata());
     if (tunnel_v6_required.is_set || is_set(tunnel_v6_required.yfilter)) leaf_name_data.push_back(tunnel_v6_required.get_name_leafdata());
     if (tunnel_v6_enabled.is_set || is_set(tunnel_v6_enabled.yfilter)) leaf_name_data.push_back(tunnel_v6_enabled.get_name_leafdata());
     if (tunnel_notif_first_rcvd.is_set || is_set(tunnel_notif_first_rcvd.yfilter)) leaf_name_data.push_back(tunnel_notif_first_rcvd.get_name_leafdata());
@@ -22368,6 +22426,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (tunnel_color.is_set || is_set(tunnel_color.yfilter)) leaf_name_data.push_back(tunnel_color.get_name_leafdata());
     if (is_tunnel_color_only.is_set || is_set(is_tunnel_color_only.yfilter)) leaf_name_data.push_back(is_tunnel_color_only.get_name_leafdata());
     if (tunnel_endpoint_afi.is_set || is_set(tunnel_endpoint_afi.yfilter)) leaf_name_data.push_back(tunnel_endpoint_afi.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -22416,6 +22475,12 @@ void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
         is_tunnel_registered = value;
         is_tunnel_registered.value_namespace = name_space;
         is_tunnel_registered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-bgp-te-registered")
+    {
+        is_bgp_te_registered = value;
+        is_bgp_te_registered.value_namespace = name_space;
+        is_bgp_te_registered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-v6-required")
     {
@@ -22477,6 +22542,12 @@ void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
         tunnel_endpoint_afi.value_namespace = name_space;
         tunnel_endpoint_afi.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel::set_filter(const std::string & value_path, YFilter yfilter)
@@ -22500,6 +22571,10 @@ void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
     if(value_path == "is-tunnel-registered")
     {
         is_tunnel_registered.yfilter = yfilter;
+    }
+    if(value_path == "is-bgp-te-registered")
+    {
+        is_bgp_te_registered.yfilter = yfilter;
     }
     if(value_path == "tunnel-v6-required")
     {
@@ -22541,11 +22616,15 @@ void Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPat
     {
         tunnel_endpoint_afi.yfilter = yfilter;
     }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
 }
 
 bool Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tunnel-type" || name == "tunnel-name" || name == "is-tunnel-up" || name == "is-tunnel-info-stale" || name == "is-tunnel-registered" || name == "tunnel-v6-required" || name == "tunnel-v6-enabled" || name == "tunnel-notif-first-rcvd" || name == "tunnel-state-skip-reg" || name == "binding-label" || name == "tunnel-if-handle" || name == "last-tunnel-update" || name == "tunnel-color" || name == "is-tunnel-color-only" || name == "tunnel-endpoint-afi")
+    if(name == "tunnel-type" || name == "tunnel-name" || name == "is-tunnel-up" || name == "is-tunnel-info-stale" || name == "is-tunnel-registered" || name == "is-bgp-te-registered" || name == "tunnel-v6-required" || name == "tunnel-v6-enabled" || name == "tunnel-notif-first-rcvd" || name == "tunnel-state-skip-reg" || name == "binding-label" || name == "tunnel-if-handle" || name == "last-tunnel-update" || name == "tunnel-color" || name == "is-tunnel-color-only" || name == "tunnel-endpoint-afi" || name == "flags")
         return true;
     return false;
 }

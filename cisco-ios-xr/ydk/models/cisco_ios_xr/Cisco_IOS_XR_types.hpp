@@ -18,6 +18,13 @@ class EncryptionType : public ydk::Enum
         static const ydk::Enum::YLeaf proprietary;
         static const ydk::Enum::YLeaf type6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "md5") return 1;
+            if (name == "proprietary") return 2;
+            if (name == "type6") return 3;
+            return -1;
+        }
 };
 
 

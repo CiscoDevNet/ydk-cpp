@@ -579,12 +579,14 @@ class Ipv4Dhcpd::Nodes::Node::Proxy : public ydk::Entity
         class Vrfs; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs
         class Profiles; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Profiles
         class Statistics; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Statistics
+        class DisconnectHistories; //type: Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories
         class Binding; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Binding
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo> statistics_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs> vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Profiles> profiles;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories> disconnect_histories;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Binding> binding;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy
@@ -1251,6 +1253,55 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_
 
 
+class Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories : public ydk::Entity
+{
+    public:
+        DisconnectHistories();
+        ~DisconnectHistories();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DisconnectHistory; //type: Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory
+
+        ydk::YList disconnect_history;
+        
+}; // Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories
+
+
+class Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory : public ydk::Entity
+{
+    public:
+        DisconnectHistory();
+        ~DisconnectHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf session_start_time_epoch; //type: uint64
+        ydk::YLeaf session_end_time_epoch; //type: uint64
+        ydk::YLeaf disc_reason; //type: string
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+
+}; // Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory
+
+
 class Ipv4Dhcpd::Nodes::Node::Proxy::Binding : public ydk::Entity
 {
     public:
@@ -1347,7 +1398,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client : public ydk::Enti
         ydk::YLeaf is_mbl_subscriber; //type: boolean
         ydk::YLeaf param_request; //type: string
         ydk::YLeaf param_response; //type: string
-        ydk::YLeaf session_start_time; //type: uint64
+        ydk::YLeaf session_start_time_epoch; //type: uint64
         ydk::YLeaf srg_state; //type: uint32
         ydk::YLeafList event_history; //type: list of  uint32
 
@@ -2197,12 +2248,14 @@ class Ipv4Dhcpd::Nodes::Node::Server : public ydk::Entity
         class Profiles; //type: Ipv4Dhcpd::Nodes::Node::Server::Profiles
         class Statistics; //type: Ipv4Dhcpd::Nodes::Node::Server::Statistics
         class Binding; //type: Ipv4Dhcpd::Nodes::Node::Server::Binding
+        class DisconnectHistories; //type: Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories
         class StatisticsInfo; //type: Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo
         class Vrfs; //type: Ipv4Dhcpd::Nodes::Node::Server::Vrfs
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Profiles> profiles;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Binding> binding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories> disconnect_histories;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo> statistics_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Vrfs> vrfs;
         
@@ -2484,11 +2537,60 @@ class Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client : public ydk::Ent
         ydk::YLeaf is_mbl_subscriber; //type: boolean
         ydk::YLeaf param_request; //type: string
         ydk::YLeaf param_response; //type: string
-        ydk::YLeaf session_start_time; //type: uint64
+        ydk::YLeaf session_start_time_epoch; //type: uint64
         ydk::YLeaf srg_state; //type: uint32
         ydk::YLeafList event_history; //type: list of  uint32
 
 }; // Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client
+
+
+class Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories : public ydk::Entity
+{
+    public:
+        DisconnectHistories();
+        ~DisconnectHistories();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DisconnectHistory; //type: Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory
+
+        ydk::YList disconnect_history;
+        
+}; // Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories
+
+
+class Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory : public ydk::Entity
+{
+    public:
+        DisconnectHistory();
+        ~DisconnectHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf session_start_time_epoch; //type: uint64
+        ydk::YLeaf session_end_time_epoch; //type: uint64
+        ydk::YLeaf disc_reason; //type: string
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+
+}; // Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory
 
 
 class Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo : public ydk::Entity
@@ -3532,6 +3634,11 @@ class DhcpIssuVersion : public ydk::Enum
         static const ydk::Enum::YLeaf version1;
         static const ydk::Enum::YLeaf version2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "version1") return 0;
+            if (name == "version2") return 1;
+            return -1;
+        }
 };
 
 class DhcpIssuRole : public ydk::Enum
@@ -3540,6 +3647,11 @@ class DhcpIssuRole : public ydk::Enum
         static const ydk::Enum::YLeaf role_primary;
         static const ydk::Enum::YLeaf role_secondary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "role-primary") return 0;
+            if (name == "role-secondary") return 1;
+            return -1;
+        }
 };
 
 class ProxyLeaseLimit : public ydk::Enum
@@ -3551,6 +3663,14 @@ class ProxyLeaseLimit : public ydk::Enum
         static const ydk::Enum::YLeaf remote_id;
         static const ydk::Enum::YLeaf remote_id_circuit_id;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "interface") return 1;
+            if (name == "circuit-id") return 2;
+            if (name == "remote-id") return 3;
+            if (name == "remote-id-circuit-id") return 4;
+            return -1;
+        }
 };
 
 class DhcpIssuPhase : public ydk::Enum
@@ -3562,6 +3682,14 @@ class DhcpIssuPhase : public ydk::Enum
         static const ydk::Enum::YLeaf phase_completed;
         static const ydk::Enum::YLeaf phase_aborted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "phase-not-started") return 0;
+            if (name == "phase-load") return 1;
+            if (name == "phase-run") return 2;
+            if (name == "phase-completed") return 3;
+            if (name == "phase-aborted") return 4;
+            return -1;
+        }
 };
 
 class RelayInfoPolicy : public ydk::Enum
@@ -3572,6 +3700,13 @@ class RelayInfoPolicy : public ydk::Enum
         static const ydk::Enum::YLeaf drop;
         static const ydk::Enum::YLeaf encapsulate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "replace") return 0;
+            if (name == "keep") return 1;
+            if (name == "drop") return 2;
+            if (name == "encapsulate") return 3;
+            return -1;
+        }
 };
 
 class BagDhcpdIntfSrgRole : public ydk::Enum
@@ -3581,6 +3716,12 @@ class BagDhcpdIntfSrgRole : public ydk::Enum
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "master") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
 };
 
 class DhcpcIpv4State : public ydk::Enum
@@ -3596,6 +3737,18 @@ class DhcpcIpv4State : public ydk::Enum
         static const ydk::Enum::YLeaf rebinding;
         static const ydk::Enum::YLeaf invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "init") return 0;
+            if (name == "init-reboot") return 1;
+            if (name == "rebooting") return 2;
+            if (name == "selecting") return 3;
+            if (name == "requesting") return 4;
+            if (name == "bound") return 5;
+            if (name == "renewing") return 6;
+            if (name == "rebinding") return 7;
+            if (name == "invalid") return 8;
+            return -1;
+        }
 };
 
 class BagDhcpdProxyState : public ydk::Enum
@@ -3619,6 +3772,26 @@ class BagDhcpdProxyState : public ydk::Enum
         static const ydk::Enum::YLeaf change_addr_dpm;
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initializing") return 0;
+            if (name == "selecting") return 1;
+            if (name == "requesting") return 2;
+            if (name == "bound") return 3;
+            if (name == "renewing") return 4;
+            if (name == "informing") return 5;
+            if (name == "deleting") return 6;
+            if (name == "create-dpm") return 7;
+            if (name == "offer-sent") return 8;
+            if (name == "update-dpm") return 9;
+            if (name == "route-install") return 10;
+            if (name == "disc-dpm") return 11;
+            if (name == "renew-new-intf") return 12;
+            if (name == "other-intf-dpm") return 13;
+            if (name == "request-dpm") return 14;
+            if (name == "change-addr-dpm") return 15;
+            if (name == "max") return 16;
+            return -1;
+        }
 };
 
 class RelayInfoVpnMode : public ydk::Enum
@@ -3627,6 +3800,11 @@ class RelayInfoVpnMode : public ydk::Enum
         static const ydk::Enum::YLeaf rfc;
         static const ydk::Enum::YLeaf cisco;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rfc") return 0;
+            if (name == "cisco") return 1;
+            return -1;
+        }
 };
 
 class RelayInfoAuthenticate : public ydk::Enum
@@ -3635,6 +3813,11 @@ class RelayInfoAuthenticate : public ydk::Enum
         static const ydk::Enum::YLeaf received;
         static const ydk::Enum::YLeaf inserted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "received") return 0;
+            if (name == "inserted") return 1;
+            return -1;
+        }
 };
 
 class BroadcastFlag : public ydk::Enum
@@ -3644,6 +3827,12 @@ class BroadcastFlag : public ydk::Enum
         static const ydk::Enum::YLeaf check;
         static const ydk::Enum::YLeaf unicast_always;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ignore") return 0;
+            if (name == "check") return 1;
+            if (name == "unicast-always") return 2;
+            return -1;
+        }
 };
 
 

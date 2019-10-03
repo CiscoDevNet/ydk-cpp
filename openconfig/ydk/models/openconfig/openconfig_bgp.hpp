@@ -7514,6 +7514,15 @@ class Bgp::Neighbors::Neighbor::State::SessionState : public ydk::Enum
         static const ydk::Enum::YLeaf OPENCONFIRM;
         static const ydk::Enum::YLeaf ESTABLISHED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IDLE") return 0;
+            if (name == "CONNECT") return 1;
+            if (name == "ACTIVE") return 2;
+            if (name == "OPENSENT") return 3;
+            if (name == "OPENCONFIRM") return 4;
+            if (name == "ESTABLISHED") return 5;
+            return -1;
+        }
 };
 
 class Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode : public ydk::Enum
@@ -7523,6 +7532,12 @@ class Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf BILATERAL;
         static const ydk::Enum::YLeaf REMOTE_HELPER;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "HELPER_ONLY") return 0;
+            if (name == "BILATERAL") return 1;
+            if (name == "REMOTE_HELPER") return 2;
+            return -1;
+        }
 };
 
 

@@ -661,6 +661,34 @@ class FailureReason : public ydk::Enum
         static const ydk::Enum::YLeaf notWritable;
         static const ydk::Enum::YLeaf inconsistentName;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sampleOverrun") return -6;
+            if (name == "badType") return -5;
+            if (name == "noResponse") return -4;
+            if (name == "destinationUnreachable") return -3;
+            if (name == "badDestination") return -2;
+            if (name == "localResourceLack") return -1;
+            if (name == "noError") return 0;
+            if (name == "tooBig") return 1;
+            if (name == "noSuchName") return 2;
+            if (name == "badValue") return 3;
+            if (name == "readOnly") return 4;
+            if (name == "genErr") return 5;
+            if (name == "noAccess") return 6;
+            if (name == "wrongType") return 7;
+            if (name == "wrongLength") return 8;
+            if (name == "wrongEncoding") return 9;
+            if (name == "wrongValue") return 10;
+            if (name == "noCreation") return 11;
+            if (name == "inconsistentValue") return 12;
+            if (name == "resourceUnavailable") return 13;
+            if (name == "commitFailed") return 14;
+            if (name == "undoFailed") return 15;
+            if (name == "authorizationError") return 16;
+            if (name == "notWritable") return 17;
+            if (name == "inconsistentName") return 18;
+            return -1;
+        }
 };
 
 class DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry::MteTriggerSampleType : public ydk::Enum
@@ -669,6 +697,11 @@ class DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry::MteTriggerSampleType : p
         static const ydk::Enum::YLeaf absoluteValue;
         static const ydk::Enum::YLeaf deltaValue;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absoluteValue") return 1;
+            if (name == "deltaValue") return 2;
+            return -1;
+        }
 };
 
 class DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry::MteTriggerDeltaDiscontinuityIDType : public ydk::Enum
@@ -678,6 +711,12 @@ class DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry::MteTriggerDelt
         static const ydk::Enum::YLeaf timeStamp;
         static const ydk::Enum::YLeaf dateAndTime;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "timeTicks") return 1;
+            if (name == "timeStamp") return 2;
+            if (name == "dateAndTime") return 3;
+            return -1;
+        }
 };
 
 class DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry::MteTriggerBooleanComparison : public ydk::Enum
@@ -690,6 +729,15 @@ class DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry::MteTrigger
         static const ydk::Enum::YLeaf greater;
         static const ydk::Enum::YLeaf greaterOrEqual;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unequal") return 1;
+            if (name == "equal") return 2;
+            if (name == "less") return 3;
+            if (name == "lessOrEqual") return 4;
+            if (name == "greater") return 5;
+            if (name == "greaterOrEqual") return 6;
+            return -1;
+        }
 };
 
 class DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry::MteTriggerThresholdStartup : public ydk::Enum
@@ -699,6 +747,12 @@ class DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry::MteTri
         static const ydk::Enum::YLeaf falling;
         static const ydk::Enum::YLeaf risingOrFalling;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rising") return 1;
+            if (name == "falling") return 2;
+            if (name == "risingOrFalling") return 3;
+            return -1;
+        }
 };
 
 

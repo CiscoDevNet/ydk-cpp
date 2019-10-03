@@ -43,7 +43,7 @@ class Sr : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::Mappings> mappings;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::AdjacencySid> adjacency_sid;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::GlobalBlock> global_block; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering> traffic_engineering; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering> traffic_engineering;
         
 }; // Sr
 
@@ -356,18 +356,22 @@ class Sr::TrafficEngineering : public ydk::Entity
         ydk::YLeaf te_latency; //type: empty
         ydk::YLeaf maximum_sid_depth; //type: uint32
         ydk::YLeaf enable; //type: empty
+        class OutOfResources; //type: Sr::TrafficEngineering::OutOfResources
         class OnDemandColors; //type: Sr::TrafficEngineering::OnDemandColors
         class Segments; //type: Sr::TrafficEngineering::Segments
         class Logging; //type: Sr::TrafficEngineering::Logging
+        class Timers; //type: Sr::TrafficEngineering::Timers
         class BindingSidRules; //type: Sr::TrafficEngineering::BindingSidRules
         class Policies; //type: Sr::TrafficEngineering::Policies
         class SrteInterfaces; //type: Sr::TrafficEngineering::SrteInterfaces
         class Pcc; //type: Sr::TrafficEngineering::Pcc
         class AffinityMaps; //type: Sr::TrafficEngineering::AffinityMaps
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OutOfResources> out_of_resources;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors> on_demand_colors;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Segments> segments;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Logging> logging; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Timers> timers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::BindingSidRules> binding_sid_rules;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Policies> policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::SrteInterfaces> srte_interfaces;
@@ -375,6 +379,29 @@ class Sr::TrafficEngineering : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::AffinityMaps> affinity_maps;
         
 }; // Sr::TrafficEngineering
+
+
+class Sr::TrafficEngineering::OutOfResources : public ydk::Entity
+{
+    public:
+        OutOfResources();
+        ~OutOfResources();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf maximum_paths_batch; //type: uint32
+        ydk::YLeaf maximum_paths; //type: uint32
+
+}; // Sr::TrafficEngineering::OutOfResources
 
 
 class Sr::TrafficEngineering::OnDemandColors : public ydk::Entity
@@ -420,10 +447,11 @@ class Sr::TrafficEngineering::OnDemandColors::OnDemandColor : public ydk::Entity
 
         ydk::YLeaf color; //type: uint32
         ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf maximum_sid_depth; //type: uint32
         ydk::YLeaf enable; //type: empty
         class OnDemandColorDynMpls; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls> on_demand_color_dyn_mpls; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls> on_demand_color_dyn_mpls;
         
 }; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor
 
@@ -449,10 +477,12 @@ class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpl
         class OnDemandColorDynMplsMetric; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric
         class OnDemandColorDynMplsPce; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce
         class DisjointPath; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath
+        class AffinityRules; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric> on_demand_color_dyn_mpls_metric; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric> on_demand_color_dyn_mpls_metric;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce> on_demand_color_dyn_mpls_pce;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath> disjoint_path; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules> affinity_rules;
         
 }; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls
 
@@ -475,8 +505,34 @@ class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpl
 
         ydk::YLeaf metric_type; //type: XtcMetric
         ydk::YLeaf enable; //type: empty
+        class MetricMargin; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::MetricMargin
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::MetricMargin> metric_margin;
+        
 }; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric
+
+
+class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::MetricMargin : public ydk::Entity
+{
+    public:
+        MetricMargin();
+        ~MetricMargin();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_type; //type: XtcMetricValue
+        ydk::YLeaf absolute_value; //type: uint32
+        ydk::YLeaf relative_value; //type: uint32
+
+}; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::MetricMargin
 
 
 class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce : public ydk::Entity
@@ -521,6 +577,74 @@ class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpl
         ydk::YLeaf sub_id; //type: uint32
 
 }; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath
+
+
+class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules : public ydk::Entity
+{
+    public:
+        AffinityRules();
+        ~AffinityRules();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AffinityRule; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules::AffinityRule
+
+        ydk::YList affinity_rule;
+        
+}; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules
+
+
+class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules::AffinityRule : public ydk::Entity
+{
+    public:
+        AffinityRule();
+        ~AffinityRule();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rule; //type: XtcAffinityRule
+        class AffinityName; //type: Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules::AffinityRule::AffinityName
+
+        ydk::YList affinity_name;
+        
+}; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules::AffinityRule
+
+
+class Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules::AffinityRule::AffinityName : public ydk::Entity
+{
+    public:
+        AffinityName();
+        ~AffinityName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf affinity_name; //type: string
+
+}; // Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::AffinityRules::AffinityRule::AffinityName
 
 
 class Sr::TrafficEngineering::Segments : public ydk::Entity
@@ -642,6 +766,31 @@ class Sr::TrafficEngineering::Logging : public ydk::Entity
 }; // Sr::TrafficEngineering::Logging
 
 
+class Sr::TrafficEngineering::Timers : public ydk::Entity
+{
+    public:
+        Timers();
+        ~Timers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf candidate_path_cleanup_delay; //type: uint32
+        ydk::YLeaf cleanup_delay; //type: uint32
+        ydk::YLeaf install_delay; //type: uint32
+        ydk::YLeaf periodic_reoptimization; //type: uint32
+
+}; // Sr::TrafficEngineering::Timers
+
+
 class Sr::TrafficEngineering::BindingSidRules : public ydk::Entity
 {
     public:
@@ -660,8 +809,10 @@ class Sr::TrafficEngineering::BindingSidRules : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class Explicit; //type: Sr::TrafficEngineering::BindingSidRules::Explicit
+        class DynamicBindingSidRules; //type: Sr::TrafficEngineering::BindingSidRules::DynamicBindingSidRules
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::BindingSidRules::Explicit> explicit_; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::BindingSidRules::DynamicBindingSidRules> dynamic_binding_sid_rules; // presence node
         
 }; // Sr::TrafficEngineering::BindingSidRules
 
@@ -686,6 +837,28 @@ class Sr::TrafficEngineering::BindingSidRules::Explicit : public ydk::Entity
         ydk::YLeaf rule; //type: XtcBindingSidexplicitRule
 
 }; // Sr::TrafficEngineering::BindingSidRules::Explicit
+
+
+class Sr::TrafficEngineering::BindingSidRules::DynamicBindingSidRules : public ydk::Entity
+{
+    public:
+        DynamicBindingSidRules();
+        ~DynamicBindingSidRules();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dynamic_binding_sid_rule; //type: XtcBindingSidDynamicRule
+
+}; // Sr::TrafficEngineering::BindingSidRules::DynamicBindingSidRules
 
 
 class Sr::TrafficEngineering::Policies : public ydk::Entity
@@ -879,6 +1052,7 @@ class Sr::TrafficEngineering::Policies::Policy::AutoRoute : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf force_sr_include; //type: empty
         ydk::YLeaf enable; //type: empty
         class AutoRouteMetric; //type: Sr::TrafficEngineering::Policies::Policy::AutoRoute::AutoRouteMetric
         class IncludePrefixes; //type: Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes
@@ -1048,7 +1222,6 @@ class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Pre
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
         class DisjointPath; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::DisjointPath
         class SegmentRules; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::SegmentRules
         class AffinityRules; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules
@@ -1144,9 +1317,32 @@ class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Pre
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rule; //type: XtcAffinityRule
-        ydk::YLeaf color; //type: string
+        class AffinityName; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::AffinityName
 
+        ydk::YList affinity_name;
+        
 }; // Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule
+
+
+class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::AffinityName : public ydk::Entity
+{
+    public:
+        AffinityName();
+        ~AffinityName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf affinity_name; //type: string
+
+}; // Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::AffinityName
 
 
 class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos : public ydk::Entity
@@ -1196,7 +1392,7 @@ class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Pre
         class Metric; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric
         class Pcep; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric> metric; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric> metric;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep> pcep;
         
 }; // Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo
@@ -1221,18 +1417,18 @@ class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Pre
         ydk::YLeaf sid_limit; //type: uint32
         ydk::YLeaf metric_type; //type: XtcMetric
         ydk::YLeaf enable; //type: empty
-        class Margin; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin
+        class MetricMargin; //type: Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::MetricMargin
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin> margin;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_cfg::Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::MetricMargin> metric_margin;
         
 }; // Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric
 
 
-class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin : public ydk::Entity
+class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::MetricMargin : public ydk::Entity
 {
     public:
-        Margin();
-        ~Margin();
+        MetricMargin();
+        ~MetricMargin();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1248,7 +1444,7 @@ class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Pre
         ydk::YLeaf absolute_value; //type: uint32
         ydk::YLeaf relative_value; //type: uint32
 
-}; // Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin
+}; // Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::MetricMargin
 
 
 class Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep : public ydk::Entity
@@ -1362,7 +1558,7 @@ class Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf color; //type: string
+        ydk::YLeaf affinity_name; //type: string
 
 }; // Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity
 
@@ -1390,7 +1586,6 @@ class Sr::TrafficEngineering::Pcc : public ydk::Entity
         ydk::YLeaf keepalive_timer_interval; //type: uint32
         ydk::YLeaf initiated_state_interval; //type: uint32
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf max_sid_depth; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf initiated_orphan_interval; //type: uint32
         ydk::YLeaf delegation_timeout; //type: uint32
@@ -1541,7 +1736,7 @@ class Sr::TrafficEngineering::AffinityMaps::AffinityMap : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf color; //type: string
+        ydk::YLeaf affinity_name; //type: string
         ydk::YLeaf bit_position; //type: uint32
 
 }; // Sr::TrafficEngineering::AffinityMaps::AffinityMap
@@ -1552,6 +1747,11 @@ class SrmsMiFlag : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
 class SrmsAddressFamily : public ydk::Enum
@@ -1560,6 +1760,11 @@ class SrmsAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class SidTypeList : public ydk::Enum
@@ -1568,6 +1773,11 @@ class SidTypeList : public ydk::Enum
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf index_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absolute") return 1;
+            if (name == "index") return 2;
+            return -1;
+        }
 };
 
 

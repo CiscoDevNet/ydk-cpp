@@ -757,6 +757,13 @@ class IpArpBagFlags : public ydk::Enum
         static const ydk::Enum::YLeaf flag_evpn_sync;
         static const ydk::Enum::YLeaf flag_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "flag-none") return 0;
+            if (name == "flag-dynamic") return 1;
+            if (name == "flag-evpn-sync") return 2;
+            if (name == "flag-max") return 3;
+            return -1;
+        }
 };
 
 class ArpResolutionHistoryStatus : public ydk::Enum
@@ -786,6 +793,32 @@ class ArpResolutionHistoryStatus : public ydk::Enum
         static const ydk::Enum::YLeaf status_resolved_peer_sync;
         static const ydk::Enum::YLeaf status_dropped_unsolicited_pak;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "status-none") return 0;
+            if (name == "status-resolution-request") return 1;
+            if (name == "status-resolved-reply") return 2;
+            if (name == "status-resolved-grat-arp") return 3;
+            if (name == "status-resolved-request") return 4;
+            if (name == "status-resolved-lc-sync") return 5;
+            if (name == "status-resolved-lc-sync-purge-delay") return 6;
+            if (name == "status-resolved-client") return 7;
+            if (name == "status-removed-client") return 8;
+            if (name == "status-already-resolved") return 9;
+            if (name == "status-failed") return 10;
+            if (name == "status-dropped-interface-down") return 11;
+            if (name == "status-dropped-broadcast-disabled") return 12;
+            if (name == "status-dropped-interface-unavailable") return 13;
+            if (name == "status-dropped-bad-subnet") return 14;
+            if (name == "status-dropped-dynamic-learning-disabled") return 15;
+            if (name == "status-dropped-out-of-subnet-disabled") return 16;
+            if (name == "status-removed-client-sweep") return 17;
+            if (name == "status-added-client") return 18;
+            if (name == "status-added-v1") return 19;
+            if (name == "status-removed-v1") return 20;
+            if (name == "status-resolved-peer-sync") return 21;
+            if (name == "status-dropped-unsolicited-pak") return 22;
+            return -1;
+        }
 };
 
 class IpArpBagEncap : public ydk::Enum
@@ -799,6 +832,16 @@ class IpArpBagEncap : public ydk::Enum
         static const ydk::Enum::YLeaf srpa;
         static const ydk::Enum::YLeaf srpb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "arpa") return 1;
+            if (name == "snap") return 2;
+            if (name == "ieee802-1q") return 3;
+            if (name == "srp") return 4;
+            if (name == "srpa") return 5;
+            if (name == "srpb") return 6;
+            return -1;
+        }
 };
 
 class ArpGmpBagEncap : public ydk::Enum
@@ -812,6 +855,16 @@ class ArpGmpBagEncap : public ydk::Enum
         static const ydk::Enum::YLeaf srpa;
         static const ydk::Enum::YLeaf srpb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "arpa") return 1;
+            if (name == "snap") return 2;
+            if (name == "ieee802-1q") return 3;
+            if (name == "srp") return 4;
+            if (name == "srpa") return 5;
+            if (name == "srpb") return 6;
+            return -1;
+        }
 };
 
 class IpArpBagMedia : public ydk::Enum
@@ -821,6 +874,12 @@ class IpArpBagMedia : public ydk::Enum
         static const ydk::Enum::YLeaf media_srp;
         static const ydk::Enum::YLeaf media_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "media-arpa") return 0;
+            if (name == "media-srp") return 1;
+            if (name == "media-unknown") return 2;
+            return -1;
+        }
 };
 
 class ArpGmpBagEntry : public ydk::Enum
@@ -830,6 +889,12 @@ class ArpGmpBagEntry : public ydk::Enum
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf alias;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "null") return 0;
+            if (name == "static") return 1;
+            if (name == "alias") return 2;
+            return -1;
+        }
 };
 
 class IpArpBagState : public ydk::Enum
@@ -853,6 +918,26 @@ class IpArpBagState : public ydk::Enum
         static const ydk::Enum::YLeaf state_r_sync;
         static const ydk::Enum::YLeaf state_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-none") return 0;
+            if (name == "state-interface") return 1;
+            if (name == "state-standby") return 2;
+            if (name == "state-static") return 3;
+            if (name == "state-alias") return 4;
+            if (name == "state-mobile") return 5;
+            if (name == "state-incomplete") return 6;
+            if (name == "state-deleted") return 7;
+            if (name == "state-dynamic") return 8;
+            if (name == "state-probe") return 9;
+            if (name == "state-purge-delayed") return 10;
+            if (name == "state-dhcp") return 11;
+            if (name == "state-vxlan") return 12;
+            if (name == "state-evpn-sync") return 13;
+            if (name == "state-sat") return 14;
+            if (name == "state-r-sync") return 15;
+            if (name == "state-max") return 16;
+            return -1;
+        }
 };
 
 

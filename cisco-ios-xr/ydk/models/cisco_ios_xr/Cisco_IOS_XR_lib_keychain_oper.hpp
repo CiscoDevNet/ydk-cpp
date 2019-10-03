@@ -218,6 +218,11 @@ class Enc : public ydk::Enum
         static const ydk::Enum::YLeaf password_type7;
         static const ydk::Enum::YLeaf password_type6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "password-type7") return 0;
+            if (name == "password-type6") return 2;
+            return -1;
+        }
 };
 
 class CrytoAlgo : public ydk::Enum
@@ -235,6 +240,20 @@ class CrytoAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf hmac_sha1_96;
         static const ydk::Enum::YLeaf hmac_sha_256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-configured") return 0;
+            if (name == "aes-128-cmac-96") return 1;
+            if (name == "hmac-sha1-12") return 2;
+            if (name == "md5") return 3;
+            if (name == "sha1") return 4;
+            if (name == "hmac-md5") return 5;
+            if (name == "hmac-sha1-20") return 6;
+            if (name == "aes-128-cmac") return 7;
+            if (name == "aes-256-cmac") return 8;
+            if (name == "hmac-sha1-96") return 9;
+            if (name == "hmac-sha-256") return 10;
+            return -1;
+        }
 };
 
 

@@ -7,8 +7,8 @@
 #include "Cisco_NX_OS_device_0.hpp"
 #include "Cisco_NX_OS_device_15.hpp"
 #include "Cisco_NX_OS_device_1.hpp"
-#include "Cisco_NX_OS_device_2.hpp"
-#include "Cisco_NX_OS_device_18.hpp"
+#include "Cisco_NX_OS_device_49.hpp"
+#include "Cisco_NX_OS_device_32.hpp"
 #include "Cisco_NX_OS_device_33.hpp"
 #include "Cisco_NX_OS_device_7.hpp"
 #include "Cisco_NX_OS_device_23.hpp"
@@ -16,32 +16,33 @@
 #include "Cisco_NX_OS_device_41.hpp"
 #include "Cisco_NX_OS_device_21.hpp"
 #include "Cisco_NX_OS_device_24.hpp"
-#include "Cisco_NX_OS_device_31.hpp"
 #include "Cisco_NX_OS_device_36.hpp"
 #include "Cisco_NX_OS_device_28.hpp"
 #include "Cisco_NX_OS_device_35.hpp"
-#include "Cisco_NX_OS_device_14.hpp"
+#include "Cisco_NX_OS_device_2.hpp"
 #include "Cisco_NX_OS_device_8.hpp"
+#include "Cisco_NX_OS_device_29.hpp"
 #include "Cisco_NX_OS_device_39.hpp"
-#include "Cisco_NX_OS_device_43.hpp"
+#include "Cisco_NX_OS_device_14.hpp"
 #include "Cisco_NX_OS_device_17.hpp"
 #include "Cisco_NX_OS_device_3.hpp"
 #include "Cisco_NX_OS_device_5.hpp"
 #include "Cisco_NX_OS_device_4.hpp"
 #include "Cisco_NX_OS_device_20.hpp"
 #include "Cisco_NX_OS_device_6.hpp"
+#include "Cisco_NX_OS_device_48.hpp"
 #include "Cisco_NX_OS_device_42.hpp"
-#include "Cisco_NX_OS_device_30.hpp"
 #include "Cisco_NX_OS_device_34.hpp"
-#include "Cisco_NX_OS_device_32.hpp"
+#include "Cisco_NX_OS_device_18.hpp"
 #include "Cisco_NX_OS_device_37.hpp"
 #include "Cisco_NX_OS_device_45.hpp"
 #include "Cisco_NX_OS_device_22.hpp"
 #include "Cisco_NX_OS_device_25.hpp"
 #include "Cisco_NX_OS_device_11.hpp"
-#include "Cisco_NX_OS_device_27.hpp"
+#include "Cisco_NX_OS_device_26.hpp"
+#include "Cisco_NX_OS_device_43.hpp"
 #include "Cisco_NX_OS_device_46.hpp"
-#include "Cisco_NX_OS_device_40.hpp"
+#include "Cisco_NX_OS_device_47.hpp"
 #include "Cisco_NX_OS_device_38.hpp"
 #include "Cisco_NX_OS_device_44.hpp"
 
@@ -62,12 +63,14 @@ Inactive::~Inactive()
 
 System::System()
     :
+    name{YType::str, "name"},
     currenttime{YType::str, "currentTime"},
     systemuptime{YType::str, "systemUpTime"},
-    serial{YType::str, "serial"},
-    name{YType::str, "name"}
+    serial{YType::str, "serial"}
         ,
     bgp_items(std::make_shared<System::BgpItems>())
+    , callhome_items(std::make_shared<System::CallhomeItems>())
+    , caploglevel_items(std::make_shared<System::CaploglevelItems>())
     , sfw_items(std::make_shared<System::SfwItems>())
     , capabilities_items(std::make_shared<System::CapabilitiesItems>())
     , clock_items(std::make_shared<System::ClockItems>())
@@ -94,6 +97,7 @@ System::System()
     , fwstatuscont_items(std::make_shared<System::FwstatuscontItems>())
     , catfwstatuscont_items(std::make_shared<System::CatfwstatuscontItems>())
     , isis_items(std::make_shared<System::IsisItems>())
+    , itd_items(std::make_shared<System::ItdItems>())
     , lacp_items(std::make_shared<System::LacpItems>())
     , mgmt_items(std::make_shared<System::MgmtItems>())
     , snmp_items(std::make_shared<System::SnmpItems>())
@@ -105,7 +109,9 @@ System::System()
     , odcresp_items(std::make_shared<System::OdcrespItems>())
     , ospf_items(std::make_shared<System::OspfItems>())
     , evpn_items(std::make_shared<System::EvpnItems>())
+    , comm_items(std::make_shared<System::CommItems>())
     , userext_items(std::make_shared<System::UserextItems>())
+    , security_items(std::make_shared<System::SecurityItems>())
     , mockroot_items(std::make_shared<System::MockrootItems>())
     , stp_items(std::make_shared<System::StpItems>())
     , bdtable_items(std::make_shared<System::BdTableItems>())
@@ -134,6 +140,7 @@ System::System()
     , poe_items(std::make_shared<System::PoeItems>())
     , qosm_items(std::make_shared<System::QosmItems>())
     , sisf_items(std::make_shared<System::SisfItems>())
+    , sla_items(std::make_shared<System::SlaItems>())
     , tm_items(std::make_shared<System::TmItems>())
     , track_items(std::make_shared<System::TrackItems>())
     , udld_items(std::make_shared<System::UdldItems>())
@@ -165,13 +172,16 @@ System::System()
     , ctx_items(std::make_shared<System::CtxItems>())
     , inst_items(std::make_shared<System::InstItems>())
     , l3capprov_items(std::make_shared<System::L3capprovItems>())
+    , ipfib_items(std::make_shared<System::IpfibItems>())
     , l3vm_items(std::make_shared<System::L3vmItems>())
     , urib_items(std::make_shared<System::UribItems>())
     , u6rib_items(std::make_shared<System::U6ribItems>())
     , uribv4_items(std::make_shared<System::Uribv4Items>())
     , uribv6_items(std::make_shared<System::Uribv6Items>())
+    , mmode_items(std::make_shared<System::MmodeItems>())
     , conng_items(std::make_shared<System::ConngItems>())
     , vdc_items(std::make_shared<System::VdcItems>())
+    , pktmgr_items(std::make_shared<System::PktmgrItems>())
     , procsys_items(std::make_shared<System::ProcsysItems>())
     , proc_items(std::make_shared<System::ProcItems>())
     , regr_items(std::make_shared<System::RegrItems>())
@@ -187,6 +197,7 @@ System::System()
     , test_rslt__items(std::make_shared<System::TestRsltItems>())
     , tunnel_items(std::make_shared<System::TunnelItems>())
     , vtp_items(std::make_shared<System::VtpItems>())
+    , wedge_items(std::make_shared<System::WedgeItems>())
     , nbm_items(std::make_shared<System::NbmItems>())
     , nbmcc_items(std::make_shared<System::NbmccItems>())
     , nbmflowstable_items(std::make_shared<System::NbmFlowsTableItems>())
@@ -197,6 +208,7 @@ System::System()
     , ops_items(std::make_shared<System::OpsItems>())
     , eqptcapacity_items(std::make_shared<System::EqptcapacityItems>())
     , diag_items(std::make_shared<System::DiagItems>())
+    , lcm_items(std::make_shared<System::LcmItems>())
     , lsnode_items(std::make_shared<System::LsnodeItems>())
     , pltfm_items(std::make_shared<System::PltfmItems>())
     , satm_items(std::make_shared<System::SatmItems>())
@@ -219,6 +231,7 @@ System::System()
     , msdp_items(std::make_shared<System::MsdpItems>())
     , nd_items(std::make_shared<System::NdItems>())
     , ngmvpn_items(std::make_shared<System::NgmvpnItems>())
+    , ospfv3_items(std::make_shared<System::Ospfv3Items>())
     , pim_items(std::make_shared<System::PimItems>())
     , pim6_items(std::make_shared<System::Pim6Items>())
     , segrt_items(std::make_shared<System::SegrtItems>())
@@ -228,6 +241,7 @@ System::System()
     , sectl_items(std::make_shared<System::SectlItems>())
     , caggr_items(std::make_shared<System::CaggrItems>())
     , cphys_items(std::make_shared<System::CphysItems>())
+    , clialias_items(std::make_shared<System::ClialiasItems>())
     , action_items(std::make_shared<System::ActionItems>())
     , rtdbgexptssrc_items(std::make_shared<System::RtdbgexpTsSrcItems>())
     , rttracerouteptrsrc_items(std::make_shared<System::RttraceroutepTrSrcItems>())
@@ -235,6 +249,8 @@ System::System()
     , rtmaintfwinstlsrc_items(std::make_shared<System::RtmaintFwinstlsrcItems>())
 {
     bgp_items->parent = this;
+    callhome_items->parent = this;
+    caploglevel_items->parent = this;
     sfw_items->parent = this;
     capabilities_items->parent = this;
     clock_items->parent = this;
@@ -261,6 +277,7 @@ System::System()
     fwstatuscont_items->parent = this;
     catfwstatuscont_items->parent = this;
     isis_items->parent = this;
+    itd_items->parent = this;
     lacp_items->parent = this;
     mgmt_items->parent = this;
     snmp_items->parent = this;
@@ -272,7 +289,9 @@ System::System()
     odcresp_items->parent = this;
     ospf_items->parent = this;
     evpn_items->parent = this;
+    comm_items->parent = this;
     userext_items->parent = this;
+    security_items->parent = this;
     mockroot_items->parent = this;
     stp_items->parent = this;
     bdtable_items->parent = this;
@@ -301,6 +320,7 @@ System::System()
     poe_items->parent = this;
     qosm_items->parent = this;
     sisf_items->parent = this;
+    sla_items->parent = this;
     tm_items->parent = this;
     track_items->parent = this;
     udld_items->parent = this;
@@ -332,13 +352,16 @@ System::System()
     ctx_items->parent = this;
     inst_items->parent = this;
     l3capprov_items->parent = this;
+    ipfib_items->parent = this;
     l3vm_items->parent = this;
     urib_items->parent = this;
     u6rib_items->parent = this;
     uribv4_items->parent = this;
     uribv6_items->parent = this;
+    mmode_items->parent = this;
     conng_items->parent = this;
     vdc_items->parent = this;
+    pktmgr_items->parent = this;
     procsys_items->parent = this;
     proc_items->parent = this;
     regr_items->parent = this;
@@ -354,6 +377,7 @@ System::System()
     test_rslt__items->parent = this;
     tunnel_items->parent = this;
     vtp_items->parent = this;
+    wedge_items->parent = this;
     nbm_items->parent = this;
     nbmcc_items->parent = this;
     nbmflowstable_items->parent = this;
@@ -364,6 +388,7 @@ System::System()
     ops_items->parent = this;
     eqptcapacity_items->parent = this;
     diag_items->parent = this;
+    lcm_items->parent = this;
     lsnode_items->parent = this;
     pltfm_items->parent = this;
     satm_items->parent = this;
@@ -386,6 +411,7 @@ System::System()
     msdp_items->parent = this;
     nd_items->parent = this;
     ngmvpn_items->parent = this;
+    ospfv3_items->parent = this;
     pim_items->parent = this;
     pim6_items->parent = this;
     segrt_items->parent = this;
@@ -395,6 +421,7 @@ System::System()
     sectl_items->parent = this;
     caggr_items->parent = this;
     cphys_items->parent = this;
+    clialias_items->parent = this;
     action_items->parent = this;
     rtdbgexptssrc_items->parent = this;
     rttracerouteptrsrc_items->parent = this;
@@ -411,11 +438,13 @@ System::~System()
 bool System::has_data() const
 {
     if (is_presence_container) return true;
-    return currenttime.is_set
+    return name.is_set
+	|| currenttime.is_set
 	|| systemuptime.is_set
 	|| serial.is_set
-	|| name.is_set
 	|| (bgp_items !=  nullptr && bgp_items->has_data())
+	|| (callhome_items !=  nullptr && callhome_items->has_data())
+	|| (caploglevel_items !=  nullptr && caploglevel_items->has_data())
 	|| (sfw_items !=  nullptr && sfw_items->has_data())
 	|| (capabilities_items !=  nullptr && capabilities_items->has_data())
 	|| (clock_items !=  nullptr && clock_items->has_data())
@@ -442,6 +471,7 @@ bool System::has_data() const
 	|| (fwstatuscont_items !=  nullptr && fwstatuscont_items->has_data())
 	|| (catfwstatuscont_items !=  nullptr && catfwstatuscont_items->has_data())
 	|| (isis_items !=  nullptr && isis_items->has_data())
+	|| (itd_items !=  nullptr && itd_items->has_data())
 	|| (lacp_items !=  nullptr && lacp_items->has_data())
 	|| (mgmt_items !=  nullptr && mgmt_items->has_data())
 	|| (snmp_items !=  nullptr && snmp_items->has_data())
@@ -453,7 +483,9 @@ bool System::has_data() const
 	|| (odcresp_items !=  nullptr && odcresp_items->has_data())
 	|| (ospf_items !=  nullptr && ospf_items->has_data())
 	|| (evpn_items !=  nullptr && evpn_items->has_data())
+	|| (comm_items !=  nullptr && comm_items->has_data())
 	|| (userext_items !=  nullptr && userext_items->has_data())
+	|| (security_items !=  nullptr && security_items->has_data())
 	|| (mockroot_items !=  nullptr && mockroot_items->has_data())
 	|| (stp_items !=  nullptr && stp_items->has_data())
 	|| (bdtable_items !=  nullptr && bdtable_items->has_data())
@@ -482,6 +514,7 @@ bool System::has_data() const
 	|| (poe_items !=  nullptr && poe_items->has_data())
 	|| (qosm_items !=  nullptr && qosm_items->has_data())
 	|| (sisf_items !=  nullptr && sisf_items->has_data())
+	|| (sla_items !=  nullptr && sla_items->has_data())
 	|| (tm_items !=  nullptr && tm_items->has_data())
 	|| (track_items !=  nullptr && track_items->has_data())
 	|| (udld_items !=  nullptr && udld_items->has_data())
@@ -513,13 +546,16 @@ bool System::has_data() const
 	|| (ctx_items !=  nullptr && ctx_items->has_data())
 	|| (inst_items !=  nullptr && inst_items->has_data())
 	|| (l3capprov_items !=  nullptr && l3capprov_items->has_data())
+	|| (ipfib_items !=  nullptr && ipfib_items->has_data())
 	|| (l3vm_items !=  nullptr && l3vm_items->has_data())
 	|| (urib_items !=  nullptr && urib_items->has_data())
 	|| (u6rib_items !=  nullptr && u6rib_items->has_data())
 	|| (uribv4_items !=  nullptr && uribv4_items->has_data())
 	|| (uribv6_items !=  nullptr && uribv6_items->has_data())
+	|| (mmode_items !=  nullptr && mmode_items->has_data())
 	|| (conng_items !=  nullptr && conng_items->has_data())
 	|| (vdc_items !=  nullptr && vdc_items->has_data())
+	|| (pktmgr_items !=  nullptr && pktmgr_items->has_data())
 	|| (procsys_items !=  nullptr && procsys_items->has_data())
 	|| (proc_items !=  nullptr && proc_items->has_data())
 	|| (regr_items !=  nullptr && regr_items->has_data())
@@ -535,6 +571,7 @@ bool System::has_data() const
 	|| (test_rslt__items !=  nullptr && test_rslt__items->has_data())
 	|| (tunnel_items !=  nullptr && tunnel_items->has_data())
 	|| (vtp_items !=  nullptr && vtp_items->has_data())
+	|| (wedge_items !=  nullptr && wedge_items->has_data())
 	|| (nbm_items !=  nullptr && nbm_items->has_data())
 	|| (nbmcc_items !=  nullptr && nbmcc_items->has_data())
 	|| (nbmflowstable_items !=  nullptr && nbmflowstable_items->has_data())
@@ -545,6 +582,7 @@ bool System::has_data() const
 	|| (ops_items !=  nullptr && ops_items->has_data())
 	|| (eqptcapacity_items !=  nullptr && eqptcapacity_items->has_data())
 	|| (diag_items !=  nullptr && diag_items->has_data())
+	|| (lcm_items !=  nullptr && lcm_items->has_data())
 	|| (lsnode_items !=  nullptr && lsnode_items->has_data())
 	|| (pltfm_items !=  nullptr && pltfm_items->has_data())
 	|| (satm_items !=  nullptr && satm_items->has_data())
@@ -567,6 +605,7 @@ bool System::has_data() const
 	|| (msdp_items !=  nullptr && msdp_items->has_data())
 	|| (nd_items !=  nullptr && nd_items->has_data())
 	|| (ngmvpn_items !=  nullptr && ngmvpn_items->has_data())
+	|| (ospfv3_items !=  nullptr && ospfv3_items->has_data())
 	|| (pim_items !=  nullptr && pim_items->has_data())
 	|| (pim6_items !=  nullptr && pim6_items->has_data())
 	|| (segrt_items !=  nullptr && segrt_items->has_data())
@@ -576,6 +615,7 @@ bool System::has_data() const
 	|| (sectl_items !=  nullptr && sectl_items->has_data())
 	|| (caggr_items !=  nullptr && caggr_items->has_data())
 	|| (cphys_items !=  nullptr && cphys_items->has_data())
+	|| (clialias_items !=  nullptr && clialias_items->has_data())
 	|| (action_items !=  nullptr && action_items->has_data())
 	|| (rtdbgexptssrc_items !=  nullptr && rtdbgexptssrc_items->has_data())
 	|| (rttracerouteptrsrc_items !=  nullptr && rttracerouteptrsrc_items->has_data())
@@ -586,11 +626,13 @@ bool System::has_data() const
 bool System::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(currenttime.yfilter)
 	|| ydk::is_set(systemuptime.yfilter)
 	|| ydk::is_set(serial.yfilter)
-	|| ydk::is_set(name.yfilter)
 	|| (bgp_items !=  nullptr && bgp_items->has_operation())
+	|| (callhome_items !=  nullptr && callhome_items->has_operation())
+	|| (caploglevel_items !=  nullptr && caploglevel_items->has_operation())
 	|| (sfw_items !=  nullptr && sfw_items->has_operation())
 	|| (capabilities_items !=  nullptr && capabilities_items->has_operation())
 	|| (clock_items !=  nullptr && clock_items->has_operation())
@@ -617,6 +659,7 @@ bool System::has_operation() const
 	|| (fwstatuscont_items !=  nullptr && fwstatuscont_items->has_operation())
 	|| (catfwstatuscont_items !=  nullptr && catfwstatuscont_items->has_operation())
 	|| (isis_items !=  nullptr && isis_items->has_operation())
+	|| (itd_items !=  nullptr && itd_items->has_operation())
 	|| (lacp_items !=  nullptr && lacp_items->has_operation())
 	|| (mgmt_items !=  nullptr && mgmt_items->has_operation())
 	|| (snmp_items !=  nullptr && snmp_items->has_operation())
@@ -628,7 +671,9 @@ bool System::has_operation() const
 	|| (odcresp_items !=  nullptr && odcresp_items->has_operation())
 	|| (ospf_items !=  nullptr && ospf_items->has_operation())
 	|| (evpn_items !=  nullptr && evpn_items->has_operation())
+	|| (comm_items !=  nullptr && comm_items->has_operation())
 	|| (userext_items !=  nullptr && userext_items->has_operation())
+	|| (security_items !=  nullptr && security_items->has_operation())
 	|| (mockroot_items !=  nullptr && mockroot_items->has_operation())
 	|| (stp_items !=  nullptr && stp_items->has_operation())
 	|| (bdtable_items !=  nullptr && bdtable_items->has_operation())
@@ -657,6 +702,7 @@ bool System::has_operation() const
 	|| (poe_items !=  nullptr && poe_items->has_operation())
 	|| (qosm_items !=  nullptr && qosm_items->has_operation())
 	|| (sisf_items !=  nullptr && sisf_items->has_operation())
+	|| (sla_items !=  nullptr && sla_items->has_operation())
 	|| (tm_items !=  nullptr && tm_items->has_operation())
 	|| (track_items !=  nullptr && track_items->has_operation())
 	|| (udld_items !=  nullptr && udld_items->has_operation())
@@ -688,13 +734,16 @@ bool System::has_operation() const
 	|| (ctx_items !=  nullptr && ctx_items->has_operation())
 	|| (inst_items !=  nullptr && inst_items->has_operation())
 	|| (l3capprov_items !=  nullptr && l3capprov_items->has_operation())
+	|| (ipfib_items !=  nullptr && ipfib_items->has_operation())
 	|| (l3vm_items !=  nullptr && l3vm_items->has_operation())
 	|| (urib_items !=  nullptr && urib_items->has_operation())
 	|| (u6rib_items !=  nullptr && u6rib_items->has_operation())
 	|| (uribv4_items !=  nullptr && uribv4_items->has_operation())
 	|| (uribv6_items !=  nullptr && uribv6_items->has_operation())
+	|| (mmode_items !=  nullptr && mmode_items->has_operation())
 	|| (conng_items !=  nullptr && conng_items->has_operation())
 	|| (vdc_items !=  nullptr && vdc_items->has_operation())
+	|| (pktmgr_items !=  nullptr && pktmgr_items->has_operation())
 	|| (procsys_items !=  nullptr && procsys_items->has_operation())
 	|| (proc_items !=  nullptr && proc_items->has_operation())
 	|| (regr_items !=  nullptr && regr_items->has_operation())
@@ -710,6 +759,7 @@ bool System::has_operation() const
 	|| (test_rslt__items !=  nullptr && test_rslt__items->has_operation())
 	|| (tunnel_items !=  nullptr && tunnel_items->has_operation())
 	|| (vtp_items !=  nullptr && vtp_items->has_operation())
+	|| (wedge_items !=  nullptr && wedge_items->has_operation())
 	|| (nbm_items !=  nullptr && nbm_items->has_operation())
 	|| (nbmcc_items !=  nullptr && nbmcc_items->has_operation())
 	|| (nbmflowstable_items !=  nullptr && nbmflowstable_items->has_operation())
@@ -720,6 +770,7 @@ bool System::has_operation() const
 	|| (ops_items !=  nullptr && ops_items->has_operation())
 	|| (eqptcapacity_items !=  nullptr && eqptcapacity_items->has_operation())
 	|| (diag_items !=  nullptr && diag_items->has_operation())
+	|| (lcm_items !=  nullptr && lcm_items->has_operation())
 	|| (lsnode_items !=  nullptr && lsnode_items->has_operation())
 	|| (pltfm_items !=  nullptr && pltfm_items->has_operation())
 	|| (satm_items !=  nullptr && satm_items->has_operation())
@@ -742,6 +793,7 @@ bool System::has_operation() const
 	|| (msdp_items !=  nullptr && msdp_items->has_operation())
 	|| (nd_items !=  nullptr && nd_items->has_operation())
 	|| (ngmvpn_items !=  nullptr && ngmvpn_items->has_operation())
+	|| (ospfv3_items !=  nullptr && ospfv3_items->has_operation())
 	|| (pim_items !=  nullptr && pim_items->has_operation())
 	|| (pim6_items !=  nullptr && pim6_items->has_operation())
 	|| (segrt_items !=  nullptr && segrt_items->has_operation())
@@ -751,6 +803,7 @@ bool System::has_operation() const
 	|| (sectl_items !=  nullptr && sectl_items->has_operation())
 	|| (caggr_items !=  nullptr && caggr_items->has_operation())
 	|| (cphys_items !=  nullptr && cphys_items->has_operation())
+	|| (clialias_items !=  nullptr && clialias_items->has_operation())
 	|| (action_items !=  nullptr && action_items->has_operation())
 	|| (rtdbgexptssrc_items !=  nullptr && rtdbgexptssrc_items->has_operation())
 	|| (rttracerouteptrsrc_items !=  nullptr && rttracerouteptrsrc_items->has_operation())
@@ -769,10 +822,10 @@ std::vector<std::pair<std::string, LeafData> > System::get_name_leaf_data() cons
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (currenttime.is_set || is_set(currenttime.yfilter)) leaf_name_data.push_back(currenttime.get_name_leafdata());
     if (systemuptime.is_set || is_set(systemuptime.yfilter)) leaf_name_data.push_back(systemuptime.get_name_leafdata());
     if (serial.is_set || is_set(serial.yfilter)) leaf_name_data.push_back(serial.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -787,6 +840,24 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
             bgp_items = std::make_shared<System::BgpItems>();
         }
         return bgp_items;
+    }
+
+    if(child_yang_name == "callhome-items")
+    {
+        if(callhome_items == nullptr)
+        {
+            callhome_items = std::make_shared<System::CallhomeItems>();
+        }
+        return callhome_items;
+    }
+
+    if(child_yang_name == "caploglevel-items")
+    {
+        if(caploglevel_items == nullptr)
+        {
+            caploglevel_items = std::make_shared<System::CaploglevelItems>();
+        }
+        return caploglevel_items;
     }
 
     if(child_yang_name == "sfw-items")
@@ -1023,6 +1094,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
         return isis_items;
     }
 
+    if(child_yang_name == "itd-items")
+    {
+        if(itd_items == nullptr)
+        {
+            itd_items = std::make_shared<System::ItdItems>();
+        }
+        return itd_items;
+    }
+
     if(child_yang_name == "lacp-items")
     {
         if(lacp_items == nullptr)
@@ -1122,6 +1202,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
         return evpn_items;
     }
 
+    if(child_yang_name == "comm-items")
+    {
+        if(comm_items == nullptr)
+        {
+            comm_items = std::make_shared<System::CommItems>();
+        }
+        return comm_items;
+    }
+
     if(child_yang_name == "userext-items")
     {
         if(userext_items == nullptr)
@@ -1129,6 +1218,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
             userext_items = std::make_shared<System::UserextItems>();
         }
         return userext_items;
+    }
+
+    if(child_yang_name == "security-items")
+    {
+        if(security_items == nullptr)
+        {
+            security_items = std::make_shared<System::SecurityItems>();
+        }
+        return security_items;
     }
 
     if(child_yang_name == "mockroot-items")
@@ -1381,6 +1479,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
             sisf_items = std::make_shared<System::SisfItems>();
         }
         return sisf_items;
+    }
+
+    if(child_yang_name == "sla-items")
+    {
+        if(sla_items == nullptr)
+        {
+            sla_items = std::make_shared<System::SlaItems>();
+        }
+        return sla_items;
     }
 
     if(child_yang_name == "tm-items")
@@ -1662,6 +1769,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
         return l3capprov_items;
     }
 
+    if(child_yang_name == "ipfib-items")
+    {
+        if(ipfib_items == nullptr)
+        {
+            ipfib_items = std::make_shared<System::IpfibItems>();
+        }
+        return ipfib_items;
+    }
+
     if(child_yang_name == "l3vm-items")
     {
         if(l3vm_items == nullptr)
@@ -1707,6 +1823,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
         return uribv6_items;
     }
 
+    if(child_yang_name == "mmode-items")
+    {
+        if(mmode_items == nullptr)
+        {
+            mmode_items = std::make_shared<System::MmodeItems>();
+        }
+        return mmode_items;
+    }
+
     if(child_yang_name == "conng-items")
     {
         if(conng_items == nullptr)
@@ -1723,6 +1848,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
             vdc_items = std::make_shared<System::VdcItems>();
         }
         return vdc_items;
+    }
+
+    if(child_yang_name == "pktmgr-items")
+    {
+        if(pktmgr_items == nullptr)
+        {
+            pktmgr_items = std::make_shared<System::PktmgrItems>();
+        }
+        return pktmgr_items;
     }
 
     if(child_yang_name == "procsys-items")
@@ -1860,6 +1994,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
         return vtp_items;
     }
 
+    if(child_yang_name == "wedge-items")
+    {
+        if(wedge_items == nullptr)
+        {
+            wedge_items = std::make_shared<System::WedgeItems>();
+        }
+        return wedge_items;
+    }
+
     if(child_yang_name == "nbm-items")
     {
         if(nbm_items == nullptr)
@@ -1948,6 +2091,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
             diag_items = std::make_shared<System::DiagItems>();
         }
         return diag_items;
+    }
+
+    if(child_yang_name == "lcm-items")
+    {
+        if(lcm_items == nullptr)
+        {
+            lcm_items = std::make_shared<System::LcmItems>();
+        }
+        return lcm_items;
     }
 
     if(child_yang_name == "lsnode-items")
@@ -2148,6 +2300,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
         return ngmvpn_items;
     }
 
+    if(child_yang_name == "ospfv3-items")
+    {
+        if(ospfv3_items == nullptr)
+        {
+            ospfv3_items = std::make_shared<System::Ospfv3Items>();
+        }
+        return ospfv3_items;
+    }
+
     if(child_yang_name == "pim-items")
     {
         if(pim_items == nullptr)
@@ -2229,6 +2390,15 @@ std::shared_ptr<ydk::Entity> System::get_child_by_name(const std::string & child
         return cphys_items;
     }
 
+    if(child_yang_name == "clialias-items")
+    {
+        if(clialias_items == nullptr)
+        {
+            clialias_items = std::make_shared<System::ClialiasItems>();
+        }
+        return clialias_items;
+    }
+
     if(child_yang_name == "action-items")
     {
         if(action_items == nullptr)
@@ -2284,6 +2454,16 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
     if(bgp_items != nullptr)
     {
         _children["bgp-items"] = bgp_items;
+    }
+
+    if(callhome_items != nullptr)
+    {
+        _children["callhome-items"] = callhome_items;
+    }
+
+    if(caploglevel_items != nullptr)
+    {
+        _children["caploglevel-items"] = caploglevel_items;
     }
 
     if(sfw_items != nullptr)
@@ -2416,6 +2596,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
         _children["isis-items"] = isis_items;
     }
 
+    if(itd_items != nullptr)
+    {
+        _children["itd-items"] = itd_items;
+    }
+
     if(lacp_items != nullptr)
     {
         _children["lacp-items"] = lacp_items;
@@ -2471,9 +2656,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
         _children["evpn-items"] = evpn_items;
     }
 
+    if(comm_items != nullptr)
+    {
+        _children["comm-items"] = comm_items;
+    }
+
     if(userext_items != nullptr)
     {
         _children["userext-items"] = userext_items;
+    }
+
+    if(security_items != nullptr)
+    {
+        _children["security-items"] = security_items;
     }
 
     if(mockroot_items != nullptr)
@@ -2614,6 +2809,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
     if(sisf_items != nullptr)
     {
         _children["sisf-items"] = sisf_items;
+    }
+
+    if(sla_items != nullptr)
+    {
+        _children["sla-items"] = sla_items;
     }
 
     if(tm_items != nullptr)
@@ -2771,6 +2971,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
         _children["l3capprov-items"] = l3capprov_items;
     }
 
+    if(ipfib_items != nullptr)
+    {
+        _children["ipfib-items"] = ipfib_items;
+    }
+
     if(l3vm_items != nullptr)
     {
         _children["l3vm-items"] = l3vm_items;
@@ -2796,6 +3001,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
         _children["uribv6-items"] = uribv6_items;
     }
 
+    if(mmode_items != nullptr)
+    {
+        _children["mmode-items"] = mmode_items;
+    }
+
     if(conng_items != nullptr)
     {
         _children["conng-items"] = conng_items;
@@ -2804,6 +3014,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
     if(vdc_items != nullptr)
     {
         _children["vdc-items"] = vdc_items;
+    }
+
+    if(pktmgr_items != nullptr)
+    {
+        _children["pktmgr-items"] = pktmgr_items;
     }
 
     if(procsys_items != nullptr)
@@ -2881,6 +3096,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
         _children["vtp-items"] = vtp_items;
     }
 
+    if(wedge_items != nullptr)
+    {
+        _children["wedge-items"] = wedge_items;
+    }
+
     if(nbm_items != nullptr)
     {
         _children["nbm-items"] = nbm_items;
@@ -2929,6 +3149,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
     if(diag_items != nullptr)
     {
         _children["diag-items"] = diag_items;
+    }
+
+    if(lcm_items != nullptr)
+    {
+        _children["lcm-items"] = lcm_items;
     }
 
     if(lsnode_items != nullptr)
@@ -3041,6 +3266,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
         _children["ngmvpn-items"] = ngmvpn_items;
     }
 
+    if(ospfv3_items != nullptr)
+    {
+        _children["ospfv3-items"] = ospfv3_items;
+    }
+
     if(pim_items != nullptr)
     {
         _children["pim-items"] = pim_items;
@@ -3086,6 +3316,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
         _children["cphys-items"] = cphys_items;
     }
 
+    if(clialias_items != nullptr)
+    {
+        _children["clialias-items"] = clialias_items;
+    }
+
     if(action_items != nullptr)
     {
         _children["action-items"] = action_items;
@@ -3116,6 +3351,12 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::get_children() const
 
 void System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "currentTime")
     {
         currenttime = value;
@@ -3134,16 +3375,14 @@ void System::set_value(const std::string & value_path, const std::string & value
         serial.value_namespace = name_space;
         serial.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
     if(value_path == "currentTime")
     {
         currenttime.yfilter = yfilter;
@@ -3155,10 +3394,6 @@ void System::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "serial")
     {
         serial.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
     }
 }
 
@@ -3189,7 +3424,7 @@ std::map<std::pair<std::string, std::string>, std::string> System::get_namespace
 
 bool System::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bgp-items" || name == "sfw-items" || name == "capabilities-items" || name == "clock-items" || name == "time-items" || name == "ntpq-items" || name == "acct-items" || name == "retry-items" || name == "span-items" || name == "dhcp-items" || name == "dns-items" || name == "decommission-items" || name == "inb-items" || name == "ext-items" || name == "br-items" || name == "mac-items" || name == "cdp-items" || name == "lldp-items" || name == "mcp-items" || name == "vpc-items" || name == "epns-items" || name == "gold-items" || name == "igmp-items" || name == "ctrlrfwstatuscont-items" || name == "fwstatuscont-items" || name == "catfwstatuscont-items" || name == "isis-items" || name == "lacp-items" || name == "mgmt-items" || name == "snmp-items" || name == "syslogacct-items" || name == "syslog-items" || name == "mts-items" || name == "nat-items" || name == "odcreq-items" || name == "odcresp-items" || name == "ospf-items" || name == "evpn-items" || name == "userext-items" || name == "mockroot-items" || name == "stp-items" || name == "bdTable-items" || name == "globalConfTable-items" || name == "intfTable-items" || name == "macTable-items" || name == "systemTable-items" || name == "tunnelIntfTable-items" || name == "vlanTable-items" || name == "vpcDomTable-items" || name == "vrfTable-items" || name == "acl-items" || name == "actrl-items" || name == "actrlcapprov-items" || name == "analytics-items" || name == "hwtelemetry-items" || name == "copp-items" || name == "glean-items" || name == "hmm-items" || name == "icam-items" || name == "ipqos-items" || name == "monitor-items" || name == "flow-items" || name == "ngoam-items" || name == "nxapi-items" || name == "poe-items" || name == "qosm-items" || name == "sisf-items" || name == "tm-items" || name == "track-items" || name == "udld-items" || name == "acllog-items" || name == "bd-items" || name == "templateTable-items" || name == "fc-items" || name == "fcoe-items" || name == "npv-items" || name == "vsanmgr-items" || name == "fm-items" || name == "fset-items" || name == "install-items" || name == "intf-items" || name == "ipv4-items" || name == "ipv6-items" || name == "l1capprov-items" || name == "ethpm-items" || name == "breakout-items" || name == "im-items" || name == "pc-items" || name == "l2capprov-items" || name == "fcpm-items" || name == "l2fm-items" || name == "l2rib-items" || name == "pvlan-items" || name == "vlanmgr-items" || name == "eps-items" || name == "ctx-items" || name == "inst-items" || name == "l3capprov-items" || name == "l3vm-items" || name == "urib-items" || name == "u6rib-items" || name == "uribv4-items" || name == "uribv6-items" || name == "conng-items" || name == "vdc-items" || name == "procsys-items" || name == "proc-items" || name == "regr-items" || name == "rpm-items" || name == "ipSrcIf-items" || name == "swpkgs-items" || name == "sysmgr-items" || name == "showversion-items" || name == "tcpudp-items" || name == "terml-items" || name == "termlog-items" || name == "test_rule-items" || name == "test_rslt_-items" || name == "tunnel-items" || name == "vtp-items" || name == "nbm-items" || name == "nbmcc-items" || name == "nbmFlowsTable-items" || name == "nbmStats-items" || name == "boot-items" || name == "ch-items" || name == "extch-items" || name == "ops-items" || name == "eqptcapacity-items" || name == "diag-items" || name == "lsnode-items" || name == "pltfm-items" || name == "satm-items" || name == "adjacency-items" || name == "arp-items" || name == "bfd-items" || name == "cfs-items" || name == "hsrp-items" || name == "icmpv4-items" || name == "icmpv6-items" || name == "igmpsnoop-items" || name == "m6rib-items" || name == "macsec-items" || name == "mcastfwd-items" || name == "mldsnoop-items" || name == "mpls-items" || name == "mplsstatic-items" || name == "labeltable-items" || name == "mrib-items" || name == "msdp-items" || name == "nd-items" || name == "ngmvpn-items" || name == "pim-items" || name == "pim6-items" || name == "segrt-items" || name == "vrrp-items" || name == "vrrpv3-items" || name == "scrtchpdrt-items" || name == "sectl-items" || name == "caggr-items" || name == "cphys-items" || name == "action-items" || name == "rtdbgexpTsSrc-items" || name == "rttraceroutepTrSrc-items" || name == "rttraceroutepTrDst-items" || name == "rtmaintFwinstlsrc-items" || name == "currentTime" || name == "systemUpTime" || name == "serial" || name == "name")
+    if(name == "bgp-items" || name == "callhome-items" || name == "caploglevel-items" || name == "sfw-items" || name == "capabilities-items" || name == "clock-items" || name == "time-items" || name == "ntpq-items" || name == "acct-items" || name == "retry-items" || name == "span-items" || name == "dhcp-items" || name == "dns-items" || name == "decommission-items" || name == "inb-items" || name == "ext-items" || name == "br-items" || name == "mac-items" || name == "cdp-items" || name == "lldp-items" || name == "mcp-items" || name == "vpc-items" || name == "epns-items" || name == "gold-items" || name == "igmp-items" || name == "ctrlrfwstatuscont-items" || name == "fwstatuscont-items" || name == "catfwstatuscont-items" || name == "isis-items" || name == "itd-items" || name == "lacp-items" || name == "mgmt-items" || name == "snmp-items" || name == "syslogacct-items" || name == "syslog-items" || name == "mts-items" || name == "nat-items" || name == "odcreq-items" || name == "odcresp-items" || name == "ospf-items" || name == "evpn-items" || name == "comm-items" || name == "userext-items" || name == "security-items" || name == "mockroot-items" || name == "stp-items" || name == "bdTable-items" || name == "globalConfTable-items" || name == "intfTable-items" || name == "macTable-items" || name == "systemTable-items" || name == "tunnelIntfTable-items" || name == "vlanTable-items" || name == "vpcDomTable-items" || name == "vrfTable-items" || name == "acl-items" || name == "actrl-items" || name == "actrlcapprov-items" || name == "analytics-items" || name == "hwtelemetry-items" || name == "copp-items" || name == "glean-items" || name == "hmm-items" || name == "icam-items" || name == "ipqos-items" || name == "monitor-items" || name == "flow-items" || name == "ngoam-items" || name == "nxapi-items" || name == "poe-items" || name == "qosm-items" || name == "sisf-items" || name == "sla-items" || name == "tm-items" || name == "track-items" || name == "udld-items" || name == "acllog-items" || name == "bd-items" || name == "templateTable-items" || name == "fc-items" || name == "fcoe-items" || name == "npv-items" || name == "vsanmgr-items" || name == "fm-items" || name == "fset-items" || name == "install-items" || name == "intf-items" || name == "ipv4-items" || name == "ipv6-items" || name == "l1capprov-items" || name == "ethpm-items" || name == "breakout-items" || name == "im-items" || name == "pc-items" || name == "l2capprov-items" || name == "fcpm-items" || name == "l2fm-items" || name == "l2rib-items" || name == "pvlan-items" || name == "vlanmgr-items" || name == "eps-items" || name == "ctx-items" || name == "inst-items" || name == "l3capprov-items" || name == "ipfib-items" || name == "l3vm-items" || name == "urib-items" || name == "u6rib-items" || name == "uribv4-items" || name == "uribv6-items" || name == "mmode-items" || name == "conng-items" || name == "vdc-items" || name == "pktmgr-items" || name == "procsys-items" || name == "proc-items" || name == "regr-items" || name == "rpm-items" || name == "ipSrcIf-items" || name == "swpkgs-items" || name == "sysmgr-items" || name == "showversion-items" || name == "tcpudp-items" || name == "terml-items" || name == "termlog-items" || name == "test_rule-items" || name == "test_rslt_-items" || name == "tunnel-items" || name == "vtp-items" || name == "wedge-items" || name == "nbm-items" || name == "nbmcc-items" || name == "nbmFlowsTable-items" || name == "nbmStats-items" || name == "boot-items" || name == "ch-items" || name == "extch-items" || name == "ops-items" || name == "eqptcapacity-items" || name == "diag-items" || name == "lcm-items" || name == "lsnode-items" || name == "pltfm-items" || name == "satm-items" || name == "adjacency-items" || name == "arp-items" || name == "bfd-items" || name == "cfs-items" || name == "hsrp-items" || name == "icmpv4-items" || name == "icmpv6-items" || name == "igmpsnoop-items" || name == "m6rib-items" || name == "macsec-items" || name == "mcastfwd-items" || name == "mldsnoop-items" || name == "mpls-items" || name == "mplsstatic-items" || name == "labeltable-items" || name == "mrib-items" || name == "msdp-items" || name == "nd-items" || name == "ngmvpn-items" || name == "ospfv3-items" || name == "pim-items" || name == "pim6-items" || name == "segrt-items" || name == "vrrp-items" || name == "vrrpv3-items" || name == "scrtchpdrt-items" || name == "sectl-items" || name == "caggr-items" || name == "cphys-items" || name == "clialias-items" || name == "action-items" || name == "rtdbgexpTsSrc-items" || name == "rttraceroutepTrSrc-items" || name == "rttraceroutepTrDst-items" || name == "rtmaintFwinstlsrc-items" || name == "name" || name == "currentTime" || name == "systemUpTime" || name == "serial")
         return true;
     return false;
 }
@@ -3351,6 +3586,7 @@ System::BgpItems::InstItems::InstItems()
     epeactivepeers{YType::uint32, "epeActivePeers"},
     lnkstsrvr{YType::enumeration, "lnkStSrvr"},
     lnkstclnt{YType::enumeration, "lnkStClnt"},
+    nhsupprdefres{YType::enumeration, "nhSupprDefRes"},
     name{YType::str, "name"},
     adminst{YType::enumeration, "adminSt"},
     ctrl{YType::str, "ctrl"},
@@ -3397,6 +3633,7 @@ bool System::BgpItems::InstItems::has_data() const
 	|| epeactivepeers.is_set
 	|| lnkstsrvr.is_set
 	|| lnkstclnt.is_set
+	|| nhsupprdefres.is_set
 	|| name.is_set
 	|| adminst.is_set
 	|| ctrl.is_set
@@ -3432,6 +3669,7 @@ bool System::BgpItems::InstItems::has_operation() const
 	|| ydk::is_set(epeactivepeers.yfilter)
 	|| ydk::is_set(lnkstsrvr.yfilter)
 	|| ydk::is_set(lnkstclnt.yfilter)
+	|| ydk::is_set(nhsupprdefres.yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(adminst.yfilter)
 	|| ydk::is_set(ctrl.yfilter)
@@ -3482,6 +3720,7 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::get_
     if (epeactivepeers.is_set || is_set(epeactivepeers.yfilter)) leaf_name_data.push_back(epeactivepeers.get_name_leafdata());
     if (lnkstsrvr.is_set || is_set(lnkstsrvr.yfilter)) leaf_name_data.push_back(lnkstsrvr.get_name_leafdata());
     if (lnkstclnt.is_set || is_set(lnkstclnt.yfilter)) leaf_name_data.push_back(lnkstclnt.get_name_leafdata());
+    if (nhsupprdefres.is_set || is_set(nhsupprdefres.yfilter)) leaf_name_data.push_back(nhsupprdefres.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
     if (ctrl.is_set || is_set(ctrl.yfilter)) leaf_name_data.push_back(ctrl.get_name_leafdata());
@@ -3685,6 +3924,12 @@ void System::BgpItems::InstItems::set_value(const std::string & value_path, cons
         lnkstclnt.value_namespace = name_space;
         lnkstclnt.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nhSupprDefRes")
+    {
+        nhsupprdefres = value;
+        nhsupprdefres.value_namespace = name_space;
+        nhsupprdefres.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "name")
     {
         name = value;
@@ -3805,6 +4050,10 @@ void System::BgpItems::InstItems::set_filter(const std::string & value_path, YFi
     {
         lnkstclnt.yfilter = yfilter;
     }
+    if(value_path == "nhSupprDefRes")
+    {
+        nhsupprdefres.yfilter = yfilter;
+    }
     if(value_path == "name")
     {
         name.yfilter = yfilter;
@@ -3825,7 +4074,7 @@ void System::BgpItems::InstItems::set_filter(const std::string & value_path, YFi
 
 bool System::BgpItems::InstItems::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dom-items" || name == "evthist-items" || name == "oper-items" || name == "asn" || name == "disPolBatch" || name == "disPolBatchv4PfxLst" || name == "disPolBatchv6PfxLst" || name == "createTs" || name == "activateTs" || name == "waitDoneTs" || name == "memAlert" || name == "numRtAttrib" || name == "attribDbSz" || name == "numAsPath" || name == "asPathDbSz" || name == "isolate" || name == "medDampIntvl" || name == "fabricSoo" || name == "flushRoutes" || name == "affGrpActv" || name == "srgbMinLbl" || name == "srgbMaxLbl" || name == "epeConfiguredPeers" || name == "epeActivePeers" || name == "lnkStSrvr" || name == "lnkStClnt" || name == "name" || name == "adminSt" || name == "ctrl" || name == "operErr")
+    if(name == "dom-items" || name == "evthist-items" || name == "oper-items" || name == "asn" || name == "disPolBatch" || name == "disPolBatchv4PfxLst" || name == "disPolBatchv6PfxLst" || name == "createTs" || name == "activateTs" || name == "waitDoneTs" || name == "memAlert" || name == "numRtAttrib" || name == "attribDbSz" || name == "numAsPath" || name == "asPathDbSz" || name == "isolate" || name == "medDampIntvl" || name == "fabricSoo" || name == "flushRoutes" || name == "affGrpActv" || name == "srgbMinLbl" || name == "srgbMaxLbl" || name == "epeConfiguredPeers" || name == "epeActivePeers" || name == "lnkStSrvr" || name == "lnkStClnt" || name == "nhSupprDefRes" || name == "name" || name == "adminSt" || name == "ctrl" || name == "operErr")
         return true;
     return false;
 }
@@ -3955,7 +4204,8 @@ System::BgpItems::InstItems::DomItems::DomList::DomList()
     vtepip{YType::str, "vtepIp"},
     vtepvirtip{YType::str, "vtepVirtIp"},
     routermac{YType::str, "routerMac"},
-    localasn{YType::str, "localAsn"}
+    localasn{YType::str, "localAsn"},
+    allocindex{YType::uint32, "allocIndex"}
         ,
     rtctrl_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::RtctrlItems>())
     , pathctrl_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::PathctrlItems>())
@@ -3963,6 +4213,7 @@ System::BgpItems::InstItems::DomItems::DomList::DomList()
     , af_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems>())
     , bmp_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::BmpItems>())
     , gr_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::GrItems>())
+    , gs_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::GsItems>())
     , peer_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::PeerItems>())
     , peercont_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::PeercontItems>())
     , sessioncont_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::SessioncontItems>())
@@ -3974,6 +4225,7 @@ System::BgpItems::InstItems::DomItems::DomList::DomList()
     af_items->parent = this;
     bmp_items->parent = this;
     gr_items->parent = this;
+    gs_items->parent = this;
     peer_items->parent = this;
     peercont_items->parent = this;
     sessioncont_items->parent = this;
@@ -4013,12 +4265,14 @@ bool System::BgpItems::InstItems::DomItems::DomList::has_data() const
 	|| vtepvirtip.is_set
 	|| routermac.is_set
 	|| localasn.is_set
+	|| allocindex.is_set
 	|| (rtctrl_items !=  nullptr && rtctrl_items->has_data())
 	|| (pathctrl_items !=  nullptr && pathctrl_items->has_data())
 	|| (confed_items !=  nullptr && confed_items->has_data())
 	|| (af_items !=  nullptr && af_items->has_data())
 	|| (bmp_items !=  nullptr && bmp_items->has_data())
 	|| (gr_items !=  nullptr && gr_items->has_data())
+	|| (gs_items !=  nullptr && gs_items->has_data())
 	|| (peer_items !=  nullptr && peer_items->has_data())
 	|| (peercont_items !=  nullptr && peercont_items->has_data())
 	|| (sessioncont_items !=  nullptr && sessioncont_items->has_data())
@@ -4052,12 +4306,14 @@ bool System::BgpItems::InstItems::DomItems::DomList::has_operation() const
 	|| ydk::is_set(vtepvirtip.yfilter)
 	|| ydk::is_set(routermac.yfilter)
 	|| ydk::is_set(localasn.yfilter)
+	|| ydk::is_set(allocindex.yfilter)
 	|| (rtctrl_items !=  nullptr && rtctrl_items->has_operation())
 	|| (pathctrl_items !=  nullptr && pathctrl_items->has_operation())
 	|| (confed_items !=  nullptr && confed_items->has_operation())
 	|| (af_items !=  nullptr && af_items->has_operation())
 	|| (bmp_items !=  nullptr && bmp_items->has_operation())
 	|| (gr_items !=  nullptr && gr_items->has_operation())
+	|| (gs_items !=  nullptr && gs_items->has_operation())
 	|| (peer_items !=  nullptr && peer_items->has_operation())
 	|| (peercont_items !=  nullptr && peercont_items->has_operation())
 	|| (sessioncont_items !=  nullptr && sessioncont_items->has_operation())
@@ -4107,6 +4363,7 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (vtepvirtip.is_set || is_set(vtepvirtip.yfilter)) leaf_name_data.push_back(vtepvirtip.get_name_leafdata());
     if (routermac.is_set || is_set(routermac.yfilter)) leaf_name_data.push_back(routermac.get_name_leafdata());
     if (localasn.is_set || is_set(localasn.yfilter)) leaf_name_data.push_back(localasn.get_name_leafdata());
+    if (allocindex.is_set || is_set(allocindex.yfilter)) leaf_name_data.push_back(allocindex.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4166,6 +4423,15 @@ std::shared_ptr<ydk::Entity> System::BgpItems::InstItems::DomItems::DomList::get
             gr_items = std::make_shared<System::BgpItems::InstItems::DomItems::DomList::GrItems>();
         }
         return gr_items;
+    }
+
+    if(child_yang_name == "gs-items")
+    {
+        if(gs_items == nullptr)
+        {
+            gs_items = std::make_shared<System::BgpItems::InstItems::DomItems::DomList::GsItems>();
+        }
+        return gs_items;
     }
 
     if(child_yang_name == "peer-items")
@@ -4239,6 +4505,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::BgpItems::InstItems:
     if(gr_items != nullptr)
     {
         _children["gr-items"] = gr_items;
+    }
+
+    if(gs_items != nullptr)
+    {
+        _children["gs-items"] = gs_items;
     }
 
     if(peer_items != nullptr)
@@ -4410,6 +4681,12 @@ void System::BgpItems::InstItems::DomItems::DomList::set_value(const std::string
         localasn.value_namespace = name_space;
         localasn.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocIndex")
+    {
+        allocindex = value;
+        allocindex.value_namespace = name_space;
+        allocindex.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4510,11 +4787,15 @@ void System::BgpItems::InstItems::DomItems::DomList::set_filter(const std::strin
     {
         localasn.yfilter = yfilter;
     }
+    if(value_path == "allocIndex")
+    {
+        allocindex.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rtctrl-items" || name == "pathctrl-items" || name == "confed-items" || name == "af-items" || name == "bmp-items" || name == "gr-items" || name == "peer-items" || name == "peercont-items" || name == "sessioncont-items" || name == "policycont-items" || name == "name" || name == "mode" || name == "rtrId" || name == "clusterId" || name == "kaIntvl" || name == "holdIntvl" || name == "pfxPeerTimeout" || name == "pfxPeerWaitTime" || name == "maxAsLimit" || name == "bestPathIntvl" || name == "always" || name == "reConnIntvl" || name == "operSt" || name == "operRtrId" || name == "firstPeerUpTs" || name == "numPeers" || name == "numPeersPending" || name == "numEstPeers" || name == "id" || name == "vnid" || name == "vtepIp" || name == "vtepVirtIp" || name == "routerMac" || name == "localAsn")
+    if(name == "rtctrl-items" || name == "pathctrl-items" || name == "confed-items" || name == "af-items" || name == "bmp-items" || name == "gr-items" || name == "gs-items" || name == "peer-items" || name == "peercont-items" || name == "sessioncont-items" || name == "policycont-items" || name == "name" || name == "mode" || name == "rtrId" || name == "clusterId" || name == "kaIntvl" || name == "holdIntvl" || name == "pfxPeerTimeout" || name == "pfxPeerWaitTime" || name == "maxAsLimit" || name == "bestPathIntvl" || name == "always" || name == "reConnIntvl" || name == "operSt" || name == "operRtrId" || name == "firstPeerUpTs" || name == "numPeers" || name == "numPeersPending" || name == "numEstPeers" || name == "id" || name == "vnid" || name == "vtepIp" || name == "vtepVirtIp" || name == "routerMac" || name == "localAsn" || name == "allocIndex")
         return true;
     return false;
 }
@@ -5246,7 +5527,9 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::DomAfList()
     igpmetric{YType::uint16, "igpMetric"},
     supprinactive{YType::enumeration, "supprInactive"},
     advpip{YType::enumeration, "advPip"},
-    exportgwip{YType::enumeration, "exportGwIp"}
+    exportgwip{YType::enumeration, "exportGwIp"},
+    waitigpconv{YType::enumeration, "waitIgpConv"},
+    alloclbloptb{YType::enumeration, "allocLblOptB"}
         ,
     ctrl_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::CtrlItems>())
     , admindist_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::AdminDistItems>())
@@ -5366,6 +5649,8 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::has_dat
 	|| supprinactive.is_set
 	|| advpip.is_set
 	|| exportgwip.is_set
+	|| waitigpconv.is_set
+	|| alloclbloptb.is_set
 	|| (ctrl_items !=  nullptr && ctrl_items->has_data())
 	|| (admindist_items !=  nullptr && admindist_items->has_data())
 	|| (dampening_items !=  nullptr && dampening_items->has_data())
@@ -5444,6 +5729,8 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::has_ope
 	|| ydk::is_set(supprinactive.yfilter)
 	|| ydk::is_set(advpip.yfilter)
 	|| ydk::is_set(exportgwip.yfilter)
+	|| ydk::is_set(waitigpconv.yfilter)
+	|| ydk::is_set(alloclbloptb.yfilter)
 	|| (ctrl_items !=  nullptr && ctrl_items->has_operation())
 	|| (admindist_items !=  nullptr && admindist_items->has_operation())
 	|| (dampening_items !=  nullptr && dampening_items->has_operation())
@@ -5531,6 +5818,8 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (supprinactive.is_set || is_set(supprinactive.yfilter)) leaf_name_data.push_back(supprinactive.get_name_leafdata());
     if (advpip.is_set || is_set(advpip.yfilter)) leaf_name_data.push_back(advpip.get_name_leafdata());
     if (exportgwip.is_set || is_set(exportgwip.yfilter)) leaf_name_data.push_back(exportgwip.get_name_leafdata());
+    if (waitigpconv.is_set || is_set(waitigpconv.yfilter)) leaf_name_data.push_back(waitigpconv.get_name_leafdata());
+    if (alloclbloptb.is_set || is_set(alloclbloptb.yfilter)) leaf_name_data.push_back(alloclbloptb.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6252,6 +6541,18 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::set_val
         exportgwip.value_namespace = name_space;
         exportgwip.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "waitIgpConv")
+    {
+        waitigpconv = value;
+        waitigpconv.value_namespace = name_space;
+        waitigpconv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allocLblOptB")
+    {
+        alloclbloptb = value;
+        alloclbloptb.value_namespace = name_space;
+        alloclbloptb.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6416,11 +6717,19 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::set_fil
     {
         exportgwip.yfilter = yfilter;
     }
+    if(value_path == "waitIgpConv")
+    {
+        waitigpconv.yfilter = yfilter;
+    }
+    if(value_path == "allocLblOptB")
+    {
+        alloclbloptb.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ctrl-items" || name == "adminDist-items" || name == "dampening-items" || name == "prefix-items" || name == "aggaddr-items" || name == "addlpath-items" || name == "rt-items" || name == "vpnrt-items" || name == "lblrt-items" || name == "lsrt-items" || name == "evpnrt-items" || name == "mvpnrt-items" || name == "importedrt-items" || name == "selforigrt-items" || name == "injectedrt-items" || name == "exportedrt-items" || name == "rcvdpathsrt-items" || name == "rtmap-items" || name == "fltrlist-items" || name == "pfxlist-items" || name == "damppathsrt-items" || name == "damphstpathsrt-items" || name == "rttype-items" || name == "vnid-items" || name == "mac-items" || name == "rd-items" || name == "pfx-items" || name == "esid-items" || name == "nh-items" || name == "mrttype-items" || name == "defrtleak-items" || name == "interleak-items" || name == "injname-items" || name == "type" || name == "maxEcmp" || name == "maxExtEcmp" || name == "maxExtIntEcmp" || name == "maxMxdEcmp" || name == "tmrBstpthDfr" || name == "tmrMax" || name == "tblMap" || name == "tblMapFltr" || name == "vniEthTag" || name == "advSysMac" || name == "bestPathSigTs" || name == "bestPathCmpltTs" || name == "critNhTimeout" || name == "nonCritNhTimeout" || name == "tblVer" || name == "nhRtMap" || name == "clReflection" || name == "advertL2vpnEvpn" || name == "allocLblAll" || name == "allocLblRtMap" || name == "lblAllocMod" || name == "retainRttRtMap" || name == "retainRttAll" || name == "defMetric" || name == "tblId" || name == "tblSt" || name == "numPeers" || name == "numPeersActive" || name == "numRoutes" || name == "numPaths" || name == "numNetworks" || name == "numAggregates" || name == "defInfOriginate" || name == "defInfOrigRd" || name == "defInfOrigRtt" || name == "igpMetric" || name == "supprInactive" || name == "advPip" || name == "exportGwIp")
+    if(name == "ctrl-items" || name == "adminDist-items" || name == "dampening-items" || name == "prefix-items" || name == "aggaddr-items" || name == "addlpath-items" || name == "rt-items" || name == "vpnrt-items" || name == "lblrt-items" || name == "lsrt-items" || name == "evpnrt-items" || name == "mvpnrt-items" || name == "importedrt-items" || name == "selforigrt-items" || name == "injectedrt-items" || name == "exportedrt-items" || name == "rcvdpathsrt-items" || name == "rtmap-items" || name == "fltrlist-items" || name == "pfxlist-items" || name == "damppathsrt-items" || name == "damphstpathsrt-items" || name == "rttype-items" || name == "vnid-items" || name == "mac-items" || name == "rd-items" || name == "pfx-items" || name == "esid-items" || name == "nh-items" || name == "mrttype-items" || name == "defrtleak-items" || name == "interleak-items" || name == "injname-items" || name == "type" || name == "maxEcmp" || name == "maxExtEcmp" || name == "maxExtIntEcmp" || name == "maxMxdEcmp" || name == "tmrBstpthDfr" || name == "tmrMax" || name == "tblMap" || name == "tblMapFltr" || name == "vniEthTag" || name == "advSysMac" || name == "bestPathSigTs" || name == "bestPathCmpltTs" || name == "critNhTimeout" || name == "nonCritNhTimeout" || name == "tblVer" || name == "nhRtMap" || name == "clReflection" || name == "advertL2vpnEvpn" || name == "allocLblAll" || name == "allocLblRtMap" || name == "lblAllocMod" || name == "retainRttRtMap" || name == "retainRttAll" || name == "defMetric" || name == "tblId" || name == "tblSt" || name == "numPeers" || name == "numPeersActive" || name == "numRoutes" || name == "numPaths" || name == "numNetworks" || name == "numAggregates" || name == "defInfOriginate" || name == "defInfOrigRd" || name == "defInfOrigRtt" || name == "igpMetric" || name == "supprInactive" || name == "advPip" || name == "exportGwIp" || name == "waitIgpConv" || name == "allocLblOptB")
         return true;
     return false;
 }
@@ -7750,7 +8059,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems::Rou
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems::RouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems::RouteList::PathItems::PathList::RcommItems>())
@@ -7800,6 +8113,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -7835,6 +8152,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -7883,6 +8204,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8130,6 +8455,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems::RouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8230,11 +8579,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RtItems::RouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -10193,7 +10558,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtItems::
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtItems::VpnRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtItems::VpnRouteList::PathItems::PathList::RcommItems>())
@@ -10243,6 +10612,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtIt
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -10278,6 +10651,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtIt
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -10326,6 +10703,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10573,6 +10954,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtIt
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtItems::VpnRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10673,11 +11078,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtIt
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VpnrtItems::VpnRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -12691,7 +13112,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtItems::
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtItems::LblRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtItems::LblRouteList::PathItems::PathList::RcommItems>())
@@ -12741,6 +13166,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtIt
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -12776,6 +13205,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtIt
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -12824,6 +13257,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13071,6 +13508,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtIt
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtItems::LblRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -13171,11 +13632,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtIt
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LblrtItems::LblRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -15147,7 +15624,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtItems::L
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtItems::LnkStRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtItems::LnkStRouteList::PathItems::PathList::RcommItems>())
@@ -15197,6 +15678,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtIte
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -15232,6 +15717,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtIte
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -15280,6 +15769,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15527,6 +16020,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtIte
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtItems::LnkStRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15627,11 +16144,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtIte
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::LsrtItems::LnkStRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -17604,7 +18137,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtItems:
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtItems::EvpnRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtItems::EvpnRouteList::PathItems::PathList::RcommItems>())
@@ -17654,6 +18191,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtI
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -17689,6 +18230,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtI
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -17737,6 +18282,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -17984,6 +18533,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtI
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtItems::EvpnRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -18084,11 +18657,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtI
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::EvpnrtItems::EvpnRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -20061,7 +20650,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtItems:
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtItems::MvpnRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtItems::MvpnRouteList::PathItems::PathList::RcommItems>())
@@ -20111,6 +20704,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtI
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -20146,6 +20743,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtI
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -20194,6 +20795,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -20441,6 +21046,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtI
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtItems::MvpnRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -20541,11 +21170,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtI
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MvpnrtItems::MvpnRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -22607,7 +23252,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::RtItems::RouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::RtItems::RouteList::PathItems::PathList::RcommItems>())
@@ -22657,6 +23306,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -22692,6 +23345,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -22740,6 +23397,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -22987,6 +23648,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::RtItems::RouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -23087,11 +23772,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::RtItems::RouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -23409,13 +24110,33 @@ const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_6 {6, "6"};
 const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_7 {7, "7"};
 const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
 
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DLB {1, "PC_LB_ALGO_DLB"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7 {2, "PC_LB_ALGO_RTAG7"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_MURMUR {3, "PC_LB_ALGO_RTAG7_MURMUR"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_LOCAL_CRC {4, "PC_LB_ALGO_RTAG7_LOCAL_CRC"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DYNAMIC_PIN {5, "PC_LB_ALGO_DYNAMIC_PIN"};
+
+const Enum::YLeaf WedgeBmcIPEnabled::no {0, "no"};
+const Enum::YLeaf WedgeBmcIPEnabled::yes {1, "yes"};
+
 const Enum::YLeaf RelnStateQual::none {0, "none"};
 const Enum::YLeaf RelnStateQual::mismatch_target {1, "mismatch-target"};
 const Enum::YLeaf RelnStateQual::default_target {2, "default-target"};
 
+const Enum::YLeaf NatConfigErrNat::noerror {0, "noerror"};
+const Enum::YLeaf NatConfigErrNat::PoolInUse {1, "PoolInUse"};
+const Enum::YLeaf NatConfigErrNat::TcpTcamNotCarved {2, "TcpTcamNotCarved"};
+const Enum::YLeaf NatConfigErrNat::ConfigConflict {3, "ConfigConflict"};
+const Enum::YLeaf NatConfigErrNat::IfConfigError {4, "IfConfigError"};
+const Enum::YLeaf NatConfigErrNat::HwProgFailureError {5, "HwProgFailureError"};
+
 const Enum::YLeaf AnalyticsFltType::ipv4 {1, "ipv4"};
 const Enum::YLeaf AnalyticsFltType::ipv6 {2, "ipv6"};
 const Enum::YLeaf AnalyticsFltType::ce {3, "ce"};
+
+const Enum::YLeaf LcmProfVxlanMpls::no {0, "no"};
+const Enum::YLeaf LcmProfVxlanMpls::vxlan {1, "vxlan"};
+const Enum::YLeaf LcmProfVxlanMpls::mpls {2, "mpls"};
 
 const Enum::YLeaf SatmOperSt::unknown {0, "unknown"};
 const Enum::YLeaf SatmOperSt::up {1, "up"};
@@ -23430,6 +24151,9 @@ const Enum::YLeaf MribMultipathMode::legacy {5, "legacy"};
 const Enum::YLeaf MribMultipathMode::resilient {6, "resilient"};
 const Enum::YLeaf MribMultipathMode::s_g_hash_next_hop {7, "s-g-hash-next-hop"};
 
+const Enum::YLeaf BfdAuthInterop::enable {1, "enable"};
+const Enum::YLeaf BfdAuthInterop::disable {0, "disable"};
+
 const Enum::YLeaf IgmpsnoopEhType::igmp_snoop_internal {0, "igmp-snoop-internal"};
 const Enum::YLeaf IgmpsnoopEhType::mfdm {1, "mfdm"};
 const Enum::YLeaf IgmpsnoopEhType::mfdm_sum {2, "mfdm-sum"};
@@ -23443,6 +24167,10 @@ const Enum::YLeaf StpSimulate::disabled {2, "disabled"};
 
 const Enum::YLeaf NwAdminStIfStatIcmpRedirect::enabled {1, "enabled"};
 const Enum::YLeaf NwAdminStIfStatIcmpRedirect::disabled {2, "disabled"};
+
+const Enum::YLeaf NatNatTrafficDir::ip_nat_invalid {0, "ip-nat-invalid"};
+const Enum::YLeaf NatNatTrafficDir::ip_nat_inside {1, "ip-nat-inside"};
+const Enum::YLeaf NatNatTrafficDir::ip_nat_outside {2, "ip-nat-outside"};
 
 const Enum::YLeaf FsetAdminState::none {0, "none"};
 const Enum::YLeaf FsetAdminState::enabled {1, "enabled"};
@@ -23482,6 +24210,11 @@ const Enum::YLeaf BgpMajNotifErr::dyn_cap_no_buf {107, "dyn-cap-no-buf"};
 
 const Enum::YLeaf IpHardwareEcmpHashPolynomialT::CRC16 {0, "CRC16"};
 const Enum::YLeaf IpHardwareEcmpHashPolynomialT::CRC32HI {1, "CRC32HI"};
+
+const Enum::YLeaf PlatformForwardingModeSelector::normal {1, "normal"};
+const Enum::YLeaf PlatformForwardingModeSelector::warp {2, "warp"};
+const Enum::YLeaf PlatformForwardingModeSelector::openflow_hybrid {3, "openflow-hybrid"};
+const Enum::YLeaf PlatformForwardingModeSelector::openflow_only {4, "openflow-only"};
 
 const Enum::YLeaf AggregateAdminState::unknown {0, "unknown"};
 const Enum::YLeaf AggregateAdminState::up {1, "up"};
@@ -23555,9 +24288,6 @@ const Enum::YLeaf NdConfigErr::raIntvl {3, "raIntvl"};
 const Enum::YLeaf NdConfigErr::raLifetime {4, "raLifetime"};
 const Enum::YLeaf NdConfigErr::suppressRa {5, "suppressRa"};
 const Enum::YLeaf NdConfigErr::macExtract {6, "macExtract"};
-
-const Enum::YLeaf OpflexDirection::in {0, "in"};
-const Enum::YLeaf OpflexDirection::out {1, "out"};
 
 const Enum::YLeaf ActrlOperSt::enabled {1, "enabled"};
 const Enum::YLeaf ActrlOperSt::disabled {2, "disabled"};
@@ -23638,6 +24368,10 @@ const Enum::YLeaf BgpMinNotifErr::bad_cap_val {54, "bad-cap-val"};
 const Enum::YLeaf BgpMinNotifErr::unsupp_cap_code {55, "unsupp-cap-code"};
 const Enum::YLeaf BgpMinNotifErr::unknown_cap_err {56, "unknown-cap-err"};
 
+const Enum::YLeaf TunnelifTunnelOption::unknown {0, "unknown"};
+const Enum::YLeaf TunnelifTunnelOption::del_on_fail {1, "del_on_fail"};
+const Enum::YLeaf TunnelifTunnelOption::usr_cfg_mtu {2, "usr_cfg_mtu"};
+
 const Enum::YLeaf AaaAuthenticationProtocol::pap {0, "pap"};
 const Enum::YLeaf AaaAuthenticationProtocol::chap {1, "chap"};
 const Enum::YLeaf AaaAuthenticationProtocol::mschap {2, "mschap"};
@@ -23655,6 +24389,9 @@ const Enum::YLeaf AggregateTunnelType::nvgre {3, "nvgre"};
 
 const Enum::YLeaf SnmpAuthType::hmac_md5_96 {1, "hmac-md5-96"};
 const Enum::YLeaf SnmpAuthType::hmac_sha1_96 {2, "hmac-sha1-96"};
+
+const Enum::YLeaf IsisAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf IsisAdminSt::disabled {2, "disabled"};
 
 const Enum::YLeaf QospCtrlMeth::static_ {0, "static"};
 const Enum::YLeaf QospCtrlMeth::dynamic {1, "dynamic"};
@@ -23696,7 +24433,8 @@ const Enum::YLeaf PcPoType::none {0, "none"};
 const Enum::YLeaf PcPoType::hif_pc {1, "hif-pc"};
 const Enum::YLeaf PcPoType::non_hif_pc {2, "non-hif-pc"};
 
-const Enum::YLeaf SpanDestEncapT::gre {1, "gre"};
+const Enum::YLeaf IsisAfT::v4 {1, "v4"};
+const Enum::YLeaf IsisAfT::v6 {2, "v6"};
 
 const Enum::YLeaf EqptdiagAllGrpsT::none {0, "none"};
 const Enum::YLeaf EqptdiagAllGrpsT::sys_mem {1, "sys-mem"};
@@ -23728,14 +24466,30 @@ const Enum::YLeaf NwAdminSt::disabled {2, "disabled"};
 const Enum::YLeaf PkiCsyncActivationStateType::disabled {0, "disabled"};
 const Enum::YLeaf PkiCsyncActivationStateType::enabled {1, "enabled"};
 
+const Enum::YLeaf LcmLoggingType::Emergencies {0, "Emergencies"};
+const Enum::YLeaf LcmLoggingType::Alerts {1, "Alerts"};
+const Enum::YLeaf LcmLoggingType::Critical {2, "Critical"};
+const Enum::YLeaf LcmLoggingType::Errors {3, "Errors"};
+const Enum::YLeaf LcmLoggingType::Warnings {4, "Warnings"};
+const Enum::YLeaf LcmLoggingType::Notification {5, "Notification"};
+const Enum::YLeaf LcmLoggingType::Information {6, "Information"};
+const Enum::YLeaf LcmLoggingType::Debugging {7, "Debugging"};
+
 const Enum::YLeaf EqptLedOpSt::unknown {0, "unknown"};
 const Enum::YLeaf EqptLedOpSt::off {1, "off"};
 const Enum::YLeaf EqptLedOpSt::on {2, "on"};
 const Enum::YLeaf EqptLedOpSt::blinking {3, "blinking"};
 const Enum::YLeaf EqptLedOpSt::fail {4, "fail"};
 
+const Enum::YLeaf SrteIfOperSt::down {0, "down"};
+const Enum::YLeaf SrteIfOperSt::up {1, "up"};
+
 const Enum::YLeaf L1LinkTransmitReset::enable {1, "enable"};
 const Enum::YLeaf L1LinkTransmitReset::disable {0, "disable"};
+
+const Enum::YLeaf IsisNetworkTypeP2PSt::off {0, "off"};
+const Enum::YLeaf IsisNetworkTypeP2PSt::on {1, "on"};
+const Enum::YLeaf IsisNetworkTypeP2PSt::useAllISMac {2, "useAllISMac"};
 
 const Enum::YLeaf L1SpanMode::not_a_span_dest {1, "not-a-span-dest"};
 const Enum::YLeaf L1SpanMode::span_dest {2, "span-dest"};
@@ -23770,9 +24524,6 @@ const Enum::YLeaf NwAdminStProcessStatStaticDisc::disabled {2, "disabled"};
 const Enum::YLeaf BgpPasswdSet::enabled {1, "enabled"};
 const Enum::YLeaf BgpPasswdSet::disabled {0, "disabled"};
 
-const Enum::YLeaf SpanErSpanVer::ver1 {1, "ver1"};
-const Enum::YLeaf SpanErSpanVer::ver2 {2, "ver2"};
-
 const Enum::YLeaf IsisAdjOperSt::init {1, "init"};
 const Enum::YLeaf IsisAdjOperSt::up {2, "up"};
 const Enum::YLeaf IsisAdjOperSt::down {3, "down"};
@@ -23797,21 +24548,55 @@ const Enum::YLeaf SatmHpOperSt::up {1, "up"};
 const Enum::YLeaf SatmHpOperSt::down {2, "down"};
 const Enum::YLeaf SatmHpOperSt::fail {3, "fail"};
 
+const Enum::YLeaf IsisEhType::spfLeaf {0, "spfLeaf"};
+const Enum::YLeaf IsisEhType::spfTree {1, "spfTree"};
+const Enum::YLeaf IsisEhType::psnp {2, "psnp"};
+const Enum::YLeaf IsisEhType::csnp {3, "csnp"};
+const Enum::YLeaf IsisEhType::lspGen {4, "lspGen"};
+const Enum::YLeaf IsisEhType::lspFlood {5, "lspFlood"};
+const Enum::YLeaf IsisEhType::iih {6, "iih"};
+const Enum::YLeaf IsisEhType::adj {7, "adj"};
+const Enum::YLeaf IsisEhType::dis {8, "dis"};
+const Enum::YLeaf IsisEhType::events {9, "events"};
+const Enum::YLeaf IsisEhType::cli {10, "cli"};
+const Enum::YLeaf IsisEhType::ha {11, "ha"};
+const Enum::YLeaf IsisEhType::gr {12, "gr"};
+const Enum::YLeaf IsisEhType::urib {13, "urib"};
+const Enum::YLeaf IsisEhType::redist {14, "redist"};
+const Enum::YLeaf IsisEhType::tlv {15, "tlv"};
+const Enum::YLeaf IsisEhType::mtr {16, "mtr"};
+const Enum::YLeaf IsisEhType::perf {17, "perf"};
+const Enum::YLeaf IsisEhType::df {18, "df"};
+const Enum::YLeaf IsisEhType::sr {19, "sr"};
+const Enum::YLeaf IsisEhType::ulib {20, "ulib"};
+
 const Enum::YLeaf TunnelifSnmpTrapSt::enabled {1, "enabled"};
 const Enum::YLeaf TunnelifSnmpTrapSt::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminSt_::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminSt_::disabled {2, "disabled"};
 
 const Enum::YLeaf AaaNoRolePolicy::no_login {0, "no-login"};
 const Enum::YLeaf AaaNoRolePolicy::assign_default_role {1, "assign-default-role"};
 
 const Enum::YLeaf MonitorDestEncapT::gre {1, "gre"};
 
-const Enum::YLeaf L2MacType::unknown {0, "unknown"};
-const Enum::YLeaf L2MacType::primary {1, "primary"};
-const Enum::YLeaf L2MacType::gateway {2, "gateway"};
-const Enum::YLeaf L2MacType::overlay {4, "overlay"};
-const Enum::YLeaf L2MacType::primary_vpc_peer {5, "primary-vpc-peer"};
-const Enum::YLeaf L2MacType::control_plane {6, "control-plane"};
-const Enum::YLeaf L2MacType::vsan {7, "vsan"};
+const Enum::YLeaf IpfibFecType::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf IpfibFecType::IPV4 {1, "IPV4"};
+const Enum::YLeaf IpfibFecType::IPV6 {2, "IPV6"};
+const Enum::YLeaf IpfibFecType::IPV4_TE_LSP {3, "IPV4_TE_LSP"};
+const Enum::YLeaf IpfibFecType::IPV6_TE_LSP {4, "IPV6_TE_LSP"};
+const Enum::YLeaf IpfibFecType::TE_IF {5, "TE_IF"};
+const Enum::YLeaf IpfibFecType::DEAGG {6, "DEAGG"};
+const Enum::YLeaf IpfibFecType::PER_CE {7, "PER_CE"};
+const Enum::YLeaf IpfibFecType::FEC_NONE {8, "FEC_NONE"};
+const Enum::YLeaf IpfibFecType::POLICY_V4_PFX {9, "POLICY_V4_PFX"};
+const Enum::YLeaf IpfibFecType::POLICY_V6_PFX {10, "POLICY_V6_PFX"};
+const Enum::YLeaf IpfibFecType::ADJ_SID {11, "ADJ_SID"};
+const Enum::YLeaf IpfibFecType::SRTE {12, "SRTE"};
+
+const Enum::YLeaf LcmModuleFailureAction::no {0, "no"};
+const Enum::YLeaf LcmModuleFailureAction::shutdown {1, "shutdown"};
 
 const Enum::YLeaf RtleakScope::intra {1, "intra"};
 const Enum::YLeaf RtleakScope::inter {2, "inter"};
@@ -23835,11 +24620,12 @@ const Enum::YLeaf InstallerUpgStatusType::failed {3, "failed"};
 const Enum::YLeaf InstallerUpgStatusType::not_compatible {4, "not-compatible"};
 const Enum::YLeaf InstallerUpgStatusType::none {5, "none"};
 
-const Enum::YLeaf NwAdminSt_::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminSt_::disabled {2, "disabled"};
+const Enum::YLeaf NwAdminSt__::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminSt__::disabled {2, "disabled"};
 
-const Enum::YLeaf VrrpAuthType::none {1, "none"};
-const Enum::YLeaf VrrpAuthType::simple {2, "simple"};
+const Enum::YLeaf ItdSessActionType::noAction {0, "noAction"};
+const Enum::YLeaf ItdSessActionType::commit {1, "commit"};
+const Enum::YLeaf ItdSessActionType::abort {2, "abort"};
 
 const Enum::YLeaf AggregateMacType::unknown {0, "unknown"};
 const Enum::YLeaf AggregateMacType::unicast {1, "unicast"};
@@ -23849,6 +24635,9 @@ const Enum::YLeaf StpGuard::default_ {0, "default"};
 const Enum::YLeaf StpGuard::root {1, "root"};
 const Enum::YLeaf StpGuard::loop {2, "loop"};
 const Enum::YLeaf StpGuard::none {3, "none"};
+
+const Enum::YLeaf CommAdminState::enabled {1, "enabled"};
+const Enum::YLeaf CommAdminState::disabled {2, "disabled"};
 
 const Enum::YLeaf EqptCOpSt::unknown {0, "unknown"};
 const Enum::YLeaf EqptCOpSt::inserted {1, "inserted"};
@@ -23873,6 +24662,12 @@ const Enum::YLeaf EqptCOpSt::ha_seq_fail {18, "ha-seq-fail"};
 const Enum::YLeaf OpflexEpTransitionStatus::unknown {0, "unknown"};
 const Enum::YLeaf OpflexEpTransitionStatus::attached {1, "attached"};
 const Enum::YLeaf OpflexEpTransitionStatus::detached {2, "detached"};
+
+const Enum::YLeaf PlatformUdfOffsetBase::packet_start {0, "packet-start"};
+const Enum::YLeaf PlatformUdfOffsetBase::outer_header_l3 {1, "outer-header-l3"};
+const Enum::YLeaf PlatformUdfOffsetBase::outer_header_l4 {2, "outer-header-l4"};
+const Enum::YLeaf PlatformUdfOffsetBase::inner_header_l3 {3, "inner-header-l3"};
+const Enum::YLeaf PlatformUdfOffsetBase::inner_header_l4 {4, "inner-header-l4"};
 
 const Enum::YLeaf VpcPrecType::network {0, "network"};
 const Enum::YLeaf VpcPrecType::internet {1, "internet"};
@@ -23913,6 +24708,9 @@ const Enum::YLeaf CdpOperStQual::unsupported {4, "unsupported"};
 const Enum::YLeaf CdpVer::v1 {1, "v1"};
 const Enum::YLeaf CdpVer::v2 {2, "v2"};
 
+const Enum::YLeaf L3vmAsFormatType::asplain {0, "asplain"};
+const Enum::YLeaf L3vmAsFormatType::asdot {1, "asdot"};
+
 const Enum::YLeaf NwAdminStProcessStatAutoDiscAdd::enabled {1, "enabled"};
 const Enum::YLeaf NwAdminStProcessStatAutoDiscAdd::disabled {2, "disabled"};
 
@@ -23937,8 +24735,15 @@ const Enum::YLeaf BgpLogNbrSt::none {0, "none"};
 const Enum::YLeaf BgpLogNbrSt::enable {1, "enable"};
 const Enum::YLeaf BgpLogNbrSt::disable {2, "disable"};
 
-const Enum::YLeaf LldpPortIdSubType::long_ {0, "long"};
-const Enum::YLeaf LldpPortIdSubType::short_ {1, "short"};
+const Enum::YLeaf IpfibSpecialAdj::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf IpfibSpecialAdj::ATTACHED {1, "ATTACHED"};
+const Enum::YLeaf IpfibSpecialAdj::RECEIVE {2, "RECEIVE"};
+const Enum::YLeaf IpfibSpecialAdj::DROP {3, "DROP"};
+
+const Enum::YLeaf NbmNbmBwUnitEn::UNSPECIFIED {0, "UNSPECIFIED"};
+const Enum::YLeaf NbmNbmBwUnitEn::KBPS {1, "KBPS"};
+const Enum::YLeaf NbmNbmBwUnitEn::MBPS {2, "MBPS"};
+const Enum::YLeaf NbmNbmBwUnitEn::GBPS {3, "GBPS"};
 
 const Enum::YLeaf ActionType::clear {1, "clear"};
 const Enum::YLeaf ActionType::reset {2, "reset"};
@@ -23953,8 +24758,17 @@ const Enum::YLeaf L1DiagsT::none {0, "none"};
 const Enum::YLeaf L1DiagsT::dom {1, "dom"};
 const Enum::YLeaf L1DiagsT::ddm {2, "ddm"};
 
+const Enum::YLeaf PlatformFabricMode::default_ {2, "default"};
+const Enum::YLeaf PlatformFabricMode::full_rate {1, "full-rate"};
+
+const Enum::YLeaf SrteDataPlane::mpls {0, "mpls"};
+
+const Enum::YLeaf SysmgrCoreAdminSt::enable {0, "enable"};
+const Enum::YLeaf SysmgrCoreAdminSt::disable {1, "disable"};
+
 const Enum::YLeaf IsisAuthT::clear {1, "clear"};
 const Enum::YLeaf IsisAuthT::md5 {2, "md5"};
+const Enum::YLeaf IsisAuthT::unknown {3, "unknown"};
 
 const Enum::YLeaf CoppMcast::Undefined {0, "Undefined"};
 const Enum::YLeaf CoppMcast::dest_miss {1, "dest-miss"};
@@ -23972,6 +24786,17 @@ const Enum::YLeaf IpUrpfT::strict {1, "strict"};
 const Enum::YLeaf IpUrpfT::loose {2, "loose"};
 const Enum::YLeaf IpUrpfT::loose_allow_default {3, "loose-allow-default"};
 
+const Enum::YLeaf ItdNodeModeType::primary {0, "primary"};
+const Enum::YLeaf ItdNodeModeType::hot_standby {1, "hot-standby"};
+
+const Enum::YLeaf MmodeMaintProfileType::normal_mode {0, "normal-mode"};
+const Enum::YLeaf MmodeMaintProfileType::maintenance_mode {1, "maintenance-mode"};
+
+const Enum::YLeaf NbmNbmOifOrigin::UNDEFINED {0, "UNDEFINED"};
+const Enum::YLeaf NbmNbmOifOrigin::PROTOCOL {1, "PROTOCOL"};
+const Enum::YLeaf NbmNbmOifOrigin::API {2, "API"};
+const Enum::YLeaf NbmNbmOifOrigin::API_PROTOCOL {3, "API_PROTOCOL"};
+
 const Enum::YLeaf OspfAlways::no {0, "no"};
 const Enum::YLeaf OspfAlways::yes {1, "yes"};
 
@@ -23985,20 +24810,28 @@ const Enum::YLeaf NgmvpnEhType::hmm {6, "hmm"};
 const Enum::YLeaf NgmvpnEhType::isis {7, "isis"};
 const Enum::YLeaf NgmvpnEhType::ha {8, "ha"};
 
-const Enum::YLeaf SpanSrcT::port {1, "port"};
-const Enum::YLeaf SpanSrcT::encap {2, "encap"};
-const Enum::YLeaf SpanSrcT::port_encap {3, "port-encap"};
-
 const Enum::YLeaf CapRuleT::limit {1, "limit"};
 
 const Enum::YLeaf NdMacExtract::none {0, "none"};
 const Enum::YLeaf NdMacExtract::nud_phase {1, "nud-phase"};
 const Enum::YLeaf NdMacExtract::exclude_nud_phase {2, "exclude-nud-phase"};
 
-const Enum::YLeaf SisfRaGuardDeviceRole::host {1, "host"};
-const Enum::YLeaf SisfRaGuardDeviceRole::router {2, "router"};
-const Enum::YLeaf SisfRaGuardDeviceRole::switch_ {3, "switch"};
-const Enum::YLeaf SisfRaGuardDeviceRole::monitor {4, "monitor"};
+const Enum::YLeaf BootAutoCopy::enable {1, "enable"};
+const Enum::YLeaf BootAutoCopy::disable {0, "disable"};
+
+const Enum::YLeaf StpLcIssu::default_ {0, "default"};
+const Enum::YLeaf StpLcIssu::disruptive {1, "disruptive"};
+const Enum::YLeaf StpLcIssu::non_disruptive {2, "non-disruptive"};
+const Enum::YLeaf StpLcIssu::auto_ {3, "auto"};
+
+const Enum::YLeaf SpanType::invalid {63, "invalid"};
+const Enum::YLeaf SpanType::local {0, "local"};
+const Enum::YLeaf SpanType::erspan_source {1, "erspan-source"};
+const Enum::YLeaf SpanType::erspanDst {2, "erspanDst"};
+const Enum::YLeaf SpanType::aclCapture {3, "aclCapture"};
+const Enum::YLeaf SpanType::fcIsolaLocal {4, "fcIsolaLocal"};
+const Enum::YLeaf SpanType::ethSpanWarp {7, "ethSpanWarp"};
+const Enum::YLeaf SpanType::spanWarp {18, "spanWarp"};
 
 const Enum::YLeaf L1AllowMultiTag::enable {1, "enable"};
 const Enum::YLeaf L1AllowMultiTag::disable {0, "disable"};
@@ -24027,6 +24860,10 @@ const Enum::YLeaf OspfNwT::unspecified {0, "unspecified"};
 const Enum::YLeaf OspfNwT::p2p {1, "p2p"};
 const Enum::YLeaf OspfNwT::bcast {2, "bcast"};
 
+const Enum::YLeaf Ospfv3OperSt::invalid {0, "invalid"};
+const Enum::YLeaf Ospfv3OperSt::down {1, "down"};
+const Enum::YLeaf Ospfv3OperSt::up {2, "up"};
+
 const Enum::YLeaf RtmapRoutePervasive::non_pervasive {0, "non-pervasive"};
 const Enum::YLeaf RtmapRoutePervasive::pervasive {1, "pervasive"};
 const Enum::YLeaf RtmapRoutePervasive::pervasive_non_ext_bd {2, "pervasive-non-ext-bd"};
@@ -24040,11 +24877,20 @@ const Enum::YLeaf BgpPeerFabType::fabric_internal {0, "fabric-internal"};
 const Enum::YLeaf BgpPeerFabType::fabric_external {1, "fabric-external"};
 const Enum::YLeaf BgpPeerFabType::fabric_border_leaf {2, "fabric-border-leaf"};
 
+const Enum::YLeaf L1capSubj::unknown {0, "unknown"};
+const Enum::YLeaf L1capSubj::pc_namespace {1, "pc-namespace"};
+const Enum::YLeaf L1capSubj::ethport {2, "ethport"};
+
 const Enum::YLeaf EqptSock::unspecified {0, "unspecified"};
 
 const Enum::YLeaf MonitorOperSt::up {1, "up"};
 const Enum::YLeaf MonitorOperSt::down {2, "down"};
 const Enum::YLeaf MonitorOperSt::failed {3, "failed"};
+
+const Enum::YLeaf IpqosPolicyDirection::none {0, "none"};
+const Enum::YLeaf IpqosPolicyDirection::ingress {1, "ingress"};
+const Enum::YLeaf IpqosPolicyDirection::egress {2, "egress"};
+const Enum::YLeaf IpqosPolicyDirection::both {3, "both"};
 
 const Enum::YLeaf RtpfxCriteria::exact {0, "exact"};
 const Enum::YLeaf RtpfxCriteria::inexact {1, "inexact"};
@@ -24111,9 +24957,19 @@ const Enum::YLeaf SatmExtChOperSt::aa_upg_fail {24, "aa-upg-fail"};
 const Enum::YLeaf SatmExtChOperSt::aa_ver_mismatch {25, "aa-ver-mismatch"};
 const Enum::YLeaf SatmExtChOperSt::ch_type_mismatch {26, "ch-type-mismatch"};
 
+const Enum::YLeaf LldpDCBXPVerType::auto_ {0, "auto"};
+const Enum::YLeaf LldpDCBXPVerType::CEE {2, "CEE"};
+const Enum::YLeaf LldpDCBXPVerType::IEEE {3, "IEEE"};
+
+const Enum::YLeaf PlatformPcMplsLbLabelOnly::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf PlatformPcMplsLbLabelOnly::LABEL_ONLY {1, "LABEL_ONLY"};
+
 const Enum::YLeaf EqptAirDir::unknown {0, "unknown"};
 const Enum::YLeaf EqptAirDir::front2back {1, "front2back"};
 const Enum::YLeaf EqptAirDir::back2front {2, "back2front"};
+
+const Enum::YLeaf PlatformFrontPortmode::sfp_plus {0, "sfp-plus"};
+const Enum::YLeaf PlatformFrontPortmode::qsfp {1, "qsfp"};
 
 const Enum::YLeaf SysmgrFwMode::recovery {1, "recovery"};
 const Enum::YLeaf SysmgrFwMode::regular {2, "regular"};
@@ -24124,6 +24980,13 @@ const Enum::YLeaf Icmpv6OperSt::failed {2, "failed"};
 
 const Enum::YLeaf VsanOperSt::up {1, "up"};
 const Enum::YLeaf VsanOperSt::down {2, "down"};
+
+const Enum::YLeaf Ospfv3IfType::none {0, "none"};
+const Enum::YLeaf Ospfv3IfType::loopback {1, "loopback"};
+const Enum::YLeaf Ospfv3IfType::p2p {2, "p2p"};
+const Enum::YLeaf Ospfv3IfType::p2mp {3, "p2mp"};
+const Enum::YLeaf Ospfv3IfType::nbma {4, "nbma"};
+const Enum::YLeaf Ospfv3IfType::bcast {5, "bcast"};
 
 const Enum::YLeaf AggregateBfdStatus::unknown {0, "unknown"};
 const Enum::YLeaf AggregateBfdStatus::admin_down {1, "admin_down"};
@@ -24155,6 +25018,10 @@ const Enum::YLeaf CoppBurstUnit::ms {6, "ms"};
 const Enum::YLeaf FvImmediacy::immediate {1, "immediate"};
 const Enum::YLeaf FvImmediacy::lazy {2, "lazy"};
 
+const Enum::YLeaf MmodeMaintModeType::normal {0, "normal"};
+const Enum::YLeaf MmodeMaintModeType::maintenance {1, "maintenance"};
+const Enum::YLeaf MmodeMaintModeType::unplanned_maintenance {2, "unplanned-maintenance"};
+
 const Enum::YLeaf Pim6EhType::assertRcv {0, "assertRcv"};
 const Enum::YLeaf Pim6EhType::bidir {1, "bidir"};
 const Enum::YLeaf Pim6EhType::hello {2, "hello"};
@@ -24171,11 +25038,11 @@ const Enum::YLeaf L1VoiceVlanType::tagged {1, "tagged"};
 const Enum::YLeaf L1VoiceVlanType::dot1p {2, "dot1p"};
 const Enum::YLeaf L1VoiceVlanType::untagged {3, "untagged"};
 
+const Enum::YLeaf NwAdminStIfStatMRouting::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatMRouting::disabled {2, "disabled"};
+
 const Enum::YLeaf IsisBwRefUnit::mbps {0, "mbps"};
 const Enum::YLeaf IsisBwRefUnit::gbps {1, "gbps"};
-
-const Enum::YLeaf AaaMonitorServerType::disabled {0, "disabled"};
-const Enum::YLeaf AaaMonitorServerType::enabled {1, "enabled"};
 
 const Enum::YLeaf OspfAdjChangeLogLevel::none {0, "none"};
 const Enum::YLeaf OspfAdjChangeLogLevel::brief {1, "brief"};
@@ -24184,6 +25051,9 @@ const Enum::YLeaf OspfAdjChangeLogLevel::detail {2, "detail"};
 const Enum::YLeaf StpLinkType::auto_ {1, "auto"};
 const Enum::YLeaf StpLinkType::p2p {2, "p2p"};
 const Enum::YLeaf StpLinkType::shared {3, "shared"};
+
+const Enum::YLeaf LcmProfAclStats::no {0, "no"};
+const Enum::YLeaf LcmProfAclStats::yes {1, "yes"};
 
 const Enum::YLeaf NwMemAlertLevel::normal {0, "normal"};
 const Enum::YLeaf NwMemAlertLevel::minor {1, "minor"};
@@ -24205,9 +25075,39 @@ const Enum::YLeaf ArpAdjOperSt::unspecified {0, "unspecified"};
 const Enum::YLeaf ArpAdjOperSt::incomplete {1, "incomplete"};
 const Enum::YLeaf ArpAdjOperSt::normal {2, "normal"};
 
+const Enum::YLeaf AaaSearchMapEntryType::user_profile {1, "user-profile"};
+const Enum::YLeaf AaaSearchMapEntryType::trusted_cert {2, "trusted-cert"};
+const Enum::YLeaf AaaSearchMapEntryType::crl_lookup {3, "crl-lookup"};
+const Enum::YLeaf AaaSearchMapEntryType::user_switch_bind {4, "user-switch-bind"};
+const Enum::YLeaf AaaSearchMapEntryType::user_certdn_match {5, "user-certdn-match"};
+const Enum::YLeaf AaaSearchMapEntryType::user_pubkey_match {6, "user-pubkey-match"};
+
 const Enum::YLeaf OspfGrCtrl::planned_only {1, "planned-only"};
 const Enum::YLeaf OspfGrCtrl::complete {2, "complete"};
 const Enum::YLeaf OspfGrCtrl::disabled {3, "disabled"};
+
+const Enum::YLeaf Ospfv3NwT::none {0, "none"};
+const Enum::YLeaf Ospfv3NwT::p2p {1, "p2p"};
+const Enum::YLeaf Ospfv3NwT::bcast {2, "bcast"};
+
+const Enum::YLeaf SlaReactionVariable::none {0, "none"};
+const Enum::YLeaf SlaReactionVariable::rtt {1, "rtt"};
+const Enum::YLeaf SlaReactionVariable::jitterSDAvg {2, "jitterSDAvg"};
+const Enum::YLeaf SlaReactionVariable::jitterDSAvg {3, "jitterDSAvg"};
+const Enum::YLeaf SlaReactionVariable::packetLossSD {4, "packetLossSD"};
+const Enum::YLeaf SlaReactionVariable::packetLossDS {5, "packetLossDS"};
+const Enum::YLeaf SlaReactionVariable::mos {6, "mos"};
+const Enum::YLeaf SlaReactionVariable::timeout {7, "timeout"};
+const Enum::YLeaf SlaReactionVariable::connectionLoss {8, "connectionLoss"};
+const Enum::YLeaf SlaReactionVariable::verifyError {9, "verifyError"};
+const Enum::YLeaf SlaReactionVariable::jitterAvg {10, "jitterAvg"};
+const Enum::YLeaf SlaReactionVariable::icpif {11, "icpif"};
+const Enum::YLeaf SlaReactionVariable::packetLateArrival {13, "packetLateArrival"};
+const Enum::YLeaf SlaReactionVariable::packetOutOfSequence {14, "packetOutOfSequence"};
+const Enum::YLeaf SlaReactionVariable::maxOfPositiveSD {15, "maxOfPositiveSD"};
+const Enum::YLeaf SlaReactionVariable::maxOfNegativeSD {16, "maxOfNegativeSD"};
+const Enum::YLeaf SlaReactionVariable::maxOfPositiveDS {17, "maxOfPositiveDS"};
+const Enum::YLeaf SlaReactionVariable::maxOfNegativeDS {18, "maxOfNegativeDS"};
 
 const Enum::YLeaf AaaRuleScopeType::none {0, "none"};
 const Enum::YLeaf AaaRuleScopeType::feature {2, "feature"};
@@ -24225,12 +25125,20 @@ const Enum::YLeaf CoppAffix::unknown {0, "unknown"};
 const Enum::YLeaf CoppAffix::prefix {1, "prefix"};
 const Enum::YLeaf CoppAffix::suffix {2, "suffix"};
 
+const Enum::YLeaf IpfibAddressType::IPV4 {0, "IPV4"};
+const Enum::YLeaf IpfibAddressType::IPV6 {1, "IPV6"};
+const Enum::YLeaf IpfibAddressType::LABEL {2, "LABEL"};
+
 const Enum::YLeaf M6ribHoldAdminSt::enabled {1, "enabled"};
 const Enum::YLeaf M6ribHoldAdminSt::disabled {2, "disabled"};
 
 const Enum::YLeaf PlatformPstatCfg::PSTAT_DISABLE {0, "PSTAT_DISABLE"};
 const Enum::YLeaf PlatformPstatCfg::PSTAT_ENABLE {1, "PSTAT_ENABLE"};
 const Enum::YLeaf PlatformPstatCfg::PSTAT_ENABLE_PEAK {2, "PSTAT_ENABLE_PEAK"};
+
+const Enum::YLeaf CallhomePredefProfileName::predef_tac_prof {0, "predef_tac_prof"};
+const Enum::YLeaf CallhomePredefProfileName::full_txt {1, "full_txt"};
+const Enum::YLeaf CallhomePredefProfileName::short_txt {2, "short_txt"};
 
 const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::low {1, "low"};
 const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::medium {2, "medium"};
@@ -24273,12 +25181,25 @@ const Enum::YLeaf EqptSlotOpSt::inserted {1, "inserted"};
 const Enum::YLeaf UdldAdminSt::enabled {1, "enabled"};
 const Enum::YLeaf UdldAdminSt::disabled {2, "disabled"};
 
+const Enum::YLeaf OpflexDirection::in {0, "in"};
+const Enum::YLeaf OpflexDirection::out {1, "out"};
+
+const Enum::YLeaf Vrrpv3Preempt::enabled {1, "enabled"};
+const Enum::YLeaf Vrrpv3Preempt::disabled {0, "disabled"};
+
+const Enum::YLeaf PlatformSwitchMode::default_ {0, "default"};
+const Enum::YLeaf PlatformSwitchMode::n3k {1, "n3k"};
+const Enum::YLeaf PlatformSwitchMode::n9k {2, "n9k"};
+
 const Enum::YLeaf AaaAccountStatus::active {0, "active"};
 const Enum::YLeaf AaaAccountStatus::inactive {1, "inactive"};
 
 const Enum::YLeaf EqptParity::none {0, "none"};
 const Enum::YLeaf EqptParity::even {1, "even"};
 const Enum::YLeaf EqptParity::odd {2, "odd"};
+
+const Enum::YLeaf SlaPrecision::microseconds {1, "microseconds"};
+const Enum::YLeaf SlaPrecision::milliseconds {2, "milliseconds"};
 
 const Enum::YLeaf SnmpBoolean::no {0, "no"};
 const Enum::YLeaf SnmpBoolean::yes {1, "yes"};
@@ -24313,8 +25234,18 @@ const Enum::YLeaf CompHostState::unknown {8, "unknown"};
 const Enum::YLeaf BootPoap::enable {1, "enable"};
 const Enum::YLeaf BootPoap::disable {0, "disable"};
 
+const Enum::YLeaf SviMedium::bcast {0, "bcast"};
+const Enum::YLeaf SviMedium::p2p {1, "p2p"};
+
+const Enum::YLeaf AnalyticsDirectionT::in {1, "in"};
+const Enum::YLeaf AnalyticsDirectionT::out {2, "out"};
+const Enum::YLeaf AnalyticsDirectionT::both {3, "both"};
+
 const Enum::YLeaf SnmpSnmpTrapSt::enable {1, "enable"};
 const Enum::YLeaf SnmpSnmpTrapSt::disable {2, "disable"};
+
+const Enum::YLeaf CommSshPortfaultBitmapT::noerror {0, "noerror"};
+const Enum::YLeaf CommSshPortfaultBitmapT::SshPortUnavailable {1, "SshPortUnavailable"};
 
 const Enum::YLeaf ImModeHwProfile::undefined {0, "undefined"};
 const Enum::YLeaf ImModeHwProfile::Y_4C {1, "4C"};
@@ -24325,6 +25256,13 @@ const Enum::YLeaf ImModeHwProfile::Y_6C__PLUS__24Q {5, "6C+24Q"};
 
 const Enum::YLeaf OspfSgmntRtgMplsOperSt::Disabled {0, "Disabled"};
 const Enum::YLeaf OspfSgmntRtgMplsOperSt::Enabled {1, "Enabled"};
+
+const Enum::YLeaf BootBootOrderReverse::yes {1, "yes"};
+const Enum::YLeaf BootBootOrderReverse::no {0, "no"};
+
+const Enum::YLeaf SrteDisjointType::none {0, "none"};
+const Enum::YLeaf SrteDisjointType::node {1, "node"};
+const Enum::YLeaf SrteDisjointType::link {2, "link"};
 
 const Enum::YLeaf OspfHelperExitQual::none {1, "none"};
 const Enum::YLeaf OspfHelperExitQual::in_progress {2, "in-progress"};
@@ -24366,6 +25304,10 @@ const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerLinkDown {1, "VpcPeerLinkDo
 const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerOk {2, "VpcPeerOk"};
 const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerNotfound {3, "VpcPeerNotfound"};
 
+const Enum::YLeaf IsisAdvtLvl::l0 {0, "l0"};
+const Enum::YLeaf IsisAdvtLvl::l1 {1, "l1"};
+const Enum::YLeaf IsisAdvtLvl::l2 {2, "l2"};
+
 const Enum::YLeaf CoppViolateAction::Undefined {0, "Undefined"};
 const Enum::YLeaf CoppViolateAction::transmit {1, "transmit"};
 const Enum::YLeaf CoppViolateAction::drop {2, "drop"};
@@ -24373,6 +25315,10 @@ const Enum::YLeaf CoppViolateAction::drop {2, "drop"};
 const Enum::YLeaf L1VdcSt::not_created {0, "not-created"};
 const Enum::YLeaf L1VdcSt::created {1, "created"};
 const Enum::YLeaf L1VdcSt::cleanup {2, "cleanup"};
+
+const Enum::YLeaf IsisTopoT::st {1, "st"};
+const Enum::YLeaf IsisTopoT::mt {2, "mt"};
+const Enum::YLeaf IsisTopoT::mtt {3, "mtt"};
 
 const Enum::YLeaf PcHashDist::none {0, "none"};
 const Enum::YLeaf PcHashDist::adaptive {1, "adaptive"};
@@ -24477,10 +25423,24 @@ const Enum::YLeaf SwpkgsPackageAction::deactivate {4, "deactivate"};
 const Enum::YLeaf SwpkgsPackageAction::commit {5, "commit"};
 const Enum::YLeaf SwpkgsPackageAction::remove {6, "remove"};
 
+const Enum::YLeaf NvoSrStateT::unknown {4, "unknown"};
+const Enum::YLeaf NvoSrStateT::init {0, "init"};
+const Enum::YLeaf NvoSrStateT::add_complete {1, "add_complete"};
+const Enum::YLeaf NvoSrStateT::EviDelPending {2, "EviDelPending"};
+const Enum::YLeaf NvoSrStateT::PeerDelPending {3, "PeerDelPending"};
+
 const Enum::YLeaf CompInstType::unknown {0, "unknown"};
 const Enum::YLeaf CompInstType::phys {1, "phys"};
 const Enum::YLeaf CompInstType::virt {2, "virt"};
 const Enum::YLeaf CompInstType::hv {3, "hv"};
+
+const Enum::YLeaf ItdProtocolType::noProtocol {0, "noProtocol"};
+const Enum::YLeaf ItdProtocolType::DNS {1, "DNS"};
+const Enum::YLeaf ItdProtocolType::HTTP {2, "HTTP"};
+const Enum::YLeaf ItdProtocolType::ICMP {3, "ICMP"};
+const Enum::YLeaf ItdProtocolType::TCP {4, "TCP"};
+const Enum::YLeaf ItdProtocolType::UDP {5, "UDP"};
+const Enum::YLeaf ItdProtocolType::IP {6, "IP"};
 
 const Enum::YLeaf AaaUserRolePrivType::noDataPriv {0, "noDataPriv"};
 const Enum::YLeaf AaaUserRolePrivType::readPriv {1, "readPriv"};
@@ -24525,8 +25485,15 @@ const Enum::YLeaf BgpPathT::aggregate {5, "aggregate"};
 const Enum::YLeaf BgpPathT::redistribute {6, "redistribute"};
 const Enum::YLeaf BgpPathT::injected {7, "injected"};
 
+const Enum::YLeaf PlatformMplsEcmpMode::disable {1, "disable"};
+const Enum::YLeaf PlatformMplsEcmpMode::enable {0, "enable"};
+
 const Enum::YLeaf ProcOperState::up {0, "up"};
 const Enum::YLeaf ProcOperState::down {1, "down"};
+
+const Enum::YLeaf NvoMplsEncapT::unknown {0, "unknown"};
+const Enum::YLeaf NvoMplsEncapT::mpls {1, "mpls"};
+const Enum::YLeaf NvoMplsEncapT::none {2, "none"};
 
 const Enum::YLeaf NdRtPrefForCmd::unspecified {0, "unspecified"};
 const Enum::YLeaf NdRtPrefForCmd::low {1, "low"};
@@ -24537,6 +25504,11 @@ const Enum::YLeaf SnmpCommAcessT::ro {0, "ro"};
 const Enum::YLeaf SnmpCommAcessT::rw {1, "rw"};
 const Enum::YLeaf SnmpCommAcessT::unspecified {2, "unspecified"};
 
+const Enum::YLeaf SlaCodecType::none {0, "none"};
+const Enum::YLeaf SlaCodecType::g711alaw {2, "g711alaw"};
+const Enum::YLeaf SlaCodecType::g711ulaw {1, "g711ulaw"};
+const Enum::YLeaf SlaCodecType::g729a {3, "g729a"};
+
 const Enum::YLeaf SegrtSRGBOperSt::none {0, "none"};
 const Enum::YLeaf SegrtSRGBOperSt::in_use {1, "in-use"};
 const Enum::YLeaf SegrtSRGBOperSt::alloc_in_progress {2, "alloc-in-progress"};
@@ -24544,12 +25516,16 @@ const Enum::YLeaf SegrtSRGBOperSt::alloc_failed {3, "alloc-failed"};
 const Enum::YLeaf SegrtSRGBOperSt::cleanup_in_progress {4, "cleanup-in-progress"};
 const Enum::YLeaf SegrtSRGBOperSt::cleanup_failed {5, "cleanup-failed"};
 
-const Enum::YLeaf UdldPortEnable::port_enabled {0, "port-enabled"};
-const Enum::YLeaf UdldPortEnable::port_fiber_disabled {1, "port-fiber-disabled"};
-const Enum::YLeaf UdldPortEnable::port_default {2, "port-default"};
-
 const Enum::YLeaf AnalyticsModeT::analytics {0, "analytics"};
 const Enum::YLeaf AnalyticsModeT::netflow {1, "netflow"};
+
+const Enum::YLeaf IsisBfdT::inheritVrf {1, "inheritVrf"};
+const Enum::YLeaf IsisBfdT::enabled {2, "enabled"};
+const Enum::YLeaf IsisBfdT::disabled {3, "disabled"};
+
+const Enum::YLeaf StpSimulateIf::default_ {0, "default"};
+const Enum::YLeaf StpSimulateIf::enabled {1, "enabled"};
+const Enum::YLeaf StpSimulateIf::disabled {2, "disabled"};
 
 const Enum::YLeaf IgmpEhType::igmpInternal {0, "igmpInternal"};
 const Enum::YLeaf IgmpEhType::cli {1, "cli"};
@@ -24567,6 +25543,14 @@ const Enum::YLeaf IgmpEhType::nbm {11, "nbm"};
 const Enum::YLeaf L1LayerAggrIfLayer::Layer2 {1, "Layer2"};
 const Enum::YLeaf L1LayerAggrIfLayer::Layer3 {2, "Layer3"};
 const Enum::YLeaf L1LayerAggrIfLayer::pltfmDfltLayer {3, "pltfmDfltLayer"};
+
+const Enum::YLeaf PktmgrRateLimitDirection::input {1, "input"};
+const Enum::YLeaf PktmgrRateLimitDirection::output {2, "output"};
+const Enum::YLeaf PktmgrRateLimitDirection::both {3, "both"};
+const Enum::YLeaf PktmgrRateLimitDirection::unspecified {4, "unspecified"};
+
+const Enum::YLeaf Vrrpv3AdminSt::disabled {1, "disabled"};
+const Enum::YLeaf Vrrpv3AdminSt::enabled {0, "enabled"};
 
 const Enum::YLeaf L2capSubj::unknown {0, "unknown"};
 const Enum::YLeaf L2capSubj::vxlan_namespace {1, "vxlan-namespace"};
@@ -24854,6 +25838,15 @@ const Enum::YLeaf DatetimeLoggingLevel::debug {7, "debug"};
 const Enum::YLeaf FcoeAdminSt::enabled {1, "enabled"};
 const Enum::YLeaf FcoeAdminSt::disabled {2, "disabled"};
 
+const Enum::YLeaf AaaLdapLogLevel::emergency {0, "emergency"};
+const Enum::YLeaf AaaLdapLogLevel::alert {1, "alert"};
+const Enum::YLeaf AaaLdapLogLevel::critical {2, "critical"};
+const Enum::YLeaf AaaLdapLogLevel::error {3, "error"};
+const Enum::YLeaf AaaLdapLogLevel::warning {4, "warning"};
+const Enum::YLeaf AaaLdapLogLevel::notification {5, "notification"};
+const Enum::YLeaf AaaLdapLogLevel::informational {6, "informational"};
+const Enum::YLeaf AaaLdapLogLevel::debug {7, "debug"};
+
 const Enum::YLeaf MonitorDirection::in {1, "in"};
 const Enum::YLeaf MonitorDirection::out {2, "out"};
 const Enum::YLeaf MonitorDirection::both {3, "both"};
@@ -24870,6 +25863,9 @@ const Enum::YLeaf BgpPrivateASControl::replace_as {3, "replace-as"};
 const Enum::YLeaf RtcomMode::standard {1, "standard"};
 const Enum::YLeaf RtcomMode::regex {2, "regex"};
 
+const Enum::YLeaf PlatformMroutingDisableSecRouteUpd::disable {0, "disable"};
+const Enum::YLeaf PlatformMroutingDisableSecRouteUpd::enable {1, "enable"};
+
 const Enum::YLeaf AggregateBooleanFlag::no {0, "no"};
 const Enum::YLeaf AggregateBooleanFlag::yes {1, "yes"};
 
@@ -24880,6 +25876,12 @@ const Enum::YLeaf OamEpT::node {3, "node"};
 const Enum::YLeaf IpqosPolicyType::none {0, "none"};
 const Enum::YLeaf IpqosPolicyType::qos {1, "qos"};
 const Enum::YLeaf IpqosPolicyType::queuing {2, "queuing"};
+
+const Enum::YLeaf PlatformUdfCfgFault::none {0, "none"};
+const Enum::YLeaf PlatformUdfCfgFault::definition {1, "definition"};
+const Enum::YLeaf PlatformUdfCfgFault::qualifySpan {2, "qualifySpan"};
+const Enum::YLeaf PlatformUdfCfgFault::qualifySpanV6 {3, "qualifySpanV6"};
+const Enum::YLeaf PlatformUdfCfgFault::qualifySpanV6L2 {4, "qualifySpanV6L2"};
 
 const Enum::YLeaf IsisDbT::ls {1, "ls"};
 const Enum::YLeaf IsisDbT::rt {2, "rt"};
@@ -24925,14 +25927,20 @@ const Enum::YLeaf L1SwitchportMacLearn::enable {1, "enable"};
 const Enum::YLeaf LacpSysRole::primary {1, "primary"};
 const Enum::YLeaf LacpSysRole::secondary {2, "secondary"};
 
+const Enum::YLeaf SlaThresholdType::never {1, "never"};
+const Enum::YLeaf SlaThresholdType::immediate {2, "immediate"};
+const Enum::YLeaf SlaThresholdType::consecutive {3, "consecutive"};
+const Enum::YLeaf SlaThresholdType::xOfy {4, "xOfy"};
+const Enum::YLeaf SlaThresholdType::average {5, "average"};
+
 const Enum::YLeaf NwAdminStProcessStatAutoDisc::enabled {1, "enabled"};
 const Enum::YLeaf NwAdminStProcessStatAutoDisc::disabled {2, "disabled"};
 
+const Enum::YLeaf EqptAutoShutdown::disabled {0, "disabled"};
+const Enum::YLeaf EqptAutoShutdown::enabled {1, "enabled"};
+
 const Enum::YLeaf SnmpNotificationType::traps {1, "traps"};
 const Enum::YLeaf SnmpNotificationType::informs {2, "informs"};
-
-const Enum::YLeaf AnalyticsOperSt::enabled {1, "enabled"};
-const Enum::YLeaf AnalyticsOperSt::disabled {2, "disabled"};
 
 const Enum::YLeaf MribModeAdminSt::enabled {1, "enabled"};
 const Enum::YLeaf MribModeAdminSt::disabled {2, "disabled"};
@@ -24954,6 +25962,18 @@ const Enum::YLeaf ActionAdminSt::suspend {3, "suspend"};
 
 const Enum::YLeaf BgpRtCtrlOperSt::unresolved {1, "unresolved"};
 const Enum::YLeaf BgpRtCtrlOperSt::resolved {2, "resolved"};
+
+const Enum::YLeaf MribEhType::cli {0, "cli"};
+const Enum::YLeaf MribEhType::mdt {1, "mdt"};
+const Enum::YLeaf MribEhType::mfdmDebugs {2, "mfdmDebugs"};
+const Enum::YLeaf MribEhType::mfdmEvents {3, "mfdmEvents"};
+const Enum::YLeaf MribEhType::mfdmStats {4, "mfdmStats"};
+const Enum::YLeaf MribEhType::notyClients {5, "notyClients"};
+const Enum::YLeaf MribEhType::rib {6, "rib"};
+const Enum::YLeaf MribEhType::ribSum {7, "ribSum"};
+const Enum::YLeaf MribEhType::urib {8, "urib"};
+const Enum::YLeaf MribEhType::vrf {9, "vrf"};
+const Enum::YLeaf MribEhType::nbm {10, "nbm"};
 
 const Enum::YLeaf RtleakProto::unspecified {0, "unspecified"};
 const Enum::YLeaf RtleakProto::static_ {1, "static"};
@@ -24994,6 +26014,7 @@ const Enum::YLeaf OspfEventType::hello {9, "hello"};
 const Enum::YLeaf OspfEventType::rib {10, "rib"};
 const Enum::YLeaf OspfEventType::spf_trigger {11, "spf-trigger"};
 const Enum::YLeaf OspfEventType::cli {12, "cli"};
+const Enum::YLeaf OspfEventType::segrt {13, "segrt"};
 
 const Enum::YLeaf L2MacInfo::standard {0, "standard"};
 const Enum::YLeaf L2MacInfo::drop {1, "drop"};
@@ -25091,61 +26112,20 @@ const Enum::YLeaf BgpPeerOperSt::closing {9, "closing"};
 const Enum::YLeaf BgpPeerOperSt::error {10, "error"};
 const Enum::YLeaf BgpPeerOperSt::unknown {11, "unknown"};
 
+const Enum::YLeaf SnmpSnmpLogLevel::emergencies {0, "emergencies"};
+const Enum::YLeaf SnmpSnmpLogLevel::alerts {1, "alerts"};
+const Enum::YLeaf SnmpSnmpLogLevel::critical {2, "critical"};
+const Enum::YLeaf SnmpSnmpLogLevel::errors {3, "errors"};
+const Enum::YLeaf SnmpSnmpLogLevel::warnings {4, "warnings"};
+const Enum::YLeaf SnmpSnmpLogLevel::notifications {5, "notifications"};
+const Enum::YLeaf SnmpSnmpLogLevel::information {6, "information"};
+const Enum::YLeaf SnmpSnmpLogLevel::debugging {7, "debugging"};
+
 const Enum::YLeaf RtctrlRtCtrlDir::in {1, "in"};
 const Enum::YLeaf RtctrlRtCtrlDir::out {2, "out"};
 
 const Enum::YLeaf ClimodeT::EXEC {0, "EXEC"};
 const Enum::YLeaf ClimodeT::CONFIG {1, "CONFIG"};
-
-const Enum::YLeaf RelnClassId::unspecified {0, "unspecified"};
-const Enum::YLeaf RelnClassId::cdpIf {1, "cdpIf"};
-const Enum::YLeaf RelnClassId::cnwAggrIf {2, "cnwAggrIf"};
-const Enum::YLeaf RelnClassId::cnwPhysIf {3, "cnwPhysIf"};
-const Enum::YLeaf RelnClassId::connIf {4, "connIf"};
-const Enum::YLeaf RelnClassId::datetimeNtpSrcIf {5, "datetimeNtpSrcIf"};
-const Enum::YLeaf RelnClassId::dhcpClientIf {6, "dhcpClientIf"};
-const Enum::YLeaf RelnClassId::dhcpDAIIf {7, "dhcpDAIIf"};
-const Enum::YLeaf RelnClassId::dhcpIpsgIf {8, "dhcpIpsgIf"};
-const Enum::YLeaf RelnClassId::dhcpPseudoIf {9, "dhcpPseudoIf"};
-const Enum::YLeaf RelnClassId::dhcpRelayIf {10, "dhcpRelayIf"};
-const Enum::YLeaf RelnClassId::dhcpServerIf {11, "dhcpServerIf"};
-const Enum::YLeaf RelnClassId::dhcpSnoopIf {12, "dhcpSnoopIf"};
-const Enum::YLeaf RelnClassId::dhcpSourceIf {13, "dhcpSourceIf"};
-const Enum::YLeaf RelnClassId::dhcpSrcIf {14, "dhcpSrcIf"};
-const Enum::YLeaf RelnClassId::dhcpV6SourceIf {15, "dhcpV6SourceIf"};
-const Enum::YLeaf RelnClassId::dhcpV6SrcIf {16, "dhcpV6SrcIf"};
-const Enum::YLeaf RelnClassId::egressIf {17, "egressIf"};
-const Enum::YLeaf RelnClassId::ingressIf {18, "ingressIf"};
-const Enum::YLeaf RelnClassId::ipSrcIf {19, "ipSrcIf"};
-const Enum::YLeaf RelnClassId::l1EthIf {20, "l1EthIf"};
-const Enum::YLeaf RelnClassId::l1PhysIf {21, "l1PhysIf"};
-const Enum::YLeaf RelnClassId::l2BrIf {22, "l2BrIf"};
-const Enum::YLeaf RelnClassId::l2ExtIf {23, "l2ExtIf"};
-const Enum::YLeaf RelnClassId::l2InbandIf {24, "l2InbandIf"};
-const Enum::YLeaf RelnClassId::l2VfcIf {25, "l2VfcIf"};
-const Enum::YLeaf RelnClassId::l3If {26, "l3If"};
-const Enum::YLeaf RelnClassId::l3LbRtdIf {27, "l3LbRtdIf"};
-const Enum::YLeaf RelnClassId::lldpIf {28, "lldpIf"};
-const Enum::YLeaf RelnClassId::mcpIf {29, "mcpIf"};
-const Enum::YLeaf RelnClassId::mgmtMgmtIf {30, "mgmtMgmtIf"};
-const Enum::YLeaf RelnClassId::mgmtRtdMgmtIf {31, "mgmtRtdMgmtIf"};
-const Enum::YLeaf RelnClassId::nwIf {32, "nwIf"};
-const Enum::YLeaf RelnClassId::ospfIf {33, "ospfIf"};
-const Enum::YLeaf RelnClassId::ospfv3If {34, "ospfv3If"};
-const Enum::YLeaf RelnClassId::pcAggrIf {35, "pcAggrIf"};
-const Enum::YLeaf RelnClassId::pktOnPassiveIf {36, "pktOnPassiveIf"};
-const Enum::YLeaf RelnClassId::regressIf {37, "regressIf"};
-const Enum::YLeaf RelnClassId::rsactiveIf {38, "rsactiveIf"};
-const Enum::YLeaf RelnClassId::rtactiveIf {39, "rtactiveIf"};
-const Enum::YLeaf RelnClassId::rtlsNodeToIf {40, "rtlsNodeToIf"};
-const Enum::YLeaf RelnClassId::srcIf {41, "srcIf"};
-const Enum::YLeaf RelnClassId::tunnelIf {42, "tunnelIf"};
-const Enum::YLeaf RelnClassId::vpcIf {43, "vpcIf"};
-const Enum::YLeaf RelnClassId::l3Inst {44, "l3Inst"};
-const Enum::YLeaf RelnClassId::l3EncRtdIf {45, "l3EncRtdIf"};
-const Enum::YLeaf RelnClassId::rtregcomRule {46, "rtregcomRule"};
-const Enum::YLeaf RelnClassId::rtpfxRule {47, "rtpfxRule"};
-const Enum::YLeaf RelnClassId::rtmapMatchRtDst {48, "rtmapMatchRtDst"};
 
 const Enum::YLeaf EthpmErrDisEvent::event_link_flap {0, "event-link-flap"};
 const Enum::YLeaf EthpmErrDisEvent::event_udld {1, "event-udld"};
@@ -25240,6 +26220,9 @@ const Enum::YLeaf BgpSoftReconfigBackup::inbound_always {2, "inbound-always"};
 const Enum::YLeaf StpRoot::primary {1, "primary"};
 const Enum::YLeaf StpRoot::secondary {2, "secondary"};
 
+const Enum::YLeaf L1SwitchportIsolated::disable {0, "disable"};
+const Enum::YLeaf L1SwitchportIsolated::enable {1, "enable"};
+
 const Enum::YLeaf OpflexDeviceType::unknown {0, "unknown"};
 const Enum::YLeaf OpflexDeviceType::n1kv {1, "n1kv"};
 const Enum::YLeaf OpflexDeviceType::hyperv {2, "hyperv"};
@@ -25248,6 +26231,10 @@ const Enum::YLeaf OpflexDeviceType::ovs {3, "ovs"};
 const Enum::YLeaf EqptAirFilter::absent {0, "absent"};
 const Enum::YLeaf EqptAirFilter::present {1, "present"};
 const Enum::YLeaf EqptAirFilter::notsupported {2, "notsupported"};
+
+const Enum::YLeaf BootMode::none {0, "none"};
+const Enum::YLeaf BootMode::lxc {1, "lxc"};
+const Enum::YLeaf BootMode::dockerCluster {3, "dockerCluster"};
 
 const Enum::YLeaf UdldOperSt::enabled {1, "enabled"};
 const Enum::YLeaf UdldOperSt::disabled {2, "disabled"};
@@ -25269,6 +26256,19 @@ const Enum::YLeaf CoppProfT::strict {1, "strict"};
 const Enum::YLeaf CoppProfT::moderate {2, "moderate"};
 const Enum::YLeaf CoppProfT::dense {4, "dense"};
 const Enum::YLeaf CoppProfT::lenient {3, "lenient"};
+
+const Enum::YLeaf RtdmcBfdInstSt::enabled {1, "enabled"};
+const Enum::YLeaf RtdmcBfdInstSt::disabled {2, "disabled"};
+const Enum::YLeaf RtdmcBfdInstSt::none {0, "none"};
+
+const Enum::YLeaf MmodeMaintModeActionStatusType::unknown {0, "unknown"};
+const Enum::YLeaf MmodeMaintModeActionStatusType::success {1, "success"};
+const Enum::YLeaf MmodeMaintModeActionStatusType::failed {2, "failed"};
+const Enum::YLeaf MmodeMaintModeActionStatusType::gen_profile {3, "gen-profile"};
+const Enum::YLeaf MmodeMaintModeActionStatusType::confirm_profile {4, "confirm-profile"};
+const Enum::YLeaf MmodeMaintModeActionStatusType::taking_snapshot {5, "taking-snapshot"};
+const Enum::YLeaf MmodeMaintModeActionStatusType::applying_config {6, "applying-config"};
+const Enum::YLeaf MmodeMaintModeActionStatusType::waiting_delay {7, "waiting-delay"};
 
 const Enum::YLeaf BgpTblSt::unknown {0, "unknown"};
 const Enum::YLeaf BgpTblSt::up {1, "up"};
@@ -25331,12 +26331,18 @@ const Enum::YLeaf AaaRulePermissionType::deny {2, "deny"};
 const Enum::YLeaf NdRtPrefForNdRt::low {0, "low"};
 const Enum::YLeaf NdRtPrefForNdRt::medium {1, "medium"};
 const Enum::YLeaf NdRtPrefForNdRt::high {2, "high"};
+const Enum::YLeaf NdRtPrefForNdRt::unspecified {3, "unspecified"};
 
 const Enum::YLeaf FirmwareRunningMode::normal {0, "normal"};
 const Enum::YLeaf FirmwareRunningMode::recovery {1, "recovery"};
 
 const Enum::YLeaf NvoPeerStateT::Up {1, "Up"};
 const Enum::YLeaf NvoPeerStateT::Down {2, "Down"};
+
+const Enum::YLeaf BootOrder::bootflash {0, "bootflash"};
+const Enum::YLeaf BootOrder::pxe {1, "pxe"};
+const Enum::YLeaf BootOrder::pxe2bootflash {2, "pxe2bootflash"};
+const Enum::YLeaf BootOrder::bootflash2pxe {3, "bootflash2pxe"};
 
 const Enum::YLeaf TrackProbeState::reachability {0, "reachability"};
 const Enum::YLeaf TrackProbeState::state {1, "state"};
@@ -25346,6 +26352,78 @@ const Enum::YLeaf PcLastSt::failed {1, "failed"};
 
 const Enum::YLeaf IpmcJoinType::Y_0 {0, "0"};
 const Enum::YLeaf IpmcJoinType::Y_1 {1, "1"};
+
+const Enum::YLeaf BgpBgpDscp::Y_0 {0, "0"};
+const Enum::YLeaf BgpBgpDscp::Y_1 {1, "1"};
+const Enum::YLeaf BgpBgpDscp::Y_2 {2, "2"};
+const Enum::YLeaf BgpBgpDscp::Y_3 {3, "3"};
+const Enum::YLeaf BgpBgpDscp::Y_4 {4, "4"};
+const Enum::YLeaf BgpBgpDscp::Y_5 {5, "5"};
+const Enum::YLeaf BgpBgpDscp::Y_6 {6, "6"};
+const Enum::YLeaf BgpBgpDscp::Y_7 {7, "7"};
+const Enum::YLeaf BgpBgpDscp::cs1 {8, "cs1"};
+const Enum::YLeaf BgpBgpDscp::Y_9 {9, "9"};
+const Enum::YLeaf BgpBgpDscp::af11 {10, "af11"};
+const Enum::YLeaf BgpBgpDscp::Y_11 {11, "11"};
+const Enum::YLeaf BgpBgpDscp::af12 {12, "af12"};
+const Enum::YLeaf BgpBgpDscp::Y_13 {13, "13"};
+const Enum::YLeaf BgpBgpDscp::af13 {14, "af13"};
+const Enum::YLeaf BgpBgpDscp::Y_15 {15, "15"};
+const Enum::YLeaf BgpBgpDscp::cs2 {16, "cs2"};
+const Enum::YLeaf BgpBgpDscp::Y_17 {17, "17"};
+const Enum::YLeaf BgpBgpDscp::af21 {18, "af21"};
+const Enum::YLeaf BgpBgpDscp::Y_19 {19, "19"};
+const Enum::YLeaf BgpBgpDscp::af22 {20, "af22"};
+const Enum::YLeaf BgpBgpDscp::Y_21 {21, "21"};
+const Enum::YLeaf BgpBgpDscp::af23 {22, "af23"};
+const Enum::YLeaf BgpBgpDscp::Y_23 {23, "23"};
+const Enum::YLeaf BgpBgpDscp::cs3 {24, "cs3"};
+const Enum::YLeaf BgpBgpDscp::Y_25 {25, "25"};
+const Enum::YLeaf BgpBgpDscp::af31 {26, "af31"};
+const Enum::YLeaf BgpBgpDscp::Y_27 {27, "27"};
+const Enum::YLeaf BgpBgpDscp::af32 {28, "af32"};
+const Enum::YLeaf BgpBgpDscp::Y_29 {29, "29"};
+const Enum::YLeaf BgpBgpDscp::af33 {30, "af33"};
+const Enum::YLeaf BgpBgpDscp::Y_31 {31, "31"};
+const Enum::YLeaf BgpBgpDscp::cs4 {32, "cs4"};
+const Enum::YLeaf BgpBgpDscp::Y_33 {33, "33"};
+const Enum::YLeaf BgpBgpDscp::af41 {34, "af41"};
+const Enum::YLeaf BgpBgpDscp::Y_35 {35, "35"};
+const Enum::YLeaf BgpBgpDscp::af42 {36, "af42"};
+const Enum::YLeaf BgpBgpDscp::Y_37 {37, "37"};
+const Enum::YLeaf BgpBgpDscp::af43 {38, "af43"};
+const Enum::YLeaf BgpBgpDscp::Y_39 {39, "39"};
+const Enum::YLeaf BgpBgpDscp::cs5 {40, "cs5"};
+const Enum::YLeaf BgpBgpDscp::Y_41 {41, "41"};
+const Enum::YLeaf BgpBgpDscp::Y_42 {42, "42"};
+const Enum::YLeaf BgpBgpDscp::Y_43 {43, "43"};
+const Enum::YLeaf BgpBgpDscp::Y_44 {44, "44"};
+const Enum::YLeaf BgpBgpDscp::Y_45 {45, "45"};
+const Enum::YLeaf BgpBgpDscp::ef {46, "ef"};
+const Enum::YLeaf BgpBgpDscp::Y_47 {47, "47"};
+const Enum::YLeaf BgpBgpDscp::cs6 {48, "cs6"};
+const Enum::YLeaf BgpBgpDscp::Y_49 {49, "49"};
+const Enum::YLeaf BgpBgpDscp::Y_50 {50, "50"};
+const Enum::YLeaf BgpBgpDscp::Y_51 {51, "51"};
+const Enum::YLeaf BgpBgpDscp::Y_52 {52, "52"};
+const Enum::YLeaf BgpBgpDscp::Y_53 {53, "53"};
+const Enum::YLeaf BgpBgpDscp::Y_54 {54, "54"};
+const Enum::YLeaf BgpBgpDscp::Y_55 {55, "55"};
+const Enum::YLeaf BgpBgpDscp::cs7 {56, "cs7"};
+const Enum::YLeaf BgpBgpDscp::Y_57 {57, "57"};
+const Enum::YLeaf BgpBgpDscp::Y_58 {58, "58"};
+const Enum::YLeaf BgpBgpDscp::Y_59 {59, "59"};
+const Enum::YLeaf BgpBgpDscp::Y_60 {60, "60"};
+const Enum::YLeaf BgpBgpDscp::Y_61 {61, "61"};
+const Enum::YLeaf BgpBgpDscp::Y_62 {62, "62"};
+const Enum::YLeaf BgpBgpDscp::Y_63 {63, "63"};
+
+const Enum::YLeaf MsdpOperSt::inactive {0, "inactive"};
+const Enum::YLeaf MsdpOperSt::down {1, "down"};
+const Enum::YLeaf MsdpOperSt::admin_down {2, "admin-down"};
+const Enum::YLeaf MsdpOperSt::connecting {3, "connecting"};
+const Enum::YLeaf MsdpOperSt::listening {4, "listening"};
+const Enum::YLeaf MsdpOperSt::established {5, "established"};
 
 const Enum::YLeaf L1SwitchportVirtualEthernetBridge::disable {0, "disable"};
 const Enum::YLeaf L1SwitchportVirtualEthernetBridge::enable {1, "enable"};
@@ -25368,14 +26446,15 @@ const Enum::YLeaf PoePoePolice::Default {0, "Default"};
 const Enum::YLeaf PoePoePolice::errdisable {1, "errdisable"};
 const Enum::YLeaf PoePoePolice::log {2, "log"};
 
-const Enum::YLeaf SpanMode::access {1, "access"};
-const Enum::YLeaf SpanMode::fabric {2, "fabric"};
-
 const Enum::YLeaf HsrpBiaScopeType::global {1, "global"};
 const Enum::YLeaf HsrpBiaScopeType::local {2, "local"};
 
 const Enum::YLeaf NdStAdjOperSt::down {0, "down"};
 const Enum::YLeaf NdStAdjOperSt::up {1, "up"};
+
+const Enum::YLeaf AaaAuthMechanism::plain_text {1, "plain-text"};
+const Enum::YLeaf AaaAuthMechanism::gssapi_kerb5 {2, "gssapi-kerb5"};
+const Enum::YLeaf AaaAuthMechanism::gssapi_md5 {3, "gssapi-md5"};
 
 const Enum::YLeaf CdpDevIdT::none {0, "none"};
 const Enum::YLeaf CdpDevIdT::mac {1, "mac"};
@@ -25398,11 +26477,6 @@ const Enum::YLeaf NwAddrF::mac {3, "mac"};
 
 const Enum::YLeaf RtdmcAuthT::none {0, "none"};
 const Enum::YLeaf RtdmcAuthT::ah_md5 {1, "ah-md5"};
-
-const Enum::YLeaf IpqosPolicyDirection::none {0, "none"};
-const Enum::YLeaf IpqosPolicyDirection::ingress {1, "ingress"};
-const Enum::YLeaf IpqosPolicyDirection::egress {2, "egress"};
-const Enum::YLeaf IpqosPolicyDirection::both {3, "both"};
 
 const Enum::YLeaf TunnelifTunnelSrcDirect::enabled {1, "enabled"};
 const Enum::YLeaf TunnelifTunnelSrcDirect::disabled {2, "disabled"};
@@ -25428,6 +26502,9 @@ const Enum::YLeaf TrackRouteOwner::hmm {1, "hmm"};
 const Enum::YLeaf VsanAdminSt::active {1, "active"};
 const Enum::YLeaf VsanAdminSt::suspended {2, "suspended"};
 
+const Enum::YLeaf L1EEELpi::aggressive {1, "aggressive"};
+const Enum::YLeaf L1EEELpi::normal {2, "normal"};
+
 const Enum::YLeaf FcCreateState::created {0, "created"};
 const Enum::YLeaf FcCreateState::removed {1, "removed"};
 
@@ -25447,21 +26524,24 @@ const Enum::YLeaf IsisOperSt::failed {3, "failed"};
 const Enum::YLeaf NbmNbmRcvOwner::IGMP {0, "IGMP"};
 const Enum::YLeaf NbmNbmRcvOwner::STATIC {1, "STATIC"};
 const Enum::YLeaf NbmNbmRcvOwner::PIM {2, "PIM"};
+const Enum::YLeaf NbmNbmRcvOwner::NBM_STATIC {4, "NBM-STATIC"};
+
+const Enum::YLeaf NbmNbmFlowPolicerEn::DISABLED {0, "DISABLED"};
+const Enum::YLeaf NbmNbmFlowPolicerEn::ENABLED {1, "ENABLED"};
 
 const Enum::YLeaf TrackIntfProtocolType::none {0, "none"};
 const Enum::YLeaf TrackIntfProtocolType::ipv4_routing {1, "ipv4-routing"};
 const Enum::YLeaf TrackIntfProtocolType::ipv6_routing {2, "ipv6-routing"};
 const Enum::YLeaf TrackIntfProtocolType::line_protocol {3, "line-protocol"};
 
-const Enum::YLeaf MsdpOperSt::inactive {0, "inactive"};
-const Enum::YLeaf MsdpOperSt::down {1, "down"};
-const Enum::YLeaf MsdpOperSt::admin_down {2, "admin-down"};
-const Enum::YLeaf MsdpOperSt::connecting {3, "connecting"};
-const Enum::YLeaf MsdpOperSt::listening {4, "listening"};
-const Enum::YLeaf MsdpOperSt::established {5, "established"};
+const Enum::YLeaf PlatformMroutingDisableL2Upd::disable {0, "disable"};
+const Enum::YLeaf PlatformMroutingDisableL2Upd::enable {1, "enable"};
 
 const Enum::YLeaf L1AdminSt::down {1, "down"};
 const Enum::YLeaf L1AdminSt::up {2, "up"};
+
+const Enum::YLeaf ConftmplOperationType::create {1, "create"};
+const Enum::YLeaf ConftmplOperationType::delete_ {2, "delete"};
 
 const Enum::YLeaf L3CtxT::oob_mgmt {1, "oob-mgmt"};
 const Enum::YLeaf L3CtxT::inb_mgmt {2, "inb-mgmt"};
@@ -25469,6 +26549,9 @@ const Enum::YLeaf L3CtxT::tenant {3, "tenant"};
 
 const Enum::YLeaf AdjacencyDbT::ip {1, "ip"};
 const Enum::YLeaf AdjacencyDbT::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf SrteProtectionType::protected_ {0, "protected"};
+const Enum::YLeaf SrteProtectionType::unprotected {1, "unprotected"};
 
 const Enum::YLeaf AaaKeyEncUserPass::unspecified {255, "unspecified"};
 const Enum::YLeaf AaaKeyEncUserPass::clear {0, "clear"};
@@ -25513,11 +26596,19 @@ const Enum::YLeaf VpcOperSt::down {1, "down"};
 const Enum::YLeaf VpcOperSt::up {2, "up"};
 const Enum::YLeaf VpcOperSt::noCfg {3, "noCfg"};
 
+const Enum::YLeaf ItdLBMethod::noLBMethod {0, "noLBMethod"};
+const Enum::YLeaf ItdLBMethod::src {1, "src"};
+const Enum::YLeaf ItdLBMethod::dst {2, "dst"};
+
 const Enum::YLeaf ImMode100M::disabled {0, "disabled"};
 const Enum::YLeaf ImMode100M::enabled {1, "enabled"};
 
 const Enum::YLeaf RtcomComT::regular {1, "regular"};
 const Enum::YLeaf RtcomComT::extended {2, "extended"};
+
+const Enum::YLeaf SlaOpPktPriority::none {0, "none"};
+const Enum::YLeaf SlaOpPktPriority::high {2, "high"};
+const Enum::YLeaf SlaOpPktPriority::normal {1, "normal"};
 
 const Enum::YLeaf L2DomMode::CE {1, "CE"};
 const Enum::YLeaf L2DomMode::FabricPath {2, "FabricPath"};
@@ -25542,20 +26633,28 @@ const Enum::YLeaf BgpPfxSidAttrEntryType::label_index {1, "label-index"};
 const Enum::YLeaf BgpPfxSidAttrEntryType::ipv6_sid {2, "ipv6-sid"};
 const Enum::YLeaf BgpPfxSidAttrEntryType::origin_srgb {3, "origin-srgb"};
 
-const Enum::YLeaf EqptLedType::unknown {0, "unknown"};
-const Enum::YLeaf EqptLedType::status {1, "status"};
-const Enum::YLeaf EqptLedType::system {2, "system"};
-const Enum::YLeaf EqptLedType::active {3, "active"};
-const Enum::YLeaf EqptLedType::power {4, "power"};
-const Enum::YLeaf EqptLedType::battery {5, "battery"};
-const Enum::YLeaf EqptLedType::lc_status {6, "lc-status"};
-const Enum::YLeaf EqptLedType::sup_status {7, "sup-status"};
-const Enum::YLeaf EqptLedType::fc_status {8, "fc-status"};
-const Enum::YLeaf EqptLedType::fan_status {9, "fan-status"};
-const Enum::YLeaf EqptLedType::pwr_status {10, "pwr-status"};
+const Enum::YLeaf MribLogType::none {0, "none"};
+const Enum::YLeaf MribLogType::rout {1, "rout"};
+const Enum::YLeaf MribLogType::routip {2, "routip"};
+const Enum::YLeaf MribLogType::routipv4 {3, "routipv4"};
+const Enum::YLeaf MribLogType::mrib {4, "mrib"};
 
-const Enum::YLeaf PlatformFabricSpeed::DEFAULT {0, "DEFAULT"};
-const Enum::YLeaf PlatformFabricSpeed::FABRIC_SPEED_40G {1, "FABRIC_SPEED_40G"};
+const Enum::YLeaf StpIfMode::default_ {0, "default"};
+const Enum::YLeaf StpIfMode::edge {1, "edge"};
+const Enum::YLeaf StpIfMode::network {2, "network"};
+const Enum::YLeaf StpIfMode::normal {3, "normal"};
+const Enum::YLeaf StpIfMode::trunk {4, "trunk"};
+
+const Enum::YLeaf Ospfv3PassiveControl::none {0, "none"};
+const Enum::YLeaf Ospfv3PassiveControl::enabled {1, "enabled"};
+const Enum::YLeaf Ospfv3PassiveControl::disabled {2, "disabled"};
+
+const Enum::YLeaf PlatformFabricSpeed::default_ {0, "default"};
+const Enum::YLeaf PlatformFabricSpeed::fabric_speed_40g {1, "fabric-speed-40g"};
+
+const Enum::YLeaf L3MaxRtAct::log {1, "log"};
+const Enum::YLeaf L3MaxRtAct::shut {2, "shut"};
+const Enum::YLeaf L3MaxRtAct::reinstall {3, "reinstall"};
 
 const Enum::YLeaf McastFiltMode::include {1, "include"};
 const Enum::YLeaf McastFiltMode::exclude {2, "exclude"};
@@ -25570,6 +26669,9 @@ const Enum::YLeaf AaaRuleAccessType::none {0, "none"};
 const Enum::YLeaf AaaRuleAccessType::read {1, "read"};
 const Enum::YLeaf AaaRuleAccessType::read_write {2, "read-write"};
 const Enum::YLeaf AaaRuleAccessType::command {3, "command"};
+
+const Enum::YLeaf PlatformPcLbRes::yes {1, "yes"};
+const Enum::YLeaf PlatformPcLbRes::no {2, "no"};
 
 const Enum::YLeaf SnmpPrivTypeT::no {0, "no"};
 const Enum::YLeaf SnmpPrivTypeT::des {1, "des"};
@@ -25589,6 +26691,10 @@ const Enum::YLeaf ProcOperSt::running {3, "running"};
 const Enum::YLeaf ProcOperSt::dead {4, "dead"};
 const Enum::YLeaf ProcOperSt::defunct {5, "defunct"};
 
+const Enum::YLeaf CallhomeFormat::xml {1, "xml"};
+const Enum::YLeaf CallhomeFormat::full_txt {2, "full-txt"};
+const Enum::YLeaf CallhomeFormat::short_txt {3, "short-txt"};
+
 const Enum::YLeaf NwAdminStIfStatPortUnreach::enabled {1, "enabled"};
 const Enum::YLeaf NwAdminStIfStatPortUnreach::disabled {2, "disabled"};
 
@@ -25597,6 +26703,15 @@ const Enum::YLeaf InstallerInstEnum::no {1, "no"};
 
 const Enum::YLeaf BgpAsSegT::sequence {1, "sequence"};
 const Enum::YLeaf BgpAsSegT::set {2, "set"};
+
+const Enum::YLeaf Ospfv3IfOperSt::unknown {0, "unknown"};
+const Enum::YLeaf Ospfv3IfOperSt::down {1, "down"};
+const Enum::YLeaf Ospfv3IfOperSt::loopback {2, "loopback"};
+const Enum::YLeaf Ospfv3IfOperSt::waiting {3, "waiting"};
+const Enum::YLeaf Ospfv3IfOperSt::p2p {4, "p2p"};
+const Enum::YLeaf Ospfv3IfOperSt::dr {5, "dr"};
+const Enum::YLeaf Ospfv3IfOperSt::bdr {6, "bdr"};
+const Enum::YLeaf Ospfv3IfOperSt::dr_other {7, "dr-other"};
 
 const Enum::YLeaf DatetimeNTPPeerMode::unspecified {0, "unspecified"};
 const Enum::YLeaf DatetimeNTPPeerMode::symmetricActive {1, "symmetricActive"};
@@ -25632,16 +26747,31 @@ const Enum::YLeaf IpqosBurstRateUnit::ms {4, "ms"};
 const Enum::YLeaf IpqosBurstRateUnit::us {5, "us"};
 const Enum::YLeaf IpqosBurstRateUnit::packets {6, "packets"};
 
-const Enum::YLeaf L1capSubj::unknown {0, "unknown"};
-const Enum::YLeaf L1capSubj::pc_namespace {1, "pc-namespace"};
-const Enum::YLeaf L1capSubj::ethport {2, "ethport"};
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_0 {0, "0"};
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_6 {6, "6"};
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_7 {7, "7"};
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
+
+const Enum::YLeaf L2MacType::unknown {0, "unknown"};
+const Enum::YLeaf L2MacType::primary {1, "primary"};
+const Enum::YLeaf L2MacType::gateway {2, "gateway"};
+const Enum::YLeaf L2MacType::overlay {4, "overlay"};
+const Enum::YLeaf L2MacType::primary_vpc_peer {5, "primary-vpc-peer"};
+const Enum::YLeaf L2MacType::control_plane {6, "control-plane"};
+const Enum::YLeaf L2MacType::vsan {7, "vsan"};
 
 const Enum::YLeaf AggregateFabFwdMode::standard {0, "standard"};
 const Enum::YLeaf AggregateFabFwdMode::anycastgw {1, "anycastgw"};
 const Enum::YLeaf AggregateFabFwdMode::proxygw {2, "proxygw"};
 
+const Enum::YLeaf CallhomeBoolean::enabled {1, "enabled"};
+const Enum::YLeaf CallhomeBoolean::disabled {0, "disabled"};
+
 const Enum::YLeaf BgpRtCtrlDir::in {1, "in"};
 const Enum::YLeaf BgpRtCtrlDir::out {2, "out"};
+
+const Enum::YLeaf PlatformTcamRegionCfgFault::none {0, "none"};
+const Enum::YLeaf PlatformTcamRegionCfgFault::TCAM_template_validation {1, "TCAM_template_validation"};
 
 const Enum::YLeaf IpLoadShareFormat::disabled {1, "disabled"};
 const Enum::YLeaf IpLoadShareFormat::destPort {2, "destPort"};
@@ -25650,6 +26780,12 @@ const Enum::YLeaf IpLoadShareFormat::srcDestGre {4, "srcDestGre"};
 const Enum::YLeaf IpLoadShareFormat::srcDestPort {5, "srcDestPort"};
 const Enum::YLeaf IpLoadShareFormat::source {6, "source"};
 const Enum::YLeaf IpLoadShareFormat::srcDestGTPU {7, "srcDestGTPU"};
+const Enum::YLeaf IpLoadShareFormat::srcDestSymmetric {8, "srcDestSymmetric"};
+const Enum::YLeaf IpLoadShareFormat::srcDestInnerAll {9, "srcDestInnerAll"};
+const Enum::YLeaf IpLoadShareFormat::srcDestInnerGre {10, "srcDestInnerGre"};
+const Enum::YLeaf IpLoadShareFormat::srcDestInnerGreSymmetric {11, "srcDestInnerGreSymmetric"};
+
+const Enum::YLeaf SlaHttpMethodVal::get {1, "get"};
 
 const Enum::YLeaf AaaRealmDomainAuthRealm::local {0, "local"};
 const Enum::YLeaf AaaRealmDomainAuthRealm::radius {1, "radius"};
@@ -25672,6 +26808,9 @@ const Enum::YLeaf EqptSensorT::asic_vrm {12, "asic-vrm"};
 const Enum::YLeaf EqptSensorT::x86 {18, "x86"};
 const Enum::YLeaf EqptSensorT::arm {19, "arm"};
 const Enum::YLeaf EqptSensorT::die {20, "die"};
+
+const Enum::YLeaf PlatformMcastNlb::disable {0, "disable"};
+const Enum::YLeaf PlatformMcastNlb::enable {1, "enable"};
 
 const Enum::YLeaf SysmgrSupSt::unknown {0, "unknown"};
 const Enum::YLeaf SysmgrSupSt::active {1, "active"};
@@ -25746,6 +26885,7 @@ const Enum::YLeaf IpAddrOperStQual::DAD_invalid {27, "DAD-invalid"};
 const Enum::YLeaf IpAddrOperStQual::multiple_lladdr {28, "multiple-lladdr"};
 const Enum::YLeaf IpAddrOperStQual::invalid_tunnel {29, "invalid-tunnel"};
 const Enum::YLeaf IpAddrOperStQual::lladdr_invalid_tunnel {30, "lladdr-invalid-tunnel"};
+const Enum::YLeaf IpAddrOperStQual::aggr_mapped_subnet_inconsistent {31, "aggr-mapped-subnet-inconsistent"};
 
 const Enum::YLeaf SnmpPrivType::none {0, "none"};
 const Enum::YLeaf SnmpPrivType::des {1, "des"};
@@ -25838,6 +26978,12 @@ const Enum::YLeaf BgpEgressPeerEng::none {0, "none"};
 const Enum::YLeaf BgpEgressPeerEng::enabled {1, "enabled"};
 const Enum::YLeaf BgpEgressPeerEng::enabled_adj_sid {2, "enabled-adj-sid"};
 
+const Enum::YLeaf VrrpAuthType::none {1, "none"};
+const Enum::YLeaf VrrpAuthType::simple {2, "simple"};
+
+const Enum::YLeaf LcmEcmpTemplateL3vpn::no {0, "no"};
+const Enum::YLeaf LcmEcmpTemplateL3vpn::yes {1, "yes"};
+
 const Enum::YLeaf TopNodeRole::unsupported {0, "unsupported"};
 const Enum::YLeaf TopNodeRole::controller {1, "controller"};
 const Enum::YLeaf TopNodeRole::leaf {2, "leaf"};
@@ -25845,9 +26991,6 @@ const Enum::YLeaf TopNodeRole::spine {3, "spine"};
 const Enum::YLeaf TopNodeRole::vleaf {4, "vleaf"};
 const Enum::YLeaf TopNodeRole::vip {5, "vip"};
 const Enum::YLeaf TopNodeRole::protection_chain {6, "protection-chain"};
-
-const Enum::YLeaf SviMedium::bcast {0, "bcast"};
-const Enum::YLeaf SviMedium::p2p {1, "p2p"};
 
 const Enum::YLeaf TunnelifTunnelPMTUD::enabled {1, "enabled"};
 const Enum::YLeaf TunnelifTunnelPMTUD::disabled {2, "disabled"};
@@ -25861,6 +27004,15 @@ const Enum::YLeaf InstallerInstModType::fex {2, "fex"};
 const Enum::YLeaf InstallerInstModType::bios {3, "bios"};
 const Enum::YLeaf InstallerInstModType::lcn9k {4, "lcn9k"};
 const Enum::YLeaf InstallerInstModType::unknown {-1, "unknown"};
+
+const Enum::YLeaf OspfPathT::intra {1, "intra"};
+const Enum::YLeaf OspfPathT::discard_int {2, "discard-int"};
+const Enum::YLeaf OspfPathT::inter {3, "inter"};
+const Enum::YLeaf OspfPathT::discard_ext {4, "discard-ext"};
+const Enum::YLeaf OspfPathT::ext1 {5, "ext1"};
+const Enum::YLeaf OspfPathT::nssa1 {6, "nssa1"};
+const Enum::YLeaf OspfPathT::ext2 {7, "ext2"};
+const Enum::YLeaf OspfPathT::nssa2 {8, "nssa2"};
 
 const Enum::YLeaf SisfSecurityLevel::glean {0, "glean"};
 const Enum::YLeaf SisfSecurityLevel::inspect {1, "inspect"};
@@ -25879,8 +27031,6 @@ const Enum::YLeaf SnmpSmplType::delta {2, "delta"};
 const Enum::YLeaf AnalyticsDefPolicyT::permit {0, "permit"};
 const Enum::YLeaf AnalyticsDefPolicyT::deny {1, "deny"};
 
-const Enum::YLeaf SpanDbT::ipep_resolve {1, "ipep-resolve"};
-
 const Enum::YLeaf VrrpGroupSt::init {0, "init"};
 const Enum::YLeaf VrrpGroupSt::backup {1, "backup"};
 const Enum::YLeaf VrrpGroupSt::master {2, "master"};
@@ -25891,11 +27041,31 @@ const Enum::YLeaf EthpmSyslogInfo::info_1 {1, "info-1"};
 const Enum::YLeaf VsanLbType::src_dst_id {1, "src-dst-id"};
 const Enum::YLeaf VsanLbType::src_dst_ox_id {2, "src-dst-ox-id"};
 
+const Enum::YLeaf PoeLoggingType::Emergencies {0, "Emergencies"};
+const Enum::YLeaf PoeLoggingType::Alerts {1, "Alerts"};
+const Enum::YLeaf PoeLoggingType::Critical {2, "Critical"};
+const Enum::YLeaf PoeLoggingType::Errors {3, "Errors"};
+const Enum::YLeaf PoeLoggingType::Warnings {4, "Warnings"};
+const Enum::YLeaf PoeLoggingType::Notification {5, "Notification"};
+const Enum::YLeaf PoeLoggingType::Information {6, "Information"};
+const Enum::YLeaf PoeLoggingType::Debugging {7, "Debugging"};
+
 const Enum::YLeaf OspfLsaLeakOperSt::Inactive {0, "Inactive"};
 const Enum::YLeaf OspfLsaLeakOperSt::active {1, "active"};
 
 const Enum::YLeaf L1PortTypeFabric::no {0, "no"};
 const Enum::YLeaf L1PortTypeFabric::yes {1, "yes"};
+
+const Enum::YLeaf CallhomeAlertGroupName::configuration {0, "configuration"};
+const Enum::YLeaf CallhomeAlertGroupName::diagnostic {1, "diagnostic"};
+const Enum::YLeaf CallhomeAlertGroupName::environmental {2, "environmental"};
+const Enum::YLeaf CallhomeAlertGroupName::inventory {3, "inventory"};
+const Enum::YLeaf CallhomeAlertGroupName::license {4, "license"};
+const Enum::YLeaf CallhomeAlertGroupName::linecard {5, "linecard"};
+const Enum::YLeaf CallhomeAlertGroupName::supervisor {6, "supervisor"};
+const Enum::YLeaf CallhomeAlertGroupName::syslogport {7, "syslogport"};
+const Enum::YLeaf CallhomeAlertGroupName::system {8, "system"};
+const Enum::YLeaf CallhomeAlertGroupName::test {9, "test"};
 
 const Enum::YLeaf RtleakCtrl::unspecified {0, "unspecified"};
 const Enum::YLeaf RtleakCtrl::warning {1, "warning"};
@@ -25906,14 +27076,14 @@ const Enum::YLeaf PcOperSt::down {1, "down"};
 const Enum::YLeaf PcOperSt::bringup_in_progress {2, "bringup-in-progress"};
 const Enum::YLeaf PcOperSt::module_removed {3, "module-removed"};
 
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_0 {0, "0"};
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_6 {6, "6"};
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_7 {7, "7"};
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
+const Enum::YLeaf McastfwdSwRep::none {0, "none"};
+const Enum::YLeaf McastfwdSwRep::swasm {1, "swasm"};
+const Enum::YLeaf McastfwdSwRep::swiif {2, "swiif"};
 
 const Enum::YLeaf TelemetryEncoding::GPB {1, "GPB"};
 const Enum::YLeaf TelemetryEncoding::JSON {2, "JSON"};
 const Enum::YLeaf TelemetryEncoding::XML {3, "XML"};
+const Enum::YLeaf TelemetryEncoding::GPB_compact {4, "GPB-compact"};
 
 const Enum::YLeaf CoppRdrct::Undefined {0, "Undefined"};
 const Enum::YLeaf CoppRdrct::arp_inspect {1, "arp-inspect"};
@@ -25971,6 +27141,9 @@ const Enum::YLeaf NbmNbmPermit::UNDEFINED {0, "UNDEFINED"};
 const Enum::YLeaf NbmNbmPermit::DENIED {1, "DENIED"};
 const Enum::YLeaf NbmNbmPermit::ALLOWED {2, "ALLOWED"};
 
+const Enum::YLeaf SysmgrAdminState::enable {0, "enable"};
+const Enum::YLeaf SysmgrAdminState::disable {1, "disable"};
+
 const Enum::YLeaf FmInstOperState::enabled {1, "enabled"};
 const Enum::YLeaf FmInstOperState::disabled {2, "disabled"};
 const Enum::YLeaf FmInstOperState::enabled_not_running {3, "enabled-not-running"};
@@ -26012,13 +27185,16 @@ const Enum::YLeaf AggregateCtrlrType::unknown {0, "unknown"};
 const Enum::YLeaf AggregateCtrlrType::l2_vxlan {1, "l2-vxlan"};
 const Enum::YLeaf AggregateCtrlrType::vxlan {2, "vxlan"};
 
-const Enum::YLeaf RtdmcBfdOperSt::down {0, "down"};
-const Enum::YLeaf RtdmcBfdOperSt::rem_pend {1, "rem-pend"};
-const Enum::YLeaf RtdmcBfdOperSt::up {2, "up"};
+const Enum::YLeaf AaaLdapPwdEnc::Y_0 {0, "0"};
+const Enum::YLeaf AaaLdapPwdEnc::Y_7 {7, "7"};
 
 const Enum::YLeaf NetflowCollVersion::v5 {1, "v5"};
 const Enum::YLeaf NetflowCollVersion::v9 {2, "v9"};
 const Enum::YLeaf NetflowCollVersion::cisco_v1 {3, "cisco-v1"};
+
+const Enum::YLeaf SysmgrOperState::unknown {0, "unknown"};
+const Enum::YLeaf SysmgrOperState::enabled {1, "enabled"};
+const Enum::YLeaf SysmgrOperState::disabled {2, "disabled"};
 
 const Enum::YLeaf SrteEncapsulationType::mpls {0, "mpls"};
 
@@ -26037,6 +27213,9 @@ const Enum::YLeaf AaaClear::yes {1, "yes"};
 const Enum::YLeaf EqptPsuFanDir::front2back {0, "front2back"};
 const Enum::YLeaf EqptPsuFanDir::back2front {1, "back2front"};
 const Enum::YLeaf EqptPsuFanDir::notused {2, "notused"};
+
+const Enum::YLeaf PlatformMroutingPerfMode::disable {0, "disable"};
+const Enum::YLeaf PlatformMroutingPerfMode::enable {1, "enable"};
 
 const Enum::YLeaf SyslogFacility::kern {0, "kern"};
 const Enum::YLeaf SyslogFacility::user {1, "user"};
@@ -26132,13 +27311,12 @@ const Enum::YLeaf ArpEventLogSize::small {1, "small"};
 const Enum::YLeaf ArpEventLogSize::medium {2, "medium"};
 const Enum::YLeaf ArpEventLogSize::large {3, "large"};
 
-const Enum::YLeaf VpcRole::election_not_done {0, "election-not-done"};
-const Enum::YLeaf VpcRole::master {1, "master"};
-const Enum::YLeaf VpcRole::slave {2, "slave"};
-
 const Enum::YLeaf McpOperSt::init {0, "init"};
 const Enum::YLeaf McpOperSt::up {1, "up"};
 const Enum::YLeaf McpOperSt::down {3, "down"};
+
+const Enum::YLeaf OspfFlagStatus::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfFlagStatus::clear {1, "clear"};
 
 const Enum::YLeaf RtdmcAdjOperSt::up {0, "up"};
 const Enum::YLeaf RtdmcAdjOperSt::inactive {1, "inactive"};
@@ -26149,18 +27327,6 @@ const Enum::YLeaf BgpPeerGrSt::up {3, "up"};
 
 const Enum::YLeaf BgpAdvertL2vpnEvpn::enabled {1, "enabled"};
 const Enum::YLeaf BgpAdvertL2vpnEvpn::disabled {0, "disabled"};
-
-const Enum::YLeaf MribEhType::cli {0, "cli"};
-const Enum::YLeaf MribEhType::mdt {1, "mdt"};
-const Enum::YLeaf MribEhType::mfdmDebugs {2, "mfdmDebugs"};
-const Enum::YLeaf MribEhType::mfdmEvents {3, "mfdmEvents"};
-const Enum::YLeaf MribEhType::mfdmStats {4, "mfdmStats"};
-const Enum::YLeaf MribEhType::notyClients {5, "notyClients"};
-const Enum::YLeaf MribEhType::rib {6, "rib"};
-const Enum::YLeaf MribEhType::ribSum {7, "ribSum"};
-const Enum::YLeaf MribEhType::urib {8, "urib"};
-const Enum::YLeaf MribEhType::vrf {9, "vrf"};
-const Enum::YLeaf MribEhType::nbm {10, "nbm"};
 
 const Enum::YLeaf AaaProviderState::unknown {0, "unknown"};
 const Enum::YLeaf AaaProviderState::operable {1, "operable"};
@@ -26176,9 +27342,19 @@ const Enum::YLeaf AclActionType::redirect {5, "redirect"};
 const Enum::YLeaf MonitorErSpanVer::ver2 {2, "ver2"};
 const Enum::YLeaf MonitorErSpanVer::ver3 {3, "ver3"};
 
+const Enum::YLeaf NatBatchTimeout::Y_0 {0, "0"};
+const Enum::YLeaf NatBatchTimeout::Y_250 {250, "250"};
+const Enum::YLeaf NatBatchTimeout::Y_500 {500, "500"};
+const Enum::YLeaf NatBatchTimeout::Y_750 {750, "750"};
+const Enum::YLeaf NatBatchTimeout::Y_1000 {1000, "1000"};
+
 const Enum::YLeaf StpVpcState::none {0, "none"};
 const Enum::YLeaf StpVpcState::vPCPeerlink {1, "vPCPeerlink"};
 const Enum::YLeaf StpVpcState::vPC {2, "vPC"};
+
+const Enum::YLeaf SysmgrCoreUriType::tftp {2, "tftp"};
+const Enum::YLeaf SysmgrCoreUriType::bootflash {8, "bootflash"};
+const Enum::YLeaf SysmgrCoreUriType::usb1 {32768, "usb1"};
 
 const Enum::YLeaf DhcpClIfOperSt::unspecified {0, "unspecified"};
 const Enum::YLeaf DhcpClIfOperSt::init {1, "init"};
@@ -26205,11 +27381,9 @@ const Enum::YLeaf OspfVrfLiteControl::unspecified {0, "unspecified"};
 const Enum::YLeaf OspfVrfLiteControl::l3vpn {1, "l3vpn"};
 const Enum::YLeaf OspfVrfLiteControl::evpn {2, "evpn"};
 
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DLB {1, "PC_LB_ALGO_DLB"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7 {2, "PC_LB_ALGO_RTAG7"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_MURMUR {3, "PC_LB_ALGO_RTAG7_MURMUR"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_LOCAL_CRC {4, "PC_LB_ALGO_RTAG7_LOCAL_CRC"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DYNAMIC_PIN {5, "PC_LB_ALGO_DYNAMIC_PIN"};
+const Enum::YLeaf IsisDistrLvl::l0 {0, "l0"};
+const Enum::YLeaf IsisDistrLvl::l1 {1, "l1"};
+const Enum::YLeaf IsisDistrLvl::l2 {2, "l2"};
 
 const Enum::YLeaf NdDbT::adj {1, "adj"};
 
@@ -26233,9 +27407,11 @@ const Enum::YLeaf CoppMatchT::redirect {2, "redirect"};
 const Enum::YLeaf CoppMatchT::exception {3, "exception"};
 const Enum::YLeaf CoppMatchT::protocol {4, "protocol"};
 
-const Enum::YLeaf TunnelifTunnelOption::unknown {0, "unknown"};
-const Enum::YLeaf TunnelifTunnelOption::del_on_fail {1, "del_on_fail"};
-const Enum::YLeaf TunnelifTunnelOption::usr_cfg_mtu {2, "usr_cfg_mtu"};
+const Enum::YLeaf MmodeMaintModeActionType::normal {0, "normal"};
+const Enum::YLeaf MmodeMaintModeActionType::maintenance {1, "maintenance"};
+const Enum::YLeaf MmodeMaintModeActionType::maintenance_shutdown {2, "maintenance-shutdown"};
+const Enum::YLeaf MmodeMaintModeActionType::maintenance_dont_generate_profile {3, "maintenance-dont-generate-profile"};
+const Enum::YLeaf MmodeMaintModeActionType::normal_dont_generate_profile {4, "normal-dont-generate-profile"};
 
 const Enum::YLeaf IsisMetricStyle::narrow {1, "narrow"};
 const Enum::YLeaf IsisMetricStyle::wide {2, "wide"};
@@ -26256,6 +27432,14 @@ const Enum::YLeaf RtmapRouteT::local {7, "local"};
 const Enum::YLeaf RtmapRouteT::ospf_nssa_external {8, "ospf-nssa-external"};
 const Enum::YLeaf RtmapRouteT::ospf_type1 {9, "ospf-type1"};
 const Enum::YLeaf RtmapRouteT::ospf_type2 {10, "ospf-type2"};
+const Enum::YLeaf RtmapRouteT::R1 {11, "R1"};
+const Enum::YLeaf RtmapRouteT::mac_only {12, "mac-only"};
+const Enum::YLeaf RtmapRouteT::mac_ip {13, "mac-ip"};
+const Enum::YLeaf RtmapRouteT::R2_ALL {14, "R2_ALL"};
+const Enum::YLeaf RtmapRouteT::R3 {15, "R3"};
+const Enum::YLeaf RtmapRouteT::R4 {16, "R4"};
+const Enum::YLeaf RtmapRouteT::R5 {17, "R5"};
+const Enum::YLeaf RtmapRouteT::R6 {18, "R6"};
 
 const Enum::YLeaf PcPortChannelType::ethernet {0, "ethernet"};
 
@@ -26283,6 +27467,7 @@ const Enum::YLeaf NbmNbmFlowOperEn::Y_20 {20, "20"};
 
 const Enum::YLeaf NvoMultisiteIngReplStateT::disable {1, "disable"};
 const Enum::YLeaf NvoMultisiteIngReplStateT::enable {2, "enable"};
+const Enum::YLeaf NvoMultisiteIngReplStateT::enableOptimized {3, "enableOptimized"};
 
 const Enum::YLeaf McastfwdEhType::internal {0, "internal"};
 const Enum::YLeaf McastfwdEhType::cli {1, "cli"};
@@ -26334,6 +27519,10 @@ const Enum::YLeaf BgpLsNlriType::link {2, "link"};
 const Enum::YLeaf BgpLsNlriType::ipv4_topo {3, "ipv4-topo"};
 const Enum::YLeaf BgpLsNlriType::ipv6_topo {4, "ipv6-topo"};
 
+const Enum::YLeaf OspfAdjSidTlvType::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfAdjSidTlvType::Adj_SID_Sub_TLV {2, "Adj-SID_Sub-TLV"};
+const Enum::YLeaf OspfAdjSidTlvType::LAN_Adj_SID_Sub_TLV {3, "LAN_Adj-SID_Sub-TLV"};
+
 const Enum::YLeaf RtmapSetCriteria::none {1, "none"};
 const Enum::YLeaf RtmapSetCriteria::append {2, "append"};
 const Enum::YLeaf RtmapSetCriteria::replace {3, "replace"};
@@ -26347,11 +27536,14 @@ const Enum::YLeaf EqptSensorOpSt::major_ {3, "major"};
 const Enum::YLeaf EqptSensorOpSt::absent {4, "absent"};
 const Enum::YLeaf EqptSensorOpSt::bad_asic {5, "bad-asic"};
 
-const Enum::YLeaf SpanOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf SpanOperSt::up {1, "up"};
-const Enum::YLeaf SpanOperSt::down {2, "down"};
-const Enum::YLeaf SpanOperSt::failed {3, "failed"};
-const Enum::YLeaf SpanOperSt::partial {4, "partial"};
+const Enum::YLeaf TunnelAdminSt::up {1, "up"};
+const Enum::YLeaf TunnelAdminSt::down {2, "down"};
+
+const Enum::YLeaf IsisSumLvl::l1 {1, "l1"};
+const Enum::YLeaf IsisSumLvl::l2 {2, "l2"};
+const Enum::YLeaf IsisSumLvl::l12 {3, "l12"};
+
+const Enum::YLeaf Ospfv3AfT::ipv6_ucast {1, "ipv6-ucast"};
 
 const Enum::YLeaf BgpLsAdminSt::inactive {0, "inactive"};
 const Enum::YLeaf BgpLsAdminSt::active {1, "active"};
@@ -26372,13 +27564,6 @@ const Enum::YLeaf BgpShutStQual::exceeded_pfxlimit {3, "exceeded-pfxlimit"};
 const Enum::YLeaf BgpShutStQual::admin_up {4, "admin-up"};
 const Enum::YLeaf BgpShutStQual::no_affinity {5, "no-affinity"};
 
-const Enum::YLeaf AnalyticsDirectionT::in {1, "in"};
-const Enum::YLeaf AnalyticsDirectionT::out {2, "out"};
-const Enum::YLeaf AnalyticsDirectionT::both {3, "both"};
-
-const Enum::YLeaf TunnelAdminSt::up {1, "up"};
-const Enum::YLeaf TunnelAdminSt::down {2, "down"};
-
 const Enum::YLeaf QospOperSt::enabled {1, "enabled"};
 const Enum::YLeaf QospOperSt::disabled {2, "disabled"};
 
@@ -26388,9 +27573,9 @@ const Enum::YLeaf StpPortState::learning {2, "learning"};
 const Enum::YLeaf StpPortState::forwarding {3, "forwarding"};
 const Enum::YLeaf StpPortState::disabled {4, "disabled"};
 
-const Enum::YLeaf CfsIpDistMode::none {0, "none"};
-const Enum::YLeaf CfsIpDistMode::ipv4 {1, "ipv4"};
-const Enum::YLeaf CfsIpDistMode::ipv6 {2, "ipv6"};
+const Enum::YLeaf UribNextHopEncapType::none {0, "none"};
+const Enum::YLeaf UribNextHopEncapType::vxlan {1, "vxlan"};
+const Enum::YLeaf UribNextHopEncapType::invalid {2, "invalid"};
 
 const Enum::YLeaf BgpLsProtoId::none {0, "none"};
 const Enum::YLeaf BgpLsProtoId::isis_l1 {1, "isis-l1"};
@@ -26406,6 +27591,10 @@ const Enum::YLeaf FsetOperState::enabled {1, "enabled"};
 const Enum::YLeaf FsetOperState::disabled {2, "disabled"};
 const Enum::YLeaf FsetOperState::installed {3, "installed"};
 const Enum::YLeaf FsetOperState::uninstalled {4, "uninstalled"};
+
+const Enum::YLeaf RtdmcBfdOperSt::down {0, "down"};
+const Enum::YLeaf RtdmcBfdOperSt::rem_pend {1, "rem-pend"};
+const Enum::YLeaf RtdmcBfdOperSt::up {2, "up"};
 
 const Enum::YLeaf DatetimeProvT::peer {0, "peer"};
 const Enum::YLeaf DatetimeProvT::server {1, "server"};
@@ -26423,6 +27612,10 @@ const Enum::YLeaf GoldResult::unavailable {9, "unavailable"};
 
 const Enum::YLeaf NwAdminStProcessStatNullBcast::enabled {1, "enabled"};
 const Enum::YLeaf NwAdminStProcessStatNullBcast::disabled {2, "disabled"};
+
+const Enum::YLeaf Ospfv3AreaT::regular {1, "regular"};
+const Enum::YLeaf Ospfv3AreaT::stub {2, "stub"};
+const Enum::YLeaf Ospfv3AreaT::nssa {3, "nssa"};
 
 const Enum::YLeaf CoppMatchOption::Unknown {0, "Unknown"};
 const Enum::YLeaf CoppMatchOption::MatchAny {1, "MatchAny"};
@@ -26486,6 +27679,156 @@ const Enum::YLeaf ImBreakoutMapT::Y_10g_4x {5, "10g-4x"};
 const Enum::YLeaf ImBreakoutMapT::Y_10g_2x {9, "10g-2x"};
 const Enum::YLeaf ImBreakoutMapT::Y_25g_4x {8, "25g-4x"};
 const Enum::YLeaf ImBreakoutMapT::Y_50g_2x {7, "50g-2x"};
+const Enum::YLeaf ImBreakoutMapT::Y_50g_4x {12, "50g-4x"};
+const Enum::YLeaf ImBreakoutMapT::Y_100g_4x {10, "100g-4x"};
+const Enum::YLeaf ImBreakoutMapT::Y_100g_2x {14, "100g-2x"};
+const Enum::YLeaf ImBreakoutMapT::Y_200g_1x {13, "200g-1x"};
+
+const Enum::YLeaf SyshistRstRsn::unknown {0, "unknown"};
+const Enum::YLeaf SyshistRstRsn::reboot {1, "reboot"};
+const Enum::YLeaf SyshistRstRsn::watchdog {2, "watchdog"};
+const Enum::YLeaf SyshistRstRsn::sysmgr {3, "sysmgr"};
+const Enum::YLeaf SyshistRstRsn::mod_err {4, "mod-err"};
+const Enum::YLeaf SyshistRstRsn::pwr_cfg {5, "pwr-cfg"};
+const Enum::YLeaf SyshistRstRsn::temp_alaram {6, "temp-alaram"};
+const Enum::YLeaf SyshistRstRsn::user_switchover {7, "user-switchover"};
+const Enum::YLeaf SyshistRstRsn::upg_err {8, "upg-err"};
+const Enum::YLeaf SyshistRstRsn::reload {9, "reload"};
+const Enum::YLeaf SyshistRstRsn::sprom_upd {10, "sprom-upd"};
+const Enum::YLeaf SyshistRstRsn::sys_cfg_dwn {11, "sys-cfg-dwn"};
+const Enum::YLeaf SyshistRstRsn::clock_ {12, "clock"};
+const Enum::YLeaf SyshistRstRsn::halt {13, "halt"};
+const Enum::YLeaf SyshistRstRsn::redundancy {14, "redundancy"};
+const Enum::YLeaf SyshistRstRsn::ha_switchover {15, "ha-switchover"};
+const Enum::YLeaf SyshistRstRsn::ha_reset {16, "ha-reset"};
+const Enum::YLeaf SyshistRstRsn::pfm_rtime {17, "pfm-rtime"};
+const Enum::YLeaf SyshistRstRsn::pfm_power_dwn {18, "pfm-power-dwn"};
+const Enum::YLeaf SyshistRstRsn::panic {19, "panic"};
+const Enum::YLeaf SyshistRstRsn::mgmt_app {20, "mgmt-app"};
+const Enum::YLeaf SyshistRstRsn::hw {21, "hw"};
+const Enum::YLeaf SyshistRstRsn::asic {22, "asic"};
+const Enum::YLeaf SyshistRstRsn::redun_channel {23, "redun-channel"};
+const Enum::YLeaf SyshistRstRsn::sys_health {24, "sys-health"};
+const Enum::YLeaf SyshistRstRsn::eobc {25, "eobc"};
+const Enum::YLeaf SyshistRstRsn::boot_err {27, "boot-err"};
+const Enum::YLeaf SyshistRstRsn::no_bootflash {28, "no-bootflash"};
+const Enum::YLeaf SyshistRstRsn::netboot_err {29, "netboot-err"};
+const Enum::YLeaf SyshistRstRsn::bootflash_corrupt {30, "bootflash-corrupt"};
+const Enum::YLeaf SyshistRstRsn::installer {31, "installer"};
+const Enum::YLeaf SyshistRstRsn::epld {33, "epld"};
+const Enum::YLeaf SyshistRstRsn::sigkill_fail {34, "sigkill-fail"};
+const Enum::YLeaf SyshistRstRsn::sys_gen_fail {35, "sys-gen-fail"};
+const Enum::YLeaf SyshistRstRsn::clock_switchover {37, "clock-switchover"};
+const Enum::YLeaf SyshistRstRsn::insufficient_resource {38, "insufficient-resource"};
+const Enum::YLeaf SyshistRstRsn::incompat_config {43, "incompat-config"};
+const Enum::YLeaf SyshistRstRsn::lcm_unknown {44, "lcm-unknown"};
+const Enum::YLeaf SyshistRstRsn::lcm_ha_restart {45, "lcm-ha-restart"};
+const Enum::YLeaf SyshistRstRsn::lcm_haswitchover_done {46, "lcm-haswitchover-done"};
+const Enum::YLeaf SyshistRstRsn::lcm_boot_srg_timeout {47, "lcm-boot-srg-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_coredump {48, "lcm-coredump"};
+const Enum::YLeaf SyshistRstRsn::lcm_disruptive_upg {49, "lcm-disruptive-upg"};
+const Enum::YLeaf SyshistRstRsn::lcm_lc_fail {50, "lcm-lc-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_hitless_mod_rem {51, "lcm-hitless-mod-rem"};
+const Enum::YLeaf SyshistRstRsn::lcm_hitless_pwr_dwn {52, "lcm-hitless-pwr-dwn"};
+const Enum::YLeaf SyshistRstRsn::lcm_hitless_proc_notice {53, "lcm-hitless-proc-notice"};
+const Enum::YLeaf SyshistRstRsn::lcm_hitless_reg_fail {54, "lcm-hitless-reg-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_hitless_timeout {55, "lcm-hitless-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_img_upg_timeout {56, "lcm-img-upg-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_img_upgsuccess {57, "lcm-img-upgsuccess"};
+const Enum::YLeaf SyshistRstRsn::lcm_lc_ins_seq_fail {58, "lcm-lc-ins-seq-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_hitless_upg_fail {59, "lcm-hitless-upg-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_lc_no_resp {60, "lcm-lc-no-resp"};
+const Enum::YLeaf SyshistRstRsn::lcm_lc_reg_more3 {61, "lcm-lc-reg-more3"};
+const Enum::YLeaf SyshistRstRsn::lcm_lc_reg_timeout {62, "lcm-lc-reg-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_runtime_diag_fail {63, "lcm-runtime-diag-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_runtime_diag_timeout {64, "lcm-runtime-diag-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_seeprom_timeout {65, "lcm-seeprom-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_proc_notice {66, "lcm-proc-notice"};
+const Enum::YLeaf SyshistRstRsn::lcm_save_state_fail {67, "lcm-save-state-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_hitfull_img_check {68, "lcm-hitfull-img-check"};
+const Enum::YLeaf SyshistRstRsn::lcm_img_check_pwr_cycle {69, "lcm-img-check-pwr-cycle"};
+const Enum::YLeaf SyshistRstRsn::lcm_img_check_pwr_dwn {70, "lcm-img-check-pwr-dwn"};
+const Enum::YLeaf SyshistRstRsn::lcm_img_check_switch_over {71, "lcm-img-check-switch-over"};
+const Enum::YLeaf SyshistRstRsn::lcm_power_down {72, "lcm-power-down"};
+const Enum::YLeaf SyshistRstRsn::lcm_sup_rem {73, "lcm-sup-rem"};
+const Enum::YLeaf SyshistRstRsn::lcm_lc_rem {74, "lcm-lc-rem"};
+const Enum::YLeaf SyshistRstRsn::lcm_unknown_mod {75, "lcm-unknown-mod"};
+const Enum::YLeaf SyshistRstRsn::lcm_srg_timeout {76, "lcm-srg-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_async_notice_fail {77, "lcm-async-notice-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_switchover_fail {78, "lcm-switchover-fail"};
+const Enum::YLeaf SyshistRstRsn::lcm_timeout {79, "lcm-timeout"};
+const Enum::YLeaf SyshistRstRsn::lcm_srg_incompat {80, "lcm-srg-incompat"};
+const Enum::YLeaf SyshistRstRsn::outofservice {86, "outofservice"};
+const Enum::YLeaf SyshistRstRsn::sup_dev_err {87, "sup-dev-err"};
+const Enum::YLeaf SyshistRstRsn::issu_restart {88, "issu-restart"};
+const Enum::YLeaf SyshistRstRsn::ins_seq_fail_pwr_dwn {89, "ins-seq-fail-pwr-dwn"};
+const Enum::YLeaf SyshistRstRsn::no_sup {92, "no-sup"};
+const Enum::YLeaf SyshistRstRsn::bad_volt {93, "bad-volt"};
+const Enum::YLeaf SyshistRstRsn::bad_bus_volt {94, "bad-bus-volt"};
+const Enum::YLeaf SyshistRstRsn::bad_intermediate_bus_volt {95, "bad-intermediate-bus-volt"};
+const Enum::YLeaf SyshistRstRsn::psp {96, "psp"};
+const Enum::YLeaf SyshistRstRsn::eem_pwr_dwn {97, "eem-pwr-dwn"};
+const Enum::YLeaf SyshistRstRsn::usd_fail {98, "usd-fail"};
+const Enum::YLeaf SyshistRstRsn::ejector {99, "ejector"};
+const Enum::YLeaf SyshistRstRsn::sys_rst {100, "sys-rst"};
+const Enum::YLeaf SyshistRstRsn::push_button {101, "push-button"};
+const Enum::YLeaf SyshistRstRsn::policy_reset {103, "policy-reset"};
+const Enum::YLeaf SyshistRstRsn::policy_fan {104, "policy-fan"};
+const Enum::YLeaf SyshistRstRsn::chassis_rst {105, "chassis-rst"};
+const Enum::YLeaf SyshistRstRsn::max_switchover {107, "max-switchover"};
+const Enum::YLeaf SyshistRstRsn::switchover_timeout {108, "switchover-timeout"};
+const Enum::YLeaf SyshistRstRsn::sysmgr_timeout {109, "sysmgr-timeout"};
+const Enum::YLeaf SyshistRstRsn::unknown_mod {110, "unknown-mod"};
+const Enum::YLeaf SyshistRstRsn::mod_fail {111, "mod-fail"};
+const Enum::YLeaf SyshistRstRsn::mod_pwr_cycle {112, "mod-pwr-cycle"};
+const Enum::YLeaf SyshistRstRsn::card_incompat {113, "card-incompat"};
+const Enum::YLeaf SyshistRstRsn::idprom_err {114, "idprom-err"};
+const Enum::YLeaf SyshistRstRsn::unspecified {115, "unspecified"};
+const Enum::YLeaf SyshistRstRsn::no_plugin {117, "no-plugin"};
+const Enum::YLeaf SyshistRstRsn::sw_card_id_unknown {118, "sw-card-id-unknown"};
+const Enum::YLeaf SyshistRstRsn::mod_fail_pwr_up {119, "mod-fail-pwr-up"};
+const Enum::YLeaf SyshistRstRsn::max_bring_up_exceed {120, "max-bring-up-exceed"};
+const Enum::YLeaf SyshistRstRsn::enm_enabled {121, "enm-enabled"};
+const Enum::YLeaf SyshistRstRsn::enm_disabled {122, "enm-disabled"};
+const Enum::YLeaf SyshistRstRsn::vpd_read_failure {123, "vpd-read-failure"};
+const Enum::YLeaf SyshistRstRsn::inc_cos_mod {124, "inc-cos-mod"};
+const Enum::YLeaf SyshistRstRsn::epld_upg_nw_crd_mode {125, "epld-upg-nw-crd-mode"};
+const Enum::YLeaf SyshistRstRsn::deep_sleep {126, "deep-sleep"};
+const Enum::YLeaf SyshistRstRsn::fcoe_featureset_absent {127, "fcoe-featureset-absent"};
+const Enum::YLeaf SyshistRstRsn::power_cycle_button {128, "power-cycle-button"};
+const Enum::YLeaf SyshistRstRsn::config_reset_button {129, "config-reset-button"};
+const Enum::YLeaf SyshistRstRsn::agni_app_init_reload {130, "agni-app-init-reload"};
+const Enum::YLeaf SyshistRstRsn::cpu_caterr_signal {131, "cpu-caterr-signal"};
+const Enum::YLeaf SyshistRstRsn::patch_install {132, "patch-install"};
+const Enum::YLeaf SyshistRstRsn::fastboot {133, "fastboot"};
+const Enum::YLeaf SyshistRstRsn::no_sc {134, "no-sc"};
+const Enum::YLeaf SyshistRstRsn::no_fm {135, "no-fm"};
+const Enum::YLeaf SyshistRstRsn::lc_breakout {136, "lc-breakout"};
+const Enum::YLeaf SyshistRstRsn::hg_link_down {137, "hg-link-down"};
+const Enum::YLeaf SyshistRstRsn::slot_id_parity_err {138, "slot-id-parity-err"};
+const Enum::YLeaf SyshistRstRsn::power_error {139, "power-error"};
+const Enum::YLeaf SyshistRstRsn::firmware_upgrade {140, "firmware-upgrade"};
+const Enum::YLeaf SyshistRstRsn::unsipp_dist_arbit_mode {141, "unsipp-dist-arbit-mode"};
+const Enum::YLeaf SyshistRstRsn::enhanced_virtualization_enabled {142, "enhanced-virtualization-enabled"};
+const Enum::YLeaf SyshistRstRsn::enhanced_virtualization_disabled {143, "enhanced-virtualization-disabled"};
+const Enum::YLeaf SyshistRstRsn::no_fm_connectivity {144, "no-fm-connectivity"};
+const Enum::YLeaf SyshistRstRsn::fabric_mode {145, "fabric-mode"};
+const Enum::YLeaf SyshistRstRsn::epc_failure {146, "epc-failure"};
+const Enum::YLeaf SyshistRstRsn::all_vdcs_not_online {147, "all-vdcs-not-online"};
+const Enum::YLeaf SyshistRstRsn::pfm_auth_fail {148, "pfm-auth-fail"};
+const Enum::YLeaf SyshistRstRsn::pfm_startauth_fail {149, "pfm-startauth-fail"};
+const Enum::YLeaf SyshistRstRsn::sys_dme_clean_config_reset {150, "sys-dme-clean-config-reset"};
+const Enum::YLeaf SyshistRstRsn::pf_eem_policy_trigger_fan_air_flow {151, "pf-eem-policy-trigger-fan-air-flow"};
+const Enum::YLeaf SyshistRstRsn::standby_reload_symc_failure {152, "standby-reload-symc-failure"};
+const Enum::YLeaf SyshistRstRsn::issu_non_disruptive_restart {153, "issu-non-disruptive-restart"};
+const Enum::YLeaf SyshistRstRsn::afm_tcam_remplate_apply {154, "afm-tcam-remplate-apply"};
+const Enum::YLeaf SyshistRstRsn::interop_change_request {155, "interop-change-request"};
+const Enum::YLeaf SyshistRstRsn::soft_reload_via_crash {156, "soft-reload-via-crash"};
+const Enum::YLeaf SyshistRstRsn::soft_reload_via_cli {157, "soft-reload-via-cli"};
+const Enum::YLeaf SyshistRstRsn::soft_reload_fail_reload {158, "soft-reload-fail-reload"};
+const Enum::YLeaf SyshistRstRsn::act2_auth_failure {159, "act2-auth-failure"};
+const Enum::YLeaf SyshistRstRsn::un_asic_mem_error {160, "un-asic-mem-error"};
+const Enum::YLeaf SyshistRstRsn::not_defined {161, "not-defined"};
 
 const Enum::YLeaf IpSwitchPktTarget::disabled {0, "disabled"};
 const Enum::YLeaf IpSwitchPktTarget::all {1, "all"};
@@ -26520,13 +27863,6 @@ const Enum::YLeaf InstallerStage::upgrade_switchover_notif {30, "upgrade-switcho
 const Enum::YLeaf InstallerStage::upgrade_standby_container_start {31, "upgrade-standby-container-start"};
 const Enum::YLeaf InstallerStage::user_abort {32, "user-abort"};
 
-const Enum::YLeaf OspfIfType::unspecified {0, "unspecified"};
-const Enum::YLeaf OspfIfType::loopback {1, "loopback"};
-const Enum::YLeaf OspfIfType::p2p {2, "p2p"};
-const Enum::YLeaf OspfIfType::p2mp {3, "p2mp"};
-const Enum::YLeaf OspfIfType::nbma {4, "nbma"};
-const Enum::YLeaf OspfIfType::bcast {5, "bcast"};
-
 const Enum::YLeaf NwEntOperSt::unknown {0, "unknown"};
 const Enum::YLeaf NwEntOperSt::enabled {1, "enabled"};
 const Enum::YLeaf NwEntOperSt::disabled {2, "disabled"};
@@ -26538,6 +27874,13 @@ const Enum::YLeaf PlatformLatencyMonitorSt::Disable {0, "Disable"};
 
 const Enum::YLeaf QospECN::disabled {0, "disabled"};
 const Enum::YLeaf QospECN::enabled {1, "enabled"};
+
+const Enum::YLeaf EthpmSystemIfAdminState::up {1, "up"};
+const Enum::YLeaf EthpmSystemIfAdminState::down {2, "down"};
+const Enum::YLeaf EthpmSystemIfAdminState::down_exclude_fabric {4, "down-exclude-fabric"};
+
+const Enum::YLeaf LldpPortIdSubType::long_ {0, "long"};
+const Enum::YLeaf LldpPortIdSubType::short_ {1, "short"};
 
 const Enum::YLeaf NgoamOamChannel::invalid {0, "invalid"};
 const Enum::YLeaf NgoamOamChannel::tissa {2, "tissa"};
@@ -26564,6 +27907,9 @@ const Enum::YLeaf TunnelifTunnelOperStQual::no_src {17, "no-src"};
 const Enum::YLeaf AggregateIntfAssignMode::dedicated {0, "dedicated"};
 const Enum::YLeaf AggregateIntfAssignMode::shared {1, "shared"};
 
+const Enum::YLeaf PlatformMplsStatsType::PACKETS {0, "PACKETS"};
+const Enum::YLeaf PlatformMplsStatsType::BYTES {1, "BYTES"};
+
 const Enum::YLeaf Icmpv6EventType::cli {0, "cli"};
 const Enum::YLeaf Icmpv6EventType::errors {1, "errors"};
 const Enum::YLeaf Icmpv6EventType::highAvailability {2, "highAvailability"};
@@ -26574,9 +27920,6 @@ const Enum::YLeaf Icmpv6EventType::mldEvent {6, "mldEvent"};
 const Enum::YLeaf Icmpv6EventType::nd {7, "nd"};
 const Enum::YLeaf Icmpv6EventType::sync_event {8, "sync-event"};
 const Enum::YLeaf Icmpv6EventType::vrf {9, "vrf"};
-
-const Enum::YLeaf GoldBootLevel::bypass {0, "bypass"};
-const Enum::YLeaf GoldBootLevel::complete {1, "complete"};
 
 const Enum::YLeaf EqptPoweroffSt::no {0, "no"};
 const Enum::YLeaf EqptPoweroffSt::yes {1, "yes"};
@@ -26589,10 +27932,8 @@ const Enum::YLeaf NvoCfgSrcT::unknown {0, "unknown"};
 const Enum::YLeaf NvoCfgSrcT::cli {1, "cli"};
 const Enum::YLeaf NvoCfgSrcT::controller {2, "controller"};
 
-const Enum::YLeaf NbmNbmBwUnitEn::UNSPECIFIED {0, "UNSPECIFIED"};
-const Enum::YLeaf NbmNbmBwUnitEn::KBPS {1, "KBPS"};
-const Enum::YLeaf NbmNbmBwUnitEn::MBPS {2, "MBPS"};
-const Enum::YLeaf NbmNbmBwUnitEn::GBPS {3, "GBPS"};
+const Enum::YLeaf PlatformPfcMmuCfgFault::none {0, "none"};
+const Enum::YLeaf PlatformPfcMmuCfgFault::Pfc_Buffer_Resource_Limitation {1, "Pfc_Buffer_Resource_Limitation"};
 
 const Enum::YLeaf VrrpAdminSt::disabled {1, "disabled"};
 const Enum::YLeaf VrrpAdminSt::enabled {2, "enabled"};
@@ -26633,6 +27974,12 @@ const Enum::YLeaf TestOperSt::not_acc {5, "not-acc"};
 const Enum::YLeaf TestOperSt::pass {6, "pass"};
 const Enum::YLeaf TestOperSt::not_tested {7, "not-tested"};
 
+const Enum::YLeaf ItdAdminSt::no_shut {1, "no_shut"};
+const Enum::YLeaf ItdAdminSt::shut {0, "shut"};
+
+const Enum::YLeaf SpanState::up {1, "up"};
+const Enum::YLeaf SpanState::down {2, "down"};
+
 const Enum::YLeaf BgpOrigin::igp {1, "igp"};
 const Enum::YLeaf BgpOrigin::egp {2, "egp"};
 const Enum::YLeaf BgpOrigin::incomplete {3, "incomplete"};
@@ -26650,11 +27997,20 @@ const Enum::YLeaf EpmDbT::ep {1, "ep"};
 const Enum::YLeaf LldpAdminSt::enabled {1, "enabled"};
 const Enum::YLeaf LldpAdminSt::disabled {2, "disabled"};
 
+const Enum::YLeaf McastfwdLvlType::none {0, "none"};
+const Enum::YLeaf McastfwdLvlType::mfwd {1, "mfwd"};
+const Enum::YLeaf McastfwdLvlType::mcastfwd {2, "mcastfwd"};
+
 const Enum::YLeaf IpqosThreshUnit::none {0, "none"};
 const Enum::YLeaf IpqosThreshUnit::packets {1, "packets"};
 const Enum::YLeaf IpqosThreshUnit::bytes {2, "bytes"};
 const Enum::YLeaf IpqosThreshUnit::kbytes {3, "kbytes"};
 const Enum::YLeaf IpqosThreshUnit::mbytes {4, "mbytes"};
+
+const Enum::YLeaf SysmgrCfgAdminSt::enable {0, "enable"};
+const Enum::YLeaf SysmgrCfgAdminSt::disable_all {1, "disable-all"};
+const Enum::YLeaf SysmgrCfgAdminSt::disable_trc_mask {2, "disable-trc-mask"};
+const Enum::YLeaf SysmgrCfgAdminSt::disable_fast_timer {3, "disable-fast-timer"};
 
 const Enum::YLeaf OspfEventLogSize::disabled {0, "disabled"};
 const Enum::YLeaf OspfEventLogSize::small {1, "small"};
@@ -26680,10 +28036,6 @@ const Enum::YLeaf NgoamXcState::RD__FWD_SLASH__LD {12, "RD/LD"};
 const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__RD__FWD_SLASH__LD {13, "DB/RD/LD"};
 const Enum::YLeaf NgoamXcState::HB__FWD_SLASH__RD__FWD_SLASH__LD {14, "HB/RD/LD"};
 const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB__FWD_SLASH__RD__FWD_SLASH__LD {15, "DB/HB/RD/LD"};
-
-const Enum::YLeaf RtdmcBfdInstSt::enabled {1, "enabled"};
-const Enum::YLeaf RtdmcBfdInstSt::disabled {2, "disabled"};
-const Enum::YLeaf RtdmcBfdInstSt::none {0, "none"};
 
 const Enum::YLeaf StpRootMode::enabled {1, "enabled"};
 const Enum::YLeaf StpRootMode::disabled {0, "disabled"};
@@ -26746,6 +28098,9 @@ const Enum::YLeaf IpmcsnoopMacType::R {2, "R"};
 const Enum::YLeaf IpmcsnoopMacType::O {3, "O"};
 const Enum::YLeaf IpmcsnoopMacType::IGMP {4, "IGMP"};
 
+const Enum::YLeaf NbmNbmBwRecoveryEn::DISABLED {0, "DISABLED"};
+const Enum::YLeaf NbmNbmBwRecoveryEn::ENABLED {1, "ENABLED"};
+
 const Enum::YLeaf SysmgrFwT::bios {1, "bios"};
 const Enum::YLeaf SysmgrFwT::kickstart {2, "kickstart"};
 const Enum::YLeaf SysmgrFwT::system {3, "system"};
@@ -26777,6 +28132,9 @@ const Enum::YLeaf EqptPwrState::on {2, "on"};
 const Enum::YLeaf EqptPwrState::deny {3, "deny"};
 const Enum::YLeaf EqptPwrState::multi_boot_fail {4, "multi-boot-fail"};
 
+const Enum::YLeaf NwAdminSt___::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminSt___::disabled {2, "disabled"};
+
 const Enum::YLeaf NvoHostLearnModeT::DP {1, "DP"};
 const Enum::YLeaf NvoHostLearnModeT::CP {2, "CP"};
 const Enum::YLeaf NvoHostLearnModeT::Ctrlr {3, "Ctrlr"};
@@ -26795,7 +28153,10 @@ const Enum::YLeaf SnmpLogEnableType::yes {1, "yes"};
 const Enum::YLeaf IsisPassiveIntfT::l1 {1, "l1"};
 const Enum::YLeaf IsisPassiveIntfT::l2 {2, "l2"};
 const Enum::YLeaf IsisPassiveIntfT::l12 {3, "l12"};
-const Enum::YLeaf IsisPassiveIntfT::inherit {4, "inherit"};
+const Enum::YLeaf IsisPassiveIntfT::noL1 {4, "noL1"};
+const Enum::YLeaf IsisPassiveIntfT::noL2 {5, "noL2"};
+const Enum::YLeaf IsisPassiveIntfT::noL12 {6, "noL12"};
+const Enum::YLeaf IsisPassiveIntfT::inheritDef {7, "inheritDef"};
 
 const Enum::YLeaf SysmgrOperDataMode::init {1, "init"};
 const Enum::YLeaf SysmgrOperDataMode::publish {2, "publish"};
@@ -26818,8 +28179,11 @@ const Enum::YLeaf OspfDbT::ls {1, "ls"};
 const Enum::YLeaf OspfDbT::rt {2, "rt"};
 const Enum::YLeaf OspfDbT::nh {3, "nh"};
 
-const Enum::YLeaf BdDefaultSVIAutoState::disable {0, "disable"};
-const Enum::YLeaf BdDefaultSVIAutoState::enable {1, "enable"};
+const Enum::YLeaf SpanSrcDirection::invalid {0, "invalid"};
+const Enum::YLeaf SpanSrcDirection::rx {1, "rx"};
+const Enum::YLeaf SpanSrcDirection::tx {2, "tx"};
+const Enum::YLeaf SpanSrcDirection::both {3, "both"};
+const Enum::YLeaf SpanSrcDirection::any {4, "any"};
 
 const Enum::YLeaf RtmapOriginT::egp {1, "egp"};
 const Enum::YLeaf RtmapOriginT::igp {2, "igp"};
@@ -26835,6 +28199,9 @@ const Enum::YLeaf EqptArchCPUArch::any {0, "any"};
 const Enum::YLeaf MsdpAuthT::none {0, "none"};
 const Enum::YLeaf MsdpAuthT::md5 {1, "md5"};
 
+const Enum::YLeaf PlatformUnicastTrace::disable {0, "disable"};
+const Enum::YLeaf PlatformUnicastTrace::enable {1, "enable"};
+
 const Enum::YLeaf RtmapAction::deny {0, "deny"};
 const Enum::YLeaf RtmapAction::permit {1, "permit"};
 
@@ -26847,6 +28214,9 @@ const Enum::YLeaf RtmapPrecName::critical {5, "critical"};
 const Enum::YLeaf RtmapPrecName::internet {6, "internet"};
 const Enum::YLeaf RtmapPrecName::network {7, "network"};
 
+const Enum::YLeaf OspfCapFlag::no {0, "no"};
+const Enum::YLeaf OspfCapFlag::yes {1, "yes"};
+
 const Enum::YLeaf AaaKeyEnc::Y_0 {0, "0"};
 const Enum::YLeaf AaaKeyEnc::Y_6 {6, "6"};
 const Enum::YLeaf AaaKeyEnc::Y_7 {7, "7"};
@@ -26856,6 +28226,13 @@ const Enum::YLeaf NvoHostReachT::bgp {1, "bgp"};
 const Enum::YLeaf NvoHostReachT::controller {2, "controller"};
 const Enum::YLeaf NvoHostReachT::openflow {3, "openflow"};
 const Enum::YLeaf NvoHostReachT::openflowIR {4, "openflowIR"};
+
+const Enum::YLeaf OspfIfType::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfIfType::loopback {1, "loopback"};
+const Enum::YLeaf OspfIfType::p2p {2, "p2p"};
+const Enum::YLeaf OspfIfType::p2mp {3, "p2mp"};
+const Enum::YLeaf OspfIfType::nbma {4, "nbma"};
+const Enum::YLeaf OspfIfType::bcast {5, "bcast"};
 
 const Enum::YLeaf SviOperStQual::unknown {0, "unknown"};
 const Enum::YLeaf SviOperStQual::admin_shut {1, "admin-shut"};
@@ -26886,6 +28263,9 @@ const Enum::YLeaf SyslogSeverity::debugging {7, "debugging"};
 
 const Enum::YLeaf L1BufferBoost::disable {0, "disable"};
 const Enum::YLeaf L1BufferBoost::enable {1, "enable"};
+
+const Enum::YLeaf PlatformConfigState::Disabled {0, "Disabled"};
+const Enum::YLeaf PlatformConfigState::Enabled {1, "Enabled"};
 
 const Enum::YLeaf BfdDiagCode::none {0, "none"};
 const Enum::YLeaf BfdDiagCode::detect_timeout {1, "detect-timeout"};
@@ -26929,13 +28309,16 @@ const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_64X100G {29, "TET_PORT_MODE_6
 const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_96X25G_32X100G {30, "TET_PORT_MODE_96X25G_32X100G"};
 const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_128X25G {31, "TET_PORT_MODE_128X25G"};
 
-const Enum::YLeaf PcPCHashDist::none {0, "none"};
 const Enum::YLeaf PcPCHashDist::adaptive {1, "adaptive"};
 const Enum::YLeaf PcPCHashDist::fixed {2, "fixed"};
 
 const Enum::YLeaf NetflowFltType::ipv4 {1, "ipv4"};
 const Enum::YLeaf NetflowFltType::ipv6 {2, "ipv6"};
 const Enum::YLeaf NetflowFltType::ce {3, "ce"};
+
+const Enum::YLeaf MribMfdmType::none {0, "none"};
+const Enum::YLeaf MribMfdmType::mfdmip {1, "mfdmip"};
+const Enum::YLeaf MribMfdmType::mfdmipv4 {2, "mfdmipv4"};
 
 const Enum::YLeaf L1SwitchingSt::disabled {0, "disabled"};
 const Enum::YLeaf L1SwitchingSt::enabled {1, "enabled"};
@@ -26990,13 +28373,15 @@ const Enum::YLeaf ProcProcessType::vdc_unaware {4, "vdc-unaware"};
 const Enum::YLeaf ProcProcessType::not_running {5, "not-running"};
 const Enum::YLeaf ProcProcessType::terminated_etc {6, "terminated-etc"};
 
+const Enum::YLeaf UdldPortEnable::port_enabled {0, "port-enabled"};
+const Enum::YLeaf UdldPortEnable::port_fiber_disabled {1, "port-fiber-disabled"};
+const Enum::YLeaf UdldPortEnable::port_default {2, "port-default"};
+const Enum::YLeaf UdldPortEnable::port_default_disable {3, "port-default-disable"};
+
 const Enum::YLeaf HsrpGroupAf::ipv4 {1, "ipv4"};
 const Enum::YLeaf HsrpGroupAf::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf NvoMultisiteStateT::enabled {1, "enabled"};
-
-const Enum::YLeaf NwAdminStIfStatMRouting::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatMRouting::disabled {2, "disabled"};
 
 const Enum::YLeaf PkiModulus::mod512 {512, "mod512"};
 const Enum::YLeaf PkiModulus::mod1024 {1024, "mod1024"};
@@ -27017,10 +28402,16 @@ const Enum::YLeaf NbmNbmFaultType::FLOWLIMITREACHED {10, "FLOWLIMITREACHED"};
 const Enum::YLeaf NbmNbmFaultType::EXTFLOWLIMITREACHED {11, "EXTFLOWLIMITREACHED"};
 const Enum::YLeaf NbmNbmFaultType::EXTPOLICYDENIED {12, "EXTPOLICYDENIED"};
 const Enum::YLeaf NbmNbmFaultType::EXTPOLICERUNAVAIL {13, "EXTPOLICERUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::BADIFSTATE {14, "BADIFSTATE"};
 
 const Enum::YLeaf StpBpdufilter::default_ {0, "default"};
 const Enum::YLeaf StpBpdufilter::enable {1, "enable"};
 const Enum::YLeaf StpBpdufilter::disable {2, "disable"};
+
+const Enum::YLeaf SnmpStartupAlarmType::unspecified {0, "unspecified"};
+const Enum::YLeaf SnmpStartupAlarmType::rising {1, "rising"};
+const Enum::YLeaf SnmpStartupAlarmType::falling {2, "falling"};
+const Enum::YLeaf SnmpStartupAlarmType::risingorfalling {3, "risingorfalling"};
 
 const Enum::YLeaf Vrrpv3VrAf::ipv4 {1, "ipv4"};
 const Enum::YLeaf Vrrpv3VrAf::ipv6 {2, "ipv6"};
@@ -27030,6 +28421,10 @@ const Enum::YLeaf RtdmcDfStates::offer {1, "offer"};
 const Enum::YLeaf RtdmcDfStates::lose {2, "lose"};
 const Enum::YLeaf RtdmcDfStates::winner {3, "winner"};
 const Enum::YLeaf RtdmcDfStates::backoff {4, "backoff"};
+
+const Enum::YLeaf SpanHeaderVer::v2 {0, "v2"};
+const Enum::YLeaf SpanHeaderVer::v3 {1, "v3"};
+const Enum::YLeaf SpanHeaderVer::v3_rfc_compliant {2, "v3-rfc-compliant"};
 
 const Enum::YLeaf L1OperStQual_::unknown {0, "unknown"};
 const Enum::YLeaf L1OperStQual_::up {1, "up"};
@@ -27288,6 +28683,20 @@ const Enum::YLeaf L1OperStQual_::vdc_mode {253, "vdc-mode"};
 const Enum::YLeaf L1OperStQual_::enm_pin_fail_link_down {254, "enm-pin-fail-link-down"};
 const Enum::YLeaf L1OperStQual_::inactive_m1_port_fpath_access_vlan {255, "inactive-m1-port-fpath-access-vlan"};
 
+const Enum::YLeaf SyslogOriginIdType::unknown {0, "unknown"};
+const Enum::YLeaf SyslogOriginIdType::hostname {1, "hostname"};
+const Enum::YLeaf SyslogOriginIdType::ip {2, "ip"};
+const Enum::YLeaf SyslogOriginIdType::string {3, "string"};
+
+const Enum::YLeaf ItdSessNodeActionType::add {0, "add"};
+const Enum::YLeaf ItdSessNodeActionType::delete_ {1, "delete"};
+
+const Enum::YLeaf EqptFcotDomAlert::none {0, "none"};
+const Enum::YLeaf EqptFcotDomAlert::high_alarm {1, "high-alarm"};
+const Enum::YLeaf EqptFcotDomAlert::high_warning {2, "high-warning"};
+const Enum::YLeaf EqptFcotDomAlert::low_alarm {3, "low-alarm"};
+const Enum::YLeaf EqptFcotDomAlert::low_warning {4, "low-warning"};
+
 const Enum::YLeaf RtmapMatchT::reg_community {1, "reg-community"};
 const Enum::YLeaf RtmapMatchT::ext_community {2, "ext-community"};
 const Enum::YLeaf RtmapMatchT::rt_dst {3, "rt-dst"};
@@ -27307,11 +28716,19 @@ const Enum::YLeaf RtmapMatchT::rt_nh_v6 {16, "rt-nh-v6"};
 const Enum::YLeaf RtmapMatchT::rt_src_v6 {17, "rt-src-v6"};
 const Enum::YLeaf RtmapMatchT::rt_ipv4_mcast {18, "rt-ipv4-mcast"};
 const Enum::YLeaf RtmapMatchT::rt_ipv6_mcast {19, "rt-ipv6-mcast"};
+const Enum::YLeaf RtmapMatchT::rt_mac_list {20, "rt-mac-list"};
 
 const Enum::YLeaf L3capSubj::unknown {0, "unknown"};
 const Enum::YLeaf L3capSubj::vrf_namespace {1, "vrf-namespace"};
 const Enum::YLeaf L3capSubj::lb_namespace {2, "lb-namespace"};
 const Enum::YLeaf L3capSubj::rdnn_namespace {3, "rdnn-namespace"};
+
+const Enum::YLeaf VpcRole::election_not_done {0, "election-not-done"};
+const Enum::YLeaf VpcRole::master {1, "master"};
+const Enum::YLeaf VpcRole::slave {2, "slave"};
+
+const Enum::YLeaf ItdCtrlType::disable {0, "disable"};
+const Enum::YLeaf ItdCtrlType::enable {1, "enable"};
 
 const Enum::YLeaf VpcCompatSt::pass {0, "pass"};
 const Enum::YLeaf VpcCompatSt::fail {1, "fail"};
@@ -27325,9 +28742,10 @@ const Enum::YLeaf L1PktT::unk_ucast {2, "unk-ucast"};
 const Enum::YLeaf L1PktT::mcast {3, "mcast"};
 const Enum::YLeaf L1PktT::all {4, "all"};
 
-const Enum::YLeaf SpanDirection::in {1, "in"};
-const Enum::YLeaf SpanDirection::out {2, "out"};
-const Enum::YLeaf SpanDirection::both {3, "both"};
+const Enum::YLeaf SisfRaGuardDeviceRole::host {1, "host"};
+const Enum::YLeaf SisfRaGuardDeviceRole::router {2, "router"};
+const Enum::YLeaf SisfRaGuardDeviceRole::switch_ {3, "switch"};
+const Enum::YLeaf SisfRaGuardDeviceRole::monitor {4, "monitor"};
 
 const Enum::YLeaf L2PvlanTypes::default_ {0, "default"};
 const Enum::YLeaf L2PvlanTypes::primary {1, "primary"};
@@ -27344,6 +28762,11 @@ const Enum::YLeaf EqptColor::blue {5, "blue"};
 const Enum::YLeaf L1Mdix::auto_ {1, "auto"};
 const Enum::YLeaf L1Mdix::mdi {2, "mdi"};
 const Enum::YLeaf L1Mdix::mdi_x {3, "mdi-x"};
+
+const Enum::YLeaf SlaActionType::none {1, "none"};
+const Enum::YLeaf SlaActionType::trapOnly {2, "trapOnly"};
+const Enum::YLeaf SlaActionType::triggerOnly {3, "triggerOnly"};
+const Enum::YLeaf SlaActionType::trapAndTrigger {4, "trapAndTrigger"};
 
 const Enum::YLeaf TrackRouteState::reachability {0, "reachability"};
 
@@ -27373,11 +28796,6 @@ const Enum::YLeaf BgpSummaryOnly::disabled {0, "disabled"};
 const Enum::YLeaf PoePoePriority::low {0, "low"};
 const Enum::YLeaf PoePoePriority::high {1, "high"};
 
-const Enum::YLeaf L1Dot1qEtherType::Y_0x8100 {1, "0x8100"};
-const Enum::YLeaf L1Dot1qEtherType::Y_0x88A8 {2, "0x88A8"};
-const Enum::YLeaf L1Dot1qEtherType::Y_0x9100 {3, "0x9100"};
-const Enum::YLeaf L1Dot1qEtherType::any {4, "any"};
-
 const Enum::YLeaf DatetimeClockProtocol::unspecified {0, "unspecified"};
 const Enum::YLeaf DatetimeClockProtocol::ptp {1, "ptp"};
 const Enum::YLeaf DatetimeClockProtocol::ntp {2, "ntp"};
@@ -27389,14 +28807,20 @@ const Enum::YLeaf SwpkgsOperState::activated {2, "activated"};
 const Enum::YLeaf SwpkgsOperState::deactivated {3, "deactivated"};
 const Enum::YLeaf SwpkgsOperState::committed {4, "committed"};
 
+const Enum::YLeaf IpqosOverrideIntfMode::disabled {0, "disabled"};
+const Enum::YLeaf IpqosOverrideIntfMode::off {1, "off"};
+
 const Enum::YLeaf L2XConnect::enable {1, "enable"};
 const Enum::YLeaf L2XConnect::disable {0, "disable"};
 
-const Enum::YLeaf L1EEELpi::aggressive {1, "aggressive"};
-const Enum::YLeaf L1EEELpi::normal {2, "normal"};
-
-const Enum::YLeaf ConftmplOperationType::create {1, "create"};
-const Enum::YLeaf ConftmplOperationType::delete_ {2, "delete"};
+const Enum::YLeaf CapLoggingType::Emergencies {0, "Emergencies"};
+const Enum::YLeaf CapLoggingType::Alerts {1, "Alerts"};
+const Enum::YLeaf CapLoggingType::Critical {2, "Critical"};
+const Enum::YLeaf CapLoggingType::Errors {3, "Errors"};
+const Enum::YLeaf CapLoggingType::Warnings {4, "Warnings"};
+const Enum::YLeaf CapLoggingType::Notification {5, "Notification"};
+const Enum::YLeaf CapLoggingType::Information {6, "Information"};
+const Enum::YLeaf CapLoggingType::Debugging {7, "Debugging"};
 
 const Enum::YLeaf TrackListObj::none {0, "none"};
 const Enum::YLeaf TrackListObj::and_ {1, "and"};
@@ -27407,6 +28831,9 @@ const Enum::YLeaf TrackListObj::weight {4, "weight"};
 const Enum::YLeaf NvoVniStateT::Up {1, "Up"};
 const Enum::YLeaf NvoVniStateT::Down {2, "Down"};
 
+const Enum::YLeaf InbandTelemetryProfile::endpoint {0, "endpoint"};
+const Enum::YLeaf InbandTelemetryProfile::transit {1, "transit"};
+
 const Enum::YLeaf UdldPktDirection::send {0, "send"};
 const Enum::YLeaf UdldPktDirection::recv {1, "recv"};
 
@@ -27415,6 +28842,9 @@ const Enum::YLeaf NwOSSum::initializing {1, "initializing"};
 const Enum::YLeaf NwOSSum::resetting {2, "resetting"};
 const Enum::YLeaf NwOSSum::degraded {3, "degraded"};
 const Enum::YLeaf NwOSSum::ok {4, "ok"};
+
+const Enum::YLeaf UribYesNo::No {0, "No"};
+const Enum::YLeaf UribYesNo::Yes {1, "Yes"};
 
 const Enum::YLeaf PlatformSwitchingMode::DEFAULT {0, "DEFAULT"};
 const Enum::YLeaf PlatformSwitchingMode::STORE_FORWARD {1, "STORE_FORWARD"};
@@ -27437,11 +28867,10 @@ const Enum::YLeaf Ipv6IPv6EventType::sdb {6, "sdb"};
 const Enum::YLeaf TraceroutePathT::external {1, "external"};
 const Enum::YLeaf TraceroutePathT::internal {2, "internal"};
 
-const Enum::YLeaf StpIfMode::default_ {0, "default"};
-const Enum::YLeaf StpIfMode::edge {1, "edge"};
-const Enum::YLeaf StpIfMode::network {2, "network"};
-const Enum::YLeaf StpIfMode::normal {3, "normal"};
-const Enum::YLeaf StpIfMode::trunk {4, "trunk"};
+const Enum::YLeaf IsisPassiveT::l1 {0, "l1"};
+const Enum::YLeaf IsisPassiveT::l2 {1, "l2"};
+const Enum::YLeaf IsisPassiveT::l12 {2, "l12"};
+const Enum::YLeaf IsisPassiveT::unknown {3, "unknown"};
 
 const Enum::YLeaf RelnResolverType::mo {1, "mo"};
 const Enum::YLeaf RelnResolverType::service {2, "service"};
@@ -27453,9 +28882,26 @@ const Enum::YLeaf L2Mode::E {2, "E"};
 const Enum::YLeaf L2Mode::TF {3, "TF"};
 const Enum::YLeaf L2Mode::TNP {4, "TNP"};
 
+const Enum::YLeaf CommProtocol::none {0, "none"};
+const Enum::YLeaf CommProtocol::tcp {1, "tcp"};
+const Enum::YLeaf CommProtocol::udp {2, "udp"};
+const Enum::YLeaf CommProtocol::all {3, "all"};
+
 const Enum::YLeaf SisfNonGlobalTracking::default_ {0, "default"};
 const Enum::YLeaf SisfNonGlobalTracking::disable {1, "disable"};
 const Enum::YLeaf SisfNonGlobalTracking::enable {2, "enable"};
+
+const Enum::YLeaf OspfActive::no {0, "no"};
+const Enum::YLeaf OspfActive::yes {1, "yes"};
+
+const Enum::YLeaf PlatformLoggingType::Emergencies {0, "Emergencies"};
+const Enum::YLeaf PlatformLoggingType::Alerts {1, "Alerts"};
+const Enum::YLeaf PlatformLoggingType::Critical {2, "Critical"};
+const Enum::YLeaf PlatformLoggingType::Errors {3, "Errors"};
+const Enum::YLeaf PlatformLoggingType::Warnings {4, "Warnings"};
+const Enum::YLeaf PlatformLoggingType::Notification {5, "Notification"};
+const Enum::YLeaf PlatformLoggingType::Information {6, "Information"};
+const Enum::YLeaf PlatformLoggingType::Debugging {7, "Debugging"};
 
 const Enum::YLeaf SviOperSt::unknown {0, "unknown"};
 const Enum::YLeaf SviOperSt::up {1, "up"};
@@ -27518,6 +28964,8 @@ const Enum::YLeaf L1Speed::Y_100G {9, "100G"};
 const Enum::YLeaf L1Speed::Y_25G {10, "25G"};
 const Enum::YLeaf L1Speed::Y_10M {11, "10M"};
 const Enum::YLeaf L1Speed::Y_50G {12, "50G"};
+const Enum::YLeaf L1Speed::Y_200G {13, "200G"};
+const Enum::YLeaf L1Speed::Y_400G {14, "400G"};
 
 const Enum::YLeaf StpModeType::edge {1, "edge"};
 const Enum::YLeaf StpModeType::network {2, "network"};
@@ -27533,6 +28981,7 @@ const Enum::YLeaf EthpmFcotType::cfp_40g {6, "cfp-40g"};
 const Enum::YLeaf EthpmFcotType::cfp_100g {7, "cfp-100g"};
 const Enum::YLeaf EthpmFcotType::cfp {8, "cfp"};
 const Enum::YLeaf EthpmFcotType::qsfp28 {9, "qsfp28"};
+const Enum::YLeaf EthpmFcotType::qsfpdd {10, "qsfpdd"};
 
 const Enum::YLeaf VrrpGroupStQual::up {0, "up"};
 const Enum::YLeaf VrrpGroupStQual::down {1, "down"};
@@ -27570,6 +29019,12 @@ const Enum::YLeaf TrackAf::none {0, "none"};
 const Enum::YLeaf TrackAf::ipv4 {1, "ipv4"};
 const Enum::YLeaf TrackAf::ipv6 {2, "ipv6"};
 
+const Enum::YLeaf BdDefaultSVIAutoState::disable {0, "disable"};
+const Enum::YLeaf BdDefaultSVIAutoState::enable {1, "enable"};
+
+const Enum::YLeaf PlatformPcMplsLbLabelIp::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf PlatformPcMplsLbLabelIp::LABEL_IP {1, "LABEL_IP"};
+
 const Enum::YLeaf EqptExtChSt::unknown {0, "unknown"};
 const Enum::YLeaf EqptExtChSt::initializing {1, "initializing"};
 const Enum::YLeaf EqptExtChSt::discovered {2, "discovered"};
@@ -27601,6 +29056,7 @@ const Enum::YLeaf EqptExtChSt::ExtChTypeMismatch {26, "ExtChTypeMismatch"};
 const Enum::YLeaf TelemetryDataSource::DME {1, "DME"};
 const Enum::YLeaf TelemetryDataSource::NX_API {3, "NX-API"};
 const Enum::YLeaf TelemetryDataSource::YANG {4, "YANG"};
+const Enum::YLeaf TelemetryDataSource::NATIVE {5, "NATIVE"};
 const Enum::YLeaf TelemetryDataSource::DEFAULT {16, "DEFAULT"};
 
 const Enum::YLeaf FcAdminSt::down {1, "down"};
@@ -27613,6 +29069,14 @@ const Enum::YLeaf SnmpAuthTypeT::sha {2, "sha"};
 const Enum::YLeaf FmAdminState::enabled {1, "enabled"};
 const Enum::YLeaf FmAdminState::disabled {2, "disabled"};
 
+const Enum::YLeaf GoldBootLevel::bypass {0, "bypass"};
+const Enum::YLeaf GoldBootLevel::complete {1, "complete"};
+
+const Enum::YLeaf NatInterfaceType::inside_source_static {0, "inside-source-static"};
+const Enum::YLeaf NatInterfaceType::outside_source_static {1, "outside-source-static"};
+const Enum::YLeaf NatInterfaceType::inside_source_dynamic {2, "inside-source-dynamic"};
+const Enum::YLeaf NatInterfaceType::outside_source_dynamic {3, "outside-source-dynamic"};
+
 const Enum::YLeaf SpanOperStQual::active {1, "active"};
 const Enum::YLeaf SpanOperStQual::no_hw_res {2, "no-hw-res"};
 const Enum::YLeaf SpanOperStQual::no_oper_src_dst {3, "no-oper-src-dst"};
@@ -27623,11 +29087,33 @@ const Enum::YLeaf SpanOperStQual::no_src_dst {7, "no-src-dst"};
 const Enum::YLeaf SpanOperStQual::shut {8, "shut"};
 const Enum::YLeaf SpanOperStQual::invalid_dst_mode {9, "invalid-dst-mode"};
 const Enum::YLeaf SpanOperStQual::invalid_src_mode {10, "invalid-src-mode"};
-const Enum::YLeaf SpanOperStQual::invalid_vrf {11, "invalid-vrf"};
-const Enum::YLeaf SpanOperStQual::invalid_ip {12, "invalid-ip"};
-const Enum::YLeaf SpanOperStQual::no_route {13, "no-route"};
-const Enum::YLeaf SpanOperStQual::no_eg_intf {14, "no-eg-intf"};
-const Enum::YLeaf SpanOperStQual::hw_err {15, "hw-err"};
+const Enum::YLeaf SpanOperStQual::no_flow_id {11, "no-flow-id"};
+const Enum::YLeaf SpanOperStQual::multi_dest_not_allowed {12, "multi-dest-not_allowed"};
+const Enum::YLeaf SpanOperStQual::invalid_vrf {13, "invalid-vrf"};
+const Enum::YLeaf SpanOperStQual::invalid_ip {14, "invalid-ip"};
+const Enum::YLeaf SpanOperStQual::acl_disabled {16, "acl-disabled"};
+const Enum::YLeaf SpanOperStQual::acl_no_res_string {17, "acl-no-res-string"};
+const Enum::YLeaf SpanOperStQual::acl_vdc_mismatch {18, "acl-vdc-mismatch"};
+const Enum::YLeaf SpanOperStQual::no_ssn_f1_f2 {19, "no-ssn-f1-f2"};
+const Enum::YLeaf SpanOperStQual::no_erspan_switch_id {20, "no-erspan-switch-id"};
+const Enum::YLeaf SpanOperStQual::no_route {21, "no-route"};
+const Enum::YLeaf SpanOperStQual::arp_not_resolved {22, "arp-not-resolved"};
+const Enum::YLeaf SpanOperStQual::no_eg_intf {23, "no-eg-intf"};
+const Enum::YLeaf SpanOperStQual::no_svi_member {24, "no-svi-member"};
+const Enum::YLeaf SpanOperStQual::no_dce_route {25, "no-dce-route"};
+const Enum::YLeaf SpanOperStQual::no_src_mac {26, "no-src-mac"};
+const Enum::YLeaf SpanOperStQual::no_dce_switch_id {27, "no-dce-switch-id"};
+const Enum::YLeaf SpanOperStQual::no_dce_src_lid {28, "no-dce-src-lid"};
+const Enum::YLeaf SpanOperStQual::no_dce_egress_intf {29, "no-dce-egress-intf"};
+const Enum::YLeaf SpanOperStQual::no_si_1qtag {30, "no-si-1qtag"};
+const Enum::YLeaf SpanOperStQual::no_fpc {31, "no-fpc"};
+const Enum::YLeaf SpanOperStQual::unsupported_route {32, "unsupported-route"};
+const Enum::YLeaf SpanOperStQual::erspan_dest_failed {33, "erspan-dest-failed"};
+const Enum::YLeaf SpanOperStQual::erspan_action_not_supported {34, "erspan-action-not-supported"};
+const Enum::YLeaf SpanOperStQual::udf_not_present {35, "udf-not-present"};
+const Enum::YLeaf SpanOperStQual::pfc_ns_port {36, "pfc-ns-port"};
+const Enum::YLeaf SpanOperStQual::udf_unsupported_on_vlan {37, "udf-unsupported-on-vlan"};
+const Enum::YLeaf SpanOperStQual::hw_err {38, "hw-err"};
 
 const Enum::YLeaf AnalyticsConfigLatencyResFactorT::enable {1, "enable"};
 const Enum::YLeaf AnalyticsConfigLatencyResFactorT::disable {0, "disable"};
@@ -27638,14 +29124,10 @@ const Enum::YLeaf L1PhyLayer::eobc {5, "eobc"};
 const Enum::YLeaf L1PhyLayer::mgmt {6, "mgmt"};
 const Enum::YLeaf L1PhyLayer::max {8, "max"};
 
-const Enum::YLeaf OspfPathT::intra {1, "intra"};
-const Enum::YLeaf OspfPathT::discard_int {2, "discard-int"};
-const Enum::YLeaf OspfPathT::inter {3, "inter"};
-const Enum::YLeaf OspfPathT::discard_ext {4, "discard-ext"};
-const Enum::YLeaf OspfPathT::ext1 {5, "ext1"};
-const Enum::YLeaf OspfPathT::nssa1 {6, "nssa1"};
-const Enum::YLeaf OspfPathT::ext2 {7, "ext2"};
-const Enum::YLeaf OspfPathT::nssa2 {8, "nssa2"};
+const Enum::YLeaf IpfibOutOperEnum::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf IpfibOutOperEnum::PUSH {1, "PUSH"};
+const Enum::YLeaf IpfibOutOperEnum::SWAP {2, "SWAP"};
+const Enum::YLeaf IpfibOutOperEnum::POP {3, "POP"};
 
 const Enum::YLeaf OspfMaxLsaOperSt::ok {0, "ok"};
 const Enum::YLeaf OspfMaxLsaOperSt::threshold_exceeded {1, "threshold-exceeded"};
@@ -27671,6 +29153,7 @@ const Enum::YLeaf BgpEhType::periodic {3, "periodic"};
 const Enum::YLeaf BgpEhType::detail {4, "detail"};
 const Enum::YLeaf BgpEhType::errors {5, "errors"};
 const Enum::YLeaf BgpEhType::objstore {6, "objstore"};
+const Enum::YLeaf BgpEhType::socket {7, "socket"};
 
 const Enum::YLeaf L2TrunkMode::off {0, "off"};
 const Enum::YLeaf L2TrunkMode::on {1, "on"};
@@ -27679,6 +29162,9 @@ const Enum::YLeaf L2TrunkMode::auto_ {2, "auto"};
 const Enum::YLeaf SrteMetric::none {0, "none"};
 const Enum::YLeaf SrteMetric::te {1, "te"};
 const Enum::YLeaf SrteMetric::igp {2, "igp"};
+
+const Enum::YLeaf FirmwareRunningOperSt::ok {0, "ok"};
+const Enum::YLeaf FirmwareRunningOperSt::ver_mismatch {1, "ver-mismatch"};
 
 const Enum::YLeaf AclVAclActionType::invalid {0, "invalid"};
 const Enum::YLeaf AclVAclActionType::forward {1, "forward"};
@@ -27737,6 +29223,10 @@ const Enum::YLeaf EqptBaudRate::Y_115200 {8, "115200"};
 
 const Enum::YLeaf AcBankT::even {1, "even"};
 const Enum::YLeaf AcBankT::Odd {2, "Odd"};
+
+const Enum::YLeaf NatProtocolType::any {0, "any"};
+const Enum::YLeaf NatProtocolType::tcp {1, "tcp"};
+const Enum::YLeaf NatProtocolType::udp {2, "udp"};
 
 const Enum::YLeaf FvPcEnfPref::enforced {1, "enforced"};
 const Enum::YLeaf FvPcEnfPref::unenforced {2, "unenforced"};
@@ -27803,12 +29293,18 @@ const Enum::YLeaf NwAdminStIfStatProxyArp::disabled {2, "disabled"};
 const Enum::YLeaf FmcastOperSt::active {1, "active"};
 const Enum::YLeaf FmcastOperSt::inactive {2, "inactive"};
 
-const Enum::YLeaf FirmwareRunningOperSt::ok {0, "ok"};
-const Enum::YLeaf FirmwareRunningOperSt::ver_mismatch {1, "ver-mismatch"};
+const Enum::YLeaf ItdFailactionType::nofailaction {0, "nofailaction"};
+const Enum::YLeaf ItdFailactionType::nodeReassign {1, "nodeReassign"};
+const Enum::YLeaf ItdFailactionType::nodeLeastBucket {2, "nodeLeastBucket"};
+const Enum::YLeaf ItdFailactionType::nodePerBucket {3, "nodePerBucket"};
+const Enum::YLeaf ItdFailactionType::bucketDistribute {4, "bucketDistribute"};
 
 const Enum::YLeaf SyslogOperState::unknown {0, "unknown"};
 const Enum::YLeaf SyslogOperState::available {1, "available"};
 const Enum::YLeaf SyslogOperState::errored {2, "errored"};
+
+const Enum::YLeaf LcmMulticastOptimization::enable {0, "enable"};
+const Enum::YLeaf LcmMulticastOptimization::disable {1, "disable"};
 
 const Enum::YLeaf L1SnmpTrapSt::enable {1, "enable"};
 const Enum::YLeaf L1SnmpTrapSt::disable {2, "disable"};
@@ -27817,8 +29313,13 @@ const Enum::YLeaf NdAdjOperSt::unspecified {0, "unspecified"};
 const Enum::YLeaf NdAdjOperSt::incomplete {1, "incomplete"};
 const Enum::YLeaf NdAdjOperSt::normal {2, "normal"};
 
+const Enum::YLeaf CommSshKeyType::rsa {1, "rsa"};
+const Enum::YLeaf CommSshKeyType::dsa {2, "dsa"};
+const Enum::YLeaf CommSshKeyType::ecdsa {3, "ecdsa"};
+
 const Enum::YLeaf NbmNbmNoYes::NO {0, "NO"};
 const Enum::YLeaf NbmNbmNoYes::YES {1, "YES"};
+const Enum::YLeaf NbmNbmNoYes::NA {2, "NA"};
 
 const Enum::YLeaf BfdAuthT::none {0, "none"};
 const Enum::YLeaf BfdAuthT::sha1 {4, "sha1"};

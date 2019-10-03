@@ -296,6 +296,19 @@ class HistRecord : public ydk::Enum
         static const ydk::Enum::YLeaf cfghist_bag_record_rebase;
         static const ydk::Enum::YLeaf cfghist_bag_record_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cfghist-bag-record-all") return 0;
+            if (name == "cfghist-bag-record-alarm") return 1;
+            if (name == "cfghist-bag-record-cfs-check") return 2;
+            if (name == "cfghist-bag-record-commit") return 3;
+            if (name == "cfghist-bag-record-oir") return 4;
+            if (name == "cfghist-bag-record-shutdown") return 5;
+            if (name == "cfghist-bag-record-startup") return 6;
+            if (name == "cfghist-bag-record-backup") return 7;
+            if (name == "cfghist-bag-record-rebase") return 8;
+            if (name == "cfghist-bag-record-last") return 9;
+            return -1;
+        }
 };
 
 

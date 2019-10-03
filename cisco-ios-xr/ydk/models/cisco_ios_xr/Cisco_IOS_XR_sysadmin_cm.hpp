@@ -740,6 +740,12 @@ class AreaType : public ydk::Enum
         static const ydk::Enum::YLeaf RACK;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SYSTEM") return 0;
+            if (name == "RACK") return 1;
+            if (name == "UNKNOWN") return 2;
+            return -1;
+        }
 };
 
 

@@ -1970,6 +1970,14 @@ class ConfdState::DaemonStatus : public ydk::Enum
         static const ydk::Enum::YLeaf started;
         static const ydk::Enum::YLeaf stopping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "starting") return 0;
+            if (name == "phase0") return 1;
+            if (name == "phase1") return 2;
+            if (name == "started") return 3;
+            if (name == "stopping") return 4;
+            return -1;
+        }
 };
 
 class ConfdState::Ha::Mode : public ydk::Enum
@@ -1980,6 +1988,13 @@ class ConfdState::Ha::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf relay_slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "slave") return 1;
+            if (name == "master") return 2;
+            if (name == "relay-slave") return 3;
+            return -1;
+        }
 };
 
 class ConfdState::LoadedDataModels::DataModel::ExportedTo : public ydk::Enum
@@ -1991,6 +2006,14 @@ class ConfdState::LoadedDataModels::DataModel::ExportedTo : public ydk::Enum
         static const ydk::Enum::YLeaf rest;
         static const ydk::Enum::YLeaf snmp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "netconf") return 0;
+            if (name == "cli") return 1;
+            if (name == "webui") return 2;
+            if (name == "rest") return 3;
+            if (name == "snmp") return 4;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::DatastoreName : public ydk::Enum
@@ -2000,6 +2023,12 @@ class ConfdState::Internal::DatastoreName : public ydk::Enum
         static const ydk::Enum::YLeaf startup;
         static const ydk::Enum::YLeaf operational;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 0;
+            if (name == "startup") return 1;
+            if (name == "operational") return 2;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Callpoint::Error : public ydk::Enum
@@ -2008,6 +2037,11 @@ class ConfdState::Internal::Callpoints::Callpoint::Error : public ydk::Enum
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Callpoint::Daemon::Error : public ydk::Enum
@@ -2015,6 +2049,10 @@ class ConfdState::Internal::Callpoints::Callpoint::Daemon::Error : public ydk::E
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::Error : public ydk::Enum
@@ -2022,6 +2060,10 @@ class ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::Error : public
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Validationpoint::Error : public ydk::Enum
@@ -2030,6 +2072,11 @@ class ConfdState::Internal::Callpoints::Validationpoint::Error : public ydk::Enu
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Validationpoint::Daemon::Error : public ydk::Enum
@@ -2037,6 +2084,10 @@ class ConfdState::Internal::Callpoints::Validationpoint::Daemon::Error : public 
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::Error : public ydk::Enum
@@ -2044,6 +2095,10 @@ class ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::Error : 
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Actionpoint::Error : public ydk::Enum
@@ -2052,6 +2107,11 @@ class ConfdState::Internal::Callpoints::Actionpoint::Error : public ydk::Enum
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Actionpoint::Daemon::Error : public ydk::Enum
@@ -2059,6 +2119,10 @@ class ConfdState::Internal::Callpoints::Actionpoint::Daemon::Error : public ydk:
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::Error : public ydk::Enum
@@ -2066,6 +2130,10 @@ class ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::Error : publ
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::SnmpInformCallback::Error : public ydk::Enum
@@ -2074,6 +2142,11 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback::Error : public ydk::
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::Error : public ydk::Enum
@@ -2081,6 +2154,10 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::Error : publ
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::Error : public ydk::Enum
@@ -2088,6 +2165,10 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::Error
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Error : public ydk::Enum
@@ -2096,6 +2177,11 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Error : pu
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::Error : public ydk::Enum
@@ -2103,6 +2189,10 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::Er
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::Error : public ydk::Enum
@@ -2110,6 +2200,10 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Dae
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Error : public ydk::Enum
@@ -2118,6 +2212,11 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Error : public 
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::Error : public ydk::Enum
@@ -2125,6 +2224,10 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::Error :
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::Error : public ydk::Enum
@@ -2132,6 +2235,10 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Typepoint::Error : public ydk::Enum
@@ -2140,6 +2247,11 @@ class ConfdState::Internal::Callpoints::Typepoint::Error : public ydk::Enum
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Typepoint::Daemon::Error : public ydk::Enum
@@ -2147,6 +2259,10 @@ class ConfdState::Internal::Callpoints::Typepoint::Daemon::Error : public ydk::E
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::Error : public ydk::Enum
@@ -2154,6 +2270,10 @@ class ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::Error : public
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport : public ydk::Enum
@@ -2163,6 +2283,12 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport 
         static const ydk::Enum::YLeaf builtin;
         static const ydk::Enum::YLeaf external;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "builtin") return 1;
+            if (name == "external") return 2;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::NotificationStreamReplay::Error : public ydk::Enum
@@ -2171,6 +2297,11 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::Error : public
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::Error : public ydk::Enum
@@ -2178,6 +2309,10 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::Error 
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::Error : public ydk::Enum
@@ -2185,6 +2320,10 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon:
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::AuthenticationCallback::Error : public ydk::Enum
@@ -2193,6 +2332,11 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback::Error : public y
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::Error : public ydk::Enum
@@ -2200,6 +2344,10 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::Error : 
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::Error : public ydk::Enum
@@ -2207,6 +2355,10 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::E
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Error : public ydk::Enum
@@ -2215,6 +2367,11 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Error : public y
         static const ydk::Enum::YLeaf NOT_REGISTERED;
         static const ydk::Enum::YLeaf UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NOT-REGISTERED") return 0;
+            if (name == "UNKNOWN") return 1;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::Error : public ydk::Enum
@@ -2222,6 +2379,10 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::Error : 
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::Error : public ydk::Enum
@@ -2229,6 +2390,10 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::E
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::TimeRemaining : public ydk::Enum
@@ -2236,6 +2401,10 @@ class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::TimeRemaini
     public:
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "infinity") return 0;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Cdb::Client::Type : public ydk::Enum
@@ -2246,6 +2415,13 @@ class ConfdState::Internal::Cdb::Client::Type : public ydk::Enum
         static const ydk::Enum::YLeaf subscriber;
         static const ydk::Enum::YLeaf waiting;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inactive") return 0;
+            if (name == "client") return 1;
+            if (name == "subscriber") return 2;
+            if (name == "waiting") return 3;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Cdb::Client::Datastore : public ydk::Enum
@@ -2253,6 +2429,10 @@ class ConfdState::Internal::Cdb::Client::Datastore : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf pre_commit_running;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pre_commit_running") return 9;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Cdb::Client::Lock : public ydk::Enum
@@ -2263,6 +2443,13 @@ class ConfdState::Internal::Cdb::Client::Lock : public ydk::Enum
         static const ydk::Enum::YLeaf pending_read;
         static const ydk::Enum::YLeaf pending_subscription;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "read") return 0;
+            if (name == "subscription") return 1;
+            if (name == "pending-read") return 2;
+            if (name == "pending-subscription") return 3;
+            return -1;
+        }
 };
 
 class ConfdState::Internal::Cdb::Client::Subscription::Error : public ydk::Enum
@@ -2270,6 +2457,10 @@ class ConfdState::Internal::Cdb::Client::Subscription::Error : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PENDING") return 0;
+            return -1;
+        }
 };
 
 

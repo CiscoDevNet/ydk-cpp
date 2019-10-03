@@ -283,6 +283,12 @@ class UnicastRpfType : public ydk::Enum
         static const ydk::Enum::YLeaf loose;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 1;
+            if (name == "loose") return 2;
+            if (name == "disabled") return 3;
+            return -1;
+        }
 };
 
 class CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::CipUrpfIpVersion : public ydk::Enum
@@ -291,6 +297,11 @@ class CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::CipUrpfIpVersion : public ydk:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfIpVersion : public ydk::Enum
@@ -299,6 +310,11 @@ class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfIpVersion :
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfCheckStrict : public ydk::Enum
@@ -307,6 +323,11 @@ class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfCheckStrict
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf loose;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 1;
+            if (name == "loose") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfWhichRouteTableID : public ydk::Enum
@@ -315,6 +336,11 @@ class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfWhichRouteT
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf vrf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 1;
+            if (name == "vrf") return 2;
+            return -1;
+        }
 };
 
 

@@ -971,6 +971,20 @@ class KexName : public ydk::Enum
         static const ydk::Enum::YLeaf ecdh_nistp521;
         static const ydk::Enum::YLeaf password_authenticated;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "kex-not-applicable") return -1;
+            if (name == "diffie-hellman-group1") return 0;
+            if (name == "diffie-hellman-group14") return 1;
+            if (name == "diffie-hellman-group15") return 2;
+            if (name == "diffie-hellman-group16") return 3;
+            if (name == "diffie-hellman-group17") return 4;
+            if (name == "diffie-hellman-group18") return 5;
+            if (name == "ecdh-nistp256") return 6;
+            if (name == "ecdh-nistp384") return 7;
+            if (name == "ecdh-nistp521") return 8;
+            if (name == "password-authenticated") return 9;
+            return -1;
+        }
 };
 
 class Hostkey : public ydk::Enum
@@ -983,6 +997,15 @@ class Hostkey : public ydk::Enum
         static const ydk::Enum::YLeaf ecdsa_sha2_nistp384;
         static const ydk::Enum::YLeaf ecdsa_sha2_nistp256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "host-key-not-applicable") return -1;
+            if (name == "ssh-dss") return 0;
+            if (name == "ssh-rsa") return 1;
+            if (name == "ecdsa-sha2-nistp521") return 2;
+            if (name == "ecdsa-sha2-nistp384") return 3;
+            if (name == "ecdsa-sha2-nistp256") return 4;
+            return -1;
+        }
 };
 
 class Version : public ydk::Enum
@@ -991,6 +1014,11 @@ class Version : public ydk::Enum
         static const ydk::Enum::YLeaf v2;
         static const ydk::Enum::YLeaf v1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "v2") return 0;
+            if (name == "v1") return 1;
+            return -1;
+        }
 };
 
 class Connection : public ydk::Enum
@@ -1005,6 +1033,17 @@ class Connection : public ydk::Enum
         static const ydk::Enum::YLeaf tl1_subsystem;
         static const ydk::Enum::YLeaf netconf_xml_subsystem;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "undefined") return 0;
+            if (name == "shell") return 1;
+            if (name == "exec") return 2;
+            if (name == "scp") return 3;
+            if (name == "sftp-subsystem") return 4;
+            if (name == "netconf-subsystem") return 5;
+            if (name == "tl1-subsystem") return 6;
+            if (name == "netconf-xml-subsystem") return 7;
+            return -1;
+        }
 };
 
 class States : public ydk::Enum
@@ -1024,6 +1063,22 @@ class States : public ydk::Enum
         static const ydk::Enum::YLeaf suspended;
         static const ydk::Enum::YLeaf session_closed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "open") return 1;
+            if (name == "version-ok") return 2;
+            if (name == "key-exchange-initialize") return 3;
+            if (name == "key-exchange-dh") return 4;
+            if (name == "new-keys") return 5;
+            if (name == "authenticate-information") return 6;
+            if (name == "authenticated") return 7;
+            if (name == "channel-open") return 8;
+            if (name == "pty-open") return 9;
+            if (name == "session-open") return 10;
+            if (name == "rekey") return 11;
+            if (name == "suspended") return 12;
+            if (name == "session-closed") return 13;
+            return -1;
+        }
 };
 
 class Mac : public ydk::Enum
@@ -1036,6 +1091,15 @@ class Mac : public ydk::Enum
         static const ydk::Enum::YLeaf hmac_sha2_512;
         static const ydk::Enum::YLeaf aes_gcm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mac-not-applicable") return -1;
+            if (name == "hmac-md5") return 0;
+            if (name == "hmac-sha1") return 1;
+            if (name == "hmac-sha2-256") return 2;
+            if (name == "hmac-sha2-512") return 3;
+            if (name == "aes-gcm") return 4;
+            return -1;
+        }
 };
 
 class Cipher : public ydk::Enum
@@ -1052,6 +1116,19 @@ class Cipher : public ydk::Enum
         static const ydk::Enum::YLeaf aes128_gcm;
         static const ydk::Enum::YLeaf aes256_gcm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cipher-not-applicable") return -1;
+            if (name == "aes128-cbc") return 0;
+            if (name == "aes192-cbc") return 1;
+            if (name == "aes256-cbc") return 2;
+            if (name == "triple-des-cbc") return 3;
+            if (name == "aes128-ctr") return 4;
+            if (name == "aes192-ctr") return 5;
+            if (name == "aes256-ctr") return 6;
+            if (name == "aes128-gcm") return 7;
+            if (name == "aes256-gcm") return 8;
+            return -1;
+        }
 };
 
 class Authen : public ydk::Enum
@@ -1061,6 +1138,12 @@ class Authen : public ydk::Enum
         static const ydk::Enum::YLeaf rsa_public_key;
         static const ydk::Enum::YLeaf keyboard_interactive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "password") return 0;
+            if (name == "rsa-public-key") return 1;
+            if (name == "keyboard-interactive") return 2;
+            return -1;
+        }
 };
 
 

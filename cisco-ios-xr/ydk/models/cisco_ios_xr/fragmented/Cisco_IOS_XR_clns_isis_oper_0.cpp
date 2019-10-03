@@ -763,6 +763,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1472,6 +1473,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces-afi-safi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4142,6 +4144,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "levels-afi-safi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7572,6 +7575,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "afi-safi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13408,6 +13412,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-descriptor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13772,6 +13777,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "mt-ipv4-reachability-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16019,40 +16025,6 @@ const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_d
 const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown {2, "isis-intf-topo-adv-prefix-disabled-af-prefixes-unknown"};
 const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_internal_error {3, "isis-intf-topo-adv-prefix-disabled-internal-error"};
 
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_config {0, "isis-lsp-trig-config"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_newadj {1, "isis-lsp-trig-newadj"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_deladj {2, "isis-lsp-trig-deladj"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_dr_change {3, "isis-lsp-trig-dr-change"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_area_set {4, "isis-lsp-trig-area-set"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_attach {5, "isis-lsp-trig-attach"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_hippity {6, "isis-lsp-trig-hippity"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_regen {7, "isis-lsp-trig-regen"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_if_up {8, "isis-lsp-trig-ip-if-up"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_if_down {9, "isis-lsp-trig-ip-if-down"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_inter_area {10, "isis-lsp-trig-ip-inter-area"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_external {11, "isis-lsp-trig-ip-external"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_external_full {12, "isis-lsp-trig-ip-external-full"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_def_orig {13, "isis-lsp-trig-ip-def-orig"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_addr_chg {14, "isis-lsp-trig-ip-addr-chg"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_te_info {15, "isis-lsp-trig-te-info"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_te_pce_info {16, "isis-lsp-trig-te-pce-info"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_te_fa_info {17, "isis-lsp-trig-te-fa-info"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_nsr_fo {18, "isis-lsp-trig-nsr-fo"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pn_cancel {19, "isis-lsp-trig-pn-cancel"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_lkgp {20, "isis-lsp-trig-lkgp"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pp {21, "isis-lsp-trig-pp"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_config_force_send {22, "isis-lsp-trig-config-force-send"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_config_force_init {23, "isis-lsp-trig-config-force-init"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_add {24, "isis-lsp-trig-adj-sid-add"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_delete {25, "isis-lsp-trig-adj-sid-delete"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_change {26, "isis-lsp-trig-adj-sid-change"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_msd {27, "isis-lsp-trig-msd"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_wait_timer {28, "isis-lsp-trig-adj-sid-wait-timer"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_direct_gen {29, "isis-lsp-trig-direct-gen"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_flex_algo_enable_disable {30, "isis-lsp-trig-flex-algo-enable-disable"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pm_delay_loss {31, "isis-lsp-trig-pm-delay-loss"};
-const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pm_bw_util {32, "isis-lsp-trig-pm-bw-util"};
-
 const Enum::YLeaf IsisAdjState::isis_adj_up_state {0, "isis-adj-up-state"};
 const Enum::YLeaf IsisAdjState::isis_adj_init_state {1, "isis-adj-init-state"};
 const Enum::YLeaf IsisAdjState::isis_adj_failed_state {2, "isis-adj-failed-state"};
@@ -16099,6 +16071,10 @@ const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_add_t
 const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_clns_io {3, "isis-intf-adj-form-disabled-clns-io"};
 const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_internal_error {4, "isis-intf-adj-form-disabled-internal-error"};
 
+const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_prefix_sid {0, "isis-edm-label-alloc-prefix-sid"};
+const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_local_sid {1, "isis-edm-label-alloc-local-sid"};
+const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_max {2, "isis-edm-label-alloc-max"};
+
 const Enum::YLeaf OpenconfigIsisLspIsisMetricFlagsEnum::internal {0, "internal"};
 const Enum::YLeaf OpenconfigIsisLspIsisMetricFlagsEnum::unsupported {1, "unsupported"};
 
@@ -16121,10 +16097,6 @@ const Enum::YLeaf IsisIfAfDisabledReason::isis_intf_af_disabled_no_topo_enabled 
 const Enum::YLeaf IsisIfAfDisabledReason::isis_intf_af_disabled_internal_error {1, "isis-intf-af-disabled-internal-error"};
 
 const Enum::YLeaf OpenconfigIsisLspStateFlagsEnum::numbered {0, "numbered"};
-
-const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_adv_suppressed {0, "isis-intf-af-prefix-unknown-adv-suppressed"};
-const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_global_addr_reg_error {1, "isis-intf-af-prefix-unknown-global-addr-reg-error"};
-const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_internal_error {2, "isis-intf-af-prefix-unknown-internal-error"};
 
 const Enum::YLeaf OpenconfigIsisTypesMetricStyleEnum::narrow_metric {0, "narrow-metric"};
 const Enum::YLeaf OpenconfigIsisTypesMetricStyleEnum::wide_metric {1, "wide-metric"};
@@ -16220,6 +16192,10 @@ const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level1 {0, "level1"};
 const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level2 {1, "level2"};
 const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level12 {2, "level12"};
 
+const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_adv_suppressed {0, "isis-intf-af-prefix-unknown-adv-suppressed"};
+const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_global_addr_reg_error {1, "isis-intf-af-prefix-unknown-global-addr-reg-error"};
+const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_internal_error {2, "isis-intf-af-prefix-unknown-internal-error"};
+
 const Enum::YLeaf IsisSpfClass::isis_spf_frr_sr_u_loop {0, "isis-spf-frr-sr-u-loop"};
 const Enum::YLeaf IsisSpfClass::isis_spf_frr_per_link {1, "isis-spf-frr-per-link"};
 const Enum::YLeaf IsisSpfClass::isis_spf_partial {2, "isis-spf-partial"};
@@ -16275,6 +16251,40 @@ const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::failed {3, "fail
 
 const Enum::YLeaf IsisReachable::isis_unreachable {0, "isis-unreachable"};
 const Enum::YLeaf IsisReachable::isis_reachable {1, "isis-reachable"};
+
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_config {0, "isis-lsp-trig-config"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_newadj {1, "isis-lsp-trig-newadj"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_deladj {2, "isis-lsp-trig-deladj"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_dr_change {3, "isis-lsp-trig-dr-change"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_area_set {4, "isis-lsp-trig-area-set"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_attach {5, "isis-lsp-trig-attach"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_hippity {6, "isis-lsp-trig-hippity"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_regen {7, "isis-lsp-trig-regen"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_if_up {8, "isis-lsp-trig-ip-if-up"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_if_down {9, "isis-lsp-trig-ip-if-down"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_inter_area {10, "isis-lsp-trig-ip-inter-area"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_external {11, "isis-lsp-trig-ip-external"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_external_full {12, "isis-lsp-trig-ip-external-full"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_def_orig {13, "isis-lsp-trig-ip-def-orig"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_ip_addr_chg {14, "isis-lsp-trig-ip-addr-chg"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_te_info {15, "isis-lsp-trig-te-info"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_te_pce_info {16, "isis-lsp-trig-te-pce-info"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_te_fa_info {17, "isis-lsp-trig-te-fa-info"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_nsr_fo {18, "isis-lsp-trig-nsr-fo"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pn_cancel {19, "isis-lsp-trig-pn-cancel"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_lkgp {20, "isis-lsp-trig-lkgp"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pp {21, "isis-lsp-trig-pp"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_config_force_send {22, "isis-lsp-trig-config-force-send"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_config_force_init {23, "isis-lsp-trig-config-force-init"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_add {24, "isis-lsp-trig-adj-sid-add"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_delete {25, "isis-lsp-trig-adj-sid-delete"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_change {26, "isis-lsp-trig-adj-sid-change"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_msd {27, "isis-lsp-trig-msd"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_adj_sid_wait_timer {28, "isis-lsp-trig-adj-sid-wait-timer"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_direct_gen {29, "isis-lsp-trig-direct-gen"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_flex_algo_enable_disable {30, "isis-lsp-trig-flex-algo-enable-disable"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pm_delay_loss {31, "isis-lsp-trig-pm-delay-loss"};
+const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pm_bw_util {32, "isis-lsp-trig-pm-bw-util"};
 
 const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_none {0, "isis-u-loop-avoidance-type-none"};
 const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_all {1, "isis-u-loop-avoidance-type-all"};

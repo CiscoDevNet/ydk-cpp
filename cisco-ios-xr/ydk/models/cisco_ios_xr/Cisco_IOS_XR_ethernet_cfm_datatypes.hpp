@@ -16,6 +16,11 @@ class BandwidthNotificationState : public ydk::Enum
         static const ydk::Enum::YLeaf ok;
         static const ydk::Enum::YLeaf degraded;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 1;
+            if (name == "degraded") return 2;
+            return -1;
+        }
 };
 
 class CfmMepDir : public ydk::Enum
@@ -24,6 +29,11 @@ class CfmMepDir : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            return -1;
+        }
 };
 
 class CfmCcmInterval : public ydk::Enum
@@ -37,6 +47,16 @@ class CfmCcmInterval : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1m;
         static const ydk::Enum::YLeaf Y_10m;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "3.3ms") return 1;
+            if (name == "10ms") return 2;
+            if (name == "100ms") return 3;
+            if (name == "1s") return 4;
+            if (name == "10s") return 5;
+            if (name == "1m") return 6;
+            if (name == "10m") return 7;
+            return -1;
+        }
 };
 
 class CfmAisInterval : public ydk::Enum
@@ -45,6 +65,11 @@ class CfmAisInterval : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1s;
         static const ydk::Enum::YLeaf Y_1m;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1s") return 4;
+            if (name == "1m") return 6;
+            return -1;
+        }
 };
 
 

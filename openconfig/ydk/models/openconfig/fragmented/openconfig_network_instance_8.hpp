@@ -413,6 +413,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
     public:
         static const ydk::Enum::YLeaf DYNAMIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DYNAMIC") return 0;
+            return -1;
+        }
 };
 
 

@@ -10089,7 +10089,7 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoute
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf addrress; //type: string
+        ydk::YLeaf address; //type: string
         ydk::YLeaf minimum; //type: uint32
         ydk::YLeaf maximum; //type: uint32
         ydk::YLeaf as; //type: uint32
@@ -10421,6 +10421,12 @@ class BgpSiteOfOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf four_byte_as;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "as") return 0;
+            if (name == "ipv4-address") return 1;
+            if (name == "four-byte-as") return 2;
+            return -1;
+        }
 };
 
 class BgpAsn : public ydk::Enum
@@ -10429,6 +10435,11 @@ class BgpAsn : public ydk::Enum
         static const ydk::Enum::YLeaf as_plain;
         static const ydk::Enum::YLeaf asdot;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "as-plain") return 1;
+            if (name == "asdot") return 2;
+            return -1;
+        }
 };
 
 class BgpAdvRt : public ydk::Enum
@@ -10437,6 +10448,11 @@ class BgpAdvRt : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_regular_rt;
         static const ydk::Enum::YLeaf bgp_stitching_rt;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-regular-rt") return 0;
+            if (name == "bgp-stitching-rt") return 1;
+            return -1;
+        }
 };
 
 class BgpAfEncapsulation : public ydk::Enum
@@ -10444,6 +10460,10 @@ class BgpAfEncapsulation : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf vx_lan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vx-lan") return 1;
+            return -1;
+        }
 };
 
 class BgpMvpnSfsSelect : public ydk::Enum
@@ -10452,6 +10472,11 @@ class BgpMvpnSfsSelect : public ydk::Enum
         static const ydk::Enum::YLeaf all_paths;
         static const ydk::Enum::YLeaf highest_ip_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all-paths") return 1;
+            if (name == "highest-ip-address") return 2;
+            return -1;
+        }
 };
 
 class BgpNbrgr : public ydk::Enum
@@ -10460,6 +10485,11 @@ class BgpNbrgr : public ydk::Enum
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 0;
+            if (name == "false") return 1;
+            return -1;
+        }
 };
 
 class BgpAigpCfgPoi : public ydk::Enum
@@ -10468,6 +10498,11 @@ class BgpAigpCfgPoi : public ydk::Enum
         static const ydk::Enum::YLeaf pre_best_path;
         static const ydk::Enum::YLeaf igp_cost;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pre-best-path") return 1;
+            if (name == "igp-cost") return 2;
+            return -1;
+        }
 };
 
 class BgpBfdEnableMode : public ydk::Enum
@@ -10477,6 +10512,12 @@ class BgpBfdEnableMode : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf strict;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "default") return 1;
+            if (name == "strict") return 2;
+            return -1;
+        }
 };
 
 class BgpRpkiTransport : public ydk::Enum
@@ -10485,6 +10526,11 @@ class BgpRpkiTransport : public ydk::Enum
         static const ydk::Enum::YLeaf tcp;
         static const ydk::Enum::YLeaf ssh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tcp") return 0;
+            if (name == "ssh") return 1;
+            return -1;
+        }
 };
 
 class BmpRouteDirection : public ydk::Enum
@@ -10492,6 +10538,10 @@ class BmpRouteDirection : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 1;
+            return -1;
+        }
 };
 
 class BgpSendMcastAttrCfg : public ydk::Enum
@@ -10500,6 +10550,11 @@ class BgpSendMcastAttrCfg : public ydk::Enum
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class BgpRnhInstallFormat : public ydk::Enum
@@ -10508,6 +10563,11 @@ class BgpRnhInstallFormat : public ydk::Enum
         static const ydk::Enum::YLeaf ext_comm;
         static const ydk::Enum::YLeaf ext_comm_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ext-comm") return 0;
+            if (name == "ext-comm-only") return 1;
+            return -1;
+        }
 };
 
 class BgpRouteDistinguisher : public ydk::Enum
@@ -10518,6 +10578,13 @@ class BgpRouteDistinguisher : public ydk::Enum
         static const ydk::Enum::YLeaf four_byte_as;
         static const ydk::Enum::YLeaf ipv4_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 1;
+            if (name == "as") return 2;
+            if (name == "four-byte-as") return 3;
+            if (name == "ipv4-address") return 4;
+            return -1;
+        }
 };
 
 class BgpOrf : public ydk::Enum
@@ -10528,6 +10595,13 @@ class BgpOrf : public ydk::Enum
         static const ydk::Enum::YLeaf send;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class BgpVrfRouteTarget : public ydk::Enum
@@ -10537,6 +10611,12 @@ class BgpVrfRouteTarget : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf four_byte_as;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "as") return 0;
+            if (name == "ipv4-address") return 1;
+            if (name == "four-byte-as") return 2;
+            return -1;
+        }
 };
 
 class BgpEbgpSendDmzEnableMode : public ydk::Enum
@@ -10546,6 +10626,12 @@ class BgpEbgpSendDmzEnableMode : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf cumulative;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "default") return 1;
+            if (name == "cumulative") return 2;
+            return -1;
+        }
 };
 
 class BgpClusterId : public ydk::Enum
@@ -10554,6 +10640,11 @@ class BgpClusterId : public ydk::Enum
         static const ydk::Enum::YLeaf number;
         static const ydk::Enum::YLeaf ipv4_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "number") return 1;
+            if (name == "ipv4-address") return 2;
+            return -1;
+        }
 };
 
 class BgpTcpMode : public ydk::Enum
@@ -10563,6 +10654,12 @@ class BgpTcpMode : public ydk::Enum
         static const ydk::Enum::YLeaf active_only;
         static const ydk::Enum::YLeaf passive_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "either") return 0;
+            if (name == "active-only") return 1;
+            if (name == "passive-only") return 2;
+            return -1;
+        }
 };
 
 class BgpAigpCfg : public ydk::Enum
@@ -10571,6 +10668,11 @@ class BgpAigpCfg : public ydk::Enum
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class BmpPolicySelect : public ydk::Enum
@@ -10578,6 +10680,10 @@ class BmpPolicySelect : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf post_policy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "post-policy") return 2;
+            return -1;
+        }
 };
 
 class BgpFlowspecValidationCfg : public ydk::Enum
@@ -10587,6 +10693,12 @@ class BgpFlowspecValidationCfg : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf redirect_nexhop_disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            if (name == "redirect-nexhop-disable") return 3;
+            return -1;
+        }
 };
 
 class BgpSignal : public ydk::Enum
@@ -10595,6 +10707,11 @@ class BgpSignal : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_disable;
         static const ydk::Enum::YLeaf ldp_disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-disable") return 1;
+            if (name == "ldp-disable") return 2;
+            return -1;
+        }
 };
 
 class BgpGlobalRouteDistinguisher : public ydk::Enum
@@ -10604,6 +10721,12 @@ class BgpGlobalRouteDistinguisher : public ydk::Enum
         static const ydk::Enum::YLeaf four_byte_as;
         static const ydk::Enum::YLeaf ipv4_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "as") return 2;
+            if (name == "four-byte-as") return 3;
+            if (name == "ipv4-address") return 4;
+            return -1;
+        }
 };
 
 class BgpReorgOpt : public ydk::Enum
@@ -10616,6 +10739,15 @@ class BgpReorgOpt : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_cfg_adv_def_vrf_imp_disable;
         static const ydk::Enum::YLeaf bgp_cfg_adv_vrf_re_imp_disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-cfg-adv") return 1;
+            if (name == "bgp-cfg-adv-reorg") return 2;
+            if (name == "bgp-cfg-adv-disable") return 3;
+            if (name == "bgp-cfg-adv-local") return 4;
+            if (name == "bgp-cfg-adv-def-vrf-imp-disable") return 5;
+            if (name == "bgp-cfg-adv-vrf-re-imp-disable") return 6;
+            return -1;
+        }
 };
 
 

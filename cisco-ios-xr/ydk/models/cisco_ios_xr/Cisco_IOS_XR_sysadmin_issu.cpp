@@ -4604,6 +4604,8 @@ const Enum::YLeaf OpStartResult::activate_error_no_prepare {2, "activate-error-n
 const Enum::YLeaf OpStartResult::prepare_error_previous_prepare {3, "prepare-error-previous-prepare"};
 const Enum::YLeaf OpStartResult::recover_error_unrecoverable {4, "recover-error-unrecoverable"};
 const Enum::YLeaf OpStartResult::start_error_internal {5, "start-error-internal"};
+const Enum::YLeaf OpStartResult::prepare_error_previous_operation_not_committed {6, "prepare-error-previous-operation-not-committed"};
+const Enum::YLeaf OpStartResult::prepare_error_already_in_progress {7, "prepare-error-already-in-progress"};
 
 const Enum::YLeaf Issu::Status::OperationType::no_operation {0, "no-operation"};
 const Enum::YLeaf Issu::Status::OperationType::activate_operation {1, "activate-operation"};

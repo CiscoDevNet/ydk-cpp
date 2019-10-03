@@ -930,6 +930,13 @@ class ModuleAdminType : public ydk::Enum
         static const ydk::Enum::YLeaf reset;
         static const ydk::Enum::YLeaf outOfServiceAdmin;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            if (name == "reset") return 3;
+            if (name == "outOfServiceAdmin") return 4;
+            return -1;
+        }
 };
 
 class FRUCoolingUnit : public ydk::Enum
@@ -938,6 +945,11 @@ class FRUCoolingUnit : public ydk::Enum
         static const ydk::Enum::YLeaf cfm;
         static const ydk::Enum::YLeaf watts;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cfm") return 1;
+            if (name == "watts") return 2;
+            return -1;
+        }
 };
 
 class PowerAdminType : public ydk::Enum
@@ -949,6 +961,14 @@ class PowerAdminType : public ydk::Enum
         static const ydk::Enum::YLeaf inlineOn;
         static const ydk::Enum::YLeaf powerCycle;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            if (name == "off") return 2;
+            if (name == "inlineAuto") return 3;
+            if (name == "inlineOn") return 4;
+            if (name == "powerCycle") return 5;
+            return -1;
+        }
 };
 
 class ModuleOperType : public ydk::Enum
@@ -982,6 +1002,36 @@ class ModuleOperType : public ydk::Enum
         static const ydk::Enum::YLeaf fwDownloadSuccess;
         static const ydk::Enum::YLeaf fwDownloadFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "ok") return 2;
+            if (name == "disabled") return 3;
+            if (name == "okButDiagFailed") return 4;
+            if (name == "boot") return 5;
+            if (name == "selfTest") return 6;
+            if (name == "failed") return 7;
+            if (name == "missing") return 8;
+            if (name == "mismatchWithParent") return 9;
+            if (name == "mismatchConfig") return 10;
+            if (name == "diagFailed") return 11;
+            if (name == "dormant") return 12;
+            if (name == "outOfServiceAdmin") return 13;
+            if (name == "outOfServiceEnvTemp") return 14;
+            if (name == "poweredDown") return 15;
+            if (name == "poweredUp") return 16;
+            if (name == "powerDenied") return 17;
+            if (name == "powerCycled") return 18;
+            if (name == "okButPowerOverWarning") return 19;
+            if (name == "okButPowerOverCritical") return 20;
+            if (name == "syncInProgress") return 21;
+            if (name == "upgrading") return 22;
+            if (name == "okButAuthFailed") return 23;
+            if (name == "mdr") return 24;
+            if (name == "fwMismatchFound") return 25;
+            if (name == "fwDownloadSuccess") return 26;
+            if (name == "fwDownloadFailure") return 27;
+            return -1;
+        }
 };
 
 class ModuleResetReasonType : public ydk::Enum
@@ -1011,6 +1061,32 @@ class ModuleResetReasonType : public ydk::Enum
         static const ydk::Enum::YLeaf nonNativeConfigClearReset;
         static const ydk::Enum::YLeaf memoryProtectionErrorReset;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "powerUp") return 2;
+            if (name == "parityError") return 3;
+            if (name == "clearConfigReset") return 4;
+            if (name == "manualReset") return 5;
+            if (name == "watchDogTimeoutReset") return 6;
+            if (name == "resourceOverflowReset") return 7;
+            if (name == "missingTaskReset") return 8;
+            if (name == "lowVoltageReset") return 9;
+            if (name == "controllerReset") return 10;
+            if (name == "systemReset") return 11;
+            if (name == "switchoverReset") return 12;
+            if (name == "upgradeReset") return 13;
+            if (name == "downgradeReset") return 14;
+            if (name == "cacheErrorReset") return 15;
+            if (name == "deviceDriverReset") return 16;
+            if (name == "softwareExceptionReset") return 17;
+            if (name == "restoreConfigReset") return 18;
+            if (name == "abortRevReset") return 19;
+            if (name == "burnBootReset") return 20;
+            if (name == "standbyCdHealthierReset") return 21;
+            if (name == "nonNativeConfigClearReset") return 22;
+            if (name == "memoryProtectionErrorReset") return 23;
+            return -1;
+        }
 };
 
 class PowerRedundancyType : public ydk::Enum
@@ -1024,6 +1100,16 @@ class PowerRedundancyType : public ydk::Enum
         static const ydk::Enum::YLeaf inPwrSrcRedundant;
         static const ydk::Enum::YLeaf psRedundantSingleInput;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notsupported") return 1;
+            if (name == "redundant") return 2;
+            if (name == "combined") return 3;
+            if (name == "nonRedundant") return 4;
+            if (name == "psRedundant") return 5;
+            if (name == "inPwrSrcRedundant") return 6;
+            if (name == "psRedundantSingleInput") return 7;
+            return -1;
+        }
 };
 
 class PowerOperType : public ydk::Enum
@@ -1042,6 +1128,21 @@ class PowerOperType : public ydk::Enum
         static const ydk::Enum::YLeaf offConnectorRating;
         static const ydk::Enum::YLeaf onButInlinePowerFail;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "offEnvOther") return 1;
+            if (name == "on") return 2;
+            if (name == "offAdmin") return 3;
+            if (name == "offDenied") return 4;
+            if (name == "offEnvPower") return 5;
+            if (name == "offEnvTemp") return 6;
+            if (name == "offEnvFan") return 7;
+            if (name == "failed") return 8;
+            if (name == "onButFanFail") return 9;
+            if (name == "offCooling") return 10;
+            if (name == "offConnectorRating") return 11;
+            if (name == "onButInlinePowerFail") return 12;
+            return -1;
+        }
 };
 
 class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason : public ydk::Enum
@@ -1053,6 +1154,14 @@ class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupply
         static const ydk::Enum::YLeaf mismatchedSupplies;
         static const ydk::Enum::YLeaf supplyError;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "unknown") return 2;
+            if (name == "singleSupply") return 3;
+            if (name == "mismatchedSupplies") return 4;
+            if (name == "supplyError") return 5;
+            return -1;
+        }
 };
 
 class CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::CefcModuleLocalSwitchingMode : public ydk::Enum
@@ -1061,6 +1170,11 @@ class CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSw
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::CefcFanTrayOperStatus : public ydk::Enum
@@ -1071,6 +1185,13 @@ class CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf warning;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "up") return 2;
+            if (name == "down") return 3;
+            if (name == "warning") return 4;
+            return -1;
+        }
 };
 
 class CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysicalStatus : public ydk::Enum
@@ -1081,6 +1202,13 @@ class CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysic
         static const ydk::Enum::YLeaf unsupported;
         static const ydk::Enum::YLeaf incompatible;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "supported") return 2;
+            if (name == "unsupported") return 3;
+            if (name == "incompatible") return 4;
+            return -1;
+        }
 };
 
 class CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputType : public ydk::Enum
@@ -1092,6 +1220,14 @@ class CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputE
         static const ydk::Enum::YLeaf dcLow;
         static const ydk::Enum::YLeaf dcHigh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "acLow") return 2;
+            if (name == "acHigh") return 3;
+            if (name == "dcLow") return 4;
+            if (name == "dcHigh") return 5;
+            return -1;
+        }
 };
 
 

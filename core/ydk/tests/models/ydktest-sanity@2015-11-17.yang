@@ -237,7 +237,9 @@ module ydktest-sanity {
 
         leaf number32 {
           description "integer value type";
-          type int32;
+          type int32 {
+            range "min..0 | 10 | 19 | 1000..max";
+          }
         }
 
         leaf number64 {
@@ -336,15 +338,7 @@ module ydktest-sanity {
 
         leaf bits-value {
           description "this is bits type value";
-          type bits {
-            bit disable-nagle {
-              position 0;
-            }
-
-            bit auto-sense-speed {
-              position 1;
-            }
-          }
+          type types:Ydk-bits-type;
           default "auto-sense-speed";
         }
         
@@ -359,7 +353,7 @@ module ydktest-sanity {
             bit val2 {
               position 1;
             }
-          }          
+          }
         }*/
 
         leaf younion {
@@ -474,7 +468,7 @@ module ydktest-sanity {
           type string;
         }
       }
-      
+
       list identity-list {
         description "one list data";
         key "id-ref";
@@ -729,7 +723,9 @@ module ydktest-sanity {
             }
 
             leaf mtu {
-                type int32;
+                type int32 {
+                    range "10..8000";
+                }
                 mandatory true;
             }
         }
@@ -791,7 +787,6 @@ module ydktest-sanity {
     uses inner-pres;
 
     container runner-2 {
-
        presence "Runner-2 is presence controlled";
        leaf some-leaf {
           type string;
@@ -802,6 +797,31 @@ module ydktest-sanity {
         config false;
         leaf test {
             type string;
+        }
+    }
+
+    list one-key-list {
+        key testy;
+        leaf testy {
+            type string;
+        }
+        container test {
+          container best {
+            leaf gest {
+                type string;
+            }
+          }
+        }
+    }
+
+    list mand-list {
+        key "name";
+        leaf name {
+            type string;
+        }
+        leaf num {
+            type int16;
+            mandatory true;
         }
     }
   }
@@ -854,6 +874,32 @@ module ydktest-sanity {
     leaf comp_NicInstType {
       description "this is enum type value";
       type comp_NicInstType;
+    }
+  }
+
+  container conditional-interface {
+    leaf ifType {
+        type enumeration {
+            enum ethernet;
+            enum atm;
+            enum ds0;
+        }
+    }
+    leaf ifMTU {
+        type uint32;
+    }
+    must "(ifType != 'ethernet' and ifType != 'atm') or " +
+         "(ifType = 'ethernet' and ifMTU = 1500)" {
+        error-message "An ethernet MTU must be 1500";
+    }
+    must "(ifType != 'atm' and ifType != 'ethernet') or " +
+         "(ifType = 'atm' and ifMTU <= 17966 and ifMTU >= 64)" {
+        error-message "An atm MTU must be  64 .. 17966";
+    }
+
+    when "/conditional-interface/ifType='ds0'";
+    leaf ds0ChannelNumber {
+      type uint16;
     }
   }
 

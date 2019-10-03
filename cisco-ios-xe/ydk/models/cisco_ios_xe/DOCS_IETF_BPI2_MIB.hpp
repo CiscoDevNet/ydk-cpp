@@ -823,6 +823,15 @@ class DocsBpkmDataEncryptAlg : public ydk::Enum
         static const ydk::Enum::YLeaf aes128CbcMode;
         static const ydk::Enum::YLeaf aes256CbcMode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "des56CbcMode") return 1;
+            if (name == "des40CbcMode") return 2;
+            if (name == "t3Des128CbcMode") return 3;
+            if (name == "aes128CbcMode") return 4;
+            if (name == "aes256CbcMode") return 5;
+            return -1;
+        }
 };
 
 class DocsBpkmDataAuthentAlg : public ydk::Enum
@@ -831,6 +840,11 @@ class DocsBpkmDataAuthentAlg : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf hmacSha196;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "hmacSha196") return 1;
+            return -1;
+        }
 };
 
 class DocsBpkmSAType : public ydk::Enum
@@ -841,6 +855,13 @@ class DocsBpkmSAType : public ydk::Enum
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "primary") return 1;
+            if (name == "static") return 2;
+            if (name == "dynamic") return 3;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::DocsIetfBpi2CodeDownloadStatusCode : public ydk::Enum
@@ -854,6 +875,16 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::DocsIetfBpi2CodeDownload
         static const ydk::Enum::YLeaf codeFileRejected;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "configFileCvcVerified") return 1;
+            if (name == "configFileCvcRejected") return 2;
+            if (name == "snmpCvcVerified") return 3;
+            if (name == "snmpCvcRejected") return 4;
+            if (name == "codeFileVerified") return 5;
+            if (name == "codeFileRejected") return 6;
+            if (name == "other") return 7;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::DocsIetfBpi2CmAuthState : public ydk::Enum
@@ -866,6 +897,15 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::DocsIet
         static const ydk::Enum::YLeaf authRejectWait;
         static const ydk::Enum::YLeaf silent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "start") return 1;
+            if (name == "authWait") return 2;
+            if (name == "authorized") return 3;
+            if (name == "reauthWait") return 4;
+            if (name == "authRejectWait") return 5;
+            if (name == "silent") return 6;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::DocsIetfBpi2CmAuthRejectErrorCode : public ydk::Enum
@@ -878,6 +918,15 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::DocsIet
         static const ydk::Enum::YLeaf permanentAuthorizationFailure;
         static const ydk::Enum::YLeaf timeOfDayNotAcquired;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "unauthorizedCm") return 3;
+            if (name == "unauthorizedSaid") return 4;
+            if (name == "permanentAuthorizationFailure") return 8;
+            if (name == "timeOfDayNotAcquired") return 11;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::DocsIetfBpi2CmAuthInvalidErrorCode : public ydk::Enum
@@ -890,6 +939,15 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::DocsIet
         static const ydk::Enum::YLeaf invalidKeySequence;
         static const ydk::Enum::YLeaf keyRequestAuthenticationFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "unauthorizedCm") return 3;
+            if (name == "unsolicited") return 5;
+            if (name == "invalidKeySequence") return 6;
+            if (name == "keyRequestAuthenticationFailure") return 7;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::DocsIetfBpi2CmTEKState : public ydk::Enum
@@ -902,6 +960,15 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::DocsIetfB
         static const ydk::Enum::YLeaf rekeyWait;
         static const ydk::Enum::YLeaf rekeyReauthWait;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "start") return 1;
+            if (name == "opWait") return 2;
+            if (name == "opReauthWait") return 3;
+            if (name == "operational") return 4;
+            if (name == "rekeyWait") return 5;
+            if (name == "rekeyReauthWait") return 6;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::DocsIetfBpi2CmTEKKeyRejectErrorCode : public ydk::Enum
@@ -911,6 +978,12 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::DocsIetfB
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf unauthorizedSaid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "unauthorizedSaid") return 4;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::DocsIetfBpi2CmTEKInvalidErrorCode : public ydk::Enum
@@ -920,6 +993,12 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::DocsIetfB
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf invalidKeySequence;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "invalidKeySequence") return 6;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry::DocsIetfBpi2CmIpMulticastSAMapState : public ydk::Enum
@@ -929,6 +1008,12 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMultic
         static const ydk::Enum::YLeaf mapWait;
         static const ydk::Enum::YLeaf mapped;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "start") return 1;
+            if (name == "mapWait") return 2;
+            if (name == "mapped") return 3;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry::DocsIetfBpi2CmIpMulticastSAMapRejectErrorCode : public ydk::Enum
@@ -939,6 +1024,13 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMultic
         static const ydk::Enum::YLeaf noAuthForRequestedDSFlow;
         static const ydk::Enum::YLeaf dsFlowNotMappedToSA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "noAuthForRequestedDSFlow") return 9;
+            if (name == "dsFlowNotMappedToSA") return 10;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry::DocsIetfBpi2CmtsDefaultSelfSignedManufCertTrust : public ydk::Enum
@@ -947,6 +1039,11 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry::Doc
         static const ydk::Enum::YLeaf trusted;
         static const ydk::Enum::YLeaf untrusted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "trusted") return 1;
+            if (name == "untrusted") return 2;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::DocsIetfBpi2CmtsAuthCmBpiVersion : public ydk::Enum
@@ -955,6 +1052,11 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::Doc
         static const ydk::Enum::YLeaf bpi;
         static const ydk::Enum::YLeaf bpiPlus;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bpi") return 0;
+            if (name == "bpiPlus") return 1;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::DocsIetfBpi2CmtsAuthCmReset : public ydk::Enum
@@ -965,6 +1067,13 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::Doc
         static const ydk::Enum::YLeaf sendAuthInvalid;
         static const ydk::Enum::YLeaf invalidateTeks;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noResetRequested") return 1;
+            if (name == "invalidateAuth") return 2;
+            if (name == "sendAuthInvalid") return 3;
+            if (name == "invalidateTeks") return 4;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::DocsIetfBpi2CmtsAuthRejectErrorCode : public ydk::Enum
@@ -977,6 +1086,15 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::Doc
         static const ydk::Enum::YLeaf permanentAuthorizationFailure;
         static const ydk::Enum::YLeaf timeOfDayNotAcquired;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "unauthorizedCm") return 3;
+            if (name == "unauthorizedSaid") return 4;
+            if (name == "permanentAuthorizationFailure") return 8;
+            if (name == "timeOfDayNotAcquired") return 11;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::DocsIetfBpi2CmtsAuthInvalidErrorCode : public ydk::Enum
@@ -989,6 +1107,15 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::Doc
         static const ydk::Enum::YLeaf invalidKeySequence;
         static const ydk::Enum::YLeaf keyRequestAuthenticationFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "unauthorizedCm") return 3;
+            if (name == "unsolicited") return 5;
+            if (name == "invalidKeySequence") return 6;
+            if (name == "keyRequestAuthenticationFailure") return 7;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::DocsIetfBpi2CmtsAuthBpkmCmCertValid : public ydk::Enum
@@ -1004,6 +1131,18 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::Doc
         static const ydk::Enum::YLeaf invalidCmRevoked;
         static const ydk::Enum::YLeaf invalidCARevoked;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "validCmChained") return 1;
+            if (name == "validCmTrusted") return 2;
+            if (name == "invalidCmUntrusted") return 3;
+            if (name == "invalidCAUntrusted") return 4;
+            if (name == "invalidCmOther") return 5;
+            if (name == "invalidCAOther") return 6;
+            if (name == "invalidCmRevoked") return 7;
+            if (name == "invalidCARevoked") return 8;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::DocsIetfBpi2CmtsKeyRejectErrorCode : public ydk::Enum
@@ -1013,6 +1152,12 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::DocsI
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf unauthorizedSaid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "unauthorizedSaid") return 4;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::DocsIetfBpi2CmtsTEKInvalidErrorCode : public ydk::Enum
@@ -1022,6 +1167,12 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::DocsI
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf invalidKeySequence;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "invalidKeySequence") return 6;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry::DocsIetfBpi2CmtsIpMulticastSAMapRejectErrorCode : public ydk::Enum
@@ -1032,6 +1183,13 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMu
         static const ydk::Enum::YLeaf noAuthForRequestedDSFlow;
         static const ydk::Enum::YLeaf dsFlowNotMappedToSA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknown") return 2;
+            if (name == "noAuthForRequestedDSFlow") return 9;
+            if (name == "dsFlowNotMappedToSA") return 10;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry::DocsIetfBpi2CmtsProvisionedCmCertTrust : public ydk::Enum
@@ -1040,6 +1198,11 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsP
         static const ydk::Enum::YLeaf trusted;
         static const ydk::Enum::YLeaf untrusted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "trusted") return 1;
+            if (name == "untrusted") return 2;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry::DocsIetfBpi2CmtsProvisionedCmCertSource : public ydk::Enum
@@ -1050,6 +1213,13 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsP
         static const ydk::Enum::YLeaf externalDatabase;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "snmp") return 1;
+            if (name == "configurationFile") return 2;
+            if (name == "externalDatabase") return 3;
+            if (name == "other") return 4;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::DocsIetfBpi2CmtsCACertTrust : public ydk::Enum
@@ -1060,6 +1230,13 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry:
         static const ydk::Enum::YLeaf chained;
         static const ydk::Enum::YLeaf root;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "trusted") return 1;
+            if (name == "untrusted") return 2;
+            if (name == "chained") return 3;
+            if (name == "root") return 4;
+            return -1;
+        }
 };
 
 class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::DocsIetfBpi2CmtsCACertSource : public ydk::Enum
@@ -1072,6 +1249,15 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry:
         static const ydk::Enum::YLeaf authentInfo;
         static const ydk::Enum::YLeaf compiledIntoCode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "snmp") return 1;
+            if (name == "configurationFile") return 2;
+            if (name == "externalDatabase") return 3;
+            if (name == "other") return 4;
+            if (name == "authentInfo") return 5;
+            if (name == "compiledIntoCode") return 6;
+            return -1;
+        }
 };
 
 

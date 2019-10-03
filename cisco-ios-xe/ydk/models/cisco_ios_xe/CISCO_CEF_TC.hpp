@@ -21,6 +21,16 @@ class CefFailureReason : public ydk::Enum
         static const ydk::Enum::YLeaf invalidMsgSize;
         static const ydk::Enum::YLeaf internalError;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "mallocFailure") return 2;
+            if (name == "hwFailure") return 3;
+            if (name == "keepaliveFailure") return 4;
+            if (name == "noMsgBuffer") return 5;
+            if (name == "invalidMsgSize") return 6;
+            if (name == "internalError") return 7;
+            return -1;
+        }
 };
 
 class CefCCStatus : public ydk::Enum
@@ -30,6 +40,12 @@ class CefCCStatus : public ydk::Enum
         static const ydk::Enum::YLeaf ccStatusRunning;
         static const ydk::Enum::YLeaf ccStatusDone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ccStatusIdle") return 1;
+            if (name == "ccStatusRunning") return 2;
+            if (name == "ccStatusDone") return 3;
+            return -1;
+        }
 };
 
 class CefForwardingElementSpecialType : public ydk::Enum
@@ -45,6 +61,18 @@ class CefForwardingElementSpecialType : public ydk::Enum
         static const ydk::Enum::YLeaf noRoute;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "illegal") return 1;
+            if (name == "punt") return 2;
+            if (name == "drop") return 3;
+            if (name == "discard") return 4;
+            if (name == "null") return 5;
+            if (name == "glean") return 6;
+            if (name == "unresolved") return 7;
+            if (name == "noRoute") return 8;
+            if (name == "none") return 9;
+            return -1;
+        }
 };
 
 class CefPrefixSearchState : public ydk::Enum
@@ -54,6 +82,12 @@ class CefPrefixSearchState : public ydk::Enum
         static const ydk::Enum::YLeaf matchFound;
         static const ydk::Enum::YLeaf noMatchFound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 1;
+            if (name == "matchFound") return 2;
+            if (name == "noMatchFound") return 3;
+            return -1;
+        }
 };
 
 class CefPathType : public ydk::Enum
@@ -69,6 +103,18 @@ class CefPathType : public ydk::Enum
         static const ydk::Enum::YLeaf specialPrefix;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "receive") return 1;
+            if (name == "connectedPrefix") return 2;
+            if (name == "attachedPrefix") return 3;
+            if (name == "attachedHost") return 4;
+            if (name == "attachedNexthop") return 5;
+            if (name == "recursiveNexthop") return 6;
+            if (name == "adjacencyPrefix") return 7;
+            if (name == "specialPrefix") return 8;
+            if (name == "unknown") return 9;
+            return -1;
+        }
 };
 
 class CefCCType : public ydk::Enum
@@ -88,6 +134,22 @@ class CefCCType : public ydk::Enum
         static const ydk::Enum::YLeaf fullScanFibHwSw;
         static const ydk::Enum::YLeaf fullScanFibSwHw;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lcDetect") return 1;
+            if (name == "scanFibLcRp") return 2;
+            if (name == "scanFibRpLc") return 3;
+            if (name == "scanRibFib") return 4;
+            if (name == "scanFibRib") return 5;
+            if (name == "scanFibHwSw") return 6;
+            if (name == "scanFibSwHw") return 7;
+            if (name == "fullScanRibFib") return 8;
+            if (name == "fullScanFibRib") return 9;
+            if (name == "fullScanFibRpLc") return 10;
+            if (name == "fullScanFibLcRp") return 11;
+            if (name == "fullScanFibHwSw") return 12;
+            if (name == "fullScanFibSwHw") return 13;
+            return -1;
+        }
 };
 
 class CefOperStatus : public ydk::Enum
@@ -96,6 +158,11 @@ class CefOperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            return -1;
+        }
 };
 
 class CefAdjLinkType : public ydk::Enum
@@ -107,6 +174,14 @@ class CefAdjLinkType : public ydk::Enum
         static const ydk::Enum::YLeaf raw;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "mpls") return 3;
+            if (name == "raw") return 4;
+            if (name == "unknown") return 5;
+            return -1;
+        }
 };
 
 class CefCCAction : public ydk::Enum
@@ -116,6 +191,12 @@ class CefCCAction : public ydk::Enum
         static const ydk::Enum::YLeaf ccActionAbort;
         static const ydk::Enum::YLeaf ccActionNone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ccActionStart") return 1;
+            if (name == "ccActionAbort") return 2;
+            if (name == "ccActionNone") return 3;
+            return -1;
+        }
 };
 
 class CefAdminStatus : public ydk::Enum
@@ -124,6 +205,11 @@ class CefAdminStatus : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CefIpVersion : public ydk::Enum
@@ -132,6 +218,11 @@ class CefIpVersion : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 

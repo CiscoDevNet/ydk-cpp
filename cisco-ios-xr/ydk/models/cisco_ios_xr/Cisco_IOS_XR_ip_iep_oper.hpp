@@ -197,6 +197,11 @@ class IepStatus : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 0;
+            if (name == "disabled") return 1;
+            return -1;
+        }
 };
 
 class IepAddress : public ydk::Enum
@@ -206,6 +211,12 @@ class IepAddress : public ydk::Enum
         static const ydk::Enum::YLeaf exclude;
         static const ydk::Enum::YLeaf exclude_srlg;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "next") return 0;
+            if (name == "exclude") return 1;
+            if (name == "exclude-srlg") return 2;
+            return -1;
+        }
 };
 
 class IepHop : public ydk::Enum
@@ -214,6 +225,11 @@ class IepHop : public ydk::Enum
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf loose;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 0;
+            if (name == "loose") return 1;
+            return -1;
+        }
 };
 
 

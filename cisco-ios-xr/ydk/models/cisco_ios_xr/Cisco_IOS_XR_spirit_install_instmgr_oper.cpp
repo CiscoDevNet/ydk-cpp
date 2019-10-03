@@ -535,6 +535,7 @@ std::string SoftwareInstall::Superseded::SupersededPackageInfo::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "superseded-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -779,6 +780,7 @@ std::string SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "committed-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1034,6 +1036,7 @@ std::string SoftwareInstall::ActiveSummary::ActivePackageInfo::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "active-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1471,6 +1474,7 @@ std::string SoftwareInstall::Prepare::Rpm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rpm";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1556,6 +1560,7 @@ std::string SoftwareInstall::Prepare::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "package";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1756,6 +1761,7 @@ std::string SoftwareInstall::Active::ActivePackageInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "active-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1867,7 +1873,8 @@ SoftwareInstall::Version::Version()
     label{YType::str, "label"},
     copyright_info{YType::str, "copyright-info"},
     hardware_info{YType::str, "hardware-info"},
-    system_uptime{YType::str, "system-uptime"}
+    system_uptime{YType::str, "system-uptime"},
+    img_info{YType::str, "img-info"}
         ,
     package(this, {})
 {
@@ -1891,7 +1898,8 @@ bool SoftwareInstall::Version::has_data() const
 	|| label.is_set
 	|| copyright_info.is_set
 	|| hardware_info.is_set
-	|| system_uptime.is_set;
+	|| system_uptime.is_set
+	|| img_info.is_set;
 }
 
 bool SoftwareInstall::Version::has_operation() const
@@ -1906,7 +1914,8 @@ bool SoftwareInstall::Version::has_operation() const
 	|| ydk::is_set(label.yfilter)
 	|| ydk::is_set(copyright_info.yfilter)
 	|| ydk::is_set(hardware_info.yfilter)
-	|| ydk::is_set(system_uptime.yfilter);
+	|| ydk::is_set(system_uptime.yfilter)
+	|| ydk::is_set(img_info.yfilter);
 }
 
 std::string SoftwareInstall::Version::get_absolute_path() const
@@ -1932,6 +1941,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Version::get_nam
     if (copyright_info.is_set || is_set(copyright_info.yfilter)) leaf_name_data.push_back(copyright_info.get_name_leafdata());
     if (hardware_info.is_set || is_set(hardware_info.yfilter)) leaf_name_data.push_back(hardware_info.get_name_leafdata());
     if (system_uptime.is_set || is_set(system_uptime.yfilter)) leaf_name_data.push_back(system_uptime.get_name_leafdata());
+    if (img_info.is_set || is_set(img_info.yfilter)) leaf_name_data.push_back(img_info.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1998,6 +2008,12 @@ void SoftwareInstall::Version::set_value(const std::string & value_path, const s
         system_uptime.value_namespace = name_space;
         system_uptime.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "img-info")
+    {
+        img_info = value;
+        img_info.value_namespace = name_space;
+        img_info.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SoftwareInstall::Version::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2022,11 +2038,15 @@ void SoftwareInstall::Version::set_filter(const std::string & value_path, YFilte
     {
         system_uptime.yfilter = yfilter;
     }
+    if(value_path == "img-info")
+    {
+        img_info.yfilter = yfilter;
+    }
 }
 
 bool SoftwareInstall::Version::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "package" || name == "location" || name == "label" || name == "copyright-info" || name == "hardware-info" || name == "system-uptime")
+    if(name == "package" || name == "location" || name == "label" || name == "copyright-info" || name == "hardware-info" || name == "system-uptime" || name == "img-info")
         return true;
     return false;
 }
@@ -2081,6 +2101,7 @@ std::string SoftwareInstall::Version::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "package";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2850,6 +2871,7 @@ std::string SoftwareInstall::Issu::Inventory::Invinfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "invinfo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3094,6 +3116,7 @@ std::string SoftwareInstall::Committed::CommittedPackageInfo::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "committed-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

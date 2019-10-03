@@ -40,6 +40,7 @@ public:
     virtual std::string execute_payload(const std::string & payload) = 0;
     virtual std::vector<std::string> get_capabilities() = 0;
     virtual std::string get_hostname_port() = 0;
+    virtual void perform_session_check(const std::string & message) = 0;
 };
 
 

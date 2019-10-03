@@ -314,6 +314,14 @@ class MemoryState : public ydk::Enum
         static const ydk::Enum::YLeaf severe;
         static const ydk::Enum::YLeaf critical;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "normal") return 1;
+            if (name == "minor") return 2;
+            if (name == "severe") return 3;
+            if (name == "critical") return 4;
+            return -1;
+        }
 };
 
 class OverloadCtrlNotif : public ydk::Enum
@@ -322,6 +330,11 @@ class OverloadCtrlNotif : public ydk::Enum
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            if (name == "enabled") return 1;
+            return -1;
+        }
 };
 
 

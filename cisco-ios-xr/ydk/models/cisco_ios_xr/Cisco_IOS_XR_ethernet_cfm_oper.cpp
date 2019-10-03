@@ -6720,6 +6720,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "linktrace-reply";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8653,6 +8654,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Orga
 {
     std::ostringstream path_buffer;
     path_buffer << "organization-specific-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8756,6 +8758,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Unkn
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8888,6 +8891,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 {
     std::ostringstream path_buffer;
     path_buffer << "exploratory-linktrace-reply";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10991,6 +10995,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 {
     std::ostringstream path_buffer;
     path_buffer << "organization-specific-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11094,6 +11099,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15270,6 +15276,7 @@ std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Organi
 {
     std::ostringstream path_buffer;
     path_buffer << "organization-specific-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15373,6 +15380,7 @@ std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Unknow
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

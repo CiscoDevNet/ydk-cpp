@@ -795,6 +795,7 @@ std::string AsicErrors::Instance::Sbe::Location::LogLst::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1074,6 +1075,7 @@ std::string AsicErrors::Instance::Mbe::Location::LogLst::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1353,6 +1355,7 @@ std::string AsicErrors::Instance::Parity::Location::LogLst::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1632,6 +1635,7 @@ std::string AsicErrors::Instance::Generic::Location::LogLst::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1911,6 +1915,7 @@ std::string AsicErrors::Instance::Crc::Location::LogLst::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2190,6 +2195,7 @@ std::string AsicErrors::Instance::Reset::Location::LogLst::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2469,6 +2475,7 @@ std::string AsicErrors::Instance::Barrier::Location::LogLst::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2748,6 +2755,7 @@ std::string AsicErrors::Instance::Unexpected::Location::LogLst::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3027,6 +3035,7 @@ std::string AsicErrors::Instance::Link::Location::LogLst::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3306,6 +3315,7 @@ std::string AsicErrors::Instance::OorThresh::Location::LogLst::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3585,6 +3595,7 @@ std::string AsicErrors::Instance::Bp::Location::LogLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3864,6 +3875,7 @@ std::string AsicErrors::Instance::Io::Location::LogLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4143,6 +4155,7 @@ std::string AsicErrors::Instance::Ucode::Location::LogLst::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4422,6 +4435,7 @@ std::string AsicErrors::Instance::Config::Location::LogLst::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4701,6 +4715,7 @@ std::string AsicErrors::Instance::Indirect::Location::LogLst::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4980,6 +4995,7 @@ std::string AsicErrors::Instance::Nonerr::Location::LogLst::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5259,6 +5275,7 @@ std::string AsicErrors::Instance::Summary::Location::LogLst::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5648,6 +5665,7 @@ std::string AsicErrors::Instance::All::History::Location::LogLst::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5834,6 +5852,7 @@ std::string AsicErrors::Instance::All::Location::LogLst::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6501,6 +6520,7 @@ std::string AsicErrors::ShowAllInstances::Sbe::Location::LogLst::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6780,6 +6800,7 @@ std::string AsicErrors::ShowAllInstances::Mbe::Location::LogLst::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7059,6 +7080,7 @@ std::string AsicErrors::ShowAllInstances::Parity::Location::LogLst::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7338,6 +7360,7 @@ std::string AsicErrors::ShowAllInstances::Generic::Location::LogLst::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7617,6 +7640,7 @@ std::string AsicErrors::ShowAllInstances::Crc::Location::LogLst::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7896,6 +7920,7 @@ std::string AsicErrors::ShowAllInstances::Reset::Location::LogLst::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8175,6 +8200,7 @@ std::string AsicErrors::ShowAllInstances::Barrier::Location::LogLst::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8454,6 +8480,7 @@ std::string AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8733,6 +8760,7 @@ std::string AsicErrors::ShowAllInstances::Link::Location::LogLst::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9012,6 +9040,7 @@ std::string AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9291,6 +9320,7 @@ std::string AsicErrors::ShowAllInstances::Bp::Location::LogLst::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9570,6 +9600,7 @@ std::string AsicErrors::ShowAllInstances::Io::Location::LogLst::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9849,6 +9880,7 @@ std::string AsicErrors::ShowAllInstances::Ucode::Location::LogLst::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10128,6 +10160,7 @@ std::string AsicErrors::ShowAllInstances::Config::Location::LogLst::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10407,6 +10440,7 @@ std::string AsicErrors::ShowAllInstances::Indirect::Location::LogLst::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10686,6 +10720,7 @@ std::string AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10965,6 +11000,7 @@ std::string AsicErrors::ShowAllInstances::Summary::Location::LogLst::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11244,6 +11280,7 @@ std::string AsicErrors::ShowAllInstances::All::Location::LogLst::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "log-lst";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

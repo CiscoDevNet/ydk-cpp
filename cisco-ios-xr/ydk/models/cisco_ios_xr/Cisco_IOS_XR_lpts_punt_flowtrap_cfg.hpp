@@ -26,6 +26,21 @@ class LptsPuntFlowtrapProtoId : public ydk::Enum
         static const ydk::Enum::YLeaf bgp;
         static const ydk::Enum::YLeaf default_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "arp") return 1;
+            if (name == "icmp") return 2;
+            if (name == "dhcp") return 3;
+            if (name == "pppoe") return 4;
+            if (name == "ppp") return 5;
+            if (name == "igmp") return 6;
+            if (name == "ipv4") return 7;
+            if (name == "l2tp") return 8;
+            if (name == "unclassified") return 9;
+            if (name == "ospf") return 10;
+            if (name == "bgp") return 11;
+            if (name == "default") return 12;
+            return -1;
+        }
 };
 
 

@@ -731,6 +731,7 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation:
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1814,6 +1815,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2510,6 +2512,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

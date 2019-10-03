@@ -216,6 +216,13 @@ class MdtSubState : public ydk::Enum
         static const ydk::Enum::YLeaf sub_state_terminated;
         static const ydk::Enum::YLeaf sub_state_invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sub-state-valid") return 0;
+            if (name == "sub-state-suspended") return 1;
+            if (name == "sub-state-terminated") return 2;
+            if (name == "sub-state-invalid") return 3;
+            return -1;
+        }
 };
 
 class MdtConState : public ydk::Enum
@@ -226,6 +233,13 @@ class MdtConState : public ydk::Enum
         static const ydk::Enum::YLeaf con_state_pending;
         static const ydk::Enum::YLeaf con_state_disconnecting;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "con-state-active") return 0;
+            if (name == "con-state-connecting") return 1;
+            if (name == "con-state-pending") return 2;
+            if (name == "con-state-disconnecting") return 3;
+            return -1;
+        }
 };
 
 class MdtSubType : public ydk::Enum
@@ -235,6 +249,12 @@ class MdtSubType : public ydk::Enum
         static const ydk::Enum::YLeaf sub_type_static;
         static const ydk::Enum::YLeaf sub_type_permanent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sub-type-dynamic") return 1;
+            if (name == "sub-type-static") return 2;
+            if (name == "sub-type-permanent") return 3;
+            return -1;
+        }
 };
 
 class MdtReceiverState : public ydk::Enum
@@ -245,6 +265,13 @@ class MdtReceiverState : public ydk::Enum
         static const ydk::Enum::YLeaf rcvr_state_connecting;
         static const ydk::Enum::YLeaf rcvr_state_connected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rcvr-state-invalid") return 1;
+            if (name == "rcvr-state-disconnected") return 2;
+            if (name == "rcvr-state-connecting") return 3;
+            if (name == "rcvr-state-connected") return 4;
+            return -1;
+        }
 };
 
 

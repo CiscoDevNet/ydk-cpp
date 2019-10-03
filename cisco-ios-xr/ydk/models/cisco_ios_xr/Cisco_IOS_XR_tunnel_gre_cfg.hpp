@@ -16,6 +16,11 @@ class TunnelModeDirection : public ydk::Enum
         static const ydk::Enum::YLeaf decap;
         static const ydk::Enum::YLeaf encap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "decap") return 1;
+            if (name == "encap") return 2;
+            return -1;
+        }
 };
 
 

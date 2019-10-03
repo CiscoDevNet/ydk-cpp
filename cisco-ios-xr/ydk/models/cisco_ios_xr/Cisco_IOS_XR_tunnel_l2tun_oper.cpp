@@ -6973,6 +6973,7 @@ std::string L2tp::CounterHistFail::PktTimeout::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pkt-timeout";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8222,6 +8223,7 @@ std::string L2tp::Tunnels::Tunnel::RetransmitTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmit-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17375,6 +17377,7 @@ std::string L2tpv2::CounterHistFail::PktTimeout::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pkt-timeout";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18624,6 +18627,7 @@ std::string L2tpv2::Tunnels::Tunnel::RetransmitTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmit-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

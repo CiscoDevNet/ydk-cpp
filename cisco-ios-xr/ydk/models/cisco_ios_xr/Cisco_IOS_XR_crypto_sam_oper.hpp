@@ -601,6 +601,12 @@ class LogError : public ydk::Enum
         static const ydk::Enum::YLeaf log_message_error;
         static const ydk::Enum::YLeaf get_issuer_name_failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "log-message-error") return 1;
+            if (name == "get-issuer-name-failed") return 2;
+            return -1;
+        }
 };
 
 class LogCode : public ydk::Enum
@@ -628,6 +634,30 @@ class LogCode : public ydk::Enum
         static const ydk::Enum::YLeaf validated_elf;
         static const ydk::Enum::YLeaf namespace_deleted_recovered_by_sam;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "sam-server-restared-router-reboot") return 1;
+            if (name == "sam-server-restared") return 2;
+            if (name == "added-certificate-in-table") return 3;
+            if (name == "copied-certificate-in-table") return 4;
+            if (name == "certificate-flag-changed") return 5;
+            if (name == "validated-certificate") return 6;
+            if (name == "certificate-expired-detected") return 7;
+            if (name == "certificate-revoked-detected") return 8;
+            if (name == "ca-certificate-expired-detected") return 9;
+            if (name == "ca-certificate-revoked-detected") return 10;
+            if (name == "deleted-certificate-from-table") return 11;
+            if (name == "crl-added-updated-in-table") return 12;
+            if (name == "checked-memory-digest") return 13;
+            if (name == "nvram-digest-mismatch-detected") return 14;
+            if (name == "insecure-backup-file-detected") return 15;
+            if (name == "error-restore-operation") return 16;
+            if (name == "backup-file-on-nvram-deleted") return 17;
+            if (name == "sam-log-file-recovered-from-system-database") return 18;
+            if (name == "validated-elf") return 19;
+            if (name == "namespace-deleted-recovered-by-sam") return 20;
+            return -1;
+        }
 };
 
 class CertificateIssuer : public ydk::Enum
@@ -636,6 +666,11 @@ class CertificateIssuer : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf code_signing_server_certificate_authority;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "code-signing-server-certificate-authority") return 1;
+            return -1;
+        }
 };
 
 class LogTables : public ydk::Enum
@@ -646,6 +681,13 @@ class LogTables : public ydk::Enum
         static const ydk::Enum::YLeaf system_database_digest;
         static const ydk::Enum::YLeaf sam_tables;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unkown") return 0;
+            if (name == "memory-digest-table") return 1;
+            if (name == "system-database-digest") return 2;
+            if (name == "sam-tables") return 3;
+            return -1;
+        }
 };
 
 

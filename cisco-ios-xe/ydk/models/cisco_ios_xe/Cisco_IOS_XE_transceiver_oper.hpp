@@ -271,6 +271,18 @@ class XcvrSonetCode : public ydk::Enum
         static const ydk::Enum::YLeaf escon_mmf_1310_led;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "oc-48-short-reach") return 0;
+            if (name == "oc-48-intermediate-reach") return 1;
+            if (name == "oc-48-long-reach") return 2;
+            if (name == "sonet-sr-compliant") return 3;
+            if (name == "sonet-lr-compliant") return 4;
+            if (name == "oc-192-short-reach") return 5;
+            if (name == "escon-smf-1310-laser") return 6;
+            if (name == "escon-mmf-1310-led") return 7;
+            if (name == "unknown") return 8;
+            return -1;
+        }
 };
 
 class XcvrOtnCode : public ydk::Enum
@@ -281,6 +293,13 @@ class XcvrOtnCode : public ydk::Enum
         static const ydk::Enum::YLeaf p1l1_2d2;
         static const ydk::Enum::YLeaf otn_undefined;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "p1l1-2d1") return 0;
+            if (name == "p1s1-2d2") return 1;
+            if (name == "p1l1-2d2") return 2;
+            if (name == "otn-undefined") return 3;
+            return -1;
+        }
 };
 
 

@@ -4854,7 +4854,7 @@ class FibRoute::Output::Route::NextHop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf outgoing_interface; //type: string
-        ydk::YLeaf ietf_routing_next_hop_address; //type: string
+        ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf ietf_ipv6_unicast_routing_next_hop_address; //type: string
         ydk::YLeaf ietf_ipv4_unicast_routing_next_hop_address; //type: string
         ydk::YLeaf special_next_hop; //type: SpecialNextHop
@@ -4924,6 +4924,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         static const ydk::Enum::YLeaf point_to_multipoint;
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 0;
+            if (name == "non-broadcast") return 1;
+            if (name == "point-to-multipoint") return 2;
+            if (name == "point-to-point") return 3;
+            return -1;
+        }
 };
 
 class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::RouteType : public ydk::Enum
@@ -4936,6 +4943,15 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::RouteType : publi
         static const ydk::Enum::YLeaf nssa_1;
         static const ydk::Enum::YLeaf nssa_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "intra-area") return 0;
+            if (name == "inter-area") return 1;
+            if (name == "external-1") return 2;
+            if (name == "external-2") return 3;
+            if (name == "nssa-1") return 4;
+            if (name == "nssa-2") return 5;
+            return -1;
+        }
 };
 
 class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHop : public ydk::Enum
@@ -4946,6 +4962,13 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialN
         static const ydk::Enum::YLeaf prohibit;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
 };
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop : public ydk::Enum
@@ -4956,6 +4979,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
         static const ydk::Enum::YLeaf prohibit;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
 };
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop : public ydk::Enum
@@ -4966,6 +4996,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
         static const ydk::Enum::YLeaf prohibit;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
 };
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkType : public ydk::Enum
@@ -4976,6 +5013,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         static const ydk::Enum::YLeaf point_to_multipoint;
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 0;
+            if (name == "non-broadcast") return 1;
+            if (name == "point-to-multipoint") return 2;
+            if (name == "point-to-point") return 3;
+            return -1;
+        }
 };
 
 class FibRoute::Output::Route::NextHop::SpecialNextHop : public ydk::Enum
@@ -4986,6 +5030,13 @@ class FibRoute::Output::Route::NextHop::SpecialNextHop : public ydk::Enum
         static const ydk::Enum::YLeaf prohibit;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
 };
 
 

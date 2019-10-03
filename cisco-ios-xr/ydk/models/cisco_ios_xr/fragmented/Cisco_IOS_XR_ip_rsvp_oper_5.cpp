@@ -964,6 +964,7 @@ std::string Rsvp::RequestDetails::RequestDetail::PsbKey::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "psb-key";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1189,6 +1190,7 @@ std::string Rsvp::RequestDetails::RequestDetail::RsbKey::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "rsb-key";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2180,6 +2182,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detailed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3326,6 +3329,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "psb-rsb-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3520,6 +3524,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "psb-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4070,6 +4075,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Generi
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5226,6 +5232,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Associ
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5467,6 +5474,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Associ
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6584,6 +6592,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Revers
 {
     std::ostringstream path_buffer;
     path_buffer << "ero";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6946,6 +6955,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Revers
 {
     std::ostringstream path_buffer;
     path_buffer << "unsup-sub-object";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7037,6 +7047,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Revers
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-mgmt-rev-lsp-unsupported-subobj";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7131,6 +7142,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::g
 {
     std::ostringstream path_buffer;
     path_buffer << "ero";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7501,6 +7513,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::g
 {
     std::ostringstream path_buffer;
     path_buffer << "rro";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8118,6 +8131,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::L
 {
     std::ostringstream path_buffer;
     path_buffer << "variable-length-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8562,6 +8576,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::S
 {
     std::ostringstream path_buffer;
     path_buffer << "srl-gs";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8692,6 +8707,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "rsb-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9117,6 +9133,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9633,6 +9650,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::g
 {
     std::ostringstream path_buffer;
     path_buffer << "rro";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10250,6 +10268,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::L
 {
     std::ostringstream path_buffer;
     path_buffer << "variable-length-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10694,6 +10713,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::S
 {
     std::ostringstream path_buffer;
     path_buffer << "srl-gs";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12547,6 +12567,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LocalNodeAddress:
 {
     std::ostringstream path_buffer;
     path_buffer << "local-node-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12625,6 +12646,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::InterfaceNeighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12703,6 +12725,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::NeighborHelloStat
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-hello-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12781,6 +12804,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunication
 {
     std::ostringstream path_buffer;
     path_buffer << "lost-communication-reason";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12859,6 +12883,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunication
 {
     std::ostringstream path_buffer;
     path_buffer << "lost-communication-total";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12940,6 +12965,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "up-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13032,6 +13058,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunication
 {
     std::ostringstream path_buffer;
     path_buffer << "lost-communication-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13286,6 +13313,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "psb-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16087,6 +16115,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LocalNodeAddress::g
 {
     std::ostringstream path_buffer;
     path_buffer << "local-node-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16165,6 +16194,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::NeighborHelloState:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-hello-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16243,6 +16273,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationRe
 {
     std::ostringstream path_buffer;
     path_buffer << "lost-communication-reason";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16321,6 +16352,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTo
 {
     std::ostringstream path_buffer;
     path_buffer << "lost-communication-total";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16402,6 +16434,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "up-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16494,6 +16527,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTi
 {
     std::ostringstream path_buffer;
     path_buffer << "lost-communication-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

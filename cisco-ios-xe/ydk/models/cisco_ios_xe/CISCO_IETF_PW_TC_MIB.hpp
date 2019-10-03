@@ -21,6 +21,16 @@ class CpwOperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf notPresent;
         static const ydk::Enum::YLeaf lowerLayerDown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            if (name == "unknown") return 4;
+            if (name == "dormant") return 5;
+            if (name == "notPresent") return 6;
+            if (name == "lowerLayerDown") return 7;
+            return -1;
+        }
 };
 
 class CpwVcType : public ydk::Enum
@@ -47,6 +57,29 @@ class CpwVcType : public ydk::Enum
         static const ydk::Enum::YLeaf tdmCasCesPsn;
         static const ydk::Enum::YLeaf tdmCasTdmIp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 0;
+            if (name == "frameRelay") return 1;
+            if (name == "atmAal5Vcc") return 2;
+            if (name == "atmTransparent") return 3;
+            if (name == "ethernetVLAN") return 4;
+            if (name == "ethernet") return 5;
+            if (name == "hdlc") return 6;
+            if (name == "ppp") return 7;
+            if (name == "cep") return 8;
+            if (name == "atmVccCell") return 9;
+            if (name == "atmVpcCell") return 10;
+            if (name == "ethernetVPLS") return 11;
+            if (name == "e1Satop") return 12;
+            if (name == "t1Satop") return 13;
+            if (name == "e3Satop") return 14;
+            if (name == "t3Satop") return 15;
+            if (name == "basicCesPsn") return 16;
+            if (name == "basicTdmIp") return 17;
+            if (name == "tdmCasCesPsn") return 18;
+            if (name == "tdmCasTdmIp") return 19;
+            return -1;
+        }
 };
 
 

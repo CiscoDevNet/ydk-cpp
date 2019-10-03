@@ -277,6 +277,14 @@ class CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactT
         static const ydk::Enum::YLeaf xOfy;
         static const ydk::Enum::YLeaf average;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 1;
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            if (name == "xOfy") return 4;
+            if (name == "average") return 5;
+            return -1;
+        }
 };
 
 class CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactActionType : public ydk::Enum
@@ -285,6 +293,11 @@ class CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactA
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf notificationOnly;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "notificationOnly") return 2;
+            return -1;
+        }
 };
 
 

@@ -19,6 +19,14 @@ class BgpRpkiStatus : public ydk::Enum
         static const ydk::Enum::YLeaf rpki_not_enabled;
         static const ydk::Enum::YLeaf rpki_illegal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rpki-valid") return 0;
+            if (name == "rpki-invalid") return 1;
+            if (name == "rpki-not-found") return 2;
+            if (name == "rpki-not-enabled") return 3;
+            if (name == "rpki-illegal") return 4;
+            return -1;
+        }
 };
 
 class BgpRouteFilters : public ydk::Enum
@@ -35,6 +43,19 @@ class BgpRouteFilters : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_rf_oer_controlled;
         static const ydk::Enum::YLeaf bgp_rf_pending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-rf-all") return 0;
+            if (name == "bgp-rf-cidr-only") return 1;
+            if (name == "bgp-rf-label") return 2;
+            if (name == "bgp-rf-rib-failure") return 3;
+            if (name == "bgp-rf-injected") return 4;
+            if (name == "bgp-rf-inconsistent") return 5;
+            if (name == "bgp-rf-community") return 6;
+            if (name == "bgp-rf-extcommunity") return 7;
+            if (name == "bgp-rf-oer-controlled") return 8;
+            if (name == "bgp-rf-pending") return 9;
+            return -1;
+        }
 };
 
 class BgpNeighborRouteFilters : public ydk::Enum
@@ -45,6 +66,13 @@ class BgpNeighborRouteFilters : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_nrf_pre_advertised;
         static const ydk::Enum::YLeaf bgp_nrf_post_advertised;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp-nrf-post-received") return 0;
+            if (name == "bgp-nrf-pre-received") return 1;
+            if (name == "bgp-nrf-pre-advertised") return 2;
+            if (name == "bgp-nrf-post-advertised") return 3;
+            return -1;
+        }
 };
 
 class BgpOriginCode : public ydk::Enum
@@ -54,6 +82,12 @@ class BgpOriginCode : public ydk::Enum
         static const ydk::Enum::YLeaf origin_egp;
         static const ydk::Enum::YLeaf origin_incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "origin-igp") return 0;
+            if (name == "origin-egp") return 1;
+            if (name == "origin-incomplete") return 2;
+            return -1;
+        }
 };
 
 

@@ -1047,6 +1047,22 @@ class VrrpStateChangeReason : public ydk::Enum
         static const ydk::Enum::YLeaf state_change_chkpt_update;
         static const ydk::Enum::YLeaf state_change_issu_resync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-change-bfd-down") return 0;
+            if (name == "state-change-virtual-ip-configured") return 1;
+            if (name == "state-change-interface-ip") return 2;
+            if (name == "state-change-delay-timer") return 3;
+            if (name == "state-change-startup") return 4;
+            if (name == "state-change-interface-up") return 5;
+            if (name == "state-change-interface-down") return 6;
+            if (name == "state-change-master-down-timer") return 7;
+            if (name == "state-change-higher-priority-master") return 8;
+            if (name == "state-change-fhrp-admin") return 9;
+            if (name == "state-change-mgo-parent") return 10;
+            if (name == "state-change-chkpt-update") return 11;
+            if (name == "state-change-issu-resync") return 12;
+            return -1;
+        }
 };
 
 class VrrpVmacState : public ydk::Enum
@@ -1057,6 +1073,13 @@ class VrrpVmacState : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf reserving;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stored") return 0;
+            if (name == "reserved") return 1;
+            if (name == "active") return 2;
+            if (name == "reserving") return 3;
+            return -1;
+        }
 };
 
 class VrrpBAf : public ydk::Enum
@@ -1066,6 +1089,12 @@ class VrrpBAf : public ydk::Enum
         static const ydk::Enum::YLeaf address_family_ipv6;
         static const ydk::Enum::YLeaf vrrp_baf_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-family-ipv4") return 0;
+            if (name == "address-family-ipv6") return 1;
+            if (name == "vrrp-baf-count") return 2;
+            return -1;
+        }
 };
 
 class VrrpVipState : public ydk::Enum
@@ -1074,6 +1103,11 @@ class VrrpVipState : public ydk::Enum
         static const ydk::Enum::YLeaf virtual_ip_state_down;
         static const ydk::Enum::YLeaf virtual_ip_state_up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "virtual-ip-state-down") return 0;
+            if (name == "virtual-ip-state-up") return 1;
+            return -1;
+        }
 };
 
 class VrrpProtAuth : public ydk::Enum
@@ -1083,6 +1117,12 @@ class VrrpProtAuth : public ydk::Enum
         static const ydk::Enum::YLeaf authentication_text;
         static const ydk::Enum::YLeaf authentication_ip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "authentication-none") return 0;
+            if (name == "authentication-text") return 1;
+            if (name == "authentication-ip") return 2;
+            return -1;
+        }
 };
 
 class VrrpBfdSessionState : public ydk::Enum
@@ -1093,6 +1133,13 @@ class VrrpBfdSessionState : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_state_up;
         static const ydk::Enum::YLeaf bfd_state_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-state-none") return 0;
+            if (name == "bfd-state-inactive") return 1;
+            if (name == "bfd-state-up") return 2;
+            if (name == "bfd-state-down") return 3;
+            return -1;
+        }
 };
 
 class VrrpBagProtocolState : public ydk::Enum
@@ -1102,6 +1149,12 @@ class VrrpBagProtocolState : public ydk::Enum
         static const ydk::Enum::YLeaf state_backup;
         static const ydk::Enum::YLeaf state_master;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-initial") return 1;
+            if (name == "state-backup") return 2;
+            if (name == "state-master") return 3;
+            return -1;
+        }
 };
 
 

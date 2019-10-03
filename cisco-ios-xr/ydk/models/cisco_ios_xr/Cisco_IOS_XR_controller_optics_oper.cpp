@@ -585,6 +585,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::Dw
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-carrier-map-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -931,6 +932,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::
 {
     std::ostringstream path_buffer;
     path_buffer << "spectrum-slice-power-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1219,6 +1221,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlex
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-carrier-map-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3072,6 +3075,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::Ne
 {
     std::ostringstream path_buffer;
     path_buffer << "network-srlg-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15007,6 +15011,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "lane-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16948,6 +16953,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::
 {
     std::ostringstream path_buffer;
     path_buffer << "network-srlg-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17056,7 +17062,8 @@ const Enum::YLeaf EthernetPmd::optics_eth_100gbase_psm4 {25, "optics-eth-100gbas
 const Enum::YLeaf EthernetPmd::optics_eth_100gbase_cr4 {26, "optics-eth-100gbase-cr4"};
 const Enum::YLeaf EthernetPmd::optics_eth_100gbase_al {27, "optics-eth-100gbase-al"};
 const Enum::YLeaf EthernetPmd::optics_eth_100gbase_pl {28, "optics-eth-100gbase-pl"};
-const Enum::YLeaf EthernetPmd::optics_eth_undefined {29, "optics-eth-undefined"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_srbd {29, "optics-eth-100gbase-srbd"};
+const Enum::YLeaf EthernetPmd::optics_eth_undefined {30, "optics-eth-undefined"};
 
 const Enum::YLeaf OpticsWaveBand::c_band {0, "c-band"};
 const Enum::YLeaf OpticsWaveBand::l_band {1, "l-band"};
@@ -17192,6 +17199,8 @@ const Enum::YLeaf OpticsPhy::fx_one_lane {63, "fx-one-lane"};
 const Enum::YLeaf OpticsPhy::ten_gig_emrdwdm {64, "ten-gig-emrdwdm"};
 const Enum::YLeaf OpticsPhy::ten_gig_e_edge_performance {65, "ten-gig-e-edge-performance"};
 const Enum::YLeaf OpticsPhy::one_gig_csfp {66, "one-gig-csfp"};
+const Enum::YLeaf OpticsPhy::short_reach_bd {67, "short-reach-bd"};
+const Enum::YLeaf OpticsPhy::far_reach {68, "far-reach"};
 
 const Enum::YLeaf OpticsTas::tas_ui_oos {0, "tas-ui-oos"};
 const Enum::YLeaf OpticsTas::tas_ui_main {1, "tas-ui-main"};

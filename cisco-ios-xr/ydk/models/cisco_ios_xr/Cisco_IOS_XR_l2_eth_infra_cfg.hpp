@@ -884,6 +884,12 @@ class EgressFiltering : public ydk::Enum
         static const ydk::Enum::YLeaf egress_filtering_type_disable;
         static const ydk::Enum::YLeaf egress_filtering_type_default;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "egress-filtering-type-strict") return 1;
+            if (name == "egress-filtering-type-disable") return 2;
+            if (name == "egress-filtering-type-default") return 3;
+            return -1;
+        }
 };
 
 class L2ProtocolName : public ydk::Enum
@@ -895,6 +901,14 @@ class L2ProtocolName : public ydk::Enum
         static const ydk::Enum::YLeaf pvst;
         static const ydk::Enum::YLeaf cpsv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdp") return 0;
+            if (name == "stp") return 1;
+            if (name == "vtp") return 2;
+            if (name == "pvst") return 3;
+            if (name == "cpsv") return 4;
+            return -1;
+        }
 };
 
 class Filtering : public ydk::Enum
@@ -903,6 +917,11 @@ class Filtering : public ydk::Enum
         static const ydk::Enum::YLeaf filtering_type_dot1q;
         static const ydk::Enum::YLeaf filtering_type_dot1ad;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "filtering-type-dot1q") return 0;
+            if (name == "filtering-type-dot1ad") return 1;
+            return -1;
+        }
 };
 
 class L2ProtocolMode : public ydk::Enum
@@ -913,6 +932,13 @@ class L2ProtocolMode : public ydk::Enum
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf reverse_tunnel;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forward") return 0;
+            if (name == "drop") return 1;
+            if (name == "tunnel") return 2;
+            if (name == "reverse-tunnel") return 3;
+            return -1;
+        }
 };
 
 

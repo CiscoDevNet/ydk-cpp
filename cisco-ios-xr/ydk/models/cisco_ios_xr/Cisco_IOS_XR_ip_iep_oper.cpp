@@ -408,6 +408,7 @@ std::string ExplicitPaths::Identifiers::Identifier::Address::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -785,6 +786,7 @@ std::string ExplicitPaths::Names::Name::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

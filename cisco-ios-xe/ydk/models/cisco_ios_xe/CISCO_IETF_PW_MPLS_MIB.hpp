@@ -348,6 +348,12 @@ class CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry::CpwVcMplsExpBitsMode :
         static const ydk::Enum::YLeaf specifiedValue;
         static const ydk::Enum::YLeaf serviceDependant;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "outerTunnel") return 1;
+            if (name == "specifiedValue") return 2;
+            if (name == "serviceDependant") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry::CpwVcMplsNonTeMappingTunnelDirection : public ydk::Enum
@@ -356,6 +362,11 @@ class CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry
         static const ydk::Enum::YLeaf outbound;
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "outbound") return 1;
+            if (name == "inbound") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry::CpwVcMplsTeMappingTunnelDirection : public ydk::Enum
@@ -364,6 +375,11 @@ class CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry::CpwV
         static const ydk::Enum::YLeaf outbound;
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "outbound") return 1;
+            if (name == "inbound") return 2;
+            return -1;
+        }
 };
 
 

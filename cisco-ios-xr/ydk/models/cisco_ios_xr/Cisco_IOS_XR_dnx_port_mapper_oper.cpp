@@ -688,6 +688,7 @@ std::string Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

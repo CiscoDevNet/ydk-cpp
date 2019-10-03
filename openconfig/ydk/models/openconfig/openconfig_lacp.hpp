@@ -306,6 +306,11 @@ class LacpTimeoutType : public ydk::Enum
         static const ydk::Enum::YLeaf LONG;
         static const ydk::Enum::YLeaf SHORT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LONG") return 0;
+            if (name == "SHORT") return 1;
+            return -1;
+        }
 };
 
 class LacpPeriodType : public ydk::Enum
@@ -314,6 +319,11 @@ class LacpPeriodType : public ydk::Enum
         static const ydk::Enum::YLeaf FAST;
         static const ydk::Enum::YLeaf SLOW;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FAST") return 0;
+            if (name == "SLOW") return 1;
+            return -1;
+        }
 };
 
 class LacpActivityType : public ydk::Enum
@@ -322,6 +332,11 @@ class LacpActivityType : public ydk::Enum
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf PASSIVE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACTIVE") return 0;
+            if (name == "PASSIVE") return 1;
+            return -1;
+        }
 };
 
 class LacpSynchronizationType : public ydk::Enum
@@ -330,6 +345,11 @@ class LacpSynchronizationType : public ydk::Enum
         static const ydk::Enum::YLeaf IN_SYNC;
         static const ydk::Enum::YLeaf OUT_SYNC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IN_SYNC") return 0;
+            if (name == "OUT_SYNC") return 1;
+            return -1;
+        }
 };
 
 

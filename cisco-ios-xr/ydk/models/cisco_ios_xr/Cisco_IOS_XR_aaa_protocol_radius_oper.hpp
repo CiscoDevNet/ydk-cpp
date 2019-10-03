@@ -279,7 +279,6 @@ class Radius::Nodes::Node::Authentication::AuthenticationGroup : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf server_address; //type: string
         ydk::YLeaf port; //type: uint32
         ydk::YLeaf ip_address; //type: string
         ydk::YLeaf family; //type: string
@@ -318,12 +317,17 @@ class Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_ 
         ydk::YLeaf unknown_access_types; //type: uint32
         ydk::YLeaf dropped_access_responses; //type: uint32
         ydk::YLeaf rtt; //type: uint32
-        ydk::YLeaf authen_response_time; //type: uint32
         ydk::YLeaf authen_transaction_successess; //type: uint32
         ydk::YLeaf authen_transaction_failure; //type: uint32
         ydk::YLeaf authen_unexpected_responses; //type: uint32
         ydk::YLeaf authen_server_error_responses; //type: uint32
         ydk::YLeaf authen_incorrect_responses; //type: uint32
+        ydk::YLeaf auth_throttled_transactions; //type: uint32
+        ydk::YLeaf auth_max_transactions; //type: uint32
+        ydk::YLeaf total_test_auth_reqs; //type: uint32
+        ydk::YLeaf total_test_auth_timeouts; //type: uint32
+        ydk::YLeaf total_test_auth_response; //type: uint32
+        ydk::YLeaf total_test_auth_pending; //type: uint32
 
 }; // Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_
 
@@ -367,7 +371,6 @@ class Radius::Nodes::Node::Accounting::AccountingGroup : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf server_address; //type: string
         ydk::YLeaf port; //type: uint32
         ydk::YLeaf ip_address; //type: string
         ydk::YLeaf family; //type: string
@@ -405,11 +408,14 @@ class Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_ : public ydk
         ydk::YLeaf dropped_responses; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf acct_unexpected_responses; //type: uint32
-        ydk::YLeaf acct_server_error_responses; //type: uint32
-        ydk::YLeaf acct_incorrect_responses; //type: uint32
-        ydk::YLeaf acct_response_time; //type: uint32
         ydk::YLeaf acct_transaction_successess; //type: uint32
         ydk::YLeaf acct_transaction_failure; //type: uint32
+        ydk::YLeaf acct_throttled_transactions; //type: uint32
+        ydk::YLeaf acct_max_throttle_trans; //type: uint32
+        ydk::YLeaf total_test_acct_reqs; //type: uint32
+        ydk::YLeaf total_test_acct_timeouts; //type: uint32
+        ydk::YLeaf total_test_acct_response; //type: uint32
+        ydk::YLeaf total_test_acct_pending; //type: uint32
 
 }; // Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_
 
@@ -453,7 +459,6 @@ class Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf client_address; //type: string
         ydk::YLeaf disc_reqs; //type: uint32
         ydk::YLeaf disc_acks; //type: uint32
         ydk::YLeaf disc_naks; //type: uint32
@@ -477,7 +482,7 @@ class Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient : pu
         ydk::YLeaf service_not_present; //type: uint32
         ydk::YLeaf send_to_ch_fail; //type: uint32
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf addr_buf; //type: string
+        ydk::YLeaf client_address; //type: string
 
 }; // Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient
 
@@ -549,7 +554,6 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_ : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf server_address; //type: string
         ydk::YLeaf authentication_port; //type: uint32
         ydk::YLeaf accounting_port; //type: uint32
         ydk::YLeaf is_private; //type: boolean
@@ -594,11 +598,14 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting :
         ydk::YLeaf dropped_responses; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf acct_unexpected_responses; //type: uint32
-        ydk::YLeaf acct_server_error_responses; //type: uint32
-        ydk::YLeaf acct_incorrect_responses; //type: uint32
-        ydk::YLeaf acct_response_time; //type: uint32
         ydk::YLeaf acct_transaction_successess; //type: uint32
         ydk::YLeaf acct_transaction_failure; //type: uint32
+        ydk::YLeaf acct_throttled_transactions; //type: uint32
+        ydk::YLeaf acct_max_throttle_trans; //type: uint32
+        ydk::YLeaf total_test_acct_reqs; //type: uint32
+        ydk::YLeaf total_test_acct_timeouts; //type: uint32
+        ydk::YLeaf total_test_acct_response; //type: uint32
+        ydk::YLeaf total_test_acct_pending; //type: uint32
 
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting
 
@@ -631,12 +638,17 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticati
         ydk::YLeaf unknown_access_types; //type: uint32
         ydk::YLeaf dropped_access_responses; //type: uint32
         ydk::YLeaf rtt; //type: uint32
-        ydk::YLeaf authen_response_time; //type: uint32
         ydk::YLeaf authen_transaction_successess; //type: uint32
         ydk::YLeaf authen_transaction_failure; //type: uint32
         ydk::YLeaf authen_unexpected_responses; //type: uint32
         ydk::YLeaf authen_server_error_responses; //type: uint32
         ydk::YLeaf authen_incorrect_responses; //type: uint32
+        ydk::YLeaf auth_throttled_transactions; //type: uint32
+        ydk::YLeaf auth_max_transactions; //type: uint32
+        ydk::YLeaf total_test_auth_reqs; //type: uint32
+        ydk::YLeaf total_test_auth_timeouts; //type: uint32
+        ydk::YLeaf total_test_auth_response; //type: uint32
+        ydk::YLeaf total_test_auth_pending; //type: uint32
 
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication
 

@@ -61,6 +61,11 @@ class VlanModeType : public ydk::Enum
         static const ydk::Enum::YLeaf ACCESS;
         static const ydk::Enum::YLeaf TRUNK;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACCESS") return 0;
+            if (name == "TRUNK") return 1;
+            return -1;
+        }
 };
 
 

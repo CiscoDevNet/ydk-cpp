@@ -1115,6 +1115,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::GracefulRestart::GracefulResta
 {
     std::ostringstream path_buffer;
     path_buffer << "graceful-restartable-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1452,6 +1453,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::GracefulRestart::GracefulResta
 {
     std::ostringstream path_buffer;
     path_buffer << "down-nbr-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1557,6 +1559,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::GracefulRestart::GracefulResta
 {
     std::ostringstream path_buffer;
     path_buffer << "down-nbr-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3773,6 +3776,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Bindings::Binding::Re
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3999,6 +4003,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Bindings::Binding::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4105,6 +4110,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Bindings::Binding::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "peers-acked";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4731,6 +4737,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Igp::Syncs::Sync::Pee
 {
     std::ostringstream path_buffer;
     path_buffer << "peers";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4823,6 +4830,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Igp::Syncs::Sync::GrO
 {
     std::ostringstream path_buffer;
     path_buffer << "gr-only-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5390,6 +5398,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::BindingsSummary::Bind
 {
     std::ostringstream path_buffer;
     path_buffer << "bind-af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5952,6 +5961,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Interfaces::Interface
 {
     std::ostringstream path_buffer;
     path_buffer << "te-mesh-grp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6052,6 +6062,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Interfaces::Interface
 {
     std::ostringstream path_buffer;
     path_buffer << "auto-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6733,6 +6744,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::LinkHellos
 {
     std::ostringstream path_buffer;
     path_buffer << "hello-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7346,6 +7358,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::LinkHellos
 {
     std::ostringstream path_buffer;
     path_buffer << "last-session-down-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7455,6 +7468,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::LinkHellos
 {
     std::ostringstream path_buffer;
     path_buffer << "discovery-link-af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8299,6 +8313,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::TargetedHe
 {
     std::ostringstream path_buffer;
     path_buffer << "targeted-hello";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8822,6 +8837,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::TargetedHe
 {
     std::ostringstream path_buffer;
     path_buffer << "last-session-down-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9395,6 +9411,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::Brief::Lin
 {
     std::ostringstream path_buffer;
     path_buffer << "hello-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9614,6 +9631,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::Brief::Tar
 {
     std::ostringstream path_buffer;
     path_buffer << "targeted-hello-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9977,6 +9995,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::Brief::Tar
 {
     std::ostringstream path_buffer;
     path_buffer << "hello-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10185,6 +10204,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Discovery::Stats::Sta
 {
     std::ostringstream path_buffer;
     path_buffer << "stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11256,6 +11276,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Forwardings::Forwardi
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12678,6 +12699,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::Forwardings::Forwardi
 {
     std::ostringstream path_buffer;
     path_buffer << "stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13150,6 +13172,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Afs::Af::BindingsAdvertiseSpec
 {
     std::ostringstream path_buffer;
     path_buffer << "advt-acl";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14350,6 +14373,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::NeighborBriefs::NeighborBrief:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14618,6 +14642,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::NeighborBriefs::NeighborBrief:
 {
     std::ostringstream path_buffer;
     path_buffer << "nbr-br-af-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14944,6 +14969,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Backoffs::Backoff::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "backoff";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15400,6 +15426,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Nsr::NsrPending::HaNeighbors::
 {
     std::ostringstream path_buffer;
     path_buffer << "ha-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17036,6 +17063,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Nsr::HaStatistics::HaNeighbors
 {
     std::ostringstream path_buffer;
     path_buffer << "ha-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18140,6 +18168,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Parameters::AddressFamilyParam
 {
     std::ostringstream path_buffer;
     path_buffer << "address-family-parameter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19633,6 +19662,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Issu::HaStatistics::HaNeighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "ha-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20279,6 +20309,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::NeighborCapabilities::Neighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-capability";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20418,6 +20449,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::NeighborCapabilities::Neighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "sent";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20545,6 +20577,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::NeighborCapabilities::Neighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "received";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20823,6 +20856,7 @@ std::string MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

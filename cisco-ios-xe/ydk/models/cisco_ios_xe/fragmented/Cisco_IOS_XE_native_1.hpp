@@ -13,6 +13,52 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
+class Native::Service::Timestamps::Debug::Datetime::Localtime::Msec : public ydk::Entity
+{
+    public:
+        Msec();
+        ~Msec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf show_timezone; //type: empty
+        ydk::YLeaf year; //type: empty
+
+}; // Native::Service::Timestamps::Debug::Datetime::Localtime::Msec
+
+
+class Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone : public ydk::Entity
+{
+    public:
+        ShowTimezone();
+        ~ShowTimezone();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf msec; //type: empty
+        ydk::YLeaf year; //type: empty
+
+}; // Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone
+
+
 class Native::Service::Timestamps::Debug::Datetime::Localtime::Year : public ydk::Entity
 {
     public:
@@ -3671,59 +3717,17 @@ class Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2 : public ydk::
 
 }; // Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2
 
-
-class Native::Controller::SONET::Au4::CemGroupUnframed : public ydk::Entity
-{
-    public:
-        CemGroupUnframed();
-        ~CemGroupUnframed();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Tug2; //type: Native::Controller::SONET::Au4::CemGroupUnframed::Tug2
-
-        ydk::YList tug_2;
-        
-}; // Native::Controller::SONET::Au4::CemGroupUnframed
-
-
-class Native::Controller::SONET::Au4::CemGroupUnframed::Tug2 : public ydk::Entity
-{
-    public:
-        Tug2();
-        ~Tug2();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf number; //type: int8
-        ydk::YLeaf e1; //type: int8
-        ydk::YLeaf cem_group; //type: int32
-        ydk::YLeaf unframed; //type: empty
-
-}; // Native::Controller::SONET::Au4::CemGroupUnframed::Tug2
-
 class Native::Platform::TcamParityError : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            if (name == "disable") return 1;
+            return -1;
+        }
 };
 
 class Native::Platform::TimeSource::Ntp::TimeScale : public ydk::Enum
@@ -3732,6 +3736,11 @@ class Native::Platform::TimeSource::Ntp::TimeScale : public ydk::Enum
         static const ydk::Enum::YLeaf epoch_1900;
         static const ydk::Enum::YLeaf epoch_1970;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "epoch-1900") return 0;
+            if (name == "epoch-1970") return 1;
+            return -1;
+        }
 };
 
 class Native::Platform::Console::Output : public ydk::Enum
@@ -3741,6 +3750,12 @@ class Native::Platform::Console::Output : public ydk::Enum
         static const ydk::Enum::YLeaf serial;
         static const ydk::Enum::YLeaf virtual_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "serial") return 1;
+            if (name == "virtual") return 2;
+            return -1;
+        }
 };
 
 class Native::Platform::Hardware::Lite::License : public ydk::Enum
@@ -3748,6 +3763,10 @@ class Native::Platform::Hardware::Lite::License : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            return -1;
+        }
 };
 
 class Native::Platform::Hardware::Throughput::Disable : public ydk::Enum
@@ -3755,6 +3774,10 @@ class Native::Platform::Hardware::Throughput::Disable : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf internal_license;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal-license") return 0;
+            return -1;
+        }
 };
 
 class Native::Platform::Hardware::Throughput::Level::Kbps : public ydk::Enum
@@ -3762,8 +3785,40 @@ class Native::Platform::Hardware::Throughput::Level::Kbps : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf Y_10000;
         static const ydk::Enum::YLeaf Y_25000;
+        static const ydk::Enum::YLeaf Y_35000;
         static const ydk::Enum::YLeaf Y_50000;
+        static const ydk::Enum::YLeaf Y_75000;
+        static const ydk::Enum::YLeaf Y_100000;
+        static const ydk::Enum::YLeaf Y_150000;
+        static const ydk::Enum::YLeaf Y_200000;
+        static const ydk::Enum::YLeaf Y_250000;
+        static const ydk::Enum::YLeaf Y_300000;
+        static const ydk::Enum::YLeaf Y_400000;
+        static const ydk::Enum::YLeaf Y_500000;
+        static const ydk::Enum::YLeaf Y_1000000;
+        static const ydk::Enum::YLeaf Y_1500000;
+        static const ydk::Enum::YLeaf Y_2000000;
+        static const ydk::Enum::YLeaf Y_3000000;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "10000") return 0;
+            if (name == "25000") return 1;
+            if (name == "35000") return 2;
+            if (name == "50000") return 3;
+            if (name == "75000") return 4;
+            if (name == "100000") return 5;
+            if (name == "150000") return 6;
+            if (name == "200000") return 7;
+            if (name == "250000") return 8;
+            if (name == "300000") return 9;
+            if (name == "400000") return 10;
+            if (name == "500000") return 11;
+            if (name == "1000000") return 12;
+            if (name == "1500000") return 13;
+            if (name == "2000000") return 14;
+            if (name == "3000000") return 15;
+            return -1;
+        }
 };
 
 class Native::Platform::Ipsec::Gdoi : public ydk::Enum
@@ -3771,6 +3826,10 @@ class Native::Platform::Ipsec::Gdoi : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf accept_both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "accept-both") return 0;
+            return -1;
+        }
 };
 
 class Native::Platform::Ipsec::ControlPlane : public ydk::Enum
@@ -3779,6 +3838,11 @@ class Native::Platform::Ipsec::ControlPlane : public ydk::Enum
         static const ydk::Enum::YLeaf heavy;
         static const ydk::Enum::YLeaf medium;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "heavy") return 0;
+            if (name == "medium") return 1;
+            return -1;
+        }
 };
 
 class Native::Platform::Trace::Runtime::Process : public ydk::Enum
@@ -3786,6 +3850,10 @@ class Native::Platform::Trace::Runtime::Process : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf iomd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "iomd") return 0;
+            return -1;
+        }
 };
 
 class Native::Platform::Trace::Runtime::Module : public ydk::Enum
@@ -3793,6 +3861,10 @@ class Native::Platform::Trace::Runtime::Module : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf all_modules;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all-modules") return 0;
+            return -1;
+        }
 };
 
 class Native::Platform::Trace::Runtime::Level : public ydk::Enum
@@ -3800,6 +3872,10 @@ class Native::Platform::Trace::Runtime::Level : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf info;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "info") return 0;
+            return -1;
+        }
 };
 
 class Native::Enable::LastResort : public ydk::Enum
@@ -3808,6 +3884,11 @@ class Native::Enable::LastResort : public ydk::Enum
         static const ydk::Enum::YLeaf password;
         static const ydk::Enum::YLeaf succeed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "password") return 0;
+            if (name == "succeed") return 1;
+            return -1;
+        }
 };
 
 class Native::Enable::Password::Type : public ydk::Enum
@@ -3816,6 +3897,11 @@ class Native::Enable::Password::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Enable::Secret::Type : public ydk::Enum
@@ -3825,6 +3911,12 @@ class Native::Enable::Secret::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_4;
         static const ydk::Enum::YLeaf Y_5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "4") return 1;
+            if (name == "5") return 2;
+            return -1;
+        }
 };
 
 class Native::Archive::Path : public ydk::Enum
@@ -3841,6 +3933,19 @@ class Native::Archive::Path : public ydk::Enum
         static const ydk::Enum::YLeaf scp__COLON__;
         static const ydk::Enum::YLeaf tftp__COLON__;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bootflash:") return 0;
+            if (name == "flash:") return 1;
+            if (name == "ftp:") return 2;
+            if (name == "harddisk:") return 3;
+            if (name == "http:") return 4;
+            if (name == "https:") return 5;
+            if (name == "pram:") return 6;
+            if (name == "rcp:") return 7;
+            if (name == "scp:") return 8;
+            if (name == "tftp:") return 9;
+            return -1;
+        }
 };
 
 class Native::Archive::Log::Config::Notify::Syslog::Contenttype : public ydk::Enum
@@ -3849,6 +3954,11 @@ class Native::Archive::Log::Config::Notify::Syslog::Contenttype : public ydk::En
         static const ydk::Enum::YLeaf plaintext;
         static const ydk::Enum::YLeaf xml;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "plaintext") return 0;
+            if (name == "xml") return 1;
+            return -1;
+        }
 };
 
 class Native::Username::Password::Encryption : public ydk::Enum
@@ -3857,6 +3967,11 @@ class Native::Username::Password::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Username::Secret::Encryption : public ydk::Enum
@@ -3866,6 +3981,12 @@ class Native::Username::Secret::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_5;
         static const ydk::Enum::YLeaf Y_9;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "5") return 1;
+            if (name == "9") return 2;
+            return -1;
+        }
 };
 
 class Native::Card::Type : public ydk::Enum
@@ -3874,6 +3995,11 @@ class Native::Card::Type : public ydk::Enum
         static const ydk::Enum::YLeaf t1;
         static const ydk::Enum::YLeaf e1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "t1") return 0;
+            if (name == "e1") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::ControllerTxExList::Name : public ydk::Enum
@@ -3883,6 +4009,12 @@ class Native::Controller::ControllerTxExList::Name : public ydk::Enum
         static const ydk::Enum::YLeaf E1;
         static const ydk::Enum::YLeaf T3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "T1") return 0;
+            if (name == "E1") return 1;
+            if (name == "T3") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::ControllerTxExList::Linecode : public ydk::Enum
@@ -3892,6 +4024,12 @@ class Native::Controller::ControllerTxExList::Linecode : public ydk::Enum
         static const ydk::Enum::YLeaf b8zs;
         static const ydk::Enum::YLeaf hdb3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ami") return 0;
+            if (name == "b8zs") return 1;
+            if (name == "hdb3") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::ControllerTxExList::Clock::Source::Line::LineMode : public ydk::Enum
@@ -3900,6 +4038,11 @@ class Native::Controller::ControllerTxExList::Clock::Source::Line::LineMode : pu
         static const ydk::Enum::YLeaf primary;
         static const ydk::Enum::YLeaf secondary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "primary") return 0;
+            if (name == "secondary") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Sim::Authenticate::PinType : public ydk::Enum
@@ -3908,6 +4051,11 @@ class Native::Controller::Cellular::Lte::Sim::Authenticate::PinType : public ydk
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Sms::Archive::Path : public ydk::Enum
@@ -3921,6 +4069,16 @@ class Native::Controller::Cellular::Lte::Sms::Archive::Path : public ydk::Enum
         static const ydk::Enum::YLeaf scp__COLON__;
         static const ydk::Enum::YLeaf tftp__COLON__;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ftp:") return 0;
+            if (name == "http:") return 1;
+            if (name == "https:") return 2;
+            if (name == "pram:") return 3;
+            if (name == "rcp:") return 4;
+            if (name == "scp:") return 5;
+            if (name == "tftp:") return 6;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Gps::Mode : public ydk::Enum
@@ -3929,6 +4087,11 @@ class Native::Controller::Cellular::Lte::Gps::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf ms_based;
         static const ydk::Enum::YLeaf standalone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ms-based") return 0;
+            if (name == "standalone") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Modem::DmLog::Filter : public ydk::Enum
@@ -3938,6 +4101,12 @@ class Native::Controller::Cellular::Lte::Modem::DmLog::Filter : public ydk::Enum
         static const ydk::Enum::YLeaf flash__COLON__;
         static const ydk::Enum::YLeaf webui__COLON__;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bootflash:") return 0;
+            if (name == "flash:") return 1;
+            if (name == "webui:") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path : public ydk::Enum
@@ -3953,6 +4122,18 @@ class Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path : public ydk
         static const ydk::Enum::YLeaf scp__COLON__;
         static const ydk::Enum::YLeaf tftp__COLON__;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bootflash:") return 0;
+            if (name == "flash:") return 1;
+            if (name == "ftp:") return 2;
+            if (name == "http:") return 3;
+            if (name == "https:") return 4;
+            if (name == "pram:") return 5;
+            if (name == "rcp:") return 6;
+            if (name == "scp:") return 7;
+            if (name == "tftp:") return 8;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Modem::NasLog::Output::Path : public ydk::Enum
@@ -3961,6 +4142,11 @@ class Native::Controller::Cellular::Lte::Modem::NasLog::Output::Path : public yd
         static const ydk::Enum::YLeaf bootflash__COLON__;
         static const ydk::Enum::YLeaf flash__COLON__;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bootflash:") return 0;
+            if (name == "flash:") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::ConnectionStatus::MibTrap : public ydk::Enum
@@ -3970,6 +4156,12 @@ class Native::Controller::Cellular::Lte::Event::ConnectionStatus::MibTrap : publ
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf inactive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "All-lte") return 0;
+            if (name == "active") return 1;
+            if (name == "inactive") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap : public ydk::Enum
@@ -3990,6 +4182,23 @@ class Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1xrtt") return 0;
+            if (name == "All-lte") return 1;
+            if (name == "edge") return 2;
+            if (name == "evdoRel0") return 3;
+            if (name == "evdoRelA") return 4;
+            if (name == "evdoRelB") return 5;
+            if (name == "gprs") return 6;
+            if (name == "umts/wcdma") return 7;
+            if (name == "hsdpa") return 8;
+            if (name == "hsupa") return 9;
+            if (name == "hspa") return 10;
+            if (name == "hspa-plus") return 11;
+            if (name == "lte-tdd") return 12;
+            if (name == "lte-fdd") return 13;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap : public ydk::Enum
@@ -4010,6 +4219,23 @@ class Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1xrtt") return 0;
+            if (name == "All-lte") return 1;
+            if (name == "edge") return 2;
+            if (name == "evdoRel0") return 3;
+            if (name == "evdoRelA") return 4;
+            if (name == "evdoRelB") return 5;
+            if (name == "gprs") return 6;
+            if (name == "umts/wcdma") return 7;
+            if (name == "hsdpa") return 8;
+            if (name == "hsupa") return 9;
+            if (name == "hspa") return 10;
+            if (name == "hspa-plus") return 11;
+            if (name == "lte-tdd") return 12;
+            if (name == "lte-fdd") return 13;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::ModemState::MibTrap : public ydk::Enum
@@ -4019,6 +4245,12 @@ class Native::Controller::Cellular::Lte::Event::ModemState::MibTrap : public ydk
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "down") return 1;
+            if (name == "up") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Rsrp::Abate::MibTrap : public ydk::Enum
@@ -4028,6 +4260,12 @@ class Native::Controller::Cellular::Lte::Event::Rsrp::Abate::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "All-lte") return 0;
+            if (name == "lte-tdd") return 1;
+            if (name == "lte-fdd") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Rsrp::Onset::MibTrap : public ydk::Enum
@@ -4037,6 +4275,12 @@ class Native::Controller::Cellular::Lte::Event::Rsrp::Onset::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "All-lte") return 0;
+            if (name == "lte-tdd") return 1;
+            if (name == "lte-fdd") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Rsrq::Abate::MibTrap : public ydk::Enum
@@ -4046,6 +4290,12 @@ class Native::Controller::Cellular::Lte::Event::Rsrq::Abate::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "All-lte") return 0;
+            if (name == "lte-tdd") return 1;
+            if (name == "lte-fdd") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Rsrq::Onset::MibTrap : public ydk::Enum
@@ -4055,6 +4305,12 @@ class Native::Controller::Cellular::Lte::Event::Rsrq::Onset::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "All-lte") return 0;
+            if (name == "lte-tdd") return 1;
+            if (name == "lte-fdd") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Rssi::Abate::MibTrap : public ydk::Enum
@@ -4064,6 +4320,12 @@ class Native::Controller::Cellular::Lte::Event::Rssi::Abate::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "All-lte") return 0;
+            if (name == "lte-tdd") return 1;
+            if (name == "lte-fdd") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::Cellular::Lte::Event::Rssi::Onset::MibTrap : public ydk::Enum
@@ -4073,6 +4335,12 @@ class Native::Controller::Cellular::Lte::Event::Rssi::Onset::MibTrap : public yd
         static const ydk::Enum::YLeaf lte_tdd;
         static const ydk::Enum::YLeaf lte_fdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "All-lte") return 0;
+            if (name == "lte-tdd") return 1;
+            if (name == "lte-fdd") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::SONET::Framing : public ydk::Enum
@@ -4081,6 +4349,11 @@ class Native::Controller::SONET::Framing : public ydk::Enum
         static const ydk::Enum::YLeaf sonet;
         static const ydk::Enum::YLeaf sdh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sonet") return 0;
+            if (name == "sdh") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::SONET::Clock::Source : public ydk::Enum
@@ -4089,6 +4362,11 @@ class Native::Controller::SONET::Clock::Source : public ydk::Enum
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf line;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            if (name == "line") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::SONET::Aug::Mapping : public ydk::Enum
@@ -4097,6 +4375,11 @@ class Native::Controller::SONET::Aug::Mapping : public ydk::Enum
         static const ydk::Enum::YLeaf au_3;
         static const ydk::Enum::YLeaf au_4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "au-3") return 0;
+            if (name == "au-4") return 1;
+            return -1;
+        }
 };
 
 class Native::Controller::SONET::Au3::Overhead::Byte : public ydk::Enum
@@ -4104,6 +4387,10 @@ class Native::Controller::SONET::Au3::Overhead::Byte : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf j1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "j1") return 0;
+            return -1;
+        }
 };
 
 class Native::Controller::SONET::Au3::Mode::Mapping : public ydk::Enum
@@ -4113,6 +4400,12 @@ class Native::Controller::SONET::Au3::Mode::Mapping : public ydk::Enum
         static const ydk::Enum::YLeaf c_12;
         static const ydk::Enum::YLeaf c_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "c-11") return 0;
+            if (name == "c-12") return 1;
+            if (name == "c-2") return 2;
+            return -1;
+        }
 };
 
 class Native::Controller::SONET::Au4::Mode : public ydk::Enum
@@ -4125,6 +4418,15 @@ class Native::Controller::SONET::Au4::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf c_4;
         static const ydk::Enum::YLeaf e3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "c-11") return 0;
+            if (name == "c-12") return 1;
+            if (name == "c-2") return 2;
+            if (name == "c-3") return 3;
+            if (name == "c-4") return 4;
+            if (name == "e3") return 5;
+            return -1;
+        }
 };
 
 class Native::Controller::SONET::Au4::Framing : public ydk::Enum
@@ -4132,6 +4434,10 @@ class Native::Controller::SONET::Au4::Framing : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf unframed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unframed") return 0;
+            return -1;
+        }
 };
 
 

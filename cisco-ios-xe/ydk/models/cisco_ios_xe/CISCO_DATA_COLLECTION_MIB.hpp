@@ -421,6 +421,18 @@ class CdcFileXferStatus : public ydk::Enum
         static const ydk::Enum::YLeaf fileWriteFailed;
         static const ydk::Enum::YLeaf authFailed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notStarted") return 1;
+            if (name == "success") return 2;
+            if (name == "aborted") return 3;
+            if (name == "fileOpenFailRemote") return 4;
+            if (name == "badDomainName") return 5;
+            if (name == "unreachableIpAddress") return 6;
+            if (name == "networkFailed") return 7;
+            if (name == "fileWriteFailed") return 8;
+            if (name == "authFailed") return 9;
+            return -1;
+        }
 };
 
 class CdcFileFormat : public ydk::Enum
@@ -430,6 +442,12 @@ class CdcFileFormat : public ydk::Enum
         static const ydk::Enum::YLeaf cdcBulkBinary;
         static const ydk::Enum::YLeaf cdcSchemaASCII;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdcBulkASCII") return 1;
+            if (name == "cdcBulkBinary") return 2;
+            if (name == "cdcSchemaASCII") return 3;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCommand : public ydk::Enum
@@ -439,6 +457,12 @@ class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCommand : pu
         static const ydk::Enum::YLeaf swapToNewFile;
         static const ydk::Enum::YLeaf collectNow;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "swapToNewFile") return 2;
+            if (name == "collectNow") return 3;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCollectMode : public ydk::Enum
@@ -447,6 +471,11 @@ class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCollectMode 
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf manual;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 1;
+            if (name == "manual") return 2;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileAdminStatus : public ydk::Enum
@@ -455,6 +484,11 @@ class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileAdminStatus 
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileOperStatus : public ydk::Enum
@@ -464,6 +498,12 @@ class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileOperStatus :
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            if (name == "error") return 3;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode : public ydk::Enum
@@ -477,6 +517,16 @@ class CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode : 
         static const ydk::Enum::YLeaf tooManyMaxSizeHits;
         static const ydk::Enum::YLeaf noResource;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noError") return 1;
+            if (name == "otherError") return 2;
+            if (name == "noSpace") return 3;
+            if (name == "openError") return 4;
+            if (name == "tooSmallMaxSize") return 5;
+            if (name == "tooManyMaxSizeHits") return 6;
+            if (name == "noResource") return 7;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::CdcVFileMgmtCommand : public ydk::Enum
@@ -487,6 +537,13 @@ class CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::CdcVFileMgmt
         static const ydk::Enum::YLeaf transfer;
         static const ydk::Enum::YLeaf abortTransfer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "delete") return 2;
+            if (name == "transfer") return 3;
+            if (name == "abortTransfer") return 4;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::CdcDGType : public ydk::Enum
@@ -495,6 +552,11 @@ class CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::CdcDGType : public ydk::En
         static const ydk::Enum::YLeaf object;
         static const ydk::Enum::YLeaf table;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "object") return 1;
+            if (name == "table") return 2;
+            return -1;
+        }
 };
 
 class CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInstanceType : public ydk::Enum
@@ -506,6 +568,14 @@ class CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInsta
         static const ydk::Enum::YLeaf subTree;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "individual") return 1;
+            if (name == "range") return 2;
+            if (name == "repititions") return 3;
+            if (name == "subTree") return 4;
+            if (name == "other") return 5;
+            return -1;
+        }
 };
 
 

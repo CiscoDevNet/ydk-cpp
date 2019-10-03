@@ -63,6 +63,13 @@ class MacLimitAction : public ydk::Enum
         static const ydk::Enum::YLeaf drop;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "flood") return 1;
+            if (name == "drop") return 2;
+            if (name == "shutdown") return 3;
+            return -1;
+        }
 };
 
 class EthTrafficClass : public ydk::Enum
@@ -72,6 +79,12 @@ class EthTrafficClass : public ydk::Enum
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf unknown_unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 0;
+            if (name == "multicast") return 1;
+            if (name == "unknown-unicast") return 2;
+            return -1;
+        }
 };
 
 class MacAgingType : public ydk::Enum
@@ -80,6 +93,11 @@ class MacAgingType : public ydk::Enum
         static const ydk::Enum::YLeaf inactivity;
         static const ydk::Enum::YLeaf absolute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inactivity") return 0;
+            if (name == "absolute") return 1;
+            return -1;
+        }
 };
 
 class MacSecureAction : public ydk::Enum
@@ -89,6 +107,12 @@ class MacSecureAction : public ydk::Enum
         static const ydk::Enum::YLeaf restrict;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "restrict") return 1;
+            if (name == "shutdown") return 2;
+            return -1;
+        }
 };
 
 

@@ -250,6 +250,11 @@ class NvSatellites::NvSatellite::UpgradeOnConnect::ConnectType : public ydk::Enu
         static const ydk::Enum::YLeaf on_connection;
         static const ydk::Enum::YLeaf on_first_connection;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on-connection") return 1;
+            if (name == "on-first-connection") return 2;
+            return -1;
+        }
 };
 
 

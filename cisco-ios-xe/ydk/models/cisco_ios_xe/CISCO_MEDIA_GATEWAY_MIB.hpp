@@ -500,6 +500,11 @@ class CCallControlJitterDelayMode : public ydk::Enum
         static const ydk::Enum::YLeaf adaptive;
         static const ydk::Enum::YLeaf fixed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "adaptive") return 1;
+            if (name == "fixed") return 2;
+            return -1;
+        }
 };
 
 class CGwAdminState : public ydk::Enum
@@ -509,6 +514,12 @@ class CGwAdminState : public ydk::Enum
         static const ydk::Enum::YLeaf forcedOutOfService;
         static const ydk::Enum::YLeaf gracefulOutOfService;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inService") return 1;
+            if (name == "forcedOutOfService") return 2;
+            if (name == "gracefulOutOfService") return 3;
+            return -1;
+        }
 };
 
 class CGwServiceState : public ydk::Enum
@@ -518,6 +529,12 @@ class CGwServiceState : public ydk::Enum
         static const ydk::Enum::YLeaf forcedOutOfService;
         static const ydk::Enum::YLeaf gracefulOutOfService;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inService") return 1;
+            if (name == "forcedOutOfService") return 2;
+            if (name == "gracefulOutOfService") return 3;
+            return -1;
+        }
 };
 
 class CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::CmgwVtMappingMode : public ydk::Enum
@@ -526,6 +543,11 @@ class CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::CmgwVtMappingMode : pu
         static const ydk::Enum::YLeaf standard;
         static const ydk::Enum::YLeaf titan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard") return 1;
+            if (name == "titan") return 2;
+            return -1;
+        }
 };
 
 class CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::CmgwSignalProtocol : public ydk::Enum
@@ -536,6 +558,13 @@ class CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::Cm
         static const ydk::Enum::YLeaf h248;
         static const ydk::Enum::YLeaf tgcp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "mgcp") return 2;
+            if (name == "h248") return 3;
+            if (name == "tgcp") return 4;
+            return -1;
+        }
 };
 
 class CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::CmgwConfigDomainNameEntity : public ydk::Enum
@@ -545,6 +574,12 @@ class CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameCon
         static const ydk::Enum::YLeaf dnsServer;
         static const ydk::Enum::YLeaf mgc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "gateway") return 1;
+            if (name == "dnsServer") return 2;
+            if (name == "mgc") return 3;
+            return -1;
+        }
 };
 
 class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgClusterEnabled : public ydk::Enum
@@ -554,6 +589,12 @@ class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlC
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf conditionalEnabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "enabled") return 2;
+            if (name == "conditionalEnabled") return 3;
+            return -1;
+        }
 };
 
 class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgDefBearerTraffic : public ydk::Enum
@@ -564,6 +605,13 @@ class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlC
         static const ydk::Enum::YLeaf atmSvcAal2;
         static const ydk::Enum::YLeaf atmSvcAal1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipPvcAal5") return 1;
+            if (name == "atmPvcAal2") return 2;
+            if (name == "atmSvcAal2") return 3;
+            if (name == "atmSvcAal1") return 4;
+            return -1;
+        }
 };
 
 class CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex : public ydk::Enum
@@ -587,6 +635,26 @@ class CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRs
         static const ydk::Enum::YLeaf hugeipcbuffer;
         static const ydk::Enum::YLeaf mblkipcbuffer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cpu") return 1;
+            if (name == "staticmemory") return 2;
+            if (name == "dynamicmemory") return 3;
+            if (name == "sysmemory") return 4;
+            if (name == "commbuffer") return 5;
+            if (name == "msgq") return 6;
+            if (name == "atmq") return 7;
+            if (name == "svccongestion") return 8;
+            if (name == "rsvpq") return 9;
+            if (name == "dspq") return 10;
+            if (name == "h248congestion") return 11;
+            if (name == "callpersec") return 12;
+            if (name == "smallipcbuffer") return 13;
+            if (name == "mediumipcbuffer") return 14;
+            if (name == "largeipcbuffer") return 15;
+            if (name == "hugeipcbuffer") return 16;
+            if (name == "mblkipcbuffer") return 17;
+            return -1;
+        }
 };
 
 

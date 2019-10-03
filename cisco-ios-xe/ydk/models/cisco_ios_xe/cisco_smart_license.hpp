@@ -1125,6 +1125,11 @@ class TransportTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf transport_type_callhome;
         static const ydk::Enum::YLeaf transport_type_smart;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "transport-type-callhome") return 0;
+            if (name == "transport-type-smart") return 1;
+            return -1;
+        }
 };
 
 class ErrorEnum : public ydk::Enum
@@ -1275,6 +1280,153 @@ class ErrorEnum : public ydk::Enum
         static const ydk::Enum::YLeaf transporttype;
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "success") return 0;
+            if (name == "malloc") return 1;
+            if (name == "nullpointer") return 2;
+            if (name == "error3") return 3;
+            if (name == "error4") return 4;
+            if (name == "error5") return 5;
+            if (name == "BadInputParams") return 6;
+            if (name == "error7") return 7;
+            if (name == "badhandle") return 8;
+            if (name == "notfound") return 9;
+            if (name == "notsupported") return 10;
+            if (name == "alreadyinit") return 11;
+            if (name == "notinit") return 12;
+            if (name == "smfailtocreate") return 13;
+            if (name == "smfailtorun") return 14;
+            if (name == "smfailtoinit") return 15;
+            if (name == "smfailtodestroy") return 16;
+            if (name == "msgparse") return 17;
+            if (name == "msgbuild") return 18;
+            if (name == "notenabled") return 19;
+            if (name == "invalidrequest") return 20;
+            if (name == "init") return 21;
+            if (name == "failtosetstate") return 22;
+            if (name == "unsupportedresponse") return 23;
+            if (name == "invalidresponse") return 24;
+            if (name == "storagefailtostore") return 25;
+            if (name == "storagefailtoretrieve") return 26;
+            if (name == "nullccoidtoken") return 27;
+            if (name == "matchidentifier") return 28;
+            if (name == "matchvendor") return 29;
+            if (name == "matchnonce") return 30;
+            if (name == "commdisabled") return 31;
+            if (name == "commsend") return 32;
+            if (name == "commresponse") return 33;
+            if (name == "communkown") return 34;
+            if (name == "smpostnotallow") return 35;
+            if (name == "reqmsgmissingmandatoryfield") return 36;
+            if (name == "responsefailed") return 37;
+            if (name == "pinotinit") return 38;
+            if (name == "alreadyenabled") return 39;
+            if (name == "alreadyregistered") return 40;
+            if (name == "certinvalid") return 41;
+            if (name == "certexpired") return 42;
+            if (name == "notregistered") return 43;
+            if (name == "csrgenerationfailed") return 44;
+            if (name == "verifysignaturefailed") return 45;
+            if (name == "generatesignaturefailed") return 46;
+            if (name == "signcertverificationfailed") return 47;
+            if (name == "nodecertverificationfailed") return 48;
+            if (name == "parsecertificatefailed") return 49;
+            if (name == "cryptorootcaimportfailed") return 50;
+            if (name == "taginvalid") return 51;
+            if (name == "standby") return 52;
+            if (name == "registrationinprogress") return 53;
+            if (name == "commretry") return 54;
+            if (name == "authrenewinprogress") return 55;
+            if (name == "idcertrenewinprogress") return 56;
+            if (name == "noudichange") return 57;
+            if (name == "callhomeserviceoff") return 58;
+            if (name == "msgexecinprogress") return 59;
+            if (name == "msgexecinproglocked") return 60;
+            if (name == "certmatchessubsetudis") return 61;
+            if (name == "storagegroupchangeincomplete") return 62;
+            if (name == "storagemgmtnotinit") return 63;
+            if (name == "tspathnotchanged") return 64;
+            if (name == "cryptoinitnotcompleted") return 65;
+            if (name == "notinunidentified") return 66;
+            if (name == "platformpathinvalid") return 67;
+            if (name == "platformudiinvalid") return 68;
+            if (name == "storageobjfailtocreate") return 69;
+            if (name == "storageobjfailtoerase") return 70;
+            if (name == "storageobjdoesnotexist") return 71;
+            if (name == "messageeventexceedspeer") return 72;
+            if (name == "codevalidationfailed") return 73;
+            if (name == "reserved") return 74;
+            if (name == "noreservationinprogress") return 75;
+            if (name == "noauthorizationinstalled") return 76;
+            if (name == "reservationmismatch") return 77;
+            if (name == "notreservationmode") return 78;
+            if (name == "reservationerror") return 79;
+            if (name == "sysmgrinit") return 80;
+            if (name == "alreadyexists") return 81;
+            if (name == "listinsertfailed") return 82;
+            if (name == "sessionmgmtnotinit") return 83;
+            if (name == "listinitfailed") return 84;
+            if (name == "listbusy") return 85;
+            if (name == "noclients") return 86;
+            if (name == "ipc") return 87;
+            if (name == "ipcopen") return 88;
+            if (name == "ipcinit") return 89;
+            if (name == "ipcconnect") return 90;
+            if (name == "ipcevents") return 91;
+            if (name == "ipcmgmt") return 92;
+            if (name == "ipcsend") return 93;
+            if (name == "ipcreceive") return 94;
+            if (name == "ipctimeout") return 95;
+            if (name == "enqueuefailed") return 96;
+            if (name == "dequeuefailed") return 97;
+            if (name == "shuttingdown") return 98;
+            if (name == "couldnotvalidatetrustchain") return 99;
+            if (name == "reservationalreadyinstalled") return 100;
+            if (name == "reservationinstallparsefail") return 101;
+            if (name == "base64encoding") return 102;
+            if (name == "base64decoding") return 103;
+            if (name == "invalidsoftwareidtag") return 104;
+            if (name == "certificatemismatch") return 105;
+            if (name == "noreservation") return 106;
+            if (name == "agentunreachable") return 107;
+            if (name == "ignoreevent") return 108;
+            if (name == "b58overflow") return 109;
+            if (name == "b58decode") return 110;
+            if (name == "b58badlen") return 111;
+            if (name == "b58invdigit") return 112;
+            if (name == "b58decodeoverflow") return 113;
+            if (name == "reservationversionoutofbound") return 114;
+            if (name == "base58encode") return 115;
+            if (name == "duplicatedentry") return 116;
+            if (name == "missingentry") return 117;
+            if (name == "badpeerinfoformat") return 118;
+            if (name == "badapplicationhaattributedataset") return 119;
+            if (name == "reservationinprogress") return 120;
+            if (name == "xdmcreatehandle") return 121;
+            if (name == "versionmismatchinentitlementrsp") return 122;
+            if (name == "harolenotsupported") return 123;
+            if (name == "apphainvalidcharacter") return 124;
+            if (name == "apphaaddpeerfromsamedevice") return 125;
+            if (name == "apphaappduplicatedinstance") return 126;
+            if (name == "versionmismatchinregresponse") return 127;
+            if (name == "conversionnocb") return 128;
+            if (name == "conversionnotallowed") return 129;
+            if (name == "conversioninprogress") return 130;
+            if (name == "conversionalreadystarted") return 131;
+            if (name == "conversionnotenabled") return 132;
+            if (name == "versionconversionnotsupported") return 133;
+            if (name == "noconversioninprogress") return 134;
+            if (name == "cryptoversionmismatch") return 135;
+            if (name == "conversionstoppedpartially") return 136;
+            if (name == "utilityenabled") return 137;
+            if (name == "utilitynotenabled") return 138;
+            if (name == "transportnotavailable") return 139;
+            if (name == "fqdn") return 140;
+            if (name == "thirdparty") return 141;
+            if (name == "transporttype") return 142;
+            if (name == "max") return 143;
+            return -1;
+        }
 };
 
 class UtilityReportingTypeEnum : public ydk::Enum
@@ -1284,6 +1436,12 @@ class UtilityReportingTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf utility_reporting_type_subscription;
         static const ydk::Enum::YLeaf utility_reporting_type_certificate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "utility-reporting-type-none") return 0;
+            if (name == "utility-reporting-type-subscription") return 1;
+            if (name == "utility-reporting-type-certificate") return 2;
+            return -1;
+        }
 };
 
 class EnforcementModeEnum : public ydk::Enum
@@ -1300,6 +1458,19 @@ class EnforcementModeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf enforcement_invalid_tag;
         static const ydk::Enum::YLeaf enforcement_disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enforcement-waiting") return 0;
+            if (name == "enforcement-in-compliance") return 1;
+            if (name == "enforcement-out-of-compliance") return 2;
+            if (name == "enforcement-overage") return 3;
+            if (name == "enforcement-evaluation") return 4;
+            if (name == "enforcement-evaluation-expired") return 5;
+            if (name == "enforcement-authorization-expired") return 6;
+            if (name == "enforcement-reservation-in-compliance") return 7;
+            if (name == "enforcement-invalid-tag") return 8;
+            if (name == "enforcement-disabled") return 9;
+            return -1;
+        }
 };
 
 class AuthorizationStateEnum : public ydk::Enum
@@ -1313,6 +1484,16 @@ class AuthorizationStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf auth_state_out_of_compliance;
         static const ydk::Enum::YLeaf auth_state_authorization_expired;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auth-state-none") return 0;
+            if (name == "auth-state-eval") return 1;
+            if (name == "auth-state-eval-expired") return 2;
+            if (name == "auth-state-authorized") return 3;
+            if (name == "auth-state-authorized-reservation") return 4;
+            if (name == "auth-state-out-of-compliance") return 5;
+            if (name == "auth-state-authorization-expired") return 6;
+            return -1;
+        }
 };
 
 class RegistrationStateEnum : public ydk::Enum
@@ -1324,6 +1505,14 @@ class RegistrationStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf reg_state_retry;
         static const ydk::Enum::YLeaf reg_state_failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reg-state-not-registered") return 0;
+            if (name == "reg-state-complete") return 1;
+            if (name == "reg-state-in-progress") return 2;
+            if (name == "reg-state-retry") return 3;
+            if (name == "reg-state-failed") return 4;
+            return -1;
+        }
 };
 
 class NotifRegisterFailureEnum : public ydk::Enum
@@ -1333,6 +1522,12 @@ class NotifRegisterFailureEnum : public ydk::Enum
         static const ydk::Enum::YLeaf already_registered_failure;
         static const ydk::Enum::YLeaf de_register_failure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "general-failure") return 0;
+            if (name == "already-registered-failure") return 1;
+            if (name == "de-register-failure") return 2;
+            return -1;
+        }
 };
 
 

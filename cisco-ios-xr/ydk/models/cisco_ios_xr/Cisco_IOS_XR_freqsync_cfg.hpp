@@ -46,6 +46,11 @@ class FsyncClockSource : public ydk::Enum
         static const ydk::Enum::YLeaf system;
         static const ydk::Enum::YLeaf independent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "system") return 1;
+            if (name == "independent") return 3;
+            return -1;
+        }
 };
 
 class FsyncSourceSelectionLogging : public ydk::Enum
@@ -54,6 +59,11 @@ class FsyncSourceSelectionLogging : public ydk::Enum
         static const ydk::Enum::YLeaf changes;
         static const ydk::Enum::YLeaf errors;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "changes") return 1;
+            if (name == "errors") return 2;
+            return -1;
+        }
 };
 
 class FsyncSystemTimingMode : public ydk::Enum
@@ -62,6 +72,11 @@ class FsyncSystemTimingMode : public ydk::Enum
         static const ydk::Enum::YLeaf line_only;
         static const ydk::Enum::YLeaf clock_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "line-only") return 2;
+            if (name == "clock-only") return 3;
+            return -1;
+        }
 };
 
 

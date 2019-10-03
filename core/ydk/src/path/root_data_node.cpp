@@ -29,11 +29,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 // class ydk::RootDataImpl
 //////////////////////////////////////////////////////////////////////////
-ydk::path::RootDataImpl::RootDataImpl(const SchemaNode& schema, struct ly_ctx* ctx, const std::string & path) : DataNodeImpl{nullptr, nullptr, nullptr}, m_schema{schema}, m_ctx{ctx}, m_path{path}
+ydk::path::RootDataImpl::RootDataImpl(const SchemaNode& schema, struct ly_ctx* ctx, const std::string & path) :
+ DataNodeImpl(nullptr, nullptr, nullptr), m_schema(schema), m_ctx(ctx), m_path(path)
 {
 }
 
-ydk::path::RootDataImpl::RootDataImpl(const SchemaNode& schema, struct ly_ctx* ctx, const std::string & path, const std::shared_ptr<RepositoryPtr> & repo) : DataNodeImpl{nullptr, nullptr, repo}, m_schema{schema}, m_ctx{ctx}, m_path{path}, m_priv_repo{repo}
+ydk::path::RootDataImpl::RootDataImpl(const SchemaNode& schema, struct ly_ctx* ctx, const std::string & path, const std::shared_ptr<RepositoryPtr> & repo) :
+ DataNodeImpl(nullptr, nullptr, repo), m_schema(schema), m_ctx(ctx), m_path(path), m_priv_repo(repo)
 {
 }
 

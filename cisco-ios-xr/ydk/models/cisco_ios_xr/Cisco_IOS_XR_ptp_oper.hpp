@@ -1175,6 +1175,9 @@ class Ptp::Nodes::Node::PacketCounters::DropReasons : public ydk::Entity
         ydk::YLeaf no_offload_session; //type: uint32
         ydk::YLeaf not_supported; //type: uint32
         ydk::YLeaf min_clock_class; //type: uint32
+        ydk::YLeaf bad_clock_class; //type: uint32
+        ydk::YLeaf steps_removed; //type: uint32
+        ydk::YLeaf reserved_clock_id; //type: uint32
         ydk::YLeaf g8265_1_incompatible; //type: uint32
         ydk::YLeaf g8275_1_incompatible; //type: uint32
         ydk::YLeaf g8275_2_incompatible; //type: uint32
@@ -4017,6 +4020,12 @@ class PtpBagRestrictPortState : public ydk::Enum
         static const ydk::Enum::YLeaf slave_only;
         static const ydk::Enum::YLeaf master_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "slave-only") return 1;
+            if (name == "master-only") return 2;
+            return -1;
+        }
 };
 
 class PtpBagPortState : public ydk::Enum
@@ -4031,6 +4040,17 @@ class PtpBagPortState : public ydk::Enum
         static const ydk::Enum::YLeaf slave;
         static const ydk::Enum::YLeaf faulty;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initializing") return 0;
+            if (name == "listen") return 1;
+            if (name == "passive") return 2;
+            if (name == "pre-master") return 3;
+            if (name == "master") return 4;
+            if (name == "uncalibrated") return 5;
+            if (name == "slave") return 6;
+            if (name == "faulty") return 7;
+            return -1;
+        }
 };
 
 class PtpBagEncap : public ydk::Enum
@@ -4041,6 +4061,13 @@ class PtpBagEncap : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "ethernet") return 1;
+            if (name == "ipv4") return 2;
+            if (name == "ipv6") return 3;
+            return -1;
+        }
 };
 
 class PtpBagDelayMechanism : public ydk::Enum
@@ -4049,6 +4076,11 @@ class PtpBagDelayMechanism : public ydk::Enum
         static const ydk::Enum::YLeaf e2e;
         static const ydk::Enum::YLeaf p2p;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "e2e") return 0;
+            if (name == "p2p") return 1;
+            return -1;
+        }
 };
 
 class PtpBagTelecomClock : public ydk::Enum
@@ -4058,6 +4090,12 @@ class PtpBagTelecomClock : public ydk::Enum
         static const ydk::Enum::YLeaf boundary;
         static const ydk::Enum::YLeaf slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "grandmaster") return 0;
+            if (name == "boundary") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
 };
 
 class ImStateEnum : public ydk::Enum
@@ -4083,6 +4121,28 @@ class ImStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf im_state_unknown;
         static const ydk::Enum::YLeaf im_state_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-state-not-ready") return 0;
+            if (name == "im-state-admin-down") return 1;
+            if (name == "im-state-down") return 2;
+            if (name == "im-state-up") return 3;
+            if (name == "im-state-shutdown") return 4;
+            if (name == "im-state-err-disable") return 5;
+            if (name == "im-state-down-immediate") return 6;
+            if (name == "im-state-down-immediate-admin") return 7;
+            if (name == "im-state-down-graceful") return 8;
+            if (name == "im-state-begin-shutdown") return 9;
+            if (name == "im-state-end-shutdown") return 10;
+            if (name == "im-state-begin-error-disable") return 11;
+            if (name == "im-state-end-error-disable") return 12;
+            if (name == "im-state-begin-down-graceful") return 13;
+            if (name == "im-state-reset") return 14;
+            if (name == "im-state-operational") return 15;
+            if (name == "im-state-not-operational") return 16;
+            if (name == "im-state-unknown") return 17;
+            if (name == "im-state-last") return 18;
+            return -1;
+        }
 };
 
 class PtpBagCommunicationModel : public ydk::Enum
@@ -4092,6 +4152,12 @@ class PtpBagCommunicationModel : public ydk::Enum
         static const ydk::Enum::YLeaf mixed_mode;
         static const ydk::Enum::YLeaf multicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            if (name == "mixed-mode") return 1;
+            if (name == "multicast") return 2;
+            return -1;
+        }
 };
 
 class PtpBagClockTimeSource : public ydk::Enum
@@ -4107,6 +4173,18 @@ class PtpBagClockTimeSource : public ydk::Enum
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf internal_oscillator;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "atomic") return 16;
+            if (name == "gps") return 32;
+            if (name == "terrestrial-radio") return 48;
+            if (name == "ptp") return 64;
+            if (name == "ntp") return 80;
+            if (name == "hand-set") return 96;
+            if (name == "other") return 144;
+            if (name == "internal-oscillator") return 160;
+            return -1;
+        }
 };
 
 class PtpBagClockLeapSeconds : public ydk::Enum
@@ -4116,6 +4194,12 @@ class PtpBagClockLeapSeconds : public ydk::Enum
         static const ydk::Enum::YLeaf leap59;
         static const ydk::Enum::YLeaf leap61;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "leap59") return 1;
+            if (name == "leap61") return 2;
+            return -1;
+        }
 };
 
 class PtpBagProfile : public ydk::Enum
@@ -4126,6 +4210,13 @@ class PtpBagProfile : public ydk::Enum
         static const ydk::Enum::YLeaf g82751;
         static const ydk::Enum::YLeaf g82752;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "g82651") return 1;
+            if (name == "g82751") return 2;
+            if (name == "g82752") return 3;
+            return -1;
+        }
 };
 
 class PtpBagClockTimescale : public ydk::Enum
@@ -4134,6 +4225,11 @@ class PtpBagClockTimescale : public ydk::Enum
         static const ydk::Enum::YLeaf ptp;
         static const ydk::Enum::YLeaf arb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ptp") return 0;
+            if (name == "arb") return 1;
+            return -1;
+        }
 };
 
 

@@ -25,6 +25,20 @@ class TcpFsmState : public ydk::Enum
         static const ydk::Enum::YLeaf closing;
         static const ydk::Enum::YLeaf timewait;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "closed") return 0;
+            if (name == "listen") return 1;
+            if (name == "synsent") return 2;
+            if (name == "synrcvd") return 3;
+            if (name == "established") return 4;
+            if (name == "finwait1") return 5;
+            if (name == "finwait2") return 6;
+            if (name == "closewait") return 7;
+            if (name == "lastack") return 8;
+            if (name == "closing") return 9;
+            if (name == "timewait") return 10;
+            return -1;
+        }
 };
 
 class AfiSafi : public ydk::Enum
@@ -50,6 +64,28 @@ class AfiSafi : public ydk::Enum
         static const ydk::Enum::YLeaf vpnv4_flowspec;
         static const ydk::Enum::YLeaf vpnv6_flowspec;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-mdt") return 0;
+            if (name == "ipv4-multicast") return 1;
+            if (name == "ipv4-unicast") return 2;
+            if (name == "ipv4-mvpn") return 3;
+            if (name == "ipv4-flowspec") return 4;
+            if (name == "ipv6-multicast") return 5;
+            if (name == "ipv6-unicast") return 6;
+            if (name == "ipv6-mvpn") return 7;
+            if (name == "ipv6-flowspec") return 8;
+            if (name == "l2vpn-vpls") return 9;
+            if (name == "l2vpn-e-vpn") return 10;
+            if (name == "nsap-unicast") return 11;
+            if (name == "rtfilter-unicast") return 12;
+            if (name == "vpnv4-multicast") return 13;
+            if (name == "vpnv4-unicast") return 14;
+            if (name == "vpnv6-unicast") return 15;
+            if (name == "vpnv6-multicast") return 16;
+            if (name == "vpnv4-flowspec") return 17;
+            if (name == "vpnv6-flowspec") return 18;
+            return -1;
+        }
 };
 
 

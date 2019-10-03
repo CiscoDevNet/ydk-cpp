@@ -38,6 +38,33 @@ class NasPortValue : public ydk::Enum
         static const ydk::Enum::YLeaf virtual_ipoeovlan;
         static const ydk::Enum::YLeaf virtual_ipoeoqinq;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "async") return 0;
+            if (name == "sync") return 1;
+            if (name == "isdn") return 2;
+            if (name == "isdn-async-v120") return 3;
+            if (name == "isdn-async-v110") return 4;
+            if (name == "virtual") return 5;
+            if (name == "isdn-async-piafs") return 6;
+            if (name == "x75") return 9;
+            if (name == "ethernet") return 15;
+            if (name == "pppoa") return 30;
+            if (name == "pppoeoa") return 31;
+            if (name == "pppoeoe") return 32;
+            if (name == "pppoeovlan") return 33;
+            if (name == "pppoeoqinq") return 34;
+            if (name == "virtual-pppoeoe") return 35;
+            if (name == "virtual-pppoeovlan") return 36;
+            if (name == "virtual-pppoeoqinaq") return 37;
+            if (name == "ipsec") return 38;
+            if (name == "ipoeoe") return 39;
+            if (name == "ipoeovlan") return 40;
+            if (name == "ipoeoqinq") return 41;
+            if (name == "virtual-ipoeoe") return 42;
+            if (name == "virtual-ipoeovlan") return 43;
+            if (name == "virtual-ipoeoqinq") return 44;
+            return -1;
+        }
 };
 
 class AaaServiceAccounting : public ydk::Enum
@@ -47,6 +74,12 @@ class AaaServiceAccounting : public ydk::Enum
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf brief;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "extended") return 1;
+            if (name == "brief") return 2;
+            return -1;
+        }
 };
 
 

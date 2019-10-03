@@ -1641,6 +1641,7 @@ class Isis::Instances::Instance : public ydk::Entity
         class Srms; //type: Isis::Instances::Instance::Srms
         class ErrorLog; //type: Isis::Instances::Instance::ErrorLog
         class CheckpointInterfaces; //type: Isis::Instances::Instance::CheckpointInterfaces
+        class SrLabels; //type: Isis::Instances::Instance::SrLabels
         class InterfaceStatistics; //type: Isis::Instances::Instance::InterfaceStatistics
         class Protocol; //type: Isis::Instances::Instance::Protocol
         class NeighborSummaries; //type: Isis::Instances::Instance::NeighborSummaries
@@ -1661,6 +1662,7 @@ class Isis::Instances::Instance : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Srms> srms;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::ErrorLog> error_log;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::CheckpointInterfaces> checkpoint_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels> sr_labels;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::InterfaceStatistics> interface_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Protocol> protocol;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NeighborSummaries> neighbor_summaries;

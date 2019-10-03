@@ -42,6 +42,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -151,6 +152,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -437,6 +439,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topology-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -826,6 +829,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     max_label_supported{YType::uint8, "max-label-supported"},
     max_bkp_label_supported{YType::uint8, "max-bkp-label-supported"},
     max_srte_label_supported{YType::uint8, "max-srte-label-supported"},
+    max_srat_label_supported{YType::uint8, "max-srat-label-supported"},
     level1ldp_sync_enabled{YType::boolean, "level1ldp-sync-enabled"},
     level2ldp_sync_enabled{YType::boolean, "level2ldp-sync-enabled"},
     ldp_sync_status{YType::boolean, "ldp-sync-status"},
@@ -837,7 +841,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     level1pp_metric{YType::uint32, "level1pp-metric"},
     level2pp_metric{YType::uint32, "level2pp-metric"},
     level1pp_configured{YType::boolean, "level1pp-configured"},
-    level2pp_configured{YType::boolean, "level2pp-configured"}
+    level2pp_configured{YType::boolean, "level2pp-configured"},
+    link_group_name{YType::str, "link-group-name"}
         ,
     adjacency_form_status(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus>())
     , adv_prefix_status(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus>())
@@ -872,6 +877,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
 	|| max_label_supported.is_set
 	|| max_bkp_label_supported.is_set
 	|| max_srte_label_supported.is_set
+	|| max_srat_label_supported.is_set
 	|| level1ldp_sync_enabled.is_set
 	|| level2ldp_sync_enabled.is_set
 	|| ldp_sync_status.is_set
@@ -884,6 +890,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
 	|| level2pp_metric.is_set
 	|| level1pp_configured.is_set
 	|| level2pp_configured.is_set
+	|| link_group_name.is_set
 	|| (adjacency_form_status !=  nullptr && adjacency_form_status->has_data())
 	|| (adv_prefix_status !=  nullptr && adv_prefix_status->has_data())
 	|| (level1_frr !=  nullptr && level1_frr->has_data())
@@ -905,6 +912,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
 	|| ydk::is_set(max_label_supported.yfilter)
 	|| ydk::is_set(max_bkp_label_supported.yfilter)
 	|| ydk::is_set(max_srte_label_supported.yfilter)
+	|| ydk::is_set(max_srat_label_supported.yfilter)
 	|| ydk::is_set(level1ldp_sync_enabled.yfilter)
 	|| ydk::is_set(level2ldp_sync_enabled.yfilter)
 	|| ydk::is_set(ldp_sync_status.yfilter)
@@ -917,6 +925,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
 	|| ydk::is_set(level2pp_metric.yfilter)
 	|| ydk::is_set(level1pp_configured.yfilter)
 	|| ydk::is_set(level2pp_configured.yfilter)
+	|| ydk::is_set(link_group_name.yfilter)
 	|| (adjacency_form_status !=  nullptr && adjacency_form_status->has_operation())
 	|| (adv_prefix_status !=  nullptr && adv_prefix_status->has_operation())
 	|| (level1_frr !=  nullptr && level1_frr->has_operation())
@@ -941,6 +950,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interf
     if (max_label_supported.is_set || is_set(max_label_supported.yfilter)) leaf_name_data.push_back(max_label_supported.get_name_leafdata());
     if (max_bkp_label_supported.is_set || is_set(max_bkp_label_supported.yfilter)) leaf_name_data.push_back(max_bkp_label_supported.get_name_leafdata());
     if (max_srte_label_supported.is_set || is_set(max_srte_label_supported.yfilter)) leaf_name_data.push_back(max_srte_label_supported.get_name_leafdata());
+    if (max_srat_label_supported.is_set || is_set(max_srat_label_supported.yfilter)) leaf_name_data.push_back(max_srat_label_supported.get_name_leafdata());
     if (level1ldp_sync_enabled.is_set || is_set(level1ldp_sync_enabled.yfilter)) leaf_name_data.push_back(level1ldp_sync_enabled.get_name_leafdata());
     if (level2ldp_sync_enabled.is_set || is_set(level2ldp_sync_enabled.yfilter)) leaf_name_data.push_back(level2ldp_sync_enabled.get_name_leafdata());
     if (ldp_sync_status.is_set || is_set(ldp_sync_status.yfilter)) leaf_name_data.push_back(ldp_sync_status.get_name_leafdata());
@@ -953,6 +963,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interf
     if (level2pp_metric.is_set || is_set(level2pp_metric.yfilter)) leaf_name_data.push_back(level2pp_metric.get_name_leafdata());
     if (level1pp_configured.is_set || is_set(level1pp_configured.yfilter)) leaf_name_data.push_back(level1pp_configured.get_name_leafdata());
     if (level2pp_configured.is_set || is_set(level2pp_configured.yfilter)) leaf_name_data.push_back(level2pp_configured.get_name_leafdata());
+    if (link_group_name.is_set || is_set(link_group_name.yfilter)) leaf_name_data.push_back(link_group_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1087,6 +1098,12 @@ void Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
         max_srte_label_supported.value_namespace = name_space;
         max_srte_label_supported.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "max-srat-label-supported")
+    {
+        max_srat_label_supported = value;
+        max_srat_label_supported.value_namespace = name_space;
+        max_srat_label_supported.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "level1ldp-sync-enabled")
     {
         level1ldp_sync_enabled = value;
@@ -1159,6 +1176,12 @@ void Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
         level2pp_configured.value_namespace = name_space;
         level2pp_configured.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "link-group-name")
+    {
+        link_group_name = value;
+        link_group_name.value_namespace = name_space;
+        link_group_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1190,6 +1213,10 @@ void Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
     if(value_path == "max-srte-label-supported")
     {
         max_srte_label_supported.yfilter = yfilter;
+    }
+    if(value_path == "max-srat-label-supported")
+    {
+        max_srat_label_supported.yfilter = yfilter;
     }
     if(value_path == "level1ldp-sync-enabled")
     {
@@ -1239,11 +1266,15 @@ void Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::E
     {
         level2pp_configured.yfilter = yfilter;
     }
+    if(value_path == "link-group-name")
+    {
+        link_group_name.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "adjacency-form-status" || name == "adv-prefix-status" || name == "level1-frr" || name == "level2-frr" || name == "manual-adj-sid" || name == "level1-metric" || name == "level2-metric" || name == "level1-weight" || name == "level2-weight" || name == "max-label-supported" || name == "max-bkp-label-supported" || name == "max-srte-label-supported" || name == "level1ldp-sync-enabled" || name == "level2ldp-sync-enabled" || name == "ldp-sync-status" || name == "ld-pv6-sync-status" || name == "level1-offset-metric" || name == "level2-offset-metric" || name == "level1-lkgp-configured" || name == "level2-lkgp-configured" || name == "level1pp-metric" || name == "level2pp-metric" || name == "level1pp-configured" || name == "level2pp-configured")
+    if(name == "adjacency-form-status" || name == "adv-prefix-status" || name == "level1-frr" || name == "level2-frr" || name == "manual-adj-sid" || name == "level1-metric" || name == "level2-metric" || name == "level1-weight" || name == "level2-weight" || name == "max-label-supported" || name == "max-bkp-label-supported" || name == "max-srte-label-supported" || name == "max-srat-label-supported" || name == "level1ldp-sync-enabled" || name == "level2ldp-sync-enabled" || name == "ldp-sync-status" || name == "ld-pv6-sync-status" || name == "level1-offset-metric" || name == "level2-offset-metric" || name == "level1-lkgp-configured" || name == "level2-lkgp-configured" || name == "level1pp-metric" || name == "level2pp-metric" || name == "level1pp-configured" || name == "level2pp-configured" || name == "link-group-name")
         return true;
     return false;
 }
@@ -1820,6 +1851,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tie-breaker";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2103,6 +2135,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tie-breaker";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2204,6 +2237,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "manual-adj-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2331,6 +2365,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "per-address-family-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3215,6 +3250,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "forwarding-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3624,6 +3660,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4049,6 +4086,7 @@ std::string Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacenc
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-adjacency";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4260,6 +4298,7 @@ std::string Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacenc
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-adjacency-per-address-family-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6808,6 +6847,7 @@ std::string Isis::Instances::Instance::ErrorLog::LogEntry::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "log-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7380,6 +7420,608 @@ bool Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface::has_l
     return false;
 }
 
+Isis::Instances::Instance::SrLabels::SrLabels()
+    :
+    sr_label(this, {"label"})
+{
+
+    yang_name = "sr-labels"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::SrLabels::~SrLabels()
+{
+}
+
+bool Isis::Instances::Instance::SrLabels::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_label.len(); index++)
+    {
+        if(sr_label[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::SrLabels::has_operation() const
+{
+    for (std::size_t index=0; index<sr_label.len(); index++)
+    {
+        if(sr_label[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::SrLabels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-labels";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::SrLabels::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::SrLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-label")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::SrLabels::SrLabel>();
+        ent_->parent = this;
+        sr_label.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::SrLabels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sr_label.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::SrLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::SrLabels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::SrLabels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-label")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::SrLabel()
+    :
+    label{YType::uint32, "label"},
+    label_type{YType::enumeration, "label-type"},
+    label_flags{YType::uint8, "label-flags"},
+    label_refcount{YType::uint8, "label-refcount"},
+    label_value{YType::uint32, "label-value"},
+    label_interface{YType::str, "label-interface"},
+    label_ifh{YType::str, "label-ifh"},
+    label_table_id{YType::uint32, "label-table-id"},
+    label_af_id{YType::enumeration, "label-af-id"}
+        ,
+    label_prefix(std::make_shared<Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix>())
+{
+    label_prefix->parent = this;
+
+    yang_name = "sr-label"; yang_parent_name = "sr-labels"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::~SrLabel()
+{
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::has_data() const
+{
+    if (is_presence_container) return true;
+    return label.is_set
+	|| label_type.is_set
+	|| label_flags.is_set
+	|| label_refcount.is_set
+	|| label_value.is_set
+	|| label_interface.is_set
+	|| label_ifh.is_set
+	|| label_table_id.is_set
+	|| label_af_id.is_set
+	|| (label_prefix !=  nullptr && label_prefix->has_data());
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(label_flags.yfilter)
+	|| ydk::is_set(label_refcount.yfilter)
+	|| ydk::is_set(label_value.yfilter)
+	|| ydk::is_set(label_interface.yfilter)
+	|| ydk::is_set(label_ifh.yfilter)
+	|| ydk::is_set(label_table_id.yfilter)
+	|| ydk::is_set(label_af_id.yfilter)
+	|| (label_prefix !=  nullptr && label_prefix->has_operation());
+}
+
+std::string Isis::Instances::Instance::SrLabels::SrLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-label";
+    ADD_KEY_TOKEN(label, "label");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::SrLabels::SrLabel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (label_flags.is_set || is_set(label_flags.yfilter)) leaf_name_data.push_back(label_flags.get_name_leafdata());
+    if (label_refcount.is_set || is_set(label_refcount.yfilter)) leaf_name_data.push_back(label_refcount.get_name_leafdata());
+    if (label_value.is_set || is_set(label_value.yfilter)) leaf_name_data.push_back(label_value.get_name_leafdata());
+    if (label_interface.is_set || is_set(label_interface.yfilter)) leaf_name_data.push_back(label_interface.get_name_leafdata());
+    if (label_ifh.is_set || is_set(label_ifh.yfilter)) leaf_name_data.push_back(label_ifh.get_name_leafdata());
+    if (label_table_id.is_set || is_set(label_table_id.yfilter)) leaf_name_data.push_back(label_table_id.get_name_leafdata());
+    if (label_af_id.is_set || is_set(label_af_id.yfilter)) leaf_name_data.push_back(label_af_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::SrLabels::SrLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "label-prefix")
+    {
+        if(label_prefix == nullptr)
+        {
+            label_prefix = std::make_shared<Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix>();
+        }
+        return label_prefix;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::SrLabels::SrLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(label_prefix != nullptr)
+    {
+        _children["label-prefix"] = label_prefix;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-type")
+    {
+        label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-flags")
+    {
+        label_flags = value;
+        label_flags.value_namespace = name_space;
+        label_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-refcount")
+    {
+        label_refcount = value;
+        label_refcount.value_namespace = name_space;
+        label_refcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-value")
+    {
+        label_value = value;
+        label_value.value_namespace = name_space;
+        label_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-interface")
+    {
+        label_interface = value;
+        label_interface.value_namespace = name_space;
+        label_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-ifh")
+    {
+        label_ifh = value;
+        label_ifh.value_namespace = name_space;
+        label_ifh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-table-id")
+    {
+        label_table_id = value;
+        label_table_id.value_namespace = name_space;
+        label_table_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-af-id")
+    {
+        label_af_id = value;
+        label_af_id.value_namespace = name_space;
+        label_af_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "label-flags")
+    {
+        label_flags.yfilter = yfilter;
+    }
+    if(value_path == "label-refcount")
+    {
+        label_refcount.yfilter = yfilter;
+    }
+    if(value_path == "label-value")
+    {
+        label_value.yfilter = yfilter;
+    }
+    if(value_path == "label-interface")
+    {
+        label_interface.yfilter = yfilter;
+    }
+    if(value_path == "label-ifh")
+    {
+        label_ifh.yfilter = yfilter;
+    }
+    if(value_path == "label-table-id")
+    {
+        label_table_id.yfilter = yfilter;
+    }
+    if(value_path == "label-af-id")
+    {
+        label_af_id.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-prefix" || name == "label" || name == "label-type" || name == "label-flags" || name == "label-refcount" || name == "label-value" || name == "label-interface" || name == "label-ifh" || name == "label-table-id" || name == "label-af-id")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::LabelPrefix()
+    :
+    af_name{YType::enumeration, "af-name"}
+        ,
+    ipv4(std::make_shared<Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4>())
+    , ipv6(std::make_shared<Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6>())
+{
+    ipv4->parent = this;
+    ipv6->parent = this;
+
+    yang_name = "label-prefix"; yang_parent_name = "sr-label"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::~LabelPrefix()
+{
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
+}
+
+std::string Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "label-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6>();
+        }
+        return ipv6;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(ipv4 != nullptr)
+    {
+        _children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        _children["ipv6"] = ipv6;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "af-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::Ipv4()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "ipv4"; yang_parent_name = "label-prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::~Ipv4()
+{
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| prefix_length.is_set;
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::Ipv6()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "ipv6"; yang_parent_name = "label-prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::~Ipv6()
+{
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| prefix_length.is_set;
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
+}
+
 Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistics()
     :
     interface_statistic(this, {"interface_name"})
@@ -7867,6 +8509,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9042,6 +9685,7 @@ std::string Isis::Instances::Instance::Protocol::ManualAreaAddress::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "manual-area-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9120,6 +9764,7 @@ std::string Isis::Instances::Instance::Protocol::ActiveAreaAddress::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "active-area-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9224,6 +9869,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topo-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9583,6 +10229,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsLis
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-sh-redist-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9865,6 +10512,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10739,6 +11387,7 @@ std::string Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11050,6 +11699,7 @@ std::string Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceL
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-sh-mesh-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11628,6 +12278,7 @@ std::string Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11961,6 +12612,7 @@ std::string Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-te-tunnel";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

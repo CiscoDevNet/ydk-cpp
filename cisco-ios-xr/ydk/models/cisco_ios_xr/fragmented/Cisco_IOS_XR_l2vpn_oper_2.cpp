@@ -2995,6 +2995,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::S
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6437,6 +6438,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mmrp-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6728,6 +6730,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::
 {
     std::ostringstream path_buffer;
     path_buffer << "message";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6944,6 +6947,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-pw-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8089,6 +8093,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBind
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-dhcp-binding-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15659,6 +15664,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::O
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19070,6 +19076,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterfac
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19545,6 +19552,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterfac
 {
     std::ostringstream path_buffer;
     path_buffer << "evpn-shg-remote-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21743,6 +21751,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterfac
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

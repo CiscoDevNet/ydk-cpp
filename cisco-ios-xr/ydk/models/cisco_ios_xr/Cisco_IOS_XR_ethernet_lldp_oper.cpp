@@ -875,6 +875,7 @@ std::string Lldp::Nodes::Node::Neighbors::Devices::Device::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "device";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1014,6 +1015,7 @@ std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1546,6 +1548,7 @@ std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2064,6 +2067,7 @@ std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Un
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-unknown-tlv-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2255,6 +2259,7 @@ std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Or
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-org-def-tlv-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2474,6 +2479,7 @@ std::string Lldp::Nodes::Node::Neighbors::Details::Detail::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2613,6 +2619,7 @@ std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3145,6 +3152,7 @@ std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3663,6 +3671,7 @@ std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Un
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-unknown-tlv-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3854,6 +3863,7 @@ std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Or
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-org-def-tlv-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4073,6 +4083,7 @@ std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4212,6 +4223,7 @@ std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4744,6 +4756,7 @@ std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5262,6 +5275,7 @@ std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib:
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-unknown-tlv-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5453,6 +5467,7 @@ std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib:
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-org-def-tlv-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5982,6 +5997,7 @@ std::string Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::Lld
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

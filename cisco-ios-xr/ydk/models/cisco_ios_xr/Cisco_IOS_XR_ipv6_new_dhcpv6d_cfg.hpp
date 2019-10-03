@@ -143,6 +143,7 @@ class Dhcpv6::Profiles::Profile::Relay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf link_address; //type: string
         ydk::YLeaf src_intf_name; //type: string
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf iana_route_add; //type: empty
@@ -1537,6 +1538,11 @@ class Action : public ydk::Enum
         static const ydk::Enum::YLeaf allow;
         static const ydk::Enum::YLeaf drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "allow") return 0;
+            if (name == "drop") return 1;
+            return -1;
+        }
 };
 
 class Insert : public ydk::Enum
@@ -1547,6 +1553,13 @@ class Insert : public ydk::Enum
         static const ydk::Enum::YLeaf pppoe;
         static const ydk::Enum::YLeaf received_nodefault;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 0;
+            if (name == "received") return 1;
+            if (name == "pppoe") return 2;
+            if (name == "received-nodefault") return 3;
+            return -1;
+        }
 };
 
 class LinkLayerAddr : public ydk::Enum
@@ -1554,6 +1567,10 @@ class LinkLayerAddr : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "set") return 4;
+            return -1;
+        }
 };
 
 class SubscriberId : public ydk::Enum
@@ -1561,6 +1578,10 @@ class SubscriberId : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf pppoe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pppoe") return 3;
+            return -1;
+        }
 };
 
 

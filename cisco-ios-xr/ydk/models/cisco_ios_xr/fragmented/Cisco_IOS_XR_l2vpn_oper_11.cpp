@@ -13,6 +13,374 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
 
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::ImpostionTailDrop()
+    :
+    packet_counts{YType::uint64, "packet-counts"},
+    byte_counts{YType::uint64, "byte-counts"}
+{
+
+    yang_name = "impostion-tail-drop"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::~ImpostionTailDrop()
+{
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::has_data() const
+{
+    if (is_presence_container) return true;
+    return packet_counts.is_set
+	|| byte_counts.is_set;
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(packet_counts.yfilter)
+	|| ydk::is_set(byte_counts.yfilter);
+}
+
+std::string L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "impostion-tail-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-counts" || name == "byte-counts")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::L2fsbiDrop()
+    :
+    packet_counts{YType::uint64, "packet-counts"},
+    byte_counts{YType::uint64, "byte-counts"}
+{
+
+    yang_name = "l2fsbi-drop"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::~L2fsbiDrop()
+{
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::has_data() const
+{
+    if (is_presence_container) return true;
+    return packet_counts.is_set
+	|| byte_counts.is_set;
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(packet_counts.yfilter)
+	|| ydk::is_set(byte_counts.yfilter);
+}
+
+std::string L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fsbi-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-counts" || name == "byte-counts")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::Multicast()
+    :
+    packet_counts{YType::uint64, "packet-counts"},
+    byte_counts{YType::uint64, "byte-counts"}
+{
+
+    yang_name = "multicast"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::~Multicast()
+{
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::has_data() const
+{
+    if (is_presence_container) return true;
+    return packet_counts.is_set
+	|| byte_counts.is_set;
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(packet_counts.yfilter)
+	|| ydk::is_set(byte_counts.yfilter);
+}
+
+std::string L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-counts" || name == "byte-counts")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::Broadcast()
+    :
+    packet_counts{YType::uint64, "packet-counts"},
+    byte_counts{YType::uint64, "byte-counts"}
+{
+
+    yang_name = "broadcast"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::~Broadcast()
+{
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::has_data() const
+{
+    if (is_presence_container) return true;
+    return packet_counts.is_set
+	|| byte_counts.is_set;
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(packet_counts.yfilter)
+	|| ydk::is_set(byte_counts.yfilter);
+}
+
+std::string L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "broadcast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-counts" || name == "byte-counts")
+        return true;
+    return false;
+}
+
 L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::KnownUnicast()
     :
     packet_counts{YType::uint64, "packet-counts"},
@@ -3474,6 +3842,7 @@ std::string L2vpnv2::Standby::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt
 {
     std::ostringstream path_buffer;
     path_buffer << "import-rt";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3993,6 +4362,7 @@ std::string L2vpnv2::Standby::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt
 {
     std::ostringstream path_buffer;
     path_buffer << "export-rt";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6565,6 +6935,7 @@ std::string L2vpnv2::Standby::ProcFsm::XidInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "xid-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6676,6 +7047,7 @@ std::string L2vpnv2::Standby::ProcFsm::ReportCard::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "report-card";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7116,6 +7488,7 @@ std::string L2vpnv2::Standby::MstpPorts::MstpPort::MstiEntry::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "msti-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7302,6 +7675,7 @@ std::string L2vpnv2::Standby::MstpPorts::MstpPort::MstiEntry::BdEntry::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "bd-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7894,6 +8268,7 @@ std::string L2vpnv2::Standby::GenericInterfaceListDetails::GenericInterfaceListD
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8014,6 +8389,7 @@ std::string L2vpnv2::Standby::GenericInterfaceListDetails::GenericInterfaceListD
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8128,6 +8504,7 @@ std::string L2vpnv2::Standby::GenericInterfaceListDetails::GenericInterfaceListD
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire-ether-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8220,6 +8597,7 @@ std::string L2vpnv2::Standby::GenericInterfaceListDetails::GenericInterfaceListD
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire-iw-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8896,6 +9274,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-pw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13146,6 +13525,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13227,6 +13607,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14092,6 +14473,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14416,6 +14798,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15104,6 +15487,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15185,6 +15569,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16050,6 +16435,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16374,6 +16760,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16948,6 +17335,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17313,6 +17701,7 @@ std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable:
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19948,1298 +20337,6 @@ void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::MacMove::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::SequenceNumber()
-    :
-    sequence_number_sent{YType::uint32, "sequence-number-sent"},
-    sequence_number_expected{YType::uint32, "sequence-number-expected"},
-    bypassed_inbound_sequence_packet{YType::uint64, "bypassed-inbound-sequence-packet"},
-    bypassed_out_sequence_packet{YType::uint64, "bypassed-out-sequence-packet"}
-{
-
-    yang_name = "sequence-number"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::~SequenceNumber()
-{
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::has_data() const
-{
-    if (is_presence_container) return true;
-    return sequence_number_sent.is_set
-	|| sequence_number_expected.is_set
-	|| bypassed_inbound_sequence_packet.is_set
-	|| bypassed_out_sequence_packet.is_set;
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sequence_number_sent.yfilter)
-	|| ydk::is_set(sequence_number_expected.yfilter)
-	|| ydk::is_set(bypassed_inbound_sequence_packet.yfilter)
-	|| ydk::is_set(bypassed_out_sequence_packet.yfilter);
-}
-
-std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sequence-number";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sequence_number_sent.is_set || is_set(sequence_number_sent.yfilter)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
-    if (sequence_number_expected.is_set || is_set(sequence_number_expected.yfilter)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
-    if (bypassed_inbound_sequence_packet.is_set || is_set(bypassed_inbound_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_inbound_sequence_packet.get_name_leafdata());
-    if (bypassed_out_sequence_packet.is_set || is_set(bypassed_out_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_out_sequence_packet.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sequence-number-sent")
-    {
-        sequence_number_sent = value;
-        sequence_number_sent.value_namespace = name_space;
-        sequence_number_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sequence-number-expected")
-    {
-        sequence_number_expected = value;
-        sequence_number_expected.value_namespace = name_space;
-        sequence_number_expected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bypassed-inbound-sequence-packet")
-    {
-        bypassed_inbound_sequence_packet = value;
-        bypassed_inbound_sequence_packet.value_namespace = name_space;
-        bypassed_inbound_sequence_packet.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bypassed-out-sequence-packet")
-    {
-        bypassed_out_sequence_packet = value;
-        bypassed_out_sequence_packet.value_namespace = name_space;
-        bypassed_out_sequence_packet.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sequence-number-sent")
-    {
-        sequence_number_sent.yfilter = yfilter;
-    }
-    if(value_path == "sequence-number-expected")
-    {
-        sequence_number_expected.yfilter = yfilter;
-    }
-    if(value_path == "bypassed-inbound-sequence-packet")
-    {
-        bypassed_inbound_sequence_packet.yfilter = yfilter;
-    }
-    if(value_path == "bypassed-out-sequence-packet")
-    {
-        bypassed_out_sequence_packet.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::SequenceNumber::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sequence-number-sent" || name == "sequence-number-expected" || name == "bypassed-inbound-sequence-packet" || name == "bypassed-out-sequence-packet")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::P2mpPw()
-    :
-    local_available{YType::boolean, "local-available"},
-    local_label{YType::uint32, "local-label"},
-    local_ptree_type{YType::enumeration, "local-ptree-type"},
-    local_tunnel_id{YType::uint32, "local-tunnel-id"},
-    local_extended_tunnel_id{YType::str, "local-extended-tunnel-id"},
-    local_p2mp_id{YType::uint32, "local-p2mp-id"},
-    local_flags{YType::uint8, "local-flags"},
-    remote_available{YType::boolean, "remote-available"},
-    remote_label{YType::uint32, "remote-label"},
-    remote_ptree_type{YType::enumeration, "remote-ptree-type"},
-    remote_tunnel_id{YType::uint32, "remote-tunnel-id"},
-    remote_extended_tunnel_id{YType::str, "remote-extended-tunnel-id"},
-    remote_p2mp_id{YType::uint32, "remote-p2mp-id"},
-    remote_flags{YType::uint8, "remote-flags"}
-{
-
-    yang_name = "p2mp-pw"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::~P2mpPw()
-{
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::has_data() const
-{
-    if (is_presence_container) return true;
-    return local_available.is_set
-	|| local_label.is_set
-	|| local_ptree_type.is_set
-	|| local_tunnel_id.is_set
-	|| local_extended_tunnel_id.is_set
-	|| local_p2mp_id.is_set
-	|| local_flags.is_set
-	|| remote_available.is_set
-	|| remote_label.is_set
-	|| remote_ptree_type.is_set
-	|| remote_tunnel_id.is_set
-	|| remote_extended_tunnel_id.is_set
-	|| remote_p2mp_id.is_set
-	|| remote_flags.is_set;
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(local_available.yfilter)
-	|| ydk::is_set(local_label.yfilter)
-	|| ydk::is_set(local_ptree_type.yfilter)
-	|| ydk::is_set(local_tunnel_id.yfilter)
-	|| ydk::is_set(local_extended_tunnel_id.yfilter)
-	|| ydk::is_set(local_p2mp_id.yfilter)
-	|| ydk::is_set(local_flags.yfilter)
-	|| ydk::is_set(remote_available.yfilter)
-	|| ydk::is_set(remote_label.yfilter)
-	|| ydk::is_set(remote_ptree_type.yfilter)
-	|| ydk::is_set(remote_tunnel_id.yfilter)
-	|| ydk::is_set(remote_extended_tunnel_id.yfilter)
-	|| ydk::is_set(remote_p2mp_id.yfilter)
-	|| ydk::is_set(remote_flags.yfilter);
-}
-
-std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "p2mp-pw";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (local_available.is_set || is_set(local_available.yfilter)) leaf_name_data.push_back(local_available.get_name_leafdata());
-    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
-    if (local_ptree_type.is_set || is_set(local_ptree_type.yfilter)) leaf_name_data.push_back(local_ptree_type.get_name_leafdata());
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (local_extended_tunnel_id.is_set || is_set(local_extended_tunnel_id.yfilter)) leaf_name_data.push_back(local_extended_tunnel_id.get_name_leafdata());
-    if (local_p2mp_id.is_set || is_set(local_p2mp_id.yfilter)) leaf_name_data.push_back(local_p2mp_id.get_name_leafdata());
-    if (local_flags.is_set || is_set(local_flags.yfilter)) leaf_name_data.push_back(local_flags.get_name_leafdata());
-    if (remote_available.is_set || is_set(remote_available.yfilter)) leaf_name_data.push_back(remote_available.get_name_leafdata());
-    if (remote_label.is_set || is_set(remote_label.yfilter)) leaf_name_data.push_back(remote_label.get_name_leafdata());
-    if (remote_ptree_type.is_set || is_set(remote_ptree_type.yfilter)) leaf_name_data.push_back(remote_ptree_type.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
-    if (remote_extended_tunnel_id.is_set || is_set(remote_extended_tunnel_id.yfilter)) leaf_name_data.push_back(remote_extended_tunnel_id.get_name_leafdata());
-    if (remote_p2mp_id.is_set || is_set(remote_p2mp_id.yfilter)) leaf_name_data.push_back(remote_p2mp_id.get_name_leafdata());
-    if (remote_flags.is_set || is_set(remote_flags.yfilter)) leaf_name_data.push_back(remote_flags.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "local-available")
-    {
-        local_available = value;
-        local_available.value_namespace = name_space;
-        local_available.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-label")
-    {
-        local_label = value;
-        local_label.value_namespace = name_space;
-        local_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-ptree-type")
-    {
-        local_ptree_type = value;
-        local_ptree_type.value_namespace = name_space;
-        local_ptree_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-tunnel-id")
-    {
-        local_tunnel_id = value;
-        local_tunnel_id.value_namespace = name_space;
-        local_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-extended-tunnel-id")
-    {
-        local_extended_tunnel_id = value;
-        local_extended_tunnel_id.value_namespace = name_space;
-        local_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-p2mp-id")
-    {
-        local_p2mp_id = value;
-        local_p2mp_id.value_namespace = name_space;
-        local_p2mp_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-flags")
-    {
-        local_flags = value;
-        local_flags.value_namespace = name_space;
-        local_flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-available")
-    {
-        remote_available = value;
-        remote_available.value_namespace = name_space;
-        remote_available.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-label")
-    {
-        remote_label = value;
-        remote_label.value_namespace = name_space;
-        remote_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-ptree-type")
-    {
-        remote_ptree_type = value;
-        remote_ptree_type.value_namespace = name_space;
-        remote_ptree_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-tunnel-id")
-    {
-        remote_tunnel_id = value;
-        remote_tunnel_id.value_namespace = name_space;
-        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-extended-tunnel-id")
-    {
-        remote_extended_tunnel_id = value;
-        remote_extended_tunnel_id.value_namespace = name_space;
-        remote_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-p2mp-id")
-    {
-        remote_p2mp_id = value;
-        remote_p2mp_id.value_namespace = name_space;
-        remote_p2mp_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-flags")
-    {
-        remote_flags = value;
-        remote_flags.value_namespace = name_space;
-        remote_flags.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "local-available")
-    {
-        local_available.yfilter = yfilter;
-    }
-    if(value_path == "local-label")
-    {
-        local_label.yfilter = yfilter;
-    }
-    if(value_path == "local-ptree-type")
-    {
-        local_ptree_type.yfilter = yfilter;
-    }
-    if(value_path == "local-tunnel-id")
-    {
-        local_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "local-extended-tunnel-id")
-    {
-        local_extended_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "local-p2mp-id")
-    {
-        local_p2mp_id.yfilter = yfilter;
-    }
-    if(value_path == "local-flags")
-    {
-        local_flags.yfilter = yfilter;
-    }
-    if(value_path == "remote-available")
-    {
-        remote_available.yfilter = yfilter;
-    }
-    if(value_path == "remote-label")
-    {
-        remote_label.yfilter = yfilter;
-    }
-    if(value_path == "remote-ptree-type")
-    {
-        remote_ptree_type.yfilter = yfilter;
-    }
-    if(value_path == "remote-tunnel-id")
-    {
-        remote_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "remote-extended-tunnel-id")
-    {
-        remote_extended_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "remote-p2mp-id")
-    {
-        remote_p2mp_id.yfilter = yfilter;
-    }
-    if(value_path == "remote-flags")
-    {
-        remote_flags.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-available" || name == "local-label" || name == "local-ptree-type" || name == "local-tunnel-id" || name == "local-extended-tunnel-id" || name == "local-p2mp-id" || name == "local-flags" || name == "remote-available" || name == "remote-label" || name == "remote-ptree-type" || name == "remote-tunnel-id" || name == "remote-extended-tunnel-id" || name == "remote-p2mp-id" || name == "remote-flags")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::SecurityParameters()
-    :
-    unicast_storm_control_rate_unit{YType::enumeration, "unicast-storm-control-rate-unit"},
-    unicast_storm_control_pps{YType::uint64, "unicast-storm-control-pps"},
-    unicast_storm_control_kb_ps{YType::uint64, "unicast-storm-control-kb-ps"},
-    multicast_storm_control_rate_unit{YType::enumeration, "multicast-storm-control-rate-unit"},
-    multicast_storm_control_pps{YType::uint64, "multicast-storm-control-pps"},
-    multicast_storm_control_kb_ps{YType::uint64, "multicast-storm-control-kb-ps"},
-    broadcast_storm_control_rate_unit{YType::enumeration, "broadcast-storm-control-rate-unit"},
-    broadcast_storm_control_pps{YType::uint64, "broadcast-storm-control-pps"},
-    broadcast_storm_control_kb_ps{YType::uint64, "broadcast-storm-control-kb-ps"},
-    dhcpv4_trust{YType::boolean, "dhcpv4-trust"}
-        ,
-    base(std::make_shared<L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base>())
-    , storm_control(std::make_shared<L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::StormControl>())
-{
-    base->parent = this;
-    storm_control->parent = this;
-
-    yang_name = "security-parameters"; yang_parent_name = "bridge-pw"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::~SecurityParameters()
-{
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::has_data() const
-{
-    if (is_presence_container) return true;
-    return unicast_storm_control_rate_unit.is_set
-	|| unicast_storm_control_pps.is_set
-	|| unicast_storm_control_kb_ps.is_set
-	|| multicast_storm_control_rate_unit.is_set
-	|| multicast_storm_control_pps.is_set
-	|| multicast_storm_control_kb_ps.is_set
-	|| broadcast_storm_control_rate_unit.is_set
-	|| broadcast_storm_control_pps.is_set
-	|| broadcast_storm_control_kb_ps.is_set
-	|| dhcpv4_trust.is_set
-	|| (base !=  nullptr && base->has_data())
-	|| (storm_control !=  nullptr && storm_control->has_data());
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unicast_storm_control_rate_unit.yfilter)
-	|| ydk::is_set(unicast_storm_control_pps.yfilter)
-	|| ydk::is_set(unicast_storm_control_kb_ps.yfilter)
-	|| ydk::is_set(multicast_storm_control_rate_unit.yfilter)
-	|| ydk::is_set(multicast_storm_control_pps.yfilter)
-	|| ydk::is_set(multicast_storm_control_kb_ps.yfilter)
-	|| ydk::is_set(broadcast_storm_control_rate_unit.yfilter)
-	|| ydk::is_set(broadcast_storm_control_pps.yfilter)
-	|| ydk::is_set(broadcast_storm_control_kb_ps.yfilter)
-	|| ydk::is_set(dhcpv4_trust.yfilter)
-	|| (base !=  nullptr && base->has_operation())
-	|| (storm_control !=  nullptr && storm_control->has_operation());
-}
-
-std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "security-parameters";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unicast_storm_control_rate_unit.is_set || is_set(unicast_storm_control_rate_unit.yfilter)) leaf_name_data.push_back(unicast_storm_control_rate_unit.get_name_leafdata());
-    if (unicast_storm_control_pps.is_set || is_set(unicast_storm_control_pps.yfilter)) leaf_name_data.push_back(unicast_storm_control_pps.get_name_leafdata());
-    if (unicast_storm_control_kb_ps.is_set || is_set(unicast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(unicast_storm_control_kb_ps.get_name_leafdata());
-    if (multicast_storm_control_rate_unit.is_set || is_set(multicast_storm_control_rate_unit.yfilter)) leaf_name_data.push_back(multicast_storm_control_rate_unit.get_name_leafdata());
-    if (multicast_storm_control_pps.is_set || is_set(multicast_storm_control_pps.yfilter)) leaf_name_data.push_back(multicast_storm_control_pps.get_name_leafdata());
-    if (multicast_storm_control_kb_ps.is_set || is_set(multicast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(multicast_storm_control_kb_ps.get_name_leafdata());
-    if (broadcast_storm_control_rate_unit.is_set || is_set(broadcast_storm_control_rate_unit.yfilter)) leaf_name_data.push_back(broadcast_storm_control_rate_unit.get_name_leafdata());
-    if (broadcast_storm_control_pps.is_set || is_set(broadcast_storm_control_pps.yfilter)) leaf_name_data.push_back(broadcast_storm_control_pps.get_name_leafdata());
-    if (broadcast_storm_control_kb_ps.is_set || is_set(broadcast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(broadcast_storm_control_kb_ps.get_name_leafdata());
-    if (dhcpv4_trust.is_set || is_set(dhcpv4_trust.yfilter)) leaf_name_data.push_back(dhcpv4_trust.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "base")
-    {
-        if(base == nullptr)
-        {
-            base = std::make_shared<L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base>();
-        }
-        return base;
-    }
-
-    if(child_yang_name == "storm-control")
-    {
-        if(storm_control == nullptr)
-        {
-            storm_control = std::make_shared<L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::StormControl>();
-        }
-        return storm_control;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(base != nullptr)
-    {
-        _children["base"] = base;
-    }
-
-    if(storm_control != nullptr)
-    {
-        _children["storm-control"] = storm_control;
-    }
-
-    return _children;
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unicast-storm-control-rate-unit")
-    {
-        unicast_storm_control_rate_unit = value;
-        unicast_storm_control_rate_unit.value_namespace = name_space;
-        unicast_storm_control_rate_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unicast-storm-control-pps")
-    {
-        unicast_storm_control_pps = value;
-        unicast_storm_control_pps.value_namespace = name_space;
-        unicast_storm_control_pps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unicast-storm-control-kb-ps")
-    {
-        unicast_storm_control_kb_ps = value;
-        unicast_storm_control_kb_ps.value_namespace = name_space;
-        unicast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-storm-control-rate-unit")
-    {
-        multicast_storm_control_rate_unit = value;
-        multicast_storm_control_rate_unit.value_namespace = name_space;
-        multicast_storm_control_rate_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-storm-control-pps")
-    {
-        multicast_storm_control_pps = value;
-        multicast_storm_control_pps.value_namespace = name_space;
-        multicast_storm_control_pps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-storm-control-kb-ps")
-    {
-        multicast_storm_control_kb_ps = value;
-        multicast_storm_control_kb_ps.value_namespace = name_space;
-        multicast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "broadcast-storm-control-rate-unit")
-    {
-        broadcast_storm_control_rate_unit = value;
-        broadcast_storm_control_rate_unit.value_namespace = name_space;
-        broadcast_storm_control_rate_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "broadcast-storm-control-pps")
-    {
-        broadcast_storm_control_pps = value;
-        broadcast_storm_control_pps.value_namespace = name_space;
-        broadcast_storm_control_pps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "broadcast-storm-control-kb-ps")
-    {
-        broadcast_storm_control_kb_ps = value;
-        broadcast_storm_control_kb_ps.value_namespace = name_space;
-        broadcast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcpv4-trust")
-    {
-        dhcpv4_trust = value;
-        dhcpv4_trust.value_namespace = name_space;
-        dhcpv4_trust.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unicast-storm-control-rate-unit")
-    {
-        unicast_storm_control_rate_unit.yfilter = yfilter;
-    }
-    if(value_path == "unicast-storm-control-pps")
-    {
-        unicast_storm_control_pps.yfilter = yfilter;
-    }
-    if(value_path == "unicast-storm-control-kb-ps")
-    {
-        unicast_storm_control_kb_ps.yfilter = yfilter;
-    }
-    if(value_path == "multicast-storm-control-rate-unit")
-    {
-        multicast_storm_control_rate_unit.yfilter = yfilter;
-    }
-    if(value_path == "multicast-storm-control-pps")
-    {
-        multicast_storm_control_pps.yfilter = yfilter;
-    }
-    if(value_path == "multicast-storm-control-kb-ps")
-    {
-        multicast_storm_control_kb_ps.yfilter = yfilter;
-    }
-    if(value_path == "broadcast-storm-control-rate-unit")
-    {
-        broadcast_storm_control_rate_unit.yfilter = yfilter;
-    }
-    if(value_path == "broadcast-storm-control-pps")
-    {
-        broadcast_storm_control_pps.yfilter = yfilter;
-    }
-    if(value_path == "broadcast-storm-control-kb-ps")
-    {
-        broadcast_storm_control_kb_ps.yfilter = yfilter;
-    }
-    if(value_path == "dhcpv4-trust")
-    {
-        dhcpv4_trust.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "base" || name == "storm-control" || name == "unicast-storm-control-rate-unit" || name == "unicast-storm-control-pps" || name == "unicast-storm-control-kb-ps" || name == "multicast-storm-control-rate-unit" || name == "multicast-storm-control-pps" || name == "multicast-storm-control-kb-ps" || name == "broadcast-storm-control-rate-unit" || name == "broadcast-storm-control-pps" || name == "broadcast-storm-control-kb-ps" || name == "dhcpv4-trust")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::Base()
-    :
-    mac_limit{YType::uint32, "mac-limit"},
-    mac_limit_action{YType::enumeration, "mac-limit-action"},
-    mac_limit_notification{YType::enumeration, "mac-limit-notification"},
-    mac_aging_time{YType::uint32, "mac-aging-time"},
-    mac_aging_mode{YType::enumeration, "mac-aging-mode"},
-    mac_flooding{YType::boolean, "mac-flooding"},
-    mac_learning{YType::boolean, "mac-learning"},
-    learn_disabled_mac_limit_action{YType::boolean, "learn-disabled-mac-limit-action"},
-    flood_uu_disabled_mac_limit_action{YType::boolean, "flood-uu-disabled-mac-limit-action"},
-    mac_limit_reached{YType::boolean, "mac-limit-reached"},
-    mac_limit_threshold{YType::uint32, "mac-limit-threshold"},
-    flood_unknown_unicast_enabled{YType::boolean, "flood-unknown-unicast-enabled"},
-    mac_port_down_flush_enabled{YType::boolean, "mac-port-down-flush-enabled"},
-    split_horizon_group_id{YType::uint32, "split-horizon-group-id"},
-    is_ip_source_guard_enabled{YType::boolean, "is-ip-source-guard-enabled"},
-    is_ipsg_logging_enabled{YType::boolean, "is-ipsg-logging-enabled"},
-    is_dai_enabled{YType::boolean, "is-dai-enabled"},
-    is_dai_logging_enabled{YType::boolean, "is-dai-logging-enabled"},
-    is_dai_addr_validate_source_mac_enabled{YType::boolean, "is-dai-addr-validate-source-mac-enabled"},
-    is_dai_addr_validate_destination_mac_enabled{YType::boolean, "is-dai-addr-validate-destination-mac-enabled"},
-    is_dai_addr_validate_ipv4_enabled{YType::boolean, "is-dai-addr-validate-ipv4-enabled"},
-    is_mac_secure_enabled{YType::boolean, "is-mac-secure-enabled"},
-    mac_secure_action{YType::enumeration, "mac-secure-action"},
-    is_mac_secure_logging_enabled{YType::boolean, "is-mac-secure-logging-enabled"},
-    is_mac_secure_accept_shutdown_enabled{YType::boolean, "is-mac-secure-accept-shutdown-enabled"},
-    is_mac_secure_threshold_enabled{YType::boolean, "is-mac-secure-threshold-enabled"},
-    dai_address_validation_mask{YType::uint8, "dai-address-validation-mask"},
-    dhcpv4_snoop{YType::boolean, "dhcpv4-snoop"},
-    dhcpv4_profile_name{YType::str, "dhcpv4-profile-name"},
-    igm_pv4_disabled{YType::boolean, "igm-pv4-disabled"},
-    igm_pv4_profile_name{YType::str, "igm-pv4-profile-name"},
-    mld_profile_name{YType::str, "mld-profile-name"},
-    mmrp_flood_optimization{YType::boolean, "mmrp-flood-optimization"},
-    unicast_storm_control_rate_unit{YType::enumeration, "unicast-storm-control-rate-unit"},
-    unicast_storm_control_pps{YType::uint64, "unicast-storm-control-pps"},
-    unicast_storm_control_kb_ps{YType::uint64, "unicast-storm-control-kb-ps"},
-    multicast_storm_control_rate_unit{YType::enumeration, "multicast-storm-control-rate-unit"},
-    multicast_storm_control_pps{YType::uint64, "multicast-storm-control-pps"},
-    multicast_storm_control_kb_ps{YType::uint64, "multicast-storm-control-kb-ps"},
-    broadcast_storm_control_rate_unit{YType::enumeration, "broadcast-storm-control-rate-unit"},
-    broadcast_storm_control_pps{YType::uint64, "broadcast-storm-control-pps"},
-    broadcast_storm_control_kb_ps{YType::uint64, "broadcast-storm-control-kb-ps"}
-        ,
-    storm_control(std::make_shared<L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::StormControl>())
-{
-    storm_control->parent = this;
-
-    yang_name = "base"; yang_parent_name = "security-parameters"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::~Base()
-{
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::has_data() const
-{
-    if (is_presence_container) return true;
-    return mac_limit.is_set
-	|| mac_limit_action.is_set
-	|| mac_limit_notification.is_set
-	|| mac_aging_time.is_set
-	|| mac_aging_mode.is_set
-	|| mac_flooding.is_set
-	|| mac_learning.is_set
-	|| learn_disabled_mac_limit_action.is_set
-	|| flood_uu_disabled_mac_limit_action.is_set
-	|| mac_limit_reached.is_set
-	|| mac_limit_threshold.is_set
-	|| flood_unknown_unicast_enabled.is_set
-	|| mac_port_down_flush_enabled.is_set
-	|| split_horizon_group_id.is_set
-	|| is_ip_source_guard_enabled.is_set
-	|| is_ipsg_logging_enabled.is_set
-	|| is_dai_enabled.is_set
-	|| is_dai_logging_enabled.is_set
-	|| is_dai_addr_validate_source_mac_enabled.is_set
-	|| is_dai_addr_validate_destination_mac_enabled.is_set
-	|| is_dai_addr_validate_ipv4_enabled.is_set
-	|| is_mac_secure_enabled.is_set
-	|| mac_secure_action.is_set
-	|| is_mac_secure_logging_enabled.is_set
-	|| is_mac_secure_accept_shutdown_enabled.is_set
-	|| is_mac_secure_threshold_enabled.is_set
-	|| dai_address_validation_mask.is_set
-	|| dhcpv4_snoop.is_set
-	|| dhcpv4_profile_name.is_set
-	|| igm_pv4_disabled.is_set
-	|| igm_pv4_profile_name.is_set
-	|| mld_profile_name.is_set
-	|| mmrp_flood_optimization.is_set
-	|| unicast_storm_control_rate_unit.is_set
-	|| unicast_storm_control_pps.is_set
-	|| unicast_storm_control_kb_ps.is_set
-	|| multicast_storm_control_rate_unit.is_set
-	|| multicast_storm_control_pps.is_set
-	|| multicast_storm_control_kb_ps.is_set
-	|| broadcast_storm_control_rate_unit.is_set
-	|| broadcast_storm_control_pps.is_set
-	|| broadcast_storm_control_kb_ps.is_set
-	|| (storm_control !=  nullptr && storm_control->has_data());
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mac_limit.yfilter)
-	|| ydk::is_set(mac_limit_action.yfilter)
-	|| ydk::is_set(mac_limit_notification.yfilter)
-	|| ydk::is_set(mac_aging_time.yfilter)
-	|| ydk::is_set(mac_aging_mode.yfilter)
-	|| ydk::is_set(mac_flooding.yfilter)
-	|| ydk::is_set(mac_learning.yfilter)
-	|| ydk::is_set(learn_disabled_mac_limit_action.yfilter)
-	|| ydk::is_set(flood_uu_disabled_mac_limit_action.yfilter)
-	|| ydk::is_set(mac_limit_reached.yfilter)
-	|| ydk::is_set(mac_limit_threshold.yfilter)
-	|| ydk::is_set(flood_unknown_unicast_enabled.yfilter)
-	|| ydk::is_set(mac_port_down_flush_enabled.yfilter)
-	|| ydk::is_set(split_horizon_group_id.yfilter)
-	|| ydk::is_set(is_ip_source_guard_enabled.yfilter)
-	|| ydk::is_set(is_ipsg_logging_enabled.yfilter)
-	|| ydk::is_set(is_dai_enabled.yfilter)
-	|| ydk::is_set(is_dai_logging_enabled.yfilter)
-	|| ydk::is_set(is_dai_addr_validate_source_mac_enabled.yfilter)
-	|| ydk::is_set(is_dai_addr_validate_destination_mac_enabled.yfilter)
-	|| ydk::is_set(is_dai_addr_validate_ipv4_enabled.yfilter)
-	|| ydk::is_set(is_mac_secure_enabled.yfilter)
-	|| ydk::is_set(mac_secure_action.yfilter)
-	|| ydk::is_set(is_mac_secure_logging_enabled.yfilter)
-	|| ydk::is_set(is_mac_secure_accept_shutdown_enabled.yfilter)
-	|| ydk::is_set(is_mac_secure_threshold_enabled.yfilter)
-	|| ydk::is_set(dai_address_validation_mask.yfilter)
-	|| ydk::is_set(dhcpv4_snoop.yfilter)
-	|| ydk::is_set(dhcpv4_profile_name.yfilter)
-	|| ydk::is_set(igm_pv4_disabled.yfilter)
-	|| ydk::is_set(igm_pv4_profile_name.yfilter)
-	|| ydk::is_set(mld_profile_name.yfilter)
-	|| ydk::is_set(mmrp_flood_optimization.yfilter)
-	|| ydk::is_set(unicast_storm_control_rate_unit.yfilter)
-	|| ydk::is_set(unicast_storm_control_pps.yfilter)
-	|| ydk::is_set(unicast_storm_control_kb_ps.yfilter)
-	|| ydk::is_set(multicast_storm_control_rate_unit.yfilter)
-	|| ydk::is_set(multicast_storm_control_pps.yfilter)
-	|| ydk::is_set(multicast_storm_control_kb_ps.yfilter)
-	|| ydk::is_set(broadcast_storm_control_rate_unit.yfilter)
-	|| ydk::is_set(broadcast_storm_control_pps.yfilter)
-	|| ydk::is_set(broadcast_storm_control_kb_ps.yfilter)
-	|| (storm_control !=  nullptr && storm_control->has_operation());
-}
-
-std::string L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "base";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mac_limit.is_set || is_set(mac_limit.yfilter)) leaf_name_data.push_back(mac_limit.get_name_leafdata());
-    if (mac_limit_action.is_set || is_set(mac_limit_action.yfilter)) leaf_name_data.push_back(mac_limit_action.get_name_leafdata());
-    if (mac_limit_notification.is_set || is_set(mac_limit_notification.yfilter)) leaf_name_data.push_back(mac_limit_notification.get_name_leafdata());
-    if (mac_aging_time.is_set || is_set(mac_aging_time.yfilter)) leaf_name_data.push_back(mac_aging_time.get_name_leafdata());
-    if (mac_aging_mode.is_set || is_set(mac_aging_mode.yfilter)) leaf_name_data.push_back(mac_aging_mode.get_name_leafdata());
-    if (mac_flooding.is_set || is_set(mac_flooding.yfilter)) leaf_name_data.push_back(mac_flooding.get_name_leafdata());
-    if (mac_learning.is_set || is_set(mac_learning.yfilter)) leaf_name_data.push_back(mac_learning.get_name_leafdata());
-    if (learn_disabled_mac_limit_action.is_set || is_set(learn_disabled_mac_limit_action.yfilter)) leaf_name_data.push_back(learn_disabled_mac_limit_action.get_name_leafdata());
-    if (flood_uu_disabled_mac_limit_action.is_set || is_set(flood_uu_disabled_mac_limit_action.yfilter)) leaf_name_data.push_back(flood_uu_disabled_mac_limit_action.get_name_leafdata());
-    if (mac_limit_reached.is_set || is_set(mac_limit_reached.yfilter)) leaf_name_data.push_back(mac_limit_reached.get_name_leafdata());
-    if (mac_limit_threshold.is_set || is_set(mac_limit_threshold.yfilter)) leaf_name_data.push_back(mac_limit_threshold.get_name_leafdata());
-    if (flood_unknown_unicast_enabled.is_set || is_set(flood_unknown_unicast_enabled.yfilter)) leaf_name_data.push_back(flood_unknown_unicast_enabled.get_name_leafdata());
-    if (mac_port_down_flush_enabled.is_set || is_set(mac_port_down_flush_enabled.yfilter)) leaf_name_data.push_back(mac_port_down_flush_enabled.get_name_leafdata());
-    if (split_horizon_group_id.is_set || is_set(split_horizon_group_id.yfilter)) leaf_name_data.push_back(split_horizon_group_id.get_name_leafdata());
-    if (is_ip_source_guard_enabled.is_set || is_set(is_ip_source_guard_enabled.yfilter)) leaf_name_data.push_back(is_ip_source_guard_enabled.get_name_leafdata());
-    if (is_ipsg_logging_enabled.is_set || is_set(is_ipsg_logging_enabled.yfilter)) leaf_name_data.push_back(is_ipsg_logging_enabled.get_name_leafdata());
-    if (is_dai_enabled.is_set || is_set(is_dai_enabled.yfilter)) leaf_name_data.push_back(is_dai_enabled.get_name_leafdata());
-    if (is_dai_logging_enabled.is_set || is_set(is_dai_logging_enabled.yfilter)) leaf_name_data.push_back(is_dai_logging_enabled.get_name_leafdata());
-    if (is_dai_addr_validate_source_mac_enabled.is_set || is_set(is_dai_addr_validate_source_mac_enabled.yfilter)) leaf_name_data.push_back(is_dai_addr_validate_source_mac_enabled.get_name_leafdata());
-    if (is_dai_addr_validate_destination_mac_enabled.is_set || is_set(is_dai_addr_validate_destination_mac_enabled.yfilter)) leaf_name_data.push_back(is_dai_addr_validate_destination_mac_enabled.get_name_leafdata());
-    if (is_dai_addr_validate_ipv4_enabled.is_set || is_set(is_dai_addr_validate_ipv4_enabled.yfilter)) leaf_name_data.push_back(is_dai_addr_validate_ipv4_enabled.get_name_leafdata());
-    if (is_mac_secure_enabled.is_set || is_set(is_mac_secure_enabled.yfilter)) leaf_name_data.push_back(is_mac_secure_enabled.get_name_leafdata());
-    if (mac_secure_action.is_set || is_set(mac_secure_action.yfilter)) leaf_name_data.push_back(mac_secure_action.get_name_leafdata());
-    if (is_mac_secure_logging_enabled.is_set || is_set(is_mac_secure_logging_enabled.yfilter)) leaf_name_data.push_back(is_mac_secure_logging_enabled.get_name_leafdata());
-    if (is_mac_secure_accept_shutdown_enabled.is_set || is_set(is_mac_secure_accept_shutdown_enabled.yfilter)) leaf_name_data.push_back(is_mac_secure_accept_shutdown_enabled.get_name_leafdata());
-    if (is_mac_secure_threshold_enabled.is_set || is_set(is_mac_secure_threshold_enabled.yfilter)) leaf_name_data.push_back(is_mac_secure_threshold_enabled.get_name_leafdata());
-    if (dai_address_validation_mask.is_set || is_set(dai_address_validation_mask.yfilter)) leaf_name_data.push_back(dai_address_validation_mask.get_name_leafdata());
-    if (dhcpv4_snoop.is_set || is_set(dhcpv4_snoop.yfilter)) leaf_name_data.push_back(dhcpv4_snoop.get_name_leafdata());
-    if (dhcpv4_profile_name.is_set || is_set(dhcpv4_profile_name.yfilter)) leaf_name_data.push_back(dhcpv4_profile_name.get_name_leafdata());
-    if (igm_pv4_disabled.is_set || is_set(igm_pv4_disabled.yfilter)) leaf_name_data.push_back(igm_pv4_disabled.get_name_leafdata());
-    if (igm_pv4_profile_name.is_set || is_set(igm_pv4_profile_name.yfilter)) leaf_name_data.push_back(igm_pv4_profile_name.get_name_leafdata());
-    if (mld_profile_name.is_set || is_set(mld_profile_name.yfilter)) leaf_name_data.push_back(mld_profile_name.get_name_leafdata());
-    if (mmrp_flood_optimization.is_set || is_set(mmrp_flood_optimization.yfilter)) leaf_name_data.push_back(mmrp_flood_optimization.get_name_leafdata());
-    if (unicast_storm_control_rate_unit.is_set || is_set(unicast_storm_control_rate_unit.yfilter)) leaf_name_data.push_back(unicast_storm_control_rate_unit.get_name_leafdata());
-    if (unicast_storm_control_pps.is_set || is_set(unicast_storm_control_pps.yfilter)) leaf_name_data.push_back(unicast_storm_control_pps.get_name_leafdata());
-    if (unicast_storm_control_kb_ps.is_set || is_set(unicast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(unicast_storm_control_kb_ps.get_name_leafdata());
-    if (multicast_storm_control_rate_unit.is_set || is_set(multicast_storm_control_rate_unit.yfilter)) leaf_name_data.push_back(multicast_storm_control_rate_unit.get_name_leafdata());
-    if (multicast_storm_control_pps.is_set || is_set(multicast_storm_control_pps.yfilter)) leaf_name_data.push_back(multicast_storm_control_pps.get_name_leafdata());
-    if (multicast_storm_control_kb_ps.is_set || is_set(multicast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(multicast_storm_control_kb_ps.get_name_leafdata());
-    if (broadcast_storm_control_rate_unit.is_set || is_set(broadcast_storm_control_rate_unit.yfilter)) leaf_name_data.push_back(broadcast_storm_control_rate_unit.get_name_leafdata());
-    if (broadcast_storm_control_pps.is_set || is_set(broadcast_storm_control_pps.yfilter)) leaf_name_data.push_back(broadcast_storm_control_pps.get_name_leafdata());
-    if (broadcast_storm_control_kb_ps.is_set || is_set(broadcast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(broadcast_storm_control_kb_ps.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "storm-control")
-    {
-        if(storm_control == nullptr)
-        {
-            storm_control = std::make_shared<L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::StormControl>();
-        }
-        return storm_control;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(storm_control != nullptr)
-    {
-        _children["storm-control"] = storm_control;
-    }
-
-    return _children;
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mac-limit")
-    {
-        mac_limit = value;
-        mac_limit.value_namespace = name_space;
-        mac_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-limit-action")
-    {
-        mac_limit_action = value;
-        mac_limit_action.value_namespace = name_space;
-        mac_limit_action.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-limit-notification")
-    {
-        mac_limit_notification = value;
-        mac_limit_notification.value_namespace = name_space;
-        mac_limit_notification.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-aging-time")
-    {
-        mac_aging_time = value;
-        mac_aging_time.value_namespace = name_space;
-        mac_aging_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-aging-mode")
-    {
-        mac_aging_mode = value;
-        mac_aging_mode.value_namespace = name_space;
-        mac_aging_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-flooding")
-    {
-        mac_flooding = value;
-        mac_flooding.value_namespace = name_space;
-        mac_flooding.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-learning")
-    {
-        mac_learning = value;
-        mac_learning.value_namespace = name_space;
-        mac_learning.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "learn-disabled-mac-limit-action")
-    {
-        learn_disabled_mac_limit_action = value;
-        learn_disabled_mac_limit_action.value_namespace = name_space;
-        learn_disabled_mac_limit_action.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flood-uu-disabled-mac-limit-action")
-    {
-        flood_uu_disabled_mac_limit_action = value;
-        flood_uu_disabled_mac_limit_action.value_namespace = name_space;
-        flood_uu_disabled_mac_limit_action.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-limit-reached")
-    {
-        mac_limit_reached = value;
-        mac_limit_reached.value_namespace = name_space;
-        mac_limit_reached.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-limit-threshold")
-    {
-        mac_limit_threshold = value;
-        mac_limit_threshold.value_namespace = name_space;
-        mac_limit_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flood-unknown-unicast-enabled")
-    {
-        flood_unknown_unicast_enabled = value;
-        flood_unknown_unicast_enabled.value_namespace = name_space;
-        flood_unknown_unicast_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-port-down-flush-enabled")
-    {
-        mac_port_down_flush_enabled = value;
-        mac_port_down_flush_enabled.value_namespace = name_space;
-        mac_port_down_flush_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "split-horizon-group-id")
-    {
-        split_horizon_group_id = value;
-        split_horizon_group_id.value_namespace = name_space;
-        split_horizon_group_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-ip-source-guard-enabled")
-    {
-        is_ip_source_guard_enabled = value;
-        is_ip_source_guard_enabled.value_namespace = name_space;
-        is_ip_source_guard_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-ipsg-logging-enabled")
-    {
-        is_ipsg_logging_enabled = value;
-        is_ipsg_logging_enabled.value_namespace = name_space;
-        is_ipsg_logging_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-dai-enabled")
-    {
-        is_dai_enabled = value;
-        is_dai_enabled.value_namespace = name_space;
-        is_dai_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-dai-logging-enabled")
-    {
-        is_dai_logging_enabled = value;
-        is_dai_logging_enabled.value_namespace = name_space;
-        is_dai_logging_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-dai-addr-validate-source-mac-enabled")
-    {
-        is_dai_addr_validate_source_mac_enabled = value;
-        is_dai_addr_validate_source_mac_enabled.value_namespace = name_space;
-        is_dai_addr_validate_source_mac_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-dai-addr-validate-destination-mac-enabled")
-    {
-        is_dai_addr_validate_destination_mac_enabled = value;
-        is_dai_addr_validate_destination_mac_enabled.value_namespace = name_space;
-        is_dai_addr_validate_destination_mac_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-dai-addr-validate-ipv4-enabled")
-    {
-        is_dai_addr_validate_ipv4_enabled = value;
-        is_dai_addr_validate_ipv4_enabled.value_namespace = name_space;
-        is_dai_addr_validate_ipv4_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-mac-secure-enabled")
-    {
-        is_mac_secure_enabled = value;
-        is_mac_secure_enabled.value_namespace = name_space;
-        is_mac_secure_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-secure-action")
-    {
-        mac_secure_action = value;
-        mac_secure_action.value_namespace = name_space;
-        mac_secure_action.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-mac-secure-logging-enabled")
-    {
-        is_mac_secure_logging_enabled = value;
-        is_mac_secure_logging_enabled.value_namespace = name_space;
-        is_mac_secure_logging_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-mac-secure-accept-shutdown-enabled")
-    {
-        is_mac_secure_accept_shutdown_enabled = value;
-        is_mac_secure_accept_shutdown_enabled.value_namespace = name_space;
-        is_mac_secure_accept_shutdown_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-mac-secure-threshold-enabled")
-    {
-        is_mac_secure_threshold_enabled = value;
-        is_mac_secure_threshold_enabled.value_namespace = name_space;
-        is_mac_secure_threshold_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dai-address-validation-mask")
-    {
-        dai_address_validation_mask = value;
-        dai_address_validation_mask.value_namespace = name_space;
-        dai_address_validation_mask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcpv4-snoop")
-    {
-        dhcpv4_snoop = value;
-        dhcpv4_snoop.value_namespace = name_space;
-        dhcpv4_snoop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcpv4-profile-name")
-    {
-        dhcpv4_profile_name = value;
-        dhcpv4_profile_name.value_namespace = name_space;
-        dhcpv4_profile_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igm-pv4-disabled")
-    {
-        igm_pv4_disabled = value;
-        igm_pv4_disabled.value_namespace = name_space;
-        igm_pv4_disabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igm-pv4-profile-name")
-    {
-        igm_pv4_profile_name = value;
-        igm_pv4_profile_name.value_namespace = name_space;
-        igm_pv4_profile_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mld-profile-name")
-    {
-        mld_profile_name = value;
-        mld_profile_name.value_namespace = name_space;
-        mld_profile_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mmrp-flood-optimization")
-    {
-        mmrp_flood_optimization = value;
-        mmrp_flood_optimization.value_namespace = name_space;
-        mmrp_flood_optimization.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unicast-storm-control-rate-unit")
-    {
-        unicast_storm_control_rate_unit = value;
-        unicast_storm_control_rate_unit.value_namespace = name_space;
-        unicast_storm_control_rate_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unicast-storm-control-pps")
-    {
-        unicast_storm_control_pps = value;
-        unicast_storm_control_pps.value_namespace = name_space;
-        unicast_storm_control_pps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unicast-storm-control-kb-ps")
-    {
-        unicast_storm_control_kb_ps = value;
-        unicast_storm_control_kb_ps.value_namespace = name_space;
-        unicast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-storm-control-rate-unit")
-    {
-        multicast_storm_control_rate_unit = value;
-        multicast_storm_control_rate_unit.value_namespace = name_space;
-        multicast_storm_control_rate_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-storm-control-pps")
-    {
-        multicast_storm_control_pps = value;
-        multicast_storm_control_pps.value_namespace = name_space;
-        multicast_storm_control_pps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-storm-control-kb-ps")
-    {
-        multicast_storm_control_kb_ps = value;
-        multicast_storm_control_kb_ps.value_namespace = name_space;
-        multicast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "broadcast-storm-control-rate-unit")
-    {
-        broadcast_storm_control_rate_unit = value;
-        broadcast_storm_control_rate_unit.value_namespace = name_space;
-        broadcast_storm_control_rate_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "broadcast-storm-control-pps")
-    {
-        broadcast_storm_control_pps = value;
-        broadcast_storm_control_pps.value_namespace = name_space;
-        broadcast_storm_control_pps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "broadcast-storm-control-kb-ps")
-    {
-        broadcast_storm_control_kb_ps = value;
-        broadcast_storm_control_kb_ps.value_namespace = name_space;
-        broadcast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mac-limit")
-    {
-        mac_limit.yfilter = yfilter;
-    }
-    if(value_path == "mac-limit-action")
-    {
-        mac_limit_action.yfilter = yfilter;
-    }
-    if(value_path == "mac-limit-notification")
-    {
-        mac_limit_notification.yfilter = yfilter;
-    }
-    if(value_path == "mac-aging-time")
-    {
-        mac_aging_time.yfilter = yfilter;
-    }
-    if(value_path == "mac-aging-mode")
-    {
-        mac_aging_mode.yfilter = yfilter;
-    }
-    if(value_path == "mac-flooding")
-    {
-        mac_flooding.yfilter = yfilter;
-    }
-    if(value_path == "mac-learning")
-    {
-        mac_learning.yfilter = yfilter;
-    }
-    if(value_path == "learn-disabled-mac-limit-action")
-    {
-        learn_disabled_mac_limit_action.yfilter = yfilter;
-    }
-    if(value_path == "flood-uu-disabled-mac-limit-action")
-    {
-        flood_uu_disabled_mac_limit_action.yfilter = yfilter;
-    }
-    if(value_path == "mac-limit-reached")
-    {
-        mac_limit_reached.yfilter = yfilter;
-    }
-    if(value_path == "mac-limit-threshold")
-    {
-        mac_limit_threshold.yfilter = yfilter;
-    }
-    if(value_path == "flood-unknown-unicast-enabled")
-    {
-        flood_unknown_unicast_enabled.yfilter = yfilter;
-    }
-    if(value_path == "mac-port-down-flush-enabled")
-    {
-        mac_port_down_flush_enabled.yfilter = yfilter;
-    }
-    if(value_path == "split-horizon-group-id")
-    {
-        split_horizon_group_id.yfilter = yfilter;
-    }
-    if(value_path == "is-ip-source-guard-enabled")
-    {
-        is_ip_source_guard_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-ipsg-logging-enabled")
-    {
-        is_ipsg_logging_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-dai-enabled")
-    {
-        is_dai_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-dai-logging-enabled")
-    {
-        is_dai_logging_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-dai-addr-validate-source-mac-enabled")
-    {
-        is_dai_addr_validate_source_mac_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-dai-addr-validate-destination-mac-enabled")
-    {
-        is_dai_addr_validate_destination_mac_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-dai-addr-validate-ipv4-enabled")
-    {
-        is_dai_addr_validate_ipv4_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-mac-secure-enabled")
-    {
-        is_mac_secure_enabled.yfilter = yfilter;
-    }
-    if(value_path == "mac-secure-action")
-    {
-        mac_secure_action.yfilter = yfilter;
-    }
-    if(value_path == "is-mac-secure-logging-enabled")
-    {
-        is_mac_secure_logging_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-mac-secure-accept-shutdown-enabled")
-    {
-        is_mac_secure_accept_shutdown_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-mac-secure-threshold-enabled")
-    {
-        is_mac_secure_threshold_enabled.yfilter = yfilter;
-    }
-    if(value_path == "dai-address-validation-mask")
-    {
-        dai_address_validation_mask.yfilter = yfilter;
-    }
-    if(value_path == "dhcpv4-snoop")
-    {
-        dhcpv4_snoop.yfilter = yfilter;
-    }
-    if(value_path == "dhcpv4-profile-name")
-    {
-        dhcpv4_profile_name.yfilter = yfilter;
-    }
-    if(value_path == "igm-pv4-disabled")
-    {
-        igm_pv4_disabled.yfilter = yfilter;
-    }
-    if(value_path == "igm-pv4-profile-name")
-    {
-        igm_pv4_profile_name.yfilter = yfilter;
-    }
-    if(value_path == "mld-profile-name")
-    {
-        mld_profile_name.yfilter = yfilter;
-    }
-    if(value_path == "mmrp-flood-optimization")
-    {
-        mmrp_flood_optimization.yfilter = yfilter;
-    }
-    if(value_path == "unicast-storm-control-rate-unit")
-    {
-        unicast_storm_control_rate_unit.yfilter = yfilter;
-    }
-    if(value_path == "unicast-storm-control-pps")
-    {
-        unicast_storm_control_pps.yfilter = yfilter;
-    }
-    if(value_path == "unicast-storm-control-kb-ps")
-    {
-        unicast_storm_control_kb_ps.yfilter = yfilter;
-    }
-    if(value_path == "multicast-storm-control-rate-unit")
-    {
-        multicast_storm_control_rate_unit.yfilter = yfilter;
-    }
-    if(value_path == "multicast-storm-control-pps")
-    {
-        multicast_storm_control_pps.yfilter = yfilter;
-    }
-    if(value_path == "multicast-storm-control-kb-ps")
-    {
-        multicast_storm_control_kb_ps.yfilter = yfilter;
-    }
-    if(value_path == "broadcast-storm-control-rate-unit")
-    {
-        broadcast_storm_control_rate_unit.yfilter = yfilter;
-    }
-    if(value_path == "broadcast-storm-control-pps")
-    {
-        broadcast_storm_control_pps.yfilter = yfilter;
-    }
-    if(value_path == "broadcast-storm-control-kb-ps")
-    {
-        broadcast_storm_control_kb_ps.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters::Base::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "storm-control" || name == "mac-limit" || name == "mac-limit-action" || name == "mac-limit-notification" || name == "mac-aging-time" || name == "mac-aging-mode" || name == "mac-flooding" || name == "mac-learning" || name == "learn-disabled-mac-limit-action" || name == "flood-uu-disabled-mac-limit-action" || name == "mac-limit-reached" || name == "mac-limit-threshold" || name == "flood-unknown-unicast-enabled" || name == "mac-port-down-flush-enabled" || name == "split-horizon-group-id" || name == "is-ip-source-guard-enabled" || name == "is-ipsg-logging-enabled" || name == "is-dai-enabled" || name == "is-dai-logging-enabled" || name == "is-dai-addr-validate-source-mac-enabled" || name == "is-dai-addr-validate-destination-mac-enabled" || name == "is-dai-addr-validate-ipv4-enabled" || name == "is-mac-secure-enabled" || name == "mac-secure-action" || name == "is-mac-secure-logging-enabled" || name == "is-mac-secure-accept-shutdown-enabled" || name == "is-mac-secure-threshold-enabled" || name == "dai-address-validation-mask" || name == "dhcpv4-snoop" || name == "dhcpv4-profile-name" || name == "igm-pv4-disabled" || name == "igm-pv4-profile-name" || name == "mld-profile-name" || name == "mmrp-flood-optimization" || name == "unicast-storm-control-rate-unit" || name == "unicast-storm-control-pps" || name == "unicast-storm-control-kb-ps" || name == "multicast-storm-control-rate-unit" || name == "multicast-storm-control-pps" || name == "multicast-storm-control-kb-ps" || name == "broadcast-storm-control-rate-unit" || name == "broadcast-storm-control-pps" || name == "broadcast-storm-control-kb-ps")
         return true;
     return false;
 }

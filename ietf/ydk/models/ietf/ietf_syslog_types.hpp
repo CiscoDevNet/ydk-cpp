@@ -247,6 +247,17 @@ class Severity : public ydk::Enum
         static const ydk::Enum::YLeaf info;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "info") return 6;
+            if (name == "debug") return 7;
+            return -1;
+        }
 };
 
 

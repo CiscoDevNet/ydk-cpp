@@ -360,6 +360,11 @@ class L2tpDigestHashMethod : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 1;
+            if (name == "sha1") return 2;
+            return -1;
+        }
 };
 
 class L2tpHashMethod : public ydk::Enum
@@ -369,6 +374,12 @@ class L2tpHashMethod : public ydk::Enum
         static const ydk::Enum::YLeaf sha1;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 1;
+            if (name == "sha1") return 2;
+            if (name == "none") return 3;
+            return -1;
+        }
 };
 
 

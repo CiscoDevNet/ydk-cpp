@@ -300,6 +300,14 @@ class VcParamConfigLocation : public ydk::Enum
         static const ydk::Enum::YLeaf configVcClassSubInterface;
         static const ydk::Enum::YLeaf configVcClassInterface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "configDefault") return 1;
+            if (name == "configVcDirect") return 2;
+            if (name == "configVcClass") return 3;
+            if (name == "configVcClassSubInterface") return 4;
+            if (name == "configVcClassInterface") return 5;
+            return -1;
+        }
 };
 
 class VpState : public ydk::Enum
@@ -308,6 +316,11 @@ class VpState : public ydk::Enum
         static const ydk::Enum::YLeaf vpStateInactive;
         static const ydk::Enum::YLeaf vpStateActive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vpStateInactive") return 1;
+            if (name == "vpStateActive") return 2;
+            return -1;
+        }
 };
 
 

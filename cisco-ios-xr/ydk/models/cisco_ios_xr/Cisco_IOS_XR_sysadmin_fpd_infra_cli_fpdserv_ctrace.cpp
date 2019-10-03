@@ -488,6 +488,7 @@ std::string Fpdserv::Trace::Location::AllOptions::TraceBlocks::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

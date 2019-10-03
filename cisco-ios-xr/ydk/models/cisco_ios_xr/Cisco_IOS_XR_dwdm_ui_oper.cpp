@@ -717,6 +717,7 @@ std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStati
 {
     std::ostringstream path_buffer;
     path_buffer << "prbs-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1124,6 +1125,7 @@ std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatist
 {
     std::ostringstream path_buffer;
     path_buffer << "prbs-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

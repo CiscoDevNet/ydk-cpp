@@ -2991,11 +2991,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
 
 Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::Attributes()
     :
-    module_done{YType::uint32, "module-done"},
-    vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::uint32, "vm-done"},
-    node_id{YType::uint32, "node-id"}
-        ,
     inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::InvBasicBag>())
     , env_sensor_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::EnvSensorInfo>())
     , pwg_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::PwgInfo>())
@@ -3024,11 +3019,7 @@ Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Ts
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::has_data() const
 {
     if (is_presence_container) return true;
-    return module_done.is_set
-	|| vm_node_id.is_set
-	|| vm_done.is_set
-	|| node_id.is_set
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
+    return (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
@@ -3041,10 +3032,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(module_done.yfilter)
-	|| ydk::is_set(vm_node_id.yfilter)
-	|| ydk::is_set(vm_done.yfilter)
-	|| ydk::is_set(node_id.yfilter)
 	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
@@ -3066,10 +3053,6 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Fantray::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_done.is_set || is_set(module_done.yfilter)) leaf_name_data.push_back(module_done.get_name_leafdata());
-    if (vm_node_id.is_set || is_set(vm_node_id.yfilter)) leaf_name_data.push_back(vm_node_id.get_name_leafdata());
-    if (vm_done.is_set || is_set(vm_done.yfilter)) leaf_name_data.push_back(vm_done.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3201,55 +3184,15 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Inventory::Racks::Rack::Fant
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "module-done")
-    {
-        module_done = value;
-        module_done.value_namespace = name_space;
-        module_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id = value;
-        vm_node_id.value_namespace = name_space;
-        vm_node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done = value;
-        vm_done.value_namespace = name_space;
-        vm_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-id")
-    {
-        node_id = value;
-        node_id.value_namespace = name_space;
-        node_id.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "module-done")
-    {
-        module_done.yfilter = yfilter;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id.yfilter = yfilter;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done.yfilter = yfilter;
-    }
-    if(value_path == "node-id")
-    {
-        node_id.yfilter = yfilter;
-    }
 }
 
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info")
         return true;
     return false;
 }
@@ -4331,6 +4274,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7555,11 +7499,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
 
 Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::Attributes()
     :
-    module_done{YType::uint32, "module-done"},
-    vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::uint32, "vm-done"},
-    node_id{YType::uint32, "node-id"}
-        ,
     inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::InvBasicBag>())
     , env_sensor_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::EnvSensorInfo>())
     , pwg_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::PwgInfo>())
@@ -7588,11 +7527,7 @@ Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::At
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::has_data() const
 {
     if (is_presence_container) return true;
-    return module_done.is_set
-	|| vm_node_id.is_set
-	|| vm_done.is_set
-	|| node_id.is_set
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
+    return (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
@@ -7605,10 +7540,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(module_done.yfilter)
-	|| ydk::is_set(vm_node_id.yfilter)
-	|| ydk::is_set(vm_done.yfilter)
-	|| ydk::is_set(node_id.yfilter)
 	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
@@ -7630,10 +7561,6 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Fantray::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_done.is_set || is_set(module_done.yfilter)) leaf_name_data.push_back(module_done.get_name_leafdata());
-    if (vm_node_id.is_set || is_set(vm_node_id.yfilter)) leaf_name_data.push_back(vm_node_id.get_name_leafdata());
-    if (vm_done.is_set || is_set(vm_done.yfilter)) leaf_name_data.push_back(vm_done.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7765,55 +7692,15 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Inventory::Racks::Rack::Fant
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "module-done")
-    {
-        module_done = value;
-        module_done.value_namespace = name_space;
-        module_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id = value;
-        vm_node_id.value_namespace = name_space;
-        vm_node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done = value;
-        vm_done.value_namespace = name_space;
-        vm_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-id")
-    {
-        node_id = value;
-        node_id.value_namespace = name_space;
-        node_id.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "module-done")
-    {
-        module_done.yfilter = yfilter;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id.yfilter = yfilter;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done.yfilter = yfilter;
-    }
-    if(value_path == "node-id")
-    {
-        node_id.yfilter = yfilter;
-    }
 }
 
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info")
         return true;
     return false;
 }
@@ -8895,6 +8782,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12119,11 +12007,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
 
 Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::Attributes()
     :
-    module_done{YType::uint32, "module-done"},
-    vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::uint32, "vm-done"},
-    node_id{YType::uint32, "node-id"}
-        ,
     inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::InvBasicBag>())
     , env_sensor_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::EnvSensorInfo>())
     , pwg_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::PwgInfo>())
@@ -12152,11 +12035,7 @@ Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::~At
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::has_data() const
 {
     if (is_presence_container) return true;
-    return module_done.is_set
-	|| vm_node_id.is_set
-	|| vm_done.is_set
-	|| node_id.is_set
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
+    return (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
@@ -12169,10 +12048,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(module_done.yfilter)
-	|| ydk::is_set(vm_node_id.yfilter)
-	|| ydk::is_set(vm_done.yfilter)
-	|| ydk::is_set(node_id.yfilter)
 	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
@@ -12194,10 +12069,6 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Fantray::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_done.is_set || is_set(module_done.yfilter)) leaf_name_data.push_back(module_done.get_name_leafdata());
-    if (vm_node_id.is_set || is_set(vm_node_id.yfilter)) leaf_name_data.push_back(vm_node_id.get_name_leafdata());
-    if (vm_done.is_set || is_set(vm_done.yfilter)) leaf_name_data.push_back(vm_done.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12329,55 +12200,15 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Inventory::Racks::Rack::Fant
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "module-done")
-    {
-        module_done = value;
-        module_done.value_namespace = name_space;
-        module_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id = value;
-        vm_node_id.value_namespace = name_space;
-        vm_node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done = value;
-        vm_done.value_namespace = name_space;
-        vm_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-id")
-    {
-        node_id = value;
-        node_id.value_namespace = name_space;
-        node_id.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "module-done")
-    {
-        module_done.yfilter = yfilter;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id.yfilter = yfilter;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done.yfilter = yfilter;
-    }
-    if(value_path == "node-id")
-    {
-        node_id.yfilter = yfilter;
-    }
 }
 
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info")
         return true;
     return false;
 }
@@ -13459,6 +13290,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16683,11 +16515,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes
 
 Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::Attributes()
     :
-    module_done{YType::uint32, "module-done"},
-    vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::uint32, "vm-done"},
-    node_id{YType::uint32, "node-id"}
-        ,
     inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::InvBasicBag>())
     , env_sensor_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::EnvSensorInfo>())
     , pwg_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::PwgInfo>())
@@ -16716,11 +16543,7 @@ Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::~Attributes()
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::has_data() const
 {
     if (is_presence_container) return true;
-    return module_done.is_set
-	|| vm_node_id.is_set
-	|| vm_done.is_set
-	|| node_id.is_set
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
+    return (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
@@ -16733,10 +16556,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::has_data() 
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(module_done.yfilter)
-	|| ydk::is_set(vm_node_id.yfilter)
-	|| ydk::is_set(vm_done.yfilter)
-	|| ydk::is_set(node_id.yfilter)
 	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
@@ -16758,10 +16577,6 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Fantray::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_done.is_set || is_set(module_done.yfilter)) leaf_name_data.push_back(module_done.get_name_leafdata());
-    if (vm_node_id.is_set || is_set(vm_node_id.yfilter)) leaf_name_data.push_back(vm_node_id.get_name_leafdata());
-    if (vm_done.is_set || is_set(vm_done.yfilter)) leaf_name_data.push_back(vm_done.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -16893,55 +16708,15 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Inventory::Racks::Rack::Fant
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "module-done")
-    {
-        module_done = value;
-        module_done.value_namespace = name_space;
-        module_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id = value;
-        vm_node_id.value_namespace = name_space;
-        vm_node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done = value;
-        vm_done.value_namespace = name_space;
-        vm_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-id")
-    {
-        node_id = value;
-        node_id.value_namespace = name_space;
-        node_id.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "module-done")
-    {
-        module_done.yfilter = yfilter;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id.yfilter = yfilter;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done.yfilter = yfilter;
-    }
-    if(value_path == "node-id")
-    {
-        node_id.yfilter = yfilter;
-    }
 }
 
 bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info")
         return true;
     return false;
 }
@@ -18023,6 +17798,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::EnvS
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21247,11 +21023,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::InvEepromIn
 
 Inventory::Racks::Rack::Fantray::Slot::Attributes::Attributes()
     :
-    module_done{YType::uint32, "module-done"},
-    vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::uint32, "vm-done"},
-    node_id{YType::uint32, "node-id"}
-        ,
     inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag>())
     , env_sensor_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::EnvSensorInfo>())
     , pwg_info(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::PwgInfo>())
@@ -21280,11 +21051,7 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::~Attributes()
 bool Inventory::Racks::Rack::Fantray::Slot::Attributes::has_data() const
 {
     if (is_presence_container) return true;
-    return module_done.is_set
-	|| vm_node_id.is_set
-	|| vm_done.is_set
-	|| node_id.is_set
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
+    return (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
@@ -21297,10 +21064,6 @@ bool Inventory::Racks::Rack::Fantray::Slot::Attributes::has_data() const
 bool Inventory::Racks::Rack::Fantray::Slot::Attributes::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(module_done.yfilter)
-	|| ydk::is_set(vm_node_id.yfilter)
-	|| ydk::is_set(vm_done.yfilter)
-	|| ydk::is_set(node_id.yfilter)
 	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
@@ -21322,10 +21085,6 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Fantray::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_done.is_set || is_set(module_done.yfilter)) leaf_name_data.push_back(module_done.get_name_leafdata());
-    if (vm_node_id.is_set || is_set(vm_node_id.yfilter)) leaf_name_data.push_back(vm_node_id.get_name_leafdata());
-    if (vm_done.is_set || is_set(vm_done.yfilter)) leaf_name_data.push_back(vm_done.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -21457,55 +21216,15 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Inventory::Racks::Rack::Fant
 
 void Inventory::Racks::Rack::Fantray::Slot::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "module-done")
-    {
-        module_done = value;
-        module_done.value_namespace = name_space;
-        module_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id = value;
-        vm_node_id.value_namespace = name_space;
-        vm_node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done = value;
-        vm_done.value_namespace = name_space;
-        vm_done.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-id")
-    {
-        node_id = value;
-        node_id.value_namespace = name_space;
-        node_id.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Inventory::Racks::Rack::Fantray::Slot::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "module-done")
-    {
-        module_done.yfilter = yfilter;
-    }
-    if(value_path == "vm-node-id")
-    {
-        vm_node_id.yfilter = yfilter;
-    }
-    if(value_path == "vm-done")
-    {
-        vm_done.yfilter = yfilter;
-    }
-    if(value_path == "node-id")
-    {
-        node_id.yfilter = yfilter;
-    }
 }
 
 bool Inventory::Racks::Rack::Fantray::Slot::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info")
         return true;
     return false;
 }
@@ -22587,6 +22306,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Attributes::EnvSensorInfoXml:
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -348,6 +348,12 @@ class StartupMode : public ydk::Enum
         static const ydk::Enum::YLeaf ON_SELECTION;
         static const ydk::Enum::YLeaf ON_DEMAND;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ON-BOOTUP") return 0;
+            if (name == "ON-SELECTION") return 1;
+            if (name == "ON-DEMAND") return 2;
+            return -1;
+        }
 };
 
 class ServiceRole : public ydk::Enum
@@ -357,6 +363,12 @@ class ServiceRole : public ydk::Enum
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf STANDBY;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NONE") return 0;
+            if (name == "ACTIVE") return 1;
+            if (name == "STANDBY") return 2;
+            return -1;
+        }
 };
 
 class ServiceState : public ydk::Enum
@@ -366,6 +378,12 @@ class ServiceState : public ydk::Enum
         static const ydk::Enum::YLeaf SS_RUNNING;
         static const ydk::Enum::YLeaf SS_ACK_PENDING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SS_IDLE") return 0;
+            if (name == "SS_RUNNING") return 1;
+            if (name == "SS_ACK_PENDING") return 2;
+            return -1;
+        }
 };
 
 class ProcessState : public ydk::Enum
@@ -378,6 +396,15 @@ class ProcessState : public ydk::Enum
         static const ydk::Enum::YLeaf DESELECTING;
         static const ydk::Enum::YLeaf DESELECTED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IDLE") return 0;
+            if (name == "RUNNING") return 1;
+            if (name == "STOPPING") return 2;
+            if (name == "STOPPED") return 3;
+            if (name == "DESELECTING") return 4;
+            if (name == "DESELECTED") return 5;
+            return -1;
+        }
 };
 
 class ServiceScope : public ydk::Enum
@@ -386,6 +413,11 @@ class ServiceScope : public ydk::Enum
         static const ydk::Enum::YLeaf SYSTEM;
         static const ydk::Enum::YLeaf RACK;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SYSTEM") return 0;
+            if (name == "RACK") return 1;
+            return -1;
+        }
 };
 
 

@@ -559,6 +559,17 @@ class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineType : public ydk::Enum
         static const ydk::Enum::YLeaf e3Framed;
         static const ydk::Enum::YLeaf e3Plcp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx3other") return 1;
+            if (name == "dsx3M23") return 2;
+            if (name == "dsx3SYNTRAN") return 3;
+            if (name == "dsx3CbitParity") return 4;
+            if (name == "dsx3ClearChannel") return 5;
+            if (name == "e3other") return 6;
+            if (name == "e3Framed") return 7;
+            if (name == "e3Plcp") return 8;
+            return -1;
+        }
 };
 
 class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineCoding : public ydk::Enum
@@ -568,6 +579,12 @@ class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineCoding : public ydk::Enu
         static const ydk::Enum::YLeaf dsx3B3ZS;
         static const ydk::Enum::YLeaf e3HDB3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx3Other") return 1;
+            if (name == "dsx3B3ZS") return 2;
+            if (name == "e3HDB3") return 3;
+            return -1;
+        }
 };
 
 class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3SendCode : public ydk::Enum
@@ -580,6 +597,15 @@ class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3SendCode : public ydk::Enum
         static const ydk::Enum::YLeaf dsx3SendDS1LoopCode;
         static const ydk::Enum::YLeaf dsx3SendTestPattern;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx3SendNoCode") return 1;
+            if (name == "dsx3SendLineCode") return 2;
+            if (name == "dsx3SendPayloadCode") return 3;
+            if (name == "dsx3SendResetCode") return 4;
+            if (name == "dsx3SendDS1LoopCode") return 5;
+            if (name == "dsx3SendTestPattern") return 6;
+            return -1;
+        }
 };
 
 class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LoopbackConfig : public ydk::Enum
@@ -592,6 +618,15 @@ class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LoopbackConfig : public ydk:
         static const ydk::Enum::YLeaf dsx3InwardLoop;
         static const ydk::Enum::YLeaf dsx3DualLoop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx3NoLoop") return 1;
+            if (name == "dsx3PayloadLoop") return 2;
+            if (name == "dsx3LineLoop") return 3;
+            if (name == "dsx3OtherLoop") return 4;
+            if (name == "dsx3InwardLoop") return 5;
+            if (name == "dsx3DualLoop") return 6;
+            return -1;
+        }
 };
 
 class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3TransmitClockSource : public ydk::Enum
@@ -601,6 +636,12 @@ class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3TransmitClockSource : public
         static const ydk::Enum::YLeaf localTiming;
         static const ydk::Enum::YLeaf throughTiming;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "loopTiming") return 1;
+            if (name == "localTiming") return 2;
+            if (name == "throughTiming") return 3;
+            return -1;
+        }
 };
 
 class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineStatusChangeTrapEnable : public ydk::Enum
@@ -609,6 +650,11 @@ class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineStatusChangeTrapEnable :
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3Channelization : public ydk::Enum
@@ -618,6 +664,12 @@ class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3Channelization : public ydk:
         static const ydk::Enum::YLeaf enabledDs1;
         static const ydk::Enum::YLeaf enabledDs2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "enabledDs1") return 2;
+            if (name == "enabledDs2") return 3;
+            return -1;
+        }
 };
 
 

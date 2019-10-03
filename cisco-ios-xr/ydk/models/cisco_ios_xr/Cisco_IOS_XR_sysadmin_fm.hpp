@@ -802,6 +802,15 @@ class FmActionT : public ydk::Enum
         static const ydk::Enum::YLeaf ALARM;
         static const ydk::Enum::YLeaf REPORT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ISOLATION") return 0;
+            if (name == "MITIGATION") return 1;
+            if (name == "RECOVERY") return 2;
+            if (name == "CORRELATION") return 3;
+            if (name == "ALARM") return 4;
+            if (name == "REPORT") return 5;
+            return -1;
+        }
 };
 
 class FmHistoryStateT : public ydk::Enum
@@ -811,6 +820,12 @@ class FmHistoryStateT : public ydk::Enum
         static const ydk::Enum::YLeaf FM_HISTORY_STATE_CLEARED;
         static const ydk::Enum::YLeaf FM_HISTORY_STATE_INVALID;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FM_HISTORY_STATE_ACTIVE") return 0;
+            if (name == "FM_HISTORY_STATE_CLEARED") return 1;
+            if (name == "FM_HISTORY_STATE_INVALID") return 2;
+            return -1;
+        }
 };
 
 class FmServiceScopeT : public ydk::Enum
@@ -820,6 +835,12 @@ class FmServiceScopeT : public ydk::Enum
         static const ydk::Enum::YLeaf FM_SERVICE_RACK_SCOPE;
         static const ydk::Enum::YLeaf FM_SERVICE_SYSTEM_SCOPE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FM_SERVICE_NODE_SCOPE") return 0;
+            if (name == "FM_SERVICE_RACK_SCOPE") return 1;
+            if (name == "FM_SERVICE_SYSTEM_SCOPE") return 2;
+            return -1;
+        }
 };
 
 class FmActionResultT : public ydk::Enum
@@ -829,6 +850,12 @@ class FmActionResultT : public ydk::Enum
         static const ydk::Enum::YLeaf FAILURE;
         static const ydk::Enum::YLeaf NO_OP;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SUCCESS") return 0;
+            if (name == "FAILURE") return 1;
+            if (name == "NO-OP") return 2;
+            return -1;
+        }
 };
 
 class GenericHaRole : public ydk::Enum
@@ -838,6 +865,12 @@ class GenericHaRole : public ydk::Enum
         static const ydk::Enum::YLeaf Active;
         static const ydk::Enum::YLeaf Standby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-ha-role") return 0;
+            if (name == "Active") return 1;
+            if (name == "Standby") return 2;
+            return -1;
+        }
 };
 
 class FmFaultStateT : public ydk::Enum
@@ -853,6 +886,18 @@ class FmFaultStateT : public ydk::Enum
         static const ydk::Enum::YLeaf SUPPRESSED;
         static const ydk::Enum::YLeaf UPDATE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SET") return 0;
+            if (name == "CLEAR") return 1;
+            if (name == "INFO") return 2;
+            if (name == "INVALID") return 3;
+            if (name == "PARTIALLY_QUALIFIED") return 4;
+            if (name == "SOAKING_BEFORE_SET") return 5;
+            if (name == "SOAKING_BEFORE_CLEAR") return 6;
+            if (name == "SUPPRESSED") return 7;
+            if (name == "UPDATE") return 8;
+            return -1;
+        }
 };
 
 class FmFaultSeverityT : public ydk::Enum
@@ -863,6 +908,13 @@ class FmFaultSeverityT : public ydk::Enum
         static const ydk::Enum::YLeaf MINOR;
         static const ydk::Enum::YLeaf NR;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "CRITICAL") return 0;
+            if (name == "MAJOR") return 1;
+            if (name == "MINOR") return 2;
+            if (name == "NR") return 3;
+            return -1;
+        }
 };
 
 class FmRuleEvalResultT : public ydk::Enum
@@ -871,6 +923,11 @@ class FmRuleEvalResultT : public ydk::Enum
         static const ydk::Enum::YLeaf SUCCESS;
         static const ydk::Enum::YLeaf FAILURE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SUCCESS") return 0;
+            if (name == "FAILURE") return 1;
+            return -1;
+        }
 };
 
 class FmCorrelationObjQualifierT : public ydk::Enum
@@ -881,6 +938,13 @@ class FmCorrelationObjQualifierT : public ydk::Enum
         static const ydk::Enum::YLeaf QUALIFIER_SLOT;
         static const ydk::Enum::YLeaf QUALIFIER_OBJECT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "QUALIFIER_IGNORED") return 0;
+            if (name == "QUALIFIER_RACK") return 1;
+            if (name == "QUALIFIER_SLOT") return 2;
+            if (name == "QUALIFIER_OBJECT") return 3;
+            return -1;
+        }
 };
 
 

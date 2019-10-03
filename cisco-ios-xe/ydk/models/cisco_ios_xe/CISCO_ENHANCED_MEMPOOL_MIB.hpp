@@ -283,6 +283,23 @@ class CempMemPoolTypes : public ydk::Enum
         static const ydk::Enum::YLeaf asicMemory;
         static const ydk::Enum::YLeaf posixMemory;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "processorMemory") return 2;
+            if (name == "ioMemory") return 3;
+            if (name == "pciMemory") return 4;
+            if (name == "fastMemory") return 5;
+            if (name == "multibusMemory") return 6;
+            if (name == "interruptStackMemory") return 7;
+            if (name == "processStackMemory") return 8;
+            if (name == "localExceptionMemory") return 9;
+            if (name == "virtualMemory") return 10;
+            if (name == "reservedMemory") return 11;
+            if (name == "imageMemory") return 12;
+            if (name == "asicMemory") return 13;
+            if (name == "posixMemory") return 14;
+            return -1;
+        }
 };
 
 

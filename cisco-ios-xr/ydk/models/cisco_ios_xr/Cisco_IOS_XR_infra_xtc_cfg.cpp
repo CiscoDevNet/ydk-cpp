@@ -22,7 +22,7 @@ Pce::Pce()
     , pcc_addresses(std::make_shared<Pce::PccAddresses>())
     , logging(std::make_shared<Pce::Logging>())
     , backoff(nullptr) // presence node
-    , rest(nullptr) // presence node
+    , rest(std::make_shared<Pce::Rest>())
     , state_syncs(std::make_shared<Pce::StateSyncs>())
     , segment_routing(std::make_shared<Pce::SegmentRouting>())
     , timers(nullptr) // presence node
@@ -33,6 +33,7 @@ Pce::Pce()
     ipv6_state_syncs->parent = this;
     pcc_addresses->parent = this;
     logging->parent = this;
+    rest->parent = this;
     state_syncs->parent = this;
     segment_routing->parent = this;
     netconf->parent = this;
@@ -1564,7 +1565,7 @@ Pce::Rest::Rest()
 {
     rest_users->parent = this;
 
-    yang_name = "rest"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+    yang_name = "rest"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::Rest::~Rest()
@@ -5810,6 +5811,8 @@ const Enum::YLeaf PcePathHop::srv6 {2, "srv6"};
 
 const Enum::YLeaf PceMetric::igp {1, "igp"};
 const Enum::YLeaf PceMetric::te {2, "te"};
+const Enum::YLeaf PceMetric::hopcount {3, "hopcount"};
+const Enum::YLeaf PceMetric::latency {12, "latency"};
 
 const Enum::YLeaf PceDisjointPath::link {1, "link"};
 const Enum::YLeaf PceDisjointPath::node {2, "node"};

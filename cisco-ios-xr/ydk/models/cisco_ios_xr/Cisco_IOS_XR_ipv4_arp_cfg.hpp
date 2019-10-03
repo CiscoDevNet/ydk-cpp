@@ -386,6 +386,11 @@ class ArpEntry : public ydk::Enum
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf alias;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static") return 0;
+            if (name == "alias") return 1;
+            return -1;
+        }
 };
 
 class ArpEncap : public ydk::Enum
@@ -396,6 +401,13 @@ class ArpEncap : public ydk::Enum
         static const ydk::Enum::YLeaf srpa;
         static const ydk::Enum::YLeaf srpb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "arpa") return 1;
+            if (name == "srp") return 4;
+            if (name == "srpa") return 5;
+            if (name == "srpb") return 6;
+            return -1;
+        }
 };
 
 

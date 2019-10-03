@@ -2774,6 +2774,11 @@ class SnmpCorrVbindMatch : public ydk::Enum
         static const ydk::Enum::YLeaf index_;
         static const ydk::Enum::YLeaf value_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "index") return 0;
+            if (name == "value") return 1;
+            return -1;
+        }
 };
 
 class SnmpCorrRuleState : public ydk::Enum
@@ -2783,6 +2788,12 @@ class SnmpCorrRuleState : public ydk::Enum
         static const ydk::Enum::YLeaf rule_applied;
         static const ydk::Enum::YLeaf rule_applied_all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rule-unapplied") return 0;
+            if (name == "rule-applied") return 1;
+            if (name == "rule-applied-all") return 2;
+            return -1;
+        }
 };
 
 class DupReqDropStatus : public ydk::Enum
@@ -2791,6 +2802,11 @@ class DupReqDropStatus : public ydk::Enum
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            if (name == "enabled") return 1;
+            return -1;
+        }
 };
 
 

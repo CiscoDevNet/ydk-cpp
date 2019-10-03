@@ -1668,7 +1668,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::RcommItems>())
@@ -1718,6 +1722,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -1753,6 +1761,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -1801,6 +1813,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2048,6 +2064,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2148,11 +2188,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -4166,7 +4222,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::RcommItems>())
@@ -4216,6 +4276,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -4251,6 +4315,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -4299,6 +4367,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4546,6 +4618,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4646,11 +4742,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ImportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -6676,7 +6788,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::SelforigrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::SelforigrtItems::RtItems::RouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::SelforigrtItems::RtItems::RouteList::PathItems::PathList::RcommItems>())
@@ -6726,6 +6842,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Selfori
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -6761,6 +6881,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Selfori
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -6809,6 +6933,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7056,6 +7184,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Selfori
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::SelforigrtItems::RtItems::RouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7156,11 +7308,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Selfori
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::SelforigrtItems::RtItems::RouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -9186,7 +9354,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::InjectedrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::InjectedrtItems::RtItems::RouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::InjectedrtItems::RtItems::RouteList::PathItems::PathList::RcommItems>())
@@ -9236,6 +9408,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Injecte
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -9271,6 +9447,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Injecte
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -9319,6 +9499,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9566,6 +9750,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Injecte
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::InjectedrtItems::RtItems::RouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9666,11 +9874,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Injecte
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::InjectedrtItems::RtItems::RouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -11732,7 +11956,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::RtItems::RouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::RtItems::RouteList::PathItems::PathList::RcommItems>())
@@ -11782,6 +12010,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -11817,6 +12049,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -11865,6 +12101,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12112,6 +12352,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::RtItems::RouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12212,11 +12476,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::RtItems::RouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -14175,7 +14455,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::RcommItems>())
@@ -14225,6 +14509,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -14260,6 +14548,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -14308,6 +14600,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14555,6 +14851,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14655,11 +14975,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::VpnrtItems::VpnRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }
@@ -16673,7 +17009,11 @@ System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtIt
     rcvdlbl{YType::str, "rcvdLbl"},
     originatorid{YType::str, "originatorId"},
     clusterlst{YType::str, "clusterLst"},
-    peerrtrid{YType::str, "peerRtrId"}
+    peerrtrid{YType::str, "peerRtrId"},
+    numimported{YType::uint16, "numImported"},
+    importedlst{YType::str, "importedLst"},
+    importedsrc{YType::str, "importedSrc"},
+    origimportedsrc{YType::str, "origImportedSrc"}
         ,
     seg_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::SegItems>())
     , rcomm_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::RcommItems>())
@@ -16723,6 +17063,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
 	|| originatorid.is_set
 	|| clusterlst.is_set
 	|| peerrtrid.is_set
+	|| numimported.is_set
+	|| importedlst.is_set
+	|| importedsrc.is_set
+	|| origimportedsrc.is_set
 	|| (seg_items !=  nullptr && seg_items->has_data())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_data())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_data())
@@ -16758,6 +17102,10 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
 	|| ydk::is_set(originatorid.yfilter)
 	|| ydk::is_set(clusterlst.yfilter)
 	|| ydk::is_set(peerrtrid.yfilter)
+	|| ydk::is_set(numimported.yfilter)
+	|| ydk::is_set(importedlst.yfilter)
+	|| ydk::is_set(importedsrc.yfilter)
+	|| ydk::is_set(origimportedsrc.yfilter)
 	|| (seg_items !=  nullptr && seg_items->has_operation())
 	|| (rcomm_items !=  nullptr && rcomm_items->has_operation())
 	|| (ecomm_items !=  nullptr && ecomm_items->has_operation())
@@ -16806,6 +17154,10 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (originatorid.is_set || is_set(originatorid.yfilter)) leaf_name_data.push_back(originatorid.get_name_leafdata());
     if (clusterlst.is_set || is_set(clusterlst.yfilter)) leaf_name_data.push_back(clusterlst.get_name_leafdata());
     if (peerrtrid.is_set || is_set(peerrtrid.yfilter)) leaf_name_data.push_back(peerrtrid.get_name_leafdata());
+    if (numimported.is_set || is_set(numimported.yfilter)) leaf_name_data.push_back(numimported.get_name_leafdata());
+    if (importedlst.is_set || is_set(importedlst.yfilter)) leaf_name_data.push_back(importedlst.get_name_leafdata());
+    if (importedsrc.is_set || is_set(importedsrc.yfilter)) leaf_name_data.push_back(importedsrc.get_name_leafdata());
+    if (origimportedsrc.is_set || is_set(origimportedsrc.yfilter)) leaf_name_data.push_back(origimportedsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -17053,6 +17405,30 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
         peerrtrid.value_namespace = name_space;
         peerrtrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "numImported")
+    {
+        numimported = value;
+        numimported.value_namespace = name_space;
+        numimported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst = value;
+        importedlst.value_namespace = name_space;
+        importedlst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc = value;
+        importedsrc.value_namespace = name_space;
+        importedsrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc = value;
+        origimportedsrc.value_namespace = name_space;
+        origimportedsrc.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -17153,11 +17529,27 @@ void System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Exporte
     {
         peerrtrid.yfilter = yfilter;
     }
+    if(value_path == "numImported")
+    {
+        numimported.yfilter = yfilter;
+    }
+    if(value_path == "importedLst")
+    {
+        importedlst.yfilter = yfilter;
+    }
+    if(value_path == "importedSrc")
+    {
+        importedsrc.yfilter = yfilter;
+    }
+    if(value_path == "origImportedSrc")
+    {
+        origimportedsrc.yfilter = yfilter;
+    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::ExportedrtItems::LblrtItems::LblRouteList::PathItems::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId")
+    if(name == "seg-items" || name == "rcomm-items" || name == "ecomm-items" || name == "lnkstattr-items" || name == "pfxsid-items" || name == "pmsi-items" || name == "peer" || name == "id" || name == "nh" || name == "importedRd" || name == "origImportedRd" || name == "nhMetric" || name == "type" || name == "operSt" || name == "flags" || name == "origin" || name == "metric" || name == "localPref" || name == "weight" || name == "aggr" || name == "aggrAs" || name == "unknownAttrData" || name == "unknownAttrLen" || name == "regComm" || name == "extComm" || name == "asPath" || name == "rcvdLbl" || name == "originatorId" || name == "clusterLst" || name == "peerRtrId" || name == "numImported" || name == "importedLst" || name == "importedSrc" || name == "origImportedSrc")
         return true;
     return false;
 }

@@ -529,6 +529,7 @@ SubscriberRedundancyManager::Summary::Summary()
     preferred_role{YType::enumeration, "preferred-role"},
     slave_mode{YType::enumeration, "slave-mode"},
     hold_timer{YType::uint32, "hold-timer"},
+    sync_time{YType::uint32, "sync-time"},
     source_interface_name{YType::str, "source-interface-name"},
     vrf_name{YType::str, "vrf-name"},
     source_interface_ipv4_address{YType::str, "source-interface-ipv4-address"},
@@ -557,6 +558,7 @@ bool SubscriberRedundancyManager::Summary::has_data() const
 	|| preferred_role.is_set
 	|| slave_mode.is_set
 	|| hold_timer.is_set
+	|| sync_time.is_set
 	|| source_interface_name.is_set
 	|| vrf_name.is_set
 	|| source_interface_ipv4_address.is_set
@@ -578,6 +580,7 @@ bool SubscriberRedundancyManager::Summary::has_operation() const
 	|| ydk::is_set(preferred_role.yfilter)
 	|| ydk::is_set(slave_mode.yfilter)
 	|| ydk::is_set(hold_timer.yfilter)
+	|| ydk::is_set(sync_time.yfilter)
 	|| ydk::is_set(source_interface_name.yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| ydk::is_set(source_interface_ipv4_address.yfilter)
@@ -614,6 +617,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyManager::Summ
     if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
     if (slave_mode.is_set || is_set(slave_mode.yfilter)) leaf_name_data.push_back(slave_mode.get_name_leafdata());
     if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
+    if (sync_time.is_set || is_set(sync_time.yfilter)) leaf_name_data.push_back(sync_time.get_name_leafdata());
     if (source_interface_name.is_set || is_set(source_interface_name.yfilter)) leaf_name_data.push_back(source_interface_name.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
     if (source_interface_ipv4_address.is_set || is_set(source_interface_ipv4_address.yfilter)) leaf_name_data.push_back(source_interface_ipv4_address.get_name_leafdata());
@@ -673,6 +677,12 @@ void SubscriberRedundancyManager::Summary::set_value(const std::string & value_p
         hold_timer = value;
         hold_timer.value_namespace = name_space;
         hold_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sync-time")
+    {
+        sync_time = value;
+        sync_time.value_namespace = name_space;
+        sync_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface-name")
     {
@@ -764,6 +774,10 @@ void SubscriberRedundancyManager::Summary::set_filter(const std::string & value_
     {
         hold_timer.yfilter = yfilter;
     }
+    if(value_path == "sync-time")
+    {
+        sync_time.yfilter = yfilter;
+    }
     if(value_path == "source-interface-name")
     {
         source_interface_name.yfilter = yfilter;
@@ -812,7 +826,7 @@ void SubscriberRedundancyManager::Summary::set_filter(const std::string & value_
 
 bool SubscriberRedundancyManager::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disabled" || name == "active-state" || name == "preferred-role" || name == "slave-mode" || name == "hold-timer" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "group-count" || name == "disabled-group-count" || name == "master-group-count" || name == "slave-group-count" || name == "interface-count" || name == "master-interface-count" || name == "slave-interface-count")
+    if(name == "disabled" || name == "active-state" || name == "preferred-role" || name == "slave-mode" || name == "hold-timer" || name == "sync-time" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "group-count" || name == "disabled-group-count" || name == "master-group-count" || name == "slave-group-count" || name == "interface-count" || name == "master-interface-count" || name == "slave-interface-count")
         return true;
     return false;
 }
@@ -1848,6 +1862,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionD
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detailed-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1976,6 +1991,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionS
 {
     std::ostringstream path_buffer;
     path_buffer << "session-sync-error-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2786,6 +2802,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::Clien
 {
     std::ostringstream path_buffer;
     path_buffer << "client-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3324,14 +3341,14 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::GroupId()
     peer_ipv4_address{YType::str, "peer-ipv4-address"},
     peer_ipv6_address{YType::str, "peer-ipv6-address"},
     peer_status{YType::enumeration, "peer-status"},
-    peer_last_negotiation_time{YType::str, "peer-last-negotiation-time"},
-    peer_last_up_time{YType::str, "peer-last-up-time"},
-    peer_last_down_time{YType::str, "peer-last-down-time"},
+    peer_last_negotiation_time_epoch{YType::uint64, "peer-last-negotiation-time-epoch"},
+    peer_last_up_time_epoch{YType::uint64, "peer-last-up-time-epoch"},
+    peer_last_down_time_epoch{YType::uint64, "peer-last-down-time-epoch"},
     peer_init_role{YType::enumeration, "peer-init-role"},
     peer_negotiating_role{YType::enumeration, "peer-negotiating-role"},
     peer_current_role{YType::enumeration, "peer-current-role"},
     peer_object_tracking_status{YType::boolean, "peer-object-tracking-status"},
-    last_switchover_time{YType::str, "last-switchover-time"},
+    last_switchover_time_epoch{YType::uint64, "last-switchover-time-epoch"},
     switchover_count{YType::uint32, "switchover-count"},
     last_switchover_reason{YType::enumeration, "last-switchover-reason"},
     switchover_hold_time{YType::uint32, "switchover-hold-time"},
@@ -3382,14 +3399,14 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_data() const
 	|| peer_ipv4_address.is_set
 	|| peer_ipv6_address.is_set
 	|| peer_status.is_set
-	|| peer_last_negotiation_time.is_set
-	|| peer_last_up_time.is_set
-	|| peer_last_down_time.is_set
+	|| peer_last_negotiation_time_epoch.is_set
+	|| peer_last_up_time_epoch.is_set
+	|| peer_last_down_time_epoch.is_set
 	|| peer_init_role.is_set
 	|| peer_negotiating_role.is_set
 	|| peer_current_role.is_set
 	|| peer_object_tracking_status.is_set
-	|| last_switchover_time.is_set
+	|| last_switchover_time_epoch.is_set
 	|| switchover_count.is_set
 	|| last_switchover_reason.is_set
 	|| switchover_hold_time.is_set
@@ -3431,14 +3448,14 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_operation() 
 	|| ydk::is_set(peer_ipv4_address.yfilter)
 	|| ydk::is_set(peer_ipv6_address.yfilter)
 	|| ydk::is_set(peer_status.yfilter)
-	|| ydk::is_set(peer_last_negotiation_time.yfilter)
-	|| ydk::is_set(peer_last_up_time.yfilter)
-	|| ydk::is_set(peer_last_down_time.yfilter)
+	|| ydk::is_set(peer_last_negotiation_time_epoch.yfilter)
+	|| ydk::is_set(peer_last_up_time_epoch.yfilter)
+	|| ydk::is_set(peer_last_down_time_epoch.yfilter)
 	|| ydk::is_set(peer_init_role.yfilter)
 	|| ydk::is_set(peer_negotiating_role.yfilter)
 	|| ydk::is_set(peer_current_role.yfilter)
 	|| ydk::is_set(peer_object_tracking_status.yfilter)
-	|| ydk::is_set(last_switchover_time.yfilter)
+	|| ydk::is_set(last_switchover_time_epoch.yfilter)
 	|| ydk::is_set(switchover_count.yfilter)
 	|| ydk::is_set(last_switchover_reason.yfilter)
 	|| ydk::is_set(switchover_hold_time.yfilter)
@@ -3484,14 +3501,14 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
     if (peer_ipv4_address.is_set || is_set(peer_ipv4_address.yfilter)) leaf_name_data.push_back(peer_ipv4_address.get_name_leafdata());
     if (peer_ipv6_address.is_set || is_set(peer_ipv6_address.yfilter)) leaf_name_data.push_back(peer_ipv6_address.get_name_leafdata());
     if (peer_status.is_set || is_set(peer_status.yfilter)) leaf_name_data.push_back(peer_status.get_name_leafdata());
-    if (peer_last_negotiation_time.is_set || is_set(peer_last_negotiation_time.yfilter)) leaf_name_data.push_back(peer_last_negotiation_time.get_name_leafdata());
-    if (peer_last_up_time.is_set || is_set(peer_last_up_time.yfilter)) leaf_name_data.push_back(peer_last_up_time.get_name_leafdata());
-    if (peer_last_down_time.is_set || is_set(peer_last_down_time.yfilter)) leaf_name_data.push_back(peer_last_down_time.get_name_leafdata());
+    if (peer_last_negotiation_time_epoch.is_set || is_set(peer_last_negotiation_time_epoch.yfilter)) leaf_name_data.push_back(peer_last_negotiation_time_epoch.get_name_leafdata());
+    if (peer_last_up_time_epoch.is_set || is_set(peer_last_up_time_epoch.yfilter)) leaf_name_data.push_back(peer_last_up_time_epoch.get_name_leafdata());
+    if (peer_last_down_time_epoch.is_set || is_set(peer_last_down_time_epoch.yfilter)) leaf_name_data.push_back(peer_last_down_time_epoch.get_name_leafdata());
     if (peer_init_role.is_set || is_set(peer_init_role.yfilter)) leaf_name_data.push_back(peer_init_role.get_name_leafdata());
     if (peer_negotiating_role.is_set || is_set(peer_negotiating_role.yfilter)) leaf_name_data.push_back(peer_negotiating_role.get_name_leafdata());
     if (peer_current_role.is_set || is_set(peer_current_role.yfilter)) leaf_name_data.push_back(peer_current_role.get_name_leafdata());
     if (peer_object_tracking_status.is_set || is_set(peer_object_tracking_status.yfilter)) leaf_name_data.push_back(peer_object_tracking_status.get_name_leafdata());
-    if (last_switchover_time.is_set || is_set(last_switchover_time.yfilter)) leaf_name_data.push_back(last_switchover_time.get_name_leafdata());
+    if (last_switchover_time_epoch.is_set || is_set(last_switchover_time_epoch.yfilter)) leaf_name_data.push_back(last_switchover_time_epoch.get_name_leafdata());
     if (switchover_count.is_set || is_set(switchover_count.yfilter)) leaf_name_data.push_back(switchover_count.get_name_leafdata());
     if (last_switchover_reason.is_set || is_set(last_switchover_reason.yfilter)) leaf_name_data.push_back(last_switchover_reason.get_name_leafdata());
     if (switchover_hold_time.is_set || is_set(switchover_hold_time.yfilter)) leaf_name_data.push_back(switchover_hold_time.get_name_leafdata());
@@ -3659,23 +3676,23 @@ void SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_value(const 
         peer_status.value_namespace = name_space;
         peer_status.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "peer-last-negotiation-time")
+    if(value_path == "peer-last-negotiation-time-epoch")
     {
-        peer_last_negotiation_time = value;
-        peer_last_negotiation_time.value_namespace = name_space;
-        peer_last_negotiation_time.value_namespace_prefix = name_space_prefix;
+        peer_last_negotiation_time_epoch = value;
+        peer_last_negotiation_time_epoch.value_namespace = name_space;
+        peer_last_negotiation_time_epoch.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "peer-last-up-time")
+    if(value_path == "peer-last-up-time-epoch")
     {
-        peer_last_up_time = value;
-        peer_last_up_time.value_namespace = name_space;
-        peer_last_up_time.value_namespace_prefix = name_space_prefix;
+        peer_last_up_time_epoch = value;
+        peer_last_up_time_epoch.value_namespace = name_space;
+        peer_last_up_time_epoch.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "peer-last-down-time")
+    if(value_path == "peer-last-down-time-epoch")
     {
-        peer_last_down_time = value;
-        peer_last_down_time.value_namespace = name_space;
-        peer_last_down_time.value_namespace_prefix = name_space_prefix;
+        peer_last_down_time_epoch = value;
+        peer_last_down_time_epoch.value_namespace = name_space;
+        peer_last_down_time_epoch.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-init-role")
     {
@@ -3701,11 +3718,11 @@ void SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_value(const 
         peer_object_tracking_status.value_namespace = name_space;
         peer_object_tracking_status.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "last-switchover-time")
+    if(value_path == "last-switchover-time-epoch")
     {
-        last_switchover_time = value;
-        last_switchover_time.value_namespace = name_space;
-        last_switchover_time.value_namespace_prefix = name_space_prefix;
+        last_switchover_time_epoch = value;
+        last_switchover_time_epoch.value_namespace = name_space;
+        last_switchover_time_epoch.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-count")
     {
@@ -3857,17 +3874,17 @@ void SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_filter(const
     {
         peer_status.yfilter = yfilter;
     }
-    if(value_path == "peer-last-negotiation-time")
+    if(value_path == "peer-last-negotiation-time-epoch")
     {
-        peer_last_negotiation_time.yfilter = yfilter;
+        peer_last_negotiation_time_epoch.yfilter = yfilter;
     }
-    if(value_path == "peer-last-up-time")
+    if(value_path == "peer-last-up-time-epoch")
     {
-        peer_last_up_time.yfilter = yfilter;
+        peer_last_up_time_epoch.yfilter = yfilter;
     }
-    if(value_path == "peer-last-down-time")
+    if(value_path == "peer-last-down-time-epoch")
     {
-        peer_last_down_time.yfilter = yfilter;
+        peer_last_down_time_epoch.yfilter = yfilter;
     }
     if(value_path == "peer-init-role")
     {
@@ -3885,9 +3902,9 @@ void SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_filter(const
     {
         peer_object_tracking_status.yfilter = yfilter;
     }
-    if(value_path == "last-switchover-time")
+    if(value_path == "last-switchover-time-epoch")
     {
-        last_switchover_time.yfilter = yfilter;
+        last_switchover_time_epoch.yfilter = yfilter;
     }
     if(value_path == "switchover-count")
     {
@@ -3937,7 +3954,7 @@ void SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_filter(const
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface" || name == "group-id" || name == "group-id-xr" || name == "description" || name == "disabled" || name == "init-role" || name == "negotiating-role" || name == "current-role" || name == "slave-mode" || name == "hold-timer" || name == "virtual-mac-address" || name == "virtual-mac-address-disable" || name == "l2tp-source-ip" || name == "core-tracking-object-name" || name == "core-tracking-object-status" || name == "access-tracking-object-name" || name == "access-tracking-object-status" || name == "object-tracking-status" || name == "peer-ipv4-address" || name == "peer-ipv6-address" || name == "peer-status" || name == "peer-last-negotiation-time" || name == "peer-last-up-time" || name == "peer-last-down-time" || name == "peer-init-role" || name == "peer-negotiating-role" || name == "peer-current-role" || name == "peer-object-tracking-status" || name == "last-switchover-time" || name == "switchover-count" || name == "last-switchover-reason" || name == "switchover-hold-time" || name == "session-count" || name == "slave-update-failure-count" || name == "tunnel-count" || name == "pending-session-update-count" || name == "pending-session-delete-count" || name == "interface-count" || name == "revertive-timer" || name == "switchover-revert-time")
+    if(name == "interface" || name == "group-id" || name == "group-id-xr" || name == "description" || name == "disabled" || name == "init-role" || name == "negotiating-role" || name == "current-role" || name == "slave-mode" || name == "hold-timer" || name == "virtual-mac-address" || name == "virtual-mac-address-disable" || name == "l2tp-source-ip" || name == "core-tracking-object-name" || name == "core-tracking-object-status" || name == "access-tracking-object-name" || name == "access-tracking-object-status" || name == "object-tracking-status" || name == "peer-ipv4-address" || name == "peer-ipv6-address" || name == "peer-status" || name == "peer-last-negotiation-time-epoch" || name == "peer-last-up-time-epoch" || name == "peer-last-down-time-epoch" || name == "peer-init-role" || name == "peer-negotiating-role" || name == "peer-current-role" || name == "peer-object-tracking-status" || name == "last-switchover-time-epoch" || name == "switchover-count" || name == "last-switchover-reason" || name == "switchover-hold-time" || name == "session-count" || name == "slave-update-failure-count" || name == "tunnel-count" || name == "pending-session-update-count" || name == "pending-session-delete-count" || name == "interface-count" || name == "revertive-timer" || name == "switchover-revert-time")
         return true;
     return false;
 }
@@ -3979,6 +3996,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

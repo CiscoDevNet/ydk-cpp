@@ -50,7 +50,17 @@ namespace ydk
 
 gNMIClient::PathPrefixValueFlags flag;
 
-static void check_status(grpc::Status status, string message)
+void release_allocated_memory(vector<GnmiClientRequest> & request_list)
+{
+    for (auto request : request_list) {
+        if (request.path) {
+            delete request.path;
+            request.path = nullptr;
+        }
+    }
+}
+
+static void check_status(grpc::Status status, const string & message)
 {
     if (!status.ok()) {
         ostringstream s;
@@ -112,8 +122,10 @@ static gnmi::SubscriptionList_Mode get_sublist_mode(const string & list_mode)
 static void populate_subscribe_request(gnmi::SubscriptionList* sl, GnmiClientSubscription subscription)
 {
     gnmi::Subscription* sub = sl->add_subscription();
-    if (subscription.path)
-        sub->set_allocated_path(subscription.path);
+    if (subscription.path) {
+        ::gnmi::Path* sub_path = sub->mutable_path();
+        sub_path->CopyFrom(*subscription.path);
+    }
     sub->set_sample_interval(subscription.sample_interval);
     sub->set_suppress_redundant(subscription.suppress_redundant);
     sub->set_heartbeat_interval(subscription.heartbeat_interval);
@@ -146,7 +158,7 @@ static string format_notification_response(pair<string,string> prefix_suffix, co
 //        reply_to_parse.append("\"data\":{" + prefix_to_prepend + ":[" + path_to_prepend + "[" + value + "]]" + "}}");
 //    else {
         string val = (value == "{\"value\":\"null\"}") ? "{}" : value;
-        if (path_to_prepend.length()==0 && val.find("{")==0)
+        if (path_to_prepend.length()==0 && val[0] == '{')
             reply_val = val;
         else
             reply_val = "{" + path_to_prepend + val + path_to_append + "}";
@@ -175,6 +187,12 @@ int gNMIClient::connect()
     auto channel = connect_to_server(host, port, server_certificate, private_key);
     stub_ = gNMI::NewStub(channel);
     return EXIT_SUCCESS;
+}
+
+void gNMIClient::perform_session_check(const std::string & message)
+{
+    // TBD
+    return;
 }
 
 string gNMIClient::get_hostname_port()
@@ -283,7 +301,7 @@ vector<string> gNMIClient::get_capabilities()
 
 GnmiClientCapabilityResponse gNMIClient::execute_get_capabilities()
 {
-    GnmiClientCapabilityResponse reply{};
+    GnmiClientCapabilityResponse reply;
 
     CapabilityRequest request;
     CapabilityResponse response;
@@ -298,7 +316,7 @@ GnmiClientCapabilityResponse gNMIClient::execute_get_capabilities()
     {
         auto model = response.supported_models(i);
 
-        GnmiClientModelData model_data{};
+        GnmiClientModelData model_data;
         model_data.name = model.name();
         model_data.organization = model.organization();
         model_data.version = model.version();
@@ -314,11 +332,24 @@ GnmiClientCapabilityResponse gNMIClient::execute_get_capabilities()
     return reply;
 }
 
+static string get_value_from_update(gnmi::Update update)
+{
+    gnmi::TypedValue value;
+    string value_for_payload;
+
+    if (update.has_val()) {
+        value = update.val();
+        value_for_payload.append(value.json_ietf_val());
+    }
+    return value_for_payload;
+}
+
 static pair<string,string> get_path_from_update(gnmi::Update update)
 {
     string path_to_prepend;
     string path_to_append;
     string path_element_to_add;
+    string value = get_value_from_update(update);
 
     if(update.has_path())
     {
@@ -330,12 +361,15 @@ static pair<string,string> get_path_from_update(gnmi::Update update)
                 path_to_prepend.append("\"" + origin + ":");
             }
             int l;
-            for (l = 0; l < elem_size - 1; l++)
+            for (l = 0; l < elem_size; l++)
             {
-                path_element_to_add = path.elem(l).name();	//check_if_path_has_key_values(path.elem(l));
+                path_element_to_add = path.elem(l).name();
                 if (l>0 || path_to_prepend.length()==0)
                     path_to_prepend.append("\"");
                 path_to_prepend.append(path_element_to_add + "\":");
+
+                if (l == elem_size-1 && value.length() > 0)
+                    break;
 
                 // Check if the path element has keys
                 if (path.elem(l).key_size() == 0) {
@@ -362,28 +396,17 @@ static pair<string,string> get_path_from_update(gnmi::Update update)
                     path_to_prepend.append(keys_to_append);
                 }
             }
-            path_element_to_add = path.elem(l).name();
-            if (elem_size>1 || path_to_prepend.length()==0)
-                path_to_prepend.append("\"");
-            path_to_prepend.append(path_element_to_add + "\":");
+            if (value.length() == 0) {
+                if (path_to_prepend[path_to_prepend.length()-1] == ',') {
+                    path_to_prepend = path_to_prepend.substr(0, path_to_prepend.length()-1);
+                }
+            }
         }
     }
     else {
         path_to_prepend.clear();
     }
     return make_pair(path_to_prepend, path_to_append);
-}
-
-static string get_value_from_update(gnmi::Update update)
-{
-    gnmi::TypedValue value;
-    string value_for_payload;
-
-    if (update.has_val()) {
-        value = update.val();
-        value_for_payload.append(value.json_ietf_val());
-    }
-    return value_for_payload;
 }
 
 static vector<string> parse_get_response(gnmi::GetResponse* response)
@@ -411,7 +434,7 @@ static vector<string> parse_get_response(gnmi::GetResponse* response)
 }
 
 vector<string>
-gNMIClient::execute_get_operation(const std::vector<GnmiClientRequest> get_request_list, const std::string& operation)
+gNMIClient::execute_get_operation(const std::vector<GnmiClientRequest> & get_request_list, const std::string & operation)
 {
     gnmi::GetRequest gnmi_get_request;
     gnmi::GetResponse gnmi_get_response;
@@ -440,7 +463,7 @@ gNMIClient::execute_get_operation(const std::vector<GnmiClientRequest> get_reque
 }
 
 bool
-gNMIClient::execute_set_operation(const std::vector<ydk::GnmiClientRequest> set_request_list)
+gNMIClient::execute_set_operation(const std::vector<ydk::GnmiClientRequest> & set_request_list)
 {
     gnmi::SetRequest gnmi_set_request;
     gnmi::SetResponse gnmi_set_response;
@@ -459,11 +482,10 @@ gNMIClient::execute_set_operation(const std::vector<ydk::GnmiClientRequest> set_
         if (request.operation == "replace") {
             ::gnmi::Update* update = gnmi_set_request.add_replace();
             if (request.path != nullptr) {
-                update->set_allocated_path(request.path);
+                gnmi::Path* path = update->mutable_path();
+                path->CopyFrom(*request.path);
                 if (!request.payload.empty()) {
-                    ::gnmi::TypedValue* value = new ::gnmi::TypedValue;
-                    value->set_json_ietf_val(request.payload);
-                    update->set_allocated_val(value);
+                    update->mutable_val()->set_json_ietf_val(request.payload);
                 }
             }
         }
@@ -473,11 +495,10 @@ gNMIClient::execute_set_operation(const std::vector<ydk::GnmiClientRequest> set_
         if (request.operation == "update") {
             ::gnmi::Update* update = gnmi_set_request.add_update();
             if (request.path != nullptr) {
-                update->set_allocated_path(request.path);
+                gnmi::Path* path = update->mutable_path();
+                path->CopyFrom(*request.path);
                 if (!request.payload.empty()) {
-                    ::gnmi::TypedValue* value = new ::gnmi::TypedValue;
-                    value->set_json_ietf_val(request.payload);
-                    update->set_allocated_val(value);
+                    update->mutable_val()->set_json_ietf_val(request.payload);
                 }
             }
         }
@@ -486,6 +507,7 @@ gNMIClient::execute_set_operation(const std::vector<ydk::GnmiClientRequest> set_
     YLOG_INFO("\n=============== Set Request Sent ================\n{}\n", gnmi_set_request.DebugString());
     auto reply = execute_set_payload(gnmi_set_request, &gnmi_set_response);
     YLOG_INFO("Set Operation Succeeded");
+
     return reply;
 }
 
@@ -517,8 +539,7 @@ gNMIClient::execute_set_payload(const SetRequest& request, SetResponse* response
 void gNMIClient::send_poll_request(bool last)
 {
     gnmi::SubscribeRequest req;
-    gnmi::Poll* p = new gnmi::Poll;
-    req.set_allocated_poll(p);
+    req.mutable_poll();
     YLOG_INFO("\n=============== Sending Poll SubscribeRequest ================\n{}\n", req.DebugString());
     if (last) {
         ::grpc::WriteOptions options{};
@@ -641,7 +662,7 @@ void poll_thread_cin_control(gNMIClient* client, const std::string & list_mode)
 }
 
 void
-gNMIClient::execute_subscribe_operation(std::vector<GnmiClientSubscription> subscription_list,
+gNMIClient::execute_subscribe_operation(const std::vector<GnmiClientSubscription> & subscription_list,
                                         uint32 qos, const std::string & list_mode,
 										const std::string & encoding,
                                         std::function<void(const char * response)> out_func,
@@ -649,8 +670,7 @@ gNMIClient::execute_subscribe_operation(std::vector<GnmiClientSubscription> subs
 {
     grpc::ClientContext context;
     gnmi::SubscribeResponse response{};
-
-    auto request = make_shared<gnmi::SubscribeRequest>();
+    gnmi::SubscribeRequest  request{};
 
     gnmi::SubscriptionList* sl = new gnmi::SubscriptionList;
     sl->set_mode(get_sublist_mode(list_mode));
@@ -671,16 +691,16 @@ gNMIClient::execute_subscribe_operation(std::vector<GnmiClientSubscription> subs
     for (auto subscription : subscription_list) {
         populate_subscribe_request(sl, subscription);
     }
-    request->set_allocated_subscribe(sl);
+    request.set_allocated_subscribe(sl);
 
-    YLOG_INFO("\n=============== Sending SubscribeRequest ================\n{}\n", request->DebugString());
+    YLOG_INFO("\n=============== Sending SubscribeRequest ================\n{}\n", request.DebugString());
 
     context.AddMetadata("username", username);
     context.AddMetadata("password", password);
 
     auto a = stub_->Subscribe(&context);
     client_reader_writer = move(a);
-    client_reader_writer->Write(*request);
+    client_reader_writer->Write(request);
     client_reader_is_active = true;
     last_subscribe_response = "";
 
@@ -709,10 +729,17 @@ gNMIClient::execute_subscribe_operation(std::vector<GnmiClientSubscription> subs
             cout << last_subscribe_response << endl;
         }
     }
-	auto status = client_reader_writer->Finish();
-	client_reader_is_active = false;
-	check_status(status, "SubscribeRequest failed with error");
+    auto status = client_reader_writer->Finish();
+    client_reader_is_active = false;
+    check_status(status, "SubscribeRequest failed with error");
     YLOG_INFO("Subscribe Operation Succeeded");
+
+    // Release allocated memory
+    sl = request.release_subscribe();
+    qosmarking = sl->release_qos();
+    delete qosmarking;
+    sl->clear_subscription();
+    delete sl;
 }
 
 }

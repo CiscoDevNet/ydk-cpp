@@ -1768,6 +1768,16 @@ class BgpFsmState : public ydk::Enum
         static const ydk::Enum::YLeaf fsm_established;
         static const ydk::Enum::YLeaf fsm_nonnegotiated;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fsm-idle") return 0;
+            if (name == "fsm-connect") return 1;
+            if (name == "fsm-active") return 2;
+            if (name == "fsm-opensent") return 3;
+            if (name == "fsm-openconfirm") return 4;
+            if (name == "fsm-established") return 5;
+            if (name == "fsm-nonnegotiated") return 6;
+            return -1;
+        }
 };
 
 class BgpLink : public ydk::Enum
@@ -1776,6 +1786,11 @@ class BgpLink : public ydk::Enum
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf external;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            if (name == "external") return 1;
+            return -1;
+        }
 };
 
 class BgpMode : public ydk::Enum
@@ -1784,6 +1799,11 @@ class BgpMode : public ydk::Enum
         static const ydk::Enum::YLeaf mode_active;
         static const ydk::Enum::YLeaf mode_passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mode-active") return 0;
+            if (name == "mode-passive") return 1;
+            return -1;
+        }
 };
 
 

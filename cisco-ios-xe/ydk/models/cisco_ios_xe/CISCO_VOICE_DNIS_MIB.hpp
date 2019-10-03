@@ -148,6 +148,11 @@ class CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::CvDnisMappingRe
         static const ydk::Enum::YLeaf idle;
         static const ydk::Enum::YLeaf refresh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "refresh") return 2;
+            return -1;
+        }
 };
 
 

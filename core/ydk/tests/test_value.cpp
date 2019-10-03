@@ -23,6 +23,12 @@ class TestEnum1 : public Enum
 
     static const Enum::YLeaf one;
     static const Enum::YLeaf two;
+
+    static int get_enum_value(const std::string & name) {
+        if (name == "one") return 1;
+        if (name == "two") return 2;
+        return -1;
+    }
 };
 
 const Enum::YLeaf TestEnum1::one {1, "one"};
@@ -93,7 +99,7 @@ TEST_CASE("test_int64")
 TEST_CASE("test_empty")
 {
     YLeaf test_value{YType::empty, "name"};
-    test_value = Empty{};
+    test_value = Empty();
     REQUIRE(test_value.get()=="");
 }
 
@@ -113,6 +119,10 @@ TEST_CASE("test_enum_")
     test_value = TestEnum1::one;
     INFO(test_value.get());
     REQUIRE(test_value.get()=="one");
+    REQUIRE(test_value.enum_value==1);
+    REQUIRE(TestEnum1::get_enum_value("one")==1);
+    REQUIRE(TestEnum1::get_enum_value("two")==2);
+    REQUIRE(TestEnum1::get_enum_value("abc")==-1);
 }
 
 TEST_CASE("test_str")

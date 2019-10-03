@@ -803,6 +803,12 @@ class LispAddressFamilyType : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6_afi;
         static const ydk::Enum::YLeaf mac_afi;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-afi") return 0;
+            if (name == "ipv6-afi") return 1;
+            if (name == "mac-afi") return 2;
+            return -1;
+        }
 };
 
 class LispRlocStateType : public ydk::Enum
@@ -811,6 +817,11 @@ class LispRlocStateType : public ydk::Enum
         static const ydk::Enum::YLeaf lisp_rloc_state_down;
         static const ydk::Enum::YLeaf lisp_rloc_state_up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lisp-rloc-state-down") return 0;
+            if (name == "lisp-rloc-state-up") return 1;
+            return -1;
+        }
 };
 
 class LispMapReplyActionType : public ydk::Enum
@@ -821,6 +832,13 @@ class LispMapReplyActionType : public ydk::Enum
         static const ydk::Enum::YLeaf send_map_request;
         static const ydk::Enum::YLeaf drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-action") return 0;
+            if (name == "natively-forward") return 1;
+            if (name == "send-map-request") return 2;
+            if (name == "drop") return 3;
+            return -1;
+        }
 };
 
 class LispIaftypeType : public ydk::Enum
@@ -832,6 +850,14 @@ class LispIaftypeType : public ydk::Enum
         static const ydk::Enum::YLeaf iaf_ar;
         static const ydk::Enum::YLeaf iaf_rar;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "iaf-ipv4") return 0;
+            if (name == "iaf-ipv6") return 1;
+            if (name == "iaf-mac") return 2;
+            if (name == "iaf-ar") return 3;
+            if (name == "iaf-rar") return 4;
+            return -1;
+        }
 };
 
 class LispSessionStateType : public ydk::Enum
@@ -842,6 +868,13 @@ class LispSessionStateType : public ydk::Enum
         static const ydk::Enum::YLeaf lisp_session_state_down;
         static const ydk::Enum::YLeaf lisp_session_state_up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lisp-session-state-incomplete") return 0;
+            if (name == "lisp-session-state-listening") return 1;
+            if (name == "lisp-session-state-down") return 2;
+            if (name == "lisp-session-state-up") return 3;
+            return -1;
+        }
 };
 
 

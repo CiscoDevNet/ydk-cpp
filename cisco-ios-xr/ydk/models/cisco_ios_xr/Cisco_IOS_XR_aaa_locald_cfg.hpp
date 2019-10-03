@@ -18,6 +18,13 @@ class AaaLocaldTaskClass : public ydk::Enum
         static const ydk::Enum::YLeaf execute;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "read") return 0;
+            if (name == "write") return 1;
+            if (name == "execute") return 2;
+            if (name == "debug") return 3;
+            return -1;
+        }
 };
 
 

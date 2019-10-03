@@ -2190,6 +2190,12 @@ class BridgeDomainStateType : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf admin_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            if (name == "admin-down") return 2;
+            return -1;
+        }
 };
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::FloodingMode : public ydk::Enum
@@ -2198,6 +2204,11 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::FloodingMode : public ydk
         static const ydk::Enum::YLeaf convergence_optimized;
         static const ydk::Enum::YLeaf resilience_optimized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "convergence-optimized") return 0;
+            if (name == "resilience-optimized") return 1;
+            return -1;
+        }
 };
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::Unit : public ydk::Enum
@@ -2207,6 +2218,12 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormC
         static const ydk::Enum::YLeaf kbps;
         static const ydk::Enum::YLeaf pps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bps") return 0;
+            if (name == "kbps") return 1;
+            if (name == "pps") return 2;
+            return -1;
+        }
 };
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::Unit : public ydk::Enum
@@ -2216,6 +2233,12 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::
         static const ydk::Enum::YLeaf kbps;
         static const ydk::Enum::YLeaf pps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bps") return 0;
+            if (name == "kbps") return 1;
+            if (name == "pps") return 2;
+            return -1;
+        }
 };
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::Unit : public ydk::Enum
@@ -2225,6 +2248,12 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds:
         static const ydk::Enum::YLeaf kbps;
         static const ydk::Enum::YLeaf pps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bps") return 0;
+            if (name == "kbps") return 1;
+            if (name == "pps") return 2;
+            return -1;
+        }
 };
 
 class BridgeDomainState::MacTable::MacType : public ydk::Enum
@@ -2233,6 +2262,11 @@ class BridgeDomainState::MacTable::MacType : public ydk::Enum
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static") return 0;
+            if (name == "dynamic") return 1;
+            return -1;
+        }
 };
 
 class CreateParameterizedBridgeDomains::Input::Parameter : public ydk::Enum
@@ -2240,6 +2274,10 @@ class CreateParameterizedBridgeDomains::Input::Parameter : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf vlan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vlan") return 0;
+            return -1;
+        }
 };
 
 

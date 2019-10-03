@@ -921,6 +921,18 @@ class Resource : public ydk::Enum
         static const ydk::Enum::YLeaf ecmpfec;
         static const ydk::Enum::YLeaf ext_tcam_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lem") return 0;
+            if (name == "lpm") return 1;
+            if (name == "encap") return 2;
+            if (name == "ext-tcam-ipv4") return 3;
+            if (name == "ext-tcam-ipv6-short") return 4;
+            if (name == "ext-tcam-ipv6-long") return 5;
+            if (name == "fec") return 6;
+            if (name == "ecmpfec") return 7;
+            if (name == "ext-tcam-ipv6") return 8;
+            return -1;
+        }
 };
 
 

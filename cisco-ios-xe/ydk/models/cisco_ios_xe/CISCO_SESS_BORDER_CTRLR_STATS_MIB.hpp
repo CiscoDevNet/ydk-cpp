@@ -442,6 +442,23 @@ class CiscoSbcSIPMethod : public ydk::Enum
         static const ydk::Enum::YLeaf subscribe;
         static const ydk::Enum::YLeaf update;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "ack") return 2;
+            if (name == "bye") return 3;
+            if (name == "cancel") return 4;
+            if (name == "info") return 5;
+            if (name == "invite") return 6;
+            if (name == "message") return 7;
+            if (name == "notify") return 8;
+            if (name == "options") return 9;
+            if (name == "prack") return 10;
+            if (name == "refer") return 11;
+            if (name == "register") return 12;
+            if (name == "subscribe") return 13;
+            if (name == "update") return 14;
+            return -1;
+        }
 };
 
 class CiscoSbcRadiusClientType : public ydk::Enum
@@ -450,6 +467,11 @@ class CiscoSbcRadiusClientType : public ydk::Enum
         static const ydk::Enum::YLeaf authentication;
         static const ydk::Enum::YLeaf accounting;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "authentication") return 1;
+            if (name == "accounting") return 2;
+            return -1;
+        }
 };
 
 

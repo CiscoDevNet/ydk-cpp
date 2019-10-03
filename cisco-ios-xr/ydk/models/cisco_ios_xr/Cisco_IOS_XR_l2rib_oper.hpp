@@ -788,10 +788,8 @@ class L2rib::EviChildTables::MacipDetails::MacipDetail : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
         ydk::YLeaf ip_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf flags; //type: string
@@ -1056,10 +1054,8 @@ class L2rib::EviChildTables::MacIps::MacIp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
         ydk::YLeaf ip_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf ip_address; //type: string
@@ -1196,9 +1192,7 @@ class L2rib::EviChildTables::Macs::Mac : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf admin_distance; //type: uint8
@@ -2102,9 +2096,7 @@ class L2rib::EviChildTables::MacDetails::MacDetail : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf flags; //type: string
@@ -3133,6 +3125,13 @@ class L2ribMacRoute : public ydk::Enum
         static const ydk::Enum::YLeaf l2rib_mac_route_type_evpn_esi;
         static const ydk::Enum::YLeaf l2rib_mac_route_type_bmac;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2rib-mac-route-type-invalid") return 0;
+            if (name == "l2rib-mac-route-type-regular") return 1;
+            if (name == "l2rib-mac-route-type-evpn-esi") return 2;
+            if (name == "l2rib-mac-route-type-bmac") return 3;
+            return -1;
+        }
 };
 
 class L2ribBagProducerId : public ydk::Enum
@@ -3155,6 +3154,25 @@ class L2ribBagProducerId : public ydk::Enum
         static const ydk::Enum::YLeaf l2rib_bag_prod_prod_local_proxy;
         static const ydk::Enum::YLeaf l2rib_bag_prod_prod_all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2rib-bag-prod-none") return 0;
+            if (name == "l2rib-bag-prod-best-route") return 1;
+            if (name == "l2rib-bag-prod-static") return 2;
+            if (name == "l2rib-bag-prod-local") return 3;
+            if (name == "l2rib-bag-prod-isis") return 4;
+            if (name == "l2rib-bag-prod-bgp") return 5;
+            if (name == "l2rib-bag-prod-igmp") return 6;
+            if (name == "l2rib-bag-prod-prod-mld") return 7;
+            if (name == "l2rib-bag-prod-prod-otv") return 8;
+            if (name == "l2rib-bag-prod-prod-l2vpn") return 9;
+            if (name == "l2rib-bag-prod-prod-mac-mgr") return 10;
+            if (name == "l2rib-bag-prod-prod-vxlan") return 11;
+            if (name == "l2rib-bag-prod-prod-hmm") return 12;
+            if (name == "l2rib-bag-prod-prod-arp") return 13;
+            if (name == "l2rib-bag-prod-prod-local-proxy") return 14;
+            if (name == "l2rib-bag-prod-prod-all") return 255;
+            return -1;
+        }
 };
 
 class L2ribAfi : public ydk::Enum
@@ -3164,6 +3182,12 @@ class L2ribAfi : public ydk::Enum
         static const ydk::Enum::YLeaf l2rib_address_family_ipv6;
         static const ydk::Enum::YLeaf l2rib_address_family_invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2rib-address-family-ipv4") return 0;
+            if (name == "l2rib-address-family-ipv6") return 1;
+            if (name == "l2rib-address-family-invalid") return 2;
+            return -1;
+        }
 };
 
 class L2ribBagProducerState : public ydk::Enum
@@ -3175,6 +3199,14 @@ class L2ribBagProducerState : public ydk::Enum
         static const ydk::Enum::YLeaf l2rib_bag_prod_state_converged;
         static const ydk::Enum::YLeaf l2rib_bag_prod_state_delete_p_end;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2rib-bag-prod-state-initial") return 0;
+            if (name == "l2rib-bag-prod-state-staled") return 1;
+            if (name == "l2rib-bag-prod-state-re-connected") return 2;
+            if (name == "l2rib-bag-prod-state-converged") return 3;
+            if (name == "l2rib-bag-prod-state-delete-p-end") return 4;
+            return -1;
+        }
 };
 
 class L2ribNextHop : public ydk::Enum
@@ -3191,6 +3223,19 @@ class L2ribNextHop : public ydk::Enum
         static const ydk::Enum::YLeaf l2rib_next_hop_label_ed;
         static const ydk::Enum::YLeaf l2rib_next_hop_xid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2rib-next-hop-invalid") return 0;
+            if (name == "l2rib-next-hop-interface-ordinal") return 1;
+            if (name == "l2rib-next-hop-interface-index") return 2;
+            if (name == "l2rib-next-hop-mac") return 3;
+            if (name == "l2rib-next-hop-ipv4") return 4;
+            if (name == "l2rib-next-hop-ipv6") return 5;
+            if (name == "l2rib-next-hop-overlay") return 6;
+            if (name == "l2rib-next-hop-site-index") return 7;
+            if (name == "l2rib-next-hop-label-ed") return 8;
+            if (name == "l2rib-next-hop-xid") return 9;
+            return -1;
+        }
 };
 
 class L2ribBagObj : public ydk::Enum
@@ -3208,6 +3253,20 @@ class L2ribBagObj : public ydk::Enum
         static const ydk::Enum::YLeaf l2rib_bag_obj_type_imet_route;
         static const ydk::Enum::YLeaf l2rib_bag_obj_type_mac_ip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2rib-bag-obj-type-min") return 0;
+            if (name == "l2rib-bag-obj-type-all") return 1;
+            if (name == "l2rib-bag-obj-type-mac") return 2;
+            if (name == "l2rib-bag-obj-type-ipv4-mcast") return 3;
+            if (name == "l2rib-bag-obj-type-ipv6-mcast") return 4;
+            if (name == "l2rib-bag-obj-type-topology") return 5;
+            if (name == "l2rib-bag-obj-type-ead") return 6;
+            if (name == "l2rib-bag-obj-type-evpn-pl") return 7;
+            if (name == "l2rib-bag-obj-type-topo-attribute") return 8;
+            if (name == "l2rib-bag-obj-type-imet-route") return 9;
+            if (name == "l2rib-bag-obj-type-mac-ip") return 13;
+            return -1;
+        }
 };
 
 

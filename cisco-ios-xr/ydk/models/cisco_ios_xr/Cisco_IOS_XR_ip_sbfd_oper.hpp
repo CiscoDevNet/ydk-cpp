@@ -249,6 +249,11 @@ class SbfdAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class BfdAfId : public ydk::Enum
@@ -258,6 +263,12 @@ class BfdAfId : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_af_id_ipv4;
         static const ydk::Enum::YLeaf bfd_af_id_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-af-id-none") return 0;
+            if (name == "bfd-af-id-ipv4") return 2;
+            if (name == "bfd-af-id-ipv6") return 10;
+            return -1;
+        }
 };
 
 

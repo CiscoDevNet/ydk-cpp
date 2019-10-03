@@ -564,7 +564,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_address; //type: uint32
+        ydk::YLeaf pcb_address; //type: string
         ydk::YLeaf l4_protocol; //type: uint32
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf foreign_port; //type: uint16
@@ -1067,6 +1067,13 @@ class LptsPcbQuery : public ydk::Enum
         static const ydk::Enum::YLeaf interface;
         static const ydk::Enum::YLeaf packet;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "static-policy") return 1;
+            if (name == "interface") return 2;
+            if (name == "packet") return 3;
+            return -1;
+        }
 };
 
 class MessageTypeIcmpv6 : public ydk::Enum
@@ -1104,6 +1111,40 @@ class MessageTypeIcmpv6 : public ydk::Enum
         static const ydk::Enum::YLeaf multicast_router_termination;
         static const ydk::Enum::YLeaf fmipv6_messages;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "destination-unreachable") return 1;
+            if (name == "packet-too-big") return 2;
+            if (name == "time-exceeded") return 3;
+            if (name == "parameter-problem") return 4;
+            if (name == "echo-request") return 128;
+            if (name == "echo-reply") return 129;
+            if (name == "multicast-listener-query") return 130;
+            if (name == "multicast-listener-report") return 131;
+            if (name == "multicast-listener-done") return 132;
+            if (name == "router-solicitation") return 133;
+            if (name == "router-advertisement") return 134;
+            if (name == "neighbor-solicitation") return 135;
+            if (name == "neighbor-advertisement") return 136;
+            if (name == "redirect-message") return 137;
+            if (name == "router-renumbering") return 138;
+            if (name == "node-information-query") return 139;
+            if (name == "node-information-reply") return 140;
+            if (name == "inverse-neighbor-discovery-solicitaion") return 141;
+            if (name == "inverse-neighbor-discover-advertisement") return 142;
+            if (name == "v2-multicast-listener-report") return 143;
+            if (name == "home-agent-address-discovery-request") return 144;
+            if (name == "home-agent-address-discovery-reply") return 145;
+            if (name == "mobile-prefix-solicitation") return 146;
+            if (name == "mobile-prefix-advertisement") return 147;
+            if (name == "certification-path-solicitation-message") return 148;
+            if (name == "certification-path-advertisement-message") return 149;
+            if (name == "experimental-mobility-protocols") return 150;
+            if (name == "multicast-router-advertisement") return 151;
+            if (name == "multicast-router-solicitation") return 152;
+            if (name == "multicast-router-termination") return 153;
+            if (name == "fmipv6-messages") return 154;
+            return -1;
+        }
 };
 
 class MessageTypeIcmp : public ydk::Enum
@@ -1134,6 +1175,33 @@ class MessageTypeIcmp : public ydk::Enum
         static const ydk::Enum::YLeaf mobile_registration_reply;
         static const ydk::Enum::YLeaf domain_name_request;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "echo-reply") return 0;
+            if (name == "destination-unreachable") return 3;
+            if (name == "source-quench") return 4;
+            if (name == "redirect") return 5;
+            if (name == "alternate-host-address") return 6;
+            if (name == "echo") return 8;
+            if (name == "router-advertisement") return 9;
+            if (name == "router-selection") return 10;
+            if (name == "time-exceeded") return 11;
+            if (name == "parameter-problem") return 12;
+            if (name == "time-stamp") return 13;
+            if (name == "time-stamp-reply") return 14;
+            if (name == "information-request") return 15;
+            if (name == "information-reply") return 16;
+            if (name == "address-mask-request") return 17;
+            if (name == "address-mask-reply") return 18;
+            if (name == "trace-route") return 30;
+            if (name == "datagram-conversion-error") return 31;
+            if (name == "mobile-host-redirect") return 32;
+            if (name == "where-are-you") return 33;
+            if (name == "iam-here") return 34;
+            if (name == "mobile-registration-request") return 35;
+            if (name == "mobile-registration-reply") return 36;
+            if (name == "domain-name-request") return 37;
+            return -1;
+        }
 };
 
 class MessageTypeIgmp : public ydk::Enum
@@ -1153,6 +1221,22 @@ class MessageTypeIgmp : public ydk::Enum
         static const ydk::Enum::YLeaf multicast_router_solicitation;
         static const ydk::Enum::YLeaf multicast_router_termination;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "membership-query") return 17;
+            if (name == "v1-membership-report") return 18;
+            if (name == "dvmrp") return 19;
+            if (name == "pi-mv1") return 20;
+            if (name == "cisco-trace-messages") return 21;
+            if (name == "v2-membership-report") return 22;
+            if (name == "v2-leave-group") return 23;
+            if (name == "multicast-traceroute-response") return 30;
+            if (name == "multicast-traceroute") return 31;
+            if (name == "v3-membership-report") return 34;
+            if (name == "multicast-router-advertisement") return 48;
+            if (name == "multicast-router-solicitation") return 49;
+            if (name == "multicast-router-termination") return 50;
+            return -1;
+        }
 };
 
 class MessageTypeIgmp_ : public ydk::Enum
@@ -1172,6 +1256,22 @@ class MessageTypeIgmp_ : public ydk::Enum
         static const ydk::Enum::YLeaf multicast_router_solicitation;
         static const ydk::Enum::YLeaf multicast_router_termination;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "membership-query") return 17;
+            if (name == "v1-membership-report") return 18;
+            if (name == "dvmrp") return 19;
+            if (name == "pi-mv1") return 20;
+            if (name == "cisco-trace-messages") return 21;
+            if (name == "v2-membership-report") return 22;
+            if (name == "v2-leave-group") return 23;
+            if (name == "multicast-traceroute-response") return 30;
+            if (name == "multicast-traceroute") return 31;
+            if (name == "v3-membership-report") return 34;
+            if (name == "multicast-router-advertisement") return 48;
+            if (name == "multicast-router-solicitation") return 49;
+            if (name == "multicast-router-termination") return 50;
+            return -1;
+        }
 };
 
 class Packet : public ydk::Enum
@@ -1182,6 +1282,13 @@ class Packet : public ydk::Enum
         static const ydk::Enum::YLeaf igmp;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icmp") return 0;
+            if (name == "icm-pv6") return 1;
+            if (name == "igmp") return 2;
+            if (name == "unknown") return 3;
+            return -1;
+        }
 };
 
 class MessageTypeIcmp_ : public ydk::Enum
@@ -1212,6 +1319,33 @@ class MessageTypeIcmp_ : public ydk::Enum
         static const ydk::Enum::YLeaf mobile_registration_reply;
         static const ydk::Enum::YLeaf domain_name_request;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "echo-reply") return 0;
+            if (name == "destination-unreachable") return 3;
+            if (name == "source-quench") return 4;
+            if (name == "redirect") return 5;
+            if (name == "alternate-host-address") return 6;
+            if (name == "echo") return 8;
+            if (name == "router-advertisement") return 9;
+            if (name == "router-selection") return 10;
+            if (name == "time-exceeded") return 11;
+            if (name == "parameter-problem") return 12;
+            if (name == "time-stamp") return 13;
+            if (name == "time-stamp-reply") return 14;
+            if (name == "information-request") return 15;
+            if (name == "information-reply") return 16;
+            if (name == "address-mask-request") return 17;
+            if (name == "address-mask-reply") return 18;
+            if (name == "trace-route") return 30;
+            if (name == "datagram-conversion-error") return 31;
+            if (name == "mobile-host-redirect") return 32;
+            if (name == "where-are-you") return 33;
+            if (name == "iam-here") return 34;
+            if (name == "mobile-registration-request") return 35;
+            if (name == "mobile-registration-reply") return 36;
+            if (name == "domain-name-request") return 37;
+            return -1;
+        }
 };
 
 class AddrFamily : public ydk::Enum
@@ -1260,6 +1394,51 @@ class AddrFamily : public ydk::Enum
         static const ydk::Enum::YLeaf ether;
         static const ydk::Enum::YLeaf srp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unspecified") return 0;
+            if (name == "local") return 1;
+            if (name == "inet") return 2;
+            if (name == "implink") return 3;
+            if (name == "pup") return 4;
+            if (name == "chaos") return 5;
+            if (name == "ns") return 6;
+            if (name == "iso") return 7;
+            if (name == "ecma") return 8;
+            if (name == "data-kit") return 9;
+            if (name == "ccitt") return 10;
+            if (name == "sna") return 11;
+            if (name == "de-cnet") return 12;
+            if (name == "dli") return 13;
+            if (name == "lat") return 14;
+            if (name == "hylink") return 15;
+            if (name == "appletalk") return 16;
+            if (name == "route") return 17;
+            if (name == "link") return 18;
+            if (name == "pseudo-xtp") return 19;
+            if (name == "coip") return 20;
+            if (name == "cnt") return 21;
+            if (name == "pseudo-rtip") return 22;
+            if (name == "ipx") return 23;
+            if (name == "sip") return 24;
+            if (name == "pseudo-pip") return 25;
+            if (name == "inet6") return 26;
+            if (name == "snap") return 27;
+            if (name == "clnl") return 28;
+            if (name == "chdlc") return 29;
+            if (name == "ppp") return 30;
+            if (name == "host-cas") return 31;
+            if (name == "dsp") return 32;
+            if (name == "sap") return 33;
+            if (name == "atm") return 34;
+            if (name == "fr") return 35;
+            if (name == "mso") return 36;
+            if (name == "dchan") return 37;
+            if (name == "cas") return 38;
+            if (name == "nat") return 39;
+            if (name == "ether") return 40;
+            if (name == "srp") return 41;
+            return -1;
+        }
 };
 
 class UdpAddressFamily : public ydk::Enum
@@ -1268,6 +1447,11 @@ class UdpAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 2;
+            if (name == "ipv6") return 10;
+            return -1;
+        }
 };
 
 class MessageTypeIcmpv6_ : public ydk::Enum
@@ -1305,6 +1489,40 @@ class MessageTypeIcmpv6_ : public ydk::Enum
         static const ydk::Enum::YLeaf multicast_router_termination;
         static const ydk::Enum::YLeaf fmipv6_messages;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "destination-unreachable") return 1;
+            if (name == "packet-too-big") return 2;
+            if (name == "time-exceeded") return 3;
+            if (name == "parameter-problem") return 4;
+            if (name == "echo-request") return 128;
+            if (name == "echo-reply") return 129;
+            if (name == "multicast-listener-query") return 130;
+            if (name == "multicast-listener-report") return 131;
+            if (name == "multicast-listener-done") return 132;
+            if (name == "router-solicitation") return 133;
+            if (name == "router-advertisement") return 134;
+            if (name == "neighbor-solicitation") return 135;
+            if (name == "neighbor-advertisement") return 136;
+            if (name == "redirect-message") return 137;
+            if (name == "router-renumbering") return 138;
+            if (name == "node-information-query") return 139;
+            if (name == "node-information-reply") return 140;
+            if (name == "inverse-neighbor-discovery-solicitaion") return 141;
+            if (name == "inverse-neighbor-discover-advertisement") return 142;
+            if (name == "v2-multicast-listener-report") return 143;
+            if (name == "home-agent-address-discovery-request") return 144;
+            if (name == "home-agent-address-discovery-reply") return 145;
+            if (name == "mobile-prefix-solicitation") return 146;
+            if (name == "mobile-prefix-advertisement") return 147;
+            if (name == "certification-path-solicitation-message") return 148;
+            if (name == "certification-path-advertisement-message") return 149;
+            if (name == "experimental-mobility-protocols") return 150;
+            if (name == "multicast-router-advertisement") return 151;
+            if (name == "multicast-router-solicitation") return 152;
+            if (name == "multicast-router-termination") return 153;
+            if (name == "fmipv6-messages") return 154;
+            return -1;
+        }
 };
 
 

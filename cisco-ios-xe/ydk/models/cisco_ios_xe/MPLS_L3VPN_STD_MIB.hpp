@@ -322,6 +322,12 @@ class MplsL3VpnRtType : public ydk::Enum
         static const ydk::Enum::YLeaf export_;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "import") return 1;
+            if (name == "export") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class MPLSL3VPNSTDMIB::MplsL3VpnIfConfTable::MplsL3VpnIfConfEntry::MplsL3VpnIfVpnClassification : public ydk::Enum
@@ -331,6 +337,12 @@ class MPLSL3VPNSTDMIB::MplsL3VpnIfConfTable::MplsL3VpnIfConfEntry::MplsL3VpnIfVp
         static const ydk::Enum::YLeaf enterprise;
         static const ydk::Enum::YLeaf interProvider;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "carrierOfCarrier") return 1;
+            if (name == "enterprise") return 2;
+            if (name == "interProvider") return 3;
+            return -1;
+        }
 };
 
 class MPLSL3VPNSTDMIB::MplsL3VpnVrfTable::MplsL3VpnVrfEntry::MplsL3VpnVrfOperStatus : public ydk::Enum
@@ -339,6 +351,11 @@ class MPLSL3VPNSTDMIB::MplsL3VpnVrfTable::MplsL3VpnVrfEntry::MplsL3VpnVrfOperSta
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            return -1;
+        }
 };
 
 class MPLSL3VPNSTDMIB::MplsL3VpnVrfTable::MplsL3VpnVrfEntry::MplsL3VpnVrfConfAdminStatus : public ydk::Enum
@@ -348,6 +365,12 @@ class MPLSL3VPNSTDMIB::MplsL3VpnVrfTable::MplsL3VpnVrfEntry::MplsL3VpnVrfConfAdm
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            return -1;
+        }
 };
 
 class MPLSL3VPNSTDMIB::MplsL3VpnVrfRteTable::MplsL3VpnVrfRteEntry::MplsL3VpnVrfRteInetCidrType : public ydk::Enum
@@ -359,6 +382,14 @@ class MPLSL3VPNSTDMIB::MplsL3VpnVrfRteTable::MplsL3VpnVrfRteEntry::MplsL3VpnVrfR
         static const ydk::Enum::YLeaf remote;
         static const ydk::Enum::YLeaf blackhole;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "reject") return 2;
+            if (name == "local") return 3;
+            if (name == "remote") return 4;
+            if (name == "blackhole") return 5;
+            return -1;
+        }
 };
 
 

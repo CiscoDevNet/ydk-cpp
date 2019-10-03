@@ -4287,6 +4287,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "mt-ipv6-reachability-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6728,6 +6729,7 @@ Isis::Instances::Instance::Instance()
     , srms(std::make_shared<Isis::Instances::Instance::Srms>())
     , error_log(std::make_shared<Isis::Instances::Instance::ErrorLog>())
     , checkpoint_interfaces(std::make_shared<Isis::Instances::Instance::CheckpointInterfaces>())
+    , sr_labels(std::make_shared<Isis::Instances::Instance::SrLabels>())
     , interface_statistics(std::make_shared<Isis::Instances::Instance::InterfaceStatistics>())
     , protocol(std::make_shared<Isis::Instances::Instance::Protocol>())
     , neighbor_summaries(std::make_shared<Isis::Instances::Instance::NeighborSummaries>())
@@ -6748,6 +6750,7 @@ Isis::Instances::Instance::Instance()
     srms->parent = this;
     error_log->parent = this;
     checkpoint_interfaces->parent = this;
+    sr_labels->parent = this;
     interface_statistics->parent = this;
     protocol->parent = this;
     neighbor_summaries->parent = this;
@@ -6779,6 +6782,7 @@ bool Isis::Instances::Instance::has_data() const
 	|| (srms !=  nullptr && srms->has_data())
 	|| (error_log !=  nullptr && error_log->has_data())
 	|| (checkpoint_interfaces !=  nullptr && checkpoint_interfaces->has_data())
+	|| (sr_labels !=  nullptr && sr_labels->has_data())
 	|| (interface_statistics !=  nullptr && interface_statistics->has_data())
 	|| (protocol !=  nullptr && protocol->has_data())
 	|| (neighbor_summaries !=  nullptr && neighbor_summaries->has_data())
@@ -6804,6 +6808,7 @@ bool Isis::Instances::Instance::has_operation() const
 	|| (srms !=  nullptr && srms->has_operation())
 	|| (error_log !=  nullptr && error_log->has_operation())
 	|| (checkpoint_interfaces !=  nullptr && checkpoint_interfaces->has_operation())
+	|| (sr_labels !=  nullptr && sr_labels->has_operation())
 	|| (interface_statistics !=  nullptr && interface_statistics->has_operation())
 	|| (protocol !=  nullptr && protocol->has_operation())
 	|| (neighbor_summaries !=  nullptr && neighbor_summaries->has_operation())
@@ -6948,6 +6953,15 @@ std::shared_ptr<ydk::Entity> Isis::Instances::Instance::get_child_by_name(const 
         return checkpoint_interfaces;
     }
 
+    if(child_yang_name == "sr-labels")
+    {
+        if(sr_labels == nullptr)
+        {
+            sr_labels = std::make_shared<Isis::Instances::Instance::SrLabels>();
+        }
+        return sr_labels;
+    }
+
     if(child_yang_name == "interface-statistics")
     {
         if(interface_statistics == nullptr)
@@ -7078,6 +7092,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::g
         _children["checkpoint-interfaces"] = checkpoint_interfaces;
     }
 
+    if(sr_labels != nullptr)
+    {
+        _children["sr-labels"] = sr_labels;
+    }
+
     if(interface_statistics != nullptr)
     {
         _children["interface-statistics"] = interface_statistics;
@@ -7136,7 +7155,7 @@ void Isis::Instances::Instance::set_filter(const std::string & value_path, YFilt
 
 bool Isis::Instances::Instance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbors" || name == "host-names" || name == "statistics-global" || name == "levels" || name == "topologies" || name == "nsr-status" || name == "interfaces" || name == "checkpoint-adjacencies" || name == "flex-algos" || name == "srms" || name == "error-log" || name == "checkpoint-interfaces" || name == "interface-statistics" || name == "protocol" || name == "neighbor-summaries" || name == "checkpoint-lsps" || name == "mesh-groups" || name == "nsr-statistics" || name == "checkpoint-te-tunnels" || name == "instance-name")
+    if(name == "neighbors" || name == "host-names" || name == "statistics-global" || name == "levels" || name == "topologies" || name == "nsr-status" || name == "interfaces" || name == "checkpoint-adjacencies" || name == "flex-algos" || name == "srms" || name == "error-log" || name == "checkpoint-interfaces" || name == "sr-labels" || name == "interface-statistics" || name == "protocol" || name == "neighbor-summaries" || name == "checkpoint-lsps" || name == "mesh-groups" || name == "nsr-statistics" || name == "checkpoint-te-tunnels" || name == "instance-name")
         return true;
     return false;
 }
@@ -7332,6 +7351,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7593,6 +7613,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAd
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-active-area-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7680,6 +7701,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported:
 {
     std::ostringstream path_buffer;
     path_buffer << "topologies-supported";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7800,6 +7822,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-per-address-family-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8369,6 +8392,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8596,6 +8620,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8938,6 +8963,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9165,6 +9191,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9243,6 +9270,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9321,6 +9349,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9402,6 +9431,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9990,6 +10020,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10217,6 +10248,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10559,6 +10591,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10786,6 +10819,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11223,6 +11257,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11671,6 +11706,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11760,6 +11796,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11838,6 +11875,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11919,6 +11957,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13587,6 +13626,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13793,6 +13833,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopolog
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topology-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14562,6 +14603,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "log-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14894,6 +14936,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Ad
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-per-topology-change";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15609,6 +15652,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topology-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16590,6 +16634,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

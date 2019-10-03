@@ -4101,6 +4101,17 @@ class PmSonetPathWidthEnum : public ydk::Enum
         static const ydk::Enum::YLeaf sts192c_stm64;
         static const ydk::Enum::YLeaf sts768c_stm256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "sts1") return 1;
+            if (name == "sts3c-stm1") return 2;
+            if (name == "sts12c-stm4") return 3;
+            if (name == "sts24c") return 4;
+            if (name == "sts48c-stm16") return 5;
+            if (name == "sts192c-stm64") return 6;
+            if (name == "sts768c-stm256") return 7;
+            return -1;
+        }
 };
 
 class PmPrbsStatusEt : public ydk::Enum
@@ -4110,6 +4121,12 @@ class PmPrbsStatusEt : public ydk::Enum
         static const ydk::Enum::YLeaf locked;
         static const ydk::Enum::YLeaf un_locked;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-applicable") return 0;
+            if (name == "locked") return 1;
+            if (name == "un-locked") return 2;
+            return -1;
+        }
 };
 
 class PmPrbsPatternEt : public ydk::Enum
@@ -4123,6 +4140,16 @@ class PmPrbsPatternEt : public ydk::Enum
         static const ydk::Enum::YLeaf inv_pn11;
         static const ydk::Enum::YLeaf pn15;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prbs-none") return 0;
+            if (name == "pn31") return 1;
+            if (name == "pn23") return 2;
+            if (name == "pn11") return 4;
+            if (name == "inv-pn31") return 8;
+            if (name == "inv-pn11") return 16;
+            if (name == "pn15") return 32;
+            return -1;
+        }
 };
 
 

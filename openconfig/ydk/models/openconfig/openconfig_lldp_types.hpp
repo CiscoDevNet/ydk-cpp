@@ -201,6 +201,16 @@ class ChassisIdType : public ydk::Enum
         static const ydk::Enum::YLeaf INTERFACE_NAME;
         static const ydk::Enum::YLeaf LOCAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "CHASSIS_COMPONENT") return 0;
+            if (name == "INTERFACE_ALIAS") return 1;
+            if (name == "PORT_COMPONENT") return 2;
+            if (name == "MAC_ADDRESS") return 3;
+            if (name == "NETWORK_ADDRESS") return 4;
+            if (name == "INTERFACE_NAME") return 5;
+            if (name == "LOCAL") return 6;
+            return -1;
+        }
 };
 
 class PortIdType : public ydk::Enum
@@ -214,6 +224,16 @@ class PortIdType : public ydk::Enum
         static const ydk::Enum::YLeaf AGENT_CIRCUIT_ID;
         static const ydk::Enum::YLeaf LOCAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERFACE_ALIAS") return 0;
+            if (name == "PORT_COMPONENT") return 1;
+            if (name == "MAC_ADDRESS") return 2;
+            if (name == "NETWORK_ADDRESS") return 3;
+            if (name == "INTERFACE_NAME") return 4;
+            if (name == "AGENT_CIRCUIT_ID") return 5;
+            if (name == "LOCAL") return 6;
+            return -1;
+        }
 };
 
 

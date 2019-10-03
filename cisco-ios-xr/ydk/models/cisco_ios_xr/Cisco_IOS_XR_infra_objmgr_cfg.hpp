@@ -831,6 +831,43 @@ class EndPort : public ydk::Enum
         static const ydk::Enum::YLeaf talk;
         static const ydk::Enum::YLeaf ldp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "echo") return 7;
+            if (name == "discard") return 9;
+            if (name == "daytime") return 13;
+            if (name == "chargen") return 19;
+            if (name == "ftp-data") return 20;
+            if (name == "ftp") return 21;
+            if (name == "ssh") return 22;
+            if (name == "telnet") return 23;
+            if (name == "smtp") return 25;
+            if (name == "time") return 37;
+            if (name == "nicname") return 43;
+            if (name == "tacacs") return 49;
+            if (name == "domain") return 53;
+            if (name == "gopher") return 70;
+            if (name == "finger") return 79;
+            if (name == "www") return 80;
+            if (name == "host-name") return 101;
+            if (name == "pop2") return 109;
+            if (name == "pop3") return 110;
+            if (name == "sun-rpc") return 111;
+            if (name == "ident") return 113;
+            if (name == "nntp") return 119;
+            if (name == "bgp") return 179;
+            if (name == "irc") return 194;
+            if (name == "pim-auto-rp") return 496;
+            if (name == "exec") return 512;
+            if (name == "login") return 513;
+            if (name == "cmd") return 514;
+            if (name == "lpd") return 515;
+            if (name == "uucp") return 540;
+            if (name == "klogin") return 543;
+            if (name == "kshell") return 544;
+            if (name == "talk") return 517;
+            if (name == "ldp") return 646;
+            return -1;
+        }
 };
 
 class PortOperator : public ydk::Enum
@@ -841,6 +878,13 @@ class PortOperator : public ydk::Enum
         static const ydk::Enum::YLeaf greater_than;
         static const ydk::Enum::YLeaf less_than;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "equal") return 0;
+            if (name == "not-equal") return 1;
+            if (name == "greater-than") return 2;
+            if (name == "less-than") return 3;
+            return -1;
+        }
 };
 
 class Port : public ydk::Enum
@@ -881,6 +925,43 @@ class Port : public ydk::Enum
         static const ydk::Enum::YLeaf talk;
         static const ydk::Enum::YLeaf ldp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "echo") return 7;
+            if (name == "discard") return 9;
+            if (name == "daytime") return 13;
+            if (name == "chargen") return 19;
+            if (name == "ftp-data") return 20;
+            if (name == "ftp") return 21;
+            if (name == "ssh") return 22;
+            if (name == "telnet") return 23;
+            if (name == "smtp") return 25;
+            if (name == "time") return 37;
+            if (name == "nicname") return 43;
+            if (name == "tacacs") return 49;
+            if (name == "domain") return 53;
+            if (name == "gopher") return 70;
+            if (name == "finger") return 79;
+            if (name == "www") return 80;
+            if (name == "host-name") return 101;
+            if (name == "pop2") return 109;
+            if (name == "pop3") return 110;
+            if (name == "sun-rpc") return 111;
+            if (name == "ident") return 113;
+            if (name == "nntp") return 119;
+            if (name == "bgp") return 179;
+            if (name == "irc") return 194;
+            if (name == "pim-auto-rp") return 496;
+            if (name == "exec") return 512;
+            if (name == "login") return 513;
+            if (name == "cmd") return 514;
+            if (name == "lpd") return 515;
+            if (name == "uucp") return 540;
+            if (name == "klogin") return 543;
+            if (name == "kshell") return 544;
+            if (name == "talk") return 517;
+            if (name == "ldp") return 646;
+            return -1;
+        }
 };
 
 class StartPort : public ydk::Enum
@@ -921,6 +1002,43 @@ class StartPort : public ydk::Enum
         static const ydk::Enum::YLeaf talk;
         static const ydk::Enum::YLeaf ldp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "echo") return 7;
+            if (name == "discard") return 9;
+            if (name == "daytime") return 13;
+            if (name == "chargen") return 19;
+            if (name == "ftp-data") return 20;
+            if (name == "ftp") return 21;
+            if (name == "ssh") return 22;
+            if (name == "telnet") return 23;
+            if (name == "smtp") return 25;
+            if (name == "time") return 37;
+            if (name == "nicname") return 43;
+            if (name == "tacacs") return 49;
+            if (name == "domain") return 53;
+            if (name == "gopher") return 70;
+            if (name == "finger") return 79;
+            if (name == "www") return 80;
+            if (name == "host-name") return 101;
+            if (name == "pop2") return 109;
+            if (name == "pop3") return 110;
+            if (name == "sun-rpc") return 111;
+            if (name == "ident") return 113;
+            if (name == "nntp") return 119;
+            if (name == "bgp") return 179;
+            if (name == "irc") return 194;
+            if (name == "pim-auto-rp") return 496;
+            if (name == "exec") return 512;
+            if (name == "login") return 513;
+            if (name == "cmd") return 514;
+            if (name == "lpd") return 515;
+            if (name == "uucp") return 540;
+            if (name == "klogin") return 543;
+            if (name == "kshell") return 544;
+            if (name == "talk") return 517;
+            if (name == "ldp") return 646;
+            return -1;
+        }
 };
 
 

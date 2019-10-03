@@ -505,6 +505,7 @@ std::string Cm::Trace::Location::AllOptions::TraceBlocks::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -896,6 +896,7 @@ std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "database-info-struct";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1006,6 +1007,7 @@ std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbIn
 {
     std::ostringstream path_buffer;
     path_buffer << "client-db-info-struct";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1144,6 +1146,7 @@ std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbIn
 {
     std::ostringstream path_buffer;
     path_buffer << "cofo-object-published-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

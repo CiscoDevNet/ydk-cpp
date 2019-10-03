@@ -686,6 +686,13 @@ class EntryStatus : public ydk::Enum
         static const ydk::Enum::YLeaf underCreation;
         static const ydk::Enum::YLeaf invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "valid") return 1;
+            if (name == "createRequest") return 2;
+            if (name == "underCreation") return 3;
+            if (name == "invalid") return 4;
+            return -1;
+        }
 };
 
 class TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState : public ydk::Enum
@@ -699,6 +706,16 @@ class TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingSt
         static const ydk::Enum::YLeaf beaconRingSignalLossState;
         static const ydk::Enum::YLeaf beaconSetRecoveryModeState;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normalOperation") return 1;
+            if (name == "ringPurgeState") return 2;
+            if (name == "claimTokenState") return 3;
+            if (name == "beaconFrameStreamingState") return 4;
+            if (name == "beaconBitStreamingState") return 5;
+            if (name == "beaconRingSignalLossState") return 6;
+            if (name == "beaconSetRecoveryModeState") return 7;
+            return -1;
+        }
 };
 
 class TOKENRINGRMONMIB::RingStationTable::RingStationEntry::RingStationStationStatus : public ydk::Enum
@@ -708,6 +725,12 @@ class TOKENRINGRMONMIB::RingStationTable::RingStationEntry::RingStationStationSt
         static const ydk::Enum::YLeaf inactive;
         static const ydk::Enum::YLeaf forcedRemoval;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "inactive") return 2;
+            if (name == "forcedRemoval") return 3;
+            return -1;
+        }
 };
 
 class TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlRemove : public ydk::Enum
@@ -716,6 +739,11 @@ class TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlE
         static const ydk::Enum::YLeaf stable;
         static const ydk::Enum::YLeaf removing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stable") return 1;
+            if (name == "removing") return 2;
+            return -1;
+        }
 };
 
 class TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlUpdateStats : public ydk::Enum
@@ -724,6 +752,11 @@ class TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlE
         static const ydk::Enum::YLeaf stable;
         static const ydk::Enum::YLeaf updating;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stable") return 1;
+            if (name == "updating") return 2;
+            return -1;
+        }
 };
 
 

@@ -465,6 +465,17 @@ class Metric : public ydk::Enum
         static const ydk::Enum::YLeaf milli;
         static const ydk::Enum::YLeaf nano;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "peta") return 1;
+            if (name == "tera") return 2;
+            if (name == "giga") return 3;
+            if (name == "mega") return 4;
+            if (name == "kilo") return 5;
+            if (name == "milli") return 6;
+            if (name == "nano") return 7;
+            return -1;
+        }
 };
 
 class Direction : public ydk::Enum
@@ -473,6 +484,11 @@ class Direction : public ydk::Enum
         static const ydk::Enum::YLeaf inbound;
         static const ydk::Enum::YLeaf outbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            if (name == "outbound") return 1;
+            return -1;
+        }
 };
 
 class RateUnit : public ydk::Enum
@@ -484,6 +500,14 @@ class RateUnit : public ydk::Enum
         static const ydk::Enum::YLeaf perc;
         static const ydk::Enum::YLeaf ratio;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pps") return 0;
+            if (name == "cps") return 1;
+            if (name == "bps") return 2;
+            if (name == "perc") return 3;
+            if (name == "ratio") return 4;
+            return -1;
+        }
 };
 
 

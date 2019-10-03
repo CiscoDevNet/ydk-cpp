@@ -15,9 +15,11 @@ Ssh::Ssh()
     :
     client(std::make_shared<Ssh::Client>())
     , server(std::make_shared<Ssh::Server>())
+    , backup_server(std::make_shared<Ssh::BackupServer>())
 {
     client->parent = this;
     server->parent = this;
+    backup_server->parent = this;
 
     yang_name = "ssh"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -30,14 +32,16 @@ bool Ssh::has_data() const
 {
     if (is_presence_container) return true;
     return (client !=  nullptr && client->has_data())
-	|| (server !=  nullptr && server->has_data());
+	|| (server !=  nullptr && server->has_data())
+	|| (backup_server !=  nullptr && backup_server->has_data());
 }
 
 bool Ssh::has_operation() const
 {
     return is_set(yfilter)
 	|| (client !=  nullptr && client->has_operation())
-	|| (server !=  nullptr && server->has_operation());
+	|| (server !=  nullptr && server->has_operation())
+	|| (backup_server !=  nullptr && backup_server->has_operation());
 }
 
 std::string Ssh::get_segment_path() const
@@ -76,6 +80,15 @@ std::shared_ptr<ydk::Entity> Ssh::get_child_by_name(const std::string & child_ya
         return server;
     }
 
+    if(child_yang_name == "backup-server")
+    {
+        if(backup_server == nullptr)
+        {
+            backup_server = std::make_shared<Ssh::BackupServer>();
+        }
+        return backup_server;
+    }
+
     return nullptr;
 }
 
@@ -91,6 +104,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::get_children() const
     if(server != nullptr)
     {
         _children["server"] = server;
+    }
+
+    if(backup_server != nullptr)
+    {
+        _children["backup-server"] = backup_server;
     }
 
     return _children;
@@ -131,7 +149,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ssh::get_namespace_id
 
 bool Ssh::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client" || name == "server")
+    if(name == "client" || name == "server" || name == "backup-server")
         return true;
     return false;
 }
@@ -141,6 +159,8 @@ Ssh::Client::Client()
     rekey_volume{YType::uint32, "rekey-volume"},
     host_public_key{YType::str, "host-public-key"},
     client_vrf{YType::str, "client-vrf"},
+    v2{YType::empty, "v2"},
+    tcp_window_scale{YType::uint32, "tcp-window-scale"},
     rekey_time{YType::uint32, "rekey-time"},
     source_interface{YType::str, "source-interface"},
     dscp{YType::uint32, "dscp"}
@@ -164,6 +184,8 @@ bool Ssh::Client::has_data() const
     return rekey_volume.is_set
 	|| host_public_key.is_set
 	|| client_vrf.is_set
+	|| v2.is_set
+	|| tcp_window_scale.is_set
 	|| rekey_time.is_set
 	|| source_interface.is_set
 	|| dscp.is_set
@@ -177,6 +199,8 @@ bool Ssh::Client::has_operation() const
 	|| ydk::is_set(rekey_volume.yfilter)
 	|| ydk::is_set(host_public_key.yfilter)
 	|| ydk::is_set(client_vrf.yfilter)
+	|| ydk::is_set(v2.yfilter)
+	|| ydk::is_set(tcp_window_scale.yfilter)
 	|| ydk::is_set(rekey_time.yfilter)
 	|| ydk::is_set(source_interface.yfilter)
 	|| ydk::is_set(dscp.yfilter)
@@ -205,6 +229,8 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::get_name_leaf_data()
     if (rekey_volume.is_set || is_set(rekey_volume.yfilter)) leaf_name_data.push_back(rekey_volume.get_name_leafdata());
     if (host_public_key.is_set || is_set(host_public_key.yfilter)) leaf_name_data.push_back(host_public_key.get_name_leafdata());
     if (client_vrf.is_set || is_set(client_vrf.yfilter)) leaf_name_data.push_back(client_vrf.get_name_leafdata());
+    if (v2.is_set || is_set(v2.yfilter)) leaf_name_data.push_back(v2.get_name_leafdata());
+    if (tcp_window_scale.is_set || is_set(tcp_window_scale.yfilter)) leaf_name_data.push_back(tcp_window_scale.get_name_leafdata());
     if (rekey_time.is_set || is_set(rekey_time.yfilter)) leaf_name_data.push_back(rekey_time.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
     if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
@@ -273,6 +299,18 @@ void Ssh::Client::set_value(const std::string & value_path, const std::string & 
         client_vrf.value_namespace = name_space;
         client_vrf.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "v2")
+    {
+        v2 = value;
+        v2.value_namespace = name_space;
+        v2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tcp-window-scale")
+    {
+        tcp_window_scale = value;
+        tcp_window_scale.value_namespace = name_space;
+        tcp_window_scale.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "rekey-time")
     {
         rekey_time = value;
@@ -307,6 +345,14 @@ void Ssh::Client::set_filter(const std::string & value_path, YFilter yfilter)
     {
         client_vrf.yfilter = yfilter;
     }
+    if(value_path == "v2")
+    {
+        v2.yfilter = yfilter;
+    }
+    if(value_path == "tcp-window-scale")
+    {
+        tcp_window_scale.yfilter = yfilter;
+    }
     if(value_path == "rekey-time")
     {
         rekey_time.yfilter = yfilter;
@@ -323,7 +369,7 @@ void Ssh::Client::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Ssh::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-algo" || name == "client-enable" || name == "rekey-volume" || name == "host-public-key" || name == "client-vrf" || name == "rekey-time" || name == "source-interface" || name == "dscp")
+    if(name == "client-algo" || name == "client-enable" || name == "rekey-volume" || name == "host-public-key" || name == "client-vrf" || name == "v2" || name == "tcp-window-scale" || name == "rekey-time" || name == "source-interface" || name == "dscp")
         return true;
     return false;
 }
@@ -705,6 +751,7 @@ Ssh::Server::Server()
     session_limit{YType::uint32, "session-limit"},
     netconf{YType::uint32, "netconf"},
     v2{YType::empty, "v2"},
+    tcp_window_scale{YType::uint32, "tcp-window-scale"},
     rekey_time{YType::uint32, "rekey-time"},
     logging{YType::empty, "logging"},
     rate_limit{YType::uint32, "rate-limit"},
@@ -739,6 +786,7 @@ bool Ssh::Server::has_data() const
 	|| session_limit.is_set
 	|| netconf.is_set
 	|| v2.is_set
+	|| tcp_window_scale.is_set
 	|| rekey_time.is_set
 	|| logging.is_set
 	|| rate_limit.is_set
@@ -759,6 +807,7 @@ bool Ssh::Server::has_operation() const
 	|| ydk::is_set(session_limit.yfilter)
 	|| ydk::is_set(netconf.yfilter)
 	|| ydk::is_set(v2.yfilter)
+	|| ydk::is_set(tcp_window_scale.yfilter)
 	|| ydk::is_set(rekey_time.yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(rate_limit.yfilter)
@@ -794,6 +843,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::get_name_leaf_data()
     if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
     if (netconf.is_set || is_set(netconf.yfilter)) leaf_name_data.push_back(netconf.get_name_leafdata());
     if (v2.is_set || is_set(v2.yfilter)) leaf_name_data.push_back(v2.get_name_leafdata());
+    if (tcp_window_scale.is_set || is_set(tcp_window_scale.yfilter)) leaf_name_data.push_back(tcp_window_scale.get_name_leafdata());
     if (rekey_time.is_set || is_set(rekey_time.yfilter)) leaf_name_data.push_back(rekey_time.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
     if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
@@ -926,6 +976,12 @@ void Ssh::Server::set_value(const std::string & value_path, const std::string & 
         v2.value_namespace = name_space;
         v2.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "tcp-window-scale")
+    {
+        tcp_window_scale = value;
+        tcp_window_scale.value_namespace = name_space;
+        tcp_window_scale.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "rekey-time")
     {
         rekey_time = value;
@@ -976,6 +1032,10 @@ void Ssh::Server::set_filter(const std::string & value_path, YFilter yfilter)
     {
         v2.yfilter = yfilter;
     }
+    if(value_path == "tcp-window-scale")
+    {
+        tcp_window_scale.yfilter = yfilter;
+    }
     if(value_path == "rekey-time")
     {
         rekey_time.yfilter = yfilter;
@@ -1000,7 +1060,7 @@ void Ssh::Server::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Ssh::Server::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disable" || name == "enable" || name == "vrf-table" || name == "server-algo" || name == "capability" || name == "netconf-vrf-table" || name == "rekey-volume" || name == "session-limit" || name == "netconf" || name == "v2" || name == "rekey-time" || name == "logging" || name == "rate-limit" || name == "timeout" || name == "dscp")
+    if(name == "disable" || name == "enable" || name == "vrf-table" || name == "server-algo" || name == "capability" || name == "netconf-vrf-table" || name == "rekey-volume" || name == "session-limit" || name == "netconf" || name == "v2" || name == "tcp-window-scale" || name == "rekey-time" || name == "logging" || name == "rate-limit" || name == "timeout" || name == "dscp")
         return true;
     return false;
 }
@@ -2087,6 +2147,193 @@ void Ssh::Server::NetconfVrfTable::Vrf::set_filter(const std::string & value_pat
 bool Ssh::Server::NetconfVrfTable::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "enable" || name == "ipv4-access-list" || name == "ipv6-access-list")
+        return true;
+    return false;
+}
+
+Ssh::BackupServer::BackupServer()
+    :
+    backup_port_vrf(nullptr) // presence node
+{
+
+    yang_name = "backup-server"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::BackupServer::~BackupServer()
+{
+}
+
+bool Ssh::BackupServer::has_data() const
+{
+    if (is_presence_container) return true;
+    return (backup_port_vrf !=  nullptr && backup_port_vrf->has_data());
+}
+
+bool Ssh::BackupServer::has_operation() const
+{
+    return is_set(yfilter)
+	|| (backup_port_vrf !=  nullptr && backup_port_vrf->has_operation());
+}
+
+std::string Ssh::BackupServer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-cfg:ssh/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::BackupServer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::BackupServer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::BackupServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "backup-port-vrf")
+    {
+        if(backup_port_vrf == nullptr)
+        {
+            backup_port_vrf = std::make_shared<Ssh::BackupServer::BackupPortVrf>();
+        }
+        return backup_port_vrf;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::BackupServer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(backup_port_vrf != nullptr)
+    {
+        _children["backup-port-vrf"] = backup_port_vrf;
+    }
+
+    return _children;
+}
+
+void Ssh::BackupServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::BackupServer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::BackupServer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-port-vrf")
+        return true;
+    return false;
+}
+
+Ssh::BackupServer::BackupPortVrf::BackupPortVrf()
+    :
+    port{YType::uint32, "port"},
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "backup-port-vrf"; yang_parent_name = "backup-server"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Ssh::BackupServer::BackupPortVrf::~BackupPortVrf()
+{
+}
+
+bool Ssh::BackupServer::BackupPortVrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return port.is_set
+	|| vrf_name.is_set;
+}
+
+bool Ssh::BackupServer::BackupPortVrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Ssh::BackupServer::BackupPortVrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-cfg:ssh/backup-server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::BackupServer::BackupPortVrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-port-vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::BackupServer::BackupPortVrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::BackupServer::BackupPortVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::BackupServer::BackupPortVrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::BackupServer::BackupPortVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::BackupServer::BackupPortVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ssh::BackupServer::BackupPortVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port" || name == "vrf-name")
         return true;
     return false;
 }

@@ -273,6 +273,18 @@ class HistoryEventMedium : public ydk::Enum
         static const ydk::Enum::YLeaf networkFtp;
         static const ydk::Enum::YLeaf networkScp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "erase") return 1;
+            if (name == "commandSource") return 2;
+            if (name == "running") return 3;
+            if (name == "startup") return 4;
+            if (name == "local") return 5;
+            if (name == "networkTftp") return 6;
+            if (name == "networkRcp") return 7;
+            if (name == "networkFtp") return 8;
+            if (name == "networkScp") return 9;
+            return -1;
+        }
 };
 
 class CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::CcmHistoryEventCommandSource : public ydk::Enum
@@ -281,6 +293,11 @@ class CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::CcmHistoryE
         static const ydk::Enum::YLeaf commandLine;
         static const ydk::Enum::YLeaf snmp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "commandLine") return 1;
+            if (name == "snmp") return 2;
+            return -1;
+        }
 };
 
 class CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::CcmHistoryEventTerminalType : public ydk::Enum
@@ -293,6 +310,15 @@ class CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::CcmHistoryE
         static const ydk::Enum::YLeaf virtual_;
         static const ydk::Enum::YLeaf auxiliary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "unknown") return 2;
+            if (name == "console") return 3;
+            if (name == "terminal") return 4;
+            if (name == "virtual") return 5;
+            if (name == "auxiliary") return 6;
+            return -1;
+        }
 };
 
 

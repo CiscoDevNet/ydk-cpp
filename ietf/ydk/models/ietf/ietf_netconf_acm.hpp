@@ -154,6 +154,11 @@ class ActionType : public ydk::Enum
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "permit") return 0;
+            if (name == "deny") return 1;
+            return -1;
+        }
 };
 
 

@@ -194,22 +194,24 @@ HwModuleProfileConfig::Profile::Profile()
     :
     tcam_table(std::make_shared<HwModuleProfileConfig::Profile::TcamTable>())
     , netflow(std::make_shared<HwModuleProfileConfig::Profile::Netflow>())
-    , flowspecs(std::make_shared<HwModuleProfileConfig::Profile::Flowspecs>())
+    , flowspec_table(std::make_shared<HwModuleProfileConfig::Profile::FlowspecTable>())
     , segment_routings(std::make_shared<HwModuleProfileConfig::Profile::SegmentRoutings>())
     , load_balance(std::make_shared<HwModuleProfileConfig::Profile::LoadBalance>())
     , stats(std::make_shared<HwModuleProfileConfig::Profile::Stats>())
     , profile_acl(std::make_shared<HwModuleProfileConfig::Profile::ProfileAcl>())
+    , sr_policies(std::make_shared<HwModuleProfileConfig::Profile::SrPolicies>())
     , bundle_scale(std::make_shared<HwModuleProfileConfig::Profile::BundleScale>())
     , profile_tcam(std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam>())
     , qos(std::make_shared<HwModuleProfileConfig::Profile::Qos>())
 {
     tcam_table->parent = this;
     netflow->parent = this;
-    flowspecs->parent = this;
+    flowspec_table->parent = this;
     segment_routings->parent = this;
     load_balance->parent = this;
     stats->parent = this;
     profile_acl->parent = this;
+    sr_policies->parent = this;
     bundle_scale->parent = this;
     profile_tcam->parent = this;
     qos->parent = this;
@@ -226,11 +228,12 @@ bool HwModuleProfileConfig::Profile::has_data() const
     if (is_presence_container) return true;
     return (tcam_table !=  nullptr && tcam_table->has_data())
 	|| (netflow !=  nullptr && netflow->has_data())
-	|| (flowspecs !=  nullptr && flowspecs->has_data())
+	|| (flowspec_table !=  nullptr && flowspec_table->has_data())
 	|| (segment_routings !=  nullptr && segment_routings->has_data())
 	|| (load_balance !=  nullptr && load_balance->has_data())
 	|| (stats !=  nullptr && stats->has_data())
 	|| (profile_acl !=  nullptr && profile_acl->has_data())
+	|| (sr_policies !=  nullptr && sr_policies->has_data())
 	|| (bundle_scale !=  nullptr && bundle_scale->has_data())
 	|| (profile_tcam !=  nullptr && profile_tcam->has_data())
 	|| (qos !=  nullptr && qos->has_data());
@@ -241,11 +244,12 @@ bool HwModuleProfileConfig::Profile::has_operation() const
     return is_set(yfilter)
 	|| (tcam_table !=  nullptr && tcam_table->has_operation())
 	|| (netflow !=  nullptr && netflow->has_operation())
-	|| (flowspecs !=  nullptr && flowspecs->has_operation())
+	|| (flowspec_table !=  nullptr && flowspec_table->has_operation())
 	|| (segment_routings !=  nullptr && segment_routings->has_operation())
 	|| (load_balance !=  nullptr && load_balance->has_operation())
 	|| (stats !=  nullptr && stats->has_operation())
 	|| (profile_acl !=  nullptr && profile_acl->has_operation())
+	|| (sr_policies !=  nullptr && sr_policies->has_operation())
 	|| (bundle_scale !=  nullptr && bundle_scale->has_operation())
 	|| (profile_tcam !=  nullptr && profile_tcam->has_operation())
 	|| (qos !=  nullptr && qos->has_operation());
@@ -294,13 +298,13 @@ std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::get_child_by_name(c
         return netflow;
     }
 
-    if(child_yang_name == "flowspecs")
+    if(child_yang_name == "flowspec-table")
     {
-        if(flowspecs == nullptr)
+        if(flowspec_table == nullptr)
         {
-            flowspecs = std::make_shared<HwModuleProfileConfig::Profile::Flowspecs>();
+            flowspec_table = std::make_shared<HwModuleProfileConfig::Profile::FlowspecTable>();
         }
-        return flowspecs;
+        return flowspec_table;
     }
 
     if(child_yang_name == "segment-routings")
@@ -337,6 +341,15 @@ std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::get_child_by_name(c
             profile_acl = std::make_shared<HwModuleProfileConfig::Profile::ProfileAcl>();
         }
         return profile_acl;
+    }
+
+    if(child_yang_name == "sr-policies")
+    {
+        if(sr_policies == nullptr)
+        {
+            sr_policies = std::make_shared<HwModuleProfileConfig::Profile::SrPolicies>();
+        }
+        return sr_policies;
     }
 
     if(child_yang_name == "bundle-scale")
@@ -383,9 +396,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profi
         _children["netflow"] = netflow;
     }
 
-    if(flowspecs != nullptr)
+    if(flowspec_table != nullptr)
     {
-        _children["flowspecs"] = flowspecs;
+        _children["flowspec-table"] = flowspec_table;
     }
 
     if(segment_routings != nullptr)
@@ -406,6 +419,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profi
     if(profile_acl != nullptr)
     {
         _children["profile-acl"] = profile_acl;
+    }
+
+    if(sr_policies != nullptr)
+    {
+        _children["sr-policies"] = sr_policies;
     }
 
     if(bundle_scale != nullptr)
@@ -436,7 +454,7 @@ void HwModuleProfileConfig::Profile::set_filter(const std::string & value_path, 
 
 bool HwModuleProfileConfig::Profile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tcam-table" || name == "netflow" || name == "flowspecs" || name == "segment-routings" || name == "load-balance" || name == "stats" || name == "profile-acl" || name == "bundle-scale" || name == "profile-tcam" || name == "qos")
+    if(name == "tcam-table" || name == "netflow" || name == "flowspec-table" || name == "segment-routings" || name == "load-balance" || name == "stats" || name == "profile-acl" || name == "sr-policies" || name == "bundle-scale" || name == "profile-tcam" || name == "qos")
         return true;
     return false;
 }
@@ -1923,19 +1941,108 @@ bool HwModuleProfileConfig::Profile::Netflow::LocationAll::has_leaf_or_child_of_
     return false;
 }
 
-HwModuleProfileConfig::Profile::Flowspecs::Flowspecs()
+HwModuleProfileConfig::Profile::FlowspecTable::FlowspecTable()
     :
-    flowspec(this, {"v6_enable", "location_string", "location_id"})
+    flowspecs(std::make_shared<HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs>())
 {
+    flowspecs->parent = this;
 
-    yang_name = "flowspecs"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "flowspec-table"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-HwModuleProfileConfig::Profile::Flowspecs::~Flowspecs()
+HwModuleProfileConfig::Profile::FlowspecTable::~FlowspecTable()
 {
 }
 
-bool HwModuleProfileConfig::Profile::Flowspecs::has_data() const
+bool HwModuleProfileConfig::Profile::FlowspecTable::has_data() const
+{
+    if (is_presence_container) return true;
+    return (flowspecs !=  nullptr && flowspecs->has_data());
+}
+
+bool HwModuleProfileConfig::Profile::FlowspecTable::has_operation() const
+{
+    return is_set(yfilter)
+	|| (flowspecs !=  nullptr && flowspecs->has_operation());
+}
+
+std::string HwModuleProfileConfig::Profile::FlowspecTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::FlowspecTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flowspec-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::FlowspecTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::FlowspecTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "flowspecs")
+    {
+        if(flowspecs == nullptr)
+        {
+            flowspecs = std::make_shared<HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs>();
+        }
+        return flowspecs;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::FlowspecTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(flowspecs != nullptr)
+    {
+        _children["flowspecs"] = flowspecs;
+    }
+
+    return _children;
+}
+
+void HwModuleProfileConfig::Profile::FlowspecTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HwModuleProfileConfig::Profile::FlowspecTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HwModuleProfileConfig::Profile::FlowspecTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flowspecs")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspecs()
+    :
+    flowspec(this, {"location_string", "location_id"})
+{
+
+    yang_name = "flowspecs"; yang_parent_name = "flowspec-table"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::~Flowspecs()
+{
+}
+
+bool HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<flowspec.len(); index++)
@@ -1946,7 +2053,7 @@ bool HwModuleProfileConfig::Profile::Flowspecs::has_data() const
     return false;
 }
 
-bool HwModuleProfileConfig::Profile::Flowspecs::has_operation() const
+bool HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::has_operation() const
 {
     for (std::size_t index=0; index<flowspec.len(); index++)
     {
@@ -1956,21 +2063,21 @@ bool HwModuleProfileConfig::Profile::Flowspecs::has_operation() const
     return is_set(yfilter);
 }
 
-std::string HwModuleProfileConfig::Profile::Flowspecs::get_absolute_path() const
+std::string HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/flowspec-table/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string HwModuleProfileConfig::Profile::Flowspecs::get_segment_path() const
+std::string HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flowspecs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Flowspecs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1979,11 +2086,11 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::F
 
 }
 
-std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Flowspecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flowspec")
     {
-        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Flowspecs::Flowspec>();
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec>();
         ent_->parent = this;
         flowspec.append(ent_);
         return ent_;
@@ -1992,7 +2099,7 @@ std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Flowspecs::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Flowspecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -2008,24 +2115,23 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profi
     return _children;
 }
 
-void HwModuleProfileConfig::Profile::Flowspecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void HwModuleProfileConfig::Profile::Flowspecs::set_filter(const std::string & value_path, YFilter yfilter)
+void HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool HwModuleProfileConfig::Profile::Flowspecs::has_leaf_or_child_of_name(const std::string & name) const
+bool HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flowspec")
         return true;
     return false;
 }
 
-HwModuleProfileConfig::Profile::Flowspecs::Flowspec::Flowspec()
+HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::Flowspec()
     :
-    v6_enable{YType::str, "v6-enable"},
     location_string{YType::str, "location-string"},
     location_id{YType::uint32, "location-id"},
     enable_val{YType::uint32, "enable-val"}
@@ -2034,50 +2140,46 @@ HwModuleProfileConfig::Profile::Flowspecs::Flowspec::Flowspec()
     yang_name = "flowspec"; yang_parent_name = "flowspecs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-HwModuleProfileConfig::Profile::Flowspecs::Flowspec::~Flowspec()
+HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::~Flowspec()
 {
 }
 
-bool HwModuleProfileConfig::Profile::Flowspecs::Flowspec::has_data() const
+bool HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::has_data() const
 {
     if (is_presence_container) return true;
-    return v6_enable.is_set
-	|| location_string.is_set
+    return location_string.is_set
 	|| location_id.is_set
 	|| enable_val.is_set;
 }
 
-bool HwModuleProfileConfig::Profile::Flowspecs::Flowspec::has_operation() const
+bool HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(v6_enable.yfilter)
 	|| ydk::is_set(location_string.yfilter)
 	|| ydk::is_set(location_id.yfilter)
 	|| ydk::is_set(enable_val.yfilter);
 }
 
-std::string HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_absolute_path() const
+std::string HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/flowspecs/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/flowspec-table/flowspecs/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_segment_path() const
+std::string HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flowspec";
-    ADD_KEY_TOKEN(v6_enable, "v6-enable");
     ADD_KEY_TOKEN(location_string, "location-string");
     ADD_KEY_TOKEN(location_id, "location-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (v6_enable.is_set || is_set(v6_enable.yfilter)) leaf_name_data.push_back(v6_enable.get_name_leafdata());
     if (location_string.is_set || is_set(location_string.yfilter)) leaf_name_data.push_back(location_string.get_name_leafdata());
     if (location_id.is_set || is_set(location_id.yfilter)) leaf_name_data.push_back(location_id.get_name_leafdata());
     if (enable_val.is_set || is_set(enable_val.yfilter)) leaf_name_data.push_back(enable_val.get_name_leafdata());
@@ -2086,26 +2188,20 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::F
 
 }
 
-std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void HwModuleProfileConfig::Profile::Flowspecs::Flowspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "v6-enable")
-    {
-        v6_enable = value;
-        v6_enable.value_namespace = name_space;
-        v6_enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "location-string")
     {
         location_string = value;
@@ -2126,12 +2222,8 @@ void HwModuleProfileConfig::Profile::Flowspecs::Flowspec::set_value(const std::s
     }
 }
 
-void HwModuleProfileConfig::Profile::Flowspecs::Flowspec::set_filter(const std::string & value_path, YFilter yfilter)
+void HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "v6-enable")
-    {
-        v6_enable.yfilter = yfilter;
-    }
     if(value_path == "location-string")
     {
         location_string.yfilter = yfilter;
@@ -2146,9 +2238,9 @@ void HwModuleProfileConfig::Profile::Flowspecs::Flowspec::set_filter(const std::
     }
 }
 
-bool HwModuleProfileConfig::Profile::Flowspecs::Flowspec::has_leaf_or_child_of_name(const std::string & name) const
+bool HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "v6-enable" || name == "location-string" || name == "location-id" || name == "enable-val")
+    if(name == "location-string" || name == "location-id" || name == "enable-val")
         return true;
     return false;
 }
@@ -2808,6 +2900,206 @@ void HwModuleProfileConfig::Profile::ProfileAcl::set_filter(const std::string & 
 bool HwModuleProfileConfig::Profile::ProfileAcl::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "egress")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::SrPolicies::SrPolicies()
+    :
+    sr_policy(this, {"null_label_autopush"})
+{
+
+    yang_name = "sr-policies"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HwModuleProfileConfig::Profile::SrPolicies::~SrPolicies()
+{
+}
+
+bool HwModuleProfileConfig::Profile::SrPolicies::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_policy.len(); index++)
+    {
+        if(sr_policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HwModuleProfileConfig::Profile::SrPolicies::has_operation() const
+{
+    for (std::size_t index=0; index<sr_policy.len(); index++)
+    {
+        if(sr_policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::SrPolicies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::SrPolicies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-policies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::SrPolicies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::SrPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-policy")
+    {
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::SrPolicies::SrPolicy>();
+        ent_->parent = this;
+        sr_policy.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::SrPolicies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sr_policy.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void HwModuleProfileConfig::Profile::SrPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HwModuleProfileConfig::Profile::SrPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HwModuleProfileConfig::Profile::SrPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-policy")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::SrPolicy()
+    :
+    null_label_autopush{YType::str, "null-label-autopush"},
+    enable_val{YType::uint32, "enable-val"}
+{
+
+    yang_name = "sr-policy"; yang_parent_name = "sr-policies"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::~SrPolicy()
+{
+}
+
+bool HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return null_label_autopush.is_set
+	|| enable_val.is_set;
+}
+
+bool HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(null_label_autopush.yfilter)
+	|| ydk::is_set(enable_val.yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/sr-policies/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-policy";
+    ADD_KEY_TOKEN(null_label_autopush, "null-label-autopush");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (null_label_autopush.is_set || is_set(null_label_autopush.yfilter)) leaf_name_data.push_back(null_label_autopush.get_name_leafdata());
+    if (enable_val.is_set || is_set(enable_val.yfilter)) leaf_name_data.push_back(enable_val.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "null-label-autopush")
+    {
+        null_label_autopush = value;
+        null_label_autopush.value_namespace = name_space;
+        null_label_autopush.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable-val")
+    {
+        enable_val = value;
+        enable_val.value_namespace = name_space;
+        enable_val.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "null-label-autopush")
+    {
+        null_label_autopush.yfilter = yfilter;
+    }
+    if(value_path == "enable-val")
+    {
+        enable_val.yfilter = yfilter;
+    }
+}
+
+bool HwModuleProfileConfig::Profile::SrPolicies::SrPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "null-label-autopush" || name == "enable-val")
         return true;
     return false;
 }

@@ -583,6 +583,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDe
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics-on-demand-current";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1246,6 +1247,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDe
 {
     std::ostringstream path_buffer;
     path_buffer << "operation-metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1601,6 +1603,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDe
 {
     std::ostringstream path_buffer;
     path_buffer << "bucket";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2267,6 +2270,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDe
 {
     std::ostringstream path_buffer;
     path_buffer << "bins";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2531,6 +2535,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDe
 {
     std::ostringstream path_buffer;
     path_buffer << "sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2834,6 +2839,7 @@ std::string Sla::Protocols::Ethernet::Operations::Operation::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "operation";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3606,6 +3612,7 @@ std::string Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Ope
 {
     std::ostringstream path_buffer;
     path_buffer << "operation-metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4310,6 +4317,7 @@ std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorica
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics-historical";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4973,6 +4981,7 @@ std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorica
 {
     std::ostringstream path_buffer;
     path_buffer << "operation-metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5328,6 +5337,7 @@ std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorica
 {
     std::ostringstream path_buffer;
     path_buffer << "bucket";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5994,6 +6004,7 @@ std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorica
 {
     std::ostringstream path_buffer;
     path_buffer << "bins";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6258,6 +6269,7 @@ std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorica
 {
     std::ostringstream path_buffer;
     path_buffer << "sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6575,6 +6587,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsO
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics-on-demand-historical";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7238,6 +7251,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsO
 {
     std::ostringstream path_buffer;
     path_buffer << "operation-metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7593,6 +7607,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsO
 {
     std::ostringstream path_buffer;
     path_buffer << "bucket";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8259,6 +8274,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsO
 {
     std::ostringstream path_buffer;
     path_buffer << "bins";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8523,6 +8539,7 @@ std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsO
 {
     std::ostringstream path_buffer;
     path_buffer << "sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8874,6 +8891,7 @@ std::string Sla::Protocols::Ethernet::ConfigErrors::ConfigError::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "config-error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9341,6 +9359,7 @@ std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::get
 {
     std::ostringstream path_buffer;
     path_buffer << "on-demand-operation";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10113,6 +10132,7 @@ std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::Pro
 {
     std::ostringstream path_buffer;
     path_buffer << "operation-metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10817,6 +10837,7 @@ std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::get
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics-current";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11480,6 +11501,7 @@ std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Ope
 {
     std::ostringstream path_buffer;
     path_buffer << "operation-metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11835,6 +11857,7 @@ std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Ope
 {
     std::ostringstream path_buffer;
     path_buffer << "bucket";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12501,6 +12524,7 @@ std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Ope
 {
     std::ostringstream path_buffer;
     path_buffer << "bins";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12765,6 +12789,7 @@ std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Ope
 {
     std::ostringstream path_buffer;
     path_buffer << "sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

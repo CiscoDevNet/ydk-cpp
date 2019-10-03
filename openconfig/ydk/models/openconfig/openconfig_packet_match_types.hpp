@@ -258,6 +258,10 @@ class PortNumRange : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ANY;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ANY") return 0;
+            return -1;
+        }
 };
 
 

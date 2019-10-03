@@ -2270,6 +2270,25 @@ class EventType : public ydk::Enum
         static const ydk::Enum::YLeaf session_stop;
         static const ydk::Enum::YLeaf timer_expiry;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "account-logoff") return 0;
+            if (name == "account-logon") return 1;
+            if (name == "authentication-failure") return 2;
+            if (name == "authentication-no-response") return 3;
+            if (name == "authorization-failure") return 4;
+            if (name == "authorization-no-response") return 5;
+            if (name == "credit-exhausted") return 6;
+            if (name == "exception") return 7;
+            if (name == "idle-timeout") return 8;
+            if (name == "quota-depleted") return 9;
+            if (name == "service-start") return 10;
+            if (name == "service-stop") return 11;
+            if (name == "session-activate") return 12;
+            if (name == "session-start") return 13;
+            if (name == "session-stop") return 14;
+            if (name == "timer-expiry") return 15;
+            return -1;
+        }
 };
 
 class ClassMapType : public ydk::Enum
@@ -2279,6 +2298,12 @@ class ClassMapType : public ydk::Enum
         static const ydk::Enum::YLeaf traffic;
         static const ydk::Enum::YLeaf control;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos") return 1;
+            if (name == "traffic") return 3;
+            if (name == "control") return 4;
+            return -1;
+        }
 };
 
 class ExecutionStrategy : public ydk::Enum
@@ -2288,6 +2313,12 @@ class ExecutionStrategy : public ydk::Enum
         static const ydk::Enum::YLeaf do_until_failure;
         static const ydk::Enum::YLeaf do_until_success;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "do-all") return 0;
+            if (name == "do-until-failure") return 1;
+            if (name == "do-until-success") return 2;
+            return -1;
+        }
 };
 
 class AuthorizeIdentifier : public ydk::Enum
@@ -2301,6 +2332,16 @@ class AuthorizeIdentifier : public ydk::Enum
         static const ydk::Enum::YLeaf source_address_mac;
         static const ydk::Enum::YLeaf username;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "circuit-id") return 0;
+            if (name == "dhcp-client-id") return 1;
+            if (name == "remote-id") return 2;
+            if (name == "source-address-ipv4") return 3;
+            if (name == "source-address-ipv6") return 4;
+            if (name == "source-address-mac") return 5;
+            if (name == "username") return 6;
+            return -1;
+        }
 };
 
 class PmapClassMapType : public ydk::Enum
@@ -2310,6 +2351,12 @@ class PmapClassMapType : public ydk::Enum
         static const ydk::Enum::YLeaf traffic;
         static const ydk::Enum::YLeaf subscriber_control;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos") return 1;
+            if (name == "traffic") return 2;
+            if (name == "subscriber-control") return 3;
+            return -1;
+        }
 };
 
 class PolicyMapType : public ydk::Enum
@@ -2322,6 +2369,15 @@ class PolicyMapType : public ydk::Enum
         static const ydk::Enum::YLeaf redirect;
         static const ydk::Enum::YLeaf flow_monitor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos") return 1;
+            if (name == "pbr") return 2;
+            if (name == "traffic") return 3;
+            if (name == "subscriber-control") return 4;
+            if (name == "redirect") return 6;
+            if (name == "flow-monitor") return 7;
+            return -1;
+        }
 };
 
 

@@ -2653,6 +2653,18 @@ class ImCmdIntfTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf cem;
         static const ydk::Enum::YLeaf gcc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "srp") return 0;
+            if (name == "tunnel") return 1;
+            if (name == "bundle") return 2;
+            if (name == "serial") return 3;
+            if (name == "sonet-pos") return 4;
+            if (name == "tunnel-gre") return 5;
+            if (name == "pseudowire-head-end") return 6;
+            if (name == "cem") return 7;
+            if (name == "gcc") return 8;
+            return -1;
+        }
 };
 
 class VlanSwitchedMode : public ydk::Enum
@@ -2662,6 +2674,12 @@ class VlanSwitchedMode : public ydk::Enum
         static const ydk::Enum::YLeaf trunk_port;
         static const ydk::Enum::YLeaf access_port;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "trunk-port") return 1;
+            if (name == "access-port") return 2;
+            return -1;
+        }
 };
 
 class ImCmdStatsEnum : public ydk::Enum
@@ -2670,6 +2688,11 @@ class ImCmdStatsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf full;
         static const ydk::Enum::YLeaf basic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "full") return 1;
+            if (name == "basic") return 2;
+            return -1;
+        }
 };
 
 class SrpMgmtFailureStateEt : public ydk::Enum
@@ -2685,6 +2708,18 @@ class SrpMgmtFailureStateEt : public ydk::Enum
         static const ydk::Enum::YLeaf invalid_failure_state;
         static const ydk::Enum::YLeaf unknown_failure_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle-failure-state") return 0;
+            if (name == "wait-to-restore-failure-state") return 1;
+            if (name == "manual-switch-failure-state") return 2;
+            if (name == "signal-degrade-failure-state") return 3;
+            if (name == "signal-fail-failure-state") return 4;
+            if (name == "forced-switch-failure-state") return 5;
+            if (name == "shutdown-failure-state") return 6;
+            if (name == "invalid-failure-state") return 7;
+            if (name == "unknown-failure-state") return 8;
+            return -1;
+        }
 };
 
 class GccDerState : public ydk::Enum
@@ -2695,6 +2730,13 @@ class GccDerState : public ydk::Enum
         static const ydk::Enum::YLeaf maintenance;
         static const ydk::Enum::YLeaf ais;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in-service") return 0;
+            if (name == "out-of-service") return 1;
+            if (name == "maintenance") return 2;
+            if (name == "ais") return 3;
+            return -1;
+        }
 };
 
 class EfpTagEtype : public ydk::Enum
@@ -2704,6 +2746,12 @@ class EfpTagEtype : public ydk::Enum
         static const ydk::Enum::YLeaf dot1q;
         static const ydk::Enum::YLeaf dot1ad;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "untagged") return 0;
+            if (name == "dot1q") return 33024;
+            if (name == "dot1ad") return 34984;
+            return -1;
+        }
 };
 
 class TunnelGreMode : public ydk::Enum
@@ -2717,6 +2765,16 @@ class TunnelGreMode : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "gr-eo-ipv4") return 1;
+            if (name == "gr-eo-ipv6") return 2;
+            if (name == "mgr-eo-ipv4") return 3;
+            if (name == "mgr-eo-ipv6") return 4;
+            if (name == "ipv4") return 5;
+            if (name == "ipv6") return 6;
+            return -1;
+        }
 };
 
 class GccSecState : public ydk::Enum
@@ -2726,6 +2784,12 @@ class GccSecState : public ydk::Enum
         static const ydk::Enum::YLeaf maintenance;
         static const ydk::Enum::YLeaf ais;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "maintenance") return 1;
+            if (name == "ais") return 2;
+            return -1;
+        }
 };
 
 class SrpMgmtIpsWrapState : public ydk::Enum
@@ -2736,6 +2800,13 @@ class SrpMgmtIpsWrapState : public ydk::Enum
         static const ydk::Enum::YLeaf locked_out_wrap_state;
         static const ydk::Enum::YLeaf unknown_wrap_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle-wrap-state") return 0;
+            if (name == "wrapped-state") return 1;
+            if (name == "locked-out-wrap-state") return 2;
+            if (name == "unknown-wrap-state") return 3;
+            return -1;
+        }
 };
 
 class StatsCounter : public ydk::Enum
@@ -2761,6 +2832,28 @@ class StatsCounter : public ydk::Enum
         static const ydk::Enum::YLeaf stats_counter_flow;
         static const ydk::Enum::YLeaf stats_counter_comp_flow;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stats-counter-rate") return 0;
+            if (name == "stats-counter-uint32") return 1;
+            if (name == "stats-counter-uint64") return 2;
+            if (name == "stats-counter-generic") return 3;
+            if (name == "stats-counter-proto") return 4;
+            if (name == "stats-counter-srp") return 5;
+            if (name == "stats-counter-ipv4-prec") return 6;
+            if (name == "stats-counter-ipv4-dscp") return 7;
+            if (name == "stats-counter-mpls-exp") return 8;
+            if (name == "stats-counter-ipv4-bgp-pa") return 9;
+            if (name == "stats-counter-src-bgp-pa") return 10;
+            if (name == "stats-counter-basic") return 11;
+            if (name == "stats-counter-comp-generic") return 12;
+            if (name == "stats-counter-comp-proto") return 13;
+            if (name == "stats-counter-comp-basic") return 14;
+            if (name == "stats-counter-accounting") return 15;
+            if (name == "stats-counter-comp-accounting") return 16;
+            if (name == "stats-counter-flow") return 17;
+            if (name == "stats-counter-comp-flow") return 18;
+            return -1;
+        }
 };
 
 class SonetApsEt : public ydk::Enum
@@ -2772,6 +2865,14 @@ class SonetApsEt : public ydk::Enum
         static const ydk::Enum::YLeaf working_inactive;
         static const ydk::Enum::YLeaf protect_inactive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-configured") return 0;
+            if (name == "working-active") return 1;
+            if (name == "protect-active") return 2;
+            if (name == "working-inactive") return 3;
+            if (name == "protect-inactive") return 4;
+            return -1;
+        }
 };
 
 class ImAttrDuplex : public ydk::Enum
@@ -2781,6 +2882,12 @@ class ImAttrDuplex : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_duplex_half;
         static const ydk::Enum::YLeaf im_attr_duplex_full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-attr-duplex-unknown") return 0;
+            if (name == "im-attr-duplex-half") return 1;
+            if (name == "im-attr-duplex-full") return 2;
+            return -1;
+        }
 };
 
 class SrpMgmtIpsPathInd : public ydk::Enum
@@ -2790,6 +2897,12 @@ class SrpMgmtIpsPathInd : public ydk::Enum
         static const ydk::Enum::YLeaf long_path;
         static const ydk::Enum::YLeaf unknown_path;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "short-path") return 0;
+            if (name == "long-path") return 1;
+            if (name == "unknown-path") return 2;
+            return -1;
+        }
 };
 
 class PppFsmState : public ydk::Enum
@@ -2806,6 +2919,19 @@ class PppFsmState : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
         static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ppp-fsm-state-initial-0") return 0;
+            if (name == "ppp-fsm-state-starting-1") return 1;
+            if (name == "ppp-fsm-state-closed-2") return 2;
+            if (name == "ppp-fsm-state-stopped-3") return 3;
+            if (name == "ppp-fsm-state-closing-4") return 4;
+            if (name == "ppp-fsm-state-stopping-5") return 5;
+            if (name == "ppp-fsm-state-req-sent-6") return 6;
+            if (name == "ppp-fsm-state-ack-rcvd-7") return 7;
+            if (name == "ppp-fsm-state-ack-sent-8") return 8;
+            if (name == "ppp-fsm-state-opened-9") return 9;
+            return -1;
+        }
 };
 
 class EfpTagPriority : public ydk::Enum
@@ -2821,6 +2947,18 @@ class EfpTagPriority : public ydk::Enum
         static const ydk::Enum::YLeaf priority7;
         static const ydk::Enum::YLeaf priority_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "priority0") return 0;
+            if (name == "priority1") return 1;
+            if (name == "priority2") return 2;
+            if (name == "priority3") return 3;
+            if (name == "priority4") return 4;
+            if (name == "priority5") return 5;
+            if (name == "priority6") return 6;
+            if (name == "priority7") return 7;
+            if (name == "priority-any") return 8;
+            return -1;
+        }
 };
 
 class ImCmdLoopbackEnum : public ydk::Enum
@@ -2831,6 +2969,13 @@ class ImCmdLoopbackEnum : public ydk::Enum
         static const ydk::Enum::YLeaf external_loopback;
         static const ydk::Enum::YLeaf line_loopback;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-loopback") return 0;
+            if (name == "internal-loopback") return 1;
+            if (name == "external-loopback") return 2;
+            if (name == "line-loopback") return 3;
+            return -1;
+        }
 };
 
 class ImCmdFrTypeEnum : public ydk::Enum
@@ -2839,6 +2984,11 @@ class ImCmdFrTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf frame_relay_cisco;
         static const ydk::Enum::YLeaf frame_relay_ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "frame-relay-cisco") return 0;
+            if (name == "frame-relay-ietf") return 1;
+            return -1;
+        }
 };
 
 class ImCmdLmiTypeEnum : public ydk::Enum
@@ -2849,6 +2999,13 @@ class ImCmdLmiTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf lmi_type_ccitt;
         static const ydk::Enum::YLeaf lmi_type_cisco;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lmi-type-auto") return 0;
+            if (name == "lmi-type-ansi") return 1;
+            if (name == "lmi-type-ccitt") return 2;
+            if (name == "lmi-type-cisco") return 3;
+            return -1;
+        }
 };
 
 class SrpMgmtSrrFailure : public ydk::Enum
@@ -2860,6 +3017,14 @@ class SrpMgmtSrrFailure : public ydk::Enum
         static const ydk::Enum::YLeaf forced_switch_srr_failure;
         static const ydk::Enum::YLeaf unknown_srr_failure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle-srr-failure") return 0;
+            if (name == "wait-to-restore-srr-failure") return 1;
+            if (name == "signal-fail-srr-failure") return 2;
+            if (name == "forced-switch-srr-failure") return 3;
+            if (name == "unknown-srr-failure") return 4;
+            return -1;
+        }
 };
 
 class ImStateEnum : public ydk::Enum
@@ -2885,6 +3050,28 @@ class ImStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf im_state_unknown;
         static const ydk::Enum::YLeaf im_state_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-state-not-ready") return 0;
+            if (name == "im-state-admin-down") return 1;
+            if (name == "im-state-down") return 2;
+            if (name == "im-state-up") return 3;
+            if (name == "im-state-shutdown") return 4;
+            if (name == "im-state-err-disable") return 5;
+            if (name == "im-state-down-immediate") return 6;
+            if (name == "im-state-down-immediate-admin") return 7;
+            if (name == "im-state-down-graceful") return 8;
+            if (name == "im-state-begin-shutdown") return 9;
+            if (name == "im-state-end-shutdown") return 10;
+            if (name == "im-state-begin-error-disable") return 11;
+            if (name == "im-state-end-error-disable") return 12;
+            if (name == "im-state-begin-down-graceful") return 13;
+            if (name == "im-state-reset") return 14;
+            if (name == "im-state-operational") return 15;
+            if (name == "im-state-not-operational") return 16;
+            if (name == "im-state-unknown") return 17;
+            if (name == "im-state-last") return 18;
+            return -1;
+        }
 };
 
 class StatsTypeContents : public ydk::Enum
@@ -2893,6 +3080,11 @@ class StatsTypeContents : public ydk::Enum
         static const ydk::Enum::YLeaf stats_type_single;
         static const ydk::Enum::YLeaf stats_type_variable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stats-type-single") return 100;
+            if (name == "stats-type-variable") return 101;
+            return -1;
+        }
 };
 
 class ImAttrFlowControl : public ydk::Enum
@@ -2903,6 +3095,13 @@ class ImAttrFlowControl : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_flow_control_not_sup;
         static const ydk::Enum::YLeaf im_attr_flow_control_priority;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-attr-flow-control-off") return 0;
+            if (name == "im-attr-flow-control-on") return 1;
+            if (name == "im-attr-flow-control-not-sup") return 2;
+            if (name == "im-attr-flow-control-priority") return 3;
+            return -1;
+        }
 };
 
 class StatsId : public ydk::Enum
@@ -2916,6 +3115,16 @@ class StatsId : public ydk::Enum
         static const ydk::Enum::YLeaf stats_id_type_feature;
         static const ydk::Enum::YLeaf stats_id_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stats-id-type-unknown") return 0;
+            if (name == "stats-id-type-min") return 1;
+            if (name == "stats-id-type-spare") return 2;
+            if (name == "stats-id-type-node") return 3;
+            if (name == "stats-id-type-other") return 4;
+            if (name == "stats-id-type-feature") return 5;
+            if (name == "stats-id-type-max") return 6;
+            return -1;
+        }
 };
 
 class TunlPfiAfId : public ydk::Enum
@@ -2925,6 +3134,12 @@ class TunlPfiAfId : public ydk::Enum
         static const ydk::Enum::YLeaf tunl_pfi_af_id_ipv4;
         static const ydk::Enum::YLeaf tunl_pfi_af_id_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tunl-pfi-af-id-none") return 0;
+            if (name == "tunl-pfi-af-id-ipv4") return 2;
+            if (name == "tunl-pfi-af-id-ipv6") return 10;
+            return -1;
+        }
 };
 
 class TunnelKaDfState : public ydk::Enum
@@ -2933,6 +3148,11 @@ class TunnelKaDfState : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
 class BmdMemberTypeEnum : public ydk::Enum
@@ -2942,6 +3162,12 @@ class BmdMemberTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf bmd_mbr_foreign;
         static const ydk::Enum::YLeaf bmd_mbr_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-mbr-local") return 0;
+            if (name == "bmd-mbr-foreign") return 1;
+            if (name == "bmd-mbr-unknown") return 2;
+            return -1;
+        }
 };
 
 class TunnelKeyState : public ydk::Enum
@@ -2950,6 +3176,11 @@ class TunnelKeyState : public ydk::Enum
         static const ydk::Enum::YLeaf absent;
         static const ydk::Enum::YLeaf present;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absent") return 0;
+            if (name == "present") return 1;
+            return -1;
+        }
 };
 
 class BmMbrStateReason : public ydk::Enum
@@ -3032,6 +3263,85 @@ class BmMbrStateReason : public ydk::Enum
         static const ydk::Enum::YLeaf bm_mbr_state_reason_client_bundle_ctrl;
         static const ydk::Enum::YLeaf bm_mbr_state_reason_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-mbr-state-reason-unknown") return 0;
+            if (name == "bm-mbr-state-reason-unselectable-unknown") return 1;
+            if (name == "bm-mbr-state-reason-link-down") return 2;
+            if (name == "bm-mbr-state-reason-link-deleting") return 3;
+            if (name == "bm-mbr-state-reason-creating") return 4;
+            if (name == "bm-mbr-state-reason-bundle-creating") return 5;
+            if (name == "bm-mbr-state-reason-bundle-deleting") return 6;
+            if (name == "bm-mbr-state-reason-bundle-admin-down") return 7;
+            if (name == "bm-mbr-state-reason-replicating") return 8;
+            if (name == "bm-mbr-state-reason-bandwidth") return 9;
+            if (name == "bm-mbr-state-reason-loop-back") return 10;
+            if (name == "bm-mbr-state-reason-activity-type") return 11;
+            if (name == "bm-mbr-state-reason-bundle-shutdown") return 12;
+            if (name == "bm-mbr-state-reason-min-selected") return 13;
+            if (name == "bm-mbr-state-reason-max-selected") return 14;
+            if (name == "bm-mbr-state-reason-link-limit") return 15;
+            if (name == "bm-mbr-state-reason-active-limit") return 16;
+            if (name == "bm-mbr-state-reason-standby-unknown") return 17;
+            if (name == "bm-mbr-state-reason-expired") return 18;
+            if (name == "bm-mbr-state-reason-defaulted") return 19;
+            if (name == "bm-mbr-state-reason-act-or-not-agg") return 20;
+            if (name == "bm-mbr-state-reason-partner-not-agg") return 21;
+            if (name == "bm-mbr-state-reason-lagid") return 22;
+            if (name == "bm-mbr-state-reason-bundle-not-cfgd") return 23;
+            if (name == "bm-mbr-state-reason-bundle-not-ready") return 24;
+            if (name == "bm-mbr-state-reason-partner-ood") return 25;
+            if (name == "bm-mbr-state-reason-partner-not-in-sync") return 26;
+            if (name == "bm-mbr-state-reason-foreign-partner-oos") return 27;
+            if (name == "bm-mbr-state-reason-attach-unknown") return 28;
+            if (name == "bm-mbr-state-reason-partner-not-collecting") return 29;
+            if (name == "bm-mbr-state-reason-collect-unknown") return 30;
+            if (name == "bm-mbr-state-reason-standby-foreign") return 31;
+            if (name == "bm-mbr-state-reason-bfd-starting") return 32;
+            if (name == "bm-mbr-state-reason-bfd-down") return 33;
+            if (name == "bm-mbr-state-reason-bfd-nbr-unconfig") return 34;
+            if (name == "bm-mbr-state-reason-mlacp") return 35;
+            if (name == "bm-mbr-state-reason-pe-isolated") return 36;
+            if (name == "bm-mbr-state-reason-forced-switchover") return 37;
+            if (name == "bm-mbr-state-reason-errdis-unknown") return 38;
+            if (name == "bm-mbr-state-reason-mlacp-no-mbr-state-info") return 39;
+            if (name == "bm-mbr-state-reason-active") return 40;
+            if (name == "bm-mbr-state-reason-mlacp-no-bdl-state-info") return 41;
+            if (name == "bm-mbr-state-reason-mlacp-no-bdl-config-info") return 42;
+            if (name == "bm-mbr-state-reason-mlacp-no-bdl-sync") return 43;
+            if (name == "bm-mbr-state-reason-mlacp-bdl-has-no-peer") return 44;
+            if (name == "bm-mbr-state-reason-mlacp-nak") return 45;
+            if (name == "bm-mbr-state-reason-mlacp-transport-unavailable") return 46;
+            if (name == "bm-mbr-state-reason-mlacp-not-configured") return 47;
+            if (name == "bm-mbr-state-reason-recovery-timer") return 48;
+            if (name == "bm-mbr-state-reason-mlacp-standby") return 49;
+            if (name == "bm-mbr-state-reason-maximized-out") return 50;
+            if (name == "bm-mbr-state-reason-mlacp-peer-selected") return 51;
+            if (name == "bm-mbr-state-reason-mlacp-connect-timer-running") return 52;
+            if (name == "bm-mbr-state-reason-bundle-not-mlacp") return 53;
+            if (name == "bm-mbr-state-reason-no-lon") return 54;
+            if (name == "bm-mbr-state-reason-cumul-rel-bw-limit") return 55;
+            if (name == "bm-mbr-state-reason-no-mac") return 56;
+            if (name == "bm-mbr-state-reason-no-system-id") return 57;
+            if (name == "bm-mbr-state-reason-link-shutdown") return 58;
+            if (name == "bm-mbr-state-reason-activity-mlacp") return 59;
+            if (name == "bm-mbr-state-reason-activity-iccp") return 60;
+            if (name == "bm-mbr-state-reason-bundle-icpe-mlacp") return 61;
+            if (name == "bm-mbr-state-reason-no-link-num") return 62;
+            if (name == "bm-mbr-state-reason-standby-peer-higher-prio") return 63;
+            if (name == "bm-mbr-state-reason-red-state-standby") return 64;
+            if (name == "bm-mbr-state-reason-other-red-state-standby") return 65;
+            if (name == "bm-mbr-state-reason-hold-ing") return 66;
+            if (name == "bm-mbr-state-reason-bundle-error-disabled") return 67;
+            if (name == "bm-mbr-state-reason-bundle-efd-disabled") return 68;
+            if (name == "bm-mbr-state-reason-singleton-pe-isolated") return 69;
+            if (name == "bm-mbr-state-reason-bfd-ipv6-starting") return 70;
+            if (name == "bm-mbr-state-reason-bfd-ipv6-down") return 71;
+            if (name == "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig") return 72;
+            if (name == "bm-mbr-state-reason-timer-running") return 73;
+            if (name == "bm-mbr-state-reason-client-bundle-ctrl") return 74;
+            if (name == "bm-mbr-state-reason-count") return 75;
+            return -1;
+        }
 };
 
 class BmSeverity : public ydk::Enum
@@ -3043,6 +3353,14 @@ class BmSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf warning;
         static const ydk::Enum::YLeaf error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 0;
+            if (name == "information") return 1;
+            if (name == "misconfiguration") return 2;
+            if (name == "warning") return 3;
+            if (name == "error") return 5;
+            return -1;
+        }
 };
 
 class SrpMgmtIpsReq : public ydk::Enum
@@ -3056,6 +3374,16 @@ class SrpMgmtIpsReq : public ydk::Enum
         static const ydk::Enum::YLeaf forced_switch_ips_request;
         static const ydk::Enum::YLeaf unknown_ips_request;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle-ips-request") return 0;
+            if (name == "wait-to-restore-ips-request") return 1;
+            if (name == "manual-switch-ips-request") return 2;
+            if (name == "signal-degrade-ips-request") return 3;
+            if (name == "signal-fail-ips-request") return 4;
+            if (name == "forced-switch-ips-request") return 5;
+            if (name == "unknown-ips-request") return 6;
+            return -1;
+        }
 };
 
 class SrpMgmtFailureEt : public ydk::Enum
@@ -3070,6 +3398,17 @@ class SrpMgmtFailureEt : public ydk::Enum
         static const ydk::Enum::YLeaf side_mismatch_failure;
         static const ydk::Enum::YLeaf unknown_failure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hardware-missing-failure") return 0;
+            if (name == "layer1-admin-state-failure") return 1;
+            if (name == "layer1-error-failure") return 2;
+            if (name == "keepalive-missed-failure") return 3;
+            if (name == "link-quality-degraded-failure") return 4;
+            if (name == "mate-problem-failure") return 5;
+            if (name == "side-mismatch-failure") return 6;
+            if (name == "unknown-failure") return 7;
+            return -1;
+        }
 };
 
 class ImAttrTransportMode : public ydk::Enum
@@ -3083,6 +3422,16 @@ class ImAttrTransportMode : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_transport_mode_otn_opu3;
         static const ydk::Enum::YLeaf im_attr_transport_mode_otn_opu4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-attr-transport-mode-unknown") return 0;
+            if (name == "im-attr-transport-mode-lan") return 1;
+            if (name == "im-attr-transport-mode-wan") return 2;
+            if (name == "im-attr-transport-mode-otn-bt-opu1e") return 3;
+            if (name == "im-attr-transport-mode-otn-bt-opu2e") return 4;
+            if (name == "im-attr-transport-mode-otn-opu3") return 5;
+            if (name == "im-attr-transport-mode-otn-opu4") return 6;
+            return -1;
+        }
 };
 
 class TunlIpModeDir : public ydk::Enum
@@ -3093,6 +3442,13 @@ class TunlIpModeDir : public ydk::Enum
         static const ydk::Enum::YLeaf tunl_ip_mode_dir_encap;
         static const ydk::Enum::YLeaf tunl_ip_mode_dir_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tunl-ip-mode-dir-none") return 0;
+            if (name == "tunl-ip-mode-dir-decap") return 1;
+            if (name == "tunl-ip-mode-dir-encap") return 2;
+            if (name == "tunl-ip-mode-dir-max") return 3;
+            return -1;
+        }
 };
 
 class ImCmdEncapsEnum : public ydk::Enum
@@ -3102,6 +3458,12 @@ class ImCmdEncapsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf vlan;
         static const ydk::Enum::YLeaf ppp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "frame-relay") return 0;
+            if (name == "vlan") return 1;
+            if (name == "ppp") return 2;
+            return -1;
+        }
 };
 
 class BmMuxstate : public ydk::Enum
@@ -3114,6 +3476,15 @@ class BmMuxstate : public ydk::Enum
         static const ydk::Enum::YLeaf distributing;
         static const ydk::Enum::YLeaf collecting_distributing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "detached") return 1;
+            if (name == "waiting") return 2;
+            if (name == "attached") return 3;
+            if (name == "collecting") return 4;
+            if (name == "distributing") return 5;
+            if (name == "collecting-distributing") return 6;
+            return -1;
+        }
 };
 
 class NcpIdent : public ydk::Enum
@@ -3126,6 +3497,15 @@ class NcpIdent : public ydk::Enum
         static const ydk::Enum::YLeaf mplscp;
         static const ydk::Enum::YLeaf osicp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdpcp") return 1;
+            if (name == "ipcp") return 2;
+            if (name == "ipcpiw") return 3;
+            if (name == "ipv6cp") return 4;
+            if (name == "mplscp") return 5;
+            if (name == "osicp") return 6;
+            return -1;
+        }
 };
 
 class BmdMemberState : public ydk::Enum
@@ -3138,6 +3518,15 @@ class BmdMemberState : public ydk::Enum
         static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
         static const ydk::Enum::YLeaf bmd_mbr_state_active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-mbr-state-configured") return 1;
+            if (name == "bmd-mbr-state-standby") return 2;
+            if (name == "bmd-mbr-state-hot-standby") return 3;
+            if (name == "bmd-mbr-state-negotiating") return 4;
+            if (name == "bmd-mbr-state-bfd-running") return 5;
+            if (name == "bmd-mbr-state-active") return 6;
+            return -1;
+        }
 };
 
 class BmMuxreason : public ydk::Enum
@@ -3164,6 +3553,29 @@ class BmMuxreason : public ydk::Enum
         static const ydk::Enum::YLeaf bm_mux_reason_distributing;
         static const ydk::Enum::YLeaf bm_mux_reason_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-mux-reason-no-reason") return 0;
+            if (name == "bm-mux-reason-link-down") return 1;
+            if (name == "bm-mux-reason-link-deleted") return 2;
+            if (name == "bm-mux-reason-duplex") return 3;
+            if (name == "bm-mux-reason-bandwidth") return 4;
+            if (name == "bm-mux-reason-loop-back") return 5;
+            if (name == "bm-mux-reason-activity-type") return 6;
+            if (name == "bm-mux-reason-link-limit") return 7;
+            if (name == "bm-mux-reason-shared") return 8;
+            if (name == "bm-mux-reason-lagid") return 9;
+            if (name == "bm-mux-reason-no-bundle") return 10;
+            if (name == "bm-mux-reason-no-primary") return 11;
+            if (name == "bm-mux-reason-bundle-down") return 12;
+            if (name == "bm-mux-reason-individual") return 13;
+            if (name == "bm-mux-reason-defaulted") return 14;
+            if (name == "bm-mux-reason-in-sync") return 15;
+            if (name == "bm-mux-reason-collecting") return 16;
+            if (name == "bm-mux-reason-active-link-limit") return 17;
+            if (name == "bm-mux-reason-distributing") return 18;
+            if (name == "bm-mux-reason-count") return 19;
+            return -1;
+        }
 };
 
 class ImAttrLink : public ydk::Enum
@@ -3172,6 +3584,11 @@ class ImAttrLink : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_link_type_auto;
         static const ydk::Enum::YLeaf im_attr_link_type_force;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-attr-link-type-auto") return 0;
+            if (name == "im-attr-link-type-force") return 1;
+            return -1;
+        }
 };
 
 class VlanEncaps : public ydk::Enum
@@ -3188,6 +3605,19 @@ class VlanEncaps : public ydk::Enum
         static const ydk::Enum::YLeaf dot1ad_dot1q;
         static const ydk::Enum::YLeaf dot1ad_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-encapsulation") return 0;
+            if (name == "dot1q") return 1;
+            if (name == "qinq") return 2;
+            if (name == "qin-any") return 3;
+            if (name == "dot1q-native") return 4;
+            if (name == "dot1ad") return 5;
+            if (name == "dot1ad-native") return 6;
+            if (name == "service-instance") return 7;
+            if (name == "dot1ad-dot1q") return 8;
+            if (name == "dot1ad-any") return 9;
+            return -1;
+        }
 };
 
 class EfpPayloadEtype : public ydk::Enum
@@ -3197,6 +3627,12 @@ class EfpPayloadEtype : public ydk::Enum
         static const ydk::Enum::YLeaf payload_ethertype_ip;
         static const ydk::Enum::YLeaf payload_ethertype_pppoe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "payload-ethertype-any") return 0;
+            if (name == "payload-ethertype-ip") return 1;
+            if (name == "payload-ethertype-pppoe") return 2;
+            return -1;
+        }
 };
 
 class InterfaceTypeSet : public ydk::Enum
@@ -3204,6 +3640,10 @@ class InterfaceTypeSet : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf hardware_interfaces;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hardware-interfaces") return 0;
+            return -1;
+        }
 };
 
 class BmStateReasonTarget : public ydk::Enum
@@ -3212,6 +3652,11 @@ class BmStateReasonTarget : public ydk::Enum
         static const ydk::Enum::YLeaf member_reason;
         static const ydk::Enum::YLeaf bundle_reason;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "member-reason") return 0;
+            if (name == "bundle-reason") return 1;
+            return -1;
+        }
 };
 
 class ImAttrMedia : public ydk::Enum
@@ -3599,7 +4044,396 @@ class ImAttrMedia : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_media_25gbase_cu3m;
         static const ydk::Enum::YLeaf im_attr_media_25gbase_cu5m;
         static const ydk::Enum::YLeaf im_attr_media_100gbase_sm_sr;
+        static const ydk::Enum::YLeaf im_attr_media_100gbase_sr_bd;
+        static const ydk::Enum::YLeaf im_attr_media_100gbase_fr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-attr-media-other") return 0;
+            if (name == "im-attr-media-unknown") return 1;
+            if (name == "im-attr-media-aui") return 2;
+            if (name == "im-attr-media-10base5") return 3;
+            if (name == "im-attr-media-foirl") return 4;
+            if (name == "im-attr-media-10base2") return 5;
+            if (name == "im-attr-media-10broad36") return 6;
+            if (name == "im-attr-media-10base") return 7;
+            if (name == "im-attr-media-10base-thd") return 8;
+            if (name == "im-attr-media-10base-tfd") return 9;
+            if (name == "im-attr-media-10base-fp") return 10;
+            if (name == "im-attr-media-10base-fb") return 11;
+            if (name == "im-attr-media-10base-fl") return 12;
+            if (name == "im-attr-media-10base-flhd") return 13;
+            if (name == "im-attr-media-10base-flfd") return 14;
+            if (name == "im-attr-media-100base-t4") return 15;
+            if (name == "im-attr-media-100base-tx") return 16;
+            if (name == "im-attr-media-100base-txhd") return 17;
+            if (name == "im-attr-media-100base-txfd") return 18;
+            if (name == "im-attr-media-100base-fx") return 19;
+            if (name == "im-attr-media-100base-fxhd") return 20;
+            if (name == "im-attr-media-100base-fxfd") return 21;
+            if (name == "im-attr-media-100base-ex") return 22;
+            if (name == "im-attr-media-100base-exhd") return 23;
+            if (name == "im-attr-media-100base-exfd") return 24;
+            if (name == "im-attr-media-100base-t2") return 25;
+            if (name == "im-attr-media-100base-t2hd") return 26;
+            if (name == "im-attr-media-100base-t2fd") return 27;
+            if (name == "im-attr-media-1000base-x") return 28;
+            if (name == "im-attr-media-1000base-xhdx") return 29;
+            if (name == "im-attr-media-1000base-xfd") return 30;
+            if (name == "im-attr-media-1000base-lx") return 31;
+            if (name == "im-attr-media-1000base-lxhd") return 32;
+            if (name == "im-attr-media-1000base-lxfdx") return 33;
+            if (name == "im-attr-media-1000base-sx") return 34;
+            if (name == "im-attr-media-1000base-sxhd") return 35;
+            if (name == "im-attr-media-1000base-sxfd") return 36;
+            if (name == "im-attr-media-1000base-cx") return 37;
+            if (name == "im-attr-media-1000base-cxhdx") return 38;
+            if (name == "im-attr-media-1000base-cxfd") return 39;
+            if (name == "im-attr-media-1000base") return 40;
+            if (name == "im-attr-media-1000base-thd") return 41;
+            if (name == "im-attr-media-1000base-tfd") return 42;
+            if (name == "im-attr-media-10gbase-x") return 43;
+            if (name == "im-attr-media-10gbase-lx4") return 44;
+            if (name == "im-attr-media-10gbase-r") return 45;
+            if (name == "im-attr-media-10gbase-er") return 46;
+            if (name == "im-attr-media-10gbase-lr") return 47;
+            if (name == "im-attr-media-10gbase-sr") return 48;
+            if (name == "im-attr-media-10gbase-w") return 49;
+            if (name == "im-attr-media-10gbase-ew") return 50;
+            if (name == "im-attr-media-10gbase-lw") return 51;
+            if (name == "im-attr-media-10gbase-sw") return 52;
+            if (name == "im-attr-media-10gbase-zr") return 53;
+            if (name == "im-attr-media-802-9a") return 54;
+            if (name == "im-attr-media-rj45") return 55;
+            if (name == "im-attr-media-1000base-zx") return 56;
+            if (name == "im-attr-media-1000base-cwdm") return 57;
+            if (name == "im-attr-media-1000base-cwdm-1470") return 58;
+            if (name == "im-attr-media-1000base-cwdm-1490") return 59;
+            if (name == "im-attr-media-1000base-cwdm-1510") return 60;
+            if (name == "im-attr-media-1000base-cwdm-1530") return 61;
+            if (name == "im-attr-media-1000base-cwdm-1550") return 62;
+            if (name == "im-attr-media-1000base-cwdm-1570") return 63;
+            if (name == "im-attr-media-1000base-cwdm-1590") return 64;
+            if (name == "im-attr-media-1000base-cwdm-1610") return 65;
+            if (name == "im-attr-media-10gbase-dwdm") return 66;
+            if (name == "im-attr-media-100gbase-lr4") return 67;
+            if (name == "im-attr-media-1000base-dwdm") return 68;
+            if (name == "im-attr-media-1000base-dwdm-1533") return 69;
+            if (name == "im-attr-media-1000base-dwdm-1537") return 70;
+            if (name == "im-attr-media-1000base-dwdm-1541") return 71;
+            if (name == "im-attr-media-1000base-dwdm-1545") return 72;
+            if (name == "im-attr-media-1000base-dwdm-1549") return 73;
+            if (name == "im-attr-media-1000base-dwdm-1553") return 74;
+            if (name == "im-attr-media-1000base-dwdm-1557") return 75;
+            if (name == "im-attr-media-1000base-dwdm-1561") return 76;
+            if (name == "im-attr-media-40gbase-lr4") return 77;
+            if (name == "im-attr-media-40gbase-er4") return 78;
+            if (name == "im-attr-media-100gbase-er4") return 79;
+            if (name == "im-attr-media-1000base-ex") return 80;
+            if (name == "im-attr-media-1000base-bx10-d") return 81;
+            if (name == "im-attr-media-1000base-bx10-u") return 82;
+            if (name == "im-attr-media-1000base-dwdm-1561-42") return 83;
+            if (name == "im-attr-media-1000base-dwdm-1560-61") return 84;
+            if (name == "im-attr-media-1000base-dwdm-1559-79") return 85;
+            if (name == "im-attr-media-1000base-dwdm-1558-98") return 86;
+            if (name == "im-attr-media-1000base-dwdm-1558-17") return 87;
+            if (name == "im-attr-media-1000base-dwdm-1557-36") return 88;
+            if (name == "im-attr-media-1000base-dwdm-1556-55") return 89;
+            if (name == "im-attr-media-1000base-dwdm-1555-75") return 90;
+            if (name == "im-attr-media-1000base-dwdm-1554-94") return 91;
+            if (name == "im-attr-media-1000base-dwdm-1554-13") return 92;
+            if (name == "im-attr-media-1000base-dwdm-1553-33") return 93;
+            if (name == "im-attr-media-1000base-dwdm-1552-52") return 94;
+            if (name == "im-attr-media-1000base-dwdm-1551-72") return 95;
+            if (name == "im-attr-media-1000base-dwdm-1550-92") return 96;
+            if (name == "im-attr-media-1000base-dwdm-1550-12") return 97;
+            if (name == "im-attr-media-1000base-dwdm-1549-32") return 98;
+            if (name == "im-attr-media-1000base-dwdm-1548-51") return 99;
+            if (name == "im-attr-media-1000base-dwdm-1547-72") return 100;
+            if (name == "im-attr-media-1000base-dwdm-1546-92") return 101;
+            if (name == "im-attr-media-1000base-dwdm-1546-12") return 102;
+            if (name == "im-attr-media-1000base-dwdm-1545-32") return 103;
+            if (name == "im-attr-media-1000base-dwdm-1544-53") return 104;
+            if (name == "im-attr-media-1000base-dwdm-1543-73") return 105;
+            if (name == "im-attr-media-1000base-dwdm-1542-94") return 106;
+            if (name == "im-attr-media-1000base-dwdm-1542-14") return 107;
+            if (name == "im-attr-media-1000base-dwdm-1541-35") return 108;
+            if (name == "im-attr-media-1000base-dwdm-1540-56") return 109;
+            if (name == "im-attr-media-1000base-dwdm-1539-77") return 110;
+            if (name == "im-attr-media-1000base-dwdm-1538-98") return 111;
+            if (name == "im-attr-media-1000base-dwdm-1538-19") return 112;
+            if (name == "im-attr-media-1000base-dwdm-1537-40") return 113;
+            if (name == "im-attr-media-1000base-dwdm-1536-61") return 114;
+            if (name == "im-attr-media-1000base-dwdm-1535-82") return 115;
+            if (name == "im-attr-media-1000base-dwdm-1535-04") return 116;
+            if (name == "im-attr-media-1000base-dwdm-1534-25") return 117;
+            if (name == "im-attr-media-1000base-dwdm-1533-47") return 118;
+            if (name == "im-attr-media-1000base-dwdm-1532-68") return 119;
+            if (name == "im-attr-media-1000base-dwdm-1531-90") return 120;
+            if (name == "im-attr-media-1000base-dwdm-1531-12") return 121;
+            if (name == "im-attr-media-1000base-dwdm-1530-33") return 122;
+            if (name == "im-attr-media-1000base-dwdm-tunable") return 123;
+            if (name == "im-attr-media-10gbase-dwdm-1561-42") return 124;
+            if (name == "im-attr-media-10gbase-dwdm-1560-61") return 125;
+            if (name == "im-attr-media-10gbase-dwdm-1559-79") return 126;
+            if (name == "im-attr-media-10gbase-dwdm-1558-98") return 127;
+            if (name == "im-attr-media-10gbase-dwdm-1558-17") return 128;
+            if (name == "im-attr-media-10gbase-dwdm-1557-36") return 129;
+            if (name == "im-attr-media-10gbase-dwdm-1556-55") return 130;
+            if (name == "im-attr-media-10gbase-dwdm-1555-75") return 131;
+            if (name == "im-attr-media-10gbase-dwdm-1554-94") return 132;
+            if (name == "im-attr-media-10gbase-dwdm-1554-13") return 133;
+            if (name == "im-attr-media-10gbase-dwdm-1553-33") return 134;
+            if (name == "im-attr-media-10gbase-dwdm-1552-52") return 135;
+            if (name == "im-attr-media-10gbase-dwdm-1551-72") return 136;
+            if (name == "im-attr-media-10gbase-dwdm-1550-92") return 137;
+            if (name == "im-attr-media-10gbase-dwdm-1550-12") return 138;
+            if (name == "im-attr-media-10gbase-dwdm-1549-32") return 139;
+            if (name == "im-attr-media-10gbase-dwdm-1548-51") return 140;
+            if (name == "im-attr-media-10gbase-dwdm-1547-72") return 141;
+            if (name == "im-attr-media-10gbase-dwdm-1546-92") return 142;
+            if (name == "im-attr-media-10gbase-dwdm-1546-12") return 143;
+            if (name == "im-attr-media-10gbase-dwdm-1545-32") return 144;
+            if (name == "im-attr-media-10gbase-dwdm-1544-53") return 145;
+            if (name == "im-attr-media-10gbase-dwdm-1543-73") return 146;
+            if (name == "im-attr-media-10gbase-dwdm-1542-94") return 147;
+            if (name == "im-attr-media-10gbase-dwdm-1542-14") return 148;
+            if (name == "im-attr-media-10gbase-dwdm-1541-35") return 149;
+            if (name == "im-attr-media-10gbase-dwdm-1540-56") return 150;
+            if (name == "im-attr-media-10gbase-dwdm-1539-77") return 151;
+            if (name == "im-attr-media-10gbase-dwdm-1538-98") return 152;
+            if (name == "im-attr-media-10gbase-dwdm-1538-19") return 153;
+            if (name == "im-attr-media-10gbase-dwdm-1537-40") return 154;
+            if (name == "im-attr-media-10gbase-dwdm-1536-61") return 155;
+            if (name == "im-attr-media-10gbase-dwdm-1535-82") return 156;
+            if (name == "im-attr-media-10gbase-dwdm-1535-04") return 157;
+            if (name == "im-attr-media-10gbase-dwdm-1534-25") return 158;
+            if (name == "im-attr-media-10gbase-dwdm-1533-47") return 159;
+            if (name == "im-attr-media-10gbase-dwdm-1532-68") return 160;
+            if (name == "im-attr-media-10gbase-dwdm-1531-90") return 161;
+            if (name == "im-attr-media-10gbase-dwdm-1531-12") return 162;
+            if (name == "im-attr-media-10gbase-dwdm-1530-33") return 163;
+            if (name == "im-attr-media-10gbase-dwdm-tunable") return 164;
+            if (name == "im-attr-media-40gbase-dwdm-1561-42") return 165;
+            if (name == "im-attr-media-40gbase-dwdm-1560-61") return 166;
+            if (name == "im-attr-media-40gbase-dwdm-1559-79") return 167;
+            if (name == "im-attr-media-40gbase-dwdm-1558-98") return 168;
+            if (name == "im-attr-media-40gbase-dwdm-1558-17") return 169;
+            if (name == "im-attr-media-40gbase-dwdm-1557-36") return 170;
+            if (name == "im-attr-media-40gbase-dwdm-1556-55") return 171;
+            if (name == "im-attr-media-40gbase-dwdm-1555-75") return 172;
+            if (name == "im-attr-media-40gbase-dwdm-1554-94") return 173;
+            if (name == "im-attr-media-40gbase-dwdm-1554-13") return 174;
+            if (name == "im-attr-media-40gbase-dwdm-1553-33") return 175;
+            if (name == "im-attr-media-40gbase-dwdm-1552-52") return 176;
+            if (name == "im-attr-media-40gbase-dwdm-1551-72") return 177;
+            if (name == "im-attr-media-40gbase-dwdm-1550-92") return 178;
+            if (name == "im-attr-media-40gbase-dwdm-1550-12") return 179;
+            if (name == "im-attr-media-40gbase-dwdm-1549-32") return 180;
+            if (name == "im-attr-media-40gbase-dwdm-1548-51") return 181;
+            if (name == "im-attr-media-40gbase-dwdm-1547-72") return 182;
+            if (name == "im-attr-media-40gbase-dwdm-1546-92") return 183;
+            if (name == "im-attr-media-40gbase-dwdm-1546-12") return 184;
+            if (name == "im-attr-media-40gbase-dwdm-1545-32") return 185;
+            if (name == "im-attr-media-40gbase-dwdm-1544-53") return 186;
+            if (name == "im-attr-media-40gbase-dwdm-1543-73") return 187;
+            if (name == "im-attr-media-40gbase-dwdm-1542-94") return 188;
+            if (name == "im-attr-media-40gbase-dwdm-1542-14") return 189;
+            if (name == "im-attr-media-40gbase-dwdm-1541-35") return 190;
+            if (name == "im-attr-media-40gbase-dwdm-1540-56") return 191;
+            if (name == "im-attr-media-40gbase-dwdm-1539-77") return 192;
+            if (name == "im-attr-media-40gbase-dwdm-1538-98") return 193;
+            if (name == "im-attr-media-40gbase-dwdm-1538-19") return 194;
+            if (name == "im-attr-media-40gbase-dwdm-1537-40") return 195;
+            if (name == "im-attr-media-40gbase-dwdm-1536-61") return 196;
+            if (name == "im-attr-media-40gbase-dwdm-1535-82") return 197;
+            if (name == "im-attr-media-40gbase-dwdm-1535-04") return 198;
+            if (name == "im-attr-media-40gbase-dwdm-1534-25") return 199;
+            if (name == "im-attr-media-40gbase-dwdm-1533-47") return 200;
+            if (name == "im-attr-media-40gbase-dwdm-1532-68") return 201;
+            if (name == "im-attr-media-40gbase-dwdm-1531-90") return 202;
+            if (name == "im-attr-media-40gbase-dwdm-1531-12") return 203;
+            if (name == "im-attr-media-40gbase-dwdm-1530-33") return 204;
+            if (name == "im-attr-media-40gbase-dwdm-tunable") return 205;
+            if (name == "im-attr-media-100gbase-dwdm-1561-42") return 206;
+            if (name == "im-attr-media-100gbase-dwdm-1560-61") return 207;
+            if (name == "im-attr-media-100gbase-dwdm-1559-79") return 208;
+            if (name == "im-attr-media-100gbase-dwdm-1558-98") return 209;
+            if (name == "im-attr-media-100gbase-dwdm-1558-17") return 210;
+            if (name == "im-attr-media-100gbase-dwdm-1557-36") return 211;
+            if (name == "im-attr-media-100gbase-dwdm-1556-55") return 212;
+            if (name == "im-attr-media-100gbase-dwdm-1555-75") return 213;
+            if (name == "im-attr-media-100gbase-dwdm-1554-94") return 214;
+            if (name == "im-attr-media-100gbase-dwdm-1554-13") return 215;
+            if (name == "im-attr-media-100gbase-dwdm-1553-33") return 216;
+            if (name == "im-attr-media-100gbase-dwdm-1552-52") return 217;
+            if (name == "im-attr-media-100gbase-dwdm-1551-72") return 218;
+            if (name == "im-attr-media-100gbase-dwdm-1550-92") return 219;
+            if (name == "im-attr-media-100gbase-dwdm-1550-12") return 220;
+            if (name == "im-attr-media-100gbase-dwdm-1549-32") return 221;
+            if (name == "im-attr-media-100gbase-dwdm-1548-51") return 222;
+            if (name == "im-attr-media-100gbase-dwdm-1547-72") return 223;
+            if (name == "im-attr-media-100gbase-dwdm-1546-92") return 224;
+            if (name == "im-attr-media-100gbase-dwdm-1546-12") return 225;
+            if (name == "im-attr-media-100gbase-dwdm-1545-32") return 226;
+            if (name == "im-attr-media-100gbase-dwdm-1544-53") return 227;
+            if (name == "im-attr-media-100gbase-dwdm-1543-73") return 228;
+            if (name == "im-attr-media-100gbase-dwdm-1542-94") return 229;
+            if (name == "im-attr-media-100gbase-dwdm-1542-14") return 230;
+            if (name == "im-attr-media-100gbase-dwdm-1541-35") return 231;
+            if (name == "im-attr-media-100gbase-dwdm-1540-56") return 232;
+            if (name == "im-attr-media-100gbase-dwdm-1539-77") return 233;
+            if (name == "im-attr-media-100gbase-dwdm-1538-98") return 234;
+            if (name == "im-attr-media-100gbase-dwdm-1538-19") return 235;
+            if (name == "im-attr-media-100gbase-dwdm-1537-40") return 236;
+            if (name == "im-attr-media-100gbase-dwdm-1536-61") return 237;
+            if (name == "im-attr-media-100gbase-dwdm-1535-82") return 238;
+            if (name == "im-attr-media-100gbase-dwdm-1535-04") return 239;
+            if (name == "im-attr-media-100gbase-dwdm-1534-25") return 240;
+            if (name == "im-attr-media-100gbase-dwdm-1533-47") return 241;
+            if (name == "im-attr-media-100gbase-dwdm-1532-68") return 242;
+            if (name == "im-attr-media-100gbase-dwdm-1531-90") return 243;
+            if (name == "im-attr-media-100gbase-dwdm-1531-12") return 244;
+            if (name == "im-attr-media-100gbase-dwdm-1530-33") return 245;
+            if (name == "im-attr-media-100gbase-dwdm-tunable") return 246;
+            if (name == "im-attr-media-40gbase-kr4") return 247;
+            if (name == "im-attr-media-40gbase-cr4") return 248;
+            if (name == "im-attr-media-40gbase-sr4") return 249;
+            if (name == "im-attr-media-40gbase-fr") return 250;
+            if (name == "im-attr-media-100gbase-cr10") return 251;
+            if (name == "im-attr-media-100gbase-sr10") return 252;
+            if (name == "im-attr-media-40gbase-csr4") return 253;
+            if (name == "im-attr-media-10gbase-cwdm") return 254;
+            if (name == "im-attr-media-10gbase-cwdm-tunable") return 255;
+            if (name == "im-attr-media-10gbase-cwdm-1470") return 256;
+            if (name == "im-attr-media-10gbase-cwdm-1490") return 257;
+            if (name == "im-attr-media-10gbase-cwdm-1510") return 258;
+            if (name == "im-attr-media-10gbase-cwdm-1530") return 259;
+            if (name == "im-attr-media-10gbase-cwdm-1550") return 260;
+            if (name == "im-attr-media-10gbase-cwdm-1570") return 261;
+            if (name == "im-attr-media-10gbase-cwdm-1590") return 262;
+            if (name == "im-attr-media-10gbase-cwdm-1610") return 263;
+            if (name == "im-attr-media-40gbase-cwdm") return 264;
+            if (name == "im-attr-media-40gbase-cwdm-tunable") return 265;
+            if (name == "im-attr-media-40gbase-cwdm-1470") return 266;
+            if (name == "im-attr-media-40gbase-cwdm-1490") return 267;
+            if (name == "im-attr-media-40gbase-cwdm-1510") return 268;
+            if (name == "im-attr-media-40gbase-cwdm-1530") return 269;
+            if (name == "im-attr-media-40gbase-cwdm-1550") return 270;
+            if (name == "im-attr-media-40gbase-cwdm-1570") return 271;
+            if (name == "im-attr-media-40gbase-cwdm-1590") return 272;
+            if (name == "im-attr-media-40gbase-cwdm-1610") return 273;
+            if (name == "im-attr-media-100gbase-cwdm") return 274;
+            if (name == "im-attr-media-100gbase-cwdm-tunable") return 275;
+            if (name == "im-attr-media-100gbase-cwdm-1470") return 276;
+            if (name == "im-attr-media-100gbase-cwdm-1490") return 277;
+            if (name == "im-attr-media-100gbase-cwdm-1510") return 278;
+            if (name == "im-attr-media-100gbase-cwdm-1530") return 279;
+            if (name == "im-attr-media-100gbase-cwdm-1550") return 280;
+            if (name == "im-attr-media-100gbase-cwdm-1570") return 281;
+            if (name == "im-attr-media-100gbase-cwdm-1590") return 282;
+            if (name == "im-attr-media-100gbase-cwdm-1610") return 283;
+            if (name == "im-attr-media-40gbase-elpb") return 284;
+            if (name == "im-attr-media-100gbase-elpb") return 285;
+            if (name == "im-attr-media-100gbase-lr10") return 286;
+            if (name == "im-attr-media-40gbase") return 287;
+            if (name == "im-attr-media-100gbase-kp4") return 288;
+            if (name == "im-attr-media-100gbase-kr4") return 289;
+            if (name == "im-attr-media-10gbase-lrm") return 290;
+            if (name == "im-attr-media-10gbase-cx4") return 291;
+            if (name == "im-attr-media-10gbase") return 292;
+            if (name == "im-attr-media-10gbase-kx4") return 293;
+            if (name == "im-attr-media-10gbase-kr") return 294;
+            if (name == "im-attr-media-10gbase-pr") return 295;
+            if (name == "im-attr-media-100base-lx") return 296;
+            if (name == "im-attr-media-100base-zx") return 297;
+            if (name == "im-attr-media-1000base-bx-d") return 298;
+            if (name == "im-attr-media-1000base-bx-u") return 299;
+            if (name == "im-attr-media-1000base-bx20-d") return 300;
+            if (name == "im-attr-media-1000base-bx20-u") return 301;
+            if (name == "im-attr-media-1000base-bx40-d") return 302;
+            if (name == "im-attr-media-1000base-bx40-da") return 303;
+            if (name == "im-attr-media-1000base-bx40-u") return 304;
+            if (name == "im-attr-media-1000base-bx80-d") return 305;
+            if (name == "im-attr-media-1000base-bx80-u") return 306;
+            if (name == "im-attr-media-1000base-bx120-d") return 307;
+            if (name == "im-attr-media-1000base-bx120-u") return 308;
+            if (name == "im-attr-media-10gbase-bx-d") return 309;
+            if (name == "im-attr-media-10gbase-bx-u") return 310;
+            if (name == "im-attr-media-10gbase-bx10-d") return 311;
+            if (name == "im-attr-media-10gbase-bx10-u") return 312;
+            if (name == "im-attr-media-10gbase-bx20-d") return 313;
+            if (name == "im-attr-media-10gbase-bx20-u") return 314;
+            if (name == "im-attr-media-10gbase-bx40-d") return 315;
+            if (name == "im-attr-media-10gbase-bx40-u") return 316;
+            if (name == "im-attr-media-10gbase-bx80-d") return 317;
+            if (name == "im-attr-media-10gbase-bx80-u") return 318;
+            if (name == "im-attr-media-10gbase-bx120-d") return 319;
+            if (name == "im-attr-media-10gbase-bx120-u") return 320;
+            if (name == "im-attr-media-1000base-dr-lx") return 321;
+            if (name == "im-attr-media-100gbase-er4l") return 322;
+            if (name == "im-attr-media-100gbase-sr4") return 323;
+            if (name == "im-attr-media-40gbase-sr-bd") return 324;
+            if (name == "im-attr-media-25gbase-cr") return 325;
+            if (name == "im-attr-media-25gbase-cr-s") return 326;
+            if (name == "im-attr-media-25gbase-kr") return 327;
+            if (name == "im-attr-media-25gbase-kr-s") return 328;
+            if (name == "im-attr-media-25gbase-r") return 329;
+            if (name == "im-attr-media-25gbase-sr") return 330;
+            if (name == "im-attr-media-25gbase-dwdm") return 331;
+            if (name == "im-attr-media-25gbase-dwdm-tunable") return 332;
+            if (name == "im-attr-media-25gbase-cwdm") return 333;
+            if (name == "im-attr-media-25gbase-cwdm-tunable") return 334;
+            if (name == "im-attr-media-100gbase-psm4") return 335;
+            if (name == "im-attr-media-100gbase-er10") return 336;
+            if (name == "im-attr-media-100gbase-er10l") return 337;
+            if (name == "im-attr-media-100gbase-acc") return 338;
+            if (name == "im-attr-media-100gbase-aoc") return 339;
+            if (name == "im-attr-media-100gbase-cwdm4") return 340;
+            if (name == "im-attr-media-40gbase-psm4") return 341;
+            if (name == "im-attr-media-100gbase-cr4") return 342;
+            if (name == "im-attr-media-100gbase-act-loop") return 343;
+            if (name == "im-attr-media-100gbase-pas-loop") return 344;
+            if (name == "im-attr-media-50gbase-cr2") return 345;
+            if (name == "im-attr-media-50gbase-sr2") return 346;
+            if (name == "im-attr-media-50gbase-psm2") return 347;
+            if (name == "im-attr-media-200gbase-cr4") return 348;
+            if (name == "im-attr-media-400gbase-fr4") return 349;
+            if (name == "im-attr-media-400gbase-dr4") return 350;
+            if (name == "im-attr-media-400gbase-cr4") return 351;
+            if (name == "im-attr-media-10gbase-cr") return 352;
+            if (name == "im-attr-media-10gbase-aoc") return 353;
+            if (name == "im-attr-media-40gbase-aoc") return 354;
+            if (name == "im-attr-media-40gbase-acu") return 355;
+            if (name == "im-attr-media-100gbase-acu") return 356;
+            if (name == "im-attr-media-10gbase-cu1m") return 357;
+            if (name == "im-attr-media-10gbase-cu3m") return 358;
+            if (name == "im-attr-media-10gbase-cu5m") return 359;
+            if (name == "im-attr-media-10gbase-acu7m") return 360;
+            if (name == "im-attr-media-10gbase-acu10m") return 361;
+            if (name == "im-attr-media-4x10g-base-lr") return 362;
+            if (name == "im-attr-media-10gbase-cu1-5m") return 363;
+            if (name == "im-attr-media-10gbase-cu2m") return 364;
+            if (name == "im-attr-media-10gbase-cu2-5m") return 365;
+            if (name == "im-attr-media-10gbase-aoc1m") return 366;
+            if (name == "im-attr-media-10gbase-aoc2m") return 367;
+            if (name == "im-attr-media-10gbase-aoc3m") return 368;
+            if (name == "im-attr-media-10gbase-aoc5m") return 369;
+            if (name == "im-attr-media-10gbase-aoc7m") return 370;
+            if (name == "im-attr-media-10gbase-aoc10m") return 371;
+            if (name == "im-attr-media-40gbase-acu1m") return 372;
+            if (name == "im-attr-media-40gbase-acu3m") return 373;
+            if (name == "im-attr-media-40gbase-acu5m") return 374;
+            if (name == "im-attr-media-40gbase-acu7m") return 375;
+            if (name == "im-attr-media-40gbase-acu10m") return 376;
+            if (name == "im-attr-media-25gbase-cu1m") return 377;
+            if (name == "im-attr-media-25gbase-cu2m") return 378;
+            if (name == "im-attr-media-25gbase-cu3m") return 379;
+            if (name == "im-attr-media-25gbase-cu5m") return 380;
+            if (name == "im-attr-media-100gbase-sm-sr") return 381;
+            if (name == "im-attr-media-100gbase-sr-bd") return 382;
+            if (name == "im-attr-media-100gbase-fr") return 383;
+            return -1;
+        }
 };
 
 class SrpMgmtSrrNodeState : public ydk::Enum
@@ -3609,6 +4443,12 @@ class SrpMgmtSrrNodeState : public ydk::Enum
         static const ydk::Enum::YLeaf discovery_srr_state;
         static const ydk::Enum::YLeaf unknown_srr_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle-srr-state") return 0;
+            if (name == "discovery-srr-state") return 1;
+            if (name == "unknown-srr-state") return 2;
+            return -1;
+        }
 };
 
 

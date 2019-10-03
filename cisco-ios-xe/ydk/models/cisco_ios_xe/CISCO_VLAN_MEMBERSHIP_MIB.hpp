@@ -413,6 +413,11 @@ class CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirm : public ydk::Enum
         static const ydk::Enum::YLeaf ready;
         static const ydk::Enum::YLeaf execute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ready") return 1;
+            if (name == "execute") return 2;
+            return -1;
+        }
 };
 
 class CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult : public ydk::Enum
@@ -426,6 +431,16 @@ class CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult : public ydk::Enum
         static const ydk::Enum::YLeaf noDynamicPort;
         static const ydk::Enum::YLeaf noHostConnected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "inProgress") return 2;
+            if (name == "success") return 3;
+            if (name == "noResponse") return 4;
+            if (name == "noVmps") return 5;
+            if (name == "noDynamicPort") return 6;
+            if (name == "noHostConnected") return 7;
+            return -1;
+        }
 };
 
 class CISCOVLANMEMBERSHIPMIB::VmMembership::VmVlanCreationMode : public ydk::Enum
@@ -434,6 +449,11 @@ class CISCOVLANMEMBERSHIPMIB::VmMembership::VmVlanCreationMode : public ydk::Enu
         static const ydk::Enum::YLeaf automatic;
         static const ydk::Enum::YLeaf manual;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "automatic") return 1;
+            if (name == "manual") return 2;
+            return -1;
+        }
 };
 
 class CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmVlanType : public ydk::Enum
@@ -443,6 +463,12 @@ class CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmVlanType :
         static const ydk::Enum::YLeaf dynamic;
         static const ydk::Enum::YLeaf multiVlan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static") return 1;
+            if (name == "dynamic") return 2;
+            if (name == "multiVlan") return 3;
+            return -1;
+        }
 };
 
 class CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmPortStatus : public ydk::Enum
@@ -452,6 +478,12 @@ class CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmPortStatus
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inactive") return 1;
+            if (name == "active") return 2;
+            if (name == "shutdown") return 3;
+            return -1;
+        }
 };
 
 

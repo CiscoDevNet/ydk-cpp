@@ -2227,6 +2227,18 @@ class Track : public ydk::Enum
         static const ydk::Enum::YLeaf threshold_percentage;
         static const ydk::Enum::YLeaf bfd_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-type") return 1;
+            if (name == "route-type") return 2;
+            if (name == "bool-and-type") return 3;
+            if (name == "bool-or-type") return 4;
+            if (name == "ipsla-type") return 5;
+            if (name == "undefined-type") return 6;
+            if (name == "threshold-weight") return 7;
+            if (name == "threshold-percentage") return 8;
+            if (name == "bfd-type") return 9;
+            return -1;
+        }
 };
 
 

@@ -252,9 +252,9 @@ class Syslog : public ydk::Entity
         class Archive; //type: Syslog::Archive
         class Ipv6; //type: Syslog::Ipv6
         class SourceInterfaceTable; //type: Syslog::SourceInterfaceTable
+        class AlarmLogger; //type: Syslog::AlarmLogger
         class Correlator; //type: Syslog::Correlator
         class Suppression; //type: Syslog::Suppression
-        class AlarmLogger; //type: Syslog::AlarmLogger
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::MonitorLogging> monitor_logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HistoryLogging> history_logging;
@@ -268,9 +268,9 @@ class Syslog : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Archive> archive;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable> source_interface_table;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger> alarm_logger;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator> correlator;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression> suppression;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger> alarm_logger;
         
 }; // Syslog
 
@@ -1366,6 +1366,82 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue:
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf
 
 
+class Syslog::AlarmLogger : public ydk::Entity
+{
+    public:
+        AlarmLogger();
+        ~AlarmLogger();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf pre_config_suppression; //type: empty
+        ydk::YLeaf severity_level; //type: AlarmLoggerSeverityLevel
+        ydk::YLeaf pre_config_suppression_timeout; //type: uint32
+        ydk::YLeaf buffer_size; //type: uint32
+        ydk::YLeaf source_location; //type: empty
+        ydk::YLeaf threshold; //type: uint32
+        class AlarmFilterStrings; //type: Syslog::AlarmLogger::AlarmFilterStrings
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger::AlarmFilterStrings> alarm_filter_strings;
+        
+}; // Syslog::AlarmLogger
+
+
+class Syslog::AlarmLogger::AlarmFilterStrings : public ydk::Entity
+{
+    public:
+        AlarmFilterStrings();
+        ~AlarmFilterStrings();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AlarmFilterString; //type: Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
+
+        ydk::YList alarm_filter_string;
+        
+}; // Syslog::AlarmLogger::AlarmFilterStrings
+
+
+class Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString : public ydk::Entity
+{
+    public:
+        AlarmFilterString();
+        ~AlarmFilterString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf filter_string; //type: string
+
+}; // Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
+
+
 class Syslog::Correlator : public ydk::Entity
 {
     public:
@@ -2277,82 +2353,6 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause : public ydk::En
 
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
 
-
-class Syslog::AlarmLogger : public ydk::Entity
-{
-    public:
-        AlarmLogger();
-        ~AlarmLogger();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf pre_config_suppression; //type: empty
-        ydk::YLeaf severity_level; //type: AlarmLoggerSeverityLevel
-        ydk::YLeaf pre_config_suppression_timeout; //type: uint32
-        ydk::YLeaf buffer_size; //type: uint32
-        ydk::YLeaf source_location; //type: empty
-        ydk::YLeaf threshold; //type: uint32
-        class AlarmFilterStrings; //type: Syslog::AlarmLogger::AlarmFilterStrings
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger::AlarmFilterStrings> alarm_filter_strings;
-        
-}; // Syslog::AlarmLogger
-
-
-class Syslog::AlarmLogger::AlarmFilterStrings : public ydk::Entity
-{
-    public:
-        AlarmFilterStrings();
-        ~AlarmFilterStrings();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AlarmFilterString; //type: Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
-
-        ydk::YList alarm_filter_string;
-        
-}; // Syslog::AlarmLogger::AlarmFilterStrings
-
-
-class Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString : public ydk::Entity
-{
-    public:
-        AlarmFilterString();
-        ~AlarmFilterString();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf filter_string; //type: string
-
-}; // Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
-
 class LogSeverity : public ydk::Enum
 {
     public:
@@ -2365,6 +2365,17 @@ class LogSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf informational;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "informational") return 6;
+            if (name == "debug") return 7;
+            return -1;
+        }
 };
 
 class Facility : public ydk::Enum
@@ -2397,6 +2408,35 @@ class Facility : public ydk::Enum
         static const ydk::Enum::YLeaf sys13;
         static const ydk::Enum::YLeaf sys14;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "kern") return 0;
+            if (name == "user") return 8;
+            if (name == "mail") return 16;
+            if (name == "daemon") return 24;
+            if (name == "auth") return 32;
+            if (name == "syslog") return 40;
+            if (name == "lpr") return 48;
+            if (name == "news") return 56;
+            if (name == "uucp") return 64;
+            if (name == "cron") return 72;
+            if (name == "authpriv") return 80;
+            if (name == "ftp") return 88;
+            if (name == "local0") return 128;
+            if (name == "local1") return 136;
+            if (name == "local2") return 144;
+            if (name == "local3") return 152;
+            if (name == "local4") return 160;
+            if (name == "local5") return 168;
+            if (name == "local6") return 176;
+            if (name == "local7") return 184;
+            if (name == "sys9") return 192;
+            if (name == "sys10") return 200;
+            if (name == "sys11") return 208;
+            if (name == "sys12") return 216;
+            if (name == "sys13") return 224;
+            if (name == "sys14") return 232;
+            return -1;
+        }
 };
 
 class LogCollectFrequency : public ydk::Enum
@@ -2405,6 +2445,11 @@ class LogCollectFrequency : public ydk::Enum
         static const ydk::Enum::YLeaf weekly;
         static const ydk::Enum::YLeaf daily;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "weekly") return 1;
+            if (name == "daily") return 2;
+            return -1;
+        }
 };
 
 class LoggingPrecedenceValue : public ydk::Enum
@@ -2419,6 +2464,17 @@ class LoggingPrecedenceValue : public ydk::Enum
         static const ydk::Enum::YLeaf internet;
         static const ydk::Enum::YLeaf network;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "routine") return 0;
+            if (name == "priority") return 1;
+            if (name == "immediate") return 2;
+            if (name == "flash") return 3;
+            if (name == "flash-override") return 4;
+            if (name == "critical") return 5;
+            if (name == "internet") return 6;
+            if (name == "network") return 7;
+            return -1;
+        }
 };
 
 class LoggingTos : public ydk::Enum
@@ -2427,6 +2483,11 @@ class LoggingTos : public ydk::Enum
         static const ydk::Enum::YLeaf precedence;
         static const ydk::Enum::YLeaf dscp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "precedence") return 0;
+            if (name == "dscp") return 1;
+            return -1;
+        }
 };
 
 class LoggingLevels : public ydk::Enum
@@ -2442,6 +2503,18 @@ class LoggingLevels : public ydk::Enum
         static const ydk::Enum::YLeaf debug;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "info") return 6;
+            if (name == "debug") return 7;
+            if (name == "disable") return 15;
+            return -1;
+        }
 };
 
 class LoggingPrecedence : public ydk::Enum
@@ -2449,6 +2522,10 @@ class LoggingPrecedence : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf precedence;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "precedence") return 0;
+            return -1;
+        }
 };
 
 class LoggingDscpValue : public ydk::Enum
@@ -2476,6 +2553,30 @@ class LoggingDscpValue : public ydk::Enum
         static const ydk::Enum::YLeaf cs6;
         static const ydk::Enum::YLeaf cs7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "af11") return 10;
+            if (name == "af12") return 12;
+            if (name == "af13") return 14;
+            if (name == "af21") return 18;
+            if (name == "af22") return 20;
+            if (name == "af23") return 22;
+            if (name == "af31") return 26;
+            if (name == "af32") return 28;
+            if (name == "af33") return 30;
+            if (name == "af41") return 34;
+            if (name == "af42") return 36;
+            if (name == "af43") return 38;
+            if (name == "ef") return 46;
+            if (name == "cs1") return 8;
+            if (name == "cs2") return 16;
+            if (name == "cs3") return 24;
+            if (name == "cs4") return 32;
+            if (name == "cs5") return 40;
+            if (name == "cs6") return 48;
+            if (name == "cs7") return 56;
+            return -1;
+        }
 };
 
 class LogMessageSeverity : public ydk::Enum
@@ -2490,6 +2591,17 @@ class LogMessageSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf informational;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "informational") return 6;
+            if (name == "debug") return 7;
+            return -1;
+        }
 };
 
 class TimeInfo : public ydk::Enum
@@ -2498,6 +2610,11 @@ class TimeInfo : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
 class LoggingDscp : public ydk::Enum
@@ -2505,6 +2622,10 @@ class LoggingDscp : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf dscp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dscp") return 1;
+            return -1;
+        }
 };
 
 

@@ -40,6 +40,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmF
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -118,6 +119,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmR
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-running-timer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -199,6 +201,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssu
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-issu-milestone";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -303,6 +306,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrH
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-err-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -417,6 +421,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrH
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-error-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1256,6 +1261,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::RibThreadStats::Ri
 {
     std::ostringstream path_buffer;
     path_buffer << "ribqueue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1795,6 +1801,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats::NcdPri
 {
     std::ostringstream path_buffer;
     path_buffer << "ncd-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1930,6 +1937,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats::NcdPri
 {
     std::ostringstream path_buffer;
     path_buffer << "num-sent";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2008,6 +2016,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats::NcdPri
 {
     std::ostringstream path_buffer;
     path_buffer << "num-recv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2095,6 +2104,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats::NcdPri
 {
     std::ostringstream path_buffer;
     path_buffer << "num-sent-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2179,6 +2189,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats::NcdPri
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pl-send-drop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2266,6 +2277,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats::NcdPri
 {
     std::ostringstream path_buffer;
     path_buffer << "num-recv-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2350,6 +2362,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats::NcdPri
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pl-recv-drop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3164,6 +3177,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrThdSc
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3559,6 +3573,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrRtrTh
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3725,6 +3740,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrFsmFl
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3803,6 +3819,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrFsmRu
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-running-timer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3884,6 +3901,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrIssuM
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-issu-milestone";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3988,6 +4006,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrErrHi
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-err-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4102,6 +4121,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrErrHi
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-error-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5906,6 +5926,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::InterfaceStatsEntr
 {
     std::ostringstream path_buffer;
     path_buffer << "if-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6023,6 +6044,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::InterfaceStatsEntr
 {
     std::ostringstream path_buffer;
     path_buffer << "if-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6307,7 +6329,7 @@ Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Neighbor:
     interface_name{YType::str, "interface-name"},
     neighbor_address{YType::str, "neighbor-address"},
     neighbor_id{YType::str, "neighbor-id"},
-    neighbor_address_xr{YType::str, "neighbor-address-xr"},
+    neighbor_ip_address{YType::str, "neighbor-ip-address"},
     neighbor_interface_name{YType::str, "neighbor-interface-name"},
     neighbor_dr_priority{YType::uint8, "neighbor-dr-priority"},
     neighbor_state{YType::enumeration, "neighbor-state"},
@@ -6333,7 +6355,7 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Neig
     return interface_name.is_set
 	|| neighbor_address.is_set
 	|| neighbor_id.is_set
-	|| neighbor_address_xr.is_set
+	|| neighbor_ip_address.is_set
 	|| neighbor_interface_name.is_set
 	|| neighbor_dr_priority.is_set
 	|| neighbor_state.is_set
@@ -6350,7 +6372,7 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Neig
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
 	|| ydk::is_set(neighbor_id.yfilter)
-	|| ydk::is_set(neighbor_address_xr.yfilter)
+	|| ydk::is_set(neighbor_ip_address.yfilter)
 	|| ydk::is_set(neighbor_interface_name.yfilter)
 	|| ydk::is_set(neighbor_dr_priority.yfilter)
 	|| ydk::is_set(neighbor_state.yfilter)
@@ -6365,6 +6387,7 @@ std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6375,7 +6398,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
     if (neighbor_id.is_set || is_set(neighbor_id.yfilter)) leaf_name_data.push_back(neighbor_id.get_name_leafdata());
-    if (neighbor_address_xr.is_set || is_set(neighbor_address_xr.yfilter)) leaf_name_data.push_back(neighbor_address_xr.get_name_leafdata());
+    if (neighbor_ip_address.is_set || is_set(neighbor_ip_address.yfilter)) leaf_name_data.push_back(neighbor_ip_address.get_name_leafdata());
     if (neighbor_interface_name.is_set || is_set(neighbor_interface_name.yfilter)) leaf_name_data.push_back(neighbor_interface_name.get_name_leafdata());
     if (neighbor_dr_priority.is_set || is_set(neighbor_dr_priority.yfilter)) leaf_name_data.push_back(neighbor_dr_priority.get_name_leafdata());
     if (neighbor_state.is_set || is_set(neighbor_state.yfilter)) leaf_name_data.push_back(neighbor_state.get_name_leafdata());
@@ -6434,11 +6457,11 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Neig
         neighbor_id.value_namespace = name_space;
         neighbor_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "neighbor-address-xr")
+    if(value_path == "neighbor-ip-address")
     {
-        neighbor_address_xr = value;
-        neighbor_address_xr.value_namespace = name_space;
-        neighbor_address_xr.value_namespace_prefix = name_space_prefix;
+        neighbor_ip_address = value;
+        neighbor_ip_address.value_namespace = name_space;
+        neighbor_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-interface-name")
     {
@@ -6498,9 +6521,9 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Neig
     {
         neighbor_id.yfilter = yfilter;
     }
-    if(value_path == "neighbor-address-xr")
+    if(value_path == "neighbor-ip-address")
     {
-        neighbor_address_xr.yfilter = yfilter;
+        neighbor_ip_address.yfilter = yfilter;
     }
     if(value_path == "neighbor-interface-name")
     {
@@ -6534,7 +6557,7 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Neig
 
 bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-bfd-information" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-id" || name == "neighbor-address-xr" || name == "neighbor-interface-name" || name == "neighbor-dr-priority" || name == "neighbor-state" || name == "dr-bdr-state" || name == "neighbor-dead-timer" || name == "neighbor-up-time" || name == "neighbor-madj-interface")
+    if(name == "neighbor-bfd-information" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-id" || name == "neighbor-ip-address" || name == "neighbor-interface-name" || name == "neighbor-dr-priority" || name == "neighbor-state" || name == "dr-bdr-state" || name == "neighbor-dead-timer" || name == "neighbor-up-time" || name == "neighbor-madj-interface")
         return true;
     return false;
 }
@@ -6776,6 +6799,7 @@ std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Requests
 {
     std::ostringstream path_buffer;
     path_buffer << "request";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6930,6 +6954,7 @@ std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Requests
 {
     std::ostringstream path_buffer;
     path_buffer << "request";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7197,6 +7222,7 @@ std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Retransm
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmission";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7390,6 +7416,7 @@ std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Retransm
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmission-area-db";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7538,6 +7565,7 @@ std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Retransm
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmission-asdb";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7855,6 +7883,7 @@ std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8236,7 +8265,7 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborSummary()
     :
     neighbor_id{YType::str, "neighbor-id"},
-    neighbor_address_xr{YType::str, "neighbor-address-xr"},
+    neighbor_ip_address{YType::str, "neighbor-ip-address"},
     neighbor_interface_name{YType::str, "neighbor-interface-name"},
     neighbor_dr_priority{YType::uint8, "neighbor-dr-priority"},
     neighbor_state{YType::enumeration, "neighbor-state"},
@@ -8260,7 +8289,7 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 {
     if (is_presence_container) return true;
     return neighbor_id.is_set
-	|| neighbor_address_xr.is_set
+	|| neighbor_ip_address.is_set
 	|| neighbor_interface_name.is_set
 	|| neighbor_dr_priority.is_set
 	|| neighbor_state.is_set
@@ -8275,7 +8304,7 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 {
     return is_set(yfilter)
 	|| ydk::is_set(neighbor_id.yfilter)
-	|| ydk::is_set(neighbor_address_xr.yfilter)
+	|| ydk::is_set(neighbor_ip_address.yfilter)
 	|| ydk::is_set(neighbor_interface_name.yfilter)
 	|| ydk::is_set(neighbor_dr_priority.yfilter)
 	|| ydk::is_set(neighbor_state.yfilter)
@@ -8298,7 +8327,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_id.is_set || is_set(neighbor_id.yfilter)) leaf_name_data.push_back(neighbor_id.get_name_leafdata());
-    if (neighbor_address_xr.is_set || is_set(neighbor_address_xr.yfilter)) leaf_name_data.push_back(neighbor_address_xr.get_name_leafdata());
+    if (neighbor_ip_address.is_set || is_set(neighbor_ip_address.yfilter)) leaf_name_data.push_back(neighbor_ip_address.get_name_leafdata());
     if (neighbor_interface_name.is_set || is_set(neighbor_interface_name.yfilter)) leaf_name_data.push_back(neighbor_interface_name.get_name_leafdata());
     if (neighbor_dr_priority.is_set || is_set(neighbor_dr_priority.yfilter)) leaf_name_data.push_back(neighbor_dr_priority.get_name_leafdata());
     if (neighbor_state.is_set || is_set(neighbor_state.yfilter)) leaf_name_data.push_back(neighbor_state.get_name_leafdata());
@@ -8345,11 +8374,11 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
         neighbor_id.value_namespace = name_space;
         neighbor_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "neighbor-address-xr")
+    if(value_path == "neighbor-ip-address")
     {
-        neighbor_address_xr = value;
-        neighbor_address_xr.value_namespace = name_space;
-        neighbor_address_xr.value_namespace_prefix = name_space_prefix;
+        neighbor_ip_address = value;
+        neighbor_ip_address.value_namespace = name_space;
+        neighbor_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-interface-name")
     {
@@ -8401,9 +8430,9 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
     {
         neighbor_id.yfilter = yfilter;
     }
-    if(value_path == "neighbor-address-xr")
+    if(value_path == "neighbor-ip-address")
     {
-        neighbor_address_xr.yfilter = yfilter;
+        neighbor_ip_address.yfilter = yfilter;
     }
     if(value_path == "neighbor-interface-name")
     {
@@ -8437,7 +8466,7 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 
 bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-bfd-information" || name == "neighbor-id" || name == "neighbor-address-xr" || name == "neighbor-interface-name" || name == "neighbor-dr-priority" || name == "neighbor-state" || name == "dr-bdr-state" || name == "neighbor-dead-timer" || name == "neighbor-up-time" || name == "neighbor-madj-interface")
+    if(name == "neighbor-bfd-information" || name == "neighbor-id" || name == "neighbor-ip-address" || name == "neighbor-interface-name" || name == "neighbor-dr-priority" || name == "neighbor-state" || name == "dr-bdr-state" || name == "neighbor-dead-timer" || name == "neighbor-up-time" || name == "neighbor-madj-interface")
         return true;
     return false;
 }
@@ -9337,6 +9366,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::BackupRoutes
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10044,6 +10074,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::BackupRoutes
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10627,6 +10658,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::BackupRoutes
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10868,6 +10900,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::BackupRoutes
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10974,6 +11007,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::BackupRoutes
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11201,6 +11235,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11904,6 +11939,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12319,6 +12355,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12425,6 +12462,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12652,6 +12690,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-intact-backup-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13359,6 +13398,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13942,6 +13982,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14183,6 +14224,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14289,6 +14331,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastInt
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14899,6 +14942,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRou
 {
     std::ostringstream path_buffer;
     path_buffer << "connected-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15602,6 +15646,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRou
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16017,6 +16062,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRou
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16123,6 +16169,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRou
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16350,6 +16397,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "local-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17053,6 +17101,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17468,6 +17517,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17574,6 +17624,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18100,6 +18151,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-intact-backup-route-area";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18807,6 +18859,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19390,6 +19443,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19631,6 +19685,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19737,6 +19792,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19964,6 +20020,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "connected-route-area";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20667,6 +20724,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21082,6 +21140,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21188,6 +21247,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21415,6 +21475,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-route-area";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22122,6 +22183,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22705,6 +22767,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22946,6 +23009,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23052,6 +23116,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23279,6 +23344,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "route-area-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23982,6 +24048,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24397,6 +24464,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24503,6 +24571,7 @@ std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

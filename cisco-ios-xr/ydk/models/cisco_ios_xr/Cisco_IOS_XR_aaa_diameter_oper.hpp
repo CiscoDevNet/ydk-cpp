@@ -17,6 +17,12 @@ class DisconnectCause : public ydk::Enum
         static const ydk::Enum::YLeaf busy;
         static const ydk::Enum::YLeaf do_not_wait_to_talk;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reboot") return 0;
+            if (name == "busy") return 1;
+            if (name == "do-not-wait-to-talk") return 2;
+            return -1;
+        }
 };
 
 class SecurityTypeValue : public ydk::Enum
@@ -26,6 +32,12 @@ class SecurityTypeValue : public ydk::Enum
         static const ydk::Enum::YLeaf type;
         static const ydk::Enum::YLeaf ipsec;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "security-type-none") return 0;
+            if (name == "type") return 1;
+            if (name == "ipsec") return 2;
+            return -1;
+        }
 };
 
 class PeerStateValue : public ydk::Enum
@@ -39,6 +51,16 @@ class PeerStateValue : public ydk::Enum
         static const ydk::Enum::YLeaf closing;
         static const ydk::Enum::YLeaf suspect;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-none") return 0;
+            if (name == "closed") return 1;
+            if (name == "wait-connection-ack") return 2;
+            if (name == "wait-cea") return 3;
+            if (name == "state-open") return 4;
+            if (name == "closing") return 5;
+            if (name == "suspect") return 6;
+            return -1;
+        }
 };
 
 class ProtocolTypeValue : public ydk::Enum
@@ -47,6 +69,11 @@ class ProtocolTypeValue : public ydk::Enum
         static const ydk::Enum::YLeaf protocol_none;
         static const ydk::Enum::YLeaf tcp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protocol-none") return 0;
+            if (name == "tcp") return 1;
+            return -1;
+        }
 };
 
 class Peer : public ydk::Enum
@@ -55,6 +82,11 @@ class Peer : public ydk::Enum
         static const ydk::Enum::YLeaf undefined;
         static const ydk::Enum::YLeaf server;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "undefined") return 0;
+            if (name == "server") return 1;
+            return -1;
+        }
 };
 
 class WhoInitiatedDisconnect : public ydk::Enum
@@ -64,6 +96,12 @@ class WhoInitiatedDisconnect : public ydk::Enum
         static const ydk::Enum::YLeaf host;
         static const ydk::Enum::YLeaf peer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "host") return 1;
+            if (name == "peer") return 2;
+            return -1;
+        }
 };
 
 

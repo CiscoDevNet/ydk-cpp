@@ -4945,6 +4945,17 @@ class NbrStateType : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_nbr_loading;
         static const ydk::Enum::YLeaf ospf_nbr_full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-nbr-down") return 1;
+            if (name == "ospf-nbr-attempt") return 2;
+            if (name == "ospf-nbr-init") return 3;
+            if (name == "ospf-nbr-two-way") return 4;
+            if (name == "ospf-nbr-exchange-start") return 5;
+            if (name == "ospf-nbr-exchange") return 6;
+            if (name == "ospf-nbr-loading") return 7;
+            if (name == "ospf-nbr-full") return 8;
+            return -1;
+        }
 };
 
 class Ospfv2IntfState : public ydk::Enum
@@ -4959,6 +4970,17 @@ class Ospfv2IntfState : public ydk::Enum
         static const ydk::Enum::YLeaf ospfv2_interface_state_backup;
         static const ydk::Enum::YLeaf ospfv2_interface_state_other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospfv2-interface-state-down") return 0;
+            if (name == "ospfv2-interface-state-loopback") return 1;
+            if (name == "ospfv2-interface-state-waiting") return 2;
+            if (name == "ospfv2-interface-state-point-to-mpoint") return 3;
+            if (name == "ospfv2-interface-state-point-to-point") return 4;
+            if (name == "ospfv2-interface-state-dr") return 5;
+            if (name == "ospfv2-interface-state-backup") return 6;
+            if (name == "ospfv2-interface-state-other") return 7;
+            return -1;
+        }
 };
 
 class Ospfv2LsaType : public ydk::Enum
@@ -4975,6 +4997,19 @@ class Ospfv2LsaType : public ydk::Enum
         static const ydk::Enum::YLeaf ospfv2_lsa_type_area_scope_opaque;
         static const ydk::Enum::YLeaf ospfv2_lsa_type_as_scope_opaque;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospfv2-lsa-type-unsupported-lsa-type") return 0;
+            if (name == "ospfv2-lsa-type-router") return 1;
+            if (name == "ospfv2-lsa-type-network") return 2;
+            if (name == "ospfv2-lsa-type-summary-net") return 3;
+            if (name == "ospfv2-lsa-type-summary-router") return 4;
+            if (name == "ospfv2-lsa-type-as-external") return 5;
+            if (name == "ospfv2-lsa-type-nssa") return 6;
+            if (name == "ospfv2-lsa-type-link-scope-opaque") return 7;
+            if (name == "ospfv2-lsa-type-area-scope-opaque") return 8;
+            if (name == "ospfv2-lsa-type-as-scope-opaque") return 9;
+            return -1;
+        }
 };
 
 class OspfNetworkType : public ydk::Enum
@@ -4985,6 +5020,13 @@ class OspfNetworkType : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_point_to_multipoint;
         static const ydk::Enum::YLeaf ospf_point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-broadcast") return 0;
+            if (name == "ospf-non-broadcast") return 1;
+            if (name == "ospf-point-to-multipoint") return 2;
+            if (name == "ospf-point-to-point") return 3;
+            return -1;
+        }
 };
 
 class Ospfv2CryptoAlgorithm : public ydk::Enum
@@ -4993,6 +5035,11 @@ class Ospfv2CryptoAlgorithm : public ydk::Enum
         static const ydk::Enum::YLeaf ospfv2_crypto_cleartest;
         static const ydk::Enum::YLeaf ospfv2_crypto_md5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospfv2-crypto-cleartest") return 0;
+            if (name == "ospfv2-crypto-md5") return 1;
+            return -1;
+        }
 };
 
 class OspfAuthType : public ydk::Enum
@@ -5003,6 +5050,13 @@ class OspfAuthType : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_auth_trailer_key;
         static const ydk::Enum::YLeaf ospf_auth_type_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-auth-ipsec") return 0;
+            if (name == "ospf-auth-trailer-keychain") return 1;
+            if (name == "ospf-auth-trailer-key") return 2;
+            if (name == "ospf-auth-type-none") return 3;
+            return -1;
+        }
 };
 
 class OspfExternalMetricType : public ydk::Enum
@@ -5011,6 +5065,11 @@ class OspfExternalMetricType : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_ext_metric_type_1;
         static const ydk::Enum::YLeaf ospf_ext_metric_type_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-ext-metric-type-1") return 0;
+            if (name == "ospf-ext-metric-type-2") return 1;
+            return -1;
+        }
 };
 
 class OspfOperationMode : public ydk::Enum
@@ -5018,6 +5077,10 @@ class OspfOperationMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ospf_ships_in_the_night;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-ships-in-the-night") return 0;
+            return -1;
+        }
 };
 
 class AddressFamily : public ydk::Enum
@@ -5026,6 +5089,11 @@ class AddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf address_family_ipv4;
         static const ydk::Enum::YLeaf address_family_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-family-ipv4") return 0;
+            if (name == "address-family-ipv6") return 1;
+            return -1;
+        }
 };
 
 class Ospfv2AuthTypeSelection : public ydk::Enum
@@ -5035,6 +5103,12 @@ class Ospfv2AuthTypeSelection : public ydk::Enum
         static const ydk::Enum::YLeaf ospfv2_auth_trailer_key;
         static const ydk::Enum::YLeaf ospfv2_auth_trailer_key_chain;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospfv2-auth-none") return 0;
+            if (name == "ospfv2-auth-trailer-key") return 1;
+            if (name == "ospfv2-auth-trailer-key-chain") return 2;
+            return -1;
+        }
 };
 
 

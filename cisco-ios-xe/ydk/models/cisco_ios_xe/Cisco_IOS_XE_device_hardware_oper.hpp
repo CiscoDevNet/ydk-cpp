@@ -152,6 +152,12 @@ class AlarmSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf alarm_severity_major;
         static const ydk::Enum::YLeaf alarm_severity_minor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "alarm-severity-critical") return 0;
+            if (name == "alarm-severity-major") return 1;
+            if (name == "alarm-severity-minor") return 2;
+            return -1;
+        }
 };
 
 class HwType : public ydk::Enum
@@ -170,6 +176,21 @@ class HwType : public ydk::Enum
         static const ydk::Enum::YLeaf hw_type_fantray;
         static const ydk::Enum::YLeaf hw_type_pem;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hw-type-unknown") return 0;
+            if (name == "hw-type-chassis") return 1;
+            if (name == "hw-type-cpu") return 2;
+            if (name == "hw-type-dram") return 3;
+            if (name == "hw-type-flash") return 4;
+            if (name == "hw-type-emmc") return 5;
+            if (name == "hw-type-sdcard") return 6;
+            if (name == "hw-type-usb") return 7;
+            if (name == "hw-type-pim") return 8;
+            if (name == "hw-type-transceiver") return 9;
+            if (name == "hw-type-fantray") return 10;
+            if (name == "hw-type-pem") return 11;
+            return -1;
+        }
 };
 
 

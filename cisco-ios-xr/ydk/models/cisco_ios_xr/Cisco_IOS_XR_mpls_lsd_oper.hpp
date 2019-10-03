@@ -30002,6 +30002,11 @@ class MgmtLsdClient : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_client_type_app;
         static const ydk::Enum::YLeaf mgmt_lsd_client_type_ba;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-client-type-app") return 0;
+            if (name == "mgmt-lsd-client-type-ba") return 1;
+            return -1;
+        }
 };
 
 class MgmtLsdFrrState : public ydk::Enum
@@ -30014,6 +30019,15 @@ class MgmtLsdFrrState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_frr_state_any;
         static const ydk::Enum::YLeaf mgmt_lsd_frr_state_igp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-frr-state-partial") return 0;
+            if (name == "mgmt-lsd-frr-state-active") return 1;
+            if (name == "mgmt-lsd-frr-state-ready") return 2;
+            if (name == "mgmt-lsd-frr-state-complete") return 3;
+            if (name == "mgmt-lsd-frr-state-any") return 4;
+            if (name == "mgmt-lsd-frr-state-igp") return 5;
+            return -1;
+        }
 };
 
 class MgmtLsdMoi : public ydk::Enum
@@ -30037,6 +30051,26 @@ class MgmtLsdMoi : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ipv6_nnh_stack;
         static const ydk::Enum::YLeaf mgmt_lsd_moi_type_label_range;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-moi-type-pop-and-lkup-ipv4") return 0;
+            if (name == "mgmt-lsd-moi-type-ipv4") return 1;
+            if (name == "mgmt-lsd-moi-type-ipv6") return 2;
+            if (name == "mgmt-lsd-moi-type-tev4") return 3;
+            if (name == "mgmt-lsd-moi-type-pw") return 4;
+            if (name == "mgmt-lsd-moi-type-pop-and-lkup-ipv6") return 5;
+            if (name == "mgmt-lsd-moi-type-ip-sub") return 6;
+            if (name == "mgmt-lsd-moi-type-pwhe") return 7;
+            if (name == "mgmt-lsd-moi-type-pw-list") return 8;
+            if (name == "mgmt-lsd-moi-type-ipv4-stack") return 9;
+            if (name == "mgmt-lsd-moi-type-pop-and-lkup-tp") return 10;
+            if (name == "mgmt-lsd-moi-type-ipv6-stack") return 11;
+            if (name == "mgmt-lsd-moi-type-te-head") return 12;
+            if (name == "mgmt-lsd-moi-type-dmtc-ext-intf") return 13;
+            if (name == "mgmt-lsd-moi-type-ipv4-nnh-stack") return 14;
+            if (name == "mgmt-lsd-moi-type-ipv6-nnh-stack") return 15;
+            if (name == "mgmt-lsd-moi-type-label-range") return 16;
+            return -1;
+        }
 };
 
 class MgmtLsdFpi : public ydk::Enum
@@ -30051,6 +30085,17 @@ class MgmtLsdFpi : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_dmtc_ext_intf;
         static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_label_range;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-fpi-type-label") return 0;
+            if (name == "mgmt-lsd-fpi-type-te") return 1;
+            if (name == "mgmt-lsd-fpi-type-ipv4") return 2;
+            if (name == "mgmt-lsd-fpi-type-ipv6") return 3;
+            if (name == "mgmt-lsd-fpi-type-pw-list") return 4;
+            if (name == "mgmt-lsd-fpi-type-te-v2") return 5;
+            if (name == "mgmt-lsd-fpi-type-dmtc-ext-intf") return 6;
+            if (name == "mgmt-lsd-fpi-type-label-range") return 7;
+            return -1;
+        }
 };
 
 class MgmtLsdLblCtx : public ydk::Enum
@@ -30088,6 +30133,40 @@ class MgmtLsdLblCtx : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_any;
         static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_lbl_blk_srlb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-lbl-ctx-type-none") return 0;
+            if (name == "mgmt-lsd-lbl-ctx-type-ipv4") return 1;
+            if (name == "mgmt-lsd-lbl-ctx-type-ipv6") return 2;
+            if (name == "mgmt-lsd-lbl-ctx-type-tev4") return 3;
+            if (name == "mgmt-lsd-lbl-ctx-type-l3vpn-ipv4") return 4;
+            if (name == "mgmt-lsd-lbl-ctx-type-l3vpn-ipv6") return 5;
+            if (name == "mgmt-lsd-lbl-ctx-type-l3vpn-vrf") return 6;
+            if (name == "mgmt-lsd-lbl-ctx-type-l3vpn-cev4") return 7;
+            if (name == "mgmt-lsd-lbl-ctx-type-l3vpn-cev6") return 8;
+            if (name == "mgmt-lsd-lbl-ctx-type-pw") return 9;
+            if (name == "mgmt-lsd-lbl-ctx-type-lbl-blk") return 10;
+            if (name == "mgmt-lsd-lbl-ctx-type-ip-sub") return 11;
+            if (name == "mgmt-lsd-lbl-ctx-type-tev4-p2mp") return 12;
+            if (name == "mgmt-lsd-lbl-ctx-type-mldpv4") return 13;
+            if (name == "mgmt-lsd-lbl-ctx-type-pwhe") return 14;
+            if (name == "mgmt-lsd-lbl-ctx-type-tp") return 15;
+            if (name == "mgmt-lsd-lbl-ctx-type-gre") return 16;
+            if (name == "mgmt-lsd-lbl-ctx-type-evpn") return 17;
+            if (name == "mgmt-lsd-lbl-ctx-type-blb-ipv4") return 18;
+            if (name == "mgmt-lsd-lbl-ctx-type-blb-ipv6") return 19;
+            if (name == "mgmt-lsd-lbl-ctx-type-pim-i-pmsi") return 20;
+            if (name == "mgmt-lsd-lbl-ctx-type-pim-s-pmsi") return 21;
+            if (name == "mgmt-lsd-lbl-ctx-type-l3vpn-nh-set") return 22;
+            if (name == "mgmt-lsd-lbl-ctx-type-sr-pfx-seg") return 23;
+            if (name == "mgmt-lsd-lbl-ctx-type-sr-adj-seg-ipv4") return 24;
+            if (name == "mgmt-lsd-lbl-ctx-type-sr-adj-seg-ipv6") return 25;
+            if (name == "mgmt-lsd-lbl-ctx-type-lbl-blk-srgb") return 26;
+            if (name == "mgmt-lsd-lbl-ctx-type-te-binding") return 27;
+            if (name == "mgmt-lsd-lbl-ctx-type-gre-ipv6") return 28;
+            if (name == "mgmt-lsd-lbl-ctx-type-any") return 29;
+            if (name == "mgmt-lsd-lbl-ctx-type-lbl-blk-srlb") return 30;
+            return -1;
+        }
 };
 
 class MgmtLsdLspRole : public ydk::Enum
@@ -30096,6 +30175,11 @@ class MgmtLsdLspRole : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_head;
         static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_mid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-lsp-role-head") return 0;
+            if (name == "mgmt-lsd-lsp-role-mid") return 1;
+            return -1;
+        }
 };
 
 class MgmtLsdAppRsrcState : public ydk::Enum
@@ -30105,6 +30189,12 @@ class MgmtLsdAppRsrcState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd;
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd_svr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-app-rsrc-state-active") return 0;
+            if (name == "mgmt-lsd-app-rsrc-state-pnd") return 1;
+            if (name == "mgmt-lsd-app-rsrc-state-pnd-svr") return 2;
+            return -1;
+        }
 };
 
 class MplsLsdNnh : public ydk::Enum
@@ -30114,6 +30204,12 @@ class MplsLsdNnh : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf interface_name;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4-address") return 1;
+            if (name == "interface-name") return 2;
+            return -1;
+        }
 };
 
 class MgmtLsdApp : public ydk::Enum
@@ -30140,6 +30236,29 @@ class MgmtLsdApp : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_dmtc;
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-app-type-none") return 0;
+            if (name == "mgmt-lsd-app-type-int") return 1;
+            if (name == "mgmt-lsd-app-type-test") return 2;
+            if (name == "mgmt-lsd-app-type-static") return 3;
+            if (name == "mgmt-lsd-app-type-ldp") return 4;
+            if (name == "mgmt-lsd-app-type-te") return 5;
+            if (name == "mgmt-lsd-app-type-app-controller") return 6;
+            if (name == "mgmt-lsd-app-type-bgp-ipv4") return 7;
+            if (name == "mgmt-lsd-app-type-bgp-vpn-ipv4") return 8;
+            if (name == "mgmt-lsd-app-type-l2vpn") return 9;
+            if (name == "mgmt-lsd-app-type-bgp-spkr") return 10;
+            if (name == "mgmt-lsd-app-type-bfd") return 11;
+            if (name == "mgmt-lsd-app-type-pim") return 12;
+            if (name == "mgmt-lsd-app-type-v2-lsd") return 13;
+            if (name == "mgmt-lsd-app-type-pim6") return 14;
+            if (name == "mgmt-lsd-app-type-isis") return 15;
+            if (name == "mgmt-lsd-app-type-ospf") return 16;
+            if (name == "mgmt-lsd-app-type-cgn") return 17;
+            if (name == "mgmt-lsd-app-type-dmtc") return 18;
+            if (name == "mgmt-lsd-app-type-any") return 19;
+            return -1;
+        }
 };
 
 class MgmtLsdTeBinding : public ydk::Enum
@@ -30150,6 +30269,13 @@ class MgmtLsdTeBinding : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
         static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-ident-p2p-tun-id") return 0;
+            if (name == "mgmt-lsd-ident-p2p-grp-id") return 1;
+            if (name == "mgmt-lsd-ident-p2mp-tun-id") return 2;
+            if (name == "mgmt-lsd-ident-p2mp-grp-id") return 3;
+            return -1;
+        }
 };
 
 class MgmtLsdAppState : public ydk::Enum
@@ -30159,6 +30285,12 @@ class MgmtLsdAppState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_app_state_zombie;
         static const ydk::Enum::YLeaf mgmt_lsd_app_state_recover;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-app-state-active") return 0;
+            if (name == "mgmt-lsd-app-state-zombie") return 1;
+            if (name == "mgmt-lsd-app-state-recover") return 2;
+            return -1;
+        }
 };
 
 class MgmtLsdIntfState : public ydk::Enum
@@ -30168,6 +30300,12 @@ class MgmtLsdIntfState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_intf_state_up;
         static const ydk::Enum::YLeaf mgmt_lsd_intf_state_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-intf-state-unknown") return 0;
+            if (name == "mgmt-lsd-intf-state-up") return 1;
+            if (name == "mgmt-lsd-intf-state-down") return 2;
+            return -1;
+        }
 };
 
 class MgmtLsdRwId : public ydk::Enum
@@ -30177,6 +30315,12 @@ class MgmtLsdRwId : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
         static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsd-rw-id-type-none") return 0;
+            if (name == "mgmt-lsd-rw-id-type-lbl-ctx") return 1;
+            if (name == "mgmt-lsd-rw-id-type-loc-lbl") return 2;
+            return -1;
+        }
 };
 
 

@@ -5716,7 +5716,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Neighbors::Neig
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -6031,7 +6031,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -11504,7 +11504,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor : pu
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -12022,7 +12022,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -21312,7 +21312,7 @@ class Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Nei
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -21627,7 +21627,7 @@ class Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetail
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -27100,7 +27100,7 @@ class Ospf::Processes::Process::DefaultVrf::Areas::Area::Neighbors::Neighbor : p
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -27618,7 +27618,7 @@ class Ospf::Processes::Process::DefaultVrf::Areas::Area::NeighborDetails::Neighb
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -31273,6 +31273,12 @@ class NsfRtr : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_nsf_rtr_requester;
         static const ydk::Enum::YLeaf mgmt_nsf_rtr_receiver;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-nsf-rtr-none") return 0;
+            if (name == "mgmt-nsf-rtr-requester") return 1;
+            if (name == "mgmt-nsf-rtr-receiver") return 2;
+            return -1;
+        }
 };
 
 class IpfrrTbrkr : public ydk::Enum
@@ -31289,6 +31295,19 @@ class IpfrrTbrkr : public ydk::Enum
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf post_convergence;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "downstream") return 0;
+            if (name == "line-card-disjoint") return 1;
+            if (name == "backup-metric") return 2;
+            if (name == "node-protect") return 3;
+            if (name == "primary-path") return 4;
+            if (name == "secondary-path") return 5;
+            if (name == "srlg-disjoint") return 6;
+            if (name == "interface-disjoint") return 7;
+            if (name == "tunnel") return 8;
+            if (name == "post-convergence") return 9;
+            return -1;
+        }
 };
 
 class IgpteLibBwModel : public ydk::Enum
@@ -31298,6 +31317,12 @@ class IgpteLibBwModel : public ydk::Enum
         static const ydk::Enum::YLeaf mam;
         static const ydk::Enum::YLeaf not_set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rdm") return 0;
+            if (name == "mam") return 1;
+            if (name == "not-set") return 2;
+            return -1;
+        }
 };
 
 class LinkSubnet : public ydk::Enum
@@ -31311,6 +31336,16 @@ class LinkSubnet : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_igp_subnet_type_loop_back;
         static const ydk::Enum::YLeaf mgmt_igp_subnet_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-igp-subnet-type-none") return 0;
+            if (name == "mgmt-igp-subnet-type-p2p") return 1;
+            if (name == "mgmt-igp-subnet-type-broadcast") return 2;
+            if (name == "mgmt-igp-subnet-type-nbma") return 3;
+            if (name == "mgmt-igp-subnet-type-p2mp") return 4;
+            if (name == "mgmt-igp-subnet-type-loop-back") return 5;
+            if (name == "mgmt-igp-subnet-type-max") return 6;
+            return -1;
+        }
 };
 
 class Authentication : public ydk::Enum
@@ -31321,6 +31356,13 @@ class Authentication : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_auth_md;
         static const ydk::Enum::YLeaf mgmt_ospf_auth_kc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ospf-auth-none") return 0;
+            if (name == "mgmt-ospf-auth-ct") return 1;
+            if (name == "mgmt-ospf-auth-md") return 2;
+            if (name == "mgmt-ospf-auth-kc") return 3;
+            return -1;
+        }
 };
 
 class OspfShNnhValTypes : public ydk::Enum
@@ -31329,6 +31371,11 @@ class OspfShNnhValTypes : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_nnh_val_type_ip_addr;
         static const ydk::Enum::YLeaf mgmt_nnh_val_type_if_index;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-nnh-val-type-ip-addr") return 1;
+            if (name == "mgmt-nnh-val-type-if-index") return 2;
+            return -1;
+        }
 };
 
 class UloopAvoidance : public ydk::Enum
@@ -31339,6 +31386,13 @@ class UloopAvoidance : public ydk::Enum
         static const ydk::Enum::YLeaf all_prefixes;
         static const ydk::Enum::YLeaf segment_routing_uloop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "protected-prefixes") return 1;
+            if (name == "all-prefixes") return 2;
+            if (name == "segment-routing-uloop") return 3;
+            return -1;
+        }
 };
 
 class OspfLinkTypes : public ydk::Enum
@@ -31349,6 +31403,13 @@ class OspfLinkTypes : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_stub_net;
         static const ydk::Enum::YLeaf mgmt_vitural_link;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-rtr-link") return 1;
+            if (name == "mgmt-trans-link") return 2;
+            if (name == "mgmt-stub-net") return 3;
+            if (name == "mgmt-vitural-link") return 4;
+            return -1;
+        }
 };
 
 class SrmsMiSrcEB : public ydk::Enum
@@ -31358,6 +31419,12 @@ class SrmsMiSrcEB : public ydk::Enum
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "local") return 1;
+            if (name == "remote") return 2;
+            return -1;
+        }
 };
 
 class OspfInterfaceState : public ydk::Enum
@@ -31372,6 +31439,17 @@ class OspfInterfaceState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_ifs_backup;
         static const ydk::Enum::YLeaf mgmt_ospf_ifs_other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ospf-ifs-down") return 0;
+            if (name == "mgmt-ospf-ifs-loop-back") return 1;
+            if (name == "mgmt-ospf-ifs-waiting") return 2;
+            if (name == "mgmt-ospf-ifs-point-to-m-point") return 3;
+            if (name == "mgmt-ospf-ifs-point-to-point") return 4;
+            if (name == "mgmt-ospf-ifs-dr") return 5;
+            if (name == "mgmt-ospf-ifs-backup") return 6;
+            if (name == "mgmt-ospf-ifs-other") return 7;
+            return -1;
+        }
 };
 
 class Ipfrr : public ydk::Enum
@@ -31381,6 +31459,12 @@ class Ipfrr : public ydk::Enum
         static const ydk::Enum::YLeaf per_link;
         static const ydk::Enum::YLeaf per_prefix;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "per-link") return 1;
+            if (name == "per-prefix") return 2;
+            return -1;
+        }
 };
 
 class OspfSrgbStatus : public ydk::Enum
@@ -31390,6 +31474,12 @@ class OspfSrgbStatus : public ydk::Enum
         static const ydk::Enum::YLeaf pending;
         static const ydk::Enum::YLeaf allocated;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-allocated") return 0;
+            if (name == "pending") return 1;
+            if (name == "allocated") return 2;
+            return -1;
+        }
 };
 
 class OspfSrEndpResFailReason : public ydk::Enum
@@ -31409,6 +31499,22 @@ class OspfSrEndpResFailReason : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_se_res_fail_area_mismatch;
         static const ydk::Enum::YLeaf ospf_se_res_fail_rid_mismatch;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-se-res-fail-none") return 0;
+            if (name == "ospf-se-res-fail-no-route") return 1;
+            if (name == "ospf-se-res-fail-inv-route-type") return 2;
+            if (name == "ospf-se-res-fail-default-route") return 3;
+            if (name == "ospf-se-res-fail-intra-multi-home-d") return 4;
+            if (name == "ospf-se-res-fail-no-path") return 5;
+            if (name == "ospf-se-res-fail-no-epl") return 6;
+            if (name == "ospf-se-res-fail-area-not-sr-enable") return 7;
+            if (name == "ospf-se-res-fail-epl-multi-home-d") return 8;
+            if (name == "ospf-se-res-fail-no-n-bit-epl") return 9;
+            if (name == "ospf-se-res-fail-no-na-bit-epl") return 10;
+            if (name == "ospf-se-res-fail-area-mismatch") return 11;
+            if (name == "ospf-se-res-fail-rid-mismatch") return 12;
+            return -1;
+        }
 };
 
 class OspfSrlbStatus : public ydk::Enum
@@ -31418,6 +31524,12 @@ class OspfSrlbStatus : public ydk::Enum
         static const ydk::Enum::YLeaf not_allocated;
         static const ydk::Enum::YLeaf allocated;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "not-allocated") return 1;
+            if (name == "allocated") return 2;
+            return -1;
+        }
 };
 
 class SrDp : public ydk::Enum
@@ -31426,6 +31538,11 @@ class SrDp : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_sr_dp_none;
         static const ydk::Enum::YLeaf mgmt_ospf_sr_dp_mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ospf-sr-dp-none") return 0;
+            if (name == "mgmt-ospf-sr-dp-mpls") return 1;
+            return -1;
+        }
 };
 
 class Interface : public ydk::Enum
@@ -31440,6 +31557,17 @@ class Interface : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_if_sham_link;
         static const ydk::Enum::YLeaf mgmt_if_loop_back;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-if-broadcast") return 1;
+            if (name == "mgmt-if-nonbroadcast") return 2;
+            if (name == "mgmt-if-point-to-point") return 3;
+            if (name == "mgmt-if-point-to-m-point") return 4;
+            if (name == "mgmt-if-p2mp-non-bcast") return 5;
+            if (name == "mgmt-if-virtual-link") return 6;
+            if (name == "mgmt-if-sham-link") return 7;
+            if (name == "mgmt-if-loop-back") return 8;
+            return -1;
+        }
 };
 
 class OspfInternalLsaTypes : public ydk::Enum
@@ -31457,6 +31585,20 @@ class OspfInternalLsaTypes : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_opq_epl_type;
         static const ydk::Enum::YLeaf mgmt_opq_ell_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-rtr-type") return 1;
+            if (name == "mgmt-ntwk-type") return 2;
+            if (name == "mgmt-sum-type") return 3;
+            if (name == "mgmt-ext-type") return 4;
+            if (name == "mgmt-opq-type") return 5;
+            if (name == "mgmt-opq-link-type") return 6;
+            if (name == "mgmt-opq-rrr-type") return 7;
+            if (name == "mgmt-opq-gr-type") return 8;
+            if (name == "mgmt-opq-ri-type") return 9;
+            if (name == "mgmt-opq-epl-type") return 10;
+            if (name == "mgmt-opq-ell-type") return 11;
+            return -1;
+        }
 };
 
 class ExMetric : public ydk::Enum
@@ -31466,6 +31608,12 @@ class ExMetric : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ex_metric_type_1;
         static const ydk::Enum::YLeaf mgmt_ex_metric_type_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ex-metric-type-none") return 0;
+            if (name == "mgmt-ex-metric-type-1") return 1;
+            if (name == "mgmt-ex-metric-type-2") return 2;
+            return -1;
+        }
 };
 
 class GsState : public ydk::Enum
@@ -31478,6 +31626,15 @@ class GsState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_gs_hello;
         static const ydk::Enum::YLeaf mgmt_gs_quiet;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-gs-init") return 0;
+            if (name == "mgmt-gs-normal") return 1;
+            if (name == "mgmt-gs-delay") return 2;
+            if (name == "mgmt-gs-flush") return 3;
+            if (name == "mgmt-gs-hello") return 4;
+            if (name == "mgmt-gs-quiet") return 5;
+            return -1;
+        }
 };
 
 class OspfShOpqRiPceAddrTypes : public ydk::Enum
@@ -31487,6 +31644,12 @@ class OspfShOpqRiPceAddrTypes : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_ipv4;
         static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ospf-opq-pce-addr-type-invalid") return 0;
+            if (name == "mgmt-ospf-opq-pce-addr-type-ipv4") return 1;
+            if (name == "mgmt-ospf-opq-pce-addr-type-ipv6") return 2;
+            return -1;
+        }
 };
 
 class MaxMetricSetReason : public ydk::Enum
@@ -31499,6 +31662,15 @@ class MaxMetricSetReason : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_max_metric_always;
         static const ydk::Enum::YLeaf mgmt_max_metric_reason_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-max-metric-on-proc-migration") return 0;
+            if (name == "mgmt-max-metric-on-proc-restart") return 1;
+            if (name == "mgmt-max-metric-on-switchover") return 2;
+            if (name == "mgmt-max-metric-on-startup") return 3;
+            if (name == "mgmt-max-metric-always") return 4;
+            if (name == "mgmt-max-metric-reason-none") return 5;
+            return -1;
+        }
 };
 
 class OspfRoute : public ydk::Enum
@@ -31522,6 +31694,26 @@ class OspfRoute : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_r_type_i_grp2_int;
         static const ydk::Enum::YLeaf mgmt_r_type_i_grp2_ext;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-r-type-none") return 0;
+            if (name == "mgmt-r-type-other") return 1;
+            if (name == "mgmt-r-type-intra") return 2;
+            if (name == "mgmt-r-type-inter") return 4;
+            if (name == "mgmt-r-type-extern1") return 8;
+            if (name == "mgmt-r-type-extern2") return 16;
+            if (name == "mgmt-r-type-isis-sum") return 32;
+            if (name == "mgmt-r-type-isis-l1") return 64;
+            if (name == "mgmt-r-type-isis-l2") return 128;
+            if (name == "mgmt-r-type-isis-l1-ia") return 256;
+            if (name == "mgmt-r-type-bgp-int") return 512;
+            if (name == "mgmt-r-type-bgp-ext") return 1024;
+            if (name == "mgmt-r-type-bgp-loc") return 2048;
+            if (name == "mgmt-r-type-nssa1") return 4096;
+            if (name == "mgmt-r-type-nssa2") return 8192;
+            if (name == "mgmt-r-type-i-grp2-int") return 16384;
+            if (name == "mgmt-r-type-i-grp2-ext") return 32768;
+            return -1;
+        }
 };
 
 class SrUloopEvent : public ydk::Enum
@@ -31531,6 +31723,12 @@ class SrUloopEvent : public ydk::Enum
         static const ydk::Enum::YLeaf link_down;
         static const ydk::Enum::YLeaf link_up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "link-down") return 1;
+            if (name == "link-up") return 2;
+            return -1;
+        }
 };
 
 class OspfShOpqRiTlvTypes : public ydk::Enum
@@ -31544,6 +31742,16 @@ class OspfShOpqRiTlvTypes : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_node_msd;
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_srlb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ospf-opq-ri-tlv-type-unknown") return 0;
+            if (name == "mgmt-ospf-opq-ri-tlv-type-rtrcap") return 1;
+            if (name == "mgmt-ospf-opq-ri-tlv-type-pce-discovery") return 2;
+            if (name == "mgmt-ospf-opq-ri-tlv-type-sr-algo") return 3;
+            if (name == "mgmt-ospf-opq-ri-tlv-type-sr-range") return 4;
+            if (name == "mgmt-ospf-opq-ri-tlv-type-node-msd") return 5;
+            if (name == "mgmt-ospf-opq-ri-tlv-type-srlb") return 6;
+            return -1;
+        }
 };
 
 class Timer : public ydk::Enum
@@ -31554,6 +31762,13 @@ class Timer : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_db_checksum;
         static const ydk::Enum::YLeaf mgmt_db_max_age;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-db-stop") return 0;
+            if (name == "mgmt-db-refresh") return 1;
+            if (name == "mgmt-db-checksum") return 2;
+            if (name == "mgmt-db-max-age") return 3;
+            return -1;
+        }
 };
 
 class MaxMetricUnsetReason : public ydk::Enum
@@ -31566,6 +31781,15 @@ class MaxMetricUnsetReason : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_max_metric_unset_process_cleared;
         static const ydk::Enum::YLeaf mgmt_max_metric_unset_over_write;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-max-metric-unset-none") return 0;
+            if (name == "mgmt-max-metric-unset-bgp") return 1;
+            if (name == "mgmt-max-metric-unset-timer") return 2;
+            if (name == "mgmt-max-metric-unset-cfg") return 3;
+            if (name == "mgmt-max-metric-unset-process-cleared") return 4;
+            if (name == "mgmt-max-metric-unset-over-write") return 5;
+            return -1;
+        }
 };
 
 class OspfBr : public ydk::Enum
@@ -31575,6 +31799,12 @@ class OspfBr : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_d_type_asbr;
         static const ydk::Enum::YLeaf mgmt_d_type_abr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-d-type-abr-asbr") return 0;
+            if (name == "mgmt-d-type-asbr") return 1;
+            if (name == "mgmt-d-type-abr") return 2;
+            return -1;
+        }
 };
 
 class Stlv : public ydk::Enum
@@ -31599,6 +31829,27 @@ class Stlv : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_unreserved_bw_sub;
         static const ydk::Enum::YLeaf mgmt_rrr_link_igp_metric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-rrr-link-type") return 1;
+            if (name == "mgmt-rrr-link-id") return 2;
+            if (name == "mgmt-rrr-link-local-if-addr") return 3;
+            if (name == "mgmt-rrr-link-remote-if-addr") return 4;
+            if (name == "mgmt-rrr-link-metric") return 5;
+            if (name == "mgmt-rrr-link-max-bw") return 6;
+            if (name == "mgmt-rrr-link-max-reservable-bw") return 7;
+            if (name == "mgmt-rrr-link-unreserved-bw") return 8;
+            if (name == "mgmt-rrr-link-re-source-class") return 9;
+            if (name == "mgmt-rrr-link-in-out-if-id") return 11;
+            if (name == "mgmt-rrr-link-if-switching-cap-desc") return 15;
+            if (name == "mgmt-ospf-rrr-link-srlg") return 16;
+            if (name == "mgmt-rrr-link-bw-constraints-sub") return 17;
+            if (name == "mgmt-ospf-rrr-link-ext-admin-sub") return 26;
+            if (name == "mgmt-ospf-rrr-link-uni-delay") return 27;
+            if (name == "mgmt-ospf-rrr-link-max-reservable-bw-sub") return 32768;
+            if (name == "mgmt-ospf-rrr-link-unreserved-bw-sub") return 32769;
+            if (name == "mgmt-rrr-link-igp-metric") return 32770;
+            return -1;
+        }
 };
 
 class SrmsMiFlagEB : public ydk::Enum
@@ -31607,6 +31858,11 @@ class SrmsMiFlagEB : public ydk::Enum
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 1;
+            return -1;
+        }
 };
 
 class SrmsMiAfEB : public ydk::Enum
@@ -31616,6 +31872,12 @@ class SrmsMiAfEB : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class NeighborState : public ydk::Enum
@@ -31631,6 +31893,18 @@ class NeighborState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_nbr_full;
         static const ydk::Enum::YLeaf mgmt_nbr_sc_virtual;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-nbr-down") return 0;
+            if (name == "mgmt-nbr-attempt") return 1;
+            if (name == "mgmt-nbr-init") return 2;
+            if (name == "mgmt-nbr-2way") return 3;
+            if (name == "mgmt-nbr-ex-start") return 4;
+            if (name == "mgmt-nbr-ex-change") return 5;
+            if (name == "mgmt-nbr-load-ing") return 6;
+            if (name == "mgmt-nbr-full") return 7;
+            if (name == "mgmt-nbr-sc-virtual") return 8;
+            return -1;
+        }
 };
 
 class InterfaceState : public ydk::Enum
@@ -31642,6 +31916,14 @@ class InterfaceState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ifs_up;
         static const ydk::Enum::YLeaf mgmt_ifs_shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ifs-unknown") return 0;
+            if (name == "mgmt-ifs-admin-down") return 1;
+            if (name == "mgmt-ifs-down") return 2;
+            if (name == "mgmt-ifs-up") return 3;
+            if (name == "mgmt-ifs-shutdown") return 4;
+            return -1;
+        }
 };
 
 class MplsTeOptTlv : public ydk::Enum
@@ -31653,6 +31935,14 @@ class MplsTeOptTlv : public ydk::Enum
         static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_ixcd;
         static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_uni_delay;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls-te-opt-tlv-type-none") return 0;
+            if (name == "mpls-te-opt-tlv-type-srlg") return 1;
+            if (name == "mpls-te-opt-tlv-type-bc") return 2;
+            if (name == "mpls-te-opt-tlv-type-ixcd") return 3;
+            if (name == "mpls-te-opt-tlv-type-uni-delay") return 4;
+            return -1;
+        }
 };
 
 class RedistProtocol : public ydk::Enum
@@ -31672,6 +31962,22 @@ class RedistProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_rib_protocol_application;
         static const ydk::Enum::YLeaf mgmt_rib_protocol_mobile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-rib-protocol-all") return 0;
+            if (name == "mgmt-rib-protocol-connected") return 1;
+            if (name == "mgmt-rib-protocol-local") return 2;
+            if (name == "mgmt-rib-protocol-static") return 3;
+            if (name == "mgmt-rib-protocol-bgp") return 4;
+            if (name == "mgmt-rib-protocol-rip") return 5;
+            if (name == "mgmt-rib-protocol-isis") return 6;
+            if (name == "mgmt-rib-protocol-ospf") return 7;
+            if (name == "mgmt-rib-protocol-eigrp") return 8;
+            if (name == "mgmt-rib-protocol-dagr") return 9;
+            if (name == "mgmt-rib-protocol-subscriber") return 10;
+            if (name == "mgmt-rib-protocol-application") return 11;
+            if (name == "mgmt-rib-protocol-mobile") return 12;
+            return -1;
+        }
 };
 
 class Lfa : public ydk::Enum
@@ -31682,6 +31988,13 @@ class Lfa : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_ti_lfa;
         static const ydk::Enum::YLeaf mgmt_ospf_remote_lfa;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ospf-unknown-lfa") return 0;
+            if (name == "mgmt-ospf-direct-lfa") return 1;
+            if (name == "mgmt-ospf-ti-lfa") return 2;
+            if (name == "mgmt-ospf-remote-lfa") return 3;
+            return -1;
+        }
 };
 
 class OspfLsaOpqRiScope : public ydk::Enum
@@ -31691,6 +32004,12 @@ class OspfLsaOpqRiScope : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_area;
         static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_as;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsa-opq-ri-scope-link") return 9;
+            if (name == "mgmt-lsa-opq-ri-scope-area") return 10;
+            if (name == "mgmt-lsa-opq-ri-scope-as") return 11;
+            return -1;
+        }
 };
 
 class Lsa : public ydk::Enum
@@ -31708,6 +32027,20 @@ class Lsa : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsa_type_opq_area;
         static const ydk::Enum::YLeaf mgmt_lsa_type_opq_as;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-lsa-type-rtr") return 1;
+            if (name == "mgmt-lsa-type-net") return 2;
+            if (name == "mgmt-lsa-type-sum-net") return 3;
+            if (name == "mgmt-lsa-type-sum-asb") return 4;
+            if (name == "mgmt-lsa-type-ext") return 5;
+            if (name == "mgmt-lsa-type-mospf") return 6;
+            if (name == "mgmt-lsa-type-7-ase") return 7;
+            if (name == "mgmt-lsa-type-8-ignore") return 8;
+            if (name == "mgmt-lsa-type-opq-link") return 9;
+            if (name == "mgmt-lsa-type-opq-area") return 10;
+            if (name == "mgmt-lsa-type-opq-as") return 11;
+            return -1;
+        }
 };
 
 class OspfSrPolMetricMode : public ydk::Enum
@@ -31718,6 +32051,13 @@ class OspfSrPolMetricMode : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_metric_mode_constant;
         static const ydk::Enum::YLeaf mgmt_ospf_metric_mode_absolute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ospf-metric-mode-none") return 0;
+            if (name == "mgmt-ospf-metric-mode-relative") return 1;
+            if (name == "mgmt-ospf-metric-mode-constant") return 3;
+            if (name == "mgmt-ospf-metric-mode-absolute") return 4;
+            return -1;
+        }
 };
 
 class DrBdrState : public ydk::Enum
@@ -31728,6 +32068,13 @@ class DrBdrState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_dbdr_bdr;
         static const ydk::Enum::YLeaf mgmt_dbdr_dr_other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-dbdr-none") return 0;
+            if (name == "mgmt-dbdr-dr") return 1;
+            if (name == "mgmt-dbdr-bdr") return 2;
+            if (name == "mgmt-dbdr-dr-other") return 3;
+            return -1;
+        }
 };
 
 class OspfCrytographicAlgo : public ydk::Enum
@@ -31746,6 +32093,21 @@ class OspfCrytographicAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_hmac_sha_256;
         static const ydk::Enum::YLeaf mgmt_hmac_sha1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-not-configured") return 0;
+            if (name == "mgmt-aes-128-cmac-96") return 1;
+            if (name == "mgmt-hmac-sha1-12") return 2;
+            if (name == "mgmt-md5-16") return 3;
+            if (name == "mgmt-sha1-20") return 4;
+            if (name == "mgmt-hmac-md5-16") return 5;
+            if (name == "mgmt-hmac-sha1-20") return 6;
+            if (name == "mgmt-aes-128-cmac") return 7;
+            if (name == "mgmt-aes-256-cmac") return 8;
+            if (name == "mgmt-hmac-sha1-96") return 9;
+            if (name == "mgmt-hmac-sha-256") return 10;
+            if (name == "mgmt-hmac-sha1") return 11;
+            return -1;
+        }
 };
 
 class TimerTable : public ydk::Enum
@@ -31756,6 +32118,13 @@ class TimerTable : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_db_buffer_table;
         static const ydk::Enum::YLeaf mgmt_db_min_table;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-db-no-table") return 0;
+            if (name == "mgmt-db-sec-table") return 1;
+            if (name == "mgmt-db-buffer-table") return 2;
+            if (name == "mgmt-db-min-table") return 3;
+            return -1;
+        }
 };
 
 class OspfGrReason : public ydk::Enum
@@ -31766,6 +32135,13 @@ class OspfGrReason : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_gr_reason_sw_upgrade;
         static const ydk::Enum::YLeaf mgmt_gr_reason_switchover;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-gr-reason-unknown") return 0;
+            if (name == "mgmt-gr-reason-sw-restart") return 1;
+            if (name == "mgmt-gr-reason-sw-upgrade") return 2;
+            if (name == "mgmt-gr-reason-switchover") return 3;
+            return -1;
+        }
 };
 
 class OspfMaxMetricAbrOffReasons : public ydk::Enum
@@ -31777,6 +32153,14 @@ class OspfMaxMetricAbrOffReasons : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_nbr_full;
         static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_flush_p_end;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-max-metric-abr-off-reason-none") return 0;
+            if (name == "ospf-max-metric-abr-off-reason-no-nbr") return 1;
+            if (name == "ospf-max-metric-abr-off-reason-new-nbr") return 2;
+            if (name == "ospf-max-metric-abr-off-reason-nbr-full") return 4;
+            if (name == "ospf-max-metric-abr-off-reason-flush-p-end") return 8;
+            return -1;
+        }
 };
 
 class OspfLs : public ydk::Enum
@@ -31792,6 +32176,18 @@ class OspfLs : public ydk::Enum
         static const ydk::Enum::YLeaf opaque_area;
         static const ydk::Enum::YLeaf opaque_as;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "router") return 1;
+            if (name == "network") return 2;
+            if (name == "summary") return 3;
+            if (name == "asbr-summary") return 4;
+            if (name == "external") return 5;
+            if (name == "nssa-external") return 7;
+            if (name == "opaque-link") return 9;
+            if (name == "opaque-area") return 10;
+            if (name == "opaque-as") return 11;
+            return -1;
+        }
 };
 
 

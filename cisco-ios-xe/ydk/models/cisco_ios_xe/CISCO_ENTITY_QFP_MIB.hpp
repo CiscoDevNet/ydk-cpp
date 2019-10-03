@@ -336,6 +336,13 @@ class CiscoQfpTimeInterval : public ydk::Enum
         static const ydk::Enum::YLeaf fiveMinutes;
         static const ydk::Enum::YLeaf sixtyMinutes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fiveSeconds") return 1;
+            if (name == "oneMinute") return 2;
+            if (name == "fiveMinutes") return 3;
+            if (name == "sixtyMinutes") return 4;
+            return -1;
+        }
 };
 
 class CiscoQfpMemoryResource : public ydk::Enum
@@ -343,6 +350,10 @@ class CiscoQfpMemoryResource : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf dram;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dram") return 1;
+            return -1;
+        }
 };
 
 class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpFiveSecondUtilAlgo : public ydk::Enum
@@ -351,6 +362,11 @@ class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpFiveSecondUtilAlgo : public ydk::E
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf fiveSecSample;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "fiveSecSample") return 2;
+            return -1;
+        }
 };
 
 class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpOneMinuteUtilAlgo : public ydk::Enum
@@ -359,6 +375,11 @@ class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpOneMinuteUtilAlgo : public ydk::En
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf fiveSecSMA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "fiveSecSMA") return 2;
+            return -1;
+        }
 };
 
 class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpFiveMinutesUtilAlgo : public ydk::Enum
@@ -367,6 +388,11 @@ class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpFiveMinutesUtilAlgo : public ydk::
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf fiveSecSMA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "fiveSecSMA") return 2;
+            return -1;
+        }
 };
 
 class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpSixtyMinutesUtilAlgo : public ydk::Enum
@@ -375,6 +401,11 @@ class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpSixtyMinutesUtilAlgo : public ydk:
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf fiveSecSMA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "fiveSecSMA") return 2;
+            return -1;
+        }
 };
 
 class CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry::CeqfpSystemTrafficDirection : public ydk::Enum
@@ -385,6 +416,13 @@ class CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry::CeqfpSystemTrafficD
         static const ydk::Enum::YLeaf egress;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "ingress") return 2;
+            if (name == "egress") return 3;
+            if (name == "both") return 4;
+            return -1;
+        }
 };
 
 class CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry::CeqfpSystemState : public ydk::Enum
@@ -398,6 +436,16 @@ class CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry::CeqfpSystemState : 
         static const ydk::Enum::YLeaf standby;
         static const ydk::Enum::YLeaf hotStandby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "reset") return 2;
+            if (name == "init") return 3;
+            if (name == "active") return 4;
+            if (name == "activeSolo") return 5;
+            if (name == "standby") return 6;
+            if (name == "hotStandby") return 7;
+            return -1;
+        }
 };
 
 class CISCOENTITYQFPMIB::CeqfpThroughputTable::CeqfpThroughputEntry::CeqfpThroughputLevel : public ydk::Enum
@@ -407,6 +455,12 @@ class CISCOENTITYQFPMIB::CeqfpThroughputTable::CeqfpThroughputEntry::CeqfpThroug
         static const ydk::Enum::YLeaf warning;
         static const ydk::Enum::YLeaf exceed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 1;
+            if (name == "warning") return 2;
+            if (name == "exceed") return 3;
+            return -1;
+        }
 };
 
 

@@ -321,6 +321,15 @@ class CISCOTAP2MIB::CTap2MediationTable::CTap2MediationEntry::CTap2MediationTran
         static const ydk::Enum::YLeaf rtp;
         static const ydk::Enum::YLeaf radius;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "udp") return 1;
+            if (name == "rtpNack") return 2;
+            if (name == "tcp") return 3;
+            if (name == "sctp") return 4;
+            if (name == "rtp") return 5;
+            if (name == "radius") return 6;
+            return -1;
+        }
 };
 
 class CISCOTAP2MIB::CTap2StreamTable::CTap2StreamEntry::CTap2StreamType : public ydk::Enum
@@ -333,6 +342,15 @@ class CISCOTAP2MIB::CTap2StreamTable::CTap2StreamEntry::CTap2StreamType : public
         static const ydk::Enum::YLeaf mobility;
         static const ydk::Enum::YLeaf voip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 1;
+            if (name == "mac") return 2;
+            if (name == "userConnection") return 3;
+            if (name == "msPdsn") return 4;
+            if (name == "mobility") return 5;
+            if (name == "voip") return 6;
+            return -1;
+        }
 };
 
 

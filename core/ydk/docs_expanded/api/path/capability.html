@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Capability &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../index.html"/>
+        <link rel="up" title="YDK Path API" href="path.html"/>
+        <link rel="next" title="Codec" href="codec.html"/>
+        <link rel="prev" title="YPathError" href="errors/path_error.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-nodes">Path API Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-errors">Path API Errors</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="path.html#path-api">Path API</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">Capability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec.html">Codec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model_provider.html">ModelProvider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="repository.html">Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc.html">Rpc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html">Path API types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_service.html">ValidationService</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>Capability</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="capability">
+<h1>Capability<a class="headerlink" href="#capability" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path10CapabilityE">
+<span id="ydk::path::Capability"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">Capability</code><a class="headerlink" href="#_CPPv2N3ydk4path10CapabilityE" title="Permalink to this definition">¶</a></dt>
+<dd><p>An instance of Capability consists of module name, revision, a the set of enabled features defined in this modules as well as the list of deviation modules.</p>
+<dl class="member">
+<dt id="_CPPv26module">
+<span id="ydk::path::Capability::module__ss"></span>std::string <code class="descclassname"></code><code class="descname">module</code><a class="headerlink" href="#_CPPv26module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Capability&#8217;s module name.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv28revision">
+<span id="ydk::path::Capability::revision__ss"></span>std::string <code class="descclassname"></code><code class="descname">revision</code><a class="headerlink" href="#_CPPv28revision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Capability&#8217;s module revision.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv28features">
+<span id="ydk::path::Capability::features__std::vector:ss:"></span>std::vector&lt;std::string&gt; <code class="descclassname"></code><code class="descname">features</code><a class="headerlink" href="#_CPPv28features" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of features defined in this module that are enabled.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv210deviations">
+<span id="ydk::path::Capability::deviations__std::vector:ss:"></span>std::vector&lt;std::string&gt; <code class="descclassname"></code><code class="descname">deviations</code><a class="headerlink" href="#_CPPv210deviations" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of deviations that targeted for this module.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Capability10CapabilityERKNSt6stringERKNSt6stringE">
+<span id="ydk::path::Capability::Capability__ssCR.ssCR"></span><code class="descclassname"></code><code class="descname">Capability</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>mod</em>, <em class="property">const</em> std::string &amp;<em>rev</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Capability10CapabilityERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Capability10CapabilityERKNSt6stringERKNSt6stringERKNSt6vectorINSt6stringEEERKNSt6vectorINSt6stringEEE">
+<span id="ydk::path::Capability::Capability__ssCR.ssCR.std::vector:ss:CR.std::vector:ss:CR"></span><code class="descclassname"></code><code class="descname">Capability</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>mod</em>, <em class="property">const</em> std::string &amp;<em>rev</em>, <em class="property">const</em> std::vector&lt;std::string&gt; &amp;<em>f</em>, <em class="property">const</em> std::vector&lt;std::string&gt; &amp;<em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Capability10CapabilityERKNSt6stringERKNSt6stringERKNSt6vectorINSt6stringEEERKNSt6vectorINSt6stringEEE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Capability10CapabilityERK10Capability">
+<span id="ydk::path::Capability::Capability__CapabilityCR"></span><code class="descclassname"></code><code class="descname">Capability</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a> &amp;<em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Capability10CapabilityERK10Capability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Capability10CapabilityERR10Capability">
+<span id="ydk::path::Capability::Capability__CapabilityRR"></span><code class="descclassname"></code><code class="descname">Capability</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a> &amp;&amp;<em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Capability10CapabilityERR10Capability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10CapabilityaSERK10Capability">
+<span id="ydk::path::Capability::assign-operator__CapabilityCR"></span><a class="reference internal" href="#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a> &amp;<code class="descclassname"></code><code class="descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a> &amp;<em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10CapabilityaSERK10Capability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10CapabilityaSERR10Capability">
+<span id="ydk::path::Capability::assign-operator__CapabilityRR"></span><a class="reference internal" href="#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a> &amp;<code class="descclassname"></code><code class="descname">operator=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a> &amp;&amp;<em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10CapabilityaSERR10Capability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10CapabilityeqERK10Capability">
+<span id="ydk::path::Capability::eq-operator__CapabilityCR"></span>bool <code class="descclassname"></code><code class="descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a> &amp;<em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10CapabilityeqERK10Capability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="codec.html" class="btn btn-neutral float-right" title="Codec" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="errors/path_error.html" class="btn btn-neutral" title="YPathError" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

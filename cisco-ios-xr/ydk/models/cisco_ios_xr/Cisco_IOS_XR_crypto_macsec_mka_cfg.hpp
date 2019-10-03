@@ -102,6 +102,12 @@ class MacsecMkaConfOffset : public ydk::Enum
         static const ydk::Enum::YLeaf conf_off_set_30;
         static const ydk::Enum::YLeaf conf_off_set_50;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "conf-off-set-0") return 0;
+            if (name == "conf-off-set-30") return 30;
+            if (name == "conf-off-set-50") return 50;
+            return -1;
+        }
 };
 
 class MacsecMkaSecurityPolicy : public ydk::Enum
@@ -110,6 +116,11 @@ class MacsecMkaSecurityPolicy : public ydk::Enum
         static const ydk::Enum::YLeaf should_secure;
         static const ydk::Enum::YLeaf must_secure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "should-secure") return 0;
+            if (name == "must-secure") return 1;
+            return -1;
+        }
 };
 
 class MacsecMkaPolicyException : public ydk::Enum
@@ -117,6 +128,10 @@ class MacsecMkaPolicyException : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf lacp_in_clear;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lacp-in-clear") return 1;
+            return -1;
+        }
 };
 
 class MacsecMkaCipherSuite : public ydk::Enum
@@ -127,6 +142,13 @@ class MacsecMkaCipherSuite : public ydk::Enum
         static const ydk::Enum::YLeaf gcm_aes_xpn_128;
         static const ydk::Enum::YLeaf gcm_aes_xpn_256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "gcm-aes-128") return 1;
+            if (name == "gcm-aes-256") return 2;
+            if (name == "gcm-aes-xpn-128") return 3;
+            if (name == "gcm-aes-xpn-256") return 4;
+            return -1;
+        }
 };
 
 

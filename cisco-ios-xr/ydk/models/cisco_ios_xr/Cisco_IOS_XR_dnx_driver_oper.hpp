@@ -1770,18 +1770,20 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         ydk::YLeaf slot_no; //type: uint32
         ydk::YLeaf asic_instance; //type: uint32
         ydk::YLeaf chip_ver; //type: uint16
-        class StatsInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo
+        class AggrStats; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats
+        class OvfStatus; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo> stats_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats> aggr_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus> ovf_status;
         
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats
 
 
-class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo : public ydk::Entity
+class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats : public ydk::Entity
 {
     public:
-        StatsInfo();
-        ~StatsInfo();
+        AggrStats();
+        ~AggrStats();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1793,19 +1795,340 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf num_blocks; //type: uint8
-        class BlockInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo
+        ydk::YLeaf rx_internal_error; //type: uint64
+        ydk::YLeaf rx_internal_drop; //type: uint64
+        ydk::YLeaf tx_internal_error; //type: uint64
+        ydk::YLeaf tx_internal_drop; //type: uint64
+        ydk::YLeaf cmic_cmc0_pkt_count_tx_pkt; //type: uint64
+        ydk::YLeaf cmic_cmc0_pkt_count_rx_pkt; //type: uint64
+        ydk::YLeaf nbi_stat_rx_bursts_err_cnt; //type: uint64
+        ydk::YLeaf nbi_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf nbi_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf nbi_parity_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn_crc32_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_crc24_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_burst_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_miss_sop_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_miss_eop_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_misaligned_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_crc24_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_burst_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_miss_sop_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_miss_eop_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_misaligned_cnt; //type: uint64
+        ydk::YLeaf nbi_tx_ilkn1_flushed_bursts_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_retrans_crc24_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_retrans_retry_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_retrans_wdog_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn0_retrans_reached_timeout_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_retrans_crc24_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_retrans_retry_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_retrans_wdog_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_ilkn1_retrans_reached_timeout_err_cnt; //type: uint64
+        ydk::YLeaf nbi_stat_rx_frame_err_cnt; //type: uint64
+        ydk::YLeaf nbi_stat_tx_frame_err_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_elk_err_bursts_cnt; //type: uint64
+        ydk::YLeaf nbi_rx_num_thrown_eops; //type: uint64
+        ydk::YLeaf nbi_rx_num_runts; //type: uint64
+        ydk::YLeaf nbi_bist_tx_crc_err_bursts_cnt; //type: uint64
+        ydk::YLeaf nbi_bist_rx_err_length_bursts_cnt; //type: uint64
+        ydk::YLeaf nbi_bist_rx_err_burst_index_cnt; //type: uint64
+        ydk::YLeaf nbi_bist_rx_err_bct_cnt; //type: uint64
+        ydk::YLeaf nbi_bist_rx_err_data_cnt; //type: uint64
+        ydk::YLeaf nbi_bist_rx_err_in_crc_err_cnt; //type: uint64
+        ydk::YLeaf nbi_bist_rx_err_sob_cnt; //type: uint64
+        ydk::YLeaf nbi_stat_tx_bursts_cnt; //type: uint64
+        ydk::YLeaf nbi_stat_tx_total_leng_cnt; //type: uint64
+        ydk::YLeaf rxaui_total_tx_pkt_count; //type: uint64
+        ydk::YLeaf rxaui_total_rx_pkt_count; //type: uint64
+        ydk::YLeaf rxaui_rx_pkt_count_bcast_pkt; //type: uint64
+        ydk::YLeaf rxaui_tx_pkt_count_bcast_pkt; //type: uint64
+        ydk::YLeaf rxaui_rx_pkt_count_mcast_pkt; //type: uint64
+        ydk::YLeaf rxaui_tx_pkt_count_mcast_pkt; //type: uint64
+        ydk::YLeaf rxaui_rx_pkt_count_ucast_pkt; //type: uint64
+        ydk::YLeaf rxaui_tx_pkt_count_ucast_pkt; //type: uint64
+        ydk::YLeaf rxaui_rx_err_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf rxaui_tx_err_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf rxaui_byte_count_tx_pkt; //type: uint64
+        ydk::YLeaf rxaui_byte_count_rx_pkt; //type: uint64
+        ydk::YLeaf rxaui_rx_dscrd_pkt_cnt; //type: uint64
+        ydk::YLeaf rxaui_tx_dscrd_pkt_cnt; //type: uint64
+        ydk::YLeaf ire_nif_packet_counter; //type: uint64
+        ydk::YLeaf il_total_rx_pkt_count; //type: uint64
+        ydk::YLeaf il_total_tx_pkt_count; //type: uint64
+        ydk::YLeaf il_rx_err_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf il_tx_err_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf il_byte_count_tx_pkt; //type: uint64
+        ydk::YLeaf il_byte_count_rx_pkt; //type: uint64
+        ydk::YLeaf il_rx_dscrd_pkt_cnt; //type: uint64
+        ydk::YLeaf il_tx_dscrd_pkt_cnt; //type: uint64
+        ydk::YLeaf il_rx_pkt_count_bcast_pkt; //type: uint64
+        ydk::YLeaf il_tx_pkt_count_bcast_pkt; //type: uint64
+        ydk::YLeaf il_rx_pkt_count_mcast_pkt; //type: uint64
+        ydk::YLeaf il_tx_pkt_count_mcast_pkt; //type: uint64
+        ydk::YLeaf il_rx_pkt_count_ucast_pkt; //type: uint64
+        ydk::YLeaf il_tx_pkt_count_ucast_pkt; //type: uint64
+        ydk::YLeaf iqm_enq_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_enq_byte_cnt; //type: uint64
+        ydk::YLeaf iqm_deq_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_deq_byte_cnt; //type: uint64
+        ydk::YLeaf iqm_tot_dscrd_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_tot_dscrd_byte_cnt; //type: uint64
+        ydk::YLeaf iqm_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf iqm_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf iqm_parity_err_cnt; //type: uint64
+        ydk::YLeaf iqm_deq_delete_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_ecn_dscrd_msk_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_q_tot_dscrd_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_q_deq_delete_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_db_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_bdb_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_bdb_protct_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_oc_bd_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_sn_err_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_mc_err_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_rsrc_err_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_qnvalid_err_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_cnm_pkt_cnt; //type: uint64
+        ydk::YLeaf iqm_rjct_dyn_space_pkt_cnt; //type: uint64
+        ydk::YLeaf ipt_fdt_pkt_cnt; //type: uint64
+        ydk::YLeaf ipt_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf ipt_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf ipt_parity_err_cnt; //type: uint64
+        ydk::YLeaf ipt_crc_err_cnt; //type: uint64
+        ydk::YLeaf ipt_crc_err_del_buff_cnt; //type: uint64
+        ydk::YLeaf ipt_cpu_del_buff_cnt; //type: uint64
+        ydk::YLeaf ipt_cpu_rel_buff_cnt; //type: uint64
+        ydk::YLeaf ipt_crc_err_buff_fifo_full_cnt; //type: uint64
+        ydk::YLeaf fdt_data_cell_cnt; //type: uint64
+        ydk::YLeaf fdt_data_byte_cnt; //type: uint64
+        ydk::YLeaf fdt_crc_dropped_pck_cnt; //type: uint64
+        ydk::YLeaf fdt_invalid_destq_drop_cell_cnt; //type: uint64
+        ydk::YLeaf fdt_indirect_command_count; //type: uint64
+        ydk::YLeaf fdt_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fdt_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fdt_parity_err_cnt; //type: uint64
+        ydk::YLeaf fdt_crc_dropped_cell_cnt; //type: uint64
+        ydk::YLeaf fcr_control_cell_cnt; //type: uint64
+        ydk::YLeaf fcr_cell_drop_cnt; //type: uint64
+        ydk::YLeaf fcr_credit_cell_drop_cnt; //type: uint64
+        ydk::YLeaf fcr_fs_cell_drop_cnt; //type: uint64
+        ydk::YLeaf fcr_rt_cell_drop_cnt; //type: uint64
+        ydk::YLeaf fcr_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fcr_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fdr_data_cell_cnt; //type: uint64
+        ydk::YLeaf fdr_data_byte_cnt; //type: uint64
+        ydk::YLeaf fdr_crc_dropped_pck_cnt; //type: uint64
+        ydk::YLeaf fdr_p_pkt_cnt; //type: uint64
+        ydk::YLeaf fdr_prm_error_filter_cnt; //type: uint64
+        ydk::YLeaf fdr_sec_error_filter_cnt; //type: uint64
+        ydk::YLeaf fdr_prm_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fdr_prm_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fdr_sec_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fdr_sec_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf egq_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf egq_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf egq_parity_err_cnt; //type: uint64
+        ydk::YLeaf egq_dbf_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf egq_dbf_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf egq_empty_mcid_counter; //type: uint64
+        ydk::YLeaf egq_rqp_discard_packet_counter; //type: uint64
+        ydk::YLeaf egq_ehp_discard_packet_counter; //type: uint64
+        ydk::YLeaf egq_ipt_pkt_cnt; //type: uint64
+        ydk::YLeaf epni_epe_pkt_cnt; //type: uint64
+        ydk::YLeaf epni_epe_byte_cnt; //type: uint64
+        ydk::YLeaf epni_epe_discard_pkt_cnt; //type: uint64
+        ydk::YLeaf epni_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf epni_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf epni_parity_err_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_ucast_pkt_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_ucast_h_pkt_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_ucast_l_pkt_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_ucast_bytes_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_ucast_discard_pkt_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_mcast_pkt_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_mcast_h_pkt_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_mcast_l_pkt_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_mcast_bytes_cnt; //type: uint64
+        ydk::YLeaf egq_pqp_mcast_discard_pkt_cnt; //type: uint64
+        ydk::YLeaf fct_control_cell_cnt; //type: uint64
+        ydk::YLeaf fct_unrch_crdt_cnt; //type: uint64
+        ydk::YLeaf idr_reassembly_errors; //type: uint64
+        ydk::YLeaf idr_mmu_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf idr_mmu_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_packets0_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_packets1_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_packets2_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_packets3_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_octets0_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_octets1_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_octets2_cnt; //type: uint64
+        ydk::YLeaf idr_discarded_octets3_cnt; //type: uint64
+        ydk::YLeaf mmu_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf mmu_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf oamp_parity_err_cnt; //type: uint64
+        ydk::YLeaf oamp_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf oamp_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf crps_parity_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_kpcs0_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_kpcs1_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_kpcs2_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_kpcs3_tst_rx_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_tst0_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_tst1_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_tst2_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_tst3_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_ecc_1b_err_cnt; //type: uint64
+        ydk::YLeaf fmac0_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac1_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac2_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac3_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac4_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac5_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac6_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac7_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf fmac8_ecc_2b_err_cnt; //type: uint64
+        ydk::YLeaf olp_incoming_bad_identifier_counter; //type: uint64
+        ydk::YLeaf olp_incoming_bad_reassembly_counter; //type: uint64
+        ydk::YLeaf cfc_parity_err_cnt; //type: uint64
+        ydk::YLeaf cfc_ilkn0_oob_rx_crc_err_cntr; //type: uint64
+        ydk::YLeaf cfc_ilkn1_oob_rx_crc_err_cntr; //type: uint64
+        ydk::YLeaf cfc_spi_oob_rx0_frm_err_cnt; //type: uint64
+        ydk::YLeaf cfc_spi_oob_rx0_dip2_err_cnt; //type: uint64
+        ydk::YLeaf cfc_spi_oob_rx1_frm_err_cnt; //type: uint64
+        ydk::YLeaf cfc_spi_oob_rx1_dip2_err_cnt; //type: uint64
+        ydk::YLeaf cgm_cgm_uc_pd_dropped_cnt; //type: uint64
+        ydk::YLeaf cgm_cgm_mc_rep_pd_dropped_cnt; //type: uint64
+        ydk::YLeaf cgm_cgm_uc_db_dropped_by_rqp_cnt; //type: uint64
+        ydk::YLeaf cgm_cgm_uc_db_dropped_by_pqp_cnt; //type: uint64
+        ydk::YLeaf cgm_cgm_mc_rep_db_dropped_cnt; //type: uint64
+        ydk::YLeaf cgm_cgm_mc_db_dropped_cnt; //type: uint64
+        ydk::YLeaf drca_full_err_cnt; //type: uint64
+        ydk::YLeaf drca_single_err_cnt; //type: uint64
+        ydk::YLeaf drca_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drca_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drcb_full_err_cnt; //type: uint64
+        ydk::YLeaf drcb_single_err_cnt; //type: uint64
+        ydk::YLeaf drcb_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drcb_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drcc_full_err_cnt; //type: uint64
+        ydk::YLeaf drcc_single_err_cnt; //type: uint64
+        ydk::YLeaf drcc_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drcc_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drcd_full_err_cnt; //type: uint64
+        ydk::YLeaf drcd_single_err_cnt; //type: uint64
+        ydk::YLeaf drcd_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drcd_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drce_full_err_cnt; //type: uint64
+        ydk::YLeaf drce_single_err_cnt; //type: uint64
+        ydk::YLeaf drce_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drce_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drcf_full_err_cnt; //type: uint64
+        ydk::YLeaf drcf_single_err_cnt; //type: uint64
+        ydk::YLeaf drcf_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drcf_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drcg_full_err_cnt; //type: uint64
+        ydk::YLeaf drcg_single_err_cnt; //type: uint64
+        ydk::YLeaf drcg_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drcg_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drch_full_err_cnt; //type: uint64
+        ydk::YLeaf drch_single_err_cnt; //type: uint64
+        ydk::YLeaf drch_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drch_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf drcbroadcast_full_err_cnt; //type: uint64
+        ydk::YLeaf drcbroadcast_single_err_cnt; //type: uint64
+        ydk::YLeaf drcbroadcast_calib_bist_full_err_cnt; //type: uint64
+        ydk::YLeaf drcbroadcast_loopback_full_err_cnt; //type: uint64
+        ydk::YLeaf otn_mode; //type: uint32
+        ydk::YLeaf num_ports; //type: uint32
+        class AggrStatsOtn; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn
 
-        ydk::YList block_info;
+        ydk::YList aggr_stats_otn;
         
-}; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo
+}; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats
 
 
-class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo : public ydk::Entity
+class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn : public ydk::Entity
 {
     public:
-        BlockInfo();
-        ~BlockInfo();
+        AggrStatsOtn();
+        ~AggrStatsOtn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1817,20 +2140,17 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf block_name; //type: string
-        ydk::YLeaf num_fields; //type: uint8
-        class FieldInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo
+        ydk::YLeaf il_total_rx_pkt_count; //type: uint64
+        ydk::YLeaf il_total_tx_pkt_count; //type: uint64
 
-        ydk::YList field_info;
-        
-}; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo
+}; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn
 
 
-class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo : public ydk::Entity
+class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus : public ydk::Entity
 {
     public:
-        FieldInfo();
-        ~FieldInfo();
+        OvfStatus();
+        ~OvfStatus();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1842,11 +2162,324 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf field_name; //type: string
-        ydk::YLeaf field_value; //type: uint64
-        ydk::YLeaf is_ovf; //type: boolean
+        ydk::YLeaf cmic_cmc0_pkt_count_tx_pkt; //type: string
+        ydk::YLeaf cmic_cmc0_pkt_count_rx_pkt; //type: string
+        ydk::YLeaf nbi_stat_rx_bursts_err_cnt; //type: string
+        ydk::YLeaf nbi_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf nbi_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf nbi_parity_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn_crc32_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_crc24_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_burst_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_miss_sop_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_miss_eop_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_misaligned_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_crc24_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_burst_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_miss_sop_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_miss_eop_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_misaligned_cnt; //type: string
+        ydk::YLeaf nbi_tx_ilkn1_flushed_bursts_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_retrans_crc24_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_retrans_retry_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_retrans_wdog_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn0_retrans_reached_timeout_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_retrans_crc24_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_retrans_retry_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_retrans_wdog_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_ilkn1_retrans_reached_timeout_err_cnt; //type: string
+        ydk::YLeaf nbi_stat_rx_frame_err_cnt; //type: string
+        ydk::YLeaf nbi_stat_tx_frame_err_cnt; //type: string
+        ydk::YLeaf nbi_rx_elk_err_bursts_cnt; //type: string
+        ydk::YLeaf nbi_rx_num_thrown_eops; //type: string
+        ydk::YLeaf nbi_rx_num_runts; //type: string
+        ydk::YLeaf nbi_bist_tx_crc_err_bursts_cnt; //type: string
+        ydk::YLeaf nbi_bist_rx_err_length_bursts_cnt; //type: string
+        ydk::YLeaf nbi_bist_rx_err_burst_index_cnt; //type: string
+        ydk::YLeaf nbi_bist_rx_err_bct_cnt; //type: string
+        ydk::YLeaf nbi_bist_rx_err_data_cnt; //type: string
+        ydk::YLeaf nbi_bist_rx_err_in_crc_err_cnt; //type: string
+        ydk::YLeaf nbi_bist_rx_err_sob_cnt; //type: string
+        ydk::YLeaf nbi_stat_tx_bursts_cnt; //type: string
+        ydk::YLeaf nbi_stat_tx_total_leng_cnt; //type: string
+        ydk::YLeaf rxaui_total_tx_pkt_count; //type: string
+        ydk::YLeaf rxaui_total_rx_pkt_count; //type: string
+        ydk::YLeaf rxaui_rx_pkt_count_bcast_pkt; //type: string
+        ydk::YLeaf rxaui_tx_pkt_count_bcast_pkt; //type: string
+        ydk::YLeaf rxaui_rx_pkt_count_mcast_pkt; //type: string
+        ydk::YLeaf rxaui_tx_pkt_count_mcast_pkt; //type: string
+        ydk::YLeaf rxaui_rx_pkt_count_ucast_pkt; //type: string
+        ydk::YLeaf rxaui_tx_pkt_count_ucast_pkt; //type: string
+        ydk::YLeaf rxaui_rx_err_drop_pkt_cnt; //type: string
+        ydk::YLeaf rxaui_tx_err_drop_pkt_cnt; //type: string
+        ydk::YLeaf rxaui_byte_count_tx_pkt; //type: string
+        ydk::YLeaf rxaui_byte_count_rx_pkt; //type: string
+        ydk::YLeaf rxaui_rx_dscrd_pkt_cnt; //type: string
+        ydk::YLeaf rxaui_tx_dscrd_pkt_cnt; //type: string
+        ydk::YLeaf ire_nif_packet_counter; //type: string
+        ydk::YLeaf il_total_rx_pkt_count; //type: string
+        ydk::YLeaf il_total_tx_pkt_count; //type: string
+        ydk::YLeaf il_rx_err_drop_pkt_cnt; //type: string
+        ydk::YLeaf il_tx_err_drop_pkt_cnt; //type: string
+        ydk::YLeaf il_byte_count_tx_pkt; //type: string
+        ydk::YLeaf il_byte_count_rx_pkt; //type: string
+        ydk::YLeaf il_rx_dscrd_pkt_cnt; //type: string
+        ydk::YLeaf il_tx_dscrd_pkt_cnt; //type: string
+        ydk::YLeaf il_rx_pkt_count_bcast_pkt; //type: string
+        ydk::YLeaf il_tx_pkt_count_bcast_pkt; //type: string
+        ydk::YLeaf il_rx_pkt_count_mcast_pkt; //type: string
+        ydk::YLeaf il_tx_pkt_count_mcast_pkt; //type: string
+        ydk::YLeaf il_rx_pkt_count_ucast_pkt; //type: string
+        ydk::YLeaf il_tx_pkt_count_ucast_pkt; //type: string
+        ydk::YLeaf iqm_enq_pkt_cnt; //type: string
+        ydk::YLeaf iqm_enq_byte_cnt; //type: string
+        ydk::YLeaf iqm_deq_pkt_cnt; //type: string
+        ydk::YLeaf iqm_deq_byte_cnt; //type: string
+        ydk::YLeaf iqm_tot_dscrd_pkt_cnt; //type: string
+        ydk::YLeaf iqm_tot_dscrd_byte_cnt; //type: string
+        ydk::YLeaf iqm_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf iqm_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf iqm_parity_err_cnt; //type: string
+        ydk::YLeaf iqm_deq_delete_pkt_cnt; //type: string
+        ydk::YLeaf iqm_ecn_dscrd_msk_pkt_cnt; //type: string
+        ydk::YLeaf iqm_q_tot_dscrd_pkt_cnt; //type: string
+        ydk::YLeaf iqm_q_deq_delete_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_db_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_bdb_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_bdb_protct_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_oc_bd_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_sn_err_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_mc_err_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_rsrc_err_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_qnvalid_err_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_cnm_pkt_cnt; //type: string
+        ydk::YLeaf iqm_rjct_dyn_space_pkt_cnt; //type: string
+        ydk::YLeaf ipt_fdt_pkt_cnt; //type: string
+        ydk::YLeaf ipt_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf ipt_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf ipt_parity_err_cnt; //type: string
+        ydk::YLeaf ipt_crc_err_cnt; //type: string
+        ydk::YLeaf ipt_crc_err_del_buff_cnt; //type: string
+        ydk::YLeaf ipt_cpu_del_buff_cnt; //type: string
+        ydk::YLeaf ipt_cpu_rel_buff_cnt; //type: string
+        ydk::YLeaf ipt_crc_err_buff_fifo_full_cnt; //type: string
+        ydk::YLeaf fdt_data_cell_cnt; //type: string
+        ydk::YLeaf fdt_data_byte_cnt; //type: string
+        ydk::YLeaf fdt_crc_dropped_pck_cnt; //type: string
+        ydk::YLeaf fdt_invalid_destq_drop_cell_cnt; //type: string
+        ydk::YLeaf fdt_indirect_command_count; //type: string
+        ydk::YLeaf fdt_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fdt_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fdt_parity_err_cnt; //type: string
+        ydk::YLeaf fdt_crc_dropped_cell_cnt; //type: string
+        ydk::YLeaf fcr_control_cell_cnt; //type: string
+        ydk::YLeaf fcr_cell_drop_cnt; //type: string
+        ydk::YLeaf fcr_credit_cell_drop_cnt; //type: string
+        ydk::YLeaf fcr_fs_cell_drop_cnt; //type: string
+        ydk::YLeaf fcr_rt_cell_drop_cnt; //type: string
+        ydk::YLeaf fcr_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fcr_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fdr_data_cell_cnt; //type: string
+        ydk::YLeaf fdr_data_byte_cnt; //type: string
+        ydk::YLeaf fdr_crc_dropped_pck_cnt; //type: string
+        ydk::YLeaf fdr_p_pkt_cnt; //type: string
+        ydk::YLeaf fdr_prm_error_filter_cnt; //type: string
+        ydk::YLeaf fdr_sec_error_filter_cnt; //type: string
+        ydk::YLeaf fdr_prm_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fdr_prm_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fdr_sec_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fdr_sec_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf egq_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf egq_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf egq_parity_err_cnt; //type: string
+        ydk::YLeaf egq_dbf_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf egq_dbf_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf egq_empty_mcid_counter; //type: string
+        ydk::YLeaf egq_rqp_discard_packet_counter; //type: string
+        ydk::YLeaf egq_ehp_discard_packet_counter; //type: string
+        ydk::YLeaf egq_ipt_pkt_cnt; //type: string
+        ydk::YLeaf epni_epe_pkt_cnt; //type: string
+        ydk::YLeaf epni_epe_byte_cnt; //type: string
+        ydk::YLeaf epni_epe_discard_pkt_cnt; //type: string
+        ydk::YLeaf epni_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf epni_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf epni_parity_err_cnt; //type: string
+        ydk::YLeaf egq_pqp_ucast_pkt_cnt; //type: string
+        ydk::YLeaf egq_pqp_ucast_h_pkt_cnt; //type: string
+        ydk::YLeaf egq_pqp_ucast_l_pkt_cnt; //type: string
+        ydk::YLeaf egq_pqp_ucast_bytes_cnt; //type: string
+        ydk::YLeaf egq_pqp_ucast_discard_pkt_cnt; //type: string
+        ydk::YLeaf egq_pqp_mcast_pkt_cnt; //type: string
+        ydk::YLeaf egq_pqp_mcast_h_pkt_cnt; //type: string
+        ydk::YLeaf egq_pqp_mcast_l_pkt_cnt; //type: string
+        ydk::YLeaf egq_pqp_mcast_bytes_cnt; //type: string
+        ydk::YLeaf egq_pqp_mcast_discard_pkt_cnt; //type: string
+        ydk::YLeaf fct_control_cell_cnt; //type: string
+        ydk::YLeaf fct_unrch_crdt_cnt; //type: string
+        ydk::YLeaf idr_reassembly_errors; //type: string
+        ydk::YLeaf idr_mmu_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf idr_mmu_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf idr_discarded_packets0_cnt; //type: string
+        ydk::YLeaf idr_discarded_packets1_cnt; //type: string
+        ydk::YLeaf idr_discarded_packets2_cnt; //type: string
+        ydk::YLeaf idr_discarded_packets3_cnt; //type: string
+        ydk::YLeaf idr_discarded_octets0_cnt; //type: string
+        ydk::YLeaf idr_discarded_octets1_cnt; //type: string
+        ydk::YLeaf idr_discarded_octets2_cnt; //type: string
+        ydk::YLeaf idr_discarded_octets3_cnt; //type: string
+        ydk::YLeaf mmu_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf mmu_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf oamp_parity_err_cnt; //type: string
+        ydk::YLeaf oamp_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf oamp_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf crps_parity_err_cnt; //type: string
+        ydk::YLeaf fmac0_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac1_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac2_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac3_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac4_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac5_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac6_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac7_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac8_kpcs0_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac0_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac1_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac2_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac3_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac4_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac5_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac6_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac7_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac8_kpcs1_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac0_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac1_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac2_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac3_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac4_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac5_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac6_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac7_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac8_kpcs2_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac0_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac1_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac2_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac3_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac4_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac5_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac6_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac7_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac8_kpcs3_tst_rx_err_cnt; //type: string
+        ydk::YLeaf fmac0_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac1_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac2_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac3_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac4_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac5_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac6_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac7_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac8_tst0_err_cnt; //type: string
+        ydk::YLeaf fmac0_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac1_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac2_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac3_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac4_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac5_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac6_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac7_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac8_tst1_err_cnt; //type: string
+        ydk::YLeaf fmac0_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac1_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac2_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac3_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac4_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac5_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac6_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac7_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac8_tst2_err_cnt; //type: string
+        ydk::YLeaf fmac0_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac1_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac2_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac3_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac4_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac5_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac6_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac7_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac8_tst3_err_cnt; //type: string
+        ydk::YLeaf fmac0_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac1_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac2_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac3_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac4_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac5_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac6_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac7_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac8_ecc_1b_err_cnt; //type: string
+        ydk::YLeaf fmac0_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac1_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac2_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac3_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac4_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac5_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac6_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac7_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf fmac8_ecc_2b_err_cnt; //type: string
+        ydk::YLeaf olp_incoming_bad_identifier_counter; //type: string
+        ydk::YLeaf olp_incoming_bad_reassembly_counter; //type: string
+        ydk::YLeaf cfc_parity_err_cnt; //type: string
+        ydk::YLeaf cfc_ilkn0_oob_rx_crc_err_cntr; //type: string
+        ydk::YLeaf cfc_ilkn1_oob_rx_crc_err_cntr; //type: string
+        ydk::YLeaf cfc_spi_oob_rx0_frm_err_cnt; //type: string
+        ydk::YLeaf cfc_spi_oob_rx0_dip2_err_cnt; //type: string
+        ydk::YLeaf cfc_spi_oob_rx1_frm_err_cnt; //type: string
+        ydk::YLeaf cfc_spi_oob_rx1_dip2_err_cnt; //type: string
+        ydk::YLeaf cgm_cgm_uc_pd_dropped_cnt; //type: string
+        ydk::YLeaf cgm_cgm_mc_rep_pd_dropped_cnt; //type: string
+        ydk::YLeaf cgm_cgm_uc_db_dropped_by_rqp_cnt; //type: string
+        ydk::YLeaf cgm_cgm_uc_db_dropped_by_pqp_cnt; //type: string
+        ydk::YLeaf cgm_cgm_mc_rep_db_dropped_cnt; //type: string
+        ydk::YLeaf cgm_cgm_mc_db_dropped_cnt; //type: string
+        ydk::YLeaf drca_full_err_cnt; //type: string
+        ydk::YLeaf drca_single_err_cnt; //type: string
+        ydk::YLeaf drca_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drca_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drcb_full_err_cnt; //type: string
+        ydk::YLeaf drcb_single_err_cnt; //type: string
+        ydk::YLeaf drcb_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drcb_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drcc_full_err_cnt; //type: string
+        ydk::YLeaf drcc_single_err_cnt; //type: string
+        ydk::YLeaf drcc_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drcc_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drcd_full_err_cnt; //type: string
+        ydk::YLeaf drcd_single_err_cnt; //type: string
+        ydk::YLeaf drcd_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drcd_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drce_full_err_cnt; //type: string
+        ydk::YLeaf drce_single_err_cnt; //type: string
+        ydk::YLeaf drce_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drce_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drcf_full_err_cnt; //type: string
+        ydk::YLeaf drcf_single_err_cnt; //type: string
+        ydk::YLeaf drcf_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drcf_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drcg_full_err_cnt; //type: string
+        ydk::YLeaf drcg_single_err_cnt; //type: string
+        ydk::YLeaf drcg_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drcg_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drch_full_err_cnt; //type: string
+        ydk::YLeaf drch_single_err_cnt; //type: string
+        ydk::YLeaf drch_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drch_loopback_full_err_cnt; //type: string
+        ydk::YLeaf drcbroadcast_full_err_cnt; //type: string
+        ydk::YLeaf drcbroadcast_single_err_cnt; //type: string
+        ydk::YLeaf drcbroadcast_calib_bist_full_err_cnt; //type: string
+        ydk::YLeaf drcbroadcast_loopback_full_err_cnt; //type: string
 
-}; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo
+}; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus
 
 
 class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics : public ydk::Entity
@@ -2204,6 +2837,13 @@ class SliceState : public ydk::Enum
         static const ydk::Enum::YLeaf slice_oper_up;
         static const ydk::Enum::YLeaf slice_oper_na;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "slice-oper-unset") return -1;
+            if (name == "slice-oper-down") return 0;
+            if (name == "slice-oper-up") return 1;
+            if (name == "slice-oper-na") return 2;
+            return -1;
+        }
 };
 
 class AsicAccessState : public ydk::Enum
@@ -2236,6 +2876,35 @@ class AsicAccessState : public ydk::Enum
         static const ydk::Enum::YLeaf asic_state_issu_abort;
         static const ydk::Enum::YLeaf asic_state_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asic-state-unset") return -1;
+            if (name == "asic-state-none") return 0;
+            if (name == "asic-state-device-off-line") return 1;
+            if (name == "asic-state-device-created") return 2;
+            if (name == "asic-state-device-online") return 3;
+            if (name == "asic-state-warmboot") return 4;
+            if (name == "asic-state-de-init-start") return 5;
+            if (name == "asic-state-intr-de-init") return 6;
+            if (name == "asic-state-bcm-detach") return 7;
+            if (name == "asic-state-soc-de-init") return 8;
+            if (name == "asic-state-de-init-done") return 9;
+            if (name == "asic-state-soc-init") return 10;
+            if (name == "asic-state-bcm-init") return 11;
+            if (name == "asic-state-intr-init") return 12;
+            if (name == "asic-state-soc-init-start") return 13;
+            if (name == "asic-state-bcm-init-start") return 14;
+            if (name == "asic-state-intr-init-start") return 15;
+            if (name == "asic-state-hard-reset") return 16;
+            if (name == "asic-state-normal") return 17;
+            if (name == "asic-state-exception") return 18;
+            if (name == "asic-state-hp-attached") return 19;
+            if (name == "asic-state-quiesce") return 20;
+            if (name == "asic-state-issu-started") return 21;
+            if (name == "asic-state-issu-started-nn") return 22;
+            if (name == "asic-state-issu-abort") return 23;
+            if (name == "asic-state-max") return 24;
+            return -1;
+        }
 };
 
 class LinkErrorState : public ydk::Enum
@@ -2246,6 +2915,13 @@ class LinkErrorState : public ydk::Enum
         static const ydk::Enum::YLeaf link_error_shut;
         static const ydk::Enum::YLeaf link_error_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "link-error-unset") return -1;
+            if (name == "link-error-none") return 0;
+            if (name == "link-error-shut") return 1;
+            if (name == "link-error-max") return 2;
+            return -1;
+        }
 };
 
 class FcMode : public ydk::Enum
@@ -2256,6 +2932,13 @@ class FcMode : public ydk::Enum
         static const ydk::Enum::YLeaf fc_mode_inband;
         static const ydk::Enum::YLeaf fc_mode_oob;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fc-mode-unset") return -1;
+            if (name == "fc-mode-unavail") return 0;
+            if (name == "fc-mode-inband") return 1;
+            if (name == "fc-mode-oob") return 2;
+            return -1;
+        }
 };
 
 class Asic : public ydk::Enum
@@ -2270,6 +2953,17 @@ class Asic : public ydk::Enum
         static const ydk::Enum::YLeaf asic_b2b;
         static const ydk::Enum::YLeaf asic_type_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asic-unset") return -1;
+            if (name == "asic-unavail") return 0;
+            if (name == "asic-fia") return 1;
+            if (name == "asic-s123") return 2;
+            if (name == "asic-s13") return 3;
+            if (name == "asic-s2") return 4;
+            if (name == "asic-b2b") return 5;
+            if (name == "asic-type-unknown") return 6;
+            return -1;
+        }
 };
 
 class AsicOperState : public ydk::Enum
@@ -2281,6 +2975,14 @@ class AsicOperState : public ydk::Enum
         static const ydk::Enum::YLeaf asic_oper_down;
         static const ydk::Enum::YLeaf asic_card_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asic-oper-unset") return -1;
+            if (name == "asic-oper-unknown") return 0;
+            if (name == "asic-oper-up") return 1;
+            if (name == "asic-oper-down") return 2;
+            if (name == "asic-card-down") return 3;
+            return -1;
+        }
 };
 
 class Link : public ydk::Enum
@@ -2291,6 +2993,13 @@ class Link : public ydk::Enum
         static const ydk::Enum::YLeaf link_type_tx;
         static const ydk::Enum::YLeaf link_type_rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "link-type-unset") return -1;
+            if (name == "link-type-unavail") return 0;
+            if (name == "link-type-tx") return 1;
+            if (name == "link-type-rx") return 2;
+            return -1;
+        }
 };
 
 class OperState : public ydk::Enum
@@ -2302,6 +3011,14 @@ class OperState : public ydk::Enum
         static const ydk::Enum::YLeaf oper_down;
         static const ydk::Enum::YLeaf card_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "oper-unset") return -1;
+            if (name == "oper-unknown") return 0;
+            if (name == "oper-up") return 1;
+            if (name == "oper-down") return 2;
+            if (name == "card-down") return 3;
+            return -1;
+        }
 };
 
 class AsicInitMethod : public ydk::Enum
@@ -2326,6 +3043,27 @@ class AsicInitMethod : public ydk::Enum
         static const ydk::Enum::YLeaf asic_init_method_board_reload;
         static const ydk::Enum::YLeaf asic_init_method_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asic-init-method-unset") return -1;
+            if (name == "asic-init-method-no-reset") return 0;
+            if (name == "asic-init-method-pon-reset") return 1;
+            if (name == "asic-init-method-pon-reset-on-intr") return 2;
+            if (name == "asic-init-method-hard-reset") return 3;
+            if (name == "asic-init-method-warmboot") return 4;
+            if (name == "asic-init-method-issu-wb") return 5;
+            if (name == "asic-init-method-pci-shutdown") return 6;
+            if (name == "asic-init-method-quiesce") return 7;
+            if (name == "asic-init-method-issu-started") return 8;
+            if (name == "asic-init-method-issu-rollback") return 9;
+            if (name == "asic-init-method-issu-abort") return 10;
+            if (name == "asic-init-method-slice-cleanup") return 11;
+            if (name == "asic-init-method-lc-remove") return 12;
+            if (name == "asic-init-method-node-down") return 13;
+            if (name == "asic-init-method-intr") return 14;
+            if (name == "asic-init-method-board-reload") return 15;
+            if (name == "asic-init-method-max") return 16;
+            return -1;
+        }
 };
 
 class AdminState : public ydk::Enum
@@ -2335,6 +3073,12 @@ class AdminState : public ydk::Enum
         static const ydk::Enum::YLeaf admin_up;
         static const ydk::Enum::YLeaf admin_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "admin-unset") return -1;
+            if (name == "admin-up") return 0;
+            if (name == "admin-down") return 1;
+            return -1;
+        }
 };
 
 class LinkStage : public ydk::Enum
@@ -2348,6 +3092,16 @@ class LinkStage : public ydk::Enum
         static const ydk::Enum::YLeaf link_stage_s3;
         static const ydk::Enum::YLeaf link_stage_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "link-stage-unset") return -1;
+            if (name == "link-stage-unused") return 0;
+            if (name == "link-stage-fia") return 1;
+            if (name == "link-stage-s1") return 2;
+            if (name == "link-stage-s2") return 3;
+            if (name == "link-stage-s3") return 4;
+            if (name == "link-stage-unknown") return 5;
+            return -1;
+        }
 };
 
 class Rack : public ydk::Enum
@@ -2357,6 +3111,12 @@ class Rack : public ydk::Enum
         static const ydk::Enum::YLeaf rack_type_lcc;
         static const ydk::Enum::YLeaf rack_type_fcc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rack-type-unset") return -1;
+            if (name == "rack-type-lcc") return 0;
+            if (name == "rack-type-fcc") return 1;
+            return -1;
+        }
 };
 
 

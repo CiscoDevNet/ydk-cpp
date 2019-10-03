@@ -250,6 +250,13 @@ class ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceTxTestPa
         static const ydk::Enum::YLeaf prbs31;
         static const ydk::Enum::YLeaf mixedFrequency;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "squareWave") return 2;
+            if (name == "prbs31") return 3;
+            if (name == "mixedFrequency") return 4;
+            return -1;
+        }
 };
 
 class ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceRxTestPatternMode : public ydk::Enum
@@ -259,6 +266,12 @@ class ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceRxTestPa
         static const ydk::Enum::YLeaf prbs31;
         static const ydk::Enum::YLeaf mixedFrequency;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "prbs31") return 3;
+            if (name == "mixedFrequency") return 4;
+            return -1;
+        }
 };
 
 

@@ -17,6 +17,12 @@ class AaaAccountingUpdate : public ydk::Enum
         static const ydk::Enum::YLeaf newinfo;
         static const ydk::Enum::YLeaf periodic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "newinfo") return 3;
+            if (name == "periodic") return 4;
+            return -1;
+        }
 };
 
 class AaaAccounting : public ydk::Enum
@@ -26,6 +32,12 @@ class AaaAccounting : public ydk::Enum
         static const ydk::Enum::YLeaf start_stop;
         static const ydk::Enum::YLeaf stop_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "start-stop") return 1;
+            if (name == "stop-only") return 2;
+            return -1;
+        }
 };
 
 class AaaMethod : public ydk::Enum
@@ -49,6 +61,26 @@ class AaaMethod : public ydk::Enum
         static const ydk::Enum::YLeaf diameter;
         static const ydk::Enum::YLeaf last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "none") return 1;
+            if (name == "local") return 2;
+            if (name == "radius") return 3;
+            if (name == "tacacs-plus") return 4;
+            if (name == "dsmd") return 5;
+            if (name == "sgbp") return 6;
+            if (name == "acct-d") return 7;
+            if (name == "error") return 8;
+            if (name == "if-authenticated") return 9;
+            if (name == "server-group") return 10;
+            if (name == "server-group-not-defined") return 11;
+            if (name == "line") return 12;
+            if (name == "enable") return 13;
+            if (name == "kerberos") return 14;
+            if (name == "diameter") return 15;
+            if (name == "last") return 16;
+            return -1;
+        }
 };
 
 class AaaAccountingBroadcast : public ydk::Enum
@@ -57,6 +89,11 @@ class AaaAccountingBroadcast : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
 class AaaMethodAccounting : public ydk::Enum
@@ -80,6 +117,26 @@ class AaaMethodAccounting : public ydk::Enum
         static const ydk::Enum::YLeaf last;
         static const ydk::Enum::YLeaf local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "none") return 1;
+            if (name == "radius") return 3;
+            if (name == "tacacs-plus") return 4;
+            if (name == "dsmd") return 5;
+            if (name == "sgbp") return 6;
+            if (name == "acct-d") return 7;
+            if (name == "error") return 8;
+            if (name == "if-authenticated") return 9;
+            if (name == "server-group") return 10;
+            if (name == "server-group-not-defined") return 11;
+            if (name == "line") return 12;
+            if (name == "enable") return 13;
+            if (name == "kerberos") return 14;
+            if (name == "diameter") return 15;
+            if (name == "last") return 16;
+            if (name == "local") return 17;
+            return -1;
+        }
 };
 
 class AaaAccountingRpFailover : public ydk::Enum
@@ -88,6 +145,11 @@ class AaaAccountingRpFailover : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
 

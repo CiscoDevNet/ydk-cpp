@@ -2679,6 +2679,7 @@ std::string EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane:
 {
     std::ostringstream path_buffer;
     path_buffer << "lane";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3030,6 +3031,7 @@ std::string EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback:
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-loopback";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5118,6 +5120,7 @@ std::string EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilte
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-mac-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6224,7 +6227,9 @@ const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu2m {372, "ethernet-25gbase-c
 const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu3m {373, "ethernet-25gbase-cu3m"};
 const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu5m {374, "ethernet-25gbase-cu5m"};
 const Enum::YLeaf EthernetMedia::ethernet_100gbase_sm_sr {375, "ethernet-100gbase-sm-sr"};
-const Enum::YLeaf EthernetMedia::ethernet_base_max {376, "ethernet-base-max"};
+const Enum::YLeaf EthernetMedia::ethernet_100gbase_sr_bd {376, "ethernet-100gbase-sr-bd"};
+const Enum::YLeaf EthernetMedia::ethernet_100gbase_fr {377, "ethernet-100gbase-fr"};
+const Enum::YLeaf EthernetMedia::ethernet_base_max {378, "ethernet-base-max"};
 
 const Enum::YLeaf EtherAinsStatus::ains_soak_status_none {0, "ains-soak-status-none"};
 const Enum::YLeaf EtherAinsStatus::ains_soak_status_pending {1, "ains-soak-status-pending"};

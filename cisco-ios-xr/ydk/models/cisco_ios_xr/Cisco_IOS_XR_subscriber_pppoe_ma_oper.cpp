@@ -1856,6 +1856,7 @@ std::string Pppoe::Nodes::Node::DisconnectHistory::Entry::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3793,6 +3794,7 @@ std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10637,6 +10639,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "limit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10951,6 +10954,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "throttle";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

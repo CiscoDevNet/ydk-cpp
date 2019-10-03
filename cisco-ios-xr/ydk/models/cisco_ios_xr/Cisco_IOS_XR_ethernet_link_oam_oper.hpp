@@ -663,6 +663,16 @@ class Log : public ydk::Enum
         static const ydk::Enum::YLeaf log_type_dying_gasp;
         static const ydk::Enum::YLeaf log_type_critical_event;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "log-type-symbol-event") return 1;
+            if (name == "log-type-period-event") return 2;
+            if (name == "log-type-frame-event") return 3;
+            if (name == "log-type-secs-event") return 4;
+            if (name == "log-type-link-fault") return 256;
+            if (name == "log-type-dying-gasp") return 257;
+            if (name == "log-type-critical-event") return 258;
+            return -1;
+        }
 };
 
 class LogLocation : public ydk::Enum
@@ -671,6 +681,11 @@ class LogLocation : public ydk::Enum
         static const ydk::Enum::YLeaf log_location_local;
         static const ydk::Enum::YLeaf log_location_remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "log-location-local") return 1;
+            if (name == "log-location-remote") return 2;
+            return -1;
+        }
 };
 
 class LoopbackStatus : public ydk::Enum
@@ -683,6 +698,15 @@ class LoopbackStatus : public ydk::Enum
         static const ydk::Enum::YLeaf local_loopback;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "initiating") return 2;
+            if (name == "master-loopback") return 3;
+            if (name == "terminating") return 4;
+            if (name == "local-loopback") return 5;
+            if (name == "unknown") return 6;
+            return -1;
+        }
 };
 
 class OperationalState : public ydk::Enum
@@ -699,6 +723,19 @@ class OperationalState : public ydk::Enum
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf operational_half_duplex;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "link-fault") return 2;
+            if (name == "passive-wait") return 3;
+            if (name == "active-send-local") return 4;
+            if (name == "send-local-and-remote") return 5;
+            if (name == "send-local-and-remote-ok") return 6;
+            if (name == "peering-locally-rejected") return 7;
+            if (name == "peering-remotely-rejected") return 8;
+            if (name == "operational") return 9;
+            if (name == "operational-half-duplex") return 10;
+            return -1;
+        }
 };
 
 class Mode : public ydk::Enum
@@ -708,6 +745,12 @@ class Mode : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf dont_care;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "passive") return 0;
+            if (name == "active") return 1;
+            if (name == "dont-care") return 2;
+            return -1;
+        }
 };
 
 class Action : public ydk::Enum
@@ -718,6 +761,13 @@ class Action : public ydk::Enum
         static const ydk::Enum::YLeaf log;
         static const ydk::Enum::YLeaf efd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-action") return 1;
+            if (name == "disable-interface") return 2;
+            if (name == "log") return 3;
+            if (name == "efd") return 4;
+            return -1;
+        }
 };
 
 class ProtocolState : public ydk::Enum
@@ -731,6 +781,16 @@ class ProtocolState : public ydk::Enum
         static const ydk::Enum::YLeaf protocol_state_send_local_remote_ok;
         static const ydk::Enum::YLeaf protocol_state_send_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protocol-state-inactive") return 0;
+            if (name == "protocol-state-fault") return 1;
+            if (name == "protocol-state-active-send-local") return 2;
+            if (name == "protocol-state-passive-wait") return 3;
+            if (name == "protocol-state-send-local-remote") return 4;
+            if (name == "protocol-state-send-local-remote-ok") return 5;
+            if (name == "protocol-state-send-any") return 6;
+            return -1;
+        }
 };
 
 

@@ -261,7 +261,9 @@ L2vpnForwarding::Nodes::Node::Node()
     , l2fib_nve_peers(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibNvePeers>())
     , l2fib_mmrps(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps>())
     , l2fib_evpn_ip6macs(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs>())
+    , l2fib_pwhe_main_port_hardware_egresses(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareEgresses>())
     , l2fib_dhcp_binding_summaries(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries>())
+    , l2fib_pwhe_main_port_hardware_ingresses(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareIngresses>())
     , l2fib_evpn_incl_m_casts(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts>())
 {
     l2fibx_con_locals->parent = this;
@@ -300,7 +302,9 @@ L2vpnForwarding::Nodes::Node::Node()
     l2fib_nve_peers->parent = this;
     l2fib_mmrps->parent = this;
     l2fib_evpn_ip6macs->parent = this;
+    l2fib_pwhe_main_port_hardware_egresses->parent = this;
     l2fib_dhcp_binding_summaries->parent = this;
+    l2fib_pwhe_main_port_hardware_ingresses->parent = this;
     l2fib_evpn_incl_m_casts->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
@@ -350,7 +354,9 @@ bool L2vpnForwarding::Nodes::Node::has_data() const
 	|| (l2fib_nve_peers !=  nullptr && l2fib_nve_peers->has_data())
 	|| (l2fib_mmrps !=  nullptr && l2fib_mmrps->has_data())
 	|| (l2fib_evpn_ip6macs !=  nullptr && l2fib_evpn_ip6macs->has_data())
+	|| (l2fib_pwhe_main_port_hardware_egresses !=  nullptr && l2fib_pwhe_main_port_hardware_egresses->has_data())
 	|| (l2fib_dhcp_binding_summaries !=  nullptr && l2fib_dhcp_binding_summaries->has_data())
+	|| (l2fib_pwhe_main_port_hardware_ingresses !=  nullptr && l2fib_pwhe_main_port_hardware_ingresses->has_data())
 	|| (l2fib_evpn_incl_m_casts !=  nullptr && l2fib_evpn_incl_m_casts->has_data());
 }
 
@@ -394,7 +400,9 @@ bool L2vpnForwarding::Nodes::Node::has_operation() const
 	|| (l2fib_nve_peers !=  nullptr && l2fib_nve_peers->has_operation())
 	|| (l2fib_mmrps !=  nullptr && l2fib_mmrps->has_operation())
 	|| (l2fib_evpn_ip6macs !=  nullptr && l2fib_evpn_ip6macs->has_operation())
+	|| (l2fib_pwhe_main_port_hardware_egresses !=  nullptr && l2fib_pwhe_main_port_hardware_egresses->has_operation())
 	|| (l2fib_dhcp_binding_summaries !=  nullptr && l2fib_dhcp_binding_summaries->has_operation())
+	|| (l2fib_pwhe_main_port_hardware_ingresses !=  nullptr && l2fib_pwhe_main_port_hardware_ingresses->has_operation())
 	|| (l2fib_evpn_incl_m_casts !=  nullptr && l2fib_evpn_incl_m_casts->has_operation());
 }
 
@@ -749,6 +757,15 @@ std::shared_ptr<ydk::Entity> L2vpnForwarding::Nodes::Node::get_child_by_name(con
         return l2fib_evpn_ip6macs;
     }
 
+    if(child_yang_name == "l2fib-pwhe-main-port-hardware-egresses")
+    {
+        if(l2fib_pwhe_main_port_hardware_egresses == nullptr)
+        {
+            l2fib_pwhe_main_port_hardware_egresses = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareEgresses>();
+        }
+        return l2fib_pwhe_main_port_hardware_egresses;
+    }
+
     if(child_yang_name == "l2fib-dhcp-binding-summaries")
     {
         if(l2fib_dhcp_binding_summaries == nullptr)
@@ -756,6 +773,15 @@ std::shared_ptr<ydk::Entity> L2vpnForwarding::Nodes::Node::get_child_by_name(con
             l2fib_dhcp_binding_summaries = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries>();
         }
         return l2fib_dhcp_binding_summaries;
+    }
+
+    if(child_yang_name == "l2fib-pwhe-main-port-hardware-ingresses")
+    {
+        if(l2fib_pwhe_main_port_hardware_ingresses == nullptr)
+        {
+            l2fib_pwhe_main_port_hardware_ingresses = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareIngresses>();
+        }
+        return l2fib_pwhe_main_port_hardware_ingresses;
     }
 
     if(child_yang_name == "l2fib-evpn-incl-m-casts")
@@ -954,9 +980,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnForwarding::Nodes::Node
         _children["l2fib-evpn-ip6macs"] = l2fib_evpn_ip6macs;
     }
 
+    if(l2fib_pwhe_main_port_hardware_egresses != nullptr)
+    {
+        _children["l2fib-pwhe-main-port-hardware-egresses"] = l2fib_pwhe_main_port_hardware_egresses;
+    }
+
     if(l2fib_dhcp_binding_summaries != nullptr)
     {
         _children["l2fib-dhcp-binding-summaries"] = l2fib_dhcp_binding_summaries;
+    }
+
+    if(l2fib_pwhe_main_port_hardware_ingresses != nullptr)
+    {
+        _children["l2fib-pwhe-main-port-hardware-ingresses"] = l2fib_pwhe_main_port_hardware_ingresses;
     }
 
     if(l2fib_evpn_incl_m_casts != nullptr)
@@ -987,7 +1023,7 @@ void L2vpnForwarding::Nodes::Node::set_filter(const std::string & value_path, YF
 
 bool L2vpnForwarding::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "l2fibx-con-locals" || name == "l2fib-mroute-summaries" || name == "l2fib-message-summary" || name == "l2fib-mroutes" || name == "pbb-bmac-sa" || name == "l2fib-mac-learning" || name == "l2fib-p2mp" || name == "l2fib-evpn-incl-m-cast-hardware-egresses" || name == "l2fibmac-hardware-ingresses" || name == "l2fib-evpn-ip4macs" || name == "l2fib-pwhe-main-ports" || name == "l2fib-dhcp-binding-count" || name == "l2fib-bridge-domains" || name == "l2fib-mstp-summaries" || name == "l2fib-resource-availability" || name == "l2fibmac-hardware-egresses" || name == "l2fibx-con-l2tpv2s" || name == "l2fib-mroute-ipv6s" || name == "l2fib-mon-sess-x-cons" || name == "l2fib-mmrp-summaries" || name == "l2fib-pw-groups" || name == "l2fib-evpn-incl-m-cast-hardware-ingresses" || name == "l2fib-dhcp-binding-details" || name == "l2fibx-cons" || name == "l2fib-main-interfaces" || name == "l2fib-mstp-details" || name == "l2fib-l2tp" || name == "l2fib-g8032" || name == "l2fib-bridge-ports" || name == "l2fibmac-details" || name == "l2fib-bridge-domain-names" || name == "l2fib-mroute-ports" || name == "l2fib-summary" || name == "l2fib-nve-peers" || name == "l2fib-mmrps" || name == "l2fib-evpn-ip6macs" || name == "l2fib-dhcp-binding-summaries" || name == "l2fib-evpn-incl-m-casts" || name == "node-id")
+    if(name == "l2fibx-con-locals" || name == "l2fib-mroute-summaries" || name == "l2fib-message-summary" || name == "l2fib-mroutes" || name == "pbb-bmac-sa" || name == "l2fib-mac-learning" || name == "l2fib-p2mp" || name == "l2fib-evpn-incl-m-cast-hardware-egresses" || name == "l2fibmac-hardware-ingresses" || name == "l2fib-evpn-ip4macs" || name == "l2fib-pwhe-main-ports" || name == "l2fib-dhcp-binding-count" || name == "l2fib-bridge-domains" || name == "l2fib-mstp-summaries" || name == "l2fib-resource-availability" || name == "l2fibmac-hardware-egresses" || name == "l2fibx-con-l2tpv2s" || name == "l2fib-mroute-ipv6s" || name == "l2fib-mon-sess-x-cons" || name == "l2fib-mmrp-summaries" || name == "l2fib-pw-groups" || name == "l2fib-evpn-incl-m-cast-hardware-ingresses" || name == "l2fib-dhcp-binding-details" || name == "l2fibx-cons" || name == "l2fib-main-interfaces" || name == "l2fib-mstp-details" || name == "l2fib-l2tp" || name == "l2fib-g8032" || name == "l2fib-bridge-ports" || name == "l2fibmac-details" || name == "l2fib-bridge-domain-names" || name == "l2fib-mroute-ports" || name == "l2fib-summary" || name == "l2fib-nve-peers" || name == "l2fib-mmrps" || name == "l2fib-evpn-ip6macs" || name == "l2fib-pwhe-main-port-hardware-egresses" || name == "l2fib-dhcp-binding-summaries" || name == "l2fib-pwhe-main-port-hardware-ingresses" || name == "l2fib-evpn-incl-m-casts" || name == "node-id")
         return true;
     return false;
 }
@@ -1138,6 +1174,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibxConLocals::L2fibxConLocal::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fibx-con-local";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8100,6 +8137,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibxConLocals::L2fibxConLocal::Segme
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11542,6 +11580,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMrouteSummaries::L2fibMrouteSumma
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mroute-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11833,6 +11872,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMrouteSummaries::L2fibMrouteSumma
 {
     std::ostringstream path_buffer;
     path_buffer << "message";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12235,6 +12275,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::EventHistory::Eve
 {
     std::ostringstream path_buffer;
     path_buffer << "event-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13404,6 +13445,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::RoundTripDelay::C
 {
     std::ostringstream path_buffer;
     path_buffer << "create";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13538,6 +13580,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::RoundTripDelay::M
 {
     std::ostringstream path_buffer;
     path_buffer << "modify";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13672,6 +13715,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::RoundTripDelay::D
 {
     std::ostringstream path_buffer;
     path_buffer << "delete";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13806,6 +13850,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::RoundTripDelay::B
 {
     std::ostringstream path_buffer;
     path_buffer << "bind";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13940,6 +13985,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::RoundTripDelay::U
 {
     std::ostringstream path_buffer;
     path_buffer << "unbind";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14074,6 +14120,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::RoundTripDelay::M
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-flush";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14208,6 +14255,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::RoundTripDelay::P
 {
     std::ostringstream path_buffer;
     path_buffer << "pirtd";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14339,6 +14387,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMessageSummary::Message::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "message";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14591,6 +14640,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMroutes::L2fibMroute::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mroute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16513,6 +16563,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMacLearning::L2fibMacLearningMacs
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mac-learning-mac";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17045,6 +17096,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMacLearning::L2fibMacLearningMacI
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mac-learning-mac-ipv4";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17577,6 +17629,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMacLearning::L2fibMacLearningMacI
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mac-learning-mac-ipv6";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18176,6 +18229,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibP2mp::Ptrees::Ptree::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "ptree";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19409,6 +19463,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibmacHardwareIngresses::L2fibmacHar
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fibmac-hardware-ingress";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20987,6 +21042,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibEvpnIp4macs::L2fibEvpnIp4mac::get
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-evpn-ip4mac";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

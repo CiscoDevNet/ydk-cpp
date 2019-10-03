@@ -1087,6 +1087,7 @@ std::string ConfdState::Netconf::Listen::Tcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1186,6 +1187,7 @@ std::string ConfdState::Netconf::Listen::Ssh::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1474,6 +1476,7 @@ std::string ConfdState::Cli::Listen::Ssh::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1790,6 +1793,7 @@ std::string ConfdState::Webui::Listen::Tcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1889,6 +1893,7 @@ std::string ConfdState::Webui::Listen::Ssl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssl";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2205,6 +2210,7 @@ std::string ConfdState::Rest::Listen::Tcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2304,6 +2310,7 @@ std::string ConfdState::Rest::Listen::Ssl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssl";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2647,6 +2654,7 @@ std::string ConfdState::Snmp::Listen::Udp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "udp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3577,6 +3585,7 @@ std::string ConfdState::Internal::Callpoints::Callpoint::Range::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4089,6 +4098,7 @@ std::string ConfdState::Internal::Callpoints::Validationpoint::Range::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4601,6 +4611,7 @@ std::string ConfdState::Internal::Callpoints::Actionpoint::Range::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5113,6 +5124,7 @@ std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5625,6 +5637,7 @@ std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Rang
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6137,6 +6150,7 @@ std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6649,6 +6663,7 @@ std::string ConfdState::Internal::Callpoints::Typepoint::Range::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7175,6 +7190,7 @@ std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::g
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7700,6 +7716,7 @@ std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8232,6 +8249,7 @@ std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8978,6 +8996,7 @@ std::string ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notif
 {
     std::ostringstream path_buffer;
     path_buffer << "notification";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9075,6 +9094,7 @@ std::string ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "pending-notification-queue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9174,6 +9194,7 @@ std::string ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Noti
 {
     std::ostringstream path_buffer;
     path_buffer << "notification";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9304,6 +9325,7 @@ std::string ConfdState::Internal::Cdb::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9465,6 +9487,7 @@ std::string ConfdState::Internal::Cdb::Client::Subscription::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "subscription";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

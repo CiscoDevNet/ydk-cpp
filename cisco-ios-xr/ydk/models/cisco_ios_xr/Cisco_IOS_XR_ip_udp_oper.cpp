@@ -2550,7 +2550,7 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::has_leaf_or_child_o
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Pcb()
     :
-    pcb_address{YType::uint32, "pcb-address"},
+    pcb_address{YType::str, "pcb-address"},
     l4_protocol{YType::uint32, "l4-protocol"},
     local_port{YType::uint16, "local-port"},
     foreign_port{YType::uint16, "foreign-port"}
@@ -3616,6 +3616,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 {
     std::ostringstream path_buffer;
     path_buffer << "filter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -81,6 +81,22 @@ class OSPFTRAPMIB::OspfTrapControl::OspfConfigErrorType : public ydk::Enum
         static const ydk::Enum::YLeaf duplicateRouterId;
         static const ydk::Enum::YLeaf noError;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "badVersion") return 1;
+            if (name == "areaMismatch") return 2;
+            if (name == "unknownNbmaNbr") return 3;
+            if (name == "unknownVirtualNbr") return 4;
+            if (name == "authTypeMismatch") return 5;
+            if (name == "authFailure") return 6;
+            if (name == "netMaskMismatch") return 7;
+            if (name == "helloIntervalMismatch") return 8;
+            if (name == "deadIntervalMismatch") return 9;
+            if (name == "optionMismatch") return 10;
+            if (name == "mtuMismatch") return 11;
+            if (name == "duplicateRouterId") return 12;
+            if (name == "noError") return 13;
+            return -1;
+        }
 };
 
 class OSPFTRAPMIB::OspfTrapControl::OspfPacketType : public ydk::Enum
@@ -93,6 +109,15 @@ class OSPFTRAPMIB::OspfTrapControl::OspfPacketType : public ydk::Enum
         static const ydk::Enum::YLeaf lsAck;
         static const ydk::Enum::YLeaf nullPacket;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hello") return 1;
+            if (name == "dbDescript") return 2;
+            if (name == "lsReq") return 3;
+            if (name == "lsUpdate") return 4;
+            if (name == "lsAck") return 5;
+            if (name == "nullPacket") return 6;
+            return -1;
+        }
 };
 
 

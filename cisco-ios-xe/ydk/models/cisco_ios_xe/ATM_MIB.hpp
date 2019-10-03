@@ -668,6 +668,13 @@ class ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceAddressT
         static const ydk::Enum::YLeaf nativeE164;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "private") return 1;
+            if (name == "nsapE164") return 2;
+            if (name == "nativeE164") return 3;
+            if (name == "other") return 4;
+            return -1;
+        }
 };
 
 class ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::AtmInterfaceDs3PlcpAlarmState : public ydk::Enum
@@ -677,6 +684,12 @@ class ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::AtmInterfaceDs
         static const ydk::Enum::YLeaf receivedFarEndAlarm;
         static const ydk::Enum::YLeaf incomingLOF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noAlarm") return 1;
+            if (name == "receivedFarEndAlarm") return 2;
+            if (name == "incomingLOF") return 3;
+            return -1;
+        }
 };
 
 class ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::AtmInterfaceTCAlarmState : public ydk::Enum
@@ -685,6 +698,11 @@ class ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::AtmInterfaceTCAlarmState
         static const ydk::Enum::YLeaf noAlarm;
         static const ydk::Enum::YLeaf lcdFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noAlarm") return 1;
+            if (name == "lcdFailure") return 2;
+            return -1;
+        }
 };
 
 class ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType : public ydk::Enum
@@ -697,6 +715,15 @@ class ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf aal2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "aal1") return 1;
+            if (name == "aal34") return 2;
+            if (name == "aal5") return 3;
+            if (name == "other") return 4;
+            if (name == "unknown") return 5;
+            if (name == "aal2") return 6;
+            return -1;
+        }
 };
 
 class ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType : public ydk::Enum
@@ -713,6 +740,19 @@ class ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType : public ydk::Enum
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vcMultiplexRoutedProtocol") return 1;
+            if (name == "vcMultiplexBridgedProtocol8023") return 2;
+            if (name == "vcMultiplexBridgedProtocol8025") return 3;
+            if (name == "vcMultiplexBridgedProtocol8026") return 4;
+            if (name == "vcMultiplexLANemulation8023") return 5;
+            if (name == "vcMultiplexLANemulation8025") return 6;
+            if (name == "llcEncapsulation") return 7;
+            if (name == "multiprotocolFrameRelaySscs") return 8;
+            if (name == "other") return 9;
+            if (name == "unknown") return 10;
+            return -1;
+        }
 };
 
 class ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamLoopBkStatus : public ydk::Enum
@@ -723,6 +763,13 @@ class ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamLoopBkStatus : public ydk::En
         static const ydk::Enum::YLeaf received;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "sent") return 2;
+            if (name == "received") return 3;
+            if (name == "failed") return 4;
+            return -1;
+        }
 };
 
 class ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState : public ydk::Enum
@@ -736,6 +783,16 @@ class ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState : public ydk::Enum
         static const ydk::Enum::YLeaf aisOut;
         static const ydk::Enum::YLeaf notManaged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "downRetry") return 1;
+            if (name == "verified") return 2;
+            if (name == "notVerified") return 3;
+            if (name == "upRetry") return 4;
+            if (name == "aisRDI") return 5;
+            if (name == "aisOut") return 6;
+            if (name == "notManaged") return 7;
+            return -1;
+        }
 };
 
 

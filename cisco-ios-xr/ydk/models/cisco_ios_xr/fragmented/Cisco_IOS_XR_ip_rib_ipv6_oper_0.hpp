@@ -4737,6 +4737,12 @@ class RibEdmNnh : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf if_index;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "ipv4-address") return 1;
+            if (name == "if-index") return 2;
+            return -1;
+        }
 };
 
 

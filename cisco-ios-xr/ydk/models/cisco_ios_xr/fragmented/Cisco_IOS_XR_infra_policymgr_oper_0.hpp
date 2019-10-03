@@ -3837,6 +3837,110 @@ class MatchTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_type_ptrs;
         static const ydk::Enum::YLeaf match_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-type-none") return 0;
+            if (name == "match-type-ipv4-dscp") return 1;
+            if (name == "match-type-ipv4-prec") return 2;
+            if (name == "match-type-ipv6-dscp") return 3;
+            if (name == "match-type-packet-length") return 4;
+            if (name == "match-type-ipv4-packet-length") return 5;
+            if (name == "match-type-ipv6-packet-length") return 6;
+            if (name == "match-type-flow-tag") return 7;
+            if (name == "match-type-icmpv4-type") return 8;
+            if (name == "match-type-icmpv4-code") return 9;
+            if (name == "match-type-icmpv6-type") return 10;
+            if (name == "match-type-icmpv6-code") return 11;
+            if (name == "match-type-ipv6-prec") return 12;
+            if (name == "match-type-fragment-type") return 13;
+            if (name == "match-type-tcp-flag") return 14;
+            if (name == "match-type-dscp") return 15;
+            if (name == "match-type-prec") return 16;
+            if (name == "match-type-proto") return 17;
+            if (name == "match-type-proto-icmpv4") return 18;
+            if (name == "match-type-proto-icmpv6") return 19;
+            if (name == "match-type-mpls-exp-top") return 20;
+            if (name == "match-type-mpls-exp-imp") return 21;
+            if (name == "match-type-mpls-disp-ipv4-acl") return 22;
+            if (name == "match-type-mpls-disp-ipv6-acl") return 23;
+            if (name == "match-type-mpls-topmost-eos") return 24;
+            if (name == "match-type-mpls-topmost-label") return 25;
+            if (name == "match-type-cos") return 26;
+            if (name == "match-type-cos-inner") return 27;
+            if (name == "match-type-dei") return 28;
+            if (name == "match-type-dei-inner") return 29;
+            if (name == "match-type-vlan") return 30;
+            if (name == "match-type-vlan-inner") return 31;
+            if (name == "match-type-fr-dlci") return 32;
+            if (name == "match-type-src-mac") return 33;
+            if (name == "match-type-dst-mac") return 34;
+            if (name == "match-type-atm-oam") return 35;
+            if (name == "match-type-atm-clp") return 36;
+            if (name == "match-type-fr-de") return 37;
+            if (name == "match-type-qos-grp") return 38;
+            if (name == "match-type-traffic-class") return 39;
+            if (name == "match-type-disc-cls") return 40;
+            if (name == "match-type-vpls-known") return 41;
+            if (name == "match-type-vpls-unknown") return 42;
+            if (name == "match-type-vpls-mcast") return 43;
+            if (name == "match-type-vpls-bcast") return 44;
+            if (name == "match-type-vpls-control") return 45;
+            if (name == "match-type-ipv4-acl") return 46;
+            if (name == "match-type-ipv6-acl") return 47;
+            if (name == "match-type-flow-key") return 48;
+            if (name == "match-type-avail-id") return 49;
+            if (name == "match-type-authen-status") return 50;
+            if (name == "match-type-media") return 51;
+            if (name == "match-type-mlp-negotiated") return 52;
+            if (name == "match-type-subs-protocol") return 53;
+            if (name == "match-type-dnis") return 54;
+            if (name == "match-type-dnis-regexp") return 55;
+            if (name == "match-type-domain") return 56;
+            if (name == "match-type-domain-regexp") return 57;
+            if (name == "match-type-nas-port") return 58;
+            if (name == "match-type-service-name") return 59;
+            if (name == "match-type-service-name-regexp") return 60;
+            if (name == "match-type-src-addr-ipv4") return 61;
+            if (name == "match-type-dst-addr-ipv4") return 62;
+            if (name == "match-type-src-addr-ipv6") return 63;
+            if (name == "match-type-dst-addr-ipv6") return 64;
+            if (name == "match-type-src-addr-mac") return 65;
+            if (name == "match-type-src-port") return 66;
+            if (name == "match-type-dst-port") return 67;
+            if (name == "match-type-timer") return 68;
+            if (name == "match-type-timer-regexp") return 69;
+            if (name == "match-type-tunnel-name") return 70;
+            if (name == "match-type-tunnel-name-regexp") return 71;
+            if (name == "match-type-user-name") return 72;
+            if (name == "match-type-user-name-regexp") return 73;
+            if (name == "match-type-auth-user-name") return 74;
+            if (name == "match-type-auth-user-name-regexp") return 75;
+            if (name == "match-type-unauth-user-name") return 76;
+            if (name == "match-type-unauth-user-name-regexp") return 77;
+            if (name == "match-type-no-user-name") return 78;
+            if (name == "match-type-auth-domain") return 79;
+            if (name == "match-type-auth-domain-regexp") return 80;
+            if (name == "match-type-unauth-domain") return 81;
+            if (name == "match-type-unauth-domain-regexp") return 82;
+            if (name == "match-type-vendor-id") return 83;
+            if (name == "match-type-vendor-id-regexp") return 84;
+            if (name == "match-type-access-interface") return 85;
+            if (name == "match-type-input-interface") return 86;
+            if (name == "match-type-input-interface-hdl") return 87;
+            if (name == "match-type-ether-type") return 88;
+            if (name == "match-type-dhcp-client-id") return 89;
+            if (name == "match-type-dhcp-client-id-regexp") return 90;
+            if (name == "match-type-circuit-id") return 91;
+            if (name == "match-type-circuit-id-regexp") return 92;
+            if (name == "match-type-remote-id") return 93;
+            if (name == "match-type-remote-id-regexp") return 94;
+            if (name == "match-type-cac-admit-local") return 95;
+            if (name == "match-type-cac-unadmit-local") return 96;
+            if (name == "match-type-any-internal") return 97;
+            if (name == "match-type-ethernet-service-s-acl") return 98;
+            if (name == "match-type-ptrs") return 99;
+            if (name == "match-type-max") return 100;
+            return -1;
+        }
 };
 
 class PlmgrVarTypeEn : public ydk::Enum
@@ -3851,6 +3955,17 @@ class PlmgrVarTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf plmgr_var_type_prec;
         static const ydk::Enum::YLeaf plmgr_var_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "plmgr-var-type-class-name") return 0;
+            if (name == "plmgr-var-type-uint8") return 1;
+            if (name == "plmgr-var-type-uint16") return 2;
+            if (name == "plmgr-var-type-uint32") return 3;
+            if (name == "plmgr-var-type-param-uint32") return 4;
+            if (name == "plmgr-var-type-dscp") return 5;
+            if (name == "plmgr-var-type-prec") return 6;
+            if (name == "plmgr-var-type-max") return 7;
+            return -1;
+        }
 };
 
 class CacFlowActnTypeEn : public ydk::Enum
@@ -3859,6 +3974,11 @@ class CacFlowActnTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf cac_flow_actn_type_local;
         static const ydk::Enum::YLeaf cac_flow_actn_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cac-flow-actn-type-local") return 0;
+            if (name == "cac-flow-actn-type-max") return 1;
+            return -1;
+        }
 };
 
 class PolicyActionEn : public ydk::Enum
@@ -3923,6 +4043,67 @@ class PolicyActionEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_action_pfc;
         static const ydk::Enum::YLeaf policy_action_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-action-none") return 0;
+            if (name == "policy-action-unspecified") return 1;
+            if (name == "policy-action-mark") return 2;
+            if (name == "policy-action-mark2") return 3;
+            if (name == "policy-action-wred") return 4;
+            if (name == "policy-action-encap-seq") return 5;
+            if (name == "policy-action-priority") return 6;
+            if (name == "policy-action-iphc") return 7;
+            if (name == "policy-action-bw-remaining") return 8;
+            if (name == "policy-action-min-bw") return 9;
+            if (name == "policy-action-authenticate-aaa") return 10;
+            if (name == "policy-action-collect-id") return 11;
+            if (name == "policy-action-disconnect") return 12;
+            if (name == "policy-action-set-timer") return 13;
+            if (name == "policy-action-stop-timer") return 14;
+            if (name == "policy-action-query-ancp") return 15;
+            if (name == "policy-action-accounting-aaa-list") return 16;
+            if (name == "policy-action-prepaid-config") return 17;
+            if (name == "policy-action-timeout-idle") return 18;
+            if (name == "policy-action-proxy-aaa") return 19;
+            if (name == "policy-action-template-activate") return 20;
+            if (name == "policy-action-template-deactivate") return 21;
+            if (name == "policy-action-decode-identifier") return 22;
+            if (name == "policy-action-q-limit") return 23;
+            if (name == "policy-action-authorize-id") return 24;
+            if (name == "policy-action-accounting-event-aaa-list") return 25;
+            if (name == "policy-action-afmon-react") return 26;
+            if (name == "policy-action-httpr") return 27;
+            if (name == "policy-action-pbr-transmit") return 28;
+            if (name == "policy-action-pbr-drop") return 29;
+            if (name == "policy-action-punt") return 30;
+            if (name == "policy-action-copy") return 31;
+            if (name == "policy-action-sfrag") return 32;
+            if (name == "policy-action-monitor") return 33;
+            if (name == "policy-action-redirect") return 34;
+            if (name == "policy-action-ipv4-nh") return 35;
+            if (name == "policy-action-ipv6-nh") return 36;
+            if (name == "policy-action-vlan-pop") return 37;
+            if (name == "policy-action-pbr-next-hop") return 38;
+            if (name == "policy-action-decap-gre") return 39;
+            if (name == "policy-action-output-interface") return 40;
+            if (name == "policy-action-service-function-path") return 41;
+            if (name == "policy-action-ptrs") return 42;
+            if (name == "policy-action-police") return 43;
+            if (name == "policy-action-shape") return 44;
+            if (name == "policy-action-serv-pol") return 45;
+            if (name == "policy-action-cac") return 46;
+            if (name == "policy-action-afmon-flow-parm") return 47;
+            if (name == "policy-action-afmon-ipcbr-metric") return 48;
+            if (name == "policy-action-afmon-rtp-metric") return 49;
+            if (name == "policy-action-afmon-rtp-mmr-metric") return 50;
+            if (name == "policy-action-afmon-rtp-j2k-metric") return 51;
+            if (name == "policy-action-afmon-rtp-voice-metric") return 52;
+            if (name == "policy-action-afmon-mdi-metric") return 53;
+            if (name == "policy-action-afmon-mdi-rtp-metric") return 54;
+            if (name == "policy-action-afmon-fmm") return 55;
+            if (name == "policy-action-pfc") return 56;
+            if (name == "policy-action-max") return 57;
+            return -1;
+        }
 };
 
 class PlmgrApplnTypeEn : public ydk::Enum
@@ -3935,6 +4116,15 @@ class PlmgrApplnTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf traffic;
         static const ydk::Enum::YLeaf performance_traffic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos") return 1;
+            if (name == "pbr") return 2;
+            if (name == "subscriber-control") return 3;
+            if (name == "accounting") return 4;
+            if (name == "traffic") return 5;
+            if (name == "performance-traffic") return 6;
+            return -1;
+        }
 };
 
 class AfmonRtpClockRateTypeEn : public ydk::Enum
@@ -3953,6 +4143,21 @@ class AfmonRtpClockRateTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_rtp_cr_148351k;
         static const ydk::Enum::YLeaf afmon_rtp_cr_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-rtp-cr-invalid") return 0;
+            if (name == "afmon-rtp-cr-8k") return 1;
+            if (name == "afmon-rtp-cr-16k") return 2;
+            if (name == "afmon-rtp-cr-11025") return 3;
+            if (name == "afmon-rtp-cr-22050") return 4;
+            if (name == "afmon-rtp-cr-44100") return 5;
+            if (name == "afmon-rtp-cr-48k") return 6;
+            if (name == "afmon-rtp-cr-90k") return 7;
+            if (name == "afmon-rtp-cr-27m") return 8;
+            if (name == "afmon-rtp-cr-148500k") return 9;
+            if (name == "afmon-rtp-cr-148351k") return 10;
+            if (name == "afmon-rtp-cr-max") return 11;
+            return -1;
+        }
 };
 
 class AfmonFlowParmTypeEn : public ydk::Enum
@@ -3965,6 +4170,15 @@ class AfmonFlowParmTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_flow_parm_flow_timeout;
         static const ydk::Enum::YLeaf afmon_flow_parm_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-flow-parm-invalid") return 0;
+            if (name == "afmon-flow-parm-max-mon-flow-s") return 1;
+            if (name == "afmon-flow-parm-mon-interval") return 2;
+            if (name == "afmon-flow-parm-intvl-hist") return 3;
+            if (name == "afmon-flow-parm-flow-timeout") return 4;
+            if (name == "afmon-flow-parm-max") return 5;
+            return -1;
+        }
 };
 
 class MatchNoUsernameEn : public ydk::Enum
@@ -3975,6 +4189,13 @@ class MatchNoUsernameEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_user_name;
         static const ydk::Enum::YLeaf match_no_user_name_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-no-user-name-unspecified") return 0;
+            if (name == "match-no-user-name") return 1;
+            if (name == "match-user-name") return 2;
+            if (name == "match-no-user-name-max") return 3;
+            return -1;
+        }
 };
 
 class DpssSnidTypeEn : public ydk::Enum
@@ -3985,6 +4206,13 @@ class DpssSnidTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf dpss_snid_name;
         static const ydk::Enum::YLeaf dpss_snid_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dpss-snid-invalid") return 0;
+            if (name == "dpss-snid-index") return 1;
+            if (name == "dpss-snid-name") return 2;
+            if (name == "dpss-snid-type-max") return 3;
+            return -1;
+        }
 };
 
 class MarkTypeEn : public ydk::Enum
@@ -4022,6 +4250,40 @@ class MarkTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf mark_type_sctp_dst_port;
         static const ydk::Enum::YLeaf mark_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mark-type-none") return 0;
+            if (name == "mark-type-dscp") return 1;
+            if (name == "mark-type-prec") return 2;
+            if (name == "mark-type-mpls-exp-topmost") return 3;
+            if (name == "mark-type-mpls-exp-imposition") return 4;
+            if (name == "mark-type-qos-group") return 5;
+            if (name == "mark-type-discard-class") return 6;
+            if (name == "mark-type-cos") return 7;
+            if (name == "mark-type-cos-inner") return 8;
+            if (name == "mark-type-srp-priority") return 9;
+            if (name == "mark-type-atm-clp") return 10;
+            if (name == "mark-type-fr-de") return 11;
+            if (name == "mark-type-dscp-tunnel") return 12;
+            if (name == "mark-type-prec-tunnel") return 13;
+            if (name == "mark-type-dei") return 14;
+            if (name == "mark-type-dei-imposition") return 15;
+            if (name == "mark-type-forward-class") return 16;
+            if (name == "mark-type-df") return 17;
+            if (name == "mark-type-traffic-class") return 18;
+            if (name == "mark-type-src-mac") return 19;
+            if (name == "mark-type-dst-mac") return 20;
+            if (name == "mark-type-ipv4-src-addr") return 21;
+            if (name == "mark-type-ipv4-dst-addr") return 22;
+            if (name == "mark-type-vlan-id") return 23;
+            if (name == "mark-type-udp-src-port") return 24;
+            if (name == "mark-type-udp-dst-port") return 25;
+            if (name == "mark-type-tcp-src-port") return 26;
+            if (name == "mark-type-tcp-dst-port") return 27;
+            if (name == "mark-type-sctp-src-port") return 28;
+            if (name == "mark-type-sctp-dst-port") return 29;
+            if (name == "mark-type-max") return 30;
+            return -1;
+        }
 };
 
 class PclassExecStratEn : public ydk::Enum
@@ -4033,6 +4295,14 @@ class PclassExecStratEn : public ydk::Enum
         static const ydk::Enum::YLeaf pclass_exe_strat_do_until_failure;
         static const ydk::Enum::YLeaf pclass_exe_strat_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pclass-exe-strat-unspecified") return 0;
+            if (name == "pclass-exe-strat-do-all") return 1;
+            if (name == "pclass-exe-strat-do-until-success") return 2;
+            if (name == "pclass-exe-strat-do-until-failure") return 3;
+            if (name == "pclass-exe-strat-max") return 4;
+            return -1;
+        }
 };
 
 class DecodeIdentifierEn : public ydk::Enum
@@ -4044,6 +4314,14 @@ class DecodeIdentifierEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_decid_user_name;
         static const ydk::Enum::YLeaf policy_decid_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-decid-unspecified") return 0;
+            if (name == "policy-decid-remote-id") return 1;
+            if (name == "policy-decid-circuit-id") return 2;
+            if (name == "policy-decid-user-name") return 3;
+            if (name == "policy-decid-max") return 4;
+            return -1;
+        }
 };
 
 class PfcPauseType : public ydk::Enum
@@ -4056,6 +4334,15 @@ class PfcPauseType : public ydk::Enum
         static const ydk::Enum::YLeaf pfc_pause_threshold_value;
         static const ydk::Enum::YLeaf pfc_resume_threshold_value;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pfc-buffer-size-defined") return 0;
+            if (name == "pfc-pause-threshold-defined") return 1;
+            if (name == "pfc-resume-threshold-defined") return 2;
+            if (name == "pfc-buffer-size-value") return 3;
+            if (name == "pfc-pause-threshold-value") return 4;
+            if (name == "pfc-resume-threshold-value") return 5;
+            return -1;
+        }
 };
 
 class SharedBucketType : public ydk::Enum
@@ -4065,6 +4352,12 @@ class SharedBucketType : public ydk::Enum
         static const ydk::Enum::YLeaf shared_bucket_referred;
         static const ydk::Enum::YLeaf shared_bucket_defined;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shared-bucket-type-not-specified") return 0;
+            if (name == "shared-bucket-referred") return 1;
+            if (name == "shared-bucket-defined") return 2;
+            return -1;
+        }
 };
 
 class PoliceActionTypeEn : public ydk::Enum
@@ -4076,6 +4369,14 @@ class PoliceActionTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf police_action_mark;
         static const ydk::Enum::YLeaf police_action_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "police-action-none") return 0;
+            if (name == "police-action-transmit") return 1;
+            if (name == "police-action-drop") return 2;
+            if (name == "police-action-mark") return 3;
+            if (name == "police-action-max") return 4;
+            return -1;
+        }
 };
 
 class PolicyActionAttrEn : public ydk::Enum
@@ -4084,6 +4385,11 @@ class PolicyActionAttrEn : public ydk::Enum
         static const ydk::Enum::YLeaf action_attribute;
         static const ydk::Enum::YLeaf sub_action_attribute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "action-attribute") return 1;
+            if (name == "sub-action-attribute") return 2;
+            return -1;
+        }
 };
 
 class MatchNasPortSubIdEn : public ydk::Enum
@@ -4103,6 +4409,22 @@ class MatchNasPortSubIdEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_nas_port_sub_id_vpi;
         static const ydk::Enum::YLeaf match_nas_port_sub_id_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-nas-port-sub-id-unspecified") return 0;
+            if (name == "match-nas-port-sub-id-adapter") return 1;
+            if (name == "match-nas-port-sub-id-channel") return 2;
+            if (name == "match-nas-port-sub-id-ip-addr") return 3;
+            if (name == "match-nas-port-sub-id-port") return 4;
+            if (name == "match-nas-port-sub-id-shelf") return 5;
+            if (name == "match-nas-port-sub-id-slot") return 6;
+            if (name == "match-nas-port-sub-id-sub-interface") return 7;
+            if (name == "match-nas-port-sub-id-type") return 8;
+            if (name == "match-nas-port-sub-id-vci") return 9;
+            if (name == "match-nas-port-sub-id-vlan") return 10;
+            if (name == "match-nas-port-sub-id-vpi") return 11;
+            if (name == "match-nas-port-sub-id-max") return 12;
+            return -1;
+        }
 };
 
 class IdentifierEn : public ydk::Enum
@@ -4128,6 +4450,28 @@ class IdentifierEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_ident_unauth_user_name;
         static const ydk::Enum::YLeaf policy_ident_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-ident-unspecified") return 0;
+            if (name == "policy-ident-authen-status") return 1;
+            if (name == "policy-ident-dnis") return 2;
+            if (name == "policy-ident-media") return 3;
+            if (name == "policy-ident-mlp-negotiated") return 4;
+            if (name == "policy-ident-nas-port") return 5;
+            if (name == "policy-ident-no-user-name") return 6;
+            if (name == "policy-ident-protocol") return 7;
+            if (name == "policy-ident-service-name") return 8;
+            if (name == "policy-ident-source-address-ipv4") return 9;
+            if (name == "policy-ident-source-address-ipv6") return 10;
+            if (name == "policy-ident-source-address-mac") return 11;
+            if (name == "policy-ident-timer") return 12;
+            if (name == "policy-ident-tunnel-name") return 13;
+            if (name == "policy-ident-auth-domain") return 14;
+            if (name == "policy-ident-auth-user-name") return 15;
+            if (name == "policy-ident-unauth-domain") return 16;
+            if (name == "policy-ident-unauth-user-name") return 17;
+            if (name == "policy-ident-max") return 18;
+            return -1;
+        }
 };
 
 class MatchLogicalOperatorEn : public ydk::Enum
@@ -4141,6 +4485,16 @@ class MatchLogicalOperatorEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_less_than_or_equal;
         static const ydk::Enum::YLeaf match_operator_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-operator-unspecified") return 0;
+            if (name == "match-equal-to") return 1;
+            if (name == "match-greater-than") return 2;
+            if (name == "match-greater-than-or-equal") return 3;
+            if (name == "match-less-than") return 4;
+            if (name == "match-less-than-or-equal") return 5;
+            if (name == "match-operator-max") return 6;
+            return -1;
+        }
 };
 
 class MatchMlpNegotiatedEn : public ydk::Enum
@@ -4151,6 +4505,13 @@ class MatchMlpNegotiatedEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_mlp_not_negotiated;
         static const ydk::Enum::YLeaf match_mlp_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-mlp-negotiated-unspecified") return 0;
+            if (name == "match-mlp-negotiated") return 1;
+            if (name == "match-mlp-not-negotiated") return 2;
+            if (name == "match-mlp-max") return 3;
+            return -1;
+        }
 };
 
 class AcctEn : public ydk::Enum
@@ -4161,6 +4522,13 @@ class AcctEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_acct_evt_stop;
         static const ydk::Enum::YLeaf policy_acct_evt_update;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-acct-evt-unspecified") return 0;
+            if (name == "policy-acct-evt-start") return 1;
+            if (name == "policy-acct-evt-stop") return 2;
+            if (name == "policy-acct-evt-update") return 3;
+            return -1;
+        }
 };
 
 class AfmonMdiParmTypeEn : public ydk::Enum
@@ -4173,6 +4541,15 @@ class AfmonMdiParmTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_mdi_parm_ip_bit_rate;
         static const ydk::Enum::YLeaf afmon_mdi_parm_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-mdi-parm-invalid") return 0;
+            if (name == "afmon-mdi-parm-pids") return 1;
+            if (name == "afmon-mdi-parm-pkt-rate") return 2;
+            if (name == "afmon-mdi-parm-ip-pkt-rate") return 3;
+            if (name == "afmon-mdi-parm-ip-bit-rate") return 4;
+            if (name == "afmon-mdi-parm-max") return 5;
+            return -1;
+        }
 };
 
 class MatchMediaTypeEn : public ydk::Enum
@@ -4188,6 +4565,18 @@ class MatchMediaTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_media_type_sync;
         static const ydk::Enum::YLeaf match_media_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-media-type-unspecified") return 0;
+            if (name == "match-media-type-async") return 1;
+            if (name == "match-media-type-atm") return 2;
+            if (name == "match-media-type-ether") return 3;
+            if (name == "match-media-type-ip") return 4;
+            if (name == "match-media-type-isdn") return 5;
+            if (name == "match-media-type-mpls") return 6;
+            if (name == "match-media-type-sync") return 7;
+            if (name == "match-media-type-max") return 8;
+            return -1;
+        }
 };
 
 class PeventCondEvalEn : public ydk::Enum
@@ -4198,6 +4587,13 @@ class PeventCondEvalEn : public ydk::Enum
         static const ydk::Enum::YLeaf pevent_cond_eval_match_all;
         static const ydk::Enum::YLeaf pevent_cond_eval_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pevent-cond-eval-unspecified") return 0;
+            if (name == "pevent-cond-eval-match-first") return 1;
+            if (name == "pevent-cond-eval-match-all") return 2;
+            if (name == "pevent-cond-eval-max") return 3;
+            return -1;
+        }
 };
 
 class ClassMapModeEn : public ydk::Enum
@@ -4208,6 +4604,13 @@ class ClassMapModeEn : public ydk::Enum
         static const ydk::Enum::YLeaf class_map_mode_max;
         static const ydk::Enum::YLeaf class_map_mode_usr_def;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "class-map-mode-match-any") return 0;
+            if (name == "class-map-mode-match-all") return 1;
+            if (name == "class-map-mode-max") return 2;
+            if (name == "class-map-mode-usr-def") return 1073741824;
+            return -1;
+        }
 };
 
 class PolicyMapTypeEn : public ydk::Enum
@@ -4224,6 +4627,19 @@ class PolicyMapTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_map_type_merge;
         static const ydk::Enum::YLeaf policy_map_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-map-type-none") return 0;
+            if (name == "policy-map-type-qos") return 1;
+            if (name == "policy-map-type-pbr") return 2;
+            if (name == "policy-map-type-traffic") return 3;
+            if (name == "policy-map-type-subs-control") return 4;
+            if (name == "policy-map-type-accounting") return 5;
+            if (name == "policy-map-type-redirect") return 6;
+            if (name == "policy-map-type-afmon") return 7;
+            if (name == "policy-map-type-merge") return 8;
+            if (name == "policy-map-type-max") return 9;
+            return -1;
+        }
 };
 
 class WredTypeEn : public ydk::Enum
@@ -4240,6 +4656,19 @@ class WredTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf wred_ecn_cmd;
         static const ydk::Enum::YLeaf wred_invalid_cmd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "wred-cos-cmd") return 0;
+            if (name == "wred-dscp-cmd") return 1;
+            if (name == "wred-precedence-cmd") return 2;
+            if (name == "wred-discard-class-cmd") return 3;
+            if (name == "wred-mpls-exp-cmd") return 4;
+            if (name == "red-with-user-min-max") return 5;
+            if (name == "red-with-default-min-max") return 6;
+            if (name == "wred-dei-cmd") return 7;
+            if (name == "wred-ecn-cmd") return 8;
+            if (name == "wred-invalid-cmd") return 9;
+            return -1;
+        }
 };
 
 class PolicyActionExecTypeE : public ydk::Enum
@@ -4248,6 +4677,11 @@ class PolicyActionExecTypeE : public ydk::Enum
         static const ydk::Enum::YLeaf execution_immediate;
         static const ydk::Enum::YLeaf execution_deferred;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "execution-immediate") return 1;
+            if (name == "execution-deferred") return 2;
+            return -1;
+        }
 };
 
 class PolicymgrClassMap : public ydk::Enum
@@ -4258,6 +4692,13 @@ class PolicymgrClassMap : public ydk::Enum
         static const ydk::Enum::YLeaf traffic;
         static const ydk::Enum::YLeaf subscriber_control;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos") return 1;
+            if (name == "pbr") return 2;
+            if (name == "traffic") return 3;
+            if (name == "subscriber-control") return 4;
+            return -1;
+        }
 };
 
 class PolicyRouteTargetEn : public ydk::Enum
@@ -4269,6 +4710,14 @@ class PolicyRouteTargetEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_rt_type_asn4;
         static const ydk::Enum::YLeaf policy_rt_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-rt-type-none") return 0;
+            if (name == "policy-rt-type-asn2") return 1;
+            if (name == "policy-rt-type-ipv4") return 2;
+            if (name == "policy-rt-type-asn4") return 3;
+            if (name == "policy-rt-type-max") return 4;
+            return -1;
+        }
 };
 
 class PolicyObjEncEn : public ydk::Enum
@@ -4279,6 +4728,13 @@ class PolicyObjEncEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_obj_enc_var_idx;
         static const ydk::Enum::YLeaf policy_obj_enc_in_line;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-obj-enc-name") return 0;
+            if (name == "policy-obj-enc-hdl") return 1;
+            if (name == "policy-obj-enc-var-idx") return 2;
+            if (name == "policy-obj-enc-in-line") return 3;
+            return -1;
+        }
 };
 
 class AfmonReactCriterionEn : public ydk::Enum
@@ -4305,6 +4761,29 @@ class AfmonReactCriterionEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_react_mdi_es;
         static const ydk::Enum::YLeaf afmon_react_crit_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-react-crit-invalid") return 0;
+            if (name == "afmon-react-mrv") return 1;
+            if (name == "afmon-react-df") return 2;
+            if (name == "afmon-react-mse") return 3;
+            if (name == "afmon-react-pkt-rate") return 4;
+            if (name == "afmon-react-flow-cnt") return 5;
+            if (name == "afmon-react-rtp-loss-fraction") return 6;
+            if (name == "afmon-react-rtp-jitter") return 7;
+            if (name == "afmon-react-rtp-max-jitter") return 8;
+            if (name == "afmon-react-rtp-out-of-order") return 9;
+            if (name == "afmon-react-rtp-loss-pkts") return 10;
+            if (name == "afmon-react-rtp-ta") return 11;
+            if (name == "afmon-react-rtp-es") return 12;
+            if (name == "afmon-react-mdi-mlr") return 13;
+            if (name == "afmon-react-mdi-mdc") return 14;
+            if (name == "afmon-react-mdi-jitter") return 15;
+            if (name == "afmon-react-mdi-loss-pkts") return 16;
+            if (name == "afmon-react-mdi-ta") return 17;
+            if (name == "afmon-react-mdi-es") return 18;
+            if (name == "afmon-react-crit-max") return 19;
+            return -1;
+        }
 };
 
 class AfmonRtpParmTypeEn : public ydk::Enum
@@ -4318,6 +4797,16 @@ class AfmonRtpParmTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_rtp_parm_clock_rate;
         static const ydk::Enum::YLeaf afmon_rtp_parm_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-rtp-parm-invalid") return 0;
+            if (name == "afmon-rtp-parm-min-seq") return 1;
+            if (name == "afmon-rtp-parm-max-drop") return 2;
+            if (name == "afmon-rtp-parm-max-mis-order") return 3;
+            if (name == "afmon-rtp-parm-seq-ext-cop4") return 4;
+            if (name == "afmon-rtp-parm-clock-rate") return 5;
+            if (name == "afmon-rtp-parm-max") return 6;
+            return -1;
+        }
 };
 
 class PolicyMapTableTypeEn : public ydk::Enum
@@ -4333,6 +4822,18 @@ class PolicyMapTableTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_map_table_type_qos_egress;
         static const ydk::Enum::YLeaf policy_map_table_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-map-table-type-none") return 0;
+            if (name == "policy-map-table-type-l2-any") return 1;
+            if (name == "policy-map-table-type-l2-l3") return 2;
+            if (name == "policy-map-table-type-l3-ipv4") return 3;
+            if (name == "policy-map-table-type-l3-ds") return 4;
+            if (name == "policy-map-table-type-traffic-ingress") return 5;
+            if (name == "policy-map-table-type-qos-ingress") return 6;
+            if (name == "policy-map-table-type-qos-egress") return 7;
+            if (name == "policy-map-table-type-max") return 8;
+            return -1;
+        }
 };
 
 class AuthorizeIdEn : public ydk::Enum
@@ -4355,6 +4856,25 @@ class AuthorizeIdEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_authorize_ident_service_name;
         static const ydk::Enum::YLeaf policy_authorize_ident_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-authorize-ident-unspecified") return 0;
+            if (name == "policy-authorize-ident-dnis") return 1;
+            if (name == "policy-authorize-ident-domain") return 2;
+            if (name == "policy-authorize-ident-user-name") return 3;
+            if (name == "policy-authorize-ident-nas-port") return 4;
+            if (name == "policy-authorize-ident-source-address-ipv4") return 5;
+            if (name == "policy-authorize-ident-source-address-ipv6") return 6;
+            if (name == "policy-authorize-ident-source-address-mac") return 7;
+            if (name == "policy-authorize-ident-auto-detect") return 8;
+            if (name == "policy-authorize-ident-tunnel-name") return 9;
+            if (name == "policy-authorize-ident-dhcp-client-id") return 10;
+            if (name == "policy-authorize-ident-circuit-id") return 11;
+            if (name == "policy-authorize-ident-remote-id") return 12;
+            if (name == "policy-authorize-ident-vendor-id") return 13;
+            if (name == "policy-authorize-ident-service-name") return 14;
+            if (name == "policy-authorize-ident-max") return 15;
+            return -1;
+        }
 };
 
 class MatchSubsProtocolEn : public ydk::Enum
@@ -4367,6 +4887,15 @@ class MatchSubsProtocolEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_subs_protocol_dhcpv6;
         static const ydk::Enum::YLeaf match_subs_protocol_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-subs-protocol-unspecified") return 0;
+            if (name == "match-subs-protocol-ipv4") return 1;
+            if (name == "match-subs-protocol-ppp") return 2;
+            if (name == "match-subs-protocol-dhcpv4") return 3;
+            if (name == "match-subs-protocol-dhcpv6") return 4;
+            if (name == "match-subs-protocol-max") return 5;
+            return -1;
+        }
 };
 
 class PlmgrAppFwdingTypeE : public ydk::Enum
@@ -4376,6 +4905,12 @@ class PlmgrAppFwdingTypeE : public ydk::Enum
         static const ydk::Enum::YLeaf layer3;
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "layer2") return 0;
+            if (name == "layer3") return 1;
+            if (name == "any") return 2;
+            return -1;
+        }
 };
 
 class ClassMapTypeEn : public ydk::Enum
@@ -4388,6 +4923,15 @@ class ClassMapTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf class_map_type_subs_control;
         static const ydk::Enum::YLeaf class_map_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "class-map-type-none") return 0;
+            if (name == "class-map-type-qos") return 1;
+            if (name == "class-map-type-pbr") return 2;
+            if (name == "class-map-type-traffic") return 3;
+            if (name == "class-map-type-subs-control") return 4;
+            if (name == "class-map-type-max") return 5;
+            return -1;
+        }
 };
 
 class AfmonReactParmTypeEn : public ydk::Enum
@@ -4404,6 +4948,19 @@ class AfmonReactParmTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_react_parm_alm_severity;
         static const ydk::Enum::YLeaf afmon_react_parm_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-react-parm-invalid") return 0;
+            if (name == "afmon-react-parm-oper-id") return 1;
+            if (name == "afmon-react-parm-crit-erion") return 2;
+            if (name == "afmon-react-parm-desc") return 3;
+            if (name == "afmon-react-parm-trig-value") return 4;
+            if (name == "afmon-react-parm-trig-type") return 5;
+            if (name == "afmon-react-parm-action") return 6;
+            if (name == "afmon-react-parm-alm-type") return 7;
+            if (name == "afmon-react-parm-alm-severity") return 8;
+            if (name == "afmon-react-parm-max") return 9;
+            return -1;
+        }
 };
 
 class MatchAvailableIdEn : public ydk::Enum
@@ -4426,6 +4983,25 @@ class MatchAvailableIdEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_avail_ident_dhcp_client_id;
         static const ydk::Enum::YLeaf match_avail_ident_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-avail-ident-unspecified") return 0;
+            if (name == "match-avail-ident-dnis") return 1;
+            if (name == "match-avail-ident-domain") return 2;
+            if (name == "match-avail-ident-circuit-id") return 3;
+            if (name == "match-avail-ident-remote-id") return 4;
+            if (name == "match-avail-ident-media") return 5;
+            if (name == "match-avail-ident-nas-port") return 6;
+            if (name == "match-avail-ident-protocol") return 7;
+            if (name == "match-avail-ident-source-address-ipv4") return 8;
+            if (name == "match-avail-ident-source-address-ipv6") return 9;
+            if (name == "match-avail-ident-source-address-mac") return 10;
+            if (name == "match-avail-ident-tunnel-name") return 11;
+            if (name == "match-avail-ident-user-name") return 12;
+            if (name == "match-avail-ident-vendor-id") return 13;
+            if (name == "match-avail-ident-dhcp-client-id") return 14;
+            if (name == "match-avail-ident-max") return 15;
+            return -1;
+        }
 };
 
 class FlowKeyEn : public ydk::Enum
@@ -4437,6 +5013,14 @@ class FlowKeyEn : public ydk::Enum
         static const ydk::Enum::YLeaf flow_key_five_tuple;
         static const ydk::Enum::YLeaf flow_key_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "flow-key-invalid") return 0;
+            if (name == "flow-key-src-ip") return 1;
+            if (name == "flow-key-dst-ip") return 2;
+            if (name == "flow-key-five-tuple") return 3;
+            if (name == "flow-key-max") return 4;
+            return -1;
+        }
 };
 
 class MatchAuthenStatusEn : public ydk::Enum
@@ -4447,6 +5031,13 @@ class MatchAuthenStatusEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_authen_status_unauthenticated;
         static const ydk::Enum::YLeaf match_authen_status_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-authen-status-unspecified") return 0;
+            if (name == "match-authen-status-authenticated") return 1;
+            if (name == "match-authen-status-unauthenticated") return 2;
+            if (name == "match-authen-status-max") return 3;
+            return -1;
+        }
 };
 
 class PolicymgrPolicyMap : public ydk::Enum
@@ -4460,6 +5051,16 @@ class PolicymgrPolicyMap : public ydk::Enum
         static const ydk::Enum::YLeaf redirect;
         static const ydk::Enum::YLeaf flow_monitor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos") return 1;
+            if (name == "pbr") return 2;
+            if (name == "traffic") return 3;
+            if (name == "subscriber-control") return 4;
+            if (name == "accounting") return 5;
+            if (name == "redirect") return 6;
+            if (name == "flow-monitor") return 7;
+            return -1;
+        }
 };
 
 class AfmonReactActnEn : public ydk::Enum
@@ -4470,6 +5071,13 @@ class AfmonReactActnEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_react_snmp;
         static const ydk::Enum::YLeaf afmon_react_clone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-react-actn-none") return 0;
+            if (name == "afmon-react-syslog") return 1;
+            if (name == "afmon-react-snmp") return 2;
+            if (name == "afmon-react-clone") return 3;
+            return -1;
+        }
 };
 
 class MatchNasPortIntfTypeEn : public ydk::Enum
@@ -4496,6 +5104,29 @@ class MatchNasPortIntfTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf match_nas_port_intf_type_x75;
         static const ydk::Enum::YLeaf match_nas_port_intf_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-nas-port-intf-type-unspecified") return 0;
+            if (name == "match-nas-port-intf-type-async") return 1;
+            if (name == "match-nas-port-intf-type-atm") return 2;
+            if (name == "match-nas-port-intf-type-bri") return 3;
+            if (name == "match-nas-port-intf-type-ether") return 4;
+            if (name == "match-nas-port-intf-type-ipsec") return 5;
+            if (name == "match-nas-port-intf-type-none") return 6;
+            if (name == "match-nas-port-intf-type-piafs") return 7;
+            if (name == "match-nas-port-intf-type-pppatm") return 8;
+            if (name == "match-nas-port-intf-type-ppp-ether") return 9;
+            if (name == "match-nas-port-intf-type-pppoeatm") return 10;
+            if (name == "match-nas-port-intf-type-pppqinq") return 11;
+            if (name == "match-nas-port-intf-type-pppvlan") return 12;
+            if (name == "match-nas-port-intf-type-pri") return 13;
+            if (name == "match-nas-port-intf-type-sync") return 14;
+            if (name == "match-nas-port-intf-type-v110") return 15;
+            if (name == "match-nas-port-intf-type-v120") return 16;
+            if (name == "match-nas-port-intf-type-vty") return 17;
+            if (name == "match-nas-port-intf-type-x75") return 18;
+            if (name == "match-nas-port-intf-type-max") return 19;
+            return -1;
+        }
 };
 
 class QlimitTypeEn : public ydk::Enum
@@ -4509,6 +5140,16 @@ class QlimitTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf qlimit_dscp;
         static const ydk::Enum::YLeaf qlimit_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qlimit-cmd") return 0;
+            if (name == "qlimit-discard-class") return 1;
+            if (name == "qlimit-qos-group") return 2;
+            if (name == "qlimit-precedence") return 3;
+            if (name == "qlimit-mpls-exp") return 4;
+            if (name == "qlimit-dscp") return 5;
+            if (name == "qlimit-max") return 6;
+            return -1;
+        }
 };
 
 class AfmonAlarmTypeEn : public ydk::Enum
@@ -4520,6 +5161,14 @@ class AfmonAlarmTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_alm_grp_pct;
         static const ydk::Enum::YLeaf afmon_alm_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-alm-type-invalid") return 0;
+            if (name == "afmon-alm-discrete") return 1;
+            if (name == "afmon-alm-grp-cnt") return 2;
+            if (name == "afmon-alm-grp-pct") return 3;
+            if (name == "afmon-alm-type-max") return 4;
+            return -1;
+        }
 };
 
 class PolicyClassInfoEn : public ydk::Enum
@@ -4528,6 +5177,11 @@ class PolicyClassInfoEn : public ydk::Enum
         static const ydk::Enum::YLeaf policy_class_info_key_type;
         static const ydk::Enum::YLeaf policy_class_info_mod_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-class-info-key-type") return 0;
+            if (name == "policy-class-info-mod-type") return 1;
+            return -1;
+        }
 };
 
 class PoliceActnCategoryEn : public ydk::Enum
@@ -4538,6 +5192,13 @@ class PoliceActnCategoryEn : public ydk::Enum
         static const ydk::Enum::YLeaf police_actn_category_violate;
         static const ydk::Enum::YLeaf police_actn_category_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "police-actn-category-conform") return 0;
+            if (name == "police-actn-category-exceed") return 1;
+            if (name == "police-actn-category-violate") return 2;
+            if (name == "police-actn-category-max") return 3;
+            return -1;
+        }
 };
 
 class AfmonAlarmSevEn : public ydk::Enum
@@ -4553,6 +5214,18 @@ class AfmonAlarmSevEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_alm_emerg;
         static const ydk::Enum::YLeaf afmon_alm_sev_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-alm-none") return 0;
+            if (name == "afmon-alm-info") return 1;
+            if (name == "afmon-alm-notif") return 2;
+            if (name == "afmon-alm-warn") return 3;
+            if (name == "afmon-alm-error") return 4;
+            if (name == "afmon-alm-crit") return 5;
+            if (name == "afmon-alm-alert") return 6;
+            if (name == "afmon-alm-emerg") return 7;
+            if (name == "afmon-alm-sev-max") return 8;
+            return -1;
+        }
 };
 
 class RedirectTypeEn : public ydk::Enum
@@ -4562,6 +5235,12 @@ class RedirectTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf redirect_type_output_interface;
         static const ydk::Enum::YLeaf redirect_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "redirect-type-none") return 0;
+            if (name == "redirect-type-output-interface") return 1;
+            if (name == "redirect-type-max") return 2;
+            return -1;
+        }
 };
 
 class AfmonTrigTypeEn : public ydk::Enum
@@ -4572,6 +5251,13 @@ class AfmonTrigTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_trig_avg;
         static const ydk::Enum::YLeaf afmon_trig_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-trig-type-invalid") return 0;
+            if (name == "afmon-trig-immed") return 1;
+            if (name == "afmon-trig-avg") return 2;
+            if (name == "afmon-trig-type-max") return 3;
+            return -1;
+        }
 };
 
 class PeventTypeEn : public ydk::Enum
@@ -4611,6 +5297,42 @@ class PeventTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf pevent_type_session_ident_chg;
         static const ydk::Enum::YLeaf pevent_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pevent-type-unspecified") return 0;
+            if (name == "pevent-type-acct-logon") return 1;
+            if (name == "pevent-type-acct-logoff") return 2;
+            if (name == "pevent-type-credit-exhausted") return 3;
+            if (name == "pevent-type-idle-timeout") return 4;
+            if (name == "pevent-type-absolute-timeout") return 5;
+            if (name == "pevent-type-quota-depleted") return 6;
+            if (name == "pevent-type-service-start") return 7;
+            if (name == "pevent-type-service-stop") return 8;
+            if (name == "pevent-type-session-start") return 9;
+            if (name == "pevent-type-session-activate") return 10;
+            if (name == "pevent-type-session-restart") return 11;
+            if (name == "pevent-type-session-stop") return 12;
+            if (name == "pevent-type-session-disconnect") return 13;
+            if (name == "pevent-type-session-update") return 14;
+            if (name == "pevent-type-flow-start") return 15;
+            if (name == "pevent-type-flow-stop") return 16;
+            if (name == "pevent-type-accouting-start") return 17;
+            if (name == "pevent-type-acountng-g-stop") return 18;
+            if (name == "pevent-type-acountng-g-update") return 19;
+            if (name == "pevent-type-timer-expiry") return 20;
+            if (name == "pevent-type-threshold-reached") return 21;
+            if (name == "pevent-type-ka-success") return 22;
+            if (name == "pevent-type-ka-failure") return 23;
+            if (name == "pevent-type-link-up") return 24;
+            if (name == "pevent-type-link-down") return 25;
+            if (name == "pevent-type-authorization-failure") return 26;
+            if (name == "pevent-type-authorization-no-response") return 27;
+            if (name == "pevent-type-authentication-failure") return 28;
+            if (name == "pevent-type-authentication-no-response") return 29;
+            if (name == "pevent-type-exception") return 30;
+            if (name == "pevent-type-session-ident-chg") return 31;
+            if (name == "pevent-type-max") return 32;
+            return -1;
+        }
 };
 
 class VsvcServiceTypeT : public ydk::Enum
@@ -4628,6 +5350,20 @@ class VsvcServiceTypeT : public ydk::Enum
         static const ydk::Enum::YLeaf vsvc_service_sffl;
         static const ydk::Enum::YLeaf vsvc_service_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vsvc-service-invalid") return 0;
+            if (name == "vsvc-service-v-path") return 1;
+            if (name == "vsvc-service-ipsec") return 2;
+            if (name == "vsvc-service-cgn") return 3;
+            if (name == "vsvc-service-o-flow") return 4;
+            if (name == "vsvc-service-output") return 5;
+            if (name == "vsvc-service-cfg-v-path") return 6;
+            if (name == "vsvc-service-sfp") return 7;
+            if (name == "vsvc-service-sfl") return 8;
+            if (name == "vsvc-service-sffl") return 9;
+            if (name == "vsvc-service-max") return 10;
+            return -1;
+        }
 };
 
 class PolicyParamUnitType : public ydk::Enum
@@ -4658,6 +5394,33 @@ class PolicyParamUnitType : public ydk::Enum
         static const ydk::Enum::YLeaf policy_param_unit_ratio;
         static const ydk::Enum::YLeaf policy_param_unit_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-param-unit-invalid") return 0;
+            if (name == "policy-param-unit-bytes") return 1;
+            if (name == "policy-param-unit-kbytes") return 2;
+            if (name == "policy-param-unit-mbytes") return 3;
+            if (name == "policy-param-unit-gbytes") return 4;
+            if (name == "policy-param-unit-bitsps") return 5;
+            if (name == "policy-param-unit-kbitsps") return 6;
+            if (name == "policy-param-unit-mbitsps") return 7;
+            if (name == "policy-param-unit-gbitsps") return 8;
+            if (name == "policy-param-unit-cells-ps") return 9;
+            if (name == "policy-param-unit-packets-ps") return 10;
+            if (name == "policy-param-unit-us") return 11;
+            if (name == "policy-param-unit-ms") return 12;
+            if (name == "policy-param-unit-seconds") return 13;
+            if (name == "policy-param-unit-packets") return 14;
+            if (name == "policy-param-unit-cells") return 15;
+            if (name == "policy-param-unit-percent") return 16;
+            if (name == "policy-param-unit-per-thousand") return 17;
+            if (name == "policy-param-unit-per-million") return 18;
+            if (name == "policy-param-unit-hz") return 19;
+            if (name == "policy-param-unit-khz") return 20;
+            if (name == "policy-param-unit-mhz") return 21;
+            if (name == "policy-param-unit-ratio") return 22;
+            if (name == "policy-param-unit-max") return 23;
+            return -1;
+        }
 };
 
 class AfmonTrigRelopEn : public ydk::Enum
@@ -4671,6 +5434,16 @@ class AfmonTrigRelopEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_trig_range;
         static const ydk::Enum::YLeaf afmon_trig_relop_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-trig-relop-invalid") return 0;
+            if (name == "afmon-trig-lt") return 1;
+            if (name == "afmon-trig-le") return 2;
+            if (name == "afmon-trig-gt") return 3;
+            if (name == "afmon-trig-ge") return 4;
+            if (name == "afmon-trig-range") return 5;
+            if (name == "afmon-trig-relop-max") return 6;
+            return -1;
+        }
 };
 
 class MatchAttrE : public ydk::Enum
@@ -4680,6 +5453,12 @@ class MatchAttrE : public ydk::Enum
         static const ydk::Enum::YLeaf range;
         static const ydk::Enum::YLeaf mask;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "value") return 0;
+            if (name == "range") return 1;
+            if (name == "mask") return 2;
+            return -1;
+        }
 };
 
 class AfmonIpcbrParmTypeEn : public ydk::Enum
@@ -4693,6 +5472,16 @@ class AfmonIpcbrParmTypeEn : public ydk::Enum
         static const ydk::Enum::YLeaf afmon_ipcbr_parm_media_pkts_per_ip;
         static const ydk::Enum::YLeaf afmon_ipcbr_parm_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "afmon-ipcbr-parm-invalid") return 0;
+            if (name == "afmon-ipcbr-parm-ip-pkt-rate") return 1;
+            if (name == "afmon-ipcbr-parm-ip-bit-rate") return 2;
+            if (name == "afmon-ipcbr-parm-media-bit-rate") return 3;
+            if (name == "afmon-ipcbr-parm-media-pkt-size") return 4;
+            if (name == "afmon-ipcbr-parm-media-pkts-per-ip") return 5;
+            if (name == "afmon-ipcbr-parm-max") return 6;
+            return -1;
+        }
 };
 
 

@@ -698,6 +698,7 @@ std::string Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Re
 {
     std::ostringstream path_buffer;
     path_buffer << "sequence-window";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -941,6 +942,7 @@ std::string Rsvp::RsbBriefs::RsbBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsb-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11268,6 +11270,7 @@ std::string Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11502,6 +11505,7 @@ std::string Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::Neighbor
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-message-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12694,6 +12698,7 @@ std::string Rsvp::GracefulRestart::LocalNodeAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-node-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13722,6 +13727,7 @@ std::string Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNe
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-neighbor-list-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15701,6 +15707,7 @@ std::string Rsvp::Frrs::Frr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16888,6 +16895,7 @@ std::string Rsvp::RequestBriefs::RequestBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "request-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19102,6 +19110,7 @@ std::string Rsvp::RequestDetails::RequestDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "request-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

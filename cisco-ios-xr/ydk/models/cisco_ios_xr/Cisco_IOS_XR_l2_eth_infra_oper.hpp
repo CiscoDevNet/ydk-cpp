@@ -1294,6 +1294,19 @@ class VlanEncaps : public ydk::Enum
         static const ydk::Enum::YLeaf dot1ad_dot1q;
         static const ydk::Enum::YLeaf dot1ad_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-encapsulation") return 0;
+            if (name == "dot1q") return 1;
+            if (name == "qinq") return 2;
+            if (name == "qin-any") return 3;
+            if (name == "dot1q-native") return 4;
+            if (name == "dot1ad") return 5;
+            if (name == "dot1ad-native") return 6;
+            if (name == "service-instance") return 7;
+            if (name == "dot1ad-dot1q") return 8;
+            if (name == "dot1ad-any") return 9;
+            return -1;
+        }
 };
 
 class VlanSwitchedMode : public ydk::Enum
@@ -1303,6 +1316,12 @@ class VlanSwitchedMode : public ydk::Enum
         static const ydk::Enum::YLeaf trunk_port;
         static const ydk::Enum::YLeaf access_port;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "trunk-port") return 1;
+            if (name == "access-port") return 2;
+            return -1;
+        }
 };
 
 class ImStateEnum : public ydk::Enum
@@ -1328,6 +1347,28 @@ class ImStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf im_state_unknown;
         static const ydk::Enum::YLeaf im_state_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-state-not-ready") return 0;
+            if (name == "im-state-admin-down") return 1;
+            if (name == "im-state-down") return 2;
+            if (name == "im-state-up") return 3;
+            if (name == "im-state-shutdown") return 4;
+            if (name == "im-state-err-disable") return 5;
+            if (name == "im-state-down-immediate") return 6;
+            if (name == "im-state-down-immediate-admin") return 7;
+            if (name == "im-state-down-graceful") return 8;
+            if (name == "im-state-begin-shutdown") return 9;
+            if (name == "im-state-end-shutdown") return 10;
+            if (name == "im-state-begin-error-disable") return 11;
+            if (name == "im-state-end-error-disable") return 12;
+            if (name == "im-state-begin-down-graceful") return 13;
+            if (name == "im-state-reset") return 14;
+            if (name == "im-state-operational") return 15;
+            if (name == "im-state-not-operational") return 16;
+            if (name == "im-state-unknown") return 17;
+            if (name == "im-state-last") return 18;
+            return -1;
+        }
 };
 
 class EfpTagPriority : public ydk::Enum
@@ -1343,6 +1384,18 @@ class EfpTagPriority : public ydk::Enum
         static const ydk::Enum::YLeaf priority7;
         static const ydk::Enum::YLeaf priority_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "priority0") return 0;
+            if (name == "priority1") return 1;
+            if (name == "priority2") return 2;
+            if (name == "priority3") return 3;
+            if (name == "priority4") return 4;
+            if (name == "priority5") return 5;
+            if (name == "priority6") return 6;
+            if (name == "priority7") return 7;
+            if (name == "priority-any") return 8;
+            return -1;
+        }
 };
 
 class EfpTagEtype : public ydk::Enum
@@ -1352,6 +1405,12 @@ class EfpTagEtype : public ydk::Enum
         static const ydk::Enum::YLeaf dot1q;
         static const ydk::Enum::YLeaf dot1ad;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "untagged") return 0;
+            if (name == "dot1q") return 33024;
+            if (name == "dot1ad") return 34984;
+            return -1;
+        }
 };
 
 class VlanService : public ydk::Enum
@@ -1360,6 +1419,11 @@ class VlanService : public ydk::Enum
         static const ydk::Enum::YLeaf vlan_service_l2;
         static const ydk::Enum::YLeaf vlan_service_l3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vlan-service-l2") return 1;
+            if (name == "vlan-service-l3") return 2;
+            return -1;
+        }
 };
 
 class EfpPayloadEtype : public ydk::Enum
@@ -1369,6 +1433,12 @@ class EfpPayloadEtype : public ydk::Enum
         static const ydk::Enum::YLeaf payload_ethertype_ip;
         static const ydk::Enum::YLeaf payload_ethertype_pppoe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "payload-ethertype-any") return 0;
+            if (name == "payload-ethertype-ip") return 1;
+            if (name == "payload-ethertype-pppoe") return 2;
+            return -1;
+        }
 };
 
 class VlanQinqOuterEtype : public ydk::Enum
@@ -1378,6 +1448,12 @@ class VlanQinqOuterEtype : public ydk::Enum
         static const ydk::Enum::YLeaf ether_type9100;
         static const ydk::Enum::YLeaf ether_type9200;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ether-type8100") return 33024;
+            if (name == "ether-type9100") return 37120;
+            if (name == "ether-type9200") return 37376;
+            return -1;
+        }
 };
 
 class EthCapsUcastMacMode : public ydk::Enum
@@ -1386,6 +1462,11 @@ class EthCapsUcastMacMode : public ydk::Enum
         static const ydk::Enum::YLeaf reserved;
         static const ydk::Enum::YLeaf permit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reserved") return 0;
+            if (name == "permit") return 1;
+            return -1;
+        }
 };
 
 class EthFiltering : public ydk::Enum
@@ -1396,6 +1477,13 @@ class EthFiltering : public ydk::Enum
         static const ydk::Enum::YLeaf dot1ad_filtering;
         static const ydk::Enum::YLeaf two_port_mac_relay_filtering;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-filtering") return 0;
+            if (name == "dot1q-filtering") return 1;
+            if (name == "dot1ad-filtering") return 2;
+            if (name == "two-port-mac-relay-filtering") return 3;
+            return -1;
+        }
 };
 
 

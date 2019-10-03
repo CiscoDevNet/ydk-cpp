@@ -970,6 +970,12 @@ class SrmsAf : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class SrmsMiFlagEB : public ydk::Enum
@@ -978,6 +984,11 @@ class SrmsMiFlagEB : public ydk::Enum
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 1;
+            return -1;
+        }
 };
 
 class SrmsMiAfEB : public ydk::Enum
@@ -987,6 +998,12 @@ class SrmsMiAfEB : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class SrmsMiSrcEB : public ydk::Enum
@@ -996,6 +1013,12 @@ class SrmsMiSrcEB : public ydk::Enum
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "local") return 1;
+            if (name == "remote") return 2;
+            return -1;
+        }
 };
 
 class SidTypeEnum : public ydk::Enum
@@ -1004,6 +1027,11 @@ class SidTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf index_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absolute") return 1;
+            if (name == "index") return 2;
+            return -1;
+        }
 };
 
 

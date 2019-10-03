@@ -1031,6 +1031,7 @@ class MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es20
         ydk::YLeaf initial_pkt_number; //type: uint8
         ydk::YLeaf current_pkt_number; //type: uint64
         ydk::YLeaf max_pkt_number; //type: uint64
+        ydk::YLeaf conf_offset; //type: uint16
         class XformParams; //type: MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_pl_oper::MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams> xform_params;
@@ -1094,6 +1095,7 @@ class MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es20
         ydk::YLeaf in_pkts_unused_sa; //type: uint8
         ydk::YLeaf in_octets_decrypted_validated1; //type: uint8
         ydk::YLeaf in_octets_validated; //type: uint8
+        ydk::YLeaf conf_offset; //type: uint16
         class XformParams; //type: MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_pl_oper::MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams> xform_params;
@@ -2067,6 +2069,17 @@ class MacsecPhyVendor : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "msfpga") return 0;
+            if (name == "xlmsfpga") return 1;
+            if (name == "apm-es200") return 2;
+            if (name == "apm-x120") return 3;
+            if (name == "mv88ec808") return 4;
+            if (name == "max-card-type") return 5;
+            if (name == "unknown") return 6;
+            if (name == "invalid") return 7;
+            return -1;
+        }
 };
 
 

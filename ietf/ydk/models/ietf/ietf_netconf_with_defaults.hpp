@@ -18,6 +18,13 @@ class WithDefaultsMode : public ydk::Enum
         static const ydk::Enum::YLeaf trim;
         static const ydk::Enum::YLeaf explicit_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "report-all") return 0;
+            if (name == "report-all-tagged") return 1;
+            if (name == "trim") return 2;
+            if (name == "explicit") return 3;
+            return -1;
+        }
 };
 
 

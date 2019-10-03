@@ -1320,6 +1320,14 @@ class OlmCompLinkImState : public ydk::Enum
         static const ydk::Enum::YLeaf comp_link_im_state_up;
         static const ydk::Enum::YLeaf comp_link_im_state_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "comp-link-im-state-oir") return 0;
+            if (name == "comp-link-im-state-down") return 1;
+            if (name == "comp-link-im-state-admin-down") return 2;
+            if (name == "comp-link-im-state-up") return 3;
+            if (name == "comp-link-im-state-unknown") return 4;
+            return -1;
+        }
 };
 
 class OlmLinkEncoding : public ydk::Enum
@@ -1339,6 +1347,22 @@ class OlmLinkEncoding : public ydk::Enum
         static const ydk::Enum::YLeaf fiber_channel;
         static const ydk::Enum::YLeaf lencode_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "packet") return 1;
+            if (name == "ethernet") return 2;
+            if (name == "ansi-etsi-pdh") return 3;
+            if (name == "reserved1") return 4;
+            if (name == "sdh-sonet") return 5;
+            if (name == "reserved2") return 6;
+            if (name == "digital-wrapper") return 7;
+            if (name == "lambda") return 8;
+            if (name == "fiber") return 9;
+            if (name == "reserved3") return 10;
+            if (name == "fiber-channel") return 11;
+            if (name == "lencode-unknown") return 12;
+            return -1;
+        }
 };
 
 class OlmMuxCap : public ydk::Enum
@@ -1354,6 +1378,18 @@ class OlmMuxCap : public ydk::Enum
         static const ydk::Enum::YLeaf fsc;
         static const ydk::Enum::YLeaf unknown_mux_cap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "psc1") return 0;
+            if (name == "psc2") return 1;
+            if (name == "psc3") return 2;
+            if (name == "psc4") return 3;
+            if (name == "l2sc") return 4;
+            if (name == "tdm") return 5;
+            if (name == "lsc") return 6;
+            if (name == "fsc") return 7;
+            if (name == "unknown-mux-cap") return 8;
+            return -1;
+        }
 };
 
 class OlmCompLinkLmpStatus : public ydk::Enum
@@ -1362,6 +1398,11 @@ class OlmCompLinkLmpStatus : public ydk::Enum
         static const ydk::Enum::YLeaf comp_link_lmp_status_if_id_mismatch;
         static const ydk::Enum::YLeaf comp_link_lmp_status_switch_cap_mismatch;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "comp-link-lmp-status-if-id-mismatch") return 0;
+            if (name == "comp-link-lmp-status-switch-cap-mismatch") return 1;
+            return -1;
+        }
 };
 
 class OlmAddrTypeId : public ydk::Enum
@@ -1372,6 +1413,13 @@ class OlmAddrTypeId : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf unnumbered;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown-address") return 0;
+            if (name == "ipv4") return 101;
+            if (name == "ipv6") return 102;
+            if (name == "unnumbered") return 103;
+            return -1;
+        }
 };
 
 class OlmCompLinkLmpState : public ydk::Enum
@@ -1384,6 +1432,15 @@ class OlmCompLinkLmpState : public ydk::Enum
         static const ydk::Enum::YLeaf comp_link_lmp_state_up_allocated;
         static const ydk::Enum::YLeaf comp_link_lmp_state_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "comp-link-lmp-state-down") return 0;
+            if (name == "comp-link-lmp-state-test") return 1;
+            if (name == "comp-link-lmp-state-passive-test") return 2;
+            if (name == "comp-link-lmp-state-up-free") return 3;
+            if (name == "comp-link-lmp-state-up-allocated") return 4;
+            if (name == "comp-link-lmp-state-unknown") return 5;
+            return -1;
+        }
 };
 
 class OlmObjectOwner : public ydk::Enum
@@ -1394,6 +1451,13 @@ class OlmObjectOwner : public ydk::Enum
         static const ydk::Enum::YLeaf gmpls_nni;
         static const ydk::Enum::YLeaf gmpls_uni;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "ouni") return 1;
+            if (name == "gmpls-nni") return 2;
+            if (name == "gmpls-uni") return 3;
+            return -1;
+        }
 };
 
 class OlmteLinkLmpState : public ydk::Enum
@@ -1405,6 +1469,14 @@ class OlmteLinkLmpState : public ydk::Enum
         static const ydk::Enum::YLeaf te_link_lmp_state_degraded;
         static const ydk::Enum::YLeaf te_link_lmp_state_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "te-link-lmp-state-down") return 0;
+            if (name == "te-link-lmp-state-init") return 1;
+            if (name == "te-link-lmp-state-up") return 2;
+            if (name == "te-link-lmp-state-degraded") return 3;
+            if (name == "te-link-lmp-state-unknown") return 4;
+            return -1;
+        }
 };
 
 class Olmipcc : public ydk::Enum
@@ -1415,6 +1487,13 @@ class Olmipcc : public ydk::Enum
         static const ydk::Enum::YLeaf ipcc_type_ldcc_sdcc;
         static const ydk::Enum::YLeaf ipcc_type_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipcc-type-global-routed") return 0;
+            if (name == "ipcc-type-global-if-bound") return 1;
+            if (name == "ipcc-type-ldcc-sdcc") return 2;
+            if (name == "ipcc-type-unknown") return 3;
+            return -1;
+        }
 };
 
 class OlmipccState : public ydk::Enum
@@ -1430,6 +1509,18 @@ class OlmipccState : public ydk::Enum
         static const ydk::Enum::YLeaf ipcc_state_going_down;
         static const ydk::Enum::YLeaf ipcc_state_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipcc-state-oir-removed") return 0;
+            if (name == "ipcc-state-admin-down") return 1;
+            if (name == "ipcc-state-down") return 2;
+            if (name == "ipcc-state-cfg-send") return 3;
+            if (name == "ipcc-state-cfg-rcv") return 4;
+            if (name == "ipcc-state-active") return 5;
+            if (name == "ipcc-state-up") return 6;
+            if (name == "ipcc-state-going-down") return 7;
+            if (name == "ipcc-state-unknown") return 8;
+            return -1;
+        }
 };
 
 class OlmRouterId : public ydk::Enum
@@ -1442,6 +1533,15 @@ class OlmRouterId : public ydk::Enum
         static const ydk::Enum::YLeaf network_element;
         static const ydk::Enum::YLeaf unknown_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-configured") return 0;
+            if (name == "global") return 1;
+            if (name == "protocol-based-address") return 2;
+            if (name == "interface") return 3;
+            if (name == "network-element") return 4;
+            if (name == "unknown-type") return 5;
+            return -1;
+        }
 };
 
 

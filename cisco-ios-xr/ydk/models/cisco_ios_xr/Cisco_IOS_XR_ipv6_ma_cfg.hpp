@@ -16,6 +16,11 @@ class Ipv6SelfPing : public ydk::Enum
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            if (name == "enabled") return 1;
+            return -1;
+        }
 };
 
 class Ipv6Qppb : public ydk::Enum
@@ -26,6 +31,13 @@ class Ipv6Qppb : public ydk::Enum
         static const ydk::Enum::YLeaf qos_group;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ip-precedence") return 1;
+            if (name == "qos-group") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class Ipv6DefaultPing : public ydk::Enum
@@ -34,6 +46,11 @@ class Ipv6DefaultPing : public ydk::Enum
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            if (name == "enabled") return 1;
+            return -1;
+        }
 };
 
 class Ipv6Reachable : public ydk::Enum
@@ -42,6 +59,11 @@ class Ipv6Reachable : public ydk::Enum
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf received;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "received") return 1;
+            return -1;
+        }
 };
 
 

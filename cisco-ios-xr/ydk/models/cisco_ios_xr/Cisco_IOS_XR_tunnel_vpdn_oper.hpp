@@ -180,11 +180,11 @@ class Vpdn::Sessions::Session::Subscriber : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf nas_port_type; //type: VpdnNasPort
+        ydk::YLeaf nas_port_id_val; //type: string
+        ydk::YLeaf nas_port_type; //type: string
         ydk::YLeaf physical_channel_id; //type: uint32
         ydk::YLeaf receive_connect_speed; //type: uint64
         ydk::YLeaf transmit_connect_speed; //type: uint64
-        ydk::YLeafList nas_port; //type: list of  uint8
 
 }; // Vpdn::Sessions::Session::Subscriber
 
@@ -557,6 +557,12 @@ class SessionState : public ydk::Enum
         static const ydk::Enum::YLeaf connected;
         static const ydk::Enum::YLeaf established;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 0;
+            if (name == "connected") return 1;
+            if (name == "established") return 2;
+            return -1;
+        }
 };
 
 class VpdnState : public ydk::Enum
@@ -566,6 +572,12 @@ class VpdnState : public ydk::Enum
         static const ydk::Enum::YLeaf init_sync_in_progress;
         static const ydk::Enum::YLeaf steady_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initial-state") return 0;
+            if (name == "init-sync-in-progress") return 1;
+            if (name == "steady-state") return 2;
+            return -1;
+        }
 };
 
 class VpdnFailcode : public ydk::Enum
@@ -591,50 +603,28 @@ class VpdnFailcode : public ydk::Enum
         static const ydk::Enum::YLeaf tunnel_in_resync;
         static const ydk::Enum::YLeaf call_prarmeters;
 
-};
-
-class VpdnNasPort : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf bri;
-        static const ydk::Enum::YLeaf serial;
-        static const ydk::Enum::YLeaf asynchronous;
-        static const ydk::Enum::YLeaf vty;
-        static const ydk::Enum::YLeaf atm;
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf ppp_atm;
-        static const ydk::Enum::YLeaf pppoe_over_atm;
-        static const ydk::Enum::YLeaf pppoe_over_ethernet;
-        static const ydk::Enum::YLeaf pppoe_over_vlan;
-        static const ydk::Enum::YLeaf pppoe_over_q_in_q;
-        static const ydk::Enum::YLeaf v120;
-        static const ydk::Enum::YLeaf v110;
-        static const ydk::Enum::YLeaf piafs;
-        static const ydk::Enum::YLeaf x75;
-        static const ydk::Enum::YLeaf ip_sec;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf virtual_pppoe_over_ethernet;
-        static const ydk::Enum::YLeaf virtual_pppoe_over_vlan;
-        static const ydk::Enum::YLeaf virtual_pppoe_over_q_in_q;
-        static const ydk::Enum::YLeaf ipo_e_over_ethernet;
-        static const ydk::Enum::YLeaf ipo_e_over_vlan;
-        static const ydk::Enum::YLeaf ipo_e_over_q_in_q;
-        static const ydk::Enum::YLeaf virtual_i_po_e_over_ethernet;
-        static const ydk::Enum::YLeaf virtual_i_po_e_over_vlan;
-        static const ydk::Enum::YLeaf virtual_i_po_e_over_q_in_q;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class TosMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf set;
-        static const ydk::Enum::YLeaf reflect;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "peer-action") return 1;
+            if (name == "authentication") return 2;
+            if (name == "authentication-error") return 3;
+            if (name == "authentication-failed") return 4;
+            if (name == "authorization") return 5;
+            if (name == "authorization-failed") return 6;
+            if (name == "home-gatewayfailure") return 7;
+            if (name == "connection-termination") return 8;
+            if (name == "no-resources-available") return 9;
+            if (name == "timer-expiry") return 10;
+            if (name == "session-mid-exceeded") return 11;
+            if (name == "soft-shut") return 12;
+            if (name == "session-limit-exceeded") return 13;
+            if (name == "administrative") return 14;
+            if (name == "link-failure") return 15;
+            if (name == "security") return 16;
+            if (name == "tunnel-in-resync") return 17;
+            if (name == "call-prarmeters") return 18;
+            return -1;
+        }
 };
 
 class LsgStatus : public ydk::Enum
@@ -646,6 +636,29 @@ class LsgStatus : public ydk::Enum
         static const ydk::Enum::YLeaf testable;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "active") return 1;
+            if (name == "down") return 2;
+            if (name == "testable") return 3;
+            if (name == "testing") return 4;
+            return -1;
+        }
+};
+
+class TosMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf reflect;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "set") return 1;
+            if (name == "reflect") return 2;
+            return -1;
+        }
 };
 
 

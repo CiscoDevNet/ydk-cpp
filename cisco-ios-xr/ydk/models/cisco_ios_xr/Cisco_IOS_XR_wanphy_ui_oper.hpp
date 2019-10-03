@@ -157,6 +157,11 @@ class WanphyAlarmRepStatus : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
 class WanphyModeInfo : public ydk::Enum
@@ -165,6 +170,11 @@ class WanphyModeInfo : public ydk::Enum
         static const ydk::Enum::YLeaf lan;
         static const ydk::Enum::YLeaf wan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lan") return 0;
+            if (name == "wan") return 1;
+            return -1;
+        }
 };
 
 

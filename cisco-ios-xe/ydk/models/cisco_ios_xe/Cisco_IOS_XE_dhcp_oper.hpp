@@ -161,6 +161,16 @@ class DhcpServerBindingType : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp_server_binding_type_from_aaa;
         static const ydk::Enum::YLeaf dhcp_server_binding_type_remembered;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dhcp-server-binding-type-manual") return 0;
+            if (name == "dhcp-server-binding-type-static") return 1;
+            if (name == "dhcp-server-binding-type-relay") return 2;
+            if (name == "dhcp-server-binding-type-automatic") return 3;
+            if (name == "dhcp-server-binding-type-odap") return 4;
+            if (name == "dhcp-server-binding-type-from-aaa") return 5;
+            if (name == "dhcp-server-binding-type-remembered") return 6;
+            return -1;
+        }
 };
 
 class DhcpExpiryOption : public ydk::Enum
@@ -169,6 +179,11 @@ class DhcpExpiryOption : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp_expiration_time;
         static const ydk::Enum::YLeaf dhcp_expiration_infinite;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dhcp-expiration-time") return 0;
+            if (name == "dhcp-expiration-infinite") return 1;
+            return -1;
+        }
 };
 
 class DhcpClientIdType : public ydk::Enum
@@ -179,6 +194,13 @@ class DhcpClientIdType : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp_htype_rfclimit;
         static const ydk::Enum::YLeaf dhcp_htype_clientid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dhcp-htype-ethernet") return 0;
+            if (name == "dhcp-htype-ieee802") return 1;
+            if (name == "dhcp-htype-rfclimit") return 2;
+            if (name == "dhcp-htype-clientid") return 3;
+            return -1;
+        }
 };
 
 class DhcpClientState : public ydk::Enum
@@ -199,6 +221,23 @@ class DhcpClientState : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp_client_state_leasequery;
         static const ydk::Enum::YLeaf dhcp_client_state_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dhcp-client-state-temp-from-client") return 0;
+            if (name == "dhcp-client-state-temp-from-sync") return 1;
+            if (name == "dhcp-client-state-initial") return 2;
+            if (name == "dhcp-client-state-selecting") return 3;
+            if (name == "dhcp-client-state-requesting") return 4;
+            if (name == "dhcp-client-state-bound") return 5;
+            if (name == "dhcp-client-state-rebinding") return 6;
+            if (name == "dhcp-client-state-renewing") return 7;
+            if (name == "dhcp-client-state-holdtime") return 8;
+            if (name == "dhcp-client-state-ddns-wait") return 9;
+            if (name == "dhcp-client-state-releasing") return 10;
+            if (name == "dhcp-client-state-purging") return 11;
+            if (name == "dhcp-client-state-leasequery") return 12;
+            if (name == "dhcp-client-state-unknown") return 13;
+            return -1;
+        }
 };
 
 class DhcpServerBindingState : public ydk::Enum
@@ -209,6 +248,13 @@ class DhcpServerBindingState : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp_server_binding_state_terminated;
         static const ydk::Enum::YLeaf dhcp_server_binding_state_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dhcp-server-binding-state-selecting") return 0;
+            if (name == "dhcp-server-binding-state-active") return 1;
+            if (name == "dhcp-server-binding-state-terminated") return 2;
+            if (name == "dhcp-server-binding-state-unknown") return 3;
+            return -1;
+        }
 };
 
 

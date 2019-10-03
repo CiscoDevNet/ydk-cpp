@@ -207,6 +207,12 @@ class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterEditProfileAction : publ
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unSpecified") return 0;
+            if (name == "permit") return 1;
+            if (name == "deny") return 2;
+            return -1;
+        }
 };
 
 class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterEditOperation : public ydk::Enum
@@ -217,6 +223,13 @@ class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterEditOperation : public y
         static const ydk::Enum::YLeaf delete_;
         static const ydk::Enum::YLeaf modify;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "add") return 2;
+            if (name == "delete") return 3;
+            if (name == "modify") return 4;
+            return -1;
+        }
 };
 
 class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterApplyStatus : public ydk::Enum
@@ -228,6 +241,14 @@ class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterApplyStatus : public ydk
         static const ydk::Enum::YLeaf entryPresentError;
         static const ydk::Enum::YLeaf entryNotPresentError;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "someOtherError") return 1;
+            if (name == "succeeded") return 2;
+            if (name == "inconsistentEdit") return 3;
+            if (name == "entryPresentError") return 4;
+            if (name == "entryNotPresentError") return 5;
+            return -1;
+        }
 };
 
 class CISCOIGMPFILTERMIB::CIgmpFilterTable::CIgmpFilterEntry::CIgmpFilterProfileAction : public ydk::Enum
@@ -236,6 +257,11 @@ class CISCOIGMPFILTERMIB::CIgmpFilterTable::CIgmpFilterEntry::CIgmpFilterProfile
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "permit") return 1;
+            if (name == "deny") return 2;
+            return -1;
+        }
 };
 
 

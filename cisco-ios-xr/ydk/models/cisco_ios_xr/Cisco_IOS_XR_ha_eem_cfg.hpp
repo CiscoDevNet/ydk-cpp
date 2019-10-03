@@ -222,6 +222,11 @@ class EventManagerPolicySec : public ydk::Enum
         static const ydk::Enum::YLeaf rsa_2048;
         static const ydk::Enum::YLeaf trust;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsa-2048") return 2;
+            if (name == "trust") return 3;
+            return -1;
+        }
 };
 
 class EventManagerPolicyMode : public ydk::Enum
@@ -230,6 +235,11 @@ class EventManagerPolicyMode : public ydk::Enum
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf trust;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco") return 1;
+            if (name == "trust") return 2;
+            return -1;
+        }
 };
 
 class EventManagerChecksum : public ydk::Enum
@@ -238,6 +248,11 @@ class EventManagerChecksum : public ydk::Enum
         static const ydk::Enum::YLeaf sha_1;
         static const ydk::Enum::YLeaf md5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sha-1") return 1;
+            if (name == "md5") return 2;
+            return -1;
+        }
 };
 
 class EventManagerPolicy : public ydk::Enum
@@ -246,6 +261,11 @@ class EventManagerPolicy : public ydk::Enum
         static const ydk::Enum::YLeaf system;
         static const ydk::Enum::YLeaf user;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "system") return 0;
+            if (name == "user") return 1;
+            return -1;
+        }
 };
 
 

@@ -336,6 +336,14 @@ class SubdbObjectTypeData : public ydk::Enum
         static const ydk::Enum::YLeaf ppp;
         static const ydk::Enum::YLeaf ip_subscriber;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "user-profile") return 1;
+            if (name == "service-profile") return 2;
+            if (name == "subscriber-service") return 3;
+            if (name == "ppp") return 4;
+            if (name == "ip-subscriber") return 5;
+            return -1;
+        }
 };
 
 class SessionState : public ydk::Enum
@@ -352,6 +360,19 @@ class SessionState : public ydk::Enum
         static const ydk::Enum::YLeaf error;
         static const ydk::Enum::YLeaf sync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "init") return 1;
+            if (name == "destroy") return 2;
+            if (name == "config-generate") return 3;
+            if (name == "feature-registration-wait") return 4;
+            if (name == "config-apply") return 5;
+            if (name == "config-done") return 6;
+            if (name == "config-removed") return 7;
+            if (name == "config-error") return 8;
+            if (name == "error") return 9;
+            if (name == "sync") return 11;
+            return -1;
+        }
 };
 
 

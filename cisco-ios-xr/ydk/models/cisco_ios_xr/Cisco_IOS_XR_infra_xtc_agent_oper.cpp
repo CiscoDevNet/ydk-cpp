@@ -646,6 +646,7 @@ std::string Pcc::Plsps::Plsp::EventHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "event-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -828,6 +829,7 @@ std::string Pcc::Plsps::Plsp::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1307,6 +1309,7 @@ std::string Pcc::Plsps::Plsp::Path::EroHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ero-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1745,6 +1748,7 @@ std::string Pcc::Plsps::Plsp::Path::RroHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rro-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3772,18 +3776,18 @@ bool Pcc::Peers::Peer::Stats::has_leaf_or_child_of_name(const std::string & name
 Xtc::Xtc()
     :
     policies(std::make_shared<Xtc::Policies>())
+    , policy_forwardings(std::make_shared<Xtc::PolicyForwardings>())
     , policy_summary(std::make_shared<Xtc::PolicySummary>())
     , on_demand_colors(std::make_shared<Xtc::OnDemandColors>())
-    , forwarding(std::make_shared<Xtc::Forwarding>())
     , controller(std::make_shared<Xtc::Controller>())
     , topology_summary(std::make_shared<Xtc::TopologySummary>())
     , topology_nodes(std::make_shared<Xtc::TopologyNodes>())
     , prefix_infos(std::make_shared<Xtc::PrefixInfos>())
 {
     policies->parent = this;
+    policy_forwardings->parent = this;
     policy_summary->parent = this;
     on_demand_colors->parent = this;
-    forwarding->parent = this;
     controller->parent = this;
     topology_summary->parent = this;
     topology_nodes->parent = this;
@@ -3800,9 +3804,9 @@ bool Xtc::has_data() const
 {
     if (is_presence_container) return true;
     return (policies !=  nullptr && policies->has_data())
+	|| (policy_forwardings !=  nullptr && policy_forwardings->has_data())
 	|| (policy_summary !=  nullptr && policy_summary->has_data())
 	|| (on_demand_colors !=  nullptr && on_demand_colors->has_data())
-	|| (forwarding !=  nullptr && forwarding->has_data())
 	|| (controller !=  nullptr && controller->has_data())
 	|| (topology_summary !=  nullptr && topology_summary->has_data())
 	|| (topology_nodes !=  nullptr && topology_nodes->has_data())
@@ -3813,9 +3817,9 @@ bool Xtc::has_operation() const
 {
     return is_set(yfilter)
 	|| (policies !=  nullptr && policies->has_operation())
+	|| (policy_forwardings !=  nullptr && policy_forwardings->has_operation())
 	|| (policy_summary !=  nullptr && policy_summary->has_operation())
 	|| (on_demand_colors !=  nullptr && on_demand_colors->has_operation())
-	|| (forwarding !=  nullptr && forwarding->has_operation())
 	|| (controller !=  nullptr && controller->has_operation())
 	|| (topology_summary !=  nullptr && topology_summary->has_operation())
 	|| (topology_nodes !=  nullptr && topology_nodes->has_operation())
@@ -3849,6 +3853,15 @@ std::shared_ptr<ydk::Entity> Xtc::get_child_by_name(const std::string & child_ya
         return policies;
     }
 
+    if(child_yang_name == "policy-forwardings")
+    {
+        if(policy_forwardings == nullptr)
+        {
+            policy_forwardings = std::make_shared<Xtc::PolicyForwardings>();
+        }
+        return policy_forwardings;
+    }
+
     if(child_yang_name == "policy-summary")
     {
         if(policy_summary == nullptr)
@@ -3865,15 +3878,6 @@ std::shared_ptr<ydk::Entity> Xtc::get_child_by_name(const std::string & child_ya
             on_demand_colors = std::make_shared<Xtc::OnDemandColors>();
         }
         return on_demand_colors;
-    }
-
-    if(child_yang_name == "forwarding")
-    {
-        if(forwarding == nullptr)
-        {
-            forwarding = std::make_shared<Xtc::Forwarding>();
-        }
-        return forwarding;
     }
 
     if(child_yang_name == "controller")
@@ -3924,6 +3928,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::get_children() const
         _children["policies"] = policies;
     }
 
+    if(policy_forwardings != nullptr)
+    {
+        _children["policy-forwardings"] = policy_forwardings;
+    }
+
     if(policy_summary != nullptr)
     {
         _children["policy-summary"] = policy_summary;
@@ -3932,11 +3941,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::get_children() const
     if(on_demand_colors != nullptr)
     {
         _children["on-demand-colors"] = on_demand_colors;
-    }
-
-    if(forwarding != nullptr)
-    {
-        _children["forwarding"] = forwarding;
     }
 
     if(controller != nullptr)
@@ -3997,7 +4001,7 @@ std::map<std::pair<std::string, std::string>, std::string> Xtc::get_namespace_id
 
 bool Xtc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "policies" || name == "policy-summary" || name == "on-demand-colors" || name == "forwarding" || name == "controller" || name == "topology-summary" || name == "topology-nodes" || name == "prefix-infos")
+    if(name == "policies" || name == "policy-forwardings" || name == "policy-summary" || name == "on-demand-colors" || name == "controller" || name == "topology-summary" || name == "topology-nodes" || name == "prefix-infos")
         return true;
     return false;
 }
@@ -4109,30 +4113,25 @@ Xtc::Policies::Policy::Policy()
     administrative_up{YType::uint32, "administrative-up"},
     operational_up{YType::uint32, "operational-up"},
     color{YType::uint32, "color"},
-    is_auto_policy{YType::boolean, "is-auto-policy"},
     transition_count{YType::uint32, "transition-count"},
     forward_class{YType::uint32, "forward-class"},
     up_time{YType::uint64, "up-time"},
     up_age{YType::uint64, "up-age"},
     down_time{YType::uint64, "down-time"},
     down_age{YType::uint64, "down-age"},
-    lsp_id{YType::uint32, "lsp-id"},
     steering_bgp_disabled{YType::boolean, "steering-bgp-disabled"},
     interface_handle{YType::uint32, "interface-handle"},
-    policy_group_identifier{YType::uint16, "policy-group-identifier"},
-    local_label_identifier{YType::uint16, "local-label-identifier"},
-    local_label{YType::uint32, "local-label"},
     profile_id{YType::uint16, "profile-id"},
     ipv6_caps_enabled{YType::boolean, "ipv6-caps-enabled"}
         ,
     destination_address(std::make_shared<Xtc::Policies::Policy::DestinationAddress>())
     , binding_sid(std::make_shared<Xtc::Policies::Policy::BindingSid>())
-    , auto_policy_info(std::make_shared<Xtc::Policies::Policy::AutoPolicyInfo>())
-    , paths(this, {})
+    , candidate_path(this, {})
+    , ls_ps(this, {})
+    , event_buffer(this, {})
 {
     destination_address->parent = this;
     binding_sid->parent = this;
-    auto_policy_info->parent = this;
 
     yang_name = "policy"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -4144,9 +4143,19 @@ Xtc::Policies::Policy::~Policy()
 bool Xtc::Policies::Policy::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<paths.len(); index++)
+    for (std::size_t index=0; index<candidate_path.len(); index++)
     {
-        if(paths[index]->has_data())
+        if(candidate_path[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<ls_ps.len(); index++)
+    {
+        if(ls_ps[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<event_buffer.len(); index++)
+    {
+        if(event_buffer[index]->has_data())
             return true;
     }
     return id.is_set
@@ -4154,31 +4163,35 @@ bool Xtc::Policies::Policy::has_data() const
 	|| administrative_up.is_set
 	|| operational_up.is_set
 	|| color.is_set
-	|| is_auto_policy.is_set
 	|| transition_count.is_set
 	|| forward_class.is_set
 	|| up_time.is_set
 	|| up_age.is_set
 	|| down_time.is_set
 	|| down_age.is_set
-	|| lsp_id.is_set
 	|| steering_bgp_disabled.is_set
 	|| interface_handle.is_set
-	|| policy_group_identifier.is_set
-	|| local_label_identifier.is_set
-	|| local_label.is_set
 	|| profile_id.is_set
 	|| ipv6_caps_enabled.is_set
 	|| (destination_address !=  nullptr && destination_address->has_data())
-	|| (binding_sid !=  nullptr && binding_sid->has_data())
-	|| (auto_policy_info !=  nullptr && auto_policy_info->has_data());
+	|| (binding_sid !=  nullptr && binding_sid->has_data());
 }
 
 bool Xtc::Policies::Policy::has_operation() const
 {
-    for (std::size_t index=0; index<paths.len(); index++)
+    for (std::size_t index=0; index<candidate_path.len(); index++)
     {
-        if(paths[index]->has_operation())
+        if(candidate_path[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ls_ps.len(); index++)
+    {
+        if(ls_ps[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<event_buffer.len(); index++)
+    {
+        if(event_buffer[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -4187,24 +4200,18 @@ bool Xtc::Policies::Policy::has_operation() const
 	|| ydk::is_set(administrative_up.yfilter)
 	|| ydk::is_set(operational_up.yfilter)
 	|| ydk::is_set(color.yfilter)
-	|| ydk::is_set(is_auto_policy.yfilter)
 	|| ydk::is_set(transition_count.yfilter)
 	|| ydk::is_set(forward_class.yfilter)
 	|| ydk::is_set(up_time.yfilter)
 	|| ydk::is_set(up_age.yfilter)
 	|| ydk::is_set(down_time.yfilter)
 	|| ydk::is_set(down_age.yfilter)
-	|| ydk::is_set(lsp_id.yfilter)
 	|| ydk::is_set(steering_bgp_disabled.yfilter)
 	|| ydk::is_set(interface_handle.yfilter)
-	|| ydk::is_set(policy_group_identifier.yfilter)
-	|| ydk::is_set(local_label_identifier.yfilter)
-	|| ydk::is_set(local_label.yfilter)
 	|| ydk::is_set(profile_id.yfilter)
 	|| ydk::is_set(ipv6_caps_enabled.yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation())
-	|| (binding_sid !=  nullptr && binding_sid->has_operation())
-	|| (auto_policy_info !=  nullptr && auto_policy_info->has_operation());
+	|| (binding_sid !=  nullptr && binding_sid->has_operation());
 }
 
 std::string Xtc::Policies::Policy::get_absolute_path() const
@@ -4231,19 +4238,14 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::get_name_l
     if (administrative_up.is_set || is_set(administrative_up.yfilter)) leaf_name_data.push_back(administrative_up.get_name_leafdata());
     if (operational_up.is_set || is_set(operational_up.yfilter)) leaf_name_data.push_back(operational_up.get_name_leafdata());
     if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
-    if (is_auto_policy.is_set || is_set(is_auto_policy.yfilter)) leaf_name_data.push_back(is_auto_policy.get_name_leafdata());
     if (transition_count.is_set || is_set(transition_count.yfilter)) leaf_name_data.push_back(transition_count.get_name_leafdata());
     if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
     if (up_time.is_set || is_set(up_time.yfilter)) leaf_name_data.push_back(up_time.get_name_leafdata());
     if (up_age.is_set || is_set(up_age.yfilter)) leaf_name_data.push_back(up_age.get_name_leafdata());
     if (down_time.is_set || is_set(down_time.yfilter)) leaf_name_data.push_back(down_time.get_name_leafdata());
     if (down_age.is_set || is_set(down_age.yfilter)) leaf_name_data.push_back(down_age.get_name_leafdata());
-    if (lsp_id.is_set || is_set(lsp_id.yfilter)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
     if (steering_bgp_disabled.is_set || is_set(steering_bgp_disabled.yfilter)) leaf_name_data.push_back(steering_bgp_disabled.get_name_leafdata());
     if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (policy_group_identifier.is_set || is_set(policy_group_identifier.yfilter)) leaf_name_data.push_back(policy_group_identifier.get_name_leafdata());
-    if (local_label_identifier.is_set || is_set(local_label_identifier.yfilter)) leaf_name_data.push_back(local_label_identifier.get_name_leafdata());
-    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
     if (profile_id.is_set || is_set(profile_id.yfilter)) leaf_name_data.push_back(profile_id.get_name_leafdata());
     if (ipv6_caps_enabled.is_set || is_set(ipv6_caps_enabled.yfilter)) leaf_name_data.push_back(ipv6_caps_enabled.get_name_leafdata());
 
@@ -4271,20 +4273,27 @@ std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::get_child_by_name(const std:
         return binding_sid;
     }
 
-    if(child_yang_name == "auto-policy-info")
+    if(child_yang_name == "candidate-path")
     {
-        if(auto_policy_info == nullptr)
-        {
-            auto_policy_info = std::make_shared<Xtc::Policies::Policy::AutoPolicyInfo>();
-        }
-        return auto_policy_info;
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::CandidatePath>();
+        ent_->parent = this;
+        candidate_path.append(ent_);
+        return ent_;
     }
 
-    if(child_yang_name == "paths")
+    if(child_yang_name == "ls-ps")
     {
-        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths>();
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::LsPs>();
         ent_->parent = this;
-        paths.append(ent_);
+        ls_ps.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "event-buffer")
+    {
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::EventBuffer>();
+        ent_->parent = this;
+        event_buffer.append(ent_);
         return ent_;
     }
 
@@ -4305,13 +4314,26 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::get_c
         _children["binding-sid"] = binding_sid;
     }
 
-    if(auto_policy_info != nullptr)
+    count_ = 0;
+    for (auto ent_ : candidate_path.entities())
     {
-        _children["auto-policy-info"] = auto_policy_info;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     count_ = 0;
-    for (auto ent_ : paths.entities())
+    for (auto ent_ : ls_ps.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : event_buffer.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -4354,12 +4376,6 @@ void Xtc::Policies::Policy::set_value(const std::string & value_path, const std:
         color.value_namespace = name_space;
         color.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-auto-policy")
-    {
-        is_auto_policy = value;
-        is_auto_policy.value_namespace = name_space;
-        is_auto_policy.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "transition-count")
     {
         transition_count = value;
@@ -4396,12 +4412,6 @@ void Xtc::Policies::Policy::set_value(const std::string & value_path, const std:
         down_age.value_namespace = name_space;
         down_age.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "lsp-id")
-    {
-        lsp_id = value;
-        lsp_id.value_namespace = name_space;
-        lsp_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "steering-bgp-disabled")
     {
         steering_bgp_disabled = value;
@@ -4413,24 +4423,6 @@ void Xtc::Policies::Policy::set_value(const std::string & value_path, const std:
         interface_handle = value;
         interface_handle.value_namespace = name_space;
         interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-group-identifier")
-    {
-        policy_group_identifier = value;
-        policy_group_identifier.value_namespace = name_space;
-        policy_group_identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-label-identifier")
-    {
-        local_label_identifier = value;
-        local_label_identifier.value_namespace = name_space;
-        local_label_identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-label")
-    {
-        local_label = value;
-        local_label.value_namespace = name_space;
-        local_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile-id")
     {
@@ -4468,10 +4460,6 @@ void Xtc::Policies::Policy::set_filter(const std::string & value_path, YFilter y
     {
         color.yfilter = yfilter;
     }
-    if(value_path == "is-auto-policy")
-    {
-        is_auto_policy.yfilter = yfilter;
-    }
     if(value_path == "transition-count")
     {
         transition_count.yfilter = yfilter;
@@ -4496,10 +4484,6 @@ void Xtc::Policies::Policy::set_filter(const std::string & value_path, YFilter y
     {
         down_age.yfilter = yfilter;
     }
-    if(value_path == "lsp-id")
-    {
-        lsp_id.yfilter = yfilter;
-    }
     if(value_path == "steering-bgp-disabled")
     {
         steering_bgp_disabled.yfilter = yfilter;
@@ -4507,18 +4491,6 @@ void Xtc::Policies::Policy::set_filter(const std::string & value_path, YFilter y
     if(value_path == "interface-handle")
     {
         interface_handle.yfilter = yfilter;
-    }
-    if(value_path == "policy-group-identifier")
-    {
-        policy_group_identifier.yfilter = yfilter;
-    }
-    if(value_path == "local-label-identifier")
-    {
-        local_label_identifier.yfilter = yfilter;
-    }
-    if(value_path == "local-label")
-    {
-        local_label.yfilter = yfilter;
     }
     if(value_path == "profile-id")
     {
@@ -4532,7 +4504,7 @@ void Xtc::Policies::Policy::set_filter(const std::string & value_path, YFilter y
 
 bool Xtc::Policies::Policy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination-address" || name == "binding-sid" || name == "auto-policy-info" || name == "paths" || name == "id" || name == "policy-name" || name == "administrative-up" || name == "operational-up" || name == "color" || name == "is-auto-policy" || name == "transition-count" || name == "forward-class" || name == "up-time" || name == "up-age" || name == "down-time" || name == "down-age" || name == "lsp-id" || name == "steering-bgp-disabled" || name == "interface-handle" || name == "policy-group-identifier" || name == "local-label-identifier" || name == "local-label" || name == "profile-id" || name == "ipv6-caps-enabled")
+    if(name == "destination-address" || name == "binding-sid" || name == "candidate-path" || name == "ls-ps" || name == "event-buffer" || name == "id" || name == "policy-name" || name == "administrative-up" || name == "operational-up" || name == "color" || name == "transition-count" || name == "forward-class" || name == "up-time" || name == "up-age" || name == "down-time" || name == "down-age" || name == "steering-bgp-disabled" || name == "interface-handle" || name == "profile-id" || name == "ipv6-caps-enabled")
         return true;
     return false;
 }
@@ -4645,11 +4617,8 @@ bool Xtc::Policies::Policy::DestinationAddress::has_leaf_or_child_of_name(const 
 
 Xtc::Policies::Policy::BindingSid::BindingSid()
     :
-    bsid_mode{YType::enumeration, "bsid-mode"},
-    error{YType::enumeration, "error"},
-    state{YType::str, "state"},
-    explicit_based{YType::boolean, "explicit-based"},
-    policy_selected{YType::boolean, "policy-selected"}
+    is_fallback_dynamic{YType::boolean, "is-fallback-dynamic"},
+    is_within_srlb_range{YType::boolean, "is-within-srlb-range"}
         ,
     value_(std::make_shared<Xtc::Policies::Policy::BindingSid::Value>())
 {
@@ -4665,22 +4634,16 @@ Xtc::Policies::Policy::BindingSid::~BindingSid()
 bool Xtc::Policies::Policy::BindingSid::has_data() const
 {
     if (is_presence_container) return true;
-    return bsid_mode.is_set
-	|| error.is_set
-	|| state.is_set
-	|| explicit_based.is_set
-	|| policy_selected.is_set
+    return is_fallback_dynamic.is_set
+	|| is_within_srlb_range.is_set
 	|| (value_ !=  nullptr && value_->has_data());
 }
 
 bool Xtc::Policies::Policy::BindingSid::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(bsid_mode.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(explicit_based.yfilter)
-	|| ydk::is_set(policy_selected.yfilter)
+	|| ydk::is_set(is_fallback_dynamic.yfilter)
+	|| ydk::is_set(is_within_srlb_range.yfilter)
 	|| (value_ !=  nullptr && value_->has_operation());
 }
 
@@ -4695,11 +4658,8 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::BindingSid
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsid_mode.is_set || is_set(bsid_mode.yfilter)) leaf_name_data.push_back(bsid_mode.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (explicit_based.is_set || is_set(explicit_based.yfilter)) leaf_name_data.push_back(explicit_based.get_name_leafdata());
-    if (policy_selected.is_set || is_set(policy_selected.yfilter)) leaf_name_data.push_back(policy_selected.get_name_leafdata());
+    if (is_fallback_dynamic.is_set || is_set(is_fallback_dynamic.yfilter)) leaf_name_data.push_back(is_fallback_dynamic.get_name_leafdata());
+    if (is_within_srlb_range.is_set || is_set(is_within_srlb_range.yfilter)) leaf_name_data.push_back(is_within_srlb_range.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4733,65 +4693,35 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Bindi
 
 void Xtc::Policies::Policy::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "bsid-mode")
+    if(value_path == "is-fallback-dynamic")
     {
-        bsid_mode = value;
-        bsid_mode.value_namespace = name_space;
-        bsid_mode.value_namespace_prefix = name_space_prefix;
+        is_fallback_dynamic = value;
+        is_fallback_dynamic.value_namespace = name_space;
+        is_fallback_dynamic.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "error")
+    if(value_path == "is-within-srlb-range")
     {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "explicit-based")
-    {
-        explicit_based = value;
-        explicit_based.value_namespace = name_space;
-        explicit_based.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-selected")
-    {
-        policy_selected = value;
-        policy_selected.value_namespace = name_space;
-        policy_selected.value_namespace_prefix = name_space_prefix;
+        is_within_srlb_range = value;
+        is_within_srlb_range.value_namespace = name_space;
+        is_within_srlb_range.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Xtc::Policies::Policy::BindingSid::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "bsid-mode")
+    if(value_path == "is-fallback-dynamic")
     {
-        bsid_mode.yfilter = yfilter;
+        is_fallback_dynamic.yfilter = yfilter;
     }
-    if(value_path == "error")
+    if(value_path == "is-within-srlb-range")
     {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "explicit-based")
-    {
-        explicit_based.yfilter = yfilter;
-    }
-    if(value_path == "policy-selected")
-    {
-        policy_selected.yfilter = yfilter;
+        is_within_srlb_range.yfilter = yfilter;
     }
 }
 
 bool Xtc::Policies::Policy::BindingSid::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "value" || name == "bsid-mode" || name == "error" || name == "state" || name == "explicit-based" || name == "policy-selected")
+    if(name == "value" || name == "is-fallback-dynamic" || name == "is-within-srlb-range")
         return true;
     return false;
 }
@@ -4902,80 +4832,214 @@ bool Xtc::Policies::Policy::BindingSid::Value::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Xtc::Policies::Policy::AutoPolicyInfo::AutoPolicyInfo()
+Xtc::Policies::Policy::CandidatePath::CandidatePath()
     :
-    creator_name{YType::str, "creator-name"},
-    distinguisher{YType::uint32, "distinguisher"},
-    preference{YType::uint32, "preference"}
+    name{YType::str, "name"},
+    preference{YType::uint32, "preference"},
+    protocol_originator{YType::enumeration, "protocol-originator"},
+    discriminator{YType::uint32, "discriminator"},
+    is_active{YType::boolean, "is-active"},
+    is_reoptimizing{YType::boolean, "is-reoptimizing"},
+    shutdown{YType::boolean, "shutdown"},
+    error{YType::str, "error"}
+        ,
+    originator(std::make_shared<Xtc::Policies::Policy::CandidatePath::Originator>())
+    , sr_path_constraints(std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints>())
+    , requested_bsid(std::make_shared<Xtc::Policies::Policy::CandidatePath::RequestedBsid>())
+    , cleanup_timer(std::make_shared<Xtc::Policies::Policy::CandidatePath::CleanupTimer>())
+    , pcc_information(std::make_shared<Xtc::Policies::Policy::CandidatePath::PccInformation>())
+    , segment_list(this, {})
 {
+    originator->parent = this;
+    sr_path_constraints->parent = this;
+    requested_bsid->parent = this;
+    cleanup_timer->parent = this;
+    pcc_information->parent = this;
 
-    yang_name = "auto-policy-info"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "candidate-path"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Policies::Policy::AutoPolicyInfo::~AutoPolicyInfo()
+Xtc::Policies::Policy::CandidatePath::~CandidatePath()
 {
 }
 
-bool Xtc::Policies::Policy::AutoPolicyInfo::has_data() const
+bool Xtc::Policies::Policy::CandidatePath::has_data() const
 {
     if (is_presence_container) return true;
-    return creator_name.is_set
-	|| distinguisher.is_set
-	|| preference.is_set;
+    for (std::size_t index=0; index<segment_list.len(); index++)
+    {
+        if(segment_list[index]->has_data())
+            return true;
+    }
+    return name.is_set
+	|| preference.is_set
+	|| protocol_originator.is_set
+	|| discriminator.is_set
+	|| is_active.is_set
+	|| is_reoptimizing.is_set
+	|| shutdown.is_set
+	|| error.is_set
+	|| (originator !=  nullptr && originator->has_data())
+	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_data())
+	|| (requested_bsid !=  nullptr && requested_bsid->has_data())
+	|| (cleanup_timer !=  nullptr && cleanup_timer->has_data())
+	|| (pcc_information !=  nullptr && pcc_information->has_data());
 }
 
-bool Xtc::Policies::Policy::AutoPolicyInfo::has_operation() const
+bool Xtc::Policies::Policy::CandidatePath::has_operation() const
 {
+    for (std::size_t index=0; index<segment_list.len(); index++)
+    {
+        if(segment_list[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(creator_name.yfilter)
-	|| ydk::is_set(distinguisher.yfilter)
-	|| ydk::is_set(preference.yfilter);
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(protocol_originator.yfilter)
+	|| ydk::is_set(discriminator.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(is_reoptimizing.yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| (originator !=  nullptr && originator->has_operation())
+	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_operation())
+	|| (requested_bsid !=  nullptr && requested_bsid->has_operation())
+	|| (cleanup_timer !=  nullptr && cleanup_timer->has_operation())
+	|| (pcc_information !=  nullptr && pcc_information->has_operation());
 }
 
-std::string Xtc::Policies::Policy::AutoPolicyInfo::get_segment_path() const
+std::string Xtc::Policies::Policy::CandidatePath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "auto-policy-info";
+    path_buffer << "candidate-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::AutoPolicyInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (creator_name.is_set || is_set(creator_name.yfilter)) leaf_name_data.push_back(creator_name.get_name_leafdata());
-    if (distinguisher.is_set || is_set(distinguisher.yfilter)) leaf_name_data.push_back(distinguisher.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (protocol_originator.is_set || is_set(protocol_originator.yfilter)) leaf_name_data.push_back(protocol_originator.get_name_leafdata());
+    if (discriminator.is_set || is_set(discriminator.yfilter)) leaf_name_data.push_back(discriminator.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (is_reoptimizing.is_set || is_set(is_reoptimizing.yfilter)) leaf_name_data.push_back(is_reoptimizing.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::AutoPolicyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "originator")
+    {
+        if(originator == nullptr)
+        {
+            originator = std::make_shared<Xtc::Policies::Policy::CandidatePath::Originator>();
+        }
+        return originator;
+    }
+
+    if(child_yang_name == "sr-path-constraints")
+    {
+        if(sr_path_constraints == nullptr)
+        {
+            sr_path_constraints = std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints>();
+        }
+        return sr_path_constraints;
+    }
+
+    if(child_yang_name == "requested-bsid")
+    {
+        if(requested_bsid == nullptr)
+        {
+            requested_bsid = std::make_shared<Xtc::Policies::Policy::CandidatePath::RequestedBsid>();
+        }
+        return requested_bsid;
+    }
+
+    if(child_yang_name == "cleanup-timer")
+    {
+        if(cleanup_timer == nullptr)
+        {
+            cleanup_timer = std::make_shared<Xtc::Policies::Policy::CandidatePath::CleanupTimer>();
+        }
+        return cleanup_timer;
+    }
+
+    if(child_yang_name == "pcc-information")
+    {
+        if(pcc_information == nullptr)
+        {
+            pcc_information = std::make_shared<Xtc::Policies::Policy::CandidatePath::PccInformation>();
+        }
+        return pcc_information;
+    }
+
+    if(child_yang_name == "segment-list")
+    {
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList>();
+        ent_->parent = this;
+        segment_list.append(ent_);
+        return ent_;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::AutoPolicyInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(originator != nullptr)
+    {
+        _children["originator"] = originator;
+    }
+
+    if(sr_path_constraints != nullptr)
+    {
+        _children["sr-path-constraints"] = sr_path_constraints;
+    }
+
+    if(requested_bsid != nullptr)
+    {
+        _children["requested-bsid"] = requested_bsid;
+    }
+
+    if(cleanup_timer != nullptr)
+    {
+        _children["cleanup-timer"] = cleanup_timer;
+    }
+
+    if(pcc_information != nullptr)
+    {
+        _children["pcc-information"] = pcc_information;
+    }
+
+    count_ = 0;
+    for (auto ent_ : segment_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
     return _children;
 }
 
-void Xtc::Policies::Policy::AutoPolicyInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Policies::Policy::CandidatePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "creator-name")
+    if(value_path == "name")
     {
-        creator_name = value;
-        creator_name.value_namespace = name_space;
-        creator_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "distinguisher")
-    {
-        distinguisher = value;
-        distinguisher.value_namespace = name_space;
-        distinguisher.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preference")
     {
@@ -4983,58 +5047,1312 @@ void Xtc::Policies::Policy::AutoPolicyInfo::set_value(const std::string & value_
         preference.value_namespace = name_space;
         preference.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "protocol-originator")
+    {
+        protocol_originator = value;
+        protocol_originator.value_namespace = name_space;
+        protocol_originator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "discriminator")
+    {
+        discriminator = value;
+        discriminator.value_namespace = name_space;
+        discriminator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-active")
+    {
+        is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-reoptimizing")
+    {
+        is_reoptimizing = value;
+        is_reoptimizing.value_namespace = name_space;
+        is_reoptimizing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Xtc::Policies::Policy::AutoPolicyInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Policies::Policy::CandidatePath::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "creator-name")
+    if(value_path == "name")
     {
-        creator_name.yfilter = yfilter;
-    }
-    if(value_path == "distinguisher")
-    {
-        distinguisher.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
     if(value_path == "preference")
     {
         preference.yfilter = yfilter;
     }
+    if(value_path == "protocol-originator")
+    {
+        protocol_originator.yfilter = yfilter;
+    }
+    if(value_path == "discriminator")
+    {
+        discriminator.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "is-reoptimizing")
+    {
+        is_reoptimizing.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
 }
 
-bool Xtc::Policies::Policy::AutoPolicyInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Policies::Policy::CandidatePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "creator-name" || name == "distinguisher" || name == "preference")
+    if(name == "originator" || name == "sr-path-constraints" || name == "requested-bsid" || name == "cleanup-timer" || name == "pcc-information" || name == "segment-list" || name == "name" || name == "preference" || name == "protocol-originator" || name == "discriminator" || name == "is-active" || name == "is-reoptimizing" || name == "shutdown" || name == "error")
         return true;
     return false;
 }
 
-Xtc::Policies::Policy::Paths::Paths()
+Xtc::Policies::Policy::CandidatePath::Originator::Originator()
     :
-    index_{YType::uint32, "index"},
-    type{YType::enumeration, "type"},
+    autonomous_system_number{YType::uint32, "autonomous-system-number"}
+        ,
+    node_address(std::make_shared<Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress>())
+{
+    node_address->parent = this;
+
+    yang_name = "originator"; yang_parent_name = "candidate-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::Originator::~Originator()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::Originator::has_data() const
+{
+    if (is_presence_container) return true;
+    return autonomous_system_number.is_set
+	|| (node_address !=  nullptr && node_address->has_data());
+}
+
+bool Xtc::Policies::Policy::CandidatePath::Originator::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(autonomous_system_number.yfilter)
+	|| (node_address !=  nullptr && node_address->has_operation());
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::Originator::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "originator";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::Originator::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (autonomous_system_number.is_set || is_set(autonomous_system_number.yfilter)) leaf_name_data.push_back(autonomous_system_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::Originator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node-address")
+    {
+        if(node_address == nullptr)
+        {
+            node_address = std::make_shared<Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress>();
+        }
+        return node_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::Originator::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(node_address != nullptr)
+    {
+        _children["node-address"] = node_address;
+    }
+
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::Originator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number = value;
+        autonomous_system_number.value_namespace = name_space;
+        autonomous_system_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::Originator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::Originator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-address" || name == "autonomous-system-number")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::NodeAddress()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "node-address"; yang_parent_name = "originator"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::~NodeAddress()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::Originator::NodeAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::SrPathConstraints()
+    :
+    path_metrics(std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics>())
+    , segments(std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments>())
+    , affinity_constraint(this, {})
+{
+    path_metrics->parent = this;
+    segments->parent = this;
+
+    yang_name = "sr-path-constraints"; yang_parent_name = "candidate-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::~SrPathConstraints()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_constraint.len(); index++)
+    {
+        if(affinity_constraint[index]->has_data())
+            return true;
+    }
+    return (path_metrics !=  nullptr && path_metrics->has_data())
+	|| (segments !=  nullptr && segments->has_data());
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_constraint.len(); index++)
+    {
+        if(affinity_constraint[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (path_metrics !=  nullptr && path_metrics->has_operation())
+	|| (segments !=  nullptr && segments->has_operation());
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::SrPathConstraints::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-path-constraints";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SrPathConstraints::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-metrics")
+    {
+        if(path_metrics == nullptr)
+        {
+            path_metrics = std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics>();
+        }
+        return path_metrics;
+    }
+
+    if(child_yang_name == "segments")
+    {
+        if(segments == nullptr)
+        {
+            segments = std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments>();
+        }
+        return segments;
+    }
+
+    if(child_yang_name == "affinity-constraint")
+    {
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint>();
+        ent_->parent = this;
+        affinity_constraint.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(path_metrics != nullptr)
+    {
+        _children["path-metrics"] = path_metrics;
+    }
+
+    if(segments != nullptr)
+    {
+        _children["segments"] = segments;
+    }
+
+    count_ = 0;
+    for (auto ent_ : affinity_constraint.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-metrics" || name == "segments" || name == "affinity-constraint")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::PathMetrics()
+    :
+    margin_relative{YType::uint32, "margin-relative"},
+    margin_absolute{YType::uint32, "margin-absolute"},
+    maximum_segments{YType::uint16, "maximum-segments"},
+    accumulative_te_metric{YType::uint32, "accumulative-te-metric"},
+    accumulative_igp_metric{YType::uint32, "accumulative-igp-metric"},
+    accumulative_delay{YType::uint32, "accumulative-delay"}
+{
+
+    yang_name = "path-metrics"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::~PathMetrics()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::has_data() const
+{
+    if (is_presence_container) return true;
+    return margin_relative.is_set
+	|| margin_absolute.is_set
+	|| maximum_segments.is_set
+	|| accumulative_te_metric.is_set
+	|| accumulative_igp_metric.is_set
+	|| accumulative_delay.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(margin_relative.yfilter)
+	|| ydk::is_set(margin_absolute.yfilter)
+	|| ydk::is_set(maximum_segments.yfilter)
+	|| ydk::is_set(accumulative_te_metric.yfilter)
+	|| ydk::is_set(accumulative_igp_metric.yfilter)
+	|| ydk::is_set(accumulative_delay.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (margin_relative.is_set || is_set(margin_relative.yfilter)) leaf_name_data.push_back(margin_relative.get_name_leafdata());
+    if (margin_absolute.is_set || is_set(margin_absolute.yfilter)) leaf_name_data.push_back(margin_absolute.get_name_leafdata());
+    if (maximum_segments.is_set || is_set(maximum_segments.yfilter)) leaf_name_data.push_back(maximum_segments.get_name_leafdata());
+    if (accumulative_te_metric.is_set || is_set(accumulative_te_metric.yfilter)) leaf_name_data.push_back(accumulative_te_metric.get_name_leafdata());
+    if (accumulative_igp_metric.is_set || is_set(accumulative_igp_metric.yfilter)) leaf_name_data.push_back(accumulative_igp_metric.get_name_leafdata());
+    if (accumulative_delay.is_set || is_set(accumulative_delay.yfilter)) leaf_name_data.push_back(accumulative_delay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "margin-relative")
+    {
+        margin_relative = value;
+        margin_relative.value_namespace = name_space;
+        margin_relative.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "margin-absolute")
+    {
+        margin_absolute = value;
+        margin_absolute.value_namespace = name_space;
+        margin_absolute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-segments")
+    {
+        maximum_segments = value;
+        maximum_segments.value_namespace = name_space;
+        maximum_segments.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accumulative-te-metric")
+    {
+        accumulative_te_metric = value;
+        accumulative_te_metric.value_namespace = name_space;
+        accumulative_te_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accumulative-igp-metric")
+    {
+        accumulative_igp_metric = value;
+        accumulative_igp_metric.value_namespace = name_space;
+        accumulative_igp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accumulative-delay")
+    {
+        accumulative_delay = value;
+        accumulative_delay.value_namespace = name_space;
+        accumulative_delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "margin-relative")
+    {
+        margin_relative.yfilter = yfilter;
+    }
+    if(value_path == "margin-absolute")
+    {
+        margin_absolute.yfilter = yfilter;
+    }
+    if(value_path == "maximum-segments")
+    {
+        maximum_segments.yfilter = yfilter;
+    }
+    if(value_path == "accumulative-te-metric")
+    {
+        accumulative_te_metric.yfilter = yfilter;
+    }
+    if(value_path == "accumulative-igp-metric")
+    {
+        accumulative_igp_metric.yfilter = yfilter;
+    }
+    if(value_path == "accumulative-delay")
+    {
+        accumulative_delay.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::PathMetrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "margin-relative" || name == "margin-absolute" || name == "maximum-segments" || name == "accumulative-te-metric" || name == "accumulative-igp-metric" || name == "accumulative-delay")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::Segments()
+    :
+    segment_algorithm{YType::uint8, "segment-algorithm"}
+{
+
+    yang_name = "segments"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::~Segments()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::has_data() const
+{
+    if (is_presence_container) return true;
+    return segment_algorithm.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(segment_algorithm.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segments";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (segment_algorithm.is_set || is_set(segment_algorithm.yfilter)) leaf_name_data.push_back(segment_algorithm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "segment-algorithm")
+    {
+        segment_algorithm = value;
+        segment_algorithm.value_namespace = name_space;
+        segment_algorithm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "segment-algorithm")
+    {
+        segment_algorithm.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment-algorithm")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::AffinityConstraint()
+    :
+    type{YType::uint8, "type"},
+    value_{YType::uint32, "value"}
+        ,
+    color(this, {})
+{
+
+    yang_name = "affinity-constraint"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::~AffinityConstraint()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<color.len(); index++)
+    {
+        if(color[index]->has_data())
+            return true;
+    }
+    return type.is_set
+	|| value_.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::has_operation() const
+{
+    for (std::size_t index=0; index<color.len(); index++)
+    {
+        if(color[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-constraint";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "color")
+    {
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color>();
+        ent_->parent = this;
+        color.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : color.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color" || name == "type" || name == "value")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::Color()
+    :
+    color{YType::str, "color"}
+{
+
+    yang_name = "color"; yang_parent_name = "affinity-constraint"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::~Color()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::has_data() const
+{
+    if (is_presence_container) return true;
+    return color.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "color";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::RequestedBsid::RequestedBsid()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    label{YType::uint32, "label"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "requested-bsid"; yang_parent_name = "candidate-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::RequestedBsid::~RequestedBsid()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::RequestedBsid::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| label.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::RequestedBsid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::RequestedBsid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "requested-bsid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::RequestedBsid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::RequestedBsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::RequestedBsid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::RequestedBsid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::RequestedBsid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::RequestedBsid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-type" || name == "label" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::CleanupTimer::CleanupTimer()
+    :
+    running{YType::boolean, "running"},
+    remaining_seconds{YType::int64, "remaining-seconds"},
+    remaining_nano_seconds{YType::int64, "remaining-nano-seconds"}
+{
+
+    yang_name = "cleanup-timer"; yang_parent_name = "candidate-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::CleanupTimer::~CleanupTimer()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::CleanupTimer::has_data() const
+{
+    if (is_presence_container) return true;
+    return running.is_set
+	|| remaining_seconds.is_set
+	|| remaining_nano_seconds.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::CleanupTimer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(remaining_seconds.yfilter)
+	|| ydk::is_set(remaining_nano_seconds.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cleanup-timer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (remaining_seconds.is_set || is_set(remaining_seconds.yfilter)) leaf_name_data.push_back(remaining_seconds.get_name_leafdata());
+    if (remaining_nano_seconds.is_set || is_set(remaining_nano_seconds.yfilter)) leaf_name_data.push_back(remaining_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::CleanupTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds = value;
+        remaining_seconds.value_namespace = name_space;
+        remaining_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds = value;
+        remaining_nano_seconds.value_namespace = name_space;
+        remaining_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::CleanupTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds.yfilter = yfilter;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::CleanupTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "running" || name == "remaining-seconds" || name == "remaining-nano-seconds")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::PccInformation::PccInformation()
+    :
+    symbolic_name{YType::str, "symbolic-name"},
+    plsp_id{YType::uint32, "plsp-id"},
+    is_orphan{YType::boolean, "is-orphan"}
+        ,
+    orphan_timer(std::make_shared<Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer>())
+{
+    orphan_timer->parent = this;
+
+    yang_name = "pcc-information"; yang_parent_name = "candidate-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::PccInformation::~PccInformation()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::PccInformation::has_data() const
+{
+    if (is_presence_container) return true;
+    return symbolic_name.is_set
+	|| plsp_id.is_set
+	|| is_orphan.is_set
+	|| (orphan_timer !=  nullptr && orphan_timer->has_data());
+}
+
+bool Xtc::Policies::Policy::CandidatePath::PccInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(symbolic_name.yfilter)
+	|| ydk::is_set(plsp_id.yfilter)
+	|| ydk::is_set(is_orphan.yfilter)
+	|| (orphan_timer !=  nullptr && orphan_timer->has_operation());
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::PccInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pcc-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::PccInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (symbolic_name.is_set || is_set(symbolic_name.yfilter)) leaf_name_data.push_back(symbolic_name.get_name_leafdata());
+    if (plsp_id.is_set || is_set(plsp_id.yfilter)) leaf_name_data.push_back(plsp_id.get_name_leafdata());
+    if (is_orphan.is_set || is_set(is_orphan.yfilter)) leaf_name_data.push_back(is_orphan.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::PccInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "orphan-timer")
+    {
+        if(orphan_timer == nullptr)
+        {
+            orphan_timer = std::make_shared<Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer>();
+        }
+        return orphan_timer;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::PccInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(orphan_timer != nullptr)
+    {
+        _children["orphan-timer"] = orphan_timer;
+    }
+
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::PccInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "symbolic-name")
+    {
+        symbolic_name = value;
+        symbolic_name.value_namespace = name_space;
+        symbolic_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "plsp-id")
+    {
+        plsp_id = value;
+        plsp_id.value_namespace = name_space;
+        plsp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-orphan")
+    {
+        is_orphan = value;
+        is_orphan.value_namespace = name_space;
+        is_orphan.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::PccInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "symbolic-name")
+    {
+        symbolic_name.yfilter = yfilter;
+    }
+    if(value_path == "plsp-id")
+    {
+        plsp_id.yfilter = yfilter;
+    }
+    if(value_path == "is-orphan")
+    {
+        is_orphan.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::PccInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "orphan-timer" || name == "symbolic-name" || name == "plsp-id" || name == "is-orphan")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::OrphanTimer()
+    :
+    running{YType::boolean, "running"},
+    remaining_seconds{YType::int64, "remaining-seconds"},
+    remaining_nano_seconds{YType::int64, "remaining-nano-seconds"}
+{
+
+    yang_name = "orphan-timer"; yang_parent_name = "pcc-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::~OrphanTimer()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::has_data() const
+{
+    if (is_presence_container) return true;
+    return running.is_set
+	|| remaining_seconds.is_set
+	|| remaining_nano_seconds.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(remaining_seconds.yfilter)
+	|| ydk::is_set(remaining_nano_seconds.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "orphan-timer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (remaining_seconds.is_set || is_set(remaining_seconds.yfilter)) leaf_name_data.push_back(remaining_seconds.get_name_leafdata());
+    if (remaining_nano_seconds.is_set || is_set(remaining_nano_seconds.yfilter)) leaf_name_data.push_back(remaining_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds = value;
+        remaining_seconds.value_namespace = name_space;
+        remaining_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds = value;
+        remaining_nano_seconds.value_namespace = name_space;
+        remaining_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds.yfilter = yfilter;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::PccInformation::OrphanTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "running" || name == "remaining-seconds" || name == "remaining-nano-seconds")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::SegmentList::SegmentList()
+    :
     name{YType::str, "name"},
+    type{YType::enumeration, "type"},
     active{YType::boolean, "active"},
     weight{YType::uint32, "weight"},
     metric_type{YType::uint8, "metric-type"},
-    metric_value{YType::uint32, "metric-value"},
+    metric_value{YType::uint64, "metric-value"},
     is_valid{YType::boolean, "is-valid"},
     pce_based_path{YType::boolean, "pce-based-path"},
     pce_address{YType::str, "pce-address"},
     error{YType::str, "error"}
         ,
-    sr_path_constraints(std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints>())
-    , hops(this, {})
+    hops(this, {})
 {
-    sr_path_constraints->parent = this;
 
-    yang_name = "paths"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "segment-list"; yang_parent_name = "candidate-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Policies::Policy::Paths::~Paths()
+Xtc::Policies::Policy::CandidatePath::SegmentList::~SegmentList()
 {
 }
 
-bool Xtc::Policies::Policy::Paths::has_data() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<hops.len(); index++)
@@ -5042,9 +6360,8 @@ bool Xtc::Policies::Policy::Paths::has_data() const
         if(hops[index]->has_data())
             return true;
     }
-    return index_.is_set
+    return name.is_set
 	|| type.is_set
-	|| name.is_set
 	|| active.is_set
 	|| weight.is_set
 	|| metric_type.is_set
@@ -5052,11 +6369,10 @@ bool Xtc::Policies::Policy::Paths::has_data() const
 	|| is_valid.is_set
 	|| pce_based_path.is_set
 	|| pce_address.is_set
-	|| error.is_set
-	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_data());
+	|| error.is_set;
 }
 
-bool Xtc::Policies::Policy::Paths::has_operation() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::has_operation() const
 {
     for (std::size_t index=0; index<hops.len(); index++)
     {
@@ -5064,9 +6380,8 @@ bool Xtc::Policies::Policy::Paths::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(active.yfilter)
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(metric_type.yfilter)
@@ -5074,24 +6389,23 @@ bool Xtc::Policies::Policy::Paths::has_operation() const
 	|| ydk::is_set(is_valid.yfilter)
 	|| ydk::is_set(pce_based_path.yfilter)
 	|| ydk::is_set(pce_address.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_operation());
+	|| ydk::is_set(error.yfilter);
 }
 
-std::string Xtc::Policies::Policy::Paths::get_segment_path() const
+std::string Xtc::Policies::Policy::CandidatePath::SegmentList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "paths";
+    path_buffer << "segment-list";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SegmentList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
@@ -5105,20 +6419,11 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::get
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SegmentList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "sr-path-constraints")
-    {
-        if(sr_path_constraints == nullptr)
-        {
-            sr_path_constraints = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints>();
-        }
-        return sr_path_constraints;
-    }
-
     if(child_yang_name == "hops")
     {
-        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths::Hops>();
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList::Hops>();
         ent_->parent = this;
         hops.append(ent_);
         return ent_;
@@ -5127,15 +6432,10 @@ std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SegmentList::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(sr_path_constraints != nullptr)
-    {
-        _children["sr-path-constraints"] = sr_path_constraints;
-    }
-
     count_ = 0;
     for (auto ent_ : hops.entities())
     {
@@ -5148,25 +6448,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths
     return _children;
 }
 
-void Xtc::Policies::Policy::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "index")
+    if(value_path == "name")
     {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active")
     {
@@ -5218,19 +6512,15 @@ void Xtc::Policies::Policy::Paths::set_value(const std::string & value_path, con
     }
 }
 
-void Xtc::Policies::Policy::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "index")
+    if(value_path == "name")
     {
-        index_.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
     if(value_path == "type")
     {
         type.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
     }
     if(value_path == "active")
     {
@@ -5266,587 +6556,34 @@ void Xtc::Policies::Policy::Paths::set_filter(const std::string & value_path, YF
     }
 }
 
-bool Xtc::Policies::Policy::Paths::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-path-constraints" || name == "hops" || name == "index" || name == "type" || name == "name" || name == "active" || name == "weight" || name == "metric-type" || name == "metric-value" || name == "is-valid" || name == "pce-based-path" || name == "pce-address" || name == "error")
+    if(name == "hops" || name == "name" || name == "type" || name == "active" || name == "weight" || name == "metric-type" || name == "metric-value" || name == "is-valid" || name == "pce-based-path" || name == "pce-address" || name == "error")
         return true;
     return false;
 }
 
-Xtc::Policies::Policy::Paths::SrPathConstraints::SrPathConstraints()
-    :
-    path_metrics(std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics>())
-    , segments(std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::Segments>())
-    , affinity_constraint(this, {})
-{
-    path_metrics->parent = this;
-    segments->parent = this;
-
-    yang_name = "sr-path-constraints"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::~SrPathConstraints()
-{
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<affinity_constraint.len(); index++)
-    {
-        if(affinity_constraint[index]->has_data())
-            return true;
-    }
-    return (path_metrics !=  nullptr && path_metrics->has_data())
-	|| (segments !=  nullptr && segments->has_data());
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::has_operation() const
-{
-    for (std::size_t index=0; index<affinity_constraint.len(); index++)
-    {
-        if(affinity_constraint[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (path_metrics !=  nullptr && path_metrics->has_operation())
-	|| (segments !=  nullptr && segments->has_operation());
-}
-
-std::string Xtc::Policies::Policy::Paths::SrPathConstraints::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sr-path-constraints";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrPathConstraints::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "path-metrics")
-    {
-        if(path_metrics == nullptr)
-        {
-            path_metrics = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics>();
-        }
-        return path_metrics;
-    }
-
-    if(child_yang_name == "segments")
-    {
-        if(segments == nullptr)
-        {
-            segments = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::Segments>();
-        }
-        return segments;
-    }
-
-    if(child_yang_name == "affinity-constraint")
-    {
-        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint>();
-        ent_->parent = this;
-        affinity_constraint.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(path_metrics != nullptr)
-    {
-        _children["path-metrics"] = path_metrics;
-    }
-
-    if(segments != nullptr)
-    {
-        _children["segments"] = segments;
-    }
-
-    count_ = 0;
-    for (auto ent_ : affinity_constraint.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path-metrics" || name == "segments" || name == "affinity-constraint")
-        return true;
-    return false;
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::PathMetrics()
-    :
-    margin_relative{YType::uint8, "margin-relative"},
-    margin_absolute{YType::uint8, "margin-absolute"},
-    maximum_segments{YType::uint16, "maximum-segments"},
-    accumulative_te_metric{YType::uint32, "accumulative-te-metric"},
-    accumulative_igp_metric{YType::uint32, "accumulative-igp-metric"},
-    accumulative_delay{YType::uint32, "accumulative-delay"}
-{
-
-    yang_name = "path-metrics"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::~PathMetrics()
-{
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::has_data() const
-{
-    if (is_presence_container) return true;
-    return margin_relative.is_set
-	|| margin_absolute.is_set
-	|| maximum_segments.is_set
-	|| accumulative_te_metric.is_set
-	|| accumulative_igp_metric.is_set
-	|| accumulative_delay.is_set;
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(margin_relative.yfilter)
-	|| ydk::is_set(margin_absolute.yfilter)
-	|| ydk::is_set(maximum_segments.yfilter)
-	|| ydk::is_set(accumulative_te_metric.yfilter)
-	|| ydk::is_set(accumulative_igp_metric.yfilter)
-	|| ydk::is_set(accumulative_delay.yfilter);
-}
-
-std::string Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path-metrics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (margin_relative.is_set || is_set(margin_relative.yfilter)) leaf_name_data.push_back(margin_relative.get_name_leafdata());
-    if (margin_absolute.is_set || is_set(margin_absolute.yfilter)) leaf_name_data.push_back(margin_absolute.get_name_leafdata());
-    if (maximum_segments.is_set || is_set(maximum_segments.yfilter)) leaf_name_data.push_back(maximum_segments.get_name_leafdata());
-    if (accumulative_te_metric.is_set || is_set(accumulative_te_metric.yfilter)) leaf_name_data.push_back(accumulative_te_metric.get_name_leafdata());
-    if (accumulative_igp_metric.is_set || is_set(accumulative_igp_metric.yfilter)) leaf_name_data.push_back(accumulative_igp_metric.get_name_leafdata());
-    if (accumulative_delay.is_set || is_set(accumulative_delay.yfilter)) leaf_name_data.push_back(accumulative_delay.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "margin-relative")
-    {
-        margin_relative = value;
-        margin_relative.value_namespace = name_space;
-        margin_relative.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "margin-absolute")
-    {
-        margin_absolute = value;
-        margin_absolute.value_namespace = name_space;
-        margin_absolute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-segments")
-    {
-        maximum_segments = value;
-        maximum_segments.value_namespace = name_space;
-        maximum_segments.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accumulative-te-metric")
-    {
-        accumulative_te_metric = value;
-        accumulative_te_metric.value_namespace = name_space;
-        accumulative_te_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accumulative-igp-metric")
-    {
-        accumulative_igp_metric = value;
-        accumulative_igp_metric.value_namespace = name_space;
-        accumulative_igp_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accumulative-delay")
-    {
-        accumulative_delay = value;
-        accumulative_delay.value_namespace = name_space;
-        accumulative_delay.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "margin-relative")
-    {
-        margin_relative.yfilter = yfilter;
-    }
-    if(value_path == "margin-absolute")
-    {
-        margin_absolute.yfilter = yfilter;
-    }
-    if(value_path == "maximum-segments")
-    {
-        maximum_segments.yfilter = yfilter;
-    }
-    if(value_path == "accumulative-te-metric")
-    {
-        accumulative_te_metric.yfilter = yfilter;
-    }
-    if(value_path == "accumulative-igp-metric")
-    {
-        accumulative_igp_metric.yfilter = yfilter;
-    }
-    if(value_path == "accumulative-delay")
-    {
-        accumulative_delay.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "margin-relative" || name == "margin-absolute" || name == "maximum-segments" || name == "accumulative-te-metric" || name == "accumulative-igp-metric" || name == "accumulative-delay")
-        return true;
-    return false;
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::Segments()
-    :
-    segment_algorithm{YType::uint8, "segment-algorithm"}
-{
-
-    yang_name = "segments"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::~Segments()
-{
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::has_data() const
-{
-    if (is_presence_container) return true;
-    return segment_algorithm.is_set;
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(segment_algorithm.yfilter);
-}
-
-std::string Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "segments";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (segment_algorithm.is_set || is_set(segment_algorithm.yfilter)) leaf_name_data.push_back(segment_algorithm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "segment-algorithm")
-    {
-        segment_algorithm = value;
-        segment_algorithm.value_namespace = name_space;
-        segment_algorithm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "segment-algorithm")
-    {
-        segment_algorithm.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "segment-algorithm")
-        return true;
-    return false;
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::AffinityConstraint()
-    :
-    type{YType::uint8, "type"},
-    value_{YType::uint32, "value"}
-        ,
-    color(this, {})
-{
-
-    yang_name = "affinity-constraint"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::~AffinityConstraint()
-{
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<color.len(); index++)
-    {
-        if(color[index]->has_data())
-            return true;
-    }
-    return type.is_set
-	|| value_.is_set;
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::has_operation() const
-{
-    for (std::size_t index=0; index<color.len(); index++)
-    {
-        if(color[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "affinity-constraint";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "color")
-    {
-        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color>();
-        ent_->parent = this;
-        color.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : color.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "color" || name == "type" || name == "value")
-        return true;
-    return false;
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::Color()
-    :
-    color{YType::str, "color"}
-{
-
-    yang_name = "color"; yang_parent_name = "affinity-constraint"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::~Color()
-{
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::has_data() const
-{
-    if (is_presence_container) return true;
-    return color.is_set;
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(color.yfilter);
-}
-
-std::string Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "color";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "color")
-    {
-        color = value;
-        color.value_namespace = name_space;
-        color.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "color")
-    {
-        color.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "color")
-        return true;
-    return false;
-}
-
-Xtc::Policies::Policy::Paths::Hops::Hops()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Hops()
     :
     sid_type{YType::enumeration, "sid-type"},
     algorithm{YType::uint8, "algorithm"}
         ,
-    sid(std::make_shared<Xtc::Policies::Policy::Paths::Hops::Sid>())
-    , local_address(std::make_shared<Xtc::Policies::Policy::Paths::Hops::LocalAddress>())
-    , remote_address(std::make_shared<Xtc::Policies::Policy::Paths::Hops::RemoteAddress>())
+    sid(std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid>())
+    , local_address(std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress>())
+    , remote_address(std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress>())
 {
     sid->parent = this;
     local_address->parent = this;
     remote_address->parent = this;
 
-    yang_name = "hops"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "hops"; yang_parent_name = "segment-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Policies::Policy::Paths::Hops::~Hops()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::~Hops()
 {
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::has_data() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::has_data() const
 {
     if (is_presence_container) return true;
     return sid_type.is_set
@@ -5856,7 +6593,7 @@ bool Xtc::Policies::Policy::Paths::Hops::has_data() const
 	|| (remote_address !=  nullptr && remote_address->has_data());
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::has_operation() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sid_type.yfilter)
@@ -5866,14 +6603,15 @@ bool Xtc::Policies::Policy::Paths::Hops::has_operation() const
 	|| (remote_address !=  nullptr && remote_address->has_operation());
 }
 
-std::string Xtc::Policies::Policy::Paths::Hops::get_segment_path() const
+std::string Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hops";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hops::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5884,13 +6622,13 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid")
     {
         if(sid == nullptr)
         {
-            sid = std::make_shared<Xtc::Policies::Policy::Paths::Hops::Sid>();
+            sid = std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid>();
         }
         return sid;
     }
@@ -5899,7 +6637,7 @@ std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::get_child_by_na
     {
         if(local_address == nullptr)
         {
-            local_address = std::make_shared<Xtc::Policies::Policy::Paths::Hops::LocalAddress>();
+            local_address = std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress>();
         }
         return local_address;
     }
@@ -5908,7 +6646,7 @@ std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::get_child_by_na
     {
         if(remote_address == nullptr)
         {
-            remote_address = std::make_shared<Xtc::Policies::Policy::Paths::Hops::RemoteAddress>();
+            remote_address = std::make_shared<Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress>();
         }
         return remote_address;
     }
@@ -5916,7 +6654,7 @@ std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -5938,7 +6676,7 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths
     return _children;
 }
 
-void Xtc::Policies::Policy::Paths::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sid-type")
     {
@@ -5954,7 +6692,7 @@ void Xtc::Policies::Policy::Paths::Hops::set_value(const std::string & value_pat
     }
 }
 
-void Xtc::Policies::Policy::Paths::Hops::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sid-type")
     {
@@ -5966,14 +6704,14 @@ void Xtc::Policies::Policy::Paths::Hops::set_filter(const std::string & value_pa
     }
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sid" || name == "local-address" || name == "remote-address" || name == "sid-type" || name == "algorithm")
         return true;
     return false;
 }
 
-Xtc::Policies::Policy::Paths::Hops::Sid::Sid()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::Sid()
     :
     sid_type{YType::enumeration, "sid-type"},
     label{YType::uint32, "label"},
@@ -5983,11 +6721,11 @@ Xtc::Policies::Policy::Paths::Hops::Sid::Sid()
     yang_name = "sid"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Policies::Policy::Paths::Hops::Sid::~Sid()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::~Sid()
 {
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::Sid::has_data() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::has_data() const
 {
     if (is_presence_container) return true;
     return sid_type.is_set
@@ -5995,7 +6733,7 @@ bool Xtc::Policies::Policy::Paths::Hops::Sid::has_data() const
 	|| ipv6.is_set;
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::Sid::has_operation() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sid_type.yfilter)
@@ -6003,14 +6741,14 @@ bool Xtc::Policies::Policy::Paths::Hops::Sid::has_operation() const
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Xtc::Policies::Policy::Paths::Hops::Sid::get_segment_path() const
+std::string Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hops::Sid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6022,19 +6760,19 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::Sid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Xtc::Policies::Policy::Paths::Hops::Sid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sid-type")
     {
@@ -6056,7 +6794,7 @@ void Xtc::Policies::Policy::Paths::Hops::Sid::set_value(const std::string & valu
     }
 }
 
-void Xtc::Policies::Policy::Paths::Hops::Sid::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sid-type")
     {
@@ -6072,14 +6810,14 @@ void Xtc::Policies::Policy::Paths::Hops::Sid::set_filter(const std::string & val
     }
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::Sid::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::Sid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sid-type" || name == "label" || name == "ipv6")
         return true;
     return false;
 }
 
-Xtc::Policies::Policy::Paths::Hops::LocalAddress::LocalAddress()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::LocalAddress()
     :
     af_name{YType::enumeration, "af-name"},
     ipv4{YType::str, "ipv4"},
@@ -6089,11 +6827,11 @@ Xtc::Policies::Policy::Paths::Hops::LocalAddress::LocalAddress()
     yang_name = "local-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Policies::Policy::Paths::Hops::LocalAddress::~LocalAddress()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::~LocalAddress()
 {
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::LocalAddress::has_data() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::has_data() const
 {
     if (is_presence_container) return true;
     return af_name.is_set
@@ -6101,7 +6839,7 @@ bool Xtc::Policies::Policy::Paths::Hops::LocalAddress::has_data() const
 	|| ipv6.is_set;
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::LocalAddress::has_operation() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(af_name.yfilter)
@@ -6109,14 +6847,14 @@ bool Xtc::Policies::Policy::Paths::Hops::LocalAddress::has_operation() const
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_segment_path() const
+std::string Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6128,19 +6866,19 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Xtc::Policies::Policy::Paths::Hops::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -6162,7 +6900,7 @@ void Xtc::Policies::Policy::Paths::Hops::LocalAddress::set_value(const std::stri
     }
 }
 
-void Xtc::Policies::Policy::Paths::Hops::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -6178,14 +6916,14 @@ void Xtc::Policies::Policy::Paths::Hops::LocalAddress::set_filter(const std::str
     }
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Xtc::Policies::Policy::Paths::Hops::RemoteAddress::RemoteAddress()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::RemoteAddress()
     :
     af_name{YType::enumeration, "af-name"},
     ipv4{YType::str, "ipv4"},
@@ -6195,11 +6933,11 @@ Xtc::Policies::Policy::Paths::Hops::RemoteAddress::RemoteAddress()
     yang_name = "remote-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Policies::Policy::Paths::Hops::RemoteAddress::~RemoteAddress()
+Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::~RemoteAddress()
 {
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::RemoteAddress::has_data() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::has_data() const
 {
     if (is_presence_container) return true;
     return af_name.is_set
@@ -6207,7 +6945,7 @@ bool Xtc::Policies::Policy::Paths::Hops::RemoteAddress::has_data() const
 	|| ipv6.is_set;
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::RemoteAddress::has_operation() const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(af_name.yfilter)
@@ -6215,14 +6953,14 @@ bool Xtc::Policies::Policy::Paths::Hops::RemoteAddress::has_operation() const
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_segment_path() const
+std::string Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6234,19 +6972,19 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Xtc::Policies::Policy::Paths::Hops::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -6268,7 +7006,7 @@ void Xtc::Policies::Policy::Paths::Hops::RemoteAddress::set_value(const std::str
     }
 }
 
-void Xtc::Policies::Policy::Paths::Hops::RemoteAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -6284,22 +7022,1583 @@ void Xtc::Policies::Policy::Paths::Hops::RemoteAddress::set_filter(const std::st
     }
 }
 
-bool Xtc::Policies::Policy::Paths::Hops::RemoteAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Policies::Policy::CandidatePath::SegmentList::Hops::RemoteAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
+Xtc::Policies::Policy::LsPs::LsPs()
+    :
+    lsp_id{YType::uint16, "lsp-id"},
+    policy_id{YType::uint16, "policy-id"},
+    local_label{YType::uint32, "local-label"},
+    state{YType::enumeration, "state"},
+    is_active_lsp{YType::boolean, "is-active-lsp"},
+    is_reoptimized_lsp{YType::boolean, "is-reoptimized-lsp"}
+        ,
+    binding_sid(std::make_shared<Xtc::Policies::Policy::LsPs::BindingSid>())
+    , install_timer(std::make_shared<Xtc::Policies::Policy::LsPs::InstallTimer>())
+    , cleanup_timer(std::make_shared<Xtc::Policies::Policy::LsPs::CleanupTimer>())
+{
+    binding_sid->parent = this;
+    install_timer->parent = this;
+    cleanup_timer->parent = this;
+
+    yang_name = "ls-ps"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::LsPs::~LsPs()
+{
+}
+
+bool Xtc::Policies::Policy::LsPs::has_data() const
+{
+    if (is_presence_container) return true;
+    return lsp_id.is_set
+	|| policy_id.is_set
+	|| local_label.is_set
+	|| state.is_set
+	|| is_active_lsp.is_set
+	|| is_reoptimized_lsp.is_set
+	|| (binding_sid !=  nullptr && binding_sid->has_data())
+	|| (install_timer !=  nullptr && install_timer->has_data())
+	|| (cleanup_timer !=  nullptr && cleanup_timer->has_data());
+}
+
+bool Xtc::Policies::Policy::LsPs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_id.yfilter)
+	|| ydk::is_set(policy_id.yfilter)
+	|| ydk::is_set(local_label.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(is_active_lsp.yfilter)
+	|| ydk::is_set(is_reoptimized_lsp.yfilter)
+	|| (binding_sid !=  nullptr && binding_sid->has_operation())
+	|| (install_timer !=  nullptr && install_timer->has_operation())
+	|| (cleanup_timer !=  nullptr && cleanup_timer->has_operation());
+}
+
+std::string Xtc::Policies::Policy::LsPs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ls-ps";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::LsPs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lsp_id.is_set || is_set(lsp_id.yfilter)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
+    if (policy_id.is_set || is_set(policy_id.yfilter)) leaf_name_data.push_back(policy_id.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (is_active_lsp.is_set || is_set(is_active_lsp.yfilter)) leaf_name_data.push_back(is_active_lsp.get_name_leafdata());
+    if (is_reoptimized_lsp.is_set || is_set(is_reoptimized_lsp.yfilter)) leaf_name_data.push_back(is_reoptimized_lsp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::LsPs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "binding-sid")
+    {
+        if(binding_sid == nullptr)
+        {
+            binding_sid = std::make_shared<Xtc::Policies::Policy::LsPs::BindingSid>();
+        }
+        return binding_sid;
+    }
+
+    if(child_yang_name == "install-timer")
+    {
+        if(install_timer == nullptr)
+        {
+            install_timer = std::make_shared<Xtc::Policies::Policy::LsPs::InstallTimer>();
+        }
+        return install_timer;
+    }
+
+    if(child_yang_name == "cleanup-timer")
+    {
+        if(cleanup_timer == nullptr)
+        {
+            cleanup_timer = std::make_shared<Xtc::Policies::Policy::LsPs::CleanupTimer>();
+        }
+        return cleanup_timer;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::LsPs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(binding_sid != nullptr)
+    {
+        _children["binding-sid"] = binding_sid;
+    }
+
+    if(install_timer != nullptr)
+    {
+        _children["install-timer"] = install_timer;
+    }
+
+    if(cleanup_timer != nullptr)
+    {
+        _children["cleanup-timer"] = cleanup_timer;
+    }
+
+    return _children;
+}
+
+void Xtc::Policies::Policy::LsPs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lsp-id")
+    {
+        lsp_id = value;
+        lsp_id.value_namespace = name_space;
+        lsp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-id")
+    {
+        policy_id = value;
+        policy_id.value_namespace = name_space;
+        policy_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-label")
+    {
+        local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-active-lsp")
+    {
+        is_active_lsp = value;
+        is_active_lsp.value_namespace = name_space;
+        is_active_lsp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-reoptimized-lsp")
+    {
+        is_reoptimized_lsp = value;
+        is_reoptimized_lsp.value_namespace = name_space;
+        is_reoptimized_lsp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::LsPs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-id")
+    {
+        lsp_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-id")
+    {
+        policy_id.yfilter = yfilter;
+    }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "is-active-lsp")
+    {
+        is_active_lsp.yfilter = yfilter;
+    }
+    if(value_path == "is-reoptimized-lsp")
+    {
+        is_reoptimized_lsp.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::LsPs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding-sid" || name == "install-timer" || name == "cleanup-timer" || name == "lsp-id" || name == "policy-id" || name == "local-label" || name == "state" || name == "is-active-lsp" || name == "is-reoptimized-lsp")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::LsPs::BindingSid::BindingSid()
+    :
+    is_fallback_dynamic{YType::boolean, "is-fallback-dynamic"},
+    is_within_srlb_range{YType::boolean, "is-within-srlb-range"}
+        ,
+    value_(std::make_shared<Xtc::Policies::Policy::LsPs::BindingSid::Value>())
+{
+    value_->parent = this;
+
+    yang_name = "binding-sid"; yang_parent_name = "ls-ps"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::LsPs::BindingSid::~BindingSid()
+{
+}
+
+bool Xtc::Policies::Policy::LsPs::BindingSid::has_data() const
+{
+    if (is_presence_container) return true;
+    return is_fallback_dynamic.is_set
+	|| is_within_srlb_range.is_set
+	|| (value_ !=  nullptr && value_->has_data());
+}
+
+bool Xtc::Policies::Policy::LsPs::BindingSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_fallback_dynamic.yfilter)
+	|| ydk::is_set(is_within_srlb_range.yfilter)
+	|| (value_ !=  nullptr && value_->has_operation());
+}
+
+std::string Xtc::Policies::Policy::LsPs::BindingSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::LsPs::BindingSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_fallback_dynamic.is_set || is_set(is_fallback_dynamic.yfilter)) leaf_name_data.push_back(is_fallback_dynamic.get_name_leafdata());
+    if (is_within_srlb_range.is_set || is_set(is_within_srlb_range.yfilter)) leaf_name_data.push_back(is_within_srlb_range.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::LsPs::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "value")
+    {
+        if(value_ == nullptr)
+        {
+            value_ = std::make_shared<Xtc::Policies::Policy::LsPs::BindingSid::Value>();
+        }
+        return value_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::LsPs::BindingSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(value_ != nullptr)
+    {
+        _children["value"] = value_;
+    }
+
+    return _children;
+}
+
+void Xtc::Policies::Policy::LsPs::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-fallback-dynamic")
+    {
+        is_fallback_dynamic = value;
+        is_fallback_dynamic.value_namespace = name_space;
+        is_fallback_dynamic.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-within-srlb-range")
+    {
+        is_within_srlb_range = value;
+        is_within_srlb_range.value_namespace = name_space;
+        is_within_srlb_range.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::LsPs::BindingSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-fallback-dynamic")
+    {
+        is_fallback_dynamic.yfilter = yfilter;
+    }
+    if(value_path == "is-within-srlb-range")
+    {
+        is_within_srlb_range.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::LsPs::BindingSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value" || name == "is-fallback-dynamic" || name == "is-within-srlb-range")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::LsPs::BindingSid::Value::Value()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    label{YType::uint32, "label"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "value"; yang_parent_name = "binding-sid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::LsPs::BindingSid::Value::~Value()
+{
+}
+
+bool Xtc::Policies::Policy::LsPs::BindingSid::Value::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| label.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::Policies::Policy::LsPs::BindingSid::Value::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::Policies::Policy::LsPs::BindingSid::Value::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "value";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::LsPs::BindingSid::Value::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::LsPs::BindingSid::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::LsPs::BindingSid::Value::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::LsPs::BindingSid::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::LsPs::BindingSid::Value::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::LsPs::BindingSid::Value::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-type" || name == "label" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::LsPs::InstallTimer::InstallTimer()
+    :
+    running{YType::boolean, "running"},
+    remaining_seconds{YType::int64, "remaining-seconds"},
+    remaining_nano_seconds{YType::int64, "remaining-nano-seconds"}
+{
+
+    yang_name = "install-timer"; yang_parent_name = "ls-ps"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::LsPs::InstallTimer::~InstallTimer()
+{
+}
+
+bool Xtc::Policies::Policy::LsPs::InstallTimer::has_data() const
+{
+    if (is_presence_container) return true;
+    return running.is_set
+	|| remaining_seconds.is_set
+	|| remaining_nano_seconds.is_set;
+}
+
+bool Xtc::Policies::Policy::LsPs::InstallTimer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(remaining_seconds.yfilter)
+	|| ydk::is_set(remaining_nano_seconds.yfilter);
+}
+
+std::string Xtc::Policies::Policy::LsPs::InstallTimer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "install-timer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::LsPs::InstallTimer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (remaining_seconds.is_set || is_set(remaining_seconds.yfilter)) leaf_name_data.push_back(remaining_seconds.get_name_leafdata());
+    if (remaining_nano_seconds.is_set || is_set(remaining_nano_seconds.yfilter)) leaf_name_data.push_back(remaining_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::LsPs::InstallTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::LsPs::InstallTimer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::LsPs::InstallTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds = value;
+        remaining_seconds.value_namespace = name_space;
+        remaining_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds = value;
+        remaining_nano_seconds.value_namespace = name_space;
+        remaining_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::LsPs::InstallTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds.yfilter = yfilter;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::LsPs::InstallTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "running" || name == "remaining-seconds" || name == "remaining-nano-seconds")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::LsPs::CleanupTimer::CleanupTimer()
+    :
+    running{YType::boolean, "running"},
+    remaining_seconds{YType::int64, "remaining-seconds"},
+    remaining_nano_seconds{YType::int64, "remaining-nano-seconds"}
+{
+
+    yang_name = "cleanup-timer"; yang_parent_name = "ls-ps"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::LsPs::CleanupTimer::~CleanupTimer()
+{
+}
+
+bool Xtc::Policies::Policy::LsPs::CleanupTimer::has_data() const
+{
+    if (is_presence_container) return true;
+    return running.is_set
+	|| remaining_seconds.is_set
+	|| remaining_nano_seconds.is_set;
+}
+
+bool Xtc::Policies::Policy::LsPs::CleanupTimer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(remaining_seconds.yfilter)
+	|| ydk::is_set(remaining_nano_seconds.yfilter);
+}
+
+std::string Xtc::Policies::Policy::LsPs::CleanupTimer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cleanup-timer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::LsPs::CleanupTimer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (remaining_seconds.is_set || is_set(remaining_seconds.yfilter)) leaf_name_data.push_back(remaining_seconds.get_name_leafdata());
+    if (remaining_nano_seconds.is_set || is_set(remaining_nano_seconds.yfilter)) leaf_name_data.push_back(remaining_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::LsPs::CleanupTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::LsPs::CleanupTimer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::LsPs::CleanupTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds = value;
+        remaining_seconds.value_namespace = name_space;
+        remaining_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds = value;
+        remaining_nano_seconds.value_namespace = name_space;
+        remaining_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::LsPs::CleanupTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds.yfilter = yfilter;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::LsPs::CleanupTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "running" || name == "remaining-seconds" || name == "remaining-nano-seconds")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::EventBuffer::EventBuffer()
+    :
+    event_message{YType::str, "event-message"},
+    time_stamp{YType::uint32, "time-stamp"}
+{
+
+    yang_name = "event-buffer"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::EventBuffer::~EventBuffer()
+{
+}
+
+bool Xtc::Policies::Policy::EventBuffer::has_data() const
+{
+    if (is_presence_container) return true;
+    return event_message.is_set
+	|| time_stamp.is_set;
+}
+
+bool Xtc::Policies::Policy::EventBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(event_message.yfilter)
+	|| ydk::is_set(time_stamp.yfilter);
+}
+
+std::string Xtc::Policies::Policy::EventBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::EventBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (event_message.is_set || is_set(event_message.yfilter)) leaf_name_data.push_back(event_message.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::EventBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::EventBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::EventBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "event-message")
+    {
+        event_message = value;
+        event_message.value_namespace = name_space;
+        event_message.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::EventBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-message")
+    {
+        event_message.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::EventBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-message" || name == "time-stamp")
+        return true;
+    return false;
+}
+
+Xtc::PolicyForwardings::PolicyForwardings()
+    :
+    policy_forwarding(this, {"name"})
+{
+
+    yang_name = "policy-forwardings"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Xtc::PolicyForwardings::~PolicyForwardings()
+{
+}
+
+bool Xtc::PolicyForwardings::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_forwarding.len(); index++)
+    {
+        if(policy_forwarding[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Xtc::PolicyForwardings::has_operation() const
+{
+    for (std::size_t index=0; index<policy_forwarding.len(); index++)
+    {
+        if(policy_forwarding[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Xtc::PolicyForwardings::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Xtc::PolicyForwardings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-forwardings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::PolicyForwardings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::PolicyForwardings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy-forwarding")
+    {
+        auto ent_ = std::make_shared<Xtc::PolicyForwardings::PolicyForwarding>();
+        ent_->parent = this;
+        policy_forwarding.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicyForwardings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_forwarding.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Xtc::PolicyForwardings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Xtc::PolicyForwardings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Xtc::PolicyForwardings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-forwarding")
+        return true;
+    return false;
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::PolicyForwarding()
+    :
+    name{YType::str, "name"},
+    policy_name{YType::str, "policy-name"},
+    candidate_path_name{YType::str, "candidate-path-name"},
+    color{YType::uint32, "color"},
+    is_local_label_valid{YType::boolean, "is-local-label-valid"},
+    local_label{YType::uint32, "local-label"},
+    are_stats_valid{YType::boolean, "are-stats-valid"},
+    forwarding_stats_pkts{YType::uint64, "forwarding-stats-pkts"},
+    forwarding_stats_bytes{YType::uint64, "forwarding-stats-bytes"}
+        ,
+    endpoint_address(std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress>())
+    , binding_sid(std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::BindingSid>())
+    , paths(this, {})
+{
+    endpoint_address->parent = this;
+    binding_sid->parent = this;
+
+    yang_name = "policy-forwarding"; yang_parent_name = "policy-forwardings"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::~PolicyForwarding()
+{
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
+    {
+        if(paths[index]->has_data())
+            return true;
+    }
+    return name.is_set
+	|| policy_name.is_set
+	|| candidate_path_name.is_set
+	|| color.is_set
+	|| is_local_label_valid.is_set
+	|| local_label.is_set
+	|| are_stats_valid.is_set
+	|| forwarding_stats_pkts.is_set
+	|| forwarding_stats_bytes.is_set
+	|| (endpoint_address !=  nullptr && endpoint_address->has_data())
+	|| (binding_sid !=  nullptr && binding_sid->has_data());
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::has_operation() const
+{
+    for (std::size_t index=0; index<paths.len(); index++)
+    {
+        if(paths[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(candidate_path_name.yfilter)
+	|| ydk::is_set(color.yfilter)
+	|| ydk::is_set(is_local_label_valid.yfilter)
+	|| ydk::is_set(local_label.yfilter)
+	|| ydk::is_set(are_stats_valid.yfilter)
+	|| ydk::is_set(forwarding_stats_pkts.yfilter)
+	|| ydk::is_set(forwarding_stats_bytes.yfilter)
+	|| (endpoint_address !=  nullptr && endpoint_address->has_operation())
+	|| (binding_sid !=  nullptr && binding_sid->has_operation());
+}
+
+std::string Xtc::PolicyForwardings::PolicyForwarding::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/policy-forwardings/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Xtc::PolicyForwardings::PolicyForwarding::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-forwarding";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::PolicyForwardings::PolicyForwarding::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (candidate_path_name.is_set || is_set(candidate_path_name.yfilter)) leaf_name_data.push_back(candidate_path_name.get_name_leafdata());
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+    if (is_local_label_valid.is_set || is_set(is_local_label_valid.yfilter)) leaf_name_data.push_back(is_local_label_valid.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (are_stats_valid.is_set || is_set(are_stats_valid.yfilter)) leaf_name_data.push_back(are_stats_valid.get_name_leafdata());
+    if (forwarding_stats_pkts.is_set || is_set(forwarding_stats_pkts.yfilter)) leaf_name_data.push_back(forwarding_stats_pkts.get_name_leafdata());
+    if (forwarding_stats_bytes.is_set || is_set(forwarding_stats_bytes.yfilter)) leaf_name_data.push_back(forwarding_stats_bytes.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::PolicyForwardings::PolicyForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "endpoint-address")
+    {
+        if(endpoint_address == nullptr)
+        {
+            endpoint_address = std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress>();
+        }
+        return endpoint_address;
+    }
+
+    if(child_yang_name == "binding-sid")
+    {
+        if(binding_sid == nullptr)
+        {
+            binding_sid = std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::BindingSid>();
+        }
+        return binding_sid;
+    }
+
+    if(child_yang_name == "paths")
+    {
+        auto ent_ = std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicyForwardings::PolicyForwarding::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(endpoint_address != nullptr)
+    {
+        _children["endpoint-address"] = endpoint_address;
+    }
+
+    if(binding_sid != nullptr)
+    {
+        _children["binding-sid"] = binding_sid;
+    }
+
+    count_ = 0;
+    for (auto ent_ : paths.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "candidate-path-name")
+    {
+        candidate_path_name = value;
+        candidate_path_name.value_namespace = name_space;
+        candidate_path_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-local-label-valid")
+    {
+        is_local_label_valid = value;
+        is_local_label_valid.value_namespace = name_space;
+        is_local_label_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-label")
+    {
+        local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "are-stats-valid")
+    {
+        are_stats_valid = value;
+        are_stats_valid.value_namespace = name_space;
+        are_stats_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forwarding-stats-pkts")
+    {
+        forwarding_stats_pkts = value;
+        forwarding_stats_pkts.value_namespace = name_space;
+        forwarding_stats_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forwarding-stats-bytes")
+    {
+        forwarding_stats_bytes = value;
+        forwarding_stats_bytes.value_namespace = name_space;
+        forwarding_stats_bytes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "candidate-path-name")
+    {
+        candidate_path_name.yfilter = yfilter;
+    }
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+    if(value_path == "is-local-label-valid")
+    {
+        is_local_label_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
+    if(value_path == "are-stats-valid")
+    {
+        are_stats_valid.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-stats-pkts")
+    {
+        forwarding_stats_pkts.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-stats-bytes")
+    {
+        forwarding_stats_bytes.yfilter = yfilter;
+    }
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "endpoint-address" || name == "binding-sid" || name == "paths" || name == "name" || name == "policy-name" || name == "candidate-path-name" || name == "color" || name == "is-local-label-valid" || name == "local-label" || name == "are-stats-valid" || name == "forwarding-stats-pkts" || name == "forwarding-stats-bytes")
+        return true;
+    return false;
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::EndpointAddress()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "endpoint-address"; yang_parent_name = "policy-forwarding"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::~EndpointAddress()
+{
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "endpoint-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::BindingSid::BindingSid()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    label{YType::uint32, "label"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "binding-sid"; yang_parent_name = "policy-forwarding"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::BindingSid::~BindingSid()
+{
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::BindingSid::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| label.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::BindingSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::BindingSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::BindingSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-type" || name == "label" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::Paths::Paths()
+    :
+    outgoing_interface{YType::str, "outgoing-interface"},
+    next_hop_ipv4{YType::str, "next-hop-ipv4"},
+    next_hop_table_id{YType::uint32, "next-hop-table-id"},
+    is_protected{YType::boolean, "is-protected"},
+    is_pure_bkup{YType::boolean, "is-pure-bkup"},
+    load_metric{YType::uint32, "load-metric"},
+    path_id{YType::uint8, "path-id"},
+    bkup_path_id{YType::uint8, "bkup-path-id"},
+    segment_list_name{YType::str, "segment-list-name"},
+    are_stats_valid{YType::boolean, "are-stats-valid"},
+    forwarding_stats_pkts{YType::uint64, "forwarding-stats-pkts"},
+    forwarding_stats_bytes{YType::uint64, "forwarding-stats-bytes"},
+    label_stack{YType::uint32, "label-stack"}
+{
+
+    yang_name = "paths"; yang_parent_name = "policy-forwarding"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::Paths::~Paths()
+{
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::Paths::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return outgoing_interface.is_set
+	|| next_hop_ipv4.is_set
+	|| next_hop_table_id.is_set
+	|| is_protected.is_set
+	|| is_pure_bkup.is_set
+	|| load_metric.is_set
+	|| path_id.is_set
+	|| bkup_path_id.is_set
+	|| segment_list_name.is_set
+	|| are_stats_valid.is_set
+	|| forwarding_stats_pkts.is_set
+	|| forwarding_stats_bytes.is_set;
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::Paths::has_operation() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(outgoing_interface.yfilter)
+	|| ydk::is_set(next_hop_ipv4.yfilter)
+	|| ydk::is_set(next_hop_table_id.yfilter)
+	|| ydk::is_set(is_protected.yfilter)
+	|| ydk::is_set(is_pure_bkup.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(bkup_path_id.yfilter)
+	|| ydk::is_set(segment_list_name.yfilter)
+	|| ydk::is_set(are_stats_valid.yfilter)
+	|| ydk::is_set(forwarding_stats_pkts.yfilter)
+	|| ydk::is_set(forwarding_stats_bytes.yfilter)
+	|| ydk::is_set(label_stack.yfilter);
+}
+
+std::string Xtc::PolicyForwardings::PolicyForwarding::Paths::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::PolicyForwardings::PolicyForwarding::Paths::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
+    if (next_hop_ipv4.is_set || is_set(next_hop_ipv4.yfilter)) leaf_name_data.push_back(next_hop_ipv4.get_name_leafdata());
+    if (next_hop_table_id.is_set || is_set(next_hop_table_id.yfilter)) leaf_name_data.push_back(next_hop_table_id.get_name_leafdata());
+    if (is_protected.is_set || is_set(is_protected.yfilter)) leaf_name_data.push_back(is_protected.get_name_leafdata());
+    if (is_pure_bkup.is_set || is_set(is_pure_bkup.yfilter)) leaf_name_data.push_back(is_pure_bkup.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (bkup_path_id.is_set || is_set(bkup_path_id.yfilter)) leaf_name_data.push_back(bkup_path_id.get_name_leafdata());
+    if (segment_list_name.is_set || is_set(segment_list_name.yfilter)) leaf_name_data.push_back(segment_list_name.get_name_leafdata());
+    if (are_stats_valid.is_set || is_set(are_stats_valid.yfilter)) leaf_name_data.push_back(are_stats_valid.get_name_leafdata());
+    if (forwarding_stats_pkts.is_set || is_set(forwarding_stats_pkts.yfilter)) leaf_name_data.push_back(forwarding_stats_pkts.get_name_leafdata());
+    if (forwarding_stats_bytes.is_set || is_set(forwarding_stats_bytes.yfilter)) leaf_name_data.push_back(forwarding_stats_bytes.get_name_leafdata());
+
+    auto label_stack_name_datas = label_stack.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::PolicyForwardings::PolicyForwarding::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicyForwardings::PolicyForwarding::Paths::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+        outgoing_interface.value_namespace = name_space;
+        outgoing_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-ipv4")
+    {
+        next_hop_ipv4 = value;
+        next_hop_ipv4.value_namespace = name_space;
+        next_hop_ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-table-id")
+    {
+        next_hop_table_id = value;
+        next_hop_table_id.value_namespace = name_space;
+        next_hop_table_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-protected")
+    {
+        is_protected = value;
+        is_protected.value_namespace = name_space;
+        is_protected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-pure-bkup")
+    {
+        is_pure_bkup = value;
+        is_pure_bkup.value_namespace = name_space;
+        is_pure_bkup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-id")
+    {
+        path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bkup-path-id")
+    {
+        bkup_path_id = value;
+        bkup_path_id.value_namespace = name_space;
+        bkup_path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "segment-list-name")
+    {
+        segment_list_name = value;
+        segment_list_name.value_namespace = name_space;
+        segment_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "are-stats-valid")
+    {
+        are_stats_valid = value;
+        are_stats_valid.value_namespace = name_space;
+        are_stats_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forwarding-stats-pkts")
+    {
+        forwarding_stats_pkts = value;
+        forwarding_stats_pkts.value_namespace = name_space;
+        forwarding_stats_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forwarding-stats-bytes")
+    {
+        forwarding_stats_bytes = value;
+        forwarding_stats_bytes.value_namespace = name_space;
+        forwarding_stats_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-stack")
+    {
+        label_stack.append(value);
+    }
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-ipv4")
+    {
+        next_hop_ipv4.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-table-id")
+    {
+        next_hop_table_id.yfilter = yfilter;
+    }
+    if(value_path == "is-protected")
+    {
+        is_protected.yfilter = yfilter;
+    }
+    if(value_path == "is-pure-bkup")
+    {
+        is_pure_bkup.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "bkup-path-id")
+    {
+        bkup_path_id.yfilter = yfilter;
+    }
+    if(value_path == "segment-list-name")
+    {
+        segment_list_name.yfilter = yfilter;
+    }
+    if(value_path == "are-stats-valid")
+    {
+        are_stats_valid.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-stats-pkts")
+    {
+        forwarding_stats_pkts.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-stats-bytes")
+    {
+        forwarding_stats_bytes.yfilter = yfilter;
+    }
+    if(value_path == "label-stack")
+    {
+        label_stack.yfilter = yfilter;
+    }
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outgoing-interface" || name == "next-hop-ipv4" || name == "next-hop-table-id" || name == "is-protected" || name == "is-pure-bkup" || name == "load-metric" || name == "path-id" || name == "bkup-path-id" || name == "segment-list-name" || name == "are-stats-valid" || name == "forwarding-stats-pkts" || name == "forwarding-stats-bytes" || name == "label-stack")
+        return true;
+    return false;
+}
+
 Xtc::PolicySummary::PolicySummary()
     :
-    configured_total_policy_count{YType::uint32, "configured-total-policy-count"},
-    configured_up_policy_count{YType::uint32, "configured-up-policy-count"},
-    configured_down_policy_count{YType::uint32, "configured-down-policy-count"}
-        ,
-    ipv4_source_address(std::make_shared<Xtc::PolicySummary::Ipv4SourceAddress>())
+    total_policy_count{YType::uint32, "total-policy-count"},
+    up_policy_count{YType::uint32, "up-policy-count"},
+    down_policy_count{YType::uint32, "down-policy-count"},
+    total_candidate_path_count{YType::uint32, "total-candidate-path-count"},
+    active_candidate_path_count{YType::uint32, "active-candidate-path-count"},
+    inactive_candidate_path_count{YType::uint32, "inactive-candidate-path-count"},
+    total_lsp_count{YType::uint32, "total-lsp-count"},
+    active_lsp_count{YType::uint32, "active-lsp-count"},
+    reoptimized_lsp_count{YType::uint32, "reoptimized-lsp-count"},
+    cleanup_lsp_count{YType::uint32, "cleanup-lsp-count"},
+    oor_lsp_count{YType::uint32, "oor-lsp-count"}
 {
-    ipv4_source_address->parent = this;
 
     yang_name = "policy-summary"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -6311,19 +8610,33 @@ Xtc::PolicySummary::~PolicySummary()
 bool Xtc::PolicySummary::has_data() const
 {
     if (is_presence_container) return true;
-    return configured_total_policy_count.is_set
-	|| configured_up_policy_count.is_set
-	|| configured_down_policy_count.is_set
-	|| (ipv4_source_address !=  nullptr && ipv4_source_address->has_data());
+    return total_policy_count.is_set
+	|| up_policy_count.is_set
+	|| down_policy_count.is_set
+	|| total_candidate_path_count.is_set
+	|| active_candidate_path_count.is_set
+	|| inactive_candidate_path_count.is_set
+	|| total_lsp_count.is_set
+	|| active_lsp_count.is_set
+	|| reoptimized_lsp_count.is_set
+	|| cleanup_lsp_count.is_set
+	|| oor_lsp_count.is_set;
 }
 
 bool Xtc::PolicySummary::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(configured_total_policy_count.yfilter)
-	|| ydk::is_set(configured_up_policy_count.yfilter)
-	|| ydk::is_set(configured_down_policy_count.yfilter)
-	|| (ipv4_source_address !=  nullptr && ipv4_source_address->has_operation());
+	|| ydk::is_set(total_policy_count.yfilter)
+	|| ydk::is_set(up_policy_count.yfilter)
+	|| ydk::is_set(down_policy_count.yfilter)
+	|| ydk::is_set(total_candidate_path_count.yfilter)
+	|| ydk::is_set(active_candidate_path_count.yfilter)
+	|| ydk::is_set(inactive_candidate_path_count.yfilter)
+	|| ydk::is_set(total_lsp_count.yfilter)
+	|| ydk::is_set(active_lsp_count.yfilter)
+	|| ydk::is_set(reoptimized_lsp_count.yfilter)
+	|| ydk::is_set(cleanup_lsp_count.yfilter)
+	|| ydk::is_set(oor_lsp_count.yfilter);
 }
 
 std::string Xtc::PolicySummary::get_absolute_path() const
@@ -6344,9 +8657,17 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::get_name_leaf
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (configured_total_policy_count.is_set || is_set(configured_total_policy_count.yfilter)) leaf_name_data.push_back(configured_total_policy_count.get_name_leafdata());
-    if (configured_up_policy_count.is_set || is_set(configured_up_policy_count.yfilter)) leaf_name_data.push_back(configured_up_policy_count.get_name_leafdata());
-    if (configured_down_policy_count.is_set || is_set(configured_down_policy_count.yfilter)) leaf_name_data.push_back(configured_down_policy_count.get_name_leafdata());
+    if (total_policy_count.is_set || is_set(total_policy_count.yfilter)) leaf_name_data.push_back(total_policy_count.get_name_leafdata());
+    if (up_policy_count.is_set || is_set(up_policy_count.yfilter)) leaf_name_data.push_back(up_policy_count.get_name_leafdata());
+    if (down_policy_count.is_set || is_set(down_policy_count.yfilter)) leaf_name_data.push_back(down_policy_count.get_name_leafdata());
+    if (total_candidate_path_count.is_set || is_set(total_candidate_path_count.yfilter)) leaf_name_data.push_back(total_candidate_path_count.get_name_leafdata());
+    if (active_candidate_path_count.is_set || is_set(active_candidate_path_count.yfilter)) leaf_name_data.push_back(active_candidate_path_count.get_name_leafdata());
+    if (inactive_candidate_path_count.is_set || is_set(inactive_candidate_path_count.yfilter)) leaf_name_data.push_back(inactive_candidate_path_count.get_name_leafdata());
+    if (total_lsp_count.is_set || is_set(total_lsp_count.yfilter)) leaf_name_data.push_back(total_lsp_count.get_name_leafdata());
+    if (active_lsp_count.is_set || is_set(active_lsp_count.yfilter)) leaf_name_data.push_back(active_lsp_count.get_name_leafdata());
+    if (reoptimized_lsp_count.is_set || is_set(reoptimized_lsp_count.yfilter)) leaf_name_data.push_back(reoptimized_lsp_count.get_name_leafdata());
+    if (cleanup_lsp_count.is_set || is_set(cleanup_lsp_count.yfilter)) leaf_name_data.push_back(cleanup_lsp_count.get_name_leafdata());
+    if (oor_lsp_count.is_set || is_set(oor_lsp_count.yfilter)) leaf_name_data.push_back(oor_lsp_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6354,15 +8675,6 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::get_name_leaf
 
 std::shared_ptr<ydk::Entity> Xtc::PolicySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4-source-address")
-    {
-        if(ipv4_source_address == nullptr)
-        {
-            ipv4_source_address = std::make_shared<Xtc::PolicySummary::Ipv4SourceAddress>();
-        }
-        return ipv4_source_address;
-    }
-
     return nullptr;
 }
 
@@ -6370,168 +8682,130 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicySummary::get_chil
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(ipv4_source_address != nullptr)
-    {
-        _children["ipv4-source-address"] = ipv4_source_address;
-    }
-
     return _children;
 }
 
 void Xtc::PolicySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "configured-total-policy-count")
+    if(value_path == "total-policy-count")
     {
-        configured_total_policy_count = value;
-        configured_total_policy_count.value_namespace = name_space;
-        configured_total_policy_count.value_namespace_prefix = name_space_prefix;
+        total_policy_count = value;
+        total_policy_count.value_namespace = name_space;
+        total_policy_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-up-policy-count")
+    if(value_path == "up-policy-count")
     {
-        configured_up_policy_count = value;
-        configured_up_policy_count.value_namespace = name_space;
-        configured_up_policy_count.value_namespace_prefix = name_space_prefix;
+        up_policy_count = value;
+        up_policy_count.value_namespace = name_space;
+        up_policy_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-down-policy-count")
+    if(value_path == "down-policy-count")
     {
-        configured_down_policy_count = value;
-        configured_down_policy_count.value_namespace = name_space;
-        configured_down_policy_count.value_namespace_prefix = name_space_prefix;
+        down_policy_count = value;
+        down_policy_count.value_namespace = name_space;
+        down_policy_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-candidate-path-count")
+    {
+        total_candidate_path_count = value;
+        total_candidate_path_count.value_namespace = name_space;
+        total_candidate_path_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-candidate-path-count")
+    {
+        active_candidate_path_count = value;
+        active_candidate_path_count.value_namespace = name_space;
+        active_candidate_path_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inactive-candidate-path-count")
+    {
+        inactive_candidate_path_count = value;
+        inactive_candidate_path_count.value_namespace = name_space;
+        inactive_candidate_path_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-lsp-count")
+    {
+        total_lsp_count = value;
+        total_lsp_count.value_namespace = name_space;
+        total_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-lsp-count")
+    {
+        active_lsp_count = value;
+        active_lsp_count.value_namespace = name_space;
+        active_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reoptimized-lsp-count")
+    {
+        reoptimized_lsp_count = value;
+        reoptimized_lsp_count.value_namespace = name_space;
+        reoptimized_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cleanup-lsp-count")
+    {
+        cleanup_lsp_count = value;
+        cleanup_lsp_count.value_namespace = name_space;
+        cleanup_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oor-lsp-count")
+    {
+        oor_lsp_count = value;
+        oor_lsp_count.value_namespace = name_space;
+        oor_lsp_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Xtc::PolicySummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "configured-total-policy-count")
+    if(value_path == "total-policy-count")
     {
-        configured_total_policy_count.yfilter = yfilter;
+        total_policy_count.yfilter = yfilter;
     }
-    if(value_path == "configured-up-policy-count")
+    if(value_path == "up-policy-count")
     {
-        configured_up_policy_count.yfilter = yfilter;
+        up_policy_count.yfilter = yfilter;
     }
-    if(value_path == "configured-down-policy-count")
+    if(value_path == "down-policy-count")
     {
-        configured_down_policy_count.yfilter = yfilter;
+        down_policy_count.yfilter = yfilter;
+    }
+    if(value_path == "total-candidate-path-count")
+    {
+        total_candidate_path_count.yfilter = yfilter;
+    }
+    if(value_path == "active-candidate-path-count")
+    {
+        active_candidate_path_count.yfilter = yfilter;
+    }
+    if(value_path == "inactive-candidate-path-count")
+    {
+        inactive_candidate_path_count.yfilter = yfilter;
+    }
+    if(value_path == "total-lsp-count")
+    {
+        total_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "active-lsp-count")
+    {
+        active_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "reoptimized-lsp-count")
+    {
+        reoptimized_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "cleanup-lsp-count")
+    {
+        cleanup_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "oor-lsp-count")
+    {
+        oor_lsp_count.yfilter = yfilter;
     }
 }
 
 bool Xtc::PolicySummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4-source-address" || name == "configured-total-policy-count" || name == "configured-up-policy-count" || name == "configured-down-policy-count")
-        return true;
-    return false;
-}
-
-Xtc::PolicySummary::Ipv4SourceAddress::Ipv4SourceAddress()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
-{
-
-    yang_name = "ipv4-source-address"; yang_parent_name = "policy-summary"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Xtc::PolicySummary::Ipv4SourceAddress::~Ipv4SourceAddress()
-{
-}
-
-bool Xtc::PolicySummary::Ipv4SourceAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
-}
-
-bool Xtc::PolicySummary::Ipv4SourceAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
-}
-
-std::string Xtc::PolicySummary::Ipv4SourceAddress::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/policy-summary/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Xtc::PolicySummary::Ipv4SourceAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-source-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::Ipv4SourceAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::PolicySummary::Ipv4SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicySummary::Ipv4SourceAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::PolicySummary::Ipv4SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6 = value;
-        ipv6.value_namespace = name_space;
-        ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::PolicySummary::Ipv4SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6.yfilter = yfilter;
-    }
-}
-
-bool Xtc::PolicySummary::Ipv4SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+    if(name == "total-policy-count" || name == "up-policy-count" || name == "down-policy-count" || name == "total-candidate-path-count" || name == "active-candidate-path-count" || name == "inactive-candidate-path-count" || name == "total-lsp-count" || name == "active-lsp-count" || name == "reoptimized-lsp-count" || name == "cleanup-lsp-count" || name == "oor-lsp-count")
         return true;
     return false;
 }
@@ -6640,6 +8914,8 @@ Xtc::OnDemandColors::OnDemandColor::OnDemandColor()
     :
     color{YType::uint32, "color"},
     color_xr{YType::uint32, "color-xr"},
+    absolute_margin{YType::uint32, "absolute-margin"},
+    relative_margin{YType::uint32, "relative-margin"},
     maximum_sid_depth{YType::uint32, "maximum-sid-depth"}
         ,
     disjoint_path_info(std::make_shared<Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo>())
@@ -6658,6 +8934,8 @@ bool Xtc::OnDemandColors::OnDemandColor::has_data() const
     if (is_presence_container) return true;
     return color.is_set
 	|| color_xr.is_set
+	|| absolute_margin.is_set
+	|| relative_margin.is_set
 	|| maximum_sid_depth.is_set
 	|| (disjoint_path_info !=  nullptr && disjoint_path_info->has_data());
 }
@@ -6667,6 +8945,8 @@ bool Xtc::OnDemandColors::OnDemandColor::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(color.yfilter)
 	|| ydk::is_set(color_xr.yfilter)
+	|| ydk::is_set(absolute_margin.yfilter)
+	|| ydk::is_set(relative_margin.yfilter)
 	|| ydk::is_set(maximum_sid_depth.yfilter)
 	|| (disjoint_path_info !=  nullptr && disjoint_path_info->has_operation());
 }
@@ -6692,6 +8972,8 @@ std::vector<std::pair<std::string, LeafData> > Xtc::OnDemandColors::OnDemandColo
 
     if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
     if (color_xr.is_set || is_set(color_xr.yfilter)) leaf_name_data.push_back(color_xr.get_name_leafdata());
+    if (absolute_margin.is_set || is_set(absolute_margin.yfilter)) leaf_name_data.push_back(absolute_margin.get_name_leafdata());
+    if (relative_margin.is_set || is_set(relative_margin.yfilter)) leaf_name_data.push_back(relative_margin.get_name_leafdata());
     if (maximum_sid_depth.is_set || is_set(maximum_sid_depth.yfilter)) leaf_name_data.push_back(maximum_sid_depth.get_name_leafdata());
 
     return leaf_name_data;
@@ -6738,6 +9020,18 @@ void Xtc::OnDemandColors::OnDemandColor::set_value(const std::string & value_pat
         color_xr.value_namespace = name_space;
         color_xr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "absolute-margin")
+    {
+        absolute_margin = value;
+        absolute_margin.value_namespace = name_space;
+        absolute_margin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "relative-margin")
+    {
+        relative_margin = value;
+        relative_margin.value_namespace = name_space;
+        relative_margin.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "maximum-sid-depth")
     {
         maximum_sid_depth = value;
@@ -6756,6 +9050,14 @@ void Xtc::OnDemandColors::OnDemandColor::set_filter(const std::string & value_pa
     {
         color_xr.yfilter = yfilter;
     }
+    if(value_path == "absolute-margin")
+    {
+        absolute_margin.yfilter = yfilter;
+    }
+    if(value_path == "relative-margin")
+    {
+        relative_margin.yfilter = yfilter;
+    }
     if(value_path == "maximum-sid-depth")
     {
         maximum_sid_depth.yfilter = yfilter;
@@ -6764,7 +9066,7 @@ void Xtc::OnDemandColors::OnDemandColor::set_filter(const std::string & value_pa
 
 bool Xtc::OnDemandColors::OnDemandColor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disjoint-path-info" || name == "color" || name == "color-xr" || name == "maximum-sid-depth")
+    if(name == "disjoint-path-info" || name == "color" || name == "color-xr" || name == "absolute-margin" || name == "relative-margin" || name == "maximum-sid-depth")
         return true;
     return false;
 }
@@ -6871,648 +9173,6 @@ void Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::set_filter(const std:
 bool Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disjointness-type" || name == "group-id" || name == "sub-id")
-        return true;
-    return false;
-}
-
-Xtc::Forwarding::Forwarding()
-    :
-    policy_forwardings(std::make_shared<Xtc::Forwarding::PolicyForwardings>())
-{
-    policy_forwardings->parent = this;
-
-    yang_name = "forwarding"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Xtc::Forwarding::~Forwarding()
-{
-}
-
-bool Xtc::Forwarding::has_data() const
-{
-    if (is_presence_container) return true;
-    return (policy_forwardings !=  nullptr && policy_forwardings->has_data());
-}
-
-bool Xtc::Forwarding::has_operation() const
-{
-    return is_set(yfilter)
-	|| (policy_forwardings !=  nullptr && policy_forwardings->has_operation());
-}
-
-std::string Xtc::Forwarding::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Xtc::Forwarding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "forwarding";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "policy-forwardings")
-    {
-        if(policy_forwardings == nullptr)
-        {
-            policy_forwardings = std::make_shared<Xtc::Forwarding::PolicyForwardings>();
-        }
-        return policy_forwardings;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(policy_forwardings != nullptr)
-    {
-        _children["policy-forwardings"] = policy_forwardings;
-    }
-
-    return _children;
-}
-
-void Xtc::Forwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Xtc::Forwarding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Xtc::Forwarding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy-forwardings")
-        return true;
-    return false;
-}
-
-Xtc::Forwarding::PolicyForwardings::PolicyForwardings()
-    :
-    policy_forwarding(this, {"name"})
-{
-
-    yang_name = "policy-forwardings"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Xtc::Forwarding::PolicyForwardings::~PolicyForwardings()
-{
-}
-
-bool Xtc::Forwarding::PolicyForwardings::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<policy_forwarding.len(); index++)
-    {
-        if(policy_forwarding[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Xtc::Forwarding::PolicyForwardings::has_operation() const
-{
-    for (std::size_t index=0; index<policy_forwarding.len(); index++)
-    {
-        if(policy_forwarding[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Xtc::Forwarding::PolicyForwardings::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/forwarding/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Xtc::Forwarding::PolicyForwardings::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-forwardings";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::PolicyForwardings::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Forwarding::PolicyForwardings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "policy-forwarding")
-    {
-        auto ent_ = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding>();
-        ent_->parent = this;
-        policy_forwarding.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::PolicyForwardings::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : policy_forwarding.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Xtc::Forwarding::PolicyForwardings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Xtc::Forwarding::PolicyForwardings::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Xtc::Forwarding::PolicyForwardings::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy-forwarding")
-        return true;
-    return false;
-}
-
-Xtc::Forwarding::PolicyForwardings::PolicyForwarding::PolicyForwarding()
-    :
-    name{YType::str, "name"},
-    policy_name{YType::str, "policy-name"},
-    is_local_label_valid{YType::boolean, "is-local-label-valid"},
-    local_label{YType::uint32, "local-label"},
-    are_stats_valid{YType::boolean, "are-stats-valid"},
-    forwarding_stats_pkts{YType::uint64, "forwarding-stats-pkts"},
-    forwarding_stats_bytes{YType::uint64, "forwarding-stats-bytes"}
-        ,
-    paths(this, {})
-{
-
-    yang_name = "policy-forwarding"; yang_parent_name = "policy-forwardings"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Xtc::Forwarding::PolicyForwardings::PolicyForwarding::~PolicyForwarding()
-{
-}
-
-bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<paths.len(); index++)
-    {
-        if(paths[index]->has_data())
-            return true;
-    }
-    return name.is_set
-	|| policy_name.is_set
-	|| is_local_label_valid.is_set
-	|| local_label.is_set
-	|| are_stats_valid.is_set
-	|| forwarding_stats_pkts.is_set
-	|| forwarding_stats_bytes.is_set;
-}
-
-bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::has_operation() const
-{
-    for (std::size_t index=0; index<paths.len(); index++)
-    {
-        if(paths[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(policy_name.yfilter)
-	|| ydk::is_set(is_local_label_valid.yfilter)
-	|| ydk::is_set(local_label.yfilter)
-	|| ydk::is_set(are_stats_valid.yfilter)
-	|| ydk::is_set(forwarding_stats_pkts.yfilter)
-	|| ydk::is_set(forwarding_stats_bytes.yfilter);
-}
-
-std::string Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/forwarding/policy-forwardings/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-forwarding";
-    ADD_KEY_TOKEN(name, "name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (is_local_label_valid.is_set || is_set(is_local_label_valid.yfilter)) leaf_name_data.push_back(is_local_label_valid.get_name_leafdata());
-    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
-    if (are_stats_valid.is_set || is_set(are_stats_valid.yfilter)) leaf_name_data.push_back(are_stats_valid.get_name_leafdata());
-    if (forwarding_stats_pkts.is_set || is_set(forwarding_stats_pkts.yfilter)) leaf_name_data.push_back(forwarding_stats_pkts.get_name_leafdata());
-    if (forwarding_stats_bytes.is_set || is_set(forwarding_stats_bytes.yfilter)) leaf_name_data.push_back(forwarding_stats_bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "paths")
-    {
-        auto ent_ = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths>();
-        ent_->parent = this;
-        paths.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : paths.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Xtc::Forwarding::PolicyForwardings::PolicyForwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-local-label-valid")
-    {
-        is_local_label_valid = value;
-        is_local_label_valid.value_namespace = name_space;
-        is_local_label_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-label")
-    {
-        local_label = value;
-        local_label.value_namespace = name_space;
-        local_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "are-stats-valid")
-    {
-        are_stats_valid = value;
-        are_stats_valid.value_namespace = name_space;
-        are_stats_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forwarding-stats-pkts")
-    {
-        forwarding_stats_pkts = value;
-        forwarding_stats_pkts.value_namespace = name_space;
-        forwarding_stats_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forwarding-stats-bytes")
-    {
-        forwarding_stats_bytes = value;
-        forwarding_stats_bytes.value_namespace = name_space;
-        forwarding_stats_bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Forwarding::PolicyForwardings::PolicyForwarding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-    if(value_path == "is-local-label-valid")
-    {
-        is_local_label_valid.yfilter = yfilter;
-    }
-    if(value_path == "local-label")
-    {
-        local_label.yfilter = yfilter;
-    }
-    if(value_path == "are-stats-valid")
-    {
-        are_stats_valid.yfilter = yfilter;
-    }
-    if(value_path == "forwarding-stats-pkts")
-    {
-        forwarding_stats_pkts.yfilter = yfilter;
-    }
-    if(value_path == "forwarding-stats-bytes")
-    {
-        forwarding_stats_bytes.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "paths" || name == "name" || name == "policy-name" || name == "is-local-label-valid" || name == "local-label" || name == "are-stats-valid" || name == "forwarding-stats-pkts" || name == "forwarding-stats-bytes")
-        return true;
-    return false;
-}
-
-Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::Paths()
-    :
-    outgoing_interface{YType::str, "outgoing-interface"},
-    next_hop_ipv4{YType::str, "next-hop-ipv4"},
-    next_hop_table_id{YType::uint32, "next-hop-table-id"},
-    is_protected{YType::boolean, "is-protected"},
-    is_pure_bkup{YType::boolean, "is-pure-bkup"},
-    load_metric{YType::uint32, "load-metric"},
-    path_id{YType::uint8, "path-id"},
-    bkup_path_id{YType::uint8, "bkup-path-id"},
-    segment_list_name{YType::str, "segment-list-name"},
-    are_stats_valid{YType::boolean, "are-stats-valid"},
-    forwarding_stats_pkts{YType::uint64, "forwarding-stats-pkts"},
-    forwarding_stats_bytes{YType::uint64, "forwarding-stats-bytes"},
-    label_stack{YType::uint32, "label-stack"}
-{
-
-    yang_name = "paths"; yang_parent_name = "policy-forwarding"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::~Paths()
-{
-}
-
-bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return outgoing_interface.is_set
-	|| next_hop_ipv4.is_set
-	|| next_hop_table_id.is_set
-	|| is_protected.is_set
-	|| is_pure_bkup.is_set
-	|| load_metric.is_set
-	|| path_id.is_set
-	|| bkup_path_id.is_set
-	|| segment_list_name.is_set
-	|| are_stats_valid.is_set
-	|| forwarding_stats_pkts.is_set
-	|| forwarding_stats_bytes.is_set;
-}
-
-bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::has_operation() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(next_hop_ipv4.yfilter)
-	|| ydk::is_set(next_hop_table_id.yfilter)
-	|| ydk::is_set(is_protected.yfilter)
-	|| ydk::is_set(is_pure_bkup.yfilter)
-	|| ydk::is_set(load_metric.yfilter)
-	|| ydk::is_set(path_id.yfilter)
-	|| ydk::is_set(bkup_path_id.yfilter)
-	|| ydk::is_set(segment_list_name.yfilter)
-	|| ydk::is_set(are_stats_valid.yfilter)
-	|| ydk::is_set(forwarding_stats_pkts.yfilter)
-	|| ydk::is_set(forwarding_stats_bytes.yfilter)
-	|| ydk::is_set(label_stack.yfilter);
-}
-
-std::string Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "paths";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (next_hop_ipv4.is_set || is_set(next_hop_ipv4.yfilter)) leaf_name_data.push_back(next_hop_ipv4.get_name_leafdata());
-    if (next_hop_table_id.is_set || is_set(next_hop_table_id.yfilter)) leaf_name_data.push_back(next_hop_table_id.get_name_leafdata());
-    if (is_protected.is_set || is_set(is_protected.yfilter)) leaf_name_data.push_back(is_protected.get_name_leafdata());
-    if (is_pure_bkup.is_set || is_set(is_pure_bkup.yfilter)) leaf_name_data.push_back(is_pure_bkup.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (bkup_path_id.is_set || is_set(bkup_path_id.yfilter)) leaf_name_data.push_back(bkup_path_id.get_name_leafdata());
-    if (segment_list_name.is_set || is_set(segment_list_name.yfilter)) leaf_name_data.push_back(segment_list_name.get_name_leafdata());
-    if (are_stats_valid.is_set || is_set(are_stats_valid.yfilter)) leaf_name_data.push_back(are_stats_valid.get_name_leafdata());
-    if (forwarding_stats_pkts.is_set || is_set(forwarding_stats_pkts.yfilter)) leaf_name_data.push_back(forwarding_stats_pkts.get_name_leafdata());
-    if (forwarding_stats_bytes.is_set || is_set(forwarding_stats_bytes.yfilter)) leaf_name_data.push_back(forwarding_stats_bytes.get_name_leafdata());
-
-    auto label_stack_name_datas = label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-        outgoing_interface.value_namespace = name_space;
-        outgoing_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-ipv4")
-    {
-        next_hop_ipv4 = value;
-        next_hop_ipv4.value_namespace = name_space;
-        next_hop_ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-table-id")
-    {
-        next_hop_table_id = value;
-        next_hop_table_id.value_namespace = name_space;
-        next_hop_table_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-protected")
-    {
-        is_protected = value;
-        is_protected.value_namespace = name_space;
-        is_protected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-pure-bkup")
-    {
-        is_pure_bkup = value;
-        is_pure_bkup.value_namespace = name_space;
-        is_pure_bkup.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "load-metric")
-    {
-        load_metric = value;
-        load_metric.value_namespace = name_space;
-        load_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path-id")
-    {
-        path_id = value;
-        path_id.value_namespace = name_space;
-        path_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bkup-path-id")
-    {
-        bkup_path_id = value;
-        bkup_path_id.value_namespace = name_space;
-        bkup_path_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "segment-list-name")
-    {
-        segment_list_name = value;
-        segment_list_name.value_namespace = name_space;
-        segment_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "are-stats-valid")
-    {
-        are_stats_valid = value;
-        are_stats_valid.value_namespace = name_space;
-        are_stats_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forwarding-stats-pkts")
-    {
-        forwarding_stats_pkts = value;
-        forwarding_stats_pkts.value_namespace = name_space;
-        forwarding_stats_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forwarding-stats-bytes")
-    {
-        forwarding_stats_bytes = value;
-        forwarding_stats_bytes.value_namespace = name_space;
-        forwarding_stats_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-stack")
-    {
-        label_stack.append(value);
-    }
-}
-
-void Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-ipv4")
-    {
-        next_hop_ipv4.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-table-id")
-    {
-        next_hop_table_id.yfilter = yfilter;
-    }
-    if(value_path == "is-protected")
-    {
-        is_protected.yfilter = yfilter;
-    }
-    if(value_path == "is-pure-bkup")
-    {
-        is_pure_bkup.yfilter = yfilter;
-    }
-    if(value_path == "load-metric")
-    {
-        load_metric.yfilter = yfilter;
-    }
-    if(value_path == "path-id")
-    {
-        path_id.yfilter = yfilter;
-    }
-    if(value_path == "bkup-path-id")
-    {
-        bkup_path_id.yfilter = yfilter;
-    }
-    if(value_path == "segment-list-name")
-    {
-        segment_list_name.yfilter = yfilter;
-    }
-    if(value_path == "are-stats-valid")
-    {
-        are_stats_valid.yfilter = yfilter;
-    }
-    if(value_path == "forwarding-stats-pkts")
-    {
-        forwarding_stats_pkts.yfilter = yfilter;
-    }
-    if(value_path == "forwarding-stats-bytes")
-    {
-        forwarding_stats_bytes.yfilter = yfilter;
-    }
-    if(value_path == "label-stack")
-    {
-        label_stack.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "outgoing-interface" || name == "next-hop-ipv4" || name == "next-hop-table-id" || name == "is-protected" || name == "is-pure-bkup" || name == "load-metric" || name == "path-id" || name == "bkup-path-id" || name == "segment-list-name" || name == "are-stats-valid" || name == "forwarding-stats-pkts" || name == "forwarding-stats-bytes" || name == "label-stack")
         return true;
     return false;
 }
@@ -7722,7 +9382,7 @@ Xtc::Controller::PolicyRequests::PolicyRequest::PolicyRequest()
     last_updated_time{YType::uint32, "last-updated-time"}
         ,
     end_point(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint>())
-    , paths(this, {})
+    , segment_list(this, {})
 {
     end_point->parent = this;
 
@@ -7736,9 +9396,9 @@ Xtc::Controller::PolicyRequests::PolicyRequest::~PolicyRequest()
 bool Xtc::Controller::PolicyRequests::PolicyRequest::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<paths.len(); index++)
+    for (std::size_t index=0; index<segment_list.len(); index++)
     {
-        if(paths[index]->has_data())
+        if(segment_list[index]->has_data())
             return true;
     }
     return source_address.is_set
@@ -7758,9 +9418,9 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::has_data() const
 
 bool Xtc::Controller::PolicyRequests::PolicyRequest::has_operation() const
 {
-    for (std::size_t index=0; index<paths.len(); index++)
+    for (std::size_t index=0; index<segment_list.len(); index++)
     {
-        if(paths[index]->has_operation())
+        if(segment_list[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -7830,11 +9490,11 @@ std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::get
         return end_point;
     }
 
-    if(child_yang_name == "paths")
+    if(child_yang_name == "segment-list")
     {
-        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths>();
+        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList>();
         ent_->parent = this;
-        paths.append(ent_);
+        segment_list.append(ent_);
         return ent_;
     }
 
@@ -7851,7 +9511,7 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyReque
     }
 
     count_ = 0;
-    for (auto ent_ : paths.entities())
+    for (auto ent_ : segment_list.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -7992,7 +9652,7 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::set_filter(const std::strin
 
 bool Xtc::Controller::PolicyRequests::PolicyRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "end-point" || name == "paths" || name == "source-address" || name == "end-point-type" || name == "end-point-address" || name == "color" || name == "route-distinguisher" || name == "source-address-xr" || name == "binding-sid" || name == "preference" || name == "color-xr" || name == "route-distinguisher-xr" || name == "creation-time" || name == "last-updated-time")
+    if(name == "end-point" || name == "segment-list" || name == "source-address" || name == "end-point-type" || name == "end-point-address" || name == "color" || name == "route-distinguisher" || name == "source-address-xr" || name == "binding-sid" || name == "preference" || name == "color-xr" || name == "route-distinguisher-xr" || name == "creation-time" || name == "last-updated-time")
         return true;
     return false;
 }
@@ -8103,33 +9763,30 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::has_leaf_or_child
     return false;
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Paths()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::SegmentList()
     :
-    index_{YType::uint32, "index"},
-    type{YType::enumeration, "type"},
     name{YType::str, "name"},
+    type{YType::enumeration, "type"},
     active{YType::boolean, "active"},
     weight{YType::uint32, "weight"},
     metric_type{YType::uint8, "metric-type"},
-    metric_value{YType::uint32, "metric-value"},
+    metric_value{YType::uint64, "metric-value"},
     is_valid{YType::boolean, "is-valid"},
     pce_based_path{YType::boolean, "pce-based-path"},
     pce_address{YType::str, "pce-address"},
     error{YType::str, "error"}
         ,
-    sr_path_constraints(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints>())
-    , hops(this, {})
+    hops(this, {})
 {
-    sr_path_constraints->parent = this;
 
-    yang_name = "paths"; yang_parent_name = "policy-request"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "segment-list"; yang_parent_name = "policy-request"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::~Paths()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::~SegmentList()
 {
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_data() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<hops.len(); index++)
@@ -8137,9 +9794,8 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_data() const
         if(hops[index]->has_data())
             return true;
     }
-    return index_.is_set
+    return name.is_set
 	|| type.is_set
-	|| name.is_set
 	|| active.is_set
 	|| weight.is_set
 	|| metric_type.is_set
@@ -8147,11 +9803,10 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_data() const
 	|| is_valid.is_set
 	|| pce_based_path.is_set
 	|| pce_address.is_set
-	|| error.is_set
-	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_data());
+	|| error.is_set;
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_operation() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::has_operation() const
 {
     for (std::size_t index=0; index<hops.len(); index++)
     {
@@ -8159,9 +9814,8 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_operation() cons
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(active.yfilter)
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(metric_type.yfilter)
@@ -8169,24 +9823,23 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_operation() cons
 	|| ydk::is_set(is_valid.yfilter)
 	|| ydk::is_set(pce_based_path.yfilter)
 	|| ydk::is_set(pce_address.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_operation());
+	|| ydk::is_set(error.yfilter);
 }
 
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_segment_path() const
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "paths";
+    path_buffer << "segment-list";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
@@ -8200,20 +9853,11 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "sr-path-constraints")
-    {
-        if(sr_path_constraints == nullptr)
-        {
-            sr_path_constraints = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints>();
-        }
-        return sr_path_constraints;
-    }
-
     if(child_yang_name == "hops")
     {
-        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops>();
+        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops>();
         ent_->parent = this;
         hops.append(ent_);
         return ent_;
@@ -8222,15 +9866,10 @@ std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Pat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(sr_path_constraints != nullptr)
-    {
-        _children["sr-path-constraints"] = sr_path_constraints;
-    }
-
     count_ = 0;
     for (auto ent_ : hops.entities())
     {
@@ -8243,25 +9882,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyReque
     return _children;
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "index")
+    if(value_path == "name")
     {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active")
     {
@@ -8313,19 +9946,15 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::set_value(const std:
     }
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "index")
+    if(value_path == "name")
     {
-        index_.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
     if(value_path == "type")
     {
         type.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
     }
     if(value_path == "active")
     {
@@ -8361,587 +9990,34 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::set_filter(const std
     }
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-path-constraints" || name == "hops" || name == "index" || name == "type" || name == "name" || name == "active" || name == "weight" || name == "metric-type" || name == "metric-value" || name == "is-valid" || name == "pce-based-path" || name == "pce-address" || name == "error")
+    if(name == "hops" || name == "name" || name == "type" || name == "active" || name == "weight" || name == "metric-type" || name == "metric-value" || name == "is-valid" || name == "pce-based-path" || name == "pce-address" || name == "error")
         return true;
     return false;
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::SrPathConstraints()
-    :
-    path_metrics(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics>())
-    , segments(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments>())
-    , affinity_constraint(this, {})
-{
-    path_metrics->parent = this;
-    segments->parent = this;
-
-    yang_name = "sr-path-constraints"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::~SrPathConstraints()
-{
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<affinity_constraint.len(); index++)
-    {
-        if(affinity_constraint[index]->has_data())
-            return true;
-    }
-    return (path_metrics !=  nullptr && path_metrics->has_data())
-	|| (segments !=  nullptr && segments->has_data());
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::has_operation() const
-{
-    for (std::size_t index=0; index<affinity_constraint.len(); index++)
-    {
-        if(affinity_constraint[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (path_metrics !=  nullptr && path_metrics->has_operation())
-	|| (segments !=  nullptr && segments->has_operation());
-}
-
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sr-path-constraints";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "path-metrics")
-    {
-        if(path_metrics == nullptr)
-        {
-            path_metrics = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics>();
-        }
-        return path_metrics;
-    }
-
-    if(child_yang_name == "segments")
-    {
-        if(segments == nullptr)
-        {
-            segments = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments>();
-        }
-        return segments;
-    }
-
-    if(child_yang_name == "affinity-constraint")
-    {
-        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint>();
-        ent_->parent = this;
-        affinity_constraint.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(path_metrics != nullptr)
-    {
-        _children["path-metrics"] = path_metrics;
-    }
-
-    if(segments != nullptr)
-    {
-        _children["segments"] = segments;
-    }
-
-    count_ = 0;
-    for (auto ent_ : affinity_constraint.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path-metrics" || name == "segments" || name == "affinity-constraint")
-        return true;
-    return false;
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::PathMetrics()
-    :
-    margin_relative{YType::uint8, "margin-relative"},
-    margin_absolute{YType::uint8, "margin-absolute"},
-    maximum_segments{YType::uint16, "maximum-segments"},
-    accumulative_te_metric{YType::uint32, "accumulative-te-metric"},
-    accumulative_igp_metric{YType::uint32, "accumulative-igp-metric"},
-    accumulative_delay{YType::uint32, "accumulative-delay"}
-{
-
-    yang_name = "path-metrics"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::~PathMetrics()
-{
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::has_data() const
-{
-    if (is_presence_container) return true;
-    return margin_relative.is_set
-	|| margin_absolute.is_set
-	|| maximum_segments.is_set
-	|| accumulative_te_metric.is_set
-	|| accumulative_igp_metric.is_set
-	|| accumulative_delay.is_set;
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(margin_relative.yfilter)
-	|| ydk::is_set(margin_absolute.yfilter)
-	|| ydk::is_set(maximum_segments.yfilter)
-	|| ydk::is_set(accumulative_te_metric.yfilter)
-	|| ydk::is_set(accumulative_igp_metric.yfilter)
-	|| ydk::is_set(accumulative_delay.yfilter);
-}
-
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path-metrics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (margin_relative.is_set || is_set(margin_relative.yfilter)) leaf_name_data.push_back(margin_relative.get_name_leafdata());
-    if (margin_absolute.is_set || is_set(margin_absolute.yfilter)) leaf_name_data.push_back(margin_absolute.get_name_leafdata());
-    if (maximum_segments.is_set || is_set(maximum_segments.yfilter)) leaf_name_data.push_back(maximum_segments.get_name_leafdata());
-    if (accumulative_te_metric.is_set || is_set(accumulative_te_metric.yfilter)) leaf_name_data.push_back(accumulative_te_metric.get_name_leafdata());
-    if (accumulative_igp_metric.is_set || is_set(accumulative_igp_metric.yfilter)) leaf_name_data.push_back(accumulative_igp_metric.get_name_leafdata());
-    if (accumulative_delay.is_set || is_set(accumulative_delay.yfilter)) leaf_name_data.push_back(accumulative_delay.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "margin-relative")
-    {
-        margin_relative = value;
-        margin_relative.value_namespace = name_space;
-        margin_relative.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "margin-absolute")
-    {
-        margin_absolute = value;
-        margin_absolute.value_namespace = name_space;
-        margin_absolute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-segments")
-    {
-        maximum_segments = value;
-        maximum_segments.value_namespace = name_space;
-        maximum_segments.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accumulative-te-metric")
-    {
-        accumulative_te_metric = value;
-        accumulative_te_metric.value_namespace = name_space;
-        accumulative_te_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accumulative-igp-metric")
-    {
-        accumulative_igp_metric = value;
-        accumulative_igp_metric.value_namespace = name_space;
-        accumulative_igp_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accumulative-delay")
-    {
-        accumulative_delay = value;
-        accumulative_delay.value_namespace = name_space;
-        accumulative_delay.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "margin-relative")
-    {
-        margin_relative.yfilter = yfilter;
-    }
-    if(value_path == "margin-absolute")
-    {
-        margin_absolute.yfilter = yfilter;
-    }
-    if(value_path == "maximum-segments")
-    {
-        maximum_segments.yfilter = yfilter;
-    }
-    if(value_path == "accumulative-te-metric")
-    {
-        accumulative_te_metric.yfilter = yfilter;
-    }
-    if(value_path == "accumulative-igp-metric")
-    {
-        accumulative_igp_metric.yfilter = yfilter;
-    }
-    if(value_path == "accumulative-delay")
-    {
-        accumulative_delay.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "margin-relative" || name == "margin-absolute" || name == "maximum-segments" || name == "accumulative-te-metric" || name == "accumulative-igp-metric" || name == "accumulative-delay")
-        return true;
-    return false;
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::Segments()
-    :
-    segment_algorithm{YType::uint8, "segment-algorithm"}
-{
-
-    yang_name = "segments"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::~Segments()
-{
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::has_data() const
-{
-    if (is_presence_container) return true;
-    return segment_algorithm.is_set;
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(segment_algorithm.yfilter);
-}
-
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "segments";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (segment_algorithm.is_set || is_set(segment_algorithm.yfilter)) leaf_name_data.push_back(segment_algorithm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "segment-algorithm")
-    {
-        segment_algorithm = value;
-        segment_algorithm.value_namespace = name_space;
-        segment_algorithm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "segment-algorithm")
-    {
-        segment_algorithm.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "segment-algorithm")
-        return true;
-    return false;
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::AffinityConstraint()
-    :
-    type{YType::uint8, "type"},
-    value_{YType::uint32, "value"}
-        ,
-    color(this, {})
-{
-
-    yang_name = "affinity-constraint"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::~AffinityConstraint()
-{
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<color.len(); index++)
-    {
-        if(color[index]->has_data())
-            return true;
-    }
-    return type.is_set
-	|| value_.is_set;
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::has_operation() const
-{
-    for (std::size_t index=0; index<color.len(); index++)
-    {
-        if(color[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "affinity-constraint";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "color")
-    {
-        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color>();
-        ent_->parent = this;
-        color.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : color.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "color" || name == "type" || name == "value")
-        return true;
-    return false;
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::Color()
-    :
-    color{YType::str, "color"}
-{
-
-    yang_name = "color"; yang_parent_name = "affinity-constraint"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::~Color()
-{
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::has_data() const
-{
-    if (is_presence_container) return true;
-    return color.is_set;
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(color.yfilter);
-}
-
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "color";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "color")
-    {
-        color = value;
-        color.value_namespace = name_space;
-        color.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "color")
-    {
-        color.yfilter = yfilter;
-    }
-}
-
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "color")
-        return true;
-    return false;
-}
-
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Hops()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Hops()
     :
     sid_type{YType::enumeration, "sid-type"},
     algorithm{YType::uint8, "algorithm"}
         ,
-    sid(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid>())
-    , local_address(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress>())
-    , remote_address(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress>())
+    sid(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid>())
+    , local_address(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress>())
+    , remote_address(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress>())
 {
     sid->parent = this;
     local_address->parent = this;
     remote_address->parent = this;
 
-    yang_name = "hops"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "hops"; yang_parent_name = "segment-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::~Hops()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::~Hops()
 {
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_data() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::has_data() const
 {
     if (is_presence_container) return true;
     return sid_type.is_set
@@ -8951,7 +10027,7 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_data() con
 	|| (remote_address !=  nullptr && remote_address->has_data());
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_operation() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sid_type.yfilter)
@@ -8961,14 +10037,15 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_operation(
 	|| (remote_address !=  nullptr && remote_address->has_operation());
 }
 
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_segment_path() const
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hops";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8979,13 +10056,13 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid")
     {
         if(sid == nullptr)
         {
-            sid = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid>();
+            sid = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid>();
         }
         return sid;
     }
@@ -8994,7 +10071,7 @@ std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Pat
     {
         if(local_address == nullptr)
         {
-            local_address = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress>();
+            local_address = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress>();
         }
         return local_address;
     }
@@ -9003,7 +10080,7 @@ std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Pat
     {
         if(remote_address == nullptr)
         {
-            remote_address = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress>();
+            remote_address = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress>();
         }
         return remote_address;
     }
@@ -9011,7 +10088,7 @@ std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Pat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -9033,7 +10110,7 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyReque
     return _children;
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sid-type")
     {
@@ -9049,7 +10126,7 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::set_value(cons
     }
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sid-type")
     {
@@ -9061,14 +10138,14 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::set_filter(con
     }
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sid" || name == "local-address" || name == "remote-address" || name == "sid-type" || name == "algorithm")
         return true;
     return false;
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::Sid()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::Sid()
     :
     sid_type{YType::enumeration, "sid-type"},
     label{YType::uint32, "label"},
@@ -9078,11 +10155,11 @@ Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::Sid()
     yang_name = "sid"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::~Sid()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::~Sid()
 {
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_data() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::has_data() const
 {
     if (is_presence_container) return true;
     return sid_type.is_set
@@ -9090,7 +10167,7 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_data(
 	|| ipv6.is_set;
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_operation() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sid_type.yfilter)
@@ -9098,14 +10175,14 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_opera
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_segment_path() const
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9117,19 +10194,19 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sid-type")
     {
@@ -9151,7 +10228,7 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::set_value
     }
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sid-type")
     {
@@ -9167,14 +10244,14 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::set_filte
     }
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::Sid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sid-type" || name == "label" || name == "ipv6")
         return true;
     return false;
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::LocalAddress()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::LocalAddress()
     :
     af_name{YType::enumeration, "af-name"},
     ipv4{YType::str, "ipv4"},
@@ -9184,11 +10261,11 @@ Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::Local
     yang_name = "local-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::~LocalAddress()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::~LocalAddress()
 {
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::has_data() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::has_data() const
 {
     if (is_presence_container) return true;
     return af_name.is_set
@@ -9196,7 +10273,7 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::
 	|| ipv6.is_set;
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::has_operation() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(af_name.yfilter)
@@ -9204,14 +10281,14 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_segment_path() const
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9223,19 +10300,19 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -9257,7 +10334,7 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::
     }
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -9273,14 +10350,14 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::
     }
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::RemoteAddress()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::RemoteAddress()
     :
     af_name{YType::enumeration, "af-name"},
     ipv4{YType::str, "ipv4"},
@@ -9290,11 +10367,11 @@ Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::Remo
     yang_name = "remote-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::~RemoteAddress()
+Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::~RemoteAddress()
 {
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::has_data() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::has_data() const
 {
     if (is_presence_container) return true;
     return af_name.is_set
@@ -9302,7 +10379,7 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress:
 	|| ipv6.is_set;
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::has_operation() const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(af_name.yfilter)
@@ -9310,14 +10387,14 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress:
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_segment_path() const
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9329,19 +10406,19 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -9363,7 +10440,7 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress:
     }
 }
 
-void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -9379,7 +10456,7 @@ void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress:
     }
 }
 
-bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
@@ -10040,6 +11117,7 @@ std::string Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInforma
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10538,6 +11616,7 @@ std::string Xtc::TopologyNodes::TopologyNode::PrefixSid::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10808,6 +11887,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11667,6 +12747,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdenti
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12165,6 +13246,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12420,6 +13502,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13258,6 +14341,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdenti
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13756,6 +14840,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14391,6 +15476,7 @@ std::string Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14879,6 +15965,7 @@ std::string Xtc::PrefixInfos::PrefixInfo::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15050,14 +16137,16 @@ const Enum::YLeaf XtcAfId::none {0, "none"};
 const Enum::YLeaf XtcAfId::ipv4 {1, "ipv4"};
 const Enum::YLeaf XtcAfId::ipv6 {2, "ipv6"};
 
-const Enum::YLeaf XtcBsidMode::explicit_ {0, "explicit"};
-const Enum::YLeaf XtcBsidMode::dynamic {1, "dynamic"};
-
 const Enum::YLeaf XtcSid1::sr_protected_adj_sid {1, "sr-protected-adj-sid"};
 const Enum::YLeaf XtcSid1::sr_unprotected_adj_sid {2, "sr-unprotected-adj-sid"};
 const Enum::YLeaf XtcSid1::sr_bgp_egress_peer_engineering_sid {3, "sr-bgp-egress-peer-engineering-sid"};
 const Enum::YLeaf XtcSid1::sr_reqular_prefix_sid {4, "sr-reqular-prefix-sid"};
 const Enum::YLeaf XtcSid1::sr_strict_prefix_sid {5, "sr-strict-prefix-sid"};
+
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::unknown {0, "unknown"};
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::pcep {10, "pcep"};
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::bgp {20, "bgp"};
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::configuration {30, "configuration"};
 
 const Enum::YLeaf XtcDisjointness::no_disjointness {0, "no-disjointness"};
 const Enum::YLeaf XtcDisjointness::link_disjointness {1, "link-disjointness"};
@@ -15065,22 +16154,32 @@ const Enum::YLeaf XtcDisjointness::node_disjointness {2, "node-disjointness"};
 const Enum::YLeaf XtcDisjointness::srlg_disjointness {3, "srlg-disjointness"};
 const Enum::YLeaf XtcDisjointness::srlg_node_disjointness {4, "srlg-node-disjointness"};
 
-const Enum::YLeaf XtcBsidError::none {0, "none"};
-const Enum::YLeaf XtcBsidError::allocating {1, "allocating"};
-const Enum::YLeaf XtcBsidError::exists {2, "exists"};
-const Enum::YLeaf XtcBsidError::internal {3, "internal"};
-const Enum::YLeaf XtcBsidError::color_endpoint_exists {4, "color-endpoint-exists"};
-const Enum::YLeaf XtcBsidError::forwarding_rewrite_error {5, "forwarding-rewrite-error"};
-const Enum::YLeaf XtcBsidError::srlb_invalid_label {6, "srlb-invalid-label"};
-const Enum::YLeaf XtcBsidError::internal_error {7, "internal-error"};
-
-const Enum::YLeaf XtcSid::none {0, "none"};
-const Enum::YLeaf XtcSid::mpls {1, "mpls"};
-const Enum::YLeaf XtcSid::ipv6 {2, "ipv6"};
+const Enum::YLeaf XtcPolicyLspSmState::unknown {0, "unknown"};
+const Enum::YLeaf XtcPolicyLspSmState::initialized {1, "initialized"};
+const Enum::YLeaf XtcPolicyLspSmState::deleted {2, "deleted"};
+const Enum::YLeaf XtcPolicyLspSmState::programmed {3, "programmed"};
+const Enum::YLeaf XtcPolicyLspSmState::egress_paths_pending {4, "egress-paths-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::out_of_resources_pending {5, "out-of-resources-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_allocation_pending {6, "label-allocation-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_allocation_cleanup_pending {7, "label-allocation-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_rewrite_pending {8, "label-rewrite-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_rewrite_cleanup_pending {9, "label-rewrite-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_allocation_pending {10, "bsid-allocation-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_allocation_cleanup_pending {11, "bsid-allocation-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_rewrite_pending {12, "bsid-rewrite-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_rewrite_cleanup_pending {13, "bsid-rewrite-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::tunnel_rewrite_pending {14, "tunnel-rewrite-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::tunnel_rewrite_cleanup_pending {15, "tunnel-rewrite-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::install_timer_pending {16, "install-timer-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::cleanup_timer_pending {17, "cleanup-timer-pending"};
 
 const Enum::YLeaf XtcPolicyPath::explicit_ {0, "explicit"};
 const Enum::YLeaf XtcPolicyPath::dynamic {1, "dynamic"};
 const Enum::YLeaf XtcPolicyPath::dynamic_pce {2, "dynamic-pce"};
+
+const Enum::YLeaf XtcSid::none {0, "none"};
+const Enum::YLeaf XtcSid::mpls {1, "mpls"};
+const Enum::YLeaf XtcSid::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf XtcAddressFamily::ipv4 {1, "ipv4"};
 const Enum::YLeaf XtcAddressFamily::ipv6 {2, "ipv6"};

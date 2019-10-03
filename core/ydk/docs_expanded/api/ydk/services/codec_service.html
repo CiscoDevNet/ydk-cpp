@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Codec Service &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="Service" href="services.html"/>
+        <link rel="next" title="CRUD Service" href="crud_service.html"/>
+        <link rel="prev" title="Service" href="services.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ydk.html">YDK API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="services.html">Service</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">Codec Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xmlsubtreecodec">XmlSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jsonsubtreecodec">JsonSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="crud_service.html">CRUD Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="executor_service.html">Executor Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netconf_service.html">Netconf Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_service.html">ValidationService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gnmi_service.html">gNMI Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../providers/providers.html">ServiceProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/errors.html">Errors Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filters.html">YDK Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../types.html">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../path/path.html">YDK Path API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../ydk.html">YDK API</a> &raquo;</li>
+      
+          <li><a href="services.html">Service</a> &raquo;</li>
+      
+    <li>Codec Service</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="codec-service">
+<h1>Codec Service<a class="headerlink" href="#codec-service" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk12CodecServiceE">
+<span id="ydk::CodecService"></span><em class="property">class </em><code class="descclassname">ydk::</code><code class="descname">CodecService</code><a class="headerlink" href="#_CPPv2N3ydk12CodecServiceE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Codec Service class for supporting encoding and decoding C++ model API objects of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+<dl class="function">
+<dt id="_CPPv2N3ydk12CodecService12CodecServiceEv">
+<span id="ydk::CodecService::CodecService"></span><code class="descclassname"></code><code class="descname">CodecService</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk12CodecService12CodecServiceEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an instance of CodecService</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk12CodecService6encodeER20CodecServiceProviderR6Entitybb">
+<span id="ydk::CodecService::encode__CodecServiceProviderR.EntityR.b.b"></span>std::string <code class="descclassname"></code><code class="descname">encode</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider">CodecServiceProvider</a> &amp;<em>provider</em>, <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> &amp;<em>entity</em>, bool <em>pretty</em> = false, bool <em>subtree</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk12CodecService6encodeER20CodecServiceProviderR6Entitybb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform encoding.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">CodecServiceProvider</span></code></a>.</li>
+<li><strong>entity</strong> &#8211; An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> class defined under a bundle.</li>
+<li><strong>pretty</strong> &#8211; Optionally produce formatted output.</li>
+<li><strong>subtree</strong> &#8211; Subtree filter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Encoded payload.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises YError:</th><td class="field-body"><p class="first last">If an error has occurred</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk12CodecService6encodeER20CodecServiceProviderRNSt3mapINSt6stringENSt10shared_ptrI6EntityEEEEb">
+<span id="ydk::CodecService::encode__CodecServiceProviderR.std::map:ss.std::shared_ptr:Entity::R.b"></span>std::map&lt;std::string, std::string&gt; <code class="descclassname"></code><code class="descname">encode</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider">CodecServiceProvider</a> &amp;<em>provider</em>, std::map&lt;std::string, std::shared_ptr&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt;&gt; &amp;<em>entity</em>, bool <em>pretty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk12CodecService6encodeER20CodecServiceProviderRNSt3mapINSt6stringENSt10shared_ptrI6EntityEEEEb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform encoding</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">CodecServiceProvider</span></code></a></li>
+<li><strong>entity</strong> &#8211; A map of <cite>Entity</cite> class defined under same bundle</li>
+<li><strong>pretty</strong> &#8211; Optionally produce formatted output</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A map of encodec payload.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises YError:</th><td class="field-body"><p class="first last">If an error has occurred</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk12CodecService6decodeER20CodecServiceProviderRKNSt6stringEb">
+<span id="ydk::CodecService::decode__CodecServiceProviderR.ssCR.b"></span>std::shared_ptr&lt;ydk::<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt; <code class="descclassname"></code><code class="descname">decode</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider">CodecServiceProvider</a> &amp;<em>provider</em>, <em class="property">const</em> std::string &amp;<em>payload</em>, bool <em>subtree</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk12CodecService6decodeER20CodecServiceProviderRKNSt6stringEb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decode the payload to produce an instance of <cite>Entity</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">CodecServiceProvider</span></code></a>.</li>
+<li><strong>payload</strong> &#8211; Payload to be decoded.</li>
+<li><strong>subtree</strong> &#8211; Subtree filter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Pointer to the decoded <cite>Entity</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises YError:</th><td class="field-body"><p class="first last">If an error has occurred</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk12CodecService6decodeER20CodecServiceProviderRNSt3mapINSt6stringENSt6stringEEENSt3mapINSt6stringENSt10shared_ptrI6EntityEEEE">
+<span id="ydk::CodecService::decode__CodecServiceProviderR.std::map:ss.ss:R.std::map:ss.std::shared_ptr:Entity::"></span>std::map&lt;std::string, std::shared_ptr&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt;&gt; <code class="descclassname"></code><code class="descname">decode</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider">CodecServiceProvider</a> &amp;<em>provider</em>, std::map&lt;std::string, std::string&gt; &amp;<em>payload_map</em>, std::map&lt;std::string, std::shared_ptr&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt;&gt; <em>entity_map</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk12CodecService6decodeER20CodecServiceProviderRNSt3mapINSt6stringENSt6stringEEENSt3mapINSt6stringENSt10shared_ptrI6EntityEEEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decode map of payload to map of <cite>Entity</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <a class="reference internal" href="../providers/codec_provider.html#_CPPv2N3ydk20CodecServiceProviderE" title="ydk::CodecServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">CodecServiceProvider</span></code></a>.</li>
+<li><strong>payload_map</strong> &#8211; Module name payload map.</li>
+<li><strong>entity_map</strong> &#8211; Module name entity map.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A <code class="docutils literal"><span class="pre">std::map</span></code> of the decoded <cite>Entity</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises YError:</th><td class="field-body"><p class="first last">If an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xmlsubtreecodec">
+<h1>XmlSubtreeCodec<a class="headerlink" href="#xmlsubtreecodec" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk15XmlSubtreeCodecE">
+<span id="ydk::XmlSubtreeCodec"></span><em class="property">class </em><code class="descclassname">ydk::</code><code class="descname">XmlSubtreeCodec</code><a class="headerlink" href="#_CPPv2N3ydk15XmlSubtreeCodecE" title="Permalink to this definition">¶</a></dt>
+<dd><p>XmlSubtreeCodec class designed to provide encoding and decoding C++ model API objects of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> to/from XML encoded string.
+Compared to <a class="reference internal" href="#_CPPv2N3ydk12CodecServiceE" title="ydk::CodecService"><code class="xref cpp cpp-class docutils literal"><span class="pre">CodecService</span></code></a> the class does not validate encoded data for their types and values.</p>
+<dl class="function">
+<dt id="_CPPv2N3ydk15XmlSubtreeCodec15XmlSubtreeCodecEv">
+<span id="ydk::XmlSubtreeCodec::XmlSubtreeCodec"></span><code class="descclassname"></code><code class="descname">XmlSubtreeCodec</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk15XmlSubtreeCodec15XmlSubtreeCodecEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an instance of <cite>XmlSubtreeCodec</cite> class.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk15XmlSubtreeCodec6encodeER6EntityRN4path14RootSchemaNodeE">
+<span id="ydk::XmlSubtreeCodec::encode__EntityR.path::RootSchemaNodeR"></span>std::string <code class="descclassname"></code><code class="descname">encode</code><span class="sig-paren">(</span><a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> &amp;<em>entity</em>, path::<a class="reference internal" href="../../path/nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode">RootSchemaNode</a> &amp;<em>root_schema</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk15XmlSubtreeCodec6encodeER6EntityRN4path14RootSchemaNodeE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs encoding of C++ model API objects of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> to well formatted XML encoded string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>entity</strong> &#8211; An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> class defined under a bundle.</li>
+<li><strong>root_schema</strong> &#8211; An instance of <a class="reference internal" href="../../path/nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a>, which includes the model bundle.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A <cite>std::string</cite>. Encoded well formatted multi-line XML payload.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises YServiceProviderError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first last">If an error has occurred; usually appears when model is not present in the bundle.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk15XmlSubtreeCodec6decodeERKNSt6stringENSt10shared_ptrI6EntityEE">
+<span id="ydk::XmlSubtreeCodec::decode__ssCR.std::shared_ptr:Entity:"></span>std::shared_ptr&lt;ydk::<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt; <code class="descclassname"></code><code class="descname">decode</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>payload</em>, std::shared_ptr&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt; <em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk15XmlSubtreeCodec6decodeERKNSt6stringENSt10shared_ptrI6EntityEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes the XML encoded string to produce corresponding instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>payload</strong> &#8211; <cite>std::string</cite>, XML encoded string to be decoded.</li>
+<li><strong>entity</strong> &#8211; <cite>std::shared_ptr&lt;Entity&gt;</cite>, instance of shared pointer to expected top level <cite>Entity</cite> class.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><cite>std::shared_ptr&lt;Entity&gt;</cite>, shared pointer to the decoded <cite>Entity</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises YServiceProviderError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first last">If an error has occurred; usually appears when payload does not correspond to <cite>Entity</cite> model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="jsonsubtreecodec">
+<h1>JsonSubtreeCodec<a class="headerlink" href="#jsonsubtreecodec" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk16JsonSubtreeCodecE">
+<span id="ydk::JsonSubtreeCodec"></span><em class="property">class </em><code class="descclassname">ydk::</code><code class="descname">JsonSubtreeCodec</code><a class="headerlink" href="#_CPPv2N3ydk16JsonSubtreeCodecE" title="Permalink to this definition">¶</a></dt>
+<dd><p>JsonSubtreeCodec class designed to provide encoding and decoding C++ model API objects of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> to/from JSON encoded string.
+Compared to <a class="reference internal" href="#_CPPv2N3ydk12CodecServiceE" title="ydk::CodecService"><code class="xref cpp cpp-class docutils literal"><span class="pre">CodecService</span></code></a> the class does not validate encoded data for their types and values.</p>
+<dl class="function">
+<dt id="_CPPv2N3ydk16JsonSubtreeCodec16JsonSubtreeCodecEv">
+<span id="ydk::JsonSubtreeCodec::JsonSubtreeCodec"></span><code class="descclassname"></code><code class="descname">JsonSubtreeCodec</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk16JsonSubtreeCodec16JsonSubtreeCodecEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an instance of <cite>JsonSubtreeCodec</cite> class.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk16JsonSubtreeCodec6encodeER6EntityRN4path14RootSchemaNodeEb">
+<span id="ydk::JsonSubtreeCodec::encode__EntityR.path::RootSchemaNodeR.b"></span>std::string <code class="descclassname"></code><code class="descname">encode</code><span class="sig-paren">(</span><a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> &amp;<em>entity</em>, path::<a class="reference internal" href="../../path/nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode">RootSchemaNode</a> &amp;<em>root_schema</em>, bool <em>pretty</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk16JsonSubtreeCodec6encodeER6EntityRN4path14RootSchemaNodeEb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs encoding of C++ model API objects of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> to JSON encoded string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>entity</strong> &#8211; An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> class defined under a bundle.</li>
+<li><strong>root_schema</strong> &#8211; An instance of <a class="reference internal" href="../../path/nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a>, which includes the model bundle.</li>
+<li><strong>pretty</strong> &#8211; <cite>bool</cite>. If set to <cite>true</cite>, the function produces well formatted multi-line JSON string. If set to <cite>false</cite> - one line string.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A <cite>std::string</cite>. Encoded JSON payload.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises YServiceProviderError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first last">If an error has occurred; usually appears when model is not present in the bundle.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk16JsonSubtreeCodec6decodeERKNSt6stringENSt10shared_ptrI6EntityEE">
+<span id="ydk::JsonSubtreeCodec::decode__ssCR.std::shared_ptr:Entity:"></span>std::shared_ptr&lt;ydk::<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt; <code class="descclassname"></code><code class="descname">decode</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>payload</em>, std::shared_ptr&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt; <em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk16JsonSubtreeCodec6decodeERKNSt6stringENSt10shared_ptrI6EntityEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes the JSON encoded string to produce corresponding instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>payload</strong> &#8211; <cite>std::string</cite>, JSON encoded string to be decoded.</li>
+<li><strong>entity</strong> &#8211; <cite>std::shared_ptr&lt;Entity&gt;</cite>, instance of shared pointer to expected top level <cite>Entity</cite> class.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><cite>std::shared_ptr&lt;Entity&gt;</cite>, shared pointer to the decoded <cite>Entity</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises YServiceProviderError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first last">If an error has occurred; usually appears when payload does not correspond to <cite>Entity</cite> model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="example-of-jsonsubtreecodec-usage">
+<h2>Example of JsonSubtreeCodec usage<a class="headerlink" href="#example-of-jsonsubtreecodec-usage" title="Permalink to this headline">¶</a></h2>
+<p>In this example we use <a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a> and
+<code class="xref cpp cpp-class docutils literal"><span class="pre">CRUDService</span></code> to get interface configuration from IOS XR device and
+then print it using <a class="reference internal" href="#_CPPv2N3ydk16JsonSubtreeCodecE" title="ydk::JsonSubtreeCodec"><code class="xref cpp cpp-class docutils literal"><span class="pre">JsonSubtreeCodec</span></code></a>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#include &lt;iostream&gt;</span>
+
+<span class="c1">#include &lt;ydk/crud_service.hpp&gt;</span>
+<span class="c1">#include &lt;ydk/gnmi_provider.hpp&gt;</span>
+<span class="c1">#include &lt;ydk/json_subtree_codec.hpp&gt;</span>
+
+<span class="c1">#include &lt;ydk_cisco_ios_xr/Cisco_IOS_XR_ifmgr_cfg.hpp&gt;</span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">ydk</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">cisco_ios_xr</span><span class="p">;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">auto</span> <span class="n">repo</span> <span class="o">=</span> <span class="n">path</span><span class="p">::</span><span class="n">Repository</span><span class="p">(</span><span class="s2">&quot;/home/yan/ydk-workspace/ydk-gen/scripts/repository/10.30.110.84&quot;</span><span class="p">);</span>
+    <span class="n">gNMIServiceProvider</span> <span class="n">provider</span><span class="p">{</span><span class="n">repo</span><span class="p">,</span> <span class="s2">&quot;10.30.110.84&quot;</span><span class="p">,</span> <span class="mi">57400</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">};</span>
+    <span class="n">CrudService</span> <span class="n">crud</span><span class="p">{};</span>
+
+    <span class="o">//</span> <span class="n">Build</span> <span class="nb">filter</span> <span class="n">to</span> <span class="n">retrieve</span> <span class="n">interface</span> <span class="n">configuration</span>
+    <span class="n">auto</span> <span class="n">ifcs_config</span> <span class="o">=</span> <span class="n">Cisco_IOS_XR_ifmgr_cfg</span><span class="p">::</span><span class="n">InterfaceConfigurations</span><span class="p">();</span>
+    <span class="n">auto</span> <span class="n">ifc_config</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Cisco_IOS_XR_ifmgr_cfg</span><span class="p">::</span><span class="n">InterfaceConfigurations</span><span class="p">::</span><span class="n">InterfaceConfiguration</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="n">ifc_config</span><span class="o">-&gt;</span><span class="n">active</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">act</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="n">ifc_config</span><span class="o">-&gt;</span><span class="n">interface_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">Loopback0</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="n">ifcs_config</span><span class="o">.</span><span class="n">interface_configuration</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ifc_config</span><span class="p">);</span>
+
+    <span class="o">//</span> <span class="n">Read</span> <span class="n">interface</span> <span class="n">configuration</span>
+    <span class="n">auto</span> <span class="n">ifc_read</span> <span class="o">=</span> <span class="n">crud</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">ifcs_config</span><span class="p">);</span>
+
+    <span class="o">//</span> <span class="n">Print</span> <span class="n">interface</span> <span class="n">configuration</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ifc_read</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">JsonSubtreeCodec</span> <span class="n">jcodec</span><span class="p">{};</span>
+        <span class="n">auto</span> <span class="n">json_payload</span> <span class="o">=</span> <span class="n">jcodec</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="o">*</span><span class="n">ifc_read</span><span class="p">,</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_session</span><span class="p">()</span><span class="o">.</span><span class="n">get_root_schema</span><span class="p">(),</span> <span class="n">true</span><span class="p">);</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Interface Configuration:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">json_payload</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="crud_service.html" class="btn btn-neutral float-right" title="CRUD Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="services.html" class="btn btn-neutral" title="Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

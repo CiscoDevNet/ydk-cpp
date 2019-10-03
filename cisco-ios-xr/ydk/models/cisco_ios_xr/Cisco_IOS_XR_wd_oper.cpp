@@ -1262,6 +1262,7 @@ std::string Watchdog::Nodes::Node::OverloadState::LastThrottle::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "last-throttle";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

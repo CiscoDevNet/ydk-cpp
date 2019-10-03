@@ -116,6 +116,12 @@ class CISCOIETFPWATMMIB::CpwVcAtmTable::CpwVcAtmEntry::CpwAtmEncap : public ydk:
         static const ydk::Enum::YLeaf l2tpv3;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 1;
+            if (name == "l2tpv3") return 2;
+            if (name == "unknown") return 3;
+            return -1;
+        }
 };
 
 

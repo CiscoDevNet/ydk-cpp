@@ -4018,6 +4018,14 @@ class RsvpMgmtAssociation : public ydk::Enum
         static const ydk::Enum::YLeaf extended_ipv4;
         static const ydk::Enum::YLeaf extended_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "extended-ipv4") return 3;
+            if (name == "extended-ipv6") return 4;
+            return -1;
+        }
 };
 
 class RsvpMgmtEroSubobj : public ydk::Enum
@@ -4026,6 +4034,11 @@ class RsvpMgmtEroSubobj : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_ipv4;
         static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_un_num;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-ero-type-ipv4") return 1;
+            if (name == "rsvp-mgmt-ero-type-un-num") return 4;
+            return -1;
+        }
 };
 
 class RsvpMgmtQosServiceEnum : public ydk::Enum
@@ -4036,6 +4049,13 @@ class RsvpMgmtQosServiceEnum : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_qos_controlled_load;
         static const ydk::Enum::YLeaf rsvp_mgmt_qos_qualitative;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-qos-unknown") return 0;
+            if (name == "rsvp-mgmt-qos-guaranteed") return 3;
+            if (name == "rsvp-mgmt-qos-controlled-load") return 5;
+            if (name == "rsvp-mgmt-qos-qualitative") return 6;
+            return -1;
+        }
 };
 
 class RsvpMgmtHelloInstance : public ydk::Enum
@@ -4044,6 +4064,11 @@ class RsvpMgmtHelloInstance : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "passive") return 1;
+            return -1;
+        }
 };
 
 class IgpteLibBwModel : public ydk::Enum
@@ -4053,6 +4078,12 @@ class IgpteLibBwModel : public ydk::Enum
         static const ydk::Enum::YLeaf mam;
         static const ydk::Enum::YLeaf not_set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rdm") return 0;
+            if (name == "mam") return 1;
+            if (name == "not-set") return 2;
+            return -1;
+        }
 };
 
 class RsvpMgmtFrrStateEnum : public ydk::Enum
@@ -4062,6 +4093,12 @@ class RsvpMgmtFrrStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf pending_state;
         static const ydk::Enum::YLeaf active_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ready-state") return 0;
+            if (name == "pending-state") return 1;
+            if (name == "active-state") return 2;
+            return -1;
+        }
 };
 
 class RsvpProcNsrNotReadyReason : public ydk::Enum
@@ -4072,6 +4109,13 @@ class RsvpProcNsrNotReadyReason : public ydk::Enum
         static const ydk::Enum::YLeaf nsr_peer_not_connected;
         static const ydk::Enum::YLeaf nsr_peer_not_in_sync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "collab-time-out") return 0;
+            if (name == "collab-conntection-idt") return 1;
+            if (name == "nsr-peer-not-connected") return 2;
+            if (name == "nsr-peer-not-in-sync") return 3;
+            return -1;
+        }
 };
 
 class RsvpMgmtDsteModes : public ydk::Enum
@@ -4080,6 +4124,11 @@ class RsvpMgmtDsteModes : public ydk::Enum
         static const ydk::Enum::YLeaf pre_standard;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pre-standard") return 1;
+            if (name == "standard") return 3;
+            return -1;
+        }
 };
 
 class RsvpMgmtRestartState : public ydk::Enum
@@ -4089,6 +4138,12 @@ class RsvpMgmtRestartState : public ydk::Enum
         static const ydk::Enum::YLeaf recovery;
         static const ydk::Enum::YLeaf abort;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "done") return 0;
+            if (name == "recovery") return 1;
+            if (name == "abort") return 2;
+            return -1;
+        }
 };
 
 class RsvpMgmtReservationTypeEnum : public ydk::Enum
@@ -4098,6 +4153,12 @@ class RsvpMgmtReservationTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_wf_option;
         static const ydk::Enum::YLeaf rsvp_mgmt_se_option;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-ff-option") return 10;
+            if (name == "rsvp-mgmt-wf-option") return 17;
+            if (name == "rsvp-mgmt-se-option") return 18;
+            return -1;
+        }
 };
 
 class RsvpMgmtTspec : public ydk::Enum
@@ -4106,6 +4167,11 @@ class RsvpMgmtTspec : public ydk::Enum
         static const ydk::Enum::YLeaf g709otn;
         static const ydk::Enum::YLeaf intsrv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "g709otn") return 5;
+            if (name == "intsrv") return 12;
+            return -1;
+        }
 };
 
 class RsvpMgmtAuthDirection : public ydk::Enum
@@ -4114,6 +4180,11 @@ class RsvpMgmtAuthDirection : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_send;
         static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_recv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-auth-direction-send") return 0;
+            if (name == "rsvp-mgmt-auth-direction-recv") return 1;
+            return -1;
+        }
 };
 
 class RsvpMgmtFilter : public ydk::Enum
@@ -4122,6 +4193,11 @@ class RsvpMgmtFilter : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_ipv4;
         static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_p2mp_lsp_ipv4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-filter-type-ipv4") return 1;
+            if (name == "rsvp-mgmt-filter-type-p2mp-lsp-ipv4") return 12;
+            return -1;
+        }
 };
 
 class RsvpProcRole : public ydk::Enum
@@ -4136,6 +4212,17 @@ class RsvpProcRole : public ydk::Enum
         static const ydk::Enum::YLeaf v1_standby_post_big_bang;
         static const ydk::Enum::YLeaf count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "v1-active") return 1;
+            if (name == "v1-standby") return 2;
+            if (name == "v2-active") return 3;
+            if (name == "v2-standby") return 4;
+            if (name == "v1-active-post-big-bang") return 5;
+            if (name == "v1-standby-post-big-bang") return 6;
+            if (name == "count") return 7;
+            return -1;
+        }
 };
 
 class RsvpSession : public ydk::Enum
@@ -4146,6 +4233,13 @@ class RsvpSession : public ydk::Enum
         static const ydk::Enum::YLeaf ouni_ipv4;
         static const ydk::Enum::YLeaf p2mp_lsp_ipv4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "p2p-lsp-ipv4") return 7;
+            if (name == "ouni-ipv4") return 9;
+            if (name == "p2mp-lsp-ipv4") return 13;
+            return -1;
+        }
 };
 
 class RsvpMgmtHelloState : public ydk::Enum
@@ -4155,6 +4249,12 @@ class RsvpMgmtHelloState : public ydk::Enum
         static const ydk::Enum::YLeaf hello_state_up;
         static const ydk::Enum::YLeaf hello_state_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hello-state-init") return 0;
+            if (name == "hello-state-up") return 1;
+            if (name == "hello-state-down") return 2;
+            return -1;
+        }
 };
 
 class RsvpMgmtFlowSpec : public ydk::Enum
@@ -4162,6 +4262,10 @@ class RsvpMgmtFlowSpec : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf g709otn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "g709otn") return 5;
+            return -1;
+        }
 };
 
 class RsvpMgmtHelloInstanceOwner : public ydk::Enum
@@ -4170,6 +4274,11 @@ class RsvpMgmtHelloInstanceOwner : public ydk::Enum
         static const ydk::Enum::YLeaf mpls_graceful_restart;
         static const ydk::Enum::YLeaf mpls_ouni;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls-graceful-restart") return 0;
+            if (name == "mpls-ouni") return 1;
+            return -1;
+        }
 };
 
 class RsvpMgmtRroSubobj : public ydk::Enum
@@ -4180,6 +4289,13 @@ class RsvpMgmtRroSubobj : public ydk::Enum
         static const ydk::Enum::YLeaf unnumbered_rro_type;
         static const ydk::Enum::YLeaf srlg_rro_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4rro-type") return 1;
+            if (name == "label-rro-type") return 3;
+            if (name == "unnumbered-rro-type") return 4;
+            if (name == "srlg-rro-type") return 34;
+            return -1;
+        }
 };
 
 class RsvpMgmtSession : public ydk::Enum
@@ -4190,6 +4306,13 @@ class RsvpMgmtSession : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_session_type_uni_ipv4;
         static const ydk::Enum::YLeaf rsvp_mgmt_session_type_p2mp_lsp_ipv4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-session-type-udp-ipv4") return 1;
+            if (name == "rsvp-mgmt-session-type-lsp-ipv4") return 7;
+            if (name == "rsvp-mgmt-session-type-uni-ipv4") return 9;
+            if (name == "rsvp-mgmt-session-type-p2mp-lsp-ipv4") return 13;
+            return -1;
+        }
 };
 
 class RsvpMgmtHelloDownReason : public ydk::Enum
@@ -4203,6 +4326,16 @@ class RsvpMgmtHelloDownReason : public ydk::Enum
         static const ydk::Enum::YLeaf neighbor_disabled_hello;
         static const ydk::Enum::YLeaf control_channel_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-applicable") return 0;
+            if (name == "wrong-destination-instance") return 1;
+            if (name == "wrong-source-instance") return 2;
+            if (name == "hello-missed") return 3;
+            if (name == "interface-down") return 4;
+            if (name == "neighbor-disabled-hello") return 5;
+            if (name == "control-channel-down") return 6;
+            return -1;
+        }
 };
 
 class RsvpMgmtGenericLabel : public ydk::Enum
@@ -4210,6 +4343,10 @@ class RsvpMgmtGenericLabel : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf rsvp_mgmt_label_type_gmpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-label-type-gmpls") return 2;
+            return -1;
+        }
 };
 
 class RsvpMgmtGrApp : public ydk::Enum
@@ -4218,6 +4355,11 @@ class RsvpMgmtGrApp : public ydk::Enum
         static const ydk::Enum::YLeaf ouni;
         static const ydk::Enum::YLeaf gmpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ouni") return 0;
+            if (name == "gmpls") return 1;
+            return -1;
+        }
 };
 
 class RsvpMgmtAuthChallengeStatus : public ydk::Enum
@@ -4229,6 +4371,14 @@ class RsvpMgmtAuthChallengeStatus : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_failure;
         static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_supported;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-auth-cs-not-cfg") return 0;
+            if (name == "rsvp-mgmt-auth-cs-completed") return 1;
+            if (name == "rsvp-mgmt-auth-cs-in-progress") return 2;
+            if (name == "rsvp-mgmt-auth-cs-failure") return 3;
+            if (name == "rsvp-mgmt-auth-cs-not-supported") return 4;
+            return -1;
+        }
 };
 
 class RsvpMgmtAuthKi : public ydk::Enum
@@ -4239,6 +4389,13 @@ class RsvpMgmtAuthKi : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_auth_ki_type_interface;
         static const ydk::Enum::YLeaf rsvp_mgmt_auth_ki_type_neighbor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-auth-ki-type-none") return 0;
+            if (name == "rsvp-mgmt-auth-ki-type-global") return 1;
+            if (name == "rsvp-mgmt-auth-ki-type-interface") return 2;
+            if (name == "rsvp-mgmt-auth-ki-type-neighbor") return 3;
+            return -1;
+        }
 };
 
 class RsvpTimerState : public ydk::Enum
@@ -4248,6 +4405,12 @@ class RsvpTimerState : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_timer_running;
         static const ydk::Enum::YLeaf rsvp_timer_not_running;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-timer-running-and-sleeping") return 1;
+            if (name == "rsvp-timer-running") return 2;
+            if (name == "rsvp-timer-not-running") return 3;
+            return -1;
+        }
 };
 
 class RsvpSyncStatus : public ydk::Enum
@@ -4256,6 +4419,11 @@ class RsvpSyncStatus : public ydk::Enum
         static const ydk::Enum::YLeaf not_ready;
         static const ydk::Enum::YLeaf ready;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-ready") return 0;
+            if (name == "ready") return 1;
+            return -1;
+        }
 };
 
 class RsvpMode : public ydk::Enum
@@ -4264,6 +4432,11 @@ class RsvpMode : public ydk::Enum
         static const ydk::Enum::YLeaf send;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "send") return 0;
+            if (name == "receive") return 1;
+            return -1;
+        }
 };
 
 class RsvpMgmtEroSubobjStatus : public ydk::Enum
@@ -4273,6 +4446,12 @@ class RsvpMgmtEroSubobjStatus : public ydk::Enum
         static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_available;
         static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_bw_not_available;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp-mgmt-ero-status-not-available") return 0;
+            if (name == "rsvp-mgmt-ero-status-available") return 1;
+            if (name == "rsvp-mgmt-ero-status-bw-not-available") return 2;
+            return -1;
+        }
 };
 
 

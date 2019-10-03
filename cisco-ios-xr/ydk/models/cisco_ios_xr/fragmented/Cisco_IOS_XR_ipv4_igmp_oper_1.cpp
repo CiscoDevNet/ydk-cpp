@@ -78,6 +78,7 @@ std::string Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -486,6 +487,7 @@ std::string Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::
 {
     std::ostringstream path_buffer;
     path_buffer << "sources";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2689,6 +2691,7 @@ std::string Mld::Active::Vrfs::Vrf::Summary::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4182,6 +4185,7 @@ std::string Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4966,6 +4970,7 @@ std::string Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5346,6 +5351,7 @@ std::string Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "non-active-groups";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5782,6 +5788,7 @@ std::string Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6134,6 +6141,7 @@ std::string Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6917,6 +6925,7 @@ std::string Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7171,6 +7180,7 @@ std::string Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceA
 {
     std::ostringstream path_buffer;
     path_buffer << "source-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8760,6 +8770,7 @@ std::string Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicast
 {
     std::ostringstream path_buffer;
     path_buffer << "update";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9210,6 +9221,7 @@ std::string Mld::Active::Vrfs::Vrf::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11465,6 +11477,7 @@ std::string Mld::Active::Vrfs::Vrf::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13599,6 +13612,7 @@ std::string Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13986,6 +14000,7 @@ std::string Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "sources";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16136,6 +16151,7 @@ std::string Mld::Active::Process::AmtGateways::AmtGateway::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "amt-gateway";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18025,6 +18041,7 @@ std::string Mld::Active::DefaultContext::Summary::Interface::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19546,6 +19563,7 @@ std::string Mld::Active::DefaultContext::DetailGroups::DetailGroup::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20365,6 +20383,7 @@ std::string Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20766,6 +20785,7 @@ std::string Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "non-active-groups";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21230,6 +21250,7 @@ std::string Mld::Active::DefaultContext::SsmMaps::SsmMap::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21603,6 +21624,7 @@ std::string Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22421,6 +22443,7 @@ std::string Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22689,6 +22712,7 @@ std::string Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::So
 {
     std::ostringstream path_buffer;
     path_buffer << "source-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24306,6 +24330,7 @@ std::string Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUn
 {
     std::ostringstream path_buffer;
     path_buffer << "update";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24770,6 +24795,7 @@ std::string Mld::Active::DefaultContext::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27067,6 +27093,7 @@ std::string Mld::Active::DefaultContext::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -891,10 +891,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
@@ -1664,10 +1660,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
@@ -2437,10 +2429,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
@@ -3210,10 +3198,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
@@ -3983,10 +3967,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
@@ -4240,6 +4220,33 @@ class CardResetReason : public ydk::Enum
         static const ydk::Enum::YLeaf memory_protection_error_reset;
         static const ydk::Enum::YLeaf card_reset_reason_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reset-unknown") return 1;
+            if (name == "power-up") return 2;
+            if (name == "parity-error") return 3;
+            if (name == "clear-config-reset") return 4;
+            if (name == "manual-reset") return 5;
+            if (name == "watch-dog-timeout-reset") return 6;
+            if (name == "resource-overflow-reset") return 7;
+            if (name == "missing-task-reset") return 8;
+            if (name == "low-voltage-reset") return 9;
+            if (name == "controller-reset") return 10;
+            if (name == "system-reset") return 11;
+            if (name == "switchover-reset") return 12;
+            if (name == "upgrade-reset") return 13;
+            if (name == "downgrade-reset") return 14;
+            if (name == "cache-error-reset") return 15;
+            if (name == "device-driver-reset") return 16;
+            if (name == "software-exception-reset") return 17;
+            if (name == "restore-config-reset") return 18;
+            if (name == "abort-rev-reset") return 19;
+            if (name == "burn-boot-reset") return 20;
+            if (name == "standby-cd-healthier-reset") return 21;
+            if (name == "non-native-config-clear-reset") return 22;
+            if (name == "memory-protection-error-reset") return 23;
+            if (name == "card-reset-reason-max") return 24;
+            return -1;
+        }
 };
 
 class ThresholdSeverity : public ydk::Enum
@@ -4250,6 +4257,13 @@ class ThresholdSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf critical;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "minor") return 10;
+            if (name == "major") return 20;
+            if (name == "critical") return 30;
+            return -1;
+        }
 };
 
 class SensorData : public ydk::Enum
@@ -4266,6 +4280,19 @@ class SensorData : public ydk::Enum
         static const ydk::Enum::YLeaf dbm;
         static const ydk::Enum::YLeaf db;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 2;
+            if (name == "ac-volts") return 3;
+            if (name == "dc-volts") return 4;
+            if (name == "amperes") return 5;
+            if (name == "watts") return 6;
+            if (name == "hertz") return 7;
+            if (name == "celsius") return 8;
+            if (name == "rpm") return 10;
+            if (name == "dbm") return 14;
+            if (name == "db") return 15;
+            return -1;
+        }
 };
 
 class SensorStatus : public ydk::Enum
@@ -4275,6 +4302,12 @@ class SensorStatus : public ydk::Enum
         static const ydk::Enum::YLeaf unavailable;
         static const ydk::Enum::YLeaf non_operational;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 1;
+            if (name == "unavailable") return 2;
+            if (name == "non-operational") return 3;
+            return -1;
+        }
 };
 
 class ThresholdRelation : public ydk::Enum
@@ -4287,6 +4320,15 @@ class ThresholdRelation : public ydk::Enum
         static const ydk::Enum::YLeaf equal;
         static const ydk::Enum::YLeaf not_equal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "less-than") return 1;
+            if (name == "less-or-equal") return 2;
+            if (name == "greater-than") return 3;
+            if (name == "greater-or-equal") return 4;
+            if (name == "equal") return 5;
+            if (name == "not-equal") return 6;
+            return -1;
+        }
 };
 
 class Unit : public ydk::Enum
@@ -4300,6 +4342,16 @@ class Unit : public ydk::Enum
         static const ydk::Enum::YLeaf dbm;
         static const ydk::Enum::YLeaf db;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "celsius") return 0;
+            if (name == "milli-volts") return 1;
+            if (name == "milli-amperes") return 2;
+            if (name == "rpm") return 3;
+            if (name == "watts") return 4;
+            if (name == "dbm") return 5;
+            if (name == "db") return 6;
+            return -1;
+        }
 };
 
 

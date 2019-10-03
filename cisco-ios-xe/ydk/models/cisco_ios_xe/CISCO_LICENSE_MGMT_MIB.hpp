@@ -533,6 +533,15 @@ class ClmgmtLicenseActionState : public ydk::Enum
         static const ydk::Enum::YLeaf partiallySuccessful;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "pending") return 2;
+            if (name == "inProgress") return 3;
+            if (name == "successful") return 4;
+            if (name == "partiallySuccessful") return 5;
+            if (name == "failed") return 6;
+            return -1;
+        }
 };
 
 class ClmgmtLicenseActionFailCause : public ydk::Enum
@@ -561,6 +570,31 @@ class ClmgmtLicenseActionFailCause : public ydk::Enum
         static const ydk::Enum::YLeaf licenseClearInProgress;
         static const ydk::Enum::YLeaf invalidLicenseEULAFile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "generalFailure") return 2;
+            if (name == "transferProtocolNotSupported") return 3;
+            if (name == "fileServerNotReachable") return 4;
+            if (name == "unrecognizedEntPhysicalIndex") return 5;
+            if (name == "invalidLicenseFilePath") return 6;
+            if (name == "invalidLicenseFile") return 7;
+            if (name == "invalidLicenseLine") return 8;
+            if (name == "licenseAlreadyExists") return 9;
+            if (name == "licenseNotValidForDevice") return 10;
+            if (name == "invalidLicenseCount") return 11;
+            if (name == "invalidLicensePeriod") return 12;
+            if (name == "licenseInUse") return 13;
+            if (name == "invalidLicenseStore") return 14;
+            if (name == "licenseStorageFull") return 15;
+            if (name == "invalidPermissionTicketFile") return 16;
+            if (name == "invalidPermissionTicket") return 17;
+            if (name == "invalidRehostTicketFile") return 18;
+            if (name == "invalidRehostTicket") return 19;
+            if (name == "invalidLicenseBackupFile") return 20;
+            if (name == "licenseClearInProgress") return 21;
+            if (name == "invalidLicenseEULAFile") return 22;
+            return -1;
+        }
 };
 
 class ClmgmtLicenseTransferProtocol : public ydk::Enum
@@ -575,6 +609,17 @@ class ClmgmtLicenseTransferProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf scp;
         static const ydk::Enum::YLeaf sftp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "local") return 2;
+            if (name == "tftp") return 3;
+            if (name == "ftp") return 4;
+            if (name == "rcp") return 5;
+            if (name == "http") return 6;
+            if (name == "scp") return 7;
+            if (name == "sftp") return 8;
+            return -1;
+        }
 };
 
 class CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEnable : public ydk::Enum
@@ -584,6 +629,12 @@ class CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEna
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 0;
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction : public ydk::Enum
@@ -597,6 +648,16 @@ class CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::C
         static const ydk::Enum::YLeaf backup;
         static const ydk::Enum::YLeaf generateEULA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noOp") return 1;
+            if (name == "install") return 2;
+            if (name == "clear") return 3;
+            if (name == "processPermissionTicket") return 4;
+            if (name == "regenerateLastRehostTicket") return 5;
+            if (name == "backup") return 6;
+            if (name == "generateEULA") return 7;
+            return -1;
+        }
 };
 
 class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType : public ydk::Enum
@@ -613,6 +674,19 @@ class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::Clmgm
         static const ydk::Enum::YLeaf rightToUse;
         static const ydk::Enum::YLeaf permanentRightToUse;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "demo") return 1;
+            if (name == "extension") return 2;
+            if (name == "gracePeriod") return 3;
+            if (name == "permanent") return 4;
+            if (name == "paidSubscription") return 5;
+            if (name == "evaluationSubscription") return 6;
+            if (name == "extensionSubscription") return 7;
+            if (name == "evalRightToUse") return 8;
+            if (name == "rightToUse") return 9;
+            if (name == "permanentRightToUse") return 10;
+            return -1;
+        }
 };
 
 class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus : public ydk::Enum
@@ -625,6 +699,15 @@ class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::Clmgm
         static const ydk::Enum::YLeaf expiredNotInUse;
         static const ydk::Enum::YLeaf usageCountConsumed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inactive") return 1;
+            if (name == "notInUse") return 2;
+            if (name == "inUse") return 3;
+            if (name == "expiredInUse") return 4;
+            if (name == "expiredNotInUse") return 5;
+            if (name == "usageCountConsumed") return 6;
+            return -1;
+        }
 };
 
 class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommand : public ydk::Enum
@@ -633,6 +716,11 @@ class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportAc
         static const ydk::Enum::YLeaf noOp;
         static const ydk::Enum::YLeaf getDeviceCredentials;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noOp") return 1;
+            if (name == "getDeviceCredentials") return 2;
+            return -1;
+        }
 };
 
 class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause : public ydk::Enum
@@ -645,6 +733,15 @@ class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportAc
         static const ydk::Enum::YLeaf unrecognizedEntPhysicalIndex;
         static const ydk::Enum::YLeaf invalidFile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "unknownError") return 2;
+            if (name == "transferProtocolNotSupported") return 3;
+            if (name == "fileServerNotReachable") return 4;
+            if (name == "unrecognizedEntPhysicalIndex") return 5;
+            if (name == "invalidFile") return 6;
+            return -1;
+        }
 };
 
 

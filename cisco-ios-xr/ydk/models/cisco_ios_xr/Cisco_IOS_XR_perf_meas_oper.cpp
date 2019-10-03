@@ -2068,6 +2068,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "delay-measurement-session";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3793,6 +3794,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "probe-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4698,6 +4700,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDelay::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5169,6 +5172,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDelay::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7446,6 +7450,7 @@ const Enum::YLeaf PmAdvertReason::clear_cli_command {10, "clear-cli-command"};
 const Enum::YLeaf PmAdvertReason::advertise_delay_config {11, "advertise-delay-config"};
 const Enum::YLeaf PmAdvertReason::advertise_delay_unconfig {12, "advertise-delay-unconfig"};
 const Enum::YLeaf PmAdvertReason::received_control_code_error {13, "received-control-code-error"};
+const Enum::YLeaf PmAdvertReason::link_is_down {14, "link-is-down"};
 
 const Enum::YLeaf PmProbeNotRunningReason::probe_is_running {0, "probe-is-running"};
 const Enum::YLeaf PmProbeNotRunningReason::platform_not_supported {1, "platform-not-supported"};

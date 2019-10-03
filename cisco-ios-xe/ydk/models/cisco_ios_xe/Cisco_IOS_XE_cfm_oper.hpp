@@ -123,6 +123,11 @@ class CfmLastClearedType : public ydk::Enum
         static const ydk::Enum::YLeaf never_cleared;
         static const ydk::Enum::YLeaf cleared_before;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never-cleared") return 0;
+            if (name == "cleared-before") return 1;
+            return -1;
+        }
 };
 
 

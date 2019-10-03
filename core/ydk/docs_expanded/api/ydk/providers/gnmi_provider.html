@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gNMIServiceProvider &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="ServiceProvider" href="providers.html"/>
+        <link rel="next" title="Errors Classes" href="../errors/errors.html"/>
+        <link rel="prev" title="OpenDaylightServiceProvider" href="opendaylight_provider.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ydk.html">YDK API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../services/services.html">Service</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="providers.html">ServiceProvider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="service_provider.html">ServiceProvider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netconf_provider.html">NetconfServiceProvider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="restconf_provider.html">RestconfServiceProvider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec_provider.html">CodecServiceProvider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opendaylight_provider.html">OpenDaylightServiceProvider</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">gNMIServiceProvider</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/errors.html">Errors Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filters.html">YDK Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../types.html">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../path/path.html">YDK Path API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../ydk.html">YDK API</a> &raquo;</li>
+      
+          <li><a href="providers.html">ServiceProvider</a> &raquo;</li>
+      
+    <li>gNMIServiceProvider</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gnmiserviceprovider">
+<h1>gNMIServiceProvider<a class="headerlink" href="#gnmiserviceprovider" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk19gNMIServiceProviderE">
+<span id="ydk::gNMIServiceProvider"></span><em class="property">class </em><code class="descclassname">ydk::</code><code class="descname">gNMIServiceProvider</code> : <em class="property">public</em> ydk::<a class="reference internal" href="service_provider.html#_CPPv2N3ydk15ServiceProviderE" title="ydk::ServiceProvider">ServiceProvider</a><a class="headerlink" href="#_CPPv2N3ydk19gNMIServiceProviderE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of <a class="reference internal" href="service_provider.html#_CPPv2N3ydk15ServiceProviderE" title="ydk::ServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">ServiceProvider</span></code></a> for the <a class="reference external" href="https://github.com/openconfig/gnmi">gNMI</a> protocol.</p>
+<dl class="function">
+<dt id="_CPPv2N3ydk19gNMIServiceProvider19gNMIServiceProviderERN4path10RepositoryERNSt6stringEiRNSt6stringERNSt6stringERNSt6stringERNSt6stringE">
+<span id="ydk::gNMIServiceProvider::gNMIServiceProvider__path::RepositoryR.ssR.i.ssR.ssR.ssR.ssR"></span><code class="descclassname"></code><code class="descname">gNMIServiceProvider</code><span class="sig-paren">(</span>path::<a class="reference internal" href="../../path/repository.html#_CPPv2N3ydk4path10RepositoryE" title="ydk::path::Repository">Repository</a> &amp;<em>repo</em>, std::string &amp;<em>address</em>, int <em>port</em>, std::string &amp;<em>username</em>, std::string &amp;<em>password</em>, std::string &amp;<em>server_certificate</em> = &quot;&quot;, std::string &amp;<em>private_key</em> = &quot;&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk19gNMIServiceProvider19gNMIServiceProviderERN4path10RepositoryERNSt6stringEiRNSt6stringERNSt6stringERNSt6stringERNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an instance of <code class="docutils literal"><span class="pre">gNMIServiceProvider</span></code> using the provided <a class="reference internal" href="../../path/repository.html#_CPPv2N3ydk4path10RepositoryE" title="ydk::path::Repository"><code class="xref cpp cpp-class docutils literal"><span class="pre">repository</span></code></a>, connects to gNMI server and retrieves server capabilities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>repository</strong> &#8211; Reference to an instance of <a class="reference internal" href="../../path/repository.html#_CPPv2N3ydk4path10RepositoryE" title="ydk::path::Repository"><code class="xref cpp cpp-class docutils literal"><span class="pre">Repository</span></code></a>.</li>
+<li><strong>address</strong> &#8211; IP address of the device supporting gNMI protocol.</li>
+<li><strong>port</strong> &#8211; Device port used to access the gNMI server.</li>
+<li><strong>username</strong> &#8211; Username to log in to the device.</li>
+<li><strong>password</strong> &#8211; Password to log in to the device.</li>
+<li><strong>server_certificate</strong> &#8211; Full path to a file, which contains server certificate of authorization (public key). If not specified, it is assumed non-secure connection to gNMI server.</li>
+<li><strong>private_key</strong> &#8211; Full path to a file, which contains private key of the application host. If not specified and <strong>server_certificate</strong> is defined (secure connection), the GRPC internally defined private key is used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YServiceError, if connection error occured.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk19gNMIServiceProvider12get_encodingEv">
+<span id="ydk::gNMIServiceProvider::get_encodingC"></span><a class="reference internal" href="../types.html#_CPPv2N3ydk14EncodingFormatE" title="ydk::EncodingFormat">EncodingFormat</a> <code class="descclassname"></code><code class="descname">get_encoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk19gNMIServiceProvider12get_encodingEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of encoding supported by the service provider. In the case of gNMI service provider, <a class="reference internal" href="../types.html#_CPPv2N3ydk14EncodingFormatE" title="ydk::EncodingFormat"><code class="xref cpp cpp-enum docutils literal"><span class="pre">EncodingFormat::JSON</span></code></a> is always returned.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk19gNMIServiceProvider16get_capabilitiesEv">
+<span id="ydk::gNMIServiceProvider::get_capabilitiesC"></span>std::vector&lt;std::string&gt; <code class="descclassname"></code><code class="descname">get_capabilities</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk19gNMIServiceProvider16get_capabilitiesEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns gNMI server capabilities as vector of strings.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../errors/errors.html" class="btn btn-neutral float-right" title="Errors Classes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="opendaylight_provider.html" class="btn btn-neutral" title="OpenDaylightServiceProvider" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

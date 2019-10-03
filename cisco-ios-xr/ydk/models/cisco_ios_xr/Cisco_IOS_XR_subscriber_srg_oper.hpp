@@ -123,6 +123,7 @@ class SubscriberRedundancyManager::Summary : public ydk::Entity
         ydk::YLeaf preferred_role; //type: SrgShowRole
         ydk::YLeaf slave_mode; //type: SrgShowSlaveMode
         ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf sync_time; //type: uint32
         ydk::YLeaf source_interface_name; //type: string
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf source_interface_ipv4_address; //type: string
@@ -632,14 +633,14 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId : public ydk::En
         ydk::YLeaf peer_ipv4_address; //type: string
         ydk::YLeaf peer_ipv6_address; //type: string
         ydk::YLeaf peer_status; //type: SrgPeerStatus
-        ydk::YLeaf peer_last_negotiation_time; //type: string
-        ydk::YLeaf peer_last_up_time; //type: string
-        ydk::YLeaf peer_last_down_time; //type: string
+        ydk::YLeaf peer_last_negotiation_time_epoch; //type: uint64
+        ydk::YLeaf peer_last_up_time_epoch; //type: uint64
+        ydk::YLeaf peer_last_down_time_epoch; //type: uint64
         ydk::YLeaf peer_init_role; //type: SrgShowRole
         ydk::YLeaf peer_negotiating_role; //type: SrgShowRole
         ydk::YLeaf peer_current_role; //type: SrgShowRole
         ydk::YLeaf peer_object_tracking_status; //type: boolean
-        ydk::YLeaf last_switchover_time; //type: string
+        ydk::YLeaf last_switchover_time_epoch; //type: uint64
         ydk::YLeaf switchover_count; //type: uint32
         ydk::YLeaf last_switchover_reason; //type: SrgShowSoReason
         ydk::YLeaf switchover_hold_time; //type: uint32
@@ -688,6 +689,12 @@ class SrgShowImRole : public ydk::Enum
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "master") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
 };
 
 class SrgShowSessionError : public ydk::Enum
@@ -697,6 +704,12 @@ class SrgShowSessionError : public ydk::Enum
         static const ydk::Enum::YLeaf hard;
         static const ydk::Enum::YLeaf soft;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "hard") return 1;
+            if (name == "soft") return 2;
+            return -1;
+        }
 };
 
 class SrgShowSoReason : public ydk::Enum
@@ -709,6 +722,15 @@ class SrgShowSoReason : public ydk::Enum
         static const ydk::Enum::YLeaf object_tracking_status_change;
         static const ydk::Enum::YLeaf srg_show_so_reason_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            if (name == "admin") return 1;
+            if (name == "peer-up") return 2;
+            if (name == "peer-down") return 3;
+            if (name == "object-tracking-status-change") return 4;
+            if (name == "srg-show-so-reason-max") return 5;
+            return -1;
+        }
 };
 
 class SrgShowSessionOperation : public ydk::Enum
@@ -719,6 +741,13 @@ class SrgShowSessionOperation : public ydk::Enum
         static const ydk::Enum::YLeaf delete_;
         static const ydk::Enum::YLeaf in_sync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "update") return 1;
+            if (name == "delete") return 2;
+            if (name == "in-sync") return 3;
+            return -1;
+        }
 };
 
 class SrgPeerStatus : public ydk::Enum
@@ -734,6 +763,18 @@ class SrgPeerStatus : public ydk::Enum
         static const ydk::Enum::YLeaf connected;
         static const ydk::Enum::YLeaf established;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-configured") return 0;
+            if (name == "initialize") return 1;
+            if (name == "retry") return 2;
+            if (name == "connect") return 3;
+            if (name == "listen") return 4;
+            if (name == "registration") return 5;
+            if (name == "cleanup") return 6;
+            if (name == "connected") return 7;
+            if (name == "established") return 8;
+            return -1;
+        }
 };
 
 class SrgShowRole : public ydk::Enum
@@ -743,6 +784,12 @@ class SrgShowRole : public ydk::Enum
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "master") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
 };
 
 class SrgShowSlaveMode : public ydk::Enum
@@ -752,6 +799,12 @@ class SrgShowSlaveMode : public ydk::Enum
         static const ydk::Enum::YLeaf warm;
         static const ydk::Enum::YLeaf hot;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "warm") return 1;
+            if (name == "hot") return 2;
+            return -1;
+        }
 };
 
 class SrgShowComp : public ydk::Enum
@@ -765,6 +818,16 @@ class SrgShowComp : public ydk::Enum
         static const ydk::Enum::YLeaf l2tp;
         static const ydk::Enum::YLeaf iedge;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "srga") return 0;
+            if (name == "dhcpv4") return 1;
+            if (name == "dhcpv6") return 2;
+            if (name == "pppoe") return 3;
+            if (name == "ppp") return 4;
+            if (name == "l2tp") return 5;
+            if (name == "iedge") return 6;
+            return -1;
+        }
 };
 
 

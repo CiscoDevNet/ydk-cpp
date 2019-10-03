@@ -22,8 +22,8 @@ Aaa::Aaa()
     , usergroups(std::make_shared<Aaa::Usergroups>())
     , authen_method(std::make_shared<Aaa::AuthenMethod>())
     , current_usergroup(std::make_shared<Aaa::CurrentUsergroup>())
-    , radius(std::make_shared<Aaa::Radius>())
     , tacacs(std::make_shared<Aaa::Tacacs>())
+    , radius(std::make_shared<Aaa::Radius>())
     , diameter(std::make_shared<Aaa::Diameter>())
 {
     all_tasks->parent = this;
@@ -35,8 +35,8 @@ Aaa::Aaa()
     usergroups->parent = this;
     authen_method->parent = this;
     current_usergroup->parent = this;
-    radius->parent = this;
     tacacs->parent = this;
+    radius->parent = this;
     diameter->parent = this;
 
     yang_name = "aaa"; yang_parent_name = "Cisco-IOS-XR-aaa-locald-oper"; is_top_level_class = true; has_list_ancestor = false; 
@@ -58,8 +58,8 @@ bool Aaa::has_data() const
 	|| (usergroups !=  nullptr && usergroups->has_data())
 	|| (authen_method !=  nullptr && authen_method->has_data())
 	|| (current_usergroup !=  nullptr && current_usergroup->has_data())
-	|| (radius !=  nullptr && radius->has_data())
 	|| (tacacs !=  nullptr && tacacs->has_data())
+	|| (radius !=  nullptr && radius->has_data())
 	|| (diameter !=  nullptr && diameter->has_data());
 }
 
@@ -75,8 +75,8 @@ bool Aaa::has_operation() const
 	|| (usergroups !=  nullptr && usergroups->has_operation())
 	|| (authen_method !=  nullptr && authen_method->has_operation())
 	|| (current_usergroup !=  nullptr && current_usergroup->has_operation())
-	|| (radius !=  nullptr && radius->has_operation())
 	|| (tacacs !=  nullptr && tacacs->has_operation())
+	|| (radius !=  nullptr && radius->has_operation())
 	|| (diameter !=  nullptr && diameter->has_operation());
 }
 
@@ -179,15 +179,6 @@ std::shared_ptr<ydk::Entity> Aaa::get_child_by_name(const std::string & child_ya
         return current_usergroup;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-aaa-protocol-radius-oper:radius")
-    {
-        if(radius == nullptr)
-        {
-            radius = std::make_shared<Aaa::Radius>();
-        }
-        return radius;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-aaa-tacacs-oper:tacacs")
     {
         if(tacacs == nullptr)
@@ -195,6 +186,15 @@ std::shared_ptr<ydk::Entity> Aaa::get_child_by_name(const std::string & child_ya
             tacacs = std::make_shared<Aaa::Tacacs>();
         }
         return tacacs;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-aaa-protocol-radius-oper:radius")
+    {
+        if(radius == nullptr)
+        {
+            radius = std::make_shared<Aaa::Radius>();
+        }
+        return radius;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-aaa-diameter-oper:diameter")
@@ -258,14 +258,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::get_children() const
         _children["current-usergroup"] = current_usergroup;
     }
 
-    if(radius != nullptr)
-    {
-        _children["Cisco-IOS-XR-aaa-protocol-radius-oper:radius"] = radius;
-    }
-
     if(tacacs != nullptr)
     {
         _children["Cisco-IOS-XR-aaa-tacacs-oper:tacacs"] = tacacs;
+    }
+
+    if(radius != nullptr)
+    {
+        _children["Cisco-IOS-XR-aaa-protocol-radius-oper:radius"] = radius;
     }
 
     if(diameter != nullptr)
@@ -311,7 +311,7 @@ std::map<std::pair<std::string, std::string>, std::string> Aaa::get_namespace_id
 
 bool Aaa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "all-tasks" || name == "currentuser-detail" || name == "task-map" || name == "taskgroups" || name == "users" || name == "password-policies" || name == "usergroups" || name == "authen-method" || name == "current-usergroup" || name == "radius" || name == "tacacs" || name == "diameter")
+    if(name == "all-tasks" || name == "currentuser-detail" || name == "task-map" || name == "taskgroups" || name == "users" || name == "password-policies" || name == "usergroups" || name == "authen-method" || name == "current-usergroup" || name == "tacacs" || name == "radius" || name == "diameter")
         return true;
     return false;
 }
@@ -1066,6 +1066,7 @@ std::string Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "tasks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1293,6 +1294,7 @@ std::string Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tasks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1789,6 +1791,7 @@ std::string Aaa::Users::User::TaskMap::Tasks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tasks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2964,6 +2967,7 @@ std::string Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tasks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3095,6 +3099,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "taskgroup";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3306,6 +3311,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "tasks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3533,6 +3539,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "tasks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3909,6 +3916,1535 @@ void Aaa::CurrentUsergroup::set_filter(const std::string & value_path, YFilter y
 bool Aaa::CurrentUsergroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "authenmethod" || name == "usergroup" || name == "taskmap")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::Tacacs()
+    :
+    requests(std::make_shared<Aaa::Tacacs::Requests>())
+    , servers(std::make_shared<Aaa::Tacacs::Servers>())
+    , server_groups(std::make_shared<Aaa::Tacacs::ServerGroups>())
+{
+    requests->parent = this;
+    servers->parent = this;
+    server_groups->parent = this;
+
+    yang_name = "tacacs"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::~Tacacs()
+{
+}
+
+bool Aaa::Tacacs::has_data() const
+{
+    if (is_presence_container) return true;
+    return (requests !=  nullptr && requests->has_data())
+	|| (servers !=  nullptr && servers->has_data())
+	|| (server_groups !=  nullptr && server_groups->has_data());
+}
+
+bool Aaa::Tacacs::has_operation() const
+{
+    return is_set(yfilter)
+	|| (requests !=  nullptr && requests->has_operation())
+	|| (servers !=  nullptr && servers->has_operation())
+	|| (server_groups !=  nullptr && server_groups->has_operation());
+}
+
+std::string Aaa::Tacacs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-tacacs-oper:tacacs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "requests")
+    {
+        if(requests == nullptr)
+        {
+            requests = std::make_shared<Aaa::Tacacs::Requests>();
+        }
+        return requests;
+    }
+
+    if(child_yang_name == "servers")
+    {
+        if(servers == nullptr)
+        {
+            servers = std::make_shared<Aaa::Tacacs::Servers>();
+        }
+        return servers;
+    }
+
+    if(child_yang_name == "server-groups")
+    {
+        if(server_groups == nullptr)
+        {
+            server_groups = std::make_shared<Aaa::Tacacs::ServerGroups>();
+        }
+        return server_groups;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(requests != nullptr)
+    {
+        _children["requests"] = requests;
+    }
+
+    if(servers != nullptr)
+    {
+        _children["servers"] = servers;
+    }
+
+    if(server_groups != nullptr)
+    {
+        _children["server-groups"] = server_groups;
+    }
+
+    return _children;
+}
+
+void Aaa::Tacacs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Tacacs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Tacacs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "requests" || name == "servers" || name == "server-groups")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::Requests::Requests()
+    :
+    request(this, {})
+{
+
+    yang_name = "requests"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::Requests::~Requests()
+{
+}
+
+bool Aaa::Tacacs::Requests::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<request.len(); index++)
+    {
+        if(request[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::Requests::has_operation() const
+{
+    for (std::size_t index=0; index<request.len(); index++)
+    {
+        if(request[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Tacacs::Requests::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::Requests::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "requests";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "request")
+    {
+        auto ent_ = std::make_shared<Aaa::Tacacs::Requests::Request>();
+        ent_->parent = this;
+        request.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Requests::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : request.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Aaa::Tacacs::Requests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Tacacs::Requests::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Tacacs::Requests::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "request")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::Requests::Request::Request()
+    :
+    tacacs_requestbag(this, {})
+{
+
+    yang_name = "request"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::Requests::Request::~Request()
+{
+}
+
+bool Aaa::Tacacs::Requests::Request::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tacacs_requestbag.len(); index++)
+    {
+        if(tacacs_requestbag[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::Requests::Request::has_operation() const
+{
+    for (std::size_t index=0; index<tacacs_requestbag.len(); index++)
+    {
+        if(tacacs_requestbag[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Tacacs::Requests::Request::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::Requests::Request::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "request";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::Request::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::Requests::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tacacs-requestbag")
+    {
+        auto ent_ = std::make_shared<Aaa::Tacacs::Requests::Request::TacacsRequestbag>();
+        ent_->parent = this;
+        tacacs_requestbag.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Requests::Request::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tacacs_requestbag.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Aaa::Tacacs::Requests::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Tacacs::Requests::Request::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Tacacs::Requests::Request::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tacacs-requestbag")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::Requests::Request::TacacsRequestbag::TacacsRequestbag()
+    :
+    time_remaining{YType::uint32, "time-remaining"},
+    bytes_out{YType::uint32, "bytes-out"},
+    out_pak_size{YType::uint32, "out-pak-size"},
+    bytes_in{YType::uint32, "bytes-in"},
+    in_pak_size{YType::uint32, "in-pak-size"},
+    pak_type{YType::str, "pak-type"},
+    session_id{YType::int32, "session-id"},
+    sock{YType::int32, "sock"}
+{
+
+    yang_name = "tacacs-requestbag"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::Requests::Request::TacacsRequestbag::~TacacsRequestbag()
+{
+}
+
+bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_remaining.is_set
+	|| bytes_out.is_set
+	|| out_pak_size.is_set
+	|| bytes_in.is_set
+	|| in_pak_size.is_set
+	|| pak_type.is_set
+	|| session_id.is_set
+	|| sock.is_set;
+}
+
+bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
+	|| ydk::is_set(bytes_out.yfilter)
+	|| ydk::is_set(out_pak_size.yfilter)
+	|| ydk::is_set(bytes_in.yfilter)
+	|| ydk::is_set(in_pak_size.yfilter)
+	|| ydk::is_set(pak_type.yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(sock.yfilter);
+}
+
+std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/request/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tacacs-requestbag";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
+    if (out_pak_size.is_set || is_set(out_pak_size.yfilter)) leaf_name_data.push_back(out_pak_size.get_name_leafdata());
+    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
+    if (in_pak_size.is_set || is_set(in_pak_size.yfilter)) leaf_name_data.push_back(in_pak_size.get_name_leafdata());
+    if (pak_type.is_set || is_set(pak_type.yfilter)) leaf_name_data.push_back(pak_type.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (sock.is_set || is_set(sock.yfilter)) leaf_name_data.push_back(sock.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Aaa::Tacacs::Requests::Request::TacacsRequestbag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out = value;
+        bytes_out.value_namespace = name_space;
+        bytes_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pak-size")
+    {
+        out_pak_size = value;
+        out_pak_size.value_namespace = name_space;
+        out_pak_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in = value;
+        bytes_in.value_namespace = name_space;
+        bytes_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-pak-size")
+    {
+        in_pak_size = value;
+        in_pak_size.value_namespace = name_space;
+        in_pak_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pak-type")
+    {
+        pak_type = value;
+        pak_type.value_namespace = name_space;
+        pak_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sock")
+    {
+        sock = value;
+        sock.value_namespace = name_space;
+        sock.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Tacacs::Requests::Request::TacacsRequestbag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out.yfilter = yfilter;
+    }
+    if(value_path == "out-pak-size")
+    {
+        out_pak_size.yfilter = yfilter;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in.yfilter = yfilter;
+    }
+    if(value_path == "in-pak-size")
+    {
+        in_pak_size.yfilter = yfilter;
+    }
+    if(value_path == "pak-type")
+    {
+        pak_type.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "sock")
+    {
+        sock.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-remaining" || name == "bytes-out" || name == "out-pak-size" || name == "bytes-in" || name == "in-pak-size" || name == "pak-type" || name == "session-id" || name == "sock")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::Servers::Servers()
+    :
+    server(this, {})
+{
+
+    yang_name = "servers"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::Servers::~Servers()
+{
+}
+
+bool Aaa::Tacacs::Servers::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server.len(); index++)
+    {
+        if(server[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::Servers::has_operation() const
+{
+    for (std::size_t index=0; index<server.len(); index++)
+    {
+        if(server[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Tacacs::Servers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::Servers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "servers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Servers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        auto ent_ = std::make_shared<Aaa::Tacacs::Servers::Server>();
+        ent_->parent = this;
+        server.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Servers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : server.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Aaa::Tacacs::Servers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Tacacs::Servers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Tacacs::Servers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::Servers::Server::Server()
+    :
+    addr{YType::str, "addr"},
+    timeout{YType::uint32, "timeout"},
+    port{YType::uint32, "port"},
+    bytes_in{YType::uint32, "bytes-in"},
+    bytes_out{YType::uint32, "bytes-out"},
+    closes{YType::uint32, "closes"},
+    opens{YType::uint32, "opens"},
+    errors{YType::uint32, "errors"},
+    aborts{YType::uint32, "aborts"},
+    paks_in{YType::uint32, "paks-in"},
+    paks_out{YType::uint32, "paks-out"},
+    replies_expected{YType::uint32, "replies-expected"},
+    up{YType::boolean, "up"},
+    conn_up{YType::boolean, "conn-up"},
+    single_connect{YType::boolean, "single-connect"},
+    is_private{YType::boolean, "is-private"},
+    vrf_name{YType::str, "vrf-name"},
+    addr_buf{YType::str, "addr-buf"},
+    family{YType::str, "family"}
+{
+
+    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::Servers::Server::~Server()
+{
+}
+
+bool Aaa::Tacacs::Servers::Server::has_data() const
+{
+    if (is_presence_container) return true;
+    return addr.is_set
+	|| timeout.is_set
+	|| port.is_set
+	|| bytes_in.is_set
+	|| bytes_out.is_set
+	|| closes.is_set
+	|| opens.is_set
+	|| errors.is_set
+	|| aborts.is_set
+	|| paks_in.is_set
+	|| paks_out.is_set
+	|| replies_expected.is_set
+	|| up.is_set
+	|| conn_up.is_set
+	|| single_connect.is_set
+	|| is_private.is_set
+	|| vrf_name.is_set
+	|| addr_buf.is_set
+	|| family.is_set;
+}
+
+bool Aaa::Tacacs::Servers::Server::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(addr.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(bytes_in.yfilter)
+	|| ydk::is_set(bytes_out.yfilter)
+	|| ydk::is_set(closes.yfilter)
+	|| ydk::is_set(opens.yfilter)
+	|| ydk::is_set(errors.yfilter)
+	|| ydk::is_set(aborts.yfilter)
+	|| ydk::is_set(paks_in.yfilter)
+	|| ydk::is_set(paks_out.yfilter)
+	|| ydk::is_set(replies_expected.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(conn_up.yfilter)
+	|| ydk::is_set(single_connect.yfilter)
+	|| ydk::is_set(is_private.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(addr_buf.yfilter)
+	|| ydk::is_set(family.yfilter);
+}
+
+std::string Aaa::Tacacs::Servers::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/servers/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::Servers::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Servers::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
+    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
+    if (closes.is_set || is_set(closes.yfilter)) leaf_name_data.push_back(closes.get_name_leafdata());
+    if (opens.is_set || is_set(opens.yfilter)) leaf_name_data.push_back(opens.get_name_leafdata());
+    if (errors.is_set || is_set(errors.yfilter)) leaf_name_data.push_back(errors.get_name_leafdata());
+    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
+    if (paks_in.is_set || is_set(paks_in.yfilter)) leaf_name_data.push_back(paks_in.get_name_leafdata());
+    if (paks_out.is_set || is_set(paks_out.yfilter)) leaf_name_data.push_back(paks_out.get_name_leafdata());
+    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (conn_up.is_set || is_set(conn_up.yfilter)) leaf_name_data.push_back(conn_up.get_name_leafdata());
+    if (single_connect.is_set || is_set(single_connect.yfilter)) leaf_name_data.push_back(single_connect.get_name_leafdata());
+    if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
+    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Servers::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Aaa::Tacacs::Servers::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "addr")
+    {
+        addr = value;
+        addr.value_namespace = name_space;
+        addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in = value;
+        bytes_in.value_namespace = name_space;
+        bytes_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out = value;
+        bytes_out.value_namespace = name_space;
+        bytes_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "closes")
+    {
+        closes = value;
+        closes.value_namespace = name_space;
+        closes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "opens")
+    {
+        opens = value;
+        opens.value_namespace = name_space;
+        opens.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "errors")
+    {
+        errors = value;
+        errors.value_namespace = name_space;
+        errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aborts")
+    {
+        aborts = value;
+        aborts.value_namespace = name_space;
+        aborts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in = value;
+        paks_in.value_namespace = name_space;
+        paks_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out = value;
+        paks_out.value_namespace = name_space;
+        paks_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected = value;
+        replies_expected.value_namespace = name_space;
+        replies_expected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up = value;
+        conn_up.value_namespace = name_space;
+        conn_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect = value;
+        single_connect.value_namespace = name_space;
+        single_connect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-private")
+    {
+        is_private = value;
+        is_private.value_namespace = name_space;
+        is_private.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf = value;
+        addr_buf.value_namespace = name_space;
+        addr_buf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "family")
+    {
+        family = value;
+        family.value_namespace = name_space;
+        family.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Tacacs::Servers::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in.yfilter = yfilter;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out.yfilter = yfilter;
+    }
+    if(value_path == "closes")
+    {
+        closes.yfilter = yfilter;
+    }
+    if(value_path == "opens")
+    {
+        opens.yfilter = yfilter;
+    }
+    if(value_path == "errors")
+    {
+        errors.yfilter = yfilter;
+    }
+    if(value_path == "aborts")
+    {
+        aborts.yfilter = yfilter;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in.yfilter = yfilter;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out.yfilter = yfilter;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up.yfilter = yfilter;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect.yfilter = yfilter;
+    }
+    if(value_path == "is-private")
+    {
+        is_private.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf.yfilter = yfilter;
+    }
+    if(value_path == "family")
+    {
+        family.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Tacacs::Servers::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr" || name == "timeout" || name == "port" || name == "bytes-in" || name == "bytes-out" || name == "closes" || name == "opens" || name == "errors" || name == "aborts" || name == "paks-in" || name == "paks-out" || name == "replies-expected" || name == "up" || name == "conn-up" || name == "single-connect" || name == "is-private" || name == "vrf-name" || name == "addr-buf" || name == "family")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroups()
+    :
+    server_group(this, {})
+{
+
+    yang_name = "server-groups"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::ServerGroups::~ServerGroups()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_group.len(); index++)
+    {
+        if(server_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::ServerGroups::has_operation() const
+{
+    for (std::size_t index=0; index<server_group.len(); index++)
+    {
+        if(server_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Tacacs::ServerGroups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::ServerGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server-group")
+    {
+        auto ent_ = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup>();
+        ent_->parent = this;
+        server_group.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::ServerGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : server_group.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Aaa::Tacacs::ServerGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Tacacs::ServerGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server-group")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::ServerGroup()
+    :
+    group_name{YType::str, "group-name"},
+    sg_map_num{YType::uint32, "sg-map-num"},
+    vrf_name{YType::str, "vrf-name"}
+        ,
+    server(this, {})
+{
+
+    yang_name = "server-group"; yang_parent_name = "server-groups"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::~ServerGroup()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server.len(); index++)
+    {
+        if(server[index]->has_data())
+            return true;
+    }
+    return group_name.is_set
+	|| sg_map_num.is_set
+	|| vrf_name.is_set;
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_operation() const
+{
+    for (std::size_t index=0; index<server.len(); index++)
+    {
+        if(server[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(sg_map_num.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-group";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::ServerGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (sg_map_num.is_set || is_set(sg_map_num.yfilter)) leaf_name_data.push_back(sg_map_num.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        auto ent_ = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup::Server>();
+        ent_->parent = this;
+        server.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : server.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group-name")
+    {
+        group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sg-map-num")
+    {
+        sg_map_num = value;
+        sg_map_num.value_namespace = name_space;
+        sg_map_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "sg-map-num")
+    {
+        sg_map_num.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server" || name == "group-name" || name == "sg-map-num" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::Server::Server()
+    :
+    addr{YType::str, "addr"},
+    timeout{YType::uint32, "timeout"},
+    port{YType::uint32, "port"},
+    bytes_in{YType::uint32, "bytes-in"},
+    bytes_out{YType::uint32, "bytes-out"},
+    closes{YType::uint32, "closes"},
+    opens{YType::uint32, "opens"},
+    errors{YType::uint32, "errors"},
+    aborts{YType::uint32, "aborts"},
+    paks_in{YType::uint32, "paks-in"},
+    paks_out{YType::uint32, "paks-out"},
+    replies_expected{YType::uint32, "replies-expected"},
+    up{YType::boolean, "up"},
+    conn_up{YType::boolean, "conn-up"},
+    single_connect{YType::boolean, "single-connect"},
+    is_private{YType::boolean, "is-private"},
+    vrf_name{YType::str, "vrf-name"},
+    addr_buf{YType::str, "addr-buf"},
+    family{YType::str, "family"}
+{
+
+    yang_name = "server"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::Server::~Server()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_data() const
+{
+    if (is_presence_container) return true;
+    return addr.is_set
+	|| timeout.is_set
+	|| port.is_set
+	|| bytes_in.is_set
+	|| bytes_out.is_set
+	|| closes.is_set
+	|| opens.is_set
+	|| errors.is_set
+	|| aborts.is_set
+	|| paks_in.is_set
+	|| paks_out.is_set
+	|| replies_expected.is_set
+	|| up.is_set
+	|| conn_up.is_set
+	|| single_connect.is_set
+	|| is_private.is_set
+	|| vrf_name.is_set
+	|| addr_buf.is_set
+	|| family.is_set;
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(addr.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(bytes_in.yfilter)
+	|| ydk::is_set(bytes_out.yfilter)
+	|| ydk::is_set(closes.yfilter)
+	|| ydk::is_set(opens.yfilter)
+	|| ydk::is_set(errors.yfilter)
+	|| ydk::is_set(aborts.yfilter)
+	|| ydk::is_set(paks_in.yfilter)
+	|| ydk::is_set(paks_out.yfilter)
+	|| ydk::is_set(replies_expected.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(conn_up.yfilter)
+	|| ydk::is_set(single_connect.yfilter)
+	|| ydk::is_set(is_private.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(addr_buf.yfilter)
+	|| ydk::is_set(family.yfilter);
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/server-group/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
+    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
+    if (closes.is_set || is_set(closes.yfilter)) leaf_name_data.push_back(closes.get_name_leafdata());
+    if (opens.is_set || is_set(opens.yfilter)) leaf_name_data.push_back(opens.get_name_leafdata());
+    if (errors.is_set || is_set(errors.yfilter)) leaf_name_data.push_back(errors.get_name_leafdata());
+    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
+    if (paks_in.is_set || is_set(paks_in.yfilter)) leaf_name_data.push_back(paks_in.get_name_leafdata());
+    if (paks_out.is_set || is_set(paks_out.yfilter)) leaf_name_data.push_back(paks_out.get_name_leafdata());
+    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (conn_up.is_set || is_set(conn_up.yfilter)) leaf_name_data.push_back(conn_up.get_name_leafdata());
+    if (single_connect.is_set || is_set(single_connect.yfilter)) leaf_name_data.push_back(single_connect.get_name_leafdata());
+    if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
+    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "addr")
+    {
+        addr = value;
+        addr.value_namespace = name_space;
+        addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in = value;
+        bytes_in.value_namespace = name_space;
+        bytes_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out = value;
+        bytes_out.value_namespace = name_space;
+        bytes_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "closes")
+    {
+        closes = value;
+        closes.value_namespace = name_space;
+        closes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "opens")
+    {
+        opens = value;
+        opens.value_namespace = name_space;
+        opens.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "errors")
+    {
+        errors = value;
+        errors.value_namespace = name_space;
+        errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aborts")
+    {
+        aborts = value;
+        aborts.value_namespace = name_space;
+        aborts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in = value;
+        paks_in.value_namespace = name_space;
+        paks_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out = value;
+        paks_out.value_namespace = name_space;
+        paks_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected = value;
+        replies_expected.value_namespace = name_space;
+        replies_expected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up = value;
+        conn_up.value_namespace = name_space;
+        conn_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect = value;
+        single_connect.value_namespace = name_space;
+        single_connect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-private")
+    {
+        is_private = value;
+        is_private.value_namespace = name_space;
+        is_private.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf = value;
+        addr_buf.value_namespace = name_space;
+        addr_buf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "family")
+    {
+        family = value;
+        family.value_namespace = name_space;
+        family.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in.yfilter = yfilter;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out.yfilter = yfilter;
+    }
+    if(value_path == "closes")
+    {
+        closes.yfilter = yfilter;
+    }
+    if(value_path == "opens")
+    {
+        opens.yfilter = yfilter;
+    }
+    if(value_path == "errors")
+    {
+        errors.yfilter = yfilter;
+    }
+    if(value_path == "aborts")
+    {
+        aborts.yfilter = yfilter;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in.yfilter = yfilter;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out.yfilter = yfilter;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up.yfilter = yfilter;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect.yfilter = yfilter;
+    }
+    if(value_path == "is-private")
+    {
+        is_private.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf.yfilter = yfilter;
+    }
+    if(value_path == "family")
+    {
+        family.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr" || name == "timeout" || name == "port" || name == "bytes-in" || name == "bytes-out" || name == "closes" || name == "opens" || name == "errors" || name == "aborts" || name == "paks-in" || name == "paks-out" || name == "replies-expected" || name == "up" || name == "conn-up" || name == "single-connect" || name == "is-private" || name == "vrf-name" || name == "addr-buf" || name == "family")
         return true;
     return false;
 }
@@ -4434,6 +5970,7 @@ std::string Aaa::Radius::Servers::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5585,6 +7122,7 @@ std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "list-of-source-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5791,1530 +7329,6 @@ void Aaa::Radius::Global::set_filter(const std::string & value_path, YFilter yfi
 bool Aaa::Radius::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-authentication-response" || name == "authentication-nas-id" || name == "unknown-accounting-response" || name == "accounting-nas-id")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::Tacacs()
-    :
-    requests(std::make_shared<Aaa::Tacacs::Requests>())
-    , servers(std::make_shared<Aaa::Tacacs::Servers>())
-    , server_groups(std::make_shared<Aaa::Tacacs::ServerGroups>())
-{
-    requests->parent = this;
-    servers->parent = this;
-    server_groups->parent = this;
-
-    yang_name = "tacacs"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::~Tacacs()
-{
-}
-
-bool Aaa::Tacacs::has_data() const
-{
-    if (is_presence_container) return true;
-    return (requests !=  nullptr && requests->has_data())
-	|| (servers !=  nullptr && servers->has_data())
-	|| (server_groups !=  nullptr && server_groups->has_data());
-}
-
-bool Aaa::Tacacs::has_operation() const
-{
-    return is_set(yfilter)
-	|| (requests !=  nullptr && requests->has_operation())
-	|| (servers !=  nullptr && servers->has_operation())
-	|| (server_groups !=  nullptr && server_groups->has_operation());
-}
-
-std::string Aaa::Tacacs::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-tacacs-oper:tacacs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "requests")
-    {
-        if(requests == nullptr)
-        {
-            requests = std::make_shared<Aaa::Tacacs::Requests>();
-        }
-        return requests;
-    }
-
-    if(child_yang_name == "servers")
-    {
-        if(servers == nullptr)
-        {
-            servers = std::make_shared<Aaa::Tacacs::Servers>();
-        }
-        return servers;
-    }
-
-    if(child_yang_name == "server-groups")
-    {
-        if(server_groups == nullptr)
-        {
-            server_groups = std::make_shared<Aaa::Tacacs::ServerGroups>();
-        }
-        return server_groups;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(requests != nullptr)
-    {
-        _children["requests"] = requests;
-    }
-
-    if(servers != nullptr)
-    {
-        _children["servers"] = servers;
-    }
-
-    if(server_groups != nullptr)
-    {
-        _children["server-groups"] = server_groups;
-    }
-
-    return _children;
-}
-
-void Aaa::Tacacs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Tacacs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Tacacs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "requests" || name == "servers" || name == "server-groups")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::Requests::Requests()
-    :
-    request(this, {})
-{
-
-    yang_name = "requests"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::Requests::~Requests()
-{
-}
-
-bool Aaa::Tacacs::Requests::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<request.len(); index++)
-    {
-        if(request[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::Requests::has_operation() const
-{
-    for (std::size_t index=0; index<request.len(); index++)
-    {
-        if(request[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Tacacs::Requests::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::Requests::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "requests";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "request")
-    {
-        auto ent_ = std::make_shared<Aaa::Tacacs::Requests::Request>();
-        ent_->parent = this;
-        request.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Requests::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : request.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Aaa::Tacacs::Requests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Tacacs::Requests::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Tacacs::Requests::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "request")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::Requests::Request::Request()
-    :
-    tacacs_requestbag(this, {})
-{
-
-    yang_name = "request"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::Requests::Request::~Request()
-{
-}
-
-bool Aaa::Tacacs::Requests::Request::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tacacs_requestbag.len(); index++)
-    {
-        if(tacacs_requestbag[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::Requests::Request::has_operation() const
-{
-    for (std::size_t index=0; index<tacacs_requestbag.len(); index++)
-    {
-        if(tacacs_requestbag[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Tacacs::Requests::Request::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::Requests::Request::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "request";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::Request::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::Requests::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tacacs-requestbag")
-    {
-        auto ent_ = std::make_shared<Aaa::Tacacs::Requests::Request::TacacsRequestbag>();
-        ent_->parent = this;
-        tacacs_requestbag.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Requests::Request::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : tacacs_requestbag.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Aaa::Tacacs::Requests::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Tacacs::Requests::Request::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Tacacs::Requests::Request::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tacacs-requestbag")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::Requests::Request::TacacsRequestbag::TacacsRequestbag()
-    :
-    time_remaining{YType::uint32, "time-remaining"},
-    bytes_out{YType::uint32, "bytes-out"},
-    out_pak_size{YType::uint32, "out-pak-size"},
-    bytes_in{YType::uint32, "bytes-in"},
-    in_pak_size{YType::uint32, "in-pak-size"},
-    pak_type{YType::str, "pak-type"},
-    session_id{YType::int32, "session-id"},
-    sock{YType::int32, "sock"}
-{
-
-    yang_name = "tacacs-requestbag"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::Requests::Request::TacacsRequestbag::~TacacsRequestbag()
-{
-}
-
-bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_data() const
-{
-    if (is_presence_container) return true;
-    return time_remaining.is_set
-	|| bytes_out.is_set
-	|| out_pak_size.is_set
-	|| bytes_in.is_set
-	|| in_pak_size.is_set
-	|| pak_type.is_set
-	|| session_id.is_set
-	|| sock.is_set;
-}
-
-bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_remaining.yfilter)
-	|| ydk::is_set(bytes_out.yfilter)
-	|| ydk::is_set(out_pak_size.yfilter)
-	|| ydk::is_set(bytes_in.yfilter)
-	|| ydk::is_set(in_pak_size.yfilter)
-	|| ydk::is_set(pak_type.yfilter)
-	|| ydk::is_set(session_id.yfilter)
-	|| ydk::is_set(sock.yfilter);
-}
-
-std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/request/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tacacs-requestbag";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
-    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
-    if (out_pak_size.is_set || is_set(out_pak_size.yfilter)) leaf_name_data.push_back(out_pak_size.get_name_leafdata());
-    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
-    if (in_pak_size.is_set || is_set(in_pak_size.yfilter)) leaf_name_data.push_back(in_pak_size.get_name_leafdata());
-    if (pak_type.is_set || is_set(pak_type.yfilter)) leaf_name_data.push_back(pak_type.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (sock.is_set || is_set(sock.yfilter)) leaf_name_data.push_back(sock.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Aaa::Tacacs::Requests::Request::TacacsRequestbag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining = value;
-        time_remaining.value_namespace = name_space;
-        time_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out = value;
-        bytes_out.value_namespace = name_space;
-        bytes_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-pak-size")
-    {
-        out_pak_size = value;
-        out_pak_size.value_namespace = name_space;
-        out_pak_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in = value;
-        bytes_in.value_namespace = name_space;
-        bytes_in.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-pak-size")
-    {
-        in_pak_size = value;
-        in_pak_size.value_namespace = name_space;
-        in_pak_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pak-type")
-    {
-        pak_type = value;
-        pak_type.value_namespace = name_space;
-        pak_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-id")
-    {
-        session_id = value;
-        session_id.value_namespace = name_space;
-        session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sock")
-    {
-        sock = value;
-        sock.value_namespace = name_space;
-        sock.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Tacacs::Requests::Request::TacacsRequestbag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining.yfilter = yfilter;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out.yfilter = yfilter;
-    }
-    if(value_path == "out-pak-size")
-    {
-        out_pak_size.yfilter = yfilter;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in.yfilter = yfilter;
-    }
-    if(value_path == "in-pak-size")
-    {
-        in_pak_size.yfilter = yfilter;
-    }
-    if(value_path == "pak-type")
-    {
-        pak_type.yfilter = yfilter;
-    }
-    if(value_path == "session-id")
-    {
-        session_id.yfilter = yfilter;
-    }
-    if(value_path == "sock")
-    {
-        sock.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-remaining" || name == "bytes-out" || name == "out-pak-size" || name == "bytes-in" || name == "in-pak-size" || name == "pak-type" || name == "session-id" || name == "sock")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::Servers::Servers()
-    :
-    server(this, {})
-{
-
-    yang_name = "servers"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::Servers::~Servers()
-{
-}
-
-bool Aaa::Tacacs::Servers::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<server.len(); index++)
-    {
-        if(server[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::Servers::has_operation() const
-{
-    for (std::size_t index=0; index<server.len(); index++)
-    {
-        if(server[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Tacacs::Servers::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::Servers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "servers";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Servers::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "server")
-    {
-        auto ent_ = std::make_shared<Aaa::Tacacs::Servers::Server>();
-        ent_->parent = this;
-        server.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Servers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : server.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Aaa::Tacacs::Servers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Tacacs::Servers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Tacacs::Servers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "server")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::Servers::Server::Server()
-    :
-    addr{YType::str, "addr"},
-    timeout{YType::uint32, "timeout"},
-    port{YType::uint32, "port"},
-    bytes_in{YType::uint32, "bytes-in"},
-    bytes_out{YType::uint32, "bytes-out"},
-    closes{YType::uint32, "closes"},
-    opens{YType::uint32, "opens"},
-    errors{YType::uint32, "errors"},
-    aborts{YType::uint32, "aborts"},
-    paks_in{YType::uint32, "paks-in"},
-    paks_out{YType::uint32, "paks-out"},
-    replies_expected{YType::uint32, "replies-expected"},
-    up{YType::boolean, "up"},
-    conn_up{YType::boolean, "conn-up"},
-    single_connect{YType::boolean, "single-connect"},
-    is_private{YType::boolean, "is-private"},
-    vrf_name{YType::str, "vrf-name"},
-    addr_buf{YType::str, "addr-buf"},
-    family{YType::str, "family"}
-{
-
-    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::Servers::Server::~Server()
-{
-}
-
-bool Aaa::Tacacs::Servers::Server::has_data() const
-{
-    if (is_presence_container) return true;
-    return addr.is_set
-	|| timeout.is_set
-	|| port.is_set
-	|| bytes_in.is_set
-	|| bytes_out.is_set
-	|| closes.is_set
-	|| opens.is_set
-	|| errors.is_set
-	|| aborts.is_set
-	|| paks_in.is_set
-	|| paks_out.is_set
-	|| replies_expected.is_set
-	|| up.is_set
-	|| conn_up.is_set
-	|| single_connect.is_set
-	|| is_private.is_set
-	|| vrf_name.is_set
-	|| addr_buf.is_set
-	|| family.is_set;
-}
-
-bool Aaa::Tacacs::Servers::Server::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(addr.yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(bytes_in.yfilter)
-	|| ydk::is_set(bytes_out.yfilter)
-	|| ydk::is_set(closes.yfilter)
-	|| ydk::is_set(opens.yfilter)
-	|| ydk::is_set(errors.yfilter)
-	|| ydk::is_set(aborts.yfilter)
-	|| ydk::is_set(paks_in.yfilter)
-	|| ydk::is_set(paks_out.yfilter)
-	|| ydk::is_set(replies_expected.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(conn_up.yfilter)
-	|| ydk::is_set(single_connect.yfilter)
-	|| ydk::is_set(is_private.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(addr_buf.yfilter)
-	|| ydk::is_set(family.yfilter);
-}
-
-std::string Aaa::Tacacs::Servers::Server::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/servers/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::Servers::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Servers::Server::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
-    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
-    if (closes.is_set || is_set(closes.yfilter)) leaf_name_data.push_back(closes.get_name_leafdata());
-    if (opens.is_set || is_set(opens.yfilter)) leaf_name_data.push_back(opens.get_name_leafdata());
-    if (errors.is_set || is_set(errors.yfilter)) leaf_name_data.push_back(errors.get_name_leafdata());
-    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
-    if (paks_in.is_set || is_set(paks_in.yfilter)) leaf_name_data.push_back(paks_in.get_name_leafdata());
-    if (paks_out.is_set || is_set(paks_out.yfilter)) leaf_name_data.push_back(paks_out.get_name_leafdata());
-    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (conn_up.is_set || is_set(conn_up.yfilter)) leaf_name_data.push_back(conn_up.get_name_leafdata());
-    if (single_connect.is_set || is_set(single_connect.yfilter)) leaf_name_data.push_back(single_connect.get_name_leafdata());
-    if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
-    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::Servers::Server::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Aaa::Tacacs::Servers::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "addr")
-    {
-        addr = value;
-        addr.value_namespace = name_space;
-        addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in = value;
-        bytes_in.value_namespace = name_space;
-        bytes_in.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out = value;
-        bytes_out.value_namespace = name_space;
-        bytes_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "closes")
-    {
-        closes = value;
-        closes.value_namespace = name_space;
-        closes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "opens")
-    {
-        opens = value;
-        opens.value_namespace = name_space;
-        opens.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "errors")
-    {
-        errors = value;
-        errors.value_namespace = name_space;
-        errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "aborts")
-    {
-        aborts = value;
-        aborts.value_namespace = name_space;
-        aborts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in = value;
-        paks_in.value_namespace = name_space;
-        paks_in.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out = value;
-        paks_out.value_namespace = name_space;
-        paks_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected = value;
-        replies_expected.value_namespace = name_space;
-        replies_expected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up = value;
-        conn_up.value_namespace = name_space;
-        conn_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect = value;
-        single_connect.value_namespace = name_space;
-        single_connect.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-private")
-    {
-        is_private = value;
-        is_private.value_namespace = name_space;
-        is_private.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "addr-buf")
-    {
-        addr_buf = value;
-        addr_buf.value_namespace = name_space;
-        addr_buf.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "family")
-    {
-        family = value;
-        family.value_namespace = name_space;
-        family.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Tacacs::Servers::Server::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "addr")
-    {
-        addr.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in.yfilter = yfilter;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out.yfilter = yfilter;
-    }
-    if(value_path == "closes")
-    {
-        closes.yfilter = yfilter;
-    }
-    if(value_path == "opens")
-    {
-        opens.yfilter = yfilter;
-    }
-    if(value_path == "errors")
-    {
-        errors.yfilter = yfilter;
-    }
-    if(value_path == "aborts")
-    {
-        aborts.yfilter = yfilter;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in.yfilter = yfilter;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out.yfilter = yfilter;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected.yfilter = yfilter;
-    }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up.yfilter = yfilter;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect.yfilter = yfilter;
-    }
-    if(value_path == "is-private")
-    {
-        is_private.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "addr-buf")
-    {
-        addr_buf.yfilter = yfilter;
-    }
-    if(value_path == "family")
-    {
-        family.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Tacacs::Servers::Server::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "addr" || name == "timeout" || name == "port" || name == "bytes-in" || name == "bytes-out" || name == "closes" || name == "opens" || name == "errors" || name == "aborts" || name == "paks-in" || name == "paks-out" || name == "replies-expected" || name == "up" || name == "conn-up" || name == "single-connect" || name == "is-private" || name == "vrf-name" || name == "addr-buf" || name == "family")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroups()
-    :
-    server_group(this, {})
-{
-
-    yang_name = "server-groups"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::ServerGroups::~ServerGroups()
-{
-}
-
-bool Aaa::Tacacs::ServerGroups::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<server_group.len(); index++)
-    {
-        if(server_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::ServerGroups::has_operation() const
-{
-    for (std::size_t index=0; index<server_group.len(); index++)
-    {
-        if(server_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Tacacs::ServerGroups::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::ServerGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server-groups";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "server-group")
-    {
-        auto ent_ = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup>();
-        ent_->parent = this;
-        server_group.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::ServerGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : server_group.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Aaa::Tacacs::ServerGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Tacacs::ServerGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Tacacs::ServerGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "server-group")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::ServerGroup()
-    :
-    group_name{YType::str, "group-name"},
-    sg_map_num{YType::uint32, "sg-map-num"},
-    vrf_name{YType::str, "vrf-name"}
-        ,
-    server(this, {})
-{
-
-    yang_name = "server-group"; yang_parent_name = "server-groups"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::~ServerGroup()
-{
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<server.len(); index++)
-    {
-        if(server[index]->has_data())
-            return true;
-    }
-    return group_name.is_set
-	|| sg_map_num.is_set
-	|| vrf_name.is_set;
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_operation() const
-{
-    for (std::size_t index=0; index<server.len(); index++)
-    {
-        if(server[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(group_name.yfilter)
-	|| ydk::is_set(sg_map_num.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server-group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::ServerGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (sg_map_num.is_set || is_set(sg_map_num.yfilter)) leaf_name_data.push_back(sg_map_num.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "server")
-    {
-        auto ent_ = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup::Server>();
-        ent_->parent = this;
-        server.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : server.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Aaa::Tacacs::ServerGroups::ServerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group-name")
-    {
-        group_name = value;
-        group_name.value_namespace = name_space;
-        group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sg-map-num")
-    {
-        sg_map_num = value;
-        sg_map_num.value_namespace = name_space;
-        sg_map_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Tacacs::ServerGroups::ServerGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group-name")
-    {
-        group_name.yfilter = yfilter;
-    }
-    if(value_path == "sg-map-num")
-    {
-        sg_map_num.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "server" || name == "group-name" || name == "sg-map-num" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::Server::Server()
-    :
-    addr{YType::str, "addr"},
-    timeout{YType::uint32, "timeout"},
-    port{YType::uint32, "port"},
-    bytes_in{YType::uint32, "bytes-in"},
-    bytes_out{YType::uint32, "bytes-out"},
-    closes{YType::uint32, "closes"},
-    opens{YType::uint32, "opens"},
-    errors{YType::uint32, "errors"},
-    aborts{YType::uint32, "aborts"},
-    paks_in{YType::uint32, "paks-in"},
-    paks_out{YType::uint32, "paks-out"},
-    replies_expected{YType::uint32, "replies-expected"},
-    up{YType::boolean, "up"},
-    conn_up{YType::boolean, "conn-up"},
-    single_connect{YType::boolean, "single-connect"},
-    is_private{YType::boolean, "is-private"},
-    vrf_name{YType::str, "vrf-name"},
-    addr_buf{YType::str, "addr-buf"},
-    family{YType::str, "family"}
-{
-
-    yang_name = "server"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::Server::~Server()
-{
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_data() const
-{
-    if (is_presence_container) return true;
-    return addr.is_set
-	|| timeout.is_set
-	|| port.is_set
-	|| bytes_in.is_set
-	|| bytes_out.is_set
-	|| closes.is_set
-	|| opens.is_set
-	|| errors.is_set
-	|| aborts.is_set
-	|| paks_in.is_set
-	|| paks_out.is_set
-	|| replies_expected.is_set
-	|| up.is_set
-	|| conn_up.is_set
-	|| single_connect.is_set
-	|| is_private.is_set
-	|| vrf_name.is_set
-	|| addr_buf.is_set
-	|| family.is_set;
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(addr.yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(bytes_in.yfilter)
-	|| ydk::is_set(bytes_out.yfilter)
-	|| ydk::is_set(closes.yfilter)
-	|| ydk::is_set(opens.yfilter)
-	|| ydk::is_set(errors.yfilter)
-	|| ydk::is_set(aborts.yfilter)
-	|| ydk::is_set(paks_in.yfilter)
-	|| ydk::is_set(paks_out.yfilter)
-	|| ydk::is_set(replies_expected.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(conn_up.yfilter)
-	|| ydk::is_set(single_connect.yfilter)
-	|| ydk::is_set(is_private.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(addr_buf.yfilter)
-	|| ydk::is_set(family.yfilter);
-}
-
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/server-group/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
-    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
-    if (closes.is_set || is_set(closes.yfilter)) leaf_name_data.push_back(closes.get_name_leafdata());
-    if (opens.is_set || is_set(opens.yfilter)) leaf_name_data.push_back(opens.get_name_leafdata());
-    if (errors.is_set || is_set(errors.yfilter)) leaf_name_data.push_back(errors.get_name_leafdata());
-    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
-    if (paks_in.is_set || is_set(paks_in.yfilter)) leaf_name_data.push_back(paks_in.get_name_leafdata());
-    if (paks_out.is_set || is_set(paks_out.yfilter)) leaf_name_data.push_back(paks_out.get_name_leafdata());
-    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (conn_up.is_set || is_set(conn_up.yfilter)) leaf_name_data.push_back(conn_up.get_name_leafdata());
-    if (single_connect.is_set || is_set(single_connect.yfilter)) leaf_name_data.push_back(single_connect.get_name_leafdata());
-    if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
-    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "addr")
-    {
-        addr = value;
-        addr.value_namespace = name_space;
-        addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in = value;
-        bytes_in.value_namespace = name_space;
-        bytes_in.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out = value;
-        bytes_out.value_namespace = name_space;
-        bytes_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "closes")
-    {
-        closes = value;
-        closes.value_namespace = name_space;
-        closes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "opens")
-    {
-        opens = value;
-        opens.value_namespace = name_space;
-        opens.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "errors")
-    {
-        errors = value;
-        errors.value_namespace = name_space;
-        errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "aborts")
-    {
-        aborts = value;
-        aborts.value_namespace = name_space;
-        aborts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in = value;
-        paks_in.value_namespace = name_space;
-        paks_in.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out = value;
-        paks_out.value_namespace = name_space;
-        paks_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected = value;
-        replies_expected.value_namespace = name_space;
-        replies_expected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up = value;
-        conn_up.value_namespace = name_space;
-        conn_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect = value;
-        single_connect.value_namespace = name_space;
-        single_connect.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-private")
-    {
-        is_private = value;
-        is_private.value_namespace = name_space;
-        is_private.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "addr-buf")
-    {
-        addr_buf = value;
-        addr_buf.value_namespace = name_space;
-        addr_buf.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "family")
-    {
-        family = value;
-        family.value_namespace = name_space;
-        family.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "addr")
-    {
-        addr.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in.yfilter = yfilter;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out.yfilter = yfilter;
-    }
-    if(value_path == "closes")
-    {
-        closes.yfilter = yfilter;
-    }
-    if(value_path == "opens")
-    {
-        opens.yfilter = yfilter;
-    }
-    if(value_path == "errors")
-    {
-        errors.yfilter = yfilter;
-    }
-    if(value_path == "aborts")
-    {
-        aborts.yfilter = yfilter;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in.yfilter = yfilter;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out.yfilter = yfilter;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected.yfilter = yfilter;
-    }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up.yfilter = yfilter;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect.yfilter = yfilter;
-    }
-    if(value_path == "is-private")
-    {
-        is_private.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "addr-buf")
-    {
-        addr_buf.yfilter = yfilter;
-    }
-    if(value_path == "family")
-    {
-        family.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "addr" || name == "timeout" || name == "port" || name == "bytes-in" || name == "bytes-out" || name == "closes" || name == "opens" || name == "errors" || name == "aborts" || name == "paks-in" || name == "paks-out" || name == "replies-expected" || name == "up" || name == "conn-up" || name == "single-connect" || name == "is-private" || name == "vrf-name" || name == "addr-buf" || name == "family")
         return true;
     return false;
 }
@@ -8324,6 +8338,7 @@ Aaa::Diameter::Peers::Peers()
     conn_retry_timer{YType::uint32, "conn-retry-timer"},
     watchdog_timer{YType::uint32, "watchdog-timer"},
     transaction_timer{YType::uint32, "transaction-timer"},
+    peer_num{YType::uint32, "peer-num"},
     trans_total{YType::uint32, "trans-total"},
     trans_max{YType::uint32, "trans-max"}
         ,
@@ -8352,6 +8367,7 @@ bool Aaa::Diameter::Peers::has_data() const
 	|| conn_retry_timer.is_set
 	|| watchdog_timer.is_set
 	|| transaction_timer.is_set
+	|| peer_num.is_set
 	|| trans_total.is_set
 	|| trans_max.is_set;
 }
@@ -8371,6 +8387,7 @@ bool Aaa::Diameter::Peers::has_operation() const
 	|| ydk::is_set(conn_retry_timer.yfilter)
 	|| ydk::is_set(watchdog_timer.yfilter)
 	|| ydk::is_set(transaction_timer.yfilter)
+	|| ydk::is_set(peer_num.yfilter)
 	|| ydk::is_set(trans_total.yfilter)
 	|| ydk::is_set(trans_max.yfilter);
 }
@@ -8400,6 +8417,7 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Peers::get_name_le
     if (conn_retry_timer.is_set || is_set(conn_retry_timer.yfilter)) leaf_name_data.push_back(conn_retry_timer.get_name_leafdata());
     if (watchdog_timer.is_set || is_set(watchdog_timer.yfilter)) leaf_name_data.push_back(watchdog_timer.get_name_leafdata());
     if (transaction_timer.is_set || is_set(transaction_timer.yfilter)) leaf_name_data.push_back(transaction_timer.get_name_leafdata());
+    if (peer_num.is_set || is_set(peer_num.yfilter)) leaf_name_data.push_back(peer_num.get_name_leafdata());
     if (trans_total.is_set || is_set(trans_total.yfilter)) leaf_name_data.push_back(trans_total.get_name_leafdata());
     if (trans_max.is_set || is_set(trans_max.yfilter)) leaf_name_data.push_back(trans_max.get_name_leafdata());
 
@@ -8480,6 +8498,12 @@ void Aaa::Diameter::Peers::set_value(const std::string & value_path, const std::
         transaction_timer.value_namespace = name_space;
         transaction_timer.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "peer-num")
+    {
+        peer_num = value;
+        peer_num.value_namespace = name_space;
+        peer_num.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "trans-total")
     {
         trans_total = value;
@@ -8524,6 +8548,10 @@ void Aaa::Diameter::Peers::set_filter(const std::string & value_path, YFilter yf
     {
         transaction_timer.yfilter = yfilter;
     }
+    if(value_path == "peer-num")
+    {
+        peer_num.yfilter = yfilter;
+    }
     if(value_path == "trans-total")
     {
         trans_total.yfilter = yfilter;
@@ -8536,7 +8564,7 @@ void Aaa::Diameter::Peers::set_filter(const std::string & value_path, YFilter yf
 
 bool Aaa::Diameter::Peers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer" || name == "origin-host" || name == "origin-realm" || name == "source-interface" || name == "tls-trustpoint" || name == "conn-retry-timer" || name == "watchdog-timer" || name == "transaction-timer" || name == "trans-total" || name == "trans-max")
+    if(name == "peer" || name == "origin-host" || name == "origin-realm" || name == "source-interface" || name == "tls-trustpoint" || name == "conn-retry-timer" || name == "watchdog-timer" || name == "transaction-timer" || name == "peer-num" || name == "trans-total" || name == "trans-max")
         return true;
     return false;
 }
@@ -8759,6 +8787,7 @@ std::string Aaa::Diameter::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9659,6 +9688,7 @@ std::string Aaa::Diameter::Nas::ListOfNas::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "list-of-nas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11842,6 +11872,7 @@ std::string Aaa::Diameter::NasSession::ListOfNas::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "list-of-nas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -6,6 +6,7 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_2.hpp"
 #include "Cisco_IOS_XE_native_7.hpp"
+#include "Cisco_IOS_XE_native_4.hpp"
 #include "Cisco_IOS_XE_native_6.hpp"
 #include "Cisco_IOS_XE_native_3.hpp"
 
@@ -13,6 +14,222 @@ using namespace ydk;
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
+
+Native::Controller::SONET::Au4::CemGroupUnframed::CemGroupUnframed()
+    :
+    tug_2(this, {"number", "e1", "cem_group"})
+{
+
+    yang_name = "cem-group-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::SONET::Au4::CemGroupUnframed::~CemGroupUnframed()
+{
+}
+
+bool Native::Controller::SONET::Au4::CemGroupUnframed::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
+    {
+        if(tug_2[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Controller::SONET::Au4::CemGroupUnframed::has_operation() const
+{
+    for (std::size_t index=0; index<tug_2.len(); index++)
+    {
+        if(tug_2[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Controller::SONET::Au4::CemGroupUnframed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cem-group-unframed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::CemGroupUnframed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Controller::SONET::Au4::CemGroupUnframed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tug-2")
+    {
+        auto ent_ = std::make_shared<Native::Controller::SONET::Au4::CemGroupUnframed::Tug2>();
+        ent_->parent = this;
+        tug_2.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Controller::SONET::Au4::CemGroupUnframed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tug_2.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Controller::SONET::Au4::CemGroupUnframed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::SONET::Au4::CemGroupUnframed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::SONET::Au4::CemGroupUnframed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tug-2")
+        return true;
+    return false;
+}
+
+Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::Tug2()
+    :
+    number{YType::int8, "number"},
+    e1{YType::int8, "e1"},
+    cem_group{YType::int32, "cem-group"},
+    unframed{YType::empty, "unframed"}
+{
+
+    yang_name = "tug-2"; yang_parent_name = "cem-group-unframed"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::~Tug2()
+{
+}
+
+bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_data() const
+{
+    if (is_presence_container) return true;
+    return number.is_set
+	|| e1.is_set
+	|| cem_group.is_set
+	|| unframed.is_set;
+}
+
+bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(e1.yfilter)
+	|| ydk::is_set(cem_group.yfilter)
+	|| ydk::is_set(unframed.yfilter);
+}
+
+std::string Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(cem_group, "cem-group");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
+    if (cem_group.is_set || is_set(cem_group.yfilter)) leaf_name_data.push_back(cem_group.get_name_leafdata());
+    if (unframed.is_set || is_set(unframed.yfilter)) leaf_name_data.push_back(unframed.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "e1")
+    {
+        e1 = value;
+        e1.value_namespace = name_space;
+        e1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cem-group")
+    {
+        cem_group = value;
+        cem_group.value_namespace = name_space;
+        cem_group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unframed")
+    {
+        unframed = value;
+        unframed.value_namespace = name_space;
+        unframed.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "e1")
+    {
+        e1.yfilter = yfilter;
+    }
+    if(value_path == "cem-group")
+    {
+        cem_group.yfilter = yfilter;
+    }
+    if(value_path == "unframed")
+    {
+        unframed.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number" || name == "e1" || name == "cem-group" || name == "unframed")
+        return true;
+    return false;
+}
 
 Native::Controller::SONET::Au4::FramingUnframed::FramingUnframed()
     :
@@ -5594,12 +5811,20 @@ Native::Vrf::Definition::Definition()
     description{YType::str, "description"},
     rd{YType::str, "rd"}
         ,
-    address_family(std::make_shared<Native::Vrf::Definition::AddressFamily>())
+    default_(std::make_shared<Native::Vrf::Definition::Default>())
+    , ipv4(std::make_shared<Native::Vrf::Definition::Ipv4>())
+    , ipv6(std::make_shared<Native::Vrf::Definition::Ipv6>())
+    , address_family(std::make_shared<Native::Vrf::Definition::AddressFamily>())
     , route_target(std::make_shared<Native::Vrf::Definition::RouteTarget>())
+    , vnet(std::make_shared<Native::Vrf::Definition::Vnet>())
     , vpn(std::make_shared<Native::Vrf::Definition::Vpn>())
 {
+    default_->parent = this;
+    ipv4->parent = this;
+    ipv6->parent = this;
     address_family->parent = this;
     route_target->parent = this;
+    vnet->parent = this;
     vpn->parent = this;
 
     yang_name = "definition"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = false; 
@@ -5615,8 +5840,12 @@ bool Native::Vrf::Definition::has_data() const
     return name.is_set
 	|| description.is_set
 	|| rd.is_set
+	|| (default_ !=  nullptr && default_->has_data())
+	|| (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data())
 	|| (address_family !=  nullptr && address_family->has_data())
 	|| (route_target !=  nullptr && route_target->has_data())
+	|| (vnet !=  nullptr && vnet->has_data())
 	|| (vpn !=  nullptr && vpn->has_data());
 }
 
@@ -5626,8 +5855,12 @@ bool Native::Vrf::Definition::has_operation() const
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(description.yfilter)
 	|| ydk::is_set(rd.yfilter)
+	|| (default_ !=  nullptr && default_->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
 	|| (address_family !=  nullptr && address_family->has_operation())
 	|| (route_target !=  nullptr && route_target->has_operation())
+	|| (vnet !=  nullptr && vnet->has_operation())
 	|| (vpn !=  nullptr && vpn->has_operation());
 }
 
@@ -5660,6 +5893,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::get_name
 
 std::shared_ptr<ydk::Entity> Native::Vrf::Definition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "default")
+    {
+        if(default_ == nullptr)
+        {
+            default_ = std::make_shared<Native::Vrf::Definition::Default>();
+        }
+        return default_;
+    }
+
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<Native::Vrf::Definition::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Native::Vrf::Definition::Ipv6>();
+        }
+        return ipv6;
+    }
+
     if(child_yang_name == "address-family")
     {
         if(address_family == nullptr)
@@ -5678,6 +5938,15 @@ std::shared_ptr<ydk::Entity> Native::Vrf::Definition::get_child_by_name(const st
         return route_target;
     }
 
+    if(child_yang_name == "vnet")
+    {
+        if(vnet == nullptr)
+        {
+            vnet = std::make_shared<Native::Vrf::Definition::Vnet>();
+        }
+        return vnet;
+    }
+
     if(child_yang_name == "vpn")
     {
         if(vpn == nullptr)
@@ -5694,6 +5963,21 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::get
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(default_ != nullptr)
+    {
+        _children["default"] = default_;
+    }
+
+    if(ipv4 != nullptr)
+    {
+        _children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        _children["ipv6"] = ipv6;
+    }
+
     if(address_family != nullptr)
     {
         _children["address-family"] = address_family;
@@ -5702,6 +5986,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::get
     if(route_target != nullptr)
     {
         _children["route-target"] = route_target;
+    }
+
+    if(vnet != nullptr)
+    {
+        _children["vnet"] = vnet;
     }
 
     if(vpn != nullptr)
@@ -5752,7 +6041,1773 @@ void Native::Vrf::Definition::set_filter(const std::string & value_path, YFilter
 
 bool Native::Vrf::Definition::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-family" || name == "route-target" || name == "vpn" || name == "name" || name == "description" || name == "rd")
+    if(name == "default" || name == "ipv4" || name == "ipv6" || name == "address-family" || name == "route-target" || name == "vnet" || name == "vpn" || name == "name" || name == "description" || name == "rd")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::Default()
+    :
+    description{YType::empty, "description"},
+    rd{YType::str, "rd"}
+        ,
+    ipv4(std::make_shared<Native::Vrf::Definition::Default::Ipv4>())
+    , ipv6(std::make_shared<Native::Vrf::Definition::Default::Ipv6>())
+    , address_family(std::make_shared<Native::Vrf::Definition::Default::AddressFamily>())
+    , route_target(std::make_shared<Native::Vrf::Definition::Default::RouteTarget>())
+    , vnet(std::make_shared<Native::Vrf::Definition::Default::Vnet>())
+    , vpn(std::make_shared<Native::Vrf::Definition::Default::Vpn>())
+{
+    ipv4->parent = this;
+    ipv6->parent = this;
+    address_family->parent = this;
+    route_target->parent = this;
+    vnet->parent = this;
+    vpn->parent = this;
+
+    yang_name = "default"; yang_parent_name = "definition"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::~Default()
+{
+}
+
+bool Native::Vrf::Definition::Default::has_data() const
+{
+    if (is_presence_container) return true;
+    return description.is_set
+	|| rd.is_set
+	|| (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data())
+	|| (address_family !=  nullptr && address_family->has_data())
+	|| (route_target !=  nullptr && route_target->has_data())
+	|| (vnet !=  nullptr && vnet->has_data())
+	|| (vpn !=  nullptr && vpn->has_data());
+}
+
+bool Native::Vrf::Definition::Default::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(rd.yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (address_family !=  nullptr && address_family->has_operation())
+	|| (route_target !=  nullptr && route_target->has_operation())
+	|| (vnet !=  nullptr && vnet->has_operation())
+	|| (vpn !=  nullptr && vpn->has_operation());
+}
+
+std::string Native::Vrf::Definition::Default::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "default";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<Native::Vrf::Definition::Default::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Native::Vrf::Definition::Default::Ipv6>();
+        }
+        return ipv6;
+    }
+
+    if(child_yang_name == "address-family")
+    {
+        if(address_family == nullptr)
+        {
+            address_family = std::make_shared<Native::Vrf::Definition::Default::AddressFamily>();
+        }
+        return address_family;
+    }
+
+    if(child_yang_name == "route-target")
+    {
+        if(route_target == nullptr)
+        {
+            route_target = std::make_shared<Native::Vrf::Definition::Default::RouteTarget>();
+        }
+        return route_target;
+    }
+
+    if(child_yang_name == "vnet")
+    {
+        if(vnet == nullptr)
+        {
+            vnet = std::make_shared<Native::Vrf::Definition::Default::Vnet>();
+        }
+        return vnet;
+    }
+
+    if(child_yang_name == "vpn")
+    {
+        if(vpn == nullptr)
+        {
+            vpn = std::make_shared<Native::Vrf::Definition::Default::Vpn>();
+        }
+        return vpn;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(ipv4 != nullptr)
+    {
+        _children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        _children["ipv6"] = ipv6;
+    }
+
+    if(address_family != nullptr)
+    {
+        _children["address-family"] = address_family;
+    }
+
+    if(route_target != nullptr)
+    {
+        _children["route-target"] = route_target;
+    }
+
+    if(vnet != nullptr)
+    {
+        _children["vnet"] = vnet;
+    }
+
+    if(vpn != nullptr)
+    {
+        _children["vpn"] = vpn;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+        rd.value_namespace = name_space;
+        rd.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "rd")
+    {
+        rd.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "address-family" || name == "route-target" || name == "vnet" || name == "vpn" || name == "description" || name == "rd")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::Ipv4::Ipv4()
+    :
+    multicast(std::make_shared<Native::Vrf::Definition::Default::Ipv4::Multicast>())
+{
+    multicast->parent = this;
+
+    yang_name = "ipv4"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::Ipv4::~Ipv4()
+{
+}
+
+bool Native::Vrf::Definition::Default::Ipv4::has_data() const
+{
+    if (is_presence_container) return true;
+    return (multicast !=  nullptr && multicast->has_data());
+}
+
+bool Native::Vrf::Definition::Default::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| (multicast !=  nullptr && multicast->has_operation());
+}
+
+std::string Native::Vrf::Definition::Default::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "multicast")
+    {
+        if(multicast == nullptr)
+        {
+            multicast = std::make_shared<Native::Vrf::Definition::Default::Ipv4::Multicast>();
+        }
+        return multicast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(multicast != nullptr)
+    {
+        _children["multicast"] = multicast;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Vrf::Definition::Default::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Vrf::Definition::Default::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::Ipv4::Multicast::Multicast()
+    :
+    multitopology{YType::empty, "multitopology"}
+{
+
+    yang_name = "multicast"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::Ipv4::Multicast::~Multicast()
+{
+}
+
+bool Native::Vrf::Definition::Default::Ipv4::Multicast::has_data() const
+{
+    if (is_presence_container) return true;
+    return multitopology.is_set;
+}
+
+bool Native::Vrf::Definition::Default::Ipv4::Multicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(multitopology.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::Ipv4::Multicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::Ipv4::Multicast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (multitopology.is_set || is_set(multitopology.yfilter)) leaf_name_data.push_back(multitopology.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::Ipv4::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::Ipv4::Multicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::Ipv4::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology = value;
+        multitopology.value_namespace = name_space;
+        multitopology.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::Ipv4::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::Ipv4::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multitopology")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::Ipv6::Ipv6()
+    :
+    multicast(std::make_shared<Native::Vrf::Definition::Default::Ipv6::Multicast>())
+{
+    multicast->parent = this;
+
+    yang_name = "ipv6"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::Ipv6::~Ipv6()
+{
+}
+
+bool Native::Vrf::Definition::Default::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    return (multicast !=  nullptr && multicast->has_data());
+}
+
+bool Native::Vrf::Definition::Default::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| (multicast !=  nullptr && multicast->has_operation());
+}
+
+std::string Native::Vrf::Definition::Default::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "multicast")
+    {
+        if(multicast == nullptr)
+        {
+            multicast = std::make_shared<Native::Vrf::Definition::Default::Ipv6::Multicast>();
+        }
+        return multicast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(multicast != nullptr)
+    {
+        _children["multicast"] = multicast;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Vrf::Definition::Default::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Vrf::Definition::Default::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::Ipv6::Multicast::Multicast()
+    :
+    multitopology{YType::empty, "multitopology"}
+{
+
+    yang_name = "multicast"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::Ipv6::Multicast::~Multicast()
+{
+}
+
+bool Native::Vrf::Definition::Default::Ipv6::Multicast::has_data() const
+{
+    if (is_presence_container) return true;
+    return multitopology.is_set;
+}
+
+bool Native::Vrf::Definition::Default::Ipv6::Multicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(multitopology.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::Ipv6::Multicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::Ipv6::Multicast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (multitopology.is_set || is_set(multitopology.yfilter)) leaf_name_data.push_back(multitopology.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::Ipv6::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::Ipv6::Multicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::Ipv6::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology = value;
+        multitopology.value_namespace = name_space;
+        multitopology.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::Ipv6::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::Ipv6::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multitopology")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::AddressFamily::AddressFamily()
+    :
+    ipv4(nullptr) // presence node
+    , ipv6(nullptr) // presence node
+{
+
+    yang_name = "address-family"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::AddressFamily::~AddressFamily()
+{
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
+}
+
+std::string Native::Vrf::Definition::Default::AddressFamily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::AddressFamily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<Native::Vrf::Definition::Default::AddressFamily::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Native::Vrf::Definition::Default::AddressFamily::Ipv6>();
+        }
+        return ipv6;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::AddressFamily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(ipv4 != nullptr)
+    {
+        _children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        _children["ipv6"] = ipv6;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Vrf::Definition::Default::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::AddressFamily::Ipv4::Ipv4()
+    :
+    unicast{YType::empty, "unicast"},
+    multicast{YType::empty, "multicast"}
+{
+
+    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Vrf::Definition::Default::AddressFamily::Ipv4::~Ipv4()
+{
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::Ipv4::has_data() const
+{
+    if (is_presence_container) return true;
+    return unicast.is_set
+	|| multicast.is_set;
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unicast.yfilter)
+	|| ydk::is_set(multicast.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::AddressFamily::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::AddressFamily::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unicast.is_set || is_set(unicast.yfilter)) leaf_name_data.push_back(unicast.get_name_leafdata());
+    if (multicast.is_set || is_set(multicast.yfilter)) leaf_name_data.push_back(multicast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::AddressFamily::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::AddressFamily::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unicast")
+    {
+        unicast = value;
+        unicast.value_namespace = name_space;
+        unicast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multicast")
+    {
+        multicast = value;
+        multicast.value_namespace = name_space;
+        multicast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::AddressFamily::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unicast")
+    {
+        unicast.yfilter = yfilter;
+    }
+    if(value_path == "multicast")
+    {
+        multicast.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unicast" || name == "multicast")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::AddressFamily::Ipv6::Ipv6()
+    :
+    unicast{YType::empty, "unicast"},
+    multicast{YType::empty, "multicast"}
+{
+
+    yang_name = "ipv6"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Vrf::Definition::Default::AddressFamily::Ipv6::~Ipv6()
+{
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    return unicast.is_set
+	|| multicast.is_set;
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unicast.yfilter)
+	|| ydk::is_set(multicast.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::AddressFamily::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::AddressFamily::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unicast.is_set || is_set(unicast.yfilter)) leaf_name_data.push_back(unicast.get_name_leafdata());
+    if (multicast.is_set || is_set(multicast.yfilter)) leaf_name_data.push_back(multicast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::AddressFamily::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::AddressFamily::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::AddressFamily::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unicast")
+    {
+        unicast = value;
+        unicast.value_namespace = name_space;
+        unicast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multicast")
+    {
+        multicast = value;
+        multicast.value_namespace = name_space;
+        multicast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::AddressFamily::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unicast")
+    {
+        unicast.yfilter = yfilter;
+    }
+    if(value_path == "multicast")
+    {
+        multicast.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::AddressFamily::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unicast" || name == "multicast")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::RouteTarget::RouteTarget()
+    :
+    empty_rt{YType::empty, "empty-rt"},
+    export_{YType::empty, "export"},
+    import{YType::empty, "import"}
+        ,
+    export_asn(std::make_shared<Native::Vrf::Definition::Default::RouteTarget::ExportAsn>())
+    , import_asn(std::make_shared<Native::Vrf::Definition::Default::RouteTarget::ImportAsn>())
+{
+    export_asn->parent = this;
+    import_asn->parent = this;
+
+    yang_name = "route-target"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::RouteTarget::~RouteTarget()
+{
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::has_data() const
+{
+    if (is_presence_container) return true;
+    return empty_rt.is_set
+	|| export_.is_set
+	|| import.is_set
+	|| (export_asn !=  nullptr && export_asn->has_data())
+	|| (import_asn !=  nullptr && import_asn->has_data());
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(empty_rt.yfilter)
+	|| ydk::is_set(export_.yfilter)
+	|| ydk::is_set(import.yfilter)
+	|| (export_asn !=  nullptr && export_asn->has_operation())
+	|| (import_asn !=  nullptr && import_asn->has_operation());
+}
+
+std::string Native::Vrf::Definition::Default::RouteTarget::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-target";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::RouteTarget::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (empty_rt.is_set || is_set(empty_rt.yfilter)) leaf_name_data.push_back(empty_rt.get_name_leafdata());
+    if (export_.is_set || is_set(export_.yfilter)) leaf_name_data.push_back(export_.get_name_leafdata());
+    if (import.is_set || is_set(import.yfilter)) leaf_name_data.push_back(import.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "export-asn")
+    {
+        if(export_asn == nullptr)
+        {
+            export_asn = std::make_shared<Native::Vrf::Definition::Default::RouteTarget::ExportAsn>();
+        }
+        return export_asn;
+    }
+
+    if(child_yang_name == "import-asn")
+    {
+        if(import_asn == nullptr)
+        {
+            import_asn = std::make_shared<Native::Vrf::Definition::Default::RouteTarget::ImportAsn>();
+        }
+        return import_asn;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::RouteTarget::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(export_asn != nullptr)
+    {
+        _children["export-asn"] = export_asn;
+    }
+
+    if(import_asn != nullptr)
+    {
+        _children["import-asn"] = import_asn;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "empty-rt")
+    {
+        empty_rt = value;
+        empty_rt.value_namespace = name_space;
+        empty_rt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "export")
+    {
+        export_ = value;
+        export_.value_namespace = name_space;
+        export_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "import")
+    {
+        import = value;
+        import.value_namespace = name_space;
+        import.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "empty-rt")
+    {
+        empty_rt.yfilter = yfilter;
+    }
+    if(value_path == "export")
+    {
+        export_.yfilter = yfilter;
+    }
+    if(value_path == "import")
+    {
+        import.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "export-asn" || name == "import-asn" || name == "empty-rt" || name == "export" || name == "import")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ExportAsn::ExportAsn()
+    :
+    export_(this, {"asn_ip"})
+{
+
+    yang_name = "export-asn"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ExportAsn::~ExportAsn()
+{
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ExportAsn::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<export_.len(); index++)
+    {
+        if(export_[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ExportAsn::has_operation() const
+{
+    for (std::size_t index=0; index<export_.len(); index++)
+    {
+        if(export_[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::RouteTarget::ExportAsn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "export-asn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::RouteTarget::ExportAsn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::RouteTarget::ExportAsn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "export")
+    {
+        auto ent_ = std::make_shared<Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export>();
+        ent_->parent = this;
+        export_.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::RouteTarget::ExportAsn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : export_.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ExportAsn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ExportAsn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ExportAsn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "export")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::Export()
+    :
+    asn_ip{YType::str, "asn-ip"}
+{
+
+    yang_name = "export"; yang_parent_name = "export-asn"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::~Export()
+{
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::has_data() const
+{
+    if (is_presence_container) return true;
+    return asn_ip.is_set;
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asn_ip.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "export";
+    ADD_KEY_TOKEN(asn_ip, "asn-ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asn_ip.is_set || is_set(asn_ip.yfilter)) leaf_name_data.push_back(asn_ip.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asn-ip")
+    {
+        asn_ip = value;
+        asn_ip.value_namespace = name_space;
+        asn_ip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asn-ip")
+    {
+        asn_ip.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ExportAsn::Export::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asn-ip")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ImportAsn::ImportAsn()
+    :
+    import(this, {"asn_ip"})
+{
+
+    yang_name = "import-asn"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ImportAsn::~ImportAsn()
+{
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ImportAsn::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<import.len(); index++)
+    {
+        if(import[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ImportAsn::has_operation() const
+{
+    for (std::size_t index=0; index<import.len(); index++)
+    {
+        if(import[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::RouteTarget::ImportAsn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "import-asn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::RouteTarget::ImportAsn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::RouteTarget::ImportAsn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "import")
+    {
+        auto ent_ = std::make_shared<Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import>();
+        ent_->parent = this;
+        import.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::RouteTarget::ImportAsn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : import.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ImportAsn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ImportAsn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ImportAsn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "import")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::Import()
+    :
+    asn_ip{YType::str, "asn-ip"}
+{
+
+    yang_name = "import"; yang_parent_name = "import-asn"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::~Import()
+{
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::has_data() const
+{
+    if (is_presence_container) return true;
+    return asn_ip.is_set;
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asn_ip.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "import";
+    ADD_KEY_TOKEN(asn_ip, "asn-ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asn_ip.is_set || is_set(asn_ip.yfilter)) leaf_name_data.push_back(asn_ip.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asn-ip")
+    {
+        asn_ip = value;
+        asn_ip.value_namespace = name_space;
+        asn_ip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asn-ip")
+    {
+        asn_ip.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::RouteTarget::ImportAsn::Import::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asn-ip")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::Vnet::Vnet()
+    :
+    tag{YType::empty, "tag"}
+{
+
+    yang_name = "vnet"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::Vnet::~Vnet()
+{
+}
+
+bool Native::Vrf::Definition::Default::Vnet::has_data() const
+{
+    if (is_presence_container) return true;
+    return tag.is_set;
+}
+
+bool Native::Vrf::Definition::Default::Vnet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tag.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::Vnet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vnet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::Vnet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::Vnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::Vnet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::Vnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tag")
+    {
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::Vnet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::Vnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Default::Vpn::Vpn()
+    :
+    id{YType::empty, "id"}
+{
+
+    yang_name = "vpn"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Default::Vpn::~Vpn()
+{
+}
+
+bool Native::Vrf::Definition::Default::Vpn::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set;
+}
+
+bool Native::Vrf::Definition::Default::Vpn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter);
+}
+
+std::string Native::Vrf::Definition::Default::Vpn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vpn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Default::Vpn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Default::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Default::Vpn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Default::Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Default::Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Default::Vpn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Ipv4::Ipv4()
+    :
+    multicast(std::make_shared<Native::Vrf::Definition::Ipv4::Multicast>())
+{
+    multicast->parent = this;
+
+    yang_name = "ipv4"; yang_parent_name = "definition"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Ipv4::~Ipv4()
+{
+}
+
+bool Native::Vrf::Definition::Ipv4::has_data() const
+{
+    if (is_presence_container) return true;
+    return (multicast !=  nullptr && multicast->has_data());
+}
+
+bool Native::Vrf::Definition::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| (multicast !=  nullptr && multicast->has_operation());
+}
+
+std::string Native::Vrf::Definition::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "multicast")
+    {
+        if(multicast == nullptr)
+        {
+            multicast = std::make_shared<Native::Vrf::Definition::Ipv4::Multicast>();
+        }
+        return multicast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(multicast != nullptr)
+    {
+        _children["multicast"] = multicast;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Vrf::Definition::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Vrf::Definition::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Ipv4::Multicast::Multicast()
+    :
+    multitopology{YType::empty, "multitopology"}
+{
+
+    yang_name = "multicast"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Ipv4::Multicast::~Multicast()
+{
+}
+
+bool Native::Vrf::Definition::Ipv4::Multicast::has_data() const
+{
+    if (is_presence_container) return true;
+    return multitopology.is_set;
+}
+
+bool Native::Vrf::Definition::Ipv4::Multicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(multitopology.yfilter);
+}
+
+std::string Native::Vrf::Definition::Ipv4::Multicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Ipv4::Multicast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (multitopology.is_set || is_set(multitopology.yfilter)) leaf_name_data.push_back(multitopology.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Ipv4::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Ipv4::Multicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Ipv4::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology = value;
+        multitopology.value_namespace = name_space;
+        multitopology.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Ipv4::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Ipv4::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multitopology")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Ipv6::Ipv6()
+    :
+    multicast(std::make_shared<Native::Vrf::Definition::Ipv6::Multicast>())
+{
+    multicast->parent = this;
+
+    yang_name = "ipv6"; yang_parent_name = "definition"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Ipv6::~Ipv6()
+{
+}
+
+bool Native::Vrf::Definition::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    return (multicast !=  nullptr && multicast->has_data());
+}
+
+bool Native::Vrf::Definition::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| (multicast !=  nullptr && multicast->has_operation());
+}
+
+std::string Native::Vrf::Definition::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "multicast")
+    {
+        if(multicast == nullptr)
+        {
+            multicast = std::make_shared<Native::Vrf::Definition::Ipv6::Multicast>();
+        }
+        return multicast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(multicast != nullptr)
+    {
+        _children["multicast"] = multicast;
+    }
+
+    return _children;
+}
+
+void Native::Vrf::Definition::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Vrf::Definition::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Vrf::Definition::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Ipv6::Multicast::Multicast()
+    :
+    multitopology{YType::empty, "multitopology"}
+{
+
+    yang_name = "multicast"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Ipv6::Multicast::~Multicast()
+{
+}
+
+bool Native::Vrf::Definition::Ipv6::Multicast::has_data() const
+{
+    if (is_presence_container) return true;
+    return multitopology.is_set;
+}
+
+bool Native::Vrf::Definition::Ipv6::Multicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(multitopology.yfilter);
+}
+
+std::string Native::Vrf::Definition::Ipv6::Multicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Ipv6::Multicast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (multitopology.is_set || is_set(multitopology.yfilter)) leaf_name_data.push_back(multitopology.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Ipv6::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Ipv6::Multicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Ipv6::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology = value;
+        multitopology.value_namespace = name_space;
+        multitopology.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Ipv6::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multitopology")
+    {
+        multitopology.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Ipv6::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multitopology")
         return true;
     return false;
 }
@@ -8742,6 +10797,84 @@ void Native::Vrf::Definition::RouteTarget::Import::set_filter(const std::string 
 bool Native::Vrf::Definition::RouteTarget::Import::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "asn-ip" || name == "stitching")
+        return true;
+    return false;
+}
+
+Native::Vrf::Definition::Vnet::Vnet()
+    :
+    tag{YType::uint16, "tag"}
+{
+
+    yang_name = "vnet"; yang_parent_name = "definition"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Vrf::Definition::Vnet::~Vnet()
+{
+}
+
+bool Native::Vrf::Definition::Vnet::has_data() const
+{
+    if (is_presence_container) return true;
+    return tag.is_set;
+}
+
+bool Native::Vrf::Definition::Vnet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tag.yfilter);
+}
+
+std::string Native::Vrf::Definition::Vnet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vnet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::Vnet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Vrf::Definition::Vnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Vrf::Definition::Vnet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Vrf::Definition::Vnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tag")
+    {
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vrf::Definition::Vnet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+}
+
+bool Native::Vrf::Definition::Vnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag")
         return true;
     return false;
 }
@@ -13751,2296 +15884,6 @@ bool Native::Flow::Record::Collect::Connection::Client::Ipv6::has_leaf_or_child_
     return false;
 }
 
-Native::Flow::Record::Collect::Connection::Client::Transport::Transport()
-    :
-    port{YType::empty, "port"}
-{
-
-    yang_name = "transport"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Client::Transport::~Transport()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Client::Transport::has_data() const
-{
-    if (is_presence_container) return true;
-    return port.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Client::Transport::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Client::Transport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transport";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Client::Transport::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Client::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Client::Transport::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Client::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Client::Transport::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Client::Transport::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Delay()
-    :
-    all{YType::empty, "all"}
-        ,
-    application(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Application>())
-    , network(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network>())
-    , response(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Response>())
-{
-    application->parent = this;
-    network->parent = this;
-    response->parent = this;
-
-    yang_name = "delay"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::~Delay()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::has_data() const
-{
-    if (is_presence_container) return true;
-    return all.is_set
-	|| (application !=  nullptr && application->has_data())
-	|| (network !=  nullptr && network->has_data())
-	|| (response !=  nullptr && response->has_data());
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(all.yfilter)
-	|| (application !=  nullptr && application->has_operation())
-	|| (network !=  nullptr && network->has_operation())
-	|| (response !=  nullptr && response->has_operation());
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delay";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "application")
-    {
-        if(application == nullptr)
-        {
-            application = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Application>();
-        }
-        return application;
-    }
-
-    if(child_yang_name == "network")
-    {
-        if(network == nullptr)
-        {
-            network = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network>();
-        }
-        return network;
-    }
-
-    if(child_yang_name == "response")
-    {
-        if(response == nullptr)
-        {
-            response = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Response>();
-        }
-        return response;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(application != nullptr)
-    {
-        _children["application"] = application;
-    }
-
-    if(network != nullptr)
-    {
-        _children["network"] = network;
-    }
-
-    if(response != nullptr)
-    {
-        _children["response"] = response;
-    }
-
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "all")
-    {
-        all = value;
-        all.value_namespace = name_space;
-        all.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "all")
-    {
-        all.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "application" || name == "network" || name == "response" || name == "all")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Application::Application()
-    :
-    max{YType::empty, "max"},
-    min{YType::empty, "min"},
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "application"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Application::~Application()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Application::has_data() const
-{
-    if (is_presence_container) return true;
-    return max.is_set
-	|| min.is_set
-	|| sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Application::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Application::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "application";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Application::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Application::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Application::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Application::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max" || name == "min" || name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::Network()
-    :
-    client_to_server(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer>())
-    , long_lived(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived>())
-    , to_client(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::ToClient>())
-    , to_server(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::ToServer>())
-{
-    client_to_server->parent = this;
-    long_lived->parent = this;
-    to_client->parent = this;
-    to_server->parent = this;
-
-    yang_name = "network"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::~Network()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::has_data() const
-{
-    if (is_presence_container) return true;
-    return (client_to_server !=  nullptr && client_to_server->has_data())
-	|| (long_lived !=  nullptr && long_lived->has_data())
-	|| (to_client !=  nullptr && to_client->has_data())
-	|| (to_server !=  nullptr && to_server->has_data());
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::has_operation() const
-{
-    return is_set(yfilter)
-	|| (client_to_server !=  nullptr && client_to_server->has_operation())
-	|| (long_lived !=  nullptr && long_lived->has_operation())
-	|| (to_client !=  nullptr && to_client->has_operation())
-	|| (to_server !=  nullptr && to_server->has_operation());
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "client-to-server")
-    {
-        if(client_to_server == nullptr)
-        {
-            client_to_server = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer>();
-        }
-        return client_to_server;
-    }
-
-    if(child_yang_name == "long-lived")
-    {
-        if(long_lived == nullptr)
-        {
-            long_lived = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived>();
-        }
-        return long_lived;
-    }
-
-    if(child_yang_name == "to-client")
-    {
-        if(to_client == nullptr)
-        {
-            to_client = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::ToClient>();
-        }
-        return to_client;
-    }
-
-    if(child_yang_name == "to-server")
-    {
-        if(to_server == nullptr)
-        {
-            to_server = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::ToServer>();
-        }
-        return to_server;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(client_to_server != nullptr)
-    {
-        _children["client-to-server"] = client_to_server;
-    }
-
-    if(long_lived != nullptr)
-    {
-        _children["long-lived"] = long_lived;
-    }
-
-    if(to_client != nullptr)
-    {
-        _children["to-client"] = to_client;
-    }
-
-    if(to_server != nullptr)
-    {
-        _children["to-server"] = to_server;
-    }
-
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "client-to-server" || name == "long-lived" || name == "to-client" || name == "to-server")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::ClientToServer()
-    :
-    max{YType::empty, "max"},
-    min{YType::empty, "min"},
-    num_samples{YType::empty, "num-samples"},
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "client-to-server"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::~ClientToServer()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::has_data() const
-{
-    if (is_presence_container) return true;
-    return max.is_set
-	|| min.is_set
-	|| num_samples.is_set
-	|| sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(num_samples.yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "client-to-server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (num_samples.is_set || is_set(num_samples.yfilter)) leaf_name_data.push_back(num_samples.get_name_leafdata());
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-samples")
-    {
-        num_samples = value;
-        num_samples.value_namespace = name_space;
-        num_samples.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "num-samples")
-    {
-        num_samples.yfilter = yfilter;
-    }
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max" || name == "min" || name == "num-samples" || name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::LongLived()
-    :
-    client_to_serve(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe>())
-    , to_client(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient>())
-    , to_serve(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe>())
-{
-    client_to_serve->parent = this;
-    to_client->parent = this;
-    to_serve->parent = this;
-
-    yang_name = "long-lived"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::~LongLived()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::has_data() const
-{
-    if (is_presence_container) return true;
-    return (client_to_serve !=  nullptr && client_to_serve->has_data())
-	|| (to_client !=  nullptr && to_client->has_data())
-	|| (to_serve !=  nullptr && to_serve->has_data());
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::has_operation() const
-{
-    return is_set(yfilter)
-	|| (client_to_serve !=  nullptr && client_to_serve->has_operation())
-	|| (to_client !=  nullptr && to_client->has_operation())
-	|| (to_serve !=  nullptr && to_serve->has_operation());
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "long-lived";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "client-to-serve")
-    {
-        if(client_to_serve == nullptr)
-        {
-            client_to_serve = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe>();
-        }
-        return client_to_serve;
-    }
-
-    if(child_yang_name == "to-client")
-    {
-        if(to_client == nullptr)
-        {
-            to_client = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient>();
-        }
-        return to_client;
-    }
-
-    if(child_yang_name == "to-serve")
-    {
-        if(to_serve == nullptr)
-        {
-            to_serve = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe>();
-        }
-        return to_serve;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(client_to_serve != nullptr)
-    {
-        _children["client-to-serve"] = client_to_serve;
-    }
-
-    if(to_client != nullptr)
-    {
-        _children["to-client"] = to_client;
-    }
-
-    if(to_serve != nullptr)
-    {
-        _children["to-serve"] = to_serve;
-    }
-
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "client-to-serve" || name == "to-client" || name == "to-serve")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::ClientToServe()
-    :
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "client-to-serve"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::~ClientToServe()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::has_data() const
-{
-    if (is_presence_container) return true;
-    return sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "client-to-serve";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::ToClient()
-    :
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "to-client"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::~ToClient()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::has_data() const
-{
-    if (is_presence_container) return true;
-    return sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "to-client";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::ToServe()
-    :
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "to-serve"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::~ToServe()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::has_data() const
-{
-    if (is_presence_container) return true;
-    return sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "to-serve";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::ToClient()
-    :
-    max{YType::empty, "max"},
-    min{YType::empty, "min"},
-    num_samples{YType::empty, "num-samples"},
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "to-client"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::~ToClient()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::has_data() const
-{
-    if (is_presence_container) return true;
-    return max.is_set
-	|| min.is_set
-	|| num_samples.is_set
-	|| sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(num_samples.yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "to-client";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (num_samples.is_set || is_set(num_samples.yfilter)) leaf_name_data.push_back(num_samples.get_name_leafdata());
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-samples")
-    {
-        num_samples = value;
-        num_samples.value_namespace = name_space;
-        num_samples.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "num-samples")
-    {
-        num_samples.yfilter = yfilter;
-    }
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max" || name == "min" || name == "num-samples" || name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::ToServer()
-    :
-    max{YType::empty, "max"},
-    min{YType::empty, "min"},
-    num_samples{YType::empty, "num-samples"},
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "to-server"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::~ToServer()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::has_data() const
-{
-    if (is_presence_container) return true;
-    return max.is_set
-	|| min.is_set
-	|| num_samples.is_set
-	|| sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(num_samples.yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "to-server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (num_samples.is_set || is_set(num_samples.yfilter)) leaf_name_data.push_back(num_samples.get_name_leafdata());
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-samples")
-    {
-        num_samples = value;
-        num_samples.value_namespace = name_space;
-        num_samples.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "num-samples")
-    {
-        num_samples.yfilter = yfilter;
-    }
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max" || name == "min" || name == "num-samples" || name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Response::Response()
-    :
-    client_to_server(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer>())
-    , to_server(std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Response::ToServer>())
-{
-    client_to_server->parent = this;
-    to_server->parent = this;
-
-    yang_name = "response"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Response::~Response()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::has_data() const
-{
-    if (is_presence_container) return true;
-    return (client_to_server !=  nullptr && client_to_server->has_data())
-	|| (to_server !=  nullptr && to_server->has_data());
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::has_operation() const
-{
-    return is_set(yfilter)
-	|| (client_to_server !=  nullptr && client_to_server->has_operation())
-	|| (to_server !=  nullptr && to_server->has_operation());
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Response::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "response";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Response::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Response::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "client-to-server")
-    {
-        if(client_to_server == nullptr)
-        {
-            client_to_server = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer>();
-        }
-        return client_to_server;
-    }
-
-    if(child_yang_name == "to-server")
-    {
-        if(to_server == nullptr)
-        {
-            to_server = std::make_shared<Native::Flow::Record::Collect::Connection::Delay::Response::ToServer>();
-        }
-        return to_server;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Response::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(client_to_server != nullptr)
-    {
-        _children["client-to-server"] = client_to_server;
-    }
-
-    if(to_server != nullptr)
-    {
-        _children["to-server"] = to_server;
-    }
-
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Response::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Response::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "client-to-server" || name == "to-server")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::ClientToServer()
-    :
-    max{YType::empty, "max"},
-    min{YType::empty, "min"},
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "client-to-server"; yang_parent_name = "response"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::~ClientToServer()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::has_data() const
-{
-    if (is_presence_container) return true;
-    return max.is_set
-	|| min.is_set
-	|| sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "client-to-server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max" || name == "min" || name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::ToServer()
-    :
-    histogram{YType::enumeration, "histogram"},
-    max{YType::empty, "max"},
-    min{YType::empty, "min"},
-    sum{YType::empty, "sum"}
-{
-
-    yang_name = "to-server"; yang_parent_name = "response"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::~ToServer()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::has_data() const
-{
-    if (is_presence_container) return true;
-    return histogram.is_set
-	|| max.is_set
-	|| min.is_set
-	|| sum.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(histogram.yfilter)
-	|| ydk::is_set(max.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(sum.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "to-server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (histogram.is_set || is_set(histogram.yfilter)) leaf_name_data.push_back(histogram.get_name_leafdata());
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "histogram")
-    {
-        histogram = value;
-        histogram.value_namespace = name_space;
-        histogram.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sum")
-    {
-        sum = value;
-        sum.value_namespace = name_space;
-        sum.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "histogram")
-    {
-        histogram.yfilter = yfilter;
-    }
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "sum")
-    {
-        sum.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "histogram" || name == "max" || name == "min" || name == "sum")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Server()
-    :
-    all{YType::empty, "all"}
-        ,
-    counter(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter>())
-    , ipv4(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Ipv4>())
-    , ipv6(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Ipv6>())
-    , transport(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Transport>())
-{
-    counter->parent = this;
-    ipv4->parent = this;
-    ipv6->parent = this;
-    transport->parent = this;
-
-    yang_name = "server"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::~Server()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::has_data() const
-{
-    if (is_presence_container) return true;
-    return all.is_set
-	|| (counter !=  nullptr && counter->has_data())
-	|| (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data())
-	|| (transport !=  nullptr && transport->has_data());
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(all.yfilter)
-	|| (counter !=  nullptr && counter->has_operation())
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation())
-	|| (transport !=  nullptr && transport->has_operation());
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "counter")
-    {
-        if(counter == nullptr)
-        {
-            counter = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter>();
-        }
-        return counter;
-    }
-
-    if(child_yang_name == "ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Ipv4>();
-        }
-        return ipv4;
-    }
-
-    if(child_yang_name == "ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Ipv6>();
-        }
-        return ipv6;
-    }
-
-    if(child_yang_name == "transport")
-    {
-        if(transport == nullptr)
-        {
-            transport = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Transport>();
-        }
-        return transport;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(counter != nullptr)
-    {
-        _children["counter"] = counter;
-    }
-
-    if(ipv4 != nullptr)
-    {
-        _children["ipv4"] = ipv4;
-    }
-
-    if(ipv6 != nullptr)
-    {
-        _children["ipv6"] = ipv6;
-    }
-
-    if(transport != nullptr)
-    {
-        _children["transport"] = transport;
-    }
-
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "all")
-    {
-        all = value;
-        all.value_namespace = name_space;
-        all.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "all")
-    {
-        all.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "ipv4" || name == "ipv6" || name == "transport" || name == "all")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Counter()
-    :
-    responses{YType::empty, "responses"}
-        ,
-    bytes(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Bytes>())
-    , packets(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Packets>())
-{
-    bytes->parent = this;
-    packets->parent = this;
-
-    yang_name = "counter"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::~Counter()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::has_data() const
-{
-    if (is_presence_container) return true;
-    return responses.is_set
-	|| (bytes !=  nullptr && bytes->has_data())
-	|| (packets !=  nullptr && packets->has_data());
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(responses.yfilter)
-	|| (bytes !=  nullptr && bytes->has_operation())
-	|| (packets !=  nullptr && packets->has_operation());
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::Counter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "counter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::Counter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (responses.is_set || is_set(responses.yfilter)) leaf_name_data.push_back(responses.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bytes")
-    {
-        if(bytes == nullptr)
-        {
-            bytes = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Bytes>();
-        }
-        return bytes;
-    }
-
-    if(child_yang_name == "packets")
-    {
-        if(packets == nullptr)
-        {
-            packets = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Packets>();
-        }
-        return packets;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(bytes != nullptr)
-    {
-        _children["bytes"] = bytes;
-    }
-
-    if(packets != nullptr)
-    {
-        _children["packets"] = packets;
-    }
-
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "responses")
-    {
-        responses = value;
-        responses.value_namespace = name_space;
-        responses.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "responses")
-    {
-        responses.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets" || name == "responses")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Bytes()
-    :
-    long_{YType::empty, "long"},
-    retransmitted{YType::empty, "retransmitted"}
-        ,
-    network(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network>())
-    , transport(std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport>())
-{
-    network->parent = this;
-    transport->parent = this;
-
-    yang_name = "bytes"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::~Bytes()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::has_data() const
-{
-    if (is_presence_container) return true;
-    return long_.is_set
-	|| retransmitted.is_set
-	|| (network !=  nullptr && network->has_data())
-	|| (transport !=  nullptr && transport->has_data());
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(long_.yfilter)
-	|| ydk::is_set(retransmitted.yfilter)
-	|| (network !=  nullptr && network->has_operation())
-	|| (transport !=  nullptr && transport->has_operation());
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bytes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (long_.is_set || is_set(long_.yfilter)) leaf_name_data.push_back(long_.get_name_leafdata());
-    if (retransmitted.is_set || is_set(retransmitted.yfilter)) leaf_name_data.push_back(retransmitted.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "network")
-    {
-        if(network == nullptr)
-        {
-            network = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network>();
-        }
-        return network;
-    }
-
-    if(child_yang_name == "transport")
-    {
-        if(transport == nullptr)
-        {
-            transport = std::make_shared<Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport>();
-        }
-        return transport;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(network != nullptr)
-    {
-        _children["network"] = network;
-    }
-
-    if(transport != nullptr)
-    {
-        _children["transport"] = transport;
-    }
-
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "long")
-    {
-        long_ = value;
-        long_.value_namespace = name_space;
-        long_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retransmitted")
-    {
-        retransmitted = value;
-        retransmitted.value_namespace = name_space;
-        retransmitted.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "long")
-    {
-        long_.yfilter = yfilter;
-    }
-    if(value_path == "retransmitted")
-    {
-        retransmitted.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network" || name == "transport" || name == "long" || name == "retransmitted")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::Network()
-    :
-    long_{YType::empty, "long"}
-{
-
-    yang_name = "network"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::~Network()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::has_data() const
-{
-    if (is_presence_container) return true;
-    return long_.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(long_.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (long_.is_set || is_set(long_.yfilter)) leaf_name_data.push_back(long_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "long")
-    {
-        long_ = value;
-        long_.value_namespace = name_space;
-        long_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "long")
-    {
-        long_.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "long")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::Transport()
-    :
-    long_{YType::empty, "long"}
-{
-
-    yang_name = "transport"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::~Transport()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::has_data() const
-{
-    if (is_presence_container) return true;
-    return long_.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(long_.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transport";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (long_.is_set || is_set(long_.yfilter)) leaf_name_data.push_back(long_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "long")
-    {
-        long_ = value;
-        long_.value_namespace = name_space;
-        long_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "long")
-    {
-        long_.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "long")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Packets::Packets()
-    :
-    long_{YType::empty, "long"},
-    retransmitted{YType::empty, "retransmitted"}
-{
-
-    yang_name = "packets"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::Counter::Packets::~Packets()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Packets::has_data() const
-{
-    if (is_presence_container) return true;
-    return long_.is_set
-	|| retransmitted.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Packets::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(long_.yfilter)
-	|| ydk::is_set(retransmitted.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::Counter::Packets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "packets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::Counter::Packets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (long_.is_set || is_set(long_.yfilter)) leaf_name_data.push_back(long_.get_name_leafdata());
-    if (retransmitted.is_set || is_set(retransmitted.yfilter)) leaf_name_data.push_back(retransmitted.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Counter::Packets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Packets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Packets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "long")
-    {
-        long_ = value;
-        long_.value_namespace = name_space;
-        long_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retransmitted")
-    {
-        retransmitted = value;
-        retransmitted.value_namespace = name_space;
-        retransmitted.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Counter::Packets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "long")
-    {
-        long_.yfilter = yfilter;
-    }
-    if(value_path == "retransmitted")
-    {
-        retransmitted.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Counter::Packets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "long" || name == "retransmitted")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Ipv4::Ipv4()
-    :
-    address{YType::empty, "address"}
-{
-
-    yang_name = "ipv4"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::Ipv4::~Ipv4()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Ipv4::has_data() const
-{
-    if (is_presence_container) return true;
-    return address.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Ipv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-Native::Flow::Record::Collect::Connection::Server::Ipv6::Ipv6()
-    :
-    address{YType::empty, "address"}
-{
-
-    yang_name = "ipv6"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Flow::Record::Collect::Connection::Server::Ipv6::~Ipv6()
-{
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Ipv6::has_data() const
-{
-    if (is_presence_container) return true;
-    return address.is_set;
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Ipv6::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter);
-}
-
-std::string Native::Flow::Record::Collect::Connection::Server::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Connection::Server::Ipv6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Flow::Record::Collect::Connection::Server::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-}
-
-bool Native::Flow::Record::Collect::Connection::Server::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf Native::Controller::SONET::Au4::FramingUnframed::Tug2::Framing::unframed {0, "unframed"};
 
 const Enum::YLeaf Native::Controller::SONETACR::Framing::sonet {0, "sonet"};
@@ -16086,16 +15929,6 @@ const Enum::YLeaf Native::Rmon::Alarm::TestMode::absolute {0, "absolute"};
 const Enum::YLeaf Native::Rmon::Alarm::TestMode::delta {1, "delta"};
 
 const Enum::YLeaf Native::Flow::Record::Type::performance_monitor {0, "performance-monitor"};
-
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::all {0, "all"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::bucket1 {1, "bucket1"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::bucket2 {2, "bucket2"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::bucket3 {3, "bucket3"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::bucket4 {4, "bucket4"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::bucket5 {5, "bucket5"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::bucket6 {6, "bucket6"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::bucket7 {7, "bucket7"};
-const Enum::YLeaf Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram::late {8, "late"};
 
 
 }

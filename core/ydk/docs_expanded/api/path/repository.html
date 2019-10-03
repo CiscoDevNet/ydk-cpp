@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Repository &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../index.html"/>
+        <link rel="up" title="YDK Path API" href="path.html"/>
+        <link rel="next" title="Rpc" href="rpc.html"/>
+        <link rel="prev" title="ModelProvider" href="model_provider.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-nodes">Path API Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-errors">Path API Errors</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="path.html#path-api">Path API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="capability.html">Capability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec.html">Codec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model_provider.html">ModelProvider</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc.html">Rpc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html">Path API types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_service.html">ValidationService</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>Repository</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="repository">
+<span id="ref-repository"></span><h1>Repository<a class="headerlink" href="#repository" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path10RepositoryE">
+<span id="ydk::path::Repository"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">Repository</code><a class="headerlink" href="#_CPPv2N3ydk4path10RepositoryE" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Repository is responsible for loading module locally or downloading module remotely if certain model providers are provided; It holds a variable pointing to the location for model downloads and could be used as a factory class to create <a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a> based on a list of <a class="reference internal" href="capability.html#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability"><code class="xref cpp cpp-class docutils literal"><span class="pre">Capability</span></code></a> passed in or list of capability lookup tables and a list of <a class="reference internal" href="capability.html#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability"><code class="xref cpp cpp-class docutils literal"><span class="pre">Capability</span></code></a> passed in.</p>
+<dl class="member">
+<dt id="_CPPv24path">
+<span id="ydk::path::Repository::path__ss"></span>std::string <code class="descclassname"></code><code class="descname">path</code><a class="headerlink" href="#_CPPv24path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Location where YANG models are present and/or downloaded to</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Repository10RepositoryE18ModelCachingOption">
+<span id="ydk::path::Repository::Repository__ModelCachingOption"></span><code class="descclassname"></code><code class="descname">Repository</code><span class="sig-paren">(</span><a class="reference internal" href="types.html#_CPPv2N3ydk4path18ModelCachingOptionE" title="ydk::path::ModelCachingOption">ModelCachingOption</a> <em>caching_option</em> = ModelCachingOption::PER_DEVICE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Repository10RepositoryE18ModelCachingOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an instance of <code class="docutils literal"><span class="pre">Repository</span></code>, the model downloading path is set to <code class="docutils literal"><span class="pre">~/.ydk</span></code>.</p>
+<p>If the caching option is set to <a class="reference internal" href="types.html#_CPPv2N3ydk4path18ModelCachingOption10PER_DEVICEE" title="ydk::path::ModelCachingOption::PER_DEVICE"><code class="xref cpp cpp-enum docutils literal"><span class="pre">PER_DEVICE</span></code></a>, directories with format of <code class="docutils literal"><span class="pre">~/.ydk/hostname:port</span></code> (<code class="docutils literal"><span class="pre">~/.ydk/127.0.0.1:1220</span></code> for example) are used for model downloading. Otherwise, a common directory(<code class="docutils literal"><span class="pre">~/.ydk/common_cache</span></code>) is used for all devices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>caching_option</strong> &#8211; Model caching option.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../ydk/errors/error_illegal_state.html#_CPPv2N3ydk18YIllegalStateErrorE" title="ydk::YIllegalStateError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YIllegalStateError</span></code></a> If the model downloads directory could not be created.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Repository10RepositoryERKNSt6stringE18ModelCachingOption">
+<span id="ydk::path::Repository::Repository__ssCR.ModelCachingOption"></span><code class="descclassname"></code><code class="descname">Repository</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>search_dir</em>, <a class="reference internal" href="types.html#_CPPv2N3ydk4path18ModelCachingOptionE" title="ydk::path::ModelCachingOption">ModelCachingOption</a> <em>caching_option</em> = ModelCachingOption::PER_DEVICE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Repository10RepositoryERKNSt6stringE18ModelCachingOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an instance of <code class="docutils literal"><span class="pre">Repository</span></code>, the model downloading path is set to <code class="docutils literal"><span class="pre">search_dir</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>search_dir</strong> &#8211; The path in the filesystem where yang files can be found.</li>
+<li><strong>caching_option</strong> &#8211; Model caching option.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../ydk/errors/error_illegal_state.html#_CPPv2N3ydk18YIllegalStateErrorE" title="ydk::YIllegalStateError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YIllegalStateError</span></code></a> If the model downloads directory could not be created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Repository18create_root_schemaERKNSt6vectorI10CapabilityEE">
+<span id="ydk::path::Repository::create_root_schema__std::vector:Capability:CR"></span>std::shared_ptr&lt;<a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode">RootSchemaNode</a>&gt; <code class="descclassname"></code><code class="descname">create_root_schema</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;<a class="reference internal" href="capability.html#_CPPv2N3ydk4path10CapabilityE" title="ydk::path::Capability">Capability</a>&gt; &amp;<em>capabilities</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Repository18create_root_schemaERKNSt6vectorI10CapabilityEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a pointer of <a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a> based on the list of capabilities passed in.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>capabilities</strong> &#8211; List of capabilities available.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Pointer to the <a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Repository18create_root_schemaERKNSt6vectorINSt13unordered_mapINSt6stringEN4path10CapabilityEEEEERKNSt6vectorIN4path10CapabilityEEE">
+<span id="ydk::path::Repository::create_root_schema__std::vector:std::unordered_map:ss.path::Capability::CR.std::vector:path::Capability:CR"></span>std::shared_ptr&lt;<a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode">RootSchemaNode</a>&gt; <code class="descclassname"></code><code class="descname">create_root_schema</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;std::unordered_map&lt;std::string, <a class="reference internal" href="#_CPPv24path" title="ydk::path::Repository::path">path</a>::Capability&gt;&gt; &amp;<em>lookup_tables</em>, <em class="property">const</em> std::vector&lt;<a class="reference internal" href="#_CPPv24path" title="ydk::path::Repository::path">path</a>::Capability&gt; &amp;<em>caps_to_load</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Repository18create_root_schemaERKNSt6vectorINSt13unordered_mapINSt6stringEN4path10CapabilityEEEEERKNSt6vectorIN4path10CapabilityEEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a pointer of <a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a> based on the list of capabilities passed in and the list of lookup tables passed in.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lookup_tables</strong> &#8211; List of capabilities lookup table available.</li>
+<li><strong>caps_to_load</strong> &#8211; List of capabilities available.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Pointer to the <a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Repository18add_model_providerEP13ModelProvider">
+<span id="ydk::path::Repository::add_model_provider__ModelProviderP"></span>void <code class="descclassname"></code><code class="descname">add_model_provider</code><span class="sig-paren">(</span><a class="reference internal" href="model_provider.html#_CPPv2N3ydk4path13ModelProviderE" title="ydk::path::ModelProvider">ModelProvider</a> *<em>model_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Repository18add_model_providerEP13ModelProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>The model provider is responsible for downloading the model from a remote device. It is meant to be invoked if the repository cannot load the model from the local directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_provider</strong> &#8211; The model provider to add</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Repository21remove_model_providerEP13ModelProvider">
+<span id="ydk::path::Repository::remove_model_provider__ModelProviderP"></span>void <code class="descclassname"></code><code class="descname">remove_model_provider</code><span class="sig-paren">(</span><a class="reference internal" href="model_provider.html#_CPPv2N3ydk4path13ModelProviderE" title="ydk::path::ModelProvider">ModelProvider</a> *<em>model_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Repository21remove_model_providerEP13ModelProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the given model provider from this repository</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_provider</strong> &#8211; The model provider to remove</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path10Repository19get_model_providersEv">
+<span id="ydk::path::Repository::get_model_providersC"></span>std::vector&lt;<a class="reference internal" href="model_provider.html#_CPPv2N3ydk4path13ModelProviderE" title="ydk::path::ModelProvider">ModelProvider</a> *&gt; <code class="descclassname"></code><code class="descname">get_model_providers</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path10Repository19get_model_providersEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all model providers registered with this repository.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of model providers associated with this repository</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc.html" class="btn btn-neutral float-right" title="Rpc" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="model_provider.html" class="btn btn-neutral" title="ModelProvider" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

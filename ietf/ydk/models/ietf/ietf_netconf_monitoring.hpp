@@ -512,6 +512,12 @@ class NetconfDatastoreType : public ydk::Enum
         static const ydk::Enum::YLeaf candidate;
         static const ydk::Enum::YLeaf startup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 0;
+            if (name == "candidate") return 1;
+            if (name == "startup") return 2;
+            return -1;
+        }
 };
 
 class NetconfState::Schemas::Schema::Location : public ydk::Enum
@@ -519,6 +525,10 @@ class NetconfState::Schemas::Schema::Location : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf NETCONF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NETCONF") return 0;
+            return -1;
+        }
 };
 
 

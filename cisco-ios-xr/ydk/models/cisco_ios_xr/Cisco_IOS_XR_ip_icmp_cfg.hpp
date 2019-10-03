@@ -235,6 +235,11 @@ class SourcePolicy : public ydk::Enum
         static const ydk::Enum::YLeaf vrf;
         static const ydk::Enum::YLeaf rfc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vrf") return 1;
+            if (name == "rfc") return 2;
+            return -1;
+        }
 };
 
 

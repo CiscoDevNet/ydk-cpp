@@ -778,6 +778,11 @@ class Interfaces::Interface::LinkUpDownTrapEnable : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class InterfacesState::Interface::AdminStatus : public ydk::Enum
@@ -787,6 +792,12 @@ class InterfacesState::Interface::AdminStatus : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            return -1;
+        }
 };
 
 class InterfacesState::Interface::OperStatus : public ydk::Enum
@@ -800,6 +811,16 @@ class InterfacesState::Interface::OperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf not_present;
         static const ydk::Enum::YLeaf lower_layer_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            if (name == "unknown") return 4;
+            if (name == "dormant") return 5;
+            if (name == "not-present") return 6;
+            if (name == "lower-layer-down") return 7;
+            return -1;
+        }
 };
 
 class InterfacesState::Interface::Ipv6::Address::Status : public ydk::Enum
@@ -814,6 +835,17 @@ class InterfacesState::Interface::Ipv6::Address::Status : public ydk::Enum
         static const ydk::Enum::YLeaf duplicate;
         static const ydk::Enum::YLeaf optimistic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "preferred") return 0;
+            if (name == "deprecated") return 1;
+            if (name == "invalid") return 2;
+            if (name == "inaccessible") return 3;
+            if (name == "unknown") return 4;
+            if (name == "tentative") return 5;
+            if (name == "duplicate") return 6;
+            if (name == "optimistic") return 7;
+            return -1;
+        }
 };
 
 class InterfacesState::Interface::Ipv6::Neighbor::State : public ydk::Enum
@@ -825,6 +857,14 @@ class InterfacesState::Interface::Ipv6::Neighbor::State : public ydk::Enum
         static const ydk::Enum::YLeaf delay;
         static const ydk::Enum::YLeaf probe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "incomplete") return 0;
+            if (name == "reachable") return 1;
+            if (name == "stale") return 2;
+            if (name == "delay") return 3;
+            if (name == "probe") return 4;
+            return -1;
+        }
 };
 
 

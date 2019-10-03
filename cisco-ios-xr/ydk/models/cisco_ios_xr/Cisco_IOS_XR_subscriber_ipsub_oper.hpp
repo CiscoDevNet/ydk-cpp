@@ -946,6 +946,25 @@ class IpsubMaIntfStateData : public ydk::Enum
         static const ydk::Enum::YLeaf disconnected;
         static const ydk::Enum::YLeaf error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "initialized") return 1;
+            if (name == "session-creation-started") return 2;
+            if (name == "control-policy-executing") return 3;
+            if (name == "control-policy-executed") return 4;
+            if (name == "session-features-applied") return 5;
+            if (name == "vrf-configured") return 6;
+            if (name == "adding-adjacency") return 7;
+            if (name == "adjacency-added") return 8;
+            if (name == "up") return 9;
+            if (name == "down") return 10;
+            if (name == "address-family-down") return 11;
+            if (name == "address-family-down-complete") return 12;
+            if (name == "disconnecting") return 13;
+            if (name == "disconnected") return 14;
+            if (name == "error") return 15;
+            return -1;
+        }
 };
 
 class IpsubMaParentIntfVlan : public ydk::Enum
@@ -954,6 +973,11 @@ class IpsubMaParentIntfVlan : public ydk::Enum
         static const ydk::Enum::YLeaf plain;
         static const ydk::Enum::YLeaf ambiguous;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "plain") return 0;
+            if (name == "ambiguous") return 1;
+            return -1;
+        }
 };
 
 class IpsubMaParentIntfStateData : public ydk::Enum
@@ -963,6 +987,12 @@ class IpsubMaParentIntfStateData : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deleted") return 0;
+            if (name == "down") return 1;
+            if (name == "up") return 2;
+            return -1;
+        }
 };
 
 class IpsubMaIntfInitiatorData : public ydk::Enum
@@ -972,6 +1002,12 @@ class IpsubMaIntfInitiatorData : public ydk::Enum
         static const ydk::Enum::YLeaf packet_trigger;
         static const ydk::Enum::YLeaf invalid_trigger;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dhcp") return 0;
+            if (name == "packet-trigger") return 1;
+            if (name == "invalid-trigger") return 2;
+            return -1;
+        }
 };
 
 

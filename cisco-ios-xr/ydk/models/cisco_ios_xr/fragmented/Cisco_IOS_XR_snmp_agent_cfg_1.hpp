@@ -281,26 +281,26 @@ class Mib : public ydk::Entity
 
         ydk::YLeaf sensor_mib_cache; //type: empty
         class CbQosmib; //type: Mib::CbQosmib
-        class Subscriber; //type: Mib::Subscriber
-        class InterfaceMib; //type: Mib::InterfaceMib
-        class EntityMib; //type: Mib::EntityMib
         class NotificationLogMib; //type: Mib::NotificationLogMib
+        class EntityMib; //type: Mib::EntityMib
+        class Subscriber; //type: Mib::Subscriber
         class MplsTeMib; //type: Mib::MplsTeMib
         class MplsP2mpMib; //type: Mib::MplsP2mpMib
         class MplsTeExtStdMib; //type: Mib::MplsTeExtStdMib
         class MplsTeExtMib; //type: Mib::MplsTeExtMib
         class MplsFrrMib; //type: Mib::MplsFrrMib
+        class InterfaceMib; //type: Mib::InterfaceMib
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::CbQosmib> cb_qosmib;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::Subscriber> subscriber;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib> interface_mib;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::EntityMib> entity_mib;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::NotificationLogMib> notification_log_mib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::EntityMib> entity_mib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::Subscriber> subscriber;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::MplsTeMib> mpls_te_mib;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::MplsP2mpMib> mpls_p2mp_mib;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::MplsTeExtStdMib> mpls_te_ext_std_mib;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::MplsTeExtMib> mpls_te_ext_mib;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::MplsFrrMib> mpls_frr_mib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib> interface_mib;
         
 }; // Mib
 
@@ -353,6 +353,54 @@ class Mib::CbQosmib::Cache : public ydk::Entity
         ydk::YLeaf service_policy_count; //type: uint32
 
 }; // Mib::CbQosmib::Cache
+
+
+class Mib::NotificationLogMib : public ydk::Entity
+{
+    public:
+        NotificationLogMib();
+        ~NotificationLogMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf global_age_out; //type: uint32
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf default_; //type: empty
+        ydk::YLeaf global_size; //type: uint32
+        ydk::YLeaf default_size; //type: uint32
+
+}; // Mib::NotificationLogMib
+
+
+class Mib::EntityMib : public ydk::Entity
+{
+    public:
+        EntityMib();
+        ~EntityMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entity_index_persistence; //type: empty
+
+}; // Mib::EntityMib
 
 
 class Mib::Subscriber : public ydk::Entity
@@ -1063,6 +1111,117 @@ class Mib::Subscriber::Threshold::Rising::Nodes::Node : public ydk::Entity
 }; // Mib::Subscriber::Threshold::Rising::Nodes::Node
 
 
+class Mib::MplsTeMib : public ydk::Entity
+{
+    public:
+        MplsTeMib();
+        ~MplsTeMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cache_garbage_collect_timer; //type: uint32
+        ydk::YLeaf cache_timer; //type: uint32
+
+}; // Mib::MplsTeMib
+
+
+class Mib::MplsP2mpMib : public ydk::Entity
+{
+    public:
+        MplsP2mpMib();
+        ~MplsP2mpMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cache_timer; //type: uint32
+
+}; // Mib::MplsP2mpMib
+
+
+class Mib::MplsTeExtStdMib : public ydk::Entity
+{
+    public:
+        MplsTeExtStdMib();
+        ~MplsTeExtStdMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cache_timer; //type: uint32
+
+}; // Mib::MplsTeExtStdMib
+
+
+class Mib::MplsTeExtMib : public ydk::Entity
+{
+    public:
+        MplsTeExtMib();
+        ~MplsTeExtMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cache_timer; //type: uint32
+
+}; // Mib::MplsTeExtMib
+
+
+class Mib::MplsFrrMib : public ydk::Entity
+{
+    public:
+        MplsFrrMib();
+        ~MplsFrrMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cache_timer; //type: uint32
+
+}; // Mib::MplsFrrMib
+
+
 class Mib::InterfaceMib : public ydk::Entity
 {
     public:
@@ -1235,165 +1394,6 @@ class Mib::InterfaceMib::Subsets::Subset::LinkUpDown : public ydk::Entity
         ydk::YLeaf regular_expression; //type: string
 
 }; // Mib::InterfaceMib::Subsets::Subset::LinkUpDown
-
-
-class Mib::EntityMib : public ydk::Entity
-{
-    public:
-        EntityMib();
-        ~EntityMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entity_index_persistence; //type: empty
-
-}; // Mib::EntityMib
-
-
-class Mib::NotificationLogMib : public ydk::Entity
-{
-    public:
-        NotificationLogMib();
-        ~NotificationLogMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf global_age_out; //type: uint32
-        ydk::YLeaf disable; //type: empty
-        ydk::YLeaf default_; //type: empty
-        ydk::YLeaf global_size; //type: uint32
-        ydk::YLeaf default_size; //type: uint32
-
-}; // Mib::NotificationLogMib
-
-
-class Mib::MplsTeMib : public ydk::Entity
-{
-    public:
-        MplsTeMib();
-        ~MplsTeMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cache_garbage_collect_timer; //type: uint32
-        ydk::YLeaf cache_timer; //type: uint32
-
-}; // Mib::MplsTeMib
-
-
-class Mib::MplsP2mpMib : public ydk::Entity
-{
-    public:
-        MplsP2mpMib();
-        ~MplsP2mpMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cache_timer; //type: uint32
-
-}; // Mib::MplsP2mpMib
-
-
-class Mib::MplsTeExtStdMib : public ydk::Entity
-{
-    public:
-        MplsTeExtStdMib();
-        ~MplsTeExtStdMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cache_timer; //type: uint32
-
-}; // Mib::MplsTeExtStdMib
-
-
-class Mib::MplsTeExtMib : public ydk::Entity
-{
-    public:
-        MplsTeExtMib();
-        ~MplsTeExtMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cache_timer; //type: uint32
-
-}; // Mib::MplsTeExtMib
-
-
-class Mib::MplsFrrMib : public ydk::Entity
-{
-    public:
-        MplsFrrMib();
-        ~MplsFrrMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cache_timer; //type: uint32
-
-}; // Mib::MplsFrrMib
 
 
 }

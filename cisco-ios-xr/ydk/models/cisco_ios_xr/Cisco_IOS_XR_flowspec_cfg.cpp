@@ -386,7 +386,7 @@ bool FlowSpec::Afs::Af::has_leaf_or_child_of_name(const std::string & name) cons
 
 FlowSpec::Afs::Af::ServicePolicies::ServicePolicies()
     :
-    service_policy(this, {"policy_name"})
+    service_policy(this, {"policy_type", "policy_name"})
 {
 
     yang_name = "service-policies"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
@@ -479,9 +479,9 @@ bool FlowSpec::Afs::Af::ServicePolicies::has_leaf_or_child_of_name(const std::st
 
 FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::ServicePolicy()
     :
-    policy_name{YType::str, "policy-name"}
-        ,
-    policy_type(this, {"policy_type"})
+    policy_type{YType::enumeration, "policy-type"},
+    policy_name{YType::str, "policy-name"},
+    local{YType::boolean, "local"}
 {
 
     yang_name = "service-policy"; yang_parent_name = "service-policies"; is_top_level_class = false; has_list_ancestor = true; 
@@ -494,29 +494,24 @@ FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::~ServicePolicy()
 bool FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<policy_type.len(); index++)
-    {
-        if(policy_type[index]->has_data())
-            return true;
-    }
-    return policy_name.is_set;
+    return policy_type.is_set
+	|| policy_name.is_set
+	|| local.is_set;
 }
 
 bool FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::has_operation() const
 {
-    for (std::size_t index=0; index<policy_type.len(); index++)
-    {
-        if(policy_type[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(policy_name.yfilter);
+	|| ydk::is_set(policy_type.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(local.yfilter);
 }
 
 std::string FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "service-policy";
+    ADD_KEY_TOKEN(policy_type, "policy-type");
     ADD_KEY_TOKEN(policy_name, "policy-name");
     return path_buffer.str();
 }
@@ -525,7 +520,9 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::Af::ServicePolicie
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (policy_type.is_set || is_set(policy_type.yfilter)) leaf_name_data.push_back(policy_type.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (local.is_set || is_set(local.yfilter)) leaf_name_data.push_back(local.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -533,14 +530,6 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::Af::ServicePolicie
 
 std::shared_ptr<ydk::Entity> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "policy-type")
-    {
-        auto ent_ = std::make_shared<FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType>();
-        ent_->parent = this;
-        policy_type.append(ent_);
-        return ent_;
-    }
-
     return nullptr;
 }
 
@@ -548,108 +537,22 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Afs::Af::ServicePo
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    count_ = 0;
-    for (auto ent_ : policy_type.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
     return _children;
 }
 
 void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-}
-
-bool FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy-type" || name == "policy-name")
-        return true;
-    return false;
-}
-
-FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::PolicyType()
-    :
-    policy_type{YType::enumeration, "policy-type"},
-    local{YType::boolean, "local"}
-{
-
-    yang_name = "policy-type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::~PolicyType()
-{
-}
-
-bool FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::has_data() const
-{
-    if (is_presence_container) return true;
-    return policy_type.is_set
-	|| local.is_set;
-}
-
-bool FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(policy_type.yfilter)
-	|| ydk::is_set(local.yfilter);
-}
-
-std::string FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-type";
-    ADD_KEY_TOKEN(policy_type, "policy-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (policy_type.is_set || is_set(policy_type.yfilter)) leaf_name_data.push_back(policy_type.get_name_leafdata());
-    if (local.is_set || is_set(local.yfilter)) leaf_name_data.push_back(local.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "policy-type")
     {
         policy_type = value;
         policy_type.value_namespace = name_space;
         policy_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local")
     {
@@ -659,11 +562,15 @@ void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_value(co
     }
 }
 
-void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_filter(const std::string & value_path, YFilter yfilter)
+void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "policy-type")
     {
         policy_type.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
     }
     if(value_path == "local")
     {
@@ -671,9 +578,9 @@ void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_filter(c
     }
 }
 
-bool FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::has_leaf_or_child_of_name(const std::string & name) const
+bool FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "policy-type" || name == "local")
+    if(name == "policy-type" || name == "policy-name" || name == "local")
         return true;
     return false;
 }
@@ -1090,7 +997,7 @@ bool FlowSpec::Vrfs::Vrf::Afs::Af::has_leaf_or_child_of_name(const std::string &
 
 FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicies()
     :
-    service_policy(this, {"policy_name"})
+    service_policy(this, {"policy_type", "policy_name"})
 {
 
     yang_name = "service-policies"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1183,9 +1090,9 @@ bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::has_leaf_or_child_of_name(co
 
 FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::ServicePolicy()
     :
-    policy_name{YType::str, "policy-name"}
-        ,
-    policy_type(this, {"policy_type"})
+    policy_type{YType::enumeration, "policy-type"},
+    policy_name{YType::str, "policy-name"},
+    local{YType::boolean, "local"}
 {
 
     yang_name = "service-policy"; yang_parent_name = "service-policies"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1198,29 +1105,24 @@ FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::~ServicePolicy()
 bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<policy_type.len(); index++)
-    {
-        if(policy_type[index]->has_data())
-            return true;
-    }
-    return policy_name.is_set;
+    return policy_type.is_set
+	|| policy_name.is_set
+	|| local.is_set;
 }
 
 bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::has_operation() const
 {
-    for (std::size_t index=0; index<policy_type.len(); index++)
-    {
-        if(policy_type[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(policy_name.yfilter);
+	|| ydk::is_set(policy_type.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(local.yfilter);
 }
 
 std::string FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "service-policy";
+    ADD_KEY_TOKEN(policy_type, "policy-type");
     ADD_KEY_TOKEN(policy_name, "policy-name");
     return path_buffer.str();
 }
@@ -1229,7 +1131,9 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Ser
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (policy_type.is_set || is_set(policy_type.yfilter)) leaf_name_data.push_back(policy_type.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (local.is_set || is_set(local.yfilter)) leaf_name_data.push_back(local.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1237,14 +1141,6 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Ser
 
 std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "policy-type")
-    {
-        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType>();
-        ent_->parent = this;
-        policy_type.append(ent_);
-        return ent_;
-    }
-
     return nullptr;
 }
 
@@ -1252,108 +1148,22 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    count_ = 0;
-    for (auto ent_ : policy_type.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
     return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-}
-
-bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy-type" || name == "policy-name")
-        return true;
-    return false;
-}
-
-FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::PolicyType()
-    :
-    policy_type{YType::enumeration, "policy-type"},
-    local{YType::boolean, "local"}
-{
-
-    yang_name = "policy-type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::~PolicyType()
-{
-}
-
-bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::has_data() const
-{
-    if (is_presence_container) return true;
-    return policy_type.is_set
-	|| local.is_set;
-}
-
-bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(policy_type.yfilter)
-	|| ydk::is_set(local.yfilter);
-}
-
-std::string FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-type";
-    ADD_KEY_TOKEN(policy_type, "policy-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (policy_type.is_set || is_set(policy_type.yfilter)) leaf_name_data.push_back(policy_type.get_name_leafdata());
-    if (local.is_set || is_set(local.yfilter)) leaf_name_data.push_back(local.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "policy-type")
     {
         policy_type = value;
         policy_type.value_namespace = name_space;
         policy_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local")
     {
@@ -1363,11 +1173,15 @@ void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::s
     }
 }
 
-void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_filter(const std::string & value_path, YFilter yfilter)
+void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "policy-type")
     {
         policy_type.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
     }
     if(value_path == "local")
     {
@@ -1375,9 +1189,9 @@ void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::s
     }
 }
 
-bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::has_leaf_or_child_of_name(const std::string & name) const
+bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "policy-type" || name == "local")
+    if(name == "policy-type" || name == "policy-name" || name == "local")
         return true;
     return false;
 }

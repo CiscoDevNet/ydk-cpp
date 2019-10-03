@@ -28,9 +28,11 @@ Grpc::Grpc()
         ,
     service_layer(std::make_shared<Grpc::ServiceLayer>())
     , tls_cipher(std::make_shared<Grpc::TlsCipher>())
+    , tls(std::make_shared<Grpc::Tls>())
 {
     service_layer->parent = this;
     tls_cipher->parent = this;
+    tls->parent = this;
 
     yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -55,7 +57,8 @@ bool Grpc::has_data() const
 	|| tls_mutual.is_set
 	|| max_request_total.is_set
 	|| (service_layer !=  nullptr && service_layer->has_data())
-	|| (tls_cipher !=  nullptr && tls_cipher->has_data());
+	|| (tls_cipher !=  nullptr && tls_cipher->has_data())
+	|| (tls !=  nullptr && tls->has_data());
 }
 
 bool Grpc::has_operation() const
@@ -74,7 +77,8 @@ bool Grpc::has_operation() const
 	|| ydk::is_set(tls_mutual.yfilter)
 	|| ydk::is_set(max_request_total.yfilter)
 	|| (service_layer !=  nullptr && service_layer->has_operation())
-	|| (tls_cipher !=  nullptr && tls_cipher->has_operation());
+	|| (tls_cipher !=  nullptr && tls_cipher->has_operation())
+	|| (tls !=  nullptr && tls->has_operation());
 }
 
 std::string Grpc::get_segment_path() const
@@ -125,6 +129,15 @@ std::shared_ptr<ydk::Entity> Grpc::get_child_by_name(const std::string & child_y
         return tls_cipher;
     }
 
+    if(child_yang_name == "tls")
+    {
+        if(tls == nullptr)
+        {
+            tls = std::make_shared<Grpc::Tls>();
+        }
+        return tls;
+    }
+
     return nullptr;
 }
 
@@ -140,6 +153,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::get_children() const
     if(tls_cipher != nullptr)
     {
         _children["tls-cipher"] = tls_cipher;
+    }
+
+    if(tls != nullptr)
+    {
+        _children["tls"] = tls;
     }
 
     return _children;
@@ -300,7 +318,7 @@ std::map<std::pair<std::string, std::string>, std::string> Grpc::get_namespace_i
 
 bool Grpc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "service-layer" || name == "tls-cipher" || name == "port" || name == "vrf" || name == "max-streams" || name == "enable" || name == "max-streams-per-user" || name == "max-request-per-user" || name == "no-tls" || name == "tls-trustpoint" || name == "dscp" || name == "address-family" || name == "tls-mutual" || name == "max-request-total")
+    if(name == "service-layer" || name == "tls-cipher" || name == "tls" || name == "port" || name == "vrf" || name == "max-streams" || name == "enable" || name == "max-streams-per-user" || name == "max-request-per-user" || name == "no-tls" || name == "tls-trustpoint" || name == "dscp" || name == "address-family" || name == "tls-mutual" || name == "max-request-total")
         return true;
     return false;
 }
@@ -499,6 +517,91 @@ void Grpc::TlsCipher::set_filter(const std::string & value_path, YFilter yfilter
 bool Grpc::TlsCipher::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "default" || name == "enable" || name == "disable")
+        return true;
+    return false;
+}
+
+Grpc::Tls::Tls()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "tls"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Grpc::Tls::~Tls()
+{
+}
+
+bool Grpc::Tls::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Grpc::Tls::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Grpc::Tls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-ems-cfg:grpc/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Grpc::Tls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Grpc::Tls::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Grpc::Tls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::Tls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Grpc::Tls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Grpc::Tls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Grpc::Tls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
         return true;
     return false;
 }

@@ -1144,6 +1144,12 @@ class SergShowSessionError : public ydk::Enum
         static const ydk::Enum::YLeaf hard;
         static const ydk::Enum::YLeaf soft;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "hard") return 1;
+            if (name == "soft") return 2;
+            return -1;
+        }
 };
 
 class SergShowSlaveMode : public ydk::Enum
@@ -1153,6 +1159,12 @@ class SergShowSlaveMode : public ydk::Enum
         static const ydk::Enum::YLeaf warm;
         static const ydk::Enum::YLeaf hot;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "warm") return 1;
+            if (name == "hot") return 2;
+            return -1;
+        }
 };
 
 class SergShowSoReason : public ydk::Enum
@@ -1165,6 +1177,15 @@ class SergShowSoReason : public ydk::Enum
         static const ydk::Enum::YLeaf object_tracking_status_change;
         static const ydk::Enum::YLeaf serg_show_so_reason_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            if (name == "admin") return 1;
+            if (name == "peer-up") return 2;
+            if (name == "peer-down") return 3;
+            if (name == "object-tracking-status-change") return 4;
+            if (name == "serg-show-so-reason-max") return 5;
+            return -1;
+        }
 };
 
 class SergShowMem : public ydk::Enum
@@ -1177,6 +1198,15 @@ class SergShowMem : public ydk::Enum
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard") return 0;
+            if (name == "chunk") return 1;
+            if (name == "edm") return 2;
+            if (name == "string") return 3;
+            if (name == "static") return 4;
+            if (name == "unknown") return 5;
+            return -1;
+        }
 };
 
 class SergPeerStatus : public ydk::Enum
@@ -1192,6 +1222,18 @@ class SergPeerStatus : public ydk::Enum
         static const ydk::Enum::YLeaf connected;
         static const ydk::Enum::YLeaf established;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-configured") return 0;
+            if (name == "initialize") return 1;
+            if (name == "retry") return 2;
+            if (name == "connect") return 3;
+            if (name == "listen") return 4;
+            if (name == "registration") return 5;
+            if (name == "cleanup") return 6;
+            if (name == "connected") return 7;
+            if (name == "established") return 8;
+            return -1;
+        }
 };
 
 class SergShowImRole : public ydk::Enum
@@ -1201,6 +1243,12 @@ class SergShowImRole : public ydk::Enum
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "master") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
 };
 
 class SergShowComp : public ydk::Enum
@@ -1211,6 +1259,13 @@ class SergShowComp : public ydk::Enum
         static const ydk::Enum::YLeaf dhcpv6;
         static const ydk::Enum::YLeaf daps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "serga") return 0;
+            if (name == "ipv6nd") return 1;
+            if (name == "dhcpv6") return 2;
+            if (name == "daps") return 3;
+            return -1;
+        }
 };
 
 class SergShowSessionOperation : public ydk::Enum
@@ -1221,6 +1276,13 @@ class SergShowSessionOperation : public ydk::Enum
         static const ydk::Enum::YLeaf delete_;
         static const ydk::Enum::YLeaf in_sync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "update") return 1;
+            if (name == "delete") return 2;
+            if (name == "in-sync") return 3;
+            return -1;
+        }
 };
 
 class SergShowRole : public ydk::Enum
@@ -1230,6 +1292,12 @@ class SergShowRole : public ydk::Enum
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "master") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
 };
 
 

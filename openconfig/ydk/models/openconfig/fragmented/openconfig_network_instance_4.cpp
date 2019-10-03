@@ -15051,6 +15051,7 @@ std::string NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-descriptor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

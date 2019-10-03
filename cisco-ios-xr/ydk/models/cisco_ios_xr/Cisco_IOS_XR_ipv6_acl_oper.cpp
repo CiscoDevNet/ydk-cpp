@@ -936,6 +936,7 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "usage";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2362,6 +2363,7 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessLis
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2501,6 +2503,7 @@ std::string Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessLis
 {
     std::ostringstream path_buffer;
     path_buffer << "udf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

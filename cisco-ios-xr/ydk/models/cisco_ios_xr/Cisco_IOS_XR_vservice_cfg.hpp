@@ -680,6 +680,10 @@ class SfcSfTransport : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf vxlan_gpe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vxlan-gpe") return 1;
+            return -1;
+        }
 };
 
 class SfcMetadataDispositionMatch : public ydk::Enum
@@ -687,6 +691,10 @@ class SfcMetadataDispositionMatch : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf type1_dcalloc_tenant_id;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type1-dcalloc-tenant-id") return 1;
+            return -1;
+        }
 };
 
 class SfcMetadataAlloc : public ydk::Enum
@@ -694,6 +702,10 @@ class SfcMetadataAlloc : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf type1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type1") return 1;
+            return -1;
+        }
 };
 
 class SfcMetadataType1AllocFormat : public ydk::Enum
@@ -701,6 +713,10 @@ class SfcMetadataType1AllocFormat : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf dc_allocation;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dc-allocation") return 1;
+            return -1;
+        }
 };
 
 class SfcMetadataDispositionAction : public ydk::Enum
@@ -708,6 +724,10 @@ class SfcMetadataDispositionAction : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf redirect_nexthop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "redirect-nexthop") return 1;
+            return -1;
+        }
 };
 
 

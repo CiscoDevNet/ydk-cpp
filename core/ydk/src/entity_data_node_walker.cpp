@@ -135,7 +135,7 @@ static void populate_name_values(path::DataNode & data_node, EntityPath & path)
         YLOG_DEBUG("Creating leaf '{}' of '{}' with value: '{}', is_set: {}", name_value.first, data_node.get_path(),
                 leaf_data.value, leaf_data.is_set);
 
-        if(leaf_data.is_set)
+        if(leaf_data.is_set || is_set(leaf_data.yfilter))
         {
             YLOG_DEBUG("Creating leaf datanode '{}' with value '{}'", name_value.first, leaf_data.value);
             auto & result = data_node.create_datanode(name_value.first, leaf_data.value);
@@ -155,15 +155,16 @@ static void populate_name_values(path::DataNode & data_node, EntityPath & path)
 
 static void add_annotation_to_datanode(const Entity & entity, path::DataNode & data_node)
 {
-    YLOG_DEBUG("Got yfilter '{}' for {}", to_string(entity.yfilter), entity.yang_name);
+    YLOG_DEBUG("Got yfilter '{}' for entity '{}'", to_string(entity.yfilter), entity.yang_name);
     if (entity.yfilter != YFilter::read)
     {
         data_node.add_annotation(
                                  get_annotation(entity.yfilter)
                                  );
-        YLOG_DEBUG("Set yfilter '{}' for {}", to_string(entity.yfilter), entity.yang_name);
-
+        YLOG_DEBUG("Set yfilter '{}' for datanode '{}'", to_string(entity.yfilter), entity.yang_name);
     }
+    auto data_node_impl = dynamic_cast<path::DataNodeImpl*>(&data_node);
+    data_node_impl->yfilter = entity.yfilter;
 }
 
 static void add_annotation_to_datanode(const pair<string, LeafData> & name_value, path::DataNode & data_node)
@@ -174,8 +175,10 @@ static void add_annotation_to_datanode(const pair<string, LeafData> & name_value
         data_node.add_annotation(
                                  get_annotation(name_value.second.yfilter)
                                  );
-        YLOG_DEBUG("Set yfilter '{}' for {}", to_string(name_value.second.yfilter), name_value.first);
+        YLOG_DEBUG("Set yfilter '{}' for datanode '{}'", to_string(name_value.second.yfilter), name_value.first);
     }
+    auto data_node_impl = dynamic_cast<path::DataNodeImpl*>(&data_node);
+    data_node_impl->yfilter = name_value.second.yfilter;
 }
 
 static path::Annotation get_annotation(YFilter yfilter)
@@ -183,6 +186,12 @@ static path::Annotation get_annotation(YFilter yfilter)
     if(yfilter == YFilter::not_set)
         throw(YInvalidArgumentError{"Invalid operation"});
     return {IETF_NETCONF_MODULE_NAME, "operation", to_string(yfilter)};
+}
+
+YFilter get_data_node_yfilter(path::DataNode * dnp)
+{
+    auto data_node_impl = dynamic_cast<path::DataNodeImpl*>(dnp);
+    return data_node_impl->yfilter;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -194,6 +203,11 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
         return;
 
     YLOG_DEBUG("Looking at parent entity '{}'", entity->yang_name);
+    auto yfilter = get_data_node_yfilter(node);
+    if (yfilter != YFilter::not_set) {
+        YLOG_DEBUG("Set yfilter '{}' for entity '{}'", to_string(yfilter), entity->yang_name);
+        entity->yfilter = yfilter;
+    }
     string module_name = node->get_schema_node().get_statement().module_name;
     for(auto & child_data_node:node->get_children())
     {
@@ -213,12 +227,17 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
             entity->set_value(child_name, child_data_node->get_value());
             YLOG_DEBUG("Created entity leaf '{}' of value '{}' in parent '{}'", child_name,
                     child_data_node->get_value(), node->get_path());
+            yfilter = get_data_node_yfilter(child_data_node.get());
+            if (yfilter != YFilter::not_set) {
+                YLOG_DEBUG("Set yfilter '{}' for leaf '{}'", to_string(yfilter), child_name);
+                entity->set_filter(child_name, yfilter);
+            }
         }
         else
         {
             YLOG_DEBUG("Going into child {} in parent {}", child_name, node->get_path());
             shared_ptr<Entity> child_entity;
-            if(data_node_is_list(*child_data_node))
+            if (data_node_is_list(*child_data_node))
             {
                 child_entity = entity->get_child_by_name(child_name, get_segment_path(child_data_node->get_path()));
             }
@@ -238,6 +257,11 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
             }
             child_entity->parent = entity.get();
             get_entity_from_data_node(child_data_node.get(), child_entity);
+            if (data_node_is_list(*child_data_node) &&
+                child_entity->ylist && child_entity->ylist->ylist_key_names.size() > 0)
+            {
+                child_entity->ylist->review(child_entity);
+            }
         }
     }
 }

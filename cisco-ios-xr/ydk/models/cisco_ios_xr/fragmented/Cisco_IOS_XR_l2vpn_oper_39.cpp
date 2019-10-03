@@ -11,6 +11,450 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
 
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::SrtePolicy()
+    :
+    policy_name{YType::str, "policy-name"}
+{
+
+    yang_name = "srte-policy"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::~SrtePolicy()
+{
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return policy_name.is_set;
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policy_name.yfilter);
+}
+
+std::string L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srte-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath::SrtePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-name")
+        return true;
+    return false;
+}
+
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::LocalSignalling()
+    :
+    pw_status{YType::uint32, "pw-status"}
+        ,
+    status_tlv(std::make_shared<L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv>())
+    , tlv(this, {})
+{
+    status_tlv->parent = this;
+
+    yang_name = "local-signalling"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::~LocalSignalling()
+{
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tlv.len(); index++)
+    {
+        if(tlv[index]->has_data())
+            return true;
+    }
+    return pw_status.is_set
+	|| (status_tlv !=  nullptr && status_tlv->has_data());
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::has_operation() const
+{
+    for (std::size_t index=0; index<tlv.len(); index++)
+    {
+        if(tlv[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(pw_status.yfilter)
+	|| (status_tlv !=  nullptr && status_tlv->has_operation());
+}
+
+std::string L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-signalling";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pw_status.is_set || is_set(pw_status.yfilter)) leaf_name_data.push_back(pw_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "status-tlv")
+    {
+        if(status_tlv == nullptr)
+        {
+            status_tlv = std::make_shared<L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv>();
+        }
+        return status_tlv;
+    }
+
+    if(child_yang_name == "tlv")
+    {
+        auto ent_ = std::make_shared<L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv>();
+        ent_->parent = this;
+        tlv.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(status_tlv != nullptr)
+    {
+        _children["status-tlv"] = status_tlv;
+    }
+
+    count_ = 0;
+    for (auto ent_ : tlv.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pw-status")
+    {
+        pw_status = value;
+        pw_status.value_namespace = name_space;
+        pw_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pw-status")
+    {
+        pw_status.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status-tlv" || name == "tlv" || name == "pw-status")
+        return true;
+    return false;
+}
+
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::StatusTlv()
+    :
+    pw_id{YType::uint32, "pw-id"},
+    local_address{YType::str, "local-address"},
+    remote_address{YType::str, "remote-address"},
+    description{YType::str, "description"}
+{
+
+    yang_name = "status-tlv"; yang_parent_name = "local-signalling"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::~StatusTlv()
+{
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return pw_id.is_set
+	|| local_address.is_set
+	|| remote_address.is_set
+	|| description.is_set;
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(description.yfilter);
+}
+
+std::string L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "status-tlv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pw-id")
+    {
+        pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-address")
+    {
+        local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::StatusTlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pw-id" || name == "local-address" || name == "remote-address" || name == "description")
+        return true;
+    return false;
+}
+
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::Tlv()
+    :
+    pw_id{YType::uint32, "pw-id"},
+    local_address{YType::str, "local-address"},
+    remote_address{YType::str, "remote-address"},
+    description{YType::str, "description"}
+{
+
+    yang_name = "tlv"; yang_parent_name = "local-signalling"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::~Tlv()
+{
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return pw_id.is_set
+	|| local_address.is_set
+	|| remote_address.is_set
+	|| description.is_set;
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(description.yfilter);
+}
+
+std::string L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pw-id")
+    {
+        pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-address")
+    {
+        local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling::Tlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pw-id" || name == "local-address" || name == "remote-address" || name == "description")
+        return true;
+    return false;
+}
+
 L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::RemoteSignalling::RemoteSignalling()
     :
     pw_status{YType::uint32, "pw-status"}
@@ -293,6 +737,7 @@ std::string L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectServ
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3540,6 +3985,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-report-matrix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3633,6 +4079,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "ac1";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3757,6 +4204,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "ac2";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3908,6 +4356,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "up-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3986,6 +4435,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "down-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4064,6 +4514,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "unresolved-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4182,6 +4633,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-total";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4333,6 +4785,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::UpCount::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "up-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4411,6 +4864,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::DownCount::
 {
     std::ostringstream path_buffer;
     path_buffer << "down-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4489,6 +4943,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::UnresolvedC
 {
     std::ostringstream path_buffer;
     path_buffer << "unresolved-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5195,6 +5650,7 @@ std::string GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5689,6 +6145,7 @@ std::string GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInter
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6183,6 +6640,7 @@ std::string GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterf
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -895,6 +895,11 @@ class PushSource : public ydk::Enum
         static const ydk::Enum::YLeaf interface_originated;
         static const ydk::Enum::YLeaf address_originated;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-originated") return 0;
+            if (name == "address-originated") return 1;
+            return -1;
+        }
 };
 
 

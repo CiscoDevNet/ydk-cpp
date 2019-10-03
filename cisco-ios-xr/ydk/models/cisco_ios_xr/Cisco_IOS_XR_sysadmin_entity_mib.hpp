@@ -341,6 +341,20 @@ class PhysicalClass : public ydk::Enum
         static const ydk::Enum::YLeaf port;
         static const ydk::Enum::YLeaf stack;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "unknown") return 2;
+            if (name == "chassis") return 3;
+            if (name == "backplane") return 4;
+            if (name == "container") return 5;
+            if (name == "powerSupply") return 6;
+            if (name == "fan") return 7;
+            if (name == "sensor") return 8;
+            if (name == "module") return 9;
+            if (name == "port") return 10;
+            if (name == "stack") return 11;
+            return -1;
+        }
 };
 
 

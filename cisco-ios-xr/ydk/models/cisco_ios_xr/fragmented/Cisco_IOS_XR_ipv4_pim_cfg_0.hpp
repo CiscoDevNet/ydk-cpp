@@ -3837,6 +3837,11 @@ class PimProtocolMode : public ydk::Enum
         static const ydk::Enum::YLeaf sm;
         static const ydk::Enum::YLeaf bidir;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sm") return 0;
+            if (name == "bidir") return 1;
+            return -1;
+        }
 };
 
 class PimMultipath : public ydk::Enum
@@ -3848,6 +3853,14 @@ class PimMultipath : public ydk::Enum
         static const ydk::Enum::YLeaf source_next_hop_hash;
         static const ydk::Enum::YLeaf source_group_hash;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            if (name == "interface-hash") return 1;
+            if (name == "source-hash") return 2;
+            if (name == "source-next-hop-hash") return 3;
+            if (name == "source-group-hash") return 4;
+            return -1;
+        }
 };
 
 

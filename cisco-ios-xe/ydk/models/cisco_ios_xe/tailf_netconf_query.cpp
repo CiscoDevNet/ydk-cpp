@@ -364,6 +364,7 @@ std::string StartQuery::Input::Select::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "select";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -963,6 +964,7 @@ std::string FetchQueryResult::Output::QueryResult::Result::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1063,6 +1065,7 @@ std::string FetchQueryResult::Output::QueryResult::Result::Select::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "select";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1499,6 +1502,7 @@ std::string ImmediateQuery::Input::Select::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "select";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1803,6 +1807,7 @@ std::string ImmediateQuery::Output::QueryResult::Result::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1903,6 +1908,7 @@ std::string ImmediateQuery::Output::QueryResult::Result::Select::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "select";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

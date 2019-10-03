@@ -4131,8 +4131,8 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     , match_neighbor_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet>())
     , match_tag_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet>())
     , igp_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions>())
-    , bgp_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>())
     , isis_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions>())
+    , bgp_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>())
 {
     config->parent = this;
     state->parent = this;
@@ -4141,8 +4141,8 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_neighbor_set->parent = this;
     match_tag_set->parent = this;
     igp_conditions->parent = this;
-    bgp_conditions->parent = this;
     isis_conditions->parent = this;
+    bgp_conditions->parent = this;
 
     yang_name = "conditions"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -4161,8 +4161,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| (match_neighbor_set !=  nullptr && match_neighbor_set->has_data())
 	|| (match_tag_set !=  nullptr && match_tag_set->has_data())
 	|| (igp_conditions !=  nullptr && igp_conditions->has_data())
-	|| (bgp_conditions !=  nullptr && bgp_conditions->has_data())
-	|| (isis_conditions !=  nullptr && isis_conditions->has_data());
+	|| (isis_conditions !=  nullptr && isis_conditions->has_data())
+	|| (bgp_conditions !=  nullptr && bgp_conditions->has_data());
 }
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::has_operation() const
@@ -4175,8 +4175,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| (match_neighbor_set !=  nullptr && match_neighbor_set->has_operation())
 	|| (match_tag_set !=  nullptr && match_tag_set->has_operation())
 	|| (igp_conditions !=  nullptr && igp_conditions->has_operation())
-	|| (bgp_conditions !=  nullptr && bgp_conditions->has_operation())
-	|| (isis_conditions !=  nullptr && isis_conditions->has_operation());
+	|| (isis_conditions !=  nullptr && isis_conditions->has_operation())
+	|| (bgp_conditions !=  nullptr && bgp_conditions->has_operation());
 }
 
 std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::get_segment_path() const
@@ -4260,15 +4260,6 @@ std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition:
         return igp_conditions;
     }
 
-    if(child_yang_name == "openconfig-bgp-policy:bgp-conditions")
-    {
-        if(bgp_conditions == nullptr)
-        {
-            bgp_conditions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>();
-        }
-        return bgp_conditions;
-    }
-
     if(child_yang_name == "openconfig-isis-policy:isis-conditions")
     {
         if(isis_conditions == nullptr)
@@ -4276,6 +4267,15 @@ std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition:
             isis_conditions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions>();
         }
         return isis_conditions;
+    }
+
+    if(child_yang_name == "openconfig-bgp-policy:bgp-conditions")
+    {
+        if(bgp_conditions == nullptr)
+        {
+            bgp_conditions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>();
+        }
+        return bgp_conditions;
     }
 
     return nullptr;
@@ -4320,14 +4320,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinit
         _children["igp-conditions"] = igp_conditions;
     }
 
-    if(bgp_conditions != nullptr)
-    {
-        _children["openconfig-bgp-policy:bgp-conditions"] = bgp_conditions;
-    }
-
     if(isis_conditions != nullptr)
     {
         _children["openconfig-isis-policy:isis-conditions"] = isis_conditions;
+    }
+
+    if(bgp_conditions != nullptr)
+    {
+        _children["openconfig-bgp-policy:bgp-conditions"] = bgp_conditions;
     }
 
     return _children;
@@ -4343,7 +4343,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "state" || name == "match-interface" || name == "match-prefix-set" || name == "match-neighbor-set" || name == "match-tag-set" || name == "igp-conditions" || name == "bgp-conditions" || name == "isis-conditions")
+    if(name == "config" || name == "state" || name == "match-interface" || name == "match-prefix-set" || name == "match-neighbor-set" || name == "match-tag-set" || name == "igp-conditions" || name == "isis-conditions" || name == "bgp-conditions")
         return true;
     return false;
 }
@@ -5727,6 +5727,262 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions::has_leaf_or_child_of_name(const std::string & name) const
 {
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::IsisConditions()
+    :
+    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>())
+{
+    config->parent = this;
+    state->parent = this;
+
+    yang_name = "isis-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::~IsisConditions()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_data() const
+{
+    if (is_presence_container) return true;
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig-isis-policy:isis-conditions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(config != nullptr)
+    {
+        _children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        _children["state"] = state;
+    }
+
+    return _children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::Config()
+    :
+    level_eq{YType::uint8, "level-eq"}
+{
+
+    yang_name = "config"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::~Config()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_data() const
+{
+    if (is_presence_container) return true;
+    return level_eq.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level_eq.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq = value;
+        level_eq.value_namespace = name_space;
+        level_eq.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level-eq")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::State()
+    :
+    level_eq{YType::uint8, "level-eq"}
+{
+
+    yang_name = "state"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::~State()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return level_eq.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level_eq.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq = value;
+        level_eq.value_namespace = name_space;
+        level_eq.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level-eq")
+        return true;
     return false;
 }
 
@@ -7670,275 +7926,19 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::IsisConditions()
-    :
-    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>())
-    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>())
-{
-    config->parent = this;
-    state->parent = this;
-
-    yang_name = "isis-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::~IsisConditions()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_data() const
-{
-    if (is_presence_container) return true;
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_operation() const
-{
-    return is_set(yfilter)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "openconfig-isis-policy:isis-conditions";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(config != nullptr)
-    {
-        _children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        _children["state"] = state;
-    }
-
-    return _children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config" || name == "state")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::Config()
-    :
-    level_eq{YType::uint8, "level-eq"}
-{
-
-    yang_name = "config"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::~Config()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_data() const
-{
-    if (is_presence_container) return true;
-    return level_eq.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level_eq.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq = value;
-        level_eq.value_namespace = name_space;
-        level_eq.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level-eq")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::State()
-    :
-    level_eq{YType::uint8, "level-eq"}
-{
-
-    yang_name = "state"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::~State()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_data() const
-{
-    if (is_presence_container) return true;
-    return level_eq.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level_eq.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq = value;
-        level_eq.value_namespace = name_space;
-        level_eq.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level-eq")
-        return true;
-    return false;
-}
-
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Actions()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Config>())
     , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State>())
     , igp_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions>())
-    , bgp_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>())
     , isis_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions>())
+    , bgp_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>())
 {
     config->parent = this;
     state->parent = this;
     igp_actions->parent = this;
-    bgp_actions->parent = this;
     isis_actions->parent = this;
+    bgp_actions->parent = this;
 
     yang_name = "actions"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -7953,8 +7953,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (igp_actions !=  nullptr && igp_actions->has_data())
-	|| (bgp_actions !=  nullptr && bgp_actions->has_data())
-	|| (isis_actions !=  nullptr && isis_actions->has_data());
+	|| (isis_actions !=  nullptr && isis_actions->has_data())
+	|| (bgp_actions !=  nullptr && bgp_actions->has_data());
 }
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::has_operation() const
@@ -7963,8 +7963,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation())
 	|| (igp_actions !=  nullptr && igp_actions->has_operation())
-	|| (bgp_actions !=  nullptr && bgp_actions->has_operation())
-	|| (isis_actions !=  nullptr && isis_actions->has_operation());
+	|| (isis_actions !=  nullptr && isis_actions->has_operation())
+	|| (bgp_actions !=  nullptr && bgp_actions->has_operation());
 }
 
 std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::get_segment_path() const
@@ -8012,15 +8012,6 @@ std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition:
         return igp_actions;
     }
 
-    if(child_yang_name == "openconfig-bgp-policy:bgp-actions")
-    {
-        if(bgp_actions == nullptr)
-        {
-            bgp_actions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>();
-        }
-        return bgp_actions;
-    }
-
     if(child_yang_name == "openconfig-isis-policy:isis-actions")
     {
         if(isis_actions == nullptr)
@@ -8028,6 +8019,15 @@ std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition:
             isis_actions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions>();
         }
         return isis_actions;
+    }
+
+    if(child_yang_name == "openconfig-bgp-policy:bgp-actions")
+    {
+        if(bgp_actions == nullptr)
+        {
+            bgp_actions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>();
+        }
+        return bgp_actions;
     }
 
     return nullptr;
@@ -8052,14 +8052,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinit
         _children["igp-actions"] = igp_actions;
     }
 
-    if(bgp_actions != nullptr)
-    {
-        _children["openconfig-bgp-policy:bgp-actions"] = bgp_actions;
-    }
-
     if(isis_actions != nullptr)
     {
         _children["openconfig-isis-policy:isis-actions"] = isis_actions;
+    }
+
+    if(bgp_actions != nullptr)
+    {
+        _children["openconfig-bgp-policy:bgp-actions"] = bgp_actions;
     }
 
     return _children;
@@ -8075,7 +8075,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "state" || name == "igp-actions" || name == "bgp-actions" || name == "isis-actions")
+    if(name == "config" || name == "state" || name == "igp-actions" || name == "isis-actions" || name == "bgp-actions")
         return true;
     return false;
 }
@@ -8516,6 +8516,318 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "set-tag")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::IsisActions()
+    :
+    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>())
+{
+    config->parent = this;
+    state->parent = this;
+
+    yang_name = "isis-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::~IsisActions()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_data() const
+{
+    if (is_presence_container) return true;
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig-isis-policy:isis-actions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(config != nullptr)
+    {
+        _children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        _children["state"] = state;
+    }
+
+    return _children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::Config()
+    :
+    set_level{YType::uint8, "set-level"},
+    set_metric_type{YType::uint8, "set-metric-type"},
+    set_metric{YType::uint32, "set-metric"}
+{
+
+    yang_name = "config"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::~Config()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_data() const
+{
+    if (is_presence_container) return true;
+    return set_level.is_set
+	|| set_metric_type.is_set
+	|| set_metric.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_level.yfilter)
+	|| ydk::is_set(set_metric_type.yfilter)
+	|| ydk::is_set(set_metric.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
+    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
+    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-level")
+    {
+        set_level = value;
+        set_level.value_namespace = name_space;
+        set_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type = value;
+        set_metric_type.value_namespace = name_space;
+        set_metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric = value;
+        set_metric.value_namespace = name_space;
+        set_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-level")
+    {
+        set_level.yfilter = yfilter;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type.yfilter = yfilter;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::State()
+    :
+    set_level{YType::uint8, "set-level"},
+    set_metric_type{YType::uint8, "set-metric-type"},
+    set_metric{YType::uint32, "set-metric"}
+{
+
+    yang_name = "state"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::~State()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return set_level.is_set
+	|| set_metric_type.is_set
+	|| set_metric.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_level.yfilter)
+	|| ydk::is_set(set_metric_type.yfilter)
+	|| ydk::is_set(set_metric.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
+    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
+    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-level")
+    {
+        set_level = value;
+        set_level.value_namespace = name_space;
+        set_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type = value;
+        set_metric_type.value_namespace = name_space;
+        set_metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric = value;
+        set_metric.value_namespace = name_space;
+        set_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-level")
+    {
+        set_level.yfilter = yfilter;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type.yfilter = yfilter;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
         return true;
     return false;
 }
@@ -10866,318 +11178,6 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ext-community-set-ref")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::IsisActions()
-    :
-    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>())
-    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>())
-{
-    config->parent = this;
-    state->parent = this;
-
-    yang_name = "isis-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::~IsisActions()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_data() const
-{
-    if (is_presence_container) return true;
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_operation() const
-{
-    return is_set(yfilter)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "openconfig-isis-policy:isis-actions";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(config != nullptr)
-    {
-        _children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        _children["state"] = state;
-    }
-
-    return _children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config" || name == "state")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::Config()
-    :
-    set_level{YType::uint8, "set-level"},
-    set_metric_type{YType::uint8, "set-metric-type"},
-    set_metric{YType::uint32, "set-metric"}
-{
-
-    yang_name = "config"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::~Config()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_data() const
-{
-    if (is_presence_container) return true;
-    return set_level.is_set
-	|| set_metric_type.is_set
-	|| set_metric.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_level.yfilter)
-	|| ydk::is_set(set_metric_type.yfilter)
-	|| ydk::is_set(set_metric.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
-    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
-    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-level")
-    {
-        set_level = value;
-        set_level.value_namespace = name_space;
-        set_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type = value;
-        set_metric_type.value_namespace = name_space;
-        set_metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric = value;
-        set_metric.value_namespace = name_space;
-        set_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-level")
-    {
-        set_level.yfilter = yfilter;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type.yfilter = yfilter;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::State()
-    :
-    set_level{YType::uint8, "set-level"},
-    set_metric_type{YType::uint8, "set-metric-type"},
-    set_metric{YType::uint32, "set-metric"}
-{
-
-    yang_name = "state"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::~State()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_data() const
-{
-    if (is_presence_container) return true;
-    return set_level.is_set
-	|| set_metric_type.is_set
-	|| set_metric.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_level.yfilter)
-	|| ydk::is_set(set_metric_type.yfilter)
-	|| ydk::is_set(set_metric.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
-    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
-    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-level")
-    {
-        set_level = value;
-        set_level.value_namespace = name_space;
-        set_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type = value;
-        set_metric_type.value_namespace = name_space;
-        set_metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric = value;
-        set_metric.value_namespace = name_space;
-        set_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-level")
-    {
-        set_level.yfilter = yfilter;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type.yfilter = yfilter;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
         return true;
     return false;
 }

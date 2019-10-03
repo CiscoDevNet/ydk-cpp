@@ -55,9 +55,20 @@ class Password::Encryption : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf aes; //type: uint32
+        ydk::YLeaf aes; //type: KeyEncryption
 
 }; // Password::Encryption
+
+class KeyEncryption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "type6") return 2;
+            return -1;
+        }
+};
 
 
 }

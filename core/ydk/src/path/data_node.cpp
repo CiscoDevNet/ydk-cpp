@@ -23,7 +23,9 @@
 
 
 #include "path_private.hpp"
+
 #include "../logger.hpp"
+#include "../filters.hpp"
 
 namespace ydk
 {
@@ -70,7 +72,7 @@ ydk::path::DataNodeImpl::DataNodeImpl(DataNode* parent, lyd_node* node, const st
             child_map.insert(std::make_pair(iter, std::make_shared<DataNodeImpl>(this, iter, m_priv_repo)));
         }
     }
-
+    yfilter = YFilter::not_set;
 }
 
 ydk::path::DataNodeImpl::~DataNodeImpl()
@@ -104,6 +106,8 @@ ydk::path::DataNodeImpl::get_path() const
 void
 ydk::path::DataNodeImpl::populate_new_schemas_from_path(const std::string& path)
 {
+    if (path.empty()) return;
+    YLOG_DEBUG("Populating schema for '{}'", path);
     check_ly_schema_node_for_path(m_node, path);
     auto snode = reinterpret_cast<SchemaNodeImpl*>(m_node->schema->priv);
     snode->populate_new_schemas_from_path(path);
@@ -134,14 +138,12 @@ ydk::path::DataNodeImpl::create_datanode(const std::string& path, const std::str
         }
 
         if(v != value){
-            YLOG_DEBUG("Replacing 'value' with '{}'", v);
+            YLOG_DEBUG("Replacing value '{}' with '{}'", value, v);
         }
     }
-
-    YLOG_DEBUG("Populating schemas for {}", path);
     populate_new_schemas_from_path(path);
-    YLOG_DEBUG("Populating schemas for {}", v);
     populate_new_schemas_from_path(v);
+
     return create_helper(path, v);
 }
 

@@ -722,6 +722,12 @@ class DOCSCABLEDEVICEMIB::DocsDevBase::DocsDevRole : public ydk::Enum
         static const ydk::Enum::YLeaf cmtsActive;
         static const ydk::Enum::YLeaf cmtsBackup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cm") return 1;
+            if (name == "cmtsActive") return 2;
+            if (name == "cmtsBackup") return 3;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevBase::DocsDevSTPControl : public ydk::Enum
@@ -731,6 +737,12 @@ class DOCSCABLEDEVICEMIB::DocsDevBase::DocsDevSTPControl : public ydk::Enum
         static const ydk::Enum::YLeaf noStFilterBpdu;
         static const ydk::Enum::YLeaf noStPassBpdu;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stEnabled") return 1;
+            if (name == "noStFilterBpdu") return 2;
+            if (name == "noStPassBpdu") return 3;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevBase::DocsDevIgmpModeControl : public ydk::Enum
@@ -739,6 +751,11 @@ class DOCSCABLEDEVICEMIB::DocsDevBase::DocsDevIgmpModeControl : public ydk::Enum
         static const ydk::Enum::YLeaf passive;
         static const ydk::Enum::YLeaf active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "passive") return 1;
+            if (name == "active") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevSoftware::DocsDevSwAdminStatus : public ydk::Enum
@@ -748,6 +765,12 @@ class DOCSCABLEDEVICEMIB::DocsDevSoftware::DocsDevSwAdminStatus : public ydk::En
         static const ydk::Enum::YLeaf allowProvisioningUpgrade;
         static const ydk::Enum::YLeaf ignoreProvisioningUpgrade;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "upgradeFromMgt") return 1;
+            if (name == "allowProvisioningUpgrade") return 2;
+            if (name == "ignoreProvisioningUpgrade") return 3;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevSoftware::DocsDevSwOperStatus : public ydk::Enum
@@ -759,6 +782,14 @@ class DOCSCABLEDEVICEMIB::DocsDevSoftware::DocsDevSwOperStatus : public ydk::Enu
         static const ydk::Enum::YLeaf failed;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inProgress") return 1;
+            if (name == "completeFromProvisioning") return 2;
+            if (name == "completeFromMgt") return 3;
+            if (name == "failed") return 4;
+            if (name == "other") return 5;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevSoftware::DocsDevSwServerTransportProtocol : public ydk::Enum
@@ -767,6 +798,11 @@ class DOCSCABLEDEVICEMIB::DocsDevSoftware::DocsDevSwServerTransportProtocol : pu
         static const ydk::Enum::YLeaf tftp;
         static const ydk::Enum::YLeaf http;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tftp") return 1;
+            if (name == "http") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevServer::DocsDevServerBootState : public ydk::Enum
@@ -783,6 +819,19 @@ class DOCSCABLEDEVICEMIB::DocsDevServer::DocsDevServerBootState : public ydk::En
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "operational") return 1;
+            if (name == "disabled") return 2;
+            if (name == "waitingForDhcpOffer") return 3;
+            if (name == "waitingForDhcpResponse") return 4;
+            if (name == "waitingForTimeServer") return 5;
+            if (name == "waitingForTftp") return 6;
+            if (name == "refusedByCmts") return 7;
+            if (name == "forwardingDenied") return 8;
+            if (name == "other") return 9;
+            if (name == "unknown") return 10;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevEvent::DocsDevEvControl : public ydk::Enum
@@ -791,6 +840,11 @@ class DOCSCABLEDEVICEMIB::DocsDevEvent::DocsDevEvControl : public ydk::Enum
         static const ydk::Enum::YLeaf resetLog;
         static const ydk::Enum::YLeaf useDefaultReporting;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "resetLog") return 1;
+            if (name == "useDefaultReporting") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevEvent::DocsDevEvThrottleAdminStatus : public ydk::Enum
@@ -801,6 +855,13 @@ class DOCSCABLEDEVICEMIB::DocsDevEvent::DocsDevEvThrottleAdminStatus : public yd
         static const ydk::Enum::YLeaf stopAtThreshold;
         static const ydk::Enum::YLeaf inhibited;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unconstrained") return 1;
+            if (name == "maintainBelowThreshold") return 2;
+            if (name == "stopAtThreshold") return 3;
+            if (name == "inhibited") return 4;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevFilter::DocsDevFilterLLCUnmatchedAction : public ydk::Enum
@@ -809,6 +870,11 @@ class DOCSCABLEDEVICEMIB::DocsDevFilter::DocsDevFilterLLCUnmatchedAction : publi
         static const ydk::Enum::YLeaf discard;
         static const ydk::Enum::YLeaf accept;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discard") return 1;
+            if (name == "accept") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevFilter::DocsDevFilterIpDefault : public ydk::Enum
@@ -817,6 +883,11 @@ class DOCSCABLEDEVICEMIB::DocsDevFilter::DocsDevFilterIpDefault : public ydk::En
         static const ydk::Enum::YLeaf discard;
         static const ydk::Enum::YLeaf accept;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discard") return 1;
+            if (name == "accept") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevCpe::DocsDevCpeEnroll : public ydk::Enum
@@ -825,6 +896,11 @@ class DOCSCABLEDEVICEMIB::DocsDevCpe::DocsDevCpeEnroll : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "any") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::DocsDevNmAccessControl : public ydk::Enum
@@ -837,6 +913,15 @@ class DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::DocsDevNmA
         static const ydk::Enum::YLeaf rwWithTraps;
         static const ydk::Enum::YLeaf trapsOnly;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "read") return 2;
+            if (name == "readWrite") return 3;
+            if (name == "roWithTraps") return 4;
+            if (name == "rwWithTraps") return 5;
+            if (name == "trapsOnly") return 6;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::DocsDevNmAccessTrapVersion : public ydk::Enum
@@ -845,6 +930,11 @@ class DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::DocsDevNmA
         static const ydk::Enum::YLeaf disableSNMPv2trap;
         static const ydk::Enum::YLeaf enableSNMPv2trap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disableSNMPv2trap") return 1;
+            if (name == "enableSNMPv2trap") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry::DocsDevEvPriority : public ydk::Enum
@@ -859,6 +949,17 @@ class DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry::DocsDevE
         static const ydk::Enum::YLeaf information;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 1;
+            if (name == "alert") return 2;
+            if (name == "critical") return 3;
+            if (name == "error") return 4;
+            if (name == "warning") return 5;
+            if (name == "notice") return 6;
+            if (name == "information") return 7;
+            if (name == "debug") return 8;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry::DocsDevEvLevel : public ydk::Enum
@@ -873,6 +974,17 @@ class DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry::DocsDevEvLevel :
         static const ydk::Enum::YLeaf information;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 1;
+            if (name == "alert") return 2;
+            if (name == "critical") return 3;
+            if (name == "error") return 4;
+            if (name == "warning") return 5;
+            if (name == "notice") return 6;
+            if (name == "information") return 7;
+            if (name == "debug") return 8;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry::DocsDevFilterLLCProtocolType : public ydk::Enum
@@ -881,6 +993,11 @@ class DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry::DocsDevF
         static const ydk::Enum::YLeaf ethertype;
         static const ydk::Enum::YLeaf dsap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethertype") return 1;
+            if (name == "dsap") return 2;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::DocsDevFilterIpControl : public ydk::Enum
@@ -890,6 +1007,12 @@ class DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::DocsDevFil
         static const ydk::Enum::YLeaf accept;
         static const ydk::Enum::YLeaf policy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discard") return 1;
+            if (name == "accept") return 2;
+            if (name == "policy") return 3;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::DocsDevFilterIpDirection : public ydk::Enum
@@ -899,6 +1022,12 @@ class DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::DocsDevFil
         static const ydk::Enum::YLeaf outbound;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 1;
+            if (name == "outbound") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry::DocsDevCpeSource : public ydk::Enum
@@ -908,6 +1037,12 @@ class DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry::DocsDevCpeSource : p
         static const ydk::Enum::YLeaf manual;
         static const ydk::Enum::YLeaf learned;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "manual") return 2;
+            if (name == "learned") return 3;
+            return -1;
+        }
 };
 
 class DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry::DocsDevCpeInetSource : public ydk::Enum
@@ -916,6 +1051,11 @@ class DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry::DocsDevCpeIn
         static const ydk::Enum::YLeaf manual;
         static const ydk::Enum::YLeaf learned;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "manual") return 2;
+            if (name == "learned") return 3;
+            return -1;
+        }
 };
 
 

@@ -1689,6 +1689,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "last-notification-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1902,6 +1903,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "last-notification-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6031,6 +6033,7 @@ Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::NeighborAfTable:
     sent_community_to_neighbor{YType::boolean, "sent-community-to-neighbor"},
     sent_gshut_community_to_neighbor{YType::boolean, "sent-gshut-community-to-neighbor"},
     sent_extended_community_to_neighbor{YType::boolean, "sent-extended-community-to-neighbor"},
+    default_originate_vpn_index{YType::uint32, "default-originate-vpn-index"},
     neighbor_default_originate{YType::boolean, "neighbor-default-originate"},
     is_orf_sent{YType::boolean, "is-orf-sent"},
     is_update_deferred{YType::boolean, "is-update-deferred"},
@@ -6193,6 +6196,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::NeighborAfT
 	|| sent_community_to_neighbor.is_set
 	|| sent_gshut_community_to_neighbor.is_set
 	|| sent_extended_community_to_neighbor.is_set
+	|| default_originate_vpn_index.is_set
 	|| neighbor_default_originate.is_set
 	|| is_orf_sent.is_set
 	|| is_update_deferred.is_set
@@ -6344,6 +6348,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::NeighborAfT
 	|| ydk::is_set(sent_community_to_neighbor.yfilter)
 	|| ydk::is_set(sent_gshut_community_to_neighbor.yfilter)
 	|| ydk::is_set(sent_extended_community_to_neighbor.yfilter)
+	|| ydk::is_set(default_originate_vpn_index.yfilter)
 	|| ydk::is_set(neighbor_default_originate.yfilter)
 	|| ydk::is_set(is_orf_sent.yfilter)
 	|| ydk::is_set(is_update_deferred.yfilter)
@@ -6455,6 +6460,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "af-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6493,6 +6499,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (sent_community_to_neighbor.is_set || is_set(sent_community_to_neighbor.yfilter)) leaf_name_data.push_back(sent_community_to_neighbor.get_name_leafdata());
     if (sent_gshut_community_to_neighbor.is_set || is_set(sent_gshut_community_to_neighbor.yfilter)) leaf_name_data.push_back(sent_gshut_community_to_neighbor.get_name_leafdata());
     if (sent_extended_community_to_neighbor.is_set || is_set(sent_extended_community_to_neighbor.yfilter)) leaf_name_data.push_back(sent_extended_community_to_neighbor.get_name_leafdata());
+    if (default_originate_vpn_index.is_set || is_set(default_originate_vpn_index.yfilter)) leaf_name_data.push_back(default_originate_vpn_index.get_name_leafdata());
     if (neighbor_default_originate.is_set || is_set(neighbor_default_originate.yfilter)) leaf_name_data.push_back(neighbor_default_originate.get_name_leafdata());
     if (is_orf_sent.is_set || is_set(is_orf_sent.yfilter)) leaf_name_data.push_back(is_orf_sent.get_name_leafdata());
     if (is_update_deferred.is_set || is_set(is_update_deferred.yfilter)) leaf_name_data.push_back(is_update_deferred.get_name_leafdata());
@@ -6849,6 +6856,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::NeighborAfT
         sent_extended_community_to_neighbor = value;
         sent_extended_community_to_neighbor.value_namespace = name_space;
         sent_extended_community_to_neighbor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default-originate-vpn-index")
+    {
+        default_originate_vpn_index = value;
+        default_originate_vpn_index.value_namespace = name_space;
+        default_originate_vpn_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-default-originate")
     {
@@ -7602,6 +7615,10 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::NeighborAfT
     {
         sent_extended_community_to_neighbor.yfilter = yfilter;
     }
+    if(value_path == "default-originate-vpn-index")
+    {
+        default_originate_vpn_index.yfilter = yfilter;
+    }
     if(value_path == "neighbor-default-originate")
     {
         neighbor_default_originate.yfilter = yfilter;
@@ -8022,7 +8039,7 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::NeighborAfT
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::NeighborAfTable::Neighbor::AfData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-af-performance-statistics" || name == "extended-community" || name == "extended-community-standby" || name == "af-name" || name == "is-neighbor-route-reflector-client" || name == "is-legacy-pe-rt" || name == "is-neighbor-af-capable" || name == "is-soft-reconfiguration-inbound-allowed" || name == "is-use-soft-reconfiguration-always-on" || name == "remove-private-as-from-updates" || name == "remove-private-as-entire-aspath-from-updates" || name == "remove-private-as-from-inbound-updates" || name == "remove-private-as-entire-aspath-from-inbound-updates" || name == "flowspec-validation-d-isable" || name == "flowspec-redirect-validation-d-isable" || name == "orr-group-name" || name == "orr-group-index" || name == "is-orr-root-address-configured" || name == "advertise-afi" || name == "advertise-afi-reorg" || name == "advertise-afi-disable" || name == "encapsulation-type" || name == "advertise-rt-type" || name == "advertise-afi-def-vrf-imp-disable" || name == "advertise-evpnv4-afi-def-vrf-imp-disable" || name == "advertise-evpnv6-afi-def-vrf-imp-disable" || name == "advertise-afi-vrf-re-imp-disable" || name == "advertise-evpnv4-afi-vrf-re-imp-disable" || name == "advertise-evpnv6-afi-vrf-re-imp-disable" || name == "advertise-afi-eo-r-ready" || name == "always-use-next-hop-local" || name == "sent-community-to-neighbor" || name == "sent-gshut-community-to-neighbor" || name == "sent-extended-community-to-neighbor" || name == "neighbor-default-originate" || name == "is-orf-sent" || name == "is-update-deferred" || name == "is-orf-send-scheduled" || name == "update-group-number" || name == "filter-group-index" || name == "is-update-throttled" || name == "is-update-leaving" || name == "vpn-update-gen-enabled" || name == "vpn-update-gen-trigger-enabled" || name == "is-addpath-send-operational" || name == "is-addpath-receive-operational" || name == "neighbor-version" || name == "weight" || name == "max-prefix-limit" || name == "use-max-prefix-warning-only" || name == "max-prefix-discard-extra-paths" || name == "max-prefix-exceed-discard-paths" || name == "max-prefix-threshold-percent" || name == "max-prefix-restart-time" || name == "prefixes-accepted" || name == "prefixes-synced" || name == "prefixes-withdrawn-not-found" || name == "prefixes-denied" || name == "prefixes-denied-no-policy" || name == "prefixes-denied-rt-permit" || name == "prefixes-denied-orf-policy" || name == "prefixes-denied-policy" || name == "number-of-bestpaths" || name == "number-of-best-externalpaths" || name == "prefixes-advertised" || name == "prefixes-be-advertised" || name == "prefixes-suppressed" || name == "prefixes-withdrawn" || name == "is-peer-orf-capable" || name == "is-advertised-orf-send" || name == "is-received-orf-send-capable" || name == "is-advertised-orf-receive" || name == "is-received-orf-receive-capable" || name == "is-advertised-graceful-restart" || name == "is-graceful-restart-state-flag" || name == "is-received-graceful-restart-capable" || name == "is-add-path-send-capability-advertised" || name == "is-add-path-send-capability-received" || name == "is-add-path-receive-capability-advertised" || name == "is-add-path-receive-capability-received" || name == "is-ext-nh-encoding-capability-received" || name == "is-ext-nh-encoding-capability-sent" || name == "restart-time" || name == "local-restart-time" || name == "stale-path-timeout" || name == "rib-purge-timeout-value" || name == "neighbor-preserved-forwarding-state" || name == "long-lived-graceful-restart-stale-time-configured" || name == "long-lived-graceful-restart-stale-time-sent" || name == "long-lived-graceful-restart-stale-time-accept" || name == "long-lived-graceful-restart-capability-received" || name == "long-lived-graceful-restart-stale-time-received" || name == "neighbor-preserved-long-lived-forwarding-state" || name == "neighbor-long-lived-graceful-restart-capable" || name == "neighbor-long-lived-graceful-restart-time-remaining" || name == "route-refreshes-received" || name == "route-refreshes-sent" || name == "refresh-target-version" || name == "refresh-version" || name == "refresh-acked-version" || name == "is-prefix-orf-present" || name == "orf-entries-received" || name == "is-default-originate-sent" || name == "route-policy-prefix-orf" || name == "route-policy-in" || name == "route-policy-out" || name == "route-policy-default-originate" || name == "is-neighbor-ebgp-without-inbound-policy" || name == "is-neighbor-ebgp-without-outbound-policy" || name == "is-as-override-set" || name == "is-allow-as-in-set" || name == "allow-as-in-count" || name == "address-family-long-lived-time" || name == "eo-r-received-in-read-only" || name == "acked-version" || name == "synced-acked-version" || name == "outstanding-version" || name == "outstanding-refresh-version" || name == "outstanding-version-max" || name == "is-aigp-set" || name == "is-rt-present" || name == "is-rt-present-standby" || name == "accept-own-enabled" || name == "selective-multipath-eligible" || name == "afrpki-disable" || name == "afrpki-use-validity" || name == "afrpki-allow-invalid" || name == "afrpki-signal-ibgp" || name == "is-advertise-permanent-network" || name == "is-send-mcast-attr" || name == "import-stitching" || name == "import-reoriginate" || name == "import-reoriginate-stitching" || name == "advertise-v4-flags" || name == "advertise-v6-flags" || name == "advertise-local-labeled-route-unicast" || name == "prefixes-denied-non-cumulative" || name == "enable-label-stack")
+    if(name == "neighbor-af-performance-statistics" || name == "extended-community" || name == "extended-community-standby" || name == "af-name" || name == "is-neighbor-route-reflector-client" || name == "is-legacy-pe-rt" || name == "is-neighbor-af-capable" || name == "is-soft-reconfiguration-inbound-allowed" || name == "is-use-soft-reconfiguration-always-on" || name == "remove-private-as-from-updates" || name == "remove-private-as-entire-aspath-from-updates" || name == "remove-private-as-from-inbound-updates" || name == "remove-private-as-entire-aspath-from-inbound-updates" || name == "flowspec-validation-d-isable" || name == "flowspec-redirect-validation-d-isable" || name == "orr-group-name" || name == "orr-group-index" || name == "is-orr-root-address-configured" || name == "advertise-afi" || name == "advertise-afi-reorg" || name == "advertise-afi-disable" || name == "encapsulation-type" || name == "advertise-rt-type" || name == "advertise-afi-def-vrf-imp-disable" || name == "advertise-evpnv4-afi-def-vrf-imp-disable" || name == "advertise-evpnv6-afi-def-vrf-imp-disable" || name == "advertise-afi-vrf-re-imp-disable" || name == "advertise-evpnv4-afi-vrf-re-imp-disable" || name == "advertise-evpnv6-afi-vrf-re-imp-disable" || name == "advertise-afi-eo-r-ready" || name == "always-use-next-hop-local" || name == "sent-community-to-neighbor" || name == "sent-gshut-community-to-neighbor" || name == "sent-extended-community-to-neighbor" || name == "default-originate-vpn-index" || name == "neighbor-default-originate" || name == "is-orf-sent" || name == "is-update-deferred" || name == "is-orf-send-scheduled" || name == "update-group-number" || name == "filter-group-index" || name == "is-update-throttled" || name == "is-update-leaving" || name == "vpn-update-gen-enabled" || name == "vpn-update-gen-trigger-enabled" || name == "is-addpath-send-operational" || name == "is-addpath-receive-operational" || name == "neighbor-version" || name == "weight" || name == "max-prefix-limit" || name == "use-max-prefix-warning-only" || name == "max-prefix-discard-extra-paths" || name == "max-prefix-exceed-discard-paths" || name == "max-prefix-threshold-percent" || name == "max-prefix-restart-time" || name == "prefixes-accepted" || name == "prefixes-synced" || name == "prefixes-withdrawn-not-found" || name == "prefixes-denied" || name == "prefixes-denied-no-policy" || name == "prefixes-denied-rt-permit" || name == "prefixes-denied-orf-policy" || name == "prefixes-denied-policy" || name == "number-of-bestpaths" || name == "number-of-best-externalpaths" || name == "prefixes-advertised" || name == "prefixes-be-advertised" || name == "prefixes-suppressed" || name == "prefixes-withdrawn" || name == "is-peer-orf-capable" || name == "is-advertised-orf-send" || name == "is-received-orf-send-capable" || name == "is-advertised-orf-receive" || name == "is-received-orf-receive-capable" || name == "is-advertised-graceful-restart" || name == "is-graceful-restart-state-flag" || name == "is-received-graceful-restart-capable" || name == "is-add-path-send-capability-advertised" || name == "is-add-path-send-capability-received" || name == "is-add-path-receive-capability-advertised" || name == "is-add-path-receive-capability-received" || name == "is-ext-nh-encoding-capability-received" || name == "is-ext-nh-encoding-capability-sent" || name == "restart-time" || name == "local-restart-time" || name == "stale-path-timeout" || name == "rib-purge-timeout-value" || name == "neighbor-preserved-forwarding-state" || name == "long-lived-graceful-restart-stale-time-configured" || name == "long-lived-graceful-restart-stale-time-sent" || name == "long-lived-graceful-restart-stale-time-accept" || name == "long-lived-graceful-restart-capability-received" || name == "long-lived-graceful-restart-stale-time-received" || name == "neighbor-preserved-long-lived-forwarding-state" || name == "neighbor-long-lived-graceful-restart-capable" || name == "neighbor-long-lived-graceful-restart-time-remaining" || name == "route-refreshes-received" || name == "route-refreshes-sent" || name == "refresh-target-version" || name == "refresh-version" || name == "refresh-acked-version" || name == "is-prefix-orf-present" || name == "orf-entries-received" || name == "is-default-originate-sent" || name == "route-policy-prefix-orf" || name == "route-policy-in" || name == "route-policy-out" || name == "route-policy-default-originate" || name == "is-neighbor-ebgp-without-inbound-policy" || name == "is-neighbor-ebgp-without-outbound-policy" || name == "is-as-override-set" || name == "is-allow-as-in-set" || name == "allow-as-in-count" || name == "address-family-long-lived-time" || name == "eo-r-received-in-read-only" || name == "acked-version" || name == "synced-acked-version" || name == "outstanding-version" || name == "outstanding-refresh-version" || name == "outstanding-version-max" || name == "is-aigp-set" || name == "is-rt-present" || name == "is-rt-present-standby" || name == "accept-own-enabled" || name == "selective-multipath-eligible" || name == "afrpki-disable" || name == "afrpki-use-validity" || name == "afrpki-allow-invalid" || name == "afrpki-signal-ibgp" || name == "is-advertise-permanent-network" || name == "is-send-mcast-attr" || name == "import-stitching" || name == "import-reoriginate" || name == "import-reoriginate-stitching" || name == "advertise-v4-flags" || name == "advertise-v6-flags" || name == "advertise-local-labeled-route-unicast" || name == "prefixes-denied-non-cumulative" || name == "enable-label-stack")
         return true;
     return false;
 }
@@ -8217,6 +8234,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8295,6 +8313,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community-standby";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8666,6 +8685,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Upda
 {
     std::ostringstream path_buffer;
     path_buffer << "update-generation-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13872,6 +13892,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Damp
 {
     std::ostringstream path_buffer;
     path_buffer << "dampening";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19186,6 +19207,7 @@ Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings::Damp
     is_tunnel_up{YType::boolean, "is-tunnel-up"},
     is_tunnel_info_stale{YType::boolean, "is-tunnel-info-stale"},
     is_tunnel_registered{YType::boolean, "is-tunnel-registered"},
+    is_bgp_te_registered{YType::boolean, "is-bgp-te-registered"},
     tunnel_v6_required{YType::boolean, "tunnel-v6-required"},
     tunnel_v6_enabled{YType::boolean, "tunnel-v6-enabled"},
     tunnel_notif_first_rcvd{YType::boolean, "tunnel-notif-first-rcvd"},
@@ -19195,7 +19217,8 @@ Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings::Damp
     last_tunnel_update{YType::uint32, "last-tunnel-update"},
     tunnel_color{YType::uint32, "tunnel-color"},
     is_tunnel_color_only{YType::boolean, "is-tunnel-color-only"},
-    tunnel_endpoint_afi{YType::enumeration, "tunnel-endpoint-afi"}
+    tunnel_endpoint_afi{YType::enumeration, "tunnel-endpoint-afi"},
+    flags{YType::uint32, "flags"}
 {
 
     yang_name = "nh-tunnel"; yang_parent_name = "path-information"; is_top_level_class = false; has_list_ancestor = true; 
@@ -19213,6 +19236,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
 	|| is_tunnel_up.is_set
 	|| is_tunnel_info_stale.is_set
 	|| is_tunnel_registered.is_set
+	|| is_bgp_te_registered.is_set
 	|| tunnel_v6_required.is_set
 	|| tunnel_v6_enabled.is_set
 	|| tunnel_notif_first_rcvd.is_set
@@ -19222,7 +19246,8 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
 	|| last_tunnel_update.is_set
 	|| tunnel_color.is_set
 	|| is_tunnel_color_only.is_set
-	|| tunnel_endpoint_afi.is_set;
+	|| tunnel_endpoint_afi.is_set
+	|| flags.is_set;
 }
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NhTunnel::has_operation() const
@@ -19233,6 +19258,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
 	|| ydk::is_set(is_tunnel_up.yfilter)
 	|| ydk::is_set(is_tunnel_info_stale.yfilter)
 	|| ydk::is_set(is_tunnel_registered.yfilter)
+	|| ydk::is_set(is_bgp_te_registered.yfilter)
 	|| ydk::is_set(tunnel_v6_required.yfilter)
 	|| ydk::is_set(tunnel_v6_enabled.yfilter)
 	|| ydk::is_set(tunnel_notif_first_rcvd.yfilter)
@@ -19242,7 +19268,8 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
 	|| ydk::is_set(last_tunnel_update.yfilter)
 	|| ydk::is_set(tunnel_color.yfilter)
 	|| ydk::is_set(is_tunnel_color_only.yfilter)
-	|| ydk::is_set(tunnel_endpoint_afi.yfilter);
+	|| ydk::is_set(tunnel_endpoint_afi.yfilter)
+	|| ydk::is_set(flags.yfilter);
 }
 
 std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NhTunnel::get_segment_path() const
@@ -19261,6 +19288,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (is_tunnel_up.is_set || is_set(is_tunnel_up.yfilter)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
     if (is_tunnel_info_stale.is_set || is_set(is_tunnel_info_stale.yfilter)) leaf_name_data.push_back(is_tunnel_info_stale.get_name_leafdata());
     if (is_tunnel_registered.is_set || is_set(is_tunnel_registered.yfilter)) leaf_name_data.push_back(is_tunnel_registered.get_name_leafdata());
+    if (is_bgp_te_registered.is_set || is_set(is_bgp_te_registered.yfilter)) leaf_name_data.push_back(is_bgp_te_registered.get_name_leafdata());
     if (tunnel_v6_required.is_set || is_set(tunnel_v6_required.yfilter)) leaf_name_data.push_back(tunnel_v6_required.get_name_leafdata());
     if (tunnel_v6_enabled.is_set || is_set(tunnel_v6_enabled.yfilter)) leaf_name_data.push_back(tunnel_v6_enabled.get_name_leafdata());
     if (tunnel_notif_first_rcvd.is_set || is_set(tunnel_notif_first_rcvd.yfilter)) leaf_name_data.push_back(tunnel_notif_first_rcvd.get_name_leafdata());
@@ -19271,6 +19299,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (tunnel_color.is_set || is_set(tunnel_color.yfilter)) leaf_name_data.push_back(tunnel_color.get_name_leafdata());
     if (is_tunnel_color_only.is_set || is_set(is_tunnel_color_only.yfilter)) leaf_name_data.push_back(is_tunnel_color_only.get_name_leafdata());
     if (tunnel_endpoint_afi.is_set || is_set(tunnel_endpoint_afi.yfilter)) leaf_name_data.push_back(tunnel_endpoint_afi.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -19319,6 +19348,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
         is_tunnel_registered = value;
         is_tunnel_registered.value_namespace = name_space;
         is_tunnel_registered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-bgp-te-registered")
+    {
+        is_bgp_te_registered = value;
+        is_bgp_te_registered.value_namespace = name_space;
+        is_bgp_te_registered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-v6-required")
     {
@@ -19380,6 +19415,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
         tunnel_endpoint_afi.value_namespace = name_space;
         tunnel_endpoint_afi.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NhTunnel::set_filter(const std::string & value_path, YFilter yfilter)
@@ -19403,6 +19444,10 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
     if(value_path == "is-tunnel-registered")
     {
         is_tunnel_registered.yfilter = yfilter;
+    }
+    if(value_path == "is-bgp-te-registered")
+    {
+        is_bgp_te_registered.yfilter = yfilter;
     }
     if(value_path == "tunnel-v6-required")
     {
@@ -19444,11 +19489,15 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings:
     {
         tunnel_endpoint_afi.yfilter = yfilter;
     }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
 }
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NhTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tunnel-type" || name == "tunnel-name" || name == "is-tunnel-up" || name == "is-tunnel-info-stale" || name == "is-tunnel-registered" || name == "tunnel-v6-required" || name == "tunnel-v6-enabled" || name == "tunnel-notif-first-rcvd" || name == "tunnel-state-skip-reg" || name == "binding-label" || name == "tunnel-if-handle" || name == "last-tunnel-update" || name == "tunnel-color" || name == "is-tunnel-color-only" || name == "tunnel-endpoint-afi")
+    if(name == "tunnel-type" || name == "tunnel-name" || name == "is-tunnel-up" || name == "is-tunnel-info-stale" || name == "is-tunnel-registered" || name == "is-bgp-te-registered" || name == "tunnel-v6-required" || name == "tunnel-v6-enabled" || name == "tunnel-notif-first-rcvd" || name == "tunnel-state-skip-reg" || name == "binding-label" || name == "tunnel-if-handle" || name == "last-tunnel-update" || name == "tunnel-color" || name == "is-tunnel-color-only" || name == "tunnel-endpoint-afi" || name == "flags")
         return true;
     return false;
 }
@@ -23478,6 +23527,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Damp
 {
     std::ostringstream path_buffer;
     path_buffer << "rcvd-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23556,6 +23606,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Damp
 {
     std::ostringstream path_buffer;
     path_buffer << "l2vpn-circuit-status-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23634,6 +23685,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Damp
 {
     std::ostringstream path_buffer;
     path_buffer << "mvpn-pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23712,6 +23764,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Damp
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23801,6 +23854,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Damp
 {
     std::ostringstream path_buffer;
     path_buffer << "local-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

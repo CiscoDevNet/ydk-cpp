@@ -3650,6 +3650,11 @@ class IsisSubAfId : public ydk::Enum
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            if (name == "multicast") return 1;
+            return -1;
+        }
 };
 
 class IsisIfAfFwdAddrUnknownReason : public ydk::Enum
@@ -3663,6 +3668,16 @@ class IsisIfAfFwdAddrUnknownReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_af_fwd_addr_unknown_vrf_enabled;
         static const ydk::Enum::YLeaf isis_intf_af_fwd_addr_unknown_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-fwd-addr-unknown-cfg-passive") return 0;
+            if (name == "isis-intf-af-fwd-addr-unknown-proto-doesnt-exist") return 1;
+            if (name == "isis-intf-af-fwd-addr-unknown-next-hop-reg-error") return 2;
+            if (name == "isis-intf-af-fwd-addr-unknown-no-link-local-add") return 3;
+            if (name == "isis-intf-af-fwd-addr-unknown-af-not-up") return 4;
+            if (name == "isis-intf-af-fwd-addr-unknown-vrf-enabled") return 5;
+            if (name == "isis-intf-af-fwd-addr-unknown-internal-error") return 6;
+            return -1;
+        }
 };
 
 class IsisUloopEvent : public ydk::Enum
@@ -3674,6 +3689,14 @@ class IsisUloopEvent : public ydk::Enum
         static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_set;
         static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_unset;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-u-loop-event-none") return 0;
+            if (name == "isis-u-loop-event-link-down") return 1;
+            if (name == "isis-u-loop-event-link-up") return 2;
+            if (name == "isis-u-loop-event-ol-bit-set") return 3;
+            if (name == "isis-u-loop-event-ol-bit-unset") return 4;
+            return -1;
+        }
 };
 
 class SrmsMiSrcEB : public ydk::Enum
@@ -3683,6 +3706,12 @@ class SrmsMiSrcEB : public ydk::Enum
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "local") return 1;
+            if (name == "remote") return 2;
+            return -1;
+        }
 };
 
 class IsisLspDbOp : public ydk::Enum
@@ -3694,6 +3723,14 @@ class IsisLspDbOp : public ydk::Enum
         static const ydk::Enum::YLeaf isis_lsp_db_purge_lsp;
         static const ydk::Enum::YLeaf isis_lsp_db_delete_lsp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-lsp-db-clear") return 0;
+            if (name == "isis-lsp-db-insert-new-lsp") return 1;
+            if (name == "isis-lsp-db-replace-lsp-with-lsp") return 2;
+            if (name == "isis-lsp-db-purge-lsp") return 3;
+            if (name == "isis-lsp-db-delete-lsp") return 4;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspRouterCapabilityStateFlagsEnum : public ydk::Enum
@@ -3702,6 +3739,11 @@ class OpenconfigIsisLspRouterCapabilityStateFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf flood;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "flood") return 0;
+            if (name == "down") return 1;
+            return -1;
+        }
 };
 
 class IsisStartupStatus : public ydk::Enum
@@ -3712,6 +3754,13 @@ class IsisStartupStatus : public ydk::Enum
         static const ydk::Enum::YLeaf isis_startup_ssm_aborted;
         static const ydk::Enum::YLeaf isis_startup_ssm_not_run;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-startup-ssm-active") return 0;
+            if (name == "isis-startup-ssm-complete") return 1;
+            if (name == "isis-startup-ssm-aborted") return 2;
+            if (name == "isis-startup-ssm-not-run") return 3;
+            return -1;
+        }
 };
 
 class IsisUp : public ydk::Enum
@@ -3720,6 +3769,11 @@ class IsisUp : public ydk::Enum
         static const ydk::Enum::YLeaf isis_down;
         static const ydk::Enum::YLeaf isis_up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-down") return 0;
+            if (name == "isis-up") return 1;
+            return -1;
+        }
 };
 
 class IsisErrLogLevel : public ydk::Enum
@@ -3729,6 +3783,12 @@ class IsisErrLogLevel : public ydk::Enum
         static const ydk::Enum::YLeaf isis_err_log_level_warn;
         static const ydk::Enum::YLeaf isis_err_log_level_critical;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-err-log-level-info") return 0;
+            if (name == "isis-err-log-level-warn") return 1;
+            if (name == "isis-err-log-level-critical") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisTypesHelloPaddingTypeEnum : public ydk::Enum
@@ -3739,6 +3799,13 @@ class OpenconfigIsisTypesHelloPaddingTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf adaptive;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 0;
+            if (name == "loose") return 1;
+            if (name == "adaptive") return 2;
+            if (name == "disable") return 3;
+            return -1;
+        }
 };
 
 class IsisIfTopoAdjFormDisabledReason : public ydk::Enum
@@ -3755,6 +3822,19 @@ class IsisIfTopoAdjFormDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_topo_adj_form_disabled_snpa;
         static const ydk::Enum::YLeaf isis_intf_topo_adj_form_disabled_mcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-topo-adj-form-disabled-intf-passive") return 0;
+            if (name == "isis-intf-topo-adj-form-disabled-af-not-up") return 1;
+            if (name == "isis-intf-topo-adj-form-disabled-af-fwd-addr-unknown") return 2;
+            if (name == "isis-intf-topo-adj-form-disabled-topo-not-cfg") return 3;
+            if (name == "isis-intf-topo-adj-form-disabled-topo-can-not-participate") return 4;
+            if (name == "isis-intf-topo-adj-form-disabled-idle") return 5;
+            if (name == "isis-intf-topo-adj-form-disabled-internal-error") return 6;
+            if (name == "isis-intf-topo-adj-form-disabled-mtu") return 7;
+            if (name == "isis-intf-topo-adj-form-disabled-snpa") return 8;
+            if (name == "isis-intf-topo-adj-form-disabled-mcast") return 9;
+            return -1;
+        }
 };
 
 class IsisTilfaComputation : public ydk::Enum
@@ -3766,6 +3846,14 @@ class IsisTilfaComputation : public ydk::Enum
         static const ydk::Enum::YLeaf isis_tilfa_comp_srlg;
         static const ydk::Enum::YLeaf isis_tilfa_comp_node_srlg;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-tilfa-comp-none") return 0;
+            if (name == "isis-tilfa-comp-link") return 1;
+            if (name == "isis-tilfa-comp-node") return 2;
+            if (name == "isis-tilfa-comp-srlg") return 3;
+            if (name == "isis-tilfa-comp-node-srlg") return 4;
+            return -1;
+        }
 };
 
 class IsisAdjStateReason : public ydk::Enum
@@ -3789,6 +3877,26 @@ class IsisAdjStateReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_adj_down_bfd_down;
         static const ydk::Enum::YLeaf isis_adj_down_3way_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-up-nsf-restart") return 0;
+            if (name == "isis-adj-up-new-adj") return 1;
+            if (name == "isis-adj-up-restarted") return 2;
+            if (name == "isis-adj-up-nsf-restored") return 3;
+            if (name == "isis-adj-up-chkpt-restored") return 4;
+            if (name == "isis-adj-init-reason") return 5;
+            if (name == "isis-adj-init-neighbor-forgot") return 6;
+            if (name == "isis-adj-down-hold-time") return 7;
+            if (name == "isis-adj-down-if-down") return 8;
+            if (name == "isis-adj-down-cfg-mismatch") return 9;
+            if (name == "isis-adj-down-circ-id") return 10;
+            if (name == "isis-adj-down-nsf-ack-fail") return 11;
+            if (name == "isis-adj-down-db-clear") return 12;
+            if (name == "isis-adj-down-no-common-topology") return 13;
+            if (name == "isis-adj-down-restart-tlv-missing") return 14;
+            if (name == "isis-adj-down-bfd-down") return 15;
+            if (name == "isis-adj-down-3way-down") return 16;
+            return -1;
+        }
 };
 
 class SrmsMiAfEB : public ydk::Enum
@@ -3798,6 +3906,12 @@ class SrmsMiAfEB : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class IsisAdjBfdState : public ydk::Enum
@@ -3808,6 +3922,13 @@ class IsisAdjBfdState : public ydk::Enum
         static const ydk::Enum::YLeaf isis_adj_bfd_init_state;
         static const ydk::Enum::YLeaf isis_adj_bfd_up_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-bfd-no-state") return 0;
+            if (name == "isis-adj-bfd-down-state") return 1;
+            if (name == "isis-adj-bfd-init-state") return 2;
+            if (name == "isis-adj-bfd-up-state") return 3;
+            return -1;
+        }
 };
 
 class IsisRedistProto : public ydk::Enum
@@ -3825,6 +3946,20 @@ class IsisRedistProto : public ydk::Enum
         static const ydk::Enum::YLeaf isis_redist_application;
         static const ydk::Enum::YLeaf isis_redist_mobile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-redist-connected") return 0;
+            if (name == "isis-redist-static") return 1;
+            if (name == "isis-redist-ospf") return 2;
+            if (name == "isis-redist-bgp") return 3;
+            if (name == "isis-redist-isis") return 4;
+            if (name == "isis-redist-ospfv3") return 5;
+            if (name == "isis-redist-rip") return 6;
+            if (name == "isis-redist-eigrp") return 7;
+            if (name == "isis-redist-subscriber") return 8;
+            if (name == "isis-redist-application") return 9;
+            if (name == "isis-redist-mobile") return 10;
+            return -1;
+        }
 };
 
 class IsisShRouteAdvOrigin : public ydk::Enum
@@ -3836,6 +3971,14 @@ class IsisShRouteAdvOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf isis_sh_route_adv_origin_summary;
         static const ydk::Enum::YLeaf isis_sh_route_adv_origin_default;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-sh-route-adv-origin-interface") return 0;
+            if (name == "isis-sh-route-adv-origin-redistributed") return 1;
+            if (name == "isis-sh-route-adv-origin-native") return 2;
+            if (name == "isis-sh-route-adv-origin-summary") return 3;
+            if (name == "isis-sh-route-adv-origin-default") return 4;
+            return -1;
+        }
 };
 
 class IsisEnabled : public ydk::Enum
@@ -3844,6 +3987,11 @@ class IsisEnabled : public ydk::Enum
         static const ydk::Enum::YLeaf isis_disabled;
         static const ydk::Enum::YLeaf isis_enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-disabled") return 0;
+            if (name == "isis-enabled") return 1;
+            return -1;
+        }
 };
 
 class IsisLevel : public ydk::Enum
@@ -3853,6 +4001,12 @@ class IsisLevel : public ydk::Enum
         static const ydk::Enum::YLeaf isis_level1;
         static const ydk::Enum::YLeaf isis_level2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-level0") return 0;
+            if (name == "isis-level1") return 1;
+            if (name == "isis-level2") return 2;
+            return -1;
+        }
 };
 
 class IsisFrrTiebreaker : public ydk::Enum
@@ -3867,6 +4021,17 @@ class IsisFrrTiebreaker : public ydk::Enum
         static const ydk::Enum::YLeaf isis_frr_tiebreaker_srlg_disjoint;
         static const ydk::Enum::YLeaf isis_frr_tiebreaker_default;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-frr-tiebreaker-down-stream") return 0;
+            if (name == "isis-frr-tiebreaker-lc-disjoint") return 1;
+            if (name == "isis-frr-tiebreaker-low-est-backup-metric") return 2;
+            if (name == "isis-frr-tiebreaker-node-protecting") return 3;
+            if (name == "isis-frr-tiebreaker-primary-path") return 4;
+            if (name == "isis-frr-tiebreaker-secondary-path") return 5;
+            if (name == "isis-frr-tiebreaker-srlg-disjoint") return 6;
+            if (name == "isis-frr-tiebreaker-default") return 7;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspIpv6SrlgStateFlagsEnum : public ydk::Enum
@@ -3874,6 +4039,10 @@ class OpenconfigIsisLspIpv6SrlgStateFlagsEnum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf na;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "na") return 0;
+            return -1;
+        }
 };
 
 class IsisFrr : public ydk::Enum
@@ -3884,6 +4053,13 @@ class IsisFrr : public ydk::Enum
         static const ydk::Enum::YLeaf isis_frr_type_per_prefix;
         static const ydk::Enum::YLeaf isis_frr_type_sr_u_loop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-frr-type-none") return 0;
+            if (name == "isis-frr-type-per-link") return 1;
+            if (name == "isis-frr-type-per-prefix") return 2;
+            if (name == "isis-frr-type-sr-u-loop") return 3;
+            return -1;
+        }
 };
 
 class IsisIfDisabledReason : public ydk::Enum
@@ -3901,6 +4077,20 @@ class IsisIfDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_disabled_intf_shutdown;
         static const ydk::Enum::YLeaf isis_intf_disabled_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-disabled-no-net-cfg") return 0;
+            if (name == "isis-intf-disabled-area-missing") return 1;
+            if (name == "isis-intf-disabled-no-area-running") return 2;
+            if (name == "isis-intf-disabled-no-topos-cfg") return 3;
+            if (name == "isis-intf-disabled-no-imd-conn") return 4;
+            if (name == "isis-intf-disabled-imd-reg-error") return 5;
+            if (name == "isis-intf-disabled-level-mismatch") return 6;
+            if (name == "isis-intf-disabled-base-caps-error") return 7;
+            if (name == "isis-intf-disabled-intf-doesnt-exist") return 8;
+            if (name == "isis-intf-disabled-intf-shutdown") return 9;
+            if (name == "isis-intf-disabled-internal-error") return 10;
+            return -1;
+        }
 };
 
 class IsisShTeLink : public ydk::Enum
@@ -3909,6 +4099,11 @@ class IsisShTeLink : public ydk::Enum
         static const ydk::Enum::YLeaf isis_sh_te_link_p2p;
         static const ydk::Enum::YLeaf isis_sh_te_link_broadcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-sh-te-link-p2p") return 0;
+            if (name == "isis-sh-te-link-broadcast") return 1;
+            return -1;
+        }
 };
 
 class IsisMediaClass : public ydk::Enum
@@ -3918,6 +4113,12 @@ class IsisMediaClass : public ydk::Enum
         static const ydk::Enum::YLeaf isis_media_class_p2p;
         static const ydk::Enum::YLeaf isis_media_class_loop_back;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-media-class-lan") return 0;
+            if (name == "isis-media-class-p2p") return 1;
+            if (name == "isis-media-class-loop-back") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisTypesAdaptiveTimerTypeEnum : public ydk::Enum
@@ -3926,6 +4127,11 @@ class OpenconfigIsisTypesAdaptiveTimerTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf linear;
         static const ydk::Enum::YLeaf exponential;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "linear") return 0;
+            if (name == "exponential") return 1;
+            return -1;
+        }
 };
 
 class IsisIfMcastInvalidReason : public ydk::Enum
@@ -3935,6 +4141,12 @@ class IsisIfMcastInvalidReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_mcast_invalid_internal_error;
         static const ydk::Enum::YLeaf isis_intf_mcast_invalid_not_yet_needed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-mcast-invalid-join-error") return 0;
+            if (name == "isis-intf-mcast-invalid-internal-error") return 1;
+            if (name == "isis-intf-mcast-invalid-not-yet-needed") return 2;
+            return -1;
+        }
 };
 
 class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
@@ -3945,45 +4157,13 @@ class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown;
         static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_internal_error;
 
-};
-
-class IsisLspTrigger : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_lsp_trig_config;
-        static const ydk::Enum::YLeaf isis_lsp_trig_newadj;
-        static const ydk::Enum::YLeaf isis_lsp_trig_deladj;
-        static const ydk::Enum::YLeaf isis_lsp_trig_dr_change;
-        static const ydk::Enum::YLeaf isis_lsp_trig_area_set;
-        static const ydk::Enum::YLeaf isis_lsp_trig_attach;
-        static const ydk::Enum::YLeaf isis_lsp_trig_hippity;
-        static const ydk::Enum::YLeaf isis_lsp_trig_regen;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_up;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_down;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_inter_area;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external_full;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_def_orig;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_addr_chg;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_pce_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_fa_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_nsr_fo;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pn_cancel;
-        static const ydk::Enum::YLeaf isis_lsp_trig_lkgp;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pp;
-        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_send;
-        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
-        static const ydk::Enum::YLeaf isis_lsp_trig_msd;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
-        static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
-        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-topo-adv-prefix-disabled-intf-suppressed") return 0;
+            if (name == "isis-intf-topo-adv-prefix-disabled-af-not-up") return 1;
+            if (name == "isis-intf-topo-adv-prefix-disabled-af-prefixes-unknown") return 2;
+            if (name == "isis-intf-topo-adv-prefix-disabled-internal-error") return 3;
+            return -1;
+        }
 };
 
 class IsisAdjState : public ydk::Enum
@@ -3993,6 +4173,12 @@ class IsisAdjState : public ydk::Enum
         static const ydk::Enum::YLeaf isis_adj_init_state;
         static const ydk::Enum::YLeaf isis_adj_failed_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-up-state") return 0;
+            if (name == "isis-adj-init-state") return 1;
+            if (name == "isis-adj-failed-state") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspNlpidEnum : public ydk::Enum
@@ -4001,6 +4187,11 @@ class OpenconfigIsisLspNlpidEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class IsisIfClnsProtoDownReason : public ydk::Enum
@@ -4013,6 +4204,15 @@ class IsisIfClnsProtoDownReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_state_reg_error;
         static const ydk::Enum::YLeaf isis_intf_clns_proto_down_clns_not_up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-clns-proto-down-add-to-intf-stack-fail") return 0;
+            if (name == "isis-intf-clns-proto-down-no-imd-conn") return 1;
+            if (name == "isis-intf-clns-proto-down-imd-node-doesnt-exist") return 2;
+            if (name == "isis-intf-clns-proto-down-imd-exist-reg-error") return 3;
+            if (name == "isis-intf-clns-proto-down-imd-state-reg-error") return 4;
+            if (name == "isis-intf-clns-proto-down-clns-not-up") return 5;
+            return -1;
+        }
 };
 
 class SrmsMiFlagEB : public ydk::Enum
@@ -4021,6 +4221,11 @@ class SrmsMiFlagEB : public ydk::Enum
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 1;
+            return -1;
+        }
 };
 
 class IsisAdjTopoStatus : public ydk::Enum
@@ -4040,6 +4245,22 @@ class IsisAdjTopoStatus : public ydk::Enum
         static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_subnet_mismatch;
         static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_not_link_local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-topo-status-ok") return 0;
+            if (name == "isis-adj-topo-status-intf-not-configured") return 1;
+            if (name == "isis-adj-topo-status-intf-not-running") return 2;
+            if (name == "isis-adj-topo-status-init-state") return 3;
+            if (name == "isis-adj-topo-status-neighbor-doesnt-participate") return 4;
+            if (name == "isis-adj-topo-status-ipv4-address-tlv-missing") return 5;
+            if (name == "isis-adj-topo-status-ipv4-address-tlv-empty") return 6;
+            if (name == "isis-adj-topo-status-ipv6-address-tlv-missing") return 7;
+            if (name == "isis-adj-topo-status-ipv6-address-tlv-empty") return 8;
+            if (name == "isis-adj-topo-status-ipv4-address-matches-ours") return 9;
+            if (name == "isis-adj-topo-status-ipv6-address-matches-ours") return 10;
+            if (name == "isis-adj-topo-status-ipv4-address-subnet-mismatch") return 11;
+            if (name == "isis-adj-topo-status-ipv6-address-not-link-local") return 12;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspLanAdjacencySidStateFlagsEnum : public ydk::Enum
@@ -4051,6 +4272,14 @@ class OpenconfigIsisLspLanAdjacencySidStateFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-family") return 0;
+            if (name == "backup") return 1;
+            if (name == "value") return 2;
+            if (name == "local") return 3;
+            if (name == "set") return 4;
+            return -1;
+        }
 };
 
 class IsisIfTopoDisabledReason : public ydk::Enum
@@ -4059,6 +4288,11 @@ class IsisIfTopoDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_topo_disabled_not_cfg;
         static const ydk::Enum::YLeaf isis_intf_topo_disabled_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-topo-disabled-not-cfg") return 0;
+            if (name == "isis-intf-topo-disabled-internal-error") return 1;
+            return -1;
+        }
 };
 
 class IsisIfAdjFormDisabledReason : public ydk::Enum
@@ -4070,6 +4304,29 @@ class IsisIfAdjFormDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_clns_io;
         static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-adj-form-disabled-cfg-passive") return 0;
+            if (name == "isis-intf-adj-form-disabled-no-topo-participate") return 1;
+            if (name == "isis-intf-adj-form-disabled-add-to-intf-stack-fail") return 2;
+            if (name == "isis-intf-adj-form-disabled-clns-io") return 3;
+            if (name == "isis-intf-adj-form-disabled-internal-error") return 4;
+            return -1;
+        }
+};
+
+class IsisEdmLabelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_prefix_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_local_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_max;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-edm-label-alloc-prefix-sid") return 0;
+            if (name == "isis-edm-label-alloc-local-sid") return 1;
+            if (name == "isis-edm-label-alloc-max") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
@@ -4078,6 +4335,11 @@ class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf unsupported;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            if (name == "unsupported") return 1;
+            return -1;
+        }
 };
 
 class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
@@ -4086,6 +4348,11 @@ class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf no_php;
         static const ydk::Enum::YLeaf explicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-php") return 0;
+            if (name == "explicit-null") return 1;
+            return -1;
+        }
 };
 
 class IsisLevels : public ydk::Enum
@@ -4097,6 +4364,14 @@ class IsisLevels : public ydk::Enum
         static const ydk::Enum::YLeaf isis_levels_12;
         static const ydk::Enum::YLeaf isis_levels_total;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-levels-none") return 0;
+            if (name == "isis-levels-1") return 1;
+            if (name == "isis-levels-2") return 2;
+            if (name == "isis-levels-12") return 3;
+            if (name == "isis-levels-total") return 4;
+            return -1;
+        }
 };
 
 class OpenconfigIsisTypesCircuitTypeEnum : public ydk::Enum
@@ -4105,6 +4380,11 @@ class OpenconfigIsisTypesCircuitTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf point_to_point;
         static const ydk::Enum::YLeaf broadcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "point-to-point") return 0;
+            if (name == "broadcast") return 1;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspCryptoTypeEnum : public ydk::Enum
@@ -4113,6 +4393,11 @@ class OpenconfigIsisLspCryptoTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf hmac_md5;
         static const ydk::Enum::YLeaf cleartext;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hmac-md5") return 0;
+            if (name == "cleartext") return 1;
+            return -1;
+        }
 };
 
 class IsisIfAfDisabledReason : public ydk::Enum
@@ -4121,6 +4406,11 @@ class IsisIfAfDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_af_disabled_no_topo_enabled;
         static const ydk::Enum::YLeaf isis_intf_af_disabled_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-disabled-no-topo-enabled") return 0;
+            if (name == "isis-intf-af-disabled-internal-error") return 1;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
@@ -4128,15 +4418,10 @@ class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf numbered;
 
-};
-
-class IsisIfAfPrefixUnknownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "numbered") return 0;
+            return -1;
+        }
 };
 
 class OpenconfigIsisTypesMetricStyleEnum : public ydk::Enum
@@ -4145,6 +4430,11 @@ class OpenconfigIsisTypesMetricStyleEnum : public ydk::Enum
         static const ydk::Enum::YLeaf narrow_metric;
         static const ydk::Enum::YLeaf wide_metric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "narrow-metric") return 0;
+            if (name == "wide-metric") return 1;
+            return -1;
+        }
 };
 
 class IsisNsfFlavor : public ydk::Enum
@@ -4155,6 +4445,13 @@ class IsisNsfFlavor : public ydk::Enum
         static const ydk::Enum::YLeaf isis_nsf_flav_or_ietf;
         static const ydk::Enum::YLeaf isis_nsf_flav_or_nsr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-nsf-flav-or-none") return 0;
+            if (name == "isis-nsf-flav-or-cisco") return 1;
+            if (name == "isis-nsf-flav-or-ietf") return 2;
+            if (name == "isis-nsf-flav-or-nsr") return 3;
+            return -1;
+        }
 };
 
 class IsisAdjTopoChange : public ydk::Enum
@@ -4164,6 +4461,12 @@ class IsisAdjTopoChange : public ydk::Enum
         static const ydk::Enum::YLeaf isis_adj_topo_next_hop_change;
         static const ydk::Enum::YLeaf isis_adj_topo_down_change;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-topo-up-change") return 0;
+            if (name == "isis-adj-topo-next-hop-change") return 1;
+            if (name == "isis-adj-topo-down-change") return 2;
+            return -1;
+        }
 };
 
 class IsisShTePceFloodingScope : public ydk::Enum
@@ -4173,6 +4476,12 @@ class IsisShTePceFloodingScope : public ydk::Enum
         static const ydk::Enum::YLeaf area;
         static const ydk::Enum::YLeaf domain;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "area") return 1;
+            if (name == "domain") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspAlgorithmEnum : public ydk::Enum
@@ -4181,6 +4490,11 @@ class OpenconfigIsisLspAlgorithmEnum : public ydk::Enum
         static const ydk::Enum::YLeaf spf;
         static const ydk::Enum::YLeaf strict_spf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "spf") return 0;
+            if (name == "strict-spf") return 1;
+            return -1;
+        }
 };
 
 class IsisPrefixPriority : public ydk::Enum
@@ -4191,6 +4505,13 @@ class IsisPrefixPriority : public ydk::Enum
         static const ydk::Enum::YLeaf isis_prefix_priority_med;
         static const ydk::Enum::YLeaf isis_prefix_priority_low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-prefix-priority-critical") return 0;
+            if (name == "isis-prefix-priority-high") return 1;
+            if (name == "isis-prefix-priority-med") return 2;
+            if (name == "isis-prefix-priority-low") return 3;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspFlagsStateFlagsEnum : public ydk::Enum
@@ -4200,6 +4521,12 @@ class OpenconfigIsisLspFlagsStateFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf readvertisement_flag;
         static const ydk::Enum::YLeaf node_flag;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external-flag") return 0;
+            if (name == "readvertisement-flag") return 1;
+            if (name == "node-flag") return 2;
+            return -1;
+        }
 };
 
 class IsisAfId : public ydk::Enum
@@ -4208,6 +4535,11 @@ class IsisAfId : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class IsisKnown : public ydk::Enum
@@ -4216,6 +4548,11 @@ class IsisKnown : public ydk::Enum
         static const ydk::Enum::YLeaf isis_unknown;
         static const ydk::Enum::YLeaf isis_known;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-unknown") return 0;
+            if (name == "isis-known") return 1;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspAdjacencySidStateFlagsEnum : public ydk::Enum
@@ -4227,6 +4564,14 @@ class OpenconfigIsisLspAdjacencySidStateFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-family") return 0;
+            if (name == "backup") return 1;
+            if (name == "value") return 2;
+            if (name == "local") return 3;
+            if (name == "set") return 4;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspPrefixSidStateFlagsEnum : public ydk::Enum
@@ -4239,6 +4584,15 @@ class OpenconfigIsisLspPrefixSidStateFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf value_;
         static const ydk::Enum::YLeaf local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "readvertisement") return 0;
+            if (name == "node") return 1;
+            if (name == "php") return 2;
+            if (name == "explicit-null") return 3;
+            if (name == "value") return 4;
+            if (name == "local") return 5;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspFlagsEnum : public ydk::Enum
@@ -4251,6 +4605,15 @@ class OpenconfigIsisLspFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf attached_default;
         static const ydk::Enum::YLeaf overload;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "partition-repair") return 0;
+            if (name == "attached-error") return 1;
+            if (name == "attached-expense") return 2;
+            if (name == "attached-delay") return 3;
+            if (name == "attached-default") return 4;
+            if (name == "overload") return 5;
+            return -1;
+        }
 };
 
 class IsisValid : public ydk::Enum
@@ -4259,6 +4622,11 @@ class IsisValid : public ydk::Enum
         static const ydk::Enum::YLeaf isis_invalid;
         static const ydk::Enum::YLeaf isis_valid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-invalid") return 0;
+            if (name == "isis-valid") return 1;
+            return -1;
+        }
 };
 
 class IsisIfClnsMtuInvalidReason : public ydk::Enum
@@ -4267,6 +4635,11 @@ class IsisIfClnsMtuInvalidReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_too_small;
         static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-clns-mtu-invalid-too-small") return 0;
+            if (name == "isis-intf-clns-mtu-invalid-internal-error") return 1;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspDefaultMetricStateFlagsEnum : public ydk::Enum
@@ -4274,6 +4647,10 @@ class OpenconfigIsisLspDefaultMetricStateFlagsEnum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            return -1;
+        }
 };
 
 class OpenconfigIsisAdjacencyStateNlpidEnum : public ydk::Enum
@@ -4282,6 +4659,11 @@ class OpenconfigIsisAdjacencyStateNlpidEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class IsisIfAfProtoDownReason : public ydk::Enum
@@ -4294,6 +4676,15 @@ class IsisIfAfProtoDownReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_af_proto_down_af_not_up;
         static const ydk::Enum::YLeaf isis_intf_af_proto_down_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-proto-down-imd-conn-fail") return 0;
+            if (name == "isis-intf-af-proto-down-imd-node-doesnt-exist") return 1;
+            if (name == "isis-intf-af-proto-down-imd-exist-reg-error") return 2;
+            if (name == "isis-intf-af-proto-down-imd-state-reg-error") return 3;
+            if (name == "isis-intf-af-proto-down-af-not-up") return 4;
+            if (name == "isis-intf-af-proto-down-internal-error") return 5;
+            return -1;
+        }
 };
 
 class IsisMetricMode : public ydk::Enum
@@ -4303,6 +4694,12 @@ class IsisMetricMode : public ydk::Enum
         static const ydk::Enum::YLeaf isis_metric_mode_relative;
         static const ydk::Enum::YLeaf isis_metric_mode_absolute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-metric-mode-fixed") return 0;
+            if (name == "isis-metric-mode-relative") return 1;
+            if (name == "isis-metric-mode-absolute") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum : public ydk::Enum
@@ -4312,6 +4709,12 @@ class OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6_mpls;
         static const ydk::Enum::YLeaf ipv6_sr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-mpls") return 0;
+            if (name == "ipv6-mpls") return 1;
+            if (name == "ipv6-sr") return 2;
+            return -1;
+        }
 };
 
 class IsisMetricStyle : public ydk::Enum
@@ -4323,6 +4726,14 @@ class IsisMetricStyle : public ydk::Enum
         static const ydk::Enum::YLeaf isis_metric_style_narrow_transition;
         static const ydk::Enum::YLeaf isis_metric_style_wide_transition;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-metric-style-narrow") return 0;
+            if (name == "isis-metric-style-wide") return 1;
+            if (name == "isis-metric-style-transition") return 2;
+            if (name == "isis-metric-style-narrow-transition") return 3;
+            if (name == "isis-metric-style-wide-transition") return 4;
+            return -1;
+        }
 };
 
 class IsisIfAdvPrefixDisabledReason : public ydk::Enum
@@ -4332,6 +4743,12 @@ class IsisIfAdvPrefixDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_no_topo_participate;
         static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-adv-prefix-disabled-if-cfg-suppressed") return 0;
+            if (name == "isis-intf-adv-prefix-disabled-no-topo-participate") return 1;
+            if (name == "isis-intf-adv-prefix-disabled-internal-error") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
@@ -4341,6 +4758,27 @@ class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf level2;
         static const ydk::Enum::YLeaf level12;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 0;
+            if (name == "level2") return 1;
+            if (name == "level12") return 2;
+            return -1;
+        }
+};
+
+class IsisIfAfPrefixUnknownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-prefix-unknown-adv-suppressed") return 0;
+            if (name == "isis-intf-af-prefix-unknown-global-addr-reg-error") return 1;
+            if (name == "isis-intf-af-prefix-unknown-internal-error") return 2;
+            return -1;
+        }
 };
 
 class IsisSpfClass : public ydk::Enum
@@ -4356,6 +4794,18 @@ class IsisSpfClass : public ydk::Enum
         static const ydk::Enum::YLeaf isis_spf_incremental;
         static const ydk::Enum::YLeaf isis_spf_full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-spf-frr-sr-u-loop") return 0;
+            if (name == "isis-spf-frr-per-link") return 1;
+            if (name == "isis-spf-partial") return 2;
+            if (name == "isis-spf-frr-per-prefix") return 3;
+            if (name == "isis-spf-ucmp-calc") return 4;
+            if (name == "isis-spf-flex") return 5;
+            if (name == "isis-spf-next-hop") return 6;
+            if (name == "isis-spf-incremental") return 7;
+            if (name == "isis-spf-full") return 8;
+            return -1;
+        }
 };
 
 class IsisSpfTrigger : public ydk::Enum
@@ -4395,6 +4845,42 @@ class IsisSpfTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf isis_spf_trig_flex_algo;
         static const ydk::Enum::YLeaf isis_spf_trig_prefix_policy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-spf-trig-config") return 0;
+            if (name == "isis-spf-trig-nsr-fo") return 1;
+            if (name == "isis-spf-trig-periodic") return 2;
+            if (name == "isis-spf-trig-clear") return 3;
+            if (name == "isis-spf-trig-newadj") return 4;
+            if (name == "isis-spf-trig-deladj") return 5;
+            if (name == "isis-spf-trig-next-hop") return 6;
+            if (name == "isis-spf-trig-metric") return 7;
+            if (name == "isis-spf-trig-dis") return 8;
+            if (name == "isis-spf-trig-frr-per-link") return 9;
+            if (name == "isis-spf-trig-frr-per-prefix") return 10;
+            if (name == "isis-spf-trig-ucmp") return 11;
+            if (name == "isis-spf-trig-new-tunnel") return 12;
+            if (name == "isis-spf-trig-del-tunnel") return 13;
+            if (name == "isis-spf-trig-chg-tunnel") return 14;
+            if (name == "isis-spf-trig-new-node") return 15;
+            if (name == "isis-spf-trig-del-node") return 16;
+            if (name == "isis-spf-trig-newlsp") return 17;
+            if (name == "isis-spf-trig-lsp-expiry") return 18;
+            if (name == "isis-spf-trig-attach-set") return 19;
+            if (name == "isis-spf-trig-attach-clr") return 20;
+            if (name == "isis-spf-trig-overload-set") return 21;
+            if (name == "isis-spf-trig-overload-clr") return 22;
+            if (name == "isis-spf-trig-link-good") return 23;
+            if (name == "isis-spf-trig-link-bad") return 24;
+            if (name == "isis-spf-trig-prefix-good") return 25;
+            if (name == "isis-spf-trig-prefix-bad") return 26;
+            if (name == "isis-spf-trig-prefix") return 27;
+            if (name == "isis-spf-trig-area-addr") return 28;
+            if (name == "isis-spf-trig-ip-addr") return 29;
+            if (name == "isis-spf-trig-rtrid") return 30;
+            if (name == "isis-spf-trig-flex-algo") return 31;
+            if (name == "isis-spf-trig-prefix-policy") return 32;
+            return -1;
+        }
 };
 
 class IsisIfClnsSnpaUnknownReason : public ydk::Enum
@@ -4404,6 +4890,12 @@ class IsisIfClnsSnpaUnknownReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_not_lan;
         static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-clns-snpa-unknown-access-error") return 0;
+            if (name == "isis-intf-clns-snpa-unknown-not-lan") return 1;
+            if (name == "isis-intf-clns-snpa-unknown-internal-error") return 2;
+            return -1;
+        }
 };
 
 class OpenconfigIsisTypesIsisInterfaceAdjStateEnum : public ydk::Enum
@@ -4414,6 +4906,13 @@ class OpenconfigIsisTypesIsisInterfaceAdjStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf init;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            if (name == "init") return 2;
+            if (name == "failed") return 3;
+            return -1;
+        }
 };
 
 class IsisReachable : public ydk::Enum
@@ -4422,6 +4921,86 @@ class IsisReachable : public ydk::Enum
         static const ydk::Enum::YLeaf isis_unreachable;
         static const ydk::Enum::YLeaf isis_reachable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-unreachable") return 0;
+            if (name == "isis-reachable") return 1;
+            return -1;
+        }
+};
+
+class IsisLspTrigger : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_lsp_trig_config;
+        static const ydk::Enum::YLeaf isis_lsp_trig_newadj;
+        static const ydk::Enum::YLeaf isis_lsp_trig_deladj;
+        static const ydk::Enum::YLeaf isis_lsp_trig_dr_change;
+        static const ydk::Enum::YLeaf isis_lsp_trig_area_set;
+        static const ydk::Enum::YLeaf isis_lsp_trig_attach;
+        static const ydk::Enum::YLeaf isis_lsp_trig_hippity;
+        static const ydk::Enum::YLeaf isis_lsp_trig_regen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_up;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_down;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_inter_area;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external_full;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_def_orig;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_addr_chg;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_pce_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_fa_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_nsr_fo;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pn_cancel;
+        static const ydk::Enum::YLeaf isis_lsp_trig_lkgp;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pp;
+        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_send;
+        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
+        static const ydk::Enum::YLeaf isis_lsp_trig_msd;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
+        static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-lsp-trig-config") return 0;
+            if (name == "isis-lsp-trig-newadj") return 1;
+            if (name == "isis-lsp-trig-deladj") return 2;
+            if (name == "isis-lsp-trig-dr-change") return 3;
+            if (name == "isis-lsp-trig-area-set") return 4;
+            if (name == "isis-lsp-trig-attach") return 5;
+            if (name == "isis-lsp-trig-hippity") return 6;
+            if (name == "isis-lsp-trig-regen") return 7;
+            if (name == "isis-lsp-trig-ip-if-up") return 8;
+            if (name == "isis-lsp-trig-ip-if-down") return 9;
+            if (name == "isis-lsp-trig-ip-inter-area") return 10;
+            if (name == "isis-lsp-trig-ip-external") return 11;
+            if (name == "isis-lsp-trig-ip-external-full") return 12;
+            if (name == "isis-lsp-trig-ip-def-orig") return 13;
+            if (name == "isis-lsp-trig-ip-addr-chg") return 14;
+            if (name == "isis-lsp-trig-te-info") return 15;
+            if (name == "isis-lsp-trig-te-pce-info") return 16;
+            if (name == "isis-lsp-trig-te-fa-info") return 17;
+            if (name == "isis-lsp-trig-nsr-fo") return 18;
+            if (name == "isis-lsp-trig-pn-cancel") return 19;
+            if (name == "isis-lsp-trig-lkgp") return 20;
+            if (name == "isis-lsp-trig-pp") return 21;
+            if (name == "isis-lsp-trig-config-force-send") return 22;
+            if (name == "isis-lsp-trig-config-force-init") return 23;
+            if (name == "isis-lsp-trig-adj-sid-add") return 24;
+            if (name == "isis-lsp-trig-adj-sid-delete") return 25;
+            if (name == "isis-lsp-trig-adj-sid-change") return 26;
+            if (name == "isis-lsp-trig-msd") return 27;
+            if (name == "isis-lsp-trig-adj-sid-wait-timer") return 28;
+            if (name == "isis-lsp-trig-direct-gen") return 29;
+            if (name == "isis-lsp-trig-flex-algo-enable-disable") return 30;
+            if (name == "isis-lsp-trig-pm-delay-loss") return 31;
+            if (name == "isis-lsp-trig-pm-bw-util") return 32;
+            return -1;
+        }
 };
 
 class IsisUloopAvoidance : public ydk::Enum
@@ -4432,6 +5011,13 @@ class IsisUloopAvoidance : public ydk::Enum
         static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_protected;
         static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_sr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-u-loop-avoidance-type-none") return 0;
+            if (name == "isis-u-loop-avoidance-type-all") return 1;
+            if (name == "isis-u-loop-avoidance-type-protected") return 2;
+            if (name == "isis-u-loop-avoidance-type-sr") return 3;
+            return -1;
+        }
 };
 
 class Srv6EndFunction : public ydk::Enum
@@ -4465,6 +5051,36 @@ class Srv6EndFunction : public ydk::Enum
         static const ydk::Enum::YLeaf end_otp;
         static const ydk::Enum::YLeaf end_s;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "end") return 1;
+            if (name == "end-with-psp") return 2;
+            if (name == "end-with-usp") return 3;
+            if (name == "end-with-psp-usp") return 4;
+            if (name == "end-x") return 5;
+            if (name == "end-x-with-psp") return 6;
+            if (name == "end-x-with-usp") return 7;
+            if (name == "end-x-with-psp-usp") return 8;
+            if (name == "end-tn") return 9;
+            if (name == "end-t-with-psp") return 10;
+            if (name == "end-t-with-usp") return 11;
+            if (name == "end-t-with-psp-usp") return 12;
+            if (name == "end-b6") return 13;
+            if (name == "end-b6-encaps") return 14;
+            if (name == "end-bm") return 15;
+            if (name == "end-dx6") return 16;
+            if (name == "end-dx4") return 17;
+            if (name == "end-dt6") return 18;
+            if (name == "end-dt4") return 19;
+            if (name == "end-dt46") return 20;
+            if (name == "end-dx2") return 21;
+            if (name == "end-dx2v") return 22;
+            if (name == "end-dx2u") return 23;
+            if (name == "end-dx2m") return 24;
+            if (name == "end-otp") return 25;
+            if (name == "end-s") return 26;
+            return -1;
+        }
 };
 
 class IsisPrefixOrigin : public ydk::Enum
@@ -4478,6 +5094,16 @@ class IsisPrefixOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf isis_prefix_origin_inter_area;
         static const ydk::Enum::YLeaf isis_prefix_origin_default_nearest_attached;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-prefix-origin-l1-summary-null") return 0;
+            if (name == "isis-prefix-origin-l1") return 1;
+            if (name == "isis-prefix-origin-l2-summary-null") return 2;
+            if (name == "isis-prefix-origin-l2") return 3;
+            if (name == "isis-prefix-origin-inter-area-summary-null") return 4;
+            if (name == "isis-prefix-origin-inter-area") return 5;
+            if (name == "isis-prefix-origin-default-nearest-attached") return 6;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspAttributesEnum : public ydk::Enum
@@ -4486,6 +5112,11 @@ class OpenconfigIsisLspAttributesEnum : public ydk::Enum
         static const ydk::Enum::YLeaf overload;
         static const ydk::Enum::YLeaf attached;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "overload") return 0;
+            if (name == "attached") return 1;
+            return -1;
+        }
 };
 
 class OpenconfigIsisLspPduTypeEnum : public ydk::Enum
@@ -4494,6 +5125,11 @@ class OpenconfigIsisLspPduTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf level1;
         static const ydk::Enum::YLeaf level2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 0;
+            if (name == "level2") return 1;
+            return -1;
+        }
 };
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::Algorithm : public ydk::Enum
@@ -4502,6 +5138,11 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         static const ydk::Enum::YLeaf spf;
         static const ydk::Enum::YLeaf strict_spf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "spf") return 0;
+            if (name == "strict-spf") return 1;
+            return -1;
+        }
 };
 
 

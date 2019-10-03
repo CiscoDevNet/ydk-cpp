@@ -40264,6 +40264,19 @@ class Wred : public ydk::Enum
         static const ydk::Enum::YLeaf wred_ecn_cmd;
         static const ydk::Enum::YLeaf wred_invalid_cmd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "wred-cos-cmd") return 0;
+            if (name == "wred-dscp-cmd") return 1;
+            if (name == "wred-precedence-cmd") return 2;
+            if (name == "wred-discard-class-cmd") return 3;
+            if (name == "wred-mpls-exp-cmd") return 4;
+            if (name == "red-with-user-min-max") return 5;
+            if (name == "red-with-default-min-max") return 6;
+            if (name == "wred-dei-cmd") return 7;
+            if (name == "wred-ecn-cmd") return 8;
+            if (name == "wred-invalid-cmd") return 9;
+            return -1;
+        }
 };
 
 class PolicyParamUnit : public ydk::Enum
@@ -40294,6 +40307,33 @@ class PolicyParamUnit : public ydk::Enum
         static const ydk::Enum::YLeaf policy_param_unit_ratio;
         static const ydk::Enum::YLeaf policy_param_unit_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-param-unit-invalid") return 0;
+            if (name == "policy-param-unit-bytes") return 1;
+            if (name == "policy-param-unit-kbytes") return 2;
+            if (name == "policy-param-unit-mbytes") return 3;
+            if (name == "policy-param-unit-gbytes") return 4;
+            if (name == "policy-param-unit-bitsps") return 5;
+            if (name == "policy-param-unit-kbitsps") return 6;
+            if (name == "policy-param-unit-mbitsps") return 7;
+            if (name == "policy-param-unit-gbitsps") return 8;
+            if (name == "policy-param-unit-cells-ps") return 9;
+            if (name == "policy-param-unit-packets-ps") return 10;
+            if (name == "policy-param-unit-us") return 11;
+            if (name == "policy-param-unit-ms") return 12;
+            if (name == "policy-param-unit-seconds") return 13;
+            if (name == "policy-param-unit-packets") return 14;
+            if (name == "policy-param-unit-cells") return 15;
+            if (name == "policy-param-unit-percent") return 16;
+            if (name == "policy-param-unit-per-thousand") return 17;
+            if (name == "policy-param-unit-per-million") return 18;
+            if (name == "policy-param-unit-hz") return 19;
+            if (name == "policy-param-unit-khz") return 20;
+            if (name == "policy-param-unit-mhz") return 21;
+            if (name == "policy-param-unit-ratio") return 22;
+            if (name == "policy-param-unit-max") return 23;
+            return -1;
+        }
 };
 
 class QosCapsOperationEnum : public ydk::Enum
@@ -40305,6 +40345,14 @@ class QosCapsOperationEnum : public ydk::Enum
         static const ydk::Enum::YLeaf modify;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "add") return 0;
+            if (name == "remove") return 1;
+            if (name == "replace") return 2;
+            if (name == "modify") return 3;
+            if (name == "unknown") return 4;
+            return -1;
+        }
 };
 
 class CacState : public ydk::Enum
@@ -40315,6 +40363,13 @@ class CacState : public ydk::Enum
         static const ydk::Enum::YLeaf redirect;
         static const ydk::Enum::YLeaf ubrl;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "admit") return 1;
+            if (name == "redirect") return 2;
+            if (name == "ubrl") return 3;
+            return -1;
+        }
 };
 
 class QosMaSatCapsTypeEnum : public ydk::Enum
@@ -40324,6 +40379,12 @@ class QosMaSatCapsTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf output;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            if (name == "unknown") return 2;
+            return -1;
+        }
 };
 
 class PolicyState : public ydk::Enum
@@ -40332,6 +40393,11 @@ class PolicyState : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf suspended;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "suspended") return 1;
+            return -1;
+        }
 };
 
 

@@ -800,6 +800,7 @@ std::string ObjectGroup::Port::Objects::Object::Operators::Operator::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "operator";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1013,6 +1014,7 @@ std::string ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "port-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2071,6 +2073,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2284,6 +2287,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressR
 {
     std::ostringstream path_buffer;
     path_buffer << "address-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3421,6 +3425,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3634,6 +3639,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressR
 {
     std::ostringstream path_buffer;
     path_buffer << "address-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

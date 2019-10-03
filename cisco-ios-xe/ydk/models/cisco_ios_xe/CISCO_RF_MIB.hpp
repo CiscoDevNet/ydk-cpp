@@ -310,6 +310,25 @@ class RFState : public ydk::Enum
         static const ydk::Enum::YLeaf activeExtraload;
         static const ydk::Enum::YLeaf activeHandback;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notKnown") return 1;
+            if (name == "disabled") return 2;
+            if (name == "initialization") return 3;
+            if (name == "negotiation") return 4;
+            if (name == "standbyCold") return 5;
+            if (name == "standbyColdConfig") return 6;
+            if (name == "standbyColdFileSys") return 7;
+            if (name == "standbyColdBulk") return 8;
+            if (name == "standbyHot") return 9;
+            if (name == "activeFast") return 10;
+            if (name == "activeDrain") return 11;
+            if (name == "activePreconfig") return 12;
+            if (name == "activePostconfig") return 13;
+            if (name == "active") return 14;
+            if (name == "activeExtraload") return 15;
+            if (name == "activeHandback") return 16;
+            return -1;
+        }
 };
 
 class RFIssuState : public ydk::Enum
@@ -321,6 +340,14 @@ class RFIssuState : public ydk::Enum
         static const ydk::Enum::YLeaf runVersion;
         static const ydk::Enum::YLeaf commitVersion;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unset") return 0;
+            if (name == "init") return 1;
+            if (name == "loadVersion") return 2;
+            if (name == "runVersion") return 3;
+            if (name == "commitVersion") return 4;
+            return -1;
+        }
 };
 
 class RFAction : public ydk::Enum
@@ -332,6 +359,14 @@ class RFAction : public ydk::Enum
         static const ydk::Enum::YLeaf switchActivity;
         static const ydk::Enum::YLeaf forceSwitchActivity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noAction") return 0;
+            if (name == "reloadPeer") return 1;
+            if (name == "reloadShelf") return 2;
+            if (name == "switchActivity") return 3;
+            if (name == "forceSwitchActivity") return 4;
+            return -1;
+        }
 };
 
 class RFMode : public ydk::Enum
@@ -346,6 +381,17 @@ class RFMode : public ydk::Enum
         static const ydk::Enum::YLeaf warmStandbyRedundant;
         static const ydk::Enum::YLeaf hotStandbyRedundant;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nonRedundant") return 1;
+            if (name == "staticLoadShareNonRedundant") return 2;
+            if (name == "dynamicLoadShareNonRedundant") return 3;
+            if (name == "staticLoadShareRedundant") return 4;
+            if (name == "dynamicLoadShareRedundant") return 5;
+            if (name == "coldStandbyRedundant") return 6;
+            if (name == "warmStandbyRedundant") return 7;
+            if (name == "hotStandbyRedundant") return 8;
+            return -1;
+        }
 };
 
 class RFClientStatus : public ydk::Enum
@@ -356,6 +402,13 @@ class RFClientStatus : public ydk::Enum
         static const ydk::Enum::YLeaf clientRedundancyInProgress;
         static const ydk::Enum::YLeaf clientRedundant;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noStatus") return 1;
+            if (name == "clientNotRedundant") return 2;
+            if (name == "clientRedundancyInProgress") return 3;
+            if (name == "clientRedundant") return 4;
+            return -1;
+        }
 };
 
 class RFSwactReasonType : public ydk::Enum
@@ -369,6 +422,16 @@ class RFSwactReasonType : public ydk::Enum
         static const ydk::Enum::YLeaf activeUnitFailed;
         static const ydk::Enum::YLeaf activeUnitRemoved;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unsupported") return 1;
+            if (name == "none") return 2;
+            if (name == "notKnown") return 3;
+            if (name == "userInitiated") return 4;
+            if (name == "userForced") return 5;
+            if (name == "activeUnitFailed") return 6;
+            if (name == "activeUnitRemoved") return 7;
+            return -1;
+        }
 };
 
 class RFIssuStateRev1 : public ydk::Enum
@@ -382,6 +445,16 @@ class RFIssuStateRev1 : public ydk::Enum
         static const ydk::Enum::YLeaf runVersionSwitchover;
         static const ydk::Enum::YLeaf commitVersion;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "init") return 0;
+            if (name == "systemReset") return 1;
+            if (name == "loadVersion") return 3;
+            if (name == "loadVersionSwitchover") return 4;
+            if (name == "runVersion") return 6;
+            if (name == "runVersionSwitchover") return 7;
+            if (name == "commitVersion") return 9;
+            return -1;
+        }
 };
 
 

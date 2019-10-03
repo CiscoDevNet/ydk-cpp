@@ -120,7 +120,7 @@ bool Password::has_leaf_or_child_of_name(const std::string & name) const
 
 Password::Encryption::Encryption()
     :
-    aes{YType::uint32, "aes"}
+    aes{YType::enumeration, "aes"}
 {
 
     yang_name = "encryption"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false; 
@@ -202,6 +202,8 @@ bool Password::Encryption::has_leaf_or_child_of_name(const std::string & name) c
         return true;
     return false;
 }
+
+const Enum::YLeaf KeyEncryption::type6 {2, "type6"};
 
 
 }

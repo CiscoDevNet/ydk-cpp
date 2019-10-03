@@ -609,6 +609,8 @@ class Ipsla::Responder::Ports::Port : public ydk::Entity
         ydk::YLeaf is_ipsla; //type: boolean
         ydk::YLeaf drop_counter; //type: uint32
         ydk::YLeaf socket; //type: int32
+        ydk::YLeaf local_ipv6_address; //type: string
+        ydk::YLeaf family; //type: int32
         class Sender; //type: Ipsla::Responder::Ports::Port::Sender
 
         ydk::YList sender;
@@ -632,9 +634,10 @@ class Ipsla::Responder::Ports::Port::Sender : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: uint32
+        ydk::YLeaf ip_address; //type: string
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf last_recv_time; //type: uint64
+        ydk::YLeaf ipv6_address; //type: string
 
 }; // Ipsla::Responder::Ports::Port::Sender
 
@@ -3953,6 +3956,14 @@ class IpslaTargetTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_pseudowire_target_type;
         static const ydk::Enum::YLeaf ipv6_address_target_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-address-target-type") return 1;
+            if (name == "ipv4-prefix-target-type") return 2;
+            if (name == "tunnel-id-target-type") return 3;
+            if (name == "ipv4-pseudowire-target-type") return 4;
+            if (name == "ipv6-address-target-type") return 5;
+            return -1;
+        }
 };
 
 class SlaOpTypes : public ydk::Enum
@@ -3967,6 +3978,17 @@ class SlaOpTypes : public ydk::Enum
         static const ydk::Enum::YLeaf oper_mpls_lsp_trace;
         static const ydk::Enum::YLeaf oper_mpls_lsp_group;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "oper-icmp-echo") return 1;
+            if (name == "oper-icmp-path-jitter") return 2;
+            if (name == "oper-icmp-path-echo") return 4;
+            if (name == "oper-udp-jitter") return 8;
+            if (name == "oper-udp-echo") return 16;
+            if (name == "oper-mpls-lsp-ping") return 32;
+            if (name == "oper-mpls-lsp-trace") return 64;
+            if (name == "oper-mpls-lsp-group") return 128;
+            return -1;
+        }
 };
 
 class IpslaRetCode : public ydk::Enum
@@ -4023,6 +4045,59 @@ class IpslaRetCode : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_ret_code_invalid_address;
         static const ydk::Enum::YLeaf ipsla_ret_code_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-ret-code-unknown") return 0;
+            if (name == "ipsla-ret-code-ok") return 1;
+            if (name == "ipsla-ret-code-disconnect") return 2;
+            if (name == "ipsla-ret-code-over-threshold") return 3;
+            if (name == "ipsla-ret-code-timeout") return 4;
+            if (name == "ipsla-ret-code-busy") return 5;
+            if (name == "ipsla-ret-code-no-connection") return 6;
+            if (name == "ipsla-ret-code-dropped") return 7;
+            if (name == "ipsla-ret-code-sequence-error") return 8;
+            if (name == "ipsla-ret-code-verify-error") return 9;
+            if (name == "ipsla-ret-code-application-specific") return 10;
+            if (name == "ipsla-ret-code-dns-server-timeout") return 11;
+            if (name == "ipsla-ret-code-tcp-connect-timeout") return 12;
+            if (name == "ipsla-ret-code-http-transaction-timeout") return 13;
+            if (name == "ipsla-ret-code-dns-query-error") return 14;
+            if (name == "ipsla-ret-code-http-error") return 15;
+            if (name == "ipsla-ret-code-internal-error") return 16;
+            if (name == "ipsla-ret-code-mpls-lsp-echo-tx-error") return 17;
+            if (name == "ipsla-ret-code-mpls-lsp-unreachable") return 18;
+            if (name == "ipsla-ret-code-mpls-lsp-malformed-request") return 19;
+            if (name == "ipsla-ret-code-mpls-lsp-reachable-but-not-fec") return 20;
+            if (name == "ipsla-ret-code-mpls-lsp-ds-map-mismatch") return 21;
+            if (name == "ipsla-ret-code-mpls-lsp-duplicate") return 22;
+            if (name == "ipsla-ret-code-failure") return 23;
+            if (name == "ipsla-ret-code-malloc-failure") return 24;
+            if (name == "ipsla-ret-code-sock-open-error") return 25;
+            if (name == "ipsla-ret-code-sock-bind-error") return 26;
+            if (name == "ipsla-ret-code-sock-send-error") return 27;
+            if (name == "ipsla-ret-code-sock-recv-error") return 28;
+            if (name == "ipsla-ret-code-sock-connect-error") return 29;
+            if (name == "ipsla-ret-code-sock-set-option-error") return 30;
+            if (name == "ipsla-ret-code-sock-attach-error") return 31;
+            if (name == "ipsla-ret-code-ctrl-msg-error") return 32;
+            if (name == "ipsla-ret-code-no-key-chain") return 33;
+            if (name == "ipsla-ret-code-key-chain-lib-fail") return 34;
+            if (name == "ipsla-ret-code-no-key-id") return 35;
+            if (name == "ipsla-ret-code-invalid-key-id") return 36;
+            if (name == "ipsla-ret-code-entry-exist") return 37;
+            if (name == "ipsla-ret-code-entry-not-found") return 38;
+            if (name == "ipsla-ret-code-hop-over-max") return 39;
+            if (name == "ipsla-ret-code-hop-dup-address") return 40;
+            if (name == "ipsla-ret-code-vrf-name-error") return 41;
+            if (name == "ipsla-ret-code-resp-failure") return 42;
+            if (name == "ipsla-ret-code-auth-failure") return 43;
+            if (name == "ipsla-ret-code-format-failure") return 44;
+            if (name == "ipsla-ret-code-port-in-use") return 45;
+            if (name == "ipsla-ret-code-no-route") return 46;
+            if (name == "ipsla-ret-code-pending") return 47;
+            if (name == "ipsla-ret-code-invalid-address") return 48;
+            if (name == "ipsla-ret-code-max") return 49;
+            return -1;
+        }
 };
 
 class OpTypeEnum : public ydk::Enum
@@ -4037,6 +4112,17 @@ class OpTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf mpls_lsp_trace;
         static const ydk::Enum::YLeaf mpls_lsp_group;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icmp-echo") return 1;
+            if (name == "icmp-path-jitter") return 2;
+            if (name == "icmp-path-echo") return 4;
+            if (name == "udp-jitter") return 8;
+            if (name == "udp-echo") return 16;
+            if (name == "mpls-lsp-ping") return 32;
+            if (name == "mpls-lsp-trace") return 64;
+            if (name == "mpls-lsp-group") return 128;
+            return -1;
+        }
 };
 
 class IpslaLspGrpPathStatusEnum : public ydk::Enum
@@ -4048,6 +4134,14 @@ class IpslaLspGrpPathStatusEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_retry;
         static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_pending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-lsp-grp-path-status-unknown") return 0;
+            if (name == "ipsla-lsp-grp-path-status-up") return 1;
+            if (name == "ipsla-lsp-grp-path-status-down") return 2;
+            if (name == "ipsla-lsp-grp-path-status-retry") return 3;
+            if (name == "ipsla-lsp-grp-path-status-pending") return 4;
+            return -1;
+        }
 };
 
 class IpslaOperStateEnum : public ydk::Enum
@@ -4057,6 +4151,12 @@ class IpslaOperStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_oper_state_pending;
         static const ydk::Enum::YLeaf ipsla_oper_state_active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-oper-state-inactive") return 0;
+            if (name == "ipsla-oper-state-pending") return 1;
+            if (name == "ipsla-oper-state-active") return 2;
+            return -1;
+        }
 };
 
 class IpslaMplsLpdDiscoveryModeEnum : public ydk::Enum
@@ -4068,6 +4168,14 @@ class IpslaMplsLpdDiscoveryModeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_rediscovery_running;
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_rediscovery_complete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-mpls-lpd-unknown") return 0;
+            if (name == "ipsla-mpls-lpd-initial-running") return 1;
+            if (name == "ipsla-mpls-lpd-initial-complete") return 2;
+            if (name == "ipsla-mpls-lpd-rediscovery-running") return 3;
+            if (name == "ipsla-mpls-lpd-rediscovery-complete") return 4;
+            return -1;
+        }
 };
 
 class IpslaMplsLpdRetCode : public ydk::Enum
@@ -4082,6 +4190,17 @@ class IpslaMplsLpdRetCode : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_ret_code_error;
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_ret_code_ok;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-mpls-lpd-ret-code-unknown") return 1;
+            if (name == "ipsla-mpls-lpd-ret-code-no-path") return 2;
+            if (name == "ipsla-mpls-lpd-ret-code-all-path-broken") return 3;
+            if (name == "ipsla-mpls-lpd-ret-code-all-path-unexplorable") return 4;
+            if (name == "ipsla-mpls-lpd-ret-code-all-path-broken-or-unexplorable") return 5;
+            if (name == "ipsla-mpls-lpd-ret-code-timeout") return 6;
+            if (name == "ipsla-mpls-lpd-ret-code-error") return 7;
+            if (name == "ipsla-mpls-lpd-ret-code-ok") return 8;
+            return -1;
+        }
 };
 
 class IpslaLspGrpStatusEnum : public ydk::Enum
@@ -4093,6 +4212,14 @@ class IpslaLspGrpStatusEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_lsp_grp_status_down;
         static const ydk::Enum::YLeaf ipsla_lsp_grp_status_pending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-lsp-grp-status-unknown") return 1;
+            if (name == "ipsla-lsp-grp-status-up") return 2;
+            if (name == "ipsla-lsp-grp-status-partial") return 3;
+            if (name == "ipsla-lsp-grp-status-down") return 4;
+            if (name == "ipsla-lsp-grp-status-pending") return 5;
+            return -1;
+        }
 };
 
 class IpslaMplsAddDeleteEnum : public ydk::Enum
@@ -4101,6 +4228,11 @@ class IpslaMplsAddDeleteEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_mpls_add_delete_add_q;
         static const ydk::Enum::YLeaf ipsla_mpls_add_delete_delete_q;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-mpls-add-delete-add-q") return 1;
+            if (name == "ipsla-mpls-add-delete-delete-q") return 2;
+            return -1;
+        }
 };
 
 class IpslaMplsLpdPathDiscoveryStatus : public ydk::Enum
@@ -4111,6 +4243,13 @@ class IpslaMplsLpdPathDiscoveryStatus : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_broken;
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unexplorable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsla-mpls-lpd-path-discovery-unknown") return 0;
+            if (name == "ipsla-mpls-lpd-path-discovery-ok") return 1;
+            if (name == "ipsla-mpls-lpd-path-discovery-broken") return 2;
+            if (name == "ipsla-mpls-lpd-path-discovery-unexplorable") return 3;
+            return -1;
+        }
 };
 
 

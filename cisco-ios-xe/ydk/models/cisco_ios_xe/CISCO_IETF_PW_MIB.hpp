@@ -421,6 +421,12 @@ class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcOwner : public ydk::Enum
         static const ydk::Enum::YLeaf maintenanceProtocol;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "manual") return 1;
+            if (name == "maintenanceProtocol") return 2;
+            if (name == "other") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType : public ydk::Enum
@@ -433,6 +439,15 @@ class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType : public ydk::Enum
         static const ydk::Enum::YLeaf gre;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 1;
+            if (name == "l2tp") return 2;
+            if (name == "ip") return 3;
+            if (name == "mplsOverIp") return 4;
+            if (name == "gre") return 5;
+            if (name == "other") return 6;
+            return -1;
+        }
 };
 
 class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcInboundMode : public ydk::Enum
@@ -441,6 +456,11 @@ class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcInboundMode : public ydk::Enu
         static const ydk::Enum::YLeaf loose;
         static const ydk::Enum::YLeaf strict;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "loose") return 1;
+            if (name == "strict") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcRemoteControlWord : public ydk::Enum
@@ -450,6 +470,12 @@ class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcRemoteControlWord : public yd
         static const ydk::Enum::YLeaf withControlWord;
         static const ydk::Enum::YLeaf notYetKnown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noControlWord") return 1;
+            if (name == "withControlWord") return 2;
+            if (name == "notYetKnown") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcAdminStatus : public ydk::Enum
@@ -459,6 +485,12 @@ class CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcAdminStatus : public ydk::Enu
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            return -1;
+        }
 };
 
 

@@ -42,6 +42,11 @@ class BundleMaximumActiveLinksMode : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf hot_standby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "hot-standby") return 1;
+            return -1;
+        }
 };
 
 class BundleCiscoExtTypes : public ydk::Enum
@@ -50,6 +55,11 @@ class BundleCiscoExtTypes : public ydk::Enum
         static const ydk::Enum::YLeaf lon_signaling_off;
         static const ydk::Enum::YLeaf lon_signaling_on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lon-signaling-off") return 0;
+            if (name == "lon-signaling-on") return 1;
+            return -1;
+        }
 };
 
 class BundleMode : public ydk::Enum
@@ -59,6 +69,12 @@ class BundleMode : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 0;
+            if (name == "active") return 1;
+            if (name == "passive") return 2;
+            return -1;
+        }
 };
 
 class BundleLoadBalance : public ydk::Enum
@@ -70,6 +86,14 @@ class BundleLoadBalance : public ydk::Enum
         static const ydk::Enum::YLeaf source_ip;
         static const ydk::Enum::YLeaf destination_ip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "efp-auto") return 1;
+            if (name == "efp-value") return 2;
+            if (name == "source-ip") return 3;
+            if (name == "destination-ip") return 4;
+            return -1;
+        }
 };
 
 class ChurnLogging : public ydk::Enum
@@ -79,6 +103,12 @@ class ChurnLogging : public ydk::Enum
         static const ydk::Enum::YLeaf partner;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "actor") return 1;
+            if (name == "partner") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class MlacpSwitchover : public ydk::Enum
@@ -87,6 +117,11 @@ class MlacpSwitchover : public ydk::Enum
         static const ydk::Enum::YLeaf brute_force;
         static const ydk::Enum::YLeaf revertive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "brute-force") return 1;
+            if (name == "revertive") return 2;
+            return -1;
+        }
 };
 
 class MlacpMaximizeParameter : public ydk::Enum
@@ -95,6 +130,11 @@ class MlacpMaximizeParameter : public ydk::Enum
         static const ydk::Enum::YLeaf links;
         static const ydk::Enum::YLeaf bandwidth;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "links") return 1;
+            if (name == "bandwidth") return 2;
+            return -1;
+        }
 };
 
 class BfdMode : public ydk::Enum
@@ -104,6 +144,12 @@ class BfdMode : public ydk::Enum
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-cfg") return 0;
+            if (name == "cisco") return 1;
+            if (name == "ietf") return 2;
+            return -1;
+        }
 };
 
 class PeriodShortEnum : public ydk::Enum
@@ -111,6 +157,10 @@ class PeriodShortEnum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            return -1;
+        }
 };
 
 class BundleMinimumBandwidthRange : public ydk::Enum
@@ -121,6 +171,13 @@ class BundleMinimumBandwidthRange : public ydk::Enum
         static const ydk::Enum::YLeaf mbps;
         static const ydk::Enum::YLeaf gbps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "kbps") return 1;
+            if (name == "mbps") return 2;
+            if (name == "gbps") return 3;
+            return -1;
+        }
 };
 
 class BundlePeriod : public ydk::Enum
@@ -128,6 +185,10 @@ class BundlePeriod : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            return -1;
+        }
 };
 
 class BundlePortActivity : public ydk::Enum
@@ -138,6 +199,13 @@ class BundlePortActivity : public ydk::Enum
         static const ydk::Enum::YLeaf passive;
         static const ydk::Enum::YLeaf inherit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            if (name == "active") return 2;
+            if (name == "passive") return 3;
+            if (name == "inherit") return 4;
+            return -1;
+        }
 };
 
 

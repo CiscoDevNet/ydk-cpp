@@ -138,6 +138,18 @@ class FibPathType : public ydk::Enum
         static const ydk::Enum::YLeaf fib_path_type_adjacency_prefix;
         static const ydk::Enum::YLeaf fib_path_type_special_prefix;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-path-type-unknown") return 0;
+            if (name == "fib-path-type-receive") return 1;
+            if (name == "fib-path-type-connected") return 2;
+            if (name == "fib-path-type-attached-prefix") return 3;
+            if (name == "fib-path-type-attached-host") return 4;
+            if (name == "fib-path-type-attached-nexthop") return 5;
+            if (name == "fib-path-type-recursive") return 6;
+            if (name == "fib-path-type-adjacency-prefix") return 7;
+            if (name == "fib-path-type-special-prefix") return 8;
+            return -1;
+        }
 };
 
 class FibAddressFamily : public ydk::Enum
@@ -147,6 +159,12 @@ class FibAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf fib_addr_fam_ipv4;
         static const ydk::Enum::YLeaf fib_addr_fam_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-addr-fam-unknown") return 0;
+            if (name == "fib-addr-fam-ipv4") return 1;
+            if (name == "fib-addr-fam-ipv6") return 2;
+            return -1;
+        }
 };
 
 class EncapsulationHeaderType : public ydk::Enum
@@ -158,6 +176,14 @@ class EncapsulationHeaderType : public ydk::Enum
         static const ydk::Enum::YLeaf encap_hdr_type_ipv6;
         static const ydk::Enum::YLeaf encap_hdr_type_mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encap-hdr-type-unknown") return 0;
+            if (name == "encap-hdr-type-gre") return 1;
+            if (name == "encap-hdr-type-ipv4") return 2;
+            if (name == "encap-hdr-type-ipv6") return 3;
+            if (name == "encap-hdr-type-mpls") return 4;
+            return -1;
+        }
 };
 
 

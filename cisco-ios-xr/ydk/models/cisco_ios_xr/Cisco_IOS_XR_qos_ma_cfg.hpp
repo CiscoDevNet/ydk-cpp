@@ -40,6 +40,10 @@ class QosFieldNotSupported : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf not_supported;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-supported") return 0;
+            return -1;
+        }
 };
 
 class QosPolicyAccount : public ydk::Enum
@@ -50,6 +54,13 @@ class QosPolicyAccount : public ydk::Enum
         static const ydk::Enum::YLeaf nolayer2;
         static const ydk::Enum::YLeaf user_defined;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "layer1") return 8;
+            if (name == "layer2") return 1;
+            if (name == "nolayer2") return 2;
+            if (name == "user-defined") return 4;
+            return -1;
+        }
 };
 
 

@@ -246,6 +246,14 @@ class PlatformPropValueType : public ydk::Enum
         static const ydk::Enum::YLeaf property_uint64;
         static const ydk::Enum::YLeaf property_decimal64;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "property-string") return 0;
+            if (name == "property-boolean") return 1;
+            if (name == "property-int64") return 2;
+            if (name == "property-uint64") return 3;
+            if (name == "property-decimal64") return 4;
+            return -1;
+        }
 };
 
 class PlatformCompType : public ydk::Enum
@@ -264,6 +272,21 @@ class PlatformCompType : public ydk::Enum
         static const ydk::Enum::YLeaf comp_optical_channel;
         static const ydk::Enum::YLeaf comp_container;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "comp-chassis") return 0;
+            if (name == "comp-backplane") return 1;
+            if (name == "comp-power-supply") return 2;
+            if (name == "comp-fan") return 3;
+            if (name == "comp-sensor") return 4;
+            if (name == "comp-module") return 5;
+            if (name == "comp-linecard") return 6;
+            if (name == "comp-port") return 7;
+            if (name == "comp-cpu") return 8;
+            if (name == "comp-operating-system") return 9;
+            if (name == "comp-optical-channel") return 10;
+            if (name == "comp-container") return 11;
+            return -1;
+        }
 };
 
 

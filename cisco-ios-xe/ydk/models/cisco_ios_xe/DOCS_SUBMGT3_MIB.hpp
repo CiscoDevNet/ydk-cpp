@@ -333,6 +333,15 @@ class DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry::DocsSubmgt3C
         static const ydk::Enum::YLeaf tea;
         static const ydk::Enum::YLeaf erouter;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cpe") return 1;
+            if (name == "ps") return 2;
+            if (name == "mta") return 3;
+            if (name == "stb") return 4;
+            if (name == "tea") return 5;
+            if (name == "erouter") return 6;
+            return -1;
+        }
 };
 
 class DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::DocsSubmgt3FilterGrpAction : public ydk::Enum
@@ -341,6 +350,11 @@ class DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::Docs
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "permit") return 1;
+            if (name == "deny") return 2;
+            return -1;
+        }
 };
 
 class DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::DocsSubmgt3FilterGrpEnetProtocolType : public ydk::Enum
@@ -352,6 +366,14 @@ class DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::Docs
         static const ydk::Enum::YLeaf mac;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ethertype") return 1;
+            if (name == "dsap") return 2;
+            if (name == "mac") return 3;
+            if (name == "all") return 4;
+            return -1;
+        }
 };
 
 

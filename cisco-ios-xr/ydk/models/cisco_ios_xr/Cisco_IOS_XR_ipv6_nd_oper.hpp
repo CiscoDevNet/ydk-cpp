@@ -531,6 +531,8 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAd
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress
 
@@ -554,6 +556,8 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalA
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress
 
@@ -716,6 +720,8 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAd
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress
 
@@ -739,6 +745,8 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGloba
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress
 
@@ -950,6 +958,12 @@ class Ipv6NdShVrState : public ydk::Enum
         static const ydk::Enum::YLeaf standby;
         static const ydk::Enum::YLeaf active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deleted") return 0;
+            if (name == "standby") return 1;
+            if (name == "active") return 2;
+            return -1;
+        }
 };
 
 class Ipv6NdBndlState : public ydk::Enum
@@ -959,6 +973,12 @@ class Ipv6NdBndlState : public ydk::Enum
         static const ydk::Enum::YLeaf error;
         static const ydk::Enum::YLeaf wait;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "run") return 0;
+            if (name == "error") return 1;
+            if (name == "wait") return 2;
+            return -1;
+        }
 };
 
 class Ipv6NdMediaEncap : public ydk::Enum
@@ -978,6 +998,22 @@ class Ipv6NdMediaEncap : public ydk::Enum
         static const ydk::Enum::YLeaf fr;
         static const ydk::Enum::YLeaf gre;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "arpa") return 1;
+            if (name == "snap") return 2;
+            if (name == "ieee802-1q") return 3;
+            if (name == "srp") return 4;
+            if (name == "srpa") return 5;
+            if (name == "srpb") return 6;
+            if (name == "ppp") return 7;
+            if (name == "hdlc") return 8;
+            if (name == "chdlc") return 9;
+            if (name == "dot1q") return 10;
+            if (name == "fr") return 11;
+            if (name == "gre") return 12;
+            return -1;
+        }
 };
 
 class Ipv6NdNeighborOrigin : public ydk::Enum
@@ -987,6 +1023,12 @@ class Ipv6NdNeighborOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 0;
+            if (name == "static") return 1;
+            if (name == "dynamic") return 2;
+            return -1;
+        }
 };
 
 class Ipv6NdShState : public ydk::Enum
@@ -1000,6 +1042,16 @@ class Ipv6NdShState : public ydk::Enum
         static const ydk::Enum::YLeaf probe;
         static const ydk::Enum::YLeaf delete_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "incomplete") return 0;
+            if (name == "reachable") return 1;
+            if (name == "stale") return 2;
+            if (name == "glean") return 3;
+            if (name == "delay") return 4;
+            if (name == "probe") return 5;
+            if (name == "delete") return 6;
+            return -1;
+        }
 };
 
 class Ipv6NdShVrFlags : public ydk::Enum
@@ -1008,6 +1060,11 @@ class Ipv6NdShVrFlags : public ydk::Enum
         static const ydk::Enum::YLeaf no_flags;
         static const ydk::Enum::YLeaf final_ra;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-flags") return 0;
+            if (name == "final-ra") return 1;
+            return -1;
+        }
 };
 
 

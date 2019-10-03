@@ -177,6 +177,14 @@ class FsdbPlaneMode : public ydk::Enum
         static const ydk::Enum::YLeaf plane_mode_mc;
         static const ydk::Enum::YLeaf plane_mode_folded;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "plane-mode-unknown") return 0;
+            if (name == "plane-mode-sc") return 1;
+            if (name == "plane-mode-b2b") return 2;
+            if (name == "plane-mode-mc") return 3;
+            if (name == "plane-mode-folded") return 4;
+            return -1;
+        }
 };
 
 class FsdbPlaneAdminState : public ydk::Enum
@@ -185,6 +193,11 @@ class FsdbPlaneAdminState : public ydk::Enum
         static const ydk::Enum::YLeaf plane_state_admin_up;
         static const ydk::Enum::YLeaf plane_state_admin_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "plane-state-admin-up") return 0;
+            if (name == "plane-state-admin-down") return 1;
+            return -1;
+        }
 };
 
 class FsdbPlaneOperState : public ydk::Enum
@@ -194,6 +207,12 @@ class FsdbPlaneOperState : public ydk::Enum
         static const ydk::Enum::YLeaf plane_state_oper_down;
         static const ydk::Enum::YLeaf plane_state_oper_mcast_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "plane-state-oper-up") return 0;
+            if (name == "plane-state-oper-down") return 1;
+            if (name == "plane-state-oper-mcast-down") return 2;
+            return -1;
+        }
 };
 
 

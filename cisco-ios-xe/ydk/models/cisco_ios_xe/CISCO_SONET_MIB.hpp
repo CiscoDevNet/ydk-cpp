@@ -719,6 +719,19 @@ class CsApsLineSwitchReason : public ydk::Enum
         static const ydk::Enum::YLeaf csApsLockOut;
         static const ydk::Enum::YLeaf csApsNoSwitch;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "csApsOther") return 1;
+            if (name == "csApsRevertive") return 2;
+            if (name == "csApsManual") return 3;
+            if (name == "csApsSignalDefectLow") return 4;
+            if (name == "csApsSignalDefectHigh") return 5;
+            if (name == "csApsSignalFailureLow") return 6;
+            if (name == "csApsSignalFailureHigh") return 7;
+            if (name == "csApsForceSwitch") return 8;
+            if (name == "csApsLockOut") return 9;
+            if (name == "csApsNoSwitch") return 10;
+            return -1;
+        }
 };
 
 class CsApsLineFailureCode : public ydk::Enum
@@ -729,6 +742,13 @@ class CsApsLineFailureCode : public ydk::Enum
         static const ydk::Enum::YLeaf csApsFEProtectionFailure;
         static const ydk::Enum::YLeaf csApsModeMismatch;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "csApsChannelMismatch") return 1;
+            if (name == "csApsProtectionByteFail") return 2;
+            if (name == "csApsFEProtectionFailure") return 3;
+            if (name == "csApsModeMismatch") return 4;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigLoopbackType : public ydk::Enum
@@ -738,6 +758,12 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigLoopbackType : public
         static const ydk::Enum::YLeaf lineLocal;
         static const ydk::Enum::YLeaf lineRemote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noLoopback") return 1;
+            if (name == "lineLocal") return 2;
+            if (name == "lineRemote") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigXmtClockSource : public ydk::Enum
@@ -746,6 +772,11 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigXmtClockSource : publ
         static const ydk::Enum::YLeaf loopTiming;
         static const ydk::Enum::YLeaf localTiming;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "loopTiming") return 1;
+            if (name == "localTiming") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigFrameScramble : public ydk::Enum
@@ -754,6 +785,11 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigFrameScramble : publi
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "enabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType : public ydk::Enum
@@ -769,6 +805,18 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType : public ydk::En
         static const ydk::Enum::YLeaf sonetStm64;
         static const ydk::Enum::YLeaf sonetSts3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sonetSts3c") return 1;
+            if (name == "sonetStm1") return 2;
+            if (name == "sonetSts12c") return 3;
+            if (name == "sonetStm4") return 4;
+            if (name == "sonetSts48c") return 5;
+            if (name == "sonetStm16") return 6;
+            if (name == "sonetSts192c") return 7;
+            if (name == "sonetStm64") return 8;
+            if (name == "sonetSts3") return 9;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIVType : public ydk::Enum
@@ -777,6 +825,11 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIVType : public ydk
         static const ydk::Enum::YLeaf onebit;
         static const ydk::Enum::YLeaf threebit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "onebit") return 1;
+            if (name == "threebit") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIPType : public ydk::Enum
@@ -785,6 +838,11 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIPType : public ydk
         static const ydk::Enum::YLeaf onebit;
         static const ydk::Enum::YLeaf threebit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "onebit") return 1;
+            if (name == "threebit") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryType : public ydk::Enum
@@ -793,6 +851,11 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryType : public ydk:
         static const ydk::Enum::YLeaf vt15vc11;
         static const ydk::Enum::YLeaf vt2vc12;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vt15vc11") return 1;
+            if (name == "vt2vc12") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryMappingType : public ydk::Enum
@@ -801,6 +864,11 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryMappingType : publ
         static const ydk::Enum::YLeaf asynchronous;
         static const ydk::Enum::YLeaf byteSynchronous;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asynchronous") return 1;
+            if (name == "byteSynchronous") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryFramingType : public ydk::Enum
@@ -810,6 +878,12 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryFramingType : publ
         static const ydk::Enum::YLeaf dsx1D4;
         static const ydk::Enum::YLeaf dsx1ESF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "dsx1D4") return 2;
+            if (name == "dsx1ESF") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsSignallingTransportMode : public ydk::Enum
@@ -819,6 +893,12 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsSignallingTransportMode : p
         static const ydk::Enum::YLeaf signallingTransferMode;
         static const ydk::Enum::YLeaf clearMode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "signallingTransferMode") return 2;
+            if (name == "clearMode") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryGroupingType : public ydk::Enum
@@ -828,6 +908,12 @@ class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryGroupingType : pub
         static const ydk::Enum::YLeaf au3Grouping;
         static const ydk::Enum::YLeaf au4Grouping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "au3Grouping") return 2;
+            if (name == "au4Grouping") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsEnable : public ydk::Enum
@@ -836,6 +922,11 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsEnable : public yd
         static const ydk::Enum::YLeaf csApsDisabled;
         static const ydk::Enum::YLeaf csApsEnabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "csApsDisabled") return 1;
+            if (name == "csApsEnabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode : public ydk::Enum
@@ -847,6 +938,14 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode : public 
         static const ydk::Enum::YLeaf ycableOnePlusOneNok1k2;
         static const ydk::Enum::YLeaf straightOnePlusOneNok1k2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "onePlusOne") return 1;
+            if (name == "oneToOne") return 2;
+            if (name == "anexBOnePlusOne") return 3;
+            if (name == "ycableOnePlusOneNok1k2") return 4;
+            if (name == "straightOnePlusOneNok1k2") return 5;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsActiveLine : public ydk::Enum
@@ -856,6 +955,12 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsActiveLine : publi
         static const ydk::Enum::YLeaf csApsProtectionLine;
         static const ydk::Enum::YLeaf csApsNone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "csApsWorkingLine") return 1;
+            if (name == "csApsProtectionLine") return 2;
+            if (name == "csApsNone") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirection : public ydk::Enum
@@ -864,6 +969,11 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirection : public
         static const ydk::Enum::YLeaf uniDirectional;
         static const ydk::Enum::YLeaf biDirectional;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "uniDirectional") return 1;
+            if (name == "biDirectional") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsRevertive : public ydk::Enum
@@ -872,6 +982,11 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsRevertive : public
         static const ydk::Enum::YLeaf nonrevertive;
         static const ydk::Enum::YLeaf revertive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nonrevertive") return 1;
+            if (name == "revertive") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirectionOperational : public ydk::Enum
@@ -880,6 +995,11 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirectionOperation
         static const ydk::Enum::YLeaf uniDirectional;
         static const ydk::Enum::YLeaf biDirectional;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "uniDirectional") return 1;
+            if (name == "biDirectional") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperational : public ydk::Enum
@@ -891,6 +1011,14 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperationa
         static const ydk::Enum::YLeaf ycableOnePlusOneNok1k2;
         static const ydk::Enum::YLeaf straightOnePlusOneNok1k2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "onePlusOne") return 1;
+            if (name == "oneToOne") return 2;
+            if (name == "anexBOnePlusOne") return 3;
+            if (name == "ycableOnePlusOneNok1k2") return 4;
+            if (name == "straightOnePlusOneNok1k2") return 5;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsChannelProtocol : public ydk::Enum
@@ -899,6 +1027,11 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsChannelProtocol : 
         static const ydk::Enum::YLeaf bellcore;
         static const ydk::Enum::YLeaf itu;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bellcore") return 1;
+            if (name == "itu") return 2;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsPrimarySection : public ydk::Enum
@@ -908,6 +1041,12 @@ class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsPrimarySection : p
         static const ydk::Enum::YLeaf workingSection2;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "workingSection1") return 1;
+            if (name == "workingSection2") return 2;
+            if (name == "none") return 3;
+            return -1;
+        }
 };
 
 class CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payload : public ydk::Enum
@@ -919,6 +1058,14 @@ class CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payloa
         static const ydk::Enum::YLeaf tu3ds3;
         static const ydk::Enum::YLeaf tu3e3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "vc11") return 2;
+            if (name == "vc12") return 3;
+            if (name == "tu3ds3") return 4;
+            if (name == "tu3e3") return 5;
+            return -1;
+        }
 };
 
 

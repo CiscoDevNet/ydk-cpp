@@ -2555,7 +2555,9 @@ Ipsla::Responder::Ports::Port::Port()
     pd_time_stamp_failed{YType::boolean, "pd-time-stamp-failed"},
     is_ipsla{YType::boolean, "is-ipsla"},
     drop_counter{YType::uint32, "drop-counter"},
-    socket{YType::int32, "socket"}
+    socket{YType::int32, "socket"},
+    local_ipv6_address{YType::str, "local-ipv6-address"},
+    family{YType::int32, "family"}
         ,
     sender(this, {})
 {
@@ -2585,7 +2587,9 @@ bool Ipsla::Responder::Ports::Port::has_data() const
 	|| pd_time_stamp_failed.is_set
 	|| is_ipsla.is_set
 	|| drop_counter.is_set
-	|| socket.is_set;
+	|| socket.is_set
+	|| local_ipv6_address.is_set
+	|| family.is_set;
 }
 
 bool Ipsla::Responder::Ports::Port::has_operation() const
@@ -2606,7 +2610,9 @@ bool Ipsla::Responder::Ports::Port::has_operation() const
 	|| ydk::is_set(pd_time_stamp_failed.yfilter)
 	|| ydk::is_set(is_ipsla.yfilter)
 	|| ydk::is_set(drop_counter.yfilter)
-	|| ydk::is_set(socket.yfilter);
+	|| ydk::is_set(socket.yfilter)
+	|| ydk::is_set(local_ipv6_address.yfilter)
+	|| ydk::is_set(family.yfilter);
 }
 
 std::string Ipsla::Responder::Ports::Port::get_absolute_path() const
@@ -2639,6 +2645,8 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::Responder::Ports::Port::ge
     if (is_ipsla.is_set || is_set(is_ipsla.yfilter)) leaf_name_data.push_back(is_ipsla.get_name_leafdata());
     if (drop_counter.is_set || is_set(drop_counter.yfilter)) leaf_name_data.push_back(drop_counter.get_name_leafdata());
     if (socket.is_set || is_set(socket.yfilter)) leaf_name_data.push_back(socket.get_name_leafdata());
+    if (local_ipv6_address.is_set || is_set(local_ipv6_address.yfilter)) leaf_name_data.push_back(local_ipv6_address.get_name_leafdata());
+    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2741,6 +2749,18 @@ void Ipsla::Responder::Ports::Port::set_value(const std::string & value_path, co
         socket.value_namespace = name_space;
         socket.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "local-ipv6-address")
+    {
+        local_ipv6_address = value;
+        local_ipv6_address.value_namespace = name_space;
+        local_ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "family")
+    {
+        family = value;
+        family.value_namespace = name_space;
+        family.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipsla::Responder::Ports::Port::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2789,20 +2809,29 @@ void Ipsla::Responder::Ports::Port::set_filter(const std::string & value_path, Y
     {
         socket.yfilter = yfilter;
     }
+    if(value_path == "local-ipv6-address")
+    {
+        local_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "family")
+    {
+        family.yfilter = yfilter;
+    }
 }
 
 bool Ipsla::Responder::Ports::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sender" || name == "port" || name == "port-xr" || name == "local-address" || name == "num-probes" || name == "ctrl-probes" || name == "permanent" || name == "discard-on" || name == "pd-time-stamp-failed" || name == "is-ipsla" || name == "drop-counter" || name == "socket")
+    if(name == "sender" || name == "port" || name == "port-xr" || name == "local-address" || name == "num-probes" || name == "ctrl-probes" || name == "permanent" || name == "discard-on" || name == "pd-time-stamp-failed" || name == "is-ipsla" || name == "drop-counter" || name == "socket" || name == "local-ipv6-address" || name == "family")
         return true;
     return false;
 }
 
 Ipsla::Responder::Ports::Port::Sender::Sender()
     :
-    ip_address{YType::uint32, "ip-address"},
+    ip_address{YType::str, "ip-address"},
     port{YType::uint16, "port"},
-    last_recv_time{YType::uint64, "last-recv-time"}
+    last_recv_time{YType::uint64, "last-recv-time"},
+    ipv6_address{YType::str, "ipv6-address"}
 {
 
     yang_name = "sender"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2817,7 +2846,8 @@ bool Ipsla::Responder::Ports::Port::Sender::has_data() const
     if (is_presence_container) return true;
     return ip_address.is_set
 	|| port.is_set
-	|| last_recv_time.is_set;
+	|| last_recv_time.is_set
+	|| ipv6_address.is_set;
 }
 
 bool Ipsla::Responder::Ports::Port::Sender::has_operation() const
@@ -2825,13 +2855,15 @@ bool Ipsla::Responder::Ports::Port::Sender::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(ip_address.yfilter)
 	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(last_recv_time.yfilter);
+	|| ydk::is_set(last_recv_time.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Ipsla::Responder::Ports::Port::Sender::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sender";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2842,6 +2874,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::Responder::Ports::Port::Se
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (last_recv_time.is_set || is_set(last_recv_time.yfilter)) leaf_name_data.push_back(last_recv_time.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2879,6 +2912,12 @@ void Ipsla::Responder::Ports::Port::Sender::set_value(const std::string & value_
         last_recv_time.value_namespace = name_space;
         last_recv_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipsla::Responder::Ports::Port::Sender::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2895,11 +2934,15 @@ void Ipsla::Responder::Ports::Port::Sender::set_filter(const std::string & value
     {
         last_recv_time.yfilter = yfilter;
     }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
 }
 
 bool Ipsla::Responder::Ports::Port::Sender::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip-address" || name == "port" || name == "last-recv-time")
+    if(name == "ip-address" || name == "port" || name == "last-recv-time" || name == "ipv6-address")
         return true;
     return false;
 }

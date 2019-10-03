@@ -1050,6 +1050,8 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element : public ydk::Entity
         ydk::YLeaf reoriginate_disabled; //type: boolean
         ydk::YLeaf stitching; //type: boolean
         ydk::YLeaf multicast_source_connected; //type: boolean
+        ydk::YLeaf bgp_implicit_import_disabled; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
         class EvpnInstance; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::EvpnInstance
         class FlowLabel; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto
@@ -3914,6 +3916,8 @@ class Evpn::Active::EviDetail::Elements::Element : public ydk::Entity
         ydk::YLeaf reoriginate_disabled; //type: boolean
         ydk::YLeaf stitching; //type: boolean
         ydk::YLeaf multicast_source_connected; //type: boolean
+        ydk::YLeaf bgp_implicit_import_disabled; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
         class EvpnInstance; //type: Evpn::Active::EviDetail::Elements::Element::EvpnInstance
         class FlowLabel; //type: Evpn::Active::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto
@@ -6847,6 +6851,8 @@ class Evpn::Standby::EviDetail::Elements::Element : public ydk::Entity
         ydk::YLeaf reoriginate_disabled; //type: boolean
         ydk::YLeaf stitching; //type: boolean
         ydk::YLeaf multicast_source_connected; //type: boolean
+        ydk::YLeaf bgp_implicit_import_disabled; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
         class EvpnInstance; //type: Evpn::Standby::EviDetail::Elements::Element::EvpnInstance
         class FlowLabel; //type: Evpn::Standby::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto
@@ -8770,6 +8776,13 @@ class L2vpnRgRole : public ydk::Enum
         static const ydk::Enum::YLeaf l2vpn_rg_role_standby;
         static const ydk::Enum::YLeaf l2vpn_rg_role_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2vpn-rg-role-not-defined") return 0;
+            if (name == "l2vpn-rg-role-active") return 1;
+            if (name == "l2vpn-rg-role-standby") return 2;
+            if (name == "l2vpn-rg-role-max") return 3;
+            return -1;
+        }
 };
 
 class L2vpnEvpnScMode : public ydk::Enum
@@ -8782,6 +8795,15 @@ class L2vpnEvpnScMode : public ydk::Enum
         static const ydk::Enum::YLeaf hrw;
         static const ydk::Enum::YLeaf pref;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "auto") return 1;
+            if (name == "manual") return 2;
+            if (name == "manual-list") return 3;
+            if (name == "hrw") return 4;
+            if (name == "pref") return 5;
+            return -1;
+        }
 };
 
 class L2vpnEvpnMfMode : public ydk::Enum
@@ -8791,6 +8813,12 @@ class L2vpnEvpnMfMode : public ydk::Enum
         static const ydk::Enum::YLeaf tcn_stp;
         static const ydk::Enum::YLeaf mvrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "tcn-stp") return 1;
+            if (name == "mvrp") return 2;
+            return -1;
+        }
 };
 
 class L2vpnEvpnLbMode : public ydk::Enum
@@ -8801,6 +8829,13 @@ class L2vpnEvpnLbMode : public ydk::Enum
         static const ydk::Enum::YLeaf multi_homed_aa_per_flow;
         static const ydk::Enum::YLeaf multi_homed_aa_per_service;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid-load-balancing") return 0;
+            if (name == "single-homed") return 1;
+            if (name == "multi-homed-aa-per-flow") return 2;
+            if (name == "multi-homed-aa-per-service") return 3;
+            return -1;
+        }
 };
 
 class L2vpnEvpnEsi : public ydk::Enum
@@ -8816,6 +8851,18 @@ class L2vpnEvpnEsi : public ydk::Enum
         static const ydk::Enum::YLeaf l2vpn_evpn_esi_type_override;
         static const ydk::Enum::YLeaf esi_type_invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "esi-type0") return 0;
+            if (name == "esi-type1") return 1;
+            if (name == "esi-type2") return 2;
+            if (name == "esi-type3") return 3;
+            if (name == "esi-type4") return 4;
+            if (name == "esi-type5") return 5;
+            if (name == "l2vpn-evpn-esi-type-legacy") return 128;
+            if (name == "l2vpn-evpn-esi-type-override") return 129;
+            if (name == "esi-type-invalid") return 255;
+            return -1;
+        }
 };
 
 class L2vpnTdmRtpOption : public ydk::Enum
@@ -8825,6 +8872,12 @@ class L2vpnTdmRtpOption : public ydk::Enum
         static const ydk::Enum::YLeaf present;
         static const ydk::Enum::YLeaf absent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "present") return 1;
+            if (name == "absent") return 2;
+            return -1;
+        }
 };
 
 class BgpRouteTargetRole : public ydk::Enum
@@ -8834,6 +8887,12 @@ class BgpRouteTargetRole : public ydk::Enum
         static const ydk::Enum::YLeaf import;
         static const ydk::Enum::YLeaf export_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "import") return 1;
+            if (name == "export") return 2;
+            return -1;
+        }
 };
 
 class L2vpnEvpn : public ydk::Enum
@@ -8846,6 +8905,15 @@ class L2vpnEvpn : public ydk::Enum
         static const ydk::Enum::YLeaf evpn_type_evpn_vpws_vlan_aware;
         static const ydk::Enum::YLeaf evpn_type_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "evpn-type-invalid") return 0;
+            if (name == "evpn-type-evpn") return 1;
+            if (name == "evpn-type-pbb-evpn") return 2;
+            if (name == "evpn-type-evpn-vpws-vlan-unaware") return 3;
+            if (name == "evpn-type-evpn-vpws-vlan-aware") return 4;
+            if (name == "evpn-type-max") return 5;
+            return -1;
+        }
 };
 
 class L2vpnFrMode : public ydk::Enum
@@ -8854,6 +8922,11 @@ class L2vpnFrMode : public ydk::Enum
         static const ydk::Enum::YLeaf l2vpn_fr_port_mode;
         static const ydk::Enum::YLeaf l2vpn_fr_dlci_mode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2vpn-fr-port-mode") return 0;
+            if (name == "l2vpn-fr-dlci-mode") return 1;
+            return -1;
+        }
 };
 
 class L2vpnEvpnRtOrigin : public ydk::Enum
@@ -8863,6 +8936,12 @@ class L2vpnEvpnRtOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf extracted;
         static const ydk::Enum::YLeaf configured;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "extracted") return 1;
+            if (name == "configured") return 2;
+            return -1;
+        }
 };
 
 class L2vpnInterface : public ydk::Enum
@@ -8882,6 +8961,22 @@ class L2vpnInterface : public ydk::Enum
         static const ydk::Enum::YLeaf l2vpn_intf_type_pw_iw;
         static const ydk::Enum::YLeaf l2vpn_intf_type_vni;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2vpn-intf-type-unknown") return 0;
+            if (name == "l2vpn-intf-type-ethernet") return 1;
+            if (name == "l2vpn-intf-type-vlan") return 2;
+            if (name == "l2vpn-intf-type-atm") return 3;
+            if (name == "l2vpn-intf-type-frame-relay") return 4;
+            if (name == "l2vpn-intf-type-hdlc") return 5;
+            if (name == "l2vpn-intf-type-ppp") return 6;
+            if (name == "l2vpn-intf-type-span") return 7;
+            if (name == "l2vpn-intf-type-bvi") return 8;
+            if (name == "l2vpn-intf-type-cem") return 9;
+            if (name == "l2vpn-intf-type-pw-ether") return 10;
+            if (name == "l2vpn-intf-type-pw-iw") return 11;
+            if (name == "l2vpn-intf-type-vni") return 12;
+            return -1;
+        }
 };
 
 class EvpnIgmpSource : public ydk::Enum
@@ -8890,6 +8985,11 @@ class EvpnIgmpSource : public ydk::Enum
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 0;
+            if (name == "remote") return 1;
+            return -1;
+        }
 };
 
 class L2vpnAtmMode : public ydk::Enum
@@ -8899,6 +8999,12 @@ class L2vpnAtmMode : public ydk::Enum
         static const ydk::Enum::YLeaf l2vpn_atm_vp_mode;
         static const ydk::Enum::YLeaf l2vpn_atm_vc_mode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2vpn-atm-port-mode") return 0;
+            if (name == "l2vpn-atm-vp-mode") return 1;
+            if (name == "l2vpn-atm-vc-mode") return 2;
+            return -1;
+        }
 };
 
 class L2vpnAdRtRole : public ydk::Enum
@@ -8908,6 +9014,12 @@ class L2vpnAdRtRole : public ydk::Enum
         static const ydk::Enum::YLeaf import;
         static const ydk::Enum::YLeaf export_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "import") return 1;
+            if (name == "export") return 2;
+            return -1;
+        }
 };
 
 class ImStateEnum : public ydk::Enum
@@ -8933,6 +9045,28 @@ class ImStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf im_state_unknown;
         static const ydk::Enum::YLeaf im_state_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-state-not-ready") return 0;
+            if (name == "im-state-admin-down") return 1;
+            if (name == "im-state-down") return 2;
+            if (name == "im-state-up") return 3;
+            if (name == "im-state-shutdown") return 4;
+            if (name == "im-state-err-disable") return 5;
+            if (name == "im-state-down-immediate") return 6;
+            if (name == "im-state-down-immediate-admin") return 7;
+            if (name == "im-state-down-graceful") return 8;
+            if (name == "im-state-begin-shutdown") return 9;
+            if (name == "im-state-end-shutdown") return 10;
+            if (name == "im-state-begin-error-disable") return 11;
+            if (name == "im-state-end-error-disable") return 12;
+            if (name == "im-state-begin-down-graceful") return 13;
+            if (name == "im-state-reset") return 14;
+            if (name == "im-state-operational") return 15;
+            if (name == "im-state-not-operational") return 16;
+            if (name == "im-state-unknown") return 17;
+            if (name == "im-state-last") return 18;
+            return -1;
+        }
 };
 
 class L2vpnTdmMode : public ydk::Enum
@@ -8945,6 +9079,15 @@ class L2vpnTdmMode : public ydk::Enum
         static const ydk::Enum::YLeaf sa_to_p_e3;
         static const ydk::Enum::YLeaf sa_to_p_t3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "ce-so-psn") return 1;
+            if (name == "sa-to-p-e1") return 2;
+            if (name == "sa-to-p-t1") return 3;
+            if (name == "sa-to-p-e3") return 4;
+            if (name == "sa-to-p-t3") return 5;
+            return -1;
+        }
 };
 
 class IflistRepStatus : public ydk::Enum
@@ -8956,6 +9099,14 @@ class IflistRepStatus : public ydk::Enum
         static const ydk::Enum::YLeaf not_supported;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "pending") return 1;
+            if (name == "done") return 2;
+            if (name == "not-supported") return 3;
+            if (name == "failed") return 4;
+            return -1;
+        }
 };
 
 class EvpnIgmpGrp : public ydk::Enum
@@ -8964,6 +9115,11 @@ class EvpnIgmpGrp : public ydk::Enum
         static const ydk::Enum::YLeaf include;
         static const ydk::Enum::YLeaf exclude;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "include") return 0;
+            if (name == "exclude") return 1;
+            return -1;
+        }
 };
 
 class EvpnIgmpMsg : public ydk::Enum
@@ -8972,6 +9128,11 @@ class EvpnIgmpMsg : public ydk::Enum
         static const ydk::Enum::YLeaf join;
         static const ydk::Enum::YLeaf leave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "join") return 0;
+            if (name == "leave") return 1;
+            return -1;
+        }
 };
 
 class BgpRouteTargetFormat : public ydk::Enum
@@ -8983,6 +9144,14 @@ class BgpRouteTargetFormat : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf es_import;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "two-byte-as") return 1;
+            if (name == "four-byte-as") return 2;
+            if (name == "ipv4-address") return 3;
+            if (name == "es-import") return 1538;
+            return -1;
+        }
 };
 
 class EvpnGrp : public ydk::Enum
@@ -8993,6 +9162,13 @@ class EvpnGrp : public ydk::Enum
         static const ydk::Enum::YLeaf ready;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deisolating") return 0;
+            if (name == "isolated") return 1;
+            if (name == "ready") return 2;
+            if (name == "incomplete") return 3;
+            return -1;
+        }
 };
 
 class L2vpnEvpnSmacSrc : public ydk::Enum
@@ -9006,6 +9182,16 @@ class L2vpnEvpnSmacSrc : public ydk::Enum
         static const ydk::Enum::YLeaf esi_invalid;
         static const ydk::Enum::YLeaf pbb_bsa_overrride;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "not-applicable") return 1;
+            if (name == "local") return 2;
+            if (name == "pbb-bsa") return 3;
+            if (name == "esi") return 4;
+            if (name == "esi-invalid") return 5;
+            if (name == "pbb-bsa-overrride") return 6;
+            return -1;
+        }
 };
 
 class L2vpnAdRt : public ydk::Enum
@@ -9017,6 +9203,14 @@ class L2vpnAdRt : public ydk::Enum
         static const ydk::Enum::YLeaf l2vpn_ad_rt_v4_addr;
         static const ydk::Enum::YLeaf es_import;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2vpn-ad-rt-none") return 0;
+            if (name == "l2vpn-ad-rt-as") return 1;
+            if (name == "l2vpn-ad-rt-4byte-as") return 2;
+            if (name == "l2vpn-ad-rt-v4-addr") return 3;
+            if (name == "es-import") return 1538;
+            return -1;
+        }
 };
 
 class EvpnIgmpVersion : public ydk::Enum
@@ -9026,6 +9220,12 @@ class EvpnIgmpVersion : public ydk::Enum
         static const ydk::Enum::YLeaf version2;
         static const ydk::Enum::YLeaf version3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "version1") return 0;
+            if (name == "version2") return 1;
+            if (name == "version3") return 2;
+            return -1;
+        }
 };
 
 class L2vpnTimeStampMode : public ydk::Enum
@@ -9036,6 +9236,13 @@ class L2vpnTimeStampMode : public ydk::Enum
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "differential") return 1;
+            if (name == "absolute") return 2;
+            if (name == "none") return 3;
+            return -1;
+        }
 };
 
 class L2vpnAdRd : public ydk::Enum
@@ -9047,6 +9254,14 @@ class L2vpnAdRd : public ydk::Enum
         static const ydk::Enum::YLeaf l2vpn_ad_rd_4byte_as;
         static const ydk::Enum::YLeaf l2vpn_ad_rd_v4_addr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2vpn-ad-rd-none") return 0;
+            if (name == "l2vpn-ad-rd-auto") return 1;
+            if (name == "l2vpn-ad-rd-as") return 2;
+            if (name == "l2vpn-ad-rd-4byte-as") return 3;
+            if (name == "l2vpn-ad-rd-v4-addr") return 4;
+            return -1;
+        }
 };
 
 

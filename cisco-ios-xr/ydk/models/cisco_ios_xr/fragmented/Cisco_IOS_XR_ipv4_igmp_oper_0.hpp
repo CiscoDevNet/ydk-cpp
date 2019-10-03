@@ -4480,6 +4480,15 @@ class IgmpEdmProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf ssm;
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-route") return 0;
+            if (name == "sm") return 1;
+            if (name == "dm") return 2;
+            if (name == "bidir") return 3;
+            if (name == "ssm") return 4;
+            if (name == "any") return 6;
+            return -1;
+        }
 };
 
 class IgmpAfi : public ydk::Enum
@@ -4488,6 +4497,11 @@ class IgmpAfi : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_unicast;
         static const ydk::Enum::YLeaf ipv6_unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-unicast") return 0;
+            if (name == "ipv6-unicast") return 1;
+            return -1;
+        }
 };
 
 class IgmpssmMap : public ydk::Enum
@@ -4497,6 +4511,12 @@ class IgmpssmMap : public ydk::Enum
         static const ydk::Enum::YLeaf dns;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static") return 0;
+            if (name == "dns") return 1;
+            if (name == "all") return 2;
+            return -1;
+        }
 };
 
 

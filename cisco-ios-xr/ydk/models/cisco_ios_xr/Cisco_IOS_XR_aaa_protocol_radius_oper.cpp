@@ -755,6 +755,7 @@ std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1134,7 +1135,6 @@ bool Radius::Nodes::Node::Authentication::has_leaf_or_child_of_name(const std::s
 
 Radius::Nodes::Node::Authentication::AuthenticationGroup::AuthenticationGroup()
     :
-    server_address{YType::str, "server-address"},
     port{YType::uint32, "port"},
     ip_address{YType::str, "ip-address"},
     family{YType::str, "family"}
@@ -1153,8 +1153,7 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::~AuthenticationGroup()
 bool Radius::Nodes::Node::Authentication::AuthenticationGroup::has_data() const
 {
     if (is_presence_container) return true;
-    return server_address.is_set
-	|| port.is_set
+    return port.is_set
 	|| ip_address.is_set
 	|| family.is_set
 	|| (authentication !=  nullptr && authentication->has_data());
@@ -1163,7 +1162,6 @@ bool Radius::Nodes::Node::Authentication::AuthenticationGroup::has_data() const
 bool Radius::Nodes::Node::Authentication::AuthenticationGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(server_address.yfilter)
 	|| ydk::is_set(port.yfilter)
 	|| ydk::is_set(ip_address.yfilter)
 	|| ydk::is_set(family.yfilter)
@@ -1174,6 +1172,7 @@ std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1181,7 +1180,6 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authenticati
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
     if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
@@ -1218,12 +1216,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Authent
 
 void Radius::Nodes::Node::Authentication::AuthenticationGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "server-address")
-    {
-        server_address = value;
-        server_address.value_namespace = name_space;
-        server_address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "port")
     {
         port = value;
@@ -1246,10 +1238,6 @@ void Radius::Nodes::Node::Authentication::AuthenticationGroup::set_value(const s
 
 void Radius::Nodes::Node::Authentication::AuthenticationGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "server-address")
-    {
-        server_address.yfilter = yfilter;
-    }
     if(value_path == "port")
     {
         port.yfilter = yfilter;
@@ -1266,7 +1254,7 @@ void Radius::Nodes::Node::Authentication::AuthenticationGroup::set_filter(const 
 
 bool Radius::Nodes::Node::Authentication::AuthenticationGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication" || name == "server-address" || name == "port" || name == "ip-address" || name == "family")
+    if(name == "authentication" || name == "port" || name == "ip-address" || name == "family")
         return true;
     return false;
 }
@@ -1285,12 +1273,17 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::Authe
     unknown_access_types{YType::uint32, "unknown-access-types"},
     dropped_access_responses{YType::uint32, "dropped-access-responses"},
     rtt{YType::uint32, "rtt"},
-    authen_response_time{YType::uint32, "authen-response-time"},
     authen_transaction_successess{YType::uint32, "authen-transaction-successess"},
     authen_transaction_failure{YType::uint32, "authen-transaction-failure"},
     authen_unexpected_responses{YType::uint32, "authen-unexpected-responses"},
     authen_server_error_responses{YType::uint32, "authen-server-error-responses"},
-    authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"}
+    authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"},
+    auth_throttled_transactions{YType::uint32, "auth-throttled-transactions"},
+    auth_max_transactions{YType::uint32, "auth-max-transactions"},
+    total_test_auth_reqs{YType::uint32, "total-test-auth-reqs"},
+    total_test_auth_timeouts{YType::uint32, "total-test-auth-timeouts"},
+    total_test_auth_response{YType::uint32, "total-test-auth-response"},
+    total_test_auth_pending{YType::uint32, "total-test-auth-pending"}
 {
 
     yang_name = "authentication"; yang_parent_name = "authentication-group"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1315,12 +1308,17 @@ bool Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
 	|| unknown_access_types.is_set
 	|| dropped_access_responses.is_set
 	|| rtt.is_set
-	|| authen_response_time.is_set
 	|| authen_transaction_successess.is_set
 	|| authen_transaction_failure.is_set
 	|| authen_unexpected_responses.is_set
 	|| authen_server_error_responses.is_set
-	|| authen_incorrect_responses.is_set;
+	|| authen_incorrect_responses.is_set
+	|| auth_throttled_transactions.is_set
+	|| auth_max_transactions.is_set
+	|| total_test_auth_reqs.is_set
+	|| total_test_auth_timeouts.is_set
+	|| total_test_auth_response.is_set
+	|| total_test_auth_pending.is_set;
 }
 
 bool Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::has_operation() const
@@ -1338,12 +1336,17 @@ bool Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
 	|| ydk::is_set(unknown_access_types.yfilter)
 	|| ydk::is_set(dropped_access_responses.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(authen_response_time.yfilter)
 	|| ydk::is_set(authen_transaction_successess.yfilter)
 	|| ydk::is_set(authen_transaction_failure.yfilter)
 	|| ydk::is_set(authen_unexpected_responses.yfilter)
 	|| ydk::is_set(authen_server_error_responses.yfilter)
-	|| ydk::is_set(authen_incorrect_responses.yfilter);
+	|| ydk::is_set(authen_incorrect_responses.yfilter)
+	|| ydk::is_set(auth_throttled_transactions.yfilter)
+	|| ydk::is_set(auth_max_transactions.yfilter)
+	|| ydk::is_set(total_test_auth_reqs.yfilter)
+	|| ydk::is_set(total_test_auth_timeouts.yfilter)
+	|| ydk::is_set(total_test_auth_response.yfilter)
+	|| ydk::is_set(total_test_auth_pending.yfilter);
 }
 
 std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_segment_path() const
@@ -1369,12 +1372,17 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authenticati
     if (unknown_access_types.is_set || is_set(unknown_access_types.yfilter)) leaf_name_data.push_back(unknown_access_types.get_name_leafdata());
     if (dropped_access_responses.is_set || is_set(dropped_access_responses.yfilter)) leaf_name_data.push_back(dropped_access_responses.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-    if (authen_response_time.is_set || is_set(authen_response_time.yfilter)) leaf_name_data.push_back(authen_response_time.get_name_leafdata());
     if (authen_transaction_successess.is_set || is_set(authen_transaction_successess.yfilter)) leaf_name_data.push_back(authen_transaction_successess.get_name_leafdata());
     if (authen_transaction_failure.is_set || is_set(authen_transaction_failure.yfilter)) leaf_name_data.push_back(authen_transaction_failure.get_name_leafdata());
     if (authen_unexpected_responses.is_set || is_set(authen_unexpected_responses.yfilter)) leaf_name_data.push_back(authen_unexpected_responses.get_name_leafdata());
     if (authen_server_error_responses.is_set || is_set(authen_server_error_responses.yfilter)) leaf_name_data.push_back(authen_server_error_responses.get_name_leafdata());
     if (authen_incorrect_responses.is_set || is_set(authen_incorrect_responses.yfilter)) leaf_name_data.push_back(authen_incorrect_responses.get_name_leafdata());
+    if (auth_throttled_transactions.is_set || is_set(auth_throttled_transactions.yfilter)) leaf_name_data.push_back(auth_throttled_transactions.get_name_leafdata());
+    if (auth_max_transactions.is_set || is_set(auth_max_transactions.yfilter)) leaf_name_data.push_back(auth_max_transactions.get_name_leafdata());
+    if (total_test_auth_reqs.is_set || is_set(total_test_auth_reqs.yfilter)) leaf_name_data.push_back(total_test_auth_reqs.get_name_leafdata());
+    if (total_test_auth_timeouts.is_set || is_set(total_test_auth_timeouts.yfilter)) leaf_name_data.push_back(total_test_auth_timeouts.get_name_leafdata());
+    if (total_test_auth_response.is_set || is_set(total_test_auth_response.yfilter)) leaf_name_data.push_back(total_test_auth_response.get_name_leafdata());
+    if (total_test_auth_pending.is_set || is_set(total_test_auth_pending.yfilter)) leaf_name_data.push_back(total_test_auth_pending.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1466,12 +1474,6 @@ void Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
         rtt.value_namespace = name_space;
         rtt.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "authen-response-time")
-    {
-        authen_response_time = value;
-        authen_response_time.value_namespace = name_space;
-        authen_response_time.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "authen-transaction-successess")
     {
         authen_transaction_successess = value;
@@ -1501,6 +1503,42 @@ void Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
         authen_incorrect_responses = value;
         authen_incorrect_responses.value_namespace = name_space;
         authen_incorrect_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-throttled-transactions")
+    {
+        auth_throttled_transactions = value;
+        auth_throttled_transactions.value_namespace = name_space;
+        auth_throttled_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-max-transactions")
+    {
+        auth_max_transactions = value;
+        auth_max_transactions.value_namespace = name_space;
+        auth_max_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-reqs")
+    {
+        total_test_auth_reqs = value;
+        total_test_auth_reqs.value_namespace = name_space;
+        total_test_auth_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-timeouts")
+    {
+        total_test_auth_timeouts = value;
+        total_test_auth_timeouts.value_namespace = name_space;
+        total_test_auth_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-response")
+    {
+        total_test_auth_response = value;
+        total_test_auth_response.value_namespace = name_space;
+        total_test_auth_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-pending")
+    {
+        total_test_auth_pending = value;
+        total_test_auth_pending.value_namespace = name_space;
+        total_test_auth_pending.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1554,10 +1592,6 @@ void Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
     {
         rtt.yfilter = yfilter;
     }
-    if(value_path == "authen-response-time")
-    {
-        authen_response_time.yfilter = yfilter;
-    }
     if(value_path == "authen-transaction-successess")
     {
         authen_transaction_successess.yfilter = yfilter;
@@ -1578,11 +1612,35 @@ void Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
     {
         authen_incorrect_responses.yfilter = yfilter;
     }
+    if(value_path == "auth-throttled-transactions")
+    {
+        auth_throttled_transactions.yfilter = yfilter;
+    }
+    if(value_path == "auth-max-transactions")
+    {
+        auth_max_transactions.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-reqs")
+    {
+        total_test_auth_reqs.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-timeouts")
+    {
+        total_test_auth_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-response")
+    {
+        total_test_auth_response.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-pending")
+    {
+        total_test_auth_pending.yfilter = yfilter;
+    }
 }
 
 bool Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-requests" || name == "pending-access-requests" || name == "access-request-retransmits" || name == "access-accepts" || name == "access-rejects" || name == "access-challenges" || name == "access-timeouts" || name == "bad-access-responses" || name == "bad-access-authenticators" || name == "unknown-access-types" || name == "dropped-access-responses" || name == "rtt" || name == "authen-response-time" || name == "authen-transaction-successess" || name == "authen-transaction-failure" || name == "authen-unexpected-responses" || name == "authen-server-error-responses" || name == "authen-incorrect-responses")
+    if(name == "access-requests" || name == "pending-access-requests" || name == "access-request-retransmits" || name == "access-accepts" || name == "access-rejects" || name == "access-challenges" || name == "access-timeouts" || name == "bad-access-responses" || name == "bad-access-authenticators" || name == "unknown-access-types" || name == "dropped-access-responses" || name == "rtt" || name == "authen-transaction-successess" || name == "authen-transaction-failure" || name == "authen-unexpected-responses" || name == "authen-server-error-responses" || name == "authen-incorrect-responses" || name == "auth-throttled-transactions" || name == "auth-max-transactions" || name == "total-test-auth-reqs" || name == "total-test-auth-timeouts" || name == "total-test-auth-response" || name == "total-test-auth-pending")
         return true;
     return false;
 }
@@ -1682,7 +1740,6 @@ bool Radius::Nodes::Node::Accounting::has_leaf_or_child_of_name(const std::strin
 
 Radius::Nodes::Node::Accounting::AccountingGroup::AccountingGroup()
     :
-    server_address{YType::str, "server-address"},
     port{YType::uint32, "port"},
     ip_address{YType::str, "ip-address"},
     family{YType::str, "family"}
@@ -1701,8 +1758,7 @@ Radius::Nodes::Node::Accounting::AccountingGroup::~AccountingGroup()
 bool Radius::Nodes::Node::Accounting::AccountingGroup::has_data() const
 {
     if (is_presence_container) return true;
-    return server_address.is_set
-	|| port.is_set
+    return port.is_set
 	|| ip_address.is_set
 	|| family.is_set
 	|| (accounting !=  nullptr && accounting->has_data());
@@ -1711,7 +1767,6 @@ bool Radius::Nodes::Node::Accounting::AccountingGroup::has_data() const
 bool Radius::Nodes::Node::Accounting::AccountingGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(server_address.yfilter)
 	|| ydk::is_set(port.yfilter)
 	|| ydk::is_set(ip_address.yfilter)
 	|| ydk::is_set(family.yfilter)
@@ -1722,6 +1777,7 @@ std::string Radius::Nodes::Node::Accounting::AccountingGroup::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1729,7 +1785,6 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
     if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
@@ -1766,12 +1821,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Account
 
 void Radius::Nodes::Node::Accounting::AccountingGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "server-address")
-    {
-        server_address = value;
-        server_address.value_namespace = name_space;
-        server_address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "port")
     {
         port = value;
@@ -1794,10 +1843,6 @@ void Radius::Nodes::Node::Accounting::AccountingGroup::set_value(const std::stri
 
 void Radius::Nodes::Node::Accounting::AccountingGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "server-address")
-    {
-        server_address.yfilter = yfilter;
-    }
     if(value_path == "port")
     {
         port.yfilter = yfilter;
@@ -1814,7 +1859,7 @@ void Radius::Nodes::Node::Accounting::AccountingGroup::set_filter(const std::str
 
 bool Radius::Nodes::Node::Accounting::AccountingGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "accounting" || name == "server-address" || name == "port" || name == "ip-address" || name == "family")
+    if(name == "accounting" || name == "port" || name == "ip-address" || name == "family")
         return true;
     return false;
 }
@@ -1832,11 +1877,14 @@ Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::Accounting_()
     dropped_responses{YType::uint32, "dropped-responses"},
     rtt{YType::uint32, "rtt"},
     acct_unexpected_responses{YType::uint32, "acct-unexpected-responses"},
-    acct_server_error_responses{YType::uint32, "acct-server-error-responses"},
-    acct_incorrect_responses{YType::uint32, "acct-incorrect-responses"},
-    acct_response_time{YType::uint32, "acct-response-time"},
     acct_transaction_successess{YType::uint32, "acct-transaction-successess"},
-    acct_transaction_failure{YType::uint32, "acct-transaction-failure"}
+    acct_transaction_failure{YType::uint32, "acct-transaction-failure"},
+    acct_throttled_transactions{YType::uint32, "acct-throttled-transactions"},
+    acct_max_throttle_trans{YType::uint32, "acct-max-throttle-trans"},
+    total_test_acct_reqs{YType::uint32, "total-test-acct-reqs"},
+    total_test_acct_timeouts{YType::uint32, "total-test-acct-timeouts"},
+    total_test_acct_response{YType::uint32, "total-test-acct-response"},
+    total_test_acct_pending{YType::uint32, "total-test-acct-pending"}
 {
 
     yang_name = "accounting"; yang_parent_name = "accounting-group"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1860,11 +1908,14 @@ bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_data() c
 	|| dropped_responses.is_set
 	|| rtt.is_set
 	|| acct_unexpected_responses.is_set
-	|| acct_server_error_responses.is_set
-	|| acct_incorrect_responses.is_set
-	|| acct_response_time.is_set
 	|| acct_transaction_successess.is_set
-	|| acct_transaction_failure.is_set;
+	|| acct_transaction_failure.is_set
+	|| acct_throttled_transactions.is_set
+	|| acct_max_throttle_trans.is_set
+	|| total_test_acct_reqs.is_set
+	|| total_test_acct_timeouts.is_set
+	|| total_test_acct_response.is_set
+	|| total_test_acct_pending.is_set;
 }
 
 bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_operation() const
@@ -1881,11 +1932,14 @@ bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_operatio
 	|| ydk::is_set(dropped_responses.yfilter)
 	|| ydk::is_set(rtt.yfilter)
 	|| ydk::is_set(acct_unexpected_responses.yfilter)
-	|| ydk::is_set(acct_server_error_responses.yfilter)
-	|| ydk::is_set(acct_incorrect_responses.yfilter)
-	|| ydk::is_set(acct_response_time.yfilter)
 	|| ydk::is_set(acct_transaction_successess.yfilter)
-	|| ydk::is_set(acct_transaction_failure.yfilter);
+	|| ydk::is_set(acct_transaction_failure.yfilter)
+	|| ydk::is_set(acct_throttled_transactions.yfilter)
+	|| ydk::is_set(acct_max_throttle_trans.yfilter)
+	|| ydk::is_set(total_test_acct_reqs.yfilter)
+	|| ydk::is_set(total_test_acct_timeouts.yfilter)
+	|| ydk::is_set(total_test_acct_response.yfilter)
+	|| ydk::is_set(total_test_acct_pending.yfilter);
 }
 
 std::string Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_segment_path() const
@@ -1910,11 +1964,14 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::
     if (dropped_responses.is_set || is_set(dropped_responses.yfilter)) leaf_name_data.push_back(dropped_responses.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (acct_unexpected_responses.is_set || is_set(acct_unexpected_responses.yfilter)) leaf_name_data.push_back(acct_unexpected_responses.get_name_leafdata());
-    if (acct_server_error_responses.is_set || is_set(acct_server_error_responses.yfilter)) leaf_name_data.push_back(acct_server_error_responses.get_name_leafdata());
-    if (acct_incorrect_responses.is_set || is_set(acct_incorrect_responses.yfilter)) leaf_name_data.push_back(acct_incorrect_responses.get_name_leafdata());
-    if (acct_response_time.is_set || is_set(acct_response_time.yfilter)) leaf_name_data.push_back(acct_response_time.get_name_leafdata());
     if (acct_transaction_successess.is_set || is_set(acct_transaction_successess.yfilter)) leaf_name_data.push_back(acct_transaction_successess.get_name_leafdata());
     if (acct_transaction_failure.is_set || is_set(acct_transaction_failure.yfilter)) leaf_name_data.push_back(acct_transaction_failure.get_name_leafdata());
+    if (acct_throttled_transactions.is_set || is_set(acct_throttled_transactions.yfilter)) leaf_name_data.push_back(acct_throttled_transactions.get_name_leafdata());
+    if (acct_max_throttle_trans.is_set || is_set(acct_max_throttle_trans.yfilter)) leaf_name_data.push_back(acct_max_throttle_trans.get_name_leafdata());
+    if (total_test_acct_reqs.is_set || is_set(total_test_acct_reqs.yfilter)) leaf_name_data.push_back(total_test_acct_reqs.get_name_leafdata());
+    if (total_test_acct_timeouts.is_set || is_set(total_test_acct_timeouts.yfilter)) leaf_name_data.push_back(total_test_acct_timeouts.get_name_leafdata());
+    if (total_test_acct_response.is_set || is_set(total_test_acct_response.yfilter)) leaf_name_data.push_back(total_test_acct_response.get_name_leafdata());
+    if (total_test_acct_pending.is_set || is_set(total_test_acct_pending.yfilter)) leaf_name_data.push_back(total_test_acct_pending.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2000,24 +2057,6 @@ void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_value(co
         acct_unexpected_responses.value_namespace = name_space;
         acct_unexpected_responses.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses = value;
-        acct_server_error_responses.value_namespace = name_space;
-        acct_server_error_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-incorrect-responses")
-    {
-        acct_incorrect_responses = value;
-        acct_incorrect_responses.value_namespace = name_space;
-        acct_incorrect_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-response-time")
-    {
-        acct_response_time = value;
-        acct_response_time.value_namespace = name_space;
-        acct_response_time.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "acct-transaction-successess")
     {
         acct_transaction_successess = value;
@@ -2029,6 +2068,42 @@ void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_value(co
         acct_transaction_failure = value;
         acct_transaction_failure.value_namespace = name_space;
         acct_transaction_failure.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-throttled-transactions")
+    {
+        acct_throttled_transactions = value;
+        acct_throttled_transactions.value_namespace = name_space;
+        acct_throttled_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-max-throttle-trans")
+    {
+        acct_max_throttle_trans = value;
+        acct_max_throttle_trans.value_namespace = name_space;
+        acct_max_throttle_trans.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-reqs")
+    {
+        total_test_acct_reqs = value;
+        total_test_acct_reqs.value_namespace = name_space;
+        total_test_acct_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-timeouts")
+    {
+        total_test_acct_timeouts = value;
+        total_test_acct_timeouts.value_namespace = name_space;
+        total_test_acct_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-response")
+    {
+        total_test_acct_response = value;
+        total_test_acct_response.value_namespace = name_space;
+        total_test_acct_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-pending")
+    {
+        total_test_acct_pending = value;
+        total_test_acct_pending.value_namespace = name_space;
+        total_test_acct_pending.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2078,18 +2153,6 @@ void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_filter(c
     {
         acct_unexpected_responses.yfilter = yfilter;
     }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-incorrect-responses")
-    {
-        acct_incorrect_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-response-time")
-    {
-        acct_response_time.yfilter = yfilter;
-    }
     if(value_path == "acct-transaction-successess")
     {
         acct_transaction_successess.yfilter = yfilter;
@@ -2098,11 +2161,35 @@ void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_filter(c
     {
         acct_transaction_failure.yfilter = yfilter;
     }
+    if(value_path == "acct-throttled-transactions")
+    {
+        acct_throttled_transactions.yfilter = yfilter;
+    }
+    if(value_path == "acct-max-throttle-trans")
+    {
+        acct_max_throttle_trans.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-reqs")
+    {
+        total_test_acct_reqs.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-timeouts")
+    {
+        total_test_acct_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-response")
+    {
+        total_test_acct_response.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-pending")
+    {
+        total_test_acct_pending.yfilter = yfilter;
+    }
 }
 
 bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "requests" || name == "pending-requests" || name == "retransmits" || name == "responses" || name == "timeouts" || name == "bad-responses" || name == "bad-authenticators" || name == "unknown-packet-types" || name == "dropped-responses" || name == "rtt" || name == "acct-unexpected-responses" || name == "acct-server-error-responses" || name == "acct-incorrect-responses" || name == "acct-response-time" || name == "acct-transaction-successess" || name == "acct-transaction-failure")
+    if(name == "requests" || name == "pending-requests" || name == "retransmits" || name == "responses" || name == "timeouts" || name == "bad-responses" || name == "bad-authenticators" || name == "unknown-packet-types" || name == "dropped-responses" || name == "rtt" || name == "acct-unexpected-responses" || name == "acct-transaction-successess" || name == "acct-transaction-failure" || name == "acct-throttled-transactions" || name == "acct-max-throttle-trans" || name == "total-test-acct-reqs" || name == "total-test-acct-timeouts" || name == "total-test-acct-response" || name == "total-test-acct-pending")
         return true;
     return false;
 }
@@ -2202,7 +2289,6 @@ bool Radius::Nodes::Node::DynamicAuthorizationClients::has_leaf_or_child_of_name
 
 Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::DynamicAuthorClient()
     :
-    client_address{YType::str, "client-address"},
     disc_reqs{YType::uint32, "disc-reqs"},
     disc_acks{YType::uint32, "disc-acks"},
     disc_naks{YType::uint32, "disc-naks"},
@@ -2226,7 +2312,7 @@ Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::DynamicAu
     service_not_present{YType::uint32, "service-not-present"},
     send_to_ch_fail{YType::uint32, "send-to-ch-fail"},
     vrf_name{YType::str, "vrf-name"},
-    addr_buf{YType::str, "addr-buf"}
+    client_address{YType::str, "client-address"}
 {
 
     yang_name = "dynamic-author-client"; yang_parent_name = "dynamic-authorization-clients"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2239,8 +2325,7 @@ Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::~DynamicA
 bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_data() const
 {
     if (is_presence_container) return true;
-    return client_address.is_set
-	|| disc_reqs.is_set
+    return disc_reqs.is_set
 	|| disc_acks.is_set
 	|| disc_naks.is_set
 	|| disc_bad_auth.is_set
@@ -2263,13 +2348,12 @@ bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_
 	|| service_not_present.is_set
 	|| send_to_ch_fail.is_set
 	|| vrf_name.is_set
-	|| addr_buf.is_set;
+	|| client_address.is_set;
 }
 
 bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(client_address.yfilter)
 	|| ydk::is_set(disc_reqs.yfilter)
 	|| ydk::is_set(disc_acks.yfilter)
 	|| ydk::is_set(disc_naks.yfilter)
@@ -2293,13 +2377,14 @@ bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_
 	|| ydk::is_set(service_not_present.yfilter)
 	|| ydk::is_set(send_to_ch_fail.yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(addr_buf.yfilter);
+	|| ydk::is_set(client_address.yfilter);
 }
 
 std::string Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dynamic-author-client";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2307,7 +2392,6 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAutho
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
     if (disc_reqs.is_set || is_set(disc_reqs.yfilter)) leaf_name_data.push_back(disc_reqs.get_name_leafdata());
     if (disc_acks.is_set || is_set(disc_acks.yfilter)) leaf_name_data.push_back(disc_acks.get_name_leafdata());
     if (disc_naks.is_set || is_set(disc_naks.yfilter)) leaf_name_data.push_back(disc_naks.get_name_leafdata());
@@ -2331,7 +2415,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAutho
     if (service_not_present.is_set || is_set(service_not_present.yfilter)) leaf_name_data.push_back(service_not_present.get_name_leafdata());
     if (send_to_ch_fail.is_set || is_set(send_to_ch_fail.yfilter)) leaf_name_data.push_back(send_to_ch_fail.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
+    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2351,12 +2435,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Dynamic
 
 void Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "client-address")
-    {
-        client_address = value;
-        client_address.value_namespace = name_space;
-        client_address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "disc-reqs")
     {
         disc_reqs = value;
@@ -2495,20 +2573,16 @@ void Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::set_
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "addr-buf")
+    if(value_path == "client-address")
     {
-        addr_buf = value;
-        addr_buf.value_namespace = name_space;
-        addr_buf.value_namespace_prefix = name_space_prefix;
+        client_address = value;
+        client_address.value_namespace = name_space;
+        client_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "client-address")
-    {
-        client_address.yfilter = yfilter;
-    }
     if(value_path == "disc-reqs")
     {
         disc_reqs.yfilter = yfilter;
@@ -2601,15 +2675,15 @@ void Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::set_
     {
         vrf_name.yfilter = yfilter;
     }
-    if(value_path == "addr-buf")
+    if(value_path == "client-address")
     {
-        addr_buf.yfilter = yfilter;
+        client_address.yfilter = yfilter;
     }
 }
 
 bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-address" || name == "disc-reqs" || name == "disc-acks" || name == "disc-naks" || name == "disc-bad-auth" || name == "drop-disc-reqs" || name == "coa-reqs" || name == "coa-acks" || name == "coa-naks" || name == "coa-bad-auth" || name == "drop-coa-reqs" || name == "unknown-types" || name == "internal-error" || name == "pak-decode-fail" || name == "vrf-parse-fail-err" || name == "unknown-vsa-error" || name == "send-msg-failed" || name == "radius-to-ch" || name == "ch-to-radius" || name == "service-parse-fail" || name == "multi-subs-error" || name == "service-not-present" || name == "send-to-ch-fail" || name == "vrf-name" || name == "addr-buf")
+    if(name == "disc-reqs" || name == "disc-acks" || name == "disc-naks" || name == "disc-bad-auth" || name == "drop-disc-reqs" || name == "coa-reqs" || name == "coa-acks" || name == "coa-naks" || name == "coa-bad-auth" || name == "drop-coa-reqs" || name == "unknown-types" || name == "internal-error" || name == "pak-decode-fail" || name == "vrf-parse-fail-err" || name == "unknown-vsa-error" || name == "send-msg-failed" || name == "radius-to-ch" || name == "ch-to-radius" || name == "service-parse-fail" || name == "multi-subs-error" || name == "service-not-present" || name == "send-to-ch-fail" || name == "vrf-name" || name == "client-address")
         return true;
     return false;
 }
@@ -2873,7 +2947,6 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::has_leaf_or_child_of_name(c
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::ServerGroup_()
     :
-    server_address{YType::str, "server-address"},
     authentication_port{YType::uint32, "authentication-port"},
     accounting_port{YType::uint32, "accounting-port"},
     is_private{YType::boolean, "is-private"},
@@ -2899,8 +2972,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::~ServerGroup_()
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_data() const
 {
     if (is_presence_container) return true;
-    return server_address.is_set
-	|| authentication_port.is_set
+    return authentication_port.is_set
 	|| accounting_port.is_set
 	|| is_private.is_set
 	|| ip_address.is_set
@@ -2914,7 +2986,6 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_data() co
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(server_address.yfilter)
 	|| ydk::is_set(authentication_port.yfilter)
 	|| ydk::is_set(accounting_port.yfilter)
 	|| ydk::is_set(is_private.yfilter)
@@ -2930,6 +3001,7 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "server-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2937,7 +3009,6 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
     if (authentication_port.is_set || is_set(authentication_port.yfilter)) leaf_name_data.push_back(authentication_port.get_name_leafdata());
     if (accounting_port.is_set || is_set(accounting_port.yfilter)) leaf_name_data.push_back(accounting_port.get_name_leafdata());
     if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
@@ -3005,12 +3076,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::ServerG
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "server-address")
-    {
-        server_address = value;
-        server_address.value_namespace = name_space;
-        server_address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "authentication-port")
     {
         authentication_port = value;
@@ -3051,10 +3116,6 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_value(con
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "server-address")
-    {
-        server_address.yfilter = yfilter;
-    }
     if(value_path == "authentication-port")
     {
         authentication_port.yfilter = yfilter;
@@ -3083,7 +3144,7 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_filter(co
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "accounting" || name == "authentication" || name == "authorization" || name == "server-address" || name == "authentication-port" || name == "accounting-port" || name == "is-private" || name == "ip-address" || name == "family" || name == "redirected-requests")
+    if(name == "accounting" || name == "authentication" || name == "authorization" || name == "authentication-port" || name == "accounting-port" || name == "is-private" || name == "ip-address" || name == "family" || name == "redirected-requests")
         return true;
     return false;
 }
@@ -3101,11 +3162,14 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::Accoun
     dropped_responses{YType::uint32, "dropped-responses"},
     rtt{YType::uint32, "rtt"},
     acct_unexpected_responses{YType::uint32, "acct-unexpected-responses"},
-    acct_server_error_responses{YType::uint32, "acct-server-error-responses"},
-    acct_incorrect_responses{YType::uint32, "acct-incorrect-responses"},
-    acct_response_time{YType::uint32, "acct-response-time"},
     acct_transaction_successess{YType::uint32, "acct-transaction-successess"},
-    acct_transaction_failure{YType::uint32, "acct-transaction-failure"}
+    acct_transaction_failure{YType::uint32, "acct-transaction-failure"},
+    acct_throttled_transactions{YType::uint32, "acct-throttled-transactions"},
+    acct_max_throttle_trans{YType::uint32, "acct-max-throttle-trans"},
+    total_test_acct_reqs{YType::uint32, "total-test-acct-reqs"},
+    total_test_acct_timeouts{YType::uint32, "total-test-acct-timeouts"},
+    total_test_acct_response{YType::uint32, "total-test-acct-response"},
+    total_test_acct_pending{YType::uint32, "total-test-acct-pending"}
 {
 
     yang_name = "accounting"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3129,11 +3193,14 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::h
 	|| dropped_responses.is_set
 	|| rtt.is_set
 	|| acct_unexpected_responses.is_set
-	|| acct_server_error_responses.is_set
-	|| acct_incorrect_responses.is_set
-	|| acct_response_time.is_set
 	|| acct_transaction_successess.is_set
-	|| acct_transaction_failure.is_set;
+	|| acct_transaction_failure.is_set
+	|| acct_throttled_transactions.is_set
+	|| acct_max_throttle_trans.is_set
+	|| total_test_acct_reqs.is_set
+	|| total_test_acct_timeouts.is_set
+	|| total_test_acct_response.is_set
+	|| total_test_acct_pending.is_set;
 }
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::has_operation() const
@@ -3150,11 +3217,14 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::h
 	|| ydk::is_set(dropped_responses.yfilter)
 	|| ydk::is_set(rtt.yfilter)
 	|| ydk::is_set(acct_unexpected_responses.yfilter)
-	|| ydk::is_set(acct_server_error_responses.yfilter)
-	|| ydk::is_set(acct_incorrect_responses.yfilter)
-	|| ydk::is_set(acct_response_time.yfilter)
 	|| ydk::is_set(acct_transaction_successess.yfilter)
-	|| ydk::is_set(acct_transaction_failure.yfilter);
+	|| ydk::is_set(acct_transaction_failure.yfilter)
+	|| ydk::is_set(acct_throttled_transactions.yfilter)
+	|| ydk::is_set(acct_max_throttle_trans.yfilter)
+	|| ydk::is_set(total_test_acct_reqs.yfilter)
+	|| ydk::is_set(total_test_acct_timeouts.yfilter)
+	|| ydk::is_set(total_test_acct_response.yfilter)
+	|| ydk::is_set(total_test_acct_pending.yfilter);
 }
 
 std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_segment_path() const
@@ -3179,11 +3249,14 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
     if (dropped_responses.is_set || is_set(dropped_responses.yfilter)) leaf_name_data.push_back(dropped_responses.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (acct_unexpected_responses.is_set || is_set(acct_unexpected_responses.yfilter)) leaf_name_data.push_back(acct_unexpected_responses.get_name_leafdata());
-    if (acct_server_error_responses.is_set || is_set(acct_server_error_responses.yfilter)) leaf_name_data.push_back(acct_server_error_responses.get_name_leafdata());
-    if (acct_incorrect_responses.is_set || is_set(acct_incorrect_responses.yfilter)) leaf_name_data.push_back(acct_incorrect_responses.get_name_leafdata());
-    if (acct_response_time.is_set || is_set(acct_response_time.yfilter)) leaf_name_data.push_back(acct_response_time.get_name_leafdata());
     if (acct_transaction_successess.is_set || is_set(acct_transaction_successess.yfilter)) leaf_name_data.push_back(acct_transaction_successess.get_name_leafdata());
     if (acct_transaction_failure.is_set || is_set(acct_transaction_failure.yfilter)) leaf_name_data.push_back(acct_transaction_failure.get_name_leafdata());
+    if (acct_throttled_transactions.is_set || is_set(acct_throttled_transactions.yfilter)) leaf_name_data.push_back(acct_throttled_transactions.get_name_leafdata());
+    if (acct_max_throttle_trans.is_set || is_set(acct_max_throttle_trans.yfilter)) leaf_name_data.push_back(acct_max_throttle_trans.get_name_leafdata());
+    if (total_test_acct_reqs.is_set || is_set(total_test_acct_reqs.yfilter)) leaf_name_data.push_back(total_test_acct_reqs.get_name_leafdata());
+    if (total_test_acct_timeouts.is_set || is_set(total_test_acct_timeouts.yfilter)) leaf_name_data.push_back(total_test_acct_timeouts.get_name_leafdata());
+    if (total_test_acct_response.is_set || is_set(total_test_acct_response.yfilter)) leaf_name_data.push_back(total_test_acct_response.get_name_leafdata());
+    if (total_test_acct_pending.is_set || is_set(total_test_acct_pending.yfilter)) leaf_name_data.push_back(total_test_acct_pending.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3269,24 +3342,6 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::s
         acct_unexpected_responses.value_namespace = name_space;
         acct_unexpected_responses.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses = value;
-        acct_server_error_responses.value_namespace = name_space;
-        acct_server_error_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-incorrect-responses")
-    {
-        acct_incorrect_responses = value;
-        acct_incorrect_responses.value_namespace = name_space;
-        acct_incorrect_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-response-time")
-    {
-        acct_response_time = value;
-        acct_response_time.value_namespace = name_space;
-        acct_response_time.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "acct-transaction-successess")
     {
         acct_transaction_successess = value;
@@ -3298,6 +3353,42 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::s
         acct_transaction_failure = value;
         acct_transaction_failure.value_namespace = name_space;
         acct_transaction_failure.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-throttled-transactions")
+    {
+        acct_throttled_transactions = value;
+        acct_throttled_transactions.value_namespace = name_space;
+        acct_throttled_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-max-throttle-trans")
+    {
+        acct_max_throttle_trans = value;
+        acct_max_throttle_trans.value_namespace = name_space;
+        acct_max_throttle_trans.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-reqs")
+    {
+        total_test_acct_reqs = value;
+        total_test_acct_reqs.value_namespace = name_space;
+        total_test_acct_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-timeouts")
+    {
+        total_test_acct_timeouts = value;
+        total_test_acct_timeouts.value_namespace = name_space;
+        total_test_acct_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-response")
+    {
+        total_test_acct_response = value;
+        total_test_acct_response.value_namespace = name_space;
+        total_test_acct_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-pending")
+    {
+        total_test_acct_pending = value;
+        total_test_acct_pending.value_namespace = name_space;
+        total_test_acct_pending.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3347,18 +3438,6 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::s
     {
         acct_unexpected_responses.yfilter = yfilter;
     }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-incorrect-responses")
-    {
-        acct_incorrect_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-response-time")
-    {
-        acct_response_time.yfilter = yfilter;
-    }
     if(value_path == "acct-transaction-successess")
     {
         acct_transaction_successess.yfilter = yfilter;
@@ -3367,11 +3446,35 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::s
     {
         acct_transaction_failure.yfilter = yfilter;
     }
+    if(value_path == "acct-throttled-transactions")
+    {
+        acct_throttled_transactions.yfilter = yfilter;
+    }
+    if(value_path == "acct-max-throttle-trans")
+    {
+        acct_max_throttle_trans.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-reqs")
+    {
+        total_test_acct_reqs.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-timeouts")
+    {
+        total_test_acct_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-response")
+    {
+        total_test_acct_response.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-pending")
+    {
+        total_test_acct_pending.yfilter = yfilter;
+    }
 }
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "requests" || name == "pending-requests" || name == "retransmits" || name == "responses" || name == "timeouts" || name == "bad-responses" || name == "bad-authenticators" || name == "unknown-packet-types" || name == "dropped-responses" || name == "rtt" || name == "acct-unexpected-responses" || name == "acct-server-error-responses" || name == "acct-incorrect-responses" || name == "acct-response-time" || name == "acct-transaction-successess" || name == "acct-transaction-failure")
+    if(name == "requests" || name == "pending-requests" || name == "retransmits" || name == "responses" || name == "timeouts" || name == "bad-responses" || name == "bad-authenticators" || name == "unknown-packet-types" || name == "dropped-responses" || name == "rtt" || name == "acct-unexpected-responses" || name == "acct-transaction-successess" || name == "acct-transaction-failure" || name == "acct-throttled-transactions" || name == "acct-max-throttle-trans" || name == "total-test-acct-reqs" || name == "total-test-acct-timeouts" || name == "total-test-acct-response" || name == "total-test-acct-pending")
         return true;
     return false;
 }
@@ -3390,12 +3493,17 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::Au
     unknown_access_types{YType::uint32, "unknown-access-types"},
     dropped_access_responses{YType::uint32, "dropped-access-responses"},
     rtt{YType::uint32, "rtt"},
-    authen_response_time{YType::uint32, "authen-response-time"},
     authen_transaction_successess{YType::uint32, "authen-transaction-successess"},
     authen_transaction_failure{YType::uint32, "authen-transaction-failure"},
     authen_unexpected_responses{YType::uint32, "authen-unexpected-responses"},
     authen_server_error_responses{YType::uint32, "authen-server-error-responses"},
-    authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"}
+    authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"},
+    auth_throttled_transactions{YType::uint32, "auth-throttled-transactions"},
+    auth_max_transactions{YType::uint32, "auth-max-transactions"},
+    total_test_auth_reqs{YType::uint32, "total-test-auth-reqs"},
+    total_test_auth_timeouts{YType::uint32, "total-test-auth-timeouts"},
+    total_test_auth_response{YType::uint32, "total-test-auth-response"},
+    total_test_auth_pending{YType::uint32, "total-test-auth-pending"}
 {
 
     yang_name = "authentication"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3420,12 +3528,17 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticatio
 	|| unknown_access_types.is_set
 	|| dropped_access_responses.is_set
 	|| rtt.is_set
-	|| authen_response_time.is_set
 	|| authen_transaction_successess.is_set
 	|| authen_transaction_failure.is_set
 	|| authen_unexpected_responses.is_set
 	|| authen_server_error_responses.is_set
-	|| authen_incorrect_responses.is_set;
+	|| authen_incorrect_responses.is_set
+	|| auth_throttled_transactions.is_set
+	|| auth_max_transactions.is_set
+	|| total_test_auth_reqs.is_set
+	|| total_test_auth_timeouts.is_set
+	|| total_test_auth_response.is_set
+	|| total_test_auth_pending.is_set;
 }
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::has_operation() const
@@ -3443,12 +3556,17 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticatio
 	|| ydk::is_set(unknown_access_types.yfilter)
 	|| ydk::is_set(dropped_access_responses.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(authen_response_time.yfilter)
 	|| ydk::is_set(authen_transaction_successess.yfilter)
 	|| ydk::is_set(authen_transaction_failure.yfilter)
 	|| ydk::is_set(authen_unexpected_responses.yfilter)
 	|| ydk::is_set(authen_server_error_responses.yfilter)
-	|| ydk::is_set(authen_incorrect_responses.yfilter);
+	|| ydk::is_set(authen_incorrect_responses.yfilter)
+	|| ydk::is_set(auth_throttled_transactions.yfilter)
+	|| ydk::is_set(auth_max_transactions.yfilter)
+	|| ydk::is_set(total_test_auth_reqs.yfilter)
+	|| ydk::is_set(total_test_auth_timeouts.yfilter)
+	|| ydk::is_set(total_test_auth_response.yfilter)
+	|| ydk::is_set(total_test_auth_pending.yfilter);
 }
 
 std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_segment_path() const
@@ -3474,12 +3592,17 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
     if (unknown_access_types.is_set || is_set(unknown_access_types.yfilter)) leaf_name_data.push_back(unknown_access_types.get_name_leafdata());
     if (dropped_access_responses.is_set || is_set(dropped_access_responses.yfilter)) leaf_name_data.push_back(dropped_access_responses.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-    if (authen_response_time.is_set || is_set(authen_response_time.yfilter)) leaf_name_data.push_back(authen_response_time.get_name_leafdata());
     if (authen_transaction_successess.is_set || is_set(authen_transaction_successess.yfilter)) leaf_name_data.push_back(authen_transaction_successess.get_name_leafdata());
     if (authen_transaction_failure.is_set || is_set(authen_transaction_failure.yfilter)) leaf_name_data.push_back(authen_transaction_failure.get_name_leafdata());
     if (authen_unexpected_responses.is_set || is_set(authen_unexpected_responses.yfilter)) leaf_name_data.push_back(authen_unexpected_responses.get_name_leafdata());
     if (authen_server_error_responses.is_set || is_set(authen_server_error_responses.yfilter)) leaf_name_data.push_back(authen_server_error_responses.get_name_leafdata());
     if (authen_incorrect_responses.is_set || is_set(authen_incorrect_responses.yfilter)) leaf_name_data.push_back(authen_incorrect_responses.get_name_leafdata());
+    if (auth_throttled_transactions.is_set || is_set(auth_throttled_transactions.yfilter)) leaf_name_data.push_back(auth_throttled_transactions.get_name_leafdata());
+    if (auth_max_transactions.is_set || is_set(auth_max_transactions.yfilter)) leaf_name_data.push_back(auth_max_transactions.get_name_leafdata());
+    if (total_test_auth_reqs.is_set || is_set(total_test_auth_reqs.yfilter)) leaf_name_data.push_back(total_test_auth_reqs.get_name_leafdata());
+    if (total_test_auth_timeouts.is_set || is_set(total_test_auth_timeouts.yfilter)) leaf_name_data.push_back(total_test_auth_timeouts.get_name_leafdata());
+    if (total_test_auth_response.is_set || is_set(total_test_auth_response.yfilter)) leaf_name_data.push_back(total_test_auth_response.get_name_leafdata());
+    if (total_test_auth_pending.is_set || is_set(total_test_auth_pending.yfilter)) leaf_name_data.push_back(total_test_auth_pending.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3571,12 +3694,6 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticatio
         rtt.value_namespace = name_space;
         rtt.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "authen-response-time")
-    {
-        authen_response_time = value;
-        authen_response_time.value_namespace = name_space;
-        authen_response_time.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "authen-transaction-successess")
     {
         authen_transaction_successess = value;
@@ -3606,6 +3723,42 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticatio
         authen_incorrect_responses = value;
         authen_incorrect_responses.value_namespace = name_space;
         authen_incorrect_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-throttled-transactions")
+    {
+        auth_throttled_transactions = value;
+        auth_throttled_transactions.value_namespace = name_space;
+        auth_throttled_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-max-transactions")
+    {
+        auth_max_transactions = value;
+        auth_max_transactions.value_namespace = name_space;
+        auth_max_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-reqs")
+    {
+        total_test_auth_reqs = value;
+        total_test_auth_reqs.value_namespace = name_space;
+        total_test_auth_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-timeouts")
+    {
+        total_test_auth_timeouts = value;
+        total_test_auth_timeouts.value_namespace = name_space;
+        total_test_auth_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-response")
+    {
+        total_test_auth_response = value;
+        total_test_auth_response.value_namespace = name_space;
+        total_test_auth_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-pending")
+    {
+        total_test_auth_pending = value;
+        total_test_auth_pending.value_namespace = name_space;
+        total_test_auth_pending.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3659,10 +3812,6 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticatio
     {
         rtt.yfilter = yfilter;
     }
-    if(value_path == "authen-response-time")
-    {
-        authen_response_time.yfilter = yfilter;
-    }
     if(value_path == "authen-transaction-successess")
     {
         authen_transaction_successess.yfilter = yfilter;
@@ -3683,11 +3832,35 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticatio
     {
         authen_incorrect_responses.yfilter = yfilter;
     }
+    if(value_path == "auth-throttled-transactions")
+    {
+        auth_throttled_transactions.yfilter = yfilter;
+    }
+    if(value_path == "auth-max-transactions")
+    {
+        auth_max_transactions.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-reqs")
+    {
+        total_test_auth_reqs.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-timeouts")
+    {
+        total_test_auth_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-response")
+    {
+        total_test_auth_response.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-pending")
+    {
+        total_test_auth_pending.yfilter = yfilter;
+    }
 }
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-requests" || name == "pending-access-requests" || name == "access-request-retransmits" || name == "access-accepts" || name == "access-rejects" || name == "access-challenges" || name == "access-timeouts" || name == "bad-access-responses" || name == "bad-access-authenticators" || name == "unknown-access-types" || name == "dropped-access-responses" || name == "rtt" || name == "authen-response-time" || name == "authen-transaction-successess" || name == "authen-transaction-failure" || name == "authen-unexpected-responses" || name == "authen-server-error-responses" || name == "authen-incorrect-responses")
+    if(name == "access-requests" || name == "pending-access-requests" || name == "access-request-retransmits" || name == "access-accepts" || name == "access-rejects" || name == "access-challenges" || name == "access-timeouts" || name == "bad-access-responses" || name == "bad-access-authenticators" || name == "unknown-access-types" || name == "dropped-access-responses" || name == "rtt" || name == "authen-transaction-successess" || name == "authen-transaction-failure" || name == "authen-unexpected-responses" || name == "authen-server-error-responses" || name == "authen-incorrect-responses" || name == "auth-throttled-transactions" || name == "auth-max-transactions" || name == "total-test-auth-reqs" || name == "total-test-auth-timeouts" || name == "total-test-auth-response" || name == "total-test-auth-pending")
         return true;
     return false;
 }

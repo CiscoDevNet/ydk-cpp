@@ -3556,6 +3556,7 @@ std::string SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

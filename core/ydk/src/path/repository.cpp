@@ -172,10 +172,12 @@ namespace ydk {
                 yang_file_path += ".yang";
                 YLOG_DEBUG("Opening file '{}'", yang_file_path);
 
-                YLOG_DEBUG("Path found with rev: {}. Path without rev: {}",
-                        file_exists(yang_file_path), file_exists(yang_file_path_no_revision));
+                if (file_exists(yang_file_path) || file_exists(yang_file_path_no_revision)) {
+                    if (file_exists(yang_file_path))
+                        YLOG_DEBUG("Path found with revision: {}", yang_file_path);
+                    else
+                        YLOG_DEBUG("Path found without revision: {}", yang_file_path_no_revision);
 
-                if(file_exists(yang_file_path) || file_exists(yang_file_path_no_revision)) {
                     //open the file read the data and return it
                     std::string model_data {""};
                     std::ifstream yang_file {yang_file_path};
@@ -193,7 +195,9 @@ namespace ydk {
                         YLOG_ERROR("Cannot open file '{}'", yang_file_path);
                         throw(YIllegalStateError("Cannot open file " + yang_file_path));
                     }
-
+                }
+                else {
+                    YLOG_DEBUG("File '{}' is not found in repository", yang_file_path);
                 }
 
                 for(auto model_provider : repo->get_model_providers()) {
@@ -211,19 +215,14 @@ namespace ydk {
                     if(!model_data.empty()){
                         sink_to_file(yang_file_path, model_data);
                         return get_enlarged_data(model_data, yang_file_path);
-                    } else {
-                        YLOG_DEBUG("Cannot find model with module_name '{}' and module_rev '{}'", module_name, (module_rev !=nullptr ? module_rev : ""));
-//                        throw(YIllegalStateError{"Cannot find model"});
-                        return {};
                     }
                 }
             }
-            YLOG_DEBUG("Cannot find model with module_name: {}", module_name);
-//            throw(YIllegalStateError{"Cannot find model"});
+            YLOG_ERROR("Cannot find model with module name '{}'", module_name);
+            //throw(YServiceProviderError("Cannot find model with module name: " + std::string(module_name)));
             return {};
         }
     }
-
 }
 
 ly_ctx* ydk::path::RepositoryPtr::create_ly_context()
@@ -236,7 +235,12 @@ ly_ctx* ydk::path::RepositoryPtr::create_ly_context()
         {
             for(auto model_provider : get_model_providers())
             {
-                path+="/"+model_provider->get_hostname_port();
+                //path+="/"+model_provider->get_hostname_port();
+                auto hostname_port = model_provider->get_hostname_port();
+                auto underscore_pos = hostname_port.rfind("_");
+                if (underscore_pos != std::string::npos)
+                    hostname_port = hostname_port.substr(0, underscore_pos);
+                path += "/" + hostname_port;
                 break;
             }
         }
@@ -351,6 +355,12 @@ ydk::path::RepositoryPtr::get_new_ly_modules_from_lookup(ly_ctx* ctx,
             {
                 module_name = kit->second.module;
             }
+            else {
+                auto colon_pos = k.rfind(":");
+                if (colon_pos != std::string::npos) {
+                    module_name = k.substr(colon_pos+1);
+                }
+            }
 
             auto m = load_module(ctx, module_name, new_module);
 
@@ -386,7 +396,6 @@ ydk::path::RepositoryPtr::get_new_ly_modules_from_path(ly_ctx* ctx,
                                                        const std::string& path,
                                                        const std::unordered_map<std::string, path::Capability>& lookup_table)
 {
-    YLOG_DEBUG("Getting new modules from '{}'", path);
     auto module_names = path::segmentalize_module_names(path);
     return get_new_ly_modules_from_lookup(ctx, module_names, lookup_table);
 }

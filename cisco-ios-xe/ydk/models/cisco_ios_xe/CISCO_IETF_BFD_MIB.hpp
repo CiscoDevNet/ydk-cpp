@@ -319,6 +319,18 @@ class CiscoBfdDiag : public ydk::Enum
         static const ydk::Enum::YLeaf administrativelyDown;
         static const ydk::Enum::YLeaf reverseConcatenatedPathDown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noDiagnostic") return 0;
+            if (name == "controlDetectionTimeExpired") return 1;
+            if (name == "echoFunctionFailed") return 2;
+            if (name == "neighborSignaledSessionDown") return 3;
+            if (name == "forwardingPlaneReset") return 4;
+            if (name == "pathDown") return 5;
+            if (name == "concatenatedPathDown") return 6;
+            if (name == "administrativelyDown") return 7;
+            if (name == "reverseConcatenatedPathDown") return 8;
+            return -1;
+        }
 };
 
 class CISCOIETFBFDMIB::CiscoBfdScalarObjects::CiscoBfdAdminStatus : public ydk::Enum
@@ -327,6 +339,11 @@ class CISCOIETFBFDMIB::CiscoBfdScalarObjects::CiscoBfdAdminStatus : public ydk::
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessState : public ydk::Enum
@@ -338,6 +355,14 @@ class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessState :
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf failing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "adminDown") return 1;
+            if (name == "down") return 2;
+            if (name == "init") return 3;
+            if (name == "up") return 4;
+            if (name == "failing") return 5;
+            return -1;
+        }
 };
 
 class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessOperMode : public ydk::Enum
@@ -348,6 +373,13 @@ class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessOperMod
         static const ydk::Enum::YLeaf demandModeWEchoFunction;
         static const ydk::Enum::YLeaf demandModeWOEchoFunction;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asyncModeWEchoFun") return 1;
+            if (name == "asynchModeWOEchoFun") return 2;
+            if (name == "demandModeWEchoFunction") return 3;
+            if (name == "demandModeWOEchoFunction") return 4;
+            return -1;
+        }
 };
 
 class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessAuthenticationType : public ydk::Enum
@@ -359,6 +391,14 @@ class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessAuthent
         static const ydk::Enum::YLeaf keyedSHA1;
         static const ydk::Enum::YLeaf meticulousKeyedSHA1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "simplePassword") return 1;
+            if (name == "keyedMD5") return 2;
+            if (name == "meticulousKeyedMD5") return 3;
+            if (name == "keyedSHA1") return 4;
+            if (name == "meticulousKeyedSHA1") return 5;
+            return -1;
+        }
 };
 
 class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessType : public ydk::Enum
@@ -367,6 +407,11 @@ class CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessType : 
         static const ydk::Enum::YLeaf singleHop;
         static const ydk::Enum::YLeaf multiHop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "singleHop") return 1;
+            if (name == "multiHop") return 2;
+            return -1;
+        }
 };
 
 

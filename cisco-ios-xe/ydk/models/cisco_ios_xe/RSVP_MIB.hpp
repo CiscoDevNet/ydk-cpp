@@ -545,6 +545,12 @@ class RsvpEncapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf udp;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 1;
+            if (name == "udp") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 

@@ -252,6 +252,11 @@ class CISCOIETFFRRMIB::CmplsFrrScalars::CmplsFrrConstProtectionMethod : public y
         static const ydk::Enum::YLeaf oneToOneBackup;
         static const ydk::Enum::YLeaf facilityBackup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "oneToOneBackup") return 0;
+            if (name == "facilityBackup") return 1;
+            return -1;
+        }
 };
 
 class CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::CmplsFrrLogEventType : public ydk::Enum
@@ -260,6 +265,11 @@ class CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::CmplsFrrLogEventType 
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf protected_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "protected") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectedTunStatus : public ydk::Enum
@@ -269,6 +279,12 @@ class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFr
         static const ydk::Enum::YLeaf ready;
         static const ydk::Enum::YLeaf partial;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "ready") return 2;
+            if (name == "partial") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectingTunProtectionType : public ydk::Enum
@@ -277,6 +293,11 @@ class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFr
         static const ydk::Enum::YLeaf linkProtection;
         static const ydk::Enum::YLeaf nodeProtection;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "linkProtection") return 0;
+            if (name == "nodeProtection") return 1;
+            return -1;
+        }
 };
 
 

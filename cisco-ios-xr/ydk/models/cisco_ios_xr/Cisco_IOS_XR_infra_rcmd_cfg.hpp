@@ -324,6 +324,13 @@ class RcmdPriority : public ydk::Enum
         static const ydk::Enum::YLeaf medium;
         static const ydk::Enum::YLeaf low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "high") return 1;
+            if (name == "medium") return 2;
+            if (name == "low") return 3;
+            return -1;
+        }
 };
 
 class ProtocolName : public ydk::Enum
@@ -332,6 +339,11 @@ class ProtocolName : public ydk::Enum
         static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf isis;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf") return 0;
+            if (name == "isis") return 1;
+            return -1;
+        }
 };
 
 

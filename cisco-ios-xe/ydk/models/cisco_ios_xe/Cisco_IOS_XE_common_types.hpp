@@ -19,6 +19,14 @@ class AddrType : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address_mcast;
         static const ydk::Enum::YLeaf ipv6_address_mcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-none") return 0;
+            if (name == "ipv4-address") return 1;
+            if (name == "ipv6-address") return 2;
+            if (name == "ipv4-address-mcast") return 3;
+            if (name == "ipv6-address-mcast") return 4;
+            return -1;
+        }
 };
 
 

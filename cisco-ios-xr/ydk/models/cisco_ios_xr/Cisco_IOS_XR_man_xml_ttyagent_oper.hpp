@@ -446,6 +446,11 @@ class XrXmlSessionAlarmRegister : public ydk::Enum
         static const ydk::Enum::YLeaf registered;
         static const ydk::Enum::YLeaf not_registered;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "registered") return 1;
+            if (name == "not-registered") return 2;
+            return -1;
+        }
 };
 
 class XrXmlSessionState : public ydk::Enum
@@ -454,6 +459,11 @@ class XrXmlSessionState : public ydk::Enum
         static const ydk::Enum::YLeaf idle;
         static const ydk::Enum::YLeaf busy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "busy") return 2;
+            return -1;
+        }
 };
 
 

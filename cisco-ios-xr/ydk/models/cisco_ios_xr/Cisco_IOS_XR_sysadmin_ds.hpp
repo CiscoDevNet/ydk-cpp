@@ -345,6 +345,13 @@ class ProcessIssuRole : public ydk::Enum
         static const ydk::Enum::YLeaf Tertiary;
         static const ydk::Enum::YLeaf Unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Primary") return 1;
+            if (name == "Secondary") return 2;
+            if (name == "Tertiary") return 3;
+            if (name == "Unknown") return 254;
+            return -1;
+        }
 };
 
 class ProcessRole : public ydk::Enum
@@ -356,6 +363,14 @@ class ProcessRole : public ydk::Enum
         static const ydk::Enum::YLeaf None;
         static const ydk::Enum::YLeaf Unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NoRole") return 0;
+            if (name == "Active") return 1;
+            if (name == "Standby") return 2;
+            if (name == "None") return 3;
+            if (name == "Unknown") return 254;
+            return -1;
+        }
 };
 
 class ServiceScope : public ydk::Enum
@@ -366,6 +381,13 @@ class ServiceScope : public ydk::Enum
         static const ydk::Enum::YLeaf System;
         static const ydk::Enum::YLeaf Node;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "None") return 0;
+            if (name == "Rack") return 1;
+            if (name == "System") return 2;
+            if (name == "Node") return 3;
+            return -1;
+        }
 };
 
 

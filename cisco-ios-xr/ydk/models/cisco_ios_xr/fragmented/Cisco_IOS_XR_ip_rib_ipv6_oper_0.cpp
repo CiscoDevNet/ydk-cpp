@@ -4377,6 +4377,7 @@ std::string Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl:
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5012,6 +5013,7 @@ std::string Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl:
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5090,6 +5092,7 @@ std::string Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl:
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5177,6 +5180,7 @@ std::string Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl:
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6284,7 +6288,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoutes()
     :
-    dest_q_route(this, {})
+    dest_q_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "dest-q-routes"; yang_parent_name = "destination-kw"; is_top_level_class = false; has_list_ancestor = true; 
@@ -6507,6 +6511,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "dest-q-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -7227,6 +7233,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7862,6 +7869,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7940,6 +7948,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8027,6 +8036,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8112,7 +8122,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoutes()
     :
-    dest_backup_route(this, {})
+    dest_backup_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "dest-backup-routes"; yang_parent_name = "destination-kw"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8335,6 +8345,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "dest-backup-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -9055,6 +9067,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9690,6 +9703,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9768,6 +9782,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9855,6 +9870,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10870,6 +10886,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11505,6 +11522,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11583,6 +11601,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11670,6 +11689,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12685,6 +12705,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13320,6 +13341,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13398,6 +13420,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13485,6 +13508,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13570,7 +13594,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Adverts()
     :
-    advert(this, {})
+    advert(this, {"address", "prefix_length"})
 {
 
     yang_name = "adverts"; yang_parent_name = "ip-rib-route-table-name"; is_top_level_class = false; has_list_ancestor = true; 
@@ -13704,6 +13728,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "advert";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -13831,6 +13857,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-advert";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13960,7 +13987,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoutes()
     :
-    deleted_route(this, {})
+    deleted_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "deleted-routes"; yang_parent_name = "ip-rib-route-table-name"; is_top_level_class = false; has_list_ancestor = true; 
@@ -14183,6 +14210,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "deleted-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -14903,6 +14932,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15538,6 +15568,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15616,6 +15647,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15703,6 +15735,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16468,7 +16501,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "lspv"; is_top_level_class = false; has_list_ancestor = true; 
@@ -16691,6 +16724,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -17411,6 +17446,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18046,6 +18082,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18124,6 +18161,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18211,6 +18249,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18614,7 +18653,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -18837,6 +18876,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -19557,6 +19598,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20192,6 +20234,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20270,6 +20313,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20357,6 +20401,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20869,7 +20914,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -21092,6 +21137,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -21812,6 +21859,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22447,6 +22495,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22525,6 +22574,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22612,6 +22662,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23097,7 +23148,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -23320,6 +23371,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -24040,6 +24093,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24675,6 +24729,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24753,6 +24808,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24840,6 +24896,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25352,7 +25409,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -25575,6 +25632,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -26295,6 +26354,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26930,6 +26990,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27008,6 +27069,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27095,6 +27157,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27607,7 +27670,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -27830,6 +27893,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -28550,6 +28615,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29185,6 +29251,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29263,6 +29330,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29350,6 +29418,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29835,7 +29904,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -30058,6 +30127,8 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -30778,6 +30849,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -31413,6 +31485,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -31491,6 +31564,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -31578,6 +31652,7 @@ std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibR
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

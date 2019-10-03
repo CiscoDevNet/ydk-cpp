@@ -36,9 +36,9 @@
 #include <utility>
 #include <initializer_list>
 
-
 #include "filters.hpp"
 
+#if (__cplusplus < 201402L)
 namespace std
 {
 template<typename T, typename ...Args>
@@ -47,6 +47,7 @@ std::unique_ptr<T> make_unique( Args&& ...args )
     return std::unique_ptr<T>( new T( std::forward<Args>(args)... ) );
 }
 }
+#endif
 
 namespace ydk
 {
@@ -105,6 +106,8 @@ struct EntityPath {
 
 typedef void (*augment_capabilities_function)();
 
+class YList;
+
 class Entity {
   public:
     Entity();
@@ -151,7 +154,12 @@ class Entity {
     bool is_presence_container;
     bool is_top_level_class;
     bool has_list_ancestor;
+    bool ignore_validation;
     std::vector<std::string> ylist_key_names;
+    std::string ylist_key;
+    YList* ylist;
+
+    std::string get_ylist_key() const;
 };
 
 class Bits {
@@ -302,6 +310,7 @@ class YLeaf
 
     std::string name;
     std::string value;
+    int enum_value;
     YType type;
     Bits bits_value;
 };
@@ -365,13 +374,15 @@ class YList
 
     void append(std::shared_ptr<Entity> ep);
     void extend(std::initializer_list<std::shared_ptr<Entity>> ep_list);
+    void review(std::shared_ptr<Entity> ep);
     std::string build_key(std::shared_ptr<Entity> ep);
 
     std::shared_ptr<Entity> pop(const std::string& key);
     std::shared_ptr<Entity> pop(const std::size_t item);
 
-  private:
     std::vector<std::string> ylist_key_names;
+
+  private:
     std::map<std::string,std::shared_ptr<Entity>> entity_map;
     std::vector<std::string> key_vector;
     Entity* parent;

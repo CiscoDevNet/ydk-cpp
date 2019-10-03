@@ -1118,6 +1118,11 @@ class IfDirection : public ydk::Enum
         static const ydk::Enum::YLeaf inbound;
         static const ydk::Enum::YLeaf outbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 1;
+            if (name == "outbound") return 2;
+            return -1;
+        }
 };
 
 class DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType : public ydk::Enum
@@ -1129,6 +1134,14 @@ class DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropTy
         static const ydk::Enum::YLeaf randomDrop;
         static const ydk::Enum::YLeaf alwaysDrop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "tailDrop") return 2;
+            if (name == "headDrop") return 3;
+            if (name == "randomDrop") return 4;
+            if (name == "alwaysDrop") return 5;
+            return -1;
+        }
 };
 
 

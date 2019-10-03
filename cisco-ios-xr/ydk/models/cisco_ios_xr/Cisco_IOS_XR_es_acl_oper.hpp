@@ -389,6 +389,15 @@ class AclAction : public ydk::Enum
         static const ydk::Enum::YLeaf fallthrough;
         static const ydk::Enum::YLeaf invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deny") return 0;
+            if (name == "permit") return 1;
+            if (name == "encrypt") return 2;
+            if (name == "bypass") return 3;
+            if (name == "fallthrough") return 4;
+            if (name == "invalid") return 5;
+            return -1;
+        }
 };
 
 class AclAce1 : public ydk::Enum
@@ -398,6 +407,12 @@ class AclAce1 : public ydk::Enum
         static const ydk::Enum::YLeaf remark;
         static const ydk::Enum::YLeaf abf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "remark") return 1;
+            if (name == "abf") return 2;
+            return -1;
+        }
 };
 
 class AclAce1_ : public ydk::Enum
@@ -407,6 +422,12 @@ class AclAce1_ : public ydk::Enum
         static const ydk::Enum::YLeaf remark;
         static const ydk::Enum::YLeaf abf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "remark") return 1;
+            if (name == "abf") return 2;
+            return -1;
+        }
 };
 
 

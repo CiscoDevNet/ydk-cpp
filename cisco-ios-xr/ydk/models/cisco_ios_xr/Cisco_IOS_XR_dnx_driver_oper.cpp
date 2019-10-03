@@ -1034,6 +1034,7 @@ std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsic
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2423,6 +2424,7 @@ std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsic
 {
     std::ostringstream path_buffer;
     path_buffer << "hist";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3405,6 +3407,7 @@ std::string Fia::Nodes::Node::DriverInformation::DeviceInfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "device-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3854,6 +3857,7 @@ std::string Fia::Nodes::Node::DriverInformation::CardInfo::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "card-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4253,6 +4257,7 @@ std::string Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::Fi
 {
     std::ostringstream path_buffer;
     path_buffer << "fia-oir-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5210,6 +5215,7 @@ std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOp
 {
     std::ostringstream path_buffer;
     path_buffer << "tx-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6379,6 +6385,7 @@ std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOp
 {
     std::ostringstream path_buffer;
     path_buffer << "hist";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8309,6 +8316,7 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::
 {
     std::ostringstream path_buffer;
     path_buffer << "device-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8758,6 +8766,7 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "card-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9157,6 +9166,7 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::Oi
 {
     std::ostringstream path_buffer;
     path_buffer << "fia-oir-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9654,9 +9664,11 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     asic_instance{YType::uint32, "asic-instance"},
     chip_ver{YType::uint16, "chip-ver"}
         ,
-    stats_info(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo>())
+    aggr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats>())
+    , ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus>())
 {
-    stats_info->parent = this;
+    aggr_stats->parent = this;
+    ovf_status->parent = this;
 
     yang_name = "pbc-stats"; yang_parent_name = "pbc-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -9673,7 +9685,8 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 	|| slot_no.is_set
 	|| asic_instance.is_set
 	|| chip_ver.is_set
-	|| (stats_info !=  nullptr && stats_info->has_data());
+	|| (aggr_stats !=  nullptr && aggr_stats->has_data())
+	|| (ovf_status !=  nullptr && ovf_status->has_data());
 }
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_operation() const
@@ -9684,7 +9697,8 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 	|| ydk::is_set(slot_no.yfilter)
 	|| ydk::is_set(asic_instance.yfilter)
 	|| ydk::is_set(chip_ver.yfilter)
-	|| (stats_info !=  nullptr && stats_info->has_operation());
+	|| (aggr_stats !=  nullptr && aggr_stats->has_operation())
+	|| (ovf_status !=  nullptr && ovf_status->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_segment_path() const
@@ -9710,13 +9724,22 @@ std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics:
 
 std::shared_ptr<ydk::Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "stats-info")
+    if(child_yang_name == "aggr-stats")
     {
-        if(stats_info == nullptr)
+        if(aggr_stats == nullptr)
         {
-            stats_info = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo>();
+            aggr_stats = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats>();
         }
-        return stats_info;
+        return aggr_stats;
+    }
+
+    if(child_yang_name == "ovf-status")
+    {
+        if(ovf_status == nullptr)
+        {
+            ovf_status = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus>();
+        }
+        return ovf_status;
     }
 
     return nullptr;
@@ -9726,9 +9749,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatis
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(stats_info != nullptr)
+    if(aggr_stats != nullptr)
     {
-        _children["stats-info"] = stats_info;
+        _children["aggr-stats"] = aggr_stats;
+    }
+
+    if(ovf_status != nullptr)
+    {
+        _children["ovf-status"] = ovf_status;
     }
 
     return _children;
@@ -9794,83 +9822,1367 @@ void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "stats-info" || name == "valid" || name == "rack-no" || name == "slot-no" || name == "asic-instance" || name == "chip-ver")
+    if(name == "aggr-stats" || name == "ovf-status" || name == "valid" || name == "rack-no" || name == "slot-no" || name == "asic-instance" || name == "chip-ver")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::StatsInfo()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStats()
     :
-    num_blocks{YType::uint8, "num-blocks"}
+    rx_internal_error{YType::uint64, "rx-internal-error"},
+    rx_internal_drop{YType::uint64, "rx-internal-drop"},
+    tx_internal_error{YType::uint64, "tx-internal-error"},
+    tx_internal_drop{YType::uint64, "tx-internal-drop"},
+    cmic_cmc0_pkt_count_tx_pkt{YType::uint64, "cmic-cmc0-pkt-count-tx-pkt"},
+    cmic_cmc0_pkt_count_rx_pkt{YType::uint64, "cmic-cmc0-pkt-count-rx-pkt"},
+    nbi_stat_rx_bursts_err_cnt{YType::uint64, "nbi-stat-rx-bursts-err-cnt"},
+    nbi_ecc_1b_err_cnt{YType::uint64, "nbi-ecc-1b-err-cnt"},
+    nbi_ecc_2b_err_cnt{YType::uint64, "nbi-ecc-2b-err-cnt"},
+    nbi_parity_err_cnt{YType::uint64, "nbi-parity-err-cnt"},
+    nbi_rx_ilkn_crc32_err_cnt{YType::uint64, "nbi-rx-ilkn-crc32-err-cnt"},
+    nbi_rx_ilkn0_crc24_err_cnt{YType::uint64, "nbi-rx-ilkn0-crc24-err-cnt"},
+    nbi_rx_ilkn0_burst_err_cnt{YType::uint64, "nbi-rx-ilkn0-burst-err-cnt"},
+    nbi_rx_ilkn0_miss_sop_err_cnt{YType::uint64, "nbi-rx-ilkn0-miss-sop-err-cnt"},
+    nbi_rx_ilkn0_miss_eop_err_cnt{YType::uint64, "nbi-rx-ilkn0-miss-eop-err-cnt"},
+    nbi_rx_ilkn0_misaligned_cnt{YType::uint64, "nbi-rx-ilkn0-misaligned-cnt"},
+    nbi_rx_ilkn1_crc24_err_cnt{YType::uint64, "nbi-rx-ilkn1-crc24-err-cnt"},
+    nbi_rx_ilkn1_burst_err_cnt{YType::uint64, "nbi-rx-ilkn1-burst-err-cnt"},
+    nbi_rx_ilkn1_miss_sop_err_cnt{YType::uint64, "nbi-rx-ilkn1-miss-sop-err-cnt"},
+    nbi_rx_ilkn1_miss_eop_err_cnt{YType::uint64, "nbi-rx-ilkn1-miss-eop-err-cnt"},
+    nbi_rx_ilkn1_misaligned_cnt{YType::uint64, "nbi-rx-ilkn1-misaligned-cnt"},
+    nbi_tx_ilkn1_flushed_bursts_cnt{YType::uint64, "nbi-tx-ilkn1-flushed-bursts-cnt"},
+    nbi_rx_ilkn0_retrans_crc24_err_cnt{YType::uint64, "nbi-rx-ilkn0-retrans-crc24-err-cnt"},
+    nbi_rx_ilkn0_retrans_retry_err_cnt{YType::uint64, "nbi-rx-ilkn0-retrans-retry-err-cnt"},
+    nbi_rx_ilkn0_retrans_wdog_err_cnt{YType::uint64, "nbi-rx-ilkn0-retrans-wdog-err-cnt"},
+    nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt{YType::uint64, "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt"},
+    nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt{YType::uint64, "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt"},
+    nbi_rx_ilkn0_retrans_reached_timeout_err_cnt{YType::uint64, "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt"},
+    nbi_rx_ilkn1_retrans_crc24_err_cnt{YType::uint64, "nbi-rx-ilkn1-retrans-crc24-err-cnt"},
+    nbi_rx_ilkn1_retrans_retry_err_cnt{YType::uint64, "nbi-rx-ilkn1-retrans-retry-err-cnt"},
+    nbi_rx_ilkn1_retrans_wdog_err_cnt{YType::uint64, "nbi-rx-ilkn1-retrans-wdog-err-cnt"},
+    nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt{YType::uint64, "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt"},
+    nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt{YType::uint64, "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt"},
+    nbi_rx_ilkn1_retrans_reached_timeout_err_cnt{YType::uint64, "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt"},
+    nbi_stat_rx_frame_err_cnt{YType::uint64, "nbi-stat-rx-frame-err-cnt"},
+    nbi_stat_tx_frame_err_cnt{YType::uint64, "nbi-stat-tx-frame-err-cnt"},
+    nbi_rx_elk_err_bursts_cnt{YType::uint64, "nbi-rx-elk-err-bursts-cnt"},
+    nbi_rx_num_thrown_eops{YType::uint64, "nbi-rx-num-thrown-eops"},
+    nbi_rx_num_runts{YType::uint64, "nbi-rx-num-runts"},
+    nbi_bist_tx_crc_err_bursts_cnt{YType::uint64, "nbi-bist-tx-crc-err-bursts-cnt"},
+    nbi_bist_rx_err_length_bursts_cnt{YType::uint64, "nbi-bist-rx-err-length-bursts-cnt"},
+    nbi_bist_rx_err_burst_index_cnt{YType::uint64, "nbi-bist-rx-err-burst-index-cnt"},
+    nbi_bist_rx_err_bct_cnt{YType::uint64, "nbi-bist-rx-err-bct-cnt"},
+    nbi_bist_rx_err_data_cnt{YType::uint64, "nbi-bist-rx-err-data-cnt"},
+    nbi_bist_rx_err_in_crc_err_cnt{YType::uint64, "nbi-bist-rx-err-in-crc-err-cnt"},
+    nbi_bist_rx_err_sob_cnt{YType::uint64, "nbi-bist-rx-err-sob-cnt"},
+    nbi_stat_tx_bursts_cnt{YType::uint64, "nbi-stat-tx-bursts-cnt"},
+    nbi_stat_tx_total_leng_cnt{YType::uint64, "nbi-stat-tx-total-leng-cnt"},
+    rxaui_total_tx_pkt_count{YType::uint64, "rxaui-total-tx-pkt-count"},
+    rxaui_total_rx_pkt_count{YType::uint64, "rxaui-total-rx-pkt-count"},
+    rxaui_rx_pkt_count_bcast_pkt{YType::uint64, "rxaui-rx-pkt-count-bcast-pkt"},
+    rxaui_tx_pkt_count_bcast_pkt{YType::uint64, "rxaui-tx-pkt-count-bcast-pkt"},
+    rxaui_rx_pkt_count_mcast_pkt{YType::uint64, "rxaui-rx-pkt-count-mcast-pkt"},
+    rxaui_tx_pkt_count_mcast_pkt{YType::uint64, "rxaui-tx-pkt-count-mcast-pkt"},
+    rxaui_rx_pkt_count_ucast_pkt{YType::uint64, "rxaui-rx-pkt-count-ucast-pkt"},
+    rxaui_tx_pkt_count_ucast_pkt{YType::uint64, "rxaui-tx-pkt-count-ucast-pkt"},
+    rxaui_rx_err_drop_pkt_cnt{YType::uint64, "rxaui-rx-err-drop-pkt-cnt"},
+    rxaui_tx_err_drop_pkt_cnt{YType::uint64, "rxaui-tx-err-drop-pkt-cnt"},
+    rxaui_byte_count_tx_pkt{YType::uint64, "rxaui-byte-count-tx-pkt"},
+    rxaui_byte_count_rx_pkt{YType::uint64, "rxaui-byte-count-rx-pkt"},
+    rxaui_rx_dscrd_pkt_cnt{YType::uint64, "rxaui-rx-dscrd-pkt-cnt"},
+    rxaui_tx_dscrd_pkt_cnt{YType::uint64, "rxaui-tx-dscrd-pkt-cnt"},
+    ire_nif_packet_counter{YType::uint64, "ire-nif-packet-counter"},
+    il_total_rx_pkt_count{YType::uint64, "il-total-rx-pkt-count"},
+    il_total_tx_pkt_count{YType::uint64, "il-total-tx-pkt-count"},
+    il_rx_err_drop_pkt_cnt{YType::uint64, "il-rx-err-drop-pkt-cnt"},
+    il_tx_err_drop_pkt_cnt{YType::uint64, "il-tx-err-drop-pkt-cnt"},
+    il_byte_count_tx_pkt{YType::uint64, "il-byte-count-tx-pkt"},
+    il_byte_count_rx_pkt{YType::uint64, "il-byte-count-rx-pkt"},
+    il_rx_dscrd_pkt_cnt{YType::uint64, "il-rx-dscrd-pkt-cnt"},
+    il_tx_dscrd_pkt_cnt{YType::uint64, "il-tx-dscrd-pkt-cnt"},
+    il_rx_pkt_count_bcast_pkt{YType::uint64, "il-rx-pkt-count-bcast-pkt"},
+    il_tx_pkt_count_bcast_pkt{YType::uint64, "il-tx-pkt-count-bcast-pkt"},
+    il_rx_pkt_count_mcast_pkt{YType::uint64, "il-rx-pkt-count-mcast-pkt"},
+    il_tx_pkt_count_mcast_pkt{YType::uint64, "il-tx-pkt-count-mcast-pkt"},
+    il_rx_pkt_count_ucast_pkt{YType::uint64, "il-rx-pkt-count-ucast-pkt"},
+    il_tx_pkt_count_ucast_pkt{YType::uint64, "il-tx-pkt-count-ucast-pkt"},
+    iqm_enq_pkt_cnt{YType::uint64, "iqm-enq-pkt-cnt"},
+    iqm_enq_byte_cnt{YType::uint64, "iqm-enq-byte-cnt"},
+    iqm_deq_pkt_cnt{YType::uint64, "iqm-deq-pkt-cnt"},
+    iqm_deq_byte_cnt{YType::uint64, "iqm-deq-byte-cnt"},
+    iqm_tot_dscrd_pkt_cnt{YType::uint64, "iqm-tot-dscrd-pkt-cnt"},
+    iqm_tot_dscrd_byte_cnt{YType::uint64, "iqm-tot-dscrd-byte-cnt"},
+    iqm_ecc_1b_err_cnt{YType::uint64, "iqm-ecc-1b-err-cnt"},
+    iqm_ecc_2b_err_cnt{YType::uint64, "iqm-ecc-2b-err-cnt"},
+    iqm_parity_err_cnt{YType::uint64, "iqm-parity-err-cnt"},
+    iqm_deq_delete_pkt_cnt{YType::uint64, "iqm-deq-delete-pkt-cnt"},
+    iqm_ecn_dscrd_msk_pkt_cnt{YType::uint64, "iqm-ecn-dscrd-msk-pkt-cnt"},
+    iqm_q_tot_dscrd_pkt_cnt{YType::uint64, "iqm-q-tot-dscrd-pkt-cnt"},
+    iqm_q_deq_delete_pkt_cnt{YType::uint64, "iqm-q-deq-delete-pkt-cnt"},
+    iqm_rjct_db_pkt_cnt{YType::uint64, "iqm-rjct-db-pkt-cnt"},
+    iqm_rjct_bdb_pkt_cnt{YType::uint64, "iqm-rjct-bdb-pkt-cnt"},
+    iqm_rjct_bdb_protct_pkt_cnt{YType::uint64, "iqm-rjct-bdb-protct-pkt-cnt"},
+    iqm_rjct_oc_bd_pkt_cnt{YType::uint64, "iqm-rjct-oc-bd-pkt-cnt"},
+    iqm_rjct_sn_err_pkt_cnt{YType::uint64, "iqm-rjct-sn-err-pkt-cnt"},
+    iqm_rjct_mc_err_pkt_cnt{YType::uint64, "iqm-rjct-mc-err-pkt-cnt"},
+    iqm_rjct_rsrc_err_pkt_cnt{YType::uint64, "iqm-rjct-rsrc-err-pkt-cnt"},
+    iqm_rjct_qnvalid_err_pkt_cnt{YType::uint64, "iqm-rjct-qnvalid-err-pkt-cnt"},
+    iqm_rjct_cnm_pkt_cnt{YType::uint64, "iqm-rjct-cnm-pkt-cnt"},
+    iqm_rjct_dyn_space_pkt_cnt{YType::uint64, "iqm-rjct-dyn-space-pkt-cnt"},
+    ipt_fdt_pkt_cnt{YType::uint64, "ipt-fdt-pkt-cnt"},
+    ipt_ecc_1b_err_cnt{YType::uint64, "ipt-ecc-1b-err-cnt"},
+    ipt_ecc_2b_err_cnt{YType::uint64, "ipt-ecc-2b-err-cnt"},
+    ipt_parity_err_cnt{YType::uint64, "ipt-parity-err-cnt"},
+    ipt_crc_err_cnt{YType::uint64, "ipt-crc-err-cnt"},
+    ipt_crc_err_del_buff_cnt{YType::uint64, "ipt-crc-err-del-buff-cnt"},
+    ipt_cpu_del_buff_cnt{YType::uint64, "ipt-cpu-del-buff-cnt"},
+    ipt_cpu_rel_buff_cnt{YType::uint64, "ipt-cpu-rel-buff-cnt"},
+    ipt_crc_err_buff_fifo_full_cnt{YType::uint64, "ipt-crc-err-buff-fifo-full-cnt"},
+    fdt_data_cell_cnt{YType::uint64, "fdt-data-cell-cnt"},
+    fdt_data_byte_cnt{YType::uint64, "fdt-data-byte-cnt"},
+    fdt_crc_dropped_pck_cnt{YType::uint64, "fdt-crc-dropped-pck-cnt"},
+    fdt_invalid_destq_drop_cell_cnt{YType::uint64, "fdt-invalid-destq-drop-cell-cnt"},
+    fdt_indirect_command_count{YType::uint64, "fdt-indirect-command-count"},
+    fdt_ecc_1b_err_cnt{YType::uint64, "fdt-ecc-1b-err-cnt"},
+    fdt_ecc_2b_err_cnt{YType::uint64, "fdt-ecc-2b-err-cnt"},
+    fdt_parity_err_cnt{YType::uint64, "fdt-parity-err-cnt"},
+    fdt_crc_dropped_cell_cnt{YType::uint64, "fdt-crc-dropped-cell-cnt"},
+    fcr_control_cell_cnt{YType::uint64, "fcr-control-cell-cnt"},
+    fcr_cell_drop_cnt{YType::uint64, "fcr-cell-drop-cnt"},
+    fcr_credit_cell_drop_cnt{YType::uint64, "fcr-credit-cell-drop-cnt"},
+    fcr_fs_cell_drop_cnt{YType::uint64, "fcr-fs-cell-drop-cnt"},
+    fcr_rt_cell_drop_cnt{YType::uint64, "fcr-rt-cell-drop-cnt"},
+    fcr_ecc_1b_err_cnt{YType::uint64, "fcr-ecc-1b-err-cnt"},
+    fcr_ecc_2b_err_cnt{YType::uint64, "fcr-ecc-2b-err-cnt"},
+    fdr_data_cell_cnt{YType::uint64, "fdr-data-cell-cnt"},
+    fdr_data_byte_cnt{YType::uint64, "fdr-data-byte-cnt"},
+    fdr_crc_dropped_pck_cnt{YType::uint64, "fdr-crc-dropped-pck-cnt"},
+    fdr_p_pkt_cnt{YType::uint64, "fdr-p-pkt-cnt"},
+    fdr_prm_error_filter_cnt{YType::uint64, "fdr-prm-error-filter-cnt"},
+    fdr_sec_error_filter_cnt{YType::uint64, "fdr-sec-error-filter-cnt"},
+    fdr_prm_ecc_1b_err_cnt{YType::uint64, "fdr-prm-ecc-1b-err-cnt"},
+    fdr_prm_ecc_2b_err_cnt{YType::uint64, "fdr-prm-ecc-2b-err-cnt"},
+    fdr_sec_ecc_1b_err_cnt{YType::uint64, "fdr-sec-ecc-1b-err-cnt"},
+    fdr_sec_ecc_2b_err_cnt{YType::uint64, "fdr-sec-ecc-2b-err-cnt"},
+    egq_ecc_1b_err_cnt{YType::uint64, "egq-ecc-1b-err-cnt"},
+    egq_ecc_2b_err_cnt{YType::uint64, "egq-ecc-2b-err-cnt"},
+    egq_parity_err_cnt{YType::uint64, "egq-parity-err-cnt"},
+    egq_dbf_ecc_1b_err_cnt{YType::uint64, "egq-dbf-ecc-1b-err-cnt"},
+    egq_dbf_ecc_2b_err_cnt{YType::uint64, "egq-dbf-ecc-2b-err-cnt"},
+    egq_empty_mcid_counter{YType::uint64, "egq-empty-mcid-counter"},
+    egq_rqp_discard_packet_counter{YType::uint64, "egq-rqp-discard-packet-counter"},
+    egq_ehp_discard_packet_counter{YType::uint64, "egq-ehp-discard-packet-counter"},
+    egq_ipt_pkt_cnt{YType::uint64, "egq-ipt-pkt-cnt"},
+    epni_epe_pkt_cnt{YType::uint64, "epni-epe-pkt-cnt"},
+    epni_epe_byte_cnt{YType::uint64, "epni-epe-byte-cnt"},
+    epni_epe_discard_pkt_cnt{YType::uint64, "epni-epe-discard-pkt-cnt"},
+    epni_ecc_1b_err_cnt{YType::uint64, "epni-ecc-1b-err-cnt"},
+    epni_ecc_2b_err_cnt{YType::uint64, "epni-ecc-2b-err-cnt"},
+    epni_parity_err_cnt{YType::uint64, "epni-parity-err-cnt"},
+    egq_pqp_ucast_pkt_cnt{YType::uint64, "egq-pqp-ucast-pkt-cnt"},
+    egq_pqp_ucast_h_pkt_cnt{YType::uint64, "egq-pqp-ucast-h-pkt-cnt"},
+    egq_pqp_ucast_l_pkt_cnt{YType::uint64, "egq-pqp-ucast-l-pkt-cnt"},
+    egq_pqp_ucast_bytes_cnt{YType::uint64, "egq-pqp-ucast-bytes-cnt"},
+    egq_pqp_ucast_discard_pkt_cnt{YType::uint64, "egq-pqp-ucast-discard-pkt-cnt"},
+    egq_pqp_mcast_pkt_cnt{YType::uint64, "egq-pqp-mcast-pkt-cnt"},
+    egq_pqp_mcast_h_pkt_cnt{YType::uint64, "egq-pqp-mcast-h-pkt-cnt"},
+    egq_pqp_mcast_l_pkt_cnt{YType::uint64, "egq-pqp-mcast-l-pkt-cnt"},
+    egq_pqp_mcast_bytes_cnt{YType::uint64, "egq-pqp-mcast-bytes-cnt"},
+    egq_pqp_mcast_discard_pkt_cnt{YType::uint64, "egq-pqp-mcast-discard-pkt-cnt"},
+    fct_control_cell_cnt{YType::uint64, "fct-control-cell-cnt"},
+    fct_unrch_crdt_cnt{YType::uint64, "fct-unrch-crdt-cnt"},
+    idr_reassembly_errors{YType::uint64, "idr-reassembly-errors"},
+    idr_mmu_ecc_1b_err_cnt{YType::uint64, "idr-mmu-ecc-1b-err-cnt"},
+    idr_mmu_ecc_2b_err_cnt{YType::uint64, "idr-mmu-ecc-2b-err-cnt"},
+    idr_discarded_packets0_cnt{YType::uint64, "idr-discarded-packets0-cnt"},
+    idr_discarded_packets1_cnt{YType::uint64, "idr-discarded-packets1-cnt"},
+    idr_discarded_packets2_cnt{YType::uint64, "idr-discarded-packets2-cnt"},
+    idr_discarded_packets3_cnt{YType::uint64, "idr-discarded-packets3-cnt"},
+    idr_discarded_octets0_cnt{YType::uint64, "idr-discarded-octets0-cnt"},
+    idr_discarded_octets1_cnt{YType::uint64, "idr-discarded-octets1-cnt"},
+    idr_discarded_octets2_cnt{YType::uint64, "idr-discarded-octets2-cnt"},
+    idr_discarded_octets3_cnt{YType::uint64, "idr-discarded-octets3-cnt"},
+    mmu_ecc_1b_err_cnt{YType::uint64, "mmu-ecc-1b-err-cnt"},
+    mmu_ecc_2b_err_cnt{YType::uint64, "mmu-ecc-2b-err-cnt"},
+    oamp_parity_err_cnt{YType::uint64, "oamp-parity-err-cnt"},
+    oamp_ecc_1b_err_cnt{YType::uint64, "oamp-ecc-1b-err-cnt"},
+    oamp_ecc_2b_err_cnt{YType::uint64, "oamp-ecc-2b-err-cnt"},
+    crps_parity_err_cnt{YType::uint64, "crps-parity-err-cnt"},
+    fmac0_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac0-kpcs0-tst-rx-err-cnt"},
+    fmac1_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac1-kpcs0-tst-rx-err-cnt"},
+    fmac2_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac2-kpcs0-tst-rx-err-cnt"},
+    fmac3_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac3-kpcs0-tst-rx-err-cnt"},
+    fmac4_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac4-kpcs0-tst-rx-err-cnt"},
+    fmac5_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac5-kpcs0-tst-rx-err-cnt"},
+    fmac6_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac6-kpcs0-tst-rx-err-cnt"},
+    fmac7_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac7-kpcs0-tst-rx-err-cnt"},
+    fmac8_kpcs0_tst_rx_err_cnt{YType::uint64, "fmac8-kpcs0-tst-rx-err-cnt"},
+    fmac0_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac0-kpcs1-tst-rx-err-cnt"},
+    fmac1_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac1-kpcs1-tst-rx-err-cnt"},
+    fmac2_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac2-kpcs1-tst-rx-err-cnt"},
+    fmac3_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac3-kpcs1-tst-rx-err-cnt"},
+    fmac4_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac4-kpcs1-tst-rx-err-cnt"},
+    fmac5_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac5-kpcs1-tst-rx-err-cnt"},
+    fmac6_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac6-kpcs1-tst-rx-err-cnt"},
+    fmac7_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac7-kpcs1-tst-rx-err-cnt"},
+    fmac8_kpcs1_tst_rx_err_cnt{YType::uint64, "fmac8-kpcs1-tst-rx-err-cnt"},
+    fmac0_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac0-kpcs2-tst-rx-err-cnt"},
+    fmac1_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac1-kpcs2-tst-rx-err-cnt"},
+    fmac2_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac2-kpcs2-tst-rx-err-cnt"},
+    fmac3_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac3-kpcs2-tst-rx-err-cnt"},
+    fmac4_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac4-kpcs2-tst-rx-err-cnt"},
+    fmac5_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac5-kpcs2-tst-rx-err-cnt"},
+    fmac6_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac6-kpcs2-tst-rx-err-cnt"},
+    fmac7_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac7-kpcs2-tst-rx-err-cnt"},
+    fmac8_kpcs2_tst_rx_err_cnt{YType::uint64, "fmac8-kpcs2-tst-rx-err-cnt"},
+    fmac0_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac0-kpcs3-tst-rx-err-cnt"},
+    fmac1_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac1-kpcs3-tst-rx-err-cnt"},
+    fmac2_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac2-kpcs3-tst-rx-err-cnt"},
+    fmac3_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac3-kpcs3-tst-rx-err-cnt"},
+    fmac4_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac4-kpcs3-tst-rx-err-cnt"},
+    fmac5_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac5-kpcs3-tst-rx-err-cnt"},
+    fmac6_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac6-kpcs3-tst-rx-err-cnt"},
+    fmac7_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac7-kpcs3-tst-rx-err-cnt"},
+    fmac8_kpcs3_tst_rx_err_cnt{YType::uint64, "fmac8-kpcs3-tst-rx-err-cnt"},
+    fmac0_tst0_err_cnt{YType::uint64, "fmac0-tst0-err-cnt"},
+    fmac1_tst0_err_cnt{YType::uint64, "fmac1-tst0-err-cnt"},
+    fmac2_tst0_err_cnt{YType::uint64, "fmac2-tst0-err-cnt"},
+    fmac3_tst0_err_cnt{YType::uint64, "fmac3-tst0-err-cnt"},
+    fmac4_tst0_err_cnt{YType::uint64, "fmac4-tst0-err-cnt"},
+    fmac5_tst0_err_cnt{YType::uint64, "fmac5-tst0-err-cnt"},
+    fmac6_tst0_err_cnt{YType::uint64, "fmac6-tst0-err-cnt"},
+    fmac7_tst0_err_cnt{YType::uint64, "fmac7-tst0-err-cnt"},
+    fmac8_tst0_err_cnt{YType::uint64, "fmac8-tst0-err-cnt"},
+    fmac0_tst1_err_cnt{YType::uint64, "fmac0-tst1-err-cnt"},
+    fmac1_tst1_err_cnt{YType::uint64, "fmac1-tst1-err-cnt"},
+    fmac2_tst1_err_cnt{YType::uint64, "fmac2-tst1-err-cnt"},
+    fmac3_tst1_err_cnt{YType::uint64, "fmac3-tst1-err-cnt"},
+    fmac4_tst1_err_cnt{YType::uint64, "fmac4-tst1-err-cnt"},
+    fmac5_tst1_err_cnt{YType::uint64, "fmac5-tst1-err-cnt"},
+    fmac6_tst1_err_cnt{YType::uint64, "fmac6-tst1-err-cnt"},
+    fmac7_tst1_err_cnt{YType::uint64, "fmac7-tst1-err-cnt"},
+    fmac8_tst1_err_cnt{YType::uint64, "fmac8-tst1-err-cnt"},
+    fmac0_tst2_err_cnt{YType::uint64, "fmac0-tst2-err-cnt"},
+    fmac1_tst2_err_cnt{YType::uint64, "fmac1-tst2-err-cnt"},
+    fmac2_tst2_err_cnt{YType::uint64, "fmac2-tst2-err-cnt"},
+    fmac3_tst2_err_cnt{YType::uint64, "fmac3-tst2-err-cnt"},
+    fmac4_tst2_err_cnt{YType::uint64, "fmac4-tst2-err-cnt"},
+    fmac5_tst2_err_cnt{YType::uint64, "fmac5-tst2-err-cnt"},
+    fmac6_tst2_err_cnt{YType::uint64, "fmac6-tst2-err-cnt"},
+    fmac7_tst2_err_cnt{YType::uint64, "fmac7-tst2-err-cnt"},
+    fmac8_tst2_err_cnt{YType::uint64, "fmac8-tst2-err-cnt"},
+    fmac0_tst3_err_cnt{YType::uint64, "fmac0-tst3-err-cnt"},
+    fmac1_tst3_err_cnt{YType::uint64, "fmac1-tst3-err-cnt"},
+    fmac2_tst3_err_cnt{YType::uint64, "fmac2-tst3-err-cnt"},
+    fmac3_tst3_err_cnt{YType::uint64, "fmac3-tst3-err-cnt"},
+    fmac4_tst3_err_cnt{YType::uint64, "fmac4-tst3-err-cnt"},
+    fmac5_tst3_err_cnt{YType::uint64, "fmac5-tst3-err-cnt"},
+    fmac6_tst3_err_cnt{YType::uint64, "fmac6-tst3-err-cnt"},
+    fmac7_tst3_err_cnt{YType::uint64, "fmac7-tst3-err-cnt"},
+    fmac8_tst3_err_cnt{YType::uint64, "fmac8-tst3-err-cnt"},
+    fmac0_ecc_1b_err_cnt{YType::uint64, "fmac0-ecc-1b-err-cnt"},
+    fmac1_ecc_1b_err_cnt{YType::uint64, "fmac1-ecc-1b-err-cnt"},
+    fmac2_ecc_1b_err_cnt{YType::uint64, "fmac2-ecc-1b-err-cnt"},
+    fmac3_ecc_1b_err_cnt{YType::uint64, "fmac3-ecc-1b-err-cnt"},
+    fmac4_ecc_1b_err_cnt{YType::uint64, "fmac4-ecc-1b-err-cnt"},
+    fmac5_ecc_1b_err_cnt{YType::uint64, "fmac5-ecc-1b-err-cnt"},
+    fmac6_ecc_1b_err_cnt{YType::uint64, "fmac6-ecc-1b-err-cnt"},
+    fmac7_ecc_1b_err_cnt{YType::uint64, "fmac7-ecc-1b-err-cnt"},
+    fmac8_ecc_1b_err_cnt{YType::uint64, "fmac8-ecc-1b-err-cnt"},
+    fmac0_ecc_2b_err_cnt{YType::uint64, "fmac0-ecc-2b-err-cnt"},
+    fmac1_ecc_2b_err_cnt{YType::uint64, "fmac1-ecc-2b-err-cnt"},
+    fmac2_ecc_2b_err_cnt{YType::uint64, "fmac2-ecc-2b-err-cnt"},
+    fmac3_ecc_2b_err_cnt{YType::uint64, "fmac3-ecc-2b-err-cnt"},
+    fmac4_ecc_2b_err_cnt{YType::uint64, "fmac4-ecc-2b-err-cnt"},
+    fmac5_ecc_2b_err_cnt{YType::uint64, "fmac5-ecc-2b-err-cnt"},
+    fmac6_ecc_2b_err_cnt{YType::uint64, "fmac6-ecc-2b-err-cnt"},
+    fmac7_ecc_2b_err_cnt{YType::uint64, "fmac7-ecc-2b-err-cnt"},
+    fmac8_ecc_2b_err_cnt{YType::uint64, "fmac8-ecc-2b-err-cnt"},
+    olp_incoming_bad_identifier_counter{YType::uint64, "olp-incoming-bad-identifier-counter"},
+    olp_incoming_bad_reassembly_counter{YType::uint64, "olp-incoming-bad-reassembly-counter"},
+    cfc_parity_err_cnt{YType::uint64, "cfc-parity-err-cnt"},
+    cfc_ilkn0_oob_rx_crc_err_cntr{YType::uint64, "cfc-ilkn0-oob-rx-crc-err-cntr"},
+    cfc_ilkn1_oob_rx_crc_err_cntr{YType::uint64, "cfc-ilkn1-oob-rx-crc-err-cntr"},
+    cfc_spi_oob_rx0_frm_err_cnt{YType::uint64, "cfc-spi-oob-rx0-frm-err-cnt"},
+    cfc_spi_oob_rx0_dip2_err_cnt{YType::uint64, "cfc-spi-oob-rx0-dip2-err-cnt"},
+    cfc_spi_oob_rx1_frm_err_cnt{YType::uint64, "cfc-spi-oob-rx1-frm-err-cnt"},
+    cfc_spi_oob_rx1_dip2_err_cnt{YType::uint64, "cfc-spi-oob-rx1-dip2-err-cnt"},
+    cgm_cgm_uc_pd_dropped_cnt{YType::uint64, "cgm-cgm-uc-pd-dropped-cnt"},
+    cgm_cgm_mc_rep_pd_dropped_cnt{YType::uint64, "cgm-cgm-mc-rep-pd-dropped-cnt"},
+    cgm_cgm_uc_db_dropped_by_rqp_cnt{YType::uint64, "cgm-cgm-uc-db-dropped-by-rqp-cnt"},
+    cgm_cgm_uc_db_dropped_by_pqp_cnt{YType::uint64, "cgm-cgm-uc-db-dropped-by-pqp-cnt"},
+    cgm_cgm_mc_rep_db_dropped_cnt{YType::uint64, "cgm-cgm-mc-rep-db-dropped-cnt"},
+    cgm_cgm_mc_db_dropped_cnt{YType::uint64, "cgm-cgm-mc-db-dropped-cnt"},
+    drca_full_err_cnt{YType::uint64, "drca-full-err-cnt"},
+    drca_single_err_cnt{YType::uint64, "drca-single-err-cnt"},
+    drca_calib_bist_full_err_cnt{YType::uint64, "drca-calib-bist-full-err-cnt"},
+    drca_loopback_full_err_cnt{YType::uint64, "drca-loopback-full-err-cnt"},
+    drcb_full_err_cnt{YType::uint64, "drcb-full-err-cnt"},
+    drcb_single_err_cnt{YType::uint64, "drcb-single-err-cnt"},
+    drcb_calib_bist_full_err_cnt{YType::uint64, "drcb-calib-bist-full-err-cnt"},
+    drcb_loopback_full_err_cnt{YType::uint64, "drcb-loopback-full-err-cnt"},
+    drcc_full_err_cnt{YType::uint64, "drcc-full-err-cnt"},
+    drcc_single_err_cnt{YType::uint64, "drcc-single-err-cnt"},
+    drcc_calib_bist_full_err_cnt{YType::uint64, "drcc-calib-bist-full-err-cnt"},
+    drcc_loopback_full_err_cnt{YType::uint64, "drcc-loopback-full-err-cnt"},
+    drcd_full_err_cnt{YType::uint64, "drcd-full-err-cnt"},
+    drcd_single_err_cnt{YType::uint64, "drcd-single-err-cnt"},
+    drcd_calib_bist_full_err_cnt{YType::uint64, "drcd-calib-bist-full-err-cnt"},
+    drcd_loopback_full_err_cnt{YType::uint64, "drcd-loopback-full-err-cnt"},
+    drce_full_err_cnt{YType::uint64, "drce-full-err-cnt"},
+    drce_single_err_cnt{YType::uint64, "drce-single-err-cnt"},
+    drce_calib_bist_full_err_cnt{YType::uint64, "drce-calib-bist-full-err-cnt"},
+    drce_loopback_full_err_cnt{YType::uint64, "drce-loopback-full-err-cnt"},
+    drcf_full_err_cnt{YType::uint64, "drcf-full-err-cnt"},
+    drcf_single_err_cnt{YType::uint64, "drcf-single-err-cnt"},
+    drcf_calib_bist_full_err_cnt{YType::uint64, "drcf-calib-bist-full-err-cnt"},
+    drcf_loopback_full_err_cnt{YType::uint64, "drcf-loopback-full-err-cnt"},
+    drcg_full_err_cnt{YType::uint64, "drcg-full-err-cnt"},
+    drcg_single_err_cnt{YType::uint64, "drcg-single-err-cnt"},
+    drcg_calib_bist_full_err_cnt{YType::uint64, "drcg-calib-bist-full-err-cnt"},
+    drcg_loopback_full_err_cnt{YType::uint64, "drcg-loopback-full-err-cnt"},
+    drch_full_err_cnt{YType::uint64, "drch-full-err-cnt"},
+    drch_single_err_cnt{YType::uint64, "drch-single-err-cnt"},
+    drch_calib_bist_full_err_cnt{YType::uint64, "drch-calib-bist-full-err-cnt"},
+    drch_loopback_full_err_cnt{YType::uint64, "drch-loopback-full-err-cnt"},
+    drcbroadcast_full_err_cnt{YType::uint64, "drcbroadcast-full-err-cnt"},
+    drcbroadcast_single_err_cnt{YType::uint64, "drcbroadcast-single-err-cnt"},
+    drcbroadcast_calib_bist_full_err_cnt{YType::uint64, "drcbroadcast-calib-bist-full-err-cnt"},
+    drcbroadcast_loopback_full_err_cnt{YType::uint64, "drcbroadcast-loopback-full-err-cnt"},
+    otn_mode{YType::uint32, "otn-mode"},
+    num_ports{YType::uint32, "num-ports"}
         ,
-    block_info(this, {})
+    aggr_stats_otn(this, {})
 {
 
-    yang_name = "stats-info"; yang_parent_name = "pbc-stats"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "aggr-stats"; yang_parent_name = "pbc-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::~StatsInfo()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::~AggrStats()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<block_info.len(); index++)
+    for (std::size_t index=0; index<aggr_stats_otn.len(); index++)
     {
-        if(block_info[index]->has_data())
+        if(aggr_stats_otn[index]->has_data())
             return true;
     }
-    return num_blocks.is_set;
+    return rx_internal_error.is_set
+	|| rx_internal_drop.is_set
+	|| tx_internal_error.is_set
+	|| tx_internal_drop.is_set
+	|| cmic_cmc0_pkt_count_tx_pkt.is_set
+	|| cmic_cmc0_pkt_count_rx_pkt.is_set
+	|| nbi_stat_rx_bursts_err_cnt.is_set
+	|| nbi_ecc_1b_err_cnt.is_set
+	|| nbi_ecc_2b_err_cnt.is_set
+	|| nbi_parity_err_cnt.is_set
+	|| nbi_rx_ilkn_crc32_err_cnt.is_set
+	|| nbi_rx_ilkn0_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn0_burst_err_cnt.is_set
+	|| nbi_rx_ilkn0_miss_sop_err_cnt.is_set
+	|| nbi_rx_ilkn0_miss_eop_err_cnt.is_set
+	|| nbi_rx_ilkn0_misaligned_cnt.is_set
+	|| nbi_rx_ilkn1_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn1_burst_err_cnt.is_set
+	|| nbi_rx_ilkn1_miss_sop_err_cnt.is_set
+	|| nbi_rx_ilkn1_miss_eop_err_cnt.is_set
+	|| nbi_rx_ilkn1_misaligned_cnt.is_set
+	|| nbi_tx_ilkn1_flushed_bursts_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_retry_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_wdog_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_retry_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_wdog_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.is_set
+	|| nbi_stat_rx_frame_err_cnt.is_set
+	|| nbi_stat_tx_frame_err_cnt.is_set
+	|| nbi_rx_elk_err_bursts_cnt.is_set
+	|| nbi_rx_num_thrown_eops.is_set
+	|| nbi_rx_num_runts.is_set
+	|| nbi_bist_tx_crc_err_bursts_cnt.is_set
+	|| nbi_bist_rx_err_length_bursts_cnt.is_set
+	|| nbi_bist_rx_err_burst_index_cnt.is_set
+	|| nbi_bist_rx_err_bct_cnt.is_set
+	|| nbi_bist_rx_err_data_cnt.is_set
+	|| nbi_bist_rx_err_in_crc_err_cnt.is_set
+	|| nbi_bist_rx_err_sob_cnt.is_set
+	|| nbi_stat_tx_bursts_cnt.is_set
+	|| nbi_stat_tx_total_leng_cnt.is_set
+	|| rxaui_total_tx_pkt_count.is_set
+	|| rxaui_total_rx_pkt_count.is_set
+	|| rxaui_rx_pkt_count_bcast_pkt.is_set
+	|| rxaui_tx_pkt_count_bcast_pkt.is_set
+	|| rxaui_rx_pkt_count_mcast_pkt.is_set
+	|| rxaui_tx_pkt_count_mcast_pkt.is_set
+	|| rxaui_rx_pkt_count_ucast_pkt.is_set
+	|| rxaui_tx_pkt_count_ucast_pkt.is_set
+	|| rxaui_rx_err_drop_pkt_cnt.is_set
+	|| rxaui_tx_err_drop_pkt_cnt.is_set
+	|| rxaui_byte_count_tx_pkt.is_set
+	|| rxaui_byte_count_rx_pkt.is_set
+	|| rxaui_rx_dscrd_pkt_cnt.is_set
+	|| rxaui_tx_dscrd_pkt_cnt.is_set
+	|| ire_nif_packet_counter.is_set
+	|| il_total_rx_pkt_count.is_set
+	|| il_total_tx_pkt_count.is_set
+	|| il_rx_err_drop_pkt_cnt.is_set
+	|| il_tx_err_drop_pkt_cnt.is_set
+	|| il_byte_count_tx_pkt.is_set
+	|| il_byte_count_rx_pkt.is_set
+	|| il_rx_dscrd_pkt_cnt.is_set
+	|| il_tx_dscrd_pkt_cnt.is_set
+	|| il_rx_pkt_count_bcast_pkt.is_set
+	|| il_tx_pkt_count_bcast_pkt.is_set
+	|| il_rx_pkt_count_mcast_pkt.is_set
+	|| il_tx_pkt_count_mcast_pkt.is_set
+	|| il_rx_pkt_count_ucast_pkt.is_set
+	|| il_tx_pkt_count_ucast_pkt.is_set
+	|| iqm_enq_pkt_cnt.is_set
+	|| iqm_enq_byte_cnt.is_set
+	|| iqm_deq_pkt_cnt.is_set
+	|| iqm_deq_byte_cnt.is_set
+	|| iqm_tot_dscrd_pkt_cnt.is_set
+	|| iqm_tot_dscrd_byte_cnt.is_set
+	|| iqm_ecc_1b_err_cnt.is_set
+	|| iqm_ecc_2b_err_cnt.is_set
+	|| iqm_parity_err_cnt.is_set
+	|| iqm_deq_delete_pkt_cnt.is_set
+	|| iqm_ecn_dscrd_msk_pkt_cnt.is_set
+	|| iqm_q_tot_dscrd_pkt_cnt.is_set
+	|| iqm_q_deq_delete_pkt_cnt.is_set
+	|| iqm_rjct_db_pkt_cnt.is_set
+	|| iqm_rjct_bdb_pkt_cnt.is_set
+	|| iqm_rjct_bdb_protct_pkt_cnt.is_set
+	|| iqm_rjct_oc_bd_pkt_cnt.is_set
+	|| iqm_rjct_sn_err_pkt_cnt.is_set
+	|| iqm_rjct_mc_err_pkt_cnt.is_set
+	|| iqm_rjct_rsrc_err_pkt_cnt.is_set
+	|| iqm_rjct_qnvalid_err_pkt_cnt.is_set
+	|| iqm_rjct_cnm_pkt_cnt.is_set
+	|| iqm_rjct_dyn_space_pkt_cnt.is_set
+	|| ipt_fdt_pkt_cnt.is_set
+	|| ipt_ecc_1b_err_cnt.is_set
+	|| ipt_ecc_2b_err_cnt.is_set
+	|| ipt_parity_err_cnt.is_set
+	|| ipt_crc_err_cnt.is_set
+	|| ipt_crc_err_del_buff_cnt.is_set
+	|| ipt_cpu_del_buff_cnt.is_set
+	|| ipt_cpu_rel_buff_cnt.is_set
+	|| ipt_crc_err_buff_fifo_full_cnt.is_set
+	|| fdt_data_cell_cnt.is_set
+	|| fdt_data_byte_cnt.is_set
+	|| fdt_crc_dropped_pck_cnt.is_set
+	|| fdt_invalid_destq_drop_cell_cnt.is_set
+	|| fdt_indirect_command_count.is_set
+	|| fdt_ecc_1b_err_cnt.is_set
+	|| fdt_ecc_2b_err_cnt.is_set
+	|| fdt_parity_err_cnt.is_set
+	|| fdt_crc_dropped_cell_cnt.is_set
+	|| fcr_control_cell_cnt.is_set
+	|| fcr_cell_drop_cnt.is_set
+	|| fcr_credit_cell_drop_cnt.is_set
+	|| fcr_fs_cell_drop_cnt.is_set
+	|| fcr_rt_cell_drop_cnt.is_set
+	|| fcr_ecc_1b_err_cnt.is_set
+	|| fcr_ecc_2b_err_cnt.is_set
+	|| fdr_data_cell_cnt.is_set
+	|| fdr_data_byte_cnt.is_set
+	|| fdr_crc_dropped_pck_cnt.is_set
+	|| fdr_p_pkt_cnt.is_set
+	|| fdr_prm_error_filter_cnt.is_set
+	|| fdr_sec_error_filter_cnt.is_set
+	|| fdr_prm_ecc_1b_err_cnt.is_set
+	|| fdr_prm_ecc_2b_err_cnt.is_set
+	|| fdr_sec_ecc_1b_err_cnt.is_set
+	|| fdr_sec_ecc_2b_err_cnt.is_set
+	|| egq_ecc_1b_err_cnt.is_set
+	|| egq_ecc_2b_err_cnt.is_set
+	|| egq_parity_err_cnt.is_set
+	|| egq_dbf_ecc_1b_err_cnt.is_set
+	|| egq_dbf_ecc_2b_err_cnt.is_set
+	|| egq_empty_mcid_counter.is_set
+	|| egq_rqp_discard_packet_counter.is_set
+	|| egq_ehp_discard_packet_counter.is_set
+	|| egq_ipt_pkt_cnt.is_set
+	|| epni_epe_pkt_cnt.is_set
+	|| epni_epe_byte_cnt.is_set
+	|| epni_epe_discard_pkt_cnt.is_set
+	|| epni_ecc_1b_err_cnt.is_set
+	|| epni_ecc_2b_err_cnt.is_set
+	|| epni_parity_err_cnt.is_set
+	|| egq_pqp_ucast_pkt_cnt.is_set
+	|| egq_pqp_ucast_h_pkt_cnt.is_set
+	|| egq_pqp_ucast_l_pkt_cnt.is_set
+	|| egq_pqp_ucast_bytes_cnt.is_set
+	|| egq_pqp_ucast_discard_pkt_cnt.is_set
+	|| egq_pqp_mcast_pkt_cnt.is_set
+	|| egq_pqp_mcast_h_pkt_cnt.is_set
+	|| egq_pqp_mcast_l_pkt_cnt.is_set
+	|| egq_pqp_mcast_bytes_cnt.is_set
+	|| egq_pqp_mcast_discard_pkt_cnt.is_set
+	|| fct_control_cell_cnt.is_set
+	|| fct_unrch_crdt_cnt.is_set
+	|| idr_reassembly_errors.is_set
+	|| idr_mmu_ecc_1b_err_cnt.is_set
+	|| idr_mmu_ecc_2b_err_cnt.is_set
+	|| idr_discarded_packets0_cnt.is_set
+	|| idr_discarded_packets1_cnt.is_set
+	|| idr_discarded_packets2_cnt.is_set
+	|| idr_discarded_packets3_cnt.is_set
+	|| idr_discarded_octets0_cnt.is_set
+	|| idr_discarded_octets1_cnt.is_set
+	|| idr_discarded_octets2_cnt.is_set
+	|| idr_discarded_octets3_cnt.is_set
+	|| mmu_ecc_1b_err_cnt.is_set
+	|| mmu_ecc_2b_err_cnt.is_set
+	|| oamp_parity_err_cnt.is_set
+	|| oamp_ecc_1b_err_cnt.is_set
+	|| oamp_ecc_2b_err_cnt.is_set
+	|| crps_parity_err_cnt.is_set
+	|| fmac0_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac0_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac0_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac0_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac0_tst0_err_cnt.is_set
+	|| fmac1_tst0_err_cnt.is_set
+	|| fmac2_tst0_err_cnt.is_set
+	|| fmac3_tst0_err_cnt.is_set
+	|| fmac4_tst0_err_cnt.is_set
+	|| fmac5_tst0_err_cnt.is_set
+	|| fmac6_tst0_err_cnt.is_set
+	|| fmac7_tst0_err_cnt.is_set
+	|| fmac8_tst0_err_cnt.is_set
+	|| fmac0_tst1_err_cnt.is_set
+	|| fmac1_tst1_err_cnt.is_set
+	|| fmac2_tst1_err_cnt.is_set
+	|| fmac3_tst1_err_cnt.is_set
+	|| fmac4_tst1_err_cnt.is_set
+	|| fmac5_tst1_err_cnt.is_set
+	|| fmac6_tst1_err_cnt.is_set
+	|| fmac7_tst1_err_cnt.is_set
+	|| fmac8_tst1_err_cnt.is_set
+	|| fmac0_tst2_err_cnt.is_set
+	|| fmac1_tst2_err_cnt.is_set
+	|| fmac2_tst2_err_cnt.is_set
+	|| fmac3_tst2_err_cnt.is_set
+	|| fmac4_tst2_err_cnt.is_set
+	|| fmac5_tst2_err_cnt.is_set
+	|| fmac6_tst2_err_cnt.is_set
+	|| fmac7_tst2_err_cnt.is_set
+	|| fmac8_tst2_err_cnt.is_set
+	|| fmac0_tst3_err_cnt.is_set
+	|| fmac1_tst3_err_cnt.is_set
+	|| fmac2_tst3_err_cnt.is_set
+	|| fmac3_tst3_err_cnt.is_set
+	|| fmac4_tst3_err_cnt.is_set
+	|| fmac5_tst3_err_cnt.is_set
+	|| fmac6_tst3_err_cnt.is_set
+	|| fmac7_tst3_err_cnt.is_set
+	|| fmac8_tst3_err_cnt.is_set
+	|| fmac0_ecc_1b_err_cnt.is_set
+	|| fmac1_ecc_1b_err_cnt.is_set
+	|| fmac2_ecc_1b_err_cnt.is_set
+	|| fmac3_ecc_1b_err_cnt.is_set
+	|| fmac4_ecc_1b_err_cnt.is_set
+	|| fmac5_ecc_1b_err_cnt.is_set
+	|| fmac6_ecc_1b_err_cnt.is_set
+	|| fmac7_ecc_1b_err_cnt.is_set
+	|| fmac8_ecc_1b_err_cnt.is_set
+	|| fmac0_ecc_2b_err_cnt.is_set
+	|| fmac1_ecc_2b_err_cnt.is_set
+	|| fmac2_ecc_2b_err_cnt.is_set
+	|| fmac3_ecc_2b_err_cnt.is_set
+	|| fmac4_ecc_2b_err_cnt.is_set
+	|| fmac5_ecc_2b_err_cnt.is_set
+	|| fmac6_ecc_2b_err_cnt.is_set
+	|| fmac7_ecc_2b_err_cnt.is_set
+	|| fmac8_ecc_2b_err_cnt.is_set
+	|| olp_incoming_bad_identifier_counter.is_set
+	|| olp_incoming_bad_reassembly_counter.is_set
+	|| cfc_parity_err_cnt.is_set
+	|| cfc_ilkn0_oob_rx_crc_err_cntr.is_set
+	|| cfc_ilkn1_oob_rx_crc_err_cntr.is_set
+	|| cfc_spi_oob_rx0_frm_err_cnt.is_set
+	|| cfc_spi_oob_rx0_dip2_err_cnt.is_set
+	|| cfc_spi_oob_rx1_frm_err_cnt.is_set
+	|| cfc_spi_oob_rx1_dip2_err_cnt.is_set
+	|| cgm_cgm_uc_pd_dropped_cnt.is_set
+	|| cgm_cgm_mc_rep_pd_dropped_cnt.is_set
+	|| cgm_cgm_uc_db_dropped_by_rqp_cnt.is_set
+	|| cgm_cgm_uc_db_dropped_by_pqp_cnt.is_set
+	|| cgm_cgm_mc_rep_db_dropped_cnt.is_set
+	|| cgm_cgm_mc_db_dropped_cnt.is_set
+	|| drca_full_err_cnt.is_set
+	|| drca_single_err_cnt.is_set
+	|| drca_calib_bist_full_err_cnt.is_set
+	|| drca_loopback_full_err_cnt.is_set
+	|| drcb_full_err_cnt.is_set
+	|| drcb_single_err_cnt.is_set
+	|| drcb_calib_bist_full_err_cnt.is_set
+	|| drcb_loopback_full_err_cnt.is_set
+	|| drcc_full_err_cnt.is_set
+	|| drcc_single_err_cnt.is_set
+	|| drcc_calib_bist_full_err_cnt.is_set
+	|| drcc_loopback_full_err_cnt.is_set
+	|| drcd_full_err_cnt.is_set
+	|| drcd_single_err_cnt.is_set
+	|| drcd_calib_bist_full_err_cnt.is_set
+	|| drcd_loopback_full_err_cnt.is_set
+	|| drce_full_err_cnt.is_set
+	|| drce_single_err_cnt.is_set
+	|| drce_calib_bist_full_err_cnt.is_set
+	|| drce_loopback_full_err_cnt.is_set
+	|| drcf_full_err_cnt.is_set
+	|| drcf_single_err_cnt.is_set
+	|| drcf_calib_bist_full_err_cnt.is_set
+	|| drcf_loopback_full_err_cnt.is_set
+	|| drcg_full_err_cnt.is_set
+	|| drcg_single_err_cnt.is_set
+	|| drcg_calib_bist_full_err_cnt.is_set
+	|| drcg_loopback_full_err_cnt.is_set
+	|| drch_full_err_cnt.is_set
+	|| drch_single_err_cnt.is_set
+	|| drch_calib_bist_full_err_cnt.is_set
+	|| drch_loopback_full_err_cnt.is_set
+	|| drcbroadcast_full_err_cnt.is_set
+	|| drcbroadcast_single_err_cnt.is_set
+	|| drcbroadcast_calib_bist_full_err_cnt.is_set
+	|| drcbroadcast_loopback_full_err_cnt.is_set
+	|| otn_mode.is_set
+	|| num_ports.is_set;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::has_operation() const
 {
-    for (std::size_t index=0; index<block_info.len(); index++)
+    for (std::size_t index=0; index<aggr_stats_otn.len(); index++)
     {
-        if(block_info[index]->has_operation())
+        if(aggr_stats_otn[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(num_blocks.yfilter);
+	|| ydk::is_set(rx_internal_error.yfilter)
+	|| ydk::is_set(rx_internal_drop.yfilter)
+	|| ydk::is_set(tx_internal_error.yfilter)
+	|| ydk::is_set(tx_internal_drop.yfilter)
+	|| ydk::is_set(cmic_cmc0_pkt_count_tx_pkt.yfilter)
+	|| ydk::is_set(cmic_cmc0_pkt_count_rx_pkt.yfilter)
+	|| ydk::is_set(nbi_stat_rx_bursts_err_cnt.yfilter)
+	|| ydk::is_set(nbi_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(nbi_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(nbi_parity_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn_crc32_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_burst_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_miss_sop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_miss_eop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_misaligned_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_burst_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_miss_sop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_miss_eop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_misaligned_cnt.yfilter)
+	|| ydk::is_set(nbi_tx_ilkn1_flushed_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_retry_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_wdog_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_retry_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_wdog_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_rx_frame_err_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_tx_frame_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_elk_err_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_num_thrown_eops.yfilter)
+	|| ydk::is_set(nbi_rx_num_runts.yfilter)
+	|| ydk::is_set(nbi_bist_tx_crc_err_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_length_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_burst_index_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_bct_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_data_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_in_crc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_sob_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_tx_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_tx_total_leng_cnt.yfilter)
+	|| ydk::is_set(rxaui_total_tx_pkt_count.yfilter)
+	|| ydk::is_set(rxaui_total_rx_pkt_count.yfilter)
+	|| ydk::is_set(rxaui_rx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_tx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_tx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(rxaui_tx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(rxaui_tx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(rxaui_byte_count_tx_pkt.yfilter)
+	|| ydk::is_set(rxaui_byte_count_rx_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(rxaui_tx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(ire_nif_packet_counter.yfilter)
+	|| ydk::is_set(il_total_rx_pkt_count.yfilter)
+	|| ydk::is_set(il_total_tx_pkt_count.yfilter)
+	|| ydk::is_set(il_rx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(il_tx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(il_byte_count_tx_pkt.yfilter)
+	|| ydk::is_set(il_byte_count_rx_pkt.yfilter)
+	|| ydk::is_set(il_rx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(il_tx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(il_rx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(il_tx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(il_rx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(il_tx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(il_rx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(il_tx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(iqm_enq_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_enq_byte_cnt.yfilter)
+	|| ydk::is_set(iqm_deq_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_deq_byte_cnt.yfilter)
+	|| ydk::is_set(iqm_tot_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_tot_dscrd_byte_cnt.yfilter)
+	|| ydk::is_set(iqm_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(iqm_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(iqm_parity_err_cnt.yfilter)
+	|| ydk::is_set(iqm_deq_delete_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_ecn_dscrd_msk_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_q_tot_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_q_deq_delete_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_db_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_bdb_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_bdb_protct_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_oc_bd_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_sn_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_mc_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_rsrc_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_qnvalid_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_cnm_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_dyn_space_pkt_cnt.yfilter)
+	|| ydk::is_set(ipt_fdt_pkt_cnt.yfilter)
+	|| ydk::is_set(ipt_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(ipt_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(ipt_parity_err_cnt.yfilter)
+	|| ydk::is_set(ipt_crc_err_cnt.yfilter)
+	|| ydk::is_set(ipt_crc_err_del_buff_cnt.yfilter)
+	|| ydk::is_set(ipt_cpu_del_buff_cnt.yfilter)
+	|| ydk::is_set(ipt_cpu_rel_buff_cnt.yfilter)
+	|| ydk::is_set(ipt_crc_err_buff_fifo_full_cnt.yfilter)
+	|| ydk::is_set(fdt_data_cell_cnt.yfilter)
+	|| ydk::is_set(fdt_data_byte_cnt.yfilter)
+	|| ydk::is_set(fdt_crc_dropped_pck_cnt.yfilter)
+	|| ydk::is_set(fdt_invalid_destq_drop_cell_cnt.yfilter)
+	|| ydk::is_set(fdt_indirect_command_count.yfilter)
+	|| ydk::is_set(fdt_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fdt_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fdt_parity_err_cnt.yfilter)
+	|| ydk::is_set(fdt_crc_dropped_cell_cnt.yfilter)
+	|| ydk::is_set(fcr_control_cell_cnt.yfilter)
+	|| ydk::is_set(fcr_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_credit_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_fs_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_rt_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fcr_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_data_cell_cnt.yfilter)
+	|| ydk::is_set(fdr_data_byte_cnt.yfilter)
+	|| ydk::is_set(fdr_crc_dropped_pck_cnt.yfilter)
+	|| ydk::is_set(fdr_p_pkt_cnt.yfilter)
+	|| ydk::is_set(fdr_prm_error_filter_cnt.yfilter)
+	|| ydk::is_set(fdr_sec_error_filter_cnt.yfilter)
+	|| ydk::is_set(fdr_prm_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_prm_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_sec_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_sec_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(egq_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(egq_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(egq_parity_err_cnt.yfilter)
+	|| ydk::is_set(egq_dbf_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(egq_dbf_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(egq_empty_mcid_counter.yfilter)
+	|| ydk::is_set(egq_rqp_discard_packet_counter.yfilter)
+	|| ydk::is_set(egq_ehp_discard_packet_counter.yfilter)
+	|| ydk::is_set(egq_ipt_pkt_cnt.yfilter)
+	|| ydk::is_set(epni_epe_pkt_cnt.yfilter)
+	|| ydk::is_set(epni_epe_byte_cnt.yfilter)
+	|| ydk::is_set(epni_epe_discard_pkt_cnt.yfilter)
+	|| ydk::is_set(epni_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(epni_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(epni_parity_err_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_h_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_l_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_bytes_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_discard_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_h_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_l_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_bytes_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_discard_pkt_cnt.yfilter)
+	|| ydk::is_set(fct_control_cell_cnt.yfilter)
+	|| ydk::is_set(fct_unrch_crdt_cnt.yfilter)
+	|| ydk::is_set(idr_reassembly_errors.yfilter)
+	|| ydk::is_set(idr_mmu_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(idr_mmu_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets0_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets1_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets2_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets3_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets0_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets1_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets2_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets3_cnt.yfilter)
+	|| ydk::is_set(mmu_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(mmu_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(oamp_parity_err_cnt.yfilter)
+	|| ydk::is_set(oamp_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(oamp_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(crps_parity_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(olp_incoming_bad_identifier_counter.yfilter)
+	|| ydk::is_set(olp_incoming_bad_reassembly_counter.yfilter)
+	|| ydk::is_set(cfc_parity_err_cnt.yfilter)
+	|| ydk::is_set(cfc_ilkn0_oob_rx_crc_err_cntr.yfilter)
+	|| ydk::is_set(cfc_ilkn1_oob_rx_crc_err_cntr.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx0_frm_err_cnt.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx0_dip2_err_cnt.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx1_frm_err_cnt.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx1_dip2_err_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_uc_pd_dropped_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_mc_rep_pd_dropped_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_uc_db_dropped_by_rqp_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_uc_db_dropped_by_pqp_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_mc_rep_db_dropped_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_mc_db_dropped_cnt.yfilter)
+	|| ydk::is_set(drca_full_err_cnt.yfilter)
+	|| ydk::is_set(drca_single_err_cnt.yfilter)
+	|| ydk::is_set(drca_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drca_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcb_full_err_cnt.yfilter)
+	|| ydk::is_set(drcb_single_err_cnt.yfilter)
+	|| ydk::is_set(drcb_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcb_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcc_full_err_cnt.yfilter)
+	|| ydk::is_set(drcc_single_err_cnt.yfilter)
+	|| ydk::is_set(drcc_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcc_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcd_full_err_cnt.yfilter)
+	|| ydk::is_set(drcd_single_err_cnt.yfilter)
+	|| ydk::is_set(drcd_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcd_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drce_full_err_cnt.yfilter)
+	|| ydk::is_set(drce_single_err_cnt.yfilter)
+	|| ydk::is_set(drce_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drce_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcf_full_err_cnt.yfilter)
+	|| ydk::is_set(drcf_single_err_cnt.yfilter)
+	|| ydk::is_set(drcf_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcf_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcg_full_err_cnt.yfilter)
+	|| ydk::is_set(drcg_single_err_cnt.yfilter)
+	|| ydk::is_set(drcg_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcg_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drch_full_err_cnt.yfilter)
+	|| ydk::is_set(drch_single_err_cnt.yfilter)
+	|| ydk::is_set(drch_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drch_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_full_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_single_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(otn_mode.yfilter)
+	|| ydk::is_set(num_ports.yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats-info";
+    path_buffer << "aggr-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_blocks.is_set || is_set(num_blocks.yfilter)) leaf_name_data.push_back(num_blocks.get_name_leafdata());
+    if (rx_internal_error.is_set || is_set(rx_internal_error.yfilter)) leaf_name_data.push_back(rx_internal_error.get_name_leafdata());
+    if (rx_internal_drop.is_set || is_set(rx_internal_drop.yfilter)) leaf_name_data.push_back(rx_internal_drop.get_name_leafdata());
+    if (tx_internal_error.is_set || is_set(tx_internal_error.yfilter)) leaf_name_data.push_back(tx_internal_error.get_name_leafdata());
+    if (tx_internal_drop.is_set || is_set(tx_internal_drop.yfilter)) leaf_name_data.push_back(tx_internal_drop.get_name_leafdata());
+    if (cmic_cmc0_pkt_count_tx_pkt.is_set || is_set(cmic_cmc0_pkt_count_tx_pkt.yfilter)) leaf_name_data.push_back(cmic_cmc0_pkt_count_tx_pkt.get_name_leafdata());
+    if (cmic_cmc0_pkt_count_rx_pkt.is_set || is_set(cmic_cmc0_pkt_count_rx_pkt.yfilter)) leaf_name_data.push_back(cmic_cmc0_pkt_count_rx_pkt.get_name_leafdata());
+    if (nbi_stat_rx_bursts_err_cnt.is_set || is_set(nbi_stat_rx_bursts_err_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_rx_bursts_err_cnt.get_name_leafdata());
+    if (nbi_ecc_1b_err_cnt.is_set || is_set(nbi_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(nbi_ecc_1b_err_cnt.get_name_leafdata());
+    if (nbi_ecc_2b_err_cnt.is_set || is_set(nbi_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(nbi_ecc_2b_err_cnt.get_name_leafdata());
+    if (nbi_parity_err_cnt.is_set || is_set(nbi_parity_err_cnt.yfilter)) leaf_name_data.push_back(nbi_parity_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn_crc32_err_cnt.is_set || is_set(nbi_rx_ilkn_crc32_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn_crc32_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn0_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_burst_err_cnt.is_set || is_set(nbi_rx_ilkn0_burst_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_burst_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_miss_sop_err_cnt.is_set || is_set(nbi_rx_ilkn0_miss_sop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_miss_sop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_miss_eop_err_cnt.is_set || is_set(nbi_rx_ilkn0_miss_eop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_miss_eop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_misaligned_cnt.is_set || is_set(nbi_rx_ilkn0_misaligned_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_misaligned_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn1_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_burst_err_cnt.is_set || is_set(nbi_rx_ilkn1_burst_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_burst_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_miss_sop_err_cnt.is_set || is_set(nbi_rx_ilkn1_miss_sop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_miss_sop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_miss_eop_err_cnt.is_set || is_set(nbi_rx_ilkn1_miss_eop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_miss_eop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_misaligned_cnt.is_set || is_set(nbi_rx_ilkn1_misaligned_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_misaligned_cnt.get_name_leafdata());
+    if (nbi_tx_ilkn1_flushed_bursts_cnt.is_set || is_set(nbi_tx_ilkn1_flushed_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_tx_ilkn1_flushed_bursts_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_retry_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_retry_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_retry_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_wdog_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_wdog_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_wdog_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_retry_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_retry_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_retry_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_wdog_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_wdog_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_wdog_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.get_name_leafdata());
+    if (nbi_stat_rx_frame_err_cnt.is_set || is_set(nbi_stat_rx_frame_err_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_rx_frame_err_cnt.get_name_leafdata());
+    if (nbi_stat_tx_frame_err_cnt.is_set || is_set(nbi_stat_tx_frame_err_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_tx_frame_err_cnt.get_name_leafdata());
+    if (nbi_rx_elk_err_bursts_cnt.is_set || is_set(nbi_rx_elk_err_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_elk_err_bursts_cnt.get_name_leafdata());
+    if (nbi_rx_num_thrown_eops.is_set || is_set(nbi_rx_num_thrown_eops.yfilter)) leaf_name_data.push_back(nbi_rx_num_thrown_eops.get_name_leafdata());
+    if (nbi_rx_num_runts.is_set || is_set(nbi_rx_num_runts.yfilter)) leaf_name_data.push_back(nbi_rx_num_runts.get_name_leafdata());
+    if (nbi_bist_tx_crc_err_bursts_cnt.is_set || is_set(nbi_bist_tx_crc_err_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_tx_crc_err_bursts_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_length_bursts_cnt.is_set || is_set(nbi_bist_rx_err_length_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_length_bursts_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_burst_index_cnt.is_set || is_set(nbi_bist_rx_err_burst_index_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_burst_index_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_bct_cnt.is_set || is_set(nbi_bist_rx_err_bct_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_bct_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_data_cnt.is_set || is_set(nbi_bist_rx_err_data_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_data_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_in_crc_err_cnt.is_set || is_set(nbi_bist_rx_err_in_crc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_in_crc_err_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_sob_cnt.is_set || is_set(nbi_bist_rx_err_sob_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_sob_cnt.get_name_leafdata());
+    if (nbi_stat_tx_bursts_cnt.is_set || is_set(nbi_stat_tx_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_tx_bursts_cnt.get_name_leafdata());
+    if (nbi_stat_tx_total_leng_cnt.is_set || is_set(nbi_stat_tx_total_leng_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_tx_total_leng_cnt.get_name_leafdata());
+    if (rxaui_total_tx_pkt_count.is_set || is_set(rxaui_total_tx_pkt_count.yfilter)) leaf_name_data.push_back(rxaui_total_tx_pkt_count.get_name_leafdata());
+    if (rxaui_total_rx_pkt_count.is_set || is_set(rxaui_total_rx_pkt_count.yfilter)) leaf_name_data.push_back(rxaui_total_rx_pkt_count.get_name_leafdata());
+    if (rxaui_rx_pkt_count_bcast_pkt.is_set || is_set(rxaui_rx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_rx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (rxaui_tx_pkt_count_bcast_pkt.is_set || is_set(rxaui_tx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_tx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (rxaui_rx_pkt_count_mcast_pkt.is_set || is_set(rxaui_rx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_rx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (rxaui_tx_pkt_count_mcast_pkt.is_set || is_set(rxaui_tx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_tx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (rxaui_rx_pkt_count_ucast_pkt.is_set || is_set(rxaui_rx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(rxaui_rx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (rxaui_tx_pkt_count_ucast_pkt.is_set || is_set(rxaui_tx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(rxaui_tx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (rxaui_rx_err_drop_pkt_cnt.is_set || is_set(rxaui_rx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_rx_err_drop_pkt_cnt.get_name_leafdata());
+    if (rxaui_tx_err_drop_pkt_cnt.is_set || is_set(rxaui_tx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_tx_err_drop_pkt_cnt.get_name_leafdata());
+    if (rxaui_byte_count_tx_pkt.is_set || is_set(rxaui_byte_count_tx_pkt.yfilter)) leaf_name_data.push_back(rxaui_byte_count_tx_pkt.get_name_leafdata());
+    if (rxaui_byte_count_rx_pkt.is_set || is_set(rxaui_byte_count_rx_pkt.yfilter)) leaf_name_data.push_back(rxaui_byte_count_rx_pkt.get_name_leafdata());
+    if (rxaui_rx_dscrd_pkt_cnt.is_set || is_set(rxaui_rx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_rx_dscrd_pkt_cnt.get_name_leafdata());
+    if (rxaui_tx_dscrd_pkt_cnt.is_set || is_set(rxaui_tx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_tx_dscrd_pkt_cnt.get_name_leafdata());
+    if (ire_nif_packet_counter.is_set || is_set(ire_nif_packet_counter.yfilter)) leaf_name_data.push_back(ire_nif_packet_counter.get_name_leafdata());
+    if (il_total_rx_pkt_count.is_set || is_set(il_total_rx_pkt_count.yfilter)) leaf_name_data.push_back(il_total_rx_pkt_count.get_name_leafdata());
+    if (il_total_tx_pkt_count.is_set || is_set(il_total_tx_pkt_count.yfilter)) leaf_name_data.push_back(il_total_tx_pkt_count.get_name_leafdata());
+    if (il_rx_err_drop_pkt_cnt.is_set || is_set(il_rx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(il_rx_err_drop_pkt_cnt.get_name_leafdata());
+    if (il_tx_err_drop_pkt_cnt.is_set || is_set(il_tx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(il_tx_err_drop_pkt_cnt.get_name_leafdata());
+    if (il_byte_count_tx_pkt.is_set || is_set(il_byte_count_tx_pkt.yfilter)) leaf_name_data.push_back(il_byte_count_tx_pkt.get_name_leafdata());
+    if (il_byte_count_rx_pkt.is_set || is_set(il_byte_count_rx_pkt.yfilter)) leaf_name_data.push_back(il_byte_count_rx_pkt.get_name_leafdata());
+    if (il_rx_dscrd_pkt_cnt.is_set || is_set(il_rx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(il_rx_dscrd_pkt_cnt.get_name_leafdata());
+    if (il_tx_dscrd_pkt_cnt.is_set || is_set(il_tx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(il_tx_dscrd_pkt_cnt.get_name_leafdata());
+    if (il_rx_pkt_count_bcast_pkt.is_set || is_set(il_rx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(il_rx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (il_tx_pkt_count_bcast_pkt.is_set || is_set(il_tx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(il_tx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (il_rx_pkt_count_mcast_pkt.is_set || is_set(il_rx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(il_rx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (il_tx_pkt_count_mcast_pkt.is_set || is_set(il_tx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(il_tx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (il_rx_pkt_count_ucast_pkt.is_set || is_set(il_rx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(il_rx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (il_tx_pkt_count_ucast_pkt.is_set || is_set(il_tx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(il_tx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (iqm_enq_pkt_cnt.is_set || is_set(iqm_enq_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_enq_pkt_cnt.get_name_leafdata());
+    if (iqm_enq_byte_cnt.is_set || is_set(iqm_enq_byte_cnt.yfilter)) leaf_name_data.push_back(iqm_enq_byte_cnt.get_name_leafdata());
+    if (iqm_deq_pkt_cnt.is_set || is_set(iqm_deq_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_deq_pkt_cnt.get_name_leafdata());
+    if (iqm_deq_byte_cnt.is_set || is_set(iqm_deq_byte_cnt.yfilter)) leaf_name_data.push_back(iqm_deq_byte_cnt.get_name_leafdata());
+    if (iqm_tot_dscrd_pkt_cnt.is_set || is_set(iqm_tot_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_tot_dscrd_pkt_cnt.get_name_leafdata());
+    if (iqm_tot_dscrd_byte_cnt.is_set || is_set(iqm_tot_dscrd_byte_cnt.yfilter)) leaf_name_data.push_back(iqm_tot_dscrd_byte_cnt.get_name_leafdata());
+    if (iqm_ecc_1b_err_cnt.is_set || is_set(iqm_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(iqm_ecc_1b_err_cnt.get_name_leafdata());
+    if (iqm_ecc_2b_err_cnt.is_set || is_set(iqm_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(iqm_ecc_2b_err_cnt.get_name_leafdata());
+    if (iqm_parity_err_cnt.is_set || is_set(iqm_parity_err_cnt.yfilter)) leaf_name_data.push_back(iqm_parity_err_cnt.get_name_leafdata());
+    if (iqm_deq_delete_pkt_cnt.is_set || is_set(iqm_deq_delete_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_deq_delete_pkt_cnt.get_name_leafdata());
+    if (iqm_ecn_dscrd_msk_pkt_cnt.is_set || is_set(iqm_ecn_dscrd_msk_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_ecn_dscrd_msk_pkt_cnt.get_name_leafdata());
+    if (iqm_q_tot_dscrd_pkt_cnt.is_set || is_set(iqm_q_tot_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_q_tot_dscrd_pkt_cnt.get_name_leafdata());
+    if (iqm_q_deq_delete_pkt_cnt.is_set || is_set(iqm_q_deq_delete_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_q_deq_delete_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_db_pkt_cnt.is_set || is_set(iqm_rjct_db_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_db_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_bdb_pkt_cnt.is_set || is_set(iqm_rjct_bdb_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_bdb_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_bdb_protct_pkt_cnt.is_set || is_set(iqm_rjct_bdb_protct_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_bdb_protct_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_oc_bd_pkt_cnt.is_set || is_set(iqm_rjct_oc_bd_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_oc_bd_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_sn_err_pkt_cnt.is_set || is_set(iqm_rjct_sn_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_sn_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_mc_err_pkt_cnt.is_set || is_set(iqm_rjct_mc_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_mc_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_rsrc_err_pkt_cnt.is_set || is_set(iqm_rjct_rsrc_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_rsrc_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_qnvalid_err_pkt_cnt.is_set || is_set(iqm_rjct_qnvalid_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_qnvalid_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_cnm_pkt_cnt.is_set || is_set(iqm_rjct_cnm_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_cnm_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_dyn_space_pkt_cnt.is_set || is_set(iqm_rjct_dyn_space_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_dyn_space_pkt_cnt.get_name_leafdata());
+    if (ipt_fdt_pkt_cnt.is_set || is_set(ipt_fdt_pkt_cnt.yfilter)) leaf_name_data.push_back(ipt_fdt_pkt_cnt.get_name_leafdata());
+    if (ipt_ecc_1b_err_cnt.is_set || is_set(ipt_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(ipt_ecc_1b_err_cnt.get_name_leafdata());
+    if (ipt_ecc_2b_err_cnt.is_set || is_set(ipt_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(ipt_ecc_2b_err_cnt.get_name_leafdata());
+    if (ipt_parity_err_cnt.is_set || is_set(ipt_parity_err_cnt.yfilter)) leaf_name_data.push_back(ipt_parity_err_cnt.get_name_leafdata());
+    if (ipt_crc_err_cnt.is_set || is_set(ipt_crc_err_cnt.yfilter)) leaf_name_data.push_back(ipt_crc_err_cnt.get_name_leafdata());
+    if (ipt_crc_err_del_buff_cnt.is_set || is_set(ipt_crc_err_del_buff_cnt.yfilter)) leaf_name_data.push_back(ipt_crc_err_del_buff_cnt.get_name_leafdata());
+    if (ipt_cpu_del_buff_cnt.is_set || is_set(ipt_cpu_del_buff_cnt.yfilter)) leaf_name_data.push_back(ipt_cpu_del_buff_cnt.get_name_leafdata());
+    if (ipt_cpu_rel_buff_cnt.is_set || is_set(ipt_cpu_rel_buff_cnt.yfilter)) leaf_name_data.push_back(ipt_cpu_rel_buff_cnt.get_name_leafdata());
+    if (ipt_crc_err_buff_fifo_full_cnt.is_set || is_set(ipt_crc_err_buff_fifo_full_cnt.yfilter)) leaf_name_data.push_back(ipt_crc_err_buff_fifo_full_cnt.get_name_leafdata());
+    if (fdt_data_cell_cnt.is_set || is_set(fdt_data_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_data_cell_cnt.get_name_leafdata());
+    if (fdt_data_byte_cnt.is_set || is_set(fdt_data_byte_cnt.yfilter)) leaf_name_data.push_back(fdt_data_byte_cnt.get_name_leafdata());
+    if (fdt_crc_dropped_pck_cnt.is_set || is_set(fdt_crc_dropped_pck_cnt.yfilter)) leaf_name_data.push_back(fdt_crc_dropped_pck_cnt.get_name_leafdata());
+    if (fdt_invalid_destq_drop_cell_cnt.is_set || is_set(fdt_invalid_destq_drop_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_invalid_destq_drop_cell_cnt.get_name_leafdata());
+    if (fdt_indirect_command_count.is_set || is_set(fdt_indirect_command_count.yfilter)) leaf_name_data.push_back(fdt_indirect_command_count.get_name_leafdata());
+    if (fdt_ecc_1b_err_cnt.is_set || is_set(fdt_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fdt_ecc_1b_err_cnt.get_name_leafdata());
+    if (fdt_ecc_2b_err_cnt.is_set || is_set(fdt_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fdt_ecc_2b_err_cnt.get_name_leafdata());
+    if (fdt_parity_err_cnt.is_set || is_set(fdt_parity_err_cnt.yfilter)) leaf_name_data.push_back(fdt_parity_err_cnt.get_name_leafdata());
+    if (fdt_crc_dropped_cell_cnt.is_set || is_set(fdt_crc_dropped_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_crc_dropped_cell_cnt.get_name_leafdata());
+    if (fcr_control_cell_cnt.is_set || is_set(fcr_control_cell_cnt.yfilter)) leaf_name_data.push_back(fcr_control_cell_cnt.get_name_leafdata());
+    if (fcr_cell_drop_cnt.is_set || is_set(fcr_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_cell_drop_cnt.get_name_leafdata());
+    if (fcr_credit_cell_drop_cnt.is_set || is_set(fcr_credit_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_credit_cell_drop_cnt.get_name_leafdata());
+    if (fcr_fs_cell_drop_cnt.is_set || is_set(fcr_fs_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_fs_cell_drop_cnt.get_name_leafdata());
+    if (fcr_rt_cell_drop_cnt.is_set || is_set(fcr_rt_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_rt_cell_drop_cnt.get_name_leafdata());
+    if (fcr_ecc_1b_err_cnt.is_set || is_set(fcr_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fcr_ecc_1b_err_cnt.get_name_leafdata());
+    if (fcr_ecc_2b_err_cnt.is_set || is_set(fcr_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fcr_ecc_2b_err_cnt.get_name_leafdata());
+    if (fdr_data_cell_cnt.is_set || is_set(fdr_data_cell_cnt.yfilter)) leaf_name_data.push_back(fdr_data_cell_cnt.get_name_leafdata());
+    if (fdr_data_byte_cnt.is_set || is_set(fdr_data_byte_cnt.yfilter)) leaf_name_data.push_back(fdr_data_byte_cnt.get_name_leafdata());
+    if (fdr_crc_dropped_pck_cnt.is_set || is_set(fdr_crc_dropped_pck_cnt.yfilter)) leaf_name_data.push_back(fdr_crc_dropped_pck_cnt.get_name_leafdata());
+    if (fdr_p_pkt_cnt.is_set || is_set(fdr_p_pkt_cnt.yfilter)) leaf_name_data.push_back(fdr_p_pkt_cnt.get_name_leafdata());
+    if (fdr_prm_error_filter_cnt.is_set || is_set(fdr_prm_error_filter_cnt.yfilter)) leaf_name_data.push_back(fdr_prm_error_filter_cnt.get_name_leafdata());
+    if (fdr_sec_error_filter_cnt.is_set || is_set(fdr_sec_error_filter_cnt.yfilter)) leaf_name_data.push_back(fdr_sec_error_filter_cnt.get_name_leafdata());
+    if (fdr_prm_ecc_1b_err_cnt.is_set || is_set(fdr_prm_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_prm_ecc_1b_err_cnt.get_name_leafdata());
+    if (fdr_prm_ecc_2b_err_cnt.is_set || is_set(fdr_prm_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_prm_ecc_2b_err_cnt.get_name_leafdata());
+    if (fdr_sec_ecc_1b_err_cnt.is_set || is_set(fdr_sec_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_sec_ecc_1b_err_cnt.get_name_leafdata());
+    if (fdr_sec_ecc_2b_err_cnt.is_set || is_set(fdr_sec_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_sec_ecc_2b_err_cnt.get_name_leafdata());
+    if (egq_ecc_1b_err_cnt.is_set || is_set(egq_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(egq_ecc_1b_err_cnt.get_name_leafdata());
+    if (egq_ecc_2b_err_cnt.is_set || is_set(egq_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(egq_ecc_2b_err_cnt.get_name_leafdata());
+    if (egq_parity_err_cnt.is_set || is_set(egq_parity_err_cnt.yfilter)) leaf_name_data.push_back(egq_parity_err_cnt.get_name_leafdata());
+    if (egq_dbf_ecc_1b_err_cnt.is_set || is_set(egq_dbf_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(egq_dbf_ecc_1b_err_cnt.get_name_leafdata());
+    if (egq_dbf_ecc_2b_err_cnt.is_set || is_set(egq_dbf_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(egq_dbf_ecc_2b_err_cnt.get_name_leafdata());
+    if (egq_empty_mcid_counter.is_set || is_set(egq_empty_mcid_counter.yfilter)) leaf_name_data.push_back(egq_empty_mcid_counter.get_name_leafdata());
+    if (egq_rqp_discard_packet_counter.is_set || is_set(egq_rqp_discard_packet_counter.yfilter)) leaf_name_data.push_back(egq_rqp_discard_packet_counter.get_name_leafdata());
+    if (egq_ehp_discard_packet_counter.is_set || is_set(egq_ehp_discard_packet_counter.yfilter)) leaf_name_data.push_back(egq_ehp_discard_packet_counter.get_name_leafdata());
+    if (egq_ipt_pkt_cnt.is_set || is_set(egq_ipt_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_ipt_pkt_cnt.get_name_leafdata());
+    if (epni_epe_pkt_cnt.is_set || is_set(epni_epe_pkt_cnt.yfilter)) leaf_name_data.push_back(epni_epe_pkt_cnt.get_name_leafdata());
+    if (epni_epe_byte_cnt.is_set || is_set(epni_epe_byte_cnt.yfilter)) leaf_name_data.push_back(epni_epe_byte_cnt.get_name_leafdata());
+    if (epni_epe_discard_pkt_cnt.is_set || is_set(epni_epe_discard_pkt_cnt.yfilter)) leaf_name_data.push_back(epni_epe_discard_pkt_cnt.get_name_leafdata());
+    if (epni_ecc_1b_err_cnt.is_set || is_set(epni_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(epni_ecc_1b_err_cnt.get_name_leafdata());
+    if (epni_ecc_2b_err_cnt.is_set || is_set(epni_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(epni_ecc_2b_err_cnt.get_name_leafdata());
+    if (epni_parity_err_cnt.is_set || is_set(epni_parity_err_cnt.yfilter)) leaf_name_data.push_back(epni_parity_err_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_pkt_cnt.is_set || is_set(egq_pqp_ucast_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_h_pkt_cnt.is_set || is_set(egq_pqp_ucast_h_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_h_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_l_pkt_cnt.is_set || is_set(egq_pqp_ucast_l_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_l_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_bytes_cnt.is_set || is_set(egq_pqp_ucast_bytes_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_bytes_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_discard_pkt_cnt.is_set || is_set(egq_pqp_ucast_discard_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_discard_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_pkt_cnt.is_set || is_set(egq_pqp_mcast_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_h_pkt_cnt.is_set || is_set(egq_pqp_mcast_h_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_h_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_l_pkt_cnt.is_set || is_set(egq_pqp_mcast_l_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_l_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_bytes_cnt.is_set || is_set(egq_pqp_mcast_bytes_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_bytes_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_discard_pkt_cnt.is_set || is_set(egq_pqp_mcast_discard_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_discard_pkt_cnt.get_name_leafdata());
+    if (fct_control_cell_cnt.is_set || is_set(fct_control_cell_cnt.yfilter)) leaf_name_data.push_back(fct_control_cell_cnt.get_name_leafdata());
+    if (fct_unrch_crdt_cnt.is_set || is_set(fct_unrch_crdt_cnt.yfilter)) leaf_name_data.push_back(fct_unrch_crdt_cnt.get_name_leafdata());
+    if (idr_reassembly_errors.is_set || is_set(idr_reassembly_errors.yfilter)) leaf_name_data.push_back(idr_reassembly_errors.get_name_leafdata());
+    if (idr_mmu_ecc_1b_err_cnt.is_set || is_set(idr_mmu_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(idr_mmu_ecc_1b_err_cnt.get_name_leafdata());
+    if (idr_mmu_ecc_2b_err_cnt.is_set || is_set(idr_mmu_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(idr_mmu_ecc_2b_err_cnt.get_name_leafdata());
+    if (idr_discarded_packets0_cnt.is_set || is_set(idr_discarded_packets0_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets0_cnt.get_name_leafdata());
+    if (idr_discarded_packets1_cnt.is_set || is_set(idr_discarded_packets1_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets1_cnt.get_name_leafdata());
+    if (idr_discarded_packets2_cnt.is_set || is_set(idr_discarded_packets2_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets2_cnt.get_name_leafdata());
+    if (idr_discarded_packets3_cnt.is_set || is_set(idr_discarded_packets3_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets3_cnt.get_name_leafdata());
+    if (idr_discarded_octets0_cnt.is_set || is_set(idr_discarded_octets0_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets0_cnt.get_name_leafdata());
+    if (idr_discarded_octets1_cnt.is_set || is_set(idr_discarded_octets1_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets1_cnt.get_name_leafdata());
+    if (idr_discarded_octets2_cnt.is_set || is_set(idr_discarded_octets2_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets2_cnt.get_name_leafdata());
+    if (idr_discarded_octets3_cnt.is_set || is_set(idr_discarded_octets3_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets3_cnt.get_name_leafdata());
+    if (mmu_ecc_1b_err_cnt.is_set || is_set(mmu_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(mmu_ecc_1b_err_cnt.get_name_leafdata());
+    if (mmu_ecc_2b_err_cnt.is_set || is_set(mmu_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(mmu_ecc_2b_err_cnt.get_name_leafdata());
+    if (oamp_parity_err_cnt.is_set || is_set(oamp_parity_err_cnt.yfilter)) leaf_name_data.push_back(oamp_parity_err_cnt.get_name_leafdata());
+    if (oamp_ecc_1b_err_cnt.is_set || is_set(oamp_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(oamp_ecc_1b_err_cnt.get_name_leafdata());
+    if (oamp_ecc_2b_err_cnt.is_set || is_set(oamp_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(oamp_ecc_2b_err_cnt.get_name_leafdata());
+    if (crps_parity_err_cnt.is_set || is_set(crps_parity_err_cnt.yfilter)) leaf_name_data.push_back(crps_parity_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_tst0_err_cnt.is_set || is_set(fmac0_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst0_err_cnt.get_name_leafdata());
+    if (fmac1_tst0_err_cnt.is_set || is_set(fmac1_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst0_err_cnt.get_name_leafdata());
+    if (fmac2_tst0_err_cnt.is_set || is_set(fmac2_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst0_err_cnt.get_name_leafdata());
+    if (fmac3_tst0_err_cnt.is_set || is_set(fmac3_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst0_err_cnt.get_name_leafdata());
+    if (fmac4_tst0_err_cnt.is_set || is_set(fmac4_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst0_err_cnt.get_name_leafdata());
+    if (fmac5_tst0_err_cnt.is_set || is_set(fmac5_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst0_err_cnt.get_name_leafdata());
+    if (fmac6_tst0_err_cnt.is_set || is_set(fmac6_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst0_err_cnt.get_name_leafdata());
+    if (fmac7_tst0_err_cnt.is_set || is_set(fmac7_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst0_err_cnt.get_name_leafdata());
+    if (fmac8_tst0_err_cnt.is_set || is_set(fmac8_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst0_err_cnt.get_name_leafdata());
+    if (fmac0_tst1_err_cnt.is_set || is_set(fmac0_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst1_err_cnt.get_name_leafdata());
+    if (fmac1_tst1_err_cnt.is_set || is_set(fmac1_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst1_err_cnt.get_name_leafdata());
+    if (fmac2_tst1_err_cnt.is_set || is_set(fmac2_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst1_err_cnt.get_name_leafdata());
+    if (fmac3_tst1_err_cnt.is_set || is_set(fmac3_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst1_err_cnt.get_name_leafdata());
+    if (fmac4_tst1_err_cnt.is_set || is_set(fmac4_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst1_err_cnt.get_name_leafdata());
+    if (fmac5_tst1_err_cnt.is_set || is_set(fmac5_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst1_err_cnt.get_name_leafdata());
+    if (fmac6_tst1_err_cnt.is_set || is_set(fmac6_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst1_err_cnt.get_name_leafdata());
+    if (fmac7_tst1_err_cnt.is_set || is_set(fmac7_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst1_err_cnt.get_name_leafdata());
+    if (fmac8_tst1_err_cnt.is_set || is_set(fmac8_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst1_err_cnt.get_name_leafdata());
+    if (fmac0_tst2_err_cnt.is_set || is_set(fmac0_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst2_err_cnt.get_name_leafdata());
+    if (fmac1_tst2_err_cnt.is_set || is_set(fmac1_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst2_err_cnt.get_name_leafdata());
+    if (fmac2_tst2_err_cnt.is_set || is_set(fmac2_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst2_err_cnt.get_name_leafdata());
+    if (fmac3_tst2_err_cnt.is_set || is_set(fmac3_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst2_err_cnt.get_name_leafdata());
+    if (fmac4_tst2_err_cnt.is_set || is_set(fmac4_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst2_err_cnt.get_name_leafdata());
+    if (fmac5_tst2_err_cnt.is_set || is_set(fmac5_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst2_err_cnt.get_name_leafdata());
+    if (fmac6_tst2_err_cnt.is_set || is_set(fmac6_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst2_err_cnt.get_name_leafdata());
+    if (fmac7_tst2_err_cnt.is_set || is_set(fmac7_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst2_err_cnt.get_name_leafdata());
+    if (fmac8_tst2_err_cnt.is_set || is_set(fmac8_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst2_err_cnt.get_name_leafdata());
+    if (fmac0_tst3_err_cnt.is_set || is_set(fmac0_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst3_err_cnt.get_name_leafdata());
+    if (fmac1_tst3_err_cnt.is_set || is_set(fmac1_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst3_err_cnt.get_name_leafdata());
+    if (fmac2_tst3_err_cnt.is_set || is_set(fmac2_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst3_err_cnt.get_name_leafdata());
+    if (fmac3_tst3_err_cnt.is_set || is_set(fmac3_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst3_err_cnt.get_name_leafdata());
+    if (fmac4_tst3_err_cnt.is_set || is_set(fmac4_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst3_err_cnt.get_name_leafdata());
+    if (fmac5_tst3_err_cnt.is_set || is_set(fmac5_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst3_err_cnt.get_name_leafdata());
+    if (fmac6_tst3_err_cnt.is_set || is_set(fmac6_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst3_err_cnt.get_name_leafdata());
+    if (fmac7_tst3_err_cnt.is_set || is_set(fmac7_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst3_err_cnt.get_name_leafdata());
+    if (fmac8_tst3_err_cnt.is_set || is_set(fmac8_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst3_err_cnt.get_name_leafdata());
+    if (fmac0_ecc_1b_err_cnt.is_set || is_set(fmac0_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac1_ecc_1b_err_cnt.is_set || is_set(fmac1_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac2_ecc_1b_err_cnt.is_set || is_set(fmac2_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac3_ecc_1b_err_cnt.is_set || is_set(fmac3_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac4_ecc_1b_err_cnt.is_set || is_set(fmac4_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac5_ecc_1b_err_cnt.is_set || is_set(fmac5_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac6_ecc_1b_err_cnt.is_set || is_set(fmac6_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac7_ecc_1b_err_cnt.is_set || is_set(fmac7_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac8_ecc_1b_err_cnt.is_set || is_set(fmac8_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac0_ecc_2b_err_cnt.is_set || is_set(fmac0_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac1_ecc_2b_err_cnt.is_set || is_set(fmac1_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac2_ecc_2b_err_cnt.is_set || is_set(fmac2_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac3_ecc_2b_err_cnt.is_set || is_set(fmac3_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac4_ecc_2b_err_cnt.is_set || is_set(fmac4_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac5_ecc_2b_err_cnt.is_set || is_set(fmac5_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac6_ecc_2b_err_cnt.is_set || is_set(fmac6_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac7_ecc_2b_err_cnt.is_set || is_set(fmac7_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac8_ecc_2b_err_cnt.is_set || is_set(fmac8_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_ecc_2b_err_cnt.get_name_leafdata());
+    if (olp_incoming_bad_identifier_counter.is_set || is_set(olp_incoming_bad_identifier_counter.yfilter)) leaf_name_data.push_back(olp_incoming_bad_identifier_counter.get_name_leafdata());
+    if (olp_incoming_bad_reassembly_counter.is_set || is_set(olp_incoming_bad_reassembly_counter.yfilter)) leaf_name_data.push_back(olp_incoming_bad_reassembly_counter.get_name_leafdata());
+    if (cfc_parity_err_cnt.is_set || is_set(cfc_parity_err_cnt.yfilter)) leaf_name_data.push_back(cfc_parity_err_cnt.get_name_leafdata());
+    if (cfc_ilkn0_oob_rx_crc_err_cntr.is_set || is_set(cfc_ilkn0_oob_rx_crc_err_cntr.yfilter)) leaf_name_data.push_back(cfc_ilkn0_oob_rx_crc_err_cntr.get_name_leafdata());
+    if (cfc_ilkn1_oob_rx_crc_err_cntr.is_set || is_set(cfc_ilkn1_oob_rx_crc_err_cntr.yfilter)) leaf_name_data.push_back(cfc_ilkn1_oob_rx_crc_err_cntr.get_name_leafdata());
+    if (cfc_spi_oob_rx0_frm_err_cnt.is_set || is_set(cfc_spi_oob_rx0_frm_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx0_frm_err_cnt.get_name_leafdata());
+    if (cfc_spi_oob_rx0_dip2_err_cnt.is_set || is_set(cfc_spi_oob_rx0_dip2_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx0_dip2_err_cnt.get_name_leafdata());
+    if (cfc_spi_oob_rx1_frm_err_cnt.is_set || is_set(cfc_spi_oob_rx1_frm_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx1_frm_err_cnt.get_name_leafdata());
+    if (cfc_spi_oob_rx1_dip2_err_cnt.is_set || is_set(cfc_spi_oob_rx1_dip2_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx1_dip2_err_cnt.get_name_leafdata());
+    if (cgm_cgm_uc_pd_dropped_cnt.is_set || is_set(cgm_cgm_uc_pd_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_uc_pd_dropped_cnt.get_name_leafdata());
+    if (cgm_cgm_mc_rep_pd_dropped_cnt.is_set || is_set(cgm_cgm_mc_rep_pd_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_mc_rep_pd_dropped_cnt.get_name_leafdata());
+    if (cgm_cgm_uc_db_dropped_by_rqp_cnt.is_set || is_set(cgm_cgm_uc_db_dropped_by_rqp_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_uc_db_dropped_by_rqp_cnt.get_name_leafdata());
+    if (cgm_cgm_uc_db_dropped_by_pqp_cnt.is_set || is_set(cgm_cgm_uc_db_dropped_by_pqp_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_uc_db_dropped_by_pqp_cnt.get_name_leafdata());
+    if (cgm_cgm_mc_rep_db_dropped_cnt.is_set || is_set(cgm_cgm_mc_rep_db_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_mc_rep_db_dropped_cnt.get_name_leafdata());
+    if (cgm_cgm_mc_db_dropped_cnt.is_set || is_set(cgm_cgm_mc_db_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_mc_db_dropped_cnt.get_name_leafdata());
+    if (drca_full_err_cnt.is_set || is_set(drca_full_err_cnt.yfilter)) leaf_name_data.push_back(drca_full_err_cnt.get_name_leafdata());
+    if (drca_single_err_cnt.is_set || is_set(drca_single_err_cnt.yfilter)) leaf_name_data.push_back(drca_single_err_cnt.get_name_leafdata());
+    if (drca_calib_bist_full_err_cnt.is_set || is_set(drca_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drca_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drca_loopback_full_err_cnt.is_set || is_set(drca_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drca_loopback_full_err_cnt.get_name_leafdata());
+    if (drcb_full_err_cnt.is_set || is_set(drcb_full_err_cnt.yfilter)) leaf_name_data.push_back(drcb_full_err_cnt.get_name_leafdata());
+    if (drcb_single_err_cnt.is_set || is_set(drcb_single_err_cnt.yfilter)) leaf_name_data.push_back(drcb_single_err_cnt.get_name_leafdata());
+    if (drcb_calib_bist_full_err_cnt.is_set || is_set(drcb_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcb_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcb_loopback_full_err_cnt.is_set || is_set(drcb_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcb_loopback_full_err_cnt.get_name_leafdata());
+    if (drcc_full_err_cnt.is_set || is_set(drcc_full_err_cnt.yfilter)) leaf_name_data.push_back(drcc_full_err_cnt.get_name_leafdata());
+    if (drcc_single_err_cnt.is_set || is_set(drcc_single_err_cnt.yfilter)) leaf_name_data.push_back(drcc_single_err_cnt.get_name_leafdata());
+    if (drcc_calib_bist_full_err_cnt.is_set || is_set(drcc_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcc_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcc_loopback_full_err_cnt.is_set || is_set(drcc_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcc_loopback_full_err_cnt.get_name_leafdata());
+    if (drcd_full_err_cnt.is_set || is_set(drcd_full_err_cnt.yfilter)) leaf_name_data.push_back(drcd_full_err_cnt.get_name_leafdata());
+    if (drcd_single_err_cnt.is_set || is_set(drcd_single_err_cnt.yfilter)) leaf_name_data.push_back(drcd_single_err_cnt.get_name_leafdata());
+    if (drcd_calib_bist_full_err_cnt.is_set || is_set(drcd_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcd_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcd_loopback_full_err_cnt.is_set || is_set(drcd_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcd_loopback_full_err_cnt.get_name_leafdata());
+    if (drce_full_err_cnt.is_set || is_set(drce_full_err_cnt.yfilter)) leaf_name_data.push_back(drce_full_err_cnt.get_name_leafdata());
+    if (drce_single_err_cnt.is_set || is_set(drce_single_err_cnt.yfilter)) leaf_name_data.push_back(drce_single_err_cnt.get_name_leafdata());
+    if (drce_calib_bist_full_err_cnt.is_set || is_set(drce_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drce_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drce_loopback_full_err_cnt.is_set || is_set(drce_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drce_loopback_full_err_cnt.get_name_leafdata());
+    if (drcf_full_err_cnt.is_set || is_set(drcf_full_err_cnt.yfilter)) leaf_name_data.push_back(drcf_full_err_cnt.get_name_leafdata());
+    if (drcf_single_err_cnt.is_set || is_set(drcf_single_err_cnt.yfilter)) leaf_name_data.push_back(drcf_single_err_cnt.get_name_leafdata());
+    if (drcf_calib_bist_full_err_cnt.is_set || is_set(drcf_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcf_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcf_loopback_full_err_cnt.is_set || is_set(drcf_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcf_loopback_full_err_cnt.get_name_leafdata());
+    if (drcg_full_err_cnt.is_set || is_set(drcg_full_err_cnt.yfilter)) leaf_name_data.push_back(drcg_full_err_cnt.get_name_leafdata());
+    if (drcg_single_err_cnt.is_set || is_set(drcg_single_err_cnt.yfilter)) leaf_name_data.push_back(drcg_single_err_cnt.get_name_leafdata());
+    if (drcg_calib_bist_full_err_cnt.is_set || is_set(drcg_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcg_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcg_loopback_full_err_cnt.is_set || is_set(drcg_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcg_loopback_full_err_cnt.get_name_leafdata());
+    if (drch_full_err_cnt.is_set || is_set(drch_full_err_cnt.yfilter)) leaf_name_data.push_back(drch_full_err_cnt.get_name_leafdata());
+    if (drch_single_err_cnt.is_set || is_set(drch_single_err_cnt.yfilter)) leaf_name_data.push_back(drch_single_err_cnt.get_name_leafdata());
+    if (drch_calib_bist_full_err_cnt.is_set || is_set(drch_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drch_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drch_loopback_full_err_cnt.is_set || is_set(drch_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drch_loopback_full_err_cnt.get_name_leafdata());
+    if (drcbroadcast_full_err_cnt.is_set || is_set(drcbroadcast_full_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_full_err_cnt.get_name_leafdata());
+    if (drcbroadcast_single_err_cnt.is_set || is_set(drcbroadcast_single_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_single_err_cnt.get_name_leafdata());
+    if (drcbroadcast_calib_bist_full_err_cnt.is_set || is_set(drcbroadcast_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcbroadcast_loopback_full_err_cnt.is_set || is_set(drcbroadcast_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_loopback_full_err_cnt.get_name_leafdata());
+    if (otn_mode.is_set || is_set(otn_mode.yfilter)) leaf_name_data.push_back(otn_mode.get_name_leafdata());
+    if (num_ports.is_set || is_set(num_ports.yfilter)) leaf_name_data.push_back(num_ports.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "block-info")
+    if(child_yang_name == "aggr-stats-otn")
     {
-        auto ent_ = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo>();
+        auto ent_ = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn>();
         ent_->parent = this;
-        block_info.append(ent_);
+        aggr_stats_otn.append(ent_);
         return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     count_ = 0;
-    for (auto ent_ : block_info.entities())
+    for (auto ent_ : aggr_stats_otn.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -9881,254 +11193,7818 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatis
     return _children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "num-blocks")
+    if(value_path == "rx-internal-error")
     {
-        num_blocks = value;
-        num_blocks.value_namespace = name_space;
-        num_blocks.value_namespace_prefix = name_space_prefix;
+        rx_internal_error = value;
+        rx_internal_error.value_namespace = name_space;
+        rx_internal_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-internal-drop")
+    {
+        rx_internal_drop = value;
+        rx_internal_drop.value_namespace = name_space;
+        rx_internal_drop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-internal-error")
+    {
+        tx_internal_error = value;
+        tx_internal_error.value_namespace = name_space;
+        tx_internal_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-internal-drop")
+    {
+        tx_internal_drop = value;
+        tx_internal_drop.value_namespace = name_space;
+        tx_internal_drop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmic-cmc0-pkt-count-tx-pkt")
+    {
+        cmic_cmc0_pkt_count_tx_pkt = value;
+        cmic_cmc0_pkt_count_tx_pkt.value_namespace = name_space;
+        cmic_cmc0_pkt_count_tx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmic-cmc0-pkt-count-rx-pkt")
+    {
+        cmic_cmc0_pkt_count_rx_pkt = value;
+        cmic_cmc0_pkt_count_rx_pkt.value_namespace = name_space;
+        cmic_cmc0_pkt_count_rx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-rx-bursts-err-cnt")
+    {
+        nbi_stat_rx_bursts_err_cnt = value;
+        nbi_stat_rx_bursts_err_cnt.value_namespace = name_space;
+        nbi_stat_rx_bursts_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-ecc-1b-err-cnt")
+    {
+        nbi_ecc_1b_err_cnt = value;
+        nbi_ecc_1b_err_cnt.value_namespace = name_space;
+        nbi_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-ecc-2b-err-cnt")
+    {
+        nbi_ecc_2b_err_cnt = value;
+        nbi_ecc_2b_err_cnt.value_namespace = name_space;
+        nbi_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-parity-err-cnt")
+    {
+        nbi_parity_err_cnt = value;
+        nbi_parity_err_cnt.value_namespace = name_space;
+        nbi_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn-crc32-err-cnt")
+    {
+        nbi_rx_ilkn_crc32_err_cnt = value;
+        nbi_rx_ilkn_crc32_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn_crc32_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_crc24_err_cnt = value;
+        nbi_rx_ilkn0_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-burst-err-cnt")
+    {
+        nbi_rx_ilkn0_burst_err_cnt = value;
+        nbi_rx_ilkn0_burst_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_burst_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_sop_err_cnt = value;
+        nbi_rx_ilkn0_miss_sop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_miss_sop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_eop_err_cnt = value;
+        nbi_rx_ilkn0_miss_eop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_miss_eop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-misaligned-cnt")
+    {
+        nbi_rx_ilkn0_misaligned_cnt = value;
+        nbi_rx_ilkn0_misaligned_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_misaligned_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_crc24_err_cnt = value;
+        nbi_rx_ilkn1_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-burst-err-cnt")
+    {
+        nbi_rx_ilkn1_burst_err_cnt = value;
+        nbi_rx_ilkn1_burst_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_burst_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_sop_err_cnt = value;
+        nbi_rx_ilkn1_miss_sop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_miss_sop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_eop_err_cnt = value;
+        nbi_rx_ilkn1_miss_eop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_miss_eop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-misaligned-cnt")
+    {
+        nbi_rx_ilkn1_misaligned_cnt = value;
+        nbi_rx_ilkn1_misaligned_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_misaligned_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-tx-ilkn1-flushed-bursts-cnt")
+    {
+        nbi_tx_ilkn1_flushed_bursts_cnt = value;
+        nbi_tx_ilkn1_flushed_bursts_cnt.value_namespace = name_space;
+        nbi_tx_ilkn1_flushed_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_crc24_err_cnt = value;
+        nbi_rx_ilkn0_retrans_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_retry_err_cnt = value;
+        nbi_rx_ilkn0_retrans_retry_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_retry_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wdog_err_cnt = value;
+        nbi_rx_ilkn0_retrans_wdog_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_wdog_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt = value;
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt = value;
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt = value;
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_crc24_err_cnt = value;
+        nbi_rx_ilkn1_retrans_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_retry_err_cnt = value;
+        nbi_rx_ilkn1_retrans_retry_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_retry_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wdog_err_cnt = value;
+        nbi_rx_ilkn1_retrans_wdog_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_wdog_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt = value;
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt = value;
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt = value;
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-rx-frame-err-cnt")
+    {
+        nbi_stat_rx_frame_err_cnt = value;
+        nbi_stat_rx_frame_err_cnt.value_namespace = name_space;
+        nbi_stat_rx_frame_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-tx-frame-err-cnt")
+    {
+        nbi_stat_tx_frame_err_cnt = value;
+        nbi_stat_tx_frame_err_cnt.value_namespace = name_space;
+        nbi_stat_tx_frame_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-elk-err-bursts-cnt")
+    {
+        nbi_rx_elk_err_bursts_cnt = value;
+        nbi_rx_elk_err_bursts_cnt.value_namespace = name_space;
+        nbi_rx_elk_err_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-num-thrown-eops")
+    {
+        nbi_rx_num_thrown_eops = value;
+        nbi_rx_num_thrown_eops.value_namespace = name_space;
+        nbi_rx_num_thrown_eops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-num-runts")
+    {
+        nbi_rx_num_runts = value;
+        nbi_rx_num_runts.value_namespace = name_space;
+        nbi_rx_num_runts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-tx-crc-err-bursts-cnt")
+    {
+        nbi_bist_tx_crc_err_bursts_cnt = value;
+        nbi_bist_tx_crc_err_bursts_cnt.value_namespace = name_space;
+        nbi_bist_tx_crc_err_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-length-bursts-cnt")
+    {
+        nbi_bist_rx_err_length_bursts_cnt = value;
+        nbi_bist_rx_err_length_bursts_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_length_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-burst-index-cnt")
+    {
+        nbi_bist_rx_err_burst_index_cnt = value;
+        nbi_bist_rx_err_burst_index_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_burst_index_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-bct-cnt")
+    {
+        nbi_bist_rx_err_bct_cnt = value;
+        nbi_bist_rx_err_bct_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_bct_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-data-cnt")
+    {
+        nbi_bist_rx_err_data_cnt = value;
+        nbi_bist_rx_err_data_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_data_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-in-crc-err-cnt")
+    {
+        nbi_bist_rx_err_in_crc_err_cnt = value;
+        nbi_bist_rx_err_in_crc_err_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_in_crc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-sob-cnt")
+    {
+        nbi_bist_rx_err_sob_cnt = value;
+        nbi_bist_rx_err_sob_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_sob_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-tx-bursts-cnt")
+    {
+        nbi_stat_tx_bursts_cnt = value;
+        nbi_stat_tx_bursts_cnt.value_namespace = name_space;
+        nbi_stat_tx_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-tx-total-leng-cnt")
+    {
+        nbi_stat_tx_total_leng_cnt = value;
+        nbi_stat_tx_total_leng_cnt.value_namespace = name_space;
+        nbi_stat_tx_total_leng_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-total-tx-pkt-count")
+    {
+        rxaui_total_tx_pkt_count = value;
+        rxaui_total_tx_pkt_count.value_namespace = name_space;
+        rxaui_total_tx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-total-rx-pkt-count")
+    {
+        rxaui_total_rx_pkt_count = value;
+        rxaui_total_rx_pkt_count.value_namespace = name_space;
+        rxaui_total_rx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-pkt-count-bcast-pkt")
+    {
+        rxaui_rx_pkt_count_bcast_pkt = value;
+        rxaui_rx_pkt_count_bcast_pkt.value_namespace = name_space;
+        rxaui_rx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-pkt-count-bcast-pkt")
+    {
+        rxaui_tx_pkt_count_bcast_pkt = value;
+        rxaui_tx_pkt_count_bcast_pkt.value_namespace = name_space;
+        rxaui_tx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-pkt-count-mcast-pkt")
+    {
+        rxaui_rx_pkt_count_mcast_pkt = value;
+        rxaui_rx_pkt_count_mcast_pkt.value_namespace = name_space;
+        rxaui_rx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-pkt-count-mcast-pkt")
+    {
+        rxaui_tx_pkt_count_mcast_pkt = value;
+        rxaui_tx_pkt_count_mcast_pkt.value_namespace = name_space;
+        rxaui_tx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-pkt-count-ucast-pkt")
+    {
+        rxaui_rx_pkt_count_ucast_pkt = value;
+        rxaui_rx_pkt_count_ucast_pkt.value_namespace = name_space;
+        rxaui_rx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-pkt-count-ucast-pkt")
+    {
+        rxaui_tx_pkt_count_ucast_pkt = value;
+        rxaui_tx_pkt_count_ucast_pkt.value_namespace = name_space;
+        rxaui_tx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-err-drop-pkt-cnt")
+    {
+        rxaui_rx_err_drop_pkt_cnt = value;
+        rxaui_rx_err_drop_pkt_cnt.value_namespace = name_space;
+        rxaui_rx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-err-drop-pkt-cnt")
+    {
+        rxaui_tx_err_drop_pkt_cnt = value;
+        rxaui_tx_err_drop_pkt_cnt.value_namespace = name_space;
+        rxaui_tx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-byte-count-tx-pkt")
+    {
+        rxaui_byte_count_tx_pkt = value;
+        rxaui_byte_count_tx_pkt.value_namespace = name_space;
+        rxaui_byte_count_tx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-byte-count-rx-pkt")
+    {
+        rxaui_byte_count_rx_pkt = value;
+        rxaui_byte_count_rx_pkt.value_namespace = name_space;
+        rxaui_byte_count_rx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-dscrd-pkt-cnt")
+    {
+        rxaui_rx_dscrd_pkt_cnt = value;
+        rxaui_rx_dscrd_pkt_cnt.value_namespace = name_space;
+        rxaui_rx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-dscrd-pkt-cnt")
+    {
+        rxaui_tx_dscrd_pkt_cnt = value;
+        rxaui_tx_dscrd_pkt_cnt.value_namespace = name_space;
+        rxaui_tx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-nif-packet-counter")
+    {
+        ire_nif_packet_counter = value;
+        ire_nif_packet_counter.value_namespace = name_space;
+        ire_nif_packet_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-total-rx-pkt-count")
+    {
+        il_total_rx_pkt_count = value;
+        il_total_rx_pkt_count.value_namespace = name_space;
+        il_total_rx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-total-tx-pkt-count")
+    {
+        il_total_tx_pkt_count = value;
+        il_total_tx_pkt_count.value_namespace = name_space;
+        il_total_tx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-err-drop-pkt-cnt")
+    {
+        il_rx_err_drop_pkt_cnt = value;
+        il_rx_err_drop_pkt_cnt.value_namespace = name_space;
+        il_rx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-err-drop-pkt-cnt")
+    {
+        il_tx_err_drop_pkt_cnt = value;
+        il_tx_err_drop_pkt_cnt.value_namespace = name_space;
+        il_tx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-byte-count-tx-pkt")
+    {
+        il_byte_count_tx_pkt = value;
+        il_byte_count_tx_pkt.value_namespace = name_space;
+        il_byte_count_tx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-byte-count-rx-pkt")
+    {
+        il_byte_count_rx_pkt = value;
+        il_byte_count_rx_pkt.value_namespace = name_space;
+        il_byte_count_rx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-dscrd-pkt-cnt")
+    {
+        il_rx_dscrd_pkt_cnt = value;
+        il_rx_dscrd_pkt_cnt.value_namespace = name_space;
+        il_rx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-dscrd-pkt-cnt")
+    {
+        il_tx_dscrd_pkt_cnt = value;
+        il_tx_dscrd_pkt_cnt.value_namespace = name_space;
+        il_tx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-pkt-count-bcast-pkt")
+    {
+        il_rx_pkt_count_bcast_pkt = value;
+        il_rx_pkt_count_bcast_pkt.value_namespace = name_space;
+        il_rx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-pkt-count-bcast-pkt")
+    {
+        il_tx_pkt_count_bcast_pkt = value;
+        il_tx_pkt_count_bcast_pkt.value_namespace = name_space;
+        il_tx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-pkt-count-mcast-pkt")
+    {
+        il_rx_pkt_count_mcast_pkt = value;
+        il_rx_pkt_count_mcast_pkt.value_namespace = name_space;
+        il_rx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-pkt-count-mcast-pkt")
+    {
+        il_tx_pkt_count_mcast_pkt = value;
+        il_tx_pkt_count_mcast_pkt.value_namespace = name_space;
+        il_tx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-pkt-count-ucast-pkt")
+    {
+        il_rx_pkt_count_ucast_pkt = value;
+        il_rx_pkt_count_ucast_pkt.value_namespace = name_space;
+        il_rx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-pkt-count-ucast-pkt")
+    {
+        il_tx_pkt_count_ucast_pkt = value;
+        il_tx_pkt_count_ucast_pkt.value_namespace = name_space;
+        il_tx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-enq-pkt-cnt")
+    {
+        iqm_enq_pkt_cnt = value;
+        iqm_enq_pkt_cnt.value_namespace = name_space;
+        iqm_enq_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-enq-byte-cnt")
+    {
+        iqm_enq_byte_cnt = value;
+        iqm_enq_byte_cnt.value_namespace = name_space;
+        iqm_enq_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-deq-pkt-cnt")
+    {
+        iqm_deq_pkt_cnt = value;
+        iqm_deq_pkt_cnt.value_namespace = name_space;
+        iqm_deq_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-deq-byte-cnt")
+    {
+        iqm_deq_byte_cnt = value;
+        iqm_deq_byte_cnt.value_namespace = name_space;
+        iqm_deq_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-tot-dscrd-pkt-cnt")
+    {
+        iqm_tot_dscrd_pkt_cnt = value;
+        iqm_tot_dscrd_pkt_cnt.value_namespace = name_space;
+        iqm_tot_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-tot-dscrd-byte-cnt")
+    {
+        iqm_tot_dscrd_byte_cnt = value;
+        iqm_tot_dscrd_byte_cnt.value_namespace = name_space;
+        iqm_tot_dscrd_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-ecc-1b-err-cnt")
+    {
+        iqm_ecc_1b_err_cnt = value;
+        iqm_ecc_1b_err_cnt.value_namespace = name_space;
+        iqm_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-ecc-2b-err-cnt")
+    {
+        iqm_ecc_2b_err_cnt = value;
+        iqm_ecc_2b_err_cnt.value_namespace = name_space;
+        iqm_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-parity-err-cnt")
+    {
+        iqm_parity_err_cnt = value;
+        iqm_parity_err_cnt.value_namespace = name_space;
+        iqm_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-deq-delete-pkt-cnt")
+    {
+        iqm_deq_delete_pkt_cnt = value;
+        iqm_deq_delete_pkt_cnt.value_namespace = name_space;
+        iqm_deq_delete_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-ecn-dscrd-msk-pkt-cnt")
+    {
+        iqm_ecn_dscrd_msk_pkt_cnt = value;
+        iqm_ecn_dscrd_msk_pkt_cnt.value_namespace = name_space;
+        iqm_ecn_dscrd_msk_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-q-tot-dscrd-pkt-cnt")
+    {
+        iqm_q_tot_dscrd_pkt_cnt = value;
+        iqm_q_tot_dscrd_pkt_cnt.value_namespace = name_space;
+        iqm_q_tot_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-q-deq-delete-pkt-cnt")
+    {
+        iqm_q_deq_delete_pkt_cnt = value;
+        iqm_q_deq_delete_pkt_cnt.value_namespace = name_space;
+        iqm_q_deq_delete_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-db-pkt-cnt")
+    {
+        iqm_rjct_db_pkt_cnt = value;
+        iqm_rjct_db_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_db_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-bdb-pkt-cnt")
+    {
+        iqm_rjct_bdb_pkt_cnt = value;
+        iqm_rjct_bdb_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_bdb_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-bdb-protct-pkt-cnt")
+    {
+        iqm_rjct_bdb_protct_pkt_cnt = value;
+        iqm_rjct_bdb_protct_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_bdb_protct_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-oc-bd-pkt-cnt")
+    {
+        iqm_rjct_oc_bd_pkt_cnt = value;
+        iqm_rjct_oc_bd_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_oc_bd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-sn-err-pkt-cnt")
+    {
+        iqm_rjct_sn_err_pkt_cnt = value;
+        iqm_rjct_sn_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_sn_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-mc-err-pkt-cnt")
+    {
+        iqm_rjct_mc_err_pkt_cnt = value;
+        iqm_rjct_mc_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_mc_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-rsrc-err-pkt-cnt")
+    {
+        iqm_rjct_rsrc_err_pkt_cnt = value;
+        iqm_rjct_rsrc_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_rsrc_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-qnvalid-err-pkt-cnt")
+    {
+        iqm_rjct_qnvalid_err_pkt_cnt = value;
+        iqm_rjct_qnvalid_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_qnvalid_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-cnm-pkt-cnt")
+    {
+        iqm_rjct_cnm_pkt_cnt = value;
+        iqm_rjct_cnm_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_cnm_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-dyn-space-pkt-cnt")
+    {
+        iqm_rjct_dyn_space_pkt_cnt = value;
+        iqm_rjct_dyn_space_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_dyn_space_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-fdt-pkt-cnt")
+    {
+        ipt_fdt_pkt_cnt = value;
+        ipt_fdt_pkt_cnt.value_namespace = name_space;
+        ipt_fdt_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-ecc-1b-err-cnt")
+    {
+        ipt_ecc_1b_err_cnt = value;
+        ipt_ecc_1b_err_cnt.value_namespace = name_space;
+        ipt_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-ecc-2b-err-cnt")
+    {
+        ipt_ecc_2b_err_cnt = value;
+        ipt_ecc_2b_err_cnt.value_namespace = name_space;
+        ipt_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-parity-err-cnt")
+    {
+        ipt_parity_err_cnt = value;
+        ipt_parity_err_cnt.value_namespace = name_space;
+        ipt_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-crc-err-cnt")
+    {
+        ipt_crc_err_cnt = value;
+        ipt_crc_err_cnt.value_namespace = name_space;
+        ipt_crc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-crc-err-del-buff-cnt")
+    {
+        ipt_crc_err_del_buff_cnt = value;
+        ipt_crc_err_del_buff_cnt.value_namespace = name_space;
+        ipt_crc_err_del_buff_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-cpu-del-buff-cnt")
+    {
+        ipt_cpu_del_buff_cnt = value;
+        ipt_cpu_del_buff_cnt.value_namespace = name_space;
+        ipt_cpu_del_buff_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-cpu-rel-buff-cnt")
+    {
+        ipt_cpu_rel_buff_cnt = value;
+        ipt_cpu_rel_buff_cnt.value_namespace = name_space;
+        ipt_cpu_rel_buff_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-crc-err-buff-fifo-full-cnt")
+    {
+        ipt_crc_err_buff_fifo_full_cnt = value;
+        ipt_crc_err_buff_fifo_full_cnt.value_namespace = name_space;
+        ipt_crc_err_buff_fifo_full_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-data-cell-cnt")
+    {
+        fdt_data_cell_cnt = value;
+        fdt_data_cell_cnt.value_namespace = name_space;
+        fdt_data_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-data-byte-cnt")
+    {
+        fdt_data_byte_cnt = value;
+        fdt_data_byte_cnt.value_namespace = name_space;
+        fdt_data_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-crc-dropped-pck-cnt")
+    {
+        fdt_crc_dropped_pck_cnt = value;
+        fdt_crc_dropped_pck_cnt.value_namespace = name_space;
+        fdt_crc_dropped_pck_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-invalid-destq-drop-cell-cnt")
+    {
+        fdt_invalid_destq_drop_cell_cnt = value;
+        fdt_invalid_destq_drop_cell_cnt.value_namespace = name_space;
+        fdt_invalid_destq_drop_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-indirect-command-count")
+    {
+        fdt_indirect_command_count = value;
+        fdt_indirect_command_count.value_namespace = name_space;
+        fdt_indirect_command_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-ecc-1b-err-cnt")
+    {
+        fdt_ecc_1b_err_cnt = value;
+        fdt_ecc_1b_err_cnt.value_namespace = name_space;
+        fdt_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-ecc-2b-err-cnt")
+    {
+        fdt_ecc_2b_err_cnt = value;
+        fdt_ecc_2b_err_cnt.value_namespace = name_space;
+        fdt_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-parity-err-cnt")
+    {
+        fdt_parity_err_cnt = value;
+        fdt_parity_err_cnt.value_namespace = name_space;
+        fdt_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-crc-dropped-cell-cnt")
+    {
+        fdt_crc_dropped_cell_cnt = value;
+        fdt_crc_dropped_cell_cnt.value_namespace = name_space;
+        fdt_crc_dropped_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-control-cell-cnt")
+    {
+        fcr_control_cell_cnt = value;
+        fcr_control_cell_cnt.value_namespace = name_space;
+        fcr_control_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-cell-drop-cnt")
+    {
+        fcr_cell_drop_cnt = value;
+        fcr_cell_drop_cnt.value_namespace = name_space;
+        fcr_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-credit-cell-drop-cnt")
+    {
+        fcr_credit_cell_drop_cnt = value;
+        fcr_credit_cell_drop_cnt.value_namespace = name_space;
+        fcr_credit_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-fs-cell-drop-cnt")
+    {
+        fcr_fs_cell_drop_cnt = value;
+        fcr_fs_cell_drop_cnt.value_namespace = name_space;
+        fcr_fs_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-rt-cell-drop-cnt")
+    {
+        fcr_rt_cell_drop_cnt = value;
+        fcr_rt_cell_drop_cnt.value_namespace = name_space;
+        fcr_rt_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-ecc-1b-err-cnt")
+    {
+        fcr_ecc_1b_err_cnt = value;
+        fcr_ecc_1b_err_cnt.value_namespace = name_space;
+        fcr_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-ecc-2b-err-cnt")
+    {
+        fcr_ecc_2b_err_cnt = value;
+        fcr_ecc_2b_err_cnt.value_namespace = name_space;
+        fcr_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-data-cell-cnt")
+    {
+        fdr_data_cell_cnt = value;
+        fdr_data_cell_cnt.value_namespace = name_space;
+        fdr_data_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-data-byte-cnt")
+    {
+        fdr_data_byte_cnt = value;
+        fdr_data_byte_cnt.value_namespace = name_space;
+        fdr_data_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-crc-dropped-pck-cnt")
+    {
+        fdr_crc_dropped_pck_cnt = value;
+        fdr_crc_dropped_pck_cnt.value_namespace = name_space;
+        fdr_crc_dropped_pck_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-p-pkt-cnt")
+    {
+        fdr_p_pkt_cnt = value;
+        fdr_p_pkt_cnt.value_namespace = name_space;
+        fdr_p_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-prm-error-filter-cnt")
+    {
+        fdr_prm_error_filter_cnt = value;
+        fdr_prm_error_filter_cnt.value_namespace = name_space;
+        fdr_prm_error_filter_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-sec-error-filter-cnt")
+    {
+        fdr_sec_error_filter_cnt = value;
+        fdr_sec_error_filter_cnt.value_namespace = name_space;
+        fdr_sec_error_filter_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-prm-ecc-1b-err-cnt")
+    {
+        fdr_prm_ecc_1b_err_cnt = value;
+        fdr_prm_ecc_1b_err_cnt.value_namespace = name_space;
+        fdr_prm_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-prm-ecc-2b-err-cnt")
+    {
+        fdr_prm_ecc_2b_err_cnt = value;
+        fdr_prm_ecc_2b_err_cnt.value_namespace = name_space;
+        fdr_prm_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-sec-ecc-1b-err-cnt")
+    {
+        fdr_sec_ecc_1b_err_cnt = value;
+        fdr_sec_ecc_1b_err_cnt.value_namespace = name_space;
+        fdr_sec_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-sec-ecc-2b-err-cnt")
+    {
+        fdr_sec_ecc_2b_err_cnt = value;
+        fdr_sec_ecc_2b_err_cnt.value_namespace = name_space;
+        fdr_sec_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ecc-1b-err-cnt")
+    {
+        egq_ecc_1b_err_cnt = value;
+        egq_ecc_1b_err_cnt.value_namespace = name_space;
+        egq_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ecc-2b-err-cnt")
+    {
+        egq_ecc_2b_err_cnt = value;
+        egq_ecc_2b_err_cnt.value_namespace = name_space;
+        egq_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-parity-err-cnt")
+    {
+        egq_parity_err_cnt = value;
+        egq_parity_err_cnt.value_namespace = name_space;
+        egq_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-dbf-ecc-1b-err-cnt")
+    {
+        egq_dbf_ecc_1b_err_cnt = value;
+        egq_dbf_ecc_1b_err_cnt.value_namespace = name_space;
+        egq_dbf_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-dbf-ecc-2b-err-cnt")
+    {
+        egq_dbf_ecc_2b_err_cnt = value;
+        egq_dbf_ecc_2b_err_cnt.value_namespace = name_space;
+        egq_dbf_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-empty-mcid-counter")
+    {
+        egq_empty_mcid_counter = value;
+        egq_empty_mcid_counter.value_namespace = name_space;
+        egq_empty_mcid_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-rqp-discard-packet-counter")
+    {
+        egq_rqp_discard_packet_counter = value;
+        egq_rqp_discard_packet_counter.value_namespace = name_space;
+        egq_rqp_discard_packet_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ehp-discard-packet-counter")
+    {
+        egq_ehp_discard_packet_counter = value;
+        egq_ehp_discard_packet_counter.value_namespace = name_space;
+        egq_ehp_discard_packet_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ipt-pkt-cnt")
+    {
+        egq_ipt_pkt_cnt = value;
+        egq_ipt_pkt_cnt.value_namespace = name_space;
+        egq_ipt_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-pkt-cnt")
+    {
+        epni_epe_pkt_cnt = value;
+        epni_epe_pkt_cnt.value_namespace = name_space;
+        epni_epe_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-byte-cnt")
+    {
+        epni_epe_byte_cnt = value;
+        epni_epe_byte_cnt.value_namespace = name_space;
+        epni_epe_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-discard-pkt-cnt")
+    {
+        epni_epe_discard_pkt_cnt = value;
+        epni_epe_discard_pkt_cnt.value_namespace = name_space;
+        epni_epe_discard_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-ecc-1b-err-cnt")
+    {
+        epni_ecc_1b_err_cnt = value;
+        epni_ecc_1b_err_cnt.value_namespace = name_space;
+        epni_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-ecc-2b-err-cnt")
+    {
+        epni_ecc_2b_err_cnt = value;
+        epni_ecc_2b_err_cnt.value_namespace = name_space;
+        epni_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-parity-err-cnt")
+    {
+        epni_parity_err_cnt = value;
+        epni_parity_err_cnt.value_namespace = name_space;
+        epni_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-pkt-cnt")
+    {
+        egq_pqp_ucast_pkt_cnt = value;
+        egq_pqp_ucast_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-h-pkt-cnt")
+    {
+        egq_pqp_ucast_h_pkt_cnt = value;
+        egq_pqp_ucast_h_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_h_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-l-pkt-cnt")
+    {
+        egq_pqp_ucast_l_pkt_cnt = value;
+        egq_pqp_ucast_l_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_l_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-bytes-cnt")
+    {
+        egq_pqp_ucast_bytes_cnt = value;
+        egq_pqp_ucast_bytes_cnt.value_namespace = name_space;
+        egq_pqp_ucast_bytes_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-discard-pkt-cnt")
+    {
+        egq_pqp_ucast_discard_pkt_cnt = value;
+        egq_pqp_ucast_discard_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_discard_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-pkt-cnt")
+    {
+        egq_pqp_mcast_pkt_cnt = value;
+        egq_pqp_mcast_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-h-pkt-cnt")
+    {
+        egq_pqp_mcast_h_pkt_cnt = value;
+        egq_pqp_mcast_h_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_h_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-l-pkt-cnt")
+    {
+        egq_pqp_mcast_l_pkt_cnt = value;
+        egq_pqp_mcast_l_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_l_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-bytes-cnt")
+    {
+        egq_pqp_mcast_bytes_cnt = value;
+        egq_pqp_mcast_bytes_cnt.value_namespace = name_space;
+        egq_pqp_mcast_bytes_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-discard-pkt-cnt")
+    {
+        egq_pqp_mcast_discard_pkt_cnt = value;
+        egq_pqp_mcast_discard_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_discard_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fct-control-cell-cnt")
+    {
+        fct_control_cell_cnt = value;
+        fct_control_cell_cnt.value_namespace = name_space;
+        fct_control_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fct-unrch-crdt-cnt")
+    {
+        fct_unrch_crdt_cnt = value;
+        fct_unrch_crdt_cnt.value_namespace = name_space;
+        fct_unrch_crdt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-reassembly-errors")
+    {
+        idr_reassembly_errors = value;
+        idr_reassembly_errors.value_namespace = name_space;
+        idr_reassembly_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-mmu-ecc-1b-err-cnt")
+    {
+        idr_mmu_ecc_1b_err_cnt = value;
+        idr_mmu_ecc_1b_err_cnt.value_namespace = name_space;
+        idr_mmu_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-mmu-ecc-2b-err-cnt")
+    {
+        idr_mmu_ecc_2b_err_cnt = value;
+        idr_mmu_ecc_2b_err_cnt.value_namespace = name_space;
+        idr_mmu_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets0-cnt")
+    {
+        idr_discarded_packets0_cnt = value;
+        idr_discarded_packets0_cnt.value_namespace = name_space;
+        idr_discarded_packets0_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets1-cnt")
+    {
+        idr_discarded_packets1_cnt = value;
+        idr_discarded_packets1_cnt.value_namespace = name_space;
+        idr_discarded_packets1_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets2-cnt")
+    {
+        idr_discarded_packets2_cnt = value;
+        idr_discarded_packets2_cnt.value_namespace = name_space;
+        idr_discarded_packets2_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets3-cnt")
+    {
+        idr_discarded_packets3_cnt = value;
+        idr_discarded_packets3_cnt.value_namespace = name_space;
+        idr_discarded_packets3_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets0-cnt")
+    {
+        idr_discarded_octets0_cnt = value;
+        idr_discarded_octets0_cnt.value_namespace = name_space;
+        idr_discarded_octets0_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets1-cnt")
+    {
+        idr_discarded_octets1_cnt = value;
+        idr_discarded_octets1_cnt.value_namespace = name_space;
+        idr_discarded_octets1_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets2-cnt")
+    {
+        idr_discarded_octets2_cnt = value;
+        idr_discarded_octets2_cnt.value_namespace = name_space;
+        idr_discarded_octets2_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets3-cnt")
+    {
+        idr_discarded_octets3_cnt = value;
+        idr_discarded_octets3_cnt.value_namespace = name_space;
+        idr_discarded_octets3_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mmu-ecc-1b-err-cnt")
+    {
+        mmu_ecc_1b_err_cnt = value;
+        mmu_ecc_1b_err_cnt.value_namespace = name_space;
+        mmu_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mmu-ecc-2b-err-cnt")
+    {
+        mmu_ecc_2b_err_cnt = value;
+        mmu_ecc_2b_err_cnt.value_namespace = name_space;
+        mmu_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oamp-parity-err-cnt")
+    {
+        oamp_parity_err_cnt = value;
+        oamp_parity_err_cnt.value_namespace = name_space;
+        oamp_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oamp-ecc-1b-err-cnt")
+    {
+        oamp_ecc_1b_err_cnt = value;
+        oamp_ecc_1b_err_cnt.value_namespace = name_space;
+        oamp_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oamp-ecc-2b-err-cnt")
+    {
+        oamp_ecc_2b_err_cnt = value;
+        oamp_ecc_2b_err_cnt.value_namespace = name_space;
+        oamp_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "crps-parity-err-cnt")
+    {
+        crps_parity_err_cnt = value;
+        crps_parity_err_cnt.value_namespace = name_space;
+        crps_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs0-tst-rx-err-cnt")
+    {
+        fmac0_kpcs0_tst_rx_err_cnt = value;
+        fmac0_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs0-tst-rx-err-cnt")
+    {
+        fmac1_kpcs0_tst_rx_err_cnt = value;
+        fmac1_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs0-tst-rx-err-cnt")
+    {
+        fmac2_kpcs0_tst_rx_err_cnt = value;
+        fmac2_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs0-tst-rx-err-cnt")
+    {
+        fmac3_kpcs0_tst_rx_err_cnt = value;
+        fmac3_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs0-tst-rx-err-cnt")
+    {
+        fmac4_kpcs0_tst_rx_err_cnt = value;
+        fmac4_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs0-tst-rx-err-cnt")
+    {
+        fmac5_kpcs0_tst_rx_err_cnt = value;
+        fmac5_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs0-tst-rx-err-cnt")
+    {
+        fmac6_kpcs0_tst_rx_err_cnt = value;
+        fmac6_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs0-tst-rx-err-cnt")
+    {
+        fmac7_kpcs0_tst_rx_err_cnt = value;
+        fmac7_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs0-tst-rx-err-cnt")
+    {
+        fmac8_kpcs0_tst_rx_err_cnt = value;
+        fmac8_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs1-tst-rx-err-cnt")
+    {
+        fmac0_kpcs1_tst_rx_err_cnt = value;
+        fmac0_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs1-tst-rx-err-cnt")
+    {
+        fmac1_kpcs1_tst_rx_err_cnt = value;
+        fmac1_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs1-tst-rx-err-cnt")
+    {
+        fmac2_kpcs1_tst_rx_err_cnt = value;
+        fmac2_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs1-tst-rx-err-cnt")
+    {
+        fmac3_kpcs1_tst_rx_err_cnt = value;
+        fmac3_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs1-tst-rx-err-cnt")
+    {
+        fmac4_kpcs1_tst_rx_err_cnt = value;
+        fmac4_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs1-tst-rx-err-cnt")
+    {
+        fmac5_kpcs1_tst_rx_err_cnt = value;
+        fmac5_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs1-tst-rx-err-cnt")
+    {
+        fmac6_kpcs1_tst_rx_err_cnt = value;
+        fmac6_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs1-tst-rx-err-cnt")
+    {
+        fmac7_kpcs1_tst_rx_err_cnt = value;
+        fmac7_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs1-tst-rx-err-cnt")
+    {
+        fmac8_kpcs1_tst_rx_err_cnt = value;
+        fmac8_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs2-tst-rx-err-cnt")
+    {
+        fmac0_kpcs2_tst_rx_err_cnt = value;
+        fmac0_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs2-tst-rx-err-cnt")
+    {
+        fmac1_kpcs2_tst_rx_err_cnt = value;
+        fmac1_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs2-tst-rx-err-cnt")
+    {
+        fmac2_kpcs2_tst_rx_err_cnt = value;
+        fmac2_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs2-tst-rx-err-cnt")
+    {
+        fmac3_kpcs2_tst_rx_err_cnt = value;
+        fmac3_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs2-tst-rx-err-cnt")
+    {
+        fmac4_kpcs2_tst_rx_err_cnt = value;
+        fmac4_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs2-tst-rx-err-cnt")
+    {
+        fmac5_kpcs2_tst_rx_err_cnt = value;
+        fmac5_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs2-tst-rx-err-cnt")
+    {
+        fmac6_kpcs2_tst_rx_err_cnt = value;
+        fmac6_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs2-tst-rx-err-cnt")
+    {
+        fmac7_kpcs2_tst_rx_err_cnt = value;
+        fmac7_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs2-tst-rx-err-cnt")
+    {
+        fmac8_kpcs2_tst_rx_err_cnt = value;
+        fmac8_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs3-tst-rx-err-cnt")
+    {
+        fmac0_kpcs3_tst_rx_err_cnt = value;
+        fmac0_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs3-tst-rx-err-cnt")
+    {
+        fmac1_kpcs3_tst_rx_err_cnt = value;
+        fmac1_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs3-tst-rx-err-cnt")
+    {
+        fmac2_kpcs3_tst_rx_err_cnt = value;
+        fmac2_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs3-tst-rx-err-cnt")
+    {
+        fmac3_kpcs3_tst_rx_err_cnt = value;
+        fmac3_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs3-tst-rx-err-cnt")
+    {
+        fmac4_kpcs3_tst_rx_err_cnt = value;
+        fmac4_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs3-tst-rx-err-cnt")
+    {
+        fmac5_kpcs3_tst_rx_err_cnt = value;
+        fmac5_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs3-tst-rx-err-cnt")
+    {
+        fmac6_kpcs3_tst_rx_err_cnt = value;
+        fmac6_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs3-tst-rx-err-cnt")
+    {
+        fmac7_kpcs3_tst_rx_err_cnt = value;
+        fmac7_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs3-tst-rx-err-cnt")
+    {
+        fmac8_kpcs3_tst_rx_err_cnt = value;
+        fmac8_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst0-err-cnt")
+    {
+        fmac0_tst0_err_cnt = value;
+        fmac0_tst0_err_cnt.value_namespace = name_space;
+        fmac0_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst0-err-cnt")
+    {
+        fmac1_tst0_err_cnt = value;
+        fmac1_tst0_err_cnt.value_namespace = name_space;
+        fmac1_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst0-err-cnt")
+    {
+        fmac2_tst0_err_cnt = value;
+        fmac2_tst0_err_cnt.value_namespace = name_space;
+        fmac2_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst0-err-cnt")
+    {
+        fmac3_tst0_err_cnt = value;
+        fmac3_tst0_err_cnt.value_namespace = name_space;
+        fmac3_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst0-err-cnt")
+    {
+        fmac4_tst0_err_cnt = value;
+        fmac4_tst0_err_cnt.value_namespace = name_space;
+        fmac4_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst0-err-cnt")
+    {
+        fmac5_tst0_err_cnt = value;
+        fmac5_tst0_err_cnt.value_namespace = name_space;
+        fmac5_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst0-err-cnt")
+    {
+        fmac6_tst0_err_cnt = value;
+        fmac6_tst0_err_cnt.value_namespace = name_space;
+        fmac6_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst0-err-cnt")
+    {
+        fmac7_tst0_err_cnt = value;
+        fmac7_tst0_err_cnt.value_namespace = name_space;
+        fmac7_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst0-err-cnt")
+    {
+        fmac8_tst0_err_cnt = value;
+        fmac8_tst0_err_cnt.value_namespace = name_space;
+        fmac8_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst1-err-cnt")
+    {
+        fmac0_tst1_err_cnt = value;
+        fmac0_tst1_err_cnt.value_namespace = name_space;
+        fmac0_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst1-err-cnt")
+    {
+        fmac1_tst1_err_cnt = value;
+        fmac1_tst1_err_cnt.value_namespace = name_space;
+        fmac1_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst1-err-cnt")
+    {
+        fmac2_tst1_err_cnt = value;
+        fmac2_tst1_err_cnt.value_namespace = name_space;
+        fmac2_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst1-err-cnt")
+    {
+        fmac3_tst1_err_cnt = value;
+        fmac3_tst1_err_cnt.value_namespace = name_space;
+        fmac3_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst1-err-cnt")
+    {
+        fmac4_tst1_err_cnt = value;
+        fmac4_tst1_err_cnt.value_namespace = name_space;
+        fmac4_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst1-err-cnt")
+    {
+        fmac5_tst1_err_cnt = value;
+        fmac5_tst1_err_cnt.value_namespace = name_space;
+        fmac5_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst1-err-cnt")
+    {
+        fmac6_tst1_err_cnt = value;
+        fmac6_tst1_err_cnt.value_namespace = name_space;
+        fmac6_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst1-err-cnt")
+    {
+        fmac7_tst1_err_cnt = value;
+        fmac7_tst1_err_cnt.value_namespace = name_space;
+        fmac7_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst1-err-cnt")
+    {
+        fmac8_tst1_err_cnt = value;
+        fmac8_tst1_err_cnt.value_namespace = name_space;
+        fmac8_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst2-err-cnt")
+    {
+        fmac0_tst2_err_cnt = value;
+        fmac0_tst2_err_cnt.value_namespace = name_space;
+        fmac0_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst2-err-cnt")
+    {
+        fmac1_tst2_err_cnt = value;
+        fmac1_tst2_err_cnt.value_namespace = name_space;
+        fmac1_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst2-err-cnt")
+    {
+        fmac2_tst2_err_cnt = value;
+        fmac2_tst2_err_cnt.value_namespace = name_space;
+        fmac2_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst2-err-cnt")
+    {
+        fmac3_tst2_err_cnt = value;
+        fmac3_tst2_err_cnt.value_namespace = name_space;
+        fmac3_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst2-err-cnt")
+    {
+        fmac4_tst2_err_cnt = value;
+        fmac4_tst2_err_cnt.value_namespace = name_space;
+        fmac4_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst2-err-cnt")
+    {
+        fmac5_tst2_err_cnt = value;
+        fmac5_tst2_err_cnt.value_namespace = name_space;
+        fmac5_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst2-err-cnt")
+    {
+        fmac6_tst2_err_cnt = value;
+        fmac6_tst2_err_cnt.value_namespace = name_space;
+        fmac6_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst2-err-cnt")
+    {
+        fmac7_tst2_err_cnt = value;
+        fmac7_tst2_err_cnt.value_namespace = name_space;
+        fmac7_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst2-err-cnt")
+    {
+        fmac8_tst2_err_cnt = value;
+        fmac8_tst2_err_cnt.value_namespace = name_space;
+        fmac8_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst3-err-cnt")
+    {
+        fmac0_tst3_err_cnt = value;
+        fmac0_tst3_err_cnt.value_namespace = name_space;
+        fmac0_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst3-err-cnt")
+    {
+        fmac1_tst3_err_cnt = value;
+        fmac1_tst3_err_cnt.value_namespace = name_space;
+        fmac1_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst3-err-cnt")
+    {
+        fmac2_tst3_err_cnt = value;
+        fmac2_tst3_err_cnt.value_namespace = name_space;
+        fmac2_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst3-err-cnt")
+    {
+        fmac3_tst3_err_cnt = value;
+        fmac3_tst3_err_cnt.value_namespace = name_space;
+        fmac3_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst3-err-cnt")
+    {
+        fmac4_tst3_err_cnt = value;
+        fmac4_tst3_err_cnt.value_namespace = name_space;
+        fmac4_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst3-err-cnt")
+    {
+        fmac5_tst3_err_cnt = value;
+        fmac5_tst3_err_cnt.value_namespace = name_space;
+        fmac5_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst3-err-cnt")
+    {
+        fmac6_tst3_err_cnt = value;
+        fmac6_tst3_err_cnt.value_namespace = name_space;
+        fmac6_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst3-err-cnt")
+    {
+        fmac7_tst3_err_cnt = value;
+        fmac7_tst3_err_cnt.value_namespace = name_space;
+        fmac7_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst3-err-cnt")
+    {
+        fmac8_tst3_err_cnt = value;
+        fmac8_tst3_err_cnt.value_namespace = name_space;
+        fmac8_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-ecc-1b-err-cnt")
+    {
+        fmac0_ecc_1b_err_cnt = value;
+        fmac0_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac0_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-ecc-1b-err-cnt")
+    {
+        fmac1_ecc_1b_err_cnt = value;
+        fmac1_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac1_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-ecc-1b-err-cnt")
+    {
+        fmac2_ecc_1b_err_cnt = value;
+        fmac2_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac2_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-ecc-1b-err-cnt")
+    {
+        fmac3_ecc_1b_err_cnt = value;
+        fmac3_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac3_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-ecc-1b-err-cnt")
+    {
+        fmac4_ecc_1b_err_cnt = value;
+        fmac4_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac4_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-ecc-1b-err-cnt")
+    {
+        fmac5_ecc_1b_err_cnt = value;
+        fmac5_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac5_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-ecc-1b-err-cnt")
+    {
+        fmac6_ecc_1b_err_cnt = value;
+        fmac6_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac6_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-ecc-1b-err-cnt")
+    {
+        fmac7_ecc_1b_err_cnt = value;
+        fmac7_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac7_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-ecc-1b-err-cnt")
+    {
+        fmac8_ecc_1b_err_cnt = value;
+        fmac8_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac8_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-ecc-2b-err-cnt")
+    {
+        fmac0_ecc_2b_err_cnt = value;
+        fmac0_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac0_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-ecc-2b-err-cnt")
+    {
+        fmac1_ecc_2b_err_cnt = value;
+        fmac1_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac1_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-ecc-2b-err-cnt")
+    {
+        fmac2_ecc_2b_err_cnt = value;
+        fmac2_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac2_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-ecc-2b-err-cnt")
+    {
+        fmac3_ecc_2b_err_cnt = value;
+        fmac3_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac3_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-ecc-2b-err-cnt")
+    {
+        fmac4_ecc_2b_err_cnt = value;
+        fmac4_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac4_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-ecc-2b-err-cnt")
+    {
+        fmac5_ecc_2b_err_cnt = value;
+        fmac5_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac5_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-ecc-2b-err-cnt")
+    {
+        fmac6_ecc_2b_err_cnt = value;
+        fmac6_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac6_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-ecc-2b-err-cnt")
+    {
+        fmac7_ecc_2b_err_cnt = value;
+        fmac7_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac7_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-ecc-2b-err-cnt")
+    {
+        fmac8_ecc_2b_err_cnt = value;
+        fmac8_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac8_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "olp-incoming-bad-identifier-counter")
+    {
+        olp_incoming_bad_identifier_counter = value;
+        olp_incoming_bad_identifier_counter.value_namespace = name_space;
+        olp_incoming_bad_identifier_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "olp-incoming-bad-reassembly-counter")
+    {
+        olp_incoming_bad_reassembly_counter = value;
+        olp_incoming_bad_reassembly_counter.value_namespace = name_space;
+        olp_incoming_bad_reassembly_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-parity-err-cnt")
+    {
+        cfc_parity_err_cnt = value;
+        cfc_parity_err_cnt.value_namespace = name_space;
+        cfc_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-ilkn0-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn0_oob_rx_crc_err_cntr = value;
+        cfc_ilkn0_oob_rx_crc_err_cntr.value_namespace = name_space;
+        cfc_ilkn0_oob_rx_crc_err_cntr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-ilkn1-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn1_oob_rx_crc_err_cntr = value;
+        cfc_ilkn1_oob_rx_crc_err_cntr.value_namespace = name_space;
+        cfc_ilkn1_oob_rx_crc_err_cntr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx0-frm-err-cnt")
+    {
+        cfc_spi_oob_rx0_frm_err_cnt = value;
+        cfc_spi_oob_rx0_frm_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx0_frm_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx0-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx0_dip2_err_cnt = value;
+        cfc_spi_oob_rx0_dip2_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx0_dip2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx1-frm-err-cnt")
+    {
+        cfc_spi_oob_rx1_frm_err_cnt = value;
+        cfc_spi_oob_rx1_frm_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx1_frm_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx1-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx1_dip2_err_cnt = value;
+        cfc_spi_oob_rx1_dip2_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx1_dip2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-uc-pd-dropped-cnt")
+    {
+        cgm_cgm_uc_pd_dropped_cnt = value;
+        cgm_cgm_uc_pd_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_uc_pd_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-mc-rep-pd-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_pd_dropped_cnt = value;
+        cgm_cgm_mc_rep_pd_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_mc_rep_pd_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-rqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_rqp_cnt = value;
+        cgm_cgm_uc_db_dropped_by_rqp_cnt.value_namespace = name_space;
+        cgm_cgm_uc_db_dropped_by_rqp_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-pqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_pqp_cnt = value;
+        cgm_cgm_uc_db_dropped_by_pqp_cnt.value_namespace = name_space;
+        cgm_cgm_uc_db_dropped_by_pqp_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-mc-rep-db-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_db_dropped_cnt = value;
+        cgm_cgm_mc_rep_db_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_mc_rep_db_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-mc-db-dropped-cnt")
+    {
+        cgm_cgm_mc_db_dropped_cnt = value;
+        cgm_cgm_mc_db_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_mc_db_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-full-err-cnt")
+    {
+        drca_full_err_cnt = value;
+        drca_full_err_cnt.value_namespace = name_space;
+        drca_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-single-err-cnt")
+    {
+        drca_single_err_cnt = value;
+        drca_single_err_cnt.value_namespace = name_space;
+        drca_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-calib-bist-full-err-cnt")
+    {
+        drca_calib_bist_full_err_cnt = value;
+        drca_calib_bist_full_err_cnt.value_namespace = name_space;
+        drca_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-loopback-full-err-cnt")
+    {
+        drca_loopback_full_err_cnt = value;
+        drca_loopback_full_err_cnt.value_namespace = name_space;
+        drca_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-full-err-cnt")
+    {
+        drcb_full_err_cnt = value;
+        drcb_full_err_cnt.value_namespace = name_space;
+        drcb_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-single-err-cnt")
+    {
+        drcb_single_err_cnt = value;
+        drcb_single_err_cnt.value_namespace = name_space;
+        drcb_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-calib-bist-full-err-cnt")
+    {
+        drcb_calib_bist_full_err_cnt = value;
+        drcb_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcb_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-loopback-full-err-cnt")
+    {
+        drcb_loopback_full_err_cnt = value;
+        drcb_loopback_full_err_cnt.value_namespace = name_space;
+        drcb_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-full-err-cnt")
+    {
+        drcc_full_err_cnt = value;
+        drcc_full_err_cnt.value_namespace = name_space;
+        drcc_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-single-err-cnt")
+    {
+        drcc_single_err_cnt = value;
+        drcc_single_err_cnt.value_namespace = name_space;
+        drcc_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-calib-bist-full-err-cnt")
+    {
+        drcc_calib_bist_full_err_cnt = value;
+        drcc_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcc_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-loopback-full-err-cnt")
+    {
+        drcc_loopback_full_err_cnt = value;
+        drcc_loopback_full_err_cnt.value_namespace = name_space;
+        drcc_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-full-err-cnt")
+    {
+        drcd_full_err_cnt = value;
+        drcd_full_err_cnt.value_namespace = name_space;
+        drcd_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-single-err-cnt")
+    {
+        drcd_single_err_cnt = value;
+        drcd_single_err_cnt.value_namespace = name_space;
+        drcd_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-calib-bist-full-err-cnt")
+    {
+        drcd_calib_bist_full_err_cnt = value;
+        drcd_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcd_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-loopback-full-err-cnt")
+    {
+        drcd_loopback_full_err_cnt = value;
+        drcd_loopback_full_err_cnt.value_namespace = name_space;
+        drcd_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-full-err-cnt")
+    {
+        drce_full_err_cnt = value;
+        drce_full_err_cnt.value_namespace = name_space;
+        drce_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-single-err-cnt")
+    {
+        drce_single_err_cnt = value;
+        drce_single_err_cnt.value_namespace = name_space;
+        drce_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-calib-bist-full-err-cnt")
+    {
+        drce_calib_bist_full_err_cnt = value;
+        drce_calib_bist_full_err_cnt.value_namespace = name_space;
+        drce_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-loopback-full-err-cnt")
+    {
+        drce_loopback_full_err_cnt = value;
+        drce_loopback_full_err_cnt.value_namespace = name_space;
+        drce_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-full-err-cnt")
+    {
+        drcf_full_err_cnt = value;
+        drcf_full_err_cnt.value_namespace = name_space;
+        drcf_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-single-err-cnt")
+    {
+        drcf_single_err_cnt = value;
+        drcf_single_err_cnt.value_namespace = name_space;
+        drcf_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-calib-bist-full-err-cnt")
+    {
+        drcf_calib_bist_full_err_cnt = value;
+        drcf_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcf_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-loopback-full-err-cnt")
+    {
+        drcf_loopback_full_err_cnt = value;
+        drcf_loopback_full_err_cnt.value_namespace = name_space;
+        drcf_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-full-err-cnt")
+    {
+        drcg_full_err_cnt = value;
+        drcg_full_err_cnt.value_namespace = name_space;
+        drcg_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-single-err-cnt")
+    {
+        drcg_single_err_cnt = value;
+        drcg_single_err_cnt.value_namespace = name_space;
+        drcg_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-calib-bist-full-err-cnt")
+    {
+        drcg_calib_bist_full_err_cnt = value;
+        drcg_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcg_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-loopback-full-err-cnt")
+    {
+        drcg_loopback_full_err_cnt = value;
+        drcg_loopback_full_err_cnt.value_namespace = name_space;
+        drcg_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-full-err-cnt")
+    {
+        drch_full_err_cnt = value;
+        drch_full_err_cnt.value_namespace = name_space;
+        drch_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-single-err-cnt")
+    {
+        drch_single_err_cnt = value;
+        drch_single_err_cnt.value_namespace = name_space;
+        drch_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-calib-bist-full-err-cnt")
+    {
+        drch_calib_bist_full_err_cnt = value;
+        drch_calib_bist_full_err_cnt.value_namespace = name_space;
+        drch_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-loopback-full-err-cnt")
+    {
+        drch_loopback_full_err_cnt = value;
+        drch_loopback_full_err_cnt.value_namespace = name_space;
+        drch_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-full-err-cnt")
+    {
+        drcbroadcast_full_err_cnt = value;
+        drcbroadcast_full_err_cnt.value_namespace = name_space;
+        drcbroadcast_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-single-err-cnt")
+    {
+        drcbroadcast_single_err_cnt = value;
+        drcbroadcast_single_err_cnt.value_namespace = name_space;
+        drcbroadcast_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-calib-bist-full-err-cnt")
+    {
+        drcbroadcast_calib_bist_full_err_cnt = value;
+        drcbroadcast_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcbroadcast_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-loopback-full-err-cnt")
+    {
+        drcbroadcast_loopback_full_err_cnt = value;
+        drcbroadcast_loopback_full_err_cnt.value_namespace = name_space;
+        drcbroadcast_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "otn-mode")
+    {
+        otn_mode = value;
+        otn_mode.value_namespace = name_space;
+        otn_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-ports")
+    {
+        num_ports = value;
+        num_ports.value_namespace = name_space;
+        num_ports.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "num-blocks")
+    if(value_path == "rx-internal-error")
     {
-        num_blocks.yfilter = yfilter;
+        rx_internal_error.yfilter = yfilter;
+    }
+    if(value_path == "rx-internal-drop")
+    {
+        rx_internal_drop.yfilter = yfilter;
+    }
+    if(value_path == "tx-internal-error")
+    {
+        tx_internal_error.yfilter = yfilter;
+    }
+    if(value_path == "tx-internal-drop")
+    {
+        tx_internal_drop.yfilter = yfilter;
+    }
+    if(value_path == "cmic-cmc0-pkt-count-tx-pkt")
+    {
+        cmic_cmc0_pkt_count_tx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "cmic-cmc0-pkt-count-rx-pkt")
+    {
+        cmic_cmc0_pkt_count_rx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-rx-bursts-err-cnt")
+    {
+        nbi_stat_rx_bursts_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-ecc-1b-err-cnt")
+    {
+        nbi_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-ecc-2b-err-cnt")
+    {
+        nbi_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-parity-err-cnt")
+    {
+        nbi_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn-crc32-err-cnt")
+    {
+        nbi_rx_ilkn_crc32_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-burst-err-cnt")
+    {
+        nbi_rx_ilkn0_burst_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_sop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_eop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-misaligned-cnt")
+    {
+        nbi_rx_ilkn0_misaligned_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-burst-err-cnt")
+    {
+        nbi_rx_ilkn1_burst_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_sop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_eop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-misaligned-cnt")
+    {
+        nbi_rx_ilkn1_misaligned_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-tx-ilkn1-flushed-bursts-cnt")
+    {
+        nbi_tx_ilkn1_flushed_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_retry_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wdog_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_retry_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wdog_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-rx-frame-err-cnt")
+    {
+        nbi_stat_rx_frame_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-tx-frame-err-cnt")
+    {
+        nbi_stat_tx_frame_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-elk-err-bursts-cnt")
+    {
+        nbi_rx_elk_err_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-num-thrown-eops")
+    {
+        nbi_rx_num_thrown_eops.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-num-runts")
+    {
+        nbi_rx_num_runts.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-tx-crc-err-bursts-cnt")
+    {
+        nbi_bist_tx_crc_err_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-length-bursts-cnt")
+    {
+        nbi_bist_rx_err_length_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-burst-index-cnt")
+    {
+        nbi_bist_rx_err_burst_index_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-bct-cnt")
+    {
+        nbi_bist_rx_err_bct_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-data-cnt")
+    {
+        nbi_bist_rx_err_data_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-in-crc-err-cnt")
+    {
+        nbi_bist_rx_err_in_crc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-sob-cnt")
+    {
+        nbi_bist_rx_err_sob_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-tx-bursts-cnt")
+    {
+        nbi_stat_tx_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-tx-total-leng-cnt")
+    {
+        nbi_stat_tx_total_leng_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-total-tx-pkt-count")
+    {
+        rxaui_total_tx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-total-rx-pkt-count")
+    {
+        rxaui_total_rx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-pkt-count-bcast-pkt")
+    {
+        rxaui_rx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-pkt-count-bcast-pkt")
+    {
+        rxaui_tx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-pkt-count-mcast-pkt")
+    {
+        rxaui_rx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-pkt-count-mcast-pkt")
+    {
+        rxaui_tx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-pkt-count-ucast-pkt")
+    {
+        rxaui_rx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-pkt-count-ucast-pkt")
+    {
+        rxaui_tx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-err-drop-pkt-cnt")
+    {
+        rxaui_rx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-err-drop-pkt-cnt")
+    {
+        rxaui_tx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-byte-count-tx-pkt")
+    {
+        rxaui_byte_count_tx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-byte-count-rx-pkt")
+    {
+        rxaui_byte_count_rx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-dscrd-pkt-cnt")
+    {
+        rxaui_rx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-dscrd-pkt-cnt")
+    {
+        rxaui_tx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-nif-packet-counter")
+    {
+        ire_nif_packet_counter.yfilter = yfilter;
+    }
+    if(value_path == "il-total-rx-pkt-count")
+    {
+        il_total_rx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "il-total-tx-pkt-count")
+    {
+        il_total_tx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-err-drop-pkt-cnt")
+    {
+        il_rx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-err-drop-pkt-cnt")
+    {
+        il_tx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-byte-count-tx-pkt")
+    {
+        il_byte_count_tx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-byte-count-rx-pkt")
+    {
+        il_byte_count_rx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-dscrd-pkt-cnt")
+    {
+        il_rx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-dscrd-pkt-cnt")
+    {
+        il_tx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-pkt-count-bcast-pkt")
+    {
+        il_rx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-pkt-count-bcast-pkt")
+    {
+        il_tx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-pkt-count-mcast-pkt")
+    {
+        il_rx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-pkt-count-mcast-pkt")
+    {
+        il_tx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-pkt-count-ucast-pkt")
+    {
+        il_rx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-pkt-count-ucast-pkt")
+    {
+        il_tx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-enq-pkt-cnt")
+    {
+        iqm_enq_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-enq-byte-cnt")
+    {
+        iqm_enq_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-deq-pkt-cnt")
+    {
+        iqm_deq_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-deq-byte-cnt")
+    {
+        iqm_deq_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-tot-dscrd-pkt-cnt")
+    {
+        iqm_tot_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-tot-dscrd-byte-cnt")
+    {
+        iqm_tot_dscrd_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-ecc-1b-err-cnt")
+    {
+        iqm_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-ecc-2b-err-cnt")
+    {
+        iqm_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-parity-err-cnt")
+    {
+        iqm_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-deq-delete-pkt-cnt")
+    {
+        iqm_deq_delete_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-ecn-dscrd-msk-pkt-cnt")
+    {
+        iqm_ecn_dscrd_msk_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-q-tot-dscrd-pkt-cnt")
+    {
+        iqm_q_tot_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-q-deq-delete-pkt-cnt")
+    {
+        iqm_q_deq_delete_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-db-pkt-cnt")
+    {
+        iqm_rjct_db_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-bdb-pkt-cnt")
+    {
+        iqm_rjct_bdb_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-bdb-protct-pkt-cnt")
+    {
+        iqm_rjct_bdb_protct_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-oc-bd-pkt-cnt")
+    {
+        iqm_rjct_oc_bd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-sn-err-pkt-cnt")
+    {
+        iqm_rjct_sn_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-mc-err-pkt-cnt")
+    {
+        iqm_rjct_mc_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-rsrc-err-pkt-cnt")
+    {
+        iqm_rjct_rsrc_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-qnvalid-err-pkt-cnt")
+    {
+        iqm_rjct_qnvalid_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-cnm-pkt-cnt")
+    {
+        iqm_rjct_cnm_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-dyn-space-pkt-cnt")
+    {
+        iqm_rjct_dyn_space_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-fdt-pkt-cnt")
+    {
+        ipt_fdt_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-ecc-1b-err-cnt")
+    {
+        ipt_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-ecc-2b-err-cnt")
+    {
+        ipt_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-parity-err-cnt")
+    {
+        ipt_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-crc-err-cnt")
+    {
+        ipt_crc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-crc-err-del-buff-cnt")
+    {
+        ipt_crc_err_del_buff_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-cpu-del-buff-cnt")
+    {
+        ipt_cpu_del_buff_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-cpu-rel-buff-cnt")
+    {
+        ipt_cpu_rel_buff_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-crc-err-buff-fifo-full-cnt")
+    {
+        ipt_crc_err_buff_fifo_full_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-data-cell-cnt")
+    {
+        fdt_data_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-data-byte-cnt")
+    {
+        fdt_data_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-crc-dropped-pck-cnt")
+    {
+        fdt_crc_dropped_pck_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-invalid-destq-drop-cell-cnt")
+    {
+        fdt_invalid_destq_drop_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-indirect-command-count")
+    {
+        fdt_indirect_command_count.yfilter = yfilter;
+    }
+    if(value_path == "fdt-ecc-1b-err-cnt")
+    {
+        fdt_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-ecc-2b-err-cnt")
+    {
+        fdt_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-parity-err-cnt")
+    {
+        fdt_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-crc-dropped-cell-cnt")
+    {
+        fdt_crc_dropped_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-control-cell-cnt")
+    {
+        fcr_control_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-cell-drop-cnt")
+    {
+        fcr_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-credit-cell-drop-cnt")
+    {
+        fcr_credit_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-fs-cell-drop-cnt")
+    {
+        fcr_fs_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-rt-cell-drop-cnt")
+    {
+        fcr_rt_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-ecc-1b-err-cnt")
+    {
+        fcr_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-ecc-2b-err-cnt")
+    {
+        fcr_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-data-cell-cnt")
+    {
+        fdr_data_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-data-byte-cnt")
+    {
+        fdr_data_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-crc-dropped-pck-cnt")
+    {
+        fdr_crc_dropped_pck_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-p-pkt-cnt")
+    {
+        fdr_p_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-prm-error-filter-cnt")
+    {
+        fdr_prm_error_filter_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-sec-error-filter-cnt")
+    {
+        fdr_sec_error_filter_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-prm-ecc-1b-err-cnt")
+    {
+        fdr_prm_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-prm-ecc-2b-err-cnt")
+    {
+        fdr_prm_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-sec-ecc-1b-err-cnt")
+    {
+        fdr_sec_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-sec-ecc-2b-err-cnt")
+    {
+        fdr_sec_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ecc-1b-err-cnt")
+    {
+        egq_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ecc-2b-err-cnt")
+    {
+        egq_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-parity-err-cnt")
+    {
+        egq_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-dbf-ecc-1b-err-cnt")
+    {
+        egq_dbf_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-dbf-ecc-2b-err-cnt")
+    {
+        egq_dbf_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-empty-mcid-counter")
+    {
+        egq_empty_mcid_counter.yfilter = yfilter;
+    }
+    if(value_path == "egq-rqp-discard-packet-counter")
+    {
+        egq_rqp_discard_packet_counter.yfilter = yfilter;
+    }
+    if(value_path == "egq-ehp-discard-packet-counter")
+    {
+        egq_ehp_discard_packet_counter.yfilter = yfilter;
+    }
+    if(value_path == "egq-ipt-pkt-cnt")
+    {
+        egq_ipt_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-pkt-cnt")
+    {
+        epni_epe_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-byte-cnt")
+    {
+        epni_epe_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-discard-pkt-cnt")
+    {
+        epni_epe_discard_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-ecc-1b-err-cnt")
+    {
+        epni_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-ecc-2b-err-cnt")
+    {
+        epni_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-parity-err-cnt")
+    {
+        epni_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-pkt-cnt")
+    {
+        egq_pqp_ucast_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-h-pkt-cnt")
+    {
+        egq_pqp_ucast_h_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-l-pkt-cnt")
+    {
+        egq_pqp_ucast_l_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-bytes-cnt")
+    {
+        egq_pqp_ucast_bytes_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-discard-pkt-cnt")
+    {
+        egq_pqp_ucast_discard_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-pkt-cnt")
+    {
+        egq_pqp_mcast_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-h-pkt-cnt")
+    {
+        egq_pqp_mcast_h_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-l-pkt-cnt")
+    {
+        egq_pqp_mcast_l_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-bytes-cnt")
+    {
+        egq_pqp_mcast_bytes_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-discard-pkt-cnt")
+    {
+        egq_pqp_mcast_discard_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fct-control-cell-cnt")
+    {
+        fct_control_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fct-unrch-crdt-cnt")
+    {
+        fct_unrch_crdt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-reassembly-errors")
+    {
+        idr_reassembly_errors.yfilter = yfilter;
+    }
+    if(value_path == "idr-mmu-ecc-1b-err-cnt")
+    {
+        idr_mmu_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-mmu-ecc-2b-err-cnt")
+    {
+        idr_mmu_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets0-cnt")
+    {
+        idr_discarded_packets0_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets1-cnt")
+    {
+        idr_discarded_packets1_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets2-cnt")
+    {
+        idr_discarded_packets2_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets3-cnt")
+    {
+        idr_discarded_packets3_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets0-cnt")
+    {
+        idr_discarded_octets0_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets1-cnt")
+    {
+        idr_discarded_octets1_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets2-cnt")
+    {
+        idr_discarded_octets2_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets3-cnt")
+    {
+        idr_discarded_octets3_cnt.yfilter = yfilter;
+    }
+    if(value_path == "mmu-ecc-1b-err-cnt")
+    {
+        mmu_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "mmu-ecc-2b-err-cnt")
+    {
+        mmu_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "oamp-parity-err-cnt")
+    {
+        oamp_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "oamp-ecc-1b-err-cnt")
+    {
+        oamp_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "oamp-ecc-2b-err-cnt")
+    {
+        oamp_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "crps-parity-err-cnt")
+    {
+        crps_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs0-tst-rx-err-cnt")
+    {
+        fmac0_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs0-tst-rx-err-cnt")
+    {
+        fmac1_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs0-tst-rx-err-cnt")
+    {
+        fmac2_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs0-tst-rx-err-cnt")
+    {
+        fmac3_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs0-tst-rx-err-cnt")
+    {
+        fmac4_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs0-tst-rx-err-cnt")
+    {
+        fmac5_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs0-tst-rx-err-cnt")
+    {
+        fmac6_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs0-tst-rx-err-cnt")
+    {
+        fmac7_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs0-tst-rx-err-cnt")
+    {
+        fmac8_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs1-tst-rx-err-cnt")
+    {
+        fmac0_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs1-tst-rx-err-cnt")
+    {
+        fmac1_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs1-tst-rx-err-cnt")
+    {
+        fmac2_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs1-tst-rx-err-cnt")
+    {
+        fmac3_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs1-tst-rx-err-cnt")
+    {
+        fmac4_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs1-tst-rx-err-cnt")
+    {
+        fmac5_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs1-tst-rx-err-cnt")
+    {
+        fmac6_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs1-tst-rx-err-cnt")
+    {
+        fmac7_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs1-tst-rx-err-cnt")
+    {
+        fmac8_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs2-tst-rx-err-cnt")
+    {
+        fmac0_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs2-tst-rx-err-cnt")
+    {
+        fmac1_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs2-tst-rx-err-cnt")
+    {
+        fmac2_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs2-tst-rx-err-cnt")
+    {
+        fmac3_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs2-tst-rx-err-cnt")
+    {
+        fmac4_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs2-tst-rx-err-cnt")
+    {
+        fmac5_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs2-tst-rx-err-cnt")
+    {
+        fmac6_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs2-tst-rx-err-cnt")
+    {
+        fmac7_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs2-tst-rx-err-cnt")
+    {
+        fmac8_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs3-tst-rx-err-cnt")
+    {
+        fmac0_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs3-tst-rx-err-cnt")
+    {
+        fmac1_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs3-tst-rx-err-cnt")
+    {
+        fmac2_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs3-tst-rx-err-cnt")
+    {
+        fmac3_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs3-tst-rx-err-cnt")
+    {
+        fmac4_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs3-tst-rx-err-cnt")
+    {
+        fmac5_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs3-tst-rx-err-cnt")
+    {
+        fmac6_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs3-tst-rx-err-cnt")
+    {
+        fmac7_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs3-tst-rx-err-cnt")
+    {
+        fmac8_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst0-err-cnt")
+    {
+        fmac0_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst0-err-cnt")
+    {
+        fmac1_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst0-err-cnt")
+    {
+        fmac2_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst0-err-cnt")
+    {
+        fmac3_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst0-err-cnt")
+    {
+        fmac4_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst0-err-cnt")
+    {
+        fmac5_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst0-err-cnt")
+    {
+        fmac6_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst0-err-cnt")
+    {
+        fmac7_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst0-err-cnt")
+    {
+        fmac8_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst1-err-cnt")
+    {
+        fmac0_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst1-err-cnt")
+    {
+        fmac1_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst1-err-cnt")
+    {
+        fmac2_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst1-err-cnt")
+    {
+        fmac3_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst1-err-cnt")
+    {
+        fmac4_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst1-err-cnt")
+    {
+        fmac5_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst1-err-cnt")
+    {
+        fmac6_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst1-err-cnt")
+    {
+        fmac7_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst1-err-cnt")
+    {
+        fmac8_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst2-err-cnt")
+    {
+        fmac0_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst2-err-cnt")
+    {
+        fmac1_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst2-err-cnt")
+    {
+        fmac2_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst2-err-cnt")
+    {
+        fmac3_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst2-err-cnt")
+    {
+        fmac4_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst2-err-cnt")
+    {
+        fmac5_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst2-err-cnt")
+    {
+        fmac6_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst2-err-cnt")
+    {
+        fmac7_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst2-err-cnt")
+    {
+        fmac8_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst3-err-cnt")
+    {
+        fmac0_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst3-err-cnt")
+    {
+        fmac1_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst3-err-cnt")
+    {
+        fmac2_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst3-err-cnt")
+    {
+        fmac3_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst3-err-cnt")
+    {
+        fmac4_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst3-err-cnt")
+    {
+        fmac5_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst3-err-cnt")
+    {
+        fmac6_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst3-err-cnt")
+    {
+        fmac7_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst3-err-cnt")
+    {
+        fmac8_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-ecc-1b-err-cnt")
+    {
+        fmac0_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-ecc-1b-err-cnt")
+    {
+        fmac1_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-ecc-1b-err-cnt")
+    {
+        fmac2_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-ecc-1b-err-cnt")
+    {
+        fmac3_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-ecc-1b-err-cnt")
+    {
+        fmac4_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-ecc-1b-err-cnt")
+    {
+        fmac5_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-ecc-1b-err-cnt")
+    {
+        fmac6_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-ecc-1b-err-cnt")
+    {
+        fmac7_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-ecc-1b-err-cnt")
+    {
+        fmac8_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-ecc-2b-err-cnt")
+    {
+        fmac0_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-ecc-2b-err-cnt")
+    {
+        fmac1_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-ecc-2b-err-cnt")
+    {
+        fmac2_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-ecc-2b-err-cnt")
+    {
+        fmac3_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-ecc-2b-err-cnt")
+    {
+        fmac4_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-ecc-2b-err-cnt")
+    {
+        fmac5_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-ecc-2b-err-cnt")
+    {
+        fmac6_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-ecc-2b-err-cnt")
+    {
+        fmac7_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-ecc-2b-err-cnt")
+    {
+        fmac8_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "olp-incoming-bad-identifier-counter")
+    {
+        olp_incoming_bad_identifier_counter.yfilter = yfilter;
+    }
+    if(value_path == "olp-incoming-bad-reassembly-counter")
+    {
+        olp_incoming_bad_reassembly_counter.yfilter = yfilter;
+    }
+    if(value_path == "cfc-parity-err-cnt")
+    {
+        cfc_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-ilkn0-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn0_oob_rx_crc_err_cntr.yfilter = yfilter;
+    }
+    if(value_path == "cfc-ilkn1-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn1_oob_rx_crc_err_cntr.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx0-frm-err-cnt")
+    {
+        cfc_spi_oob_rx0_frm_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx0-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx0_dip2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx1-frm-err-cnt")
+    {
+        cfc_spi_oob_rx1_frm_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx1-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx1_dip2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-uc-pd-dropped-cnt")
+    {
+        cgm_cgm_uc_pd_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-mc-rep-pd-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_pd_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-rqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_rqp_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-pqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_pqp_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-mc-rep-db-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_db_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-mc-db-dropped-cnt")
+    {
+        cgm_cgm_mc_db_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-full-err-cnt")
+    {
+        drca_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-single-err-cnt")
+    {
+        drca_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-calib-bist-full-err-cnt")
+    {
+        drca_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-loopback-full-err-cnt")
+    {
+        drca_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-full-err-cnt")
+    {
+        drcb_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-single-err-cnt")
+    {
+        drcb_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-calib-bist-full-err-cnt")
+    {
+        drcb_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-loopback-full-err-cnt")
+    {
+        drcb_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-full-err-cnt")
+    {
+        drcc_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-single-err-cnt")
+    {
+        drcc_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-calib-bist-full-err-cnt")
+    {
+        drcc_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-loopback-full-err-cnt")
+    {
+        drcc_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-full-err-cnt")
+    {
+        drcd_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-single-err-cnt")
+    {
+        drcd_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-calib-bist-full-err-cnt")
+    {
+        drcd_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-loopback-full-err-cnt")
+    {
+        drcd_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-full-err-cnt")
+    {
+        drce_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-single-err-cnt")
+    {
+        drce_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-calib-bist-full-err-cnt")
+    {
+        drce_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-loopback-full-err-cnt")
+    {
+        drce_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-full-err-cnt")
+    {
+        drcf_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-single-err-cnt")
+    {
+        drcf_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-calib-bist-full-err-cnt")
+    {
+        drcf_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-loopback-full-err-cnt")
+    {
+        drcf_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-full-err-cnt")
+    {
+        drcg_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-single-err-cnt")
+    {
+        drcg_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-calib-bist-full-err-cnt")
+    {
+        drcg_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-loopback-full-err-cnt")
+    {
+        drcg_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-full-err-cnt")
+    {
+        drch_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-single-err-cnt")
+    {
+        drch_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-calib-bist-full-err-cnt")
+    {
+        drch_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-loopback-full-err-cnt")
+    {
+        drch_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-full-err-cnt")
+    {
+        drcbroadcast_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-single-err-cnt")
+    {
+        drcbroadcast_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-calib-bist-full-err-cnt")
+    {
+        drcbroadcast_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-loopback-full-err-cnt")
+    {
+        drcbroadcast_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "otn-mode")
+    {
+        otn_mode.yfilter = yfilter;
+    }
+    if(value_path == "num-ports")
+    {
+        num_ports.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "block-info" || name == "num-blocks")
+    if(name == "aggr-stats-otn" || name == "rx-internal-error" || name == "rx-internal-drop" || name == "tx-internal-error" || name == "tx-internal-drop" || name == "cmic-cmc0-pkt-count-tx-pkt" || name == "cmic-cmc0-pkt-count-rx-pkt" || name == "nbi-stat-rx-bursts-err-cnt" || name == "nbi-ecc-1b-err-cnt" || name == "nbi-ecc-2b-err-cnt" || name == "nbi-parity-err-cnt" || name == "nbi-rx-ilkn-crc32-err-cnt" || name == "nbi-rx-ilkn0-crc24-err-cnt" || name == "nbi-rx-ilkn0-burst-err-cnt" || name == "nbi-rx-ilkn0-miss-sop-err-cnt" || name == "nbi-rx-ilkn0-miss-eop-err-cnt" || name == "nbi-rx-ilkn0-misaligned-cnt" || name == "nbi-rx-ilkn1-crc24-err-cnt" || name == "nbi-rx-ilkn1-burst-err-cnt" || name == "nbi-rx-ilkn1-miss-sop-err-cnt" || name == "nbi-rx-ilkn1-miss-eop-err-cnt" || name == "nbi-rx-ilkn1-misaligned-cnt" || name == "nbi-tx-ilkn1-flushed-bursts-cnt" || name == "nbi-rx-ilkn0-retrans-crc24-err-cnt" || name == "nbi-rx-ilkn0-retrans-retry-err-cnt" || name == "nbi-rx-ilkn0-retrans-wdog-err-cnt" || name == "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt" || name == "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt" || name == "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt" || name == "nbi-rx-ilkn1-retrans-crc24-err-cnt" || name == "nbi-rx-ilkn1-retrans-retry-err-cnt" || name == "nbi-rx-ilkn1-retrans-wdog-err-cnt" || name == "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt" || name == "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt" || name == "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt" || name == "nbi-stat-rx-frame-err-cnt" || name == "nbi-stat-tx-frame-err-cnt" || name == "nbi-rx-elk-err-bursts-cnt" || name == "nbi-rx-num-thrown-eops" || name == "nbi-rx-num-runts" || name == "nbi-bist-tx-crc-err-bursts-cnt" || name == "nbi-bist-rx-err-length-bursts-cnt" || name == "nbi-bist-rx-err-burst-index-cnt" || name == "nbi-bist-rx-err-bct-cnt" || name == "nbi-bist-rx-err-data-cnt" || name == "nbi-bist-rx-err-in-crc-err-cnt" || name == "nbi-bist-rx-err-sob-cnt" || name == "nbi-stat-tx-bursts-cnt" || name == "nbi-stat-tx-total-leng-cnt" || name == "rxaui-total-tx-pkt-count" || name == "rxaui-total-rx-pkt-count" || name == "rxaui-rx-pkt-count-bcast-pkt" || name == "rxaui-tx-pkt-count-bcast-pkt" || name == "rxaui-rx-pkt-count-mcast-pkt" || name == "rxaui-tx-pkt-count-mcast-pkt" || name == "rxaui-rx-pkt-count-ucast-pkt" || name == "rxaui-tx-pkt-count-ucast-pkt" || name == "rxaui-rx-err-drop-pkt-cnt" || name == "rxaui-tx-err-drop-pkt-cnt" || name == "rxaui-byte-count-tx-pkt" || name == "rxaui-byte-count-rx-pkt" || name == "rxaui-rx-dscrd-pkt-cnt" || name == "rxaui-tx-dscrd-pkt-cnt" || name == "ire-nif-packet-counter" || name == "il-total-rx-pkt-count" || name == "il-total-tx-pkt-count" || name == "il-rx-err-drop-pkt-cnt" || name == "il-tx-err-drop-pkt-cnt" || name == "il-byte-count-tx-pkt" || name == "il-byte-count-rx-pkt" || name == "il-rx-dscrd-pkt-cnt" || name == "il-tx-dscrd-pkt-cnt" || name == "il-rx-pkt-count-bcast-pkt" || name == "il-tx-pkt-count-bcast-pkt" || name == "il-rx-pkt-count-mcast-pkt" || name == "il-tx-pkt-count-mcast-pkt" || name == "il-rx-pkt-count-ucast-pkt" || name == "il-tx-pkt-count-ucast-pkt" || name == "iqm-enq-pkt-cnt" || name == "iqm-enq-byte-cnt" || name == "iqm-deq-pkt-cnt" || name == "iqm-deq-byte-cnt" || name == "iqm-tot-dscrd-pkt-cnt" || name == "iqm-tot-dscrd-byte-cnt" || name == "iqm-ecc-1b-err-cnt" || name == "iqm-ecc-2b-err-cnt" || name == "iqm-parity-err-cnt" || name == "iqm-deq-delete-pkt-cnt" || name == "iqm-ecn-dscrd-msk-pkt-cnt" || name == "iqm-q-tot-dscrd-pkt-cnt" || name == "iqm-q-deq-delete-pkt-cnt" || name == "iqm-rjct-db-pkt-cnt" || name == "iqm-rjct-bdb-pkt-cnt" || name == "iqm-rjct-bdb-protct-pkt-cnt" || name == "iqm-rjct-oc-bd-pkt-cnt" || name == "iqm-rjct-sn-err-pkt-cnt" || name == "iqm-rjct-mc-err-pkt-cnt" || name == "iqm-rjct-rsrc-err-pkt-cnt" || name == "iqm-rjct-qnvalid-err-pkt-cnt" || name == "iqm-rjct-cnm-pkt-cnt" || name == "iqm-rjct-dyn-space-pkt-cnt" || name == "ipt-fdt-pkt-cnt" || name == "ipt-ecc-1b-err-cnt" || name == "ipt-ecc-2b-err-cnt" || name == "ipt-parity-err-cnt" || name == "ipt-crc-err-cnt" || name == "ipt-crc-err-del-buff-cnt" || name == "ipt-cpu-del-buff-cnt" || name == "ipt-cpu-rel-buff-cnt" || name == "ipt-crc-err-buff-fifo-full-cnt" || name == "fdt-data-cell-cnt" || name == "fdt-data-byte-cnt" || name == "fdt-crc-dropped-pck-cnt" || name == "fdt-invalid-destq-drop-cell-cnt" || name == "fdt-indirect-command-count" || name == "fdt-ecc-1b-err-cnt" || name == "fdt-ecc-2b-err-cnt" || name == "fdt-parity-err-cnt" || name == "fdt-crc-dropped-cell-cnt" || name == "fcr-control-cell-cnt" || name == "fcr-cell-drop-cnt" || name == "fcr-credit-cell-drop-cnt" || name == "fcr-fs-cell-drop-cnt" || name == "fcr-rt-cell-drop-cnt" || name == "fcr-ecc-1b-err-cnt" || name == "fcr-ecc-2b-err-cnt" || name == "fdr-data-cell-cnt" || name == "fdr-data-byte-cnt" || name == "fdr-crc-dropped-pck-cnt" || name == "fdr-p-pkt-cnt" || name == "fdr-prm-error-filter-cnt" || name == "fdr-sec-error-filter-cnt" || name == "fdr-prm-ecc-1b-err-cnt" || name == "fdr-prm-ecc-2b-err-cnt" || name == "fdr-sec-ecc-1b-err-cnt" || name == "fdr-sec-ecc-2b-err-cnt" || name == "egq-ecc-1b-err-cnt" || name == "egq-ecc-2b-err-cnt" || name == "egq-parity-err-cnt" || name == "egq-dbf-ecc-1b-err-cnt" || name == "egq-dbf-ecc-2b-err-cnt" || name == "egq-empty-mcid-counter" || name == "egq-rqp-discard-packet-counter" || name == "egq-ehp-discard-packet-counter" || name == "egq-ipt-pkt-cnt" || name == "epni-epe-pkt-cnt" || name == "epni-epe-byte-cnt" || name == "epni-epe-discard-pkt-cnt" || name == "epni-ecc-1b-err-cnt" || name == "epni-ecc-2b-err-cnt" || name == "epni-parity-err-cnt" || name == "egq-pqp-ucast-pkt-cnt" || name == "egq-pqp-ucast-h-pkt-cnt" || name == "egq-pqp-ucast-l-pkt-cnt" || name == "egq-pqp-ucast-bytes-cnt" || name == "egq-pqp-ucast-discard-pkt-cnt" || name == "egq-pqp-mcast-pkt-cnt" || name == "egq-pqp-mcast-h-pkt-cnt" || name == "egq-pqp-mcast-l-pkt-cnt" || name == "egq-pqp-mcast-bytes-cnt" || name == "egq-pqp-mcast-discard-pkt-cnt" || name == "fct-control-cell-cnt" || name == "fct-unrch-crdt-cnt" || name == "idr-reassembly-errors" || name == "idr-mmu-ecc-1b-err-cnt" || name == "idr-mmu-ecc-2b-err-cnt" || name == "idr-discarded-packets0-cnt" || name == "idr-discarded-packets1-cnt" || name == "idr-discarded-packets2-cnt" || name == "idr-discarded-packets3-cnt" || name == "idr-discarded-octets0-cnt" || name == "idr-discarded-octets1-cnt" || name == "idr-discarded-octets2-cnt" || name == "idr-discarded-octets3-cnt" || name == "mmu-ecc-1b-err-cnt" || name == "mmu-ecc-2b-err-cnt" || name == "oamp-parity-err-cnt" || name == "oamp-ecc-1b-err-cnt" || name == "oamp-ecc-2b-err-cnt" || name == "crps-parity-err-cnt" || name == "fmac0-kpcs0-tst-rx-err-cnt" || name == "fmac1-kpcs0-tst-rx-err-cnt" || name == "fmac2-kpcs0-tst-rx-err-cnt" || name == "fmac3-kpcs0-tst-rx-err-cnt" || name == "fmac4-kpcs0-tst-rx-err-cnt" || name == "fmac5-kpcs0-tst-rx-err-cnt" || name == "fmac6-kpcs0-tst-rx-err-cnt" || name == "fmac7-kpcs0-tst-rx-err-cnt" || name == "fmac8-kpcs0-tst-rx-err-cnt" || name == "fmac0-kpcs1-tst-rx-err-cnt" || name == "fmac1-kpcs1-tst-rx-err-cnt" || name == "fmac2-kpcs1-tst-rx-err-cnt" || name == "fmac3-kpcs1-tst-rx-err-cnt" || name == "fmac4-kpcs1-tst-rx-err-cnt" || name == "fmac5-kpcs1-tst-rx-err-cnt" || name == "fmac6-kpcs1-tst-rx-err-cnt" || name == "fmac7-kpcs1-tst-rx-err-cnt" || name == "fmac8-kpcs1-tst-rx-err-cnt" || name == "fmac0-kpcs2-tst-rx-err-cnt" || name == "fmac1-kpcs2-tst-rx-err-cnt" || name == "fmac2-kpcs2-tst-rx-err-cnt" || name == "fmac3-kpcs2-tst-rx-err-cnt" || name == "fmac4-kpcs2-tst-rx-err-cnt" || name == "fmac5-kpcs2-tst-rx-err-cnt" || name == "fmac6-kpcs2-tst-rx-err-cnt" || name == "fmac7-kpcs2-tst-rx-err-cnt" || name == "fmac8-kpcs2-tst-rx-err-cnt" || name == "fmac0-kpcs3-tst-rx-err-cnt" || name == "fmac1-kpcs3-tst-rx-err-cnt" || name == "fmac2-kpcs3-tst-rx-err-cnt" || name == "fmac3-kpcs3-tst-rx-err-cnt" || name == "fmac4-kpcs3-tst-rx-err-cnt" || name == "fmac5-kpcs3-tst-rx-err-cnt" || name == "fmac6-kpcs3-tst-rx-err-cnt" || name == "fmac7-kpcs3-tst-rx-err-cnt" || name == "fmac8-kpcs3-tst-rx-err-cnt" || name == "fmac0-tst0-err-cnt" || name == "fmac1-tst0-err-cnt" || name == "fmac2-tst0-err-cnt" || name == "fmac3-tst0-err-cnt" || name == "fmac4-tst0-err-cnt" || name == "fmac5-tst0-err-cnt" || name == "fmac6-tst0-err-cnt" || name == "fmac7-tst0-err-cnt" || name == "fmac8-tst0-err-cnt" || name == "fmac0-tst1-err-cnt" || name == "fmac1-tst1-err-cnt" || name == "fmac2-tst1-err-cnt" || name == "fmac3-tst1-err-cnt" || name == "fmac4-tst1-err-cnt" || name == "fmac5-tst1-err-cnt" || name == "fmac6-tst1-err-cnt" || name == "fmac7-tst1-err-cnt" || name == "fmac8-tst1-err-cnt" || name == "fmac0-tst2-err-cnt" || name == "fmac1-tst2-err-cnt" || name == "fmac2-tst2-err-cnt" || name == "fmac3-tst2-err-cnt" || name == "fmac4-tst2-err-cnt" || name == "fmac5-tst2-err-cnt" || name == "fmac6-tst2-err-cnt" || name == "fmac7-tst2-err-cnt" || name == "fmac8-tst2-err-cnt" || name == "fmac0-tst3-err-cnt" || name == "fmac1-tst3-err-cnt" || name == "fmac2-tst3-err-cnt" || name == "fmac3-tst3-err-cnt" || name == "fmac4-tst3-err-cnt" || name == "fmac5-tst3-err-cnt" || name == "fmac6-tst3-err-cnt" || name == "fmac7-tst3-err-cnt" || name == "fmac8-tst3-err-cnt" || name == "fmac0-ecc-1b-err-cnt" || name == "fmac1-ecc-1b-err-cnt" || name == "fmac2-ecc-1b-err-cnt" || name == "fmac3-ecc-1b-err-cnt" || name == "fmac4-ecc-1b-err-cnt" || name == "fmac5-ecc-1b-err-cnt" || name == "fmac6-ecc-1b-err-cnt" || name == "fmac7-ecc-1b-err-cnt" || name == "fmac8-ecc-1b-err-cnt" || name == "fmac0-ecc-2b-err-cnt" || name == "fmac1-ecc-2b-err-cnt" || name == "fmac2-ecc-2b-err-cnt" || name == "fmac3-ecc-2b-err-cnt" || name == "fmac4-ecc-2b-err-cnt" || name == "fmac5-ecc-2b-err-cnt" || name == "fmac6-ecc-2b-err-cnt" || name == "fmac7-ecc-2b-err-cnt" || name == "fmac8-ecc-2b-err-cnt" || name == "olp-incoming-bad-identifier-counter" || name == "olp-incoming-bad-reassembly-counter" || name == "cfc-parity-err-cnt" || name == "cfc-ilkn0-oob-rx-crc-err-cntr" || name == "cfc-ilkn1-oob-rx-crc-err-cntr" || name == "cfc-spi-oob-rx0-frm-err-cnt" || name == "cfc-spi-oob-rx0-dip2-err-cnt" || name == "cfc-spi-oob-rx1-frm-err-cnt" || name == "cfc-spi-oob-rx1-dip2-err-cnt" || name == "cgm-cgm-uc-pd-dropped-cnt" || name == "cgm-cgm-mc-rep-pd-dropped-cnt" || name == "cgm-cgm-uc-db-dropped-by-rqp-cnt" || name == "cgm-cgm-uc-db-dropped-by-pqp-cnt" || name == "cgm-cgm-mc-rep-db-dropped-cnt" || name == "cgm-cgm-mc-db-dropped-cnt" || name == "drca-full-err-cnt" || name == "drca-single-err-cnt" || name == "drca-calib-bist-full-err-cnt" || name == "drca-loopback-full-err-cnt" || name == "drcb-full-err-cnt" || name == "drcb-single-err-cnt" || name == "drcb-calib-bist-full-err-cnt" || name == "drcb-loopback-full-err-cnt" || name == "drcc-full-err-cnt" || name == "drcc-single-err-cnt" || name == "drcc-calib-bist-full-err-cnt" || name == "drcc-loopback-full-err-cnt" || name == "drcd-full-err-cnt" || name == "drcd-single-err-cnt" || name == "drcd-calib-bist-full-err-cnt" || name == "drcd-loopback-full-err-cnt" || name == "drce-full-err-cnt" || name == "drce-single-err-cnt" || name == "drce-calib-bist-full-err-cnt" || name == "drce-loopback-full-err-cnt" || name == "drcf-full-err-cnt" || name == "drcf-single-err-cnt" || name == "drcf-calib-bist-full-err-cnt" || name == "drcf-loopback-full-err-cnt" || name == "drcg-full-err-cnt" || name == "drcg-single-err-cnt" || name == "drcg-calib-bist-full-err-cnt" || name == "drcg-loopback-full-err-cnt" || name == "drch-full-err-cnt" || name == "drch-single-err-cnt" || name == "drch-calib-bist-full-err-cnt" || name == "drch-loopback-full-err-cnt" || name == "drcbroadcast-full-err-cnt" || name == "drcbroadcast-single-err-cnt" || name == "drcbroadcast-calib-bist-full-err-cnt" || name == "drcbroadcast-loopback-full-err-cnt" || name == "otn-mode" || name == "num-ports")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::BlockInfo()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::AggrStatsOtn()
     :
-    block_name{YType::str, "block-name"},
-    num_fields{YType::uint8, "num-fields"}
-        ,
-    field_info(this, {})
+    il_total_rx_pkt_count{YType::uint64, "il-total-rx-pkt-count"},
+    il_total_tx_pkt_count{YType::uint64, "il-total-tx-pkt-count"}
 {
 
-    yang_name = "block-info"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "aggr-stats-otn"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::~BlockInfo()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::~AggrStatsOtn()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<field_info.len(); index++)
-    {
-        if(field_info[index]->has_data())
-            return true;
-    }
-    return block_name.is_set
-	|| num_fields.is_set;
+    return il_total_rx_pkt_count.is_set
+	|| il_total_tx_pkt_count.is_set;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::has_operation() const
 {
-    for (std::size_t index=0; index<field_info.len(); index++)
-    {
-        if(field_info[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(block_name.yfilter)
-	|| ydk::is_set(num_fields.yfilter);
+	|| ydk::is_set(il_total_rx_pkt_count.yfilter)
+	|| ydk::is_set(il_total_tx_pkt_count.yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-info";
+    path_buffer << "aggr-stats-otn";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (block_name.is_set || is_set(block_name.yfilter)) leaf_name_data.push_back(block_name.get_name_leafdata());
-    if (num_fields.is_set || is_set(num_fields.yfilter)) leaf_name_data.push_back(num_fields.get_name_leafdata());
+    if (il_total_rx_pkt_count.is_set || is_set(il_total_rx_pkt_count.yfilter)) leaf_name_data.push_back(il_total_rx_pkt_count.get_name_leafdata());
+    if (il_total_tx_pkt_count.is_set || is_set(il_total_tx_pkt_count.yfilter)) leaf_name_data.push_back(il_total_tx_pkt_count.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "field-info")
-    {
-        auto ent_ = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo>();
-        ent_->parent = this;
-        field_info.append(ent_);
-        return ent_;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    count_ = 0;
-    for (auto ent_ : field_info.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
     return _children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "block-name")
+    if(value_path == "il-total-rx-pkt-count")
     {
-        block_name = value;
-        block_name.value_namespace = name_space;
-        block_name.value_namespace_prefix = name_space_prefix;
+        il_total_rx_pkt_count = value;
+        il_total_rx_pkt_count.value_namespace = name_space;
+        il_total_rx_pkt_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "num-fields")
+    if(value_path == "il-total-tx-pkt-count")
     {
-        num_fields = value;
-        num_fields.value_namespace = name_space;
-        num_fields.value_namespace_prefix = name_space_prefix;
+        il_total_tx_pkt_count = value;
+        il_total_tx_pkt_count.value_namespace = name_space;
+        il_total_tx_pkt_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "block-name")
+    if(value_path == "il-total-rx-pkt-count")
     {
-        block_name.yfilter = yfilter;
+        il_total_rx_pkt_count.yfilter = yfilter;
     }
-    if(value_path == "num-fields")
+    if(value_path == "il-total-tx-pkt-count")
     {
-        num_fields.yfilter = yfilter;
+        il_total_tx_pkt_count.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::AggrStats::AggrStatsOtn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "field-info" || name == "block-name" || name == "num-fields")
+    if(name == "il-total-rx-pkt-count" || name == "il-total-tx-pkt-count")
         return true;
     return false;
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::FieldInfo()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::OvfStatus()
     :
-    field_name{YType::str, "field-name"},
-    field_value{YType::uint64, "field-value"},
-    is_ovf{YType::boolean, "is-ovf"}
+    cmic_cmc0_pkt_count_tx_pkt{YType::str, "cmic-cmc0-pkt-count-tx-pkt"},
+    cmic_cmc0_pkt_count_rx_pkt{YType::str, "cmic-cmc0-pkt-count-rx-pkt"},
+    nbi_stat_rx_bursts_err_cnt{YType::str, "nbi-stat-rx-bursts-err-cnt"},
+    nbi_ecc_1b_err_cnt{YType::str, "nbi-ecc-1b-err-cnt"},
+    nbi_ecc_2b_err_cnt{YType::str, "nbi-ecc-2b-err-cnt"},
+    nbi_parity_err_cnt{YType::str, "nbi-parity-err-cnt"},
+    nbi_rx_ilkn_crc32_err_cnt{YType::str, "nbi-rx-ilkn-crc32-err-cnt"},
+    nbi_rx_ilkn0_crc24_err_cnt{YType::str, "nbi-rx-ilkn0-crc24-err-cnt"},
+    nbi_rx_ilkn0_burst_err_cnt{YType::str, "nbi-rx-ilkn0-burst-err-cnt"},
+    nbi_rx_ilkn0_miss_sop_err_cnt{YType::str, "nbi-rx-ilkn0-miss-sop-err-cnt"},
+    nbi_rx_ilkn0_miss_eop_err_cnt{YType::str, "nbi-rx-ilkn0-miss-eop-err-cnt"},
+    nbi_rx_ilkn0_misaligned_cnt{YType::str, "nbi-rx-ilkn0-misaligned-cnt"},
+    nbi_rx_ilkn1_crc24_err_cnt{YType::str, "nbi-rx-ilkn1-crc24-err-cnt"},
+    nbi_rx_ilkn1_burst_err_cnt{YType::str, "nbi-rx-ilkn1-burst-err-cnt"},
+    nbi_rx_ilkn1_miss_sop_err_cnt{YType::str, "nbi-rx-ilkn1-miss-sop-err-cnt"},
+    nbi_rx_ilkn1_miss_eop_err_cnt{YType::str, "nbi-rx-ilkn1-miss-eop-err-cnt"},
+    nbi_rx_ilkn1_misaligned_cnt{YType::str, "nbi-rx-ilkn1-misaligned-cnt"},
+    nbi_tx_ilkn1_flushed_bursts_cnt{YType::str, "nbi-tx-ilkn1-flushed-bursts-cnt"},
+    nbi_rx_ilkn0_retrans_crc24_err_cnt{YType::str, "nbi-rx-ilkn0-retrans-crc24-err-cnt"},
+    nbi_rx_ilkn0_retrans_retry_err_cnt{YType::str, "nbi-rx-ilkn0-retrans-retry-err-cnt"},
+    nbi_rx_ilkn0_retrans_wdog_err_cnt{YType::str, "nbi-rx-ilkn0-retrans-wdog-err-cnt"},
+    nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt{YType::str, "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt"},
+    nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt{YType::str, "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt"},
+    nbi_rx_ilkn0_retrans_reached_timeout_err_cnt{YType::str, "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt"},
+    nbi_rx_ilkn1_retrans_crc24_err_cnt{YType::str, "nbi-rx-ilkn1-retrans-crc24-err-cnt"},
+    nbi_rx_ilkn1_retrans_retry_err_cnt{YType::str, "nbi-rx-ilkn1-retrans-retry-err-cnt"},
+    nbi_rx_ilkn1_retrans_wdog_err_cnt{YType::str, "nbi-rx-ilkn1-retrans-wdog-err-cnt"},
+    nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt{YType::str, "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt"},
+    nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt{YType::str, "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt"},
+    nbi_rx_ilkn1_retrans_reached_timeout_err_cnt{YType::str, "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt"},
+    nbi_stat_rx_frame_err_cnt{YType::str, "nbi-stat-rx-frame-err-cnt"},
+    nbi_stat_tx_frame_err_cnt{YType::str, "nbi-stat-tx-frame-err-cnt"},
+    nbi_rx_elk_err_bursts_cnt{YType::str, "nbi-rx-elk-err-bursts-cnt"},
+    nbi_rx_num_thrown_eops{YType::str, "nbi-rx-num-thrown-eops"},
+    nbi_rx_num_runts{YType::str, "nbi-rx-num-runts"},
+    nbi_bist_tx_crc_err_bursts_cnt{YType::str, "nbi-bist-tx-crc-err-bursts-cnt"},
+    nbi_bist_rx_err_length_bursts_cnt{YType::str, "nbi-bist-rx-err-length-bursts-cnt"},
+    nbi_bist_rx_err_burst_index_cnt{YType::str, "nbi-bist-rx-err-burst-index-cnt"},
+    nbi_bist_rx_err_bct_cnt{YType::str, "nbi-bist-rx-err-bct-cnt"},
+    nbi_bist_rx_err_data_cnt{YType::str, "nbi-bist-rx-err-data-cnt"},
+    nbi_bist_rx_err_in_crc_err_cnt{YType::str, "nbi-bist-rx-err-in-crc-err-cnt"},
+    nbi_bist_rx_err_sob_cnt{YType::str, "nbi-bist-rx-err-sob-cnt"},
+    nbi_stat_tx_bursts_cnt{YType::str, "nbi-stat-tx-bursts-cnt"},
+    nbi_stat_tx_total_leng_cnt{YType::str, "nbi-stat-tx-total-leng-cnt"},
+    rxaui_total_tx_pkt_count{YType::str, "rxaui-total-tx-pkt-count"},
+    rxaui_total_rx_pkt_count{YType::str, "rxaui-total-rx-pkt-count"},
+    rxaui_rx_pkt_count_bcast_pkt{YType::str, "rxaui-rx-pkt-count-bcast-pkt"},
+    rxaui_tx_pkt_count_bcast_pkt{YType::str, "rxaui-tx-pkt-count-bcast-pkt"},
+    rxaui_rx_pkt_count_mcast_pkt{YType::str, "rxaui-rx-pkt-count-mcast-pkt"},
+    rxaui_tx_pkt_count_mcast_pkt{YType::str, "rxaui-tx-pkt-count-mcast-pkt"},
+    rxaui_rx_pkt_count_ucast_pkt{YType::str, "rxaui-rx-pkt-count-ucast-pkt"},
+    rxaui_tx_pkt_count_ucast_pkt{YType::str, "rxaui-tx-pkt-count-ucast-pkt"},
+    rxaui_rx_err_drop_pkt_cnt{YType::str, "rxaui-rx-err-drop-pkt-cnt"},
+    rxaui_tx_err_drop_pkt_cnt{YType::str, "rxaui-tx-err-drop-pkt-cnt"},
+    rxaui_byte_count_tx_pkt{YType::str, "rxaui-byte-count-tx-pkt"},
+    rxaui_byte_count_rx_pkt{YType::str, "rxaui-byte-count-rx-pkt"},
+    rxaui_rx_dscrd_pkt_cnt{YType::str, "rxaui-rx-dscrd-pkt-cnt"},
+    rxaui_tx_dscrd_pkt_cnt{YType::str, "rxaui-tx-dscrd-pkt-cnt"},
+    ire_nif_packet_counter{YType::str, "ire-nif-packet-counter"},
+    il_total_rx_pkt_count{YType::str, "il-total-rx-pkt-count"},
+    il_total_tx_pkt_count{YType::str, "il-total-tx-pkt-count"},
+    il_rx_err_drop_pkt_cnt{YType::str, "il-rx-err-drop-pkt-cnt"},
+    il_tx_err_drop_pkt_cnt{YType::str, "il-tx-err-drop-pkt-cnt"},
+    il_byte_count_tx_pkt{YType::str, "il-byte-count-tx-pkt"},
+    il_byte_count_rx_pkt{YType::str, "il-byte-count-rx-pkt"},
+    il_rx_dscrd_pkt_cnt{YType::str, "il-rx-dscrd-pkt-cnt"},
+    il_tx_dscrd_pkt_cnt{YType::str, "il-tx-dscrd-pkt-cnt"},
+    il_rx_pkt_count_bcast_pkt{YType::str, "il-rx-pkt-count-bcast-pkt"},
+    il_tx_pkt_count_bcast_pkt{YType::str, "il-tx-pkt-count-bcast-pkt"},
+    il_rx_pkt_count_mcast_pkt{YType::str, "il-rx-pkt-count-mcast-pkt"},
+    il_tx_pkt_count_mcast_pkt{YType::str, "il-tx-pkt-count-mcast-pkt"},
+    il_rx_pkt_count_ucast_pkt{YType::str, "il-rx-pkt-count-ucast-pkt"},
+    il_tx_pkt_count_ucast_pkt{YType::str, "il-tx-pkt-count-ucast-pkt"},
+    iqm_enq_pkt_cnt{YType::str, "iqm-enq-pkt-cnt"},
+    iqm_enq_byte_cnt{YType::str, "iqm-enq-byte-cnt"},
+    iqm_deq_pkt_cnt{YType::str, "iqm-deq-pkt-cnt"},
+    iqm_deq_byte_cnt{YType::str, "iqm-deq-byte-cnt"},
+    iqm_tot_dscrd_pkt_cnt{YType::str, "iqm-tot-dscrd-pkt-cnt"},
+    iqm_tot_dscrd_byte_cnt{YType::str, "iqm-tot-dscrd-byte-cnt"},
+    iqm_ecc_1b_err_cnt{YType::str, "iqm-ecc-1b-err-cnt"},
+    iqm_ecc_2b_err_cnt{YType::str, "iqm-ecc-2b-err-cnt"},
+    iqm_parity_err_cnt{YType::str, "iqm-parity-err-cnt"},
+    iqm_deq_delete_pkt_cnt{YType::str, "iqm-deq-delete-pkt-cnt"},
+    iqm_ecn_dscrd_msk_pkt_cnt{YType::str, "iqm-ecn-dscrd-msk-pkt-cnt"},
+    iqm_q_tot_dscrd_pkt_cnt{YType::str, "iqm-q-tot-dscrd-pkt-cnt"},
+    iqm_q_deq_delete_pkt_cnt{YType::str, "iqm-q-deq-delete-pkt-cnt"},
+    iqm_rjct_db_pkt_cnt{YType::str, "iqm-rjct-db-pkt-cnt"},
+    iqm_rjct_bdb_pkt_cnt{YType::str, "iqm-rjct-bdb-pkt-cnt"},
+    iqm_rjct_bdb_protct_pkt_cnt{YType::str, "iqm-rjct-bdb-protct-pkt-cnt"},
+    iqm_rjct_oc_bd_pkt_cnt{YType::str, "iqm-rjct-oc-bd-pkt-cnt"},
+    iqm_rjct_sn_err_pkt_cnt{YType::str, "iqm-rjct-sn-err-pkt-cnt"},
+    iqm_rjct_mc_err_pkt_cnt{YType::str, "iqm-rjct-mc-err-pkt-cnt"},
+    iqm_rjct_rsrc_err_pkt_cnt{YType::str, "iqm-rjct-rsrc-err-pkt-cnt"},
+    iqm_rjct_qnvalid_err_pkt_cnt{YType::str, "iqm-rjct-qnvalid-err-pkt-cnt"},
+    iqm_rjct_cnm_pkt_cnt{YType::str, "iqm-rjct-cnm-pkt-cnt"},
+    iqm_rjct_dyn_space_pkt_cnt{YType::str, "iqm-rjct-dyn-space-pkt-cnt"},
+    ipt_fdt_pkt_cnt{YType::str, "ipt-fdt-pkt-cnt"},
+    ipt_ecc_1b_err_cnt{YType::str, "ipt-ecc-1b-err-cnt"},
+    ipt_ecc_2b_err_cnt{YType::str, "ipt-ecc-2b-err-cnt"},
+    ipt_parity_err_cnt{YType::str, "ipt-parity-err-cnt"},
+    ipt_crc_err_cnt{YType::str, "ipt-crc-err-cnt"},
+    ipt_crc_err_del_buff_cnt{YType::str, "ipt-crc-err-del-buff-cnt"},
+    ipt_cpu_del_buff_cnt{YType::str, "ipt-cpu-del-buff-cnt"},
+    ipt_cpu_rel_buff_cnt{YType::str, "ipt-cpu-rel-buff-cnt"},
+    ipt_crc_err_buff_fifo_full_cnt{YType::str, "ipt-crc-err-buff-fifo-full-cnt"},
+    fdt_data_cell_cnt{YType::str, "fdt-data-cell-cnt"},
+    fdt_data_byte_cnt{YType::str, "fdt-data-byte-cnt"},
+    fdt_crc_dropped_pck_cnt{YType::str, "fdt-crc-dropped-pck-cnt"},
+    fdt_invalid_destq_drop_cell_cnt{YType::str, "fdt-invalid-destq-drop-cell-cnt"},
+    fdt_indirect_command_count{YType::str, "fdt-indirect-command-count"},
+    fdt_ecc_1b_err_cnt{YType::str, "fdt-ecc-1b-err-cnt"},
+    fdt_ecc_2b_err_cnt{YType::str, "fdt-ecc-2b-err-cnt"},
+    fdt_parity_err_cnt{YType::str, "fdt-parity-err-cnt"},
+    fdt_crc_dropped_cell_cnt{YType::str, "fdt-crc-dropped-cell-cnt"},
+    fcr_control_cell_cnt{YType::str, "fcr-control-cell-cnt"},
+    fcr_cell_drop_cnt{YType::str, "fcr-cell-drop-cnt"},
+    fcr_credit_cell_drop_cnt{YType::str, "fcr-credit-cell-drop-cnt"},
+    fcr_fs_cell_drop_cnt{YType::str, "fcr-fs-cell-drop-cnt"},
+    fcr_rt_cell_drop_cnt{YType::str, "fcr-rt-cell-drop-cnt"},
+    fcr_ecc_1b_err_cnt{YType::str, "fcr-ecc-1b-err-cnt"},
+    fcr_ecc_2b_err_cnt{YType::str, "fcr-ecc-2b-err-cnt"},
+    fdr_data_cell_cnt{YType::str, "fdr-data-cell-cnt"},
+    fdr_data_byte_cnt{YType::str, "fdr-data-byte-cnt"},
+    fdr_crc_dropped_pck_cnt{YType::str, "fdr-crc-dropped-pck-cnt"},
+    fdr_p_pkt_cnt{YType::str, "fdr-p-pkt-cnt"},
+    fdr_prm_error_filter_cnt{YType::str, "fdr-prm-error-filter-cnt"},
+    fdr_sec_error_filter_cnt{YType::str, "fdr-sec-error-filter-cnt"},
+    fdr_prm_ecc_1b_err_cnt{YType::str, "fdr-prm-ecc-1b-err-cnt"},
+    fdr_prm_ecc_2b_err_cnt{YType::str, "fdr-prm-ecc-2b-err-cnt"},
+    fdr_sec_ecc_1b_err_cnt{YType::str, "fdr-sec-ecc-1b-err-cnt"},
+    fdr_sec_ecc_2b_err_cnt{YType::str, "fdr-sec-ecc-2b-err-cnt"},
+    egq_ecc_1b_err_cnt{YType::str, "egq-ecc-1b-err-cnt"},
+    egq_ecc_2b_err_cnt{YType::str, "egq-ecc-2b-err-cnt"},
+    egq_parity_err_cnt{YType::str, "egq-parity-err-cnt"},
+    egq_dbf_ecc_1b_err_cnt{YType::str, "egq-dbf-ecc-1b-err-cnt"},
+    egq_dbf_ecc_2b_err_cnt{YType::str, "egq-dbf-ecc-2b-err-cnt"},
+    egq_empty_mcid_counter{YType::str, "egq-empty-mcid-counter"},
+    egq_rqp_discard_packet_counter{YType::str, "egq-rqp-discard-packet-counter"},
+    egq_ehp_discard_packet_counter{YType::str, "egq-ehp-discard-packet-counter"},
+    egq_ipt_pkt_cnt{YType::str, "egq-ipt-pkt-cnt"},
+    epni_epe_pkt_cnt{YType::str, "epni-epe-pkt-cnt"},
+    epni_epe_byte_cnt{YType::str, "epni-epe-byte-cnt"},
+    epni_epe_discard_pkt_cnt{YType::str, "epni-epe-discard-pkt-cnt"},
+    epni_ecc_1b_err_cnt{YType::str, "epni-ecc-1b-err-cnt"},
+    epni_ecc_2b_err_cnt{YType::str, "epni-ecc-2b-err-cnt"},
+    epni_parity_err_cnt{YType::str, "epni-parity-err-cnt"},
+    egq_pqp_ucast_pkt_cnt{YType::str, "egq-pqp-ucast-pkt-cnt"},
+    egq_pqp_ucast_h_pkt_cnt{YType::str, "egq-pqp-ucast-h-pkt-cnt"},
+    egq_pqp_ucast_l_pkt_cnt{YType::str, "egq-pqp-ucast-l-pkt-cnt"},
+    egq_pqp_ucast_bytes_cnt{YType::str, "egq-pqp-ucast-bytes-cnt"},
+    egq_pqp_ucast_discard_pkt_cnt{YType::str, "egq-pqp-ucast-discard-pkt-cnt"},
+    egq_pqp_mcast_pkt_cnt{YType::str, "egq-pqp-mcast-pkt-cnt"},
+    egq_pqp_mcast_h_pkt_cnt{YType::str, "egq-pqp-mcast-h-pkt-cnt"},
+    egq_pqp_mcast_l_pkt_cnt{YType::str, "egq-pqp-mcast-l-pkt-cnt"},
+    egq_pqp_mcast_bytes_cnt{YType::str, "egq-pqp-mcast-bytes-cnt"},
+    egq_pqp_mcast_discard_pkt_cnt{YType::str, "egq-pqp-mcast-discard-pkt-cnt"},
+    fct_control_cell_cnt{YType::str, "fct-control-cell-cnt"},
+    fct_unrch_crdt_cnt{YType::str, "fct-unrch-crdt-cnt"},
+    idr_reassembly_errors{YType::str, "idr-reassembly-errors"},
+    idr_mmu_ecc_1b_err_cnt{YType::str, "idr-mmu-ecc-1b-err-cnt"},
+    idr_mmu_ecc_2b_err_cnt{YType::str, "idr-mmu-ecc-2b-err-cnt"},
+    idr_discarded_packets0_cnt{YType::str, "idr-discarded-packets0-cnt"},
+    idr_discarded_packets1_cnt{YType::str, "idr-discarded-packets1-cnt"},
+    idr_discarded_packets2_cnt{YType::str, "idr-discarded-packets2-cnt"},
+    idr_discarded_packets3_cnt{YType::str, "idr-discarded-packets3-cnt"},
+    idr_discarded_octets0_cnt{YType::str, "idr-discarded-octets0-cnt"},
+    idr_discarded_octets1_cnt{YType::str, "idr-discarded-octets1-cnt"},
+    idr_discarded_octets2_cnt{YType::str, "idr-discarded-octets2-cnt"},
+    idr_discarded_octets3_cnt{YType::str, "idr-discarded-octets3-cnt"},
+    mmu_ecc_1b_err_cnt{YType::str, "mmu-ecc-1b-err-cnt"},
+    mmu_ecc_2b_err_cnt{YType::str, "mmu-ecc-2b-err-cnt"},
+    oamp_parity_err_cnt{YType::str, "oamp-parity-err-cnt"},
+    oamp_ecc_1b_err_cnt{YType::str, "oamp-ecc-1b-err-cnt"},
+    oamp_ecc_2b_err_cnt{YType::str, "oamp-ecc-2b-err-cnt"},
+    crps_parity_err_cnt{YType::str, "crps-parity-err-cnt"},
+    fmac0_kpcs0_tst_rx_err_cnt{YType::str, "fmac0-kpcs0-tst-rx-err-cnt"},
+    fmac1_kpcs0_tst_rx_err_cnt{YType::str, "fmac1-kpcs0-tst-rx-err-cnt"},
+    fmac2_kpcs0_tst_rx_err_cnt{YType::str, "fmac2-kpcs0-tst-rx-err-cnt"},
+    fmac3_kpcs0_tst_rx_err_cnt{YType::str, "fmac3-kpcs0-tst-rx-err-cnt"},
+    fmac4_kpcs0_tst_rx_err_cnt{YType::str, "fmac4-kpcs0-tst-rx-err-cnt"},
+    fmac5_kpcs0_tst_rx_err_cnt{YType::str, "fmac5-kpcs0-tst-rx-err-cnt"},
+    fmac6_kpcs0_tst_rx_err_cnt{YType::str, "fmac6-kpcs0-tst-rx-err-cnt"},
+    fmac7_kpcs0_tst_rx_err_cnt{YType::str, "fmac7-kpcs0-tst-rx-err-cnt"},
+    fmac8_kpcs0_tst_rx_err_cnt{YType::str, "fmac8-kpcs0-tst-rx-err-cnt"},
+    fmac0_kpcs1_tst_rx_err_cnt{YType::str, "fmac0-kpcs1-tst-rx-err-cnt"},
+    fmac1_kpcs1_tst_rx_err_cnt{YType::str, "fmac1-kpcs1-tst-rx-err-cnt"},
+    fmac2_kpcs1_tst_rx_err_cnt{YType::str, "fmac2-kpcs1-tst-rx-err-cnt"},
+    fmac3_kpcs1_tst_rx_err_cnt{YType::str, "fmac3-kpcs1-tst-rx-err-cnt"},
+    fmac4_kpcs1_tst_rx_err_cnt{YType::str, "fmac4-kpcs1-tst-rx-err-cnt"},
+    fmac5_kpcs1_tst_rx_err_cnt{YType::str, "fmac5-kpcs1-tst-rx-err-cnt"},
+    fmac6_kpcs1_tst_rx_err_cnt{YType::str, "fmac6-kpcs1-tst-rx-err-cnt"},
+    fmac7_kpcs1_tst_rx_err_cnt{YType::str, "fmac7-kpcs1-tst-rx-err-cnt"},
+    fmac8_kpcs1_tst_rx_err_cnt{YType::str, "fmac8-kpcs1-tst-rx-err-cnt"},
+    fmac0_kpcs2_tst_rx_err_cnt{YType::str, "fmac0-kpcs2-tst-rx-err-cnt"},
+    fmac1_kpcs2_tst_rx_err_cnt{YType::str, "fmac1-kpcs2-tst-rx-err-cnt"},
+    fmac2_kpcs2_tst_rx_err_cnt{YType::str, "fmac2-kpcs2-tst-rx-err-cnt"},
+    fmac3_kpcs2_tst_rx_err_cnt{YType::str, "fmac3-kpcs2-tst-rx-err-cnt"},
+    fmac4_kpcs2_tst_rx_err_cnt{YType::str, "fmac4-kpcs2-tst-rx-err-cnt"},
+    fmac5_kpcs2_tst_rx_err_cnt{YType::str, "fmac5-kpcs2-tst-rx-err-cnt"},
+    fmac6_kpcs2_tst_rx_err_cnt{YType::str, "fmac6-kpcs2-tst-rx-err-cnt"},
+    fmac7_kpcs2_tst_rx_err_cnt{YType::str, "fmac7-kpcs2-tst-rx-err-cnt"},
+    fmac8_kpcs2_tst_rx_err_cnt{YType::str, "fmac8-kpcs2-tst-rx-err-cnt"},
+    fmac0_kpcs3_tst_rx_err_cnt{YType::str, "fmac0-kpcs3-tst-rx-err-cnt"},
+    fmac1_kpcs3_tst_rx_err_cnt{YType::str, "fmac1-kpcs3-tst-rx-err-cnt"},
+    fmac2_kpcs3_tst_rx_err_cnt{YType::str, "fmac2-kpcs3-tst-rx-err-cnt"},
+    fmac3_kpcs3_tst_rx_err_cnt{YType::str, "fmac3-kpcs3-tst-rx-err-cnt"},
+    fmac4_kpcs3_tst_rx_err_cnt{YType::str, "fmac4-kpcs3-tst-rx-err-cnt"},
+    fmac5_kpcs3_tst_rx_err_cnt{YType::str, "fmac5-kpcs3-tst-rx-err-cnt"},
+    fmac6_kpcs3_tst_rx_err_cnt{YType::str, "fmac6-kpcs3-tst-rx-err-cnt"},
+    fmac7_kpcs3_tst_rx_err_cnt{YType::str, "fmac7-kpcs3-tst-rx-err-cnt"},
+    fmac8_kpcs3_tst_rx_err_cnt{YType::str, "fmac8-kpcs3-tst-rx-err-cnt"},
+    fmac0_tst0_err_cnt{YType::str, "fmac0-tst0-err-cnt"},
+    fmac1_tst0_err_cnt{YType::str, "fmac1-tst0-err-cnt"},
+    fmac2_tst0_err_cnt{YType::str, "fmac2-tst0-err-cnt"},
+    fmac3_tst0_err_cnt{YType::str, "fmac3-tst0-err-cnt"},
+    fmac4_tst0_err_cnt{YType::str, "fmac4-tst0-err-cnt"},
+    fmac5_tst0_err_cnt{YType::str, "fmac5-tst0-err-cnt"},
+    fmac6_tst0_err_cnt{YType::str, "fmac6-tst0-err-cnt"},
+    fmac7_tst0_err_cnt{YType::str, "fmac7-tst0-err-cnt"},
+    fmac8_tst0_err_cnt{YType::str, "fmac8-tst0-err-cnt"},
+    fmac0_tst1_err_cnt{YType::str, "fmac0-tst1-err-cnt"},
+    fmac1_tst1_err_cnt{YType::str, "fmac1-tst1-err-cnt"},
+    fmac2_tst1_err_cnt{YType::str, "fmac2-tst1-err-cnt"},
+    fmac3_tst1_err_cnt{YType::str, "fmac3-tst1-err-cnt"},
+    fmac4_tst1_err_cnt{YType::str, "fmac4-tst1-err-cnt"},
+    fmac5_tst1_err_cnt{YType::str, "fmac5-tst1-err-cnt"},
+    fmac6_tst1_err_cnt{YType::str, "fmac6-tst1-err-cnt"},
+    fmac7_tst1_err_cnt{YType::str, "fmac7-tst1-err-cnt"},
+    fmac8_tst1_err_cnt{YType::str, "fmac8-tst1-err-cnt"},
+    fmac0_tst2_err_cnt{YType::str, "fmac0-tst2-err-cnt"},
+    fmac1_tst2_err_cnt{YType::str, "fmac1-tst2-err-cnt"},
+    fmac2_tst2_err_cnt{YType::str, "fmac2-tst2-err-cnt"},
+    fmac3_tst2_err_cnt{YType::str, "fmac3-tst2-err-cnt"},
+    fmac4_tst2_err_cnt{YType::str, "fmac4-tst2-err-cnt"},
+    fmac5_tst2_err_cnt{YType::str, "fmac5-tst2-err-cnt"},
+    fmac6_tst2_err_cnt{YType::str, "fmac6-tst2-err-cnt"},
+    fmac7_tst2_err_cnt{YType::str, "fmac7-tst2-err-cnt"},
+    fmac8_tst2_err_cnt{YType::str, "fmac8-tst2-err-cnt"},
+    fmac0_tst3_err_cnt{YType::str, "fmac0-tst3-err-cnt"},
+    fmac1_tst3_err_cnt{YType::str, "fmac1-tst3-err-cnt"},
+    fmac2_tst3_err_cnt{YType::str, "fmac2-tst3-err-cnt"},
+    fmac3_tst3_err_cnt{YType::str, "fmac3-tst3-err-cnt"},
+    fmac4_tst3_err_cnt{YType::str, "fmac4-tst3-err-cnt"},
+    fmac5_tst3_err_cnt{YType::str, "fmac5-tst3-err-cnt"},
+    fmac6_tst3_err_cnt{YType::str, "fmac6-tst3-err-cnt"},
+    fmac7_tst3_err_cnt{YType::str, "fmac7-tst3-err-cnt"},
+    fmac8_tst3_err_cnt{YType::str, "fmac8-tst3-err-cnt"},
+    fmac0_ecc_1b_err_cnt{YType::str, "fmac0-ecc-1b-err-cnt"},
+    fmac1_ecc_1b_err_cnt{YType::str, "fmac1-ecc-1b-err-cnt"},
+    fmac2_ecc_1b_err_cnt{YType::str, "fmac2-ecc-1b-err-cnt"},
+    fmac3_ecc_1b_err_cnt{YType::str, "fmac3-ecc-1b-err-cnt"},
+    fmac4_ecc_1b_err_cnt{YType::str, "fmac4-ecc-1b-err-cnt"},
+    fmac5_ecc_1b_err_cnt{YType::str, "fmac5-ecc-1b-err-cnt"},
+    fmac6_ecc_1b_err_cnt{YType::str, "fmac6-ecc-1b-err-cnt"},
+    fmac7_ecc_1b_err_cnt{YType::str, "fmac7-ecc-1b-err-cnt"},
+    fmac8_ecc_1b_err_cnt{YType::str, "fmac8-ecc-1b-err-cnt"},
+    fmac0_ecc_2b_err_cnt{YType::str, "fmac0-ecc-2b-err-cnt"},
+    fmac1_ecc_2b_err_cnt{YType::str, "fmac1-ecc-2b-err-cnt"},
+    fmac2_ecc_2b_err_cnt{YType::str, "fmac2-ecc-2b-err-cnt"},
+    fmac3_ecc_2b_err_cnt{YType::str, "fmac3-ecc-2b-err-cnt"},
+    fmac4_ecc_2b_err_cnt{YType::str, "fmac4-ecc-2b-err-cnt"},
+    fmac5_ecc_2b_err_cnt{YType::str, "fmac5-ecc-2b-err-cnt"},
+    fmac6_ecc_2b_err_cnt{YType::str, "fmac6-ecc-2b-err-cnt"},
+    fmac7_ecc_2b_err_cnt{YType::str, "fmac7-ecc-2b-err-cnt"},
+    fmac8_ecc_2b_err_cnt{YType::str, "fmac8-ecc-2b-err-cnt"},
+    olp_incoming_bad_identifier_counter{YType::str, "olp-incoming-bad-identifier-counter"},
+    olp_incoming_bad_reassembly_counter{YType::str, "olp-incoming-bad-reassembly-counter"},
+    cfc_parity_err_cnt{YType::str, "cfc-parity-err-cnt"},
+    cfc_ilkn0_oob_rx_crc_err_cntr{YType::str, "cfc-ilkn0-oob-rx-crc-err-cntr"},
+    cfc_ilkn1_oob_rx_crc_err_cntr{YType::str, "cfc-ilkn1-oob-rx-crc-err-cntr"},
+    cfc_spi_oob_rx0_frm_err_cnt{YType::str, "cfc-spi-oob-rx0-frm-err-cnt"},
+    cfc_spi_oob_rx0_dip2_err_cnt{YType::str, "cfc-spi-oob-rx0-dip2-err-cnt"},
+    cfc_spi_oob_rx1_frm_err_cnt{YType::str, "cfc-spi-oob-rx1-frm-err-cnt"},
+    cfc_spi_oob_rx1_dip2_err_cnt{YType::str, "cfc-spi-oob-rx1-dip2-err-cnt"},
+    cgm_cgm_uc_pd_dropped_cnt{YType::str, "cgm-cgm-uc-pd-dropped-cnt"},
+    cgm_cgm_mc_rep_pd_dropped_cnt{YType::str, "cgm-cgm-mc-rep-pd-dropped-cnt"},
+    cgm_cgm_uc_db_dropped_by_rqp_cnt{YType::str, "cgm-cgm-uc-db-dropped-by-rqp-cnt"},
+    cgm_cgm_uc_db_dropped_by_pqp_cnt{YType::str, "cgm-cgm-uc-db-dropped-by-pqp-cnt"},
+    cgm_cgm_mc_rep_db_dropped_cnt{YType::str, "cgm-cgm-mc-rep-db-dropped-cnt"},
+    cgm_cgm_mc_db_dropped_cnt{YType::str, "cgm-cgm-mc-db-dropped-cnt"},
+    drca_full_err_cnt{YType::str, "drca-full-err-cnt"},
+    drca_single_err_cnt{YType::str, "drca-single-err-cnt"},
+    drca_calib_bist_full_err_cnt{YType::str, "drca-calib-bist-full-err-cnt"},
+    drca_loopback_full_err_cnt{YType::str, "drca-loopback-full-err-cnt"},
+    drcb_full_err_cnt{YType::str, "drcb-full-err-cnt"},
+    drcb_single_err_cnt{YType::str, "drcb-single-err-cnt"},
+    drcb_calib_bist_full_err_cnt{YType::str, "drcb-calib-bist-full-err-cnt"},
+    drcb_loopback_full_err_cnt{YType::str, "drcb-loopback-full-err-cnt"},
+    drcc_full_err_cnt{YType::str, "drcc-full-err-cnt"},
+    drcc_single_err_cnt{YType::str, "drcc-single-err-cnt"},
+    drcc_calib_bist_full_err_cnt{YType::str, "drcc-calib-bist-full-err-cnt"},
+    drcc_loopback_full_err_cnt{YType::str, "drcc-loopback-full-err-cnt"},
+    drcd_full_err_cnt{YType::str, "drcd-full-err-cnt"},
+    drcd_single_err_cnt{YType::str, "drcd-single-err-cnt"},
+    drcd_calib_bist_full_err_cnt{YType::str, "drcd-calib-bist-full-err-cnt"},
+    drcd_loopback_full_err_cnt{YType::str, "drcd-loopback-full-err-cnt"},
+    drce_full_err_cnt{YType::str, "drce-full-err-cnt"},
+    drce_single_err_cnt{YType::str, "drce-single-err-cnt"},
+    drce_calib_bist_full_err_cnt{YType::str, "drce-calib-bist-full-err-cnt"},
+    drce_loopback_full_err_cnt{YType::str, "drce-loopback-full-err-cnt"},
+    drcf_full_err_cnt{YType::str, "drcf-full-err-cnt"},
+    drcf_single_err_cnt{YType::str, "drcf-single-err-cnt"},
+    drcf_calib_bist_full_err_cnt{YType::str, "drcf-calib-bist-full-err-cnt"},
+    drcf_loopback_full_err_cnt{YType::str, "drcf-loopback-full-err-cnt"},
+    drcg_full_err_cnt{YType::str, "drcg-full-err-cnt"},
+    drcg_single_err_cnt{YType::str, "drcg-single-err-cnt"},
+    drcg_calib_bist_full_err_cnt{YType::str, "drcg-calib-bist-full-err-cnt"},
+    drcg_loopback_full_err_cnt{YType::str, "drcg-loopback-full-err-cnt"},
+    drch_full_err_cnt{YType::str, "drch-full-err-cnt"},
+    drch_single_err_cnt{YType::str, "drch-single-err-cnt"},
+    drch_calib_bist_full_err_cnt{YType::str, "drch-calib-bist-full-err-cnt"},
+    drch_loopback_full_err_cnt{YType::str, "drch-loopback-full-err-cnt"},
+    drcbroadcast_full_err_cnt{YType::str, "drcbroadcast-full-err-cnt"},
+    drcbroadcast_single_err_cnt{YType::str, "drcbroadcast-single-err-cnt"},
+    drcbroadcast_calib_bist_full_err_cnt{YType::str, "drcbroadcast-calib-bist-full-err-cnt"},
+    drcbroadcast_loopback_full_err_cnt{YType::str, "drcbroadcast-loopback-full-err-cnt"}
 {
 
-    yang_name = "field-info"; yang_parent_name = "block-info"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "ovf-status"; yang_parent_name = "pbc-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::~FieldInfo()
+Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::~OvfStatus()
 {
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_data() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::has_data() const
 {
     if (is_presence_container) return true;
-    return field_name.is_set
-	|| field_value.is_set
-	|| is_ovf.is_set;
+    return cmic_cmc0_pkt_count_tx_pkt.is_set
+	|| cmic_cmc0_pkt_count_rx_pkt.is_set
+	|| nbi_stat_rx_bursts_err_cnt.is_set
+	|| nbi_ecc_1b_err_cnt.is_set
+	|| nbi_ecc_2b_err_cnt.is_set
+	|| nbi_parity_err_cnt.is_set
+	|| nbi_rx_ilkn_crc32_err_cnt.is_set
+	|| nbi_rx_ilkn0_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn0_burst_err_cnt.is_set
+	|| nbi_rx_ilkn0_miss_sop_err_cnt.is_set
+	|| nbi_rx_ilkn0_miss_eop_err_cnt.is_set
+	|| nbi_rx_ilkn0_misaligned_cnt.is_set
+	|| nbi_rx_ilkn1_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn1_burst_err_cnt.is_set
+	|| nbi_rx_ilkn1_miss_sop_err_cnt.is_set
+	|| nbi_rx_ilkn1_miss_eop_err_cnt.is_set
+	|| nbi_rx_ilkn1_misaligned_cnt.is_set
+	|| nbi_tx_ilkn1_flushed_bursts_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_retry_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_wdog_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.is_set
+	|| nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_crc24_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_retry_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_wdog_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.is_set
+	|| nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.is_set
+	|| nbi_stat_rx_frame_err_cnt.is_set
+	|| nbi_stat_tx_frame_err_cnt.is_set
+	|| nbi_rx_elk_err_bursts_cnt.is_set
+	|| nbi_rx_num_thrown_eops.is_set
+	|| nbi_rx_num_runts.is_set
+	|| nbi_bist_tx_crc_err_bursts_cnt.is_set
+	|| nbi_bist_rx_err_length_bursts_cnt.is_set
+	|| nbi_bist_rx_err_burst_index_cnt.is_set
+	|| nbi_bist_rx_err_bct_cnt.is_set
+	|| nbi_bist_rx_err_data_cnt.is_set
+	|| nbi_bist_rx_err_in_crc_err_cnt.is_set
+	|| nbi_bist_rx_err_sob_cnt.is_set
+	|| nbi_stat_tx_bursts_cnt.is_set
+	|| nbi_stat_tx_total_leng_cnt.is_set
+	|| rxaui_total_tx_pkt_count.is_set
+	|| rxaui_total_rx_pkt_count.is_set
+	|| rxaui_rx_pkt_count_bcast_pkt.is_set
+	|| rxaui_tx_pkt_count_bcast_pkt.is_set
+	|| rxaui_rx_pkt_count_mcast_pkt.is_set
+	|| rxaui_tx_pkt_count_mcast_pkt.is_set
+	|| rxaui_rx_pkt_count_ucast_pkt.is_set
+	|| rxaui_tx_pkt_count_ucast_pkt.is_set
+	|| rxaui_rx_err_drop_pkt_cnt.is_set
+	|| rxaui_tx_err_drop_pkt_cnt.is_set
+	|| rxaui_byte_count_tx_pkt.is_set
+	|| rxaui_byte_count_rx_pkt.is_set
+	|| rxaui_rx_dscrd_pkt_cnt.is_set
+	|| rxaui_tx_dscrd_pkt_cnt.is_set
+	|| ire_nif_packet_counter.is_set
+	|| il_total_rx_pkt_count.is_set
+	|| il_total_tx_pkt_count.is_set
+	|| il_rx_err_drop_pkt_cnt.is_set
+	|| il_tx_err_drop_pkt_cnt.is_set
+	|| il_byte_count_tx_pkt.is_set
+	|| il_byte_count_rx_pkt.is_set
+	|| il_rx_dscrd_pkt_cnt.is_set
+	|| il_tx_dscrd_pkt_cnt.is_set
+	|| il_rx_pkt_count_bcast_pkt.is_set
+	|| il_tx_pkt_count_bcast_pkt.is_set
+	|| il_rx_pkt_count_mcast_pkt.is_set
+	|| il_tx_pkt_count_mcast_pkt.is_set
+	|| il_rx_pkt_count_ucast_pkt.is_set
+	|| il_tx_pkt_count_ucast_pkt.is_set
+	|| iqm_enq_pkt_cnt.is_set
+	|| iqm_enq_byte_cnt.is_set
+	|| iqm_deq_pkt_cnt.is_set
+	|| iqm_deq_byte_cnt.is_set
+	|| iqm_tot_dscrd_pkt_cnt.is_set
+	|| iqm_tot_dscrd_byte_cnt.is_set
+	|| iqm_ecc_1b_err_cnt.is_set
+	|| iqm_ecc_2b_err_cnt.is_set
+	|| iqm_parity_err_cnt.is_set
+	|| iqm_deq_delete_pkt_cnt.is_set
+	|| iqm_ecn_dscrd_msk_pkt_cnt.is_set
+	|| iqm_q_tot_dscrd_pkt_cnt.is_set
+	|| iqm_q_deq_delete_pkt_cnt.is_set
+	|| iqm_rjct_db_pkt_cnt.is_set
+	|| iqm_rjct_bdb_pkt_cnt.is_set
+	|| iqm_rjct_bdb_protct_pkt_cnt.is_set
+	|| iqm_rjct_oc_bd_pkt_cnt.is_set
+	|| iqm_rjct_sn_err_pkt_cnt.is_set
+	|| iqm_rjct_mc_err_pkt_cnt.is_set
+	|| iqm_rjct_rsrc_err_pkt_cnt.is_set
+	|| iqm_rjct_qnvalid_err_pkt_cnt.is_set
+	|| iqm_rjct_cnm_pkt_cnt.is_set
+	|| iqm_rjct_dyn_space_pkt_cnt.is_set
+	|| ipt_fdt_pkt_cnt.is_set
+	|| ipt_ecc_1b_err_cnt.is_set
+	|| ipt_ecc_2b_err_cnt.is_set
+	|| ipt_parity_err_cnt.is_set
+	|| ipt_crc_err_cnt.is_set
+	|| ipt_crc_err_del_buff_cnt.is_set
+	|| ipt_cpu_del_buff_cnt.is_set
+	|| ipt_cpu_rel_buff_cnt.is_set
+	|| ipt_crc_err_buff_fifo_full_cnt.is_set
+	|| fdt_data_cell_cnt.is_set
+	|| fdt_data_byte_cnt.is_set
+	|| fdt_crc_dropped_pck_cnt.is_set
+	|| fdt_invalid_destq_drop_cell_cnt.is_set
+	|| fdt_indirect_command_count.is_set
+	|| fdt_ecc_1b_err_cnt.is_set
+	|| fdt_ecc_2b_err_cnt.is_set
+	|| fdt_parity_err_cnt.is_set
+	|| fdt_crc_dropped_cell_cnt.is_set
+	|| fcr_control_cell_cnt.is_set
+	|| fcr_cell_drop_cnt.is_set
+	|| fcr_credit_cell_drop_cnt.is_set
+	|| fcr_fs_cell_drop_cnt.is_set
+	|| fcr_rt_cell_drop_cnt.is_set
+	|| fcr_ecc_1b_err_cnt.is_set
+	|| fcr_ecc_2b_err_cnt.is_set
+	|| fdr_data_cell_cnt.is_set
+	|| fdr_data_byte_cnt.is_set
+	|| fdr_crc_dropped_pck_cnt.is_set
+	|| fdr_p_pkt_cnt.is_set
+	|| fdr_prm_error_filter_cnt.is_set
+	|| fdr_sec_error_filter_cnt.is_set
+	|| fdr_prm_ecc_1b_err_cnt.is_set
+	|| fdr_prm_ecc_2b_err_cnt.is_set
+	|| fdr_sec_ecc_1b_err_cnt.is_set
+	|| fdr_sec_ecc_2b_err_cnt.is_set
+	|| egq_ecc_1b_err_cnt.is_set
+	|| egq_ecc_2b_err_cnt.is_set
+	|| egq_parity_err_cnt.is_set
+	|| egq_dbf_ecc_1b_err_cnt.is_set
+	|| egq_dbf_ecc_2b_err_cnt.is_set
+	|| egq_empty_mcid_counter.is_set
+	|| egq_rqp_discard_packet_counter.is_set
+	|| egq_ehp_discard_packet_counter.is_set
+	|| egq_ipt_pkt_cnt.is_set
+	|| epni_epe_pkt_cnt.is_set
+	|| epni_epe_byte_cnt.is_set
+	|| epni_epe_discard_pkt_cnt.is_set
+	|| epni_ecc_1b_err_cnt.is_set
+	|| epni_ecc_2b_err_cnt.is_set
+	|| epni_parity_err_cnt.is_set
+	|| egq_pqp_ucast_pkt_cnt.is_set
+	|| egq_pqp_ucast_h_pkt_cnt.is_set
+	|| egq_pqp_ucast_l_pkt_cnt.is_set
+	|| egq_pqp_ucast_bytes_cnt.is_set
+	|| egq_pqp_ucast_discard_pkt_cnt.is_set
+	|| egq_pqp_mcast_pkt_cnt.is_set
+	|| egq_pqp_mcast_h_pkt_cnt.is_set
+	|| egq_pqp_mcast_l_pkt_cnt.is_set
+	|| egq_pqp_mcast_bytes_cnt.is_set
+	|| egq_pqp_mcast_discard_pkt_cnt.is_set
+	|| fct_control_cell_cnt.is_set
+	|| fct_unrch_crdt_cnt.is_set
+	|| idr_reassembly_errors.is_set
+	|| idr_mmu_ecc_1b_err_cnt.is_set
+	|| idr_mmu_ecc_2b_err_cnt.is_set
+	|| idr_discarded_packets0_cnt.is_set
+	|| idr_discarded_packets1_cnt.is_set
+	|| idr_discarded_packets2_cnt.is_set
+	|| idr_discarded_packets3_cnt.is_set
+	|| idr_discarded_octets0_cnt.is_set
+	|| idr_discarded_octets1_cnt.is_set
+	|| idr_discarded_octets2_cnt.is_set
+	|| idr_discarded_octets3_cnt.is_set
+	|| mmu_ecc_1b_err_cnt.is_set
+	|| mmu_ecc_2b_err_cnt.is_set
+	|| oamp_parity_err_cnt.is_set
+	|| oamp_ecc_1b_err_cnt.is_set
+	|| oamp_ecc_2b_err_cnt.is_set
+	|| crps_parity_err_cnt.is_set
+	|| fmac0_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs0_tst_rx_err_cnt.is_set
+	|| fmac0_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs1_tst_rx_err_cnt.is_set
+	|| fmac0_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs2_tst_rx_err_cnt.is_set
+	|| fmac0_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac1_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac2_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac3_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac4_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac5_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac6_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac7_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac8_kpcs3_tst_rx_err_cnt.is_set
+	|| fmac0_tst0_err_cnt.is_set
+	|| fmac1_tst0_err_cnt.is_set
+	|| fmac2_tst0_err_cnt.is_set
+	|| fmac3_tst0_err_cnt.is_set
+	|| fmac4_tst0_err_cnt.is_set
+	|| fmac5_tst0_err_cnt.is_set
+	|| fmac6_tst0_err_cnt.is_set
+	|| fmac7_tst0_err_cnt.is_set
+	|| fmac8_tst0_err_cnt.is_set
+	|| fmac0_tst1_err_cnt.is_set
+	|| fmac1_tst1_err_cnt.is_set
+	|| fmac2_tst1_err_cnt.is_set
+	|| fmac3_tst1_err_cnt.is_set
+	|| fmac4_tst1_err_cnt.is_set
+	|| fmac5_tst1_err_cnt.is_set
+	|| fmac6_tst1_err_cnt.is_set
+	|| fmac7_tst1_err_cnt.is_set
+	|| fmac8_tst1_err_cnt.is_set
+	|| fmac0_tst2_err_cnt.is_set
+	|| fmac1_tst2_err_cnt.is_set
+	|| fmac2_tst2_err_cnt.is_set
+	|| fmac3_tst2_err_cnt.is_set
+	|| fmac4_tst2_err_cnt.is_set
+	|| fmac5_tst2_err_cnt.is_set
+	|| fmac6_tst2_err_cnt.is_set
+	|| fmac7_tst2_err_cnt.is_set
+	|| fmac8_tst2_err_cnt.is_set
+	|| fmac0_tst3_err_cnt.is_set
+	|| fmac1_tst3_err_cnt.is_set
+	|| fmac2_tst3_err_cnt.is_set
+	|| fmac3_tst3_err_cnt.is_set
+	|| fmac4_tst3_err_cnt.is_set
+	|| fmac5_tst3_err_cnt.is_set
+	|| fmac6_tst3_err_cnt.is_set
+	|| fmac7_tst3_err_cnt.is_set
+	|| fmac8_tst3_err_cnt.is_set
+	|| fmac0_ecc_1b_err_cnt.is_set
+	|| fmac1_ecc_1b_err_cnt.is_set
+	|| fmac2_ecc_1b_err_cnt.is_set
+	|| fmac3_ecc_1b_err_cnt.is_set
+	|| fmac4_ecc_1b_err_cnt.is_set
+	|| fmac5_ecc_1b_err_cnt.is_set
+	|| fmac6_ecc_1b_err_cnt.is_set
+	|| fmac7_ecc_1b_err_cnt.is_set
+	|| fmac8_ecc_1b_err_cnt.is_set
+	|| fmac0_ecc_2b_err_cnt.is_set
+	|| fmac1_ecc_2b_err_cnt.is_set
+	|| fmac2_ecc_2b_err_cnt.is_set
+	|| fmac3_ecc_2b_err_cnt.is_set
+	|| fmac4_ecc_2b_err_cnt.is_set
+	|| fmac5_ecc_2b_err_cnt.is_set
+	|| fmac6_ecc_2b_err_cnt.is_set
+	|| fmac7_ecc_2b_err_cnt.is_set
+	|| fmac8_ecc_2b_err_cnt.is_set
+	|| olp_incoming_bad_identifier_counter.is_set
+	|| olp_incoming_bad_reassembly_counter.is_set
+	|| cfc_parity_err_cnt.is_set
+	|| cfc_ilkn0_oob_rx_crc_err_cntr.is_set
+	|| cfc_ilkn1_oob_rx_crc_err_cntr.is_set
+	|| cfc_spi_oob_rx0_frm_err_cnt.is_set
+	|| cfc_spi_oob_rx0_dip2_err_cnt.is_set
+	|| cfc_spi_oob_rx1_frm_err_cnt.is_set
+	|| cfc_spi_oob_rx1_dip2_err_cnt.is_set
+	|| cgm_cgm_uc_pd_dropped_cnt.is_set
+	|| cgm_cgm_mc_rep_pd_dropped_cnt.is_set
+	|| cgm_cgm_uc_db_dropped_by_rqp_cnt.is_set
+	|| cgm_cgm_uc_db_dropped_by_pqp_cnt.is_set
+	|| cgm_cgm_mc_rep_db_dropped_cnt.is_set
+	|| cgm_cgm_mc_db_dropped_cnt.is_set
+	|| drca_full_err_cnt.is_set
+	|| drca_single_err_cnt.is_set
+	|| drca_calib_bist_full_err_cnt.is_set
+	|| drca_loopback_full_err_cnt.is_set
+	|| drcb_full_err_cnt.is_set
+	|| drcb_single_err_cnt.is_set
+	|| drcb_calib_bist_full_err_cnt.is_set
+	|| drcb_loopback_full_err_cnt.is_set
+	|| drcc_full_err_cnt.is_set
+	|| drcc_single_err_cnt.is_set
+	|| drcc_calib_bist_full_err_cnt.is_set
+	|| drcc_loopback_full_err_cnt.is_set
+	|| drcd_full_err_cnt.is_set
+	|| drcd_single_err_cnt.is_set
+	|| drcd_calib_bist_full_err_cnt.is_set
+	|| drcd_loopback_full_err_cnt.is_set
+	|| drce_full_err_cnt.is_set
+	|| drce_single_err_cnt.is_set
+	|| drce_calib_bist_full_err_cnt.is_set
+	|| drce_loopback_full_err_cnt.is_set
+	|| drcf_full_err_cnt.is_set
+	|| drcf_single_err_cnt.is_set
+	|| drcf_calib_bist_full_err_cnt.is_set
+	|| drcf_loopback_full_err_cnt.is_set
+	|| drcg_full_err_cnt.is_set
+	|| drcg_single_err_cnt.is_set
+	|| drcg_calib_bist_full_err_cnt.is_set
+	|| drcg_loopback_full_err_cnt.is_set
+	|| drch_full_err_cnt.is_set
+	|| drch_single_err_cnt.is_set
+	|| drch_calib_bist_full_err_cnt.is_set
+	|| drch_loopback_full_err_cnt.is_set
+	|| drcbroadcast_full_err_cnt.is_set
+	|| drcbroadcast_single_err_cnt.is_set
+	|| drcbroadcast_calib_bist_full_err_cnt.is_set
+	|| drcbroadcast_loopback_full_err_cnt.is_set;
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_operation() const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(field_name.yfilter)
-	|| ydk::is_set(field_value.yfilter)
-	|| ydk::is_set(is_ovf.yfilter);
+	|| ydk::is_set(cmic_cmc0_pkt_count_tx_pkt.yfilter)
+	|| ydk::is_set(cmic_cmc0_pkt_count_rx_pkt.yfilter)
+	|| ydk::is_set(nbi_stat_rx_bursts_err_cnt.yfilter)
+	|| ydk::is_set(nbi_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(nbi_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(nbi_parity_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn_crc32_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_burst_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_miss_sop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_miss_eop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_misaligned_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_burst_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_miss_sop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_miss_eop_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_misaligned_cnt.yfilter)
+	|| ydk::is_set(nbi_tx_ilkn1_flushed_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_retry_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_wdog_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_crc24_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_retry_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_wdog_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_rx_frame_err_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_tx_frame_err_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_elk_err_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_num_thrown_eops.yfilter)
+	|| ydk::is_set(nbi_rx_num_runts.yfilter)
+	|| ydk::is_set(nbi_bist_tx_crc_err_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_length_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_burst_index_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_bct_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_data_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_in_crc_err_cnt.yfilter)
+	|| ydk::is_set(nbi_bist_rx_err_sob_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_tx_bursts_cnt.yfilter)
+	|| ydk::is_set(nbi_stat_tx_total_leng_cnt.yfilter)
+	|| ydk::is_set(rxaui_total_tx_pkt_count.yfilter)
+	|| ydk::is_set(rxaui_total_rx_pkt_count.yfilter)
+	|| ydk::is_set(rxaui_rx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_tx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_tx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(rxaui_tx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(rxaui_tx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(rxaui_byte_count_tx_pkt.yfilter)
+	|| ydk::is_set(rxaui_byte_count_rx_pkt.yfilter)
+	|| ydk::is_set(rxaui_rx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(rxaui_tx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(ire_nif_packet_counter.yfilter)
+	|| ydk::is_set(il_total_rx_pkt_count.yfilter)
+	|| ydk::is_set(il_total_tx_pkt_count.yfilter)
+	|| ydk::is_set(il_rx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(il_tx_err_drop_pkt_cnt.yfilter)
+	|| ydk::is_set(il_byte_count_tx_pkt.yfilter)
+	|| ydk::is_set(il_byte_count_rx_pkt.yfilter)
+	|| ydk::is_set(il_rx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(il_tx_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(il_rx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(il_tx_pkt_count_bcast_pkt.yfilter)
+	|| ydk::is_set(il_rx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(il_tx_pkt_count_mcast_pkt.yfilter)
+	|| ydk::is_set(il_rx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(il_tx_pkt_count_ucast_pkt.yfilter)
+	|| ydk::is_set(iqm_enq_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_enq_byte_cnt.yfilter)
+	|| ydk::is_set(iqm_deq_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_deq_byte_cnt.yfilter)
+	|| ydk::is_set(iqm_tot_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_tot_dscrd_byte_cnt.yfilter)
+	|| ydk::is_set(iqm_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(iqm_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(iqm_parity_err_cnt.yfilter)
+	|| ydk::is_set(iqm_deq_delete_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_ecn_dscrd_msk_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_q_tot_dscrd_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_q_deq_delete_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_db_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_bdb_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_bdb_protct_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_oc_bd_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_sn_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_mc_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_rsrc_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_qnvalid_err_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_cnm_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_rjct_dyn_space_pkt_cnt.yfilter)
+	|| ydk::is_set(ipt_fdt_pkt_cnt.yfilter)
+	|| ydk::is_set(ipt_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(ipt_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(ipt_parity_err_cnt.yfilter)
+	|| ydk::is_set(ipt_crc_err_cnt.yfilter)
+	|| ydk::is_set(ipt_crc_err_del_buff_cnt.yfilter)
+	|| ydk::is_set(ipt_cpu_del_buff_cnt.yfilter)
+	|| ydk::is_set(ipt_cpu_rel_buff_cnt.yfilter)
+	|| ydk::is_set(ipt_crc_err_buff_fifo_full_cnt.yfilter)
+	|| ydk::is_set(fdt_data_cell_cnt.yfilter)
+	|| ydk::is_set(fdt_data_byte_cnt.yfilter)
+	|| ydk::is_set(fdt_crc_dropped_pck_cnt.yfilter)
+	|| ydk::is_set(fdt_invalid_destq_drop_cell_cnt.yfilter)
+	|| ydk::is_set(fdt_indirect_command_count.yfilter)
+	|| ydk::is_set(fdt_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fdt_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fdt_parity_err_cnt.yfilter)
+	|| ydk::is_set(fdt_crc_dropped_cell_cnt.yfilter)
+	|| ydk::is_set(fcr_control_cell_cnt.yfilter)
+	|| ydk::is_set(fcr_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_credit_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_fs_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_rt_cell_drop_cnt.yfilter)
+	|| ydk::is_set(fcr_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fcr_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_data_cell_cnt.yfilter)
+	|| ydk::is_set(fdr_data_byte_cnt.yfilter)
+	|| ydk::is_set(fdr_crc_dropped_pck_cnt.yfilter)
+	|| ydk::is_set(fdr_p_pkt_cnt.yfilter)
+	|| ydk::is_set(fdr_prm_error_filter_cnt.yfilter)
+	|| ydk::is_set(fdr_sec_error_filter_cnt.yfilter)
+	|| ydk::is_set(fdr_prm_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_prm_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_sec_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fdr_sec_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(egq_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(egq_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(egq_parity_err_cnt.yfilter)
+	|| ydk::is_set(egq_dbf_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(egq_dbf_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(egq_empty_mcid_counter.yfilter)
+	|| ydk::is_set(egq_rqp_discard_packet_counter.yfilter)
+	|| ydk::is_set(egq_ehp_discard_packet_counter.yfilter)
+	|| ydk::is_set(egq_ipt_pkt_cnt.yfilter)
+	|| ydk::is_set(epni_epe_pkt_cnt.yfilter)
+	|| ydk::is_set(epni_epe_byte_cnt.yfilter)
+	|| ydk::is_set(epni_epe_discard_pkt_cnt.yfilter)
+	|| ydk::is_set(epni_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(epni_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(epni_parity_err_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_h_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_l_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_bytes_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_ucast_discard_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_h_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_l_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_bytes_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mcast_discard_pkt_cnt.yfilter)
+	|| ydk::is_set(fct_control_cell_cnt.yfilter)
+	|| ydk::is_set(fct_unrch_crdt_cnt.yfilter)
+	|| ydk::is_set(idr_reassembly_errors.yfilter)
+	|| ydk::is_set(idr_mmu_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(idr_mmu_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets0_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets1_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets2_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_packets3_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets0_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets1_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets2_cnt.yfilter)
+	|| ydk::is_set(idr_discarded_octets3_cnt.yfilter)
+	|| ydk::is_set(mmu_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(mmu_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(oamp_parity_err_cnt.yfilter)
+	|| ydk::is_set(oamp_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(oamp_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(crps_parity_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs0_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs1_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs2_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_kpcs3_tst_rx_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst0_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst1_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst2_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_tst3_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_ecc_1b_err_cnt.yfilter)
+	|| ydk::is_set(fmac0_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac1_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac2_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac3_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac4_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac5_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac6_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac7_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(fmac8_ecc_2b_err_cnt.yfilter)
+	|| ydk::is_set(olp_incoming_bad_identifier_counter.yfilter)
+	|| ydk::is_set(olp_incoming_bad_reassembly_counter.yfilter)
+	|| ydk::is_set(cfc_parity_err_cnt.yfilter)
+	|| ydk::is_set(cfc_ilkn0_oob_rx_crc_err_cntr.yfilter)
+	|| ydk::is_set(cfc_ilkn1_oob_rx_crc_err_cntr.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx0_frm_err_cnt.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx0_dip2_err_cnt.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx1_frm_err_cnt.yfilter)
+	|| ydk::is_set(cfc_spi_oob_rx1_dip2_err_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_uc_pd_dropped_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_mc_rep_pd_dropped_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_uc_db_dropped_by_rqp_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_uc_db_dropped_by_pqp_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_mc_rep_db_dropped_cnt.yfilter)
+	|| ydk::is_set(cgm_cgm_mc_db_dropped_cnt.yfilter)
+	|| ydk::is_set(drca_full_err_cnt.yfilter)
+	|| ydk::is_set(drca_single_err_cnt.yfilter)
+	|| ydk::is_set(drca_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drca_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcb_full_err_cnt.yfilter)
+	|| ydk::is_set(drcb_single_err_cnt.yfilter)
+	|| ydk::is_set(drcb_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcb_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcc_full_err_cnt.yfilter)
+	|| ydk::is_set(drcc_single_err_cnt.yfilter)
+	|| ydk::is_set(drcc_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcc_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcd_full_err_cnt.yfilter)
+	|| ydk::is_set(drcd_single_err_cnt.yfilter)
+	|| ydk::is_set(drcd_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcd_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drce_full_err_cnt.yfilter)
+	|| ydk::is_set(drce_single_err_cnt.yfilter)
+	|| ydk::is_set(drce_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drce_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcf_full_err_cnt.yfilter)
+	|| ydk::is_set(drcf_single_err_cnt.yfilter)
+	|| ydk::is_set(drcf_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcf_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcg_full_err_cnt.yfilter)
+	|| ydk::is_set(drcg_single_err_cnt.yfilter)
+	|| ydk::is_set(drcg_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcg_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drch_full_err_cnt.yfilter)
+	|| ydk::is_set(drch_single_err_cnt.yfilter)
+	|| ydk::is_set(drch_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drch_loopback_full_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_full_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_single_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_calib_bist_full_err_cnt.yfilter)
+	|| ydk::is_set(drcbroadcast_loopback_full_err_cnt.yfilter);
 }
 
-std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_segment_path() const
+std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "field-info";
+    path_buffer << "ovf-status";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (field_name.is_set || is_set(field_name.yfilter)) leaf_name_data.push_back(field_name.get_name_leafdata());
-    if (field_value.is_set || is_set(field_value.yfilter)) leaf_name_data.push_back(field_value.get_name_leafdata());
-    if (is_ovf.is_set || is_set(is_ovf.yfilter)) leaf_name_data.push_back(is_ovf.get_name_leafdata());
+    if (cmic_cmc0_pkt_count_tx_pkt.is_set || is_set(cmic_cmc0_pkt_count_tx_pkt.yfilter)) leaf_name_data.push_back(cmic_cmc0_pkt_count_tx_pkt.get_name_leafdata());
+    if (cmic_cmc0_pkt_count_rx_pkt.is_set || is_set(cmic_cmc0_pkt_count_rx_pkt.yfilter)) leaf_name_data.push_back(cmic_cmc0_pkt_count_rx_pkt.get_name_leafdata());
+    if (nbi_stat_rx_bursts_err_cnt.is_set || is_set(nbi_stat_rx_bursts_err_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_rx_bursts_err_cnt.get_name_leafdata());
+    if (nbi_ecc_1b_err_cnt.is_set || is_set(nbi_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(nbi_ecc_1b_err_cnt.get_name_leafdata());
+    if (nbi_ecc_2b_err_cnt.is_set || is_set(nbi_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(nbi_ecc_2b_err_cnt.get_name_leafdata());
+    if (nbi_parity_err_cnt.is_set || is_set(nbi_parity_err_cnt.yfilter)) leaf_name_data.push_back(nbi_parity_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn_crc32_err_cnt.is_set || is_set(nbi_rx_ilkn_crc32_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn_crc32_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn0_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_burst_err_cnt.is_set || is_set(nbi_rx_ilkn0_burst_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_burst_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_miss_sop_err_cnt.is_set || is_set(nbi_rx_ilkn0_miss_sop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_miss_sop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_miss_eop_err_cnt.is_set || is_set(nbi_rx_ilkn0_miss_eop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_miss_eop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_misaligned_cnt.is_set || is_set(nbi_rx_ilkn0_misaligned_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_misaligned_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn1_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_burst_err_cnt.is_set || is_set(nbi_rx_ilkn1_burst_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_burst_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_miss_sop_err_cnt.is_set || is_set(nbi_rx_ilkn1_miss_sop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_miss_sop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_miss_eop_err_cnt.is_set || is_set(nbi_rx_ilkn1_miss_eop_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_miss_eop_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_misaligned_cnt.is_set || is_set(nbi_rx_ilkn1_misaligned_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_misaligned_cnt.get_name_leafdata());
+    if (nbi_tx_ilkn1_flushed_bursts_cnt.is_set || is_set(nbi_tx_ilkn1_flushed_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_tx_ilkn1_flushed_bursts_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_retry_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_retry_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_retry_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_wdog_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_wdog_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_wdog_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.is_set || is_set(nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_crc24_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_crc24_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_crc24_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_retry_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_retry_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_retry_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_wdog_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_wdog_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_wdog_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.get_name_leafdata());
+    if (nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.is_set || is_set(nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.get_name_leafdata());
+    if (nbi_stat_rx_frame_err_cnt.is_set || is_set(nbi_stat_rx_frame_err_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_rx_frame_err_cnt.get_name_leafdata());
+    if (nbi_stat_tx_frame_err_cnt.is_set || is_set(nbi_stat_tx_frame_err_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_tx_frame_err_cnt.get_name_leafdata());
+    if (nbi_rx_elk_err_bursts_cnt.is_set || is_set(nbi_rx_elk_err_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_elk_err_bursts_cnt.get_name_leafdata());
+    if (nbi_rx_num_thrown_eops.is_set || is_set(nbi_rx_num_thrown_eops.yfilter)) leaf_name_data.push_back(nbi_rx_num_thrown_eops.get_name_leafdata());
+    if (nbi_rx_num_runts.is_set || is_set(nbi_rx_num_runts.yfilter)) leaf_name_data.push_back(nbi_rx_num_runts.get_name_leafdata());
+    if (nbi_bist_tx_crc_err_bursts_cnt.is_set || is_set(nbi_bist_tx_crc_err_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_tx_crc_err_bursts_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_length_bursts_cnt.is_set || is_set(nbi_bist_rx_err_length_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_length_bursts_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_burst_index_cnt.is_set || is_set(nbi_bist_rx_err_burst_index_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_burst_index_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_bct_cnt.is_set || is_set(nbi_bist_rx_err_bct_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_bct_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_data_cnt.is_set || is_set(nbi_bist_rx_err_data_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_data_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_in_crc_err_cnt.is_set || is_set(nbi_bist_rx_err_in_crc_err_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_in_crc_err_cnt.get_name_leafdata());
+    if (nbi_bist_rx_err_sob_cnt.is_set || is_set(nbi_bist_rx_err_sob_cnt.yfilter)) leaf_name_data.push_back(nbi_bist_rx_err_sob_cnt.get_name_leafdata());
+    if (nbi_stat_tx_bursts_cnt.is_set || is_set(nbi_stat_tx_bursts_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_tx_bursts_cnt.get_name_leafdata());
+    if (nbi_stat_tx_total_leng_cnt.is_set || is_set(nbi_stat_tx_total_leng_cnt.yfilter)) leaf_name_data.push_back(nbi_stat_tx_total_leng_cnt.get_name_leafdata());
+    if (rxaui_total_tx_pkt_count.is_set || is_set(rxaui_total_tx_pkt_count.yfilter)) leaf_name_data.push_back(rxaui_total_tx_pkt_count.get_name_leafdata());
+    if (rxaui_total_rx_pkt_count.is_set || is_set(rxaui_total_rx_pkt_count.yfilter)) leaf_name_data.push_back(rxaui_total_rx_pkt_count.get_name_leafdata());
+    if (rxaui_rx_pkt_count_bcast_pkt.is_set || is_set(rxaui_rx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_rx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (rxaui_tx_pkt_count_bcast_pkt.is_set || is_set(rxaui_tx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_tx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (rxaui_rx_pkt_count_mcast_pkt.is_set || is_set(rxaui_rx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_rx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (rxaui_tx_pkt_count_mcast_pkt.is_set || is_set(rxaui_tx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(rxaui_tx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (rxaui_rx_pkt_count_ucast_pkt.is_set || is_set(rxaui_rx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(rxaui_rx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (rxaui_tx_pkt_count_ucast_pkt.is_set || is_set(rxaui_tx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(rxaui_tx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (rxaui_rx_err_drop_pkt_cnt.is_set || is_set(rxaui_rx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_rx_err_drop_pkt_cnt.get_name_leafdata());
+    if (rxaui_tx_err_drop_pkt_cnt.is_set || is_set(rxaui_tx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_tx_err_drop_pkt_cnt.get_name_leafdata());
+    if (rxaui_byte_count_tx_pkt.is_set || is_set(rxaui_byte_count_tx_pkt.yfilter)) leaf_name_data.push_back(rxaui_byte_count_tx_pkt.get_name_leafdata());
+    if (rxaui_byte_count_rx_pkt.is_set || is_set(rxaui_byte_count_rx_pkt.yfilter)) leaf_name_data.push_back(rxaui_byte_count_rx_pkt.get_name_leafdata());
+    if (rxaui_rx_dscrd_pkt_cnt.is_set || is_set(rxaui_rx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_rx_dscrd_pkt_cnt.get_name_leafdata());
+    if (rxaui_tx_dscrd_pkt_cnt.is_set || is_set(rxaui_tx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(rxaui_tx_dscrd_pkt_cnt.get_name_leafdata());
+    if (ire_nif_packet_counter.is_set || is_set(ire_nif_packet_counter.yfilter)) leaf_name_data.push_back(ire_nif_packet_counter.get_name_leafdata());
+    if (il_total_rx_pkt_count.is_set || is_set(il_total_rx_pkt_count.yfilter)) leaf_name_data.push_back(il_total_rx_pkt_count.get_name_leafdata());
+    if (il_total_tx_pkt_count.is_set || is_set(il_total_tx_pkt_count.yfilter)) leaf_name_data.push_back(il_total_tx_pkt_count.get_name_leafdata());
+    if (il_rx_err_drop_pkt_cnt.is_set || is_set(il_rx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(il_rx_err_drop_pkt_cnt.get_name_leafdata());
+    if (il_tx_err_drop_pkt_cnt.is_set || is_set(il_tx_err_drop_pkt_cnt.yfilter)) leaf_name_data.push_back(il_tx_err_drop_pkt_cnt.get_name_leafdata());
+    if (il_byte_count_tx_pkt.is_set || is_set(il_byte_count_tx_pkt.yfilter)) leaf_name_data.push_back(il_byte_count_tx_pkt.get_name_leafdata());
+    if (il_byte_count_rx_pkt.is_set || is_set(il_byte_count_rx_pkt.yfilter)) leaf_name_data.push_back(il_byte_count_rx_pkt.get_name_leafdata());
+    if (il_rx_dscrd_pkt_cnt.is_set || is_set(il_rx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(il_rx_dscrd_pkt_cnt.get_name_leafdata());
+    if (il_tx_dscrd_pkt_cnt.is_set || is_set(il_tx_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(il_tx_dscrd_pkt_cnt.get_name_leafdata());
+    if (il_rx_pkt_count_bcast_pkt.is_set || is_set(il_rx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(il_rx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (il_tx_pkt_count_bcast_pkt.is_set || is_set(il_tx_pkt_count_bcast_pkt.yfilter)) leaf_name_data.push_back(il_tx_pkt_count_bcast_pkt.get_name_leafdata());
+    if (il_rx_pkt_count_mcast_pkt.is_set || is_set(il_rx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(il_rx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (il_tx_pkt_count_mcast_pkt.is_set || is_set(il_tx_pkt_count_mcast_pkt.yfilter)) leaf_name_data.push_back(il_tx_pkt_count_mcast_pkt.get_name_leafdata());
+    if (il_rx_pkt_count_ucast_pkt.is_set || is_set(il_rx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(il_rx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (il_tx_pkt_count_ucast_pkt.is_set || is_set(il_tx_pkt_count_ucast_pkt.yfilter)) leaf_name_data.push_back(il_tx_pkt_count_ucast_pkt.get_name_leafdata());
+    if (iqm_enq_pkt_cnt.is_set || is_set(iqm_enq_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_enq_pkt_cnt.get_name_leafdata());
+    if (iqm_enq_byte_cnt.is_set || is_set(iqm_enq_byte_cnt.yfilter)) leaf_name_data.push_back(iqm_enq_byte_cnt.get_name_leafdata());
+    if (iqm_deq_pkt_cnt.is_set || is_set(iqm_deq_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_deq_pkt_cnt.get_name_leafdata());
+    if (iqm_deq_byte_cnt.is_set || is_set(iqm_deq_byte_cnt.yfilter)) leaf_name_data.push_back(iqm_deq_byte_cnt.get_name_leafdata());
+    if (iqm_tot_dscrd_pkt_cnt.is_set || is_set(iqm_tot_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_tot_dscrd_pkt_cnt.get_name_leafdata());
+    if (iqm_tot_dscrd_byte_cnt.is_set || is_set(iqm_tot_dscrd_byte_cnt.yfilter)) leaf_name_data.push_back(iqm_tot_dscrd_byte_cnt.get_name_leafdata());
+    if (iqm_ecc_1b_err_cnt.is_set || is_set(iqm_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(iqm_ecc_1b_err_cnt.get_name_leafdata());
+    if (iqm_ecc_2b_err_cnt.is_set || is_set(iqm_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(iqm_ecc_2b_err_cnt.get_name_leafdata());
+    if (iqm_parity_err_cnt.is_set || is_set(iqm_parity_err_cnt.yfilter)) leaf_name_data.push_back(iqm_parity_err_cnt.get_name_leafdata());
+    if (iqm_deq_delete_pkt_cnt.is_set || is_set(iqm_deq_delete_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_deq_delete_pkt_cnt.get_name_leafdata());
+    if (iqm_ecn_dscrd_msk_pkt_cnt.is_set || is_set(iqm_ecn_dscrd_msk_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_ecn_dscrd_msk_pkt_cnt.get_name_leafdata());
+    if (iqm_q_tot_dscrd_pkt_cnt.is_set || is_set(iqm_q_tot_dscrd_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_q_tot_dscrd_pkt_cnt.get_name_leafdata());
+    if (iqm_q_deq_delete_pkt_cnt.is_set || is_set(iqm_q_deq_delete_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_q_deq_delete_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_db_pkt_cnt.is_set || is_set(iqm_rjct_db_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_db_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_bdb_pkt_cnt.is_set || is_set(iqm_rjct_bdb_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_bdb_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_bdb_protct_pkt_cnt.is_set || is_set(iqm_rjct_bdb_protct_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_bdb_protct_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_oc_bd_pkt_cnt.is_set || is_set(iqm_rjct_oc_bd_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_oc_bd_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_sn_err_pkt_cnt.is_set || is_set(iqm_rjct_sn_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_sn_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_mc_err_pkt_cnt.is_set || is_set(iqm_rjct_mc_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_mc_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_rsrc_err_pkt_cnt.is_set || is_set(iqm_rjct_rsrc_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_rsrc_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_qnvalid_err_pkt_cnt.is_set || is_set(iqm_rjct_qnvalid_err_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_qnvalid_err_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_cnm_pkt_cnt.is_set || is_set(iqm_rjct_cnm_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_cnm_pkt_cnt.get_name_leafdata());
+    if (iqm_rjct_dyn_space_pkt_cnt.is_set || is_set(iqm_rjct_dyn_space_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_rjct_dyn_space_pkt_cnt.get_name_leafdata());
+    if (ipt_fdt_pkt_cnt.is_set || is_set(ipt_fdt_pkt_cnt.yfilter)) leaf_name_data.push_back(ipt_fdt_pkt_cnt.get_name_leafdata());
+    if (ipt_ecc_1b_err_cnt.is_set || is_set(ipt_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(ipt_ecc_1b_err_cnt.get_name_leafdata());
+    if (ipt_ecc_2b_err_cnt.is_set || is_set(ipt_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(ipt_ecc_2b_err_cnt.get_name_leafdata());
+    if (ipt_parity_err_cnt.is_set || is_set(ipt_parity_err_cnt.yfilter)) leaf_name_data.push_back(ipt_parity_err_cnt.get_name_leafdata());
+    if (ipt_crc_err_cnt.is_set || is_set(ipt_crc_err_cnt.yfilter)) leaf_name_data.push_back(ipt_crc_err_cnt.get_name_leafdata());
+    if (ipt_crc_err_del_buff_cnt.is_set || is_set(ipt_crc_err_del_buff_cnt.yfilter)) leaf_name_data.push_back(ipt_crc_err_del_buff_cnt.get_name_leafdata());
+    if (ipt_cpu_del_buff_cnt.is_set || is_set(ipt_cpu_del_buff_cnt.yfilter)) leaf_name_data.push_back(ipt_cpu_del_buff_cnt.get_name_leafdata());
+    if (ipt_cpu_rel_buff_cnt.is_set || is_set(ipt_cpu_rel_buff_cnt.yfilter)) leaf_name_data.push_back(ipt_cpu_rel_buff_cnt.get_name_leafdata());
+    if (ipt_crc_err_buff_fifo_full_cnt.is_set || is_set(ipt_crc_err_buff_fifo_full_cnt.yfilter)) leaf_name_data.push_back(ipt_crc_err_buff_fifo_full_cnt.get_name_leafdata());
+    if (fdt_data_cell_cnt.is_set || is_set(fdt_data_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_data_cell_cnt.get_name_leafdata());
+    if (fdt_data_byte_cnt.is_set || is_set(fdt_data_byte_cnt.yfilter)) leaf_name_data.push_back(fdt_data_byte_cnt.get_name_leafdata());
+    if (fdt_crc_dropped_pck_cnt.is_set || is_set(fdt_crc_dropped_pck_cnt.yfilter)) leaf_name_data.push_back(fdt_crc_dropped_pck_cnt.get_name_leafdata());
+    if (fdt_invalid_destq_drop_cell_cnt.is_set || is_set(fdt_invalid_destq_drop_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_invalid_destq_drop_cell_cnt.get_name_leafdata());
+    if (fdt_indirect_command_count.is_set || is_set(fdt_indirect_command_count.yfilter)) leaf_name_data.push_back(fdt_indirect_command_count.get_name_leafdata());
+    if (fdt_ecc_1b_err_cnt.is_set || is_set(fdt_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fdt_ecc_1b_err_cnt.get_name_leafdata());
+    if (fdt_ecc_2b_err_cnt.is_set || is_set(fdt_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fdt_ecc_2b_err_cnt.get_name_leafdata());
+    if (fdt_parity_err_cnt.is_set || is_set(fdt_parity_err_cnt.yfilter)) leaf_name_data.push_back(fdt_parity_err_cnt.get_name_leafdata());
+    if (fdt_crc_dropped_cell_cnt.is_set || is_set(fdt_crc_dropped_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_crc_dropped_cell_cnt.get_name_leafdata());
+    if (fcr_control_cell_cnt.is_set || is_set(fcr_control_cell_cnt.yfilter)) leaf_name_data.push_back(fcr_control_cell_cnt.get_name_leafdata());
+    if (fcr_cell_drop_cnt.is_set || is_set(fcr_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_cell_drop_cnt.get_name_leafdata());
+    if (fcr_credit_cell_drop_cnt.is_set || is_set(fcr_credit_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_credit_cell_drop_cnt.get_name_leafdata());
+    if (fcr_fs_cell_drop_cnt.is_set || is_set(fcr_fs_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_fs_cell_drop_cnt.get_name_leafdata());
+    if (fcr_rt_cell_drop_cnt.is_set || is_set(fcr_rt_cell_drop_cnt.yfilter)) leaf_name_data.push_back(fcr_rt_cell_drop_cnt.get_name_leafdata());
+    if (fcr_ecc_1b_err_cnt.is_set || is_set(fcr_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fcr_ecc_1b_err_cnt.get_name_leafdata());
+    if (fcr_ecc_2b_err_cnt.is_set || is_set(fcr_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fcr_ecc_2b_err_cnt.get_name_leafdata());
+    if (fdr_data_cell_cnt.is_set || is_set(fdr_data_cell_cnt.yfilter)) leaf_name_data.push_back(fdr_data_cell_cnt.get_name_leafdata());
+    if (fdr_data_byte_cnt.is_set || is_set(fdr_data_byte_cnt.yfilter)) leaf_name_data.push_back(fdr_data_byte_cnt.get_name_leafdata());
+    if (fdr_crc_dropped_pck_cnt.is_set || is_set(fdr_crc_dropped_pck_cnt.yfilter)) leaf_name_data.push_back(fdr_crc_dropped_pck_cnt.get_name_leafdata());
+    if (fdr_p_pkt_cnt.is_set || is_set(fdr_p_pkt_cnt.yfilter)) leaf_name_data.push_back(fdr_p_pkt_cnt.get_name_leafdata());
+    if (fdr_prm_error_filter_cnt.is_set || is_set(fdr_prm_error_filter_cnt.yfilter)) leaf_name_data.push_back(fdr_prm_error_filter_cnt.get_name_leafdata());
+    if (fdr_sec_error_filter_cnt.is_set || is_set(fdr_sec_error_filter_cnt.yfilter)) leaf_name_data.push_back(fdr_sec_error_filter_cnt.get_name_leafdata());
+    if (fdr_prm_ecc_1b_err_cnt.is_set || is_set(fdr_prm_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_prm_ecc_1b_err_cnt.get_name_leafdata());
+    if (fdr_prm_ecc_2b_err_cnt.is_set || is_set(fdr_prm_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_prm_ecc_2b_err_cnt.get_name_leafdata());
+    if (fdr_sec_ecc_1b_err_cnt.is_set || is_set(fdr_sec_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_sec_ecc_1b_err_cnt.get_name_leafdata());
+    if (fdr_sec_ecc_2b_err_cnt.is_set || is_set(fdr_sec_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fdr_sec_ecc_2b_err_cnt.get_name_leafdata());
+    if (egq_ecc_1b_err_cnt.is_set || is_set(egq_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(egq_ecc_1b_err_cnt.get_name_leafdata());
+    if (egq_ecc_2b_err_cnt.is_set || is_set(egq_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(egq_ecc_2b_err_cnt.get_name_leafdata());
+    if (egq_parity_err_cnt.is_set || is_set(egq_parity_err_cnt.yfilter)) leaf_name_data.push_back(egq_parity_err_cnt.get_name_leafdata());
+    if (egq_dbf_ecc_1b_err_cnt.is_set || is_set(egq_dbf_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(egq_dbf_ecc_1b_err_cnt.get_name_leafdata());
+    if (egq_dbf_ecc_2b_err_cnt.is_set || is_set(egq_dbf_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(egq_dbf_ecc_2b_err_cnt.get_name_leafdata());
+    if (egq_empty_mcid_counter.is_set || is_set(egq_empty_mcid_counter.yfilter)) leaf_name_data.push_back(egq_empty_mcid_counter.get_name_leafdata());
+    if (egq_rqp_discard_packet_counter.is_set || is_set(egq_rqp_discard_packet_counter.yfilter)) leaf_name_data.push_back(egq_rqp_discard_packet_counter.get_name_leafdata());
+    if (egq_ehp_discard_packet_counter.is_set || is_set(egq_ehp_discard_packet_counter.yfilter)) leaf_name_data.push_back(egq_ehp_discard_packet_counter.get_name_leafdata());
+    if (egq_ipt_pkt_cnt.is_set || is_set(egq_ipt_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_ipt_pkt_cnt.get_name_leafdata());
+    if (epni_epe_pkt_cnt.is_set || is_set(epni_epe_pkt_cnt.yfilter)) leaf_name_data.push_back(epni_epe_pkt_cnt.get_name_leafdata());
+    if (epni_epe_byte_cnt.is_set || is_set(epni_epe_byte_cnt.yfilter)) leaf_name_data.push_back(epni_epe_byte_cnt.get_name_leafdata());
+    if (epni_epe_discard_pkt_cnt.is_set || is_set(epni_epe_discard_pkt_cnt.yfilter)) leaf_name_data.push_back(epni_epe_discard_pkt_cnt.get_name_leafdata());
+    if (epni_ecc_1b_err_cnt.is_set || is_set(epni_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(epni_ecc_1b_err_cnt.get_name_leafdata());
+    if (epni_ecc_2b_err_cnt.is_set || is_set(epni_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(epni_ecc_2b_err_cnt.get_name_leafdata());
+    if (epni_parity_err_cnt.is_set || is_set(epni_parity_err_cnt.yfilter)) leaf_name_data.push_back(epni_parity_err_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_pkt_cnt.is_set || is_set(egq_pqp_ucast_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_h_pkt_cnt.is_set || is_set(egq_pqp_ucast_h_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_h_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_l_pkt_cnt.is_set || is_set(egq_pqp_ucast_l_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_l_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_bytes_cnt.is_set || is_set(egq_pqp_ucast_bytes_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_bytes_cnt.get_name_leafdata());
+    if (egq_pqp_ucast_discard_pkt_cnt.is_set || is_set(egq_pqp_ucast_discard_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_ucast_discard_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_pkt_cnt.is_set || is_set(egq_pqp_mcast_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_h_pkt_cnt.is_set || is_set(egq_pqp_mcast_h_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_h_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_l_pkt_cnt.is_set || is_set(egq_pqp_mcast_l_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_l_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_bytes_cnt.is_set || is_set(egq_pqp_mcast_bytes_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_bytes_cnt.get_name_leafdata());
+    if (egq_pqp_mcast_discard_pkt_cnt.is_set || is_set(egq_pqp_mcast_discard_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mcast_discard_pkt_cnt.get_name_leafdata());
+    if (fct_control_cell_cnt.is_set || is_set(fct_control_cell_cnt.yfilter)) leaf_name_data.push_back(fct_control_cell_cnt.get_name_leafdata());
+    if (fct_unrch_crdt_cnt.is_set || is_set(fct_unrch_crdt_cnt.yfilter)) leaf_name_data.push_back(fct_unrch_crdt_cnt.get_name_leafdata());
+    if (idr_reassembly_errors.is_set || is_set(idr_reassembly_errors.yfilter)) leaf_name_data.push_back(idr_reassembly_errors.get_name_leafdata());
+    if (idr_mmu_ecc_1b_err_cnt.is_set || is_set(idr_mmu_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(idr_mmu_ecc_1b_err_cnt.get_name_leafdata());
+    if (idr_mmu_ecc_2b_err_cnt.is_set || is_set(idr_mmu_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(idr_mmu_ecc_2b_err_cnt.get_name_leafdata());
+    if (idr_discarded_packets0_cnt.is_set || is_set(idr_discarded_packets0_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets0_cnt.get_name_leafdata());
+    if (idr_discarded_packets1_cnt.is_set || is_set(idr_discarded_packets1_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets1_cnt.get_name_leafdata());
+    if (idr_discarded_packets2_cnt.is_set || is_set(idr_discarded_packets2_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets2_cnt.get_name_leafdata());
+    if (idr_discarded_packets3_cnt.is_set || is_set(idr_discarded_packets3_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_packets3_cnt.get_name_leafdata());
+    if (idr_discarded_octets0_cnt.is_set || is_set(idr_discarded_octets0_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets0_cnt.get_name_leafdata());
+    if (idr_discarded_octets1_cnt.is_set || is_set(idr_discarded_octets1_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets1_cnt.get_name_leafdata());
+    if (idr_discarded_octets2_cnt.is_set || is_set(idr_discarded_octets2_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets2_cnt.get_name_leafdata());
+    if (idr_discarded_octets3_cnt.is_set || is_set(idr_discarded_octets3_cnt.yfilter)) leaf_name_data.push_back(idr_discarded_octets3_cnt.get_name_leafdata());
+    if (mmu_ecc_1b_err_cnt.is_set || is_set(mmu_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(mmu_ecc_1b_err_cnt.get_name_leafdata());
+    if (mmu_ecc_2b_err_cnt.is_set || is_set(mmu_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(mmu_ecc_2b_err_cnt.get_name_leafdata());
+    if (oamp_parity_err_cnt.is_set || is_set(oamp_parity_err_cnt.yfilter)) leaf_name_data.push_back(oamp_parity_err_cnt.get_name_leafdata());
+    if (oamp_ecc_1b_err_cnt.is_set || is_set(oamp_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(oamp_ecc_1b_err_cnt.get_name_leafdata());
+    if (oamp_ecc_2b_err_cnt.is_set || is_set(oamp_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(oamp_ecc_2b_err_cnt.get_name_leafdata());
+    if (crps_parity_err_cnt.is_set || is_set(crps_parity_err_cnt.yfilter)) leaf_name_data.push_back(crps_parity_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs0_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs0_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs0_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs1_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs1_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs1_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs2_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs2_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs2_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac0_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac1_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac1_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac2_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac2_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac3_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac3_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac4_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac4_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac5_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac5_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac6_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac6_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac7_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac7_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac8_kpcs3_tst_rx_err_cnt.is_set || is_set(fmac8_kpcs3_tst_rx_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_kpcs3_tst_rx_err_cnt.get_name_leafdata());
+    if (fmac0_tst0_err_cnt.is_set || is_set(fmac0_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst0_err_cnt.get_name_leafdata());
+    if (fmac1_tst0_err_cnt.is_set || is_set(fmac1_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst0_err_cnt.get_name_leafdata());
+    if (fmac2_tst0_err_cnt.is_set || is_set(fmac2_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst0_err_cnt.get_name_leafdata());
+    if (fmac3_tst0_err_cnt.is_set || is_set(fmac3_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst0_err_cnt.get_name_leafdata());
+    if (fmac4_tst0_err_cnt.is_set || is_set(fmac4_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst0_err_cnt.get_name_leafdata());
+    if (fmac5_tst0_err_cnt.is_set || is_set(fmac5_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst0_err_cnt.get_name_leafdata());
+    if (fmac6_tst0_err_cnt.is_set || is_set(fmac6_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst0_err_cnt.get_name_leafdata());
+    if (fmac7_tst0_err_cnt.is_set || is_set(fmac7_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst0_err_cnt.get_name_leafdata());
+    if (fmac8_tst0_err_cnt.is_set || is_set(fmac8_tst0_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst0_err_cnt.get_name_leafdata());
+    if (fmac0_tst1_err_cnt.is_set || is_set(fmac0_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst1_err_cnt.get_name_leafdata());
+    if (fmac1_tst1_err_cnt.is_set || is_set(fmac1_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst1_err_cnt.get_name_leafdata());
+    if (fmac2_tst1_err_cnt.is_set || is_set(fmac2_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst1_err_cnt.get_name_leafdata());
+    if (fmac3_tst1_err_cnt.is_set || is_set(fmac3_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst1_err_cnt.get_name_leafdata());
+    if (fmac4_tst1_err_cnt.is_set || is_set(fmac4_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst1_err_cnt.get_name_leafdata());
+    if (fmac5_tst1_err_cnt.is_set || is_set(fmac5_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst1_err_cnt.get_name_leafdata());
+    if (fmac6_tst1_err_cnt.is_set || is_set(fmac6_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst1_err_cnt.get_name_leafdata());
+    if (fmac7_tst1_err_cnt.is_set || is_set(fmac7_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst1_err_cnt.get_name_leafdata());
+    if (fmac8_tst1_err_cnt.is_set || is_set(fmac8_tst1_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst1_err_cnt.get_name_leafdata());
+    if (fmac0_tst2_err_cnt.is_set || is_set(fmac0_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst2_err_cnt.get_name_leafdata());
+    if (fmac1_tst2_err_cnt.is_set || is_set(fmac1_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst2_err_cnt.get_name_leafdata());
+    if (fmac2_tst2_err_cnt.is_set || is_set(fmac2_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst2_err_cnt.get_name_leafdata());
+    if (fmac3_tst2_err_cnt.is_set || is_set(fmac3_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst2_err_cnt.get_name_leafdata());
+    if (fmac4_tst2_err_cnt.is_set || is_set(fmac4_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst2_err_cnt.get_name_leafdata());
+    if (fmac5_tst2_err_cnt.is_set || is_set(fmac5_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst2_err_cnt.get_name_leafdata());
+    if (fmac6_tst2_err_cnt.is_set || is_set(fmac6_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst2_err_cnt.get_name_leafdata());
+    if (fmac7_tst2_err_cnt.is_set || is_set(fmac7_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst2_err_cnt.get_name_leafdata());
+    if (fmac8_tst2_err_cnt.is_set || is_set(fmac8_tst2_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst2_err_cnt.get_name_leafdata());
+    if (fmac0_tst3_err_cnt.is_set || is_set(fmac0_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_tst3_err_cnt.get_name_leafdata());
+    if (fmac1_tst3_err_cnt.is_set || is_set(fmac1_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_tst3_err_cnt.get_name_leafdata());
+    if (fmac2_tst3_err_cnt.is_set || is_set(fmac2_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_tst3_err_cnt.get_name_leafdata());
+    if (fmac3_tst3_err_cnt.is_set || is_set(fmac3_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_tst3_err_cnt.get_name_leafdata());
+    if (fmac4_tst3_err_cnt.is_set || is_set(fmac4_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_tst3_err_cnt.get_name_leafdata());
+    if (fmac5_tst3_err_cnt.is_set || is_set(fmac5_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_tst3_err_cnt.get_name_leafdata());
+    if (fmac6_tst3_err_cnt.is_set || is_set(fmac6_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_tst3_err_cnt.get_name_leafdata());
+    if (fmac7_tst3_err_cnt.is_set || is_set(fmac7_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_tst3_err_cnt.get_name_leafdata());
+    if (fmac8_tst3_err_cnt.is_set || is_set(fmac8_tst3_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_tst3_err_cnt.get_name_leafdata());
+    if (fmac0_ecc_1b_err_cnt.is_set || is_set(fmac0_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac1_ecc_1b_err_cnt.is_set || is_set(fmac1_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac2_ecc_1b_err_cnt.is_set || is_set(fmac2_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac3_ecc_1b_err_cnt.is_set || is_set(fmac3_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac4_ecc_1b_err_cnt.is_set || is_set(fmac4_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac5_ecc_1b_err_cnt.is_set || is_set(fmac5_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac6_ecc_1b_err_cnt.is_set || is_set(fmac6_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac7_ecc_1b_err_cnt.is_set || is_set(fmac7_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac8_ecc_1b_err_cnt.is_set || is_set(fmac8_ecc_1b_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_ecc_1b_err_cnt.get_name_leafdata());
+    if (fmac0_ecc_2b_err_cnt.is_set || is_set(fmac0_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac0_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac1_ecc_2b_err_cnt.is_set || is_set(fmac1_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac1_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac2_ecc_2b_err_cnt.is_set || is_set(fmac2_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac2_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac3_ecc_2b_err_cnt.is_set || is_set(fmac3_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac3_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac4_ecc_2b_err_cnt.is_set || is_set(fmac4_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac4_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac5_ecc_2b_err_cnt.is_set || is_set(fmac5_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac5_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac6_ecc_2b_err_cnt.is_set || is_set(fmac6_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac6_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac7_ecc_2b_err_cnt.is_set || is_set(fmac7_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac7_ecc_2b_err_cnt.get_name_leafdata());
+    if (fmac8_ecc_2b_err_cnt.is_set || is_set(fmac8_ecc_2b_err_cnt.yfilter)) leaf_name_data.push_back(fmac8_ecc_2b_err_cnt.get_name_leafdata());
+    if (olp_incoming_bad_identifier_counter.is_set || is_set(olp_incoming_bad_identifier_counter.yfilter)) leaf_name_data.push_back(olp_incoming_bad_identifier_counter.get_name_leafdata());
+    if (olp_incoming_bad_reassembly_counter.is_set || is_set(olp_incoming_bad_reassembly_counter.yfilter)) leaf_name_data.push_back(olp_incoming_bad_reassembly_counter.get_name_leafdata());
+    if (cfc_parity_err_cnt.is_set || is_set(cfc_parity_err_cnt.yfilter)) leaf_name_data.push_back(cfc_parity_err_cnt.get_name_leafdata());
+    if (cfc_ilkn0_oob_rx_crc_err_cntr.is_set || is_set(cfc_ilkn0_oob_rx_crc_err_cntr.yfilter)) leaf_name_data.push_back(cfc_ilkn0_oob_rx_crc_err_cntr.get_name_leafdata());
+    if (cfc_ilkn1_oob_rx_crc_err_cntr.is_set || is_set(cfc_ilkn1_oob_rx_crc_err_cntr.yfilter)) leaf_name_data.push_back(cfc_ilkn1_oob_rx_crc_err_cntr.get_name_leafdata());
+    if (cfc_spi_oob_rx0_frm_err_cnt.is_set || is_set(cfc_spi_oob_rx0_frm_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx0_frm_err_cnt.get_name_leafdata());
+    if (cfc_spi_oob_rx0_dip2_err_cnt.is_set || is_set(cfc_spi_oob_rx0_dip2_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx0_dip2_err_cnt.get_name_leafdata());
+    if (cfc_spi_oob_rx1_frm_err_cnt.is_set || is_set(cfc_spi_oob_rx1_frm_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx1_frm_err_cnt.get_name_leafdata());
+    if (cfc_spi_oob_rx1_dip2_err_cnt.is_set || is_set(cfc_spi_oob_rx1_dip2_err_cnt.yfilter)) leaf_name_data.push_back(cfc_spi_oob_rx1_dip2_err_cnt.get_name_leafdata());
+    if (cgm_cgm_uc_pd_dropped_cnt.is_set || is_set(cgm_cgm_uc_pd_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_uc_pd_dropped_cnt.get_name_leafdata());
+    if (cgm_cgm_mc_rep_pd_dropped_cnt.is_set || is_set(cgm_cgm_mc_rep_pd_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_mc_rep_pd_dropped_cnt.get_name_leafdata());
+    if (cgm_cgm_uc_db_dropped_by_rqp_cnt.is_set || is_set(cgm_cgm_uc_db_dropped_by_rqp_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_uc_db_dropped_by_rqp_cnt.get_name_leafdata());
+    if (cgm_cgm_uc_db_dropped_by_pqp_cnt.is_set || is_set(cgm_cgm_uc_db_dropped_by_pqp_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_uc_db_dropped_by_pqp_cnt.get_name_leafdata());
+    if (cgm_cgm_mc_rep_db_dropped_cnt.is_set || is_set(cgm_cgm_mc_rep_db_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_mc_rep_db_dropped_cnt.get_name_leafdata());
+    if (cgm_cgm_mc_db_dropped_cnt.is_set || is_set(cgm_cgm_mc_db_dropped_cnt.yfilter)) leaf_name_data.push_back(cgm_cgm_mc_db_dropped_cnt.get_name_leafdata());
+    if (drca_full_err_cnt.is_set || is_set(drca_full_err_cnt.yfilter)) leaf_name_data.push_back(drca_full_err_cnt.get_name_leafdata());
+    if (drca_single_err_cnt.is_set || is_set(drca_single_err_cnt.yfilter)) leaf_name_data.push_back(drca_single_err_cnt.get_name_leafdata());
+    if (drca_calib_bist_full_err_cnt.is_set || is_set(drca_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drca_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drca_loopback_full_err_cnt.is_set || is_set(drca_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drca_loopback_full_err_cnt.get_name_leafdata());
+    if (drcb_full_err_cnt.is_set || is_set(drcb_full_err_cnt.yfilter)) leaf_name_data.push_back(drcb_full_err_cnt.get_name_leafdata());
+    if (drcb_single_err_cnt.is_set || is_set(drcb_single_err_cnt.yfilter)) leaf_name_data.push_back(drcb_single_err_cnt.get_name_leafdata());
+    if (drcb_calib_bist_full_err_cnt.is_set || is_set(drcb_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcb_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcb_loopback_full_err_cnt.is_set || is_set(drcb_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcb_loopback_full_err_cnt.get_name_leafdata());
+    if (drcc_full_err_cnt.is_set || is_set(drcc_full_err_cnt.yfilter)) leaf_name_data.push_back(drcc_full_err_cnt.get_name_leafdata());
+    if (drcc_single_err_cnt.is_set || is_set(drcc_single_err_cnt.yfilter)) leaf_name_data.push_back(drcc_single_err_cnt.get_name_leafdata());
+    if (drcc_calib_bist_full_err_cnt.is_set || is_set(drcc_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcc_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcc_loopback_full_err_cnt.is_set || is_set(drcc_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcc_loopback_full_err_cnt.get_name_leafdata());
+    if (drcd_full_err_cnt.is_set || is_set(drcd_full_err_cnt.yfilter)) leaf_name_data.push_back(drcd_full_err_cnt.get_name_leafdata());
+    if (drcd_single_err_cnt.is_set || is_set(drcd_single_err_cnt.yfilter)) leaf_name_data.push_back(drcd_single_err_cnt.get_name_leafdata());
+    if (drcd_calib_bist_full_err_cnt.is_set || is_set(drcd_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcd_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcd_loopback_full_err_cnt.is_set || is_set(drcd_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcd_loopback_full_err_cnt.get_name_leafdata());
+    if (drce_full_err_cnt.is_set || is_set(drce_full_err_cnt.yfilter)) leaf_name_data.push_back(drce_full_err_cnt.get_name_leafdata());
+    if (drce_single_err_cnt.is_set || is_set(drce_single_err_cnt.yfilter)) leaf_name_data.push_back(drce_single_err_cnt.get_name_leafdata());
+    if (drce_calib_bist_full_err_cnt.is_set || is_set(drce_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drce_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drce_loopback_full_err_cnt.is_set || is_set(drce_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drce_loopback_full_err_cnt.get_name_leafdata());
+    if (drcf_full_err_cnt.is_set || is_set(drcf_full_err_cnt.yfilter)) leaf_name_data.push_back(drcf_full_err_cnt.get_name_leafdata());
+    if (drcf_single_err_cnt.is_set || is_set(drcf_single_err_cnt.yfilter)) leaf_name_data.push_back(drcf_single_err_cnt.get_name_leafdata());
+    if (drcf_calib_bist_full_err_cnt.is_set || is_set(drcf_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcf_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcf_loopback_full_err_cnt.is_set || is_set(drcf_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcf_loopback_full_err_cnt.get_name_leafdata());
+    if (drcg_full_err_cnt.is_set || is_set(drcg_full_err_cnt.yfilter)) leaf_name_data.push_back(drcg_full_err_cnt.get_name_leafdata());
+    if (drcg_single_err_cnt.is_set || is_set(drcg_single_err_cnt.yfilter)) leaf_name_data.push_back(drcg_single_err_cnt.get_name_leafdata());
+    if (drcg_calib_bist_full_err_cnt.is_set || is_set(drcg_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcg_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcg_loopback_full_err_cnt.is_set || is_set(drcg_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcg_loopback_full_err_cnt.get_name_leafdata());
+    if (drch_full_err_cnt.is_set || is_set(drch_full_err_cnt.yfilter)) leaf_name_data.push_back(drch_full_err_cnt.get_name_leafdata());
+    if (drch_single_err_cnt.is_set || is_set(drch_single_err_cnt.yfilter)) leaf_name_data.push_back(drch_single_err_cnt.get_name_leafdata());
+    if (drch_calib_bist_full_err_cnt.is_set || is_set(drch_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drch_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drch_loopback_full_err_cnt.is_set || is_set(drch_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drch_loopback_full_err_cnt.get_name_leafdata());
+    if (drcbroadcast_full_err_cnt.is_set || is_set(drcbroadcast_full_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_full_err_cnt.get_name_leafdata());
+    if (drcbroadcast_single_err_cnt.is_set || is_set(drcbroadcast_single_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_single_err_cnt.get_name_leafdata());
+    if (drcbroadcast_calib_bist_full_err_cnt.is_set || is_set(drcbroadcast_calib_bist_full_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_calib_bist_full_err_cnt.get_name_leafdata());
+    if (drcbroadcast_loopback_full_err_cnt.is_set || is_set(drcbroadcast_loopback_full_err_cnt.yfilter)) leaf_name_data.push_back(drcbroadcast_loopback_full_err_cnt.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "field-name")
+    if(value_path == "cmic-cmc0-pkt-count-tx-pkt")
     {
-        field_name = value;
-        field_name.value_namespace = name_space;
-        field_name.value_namespace_prefix = name_space_prefix;
+        cmic_cmc0_pkt_count_tx_pkt = value;
+        cmic_cmc0_pkt_count_tx_pkt.value_namespace = name_space;
+        cmic_cmc0_pkt_count_tx_pkt.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "field-value")
+    if(value_path == "cmic-cmc0-pkt-count-rx-pkt")
     {
-        field_value = value;
-        field_value.value_namespace = name_space;
-        field_value.value_namespace_prefix = name_space_prefix;
+        cmic_cmc0_pkt_count_rx_pkt = value;
+        cmic_cmc0_pkt_count_rx_pkt.value_namespace = name_space;
+        cmic_cmc0_pkt_count_rx_pkt.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-ovf")
+    if(value_path == "nbi-stat-rx-bursts-err-cnt")
     {
-        is_ovf = value;
-        is_ovf.value_namespace = name_space;
-        is_ovf.value_namespace_prefix = name_space_prefix;
+        nbi_stat_rx_bursts_err_cnt = value;
+        nbi_stat_rx_bursts_err_cnt.value_namespace = name_space;
+        nbi_stat_rx_bursts_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-ecc-1b-err-cnt")
+    {
+        nbi_ecc_1b_err_cnt = value;
+        nbi_ecc_1b_err_cnt.value_namespace = name_space;
+        nbi_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-ecc-2b-err-cnt")
+    {
+        nbi_ecc_2b_err_cnt = value;
+        nbi_ecc_2b_err_cnt.value_namespace = name_space;
+        nbi_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-parity-err-cnt")
+    {
+        nbi_parity_err_cnt = value;
+        nbi_parity_err_cnt.value_namespace = name_space;
+        nbi_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn-crc32-err-cnt")
+    {
+        nbi_rx_ilkn_crc32_err_cnt = value;
+        nbi_rx_ilkn_crc32_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn_crc32_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_crc24_err_cnt = value;
+        nbi_rx_ilkn0_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-burst-err-cnt")
+    {
+        nbi_rx_ilkn0_burst_err_cnt = value;
+        nbi_rx_ilkn0_burst_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_burst_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_sop_err_cnt = value;
+        nbi_rx_ilkn0_miss_sop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_miss_sop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_eop_err_cnt = value;
+        nbi_rx_ilkn0_miss_eop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_miss_eop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-misaligned-cnt")
+    {
+        nbi_rx_ilkn0_misaligned_cnt = value;
+        nbi_rx_ilkn0_misaligned_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_misaligned_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_crc24_err_cnt = value;
+        nbi_rx_ilkn1_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-burst-err-cnt")
+    {
+        nbi_rx_ilkn1_burst_err_cnt = value;
+        nbi_rx_ilkn1_burst_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_burst_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_sop_err_cnt = value;
+        nbi_rx_ilkn1_miss_sop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_miss_sop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_eop_err_cnt = value;
+        nbi_rx_ilkn1_miss_eop_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_miss_eop_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-misaligned-cnt")
+    {
+        nbi_rx_ilkn1_misaligned_cnt = value;
+        nbi_rx_ilkn1_misaligned_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_misaligned_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-tx-ilkn1-flushed-bursts-cnt")
+    {
+        nbi_tx_ilkn1_flushed_bursts_cnt = value;
+        nbi_tx_ilkn1_flushed_bursts_cnt.value_namespace = name_space;
+        nbi_tx_ilkn1_flushed_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_crc24_err_cnt = value;
+        nbi_rx_ilkn0_retrans_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_retry_err_cnt = value;
+        nbi_rx_ilkn0_retrans_retry_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_retry_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wdog_err_cnt = value;
+        nbi_rx_ilkn0_retrans_wdog_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_wdog_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt = value;
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt = value;
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt = value;
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_crc24_err_cnt = value;
+        nbi_rx_ilkn1_retrans_crc24_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_crc24_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_retry_err_cnt = value;
+        nbi_rx_ilkn1_retrans_retry_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_retry_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wdog_err_cnt = value;
+        nbi_rx_ilkn1_retrans_wdog_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_wdog_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt = value;
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt = value;
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt = value;
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.value_namespace = name_space;
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-rx-frame-err-cnt")
+    {
+        nbi_stat_rx_frame_err_cnt = value;
+        nbi_stat_rx_frame_err_cnt.value_namespace = name_space;
+        nbi_stat_rx_frame_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-tx-frame-err-cnt")
+    {
+        nbi_stat_tx_frame_err_cnt = value;
+        nbi_stat_tx_frame_err_cnt.value_namespace = name_space;
+        nbi_stat_tx_frame_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-elk-err-bursts-cnt")
+    {
+        nbi_rx_elk_err_bursts_cnt = value;
+        nbi_rx_elk_err_bursts_cnt.value_namespace = name_space;
+        nbi_rx_elk_err_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-num-thrown-eops")
+    {
+        nbi_rx_num_thrown_eops = value;
+        nbi_rx_num_thrown_eops.value_namespace = name_space;
+        nbi_rx_num_thrown_eops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-num-runts")
+    {
+        nbi_rx_num_runts = value;
+        nbi_rx_num_runts.value_namespace = name_space;
+        nbi_rx_num_runts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-tx-crc-err-bursts-cnt")
+    {
+        nbi_bist_tx_crc_err_bursts_cnt = value;
+        nbi_bist_tx_crc_err_bursts_cnt.value_namespace = name_space;
+        nbi_bist_tx_crc_err_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-length-bursts-cnt")
+    {
+        nbi_bist_rx_err_length_bursts_cnt = value;
+        nbi_bist_rx_err_length_bursts_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_length_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-burst-index-cnt")
+    {
+        nbi_bist_rx_err_burst_index_cnt = value;
+        nbi_bist_rx_err_burst_index_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_burst_index_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-bct-cnt")
+    {
+        nbi_bist_rx_err_bct_cnt = value;
+        nbi_bist_rx_err_bct_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_bct_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-data-cnt")
+    {
+        nbi_bist_rx_err_data_cnt = value;
+        nbi_bist_rx_err_data_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_data_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-in-crc-err-cnt")
+    {
+        nbi_bist_rx_err_in_crc_err_cnt = value;
+        nbi_bist_rx_err_in_crc_err_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_in_crc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-bist-rx-err-sob-cnt")
+    {
+        nbi_bist_rx_err_sob_cnt = value;
+        nbi_bist_rx_err_sob_cnt.value_namespace = name_space;
+        nbi_bist_rx_err_sob_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-tx-bursts-cnt")
+    {
+        nbi_stat_tx_bursts_cnt = value;
+        nbi_stat_tx_bursts_cnt.value_namespace = name_space;
+        nbi_stat_tx_bursts_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-stat-tx-total-leng-cnt")
+    {
+        nbi_stat_tx_total_leng_cnt = value;
+        nbi_stat_tx_total_leng_cnt.value_namespace = name_space;
+        nbi_stat_tx_total_leng_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-total-tx-pkt-count")
+    {
+        rxaui_total_tx_pkt_count = value;
+        rxaui_total_tx_pkt_count.value_namespace = name_space;
+        rxaui_total_tx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-total-rx-pkt-count")
+    {
+        rxaui_total_rx_pkt_count = value;
+        rxaui_total_rx_pkt_count.value_namespace = name_space;
+        rxaui_total_rx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-pkt-count-bcast-pkt")
+    {
+        rxaui_rx_pkt_count_bcast_pkt = value;
+        rxaui_rx_pkt_count_bcast_pkt.value_namespace = name_space;
+        rxaui_rx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-pkt-count-bcast-pkt")
+    {
+        rxaui_tx_pkt_count_bcast_pkt = value;
+        rxaui_tx_pkt_count_bcast_pkt.value_namespace = name_space;
+        rxaui_tx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-pkt-count-mcast-pkt")
+    {
+        rxaui_rx_pkt_count_mcast_pkt = value;
+        rxaui_rx_pkt_count_mcast_pkt.value_namespace = name_space;
+        rxaui_rx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-pkt-count-mcast-pkt")
+    {
+        rxaui_tx_pkt_count_mcast_pkt = value;
+        rxaui_tx_pkt_count_mcast_pkt.value_namespace = name_space;
+        rxaui_tx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-pkt-count-ucast-pkt")
+    {
+        rxaui_rx_pkt_count_ucast_pkt = value;
+        rxaui_rx_pkt_count_ucast_pkt.value_namespace = name_space;
+        rxaui_rx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-pkt-count-ucast-pkt")
+    {
+        rxaui_tx_pkt_count_ucast_pkt = value;
+        rxaui_tx_pkt_count_ucast_pkt.value_namespace = name_space;
+        rxaui_tx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-err-drop-pkt-cnt")
+    {
+        rxaui_rx_err_drop_pkt_cnt = value;
+        rxaui_rx_err_drop_pkt_cnt.value_namespace = name_space;
+        rxaui_rx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-err-drop-pkt-cnt")
+    {
+        rxaui_tx_err_drop_pkt_cnt = value;
+        rxaui_tx_err_drop_pkt_cnt.value_namespace = name_space;
+        rxaui_tx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-byte-count-tx-pkt")
+    {
+        rxaui_byte_count_tx_pkt = value;
+        rxaui_byte_count_tx_pkt.value_namespace = name_space;
+        rxaui_byte_count_tx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-byte-count-rx-pkt")
+    {
+        rxaui_byte_count_rx_pkt = value;
+        rxaui_byte_count_rx_pkt.value_namespace = name_space;
+        rxaui_byte_count_rx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-rx-dscrd-pkt-cnt")
+    {
+        rxaui_rx_dscrd_pkt_cnt = value;
+        rxaui_rx_dscrd_pkt_cnt.value_namespace = name_space;
+        rxaui_rx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxaui-tx-dscrd-pkt-cnt")
+    {
+        rxaui_tx_dscrd_pkt_cnt = value;
+        rxaui_tx_dscrd_pkt_cnt.value_namespace = name_space;
+        rxaui_tx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-nif-packet-counter")
+    {
+        ire_nif_packet_counter = value;
+        ire_nif_packet_counter.value_namespace = name_space;
+        ire_nif_packet_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-total-rx-pkt-count")
+    {
+        il_total_rx_pkt_count = value;
+        il_total_rx_pkt_count.value_namespace = name_space;
+        il_total_rx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-total-tx-pkt-count")
+    {
+        il_total_tx_pkt_count = value;
+        il_total_tx_pkt_count.value_namespace = name_space;
+        il_total_tx_pkt_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-err-drop-pkt-cnt")
+    {
+        il_rx_err_drop_pkt_cnt = value;
+        il_rx_err_drop_pkt_cnt.value_namespace = name_space;
+        il_rx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-err-drop-pkt-cnt")
+    {
+        il_tx_err_drop_pkt_cnt = value;
+        il_tx_err_drop_pkt_cnt.value_namespace = name_space;
+        il_tx_err_drop_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-byte-count-tx-pkt")
+    {
+        il_byte_count_tx_pkt = value;
+        il_byte_count_tx_pkt.value_namespace = name_space;
+        il_byte_count_tx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-byte-count-rx-pkt")
+    {
+        il_byte_count_rx_pkt = value;
+        il_byte_count_rx_pkt.value_namespace = name_space;
+        il_byte_count_rx_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-dscrd-pkt-cnt")
+    {
+        il_rx_dscrd_pkt_cnt = value;
+        il_rx_dscrd_pkt_cnt.value_namespace = name_space;
+        il_rx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-dscrd-pkt-cnt")
+    {
+        il_tx_dscrd_pkt_cnt = value;
+        il_tx_dscrd_pkt_cnt.value_namespace = name_space;
+        il_tx_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-pkt-count-bcast-pkt")
+    {
+        il_rx_pkt_count_bcast_pkt = value;
+        il_rx_pkt_count_bcast_pkt.value_namespace = name_space;
+        il_rx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-pkt-count-bcast-pkt")
+    {
+        il_tx_pkt_count_bcast_pkt = value;
+        il_tx_pkt_count_bcast_pkt.value_namespace = name_space;
+        il_tx_pkt_count_bcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-pkt-count-mcast-pkt")
+    {
+        il_rx_pkt_count_mcast_pkt = value;
+        il_rx_pkt_count_mcast_pkt.value_namespace = name_space;
+        il_rx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-pkt-count-mcast-pkt")
+    {
+        il_tx_pkt_count_mcast_pkt = value;
+        il_tx_pkt_count_mcast_pkt.value_namespace = name_space;
+        il_tx_pkt_count_mcast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-rx-pkt-count-ucast-pkt")
+    {
+        il_rx_pkt_count_ucast_pkt = value;
+        il_rx_pkt_count_ucast_pkt.value_namespace = name_space;
+        il_rx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "il-tx-pkt-count-ucast-pkt")
+    {
+        il_tx_pkt_count_ucast_pkt = value;
+        il_tx_pkt_count_ucast_pkt.value_namespace = name_space;
+        il_tx_pkt_count_ucast_pkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-enq-pkt-cnt")
+    {
+        iqm_enq_pkt_cnt = value;
+        iqm_enq_pkt_cnt.value_namespace = name_space;
+        iqm_enq_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-enq-byte-cnt")
+    {
+        iqm_enq_byte_cnt = value;
+        iqm_enq_byte_cnt.value_namespace = name_space;
+        iqm_enq_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-deq-pkt-cnt")
+    {
+        iqm_deq_pkt_cnt = value;
+        iqm_deq_pkt_cnt.value_namespace = name_space;
+        iqm_deq_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-deq-byte-cnt")
+    {
+        iqm_deq_byte_cnt = value;
+        iqm_deq_byte_cnt.value_namespace = name_space;
+        iqm_deq_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-tot-dscrd-pkt-cnt")
+    {
+        iqm_tot_dscrd_pkt_cnt = value;
+        iqm_tot_dscrd_pkt_cnt.value_namespace = name_space;
+        iqm_tot_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-tot-dscrd-byte-cnt")
+    {
+        iqm_tot_dscrd_byte_cnt = value;
+        iqm_tot_dscrd_byte_cnt.value_namespace = name_space;
+        iqm_tot_dscrd_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-ecc-1b-err-cnt")
+    {
+        iqm_ecc_1b_err_cnt = value;
+        iqm_ecc_1b_err_cnt.value_namespace = name_space;
+        iqm_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-ecc-2b-err-cnt")
+    {
+        iqm_ecc_2b_err_cnt = value;
+        iqm_ecc_2b_err_cnt.value_namespace = name_space;
+        iqm_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-parity-err-cnt")
+    {
+        iqm_parity_err_cnt = value;
+        iqm_parity_err_cnt.value_namespace = name_space;
+        iqm_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-deq-delete-pkt-cnt")
+    {
+        iqm_deq_delete_pkt_cnt = value;
+        iqm_deq_delete_pkt_cnt.value_namespace = name_space;
+        iqm_deq_delete_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-ecn-dscrd-msk-pkt-cnt")
+    {
+        iqm_ecn_dscrd_msk_pkt_cnt = value;
+        iqm_ecn_dscrd_msk_pkt_cnt.value_namespace = name_space;
+        iqm_ecn_dscrd_msk_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-q-tot-dscrd-pkt-cnt")
+    {
+        iqm_q_tot_dscrd_pkt_cnt = value;
+        iqm_q_tot_dscrd_pkt_cnt.value_namespace = name_space;
+        iqm_q_tot_dscrd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-q-deq-delete-pkt-cnt")
+    {
+        iqm_q_deq_delete_pkt_cnt = value;
+        iqm_q_deq_delete_pkt_cnt.value_namespace = name_space;
+        iqm_q_deq_delete_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-db-pkt-cnt")
+    {
+        iqm_rjct_db_pkt_cnt = value;
+        iqm_rjct_db_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_db_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-bdb-pkt-cnt")
+    {
+        iqm_rjct_bdb_pkt_cnt = value;
+        iqm_rjct_bdb_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_bdb_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-bdb-protct-pkt-cnt")
+    {
+        iqm_rjct_bdb_protct_pkt_cnt = value;
+        iqm_rjct_bdb_protct_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_bdb_protct_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-oc-bd-pkt-cnt")
+    {
+        iqm_rjct_oc_bd_pkt_cnt = value;
+        iqm_rjct_oc_bd_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_oc_bd_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-sn-err-pkt-cnt")
+    {
+        iqm_rjct_sn_err_pkt_cnt = value;
+        iqm_rjct_sn_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_sn_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-mc-err-pkt-cnt")
+    {
+        iqm_rjct_mc_err_pkt_cnt = value;
+        iqm_rjct_mc_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_mc_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-rsrc-err-pkt-cnt")
+    {
+        iqm_rjct_rsrc_err_pkt_cnt = value;
+        iqm_rjct_rsrc_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_rsrc_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-qnvalid-err-pkt-cnt")
+    {
+        iqm_rjct_qnvalid_err_pkt_cnt = value;
+        iqm_rjct_qnvalid_err_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_qnvalid_err_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-cnm-pkt-cnt")
+    {
+        iqm_rjct_cnm_pkt_cnt = value;
+        iqm_rjct_cnm_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_cnm_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-rjct-dyn-space-pkt-cnt")
+    {
+        iqm_rjct_dyn_space_pkt_cnt = value;
+        iqm_rjct_dyn_space_pkt_cnt.value_namespace = name_space;
+        iqm_rjct_dyn_space_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-fdt-pkt-cnt")
+    {
+        ipt_fdt_pkt_cnt = value;
+        ipt_fdt_pkt_cnt.value_namespace = name_space;
+        ipt_fdt_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-ecc-1b-err-cnt")
+    {
+        ipt_ecc_1b_err_cnt = value;
+        ipt_ecc_1b_err_cnt.value_namespace = name_space;
+        ipt_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-ecc-2b-err-cnt")
+    {
+        ipt_ecc_2b_err_cnt = value;
+        ipt_ecc_2b_err_cnt.value_namespace = name_space;
+        ipt_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-parity-err-cnt")
+    {
+        ipt_parity_err_cnt = value;
+        ipt_parity_err_cnt.value_namespace = name_space;
+        ipt_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-crc-err-cnt")
+    {
+        ipt_crc_err_cnt = value;
+        ipt_crc_err_cnt.value_namespace = name_space;
+        ipt_crc_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-crc-err-del-buff-cnt")
+    {
+        ipt_crc_err_del_buff_cnt = value;
+        ipt_crc_err_del_buff_cnt.value_namespace = name_space;
+        ipt_crc_err_del_buff_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-cpu-del-buff-cnt")
+    {
+        ipt_cpu_del_buff_cnt = value;
+        ipt_cpu_del_buff_cnt.value_namespace = name_space;
+        ipt_cpu_del_buff_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-cpu-rel-buff-cnt")
+    {
+        ipt_cpu_rel_buff_cnt = value;
+        ipt_cpu_rel_buff_cnt.value_namespace = name_space;
+        ipt_cpu_rel_buff_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-crc-err-buff-fifo-full-cnt")
+    {
+        ipt_crc_err_buff_fifo_full_cnt = value;
+        ipt_crc_err_buff_fifo_full_cnt.value_namespace = name_space;
+        ipt_crc_err_buff_fifo_full_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-data-cell-cnt")
+    {
+        fdt_data_cell_cnt = value;
+        fdt_data_cell_cnt.value_namespace = name_space;
+        fdt_data_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-data-byte-cnt")
+    {
+        fdt_data_byte_cnt = value;
+        fdt_data_byte_cnt.value_namespace = name_space;
+        fdt_data_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-crc-dropped-pck-cnt")
+    {
+        fdt_crc_dropped_pck_cnt = value;
+        fdt_crc_dropped_pck_cnt.value_namespace = name_space;
+        fdt_crc_dropped_pck_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-invalid-destq-drop-cell-cnt")
+    {
+        fdt_invalid_destq_drop_cell_cnt = value;
+        fdt_invalid_destq_drop_cell_cnt.value_namespace = name_space;
+        fdt_invalid_destq_drop_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-indirect-command-count")
+    {
+        fdt_indirect_command_count = value;
+        fdt_indirect_command_count.value_namespace = name_space;
+        fdt_indirect_command_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-ecc-1b-err-cnt")
+    {
+        fdt_ecc_1b_err_cnt = value;
+        fdt_ecc_1b_err_cnt.value_namespace = name_space;
+        fdt_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-ecc-2b-err-cnt")
+    {
+        fdt_ecc_2b_err_cnt = value;
+        fdt_ecc_2b_err_cnt.value_namespace = name_space;
+        fdt_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-parity-err-cnt")
+    {
+        fdt_parity_err_cnt = value;
+        fdt_parity_err_cnt.value_namespace = name_space;
+        fdt_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-crc-dropped-cell-cnt")
+    {
+        fdt_crc_dropped_cell_cnt = value;
+        fdt_crc_dropped_cell_cnt.value_namespace = name_space;
+        fdt_crc_dropped_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-control-cell-cnt")
+    {
+        fcr_control_cell_cnt = value;
+        fcr_control_cell_cnt.value_namespace = name_space;
+        fcr_control_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-cell-drop-cnt")
+    {
+        fcr_cell_drop_cnt = value;
+        fcr_cell_drop_cnt.value_namespace = name_space;
+        fcr_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-credit-cell-drop-cnt")
+    {
+        fcr_credit_cell_drop_cnt = value;
+        fcr_credit_cell_drop_cnt.value_namespace = name_space;
+        fcr_credit_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-fs-cell-drop-cnt")
+    {
+        fcr_fs_cell_drop_cnt = value;
+        fcr_fs_cell_drop_cnt.value_namespace = name_space;
+        fcr_fs_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-rt-cell-drop-cnt")
+    {
+        fcr_rt_cell_drop_cnt = value;
+        fcr_rt_cell_drop_cnt.value_namespace = name_space;
+        fcr_rt_cell_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-ecc-1b-err-cnt")
+    {
+        fcr_ecc_1b_err_cnt = value;
+        fcr_ecc_1b_err_cnt.value_namespace = name_space;
+        fcr_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fcr-ecc-2b-err-cnt")
+    {
+        fcr_ecc_2b_err_cnt = value;
+        fcr_ecc_2b_err_cnt.value_namespace = name_space;
+        fcr_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-data-cell-cnt")
+    {
+        fdr_data_cell_cnt = value;
+        fdr_data_cell_cnt.value_namespace = name_space;
+        fdr_data_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-data-byte-cnt")
+    {
+        fdr_data_byte_cnt = value;
+        fdr_data_byte_cnt.value_namespace = name_space;
+        fdr_data_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-crc-dropped-pck-cnt")
+    {
+        fdr_crc_dropped_pck_cnt = value;
+        fdr_crc_dropped_pck_cnt.value_namespace = name_space;
+        fdr_crc_dropped_pck_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-p-pkt-cnt")
+    {
+        fdr_p_pkt_cnt = value;
+        fdr_p_pkt_cnt.value_namespace = name_space;
+        fdr_p_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-prm-error-filter-cnt")
+    {
+        fdr_prm_error_filter_cnt = value;
+        fdr_prm_error_filter_cnt.value_namespace = name_space;
+        fdr_prm_error_filter_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-sec-error-filter-cnt")
+    {
+        fdr_sec_error_filter_cnt = value;
+        fdr_sec_error_filter_cnt.value_namespace = name_space;
+        fdr_sec_error_filter_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-prm-ecc-1b-err-cnt")
+    {
+        fdr_prm_ecc_1b_err_cnt = value;
+        fdr_prm_ecc_1b_err_cnt.value_namespace = name_space;
+        fdr_prm_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-prm-ecc-2b-err-cnt")
+    {
+        fdr_prm_ecc_2b_err_cnt = value;
+        fdr_prm_ecc_2b_err_cnt.value_namespace = name_space;
+        fdr_prm_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-sec-ecc-1b-err-cnt")
+    {
+        fdr_sec_ecc_1b_err_cnt = value;
+        fdr_sec_ecc_1b_err_cnt.value_namespace = name_space;
+        fdr_sec_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-sec-ecc-2b-err-cnt")
+    {
+        fdr_sec_ecc_2b_err_cnt = value;
+        fdr_sec_ecc_2b_err_cnt.value_namespace = name_space;
+        fdr_sec_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ecc-1b-err-cnt")
+    {
+        egq_ecc_1b_err_cnt = value;
+        egq_ecc_1b_err_cnt.value_namespace = name_space;
+        egq_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ecc-2b-err-cnt")
+    {
+        egq_ecc_2b_err_cnt = value;
+        egq_ecc_2b_err_cnt.value_namespace = name_space;
+        egq_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-parity-err-cnt")
+    {
+        egq_parity_err_cnt = value;
+        egq_parity_err_cnt.value_namespace = name_space;
+        egq_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-dbf-ecc-1b-err-cnt")
+    {
+        egq_dbf_ecc_1b_err_cnt = value;
+        egq_dbf_ecc_1b_err_cnt.value_namespace = name_space;
+        egq_dbf_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-dbf-ecc-2b-err-cnt")
+    {
+        egq_dbf_ecc_2b_err_cnt = value;
+        egq_dbf_ecc_2b_err_cnt.value_namespace = name_space;
+        egq_dbf_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-empty-mcid-counter")
+    {
+        egq_empty_mcid_counter = value;
+        egq_empty_mcid_counter.value_namespace = name_space;
+        egq_empty_mcid_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-rqp-discard-packet-counter")
+    {
+        egq_rqp_discard_packet_counter = value;
+        egq_rqp_discard_packet_counter.value_namespace = name_space;
+        egq_rqp_discard_packet_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ehp-discard-packet-counter")
+    {
+        egq_ehp_discard_packet_counter = value;
+        egq_ehp_discard_packet_counter.value_namespace = name_space;
+        egq_ehp_discard_packet_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ipt-pkt-cnt")
+    {
+        egq_ipt_pkt_cnt = value;
+        egq_ipt_pkt_cnt.value_namespace = name_space;
+        egq_ipt_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-pkt-cnt")
+    {
+        epni_epe_pkt_cnt = value;
+        epni_epe_pkt_cnt.value_namespace = name_space;
+        epni_epe_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-byte-cnt")
+    {
+        epni_epe_byte_cnt = value;
+        epni_epe_byte_cnt.value_namespace = name_space;
+        epni_epe_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-discard-pkt-cnt")
+    {
+        epni_epe_discard_pkt_cnt = value;
+        epni_epe_discard_pkt_cnt.value_namespace = name_space;
+        epni_epe_discard_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-ecc-1b-err-cnt")
+    {
+        epni_ecc_1b_err_cnt = value;
+        epni_ecc_1b_err_cnt.value_namespace = name_space;
+        epni_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-ecc-2b-err-cnt")
+    {
+        epni_ecc_2b_err_cnt = value;
+        epni_ecc_2b_err_cnt.value_namespace = name_space;
+        epni_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-parity-err-cnt")
+    {
+        epni_parity_err_cnt = value;
+        epni_parity_err_cnt.value_namespace = name_space;
+        epni_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-pkt-cnt")
+    {
+        egq_pqp_ucast_pkt_cnt = value;
+        egq_pqp_ucast_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-h-pkt-cnt")
+    {
+        egq_pqp_ucast_h_pkt_cnt = value;
+        egq_pqp_ucast_h_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_h_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-l-pkt-cnt")
+    {
+        egq_pqp_ucast_l_pkt_cnt = value;
+        egq_pqp_ucast_l_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_l_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-bytes-cnt")
+    {
+        egq_pqp_ucast_bytes_cnt = value;
+        egq_pqp_ucast_bytes_cnt.value_namespace = name_space;
+        egq_pqp_ucast_bytes_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-ucast-discard-pkt-cnt")
+    {
+        egq_pqp_ucast_discard_pkt_cnt = value;
+        egq_pqp_ucast_discard_pkt_cnt.value_namespace = name_space;
+        egq_pqp_ucast_discard_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-pkt-cnt")
+    {
+        egq_pqp_mcast_pkt_cnt = value;
+        egq_pqp_mcast_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-h-pkt-cnt")
+    {
+        egq_pqp_mcast_h_pkt_cnt = value;
+        egq_pqp_mcast_h_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_h_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-l-pkt-cnt")
+    {
+        egq_pqp_mcast_l_pkt_cnt = value;
+        egq_pqp_mcast_l_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_l_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-bytes-cnt")
+    {
+        egq_pqp_mcast_bytes_cnt = value;
+        egq_pqp_mcast_bytes_cnt.value_namespace = name_space;
+        egq_pqp_mcast_bytes_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mcast-discard-pkt-cnt")
+    {
+        egq_pqp_mcast_discard_pkt_cnt = value;
+        egq_pqp_mcast_discard_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mcast_discard_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fct-control-cell-cnt")
+    {
+        fct_control_cell_cnt = value;
+        fct_control_cell_cnt.value_namespace = name_space;
+        fct_control_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fct-unrch-crdt-cnt")
+    {
+        fct_unrch_crdt_cnt = value;
+        fct_unrch_crdt_cnt.value_namespace = name_space;
+        fct_unrch_crdt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-reassembly-errors")
+    {
+        idr_reassembly_errors = value;
+        idr_reassembly_errors.value_namespace = name_space;
+        idr_reassembly_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-mmu-ecc-1b-err-cnt")
+    {
+        idr_mmu_ecc_1b_err_cnt = value;
+        idr_mmu_ecc_1b_err_cnt.value_namespace = name_space;
+        idr_mmu_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-mmu-ecc-2b-err-cnt")
+    {
+        idr_mmu_ecc_2b_err_cnt = value;
+        idr_mmu_ecc_2b_err_cnt.value_namespace = name_space;
+        idr_mmu_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets0-cnt")
+    {
+        idr_discarded_packets0_cnt = value;
+        idr_discarded_packets0_cnt.value_namespace = name_space;
+        idr_discarded_packets0_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets1-cnt")
+    {
+        idr_discarded_packets1_cnt = value;
+        idr_discarded_packets1_cnt.value_namespace = name_space;
+        idr_discarded_packets1_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets2-cnt")
+    {
+        idr_discarded_packets2_cnt = value;
+        idr_discarded_packets2_cnt.value_namespace = name_space;
+        idr_discarded_packets2_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-packets3-cnt")
+    {
+        idr_discarded_packets3_cnt = value;
+        idr_discarded_packets3_cnt.value_namespace = name_space;
+        idr_discarded_packets3_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets0-cnt")
+    {
+        idr_discarded_octets0_cnt = value;
+        idr_discarded_octets0_cnt.value_namespace = name_space;
+        idr_discarded_octets0_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets1-cnt")
+    {
+        idr_discarded_octets1_cnt = value;
+        idr_discarded_octets1_cnt.value_namespace = name_space;
+        idr_discarded_octets1_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets2-cnt")
+    {
+        idr_discarded_octets2_cnt = value;
+        idr_discarded_octets2_cnt.value_namespace = name_space;
+        idr_discarded_octets2_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-discarded-octets3-cnt")
+    {
+        idr_discarded_octets3_cnt = value;
+        idr_discarded_octets3_cnt.value_namespace = name_space;
+        idr_discarded_octets3_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mmu-ecc-1b-err-cnt")
+    {
+        mmu_ecc_1b_err_cnt = value;
+        mmu_ecc_1b_err_cnt.value_namespace = name_space;
+        mmu_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mmu-ecc-2b-err-cnt")
+    {
+        mmu_ecc_2b_err_cnt = value;
+        mmu_ecc_2b_err_cnt.value_namespace = name_space;
+        mmu_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oamp-parity-err-cnt")
+    {
+        oamp_parity_err_cnt = value;
+        oamp_parity_err_cnt.value_namespace = name_space;
+        oamp_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oamp-ecc-1b-err-cnt")
+    {
+        oamp_ecc_1b_err_cnt = value;
+        oamp_ecc_1b_err_cnt.value_namespace = name_space;
+        oamp_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oamp-ecc-2b-err-cnt")
+    {
+        oamp_ecc_2b_err_cnt = value;
+        oamp_ecc_2b_err_cnt.value_namespace = name_space;
+        oamp_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "crps-parity-err-cnt")
+    {
+        crps_parity_err_cnt = value;
+        crps_parity_err_cnt.value_namespace = name_space;
+        crps_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs0-tst-rx-err-cnt")
+    {
+        fmac0_kpcs0_tst_rx_err_cnt = value;
+        fmac0_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs0-tst-rx-err-cnt")
+    {
+        fmac1_kpcs0_tst_rx_err_cnt = value;
+        fmac1_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs0-tst-rx-err-cnt")
+    {
+        fmac2_kpcs0_tst_rx_err_cnt = value;
+        fmac2_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs0-tst-rx-err-cnt")
+    {
+        fmac3_kpcs0_tst_rx_err_cnt = value;
+        fmac3_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs0-tst-rx-err-cnt")
+    {
+        fmac4_kpcs0_tst_rx_err_cnt = value;
+        fmac4_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs0-tst-rx-err-cnt")
+    {
+        fmac5_kpcs0_tst_rx_err_cnt = value;
+        fmac5_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs0-tst-rx-err-cnt")
+    {
+        fmac6_kpcs0_tst_rx_err_cnt = value;
+        fmac6_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs0-tst-rx-err-cnt")
+    {
+        fmac7_kpcs0_tst_rx_err_cnt = value;
+        fmac7_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs0-tst-rx-err-cnt")
+    {
+        fmac8_kpcs0_tst_rx_err_cnt = value;
+        fmac8_kpcs0_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs0_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs1-tst-rx-err-cnt")
+    {
+        fmac0_kpcs1_tst_rx_err_cnt = value;
+        fmac0_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs1-tst-rx-err-cnt")
+    {
+        fmac1_kpcs1_tst_rx_err_cnt = value;
+        fmac1_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs1-tst-rx-err-cnt")
+    {
+        fmac2_kpcs1_tst_rx_err_cnt = value;
+        fmac2_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs1-tst-rx-err-cnt")
+    {
+        fmac3_kpcs1_tst_rx_err_cnt = value;
+        fmac3_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs1-tst-rx-err-cnt")
+    {
+        fmac4_kpcs1_tst_rx_err_cnt = value;
+        fmac4_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs1-tst-rx-err-cnt")
+    {
+        fmac5_kpcs1_tst_rx_err_cnt = value;
+        fmac5_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs1-tst-rx-err-cnt")
+    {
+        fmac6_kpcs1_tst_rx_err_cnt = value;
+        fmac6_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs1-tst-rx-err-cnt")
+    {
+        fmac7_kpcs1_tst_rx_err_cnt = value;
+        fmac7_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs1-tst-rx-err-cnt")
+    {
+        fmac8_kpcs1_tst_rx_err_cnt = value;
+        fmac8_kpcs1_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs1_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs2-tst-rx-err-cnt")
+    {
+        fmac0_kpcs2_tst_rx_err_cnt = value;
+        fmac0_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs2-tst-rx-err-cnt")
+    {
+        fmac1_kpcs2_tst_rx_err_cnt = value;
+        fmac1_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs2-tst-rx-err-cnt")
+    {
+        fmac2_kpcs2_tst_rx_err_cnt = value;
+        fmac2_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs2-tst-rx-err-cnt")
+    {
+        fmac3_kpcs2_tst_rx_err_cnt = value;
+        fmac3_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs2-tst-rx-err-cnt")
+    {
+        fmac4_kpcs2_tst_rx_err_cnt = value;
+        fmac4_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs2-tst-rx-err-cnt")
+    {
+        fmac5_kpcs2_tst_rx_err_cnt = value;
+        fmac5_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs2-tst-rx-err-cnt")
+    {
+        fmac6_kpcs2_tst_rx_err_cnt = value;
+        fmac6_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs2-tst-rx-err-cnt")
+    {
+        fmac7_kpcs2_tst_rx_err_cnt = value;
+        fmac7_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs2-tst-rx-err-cnt")
+    {
+        fmac8_kpcs2_tst_rx_err_cnt = value;
+        fmac8_kpcs2_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs2_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-kpcs3-tst-rx-err-cnt")
+    {
+        fmac0_kpcs3_tst_rx_err_cnt = value;
+        fmac0_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac0_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-kpcs3-tst-rx-err-cnt")
+    {
+        fmac1_kpcs3_tst_rx_err_cnt = value;
+        fmac1_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac1_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-kpcs3-tst-rx-err-cnt")
+    {
+        fmac2_kpcs3_tst_rx_err_cnt = value;
+        fmac2_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac2_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-kpcs3-tst-rx-err-cnt")
+    {
+        fmac3_kpcs3_tst_rx_err_cnt = value;
+        fmac3_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac3_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-kpcs3-tst-rx-err-cnt")
+    {
+        fmac4_kpcs3_tst_rx_err_cnt = value;
+        fmac4_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac4_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-kpcs3-tst-rx-err-cnt")
+    {
+        fmac5_kpcs3_tst_rx_err_cnt = value;
+        fmac5_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac5_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-kpcs3-tst-rx-err-cnt")
+    {
+        fmac6_kpcs3_tst_rx_err_cnt = value;
+        fmac6_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac6_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-kpcs3-tst-rx-err-cnt")
+    {
+        fmac7_kpcs3_tst_rx_err_cnt = value;
+        fmac7_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac7_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-kpcs3-tst-rx-err-cnt")
+    {
+        fmac8_kpcs3_tst_rx_err_cnt = value;
+        fmac8_kpcs3_tst_rx_err_cnt.value_namespace = name_space;
+        fmac8_kpcs3_tst_rx_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst0-err-cnt")
+    {
+        fmac0_tst0_err_cnt = value;
+        fmac0_tst0_err_cnt.value_namespace = name_space;
+        fmac0_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst0-err-cnt")
+    {
+        fmac1_tst0_err_cnt = value;
+        fmac1_tst0_err_cnt.value_namespace = name_space;
+        fmac1_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst0-err-cnt")
+    {
+        fmac2_tst0_err_cnt = value;
+        fmac2_tst0_err_cnt.value_namespace = name_space;
+        fmac2_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst0-err-cnt")
+    {
+        fmac3_tst0_err_cnt = value;
+        fmac3_tst0_err_cnt.value_namespace = name_space;
+        fmac3_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst0-err-cnt")
+    {
+        fmac4_tst0_err_cnt = value;
+        fmac4_tst0_err_cnt.value_namespace = name_space;
+        fmac4_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst0-err-cnt")
+    {
+        fmac5_tst0_err_cnt = value;
+        fmac5_tst0_err_cnt.value_namespace = name_space;
+        fmac5_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst0-err-cnt")
+    {
+        fmac6_tst0_err_cnt = value;
+        fmac6_tst0_err_cnt.value_namespace = name_space;
+        fmac6_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst0-err-cnt")
+    {
+        fmac7_tst0_err_cnt = value;
+        fmac7_tst0_err_cnt.value_namespace = name_space;
+        fmac7_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst0-err-cnt")
+    {
+        fmac8_tst0_err_cnt = value;
+        fmac8_tst0_err_cnt.value_namespace = name_space;
+        fmac8_tst0_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst1-err-cnt")
+    {
+        fmac0_tst1_err_cnt = value;
+        fmac0_tst1_err_cnt.value_namespace = name_space;
+        fmac0_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst1-err-cnt")
+    {
+        fmac1_tst1_err_cnt = value;
+        fmac1_tst1_err_cnt.value_namespace = name_space;
+        fmac1_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst1-err-cnt")
+    {
+        fmac2_tst1_err_cnt = value;
+        fmac2_tst1_err_cnt.value_namespace = name_space;
+        fmac2_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst1-err-cnt")
+    {
+        fmac3_tst1_err_cnt = value;
+        fmac3_tst1_err_cnt.value_namespace = name_space;
+        fmac3_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst1-err-cnt")
+    {
+        fmac4_tst1_err_cnt = value;
+        fmac4_tst1_err_cnt.value_namespace = name_space;
+        fmac4_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst1-err-cnt")
+    {
+        fmac5_tst1_err_cnt = value;
+        fmac5_tst1_err_cnt.value_namespace = name_space;
+        fmac5_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst1-err-cnt")
+    {
+        fmac6_tst1_err_cnt = value;
+        fmac6_tst1_err_cnt.value_namespace = name_space;
+        fmac6_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst1-err-cnt")
+    {
+        fmac7_tst1_err_cnt = value;
+        fmac7_tst1_err_cnt.value_namespace = name_space;
+        fmac7_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst1-err-cnt")
+    {
+        fmac8_tst1_err_cnt = value;
+        fmac8_tst1_err_cnt.value_namespace = name_space;
+        fmac8_tst1_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst2-err-cnt")
+    {
+        fmac0_tst2_err_cnt = value;
+        fmac0_tst2_err_cnt.value_namespace = name_space;
+        fmac0_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst2-err-cnt")
+    {
+        fmac1_tst2_err_cnt = value;
+        fmac1_tst2_err_cnt.value_namespace = name_space;
+        fmac1_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst2-err-cnt")
+    {
+        fmac2_tst2_err_cnt = value;
+        fmac2_tst2_err_cnt.value_namespace = name_space;
+        fmac2_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst2-err-cnt")
+    {
+        fmac3_tst2_err_cnt = value;
+        fmac3_tst2_err_cnt.value_namespace = name_space;
+        fmac3_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst2-err-cnt")
+    {
+        fmac4_tst2_err_cnt = value;
+        fmac4_tst2_err_cnt.value_namespace = name_space;
+        fmac4_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst2-err-cnt")
+    {
+        fmac5_tst2_err_cnt = value;
+        fmac5_tst2_err_cnt.value_namespace = name_space;
+        fmac5_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst2-err-cnt")
+    {
+        fmac6_tst2_err_cnt = value;
+        fmac6_tst2_err_cnt.value_namespace = name_space;
+        fmac6_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst2-err-cnt")
+    {
+        fmac7_tst2_err_cnt = value;
+        fmac7_tst2_err_cnt.value_namespace = name_space;
+        fmac7_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst2-err-cnt")
+    {
+        fmac8_tst2_err_cnt = value;
+        fmac8_tst2_err_cnt.value_namespace = name_space;
+        fmac8_tst2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-tst3-err-cnt")
+    {
+        fmac0_tst3_err_cnt = value;
+        fmac0_tst3_err_cnt.value_namespace = name_space;
+        fmac0_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-tst3-err-cnt")
+    {
+        fmac1_tst3_err_cnt = value;
+        fmac1_tst3_err_cnt.value_namespace = name_space;
+        fmac1_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-tst3-err-cnt")
+    {
+        fmac2_tst3_err_cnt = value;
+        fmac2_tst3_err_cnt.value_namespace = name_space;
+        fmac2_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-tst3-err-cnt")
+    {
+        fmac3_tst3_err_cnt = value;
+        fmac3_tst3_err_cnt.value_namespace = name_space;
+        fmac3_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-tst3-err-cnt")
+    {
+        fmac4_tst3_err_cnt = value;
+        fmac4_tst3_err_cnt.value_namespace = name_space;
+        fmac4_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-tst3-err-cnt")
+    {
+        fmac5_tst3_err_cnt = value;
+        fmac5_tst3_err_cnt.value_namespace = name_space;
+        fmac5_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-tst3-err-cnt")
+    {
+        fmac6_tst3_err_cnt = value;
+        fmac6_tst3_err_cnt.value_namespace = name_space;
+        fmac6_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-tst3-err-cnt")
+    {
+        fmac7_tst3_err_cnt = value;
+        fmac7_tst3_err_cnt.value_namespace = name_space;
+        fmac7_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-tst3-err-cnt")
+    {
+        fmac8_tst3_err_cnt = value;
+        fmac8_tst3_err_cnt.value_namespace = name_space;
+        fmac8_tst3_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-ecc-1b-err-cnt")
+    {
+        fmac0_ecc_1b_err_cnt = value;
+        fmac0_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac0_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-ecc-1b-err-cnt")
+    {
+        fmac1_ecc_1b_err_cnt = value;
+        fmac1_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac1_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-ecc-1b-err-cnt")
+    {
+        fmac2_ecc_1b_err_cnt = value;
+        fmac2_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac2_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-ecc-1b-err-cnt")
+    {
+        fmac3_ecc_1b_err_cnt = value;
+        fmac3_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac3_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-ecc-1b-err-cnt")
+    {
+        fmac4_ecc_1b_err_cnt = value;
+        fmac4_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac4_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-ecc-1b-err-cnt")
+    {
+        fmac5_ecc_1b_err_cnt = value;
+        fmac5_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac5_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-ecc-1b-err-cnt")
+    {
+        fmac6_ecc_1b_err_cnt = value;
+        fmac6_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac6_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-ecc-1b-err-cnt")
+    {
+        fmac7_ecc_1b_err_cnt = value;
+        fmac7_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac7_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-ecc-1b-err-cnt")
+    {
+        fmac8_ecc_1b_err_cnt = value;
+        fmac8_ecc_1b_err_cnt.value_namespace = name_space;
+        fmac8_ecc_1b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac0-ecc-2b-err-cnt")
+    {
+        fmac0_ecc_2b_err_cnt = value;
+        fmac0_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac0_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac1-ecc-2b-err-cnt")
+    {
+        fmac1_ecc_2b_err_cnt = value;
+        fmac1_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac1_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac2-ecc-2b-err-cnt")
+    {
+        fmac2_ecc_2b_err_cnt = value;
+        fmac2_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac2_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac3-ecc-2b-err-cnt")
+    {
+        fmac3_ecc_2b_err_cnt = value;
+        fmac3_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac3_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac4-ecc-2b-err-cnt")
+    {
+        fmac4_ecc_2b_err_cnt = value;
+        fmac4_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac4_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac5-ecc-2b-err-cnt")
+    {
+        fmac5_ecc_2b_err_cnt = value;
+        fmac5_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac5_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac6-ecc-2b-err-cnt")
+    {
+        fmac6_ecc_2b_err_cnt = value;
+        fmac6_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac6_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac7-ecc-2b-err-cnt")
+    {
+        fmac7_ecc_2b_err_cnt = value;
+        fmac7_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac7_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fmac8-ecc-2b-err-cnt")
+    {
+        fmac8_ecc_2b_err_cnt = value;
+        fmac8_ecc_2b_err_cnt.value_namespace = name_space;
+        fmac8_ecc_2b_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "olp-incoming-bad-identifier-counter")
+    {
+        olp_incoming_bad_identifier_counter = value;
+        olp_incoming_bad_identifier_counter.value_namespace = name_space;
+        olp_incoming_bad_identifier_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "olp-incoming-bad-reassembly-counter")
+    {
+        olp_incoming_bad_reassembly_counter = value;
+        olp_incoming_bad_reassembly_counter.value_namespace = name_space;
+        olp_incoming_bad_reassembly_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-parity-err-cnt")
+    {
+        cfc_parity_err_cnt = value;
+        cfc_parity_err_cnt.value_namespace = name_space;
+        cfc_parity_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-ilkn0-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn0_oob_rx_crc_err_cntr = value;
+        cfc_ilkn0_oob_rx_crc_err_cntr.value_namespace = name_space;
+        cfc_ilkn0_oob_rx_crc_err_cntr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-ilkn1-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn1_oob_rx_crc_err_cntr = value;
+        cfc_ilkn1_oob_rx_crc_err_cntr.value_namespace = name_space;
+        cfc_ilkn1_oob_rx_crc_err_cntr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx0-frm-err-cnt")
+    {
+        cfc_spi_oob_rx0_frm_err_cnt = value;
+        cfc_spi_oob_rx0_frm_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx0_frm_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx0-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx0_dip2_err_cnt = value;
+        cfc_spi_oob_rx0_dip2_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx0_dip2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx1-frm-err-cnt")
+    {
+        cfc_spi_oob_rx1_frm_err_cnt = value;
+        cfc_spi_oob_rx1_frm_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx1_frm_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfc-spi-oob-rx1-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx1_dip2_err_cnt = value;
+        cfc_spi_oob_rx1_dip2_err_cnt.value_namespace = name_space;
+        cfc_spi_oob_rx1_dip2_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-uc-pd-dropped-cnt")
+    {
+        cgm_cgm_uc_pd_dropped_cnt = value;
+        cgm_cgm_uc_pd_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_uc_pd_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-mc-rep-pd-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_pd_dropped_cnt = value;
+        cgm_cgm_mc_rep_pd_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_mc_rep_pd_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-rqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_rqp_cnt = value;
+        cgm_cgm_uc_db_dropped_by_rqp_cnt.value_namespace = name_space;
+        cgm_cgm_uc_db_dropped_by_rqp_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-pqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_pqp_cnt = value;
+        cgm_cgm_uc_db_dropped_by_pqp_cnt.value_namespace = name_space;
+        cgm_cgm_uc_db_dropped_by_pqp_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-mc-rep-db-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_db_dropped_cnt = value;
+        cgm_cgm_mc_rep_db_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_mc_rep_db_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cgm-cgm-mc-db-dropped-cnt")
+    {
+        cgm_cgm_mc_db_dropped_cnt = value;
+        cgm_cgm_mc_db_dropped_cnt.value_namespace = name_space;
+        cgm_cgm_mc_db_dropped_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-full-err-cnt")
+    {
+        drca_full_err_cnt = value;
+        drca_full_err_cnt.value_namespace = name_space;
+        drca_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-single-err-cnt")
+    {
+        drca_single_err_cnt = value;
+        drca_single_err_cnt.value_namespace = name_space;
+        drca_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-calib-bist-full-err-cnt")
+    {
+        drca_calib_bist_full_err_cnt = value;
+        drca_calib_bist_full_err_cnt.value_namespace = name_space;
+        drca_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drca-loopback-full-err-cnt")
+    {
+        drca_loopback_full_err_cnt = value;
+        drca_loopback_full_err_cnt.value_namespace = name_space;
+        drca_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-full-err-cnt")
+    {
+        drcb_full_err_cnt = value;
+        drcb_full_err_cnt.value_namespace = name_space;
+        drcb_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-single-err-cnt")
+    {
+        drcb_single_err_cnt = value;
+        drcb_single_err_cnt.value_namespace = name_space;
+        drcb_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-calib-bist-full-err-cnt")
+    {
+        drcb_calib_bist_full_err_cnt = value;
+        drcb_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcb_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcb-loopback-full-err-cnt")
+    {
+        drcb_loopback_full_err_cnt = value;
+        drcb_loopback_full_err_cnt.value_namespace = name_space;
+        drcb_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-full-err-cnt")
+    {
+        drcc_full_err_cnt = value;
+        drcc_full_err_cnt.value_namespace = name_space;
+        drcc_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-single-err-cnt")
+    {
+        drcc_single_err_cnt = value;
+        drcc_single_err_cnt.value_namespace = name_space;
+        drcc_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-calib-bist-full-err-cnt")
+    {
+        drcc_calib_bist_full_err_cnt = value;
+        drcc_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcc_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcc-loopback-full-err-cnt")
+    {
+        drcc_loopback_full_err_cnt = value;
+        drcc_loopback_full_err_cnt.value_namespace = name_space;
+        drcc_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-full-err-cnt")
+    {
+        drcd_full_err_cnt = value;
+        drcd_full_err_cnt.value_namespace = name_space;
+        drcd_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-single-err-cnt")
+    {
+        drcd_single_err_cnt = value;
+        drcd_single_err_cnt.value_namespace = name_space;
+        drcd_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-calib-bist-full-err-cnt")
+    {
+        drcd_calib_bist_full_err_cnt = value;
+        drcd_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcd_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcd-loopback-full-err-cnt")
+    {
+        drcd_loopback_full_err_cnt = value;
+        drcd_loopback_full_err_cnt.value_namespace = name_space;
+        drcd_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-full-err-cnt")
+    {
+        drce_full_err_cnt = value;
+        drce_full_err_cnt.value_namespace = name_space;
+        drce_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-single-err-cnt")
+    {
+        drce_single_err_cnt = value;
+        drce_single_err_cnt.value_namespace = name_space;
+        drce_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-calib-bist-full-err-cnt")
+    {
+        drce_calib_bist_full_err_cnt = value;
+        drce_calib_bist_full_err_cnt.value_namespace = name_space;
+        drce_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drce-loopback-full-err-cnt")
+    {
+        drce_loopback_full_err_cnt = value;
+        drce_loopback_full_err_cnt.value_namespace = name_space;
+        drce_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-full-err-cnt")
+    {
+        drcf_full_err_cnt = value;
+        drcf_full_err_cnt.value_namespace = name_space;
+        drcf_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-single-err-cnt")
+    {
+        drcf_single_err_cnt = value;
+        drcf_single_err_cnt.value_namespace = name_space;
+        drcf_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-calib-bist-full-err-cnt")
+    {
+        drcf_calib_bist_full_err_cnt = value;
+        drcf_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcf_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcf-loopback-full-err-cnt")
+    {
+        drcf_loopback_full_err_cnt = value;
+        drcf_loopback_full_err_cnt.value_namespace = name_space;
+        drcf_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-full-err-cnt")
+    {
+        drcg_full_err_cnt = value;
+        drcg_full_err_cnt.value_namespace = name_space;
+        drcg_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-single-err-cnt")
+    {
+        drcg_single_err_cnt = value;
+        drcg_single_err_cnt.value_namespace = name_space;
+        drcg_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-calib-bist-full-err-cnt")
+    {
+        drcg_calib_bist_full_err_cnt = value;
+        drcg_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcg_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcg-loopback-full-err-cnt")
+    {
+        drcg_loopback_full_err_cnt = value;
+        drcg_loopback_full_err_cnt.value_namespace = name_space;
+        drcg_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-full-err-cnt")
+    {
+        drch_full_err_cnt = value;
+        drch_full_err_cnt.value_namespace = name_space;
+        drch_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-single-err-cnt")
+    {
+        drch_single_err_cnt = value;
+        drch_single_err_cnt.value_namespace = name_space;
+        drch_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-calib-bist-full-err-cnt")
+    {
+        drch_calib_bist_full_err_cnt = value;
+        drch_calib_bist_full_err_cnt.value_namespace = name_space;
+        drch_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drch-loopback-full-err-cnt")
+    {
+        drch_loopback_full_err_cnt = value;
+        drch_loopback_full_err_cnt.value_namespace = name_space;
+        drch_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-full-err-cnt")
+    {
+        drcbroadcast_full_err_cnt = value;
+        drcbroadcast_full_err_cnt.value_namespace = name_space;
+        drcbroadcast_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-single-err-cnt")
+    {
+        drcbroadcast_single_err_cnt = value;
+        drcbroadcast_single_err_cnt.value_namespace = name_space;
+        drcbroadcast_single_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-calib-bist-full-err-cnt")
+    {
+        drcbroadcast_calib_bist_full_err_cnt = value;
+        drcbroadcast_calib_bist_full_err_cnt.value_namespace = name_space;
+        drcbroadcast_calib_bist_full_err_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drcbroadcast-loopback-full-err-cnt")
+    {
+        drcbroadcast_loopback_full_err_cnt = value;
+        drcbroadcast_loopback_full_err_cnt.value_namespace = name_space;
+        drcbroadcast_loopback_full_err_cnt.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "field-name")
+    if(value_path == "cmic-cmc0-pkt-count-tx-pkt")
     {
-        field_name.yfilter = yfilter;
+        cmic_cmc0_pkt_count_tx_pkt.yfilter = yfilter;
     }
-    if(value_path == "field-value")
+    if(value_path == "cmic-cmc0-pkt-count-rx-pkt")
     {
-        field_value.yfilter = yfilter;
+        cmic_cmc0_pkt_count_rx_pkt.yfilter = yfilter;
     }
-    if(value_path == "is-ovf")
+    if(value_path == "nbi-stat-rx-bursts-err-cnt")
     {
-        is_ovf.yfilter = yfilter;
+        nbi_stat_rx_bursts_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-ecc-1b-err-cnt")
+    {
+        nbi_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-ecc-2b-err-cnt")
+    {
+        nbi_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-parity-err-cnt")
+    {
+        nbi_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn-crc32-err-cnt")
+    {
+        nbi_rx_ilkn_crc32_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-burst-err-cnt")
+    {
+        nbi_rx_ilkn0_burst_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_sop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn0_miss_eop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-misaligned-cnt")
+    {
+        nbi_rx_ilkn0_misaligned_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-burst-err-cnt")
+    {
+        nbi_rx_ilkn1_burst_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-sop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_sop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-miss-eop-err-cnt")
+    {
+        nbi_rx_ilkn1_miss_eop_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-misaligned-cnt")
+    {
+        nbi_rx_ilkn1_misaligned_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-tx-ilkn1-flushed-bursts-cnt")
+    {
+        nbi_tx_ilkn1_flushed_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_retry_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wdog_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_after_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_wrap_b4_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn0_retrans_reached_timeout_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-crc24-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_crc24_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-retry-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_retry_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wdog-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wdog_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_after_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_wrap_b4_disc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt")
+    {
+        nbi_rx_ilkn1_retrans_reached_timeout_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-rx-frame-err-cnt")
+    {
+        nbi_stat_rx_frame_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-tx-frame-err-cnt")
+    {
+        nbi_stat_tx_frame_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-elk-err-bursts-cnt")
+    {
+        nbi_rx_elk_err_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-num-thrown-eops")
+    {
+        nbi_rx_num_thrown_eops.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-num-runts")
+    {
+        nbi_rx_num_runts.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-tx-crc-err-bursts-cnt")
+    {
+        nbi_bist_tx_crc_err_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-length-bursts-cnt")
+    {
+        nbi_bist_rx_err_length_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-burst-index-cnt")
+    {
+        nbi_bist_rx_err_burst_index_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-bct-cnt")
+    {
+        nbi_bist_rx_err_bct_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-data-cnt")
+    {
+        nbi_bist_rx_err_data_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-in-crc-err-cnt")
+    {
+        nbi_bist_rx_err_in_crc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-bist-rx-err-sob-cnt")
+    {
+        nbi_bist_rx_err_sob_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-tx-bursts-cnt")
+    {
+        nbi_stat_tx_bursts_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-stat-tx-total-leng-cnt")
+    {
+        nbi_stat_tx_total_leng_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-total-tx-pkt-count")
+    {
+        rxaui_total_tx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-total-rx-pkt-count")
+    {
+        rxaui_total_rx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-pkt-count-bcast-pkt")
+    {
+        rxaui_rx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-pkt-count-bcast-pkt")
+    {
+        rxaui_tx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-pkt-count-mcast-pkt")
+    {
+        rxaui_rx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-pkt-count-mcast-pkt")
+    {
+        rxaui_tx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-pkt-count-ucast-pkt")
+    {
+        rxaui_rx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-pkt-count-ucast-pkt")
+    {
+        rxaui_tx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-err-drop-pkt-cnt")
+    {
+        rxaui_rx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-err-drop-pkt-cnt")
+    {
+        rxaui_tx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-byte-count-tx-pkt")
+    {
+        rxaui_byte_count_tx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-byte-count-rx-pkt")
+    {
+        rxaui_byte_count_rx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-rx-dscrd-pkt-cnt")
+    {
+        rxaui_rx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "rxaui-tx-dscrd-pkt-cnt")
+    {
+        rxaui_tx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-nif-packet-counter")
+    {
+        ire_nif_packet_counter.yfilter = yfilter;
+    }
+    if(value_path == "il-total-rx-pkt-count")
+    {
+        il_total_rx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "il-total-tx-pkt-count")
+    {
+        il_total_tx_pkt_count.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-err-drop-pkt-cnt")
+    {
+        il_rx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-err-drop-pkt-cnt")
+    {
+        il_tx_err_drop_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-byte-count-tx-pkt")
+    {
+        il_byte_count_tx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-byte-count-rx-pkt")
+    {
+        il_byte_count_rx_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-dscrd-pkt-cnt")
+    {
+        il_rx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-dscrd-pkt-cnt")
+    {
+        il_tx_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-pkt-count-bcast-pkt")
+    {
+        il_rx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-pkt-count-bcast-pkt")
+    {
+        il_tx_pkt_count_bcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-pkt-count-mcast-pkt")
+    {
+        il_rx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-pkt-count-mcast-pkt")
+    {
+        il_tx_pkt_count_mcast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-rx-pkt-count-ucast-pkt")
+    {
+        il_rx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "il-tx-pkt-count-ucast-pkt")
+    {
+        il_tx_pkt_count_ucast_pkt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-enq-pkt-cnt")
+    {
+        iqm_enq_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-enq-byte-cnt")
+    {
+        iqm_enq_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-deq-pkt-cnt")
+    {
+        iqm_deq_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-deq-byte-cnt")
+    {
+        iqm_deq_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-tot-dscrd-pkt-cnt")
+    {
+        iqm_tot_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-tot-dscrd-byte-cnt")
+    {
+        iqm_tot_dscrd_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-ecc-1b-err-cnt")
+    {
+        iqm_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-ecc-2b-err-cnt")
+    {
+        iqm_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-parity-err-cnt")
+    {
+        iqm_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-deq-delete-pkt-cnt")
+    {
+        iqm_deq_delete_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-ecn-dscrd-msk-pkt-cnt")
+    {
+        iqm_ecn_dscrd_msk_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-q-tot-dscrd-pkt-cnt")
+    {
+        iqm_q_tot_dscrd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-q-deq-delete-pkt-cnt")
+    {
+        iqm_q_deq_delete_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-db-pkt-cnt")
+    {
+        iqm_rjct_db_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-bdb-pkt-cnt")
+    {
+        iqm_rjct_bdb_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-bdb-protct-pkt-cnt")
+    {
+        iqm_rjct_bdb_protct_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-oc-bd-pkt-cnt")
+    {
+        iqm_rjct_oc_bd_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-sn-err-pkt-cnt")
+    {
+        iqm_rjct_sn_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-mc-err-pkt-cnt")
+    {
+        iqm_rjct_mc_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-rsrc-err-pkt-cnt")
+    {
+        iqm_rjct_rsrc_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-qnvalid-err-pkt-cnt")
+    {
+        iqm_rjct_qnvalid_err_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-cnm-pkt-cnt")
+    {
+        iqm_rjct_cnm_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-rjct-dyn-space-pkt-cnt")
+    {
+        iqm_rjct_dyn_space_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-fdt-pkt-cnt")
+    {
+        ipt_fdt_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-ecc-1b-err-cnt")
+    {
+        ipt_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-ecc-2b-err-cnt")
+    {
+        ipt_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-parity-err-cnt")
+    {
+        ipt_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-crc-err-cnt")
+    {
+        ipt_crc_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-crc-err-del-buff-cnt")
+    {
+        ipt_crc_err_del_buff_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-cpu-del-buff-cnt")
+    {
+        ipt_cpu_del_buff_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-cpu-rel-buff-cnt")
+    {
+        ipt_cpu_rel_buff_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-crc-err-buff-fifo-full-cnt")
+    {
+        ipt_crc_err_buff_fifo_full_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-data-cell-cnt")
+    {
+        fdt_data_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-data-byte-cnt")
+    {
+        fdt_data_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-crc-dropped-pck-cnt")
+    {
+        fdt_crc_dropped_pck_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-invalid-destq-drop-cell-cnt")
+    {
+        fdt_invalid_destq_drop_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-indirect-command-count")
+    {
+        fdt_indirect_command_count.yfilter = yfilter;
+    }
+    if(value_path == "fdt-ecc-1b-err-cnt")
+    {
+        fdt_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-ecc-2b-err-cnt")
+    {
+        fdt_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-parity-err-cnt")
+    {
+        fdt_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-crc-dropped-cell-cnt")
+    {
+        fdt_crc_dropped_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-control-cell-cnt")
+    {
+        fcr_control_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-cell-drop-cnt")
+    {
+        fcr_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-credit-cell-drop-cnt")
+    {
+        fcr_credit_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-fs-cell-drop-cnt")
+    {
+        fcr_fs_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-rt-cell-drop-cnt")
+    {
+        fcr_rt_cell_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-ecc-1b-err-cnt")
+    {
+        fcr_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fcr-ecc-2b-err-cnt")
+    {
+        fcr_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-data-cell-cnt")
+    {
+        fdr_data_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-data-byte-cnt")
+    {
+        fdr_data_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-crc-dropped-pck-cnt")
+    {
+        fdr_crc_dropped_pck_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-p-pkt-cnt")
+    {
+        fdr_p_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-prm-error-filter-cnt")
+    {
+        fdr_prm_error_filter_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-sec-error-filter-cnt")
+    {
+        fdr_sec_error_filter_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-prm-ecc-1b-err-cnt")
+    {
+        fdr_prm_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-prm-ecc-2b-err-cnt")
+    {
+        fdr_prm_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-sec-ecc-1b-err-cnt")
+    {
+        fdr_sec_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-sec-ecc-2b-err-cnt")
+    {
+        fdr_sec_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ecc-1b-err-cnt")
+    {
+        egq_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ecc-2b-err-cnt")
+    {
+        egq_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-parity-err-cnt")
+    {
+        egq_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-dbf-ecc-1b-err-cnt")
+    {
+        egq_dbf_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-dbf-ecc-2b-err-cnt")
+    {
+        egq_dbf_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-empty-mcid-counter")
+    {
+        egq_empty_mcid_counter.yfilter = yfilter;
+    }
+    if(value_path == "egq-rqp-discard-packet-counter")
+    {
+        egq_rqp_discard_packet_counter.yfilter = yfilter;
+    }
+    if(value_path == "egq-ehp-discard-packet-counter")
+    {
+        egq_ehp_discard_packet_counter.yfilter = yfilter;
+    }
+    if(value_path == "egq-ipt-pkt-cnt")
+    {
+        egq_ipt_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-pkt-cnt")
+    {
+        epni_epe_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-byte-cnt")
+    {
+        epni_epe_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-discard-pkt-cnt")
+    {
+        epni_epe_discard_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-ecc-1b-err-cnt")
+    {
+        epni_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-ecc-2b-err-cnt")
+    {
+        epni_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-parity-err-cnt")
+    {
+        epni_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-pkt-cnt")
+    {
+        egq_pqp_ucast_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-h-pkt-cnt")
+    {
+        egq_pqp_ucast_h_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-l-pkt-cnt")
+    {
+        egq_pqp_ucast_l_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-bytes-cnt")
+    {
+        egq_pqp_ucast_bytes_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-ucast-discard-pkt-cnt")
+    {
+        egq_pqp_ucast_discard_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-pkt-cnt")
+    {
+        egq_pqp_mcast_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-h-pkt-cnt")
+    {
+        egq_pqp_mcast_h_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-l-pkt-cnt")
+    {
+        egq_pqp_mcast_l_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-bytes-cnt")
+    {
+        egq_pqp_mcast_bytes_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mcast-discard-pkt-cnt")
+    {
+        egq_pqp_mcast_discard_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fct-control-cell-cnt")
+    {
+        fct_control_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fct-unrch-crdt-cnt")
+    {
+        fct_unrch_crdt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-reassembly-errors")
+    {
+        idr_reassembly_errors.yfilter = yfilter;
+    }
+    if(value_path == "idr-mmu-ecc-1b-err-cnt")
+    {
+        idr_mmu_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-mmu-ecc-2b-err-cnt")
+    {
+        idr_mmu_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets0-cnt")
+    {
+        idr_discarded_packets0_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets1-cnt")
+    {
+        idr_discarded_packets1_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets2-cnt")
+    {
+        idr_discarded_packets2_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-packets3-cnt")
+    {
+        idr_discarded_packets3_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets0-cnt")
+    {
+        idr_discarded_octets0_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets1-cnt")
+    {
+        idr_discarded_octets1_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets2-cnt")
+    {
+        idr_discarded_octets2_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-discarded-octets3-cnt")
+    {
+        idr_discarded_octets3_cnt.yfilter = yfilter;
+    }
+    if(value_path == "mmu-ecc-1b-err-cnt")
+    {
+        mmu_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "mmu-ecc-2b-err-cnt")
+    {
+        mmu_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "oamp-parity-err-cnt")
+    {
+        oamp_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "oamp-ecc-1b-err-cnt")
+    {
+        oamp_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "oamp-ecc-2b-err-cnt")
+    {
+        oamp_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "crps-parity-err-cnt")
+    {
+        crps_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs0-tst-rx-err-cnt")
+    {
+        fmac0_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs0-tst-rx-err-cnt")
+    {
+        fmac1_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs0-tst-rx-err-cnt")
+    {
+        fmac2_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs0-tst-rx-err-cnt")
+    {
+        fmac3_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs0-tst-rx-err-cnt")
+    {
+        fmac4_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs0-tst-rx-err-cnt")
+    {
+        fmac5_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs0-tst-rx-err-cnt")
+    {
+        fmac6_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs0-tst-rx-err-cnt")
+    {
+        fmac7_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs0-tst-rx-err-cnt")
+    {
+        fmac8_kpcs0_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs1-tst-rx-err-cnt")
+    {
+        fmac0_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs1-tst-rx-err-cnt")
+    {
+        fmac1_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs1-tst-rx-err-cnt")
+    {
+        fmac2_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs1-tst-rx-err-cnt")
+    {
+        fmac3_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs1-tst-rx-err-cnt")
+    {
+        fmac4_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs1-tst-rx-err-cnt")
+    {
+        fmac5_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs1-tst-rx-err-cnt")
+    {
+        fmac6_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs1-tst-rx-err-cnt")
+    {
+        fmac7_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs1-tst-rx-err-cnt")
+    {
+        fmac8_kpcs1_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs2-tst-rx-err-cnt")
+    {
+        fmac0_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs2-tst-rx-err-cnt")
+    {
+        fmac1_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs2-tst-rx-err-cnt")
+    {
+        fmac2_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs2-tst-rx-err-cnt")
+    {
+        fmac3_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs2-tst-rx-err-cnt")
+    {
+        fmac4_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs2-tst-rx-err-cnt")
+    {
+        fmac5_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs2-tst-rx-err-cnt")
+    {
+        fmac6_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs2-tst-rx-err-cnt")
+    {
+        fmac7_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs2-tst-rx-err-cnt")
+    {
+        fmac8_kpcs2_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-kpcs3-tst-rx-err-cnt")
+    {
+        fmac0_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-kpcs3-tst-rx-err-cnt")
+    {
+        fmac1_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-kpcs3-tst-rx-err-cnt")
+    {
+        fmac2_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-kpcs3-tst-rx-err-cnt")
+    {
+        fmac3_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-kpcs3-tst-rx-err-cnt")
+    {
+        fmac4_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-kpcs3-tst-rx-err-cnt")
+    {
+        fmac5_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-kpcs3-tst-rx-err-cnt")
+    {
+        fmac6_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-kpcs3-tst-rx-err-cnt")
+    {
+        fmac7_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-kpcs3-tst-rx-err-cnt")
+    {
+        fmac8_kpcs3_tst_rx_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst0-err-cnt")
+    {
+        fmac0_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst0-err-cnt")
+    {
+        fmac1_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst0-err-cnt")
+    {
+        fmac2_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst0-err-cnt")
+    {
+        fmac3_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst0-err-cnt")
+    {
+        fmac4_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst0-err-cnt")
+    {
+        fmac5_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst0-err-cnt")
+    {
+        fmac6_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst0-err-cnt")
+    {
+        fmac7_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst0-err-cnt")
+    {
+        fmac8_tst0_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst1-err-cnt")
+    {
+        fmac0_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst1-err-cnt")
+    {
+        fmac1_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst1-err-cnt")
+    {
+        fmac2_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst1-err-cnt")
+    {
+        fmac3_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst1-err-cnt")
+    {
+        fmac4_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst1-err-cnt")
+    {
+        fmac5_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst1-err-cnt")
+    {
+        fmac6_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst1-err-cnt")
+    {
+        fmac7_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst1-err-cnt")
+    {
+        fmac8_tst1_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst2-err-cnt")
+    {
+        fmac0_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst2-err-cnt")
+    {
+        fmac1_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst2-err-cnt")
+    {
+        fmac2_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst2-err-cnt")
+    {
+        fmac3_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst2-err-cnt")
+    {
+        fmac4_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst2-err-cnt")
+    {
+        fmac5_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst2-err-cnt")
+    {
+        fmac6_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst2-err-cnt")
+    {
+        fmac7_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst2-err-cnt")
+    {
+        fmac8_tst2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-tst3-err-cnt")
+    {
+        fmac0_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-tst3-err-cnt")
+    {
+        fmac1_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-tst3-err-cnt")
+    {
+        fmac2_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-tst3-err-cnt")
+    {
+        fmac3_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-tst3-err-cnt")
+    {
+        fmac4_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-tst3-err-cnt")
+    {
+        fmac5_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-tst3-err-cnt")
+    {
+        fmac6_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-tst3-err-cnt")
+    {
+        fmac7_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-tst3-err-cnt")
+    {
+        fmac8_tst3_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-ecc-1b-err-cnt")
+    {
+        fmac0_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-ecc-1b-err-cnt")
+    {
+        fmac1_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-ecc-1b-err-cnt")
+    {
+        fmac2_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-ecc-1b-err-cnt")
+    {
+        fmac3_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-ecc-1b-err-cnt")
+    {
+        fmac4_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-ecc-1b-err-cnt")
+    {
+        fmac5_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-ecc-1b-err-cnt")
+    {
+        fmac6_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-ecc-1b-err-cnt")
+    {
+        fmac7_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-ecc-1b-err-cnt")
+    {
+        fmac8_ecc_1b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac0-ecc-2b-err-cnt")
+    {
+        fmac0_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac1-ecc-2b-err-cnt")
+    {
+        fmac1_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac2-ecc-2b-err-cnt")
+    {
+        fmac2_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac3-ecc-2b-err-cnt")
+    {
+        fmac3_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac4-ecc-2b-err-cnt")
+    {
+        fmac4_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac5-ecc-2b-err-cnt")
+    {
+        fmac5_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac6-ecc-2b-err-cnt")
+    {
+        fmac6_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac7-ecc-2b-err-cnt")
+    {
+        fmac7_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fmac8-ecc-2b-err-cnt")
+    {
+        fmac8_ecc_2b_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "olp-incoming-bad-identifier-counter")
+    {
+        olp_incoming_bad_identifier_counter.yfilter = yfilter;
+    }
+    if(value_path == "olp-incoming-bad-reassembly-counter")
+    {
+        olp_incoming_bad_reassembly_counter.yfilter = yfilter;
+    }
+    if(value_path == "cfc-parity-err-cnt")
+    {
+        cfc_parity_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-ilkn0-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn0_oob_rx_crc_err_cntr.yfilter = yfilter;
+    }
+    if(value_path == "cfc-ilkn1-oob-rx-crc-err-cntr")
+    {
+        cfc_ilkn1_oob_rx_crc_err_cntr.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx0-frm-err-cnt")
+    {
+        cfc_spi_oob_rx0_frm_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx0-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx0_dip2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx1-frm-err-cnt")
+    {
+        cfc_spi_oob_rx1_frm_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cfc-spi-oob-rx1-dip2-err-cnt")
+    {
+        cfc_spi_oob_rx1_dip2_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-uc-pd-dropped-cnt")
+    {
+        cgm_cgm_uc_pd_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-mc-rep-pd-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_pd_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-rqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_rqp_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-uc-db-dropped-by-pqp-cnt")
+    {
+        cgm_cgm_uc_db_dropped_by_pqp_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-mc-rep-db-dropped-cnt")
+    {
+        cgm_cgm_mc_rep_db_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "cgm-cgm-mc-db-dropped-cnt")
+    {
+        cgm_cgm_mc_db_dropped_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-full-err-cnt")
+    {
+        drca_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-single-err-cnt")
+    {
+        drca_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-calib-bist-full-err-cnt")
+    {
+        drca_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drca-loopback-full-err-cnt")
+    {
+        drca_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-full-err-cnt")
+    {
+        drcb_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-single-err-cnt")
+    {
+        drcb_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-calib-bist-full-err-cnt")
+    {
+        drcb_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcb-loopback-full-err-cnt")
+    {
+        drcb_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-full-err-cnt")
+    {
+        drcc_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-single-err-cnt")
+    {
+        drcc_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-calib-bist-full-err-cnt")
+    {
+        drcc_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcc-loopback-full-err-cnt")
+    {
+        drcc_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-full-err-cnt")
+    {
+        drcd_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-single-err-cnt")
+    {
+        drcd_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-calib-bist-full-err-cnt")
+    {
+        drcd_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcd-loopback-full-err-cnt")
+    {
+        drcd_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-full-err-cnt")
+    {
+        drce_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-single-err-cnt")
+    {
+        drce_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-calib-bist-full-err-cnt")
+    {
+        drce_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drce-loopback-full-err-cnt")
+    {
+        drce_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-full-err-cnt")
+    {
+        drcf_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-single-err-cnt")
+    {
+        drcf_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-calib-bist-full-err-cnt")
+    {
+        drcf_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcf-loopback-full-err-cnt")
+    {
+        drcf_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-full-err-cnt")
+    {
+        drcg_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-single-err-cnt")
+    {
+        drcg_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-calib-bist-full-err-cnt")
+    {
+        drcg_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcg-loopback-full-err-cnt")
+    {
+        drcg_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-full-err-cnt")
+    {
+        drch_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-single-err-cnt")
+    {
+        drch_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-calib-bist-full-err-cnt")
+    {
+        drch_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drch-loopback-full-err-cnt")
+    {
+        drch_loopback_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-full-err-cnt")
+    {
+        drcbroadcast_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-single-err-cnt")
+    {
+        drcbroadcast_single_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-calib-bist-full-err-cnt")
+    {
+        drcbroadcast_calib_bist_full_err_cnt.yfilter = yfilter;
+    }
+    if(value_path == "drcbroadcast-loopback-full-err-cnt")
+    {
+        drcbroadcast_loopback_full_err_cnt.yfilter = yfilter;
     }
 }
 
-bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::OvfStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "field-name" || name == "field-value" || name == "is-ovf")
+    if(name == "cmic-cmc0-pkt-count-tx-pkt" || name == "cmic-cmc0-pkt-count-rx-pkt" || name == "nbi-stat-rx-bursts-err-cnt" || name == "nbi-ecc-1b-err-cnt" || name == "nbi-ecc-2b-err-cnt" || name == "nbi-parity-err-cnt" || name == "nbi-rx-ilkn-crc32-err-cnt" || name == "nbi-rx-ilkn0-crc24-err-cnt" || name == "nbi-rx-ilkn0-burst-err-cnt" || name == "nbi-rx-ilkn0-miss-sop-err-cnt" || name == "nbi-rx-ilkn0-miss-eop-err-cnt" || name == "nbi-rx-ilkn0-misaligned-cnt" || name == "nbi-rx-ilkn1-crc24-err-cnt" || name == "nbi-rx-ilkn1-burst-err-cnt" || name == "nbi-rx-ilkn1-miss-sop-err-cnt" || name == "nbi-rx-ilkn1-miss-eop-err-cnt" || name == "nbi-rx-ilkn1-misaligned-cnt" || name == "nbi-tx-ilkn1-flushed-bursts-cnt" || name == "nbi-rx-ilkn0-retrans-crc24-err-cnt" || name == "nbi-rx-ilkn0-retrans-retry-err-cnt" || name == "nbi-rx-ilkn0-retrans-wdog-err-cnt" || name == "nbi-rx-ilkn0-retrans-wrap-after-disc-err-cnt" || name == "nbi-rx-ilkn0-retrans-wrap-b4-disc-err-cnt" || name == "nbi-rx-ilkn0-retrans-reached-timeout-err-cnt" || name == "nbi-rx-ilkn1-retrans-crc24-err-cnt" || name == "nbi-rx-ilkn1-retrans-retry-err-cnt" || name == "nbi-rx-ilkn1-retrans-wdog-err-cnt" || name == "nbi-rx-ilkn1-retrans-wrap-after-disc-err-cnt" || name == "nbi-rx-ilkn1-retrans-wrap-b4-disc-err-cnt" || name == "nbi-rx-ilkn1-retrans-reached-timeout-err-cnt" || name == "nbi-stat-rx-frame-err-cnt" || name == "nbi-stat-tx-frame-err-cnt" || name == "nbi-rx-elk-err-bursts-cnt" || name == "nbi-rx-num-thrown-eops" || name == "nbi-rx-num-runts" || name == "nbi-bist-tx-crc-err-bursts-cnt" || name == "nbi-bist-rx-err-length-bursts-cnt" || name == "nbi-bist-rx-err-burst-index-cnt" || name == "nbi-bist-rx-err-bct-cnt" || name == "nbi-bist-rx-err-data-cnt" || name == "nbi-bist-rx-err-in-crc-err-cnt" || name == "nbi-bist-rx-err-sob-cnt" || name == "nbi-stat-tx-bursts-cnt" || name == "nbi-stat-tx-total-leng-cnt" || name == "rxaui-total-tx-pkt-count" || name == "rxaui-total-rx-pkt-count" || name == "rxaui-rx-pkt-count-bcast-pkt" || name == "rxaui-tx-pkt-count-bcast-pkt" || name == "rxaui-rx-pkt-count-mcast-pkt" || name == "rxaui-tx-pkt-count-mcast-pkt" || name == "rxaui-rx-pkt-count-ucast-pkt" || name == "rxaui-tx-pkt-count-ucast-pkt" || name == "rxaui-rx-err-drop-pkt-cnt" || name == "rxaui-tx-err-drop-pkt-cnt" || name == "rxaui-byte-count-tx-pkt" || name == "rxaui-byte-count-rx-pkt" || name == "rxaui-rx-dscrd-pkt-cnt" || name == "rxaui-tx-dscrd-pkt-cnt" || name == "ire-nif-packet-counter" || name == "il-total-rx-pkt-count" || name == "il-total-tx-pkt-count" || name == "il-rx-err-drop-pkt-cnt" || name == "il-tx-err-drop-pkt-cnt" || name == "il-byte-count-tx-pkt" || name == "il-byte-count-rx-pkt" || name == "il-rx-dscrd-pkt-cnt" || name == "il-tx-dscrd-pkt-cnt" || name == "il-rx-pkt-count-bcast-pkt" || name == "il-tx-pkt-count-bcast-pkt" || name == "il-rx-pkt-count-mcast-pkt" || name == "il-tx-pkt-count-mcast-pkt" || name == "il-rx-pkt-count-ucast-pkt" || name == "il-tx-pkt-count-ucast-pkt" || name == "iqm-enq-pkt-cnt" || name == "iqm-enq-byte-cnt" || name == "iqm-deq-pkt-cnt" || name == "iqm-deq-byte-cnt" || name == "iqm-tot-dscrd-pkt-cnt" || name == "iqm-tot-dscrd-byte-cnt" || name == "iqm-ecc-1b-err-cnt" || name == "iqm-ecc-2b-err-cnt" || name == "iqm-parity-err-cnt" || name == "iqm-deq-delete-pkt-cnt" || name == "iqm-ecn-dscrd-msk-pkt-cnt" || name == "iqm-q-tot-dscrd-pkt-cnt" || name == "iqm-q-deq-delete-pkt-cnt" || name == "iqm-rjct-db-pkt-cnt" || name == "iqm-rjct-bdb-pkt-cnt" || name == "iqm-rjct-bdb-protct-pkt-cnt" || name == "iqm-rjct-oc-bd-pkt-cnt" || name == "iqm-rjct-sn-err-pkt-cnt" || name == "iqm-rjct-mc-err-pkt-cnt" || name == "iqm-rjct-rsrc-err-pkt-cnt" || name == "iqm-rjct-qnvalid-err-pkt-cnt" || name == "iqm-rjct-cnm-pkt-cnt" || name == "iqm-rjct-dyn-space-pkt-cnt" || name == "ipt-fdt-pkt-cnt" || name == "ipt-ecc-1b-err-cnt" || name == "ipt-ecc-2b-err-cnt" || name == "ipt-parity-err-cnt" || name == "ipt-crc-err-cnt" || name == "ipt-crc-err-del-buff-cnt" || name == "ipt-cpu-del-buff-cnt" || name == "ipt-cpu-rel-buff-cnt" || name == "ipt-crc-err-buff-fifo-full-cnt" || name == "fdt-data-cell-cnt" || name == "fdt-data-byte-cnt" || name == "fdt-crc-dropped-pck-cnt" || name == "fdt-invalid-destq-drop-cell-cnt" || name == "fdt-indirect-command-count" || name == "fdt-ecc-1b-err-cnt" || name == "fdt-ecc-2b-err-cnt" || name == "fdt-parity-err-cnt" || name == "fdt-crc-dropped-cell-cnt" || name == "fcr-control-cell-cnt" || name == "fcr-cell-drop-cnt" || name == "fcr-credit-cell-drop-cnt" || name == "fcr-fs-cell-drop-cnt" || name == "fcr-rt-cell-drop-cnt" || name == "fcr-ecc-1b-err-cnt" || name == "fcr-ecc-2b-err-cnt" || name == "fdr-data-cell-cnt" || name == "fdr-data-byte-cnt" || name == "fdr-crc-dropped-pck-cnt" || name == "fdr-p-pkt-cnt" || name == "fdr-prm-error-filter-cnt" || name == "fdr-sec-error-filter-cnt" || name == "fdr-prm-ecc-1b-err-cnt" || name == "fdr-prm-ecc-2b-err-cnt" || name == "fdr-sec-ecc-1b-err-cnt" || name == "fdr-sec-ecc-2b-err-cnt" || name == "egq-ecc-1b-err-cnt" || name == "egq-ecc-2b-err-cnt" || name == "egq-parity-err-cnt" || name == "egq-dbf-ecc-1b-err-cnt" || name == "egq-dbf-ecc-2b-err-cnt" || name == "egq-empty-mcid-counter" || name == "egq-rqp-discard-packet-counter" || name == "egq-ehp-discard-packet-counter" || name == "egq-ipt-pkt-cnt" || name == "epni-epe-pkt-cnt" || name == "epni-epe-byte-cnt" || name == "epni-epe-discard-pkt-cnt" || name == "epni-ecc-1b-err-cnt" || name == "epni-ecc-2b-err-cnt" || name == "epni-parity-err-cnt" || name == "egq-pqp-ucast-pkt-cnt" || name == "egq-pqp-ucast-h-pkt-cnt" || name == "egq-pqp-ucast-l-pkt-cnt" || name == "egq-pqp-ucast-bytes-cnt" || name == "egq-pqp-ucast-discard-pkt-cnt" || name == "egq-pqp-mcast-pkt-cnt" || name == "egq-pqp-mcast-h-pkt-cnt" || name == "egq-pqp-mcast-l-pkt-cnt" || name == "egq-pqp-mcast-bytes-cnt" || name == "egq-pqp-mcast-discard-pkt-cnt" || name == "fct-control-cell-cnt" || name == "fct-unrch-crdt-cnt" || name == "idr-reassembly-errors" || name == "idr-mmu-ecc-1b-err-cnt" || name == "idr-mmu-ecc-2b-err-cnt" || name == "idr-discarded-packets0-cnt" || name == "idr-discarded-packets1-cnt" || name == "idr-discarded-packets2-cnt" || name == "idr-discarded-packets3-cnt" || name == "idr-discarded-octets0-cnt" || name == "idr-discarded-octets1-cnt" || name == "idr-discarded-octets2-cnt" || name == "idr-discarded-octets3-cnt" || name == "mmu-ecc-1b-err-cnt" || name == "mmu-ecc-2b-err-cnt" || name == "oamp-parity-err-cnt" || name == "oamp-ecc-1b-err-cnt" || name == "oamp-ecc-2b-err-cnt" || name == "crps-parity-err-cnt" || name == "fmac0-kpcs0-tst-rx-err-cnt" || name == "fmac1-kpcs0-tst-rx-err-cnt" || name == "fmac2-kpcs0-tst-rx-err-cnt" || name == "fmac3-kpcs0-tst-rx-err-cnt" || name == "fmac4-kpcs0-tst-rx-err-cnt" || name == "fmac5-kpcs0-tst-rx-err-cnt" || name == "fmac6-kpcs0-tst-rx-err-cnt" || name == "fmac7-kpcs0-tst-rx-err-cnt" || name == "fmac8-kpcs0-tst-rx-err-cnt" || name == "fmac0-kpcs1-tst-rx-err-cnt" || name == "fmac1-kpcs1-tst-rx-err-cnt" || name == "fmac2-kpcs1-tst-rx-err-cnt" || name == "fmac3-kpcs1-tst-rx-err-cnt" || name == "fmac4-kpcs1-tst-rx-err-cnt" || name == "fmac5-kpcs1-tst-rx-err-cnt" || name == "fmac6-kpcs1-tst-rx-err-cnt" || name == "fmac7-kpcs1-tst-rx-err-cnt" || name == "fmac8-kpcs1-tst-rx-err-cnt" || name == "fmac0-kpcs2-tst-rx-err-cnt" || name == "fmac1-kpcs2-tst-rx-err-cnt" || name == "fmac2-kpcs2-tst-rx-err-cnt" || name == "fmac3-kpcs2-tst-rx-err-cnt" || name == "fmac4-kpcs2-tst-rx-err-cnt" || name == "fmac5-kpcs2-tst-rx-err-cnt" || name == "fmac6-kpcs2-tst-rx-err-cnt" || name == "fmac7-kpcs2-tst-rx-err-cnt" || name == "fmac8-kpcs2-tst-rx-err-cnt" || name == "fmac0-kpcs3-tst-rx-err-cnt" || name == "fmac1-kpcs3-tst-rx-err-cnt" || name == "fmac2-kpcs3-tst-rx-err-cnt" || name == "fmac3-kpcs3-tst-rx-err-cnt" || name == "fmac4-kpcs3-tst-rx-err-cnt" || name == "fmac5-kpcs3-tst-rx-err-cnt" || name == "fmac6-kpcs3-tst-rx-err-cnt" || name == "fmac7-kpcs3-tst-rx-err-cnt" || name == "fmac8-kpcs3-tst-rx-err-cnt" || name == "fmac0-tst0-err-cnt" || name == "fmac1-tst0-err-cnt" || name == "fmac2-tst0-err-cnt" || name == "fmac3-tst0-err-cnt" || name == "fmac4-tst0-err-cnt" || name == "fmac5-tst0-err-cnt" || name == "fmac6-tst0-err-cnt" || name == "fmac7-tst0-err-cnt" || name == "fmac8-tst0-err-cnt" || name == "fmac0-tst1-err-cnt" || name == "fmac1-tst1-err-cnt" || name == "fmac2-tst1-err-cnt" || name == "fmac3-tst1-err-cnt" || name == "fmac4-tst1-err-cnt" || name == "fmac5-tst1-err-cnt" || name == "fmac6-tst1-err-cnt" || name == "fmac7-tst1-err-cnt" || name == "fmac8-tst1-err-cnt" || name == "fmac0-tst2-err-cnt" || name == "fmac1-tst2-err-cnt" || name == "fmac2-tst2-err-cnt" || name == "fmac3-tst2-err-cnt" || name == "fmac4-tst2-err-cnt" || name == "fmac5-tst2-err-cnt" || name == "fmac6-tst2-err-cnt" || name == "fmac7-tst2-err-cnt" || name == "fmac8-tst2-err-cnt" || name == "fmac0-tst3-err-cnt" || name == "fmac1-tst3-err-cnt" || name == "fmac2-tst3-err-cnt" || name == "fmac3-tst3-err-cnt" || name == "fmac4-tst3-err-cnt" || name == "fmac5-tst3-err-cnt" || name == "fmac6-tst3-err-cnt" || name == "fmac7-tst3-err-cnt" || name == "fmac8-tst3-err-cnt" || name == "fmac0-ecc-1b-err-cnt" || name == "fmac1-ecc-1b-err-cnt" || name == "fmac2-ecc-1b-err-cnt" || name == "fmac3-ecc-1b-err-cnt" || name == "fmac4-ecc-1b-err-cnt" || name == "fmac5-ecc-1b-err-cnt" || name == "fmac6-ecc-1b-err-cnt" || name == "fmac7-ecc-1b-err-cnt" || name == "fmac8-ecc-1b-err-cnt" || name == "fmac0-ecc-2b-err-cnt" || name == "fmac1-ecc-2b-err-cnt" || name == "fmac2-ecc-2b-err-cnt" || name == "fmac3-ecc-2b-err-cnt" || name == "fmac4-ecc-2b-err-cnt" || name == "fmac5-ecc-2b-err-cnt" || name == "fmac6-ecc-2b-err-cnt" || name == "fmac7-ecc-2b-err-cnt" || name == "fmac8-ecc-2b-err-cnt" || name == "olp-incoming-bad-identifier-counter" || name == "olp-incoming-bad-reassembly-counter" || name == "cfc-parity-err-cnt" || name == "cfc-ilkn0-oob-rx-crc-err-cntr" || name == "cfc-ilkn1-oob-rx-crc-err-cntr" || name == "cfc-spi-oob-rx0-frm-err-cnt" || name == "cfc-spi-oob-rx0-dip2-err-cnt" || name == "cfc-spi-oob-rx1-frm-err-cnt" || name == "cfc-spi-oob-rx1-dip2-err-cnt" || name == "cgm-cgm-uc-pd-dropped-cnt" || name == "cgm-cgm-mc-rep-pd-dropped-cnt" || name == "cgm-cgm-uc-db-dropped-by-rqp-cnt" || name == "cgm-cgm-uc-db-dropped-by-pqp-cnt" || name == "cgm-cgm-mc-rep-db-dropped-cnt" || name == "cgm-cgm-mc-db-dropped-cnt" || name == "drca-full-err-cnt" || name == "drca-single-err-cnt" || name == "drca-calib-bist-full-err-cnt" || name == "drca-loopback-full-err-cnt" || name == "drcb-full-err-cnt" || name == "drcb-single-err-cnt" || name == "drcb-calib-bist-full-err-cnt" || name == "drcb-loopback-full-err-cnt" || name == "drcc-full-err-cnt" || name == "drcc-single-err-cnt" || name == "drcc-calib-bist-full-err-cnt" || name == "drcc-loopback-full-err-cnt" || name == "drcd-full-err-cnt" || name == "drcd-single-err-cnt" || name == "drcd-calib-bist-full-err-cnt" || name == "drcd-loopback-full-err-cnt" || name == "drce-full-err-cnt" || name == "drce-single-err-cnt" || name == "drce-calib-bist-full-err-cnt" || name == "drce-loopback-full-err-cnt" || name == "drcf-full-err-cnt" || name == "drcf-single-err-cnt" || name == "drcf-calib-bist-full-err-cnt" || name == "drcf-loopback-full-err-cnt" || name == "drcg-full-err-cnt" || name == "drcg-single-err-cnt" || name == "drcg-calib-bist-full-err-cnt" || name == "drcg-loopback-full-err-cnt" || name == "drch-full-err-cnt" || name == "drch-single-err-cnt" || name == "drch-calib-bist-full-err-cnt" || name == "drch-loopback-full-err-cnt" || name == "drcbroadcast-full-err-cnt" || name == "drcbroadcast-single-err-cnt" || name == "drcbroadcast-calib-bist-full-err-cnt" || name == "drcbroadcast-loopback-full-err-cnt")
         return true;
     return false;
 }

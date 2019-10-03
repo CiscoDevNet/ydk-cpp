@@ -901,6 +901,14 @@ class SONETMIB::SonetMedium::SonetSESthresholdSet : public ydk::Enum
         static const ydk::Enum::YLeaf itu1995;
         static const ydk::Enum::YLeaf ansi1997;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "bellcore1991") return 2;
+            if (name == "ansi1993") return 3;
+            if (name == "itu1995") return 4;
+            if (name == "ansi1997") return 5;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetMediumTable::SonetMediumEntry::SonetMediumType : public ydk::Enum
@@ -909,6 +917,11 @@ class SONETMIB::SonetMediumTable::SonetMediumEntry::SonetMediumType : public ydk
         static const ydk::Enum::YLeaf sonet;
         static const ydk::Enum::YLeaf sdh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sonet") return 1;
+            if (name == "sdh") return 2;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetMediumTable::SonetMediumEntry::SonetMediumLineCoding : public ydk::Enum
@@ -920,6 +933,14 @@ class SONETMIB::SonetMediumTable::SonetMediumEntry::SonetMediumLineCoding : publ
         static const ydk::Enum::YLeaf sonetMediumNRZ;
         static const ydk::Enum::YLeaf sonetMediumRZ;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sonetMediumOther") return 1;
+            if (name == "sonetMediumB3ZS") return 2;
+            if (name == "sonetMediumCMI") return 3;
+            if (name == "sonetMediumNRZ") return 4;
+            if (name == "sonetMediumRZ") return 5;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetMediumTable::SonetMediumEntry::SonetMediumLineType : public ydk::Enum
@@ -932,6 +953,15 @@ class SONETMIB::SonetMediumTable::SonetMediumEntry::SonetMediumLineType : public
         static const ydk::Enum::YLeaf sonetCoax;
         static const ydk::Enum::YLeaf sonetUTP;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sonetOther") return 1;
+            if (name == "sonetShortSingleMode") return 2;
+            if (name == "sonetLongSingleMode") return 3;
+            if (name == "sonetMultiMode") return 4;
+            if (name == "sonetCoax") return 5;
+            if (name == "sonetUTP") return 6;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::SonetPathCurrentWidth : public ydk::Enum
@@ -945,6 +975,16 @@ class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::SonetPathCurrentWi
         static const ydk::Enum::YLeaf sts192cSTM64;
         static const ydk::Enum::YLeaf sts768cSTM256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sts1") return 1;
+            if (name == "sts3cSTM1") return 2;
+            if (name == "sts12cSTM4") return 3;
+            if (name == "sts24c") return 4;
+            if (name == "sts48cSTM16") return 5;
+            if (name == "sts192cSTM64") return 6;
+            if (name == "sts768cSTM256") return 7;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspSonetPathPayload : public ydk::Enum
@@ -960,6 +1000,18 @@ class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspSonetPathPayloa
         static const ydk::Enum::YLeaf e3;
         static const ydk::Enum::YLeaf vtStructured;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unequipped") return 1;
+            if (name == "unspecified") return 2;
+            if (name == "ds3") return 3;
+            if (name == "vt15vc11") return 4;
+            if (name == "vt2vc12") return 5;
+            if (name == "atmCell") return 6;
+            if (name == "hdlcFr") return 7;
+            if (name == "e3") return 8;
+            if (name == "vtStructured") return 9;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspTributaryMappingType : public ydk::Enum
@@ -968,6 +1020,11 @@ class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspTributaryMappin
         static const ydk::Enum::YLeaf asynchronous;
         static const ydk::Enum::YLeaf byteSynchronous;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asynchronous") return 1;
+            if (name == "byteSynchronous") return 2;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspSignallingTransportMode : public ydk::Enum
@@ -977,6 +1034,12 @@ class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspSignallingTrans
         static const ydk::Enum::YLeaf signallingTransferMode;
         static const ydk::Enum::YLeaf clearMode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "signallingTransferMode") return 2;
+            if (name == "clearMode") return 3;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspTributaryGroupingType : public ydk::Enum
@@ -986,6 +1049,12 @@ class SONETMIB::SonetPathCurrentTable::SonetPathCurrentEntry::CspTributaryGroupi
         static const ydk::Enum::YLeaf au3Grouping;
         static const ydk::Enum::YLeaf au4Grouping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "au3Grouping") return 2;
+            if (name == "au4Grouping") return 3;
+            return -1;
+        }
 };
 
 class SONETMIB::SonetVTCurrentTable::SonetVTCurrentEntry::SonetVTCurrentWidth : public ydk::Enum
@@ -997,6 +1066,14 @@ class SONETMIB::SonetVTCurrentTable::SonetVTCurrentEntry::SonetVTCurrentWidth : 
         static const ydk::Enum::YLeaf vtWidth6VC2;
         static const ydk::Enum::YLeaf vtWidth6c;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vtWidth15VC11") return 1;
+            if (name == "vtWidth2VC12") return 2;
+            if (name == "vtWidth3") return 3;
+            if (name == "vtWidth6VC2") return 4;
+            if (name == "vtWidth6c") return 5;
+            return -1;
+        }
 };
 
 

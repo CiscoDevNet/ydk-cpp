@@ -16,6 +16,11 @@ class TruthValue : public ydk::Enum
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class StorageType : public ydk::Enum
@@ -27,6 +32,14 @@ class StorageType : public ydk::Enum
         static const ydk::Enum::YLeaf permanent;
         static const ydk::Enum::YLeaf readOnly;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "volatile") return 2;
+            if (name == "nonVolatile") return 3;
+            if (name == "permanent") return 4;
+            if (name == "readOnly") return 5;
+            return -1;
+        }
 };
 
 class RowStatus : public ydk::Enum
@@ -39,6 +52,15 @@ class RowStatus : public ydk::Enum
         static const ydk::Enum::YLeaf createAndWait;
         static const ydk::Enum::YLeaf destroy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "notInService") return 2;
+            if (name == "notReady") return 3;
+            if (name == "createAndGo") return 4;
+            if (name == "createAndWait") return 5;
+            if (name == "destroy") return 6;
+            return -1;
+        }
 };
 
 

@@ -2414,6 +2414,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_tunnel_up; //type: boolean
         ydk::YLeaf is_tunnel_info_stale; //type: boolean
         ydk::YLeaf is_tunnel_registered; //type: boolean
+        ydk::YLeaf is_bgp_te_registered; //type: boolean
         ydk::YLeaf tunnel_v6_required; //type: boolean
         ydk::YLeaf tunnel_v6_enabled; //type: boolean
         ydk::YLeaf tunnel_notif_first_rcvd; //type: boolean
@@ -2424,6 +2425,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf tunnel_color; //type: uint32
         ydk::YLeaf is_tunnel_color_only; //type: boolean
         ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
+        ydk::YLeaf flags; //type: uint32
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::NhTunnel
 
@@ -2757,6 +2759,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_tunnel_up; //type: boolean
         ydk::YLeaf is_tunnel_info_stale; //type: boolean
         ydk::YLeaf is_tunnel_registered; //type: boolean
+        ydk::YLeaf is_bgp_te_registered; //type: boolean
         ydk::YLeaf tunnel_v6_required; //type: boolean
         ydk::YLeaf tunnel_v6_enabled; //type: boolean
         ydk::YLeaf tunnel_notif_first_rcvd; //type: boolean
@@ -2767,6 +2770,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf tunnel_color; //type: uint32
         ydk::YLeaf is_tunnel_color_only; //type: boolean
         ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
+        ydk::YLeaf flags; //type: uint32
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::NhTunnel
 
@@ -3719,6 +3723,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf is_tunnel_up; //type: boolean
         ydk::YLeaf is_tunnel_info_stale; //type: boolean
         ydk::YLeaf is_tunnel_registered; //type: boolean
+        ydk::YLeaf is_bgp_te_registered; //type: boolean
         ydk::YLeaf tunnel_v6_required; //type: boolean
         ydk::YLeaf tunnel_v6_enabled; //type: boolean
         ydk::YLeaf tunnel_notif_first_rcvd; //type: boolean
@@ -3729,6 +3734,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf tunnel_color; //type: uint32
         ydk::YLeaf is_tunnel_color_only; //type: boolean
         ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
+        ydk::YLeaf flags; //type: uint32
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhTunnel
 

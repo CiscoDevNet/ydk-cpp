@@ -9724,6 +9724,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::g
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9958,6 +9959,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::N
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-message-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11150,6 +11152,7 @@ std::string RsvpStandby::GracefulRestart::LocalNodeAddress::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "local-node-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12178,6 +12181,7 @@ std::string RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-neighbor-list-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14157,6 +14161,7 @@ std::string RsvpStandby::Frrs::Frr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15344,6 +15349,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "request-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17558,6 +17564,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "request-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20604,6 +20611,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "psb-key";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20829,6 +20837,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "rsb-key";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

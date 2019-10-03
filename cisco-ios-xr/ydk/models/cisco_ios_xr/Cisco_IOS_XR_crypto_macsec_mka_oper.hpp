@@ -616,6 +616,14 @@ class MacsecCipherSuite : public ydk::Enum
         static const ydk::Enum::YLeaf cipher_suite_gcm_aes_128_xpn;
         static const ydk::Enum::YLeaf cipher_suite_gcm_aes_256_xpn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cipher-suite-none") return 0;
+            if (name == "cipher-suite-gcm-aes-128") return 1;
+            if (name == "cipher-suite-gcm-aes-256") return 2;
+            if (name == "cipher-suite-gcm-aes-128-xpn") return 3;
+            if (name == "cipher-suite-gcm-aes-256-xpn") return 4;
+            return -1;
+        }
 };
 
 class MkaAuthenticationMode : public ydk::Enum
@@ -625,6 +633,12 @@ class MkaAuthenticationMode : public ydk::Enum
         static const ydk::Enum::YLeaf auth_mode_psk;
         static const ydk::Enum::YLeaf auth_mode_eap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auth-mode-invalid") return 0;
+            if (name == "auth-mode-psk") return 1;
+            if (name == "auth-mode-eap") return 2;
+            return -1;
+        }
 };
 
 class MacsecServicePort : public ydk::Enum
@@ -634,6 +648,12 @@ class MacsecServicePort : public ydk::Enum
         static const ydk::Enum::YLeaf macsec_service_port_encryption;
         static const ydk::Enum::YLeaf macsec_service_port_decryption;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "macsec-service-port-none") return 0;
+            if (name == "macsec-service-port-encryption") return 1;
+            if (name == "macsec-service-port-decryption") return 2;
+            return -1;
+        }
 };
 
 

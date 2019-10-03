@@ -1513,6 +1513,10 @@ class PmMeasurement : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf delay_measurement_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "delay-measurement-type") return 0;
+            return -1;
+        }
 };
 
 class PmAdvertReason : public ydk::Enum
@@ -1532,7 +1536,26 @@ class PmAdvertReason : public ydk::Enum
         static const ydk::Enum::YLeaf advertise_delay_config;
         static const ydk::Enum::YLeaf advertise_delay_unconfig;
         static const ydk::Enum::YLeaf received_control_code_error;
+        static const ydk::Enum::YLeaf link_is_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "periodic-timer-expired-no-advertisements") return 0;
+            if (name == "periodic-advertisement-threshold-average") return 1;
+            if (name == "periodic-advertisement-threshold-minimum") return 2;
+            if (name == "periodic-advertisement-threshold-maximum") return 3;
+            if (name == "periodic-advertisement-threshold-variance") return 4;
+            if (name == "accelerated-advertisement-threshold-minimum") return 5;
+            if (name == "accelerated-advertisement-upper-bound-minimum") return 6;
+            if (name == "advertisement-enabled") return 7;
+            if (name == "advertisement-disabled") return 8;
+            if (name == "session-unconfigured") return 9;
+            if (name == "clear-cli-command") return 10;
+            if (name == "advertise-delay-config") return 11;
+            if (name == "advertise-delay-unconfig") return 12;
+            if (name == "received-control-code-error") return 13;
+            if (name == "link-is-down") return 14;
+            return -1;
+        }
 };
 
 class PmProbeNotRunningReason : public ydk::Enum
@@ -1548,6 +1571,18 @@ class PmProbeNotRunningReason : public ydk::Enum
         static const ydk::Enum::YLeaf interface_not_present;
         static const ydk::Enum::YLeaf ip_address_not_configured;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "probe-is-running") return 0;
+            if (name == "platform-not-supported") return 1;
+            if (name == "nonv1-active-node") return 2;
+            if (name == "control-code-error") return 3;
+            if (name == "interface-admin-down") return 4;
+            if (name == "interface-down") return 5;
+            if (name == "mpls-capability-not-present") return 6;
+            if (name == "interface-not-present") return 7;
+            if (name == "ip-address-not-configured") return 8;
+            return -1;
+        }
 };
 
 class PmDelayMode : public ydk::Enum
@@ -1556,6 +1591,11 @@ class PmDelayMode : public ydk::Enum
         static const ydk::Enum::YLeaf delay_mode_one_way;
         static const ydk::Enum::YLeaf delay_mode_two_way;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "delay-mode-one-way") return 0;
+            if (name == "delay-mode-two-way") return 1;
+            return -1;
+        }
 };
 
 class PmTransport : public ydk::Enum
@@ -1565,6 +1605,12 @@ class PmTransport : public ydk::Enum
         static const ydk::Enum::YLeaf rsvpte_transport_type;
         static const ydk::Enum::YLeaf sr_policy_transport_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-transport-type") return 0;
+            if (name == "rsvpte-transport-type") return 1;
+            if (name == "sr-policy-transport-type") return 2;
+            return -1;
+        }
 };
 
 

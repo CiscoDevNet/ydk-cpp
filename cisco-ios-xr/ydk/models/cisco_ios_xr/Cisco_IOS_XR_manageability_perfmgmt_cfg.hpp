@@ -6760,6 +6760,16 @@ class PmThresholdOp : public ydk::Enum
         static const ydk::Enum::YLeaf ge;
         static const ydk::Enum::YLeaf rg;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "eq") return 1;
+            if (name == "ne") return 2;
+            if (name == "lt") return 3;
+            if (name == "le") return 4;
+            if (name == "gt") return 5;
+            if (name == "ge") return 6;
+            if (name == "rg") return 7;
+            return -1;
+        }
 };
 
 class PmThresholdRearm : public ydk::Enum
@@ -6769,6 +6779,12 @@ class PmThresholdRearm : public ydk::Enum
         static const ydk::Enum::YLeaf window;
         static const ydk::Enum::YLeaf toggle;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "always") return 0;
+            if (name == "window") return 1;
+            if (name == "toggle") return 2;
+            return -1;
+        }
 };
 
 

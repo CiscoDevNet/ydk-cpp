@@ -703,6 +703,20 @@ class PwOperStateType : public ydk::Enum
         static const ydk::Enum::YLeaf local_ready;
         static const ydk::Enum::YLeaf all_ready;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "cold-standby") return 3;
+            if (name == "hot-standby") return 4;
+            if (name == "recovering") return 5;
+            if (name == "no-hardware") return 6;
+            if (name == "unresolved") return 7;
+            if (name == "provisioned") return 8;
+            if (name == "remote-standby") return 9;
+            if (name == "local-ready") return 10;
+            if (name == "all-ready") return 11;
+            return -1;
+        }
 };
 
 class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Direction : public ydk::Enum
@@ -712,6 +726,12 @@ class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Directi
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "transmit") return 1;
+            if (name == "receive") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class PseudowireState::Pseudowires::VcOwnerType : public ydk::Enum
@@ -722,6 +742,13 @@ class PseudowireState::Pseudowires::VcOwnerType : public ydk::Enum
         static const ydk::Enum::YLeaf vpls_bridge_domain;
         static const ydk::Enum::YLeaf interface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vpws") return 1;
+            if (name == "vpls-vfi") return 2;
+            if (name == "vpls-bridge-domain") return 3;
+            if (name == "interface") return 4;
+            return -1;
+        }
 };
 
 class PseudowireState::Pseudowires::VcPsnType : public ydk::Enum
@@ -734,6 +761,15 @@ class PseudowireState::Pseudowires::VcPsnType : public ydk::Enum
         static const ydk::Enum::YLeaf gre;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 1;
+            if (name == "l2tp") return 2;
+            if (name == "ip") return 3;
+            if (name == "mpls-over-ip") return 4;
+            if (name == "gre") return 5;
+            if (name == "other") return 6;
+            return -1;
+        }
 };
 
 class PseudowireState::Pseudowires::VcRemoteControlWord : public ydk::Enum
@@ -743,6 +779,12 @@ class PseudowireState::Pseudowires::VcRemoteControlWord : public ydk::Enum
         static const ydk::Enum::YLeaf withControlWord;
         static const ydk::Enum::YLeaf notYetKnown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noControlWord") return 1;
+            if (name == "withControlWord") return 2;
+            if (name == "notYetKnown") return 3;
+            return -1;
+        }
 };
 
 

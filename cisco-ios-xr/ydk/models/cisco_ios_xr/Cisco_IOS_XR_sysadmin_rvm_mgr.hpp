@@ -215,6 +215,11 @@ class NodetypeTd : public ydk::Enum
         static const ydk::Enum::YLeaf sysadmin;
         static const ydk::Enum::YLeaf service;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sysadmin") return 1;
+            if (name == "service") return 2;
+            return -1;
+        }
 };
 
 class FlagtypeTd : public ydk::Enum
@@ -223,6 +228,11 @@ class FlagtypeTd : public ydk::Enum
         static const ydk::Enum::YLeaf clear;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "set") return 1;
+            return -1;
+        }
 };
 
 

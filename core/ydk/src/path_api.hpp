@@ -1082,11 +1082,15 @@ public:
     std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
     std::shared_ptr<DataNode> invoke(DataNode& rpc) const;
     std::vector<std::string> get_capabilities() const;
+    std::string execute_netconf_operation(Rpc& netconf_rpc) const;
 
-private:
+    // This function is for YDK internal tests only
+    std::shared_ptr<path::DataNode> handle_action_rpc_output(const std::string & rpc_reply, path::DataNode& action_dn);
+    void check_session_state();		// throws YClientError exception when state is other than connected
+
+  private:
     std::vector<std::string> get_yang_1_1_capabilities() const;
-    std::shared_ptr<DataNode> handle_crud_edit(
-        Rpc& rpc, Annotation ann) const;
+    std::shared_ptr<DataNode> handle_crud_edit(Rpc& rpc, Annotation ann) const;
     std::shared_ptr<DataNode> handle_crud_read(Rpc& rpc) const;
     std::shared_ptr<DataNode> handle_netconf_operation(Rpc& ydk_rpc) const;
     void initialize_client_with_key(const std::string& address,
@@ -1103,7 +1107,7 @@ private:
                            int timeout);
     void initialize_repo(Repository& repo, bool on_demand);
     std::string execute_payload(const std::string & payload) const;
-private:
+
     std::shared_ptr<NetconfClient> client;
     std::shared_ptr<ModelProvider> model_provider;
     std::shared_ptr<RootSchemaNode> root_schema;

@@ -124,6 +124,11 @@ class MatchSetOptionsRestrictedType : public ydk::Enum
         static const ydk::Enum::YLeaf ANY;
         static const ydk::Enum::YLeaf INVERT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ANY") return 0;
+            if (name == "INVERT") return 1;
+            return -1;
+        }
 };
 
 class MatchSetOptionsType : public ydk::Enum
@@ -133,6 +138,12 @@ class MatchSetOptionsType : public ydk::Enum
         static const ydk::Enum::YLeaf ALL;
         static const ydk::Enum::YLeaf INVERT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ANY") return 0;
+            if (name == "ALL") return 1;
+            if (name == "INVERT") return 2;
+            return -1;
+        }
 };
 
 

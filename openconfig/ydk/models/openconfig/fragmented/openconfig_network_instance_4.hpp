@@ -3683,6 +3683,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LEVEL_1;
         static const ydk::Enum::YLeaf LEVEL_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LEVEL_1") return 0;
+            if (name == "LEVEL_2") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::State::Flags : public ydk::Enum
@@ -3695,6 +3700,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf ATTACHED_DEFAULT;
         static const ydk::Enum::YLeaf OVERLOAD;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PARTITION_REPAIR") return 0;
+            if (name == "ATTACHED_ERROR") return 1;
+            if (name == "ATTACHED_EXPENSE") return 2;
+            if (name == "ATTACHED_DELAY") return 3;
+            if (name == "ATTACHED_DEFAULT") return 4;
+            if (name == "OVERLOAD") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Nlpid::State::Nlpid_ : public ydk::Enum
@@ -3703,6 +3717,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf IPV4;
         static const ydk::Enum::YLeaf IPV6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IPV4") return 0;
+            if (name == "IPV6") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv4Srlgs::Ipv4Srlg::State::Flags : public ydk::Enum
@@ -3710,6 +3729,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf NUMBERED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NUMBERED") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv6Srlgs::Ipv6Srlg::State::Flags : public ydk::Enum
@@ -3717,6 +3740,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf NA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NA") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::RouterCapabilities::RouterCapability::State::Flags : public ydk::Enum
@@ -3725,6 +3752,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf FLOOD;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FLOOD") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::Algorithm : public ydk::Enum
@@ -3733,6 +3765,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf SPF;
         static const ydk::Enum::YLeaf STRICT_SPF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SPF") return 0;
+            if (name == "STRICT_SPF") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::Flags : public ydk::Enum
@@ -3742,6 +3779,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf IPV6_MPLS;
         static const ydk::Enum::YLeaf IPV6_SR;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IPV4_MPLS") return 0;
+            if (name == "IPV6_MPLS") return 1;
+            if (name == "IPV6_SR") return 2;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::IsReachability::Neighbors::Neighbors_::DefaultMetric::State::Flags : public ydk::Enum
@@ -3749,6 +3792,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf INTERNAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERNAL") return 0;
+            return -1;
+        }
 };
 
 

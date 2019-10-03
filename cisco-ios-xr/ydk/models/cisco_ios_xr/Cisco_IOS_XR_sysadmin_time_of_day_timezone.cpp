@@ -801,6 +801,7 @@ std::string Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1310,6 +1311,7 @@ std::string Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

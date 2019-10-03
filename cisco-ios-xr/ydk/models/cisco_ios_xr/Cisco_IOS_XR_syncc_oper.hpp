@@ -413,6 +413,14 @@ class Smode1 : public ydk::Enum
         static const ydk::Enum::YLeaf crc4;
         static const ydk::Enum::YLeaf submode1_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "extended-super-frame") return 0;
+            if (name == "d4") return 1;
+            if (name == "non-crc4") return 2;
+            if (name == "crc4") return 3;
+            if (name == "submode1-none") return 4;
+            return -1;
+        }
 };
 
 class Smode2 : public ydk::Enum
@@ -423,6 +431,13 @@ class Smode2 : public ydk::Enum
         static const ydk::Enum::YLeaf hdb3;
         static const ydk::Enum::YLeaf submode2_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ami-mode") return 0;
+            if (name == "b8zs") return 1;
+            if (name == "hdb3") return 2;
+            if (name == "submode2-none") return 3;
+            return -1;
+        }
 };
 
 class ClockModes : public ydk::Enum
@@ -436,6 +451,16 @@ class ClockModes : public ydk::Enum
         static const ydk::Enum::YLeaf uti;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "t1") return 0;
+            if (name == "e1") return 1;
+            if (name == "two-m") return 2;
+            if (name == "input64k") return 3;
+            if (name == "output6m") return 4;
+            if (name == "uti") return 5;
+            if (name == "none") return 6;
+            return -1;
+        }
 };
 
 class QlOption1 : public ydk::Enum
@@ -446,6 +471,13 @@ class QlOption1 : public ydk::Enum
         static const ydk::Enum::YLeaf o2_g1;
         static const ydk::Enum::YLeaf o2_g2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "quality-level-none") return 0;
+            if (name == "o1") return 1;
+            if (name == "o2-g1") return 2;
+            if (name == "o2-g2") return 3;
+            return -1;
+        }
 };
 
 class Direct : public ydk::Enum
@@ -455,6 +487,12 @@ class Direct : public ydk::Enum
         static const ydk::Enum::YLeaf transmit;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "receive-transmit") return 0;
+            if (name == "transmit") return 1;
+            if (name == "receive") return 2;
+            return -1;
+        }
 };
 
 class SourceStateName : public ydk::Enum
@@ -467,6 +505,15 @@ class SourceStateName : public ydk::Enum
         static const ydk::Enum::YLeaf unmonitored;
         static const ydk::Enum::YLeaf error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-valid") return 0;
+            if (name == "unqualified") return 1;
+            if (name == "available") return 2;
+            if (name == "failed") return 3;
+            if (name == "unmonitored") return 4;
+            if (name == "error") return 5;
+            return -1;
+        }
 };
 
 class Source : public ydk::Enum
@@ -478,6 +525,14 @@ class Source : public ydk::Enum
         static const ydk::Enum::YLeaf clock_interface;
         static const ydk::Enum::YLeaf internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "ethernet-line-interface") return 1;
+            if (name == "sonet-line-interface") return 2;
+            if (name == "clock-interface") return 3;
+            if (name == "internal") return 4;
+            return -1;
+        }
 };
 
 class NodeState : public ydk::Enum
@@ -486,6 +541,11 @@ class NodeState : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf standby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "standby") return 2;
+            return -1;
+        }
 };
 
 class InterfaceState : public ydk::Enum
@@ -495,6 +555,12 @@ class InterfaceState : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf admin_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            if (name == "admin-down") return 2;
+            return -1;
+        }
 };
 
 class SynccStates : public ydk::Enum
@@ -505,6 +571,13 @@ class SynccStates : public ydk::Enum
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initializing") return 0;
+            if (name == "running") return 1;
+            if (name == "normal") return 2;
+            if (name == "shutdown") return 3;
+            return -1;
+        }
 };
 
 

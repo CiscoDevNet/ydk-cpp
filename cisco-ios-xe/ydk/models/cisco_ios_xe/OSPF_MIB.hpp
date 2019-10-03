@@ -1033,6 +1033,11 @@ class Status : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class OspfAuthenticationType : public ydk::Enum
@@ -1042,6 +1047,12 @@ class OspfAuthenticationType : public ydk::Enum
         static const ydk::Enum::YLeaf simplePassword;
         static const ydk::Enum::YLeaf md5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "simplePassword") return 1;
+            if (name == "md5") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfGeneralGroup::OspfVersionNumber : public ydk::Enum
@@ -1049,6 +1060,10 @@ class OSPFMIB::OspfGeneralGroup::OspfVersionNumber : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf version2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "version2") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfGeneralGroup::OspfRestartSupport : public ydk::Enum
@@ -1058,6 +1073,12 @@ class OSPFMIB::OspfGeneralGroup::OspfRestartSupport : public ydk::Enum
         static const ydk::Enum::YLeaf plannedOnly;
         static const ydk::Enum::YLeaf plannedAndUnplanned;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "plannedOnly") return 2;
+            if (name == "plannedAndUnplanned") return 3;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfGeneralGroup::OspfRestartStatus : public ydk::Enum
@@ -1067,6 +1088,12 @@ class OSPFMIB::OspfGeneralGroup::OspfRestartStatus : public ydk::Enum
         static const ydk::Enum::YLeaf plannedRestart;
         static const ydk::Enum::YLeaf unplannedRestart;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notRestarting") return 1;
+            if (name == "plannedRestart") return 2;
+            if (name == "unplannedRestart") return 3;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfGeneralGroup::OspfRestartExitReason : public ydk::Enum
@@ -1078,6 +1105,14 @@ class OSPFMIB::OspfGeneralGroup::OspfRestartExitReason : public ydk::Enum
         static const ydk::Enum::YLeaf timedOut;
         static const ydk::Enum::YLeaf topologyChanged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "inProgress") return 2;
+            if (name == "completed") return 3;
+            if (name == "timedOut") return 4;
+            if (name == "topologyChanged") return 5;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfGeneralGroup::OspfStubRouterAdvertisement : public ydk::Enum
@@ -1086,6 +1121,11 @@ class OSPFMIB::OspfGeneralGroup::OspfStubRouterAdvertisement : public ydk::Enum
         static const ydk::Enum::YLeaf doNotAdvertise;
         static const ydk::Enum::YLeaf advertise;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "doNotAdvertise") return 1;
+            if (name == "advertise") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfImportAsExtern : public ydk::Enum
@@ -1095,6 +1135,12 @@ class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfImportAsExtern : public ydk::En
         static const ydk::Enum::YLeaf importNoExternal;
         static const ydk::Enum::YLeaf importNssa;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "importExternal") return 1;
+            if (name == "importNoExternal") return 2;
+            if (name == "importNssa") return 3;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaSummary : public ydk::Enum
@@ -1103,6 +1149,11 @@ class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaSummary : public ydk::Enum
         static const ydk::Enum::YLeaf noAreaSummary;
         static const ydk::Enum::YLeaf sendAreaSummary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noAreaSummary") return 1;
+            if (name == "sendAreaSummary") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaNssaTranslatorRole : public ydk::Enum
@@ -1111,6 +1162,11 @@ class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaNssaTranslatorRole : public
         static const ydk::Enum::YLeaf always;
         static const ydk::Enum::YLeaf candidate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "always") return 1;
+            if (name == "candidate") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaNssaTranslatorState : public ydk::Enum
@@ -1120,6 +1176,12 @@ class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaNssaTranslatorState : publi
         static const ydk::Enum::YLeaf elected;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "elected") return 2;
+            if (name == "disabled") return 3;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaTable::OspfAreaEntry::CospfAreaNssaTranslatorRole : public ydk::Enum
@@ -1128,6 +1190,11 @@ class OSPFMIB::OspfAreaTable::OspfAreaEntry::CospfAreaNssaTranslatorRole : publi
         static const ydk::Enum::YLeaf always;
         static const ydk::Enum::YLeaf candidate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "always") return 1;
+            if (name == "candidate") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaTable::OspfAreaEntry::CospfAreaNssaTranslatorState : public ydk::Enum
@@ -1137,6 +1204,12 @@ class OSPFMIB::OspfAreaTable::OspfAreaEntry::CospfAreaNssaTranslatorState : publ
         static const ydk::Enum::YLeaf elected;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "elected") return 2;
+            if (name == "disabled") return 3;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::OspfStubMetricType : public ydk::Enum
@@ -1146,6 +1219,12 @@ class OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::OspfStubMetricType : public
         static const ydk::Enum::YLeaf comparableCost;
         static const ydk::Enum::YLeaf nonComparable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospfMetric") return 1;
+            if (name == "comparableCost") return 2;
+            if (name == "nonComparable") return 3;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfLsdbTable::OspfLsdbEntry::OspfLsdbType : public ydk::Enum
@@ -1160,6 +1239,17 @@ class OSPFMIB::OspfLsdbTable::OspfLsdbEntry::OspfLsdbType : public ydk::Enum
         static const ydk::Enum::YLeaf nssaExternalLink;
         static const ydk::Enum::YLeaf areaOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "routerLink") return 1;
+            if (name == "networkLink") return 2;
+            if (name == "summaryLink") return 3;
+            if (name == "asSummaryLink") return 4;
+            if (name == "asExternalLink") return 5;
+            if (name == "multicastLink") return 6;
+            if (name == "nssaExternalLink") return 7;
+            if (name == "areaOpaqueLink") return 10;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::OspfAreaRangeEffect : public ydk::Enum
@@ -1168,6 +1258,11 @@ class OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::OspfAreaRangeEffect : pub
         static const ydk::Enum::YLeaf advertiseMatching;
         static const ydk::Enum::YLeaf doNotAdvertiseMatching;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "advertiseMatching") return 1;
+            if (name == "doNotAdvertiseMatching") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfType : public ydk::Enum
@@ -1178,6 +1273,13 @@ class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfType : public ydk::Enum
         static const ydk::Enum::YLeaf pointToPoint;
         static const ydk::Enum::YLeaf pointToMultipoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 1;
+            if (name == "nbma") return 2;
+            if (name == "pointToPoint") return 3;
+            if (name == "pointToMultipoint") return 5;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfState : public ydk::Enum
@@ -1191,6 +1293,16 @@ class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfState : public ydk::Enum
         static const ydk::Enum::YLeaf backupDesignatedRouter;
         static const ydk::Enum::YLeaf otherDesignatedRouter;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "loopback") return 2;
+            if (name == "waiting") return 3;
+            if (name == "pointToPoint") return 4;
+            if (name == "designatedRouter") return 5;
+            if (name == "backupDesignatedRouter") return 6;
+            if (name == "otherDesignatedRouter") return 7;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfMulticastForwarding : public ydk::Enum
@@ -1200,6 +1312,12 @@ class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfMulticastForwarding : public ydk:
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blocked") return 1;
+            if (name == "multicast") return 2;
+            if (name == "unicast") return 3;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::OspfVirtIfState : public ydk::Enum
@@ -1208,6 +1326,11 @@ class OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::OspfVirtIfState : public ydk::E
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf pointToPoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "pointToPoint") return 4;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrState : public ydk::Enum
@@ -1222,6 +1345,17 @@ class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrState : public ydk::Enum
         static const ydk::Enum::YLeaf loading;
         static const ydk::Enum::YLeaf full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "attempt") return 2;
+            if (name == "init") return 3;
+            if (name == "twoWay") return 4;
+            if (name == "exchangeStart") return 5;
+            if (name == "exchange") return 6;
+            if (name == "loading") return 7;
+            if (name == "full") return 8;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbmaNbrPermanence : public ydk::Enum
@@ -1230,6 +1364,11 @@ class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbmaNbrPermanence : public ydk::E
         static const ydk::Enum::YLeaf dynamic;
         static const ydk::Enum::YLeaf permanent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 1;
+            if (name == "permanent") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrRestartHelperStatus : public ydk::Enum
@@ -1238,6 +1377,11 @@ class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrRestartHelperStatus : public y
         static const ydk::Enum::YLeaf notHelping;
         static const ydk::Enum::YLeaf helping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notHelping") return 1;
+            if (name == "helping") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrRestartHelperExitReason : public ydk::Enum
@@ -1249,6 +1393,14 @@ class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrRestartHelperExitReason : publ
         static const ydk::Enum::YLeaf timedOut;
         static const ydk::Enum::YLeaf topologyChanged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "inProgress") return 2;
+            if (name == "completed") return 3;
+            if (name == "timedOut") return 4;
+            if (name == "topologyChanged") return 5;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrState : public ydk::Enum
@@ -1263,6 +1415,17 @@ class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrState : public ydk
         static const ydk::Enum::YLeaf loading;
         static const ydk::Enum::YLeaf full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "attempt") return 2;
+            if (name == "init") return 3;
+            if (name == "twoWay") return 4;
+            if (name == "exchangeStart") return 5;
+            if (name == "exchange") return 6;
+            if (name == "loading") return 7;
+            if (name == "full") return 8;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrRestartHelperStatus : public ydk::Enum
@@ -1271,6 +1434,11 @@ class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrRestartHelperStatu
         static const ydk::Enum::YLeaf notHelping;
         static const ydk::Enum::YLeaf helping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notHelping") return 1;
+            if (name == "helping") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrRestartHelperExitReason : public ydk::Enum
@@ -1282,6 +1450,14 @@ class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrRestartHelperExitR
         static const ydk::Enum::YLeaf timedOut;
         static const ydk::Enum::YLeaf topologyChanged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "inProgress") return 2;
+            if (name == "completed") return 3;
+            if (name == "timedOut") return 4;
+            if (name == "topologyChanged") return 5;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::OspfExtLsdbType : public ydk::Enum
@@ -1289,6 +1465,10 @@ class OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::OspfExtLsdbType : public ydk:
     public:
         static const ydk::Enum::YLeaf asExternalLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asExternalLink") return 5;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::OspfAreaAggregateLsdbType : public ydk::Enum
@@ -1297,6 +1477,11 @@ class OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::OspfAreaAggregate
         static const ydk::Enum::YLeaf summaryLink;
         static const ydk::Enum::YLeaf nssaExternalLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "summaryLink") return 3;
+            if (name == "nssaExternalLink") return 7;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::OspfAreaAggregateEffect : public ydk::Enum
@@ -1305,6 +1490,11 @@ class OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::OspfAreaAggregate
         static const ydk::Enum::YLeaf advertiseMatching;
         static const ydk::Enum::YLeaf doNotAdvertiseMatching;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "advertiseMatching") return 1;
+            if (name == "doNotAdvertiseMatching") return 2;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::OspfLocalLsdbType : public ydk::Enum
@@ -1312,6 +1502,10 @@ class OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::OspfLocalLsdbType : publi
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "localOpaqueLink") return 9;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::OspfVirtLocalLsdbType : public ydk::Enum
@@ -1319,6 +1513,10 @@ class OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::OspfVirtLocalLsdb
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "localOpaqueLink") return 9;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::OspfAsLsdbType : public ydk::Enum
@@ -1327,6 +1525,11 @@ class OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::OspfAsLsdbType : public ydk::En
         static const ydk::Enum::YLeaf asExternalLink;
         static const ydk::Enum::YLeaf asOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asExternalLink") return 5;
+            if (name == "asOpaqueLink") return 11;
+            return -1;
+        }
 };
 
 class OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::OspfAreaLsaCountLsaType : public ydk::Enum
@@ -1340,6 +1543,16 @@ class OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::OspfAreaLsaCountLsa
         static const ydk::Enum::YLeaf nssaExternalLink;
         static const ydk::Enum::YLeaf areaOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "routerLink") return 1;
+            if (name == "networkLink") return 2;
+            if (name == "summaryLink") return 3;
+            if (name == "asSummaryLink") return 4;
+            if (name == "multicastLink") return 6;
+            if (name == "nssaExternalLink") return 7;
+            if (name == "areaOpaqueLink") return 10;
+            return -1;
+        }
 };
 
 

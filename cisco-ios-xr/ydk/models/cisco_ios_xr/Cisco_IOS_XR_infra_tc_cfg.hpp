@@ -117,6 +117,10 @@ class HistoryTimeout : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "max") return 720;
+            return -1;
+        }
 };
 
 class HistorySize : public ydk::Enum
@@ -124,6 +128,10 @@ class HistorySize : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "max") return 10;
+            return -1;
+        }
 };
 
 class CollectIonInterval : public ydk::Enum
@@ -142,6 +150,21 @@ class CollectIonInterval : public ydk::Enum
         static const ydk::Enum::YLeaf Y_30_minutes;
         static const ydk::Enum::YLeaf Y_60_minutes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1-minute") return 1;
+            if (name == "2-minutes") return 2;
+            if (name == "3-minutes") return 3;
+            if (name == "4-minutes") return 4;
+            if (name == "5-minutes") return 5;
+            if (name == "6-minutes") return 6;
+            if (name == "10-minutes") return 10;
+            if (name == "12-minutes") return 12;
+            if (name == "15-minutes") return 15;
+            if (name == "20-minutes") return 20;
+            if (name == "30-minutes") return 30;
+            if (name == "60-minutes") return 60;
+            return -1;
+        }
 };
 
 

@@ -14,6 +14,7 @@ namespace Cisco_IOS_XR_ethernet_lldp_cfg {
 Lldp::Lldp()
     :
     holdtime{YType::uint32, "holdtime"},
+    enable_priority_addr{YType::boolean, "enable-priority-addr"},
     extended_show_width{YType::boolean, "extended-show-width"},
     enable_subintf{YType::boolean, "enable-subintf"},
     enable_mgmtintf{YType::boolean, "enable-mgmtintf"},
@@ -35,6 +36,7 @@ bool Lldp::has_data() const
 {
     if (is_presence_container) return true;
     return holdtime.is_set
+	|| enable_priority_addr.is_set
 	|| extended_show_width.is_set
 	|| enable_subintf.is_set
 	|| enable_mgmtintf.is_set
@@ -48,6 +50,7 @@ bool Lldp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(holdtime.yfilter)
+	|| ydk::is_set(enable_priority_addr.yfilter)
 	|| ydk::is_set(extended_show_width.yfilter)
 	|| ydk::is_set(enable_subintf.yfilter)
 	|| ydk::is_set(enable_mgmtintf.yfilter)
@@ -69,6 +72,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::get_name_leaf_data() const
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (holdtime.is_set || is_set(holdtime.yfilter)) leaf_name_data.push_back(holdtime.get_name_leafdata());
+    if (enable_priority_addr.is_set || is_set(enable_priority_addr.yfilter)) leaf_name_data.push_back(enable_priority_addr.get_name_leafdata());
     if (extended_show_width.is_set || is_set(extended_show_width.yfilter)) leaf_name_data.push_back(extended_show_width.get_name_leafdata());
     if (enable_subintf.is_set || is_set(enable_subintf.yfilter)) leaf_name_data.push_back(enable_subintf.get_name_leafdata());
     if (enable_mgmtintf.is_set || is_set(enable_mgmtintf.yfilter)) leaf_name_data.push_back(enable_mgmtintf.get_name_leafdata());
@@ -114,6 +118,12 @@ void Lldp::set_value(const std::string & value_path, const std::string & value, 
         holdtime.value_namespace = name_space;
         holdtime.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable-priority-addr")
+    {
+        enable_priority_addr = value;
+        enable_priority_addr.value_namespace = name_space;
+        enable_priority_addr.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "extended-show-width")
     {
         extended_show_width = value;
@@ -157,6 +167,10 @@ void Lldp::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "holdtime")
     {
         holdtime.yfilter = yfilter;
+    }
+    if(value_path == "enable-priority-addr")
+    {
+        enable_priority_addr.yfilter = yfilter;
     }
     if(value_path == "extended-show-width")
     {
@@ -211,7 +225,7 @@ std::map<std::pair<std::string, std::string>, std::string> Lldp::get_namespace_i
 
 bool Lldp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tlv-select" || name == "holdtime" || name == "extended-show-width" || name == "enable-subintf" || name == "enable-mgmtintf" || name == "timer" || name == "reinit" || name == "enable")
+    if(name == "tlv-select" || name == "holdtime" || name == "enable-priority-addr" || name == "extended-show-width" || name == "enable-subintf" || name == "enable-mgmtintf" || name == "timer" || name == "reinit" || name == "enable")
         return true;
     return false;
 }

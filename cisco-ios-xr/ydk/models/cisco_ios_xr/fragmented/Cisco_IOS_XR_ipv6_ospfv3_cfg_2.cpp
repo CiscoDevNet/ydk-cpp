@@ -1014,8 +1014,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrS
     redistribute_route{YType::boolean, "redistribute-route"},
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
-    preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"},
+    preserve_med{YType::boolean, "preserve-med"},
+    bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
@@ -1040,7 +1040,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set
+	|| bgp_preserve_default_info.is_set
 	|| use_rib_metric.is_set;
 }
 
@@ -1058,7 +1058,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
@@ -1084,7 +1084,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (isis_route_type.is_set || is_set(isis_route_type.yfilter)) leaf_name_data.push_back(isis_route_type.get_name_leafdata());
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
-    if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
@@ -1171,11 +1171,11 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
         preserve_med.value_namespace = name_space;
         preserve_med.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info = value;
-        preserve_med_info.value_namespace = name_space;
-        preserve_med_info.value_namespace_prefix = name_space_prefix;
+        bgp_preserve_default_info = value;
+        bgp_preserve_default_info.value_namespace = name_space;
+        bgp_preserve_default_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-rib-metric")
     {
@@ -1231,9 +1231,9 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
     {
         preserve_med.yfilter = yfilter;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info.yfilter = yfilter;
+        bgp_preserve_default_info.yfilter = yfilter;
     }
     if(value_path == "use-rib-metric")
     {
@@ -1243,7 +1243,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
+    if(name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "bgp-preserve-default-info" || name == "use-rib-metric")
         return true;
     return false;
 }
@@ -1262,8 +1262,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::Bgp()
     redistribute_route{YType::boolean, "redistribute-route"},
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
-    preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"},
+    preserve_med{YType::boolean, "preserve-med"},
+    bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
@@ -1290,7 +1290,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::ha
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set
+	|| bgp_preserve_default_info.is_set
 	|| use_rib_metric.is_set;
 }
 
@@ -1310,7 +1310,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::ha
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
@@ -1340,7 +1340,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (isis_route_type.is_set || is_set(isis_route_type.yfilter)) leaf_name_data.push_back(isis_route_type.get_name_leafdata());
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
-    if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
@@ -1439,11 +1439,11 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::se
         preserve_med.value_namespace = name_space;
         preserve_med.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info = value;
-        preserve_med_info.value_namespace = name_space;
-        preserve_med_info.value_namespace_prefix = name_space_prefix;
+        bgp_preserve_default_info = value;
+        bgp_preserve_default_info.value_namespace = name_space;
+        bgp_preserve_default_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-rib-metric")
     {
@@ -1507,9 +1507,9 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::se
     {
         preserve_med.yfilter = yfilter;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info.yfilter = yfilter;
+        bgp_preserve_default_info.yfilter = yfilter;
     }
     if(value_path == "use-rib-metric")
     {
@@ -1519,7 +1519,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::se
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "as-xx" || name == "as-yy" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
+    if(name == "as-xx" || name == "as-yy" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "bgp-preserve-default-info" || name == "use-rib-metric")
         return true;
     return false;
 }
@@ -1537,8 +1537,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsis
     redistribute_route{YType::boolean, "redistribute-route"},
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
-    preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"},
+    preserve_med{YType::boolean, "preserve-med"},
+    bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
@@ -1564,7 +1564,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set
+	|| bgp_preserve_default_info.is_set
 	|| use_rib_metric.is_set;
 }
 
@@ -1583,7 +1583,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
@@ -1611,7 +1611,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (isis_route_type.is_set || is_set(isis_route_type.yfilter)) leaf_name_data.push_back(isis_route_type.get_name_leafdata());
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
-    if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
@@ -1704,11 +1704,11 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
         preserve_med.value_namespace = name_space;
         preserve_med.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info = value;
-        preserve_med_info.value_namespace = name_space;
-        preserve_med_info.value_namespace_prefix = name_space_prefix;
+        bgp_preserve_default_info = value;
+        bgp_preserve_default_info.value_namespace = name_space;
+        bgp_preserve_default_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-rib-metric")
     {
@@ -1768,9 +1768,9 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
     {
         preserve_med.yfilter = yfilter;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info.yfilter = yfilter;
+        bgp_preserve_default_info.yfilter = yfilter;
     }
     if(value_path == "use-rib-metric")
     {
@@ -1780,7 +1780,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "process-name" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
+    if(name == "process-name" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "bgp-preserve-default-info" || name == "use-rib-metric")
         return true;
     return false;
 }
@@ -1798,8 +1798,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::Eigrp
     redistribute_route{YType::boolean, "redistribute-route"},
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
-    preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"},
+    preserve_med{YType::boolean, "preserve-med"},
+    bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
@@ -1825,7 +1825,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set
+	|| bgp_preserve_default_info.is_set
 	|| use_rib_metric.is_set;
 }
 
@@ -1844,7 +1844,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
@@ -1872,7 +1872,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (isis_route_type.is_set || is_set(isis_route_type.yfilter)) leaf_name_data.push_back(isis_route_type.get_name_leafdata());
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
-    if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
@@ -1965,11 +1965,11 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
         preserve_med.value_namespace = name_space;
         preserve_med.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info = value;
-        preserve_med_info.value_namespace = name_space;
-        preserve_med_info.value_namespace_prefix = name_space_prefix;
+        bgp_preserve_default_info = value;
+        bgp_preserve_default_info.value_namespace = name_space;
+        bgp_preserve_default_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-rib-metric")
     {
@@ -2029,9 +2029,9 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
     {
         preserve_med.yfilter = yfilter;
     }
-    if(value_path == "preserve-med-info")
+    if(value_path == "bgp-preserve-default-info")
     {
-        preserve_med_info.yfilter = yfilter;
+        bgp_preserve_default_info.yfilter = yfilter;
     }
     if(value_path == "use-rib-metric")
     {
@@ -2041,7 +2041,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "as-xx" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
+    if(name == "as-xx" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "bgp-preserve-default-info" || name == "use-rib-metric")
         return true;
     return false;
 }

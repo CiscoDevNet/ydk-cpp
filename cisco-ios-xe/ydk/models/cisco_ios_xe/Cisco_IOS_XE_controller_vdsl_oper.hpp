@@ -135,6 +135,17 @@ class IdbStates : public ydk::Enum
         static const ydk::Enum::YLeaf admindown;
         static const ydk::Enum::YLeaf deleted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 0;
+            if (name == "going-down") return 1;
+            if (name == "init") return 2;
+            if (name == "testing") return 3;
+            if (name == "up") return 4;
+            if (name == "reset") return 5;
+            if (name == "admindown") return 6;
+            if (name == "deleted") return 7;
+            return -1;
+        }
 };
 
 class ModeTc : public ydk::Enum
@@ -143,6 +154,11 @@ class ModeTc : public ydk::Enum
         static const ydk::Enum::YLeaf ptm;
         static const ydk::Enum::YLeaf atm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ptm") return 0;
+            if (name == "atm") return 1;
+            return -1;
+        }
 };
 
 

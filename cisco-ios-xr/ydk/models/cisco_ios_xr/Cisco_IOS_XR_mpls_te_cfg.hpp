@@ -8031,6 +8031,12 @@ class MplsTeBackupBandwidthClass : public ydk::Enum
         static const ydk::Enum::YLeaf class1;
         static const ydk::Enum::YLeaf any_class;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "class0") return 0;
+            if (name == "class1") return 1;
+            if (name == "any-class") return 9;
+            return -1;
+        }
 };
 
 class SrPrepend : public ydk::Enum
@@ -8040,6 +8046,12 @@ class SrPrepend : public ydk::Enum
         static const ydk::Enum::YLeaf next_label;
         static const ydk::Enum::YLeaf bgp_n_hop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none-type") return 0;
+            if (name == "next-label") return 1;
+            if (name == "bgp-n-hop") return 2;
+            return -1;
+        }
 };
 
 class MplsTePathComputationMethod : public ydk::Enum
@@ -8050,6 +8062,13 @@ class MplsTePathComputationMethod : public ydk::Enum
         static const ydk::Enum::YLeaf pce;
         static const ydk::Enum::YLeaf explicit_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "dynamic") return 1;
+            if (name == "pce") return 2;
+            if (name == "explicit") return 3;
+            return -1;
+        }
 };
 
 class OtnDestination : public ydk::Enum
@@ -8058,6 +8077,11 @@ class OtnDestination : public ydk::Enum
         static const ydk::Enum::YLeaf number_ed;
         static const ydk::Enum::YLeaf un_number_ed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "number-ed") return 0;
+            if (name == "un-number-ed") return 1;
+            return -1;
+        }
 };
 
 class MplsTeSwitchingCap : public ydk::Enum
@@ -8067,6 +8091,12 @@ class MplsTeSwitchingCap : public ydk::Enum
         static const ydk::Enum::YLeaf lsc;
         static const ydk::Enum::YLeaf fsc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "psc1") return 1;
+            if (name == "lsc") return 150;
+            if (name == "fsc") return 200;
+            return -1;
+        }
 };
 
 class MplsTeBfdSessionDownAction : public ydk::Enum
@@ -8074,6 +8104,10 @@ class MplsTeBfdSessionDownAction : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf re_setup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "re-setup") return 1;
+            return -1;
+        }
 };
 
 class RoutePriorityRole : public ydk::Enum
@@ -8083,6 +8117,12 @@ class RoutePriorityRole : public ydk::Enum
         static const ydk::Enum::YLeaf route_priority_role_head_primary;
         static const ydk::Enum::YLeaf route_priority_role_middle;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "route-priority-role-head-back-up") return 0;
+            if (name == "route-priority-role-head-primary") return 1;
+            if (name == "route-priority-role-middle") return 2;
+            return -1;
+        }
 };
 
 class MplsTebfdSession : public ydk::Enum
@@ -8092,6 +8132,12 @@ class MplsTebfdSession : public ydk::Enum
         static const ydk::Enum::YLeaf sbfd;
         static const ydk::Enum::YLeaf redundant_sbfd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "regular-bfd") return 1;
+            if (name == "sbfd") return 2;
+            if (name == "redundant-sbfd") return 3;
+            return -1;
+        }
 };
 
 class MplsTeLogFrrProtection : public ydk::Enum
@@ -8103,6 +8149,14 @@ class MplsTeLogFrrProtection : public ydk::Enum
         static const ydk::Enum::YLeaf primary;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "frr-active-primary") return 1;
+            if (name == "backup") return 256;
+            if (name == "frr-ready-primary") return 512;
+            if (name == "primary") return 513;
+            if (name == "all") return 769;
+            return -1;
+        }
 };
 
 class MplsTeTunnelAffinity : public ydk::Enum
@@ -8114,6 +8168,14 @@ class MplsTeTunnelAffinity : public ydk::Enum
         static const ydk::Enum::YLeaf exclude_all;
         static const ydk::Enum::YLeaf ignore;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "include") return 1;
+            if (name == "include-strict") return 2;
+            if (name == "exclude") return 3;
+            if (name == "exclude-all") return 4;
+            if (name == "ignore") return 5;
+            return -1;
+        }
 };
 
 class IetfMode : public ydk::Enum
@@ -8121,6 +8183,10 @@ class IetfMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard") return 3;
+            return -1;
+        }
 };
 
 class MplsTePathOptionProperty : public ydk::Enum
@@ -8132,6 +8198,14 @@ class MplsTePathOptionProperty : public ydk::Enum
         static const ydk::Enum::YLeaf pce;
         static const ydk::Enum::YLeaf segment_routing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "lockdown") return 1;
+            if (name == "verbatim") return 4;
+            if (name == "pce") return 8;
+            if (name == "segment-routing") return 16;
+            return -1;
+        }
 };
 
 class GmplsttiMode : public ydk::Enum
@@ -8141,6 +8215,12 @@ class GmplsttiMode : public ydk::Enum
         static const ydk::Enum::YLeaf pm;
         static const ydk::Enum::YLeaf tcm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sm") return 1;
+            if (name == "pm") return 2;
+            if (name == "tcm") return 3;
+            return -1;
+        }
 };
 
 class MplsTePathSelectionInvalidationTimerExpire : public ydk::Enum
@@ -8149,6 +8229,11 @@ class MplsTePathSelectionInvalidationTimerExpire : public ydk::Enum
         static const ydk::Enum::YLeaf tunnel_action_tear;
         static const ydk::Enum::YLeaf tunnel_action_drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tunnel-action-tear") return 1;
+            if (name == "tunnel-action-drop") return 2;
+            return -1;
+        }
 };
 
 class MplsTeOtnApsProtection : public ydk::Enum
@@ -8158,6 +8243,12 @@ class MplsTeOtnApsProtection : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1plus1_unidir_aps;
         static const ydk::Enum::YLeaf Y_1plus1_bdir_aps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1plus1-unidir-no-aps") return 4;
+            if (name == "1plus1-unidir-aps") return 8;
+            if (name == "1plus1-bdir-aps") return 16;
+            return -1;
+        }
 };
 
 class MplsTeSwitchingEncoding : public ydk::Enum
@@ -8167,6 +8258,12 @@ class MplsTeSwitchingEncoding : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet;
         static const ydk::Enum::YLeaf sondet_sdh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "packet") return 1;
+            if (name == "ethernet") return 2;
+            if (name == "sondet-sdh") return 5;
+            return -1;
+        }
 };
 
 class MplsTeSigNameOption : public ydk::Enum
@@ -8176,6 +8273,12 @@ class MplsTeSigNameOption : public ydk::Enum
         static const ydk::Enum::YLeaf address;
         static const ydk::Enum::YLeaf name;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "address") return 1;
+            if (name == "name") return 2;
+            return -1;
+        }
 };
 
 class OtnProtectionSwitchLockout : public ydk::Enum
@@ -8184,6 +8287,11 @@ class OtnProtectionSwitchLockout : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf working;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "working") return 1;
+            return -1;
+        }
 };
 
 class MplsTeTunnelId : public ydk::Enum
@@ -8192,6 +8300,11 @@ class MplsTeTunnelId : public ydk::Enum
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf explicit_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "explicit") return 1;
+            return -1;
+        }
 };
 
 class MplsTeAffinityValue : public ydk::Enum
@@ -8200,6 +8313,11 @@ class MplsTeAffinityValue : public ydk::Enum
         static const ydk::Enum::YLeaf hex_value;
         static const ydk::Enum::YLeaf bit_position;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hex-value") return 1;
+            if (name == "bit-position") return 2;
+            return -1;
+        }
 };
 
 class OtnStaticUni : public ydk::Enum
@@ -8209,6 +8327,12 @@ class OtnStaticUni : public ydk::Enum
         static const ydk::Enum::YLeaf xc;
         static const ydk::Enum::YLeaf termination;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "xc") return 1;
+            if (name == "termination") return 2;
+            return -1;
+        }
 };
 
 class MplsTeOtnSncMode : public ydk::Enum
@@ -8218,6 +8342,12 @@ class MplsTeOtnSncMode : public ydk::Enum
         static const ydk::Enum::YLeaf snc_i;
         static const ydk::Enum::YLeaf snc_s;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "snc-n") return 1;
+            if (name == "snc-i") return 2;
+            if (name == "snc-s") return 3;
+            return -1;
+        }
 };
 
 class OtnPayload : public ydk::Enum
@@ -8229,6 +8359,14 @@ class OtnPayload : public ydk::Enum
         static const ydk::Enum::YLeaf gmp;
         static const ydk::Enum::YLeaf gfp_f_ext;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "bmp") return 50;
+            if (name == "gfp-f") return 54;
+            if (name == "gmp") return 55;
+            if (name == "gfp-f-ext") return 70;
+            return -1;
+        }
 };
 
 class OspfAreaMode : public ydk::Enum
@@ -8237,6 +8375,11 @@ class OspfAreaMode : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_int;
         static const ydk::Enum::YLeaf ospfip_addr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf-int") return 0;
+            if (name == "ospfip-addr") return 1;
+            return -1;
+        }
 };
 
 class MplsTeIgpProtocol : public ydk::Enum
@@ -8246,6 +8389,12 @@ class MplsTeIgpProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf isis;
         static const ydk::Enum::YLeaf ospf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "isis") return 1;
+            if (name == "ospf") return 2;
+            return -1;
+        }
 };
 
 class MplsTePathSelectionTiebreaker : public ydk::Enum
@@ -8255,6 +8404,12 @@ class MplsTePathSelectionTiebreaker : public ydk::Enum
         static const ydk::Enum::YLeaf max_fill;
         static const ydk::Enum::YLeaf random;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "min-fill") return 1;
+            if (name == "max-fill") return 2;
+            if (name == "random") return 3;
+            return -1;
+        }
 };
 
 class MplsTePathOption : public ydk::Enum
@@ -8267,6 +8422,15 @@ class MplsTePathOption : public ydk::Enum
         static const ydk::Enum::YLeaf no_ero;
         static const ydk::Enum::YLeaf sr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "dynamic") return 1;
+            if (name == "explicit-name") return 3;
+            if (name == "explicit-number") return 4;
+            if (name == "no-ero") return 5;
+            if (name == "sr") return 6;
+            return -1;
+        }
 };
 
 class PathInvalidationAction : public ydk::Enum
@@ -8275,6 +8439,11 @@ class PathInvalidationAction : public ydk::Enum
         static const ydk::Enum::YLeaf tear;
         static const ydk::Enum::YLeaf drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tear") return 1;
+            if (name == "drop") return 2;
+            return -1;
+        }
 };
 
 class OtnSignaledBandwidth : public ydk::Enum
@@ -8295,6 +8464,23 @@ class OtnSignaledBandwidth : public ydk::Enum
         static const ydk::Enum::YLeaf odu3e1;
         static const ydk::Enum::YLeaf odu3e2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "odu1") return 1;
+            if (name == "odu2") return 2;
+            if (name == "odu3") return 3;
+            if (name == "odu4") return 4;
+            if (name == "odu0") return 10;
+            if (name == "odu2e") return 11;
+            if (name == "od-uflex-cbr") return 20;
+            if (name == "od-uflex-gfp-resize") return 21;
+            if (name == "od-uflex-gfp-not-resize") return 22;
+            if (name == "odu1e") return 23;
+            if (name == "odu1f") return 24;
+            if (name == "odu2f") return 25;
+            if (name == "odu3e1") return 26;
+            if (name == "odu3e2") return 27;
+            return -1;
+        }
 };
 
 class MplsTeAutorouteMetric : public ydk::Enum
@@ -8304,6 +8490,12 @@ class MplsTeAutorouteMetric : public ydk::Enum
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf constant;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "relative") return 1;
+            if (name == "absolute") return 2;
+            if (name == "constant") return 3;
+            return -1;
+        }
 };
 
 class BindingSegmentId : public ydk::Enum
@@ -8312,6 +8504,11 @@ class BindingSegmentId : public ydk::Enum
         static const ydk::Enum::YLeaf any_label;
         static const ydk::Enum::YLeaf specified_label;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any-label") return 1;
+            if (name == "specified-label") return 2;
+            return -1;
+        }
 };
 
 class MplsTesrlgExclude : public ydk::Enum
@@ -8321,6 +8518,12 @@ class MplsTesrlgExclude : public ydk::Enum
         static const ydk::Enum::YLeaf preferred;
         static const ydk::Enum::YLeaf weighted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mandatory") return 1;
+            if (name == "preferred") return 2;
+            if (name == "weighted") return 3;
+            return -1;
+        }
 };
 
 class MplsTeSignaledLabel : public ydk::Enum
@@ -8329,6 +8532,11 @@ class MplsTeSignaledLabel : public ydk::Enum
         static const ydk::Enum::YLeaf not_set;
         static const ydk::Enum::YLeaf dwdm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "dwdm") return 1;
+            return -1;
+        }
 };
 
 class BandwidthConstraint : public ydk::Enum
@@ -8336,6 +8544,10 @@ class BandwidthConstraint : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf bandwidth_constraint_maximum_allocation_model;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bandwidth-constraint-maximum-allocation-model") return 1;
+            return -1;
+        }
 };
 
 class MplsTeSwitchingEncode : public ydk::Enum
@@ -8346,6 +8558,13 @@ class MplsTeSwitchingEncode : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet;
         static const ydk::Enum::YLeaf sondet_sdh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "packet") return 1;
+            if (name == "ethernet") return 2;
+            if (name == "sondet-sdh") return 5;
+            return -1;
+        }
 };
 
 class MplsTePathSelectionMetric : public ydk::Enum
@@ -8355,6 +8574,12 @@ class MplsTePathSelectionMetric : public ydk::Enum
         static const ydk::Enum::YLeaf te;
         static const ydk::Enum::YLeaf delay;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 1;
+            if (name == "te") return 2;
+            if (name == "delay") return 4;
+            return -1;
+        }
 };
 
 class MplsTePathOptionProtection : public ydk::Enum
@@ -8363,6 +8588,11 @@ class MplsTePathOptionProtection : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf protecting;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "protecting") return 1;
+            return -1;
+        }
 };
 
 class OtnSignaledBandwidthFlexFraming : public ydk::Enum
@@ -8372,6 +8602,12 @@ class OtnSignaledBandwidthFlexFraming : public ydk::Enum
         static const ydk::Enum::YLeaf framed_gfp_fixed;
         static const ydk::Enum::YLeaf framed_gfp_resize;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cbr") return 20;
+            if (name == "framed-gfp-fixed") return 21;
+            if (name == "framed-gfp-resize") return 22;
+            return -1;
+        }
 };
 
 class MplsTeBandwidthLimit : public ydk::Enum
@@ -8380,6 +8616,11 @@ class MplsTeBandwidthLimit : public ydk::Enum
         static const ydk::Enum::YLeaf unlimited;
         static const ydk::Enum::YLeaf limited;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unlimited") return 64;
+            if (name == "limited") return 128;
+            return -1;
+        }
 };
 
 class MplsTePathSelectionSegmentRoutingAdjacencyProtection : public ydk::Enum
@@ -8389,6 +8630,12 @@ class MplsTePathSelectionSegmentRoutingAdjacencyProtection : public ydk::Enum
         static const ydk::Enum::YLeaf adj_unprotected;
         static const ydk::Enum::YLeaf adj_protected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "adj-unprotected") return 1;
+            if (name == "adj-protected") return 2;
+            return -1;
+        }
 };
 
 class LinkNextHop : public ydk::Enum
@@ -8397,6 +8644,11 @@ class LinkNextHop : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf ipv4_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "ipv4-address") return 2;
+            return -1;
+        }
 };
 
 class MplsLcacFloodingIgp : public ydk::Enum
@@ -8404,6 +8656,10 @@ class MplsLcacFloodingIgp : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ospf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf") return 0;
+            return -1;
+        }
 };
 
 class BfdReversePath : public ydk::Enum
@@ -8411,6 +8667,10 @@ class BfdReversePath : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf bfd_reverse_path_binding_label;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-reverse-path-binding-label") return 1;
+            return -1;
+        }
 };
 
 class MplsTeOtnApsRestorationStyle : public ydk::Enum
@@ -8419,6 +8679,11 @@ class MplsTeOtnApsRestorationStyle : public ydk::Enum
         static const ydk::Enum::YLeaf keep_failed_lsp;
         static const ydk::Enum::YLeaf delete_failed_lsp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "keep-failed-lsp") return 1;
+            if (name == "delete-failed-lsp") return 2;
+            return -1;
+        }
 };
 
 class MplsTeBandwidthDste : public ydk::Enum
@@ -8427,6 +8692,11 @@ class MplsTeBandwidthDste : public ydk::Enum
         static const ydk::Enum::YLeaf standard_dste;
         static const ydk::Enum::YLeaf pre_standard_dste;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard-dste") return 0;
+            if (name == "pre-standard-dste") return 1;
+            return -1;
+        }
 };
 
 class MplsTePathDiversityConformance : public ydk::Enum
@@ -8435,6 +8705,11 @@ class MplsTePathDiversityConformance : public ydk::Enum
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf best_effort;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 0;
+            if (name == "best-effort") return 1;
+            return -1;
+        }
 };
 
 class MplsTeBackupBandwidthPool : public ydk::Enum
@@ -8444,6 +8719,12 @@ class MplsTeBackupBandwidthPool : public ydk::Enum
         static const ydk::Enum::YLeaf global_pool;
         static const ydk::Enum::YLeaf sub_pool;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any-pool") return 1;
+            if (name == "global-pool") return 2;
+            if (name == "sub-pool") return 4;
+            return -1;
+        }
 };
 
 class MplsTeOtnApsProtectionMode : public ydk::Enum
@@ -8452,6 +8733,11 @@ class MplsTeOtnApsProtectionMode : public ydk::Enum
         static const ydk::Enum::YLeaf revertive;
         static const ydk::Enum::YLeaf non_revertive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "revertive") return 1;
+            if (name == "non-revertive") return 2;
+            return -1;
+        }
 };
 
 class MplsTeSwitchingIndex : public ydk::Enum
@@ -8459,6 +8745,10 @@ class MplsTeSwitchingIndex : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf link;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "link") return 255;
+            return -1;
+        }
 };
 
 class MplsTeConfigTunnel : public ydk::Enum
@@ -8467,6 +8757,11 @@ class MplsTeConfigTunnel : public ydk::Enum
         static const ydk::Enum::YLeaf p2p;
         static const ydk::Enum::YLeaf p2mp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "p2p") return 0;
+            if (name == "p2mp") return 1;
+            return -1;
+        }
 };
 
 

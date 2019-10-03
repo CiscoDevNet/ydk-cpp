@@ -17,6 +17,12 @@ class IsisInternalLevel : public ydk::Enum
         static const ydk::Enum::YLeaf level1;
         static const ydk::Enum::YLeaf level2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "level1") return 1;
+            if (name == "level2") return 2;
+            return -1;
+        }
 };
 
 class IsisAddressFamily : public ydk::Enum
@@ -25,6 +31,11 @@ class IsisAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class IsisSubAddressFamily : public ydk::Enum
@@ -33,6 +44,11 @@ class IsisSubAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            if (name == "multicast") return 1;
+            return -1;
+        }
 };
 
 

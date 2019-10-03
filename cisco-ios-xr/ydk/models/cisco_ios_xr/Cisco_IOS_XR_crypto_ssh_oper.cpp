@@ -575,6 +575,7 @@ std::string Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -858,6 +859,7 @@ std::string Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1515,6 +1517,7 @@ std::string Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "session-rekey-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1742,6 +1745,7 @@ std::string Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "session-rekey-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2091,6 +2095,7 @@ std::string Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2388,6 +2393,7 @@ std::string Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2798,6 +2804,7 @@ std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "session-brief-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2975,6 +2982,7 @@ std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get
 {
     std::ostringstream path_buffer;
     path_buffer << "mc-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3223,6 +3231,7 @@ std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "session-brief-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3400,6 +3409,7 @@ std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get
 {
     std::ostringstream path_buffer;
     path_buffer << "mc-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3734,6 +3744,7 @@ std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "session-history-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3900,6 +3911,7 @@ std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "mc-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4249,6 +4261,7 @@ std::string Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4546,6 +4559,7 @@ std::string Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

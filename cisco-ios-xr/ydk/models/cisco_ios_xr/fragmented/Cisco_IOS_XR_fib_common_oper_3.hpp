@@ -13,7 +13,108 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_fib_common_oper {
 
 
-class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef : public ydk::Entity
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix : public ydk::Entity
+{
+    public:
+        Prefix();
+        ~Prefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        class NextHops; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops> next_hops;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::State> state;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops : public ydk::Entity
+{
+    public:
+        NextHops();
+        ~NextHops();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class NextHop; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop
+
+        ydk::YList next_hop;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint32
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::State
+        class InterfaceRef; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef> interface_ref;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint64
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf network_instance; //type: string
+        ydk::YLeafList popped_mpls_label_stack; //type: list of  string
+        ydk::YLeafList pushed_mpls_label_stack; //type: list of  string
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef : public ydk::Entity
 {
     public:
         InterfaceRef();
@@ -29,14 +130,14 @@ class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State> state;
         
-}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef
 
 
-class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State : public ydk::Entity
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
 {
     public:
         State();
@@ -55,7 +156,28 @@ class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::
         ydk::YLeaf interface; //type: string
         ydk::YLeaf subinterface; //type: uint32
 
-}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_index; //type: string
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix::State
 
 class MplsForwarding : public ydk::Entity
 {
@@ -161,6 +283,9 @@ class MplsForwarding::Nodes::Node::ForwardingSummary : public ydk::Entity
         ydk::YLeaf ipv4_imposition_entries; //type: uint32
         ydk::YLeaf reserved_label_entries; //type: uint32
         ydk::YLeaf label_switched_entries; //type: uint32
+        ydk::YLeaf protected_label_switched_entries; //type: uint32
+        ydk::YLeaf frr_ready_label_switched_entries; //type: uint32
+        ydk::YLeaf frr_active_label_switched_entries; //type: uint32
         ydk::YLeaf deleted_stale_entries; //type: uint32
         ydk::YLeaf te_head_entries; //type: uint32
         ydk::YLeaf te_frr_head_entries; //type: uint32
@@ -354,6 +479,8 @@ class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
         ydk::YLeaf afi_table_id; //type: uint32
         ydk::YLeaf multicast_label; //type: boolean
         ydk::YLeaf leaf_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf total_number_of_packets_switched; //type: uint64
+        ydk::YLeaf total_number_of_bytes_switched; //type: uint64
         class LdiInformation; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation
         class MulticastInformation; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation
         class LabelInformation; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation
@@ -441,16 +568,15 @@ class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf mpls_adjacency_flags; //type: uint32
         ydk::YLeaf tunnel_id_present; //type: boolean
-        ydk::YLeaf outgoing_interface; //type: string
-        ydk::YLeaf outgoing_physical_interface; //type: string
-        ydk::YLeaf outgoing_parent_interface; //type: string
-        ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf label_information_path_index; //type: uint32
         ydk::YLeaf label_information_next_hop_type; //type: NextHop
         ydk::YLeaf label_information_next_hop_protocol; //type: Proto
         ydk::YLeaf tx_bytes; //type: uint64
         ydk::YLeaf tx_packets; //type: uint64
-        ydk::YLeaf outgoing_interface_string; //type: string
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_physical_interface; //type: string
+        ydk::YLeaf outgoing_parent_interface; //type: string
+        ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf outgoing_label_string; //type: string
         ydk::YLeaf prefix_or_id; //type: string
         ydk::YLeaf label_information_next_hop_string; //type: string
@@ -600,6 +726,8 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information : public 
         ydk::YLeaf afi_table_id; //type: uint32
         ydk::YLeaf multicast_label; //type: boolean
         ydk::YLeaf leaf_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf total_number_of_packets_switched; //type: uint64
+        ydk::YLeaf total_number_of_bytes_switched; //type: uint64
         class LdiInformation; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation
         class MulticastInformation; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation
         class LabelInformation; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation
@@ -687,16 +815,15 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInf
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf mpls_adjacency_flags; //type: uint32
         ydk::YLeaf tunnel_id_present; //type: boolean
-        ydk::YLeaf outgoing_interface; //type: string
-        ydk::YLeaf outgoing_physical_interface; //type: string
-        ydk::YLeaf outgoing_parent_interface; //type: string
-        ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf label_information_path_index; //type: uint32
         ydk::YLeaf label_information_next_hop_type; //type: NextHop
         ydk::YLeaf label_information_next_hop_protocol; //type: Proto
         ydk::YLeaf tx_bytes; //type: uint64
         ydk::YLeaf tx_packets; //type: uint64
-        ydk::YLeaf outgoing_interface_string; //type: string
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_physical_interface; //type: string
+        ydk::YLeaf outgoing_parent_interface; //type: string
+        ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf outgoing_label_string; //type: string
         ydk::YLeaf prefix_or_id; //type: string
         ydk::YLeaf label_information_next_hop_string; //type: string
@@ -1019,6 +1146,8 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
         ydk::YLeaf afi_table_id; //type: uint32
         ydk::YLeaf multicast_label; //type: boolean
         ydk::YLeaf leaf_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf total_number_of_packets_switched; //type: uint64
+        ydk::YLeaf total_number_of_bytes_switched; //type: uint64
         class LdiInformation; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation
         class MulticastInformation; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation
         class LabelInformation; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation
@@ -1106,16 +1235,15 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf mpls_adjacency_flags; //type: uint32
         ydk::YLeaf tunnel_id_present; //type: boolean
-        ydk::YLeaf outgoing_interface; //type: string
-        ydk::YLeaf outgoing_physical_interface; //type: string
-        ydk::YLeaf outgoing_parent_interface; //type: string
-        ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf label_information_path_index; //type: uint32
         ydk::YLeaf label_information_next_hop_type; //type: NextHop
         ydk::YLeaf label_information_next_hop_protocol; //type: Proto
         ydk::YLeaf tx_bytes; //type: uint64
         ydk::YLeaf tx_packets; //type: uint64
-        ydk::YLeaf outgoing_interface_string; //type: string
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_physical_interface; //type: string
+        ydk::YLeaf outgoing_parent_interface; //type: string
+        ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf outgoing_label_string; //type: string
         ydk::YLeaf prefix_or_id; //type: string
         ydk::YLeaf label_information_next_hop_string; //type: string

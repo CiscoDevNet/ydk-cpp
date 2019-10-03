@@ -941,6 +941,7 @@ std::string Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignM
 {
     std::ostringstream path_buffer;
     path_buffer << "foreign-clock";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3768,6 +3769,7 @@ std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4023,6 +4025,7 @@ std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::C
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4138,6 +4141,7 @@ std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterTable::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "master-table";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4848,6 +4852,7 @@ std::string Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPee
 {
     std::ostringstream path_buffer;
     path_buffer << "peers";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6210,6 +6215,9 @@ Ptp::Nodes::Node::PacketCounters::DropReasons::DropReasons()
     no_offload_session{YType::uint32, "no-offload-session"},
     not_supported{YType::uint32, "not-supported"},
     min_clock_class{YType::uint32, "min-clock-class"},
+    bad_clock_class{YType::uint32, "bad-clock-class"},
+    steps_removed{YType::uint32, "steps-removed"},
+    reserved_clock_id{YType::uint32, "reserved-clock-id"},
     g8265_1_incompatible{YType::uint32, "g8265-1-incompatible"},
     g8275_1_incompatible{YType::uint32, "g8275-1-incompatible"},
     g8275_2_incompatible{YType::uint32, "g8275-2-incompatible"},
@@ -6248,6 +6256,9 @@ bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_data() const
 	|| no_offload_session.is_set
 	|| not_supported.is_set
 	|| min_clock_class.is_set
+	|| bad_clock_class.is_set
+	|| steps_removed.is_set
+	|| reserved_clock_id.is_set
 	|| g8265_1_incompatible.is_set
 	|| g8275_1_incompatible.is_set
 	|| g8275_2_incompatible.is_set
@@ -6279,6 +6290,9 @@ bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_operation() const
 	|| ydk::is_set(no_offload_session.yfilter)
 	|| ydk::is_set(not_supported.yfilter)
 	|| ydk::is_set(min_clock_class.yfilter)
+	|| ydk::is_set(bad_clock_class.yfilter)
+	|| ydk::is_set(steps_removed.yfilter)
+	|| ydk::is_set(reserved_clock_id.yfilter)
 	|| ydk::is_set(g8265_1_incompatible.yfilter)
 	|| ydk::is_set(g8275_1_incompatible.yfilter)
 	|| ydk::is_set(g8275_2_incompatible.yfilter)
@@ -6318,6 +6332,9 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::PacketCounters:
     if (no_offload_session.is_set || is_set(no_offload_session.yfilter)) leaf_name_data.push_back(no_offload_session.get_name_leafdata());
     if (not_supported.is_set || is_set(not_supported.yfilter)) leaf_name_data.push_back(not_supported.get_name_leafdata());
     if (min_clock_class.is_set || is_set(min_clock_class.yfilter)) leaf_name_data.push_back(min_clock_class.get_name_leafdata());
+    if (bad_clock_class.is_set || is_set(bad_clock_class.yfilter)) leaf_name_data.push_back(bad_clock_class.get_name_leafdata());
+    if (steps_removed.is_set || is_set(steps_removed.yfilter)) leaf_name_data.push_back(steps_removed.get_name_leafdata());
+    if (reserved_clock_id.is_set || is_set(reserved_clock_id.yfilter)) leaf_name_data.push_back(reserved_clock_id.get_name_leafdata());
     if (g8265_1_incompatible.is_set || is_set(g8265_1_incompatible.yfilter)) leaf_name_data.push_back(g8265_1_incompatible.get_name_leafdata());
     if (g8275_1_incompatible.is_set || is_set(g8275_1_incompatible.yfilter)) leaf_name_data.push_back(g8275_1_incompatible.get_name_leafdata());
     if (g8275_2_incompatible.is_set || is_set(g8275_2_incompatible.yfilter)) leaf_name_data.push_back(g8275_2_incompatible.get_name_leafdata());
@@ -6473,6 +6490,24 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_value(const std::string 
         min_clock_class.value_namespace = name_space;
         min_clock_class.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "bad-clock-class")
+    {
+        bad_clock_class = value;
+        bad_clock_class.value_namespace = name_space;
+        bad_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "steps-removed")
+    {
+        steps_removed = value;
+        steps_removed.value_namespace = name_space;
+        steps_removed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reserved-clock-id")
+    {
+        reserved_clock_id = value;
+        reserved_clock_id.value_namespace = name_space;
+        reserved_clock_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "g8265-1-incompatible")
     {
         g8265_1_incompatible = value;
@@ -6589,6 +6624,18 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_filter(const std::string
     {
         min_clock_class.yfilter = yfilter;
     }
+    if(value_path == "bad-clock-class")
+    {
+        bad_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "steps-removed")
+    {
+        steps_removed.yfilter = yfilter;
+    }
+    if(value_path == "reserved-clock-id")
+    {
+        reserved_clock_id.yfilter = yfilter;
+    }
     if(value_path == "g8265-1-incompatible")
     {
         g8265_1_incompatible.yfilter = yfilter;
@@ -6609,7 +6656,7 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_filter(const std::string
 
 bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "not-ready" || name == "wrong-domain" || name == "too-short" || name == "looped-same-port" || name == "looped-higher-port" || name == "looped-lower-port" || name == "no-timestamp" || name == "zero-timestamp" || name == "invalid-tl-vs" || name == "not-for-us" || name == "not-listening" || name == "wrong-master" || name == "unknown-master" || name == "not-master" || name == "not-slave" || name == "not-granted" || name == "too-slow" || name == "invalid-packet" || name == "wrong-sequence-id" || name == "no-offload-session" || name == "not-supported" || name == "min-clock-class" || name == "g8265-1-incompatible" || name == "g8275-1-incompatible" || name == "g8275-2-incompatible" || name == "incorrect-address")
+    if(name == "not-ready" || name == "wrong-domain" || name == "too-short" || name == "looped-same-port" || name == "looped-higher-port" || name == "looped-lower-port" || name == "no-timestamp" || name == "zero-timestamp" || name == "invalid-tl-vs" || name == "not-for-us" || name == "not-listening" || name == "wrong-master" || name == "unknown-master" || name == "not-master" || name == "not-slave" || name == "not-granted" || name == "too-slow" || name == "invalid-packet" || name == "wrong-sequence-id" || name == "no-offload-session" || name == "not-supported" || name == "min-clock-class" || name == "bad-clock-class" || name == "steps-removed" || name == "reserved-clock-id" || name == "g8265-1-incompatible" || name == "g8275-1-incompatible" || name == "g8275-2-incompatible" || name == "incorrect-address")
         return true;
     return false;
 }
@@ -8120,6 +8167,7 @@ std::string Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::
 {
     std::ostringstream path_buffer;
     path_buffer << "foreign-clock";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10056,6 +10104,7 @@ std::string Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "ingress-interop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12426,6 +12475,7 @@ std::string Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter::g
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15380,6 +15430,7 @@ std::string Ptp::Interfaces::Interface::IngressConversion::ClassMapping::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15635,6 +15686,7 @@ std::string Ptp::Interfaces::Interface::EgressConversion::ClassMapping::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15750,6 +15802,7 @@ std::string Ptp::Interfaces::Interface::MasterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "master-table";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19349,6 +19402,7 @@ std::string Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "peers";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21019,6 +21073,7 @@ std::string Ptp::UtcOffsetInfo::ConfiguredLeapSecond::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "configured-leap-second";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

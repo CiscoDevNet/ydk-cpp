@@ -170,9 +170,15 @@ class Native : public ydk::Entity
         class Process; //type: Native::Process
         class Exception; //type: Native::Exception
         class Iox; //type: Native::Iox
-        class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
+        class Power; //type: Native::Power
+        class Vpdn; //type: Native::Vpdn
         class Esmc; //type: Native::Esmc
-        class Cef; //type: Native::Cef
+        class AccessSession; //type: Native::AccessSession
+        class Authentication; //type: Native::Authentication
+        class Dialer; //type: Native::Dialer
+        class DialerList; //type: Native::DialerList
+        class Vstack; //type: Native::Vstack
+        class EtAnalytics; //type: Native::EtAnalytics
         class Arp; //type: Native::Arp
         class NetworkPolicy; //type: Native::NetworkPolicy
         class Energywise; //type: Native::Energywise
@@ -186,31 +192,26 @@ class Native : public ydk::Entity
         class HwSwitch; //type: Native::HwSwitch
         class Feature; //type: Native::Feature
         class Openflow; //type: Native::Openflow
-        class EtAnalytics; //type: Native::EtAnalytics
-        class Dialer; //type: Native::Dialer
-        class DialerList; //type: Native::DialerList
+        class BbaGroup; //type: Native::BbaGroup
+        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
+        class Cef; //type: Native::Cef
+        class Nat66; //type: Native::Nat66
+        class Shell; //type: Native::Shell
+        class Voice; //type: Native::Voice
+        class VoiceCard; //type: Native::VoiceCard
+        class ServiceRouting; //type: Native::ServiceRouting
+        class Lldp; //type: Native::Lldp
+        class ServiceList; //type: Native::ServiceList
+        class Diagnostic; //type: Native::Diagnostic
+        class PmAgent; //type: Native::PmAgent
+        class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
+        class Pnp; //type: Native::Pnp
+        class FabricGroup; //type: Native::FabricGroup
+        class DeviceSensor; //type: Native::DeviceSensor
+        class Coap; //type: Native::Coap
         class Utd; //type: Native::Utd
         class UtdSt; //type: Native::UtdSt
         class UtdMt; //type: Native::UtdMt
-        class FabricGroup; //type: Native::FabricGroup
-        class Coap; //type: Native::Coap
-        class Voice; //type: Native::Voice
-        class VoiceCard; //type: Native::VoiceCard
-        class Power; //type: Native::Power
-        class DeviceSensor; //type: Native::DeviceSensor
-        class ServiceList; //type: Native::ServiceList
-        class AccessSession; //type: Native::AccessSession
-        class Authentication; //type: Native::Authentication
-        class ServiceRouting; //type: Native::ServiceRouting
-        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
-        class Lldp; //type: Native::Lldp
-        class Diagnostic; //type: Native::Diagnostic
-        class Nat66; //type: Native::Nat66
-        class BbaGroup; //type: Native::BbaGroup
-        class Shell; //type: Native::Shell
-        class Vstack; //type: Native::Vstack
-        class PmAgent; //type: Native::PmAgent
-        class Vpdn; //type: Native::Vpdn
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Bfd> bfd;
@@ -327,7 +328,7 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Transceiver> transceiver;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion> service_insertion;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Qos> qos; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Qos> qos;
         ydk::YList time_range;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceTracking> device_tracking;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Fhrp> fhrp;
@@ -342,9 +343,15 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Process> process;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Exception> exception;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Iox> iox; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NamedOrderingRouteMap> named_ordering_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power> power;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vpdn> vpdn;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Esmc> esmc;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cef> cef;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession> access_session;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dialer> dialer;
+        ydk::YList dialer_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vstack> vstack;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::EtAnalytics> et_analytics; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Arp> arp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NetworkPolicy> network_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise> energywise;
@@ -358,31 +365,26 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::HwSwitch> hw_switch;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Feature> feature;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Openflow> openflow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::EtAnalytics> et_analytics; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dialer> dialer;
-        ydk::YList dialer_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BbaGroup> bba_group;
+        ydk::YList maintenance_template;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cef> cef;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66> nat66;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Shell> shell;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Voice> voice;
+        ydk::YList voice_card;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceRouting> service_routing;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Lldp> lldp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList> service_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic> diagnostic;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent> pm_agent; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NamedOrderingRouteMap> named_ordering_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pnp> pnp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::FabricGroup> fabric_group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceSensor> device_sensor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Coap> coap;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Utd> utd; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdSt> utd_st;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdMt> utd_mt;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::FabricGroup> fabric_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Coap> coap;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Voice> voice;
-        ydk::YList voice_card;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power> power;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceSensor> device_sensor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList> service_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession> access_session;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceRouting> service_routing;
-        ydk::YList maintenance_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic> diagnostic;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66> nat66;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BbaGroup> bba_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Shell> shell;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vstack> vstack;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent> pm_agent; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vpdn> vpdn;
         
 }; // Native
 
@@ -1664,10 +1666,12 @@ class Native::CallHome : public ydk::Entity
 
         ydk::YLeaf contact_email_addr; //type: string
         class SourceInterface; //type: Native::CallHome::SourceInterface
+        class Http; //type: Native::CallHome::Http
         class HttpProxy; //type: Native::CallHome::HttpProxy
         class Profile; //type: Native::CallHome::Profile
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::SourceInterface> source_interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::Http> http;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::HttpProxy> http_proxy;
         ydk::YList profile;
         
@@ -1825,6 +1829,52 @@ class Native::CallHome::SourceInterface::PortChannelSubinterface : public ydk::E
 }; // Native::CallHome::SourceInterface::PortChannelSubinterface
 
 
+class Native::CallHome::Http : public ydk::Entity
+{
+    public:
+        Http();
+        ~Http();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Secure; //type: Native::CallHome::Http::Secure
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::Http::Secure> secure;
+        
+}; // Native::CallHome::Http
+
+
+class Native::CallHome::Http::Secure : public ydk::Entity
+{
+    public:
+        Secure();
+        ~Secure();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf server_identity_check; //type: boolean
+
+}; // Native::CallHome::Http::Secure
+
+
 class Native::CallHome::HttpProxy : public ydk::Entity
 {
     public:
@@ -1891,6 +1941,7 @@ class Native::CallHome::Profile : public ydk::Entity
 
         ydk::YLeaf profile_name; //type: string
         ydk::YLeaf active; //type: boolean
+        ydk::YLeaf anonymous_reporting_only; //type: empty
         class Destination; //type: Native::CallHome::Profile::Destination
         class SubscribeToAlertGroup; //type: Native::CallHome::Profile::SubscribeToAlertGroup
 
@@ -4015,52 +4066,6 @@ class Native::Service::Timestamps::Debug::Datetime::Localtime : public ydk::Enti
         
 }; // Native::Service::Timestamps::Debug::Datetime::Localtime
 
-
-class Native::Service::Timestamps::Debug::Datetime::Localtime::Msec : public ydk::Entity
-{
-    public:
-        Msec();
-        ~Msec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf show_timezone; //type: empty
-        ydk::YLeaf year; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Localtime::Msec
-
-
-class Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone : public ydk::Entity
-{
-    public:
-        ShowTimezone();
-        ~ShowTimezone();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf msec; //type: empty
-        ydk::YLeaf year; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone
-
 class MonitorEventType : public ydk::Enum
 {
     public:
@@ -4068,6 +4073,12 @@ class MonitorEventType : public ydk::Enum
         static const ydk::Enum::YLeaf detail;
         static const ydk::Enum::YLeaf major_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "error") return 0;
+            if (name == "detail") return 1;
+            if (name == "major") return 2;
+            return -1;
+        }
 };
 
 class LoggingLevelType : public ydk::Enum
@@ -4083,6 +4094,18 @@ class LoggingLevelType : public ydk::Enum
         static const ydk::Enum::YLeaf debugging;
         static const ydk::Enum::YLeaf bogus;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergencies") return 0;
+            if (name == "alerts") return 1;
+            if (name == "critical") return 2;
+            if (name == "errors") return 3;
+            if (name == "warnings") return 4;
+            if (name == "notifications") return 5;
+            if (name == "informational") return 6;
+            if (name == "debugging") return 7;
+            if (name == "bogus") return 8;
+            return -1;
+        }
 };
 
 class Native::CallHome::Profile::Destination::TransportMethod : public ydk::Enum
@@ -4091,6 +4114,11 @@ class Native::CallHome::Profile::Destination::TransportMethod : public ydk::Enum
         static const ydk::Enum::YLeaf http;
         static const ydk::Enum::YLeaf email;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "http") return 0;
+            if (name == "email") return 1;
+            return -1;
+        }
 };
 
 class Native::CallHome::Profile::SubscribeToAlertGroup::Diagnostic::Severity : public ydk::Enum
@@ -4107,6 +4135,19 @@ class Native::CallHome::Profile::SubscribeToAlertGroup::Diagnostic::Severity : p
         static const ydk::Enum::YLeaf notification;
         static const ydk::Enum::YLeaf warning;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "catastrophic") return 0;
+            if (name == "critical") return 1;
+            if (name == "debugging") return 2;
+            if (name == "disaster") return 3;
+            if (name == "fatal") return 4;
+            if (name == "major") return 5;
+            if (name == "minor") return 6;
+            if (name == "normal") return 7;
+            if (name == "notification") return 8;
+            if (name == "warning") return 9;
+            return -1;
+        }
 };
 
 class Native::CallHome::Profile::SubscribeToAlertGroup::Environment::Severity : public ydk::Enum
@@ -4123,6 +4164,19 @@ class Native::CallHome::Profile::SubscribeToAlertGroup::Environment::Severity : 
         static const ydk::Enum::YLeaf notification;
         static const ydk::Enum::YLeaf warning;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "catastrophic") return 0;
+            if (name == "critical") return 1;
+            if (name == "debugging") return 2;
+            if (name == "disaster") return 3;
+            if (name == "fatal") return 4;
+            if (name == "major") return 5;
+            if (name == "minor") return 6;
+            if (name == "normal") return 7;
+            if (name == "notification") return 8;
+            if (name == "warning") return 9;
+            return -1;
+        }
 };
 
 class Native::CallHome::Profile::SubscribeToAlertGroup::Syslog::Severity::Value_ : public ydk::Enum
@@ -4139,6 +4193,19 @@ class Native::CallHome::Profile::SubscribeToAlertGroup::Syslog::Severity::Value_
         static const ydk::Enum::YLeaf notification;
         static const ydk::Enum::YLeaf warning;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "catastrophic") return 0;
+            if (name == "critical") return 1;
+            if (name == "debugging") return 2;
+            if (name == "disaster") return 3;
+            if (name == "fatal") return 4;
+            if (name == "major") return 5;
+            if (name == "minor") return 6;
+            if (name == "normal") return 7;
+            if (name == "notification") return 8;
+            if (name == "warning") return 9;
+            return -1;
+        }
 };
 
 class Native::HwModule::Uplink::Mode : public ydk::Enum
@@ -4146,6 +4213,10 @@ class Native::HwModule::Uplink::Mode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf shared_backplane;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shared-backplane") return 0;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Border::Master : public ydk::Enum
@@ -4153,6 +4224,10 @@ class Native::Domain::Vrf::Border::Master : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 0;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Border::Password::Encryption : public ydk::Enum
@@ -4161,6 +4236,11 @@ class Native::Domain::Vrf::Border::Password::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Master::Advanced::MitigationMode : public ydk::Enum
@@ -4168,6 +4248,10 @@ class Native::Domain::Vrf::Master::Advanced::MitigationMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf aggressive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "aggressive") return 0;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Master::Advanced::TrafficClassAgeoutTimer::IntervalUnit : public ydk::Enum
@@ -4176,6 +4260,11 @@ class Native::Domain::Vrf::Master::Advanced::TrafficClassAgeoutTimer::IntervalUn
         static const ydk::Enum::YLeaf hours;
         static const ydk::Enum::YLeaf minutes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hours") return 0;
+            if (name == "minutes") return 1;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Master::LoadBalance::Advanced::Match::Dscp::Policy : public ydk::Enum
@@ -4189,6 +4278,16 @@ class Native::Domain::Vrf::Master::LoadBalance::Advanced::Match::Dscp::Policy : 
         static const ydk::Enum::YLeaf scavenger;
         static const ydk::Enum::YLeaf voice;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "best-effort") return 0;
+            if (name == "bulk-data") return 1;
+            if (name == "custom") return 2;
+            if (name == "low-latency-data") return 3;
+            if (name == "real-time-video") return 4;
+            if (name == "scavenger") return 5;
+            if (name == "voice") return 6;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Master::LoadBalance::Advanced::PathPreference::Fallback : public ydk::Enum
@@ -4197,6 +4296,11 @@ class Native::Domain::Vrf::Master::LoadBalance::Advanced::PathPreference::Fallba
         static const ydk::Enum::YLeaf routing;
         static const ydk::Enum::YLeaf blackhole;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "routing") return 0;
+            if (name == "blackhole") return 1;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Master::Password::Encryption : public ydk::Enum
@@ -4205,6 +4309,11 @@ class Native::Domain::Vrf::Master::Password::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Master::Class::Match::Dscp::Policy : public ydk::Enum
@@ -4218,6 +4327,16 @@ class Native::Domain::Vrf::Master::Class::Match::Dscp::Policy : public ydk::Enum
         static const ydk::Enum::YLeaf scavenger;
         static const ydk::Enum::YLeaf voice;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "best-effort") return 0;
+            if (name == "bulk-data") return 1;
+            if (name == "custom") return 2;
+            if (name == "low-latency-data") return 3;
+            if (name == "real-time-video") return 4;
+            if (name == "scavenger") return 5;
+            if (name == "voice") return 6;
+            return -1;
+        }
 };
 
 class Native::Domain::Vrf::Master::Class::PathPreference::Fallback : public ydk::Enum
@@ -4226,6 +4345,11 @@ class Native::Domain::Vrf::Master::Class::PathPreference::Fallback : public ydk:
         static const ydk::Enum::YLeaf routing;
         static const ydk::Enum::YLeaf blackhole;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "routing") return 0;
+            if (name == "blackhole") return 1;
+            return -1;
+        }
 };
 
 class Native::Parser::Config::Cache : public ydk::Enum
@@ -4233,6 +4357,10 @@ class Native::Parser::Config::Cache : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf interface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface") return 0;
+            return -1;
+        }
 };
 
 class Native::Parser::View::ViewNameList::Secret::Type : public ydk::Enum
@@ -4241,6 +4369,11 @@ class Native::Parser::View::ViewNameList::Secret::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "5") return 1;
+            return -1;
+        }
 };
 
 class Native::Parser::View::ViewNameSuperviewList::Secret::Type : public ydk::Enum
@@ -4249,6 +4382,11 @@ class Native::Parser::View::ViewNameSuperviewList::Secret::Type : public ydk::En
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "5") return 1;
+            return -1;
+        }
 };
 
 

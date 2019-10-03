@@ -775,6 +775,12 @@ class LoopbackModeType : public ydk::Enum
         static const ydk::Enum::YLeaf FACILITY;
         static const ydk::Enum::YLeaf TERMINAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NONE") return 0;
+            if (name == "FACILITY") return 1;
+            if (name == "TERMINAL") return 2;
+            return -1;
+        }
 };
 
 class AdminStateType : public ydk::Enum
@@ -784,6 +790,12 @@ class AdminStateType : public ydk::Enum
         static const ydk::Enum::YLeaf DISABLED;
         static const ydk::Enum::YLeaf MAINT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ENABLED") return 0;
+            if (name == "DISABLED") return 1;
+            if (name == "MAINT") return 2;
+            return -1;
+        }
 };
 
 

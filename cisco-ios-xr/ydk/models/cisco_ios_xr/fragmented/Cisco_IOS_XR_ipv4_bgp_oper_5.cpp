@@ -323,6 +323,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1395,6 +1396,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2467,6 +2469,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3539,6 +3542,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4611,6 +4615,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5683,6 +5688,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6755,6 +6761,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7827,6 +7834,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8899,6 +8907,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9971,6 +9980,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11043,6 +11053,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Enti
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11984,6 +11995,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::ConfigurationUse
     entity_type{YType::enumeration, "entity-type"},
     neighbor_address{YType::str, "neighbor-address"},
     entity_name{YType::str, "entity-name"},
+    length{YType::uint32, "length"},
     group_name{YType::str, "group-name"},
     configuration_type{YType::enumeration, "configuration-type"},
     address_family_identifier{YType::uint8, "address-family-identifier"}
@@ -12013,6 +12025,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
     return entity_type.is_set
 	|| neighbor_address.is_set
 	|| entity_name.is_set
+	|| length.is_set
 	|| group_name.is_set
 	|| configuration_type.is_set
 	|| address_family_identifier.is_set
@@ -12031,6 +12044,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
 	|| ydk::is_set(entity_type.yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
 	|| ydk::is_set(entity_name.yfilter)
+	|| ydk::is_set(length.yfilter)
 	|| ydk::is_set(group_name.yfilter)
 	|| ydk::is_set(configuration_type.yfilter)
 	|| ydk::is_set(address_family_identifier.yfilter)
@@ -12042,6 +12056,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "configuration-user";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12052,6 +12067,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInsta
     if (entity_type.is_set || is_set(entity_type.yfilter)) leaf_name_data.push_back(entity_type.get_name_leafdata());
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
     if (entity_name.is_set || is_set(entity_name.yfilter)) leaf_name_data.push_back(entity_name.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
     if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
     if (configuration_type.is_set || is_set(configuration_type.yfilter)) leaf_name_data.push_back(configuration_type.get_name_leafdata());
     if (address_family_identifier.is_set || is_set(address_family_identifier.yfilter)) leaf_name_data.push_back(address_family_identifier.get_name_leafdata());
@@ -12137,6 +12153,12 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
         entity_name.value_namespace = name_space;
         entity_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "length")
+    {
+        length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "group-name")
     {
         group_name = value;
@@ -12171,6 +12193,10 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
     {
         entity_name.yfilter = yfilter;
     }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
     if(value_path == "group-name")
     {
         group_name.yfilter = yfilter;
@@ -12187,7 +12213,7 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
 
 bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::ConfigurationUsers::ConfigurationUser::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address-xr" || name == "af-independent-relatives" || name == "af-dependent-relative" || name == "entity-type" || name == "neighbor-address" || name == "entity-name" || name == "group-name" || name == "configuration-type" || name == "address-family-identifier")
+    if(name == "neighbor-address-xr" || name == "af-independent-relatives" || name == "af-dependent-relative" || name == "entity-type" || name == "neighbor-address" || name == "entity-name" || name == "length" || name == "group-name" || name == "configuration-type" || name == "address-family-identifier")
         return true;
     return false;
 }
@@ -13081,6 +13107,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13961,6 +13988,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "af-dependent-relative";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14056,6 +14084,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14997,6 +15026,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::ConfigurationInh
     entity_type{YType::enumeration, "entity-type"},
     neighbor_address{YType::str, "neighbor-address"},
     entity_name{YType::str, "entity-name"},
+    length{YType::uint32, "length"},
     group_name{YType::str, "group-name"},
     configuration_type{YType::enumeration, "configuration-type"},
     address_family_identifier{YType::uint8, "address-family-identifier"}
@@ -15026,6 +15056,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
     return entity_type.is_set
 	|| neighbor_address.is_set
 	|| entity_name.is_set
+	|| length.is_set
 	|| group_name.is_set
 	|| configuration_type.is_set
 	|| address_family_identifier.is_set
@@ -15044,6 +15075,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
 	|| ydk::is_set(entity_type.yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
 	|| ydk::is_set(entity_name.yfilter)
+	|| ydk::is_set(length.yfilter)
 	|| ydk::is_set(group_name.yfilter)
 	|| ydk::is_set(configuration_type.yfilter)
 	|| ydk::is_set(address_family_identifier.yfilter)
@@ -15055,6 +15087,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "configuration-inheritance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15065,6 +15098,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInsta
     if (entity_type.is_set || is_set(entity_type.yfilter)) leaf_name_data.push_back(entity_type.get_name_leafdata());
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
     if (entity_name.is_set || is_set(entity_name.yfilter)) leaf_name_data.push_back(entity_name.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
     if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
     if (configuration_type.is_set || is_set(configuration_type.yfilter)) leaf_name_data.push_back(configuration_type.get_name_leafdata());
     if (address_family_identifier.is_set || is_set(address_family_identifier.yfilter)) leaf_name_data.push_back(address_family_identifier.get_name_leafdata());
@@ -15150,6 +15184,12 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
         entity_name.value_namespace = name_space;
         entity_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "length")
+    {
+        length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "group-name")
     {
         group_name = value;
@@ -15184,6 +15224,10 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
     {
         entity_name.yfilter = yfilter;
     }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
     if(value_path == "group-name")
     {
         group_name.yfilter = yfilter;
@@ -15200,7 +15244,7 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Configurati
 
 bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::ConfigurationInheritances::ConfigurationInheritance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address-xr" || name == "af-independent-relatives" || name == "af-dependent-relative" || name == "entity-type" || name == "neighbor-address" || name == "entity-name" || name == "group-name" || name == "configuration-type" || name == "address-family-identifier")
+    if(name == "neighbor-address-xr" || name == "af-independent-relatives" || name == "af-dependent-relative" || name == "entity-type" || name == "neighbor-address" || name == "entity-name" || name == "length" || name == "group-name" || name == "configuration-type" || name == "address-family-identifier")
         return true;
     return false;
 }
@@ -16094,6 +16138,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16974,6 +17019,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "af-dependent-relative";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17069,6 +17115,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::Conf
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18237,6 +18284,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityConfiguration
     entity_type{YType::enumeration, "entity-type"},
     neighbor_address{YType::str, "neighbor-address"},
     entity_name{YType::str, "entity-name"},
+    length{YType::uint32, "length"},
     group_name{YType::str, "group-name"},
     configuration_type{YType::enumeration, "configuration-type"},
     address_family_identifier{YType::uint8, "address-family-identifier"}
@@ -18266,6 +18314,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityConfigur
     return entity_type.is_set
 	|| neighbor_address.is_set
 	|| entity_name.is_set
+	|| length.is_set
 	|| group_name.is_set
 	|| configuration_type.is_set
 	|| address_family_identifier.is_set
@@ -18284,6 +18333,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityConfigur
 	|| ydk::is_set(entity_type.yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
 	|| ydk::is_set(entity_name.yfilter)
+	|| ydk::is_set(length.yfilter)
 	|| ydk::is_set(group_name.yfilter)
 	|| ydk::is_set(configuration_type.yfilter)
 	|| ydk::is_set(address_family_identifier.yfilter)
@@ -18295,6 +18345,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "entity-configuration";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18305,6 +18356,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInsta
     if (entity_type.is_set || is_set(entity_type.yfilter)) leaf_name_data.push_back(entity_type.get_name_leafdata());
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
     if (entity_name.is_set || is_set(entity_name.yfilter)) leaf_name_data.push_back(entity_name.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
     if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
     if (configuration_type.is_set || is_set(configuration_type.yfilter)) leaf_name_data.push_back(configuration_type.get_name_leafdata());
     if (address_family_identifier.is_set || is_set(address_family_identifier.yfilter)) leaf_name_data.push_back(address_family_identifier.get_name_leafdata());
@@ -18390,6 +18442,12 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityConfigur
         entity_name.value_namespace = name_space;
         entity_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "length")
+    {
+        length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "group-name")
     {
         group_name = value;
@@ -18424,6 +18482,10 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityConfigur
     {
         entity_name.yfilter = yfilter;
     }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
     if(value_path == "group-name")
     {
         group_name.yfilter = yfilter;
@@ -18440,7 +18502,7 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityConfigur
 
 bool Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityConfigurations::EntityConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address-xr" || name == "af-independent-config" || name == "af-dependent-config" || name == "entity-type" || name == "neighbor-address" || name == "entity-name" || name == "group-name" || name == "configuration-type" || name == "address-family-identifier")
+    if(name == "neighbor-address-xr" || name == "af-independent-config" || name == "af-dependent-config" || name == "entity-type" || name == "neighbor-address" || name == "entity-name" || name == "length" || name == "group-name" || name == "configuration-type" || name == "address-family-identifier")
         return true;
     return false;
 }
@@ -22305,6 +22367,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

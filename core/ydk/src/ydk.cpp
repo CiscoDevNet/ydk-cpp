@@ -144,7 +144,7 @@ static ydk::Protocol get_real_protocol(Protocol protocol)
 
 static const char* string_to_array(const string & str)
 {
-    char * cstr = new char [str.length()+1];
+    char * cstr = (char*) calloc(str.length()+1, sizeof(char));
     std::strcpy (cstr, str.c_str());
     return cstr;
 }
@@ -770,7 +770,10 @@ DataNode RpcExecute(YDKStatePtr state, Rpc rpc, ServiceProvider provider)
         ydk::ServiceProvider * real_provider = (ydk::ServiceProvider *) provider;
         std::shared_ptr<ydk::path::DataNode> result = (*real_rpc)((*real_provider).get_session());
 
-        return static_cast<void*>(wrap(result));
+        if (result)
+            return static_cast<void*>(wrap(result));
+        else
+            return nullptr;
     }
     catch(...)
     {
@@ -874,6 +877,15 @@ DataNode DataNodeGetParent(DataNode datanode)
     ydk::path::DataNode* real_datanode = unwrap(datanode_wrapper);
     ydk::path::DataNode* parent = real_datanode->get_parent();
     return static_cast<void*>(wrap(parent));
+}
+
+DataNode DataNodeGetTopDataNode(DataNode datanode)
+{
+    DataNodeWrapper* datanode_wrapper = (DataNodeWrapper*)datanode;
+    ydk::path::DataNode* dn = unwrap(datanode_wrapper);
+    while (dn && dn->get_parent())
+        dn = dn->get_parent();
+    return static_cast<void*>(wrap(dn));
 }
 
 const char* DataNodeGetSegmentPath(DataNode datanode)

@@ -189,6 +189,12 @@ class CISCODIALCONTROLMIB::CPeerGlobalConfiguration::CPeerSearchType : public yd
         static const ydk::Enum::YLeaf datavoice;
         static const ydk::Enum::YLeaf voicedata;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "datavoice") return 2;
+            if (name == "voicedata") return 3;
+            return -1;
+        }
 };
 
 class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryCallOrigin : public ydk::Enum
@@ -198,6 +204,12 @@ class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryCal
         static const ydk::Enum::YLeaf answer;
         static const ydk::Enum::YLeaf callback;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "originate") return 1;
+            if (name == "answer") return 2;
+            if (name == "callback") return 3;
+            return -1;
+        }
 };
 
 class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryInfoType : public ydk::Enum
@@ -214,6 +226,19 @@ class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryInf
         static const ydk::Enum::YLeaf packetSwitched;
         static const ydk::Enum::YLeaf fax;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "speech") return 2;
+            if (name == "unrestrictedDigital") return 3;
+            if (name == "unrestrictedDigital56") return 4;
+            if (name == "restrictedDigital") return 5;
+            if (name == "audio31") return 6;
+            if (name == "audio7") return 7;
+            if (name == "video") return 8;
+            if (name == "packetSwitched") return 9;
+            if (name == "fax") return 10;
+            return -1;
+        }
 };
 
 class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryReleaseSource : public ydk::Enum
@@ -230,6 +255,19 @@ class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryRel
         static const ydk::Enum::YLeaf externalNmsApp;
         static const ydk::Enum::YLeaf externalCallControlAgent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "callingPartyInPstn") return 1;
+            if (name == "callingPartyInVoip") return 2;
+            if (name == "calledPartyInPstn") return 3;
+            if (name == "calledPartyInVoip") return 4;
+            if (name == "internalRelease") return 5;
+            if (name == "internalCallControlApp") return 6;
+            if (name == "consoleCommand") return 7;
+            if (name == "externalRadiusServer") return 8;
+            if (name == "externalNmsApp") return 9;
+            if (name == "externalCallControlAgent") return 10;
+            return -1;
+        }
 };
 
 class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryReleaseSrc : public ydk::Enum
@@ -250,6 +288,23 @@ class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryRel
         static const ydk::Enum::YLeaf gatekeeper;
         static const ydk::Enum::YLeaf externalGKTMPServer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "callingPartyInPstn") return 1;
+            if (name == "callingPartyInVoip") return 2;
+            if (name == "calledPartyInPstn") return 3;
+            if (name == "calledPartyInVoip") return 4;
+            if (name == "internalReleaseInPotsLeg") return 5;
+            if (name == "internalReleaseInVoipLeg") return 6;
+            if (name == "internalCallControlApp") return 7;
+            if (name == "internalReleaseInVoipAAA") return 8;
+            if (name == "consoleCommand") return 9;
+            if (name == "externalRadiusServer") return 10;
+            if (name == "externalNmsApp") return 11;
+            if (name == "externalCallControlAgent") return 12;
+            if (name == "gatekeeper") return 13;
+            if (name == "externalGKTMPServer") return 14;
+            return -1;
+        }
 };
 
 

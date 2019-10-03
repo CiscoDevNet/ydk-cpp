@@ -573,6 +573,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2121,6 +2122,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::
 {
     std::ostringstream path_buffer;
     path_buffer << "filter-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3170,6 +3172,7 @@ std::string Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-summary-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

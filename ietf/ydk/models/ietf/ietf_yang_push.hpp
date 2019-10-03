@@ -55,6 +55,12 @@ class ChangeType : public ydk::Enum
         static const ydk::Enum::YLeaf delete_;
         static const ydk::Enum::YLeaf modify;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "create") return 0;
+            if (name == "delete") return 1;
+            if (name == "modify") return 2;
+            return -1;
+        }
 };
 
 

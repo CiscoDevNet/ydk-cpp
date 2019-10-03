@@ -17,6 +17,12 @@ class OamCCVcState : public ydk::Enum
         static const ydk::Enum::YLeaf aisrdi;
         static const ydk::Enum::YLeaf notManaged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "verified") return 1;
+            if (name == "aisrdi") return 2;
+            if (name == "notManaged") return 3;
+            return -1;
+        }
 };
 
 class OamCCStatus : public ydk::Enum
@@ -28,6 +34,14 @@ class OamCCStatus : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf waitDeactiveConfirm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ready") return 1;
+            if (name == "waitActiveResponse") return 2;
+            if (name == "waitActiveConfirm") return 3;
+            if (name == "active") return 4;
+            if (name == "waitDeactiveConfirm") return 5;
+            return -1;
+        }
 };
 
 

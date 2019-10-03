@@ -166,6 +166,18 @@ class ConfigCopyFailCause : public ydk::Enum
         static const ydk::Enum::YLeaf systemNotReady;
         static const ydk::Enum::YLeaf requestAborted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "badFileName") return 2;
+            if (name == "timeout") return 3;
+            if (name == "noMem") return 4;
+            if (name == "noConfig") return 5;
+            if (name == "unsupportedProtocol") return 6;
+            if (name == "someConfigApplyFailed") return 7;
+            if (name == "systemNotReady") return 8;
+            if (name == "requestAborted") return 9;
+            return -1;
+        }
 };
 
 class ConfigCopyState : public ydk::Enum
@@ -176,6 +188,13 @@ class ConfigCopyState : public ydk::Enum
         static const ydk::Enum::YLeaf successful;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waiting") return 1;
+            if (name == "running") return 2;
+            if (name == "successful") return 3;
+            if (name == "failed") return 4;
+            return -1;
+        }
 };
 
 class ConfigFileType : public ydk::Enum
@@ -188,6 +207,15 @@ class ConfigFileType : public ydk::Enum
         static const ydk::Enum::YLeaf terminal;
         static const ydk::Enum::YLeaf fabricStartupConfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "networkFile") return 1;
+            if (name == "iosFile") return 2;
+            if (name == "startupConfig") return 3;
+            if (name == "runningConfig") return 4;
+            if (name == "terminal") return 5;
+            if (name == "fabricStartupConfig") return 6;
+            return -1;
+        }
 };
 
 class ConfigCopyProtocol : public ydk::Enum
@@ -199,6 +227,14 @@ class ConfigCopyProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf scp;
         static const ydk::Enum::YLeaf sftp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tftp") return 1;
+            if (name == "ftp") return 2;
+            if (name == "rcp") return 3;
+            if (name == "scp") return 4;
+            if (name == "sftp") return 5;
+            return -1;
+        }
 };
 
 

@@ -698,6 +698,17 @@ class NHRPMIB::NhrpCacheTable::NhrpCacheEntry::NhrpCacheType : public ydk::Enum
         static const ydk::Enum::YLeaf atmarp;
         static const ydk::Enum::YLeaf scsp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "register") return 2;
+            if (name == "resolveAuthoritative") return 3;
+            if (name == "resoveNonauthoritative") return 4;
+            if (name == "transit") return 5;
+            if (name == "administrativelyAdded") return 6;
+            if (name == "atmarp") return 7;
+            if (name == "scsp") return 8;
+            return -1;
+        }
 };
 
 class NHRPMIB::NhrpCacheTable::NhrpCacheEntry::NhrpCacheState : public ydk::Enum
@@ -707,6 +718,12 @@ class NHRPMIB::NhrpCacheTable::NhrpCacheEntry::NhrpCacheState : public ydk::Enum
         static const ydk::Enum::YLeaf ackReply;
         static const ydk::Enum::YLeaf nakReply;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "incomplete") return 1;
+            if (name == "ackReply") return 2;
+            if (name == "nakReply") return 3;
+            return -1;
+        }
 };
 
 class NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry::NhrpClientRegUniqueness : public ydk::Enum
@@ -715,6 +732,11 @@ class NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry::NhrpCli
         static const ydk::Enum::YLeaf requestUnique;
         static const ydk::Enum::YLeaf requestNotUnique;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "requestUnique") return 1;
+            if (name == "requestNotUnique") return 2;
+            return -1;
+        }
 };
 
 class NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry::NhrpClientRegState : public ydk::Enum
@@ -725,6 +747,13 @@ class NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry::NhrpCli
         static const ydk::Enum::YLeaf ackRegisterReply;
         static const ydk::Enum::YLeaf nakRegisterReply;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "registering") return 2;
+            if (name == "ackRegisterReply") return 3;
+            if (name == "nakRegisterReply") return 4;
+            return -1;
+        }
 };
 
 

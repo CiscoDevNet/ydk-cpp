@@ -3372,8 +3372,8 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Conne
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile
@@ -3407,8 +3407,8 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Bgp :
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Bgp
@@ -3441,8 +3441,8 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Ospfv
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication
@@ -3475,8 +3475,8 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Eigrp
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Eigrp
@@ -3825,6 +3825,13 @@ class Ospfv3DomainId : public ydk::Enum
         static const ydk::Enum::YLeaf type0205;
         static const ydk::Enum::YLeaf type8005;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type0005") return 5;
+            if (name == "type0105") return 261;
+            if (name == "type0205") return 517;
+            if (name == "type8005") return 32773;
+            return -1;
+        }
 };
 
 class Ospfv3Network : public ydk::Enum
@@ -3836,6 +3843,14 @@ class Ospfv3Network : public ydk::Enum
         static const ydk::Enum::YLeaf point_to_multipoint;
         static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 1;
+            if (name == "non-broadcast") return 2;
+            if (name == "point-to-point") return 3;
+            if (name == "point-to-multipoint") return 4;
+            if (name == "non-broadcast-point-to-multipoint") return 5;
+            return -1;
+        }
 };
 
 class Ospfv3Metric : public ydk::Enum
@@ -3844,6 +3859,11 @@ class Ospfv3Metric : public ydk::Enum
         static const ydk::Enum::YLeaf type1;
         static const ydk::Enum::YLeaf type2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type1") return 1;
+            if (name == "type2") return 2;
+            return -1;
+        }
 };
 
 class Ospfv3AuthenticationType2 : public ydk::Enum
@@ -3853,6 +3873,12 @@ class Ospfv3AuthenticationType2 : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "null") return 0;
+            if (name == "md5") return 1;
+            if (name == "sha1") return 2;
+            return -1;
+        }
 };
 
 class Ospfv3FastReroutePriority : public ydk::Enum
@@ -3863,6 +3889,13 @@ class Ospfv3FastReroutePriority : public ydk::Enum
         static const ydk::Enum::YLeaf medium;
         static const ydk::Enum::YLeaf low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "high") return 1;
+            if (name == "medium") return 2;
+            if (name == "low") return 3;
+            return -1;
+        }
 };
 
 class Ospfv3bfdEnableMode : public ydk::Enum
@@ -3872,6 +3905,12 @@ class Ospfv3bfdEnableMode : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf strict;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "default") return 1;
+            if (name == "strict") return 2;
+            return -1;
+        }
 };
 
 class Ospfv3LogAdj : public ydk::Enum
@@ -3881,6 +3920,12 @@ class Ospfv3LogAdj : public ydk::Enum
         static const ydk::Enum::YLeaf brief;
         static const ydk::Enum::YLeaf detail;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "suppress") return 0;
+            if (name == "brief") return 1;
+            if (name == "detail") return 2;
+            return -1;
+        }
 };
 
 class Ospfv3TraceBufSize : public ydk::Enum
@@ -3897,6 +3942,19 @@ class Ospfv3TraceBufSize : public ydk::Enum
         static const ydk::Enum::YLeaf size32768;
         static const ydk::Enum::YLeaf size65536;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "size0") return 0;
+            if (name == "size256") return 256;
+            if (name == "size512") return 512;
+            if (name == "size1024") return 1024;
+            if (name == "size2048") return 2048;
+            if (name == "size4096") return 4096;
+            if (name == "size8192") return 8192;
+            if (name == "size16384") return 16384;
+            if (name == "size32768") return 32768;
+            if (name == "size65536") return 65536;
+            return -1;
+        }
 };
 
 class Ospfv3FastReroute : public ydk::Enum
@@ -3906,6 +3964,12 @@ class Ospfv3FastReroute : public ydk::Enum
         static const ydk::Enum::YLeaf per_link;
         static const ydk::Enum::YLeaf per_prefix;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "per-link") return 1;
+            if (name == "per-prefix") return 2;
+            return -1;
+        }
 };
 
 class Ospfv3isisRoute : public ydk::Enum
@@ -3915,6 +3979,12 @@ class Ospfv3isisRoute : public ydk::Enum
         static const ydk::Enum::YLeaf level2;
         static const ydk::Enum::YLeaf level1_and2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 64;
+            if (name == "level2") return 128;
+            if (name == "level1-and2") return 192;
+            return -1;
+        }
 };
 
 class Ospfv3nssaExternalRoute : public ydk::Enum
@@ -3924,6 +3994,12 @@ class Ospfv3nssaExternalRoute : public ydk::Enum
         static const ydk::Enum::YLeaf external2;
         static const ydk::Enum::YLeaf external;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external1") return 4096;
+            if (name == "external2") return 8192;
+            if (name == "external") return 12288;
+            return -1;
+        }
 };
 
 class Ospfv3ExternalRoute : public ydk::Enum
@@ -3933,6 +4009,12 @@ class Ospfv3ExternalRoute : public ydk::Enum
         static const ydk::Enum::YLeaf external2;
         static const ydk::Enum::YLeaf external;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external1") return 8;
+            if (name == "external2") return 16;
+            if (name == "external") return 24;
+            return -1;
+        }
 };
 
 class Ospfv3nsr : public ydk::Enum
@@ -3941,6 +4023,11 @@ class Ospfv3nsr : public ydk::Enum
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class Ospfv3AddressFamily : public ydk::Enum
@@ -3948,6 +4035,10 @@ class Ospfv3AddressFamily : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class Ospfv3Protocol : public ydk::Enum
@@ -3961,6 +4052,16 @@ class Ospfv3Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf ospfv3;
         static const ydk::Enum::YLeaf eigrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "connected") return 1;
+            if (name == "static") return 3;
+            if (name == "bgp") return 4;
+            if (name == "isis") return 6;
+            if (name == "ospfv3") return 7;
+            if (name == "eigrp") return 8;
+            return -1;
+        }
 };
 
 class Ospfv3EncryptionAlgorithm : public ydk::Enum
@@ -3973,6 +4074,15 @@ class Ospfv3EncryptionAlgorithm : public ydk::Enum
         static const ydk::Enum::YLeaf aes192;
         static const ydk::Enum::YLeaf aes256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "null") return 0;
+            if (name == "des") return 1;
+            if (name == "3des") return 2;
+            if (name == "aes") return 3;
+            if (name == "aes192") return 4;
+            if (name == "aes256") return 5;
+            return -1;
+        }
 };
 
 class Ospfv3ProtocolType2 : public ydk::Enum
@@ -3988,6 +4098,18 @@ class Ospfv3ProtocolType2 : public ydk::Enum
         static const ydk::Enum::YLeaf application;
         static const ydk::Enum::YLeaf mobile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "connected") return 1;
+            if (name == "static") return 3;
+            if (name == "bgp") return 4;
+            if (name == "isis") return 6;
+            if (name == "ospfv3") return 7;
+            if (name == "eigrp") return 8;
+            if (name == "subscriber") return 9;
+            if (name == "application") return 10;
+            if (name == "mobile") return 11;
+            return -1;
+        }
 };
 
 class Ospfv3SubsequentAddressFamily : public ydk::Enum
@@ -3995,6 +4117,10 @@ class Ospfv3SubsequentAddressFamily : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            return -1;
+        }
 };
 
 class Ospfv3EigrpRoute : public ydk::Enum
@@ -4003,6 +4129,11 @@ class Ospfv3EigrpRoute : public ydk::Enum
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf external;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 16384;
+            if (name == "external") return 32768;
+            return -1;
+        }
 };
 
 class Ospfv3FastRerouteTiebreakers : public ydk::Enum
@@ -4016,6 +4147,16 @@ class Ospfv3FastRerouteTiebreakers : public ydk::Enum
         static const ydk::Enum::YLeaf secondary_path;
         static const ydk::Enum::YLeaf srlg_disjoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "downstream") return 0;
+            if (name == "line-card-disjoint") return 1;
+            if (name == "lowest-metric") return 2;
+            if (name == "node-protect") return 3;
+            if (name == "primary-path") return 4;
+            if (name == "secondary-path") return 5;
+            if (name == "srlg-disjoint") return 6;
+            return -1;
+        }
 };
 
 class Ospfv3Authentication : public ydk::Enum
@@ -4024,6 +4165,11 @@ class Ospfv3Authentication : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 1;
+            if (name == "sha1") return 2;
+            return -1;
+        }
 };
 
 class Ospfv3InternalRoute : public ydk::Enum
@@ -4031,6 +4177,10 @@ class Ospfv3InternalRoute : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 6;
+            return -1;
+        }
 };
 
 

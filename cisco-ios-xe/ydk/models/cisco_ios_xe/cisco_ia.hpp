@@ -392,6 +392,14 @@ class CiaLogLevel : public ydk::Enum
         static const ydk::Enum::YLeaf information;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "error") return 1;
+            if (name == "warning") return 2;
+            if (name == "information") return 3;
+            if (name == "debug") return 4;
+            return -1;
+        }
 };
 
 class CiaSyncType : public ydk::Enum
@@ -401,6 +409,12 @@ class CiaSyncType : public ydk::Enum
         static const ydk::Enum::YLeaf without_defaults;
         static const ydk::Enum::YLeaf include_defaults;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            if (name == "without-defaults") return 1;
+            if (name == "include-defaults") return 2;
+            return -1;
+        }
 };
 
 class SyslogSeverity : public ydk::Enum
@@ -416,6 +430,31 @@ class SyslogSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf info;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 8;
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "info") return 6;
+            if (name == "debug") return 7;
+            return -1;
+        }
+};
+
+class ParserMsgProcessingMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf blacklist;
+        static const ydk::Enum::YLeaf whitelist;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "blacklist") return 0;
+            if (name == "whitelist") return 1;
+            return -1;
+        }
 };
 
 class OnepLogLevel : public ydk::Enum
@@ -429,6 +468,16 @@ class OnepLogLevel : public ydk::Enum
         static const ydk::Enum::YLeaf debug;
         static const ydk::Enum::YLeaf trace;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "fatal") return 1;
+            if (name == "error") return 2;
+            if (name == "warning") return 3;
+            if (name == "information") return 4;
+            if (name == "debug") return 5;
+            if (name == "trace") return 6;
+            return -1;
+        }
 };
 
 

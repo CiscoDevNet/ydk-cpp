@@ -268,6 +268,12 @@ class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPtype : public ydk:
         static const ydk::Enum::YLeaf dte;
         static const ydk::Enum::YLeaf dce;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notAvailable") return 1;
+            if (name == "dte") return 2;
+            if (name == "dce") return 3;
+            return -1;
+        }
 };
 
 class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPrts : public ydk::Enum
@@ -277,6 +283,12 @@ class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPrts : public ydk::
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notAvailable") return 1;
+            if (name == "up") return 2;
+            if (name == "down") return 3;
+            return -1;
+        }
 };
 
 class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPcts : public ydk::Enum
@@ -286,6 +298,12 @@ class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPcts : public ydk::
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notAvailable") return 1;
+            if (name == "up") return 2;
+            if (name == "down") return 3;
+            return -1;
+        }
 };
 
 class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPdtr : public ydk::Enum
@@ -295,6 +313,12 @@ class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPdtr : public ydk::
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notAvailable") return 1;
+            if (name == "up") return 2;
+            if (name == "down") return 3;
+            return -1;
+        }
 };
 
 class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPdcd : public ydk::Enum
@@ -304,6 +328,12 @@ class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPdcd : public ydk::
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notAvailable") return 1;
+            if (name == "up") return 2;
+            if (name == "down") return 3;
+            return -1;
+        }
 };
 
 class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPdsr : public ydk::Enum
@@ -313,6 +343,12 @@ class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPdsr : public ydk::
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notAvailable") return 1;
+            if (name == "up") return 2;
+            if (name == "down") return 3;
+            return -1;
+        }
 };
 
 class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPportType : public ydk::Enum
@@ -331,6 +367,21 @@ class OLDCISCOINTERFACESMIB::LFSIPTable::LFSIPEntry::LocIfFSIPportType : public 
         static const ydk::Enum::YLeaf g703bal;
         static const ydk::Enum::YLeaf jt2unbal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noCable") return 1;
+            if (name == "rs232") return 2;
+            if (name == "rs422") return 3;
+            if (name == "rs423") return 4;
+            if (name == "v35") return 5;
+            if (name == "x21") return 6;
+            if (name == "rs449") return 7;
+            if (name == "rs530") return 8;
+            if (name == "hssi") return 9;
+            if (name == "g703unbal") return 10;
+            if (name == "g703bal") return 11;
+            if (name == "jt2unbal") return 12;
+            return -1;
+        }
 };
 
 

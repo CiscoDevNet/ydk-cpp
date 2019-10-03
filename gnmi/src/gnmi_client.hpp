@@ -67,6 +67,8 @@ struct GnmiClientRequest {
 	std::string operation;
 };
 
+void release_allocated_memory(std::vector<GnmiClientRequest> & request_list);
+
 struct GnmiClientModelData {
 	std::string name;
 	std::string organization;
@@ -106,11 +108,11 @@ class gNMIClient : public NetconfClient
                const std::string & server_certificate="", const std::string & private_key="");
     ~gNMIClient();
 
-    std::vector<std::string> execute_get_operation(const std::vector<GnmiClientRequest> get_request_list, const std::string& operation);
+    std::vector<std::string> execute_get_operation(const std::vector<GnmiClientRequest> & get_request_list, const std::string & operation);
 
-    bool execute_set_operation(const std::vector<GnmiClientRequest> get_request_list);
+    bool execute_set_operation(const std::vector<GnmiClientRequest> & get_request_list);
 
-    void execute_subscribe_operation(std::vector<GnmiClientSubscription> subscription_list,
+    void execute_subscribe_operation(const std::vector<GnmiClientSubscription> & subscription_list,
                                      uint32 qos, const std::string & mode,
 									 const std::string & encoding,
                                      std::function<void(const char * response)> out_func,
@@ -132,6 +134,8 @@ class gNMIClient : public NetconfClient
     std::string execute_payload(const std::string & payload);
     std::vector<std::string> get_capabilities();
     std::string get_hostname_port();
+
+    void perform_session_check(const std::string & message);
 
   private:
 

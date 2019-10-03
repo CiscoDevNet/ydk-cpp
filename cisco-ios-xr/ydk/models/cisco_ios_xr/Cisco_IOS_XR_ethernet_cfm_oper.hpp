@@ -2915,6 +2915,13 @@ class CfmPmElrIngressAction : public ydk::Enum
         static const ydk::Enum::YLeaf elr_ingress_blocked;
         static const ydk::Enum::YLeaf elr_ingress_vid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "elr-ingress-ok") return 1;
+            if (name == "elr-ingress-down") return 2;
+            if (name == "elr-ingress-blocked") return 3;
+            if (name == "elr-ingress-vid") return 4;
+            return -1;
+        }
 };
 
 class CfmPmRelayAction : public ydk::Enum
@@ -2924,6 +2931,12 @@ class CfmPmRelayAction : public ydk::Enum
         static const ydk::Enum::YLeaf relay_fdb;
         static const ydk::Enum::YLeaf relay_mpdb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "relay-hit") return 1;
+            if (name == "relay-fdb") return 2;
+            if (name == "relay-mpdb") return 3;
+            return -1;
+        }
 };
 
 class CfmBagSmanFmt : public ydk::Enum
@@ -2936,6 +2949,15 @@ class CfmBagSmanFmt : public ydk::Enum
         static const ydk::Enum::YLeaf sman_icc;
         static const ydk::Enum::YLeaf sman_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sman-vlan-id") return 1;
+            if (name == "sman-string") return 2;
+            if (name == "sman-uint16") return 3;
+            if (name == "sman-vpn-id") return 4;
+            if (name == "sman-icc") return 32;
+            if (name == "sman-unknown") return 33;
+            return -1;
+        }
 };
 
 class CfmPmMepDefect : public ydk::Enum
@@ -2948,6 +2970,15 @@ class CfmPmMepDefect : public ydk::Enum
         static const ydk::Enum::YLeaf defect_error_ccm;
         static const ydk::Enum::YLeaf defect_cross_connect_ccm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "defect-none") return 0;
+            if (name == "defect-rdi-ccm") return 1;
+            if (name == "defect-ma-cstatus") return 2;
+            if (name == "defect-remote-ccm") return 3;
+            if (name == "defect-error-ccm") return 4;
+            if (name == "defect-cross-connect-ccm") return 5;
+            return -1;
+        }
 };
 
 class CfmPmElrEgressAction : public ydk::Enum
@@ -2959,6 +2990,14 @@ class CfmPmElrEgressAction : public ydk::Enum
         static const ydk::Enum::YLeaf elr_egress_vid;
         static const ydk::Enum::YLeaf elr_egress_mac;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "elr-egress-ok") return 1;
+            if (name == "elr-egress-down") return 2;
+            if (name == "elr-egress-blocked") return 3;
+            if (name == "elr-egress-vid") return 4;
+            if (name == "elr-egress-mac") return 255;
+            return -1;
+        }
 };
 
 class CfmPmIngressAction : public ydk::Enum
@@ -2969,6 +3008,13 @@ class CfmPmIngressAction : public ydk::Enum
         static const ydk::Enum::YLeaf ingress_blocked;
         static const ydk::Enum::YLeaf ingress_vid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ingress-ok") return 1;
+            if (name == "ingress-down") return 2;
+            if (name == "ingress-blocked") return 3;
+            if (name == "ingress-vid") return 4;
+            return -1;
+        }
 };
 
 class CfmBagCcmInterval : public ydk::Enum
@@ -2983,6 +3029,17 @@ class CfmBagCcmInterval : public ydk::Enum
         static const ydk::Enum::YLeaf interval1m;
         static const ydk::Enum::YLeaf interval10m;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interval-none") return 0;
+            if (name == "interval3-3ms") return 1;
+            if (name == "interval10ms") return 2;
+            if (name == "interval100ms") return 3;
+            if (name == "interval1s") return 4;
+            if (name == "interval10s") return 5;
+            if (name == "interval1m") return 6;
+            if (name == "interval10m") return 7;
+            return -1;
+        }
 };
 
 class CfmPmChassisIdFmt : public ydk::Enum
@@ -2997,6 +3054,17 @@ class CfmPmChassisIdFmt : public ydk::Enum
         static const ydk::Enum::YLeaf chassis_id_local;
         static const ydk::Enum::YLeaf chassis_id_unknown_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "chassis-id-chassis-component") return 1;
+            if (name == "chassis-id-interface-alias") return 2;
+            if (name == "chassis-id-port-component") return 3;
+            if (name == "chassis-id-mac-address") return 4;
+            if (name == "chassis-id-network-address") return 5;
+            if (name == "chassis-id-interface-name") return 6;
+            if (name == "chassis-id-local") return 7;
+            if (name == "chassis-id-unknown-type") return 8;
+            return -1;
+        }
 };
 
 class SlaOperOperation : public ydk::Enum
@@ -3005,6 +3073,11 @@ class SlaOperOperation : public ydk::Enum
         static const ydk::Enum::YLeaf operation_type_configured;
         static const ydk::Enum::YLeaf operation_type_ondemand;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "operation-type-configured") return 0;
+            if (name == "operation-type-ondemand") return 1;
+            return -1;
+        }
 };
 
 class CfmPmLastHopFmt : public ydk::Enum
@@ -3014,6 +3087,12 @@ class CfmPmLastHopFmt : public ydk::Enum
         static const ydk::Enum::YLeaf last_hop_host_name;
         static const ydk::Enum::YLeaf last_hop_egress_id;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "last-hop-none") return 0;
+            if (name == "last-hop-host-name") return 1;
+            if (name == "last-hop-egress-id") return 2;
+            return -1;
+        }
 };
 
 class CfmPmIdFmt : public ydk::Enum
@@ -3023,6 +3102,12 @@ class CfmPmIdFmt : public ydk::Enum
         static const ydk::Enum::YLeaf id_format_is_mac_address;
         static const ydk::Enum::YLeaf id_format_is_raw_hex;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "id-format-is-string") return 0;
+            if (name == "id-format-is-mac-address") return 1;
+            if (name == "id-format-is-raw-hex") return 2;
+            return -1;
+        }
 };
 
 class CfmPmRmepState : public ydk::Enum
@@ -3033,6 +3118,13 @@ class CfmPmRmepState : public ydk::Enum
         static const ydk::Enum::YLeaf peer_mep_failed;
         static const ydk::Enum::YLeaf peer_mep_ok;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "peer-mep-idle") return 1;
+            if (name == "peer-mep-start") return 2;
+            if (name == "peer-mep-failed") return 3;
+            if (name == "peer-mep-ok") return 4;
+            return -1;
+        }
 };
 
 class CfmBagCcmOffload : public ydk::Enum
@@ -3042,6 +3134,12 @@ class CfmBagCcmOffload : public ydk::Enum
         static const ydk::Enum::YLeaf offload_software;
         static const ydk::Enum::YLeaf offload_hardware;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "offload-none") return 0;
+            if (name == "offload-software") return 1;
+            if (name == "offload-hardware") return 2;
+            return -1;
+        }
 };
 
 class CfmPmAisReceive : public ydk::Enum
@@ -3052,6 +3150,13 @@ class CfmPmAisReceive : public ydk::Enum
         static const ydk::Enum::YLeaf receive_lck;
         static const ydk::Enum::YLeaf receive_direct;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "receive-none") return 0;
+            if (name == "receive-ais") return 1;
+            if (name == "receive-lck") return 2;
+            if (name == "receive-direct") return 3;
+            return -1;
+        }
 };
 
 class CfmMaMpVariety : public ydk::Enum
@@ -3062,6 +3167,13 @@ class CfmMaMpVariety : public ydk::Enum
         static const ydk::Enum::YLeaf downmep;
         static const ydk::Enum::YLeaf unknown_mep;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mip") return 0;
+            if (name == "up-mep") return 1;
+            if (name == "downmep") return 2;
+            if (name == "unknown-mep") return 3;
+            return -1;
+        }
 };
 
 class CfmPmPktAction : public ydk::Enum
@@ -3161,6 +3273,102 @@ class CfmPmPktAction : public ydk::Enum
         static const ydk::Enum::YLeaf filter_response_standby;
         static const ydk::Enum::YLeaf filter_response_issu_secondary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "packet-processed") return 0;
+            if (name == "packet-forwarded") return 1;
+            if (name == "unknown-opcode") return 2;
+            if (name == "filter-level") return 3;
+            if (name == "filter-blocked") return 4;
+            if (name == "filter-local-mac") return 5;
+            if (name == "malformed-ccm-size") return 6;
+            if (name == "malformed-ccm-mep-id") return 7;
+            if (name == "malformed-too-short") return 8;
+            if (name == "malformed-destination-mac-unicast") return 9;
+            if (name == "malformed-destination-mac-multicast") return 10;
+            if (name == "malformed-tlv-offset") return 11;
+            if (name == "malformed-lbm-source-mac") return 12;
+            if (name == "malformed-ltr-relay-action") return 13;
+            if (name == "malformed-ltr-reply-tlv") return 14;
+            if (name == "malformed-lt-origin") return 15;
+            if (name == "malformed-ltm-target") return 16;
+            if (name == "malformed-source-mac") return 17;
+            if (name == "malformed-header-too-short") return 18;
+            if (name == "malformed-tlv-header-overrun") return 19;
+            if (name == "malformed-tlv-overrun") return 20;
+            if (name == "malformed-duplicate-sender-id") return 21;
+            if (name == "malformed-duplicate-port-status") return 22;
+            if (name == "malformed-duplicate-interface-status") return 23;
+            if (name == "malformed-wrong-tlv") return 24;
+            if (name == "malformed-duplicate-data") return 25;
+            if (name == "malformed-duplicate-ltr-egress-id") return 26;
+            if (name == "malformed-duplicate-reply-ingress") return 27;
+            if (name == "malformed-duplicate-reply-egress") return 28;
+            if (name == "malformed-duplicate-ltm-egress-id") return 29;
+            if (name == "malformed-sender-id-size") return 30;
+            if (name == "malformed-chassis-id-size") return 31;
+            if (name == "malformed-mgmt-address-domain-size") return 32;
+            if (name == "malformed-mgmt-address-size") return 33;
+            if (name == "malformed-port-status-size") return 34;
+            if (name == "malformed-port-status") return 35;
+            if (name == "malformed-interface-status-size") return 36;
+            if (name == "malformed-interface-status") return 37;
+            if (name == "malformed-organization-specific-tlv-size") return 38;
+            if (name == "malformed-duplicate-mep-name") return 39;
+            if (name == "malformed-duplicate-additional-interface-status") return 40;
+            if (name == "malformed-ltr-egress-id-size") return 41;
+            if (name == "malformed-reply-ingress-size") return 42;
+            if (name == "malformed-ingress-action") return 43;
+            if (name == "malformed-reply-ingress-mac") return 44;
+            if (name == "malformed-ingress-port-length-size") return 45;
+            if (name == "malformed-ingress-port-id-length") return 46;
+            if (name == "malformed-ingress-port-id-size") return 47;
+            if (name == "malformed-reply-egress-size") return 48;
+            if (name == "malformed-egress-action") return 49;
+            if (name == "malformed-reply-egress-mac") return 50;
+            if (name == "malformed-egress-port-length-size") return 51;
+            if (name == "malformed-egress-port-id-length") return 52;
+            if (name == "malformed-egress-port-id-size") return 53;
+            if (name == "malformed-ltm-egress-id-size") return 54;
+            if (name == "malformed-mep-name-size") return 55;
+            if (name == "malformed-mep-name-name-length") return 56;
+            if (name == "malformed-additional-interface-status-size") return 57;
+            if (name == "malformed-additional-interface-status") return 58;
+            if (name == "malformed-ccm-interval") return 59;
+            if (name == "malformed-mdid-mac-address-length") return 60;
+            if (name == "malformed-mdid-length") return 61;
+            if (name == "malformed-sman-length") return 62;
+            if (name == "malformed-sman2-byte-length") return 63;
+            if (name == "malformed-sman-vpn-id-length") return 64;
+            if (name == "malformed-elr-no-reply-tlv") return 65;
+            if (name == "malformed-separate-elr-reply-egress") return 66;
+            if (name == "malformed-dcm-destination-multicast") return 67;
+            if (name == "malformed-dcm-embed-length") return 68;
+            if (name == "malformed-dcm-embed-level") return 69;
+            if (name == "malformed-dcm-embed-version") return 70;
+            if (name == "malformed-elr-relay-action") return 71;
+            if (name == "malformed-elr-tt-ls") return 73;
+            if (name == "malformed-elr-ttl-ingress") return 74;
+            if (name == "malformed-elr-ttl-egress") return 75;
+            if (name == "malformed-elm-destination-unicast") return 76;
+            if (name == "malformed-elm-egress-id") return 77;
+            if (name == "malformed-dcm-embed-oui") return 78;
+            if (name == "malformed-dcm-embed-opcode") return 79;
+            if (name == "malformed-elm-constant-zero") return 80;
+            if (name == "malformed-elr-timeout-zero") return 81;
+            if (name == "malformed-duplicate-test") return 82;
+            if (name == "malformed-dmm-source-mac") return 83;
+            if (name == "malformed-test-size") return 84;
+            if (name == "malformed-dmr-time-stamps") return 85;
+            if (name == "malformed-dm-time-stamp-fmt") return 86;
+            if (name == "malformed-ais-interval") return 87;
+            if (name == "filter-interface-down") return 88;
+            if (name == "filter-forward-standby") return 89;
+            if (name == "malformed-sman-icc-based-length") return 90;
+            if (name == "filter-foward-issu-secondary") return 120;
+            if (name == "filter-response-standby") return 121;
+            if (name == "filter-response-issu-secondary") return 122;
+            return -1;
+        }
 };
 
 class SlaBucketSize : public ydk::Enum
@@ -3169,6 +3377,11 @@ class SlaBucketSize : public ydk::Enum
         static const ydk::Enum::YLeaf buckets_per_probe;
         static const ydk::Enum::YLeaf probes_per_bucket;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "buckets-per-probe") return 0;
+            if (name == "probes-per-bucket") return 1;
+            return -1;
+        }
 };
 
 class CfmPmEltDelayModel : public ydk::Enum
@@ -3178,6 +3391,12 @@ class CfmPmEltDelayModel : public ydk::Enum
         static const ydk::Enum::YLeaf delay_model_logarithmic;
         static const ydk::Enum::YLeaf delay_model_constant;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "delay-model-invalid") return 0;
+            if (name == "delay-model-logarithmic") return 1;
+            if (name == "delay-model-constant") return 2;
+            return -1;
+        }
 };
 
 class CfmPmAisTransmit : public ydk::Enum
@@ -3187,6 +3406,12 @@ class CfmPmAisTransmit : public ydk::Enum
         static const ydk::Enum::YLeaf transmit_ais;
         static const ydk::Enum::YLeaf transmit_ais_direct;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "transmit-none") return 0;
+            if (name == "transmit-ais") return 1;
+            if (name == "transmit-ais-direct") return 2;
+            return -1;
+        }
 };
 
 class CfmPmElrRelayAction : public ydk::Enum
@@ -3197,6 +3422,13 @@ class CfmPmElrRelayAction : public ydk::Enum
         static const ydk::Enum::YLeaf elr_relay_flood;
         static const ydk::Enum::YLeaf elr_relay_drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "elr-relay-hit") return 1;
+            if (name == "elr-relay-fdb") return 2;
+            if (name == "elr-relay-flood") return 3;
+            if (name == "elr-relay-drop") return 4;
+            return -1;
+        }
 };
 
 class CfmPmPortStatus : public ydk::Enum
@@ -3206,6 +3438,12 @@ class CfmPmPortStatus : public ydk::Enum
         static const ydk::Enum::YLeaf port_status_up;
         static const ydk::Enum::YLeaf port_status_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "port-status-blocked") return 1;
+            if (name == "port-status-up") return 2;
+            if (name == "port-status-unknown") return 3;
+            return -1;
+        }
 };
 
 class CfmBagIwState : public ydk::Enum
@@ -3214,6 +3452,11 @@ class CfmBagIwState : public ydk::Enum
         static const ydk::Enum::YLeaf interworking_up;
         static const ydk::Enum::YLeaf interworking_test;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interworking-up") return 0;
+            if (name == "interworking-test") return 1;
+            return -1;
+        }
 };
 
 class CfmBagMdidFmt : public ydk::Enum
@@ -3225,6 +3468,14 @@ class CfmBagMdidFmt : public ydk::Enum
         static const ydk::Enum::YLeaf mdid_string;
         static const ydk::Enum::YLeaf mdid_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mdid-null") return 1;
+            if (name == "mdid-dns-like") return 2;
+            if (name == "mdid-mac-address") return 3;
+            if (name == "mdid-string") return 4;
+            if (name == "mdid-unknown") return 5;
+            return -1;
+        }
 };
 
 class CfmBagBdidFmt : public ydk::Enum
@@ -3238,6 +3489,16 @@ class CfmBagBdidFmt : public ydk::Enum
         static const ydk::Enum::YLeaf fxc_vlan_unaware_id;
         static const ydk::Enum::YLeaf down_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "bd-id") return 1;
+            if (name == "xc-p2p-id") return 2;
+            if (name == "xc-mp2mp-id") return 3;
+            if (name == "fxc-vlan-aware-id") return 4;
+            if (name == "fxc-vlan-unaware-id") return 5;
+            if (name == "down-only") return 6;
+            return -1;
+        }
 };
 
 class CfmBagIssuRole : public ydk::Enum
@@ -3247,6 +3508,12 @@ class CfmBagIssuRole : public ydk::Enum
         static const ydk::Enum::YLeaf primary;
         static const ydk::Enum::YLeaf secondary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "primary") return 1;
+            if (name == "secondary") return 2;
+            return -1;
+        }
 };
 
 class CfmBagStpState : public ydk::Enum
@@ -3256,6 +3523,12 @@ class CfmBagStpState : public ydk::Enum
         static const ydk::Enum::YLeaf stp_blocked;
         static const ydk::Enum::YLeaf stp_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-up") return 0;
+            if (name == "stp-blocked") return 1;
+            if (name == "stp-unknown") return 2;
+            return -1;
+        }
 };
 
 class CfmBagMdLevel : public ydk::Enum
@@ -3271,6 +3544,18 @@ class CfmBagMdLevel : public ydk::Enum
         static const ydk::Enum::YLeaf level7;
         static const ydk::Enum::YLeaf level_invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level0") return 0;
+            if (name == "level1") return 1;
+            if (name == "level2") return 2;
+            if (name == "level3") return 3;
+            if (name == "level4") return 4;
+            if (name == "level5") return 5;
+            if (name == "level6") return 6;
+            if (name == "level7") return 7;
+            if (name == "level-invalid") return 8;
+            return -1;
+        }
 };
 
 class SlaOperPacketPriority : public ydk::Enum
@@ -3279,6 +3564,11 @@ class SlaOperPacketPriority : public ydk::Enum
         static const ydk::Enum::YLeaf priority_none;
         static const ydk::Enum::YLeaf priority_cos;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "priority-none") return 0;
+            if (name == "priority-cos") return 1;
+            return -1;
+        }
 };
 
 class CfmBagAisInterval : public ydk::Enum
@@ -3288,6 +3578,12 @@ class CfmBagAisInterval : public ydk::Enum
         static const ydk::Enum::YLeaf ais_interval1s;
         static const ydk::Enum::YLeaf ais_interval1m;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ais-interval-none") return 0;
+            if (name == "ais-interval1s") return 4;
+            if (name == "ais-interval1m") return 6;
+            return -1;
+        }
 };
 
 class CfmPmRmepXcState : public ydk::Enum
@@ -3297,6 +3593,12 @@ class CfmPmRmepXcState : public ydk::Enum
         static const ydk::Enum::YLeaf cross_check_missing;
         static const ydk::Enum::YLeaf cross_check_extra;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cross-check-ok") return 0;
+            if (name == "cross-check-missing") return 1;
+            if (name == "cross-check-extra") return 2;
+            return -1;
+        }
 };
 
 class CfmPmLtMode : public ydk::Enum
@@ -3305,6 +3607,11 @@ class CfmPmLtMode : public ydk::Enum
         static const ydk::Enum::YLeaf cfm_pm_lt_mode_basic;
         static const ydk::Enum::YLeaf cfm_pm_lt_mode_exploratory;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cfm-pm-lt-mode-basic") return 1;
+            if (name == "cfm-pm-lt-mode-exploratory") return 2;
+            return -1;
+        }
 };
 
 class CfmPmIntfStatus : public ydk::Enum
@@ -3318,6 +3625,16 @@ class CfmPmIntfStatus : public ydk::Enum
         static const ydk::Enum::YLeaf interface_status_not_present;
         static const ydk::Enum::YLeaf interface_status_lower_layer_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-status-up") return 1;
+            if (name == "interface-status-down") return 2;
+            if (name == "interface-status-testing") return 3;
+            if (name == "interface-status-unknown") return 4;
+            if (name == "interface-status-dormant") return 5;
+            if (name == "interface-status-not-present") return 6;
+            if (name == "interface-status-lower-layer-down") return 7;
+            return -1;
+        }
 };
 
 class CfmBagDirection : public ydk::Enum
@@ -3327,6 +3644,12 @@ class CfmBagDirection : public ydk::Enum
         static const ydk::Enum::YLeaf direction_down;
         static const ydk::Enum::YLeaf direction_invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "direction-up") return 0;
+            if (name == "direction-down") return 1;
+            if (name == "direction-invalid") return 2;
+            return -1;
+        }
 };
 
 class CfmPmEgressAction : public ydk::Enum
@@ -3337,6 +3660,13 @@ class CfmPmEgressAction : public ydk::Enum
         static const ydk::Enum::YLeaf egress_blocked;
         static const ydk::Enum::YLeaf egress_vid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "egress-ok") return 1;
+            if (name == "egress-down") return 2;
+            if (name == "egress-blocked") return 3;
+            if (name == "egress-vid") return 4;
+            return -1;
+        }
 };
 
 class CfmPmElmReplyFilter : public ydk::Enum
@@ -3348,6 +3678,14 @@ class CfmPmElmReplyFilter : public ydk::Enum
         static const ydk::Enum::YLeaf reply_filter_spanning_tree;
         static const ydk::Enum::YLeaf reply_filter_all_ports;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reply-filter-not-present") return 0;
+            if (name == "reply-filter-default") return 1;
+            if (name == "reply-filter-vlan-topology") return 2;
+            if (name == "reply-filter-spanning-tree") return 3;
+            if (name == "reply-filter-all-ports") return 4;
+            return -1;
+        }
 };
 
 class CfmAisDir : public ydk::Enum
@@ -3356,6 +3694,11 @@ class CfmAisDir : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            return -1;
+        }
 };
 
 class CfmPmAddlIntfStatus : public ydk::Enum
@@ -3366,6 +3709,13 @@ class CfmPmAddlIntfStatus : public ydk::Enum
         static const ydk::Enum::YLeaf remote_excessive_errors;
         static const ydk::Enum::YLeaf local_excessive_errors;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "administratively-down") return 1;
+            if (name == "remote-excessive-errors") return 2;
+            if (name == "local-excessive-errors") return 3;
+            return -1;
+        }
 };
 
 class CfmBagOpcode : public ydk::Enum
@@ -3378,6 +3728,15 @@ class CfmBagOpcode : public ydk::Enum
         static const ydk::Enum::YLeaf ltr;
         static const ydk::Enum::YLeaf ltm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reserved") return 0;
+            if (name == "ccm") return 1;
+            if (name == "lbr") return 2;
+            if (name == "lbm") return 3;
+            if (name == "ltr") return 4;
+            if (name == "ltm") return 5;
+            return -1;
+        }
 };
 
 class SlaOperTestPatternScheme : public ydk::Enum
@@ -3386,6 +3745,11 @@ class SlaOperTestPatternScheme : public ydk::Enum
         static const ydk::Enum::YLeaf hex;
         static const ydk::Enum::YLeaf pseudo_random;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hex") return 0;
+            if (name == "pseudo-random") return 1;
+            return -1;
+        }
 };
 
 class CfmPmMepFngState : public ydk::Enum
@@ -3397,6 +3761,14 @@ class CfmPmMepFngState : public ydk::Enum
         static const ydk::Enum::YLeaf fng_defect_reported;
         static const ydk::Enum::YLeaf fng_defect_clearing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fng-reset") return 1;
+            if (name == "fng-defect") return 2;
+            if (name == "fng-report-defect") return 3;
+            if (name == "fng-defect-reported") return 4;
+            if (name == "fng-defect-clearing") return 5;
+            return -1;
+        }
 };
 
 class CfmPmPortIdFmt : public ydk::Enum
@@ -3411,6 +3783,17 @@ class CfmPmPortIdFmt : public ydk::Enum
         static const ydk::Enum::YLeaf port_id_local;
         static const ydk::Enum::YLeaf port_id_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "port-id-interface-alias") return 1;
+            if (name == "port-id-port-component") return 2;
+            if (name == "port-id-mac-address") return 3;
+            if (name == "port-id-network-address") return 4;
+            if (name == "port-id-interface-name") return 5;
+            if (name == "port-id-agent-circuit-id") return 6;
+            if (name == "port-id-local") return 7;
+            if (name == "port-id-unknown") return 8;
+            return -1;
+        }
 };
 
 class SlaOperBucket : public ydk::Enum
@@ -3419,6 +3802,11 @@ class SlaOperBucket : public ydk::Enum
         static const ydk::Enum::YLeaf bucket_type_bins;
         static const ydk::Enum::YLeaf bucket_type_samples;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bucket-type-bins") return 0;
+            if (name == "bucket-type-samples") return 1;
+            return -1;
+        }
 };
 
 class SlaRecordableMetric : public ydk::Enum
@@ -3434,6 +3822,18 @@ class SlaRecordableMetric : public ydk::Enum
         static const ydk::Enum::YLeaf metric_one_way_flr_sd;
         static const ydk::Enum::YLeaf metric_one_way_flr_ds;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "metric-invalid") return 0;
+            if (name == "metric-round-trip-delay") return 1;
+            if (name == "metric-one-way-delay-sd") return 2;
+            if (name == "metric-one-way-delay-ds") return 3;
+            if (name == "metric-round-trip-jitter") return 4;
+            if (name == "metric-one-way-jitter-sd") return 5;
+            if (name == "metric-one-way-jitter-ds") return 6;
+            if (name == "metric-one-way-flr-sd") return 7;
+            if (name == "metric-one-way-flr-ds") return 8;
+            return -1;
+        }
 };
 
 

@@ -535,6 +535,12 @@ class ProtoType : public ydk::Enum
         static const ydk::Enum::YLeaf tcp;
         static const ydk::Enum::YLeaf udp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "grpc") return 1;
+            if (name == "tcp") return 2;
+            if (name == "udp") return 3;
+            return -1;
+        }
 };
 
 class EncodeType : public ydk::Enum
@@ -544,6 +550,12 @@ class EncodeType : public ydk::Enum
         static const ydk::Enum::YLeaf self_describing_gpb;
         static const ydk::Enum::YLeaf json;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "gpb") return 2;
+            if (name == "self-describing-gpb") return 3;
+            if (name == "json") return 4;
+            return -1;
+        }
 };
 
 class MdtDscpValue : public ydk::Enum
@@ -571,6 +583,30 @@ class MdtDscpValue : public ydk::Enum
         static const ydk::Enum::YLeaf cs6;
         static const ydk::Enum::YLeaf cs7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "cs1") return 8;
+            if (name == "af11") return 10;
+            if (name == "af12") return 12;
+            if (name == "af13") return 14;
+            if (name == "cs2") return 16;
+            if (name == "af21") return 18;
+            if (name == "af22") return 20;
+            if (name == "af23") return 22;
+            if (name == "cs3") return 24;
+            if (name == "af31") return 26;
+            if (name == "af32") return 28;
+            if (name == "af33") return 30;
+            if (name == "cs4") return 32;
+            if (name == "af41") return 34;
+            if (name == "af42") return 36;
+            if (name == "af43") return 38;
+            if (name == "cs5") return 40;
+            if (name == "ef") return 46;
+            if (name == "cs6") return 48;
+            if (name == "cs7") return 56;
+            return -1;
+        }
 };
 
 

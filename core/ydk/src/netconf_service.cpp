@@ -41,6 +41,7 @@ static shared_ptr<path::Rpc> get_rpc_instance(NetconfServiceProvider& provider, 
 static void create_input_leaf(path::DataNode & input_datanode, DataStore datastore, string && datastore_string, string & url);
 static void create_input_leaf(path::DataNode & input_datanode, DataStore datastore, string && datastore_string);
 static string datastore_to_string(DataStore datastore);
+static map<string,string> split_xml_payload(string reply);
 
 NetconfService::NetconfService()
 {
@@ -147,18 +148,28 @@ bool NetconfService::copy_config(NetconfServiceProvider& provider, DataStore tar
 {
     YLOG_INFO("Executing 'copy-config' RPC from [{}] to {}", source.get_segment_path(), datastore_to_string(target));
 
-    std::string entity_string = get_data_payload(source, provider);
+    auto top_entity = get_top_entity(&source);
+    std::string entity_string = (source.ignore_validation && top_entity->is_top_level_class) ?
+         get_xml_subtree_filter_payload(*top_entity, provider) :
+         get_data_payload(source, provider);
 
     return copy_payload(provider, target, entity_string);
 }
 
 bool NetconfService::copy_config(NetconfServiceProvider& provider, DataStore target, vector<Entity*>& source_list)
 {
+    if (source_list.empty()) {
+        YLOG_INFO("NetconfService::copy_config: Source list is empty");
+        return false;
+    }
     YLOG_INFO("Executing 'copy-config' RPC from {} to {}", entity_vector_to_string(source_list), datastore_to_string(target));
 
     string payload = "";
     for (auto entity : source_list) {
-        payload += get_data_payload(*entity, provider);
+        auto top_entity = get_top_entity(entity);
+        payload += (entity->ignore_validation && top_entity->is_top_level_class) ?
+            get_xml_subtree_filter_payload(*top_entity, provider) :
+            get_data_payload(*entity, provider);
     }
 
     return copy_payload(provider, target, payload);
@@ -229,7 +240,10 @@ bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore tar
 {
     YLOG_INFO("Executing 'edit-config' RPC on [{}]", config.get_segment_path());
 
-    std::string payload = get_data_payload(config, provider);
+    auto top_entity = get_top_entity(&config);
+    std::string payload = (config.ignore_validation && top_entity->is_top_level_class) ?
+            get_xml_subtree_filter_payload(*top_entity, provider) :
+            get_data_payload(*top_entity, provider);
 
     return edit_payload(provider, target, payload, default_operation, test_option, error_option);
 }
@@ -237,35 +251,101 @@ bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore tar
 bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore target,
 	vector<Entity*>& config_list, string default_operation, string test_option, string error_option)
 {
+    if (config_list.empty()) {
+        YLOG_INFO("NetconfService::edit_config: Config list is empty");
+        return false;
+    }
     YLOG_INFO("Executing 'edit-config' RPC on {}", entity_vector_to_string(config_list));
 
     string payload = "";
     for (auto entity : config_list) {
-        payload += get_xml_subtree_filter_payload(*entity, provider);
+        auto top_entity = get_top_entity(entity);
+        payload += (entity->ignore_validation && top_entity->is_top_level_class) ?
+                get_xml_subtree_filter_payload(*top_entity, provider) :
+                get_data_payload(*top_entity, provider);
     }
 
     return edit_payload(provider, target, payload, default_operation, test_option, error_option);
 }
 
+static shared_ptr<Entity> xml_codec_payload_to_entity(const std::string & payload, shared_ptr<Entity> filter)
+{
+    XmlSubtreeCodec xml_subtree_codec{};
+    YLOG_DEBUG("Decoding XML payload to Entity using XML subtree codec");
+    return xml_subtree_codec.decode(payload, filter);
+}
+
 static vector<shared_ptr<Entity>>
 get_from_list(NetconfServiceProvider& provider, DataStore source, vector<Entity*> & filter_list, const char* path)
 {
-    // Get the root schema node
-    shared_ptr<path::Rpc> rpc = get_rpc_instance(provider, path);
+    vector<shared_ptr<Entity>> result_list{};
 
-    // Build filter
-    string filter_string = "";
-    for (auto entity : filter_list) {
-        filter_string += get_xml_subtree_filter_payload(*entity, provider);
-    }
+    // Create RPC node
+    shared_ptr<path::Rpc> rpc = get_rpc_instance(provider, path);
 
     // Source options: candidate | running | startup
     if (source != DataStore::na)
         create_input_leaf(rpc->get_input_node(), source, "source");
+
+    // Build filter
+    size_t bypass_validation = 0;
+    string filter_string = "";
+    for (auto entity : filter_list) {
+        YFilter original_yfilter = entity->yfilter;
+        if (!entity->is_top_level_class && original_yfilter == YFilter::not_set) {
+            entity->yfilter = YFilter::read;
+        }
+        auto top_entity = get_top_entity(entity);
+        if (top_entity->is_top_level_class) {
+            filter_string += get_xml_subtree_filter_payload(*top_entity, provider);
+            if (entity->ignore_validation)
+                bypass_validation++;
+        }
+        else {
+            filter_string += get_data_payload(*entity, provider);
+        }
+        entity->yfilter = original_yfilter;
+    }
     rpc->get_input_node().create_datanode("filter", filter_string);
 
+    if (bypass_validation == filter_list.size()) {
+        const path::NetconfSession * ns = dynamic_cast<const path::NetconfSession *>(&(provider.get_session()));
+        auto reply = ns->execute_netconf_operation(*rpc);
+        auto payload_map = split_xml_payload(reply);
+
+        // Build resulting list of entities
+        for (Entity* entity : filter_list) {
+            auto top_entity = get_top_entity(entity);
+            string entity_key = top_entity->get_segment_path();
+            string payload = "";
+            for (auto payload_entry : payload_map) {
+                auto key = payload_entry.first;
+                if (key == entity_key) {
+                    payload = payload_entry.second;
+                    break;
+                }
+                auto colon = entity_key.find(":");
+                if (colon != string::npos) {
+                    auto name = entity_key.substr(colon+1);
+                    if (key == name) {
+                        payload = payload_entry.second;
+                        break;
+                    }
+                }
+            }
+            if (!payload.empty()) {
+                auto reply_entity = xml_codec_payload_to_entity(payload, top_entity->clone_ptr());
+                result_list.push_back( get_child_entity_from_top(reply_entity, *entity) );
+            }
+            else {
+                YLOG_DEBUG("Netconf Service 'get' operation did not return data node on entity '{}'; returning nullptr.", entity_key);
+                result_list.push_back(nullptr);
+            }
+        }
+        return result_list;
+    }
+
     // Get root data node
-    vector<shared_ptr<Entity>> result_list{};
     shared_ptr<path::DataNode> result_datanode = (*rpc)(provider.get_session());
     if (result_datanode == nullptr)
         return result_list;
@@ -280,10 +360,11 @@ get_from_list(NetconfServiceProvider& provider, DataStore source, vector<Entity*
 
     // Build resulting list of entities
     for (Entity* entity : filter_list) {
-        string internal_key = entity->get_segment_path();
+        auto top_entity = get_top_entity(entity);
+        string internal_key = top_entity->get_segment_path();
         shared_ptr<path::DataNode> datanode = path_to_datanode[internal_key];
         if (!datanode) {
-            YLOG_DEBUG("Searching for datanode using entity yang name '{}'", entity->yang_name);
+            YLOG_DEBUG("Searching for datanode using entity yang name '{}'", top_entity->yang_name);
             path_to_datanode.erase(internal_key);
             for (auto dn_entry : path_to_datanode) {
                 if (dn_entry.first.find(entity->yang_name) != string::npos && dn_entry.second) {
@@ -293,20 +374,23 @@ get_from_list(NetconfServiceProvider& provider, DataStore source, vector<Entity*
             }
         }
         if (datanode) {
-            result_list.push_back( read_datanode(*entity, datanode));
+            result_list.push_back( read_datanode(*top_entity, datanode));
         }
         else {
             YLOG_DEBUG("Netconf Service 'get' operation did not return data node on entity '{}'; returning nullptr.", internal_key);
             result_list.push_back(nullptr);
         }
     }
-
     return result_list;
 }
 
 vector<shared_ptr<Entity>>
 NetconfService::get(NetconfServiceProvider& provider, vector<Entity*> & filter_list)
 {
+    if (filter_list.empty()) {
+        YLOG_INFO("NetconfService::get: Filter list is empty");
+        return {};
+    }
     YLOG_INFO("Executing 'get' RPC on {}", entity_vector_to_string(filter_list));
     return get_from_list(provider, DataStore::na, filter_list, "ietf-netconf:get");
 }
@@ -314,6 +398,10 @@ NetconfService::get(NetconfServiceProvider& provider, vector<Entity*> & filter_l
 vector<shared_ptr<Entity>>
 NetconfService::get_config(NetconfServiceProvider& provider, DataStore source, vector<Entity*> & filter_list)
 {
+    if (filter_list.empty()) {
+        YLOG_INFO("NetconfService::get: Filter list is empty");
+        return {};
+    }
     YLOG_INFO("Executing 'get-config' RPC on {} from {}", entity_vector_to_string(filter_list), datastore_to_string(source));
     return get_from_list(provider, source, filter_list, "ietf-netconf:get-config");
 }
@@ -327,9 +415,24 @@ get_entity(NetconfServiceProvider& provider, DataStore source, Entity& filter, c
         create_input_leaf(rpc->get_input_node(), source, "source");
     }
 
-    // filter
-    std::string filter_string  = get_xml_subtree_filter_payload(filter, provider);
+    YFilter original_yfilter = filter.yfilter;
+    if (!filter.is_top_level_class && original_yfilter == YFilter::not_set) {
+        filter.yfilter = YFilter::read;
+    }
+    auto top_entity = get_top_entity(&filter);
+    string filter_string = (top_entity->is_top_level_class) ?
+        get_xml_subtree_filter_payload(*top_entity, provider) :
+        get_data_payload(filter, provider);
     rpc->get_input_node().create_datanode("filter", filter_string);
+    filter.yfilter = original_yfilter;
+
+    if (filter.ignore_validation && top_entity->is_top_level_class) {
+        // Bypass libyang validation
+        const path::NetconfSession * ns = dynamic_cast<const path::NetconfSession *>(&(provider.get_session()));
+        auto reply = ns->execute_netconf_operation(*rpc);
+        auto reply_entity = xml_codec_payload_to_entity(reply, top_entity->clone_ptr());
+        return get_child_entity_from_top(reply_entity, filter);
+    }
 
     shared_ptr<path::DataNode> result_datanode = (*rpc)(provider.get_session());
     if (result_datanode == nullptr)
@@ -483,6 +586,31 @@ static string datastore_to_string(DataStore datastore)
         default:
             return "na";
     }
+}
+
+static map<string,string> split_xml_payload(string reply)
+{
+    map<string,string> payload_map;
+    while (!reply.empty())
+    {
+        reply = trim(reply);
+        if (reply.find("<") != 0)
+            break;
+        auto space = reply.find(" ");
+        if (space != string::npos) {
+            auto start_tag = reply.substr(0, space);
+            auto end_tag = reply.find(start_tag.insert(1, "/"));
+            if (end_tag != string::npos) {
+                size_t payload_end_pos = end_tag + start_tag.length() + 1;
+                auto payload = reply.substr(0, payload_end_pos);
+                reply = reply.substr(payload_end_pos);
+                payload_map[start_tag.substr(2)] = payload;
+                continue;
+            }
+        }
+        break; 	// error conditions
+    }
+    return payload_map;
 }
 
 }

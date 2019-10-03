@@ -285,8 +285,6 @@ class RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
         ydk::YLeaf address; //type: string
         ydk::YLeaf prefix_length; //type: uint8
-        ydk::YLeaf next_hop_address; //type: string
-        ydk::YLeaf interface_name; //type: string
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf prefix_length_xr; //type: uint8
         ydk::YLeaf route_version; //type: uint32
@@ -4890,6 +4888,12 @@ class RibEdmNnh : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf if_index;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "ipv4-address") return 1;
+            if (name == "if-index") return 2;
+            return -1;
+        }
 };
 
 

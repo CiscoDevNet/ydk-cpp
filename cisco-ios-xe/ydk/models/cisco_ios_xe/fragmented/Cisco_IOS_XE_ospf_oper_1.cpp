@@ -1459,6 +1459,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2Area::Ospfv2LsdbArea::Ospfv2Rout
 {
     std::ostringstream path_buffer;
     path_buffer << "link-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1935,6 +1936,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2Area::Ospfv2LsdbArea::NetworkSum
 {
     std::ostringstream path_buffer;
     path_buffer << "summary-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2134,6 +2136,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2Area::Ospfv2LsdbArea::RouterSumm
 {
     std::ostringstream path_buffer;
     path_buffer << "summary-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2342,6 +2345,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2Area::Ospfv2LsdbArea::ExternalLs
 {
     std::ostringstream path_buffer;
     path_buffer << "external-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2583,6 +2587,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2Area::Ospfv2LsdbArea::NssaLsa::E
 {
     std::ostringstream path_buffer;
     path_buffer << "external-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4187,6 +4192,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2LsdbExternal::Ospfv2RouterLsaLin
 {
     std::ostringstream path_buffer;
     path_buffer << "link-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4663,6 +4669,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2LsdbExternal::NetworkSummaryLsa:
 {
     std::ostringstream path_buffer;
     path_buffer << "summary-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4862,6 +4869,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2LsdbExternal::RouterSummaryLsa::
 {
     std::ostringstream path_buffer;
     path_buffer << "summary-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5070,6 +5078,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2LsdbExternal::ExternalLsa::Exter
 {
     std::ostringstream path_buffer;
     path_buffer << "external-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5311,6 +5320,7 @@ std::string OspfOperData::Ospfv2Instance::Ospfv2LsdbExternal::NssaLsa::ExternalT
 {
     std::ostringstream path_buffer;
     path_buffer << "external-topo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

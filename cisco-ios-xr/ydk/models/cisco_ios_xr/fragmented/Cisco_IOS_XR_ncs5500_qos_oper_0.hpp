@@ -3768,6 +3768,13 @@ class DnxQoseaShowAction : public ydk::Enum
         static const ydk::Enum::YLeaf action_drop;
         static const ydk::Enum::YLeaf action_mark;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "action-none") return 0;
+            if (name == "action-transmit") return 1;
+            if (name == "action-drop") return 2;
+            if (name == "action-mark") return 3;
+            return -1;
+        }
 };
 
 class PolicyParamUnit : public ydk::Enum
@@ -3798,6 +3805,33 @@ class PolicyParamUnit : public ydk::Enum
         static const ydk::Enum::YLeaf policy_param_unit_ratio;
         static const ydk::Enum::YLeaf policy_param_unit_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policy-param-unit-invalid") return 0;
+            if (name == "policy-param-unit-bytes") return 1;
+            if (name == "policy-param-unit-kbytes") return 2;
+            if (name == "policy-param-unit-mbytes") return 3;
+            if (name == "policy-param-unit-gbytes") return 4;
+            if (name == "policy-param-unit-bitsps") return 5;
+            if (name == "policy-param-unit-kbitsps") return 6;
+            if (name == "policy-param-unit-mbitsps") return 7;
+            if (name == "policy-param-unit-gbitsps") return 8;
+            if (name == "policy-param-unit-cells-ps") return 9;
+            if (name == "policy-param-unit-packets-ps") return 10;
+            if (name == "policy-param-unit-us") return 11;
+            if (name == "policy-param-unit-ms") return 12;
+            if (name == "policy-param-unit-seconds") return 13;
+            if (name == "policy-param-unit-packets") return 14;
+            if (name == "policy-param-unit-cells") return 15;
+            if (name == "policy-param-unit-percent") return 16;
+            if (name == "policy-param-unit-per-thousand") return 17;
+            if (name == "policy-param-unit-per-million") return 18;
+            if (name == "policy-param-unit-hz") return 19;
+            if (name == "policy-param-unit-khz") return 20;
+            if (name == "policy-param-unit-mhz") return 21;
+            if (name == "policy-param-unit-ratio") return 22;
+            if (name == "policy-param-unit-max") return 23;
+            return -1;
+        }
 };
 
 class DnxQoseaShowWred : public ydk::Enum
@@ -3812,6 +3846,17 @@ class DnxQoseaShowWred : public ydk::Enum
         static const ydk::Enum::YLeaf red_with_default_min_max;
         static const ydk::Enum::YLeaf wred_invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "wred-cos") return 0;
+            if (name == "wred-dscp") return 1;
+            if (name == "wred-precedence") return 2;
+            if (name == "wred-discard-class") return 3;
+            if (name == "wred-mpls-exp") return 4;
+            if (name == "red-with-user-min-max") return 5;
+            if (name == "red-with-default-min-max") return 6;
+            if (name == "wred-invalid") return 7;
+            return -1;
+        }
 };
 
 class DnxQoseaShowHpLevel : public ydk::Enum
@@ -3826,6 +3871,17 @@ class DnxQoseaShowHpLevel : public ydk::Enum
         static const ydk::Enum::YLeaf high_priority_level7;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "high-priority-level1") return 0;
+            if (name == "high-priority-level2") return 1;
+            if (name == "high-priority-level3") return 2;
+            if (name == "high-priority-level4") return 3;
+            if (name == "high-priority-level5") return 4;
+            if (name == "high-priority-level6") return 5;
+            if (name == "high-priority-level7") return 6;
+            if (name == "unknown") return 7;
+            return -1;
+        }
 };
 
 class QosPolicyAccountEnum : public ydk::Enum
@@ -3837,6 +3893,14 @@ class QosPolicyAccountEnum : public ydk::Enum
         static const ydk::Enum::YLeaf qos_serv_policy_ac_count_user_def;
         static const ydk::Enum::YLeaf qos_serv_policy_ac_count_l1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos-serv-policy-no-ac-count-pref") return 0;
+            if (name == "qos-serv-policy-ac-count-l2") return 1;
+            if (name == "qos-serv-policy-no-ac-count-l2") return 2;
+            if (name == "qos-serv-policy-ac-count-user-def") return 3;
+            if (name == "qos-serv-policy-ac-count-l1") return 4;
+            return -1;
+        }
 };
 
 class DnxQoseaShowMark : public ydk::Enum
@@ -3862,6 +3926,28 @@ class DnxQoseaShowMark : public ydk::Enum
         static const ydk::Enum::YLeaf un_supported17;
         static const ydk::Enum::YLeaf traffic_class;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mark-none") return 0;
+            if (name == "dscp") return 1;
+            if (name == "precedence") return 2;
+            if (name == "mpls-topmost") return 3;
+            if (name == "mpls-imposition") return 4;
+            if (name == "qos-group") return 5;
+            if (name == "discard-class") return 6;
+            if (name == "cos") return 7;
+            if (name == "inner-cos") return 8;
+            if (name == "un-supported9") return 9;
+            if (name == "un-supported10") return 10;
+            if (name == "un-supported11") return 11;
+            if (name == "dscp-tunnel") return 12;
+            if (name == "precedence-tunnel") return 13;
+            if (name == "dei") return 14;
+            if (name == "dei-imposition") return 15;
+            if (name == "un-supported16") return 16;
+            if (name == "un-supported17") return 17;
+            if (name == "traffic-class") return 18;
+            return -1;
+        }
 };
 
 class DnxQoseaShowPolicyStatus : public ydk::Enum
@@ -3870,6 +3956,11 @@ class DnxQoseaShowPolicyStatus : public ydk::Enum
         static const ydk::Enum::YLeaf no_error;
         static const ydk::Enum::YLeaf policy_in_reset;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-error") return 0;
+            if (name == "policy-in-reset") return 1;
+            return -1;
+        }
 };
 
 class DnxQoseaShowIntfStatus : public ydk::Enum
@@ -3878,6 +3969,11 @@ class DnxQoseaShowIntfStatus : public ydk::Enum
         static const ydk::Enum::YLeaf state_unknown;
         static const ydk::Enum::YLeaf state_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-unknown") return 0;
+            if (name == "state-down") return 1;
+            return -1;
+        }
 };
 
 class DnxQoseaShowLevel : public ydk::Enum
@@ -3889,6 +3985,14 @@ class DnxQoseaShowLevel : public ydk::Enum
         static const ydk::Enum::YLeaf level4;
         static const ydk::Enum::YLeaf level5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 0;
+            if (name == "level2") return 1;
+            if (name == "level3") return 2;
+            if (name == "level4") return 3;
+            if (name == "level5") return 4;
+            return -1;
+        }
 };
 
 class DnxQoseaShowQueue : public ydk::Enum
@@ -3899,6 +4003,13 @@ class DnxQoseaShowQueue : public ydk::Enum
         static const ydk::Enum::YLeaf high_priority_queue;
         static const ydk::Enum::YLeaf unknown_queue_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "low-priority-default-queue") return 0;
+            if (name == "low-priority-queue") return 1;
+            if (name == "high-priority-queue") return 2;
+            if (name == "unknown-queue-type") return 3;
+            return -1;
+        }
 };
 
 

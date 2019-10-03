@@ -3966,6 +3966,12 @@ class BgpOcOriginAttr : public ydk::Enum
         static const ydk::Enum::YLeaf egp;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 0;
+            if (name == "egp") return 1;
+            if (name == "incomplete") return 2;
+            return -1;
+        }
 };
 
 class BgpOcInvalidRouteReason : public ydk::Enum
@@ -3977,6 +3983,14 @@ class BgpOcInvalidRouteReason : public ydk::Enum
         static const ydk::Enum::YLeaf invalid_origin_at_or_id;
         static const ydk::Enum::YLeaf invalid_as_confed_loop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "valid-route") return 1;
+            if (name == "invalid-clsuter-loop") return 2;
+            if (name == "invalid-as-path-loop") return 3;
+            if (name == "invalid-origin-at-or-id") return 4;
+            if (name == "invalid-as-confed-loop") return 5;
+            return -1;
+        }
 };
 
 class BgpOcAfi : public ydk::Enum
@@ -3985,6 +3999,11 @@ class BgpOcAfi : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 5;
+            return -1;
+        }
 };
 
 

@@ -580,6 +580,7 @@ std::string VrfGroup::Nodes::Node::Groups::Group::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1158,6 +1159,7 @@ std::string Srlg::Groups::Group::SrlgAttribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1771,6 +1773,7 @@ std::string Srlg::Rsips::Rsip::SrlgAttribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2833,6 +2836,7 @@ std::string Srlg::Nodes::Node::Groups::Group::SrlgAttribute::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3168,6 +3172,7 @@ std::string Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3773,6 +3778,7 @@ std::string Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute:
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3895,6 +3901,7 @@ std::string Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::Rsip::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "rsip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5042,6 +5049,7 @@ std::string Srlg::InheritNodes::InheritNode::SrlgAttribute::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5633,6 +5641,7 @@ std::string Srlg::InterfaceDetails::InterfaceDetail::SrlgAttribute::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5755,6 +5764,7 @@ std::string Srlg::InterfaceDetails::InterfaceDetail::Rsip::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "rsip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

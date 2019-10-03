@@ -276,6 +276,13 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Commands : public ydk::Enum
         static const ydk::Enum::YLeaf reset;
         static const ydk::Enum::YLeaf close;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noop") return 1;
+            if (name == "open") return 2;
+            if (name == "reset") return 3;
+            if (name == "close") return 4;
+            return -1;
+        }
 };
 
 class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingState : public ydk::Enum
@@ -288,6 +295,15 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingState : public ydk::Enum
         static const ydk::Enum::YLeaf openFailure;
         static const ydk::Enum::YLeaf ringFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "opened") return 1;
+            if (name == "closed") return 2;
+            if (name == "opening") return 3;
+            if (name == "closing") return 4;
+            if (name == "openFailure") return 5;
+            if (name == "ringFailure") return 6;
+            return -1;
+        }
 };
 
 class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingOpenStatus : public ydk::Enum
@@ -305,6 +321,20 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingOpenStatus : public ydk::Enum
         static const ydk::Enum::YLeaf removeReceived;
         static const ydk::Enum::YLeaf open;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noOpen") return 1;
+            if (name == "badParam") return 2;
+            if (name == "lobeFailed") return 3;
+            if (name == "signalLoss") return 4;
+            if (name == "insertionTimeout") return 5;
+            if (name == "ringFailed") return 6;
+            if (name == "beaconing") return 7;
+            if (name == "duplicateMAC") return 8;
+            if (name == "requestFailed") return 9;
+            if (name == "removeReceived") return 10;
+            if (name == "open") return 11;
+            return -1;
+        }
 };
 
 class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingSpeed : public ydk::Enum
@@ -315,6 +345,13 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingSpeed : public ydk::Enum
         static const ydk::Enum::YLeaf fourMegabit;
         static const ydk::Enum::YLeaf sixteenMegabit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "oneMegabit") return 2;
+            if (name == "fourMegabit") return 3;
+            if (name == "sixteenMegabit") return 4;
+            return -1;
+        }
 };
 
 class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5ActMonParticipate : public ydk::Enum
@@ -323,6 +360,11 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5ActMonParticipate : public ydk::En
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 

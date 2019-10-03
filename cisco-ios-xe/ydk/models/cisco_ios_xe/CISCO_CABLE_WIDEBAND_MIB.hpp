@@ -505,6 +505,12 @@ class CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::CcwbRFChann
         static const ydk::Enum::YLeaf qam256;
         static const ydk::Enum::YLeaf qam1024;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qam64") return 1;
+            if (name == "qam256") return 2;
+            if (name == "qam1024") return 3;
+            return -1;
+        }
 };
 
 class CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::CcwbRFChannelAnnex : public ydk::Enum
@@ -514,6 +520,12 @@ class CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::CcwbRFChann
         static const ydk::Enum::YLeaf annexB;
         static const ydk::Enum::YLeaf annexC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "annexA") return 1;
+            if (name == "annexB") return 2;
+            if (name == "annexC") return 3;
+            return -1;
+        }
 };
 
 class CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry::CcwbWBCmStatusValue : public ydk::Enum
@@ -559,6 +571,48 @@ class CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry::CcwbWBCmS
         static const ydk::Enum::YLeaf wbNetAccessDisExpire;
         static const ydk::Enum::YLeaf wbPrivacyEnabExpire;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "offline") return 1;
+            if (name == "others") return 2;
+            if (name == "initRangingRcvd") return 3;
+            if (name == "initDhcpReqRcvd") return 4;
+            if (name == "onlineNetAccessDisabled") return 5;
+            if (name == "onlineKekAssigned") return 6;
+            if (name == "onlineTekAssigned") return 7;
+            if (name == "rejectBadMic") return 8;
+            if (name == "rejectBadCos") return 9;
+            if (name == "kekRejected") return 10;
+            if (name == "tekRejected") return 11;
+            if (name == "online") return 12;
+            if (name == "initTftpPacketRcvd") return 13;
+            if (name == "initTodRequestRcvd") return 14;
+            if (name == "reset") return 15;
+            if (name == "rangingInProgress") return 16;
+            if (name == "dhcpGotIpAddr") return 17;
+            if (name == "rejStaleConfig") return 18;
+            if (name == "rejIpSpoof") return 19;
+            if (name == "rejClassFail") return 20;
+            if (name == "rejRegNack") return 21;
+            if (name == "bpiKekExpired") return 22;
+            if (name == "bpiTekExpired") return 23;
+            if (name == "shutdown") return 24;
+            if (name == "channelChgInitRangingRcvd") return 25;
+            if (name == "channelChgRangingInProgress") return 26;
+            if (name == "wbOnline") return 27;
+            if (name == "wbOnlinePrivacy") return 28;
+            if (name == "wbOnlineKekAssigned") return 29;
+            if (name == "wbOnlineTekAssigned") return 30;
+            if (name == "wbOnlineNetAccessDis") return 31;
+            if (name == "wbKekReject") return 32;
+            if (name == "wbTekReject") return 33;
+            if (name == "wbNetAccessDisReject") return 34;
+            if (name == "wbPrivacyEnabReject") return 35;
+            if (name == "wbKekExpire") return 36;
+            if (name == "wbTekExpire") return 37;
+            if (name == "wbNetAccessDisExpire") return 38;
+            if (name == "wbPrivacyEnabExpire") return 39;
+            return -1;
+        }
 };
 
 

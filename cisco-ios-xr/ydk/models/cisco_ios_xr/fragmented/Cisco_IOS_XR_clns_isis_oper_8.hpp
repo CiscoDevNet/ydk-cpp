@@ -209,6 +209,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::
         ydk::YLeaf max_label_supported; //type: uint8
         ydk::YLeaf max_bkp_label_supported; //type: uint8
         ydk::YLeaf max_srte_label_supported; //type: uint8
+        ydk::YLeaf max_srat_label_supported; //type: uint8
         ydk::YLeaf level1ldp_sync_enabled; //type: boolean
         ydk::YLeaf level2ldp_sync_enabled; //type: boolean
         ydk::YLeaf ldp_sync_status; //type: boolean
@@ -221,6 +222,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::
         ydk::YLeaf level2pp_metric; //type: uint32
         ydk::YLeaf level1pp_configured; //type: boolean
         ydk::YLeaf level2pp_configured; //type: boolean
+        ydk::YLeaf link_group_name; //type: string
         class AdjacencyFormStatus; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus
         class AdvPrefixStatus; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus
         class Level1Frr; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::Level1Frr
@@ -1524,6 +1526,131 @@ class Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface : pub
         ydk::YLeaf has_achieved_ld_pv6_sync; //type: boolean
 
 }; // Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface
+
+
+class Isis::Instances::Instance::SrLabels : public ydk::Entity
+{
+    public:
+        SrLabels();
+        ~SrLabels();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SrLabel; //type: Isis::Instances::Instance::SrLabels::SrLabel
+
+        ydk::YList sr_label;
+        
+}; // Isis::Instances::Instance::SrLabels
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel : public ydk::Entity
+{
+    public:
+        SrLabel();
+        ~SrLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf label_type; //type: IsisEdmLabelTypeEnum
+        ydk::YLeaf label_flags; //type: uint8
+        ydk::YLeaf label_refcount; //type: uint8
+        ydk::YLeaf label_value; //type: uint32
+        ydk::YLeaf label_interface; //type: string
+        ydk::YLeaf label_ifh; //type: string
+        ydk::YLeaf label_table_id; //type: uint32
+        ydk::YLeaf label_af_id; //type: IsisAfId
+        class LabelPrefix; //type: Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix> label_prefix;
+        
+}; // Isis::Instances::Instance::SrLabels::SrLabel
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix : public ydk::Entity
+{
+    public:
+        LabelPrefix();
+        ~LabelPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: IsisAfId
+        class Ipv4; //type: Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4
+        class Ipv6; //type: Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6> ipv6;
+        
+}; // Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4 : public ydk::Entity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6
 
 
 class Isis::Instances::Instance::InterfaceStatistics : public ydk::Entity

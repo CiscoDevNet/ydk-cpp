@@ -40,6 +40,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -139,6 +140,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -339,6 +341,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
 {
     std::ostringstream path_buffer;
     path_buffer << "per-level-advertising-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -720,6 +723,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -819,6 +823,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1094,6 +1099,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1432,6 +1438,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1705,6 +1712,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-sh-route-redist-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2030,7 +2038,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 
 Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::NativeDetails()
     :
-    priority{YType::enumeration, "priority"}
+    priority{YType::enumeration, "priority"},
+    local_label{YType::uint32, "local-label"}
         ,
     primary(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary>())
     , backup(this, {})
@@ -2053,6 +2062,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
             return true;
     }
     return priority.is_set
+	|| local_label.is_set
 	|| (primary !=  nullptr && primary->has_data());
 }
 
@@ -2065,6 +2075,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     }
     return is_set(yfilter)
 	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(local_label.yfilter)
 	|| (primary !=  nullptr && primary->has_operation());
 }
 
@@ -2080,6 +2091,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2136,6 +2148,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         priority.value_namespace = name_space;
         priority.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "local-label")
+    {
+        local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2144,11 +2162,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         priority.yfilter = yfilter;
     }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "primary" || name == "backup" || name == "priority")
+    if(name == "primary" || name == "backup" || name == "priority" || name == "local-label")
         return true;
     return false;
 }
@@ -2495,7 +2517,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup>())
     , uloop_explicit(this, {})
@@ -2533,6 +2556,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -2559,6 +2583,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -2566,6 +2591,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2583,6 +2609,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2710,6 +2737,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2754,11 +2787,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -2789,7 +2826,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -2839,7 +2877,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::has_operation() const
@@ -2879,7 +2918,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_segment_path() const
@@ -2918,6 +2958,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3121,6 +3162,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3225,11 +3272,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -3262,6 +3313,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3355,6 +3407,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3503,6 +3556,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3645,6 +3699,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3739,7 +3794,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup>())
 {
@@ -3765,6 +3821,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -3781,6 +3838,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -3788,6 +3846,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "ucmp-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3805,6 +3864,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3898,6 +3958,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3942,11 +4008,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "total-ucmp-distance" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "total-ucmp-distance" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -3977,7 +4047,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -4027,7 +4098,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::has_operation() const
@@ -4067,7 +4139,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_segment_path() const
@@ -4106,6 +4179,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4309,6 +4383,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4413,11 +4493,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -4450,6 +4534,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4543,6 +4628,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4659,7 +4745,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup>())
     , uloop_explicit(this, {})
@@ -4697,6 +4784,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -4723,6 +4811,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -4730,6 +4819,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4747,6 +4837,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4874,6 +4965,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4918,11 +5015,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -4953,7 +5054,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -5003,7 +5105,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::has_operation() const
@@ -5043,7 +5146,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_segment_path() const
@@ -5082,6 +5186,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5285,6 +5390,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5389,11 +5500,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -5426,6 +5541,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5519,6 +5635,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5667,6 +5784,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5809,6 +5927,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5903,7 +6022,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup>())
     , uloop_explicit(this, {})
@@ -5941,6 +6061,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -5967,6 +6088,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -5974,6 +6096,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "srte-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5991,6 +6114,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6118,6 +6242,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6162,11 +6292,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -6197,7 +6331,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -6247,7 +6382,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::has_operation() const
@@ -6287,7 +6423,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_segment_path() const
@@ -6326,6 +6463,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6529,6 +6667,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6633,11 +6777,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -6670,6 +6818,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6763,6 +6912,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6911,6 +7061,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7053,6 +7204,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7147,7 +7299,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup>())
     , uloop_explicit(this, {})
@@ -7185,6 +7338,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -7211,6 +7365,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -7218,6 +7373,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7235,6 +7391,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7362,6 +7519,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7406,11 +7569,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -7441,7 +7608,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -7491,7 +7659,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::has_operation() const
@@ -7531,7 +7700,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_segment_path() const
@@ -7570,6 +7740,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7773,6 +7944,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7877,11 +8054,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -7914,6 +8095,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8007,6 +8189,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8155,6 +8338,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8297,6 +8481,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8434,6 +8619,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8557,6 +8743,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8656,6 +8843,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8837,6 +9025,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8960,6 +9149,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9059,6 +9249,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9304,6 +9495,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9528,7 +9720,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup>())
     , uloop_explicit(this, {})
@@ -9566,6 +9759,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -9592,6 +9786,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -9599,6 +9794,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9616,6 +9812,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9743,6 +9940,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9787,11 +9990,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -9822,7 +10029,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -9872,7 +10080,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::has_operation() const
@@ -9912,7 +10121,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_segment_path() const
@@ -9951,6 +10161,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10154,6 +10365,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10258,11 +10475,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -10295,6 +10516,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10388,6 +10610,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10536,6 +10759,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10678,6 +10902,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10772,7 +10997,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup>())
 {
@@ -10798,6 +11024,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -10814,6 +11041,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -10821,6 +11049,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "ucmp-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10838,6 +11067,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10931,6 +11161,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10975,11 +11211,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "total-ucmp-distance" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "total-ucmp-distance" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -11010,7 +11250,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -11060,7 +11301,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::has_operation() const
@@ -11100,7 +11342,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_segment_path() const
@@ -11139,6 +11382,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11342,6 +11586,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11446,11 +11696,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -11483,6 +11737,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11576,6 +11831,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11692,7 +11948,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup>())
     , uloop_explicit(this, {})
@@ -11730,6 +11987,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -11756,6 +12014,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -11763,6 +12022,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11780,6 +12040,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11907,6 +12168,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11951,11 +12218,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -11986,7 +12257,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -12036,7 +12308,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::has_operation() const
@@ -12076,7 +12349,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::get_segment_path() const
@@ -12115,6 +12389,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12318,6 +12593,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12422,11 +12703,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -12459,6 +12744,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12552,6 +12838,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12700,6 +12987,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12842,6 +13130,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12936,7 +13225,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup>())
     , uloop_explicit(this, {})
@@ -12974,6 +13264,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -13000,6 +13291,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -13007,6 +13299,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "srte-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13024,6 +13317,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13151,6 +13445,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -13195,11 +13495,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -13230,7 +13534,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -13280,7 +13585,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::has_operation() const
@@ -13320,7 +13626,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::get_segment_path() const
@@ -13359,6 +13666,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13562,6 +13870,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -13666,11 +13980,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -13703,6 +14021,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13796,6 +14115,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13944,6 +14264,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14086,6 +14407,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14180,7 +14502,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     segment_routing_sid_value{YType::uint32, "segment-routing-sid-value"},
     weight{YType::uint32, "weight"},
     is_te_tunnel_interface{YType::boolean, "is-te-tunnel-interface"},
-    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"}
+    is_sr_exclude_tunnel_interface{YType::boolean, "is-sr-exclude-tunnel-interface"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup>())
     , uloop_explicit(this, {})
@@ -14218,6 +14541,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| weight.is_set
 	|| is_te_tunnel_interface.is_set
 	|| is_sr_exclude_tunnel_interface.is_set
+	|| outgoing_label.is_set
 	|| (frr_backup !=  nullptr && frr_backup->has_data());
 }
 
@@ -14244,6 +14568,7 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(is_te_tunnel_interface.yfilter)
 	|| ydk::is_set(is_sr_exclude_tunnel_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| (frr_backup !=  nullptr && frr_backup->has_operation());
 }
 
@@ -14251,6 +14576,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14268,6 +14594,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (is_te_tunnel_interface.is_set || is_set(is_te_tunnel_interface.yfilter)) leaf_name_data.push_back(is_te_tunnel_interface.get_name_leafdata());
     if (is_sr_exclude_tunnel_interface.is_set || is_set(is_sr_exclude_tunnel_interface.yfilter)) leaf_name_data.push_back(is_sr_exclude_tunnel_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14395,6 +14722,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         is_sr_exclude_tunnel_interface.value_namespace = name_space;
         is_sr_exclude_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14439,11 +14772,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         is_sr_exclude_tunnel_interface.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface")
+    if(name == "frr-backup" || name == "uloop-explicit" || name == "nnh" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "neighbor-snpa" || name == "tag" || name == "tunnel-interface" || name == "segment-routing-sid-value" || name == "weight" || name == "is-te-tunnel-interface" || name == "is-sr-exclude-tunnel-interface" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -14474,7 +14811,8 @@ Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeSt
     is_epcfrr_lfa{YType::boolean, "is-epcfrr-lfa"},
     is_strict_spflfa{YType::boolean, "is-strict-spflfa"},
     is_tunnel_requested{YType::boolean, "is-tunnel-requested"},
-    weight{YType::uint32, "weight"}
+    weight{YType::uint32, "weight"},
+    outgoing_label{YType::uint32, "outgoing-label"}
         ,
     segment_routing_sid_value_entry(this, {})
     , backup_repair(this, {})
@@ -14524,7 +14862,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| is_epcfrr_lfa.is_set
 	|| is_strict_spflfa.is_set
 	|| is_tunnel_requested.is_set
-	|| weight.is_set;
+	|| weight.is_set
+	|| outgoing_label.is_set;
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::has_operation() const
@@ -14564,7 +14903,8 @@ bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
 	|| ydk::is_set(is_epcfrr_lfa.yfilter)
 	|| ydk::is_set(is_strict_spflfa.yfilter)
 	|| ydk::is_set(is_tunnel_requested.yfilter)
-	|| ydk::is_set(weight.yfilter);
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter);
 }
 
 std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::get_segment_path() const
@@ -14603,6 +14943,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Topolo
     if (is_strict_spflfa.is_set || is_set(is_strict_spflfa.yfilter)) leaf_name_data.push_back(is_strict_spflfa.get_name_leafdata());
     if (is_tunnel_requested.is_set || is_set(is_tunnel_requested.yfilter)) leaf_name_data.push_back(is_tunnel_requested.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14806,6 +15147,12 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
         weight.value_namespace = name_space;
         weight.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14910,11 +15257,15 @@ void Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Nat
     {
         weight.yfilter = yfilter;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight")
+    if(name == "segment-routing-sid-value-entry" || name == "backup-repair" || name == "neighbor-id" || name == "egress-interface" || name == "neighbor-address" || name == "tunnel-egress-interface" || name == "neighbor-snpa" || name == "remote-lfa-system-id" || name == "remote-lfa-router-id" || name == "remote-lfa-system-pid" || name == "remote-lfa-router-pid" || name == "total-backup-distance" || name == "segment-routing-sid-value" || name == "num-sid" || name == "backup-repair-list-size" || name == "tilfa-computation" || name == "prefix-source-node-id" || name == "is-downstream" || name == "is-lc-disjoint" || name == "is-node-protecting" || name == "is-primary-path" || name == "is-srlg-disjoint" || name == "is-remote-lfa" || name == "is-epcfrr-lfa" || name == "is-strict-spflfa" || name == "is-tunnel-requested" || name == "weight" || name == "outgoing-label")
         return true;
     return false;
 }
@@ -14947,6 +15298,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15040,6 +15392,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15188,6 +15541,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15330,6 +15684,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15467,6 +15822,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15590,6 +15946,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15689,6 +16046,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15870,6 +16228,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15993,6 +16352,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16092,6 +16452,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16292,6 +16653,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "per-level-advertising-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16673,6 +17035,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16772,6 +17135,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17247,6 +17611,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrPeer::FullSyncAchieved:
 {
     std::ostringstream path_buffer;
     path_buffer << "full-sync-achieved";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17325,6 +17690,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrPeer::ManSyncCount::get
 {
     std::ostringstream path_buffer;
     path_buffer << "man-sync-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17403,6 +17769,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrPeer::NsrChgCount::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-chg-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17481,6 +17848,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "uptime";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17559,6 +17927,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "uptime-valid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19945,6 +20314,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::
 {
     std::ostringstream path_buffer;
     path_buffer << "notify-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20225,6 +20595,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "ncd";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20370,6 +20741,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "nii-idb";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23052,6 +23424,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

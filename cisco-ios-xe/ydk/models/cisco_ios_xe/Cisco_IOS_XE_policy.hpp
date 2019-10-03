@@ -15,6 +15,10 @@ class PrecedenceType2 : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf rsvp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rsvp") return 0;
+            return -1;
+        }
 };
 
 class ClassNameType : public ydk::Enum
@@ -22,6 +26,10 @@ class ClassNameType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf class_default;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "class-default") return 0;
+            return -1;
+        }
 };
 
 class PolicePpsBpsType : public ydk::Enum
@@ -30,6 +38,11 @@ class PolicePpsBpsType : public ydk::Enum
         static const ydk::Enum::YLeaf pps;
         static const ydk::Enum::YLeaf bps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pps") return 0;
+            if (name == "bps") return 1;
+            return -1;
+        }
 };
 
 class PolicePacketsBytesType : public ydk::Enum
@@ -38,6 +51,11 @@ class PolicePacketsBytesType : public ydk::Enum
         static const ydk::Enum::YLeaf packets;
         static const ydk::Enum::YLeaf bytes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "packets") return 0;
+            if (name == "bytes") return 1;
+            return -1;
+        }
 };
 
 class PolicyActionType : public ydk::Enum
@@ -61,6 +79,26 @@ class PolicyActionType : public ydk::Enum
         static const ydk::Enum::YLeaf dbl;
         static const ydk::Enum::YLeaf queue_buffers;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bandwidth") return 0;
+            if (name == "compression") return 1;
+            if (name == "drop") return 2;
+            if (name == "estimate") return 3;
+            if (name == "fair-queue") return 4;
+            if (name == "forward") return 5;
+            if (name == "netflow-sampler") return 6;
+            if (name == "police") return 7;
+            if (name == "priority") return 8;
+            if (name == "queue-limit") return 9;
+            if (name == "random-detect") return 10;
+            if (name == "service-policy") return 11;
+            if (name == "set") return 12;
+            if (name == "shape") return 13;
+            if (name == "trust") return 14;
+            if (name == "dbl") return 15;
+            if (name == "queue-buffers") return 16;
+            return -1;
+        }
 };
 
 class BytesMsUsType : public ydk::Enum
@@ -70,6 +108,12 @@ class BytesMsUsType : public ydk::Enum
         static const ydk::Enum::YLeaf ms;
         static const ydk::Enum::YLeaf us;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bytes") return 0;
+            if (name == "ms") return 1;
+            if (name == "us") return 2;
+            return -1;
+        }
 };
 
 

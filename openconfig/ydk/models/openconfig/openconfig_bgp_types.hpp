@@ -243,6 +243,13 @@ class AsPathSegmentType : public ydk::Enum
         static const ydk::Enum::YLeaf AS_CONFED_SEQUENCE;
         static const ydk::Enum::YLeaf AS_CONFED_SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "AS_SEQ") return 0;
+            if (name == "AS_SET") return 1;
+            if (name == "AS_CONFED_SEQUENCE") return 2;
+            if (name == "AS_CONFED_SET") return 3;
+            return -1;
+        }
 };
 
 class CommunityType : public ydk::Enum
@@ -253,6 +260,13 @@ class CommunityType : public ydk::Enum
         static const ydk::Enum::YLeaf BOTH;
         static const ydk::Enum::YLeaf NONE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "STANDARD") return 0;
+            if (name == "EXTENDED") return 1;
+            if (name == "BOTH") return 2;
+            if (name == "NONE") return 3;
+            return -1;
+        }
 };
 
 class PeerType : public ydk::Enum
@@ -261,6 +275,11 @@ class PeerType : public ydk::Enum
         static const ydk::Enum::YLeaf INTERNAL;
         static const ydk::Enum::YLeaf EXTERNAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERNAL") return 0;
+            if (name == "EXTERNAL") return 1;
+            return -1;
+        }
 };
 
 class BgpSessionDirection : public ydk::Enum
@@ -269,6 +288,11 @@ class BgpSessionDirection : public ydk::Enum
         static const ydk::Enum::YLeaf INBOUND;
         static const ydk::Enum::YLeaf OUTBOUND;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INBOUND") return 0;
+            if (name == "OUTBOUND") return 1;
+            return -1;
+        }
 };
 
 class BgpOriginAttrType : public ydk::Enum
@@ -278,6 +302,12 @@ class BgpOriginAttrType : public ydk::Enum
         static const ydk::Enum::YLeaf EGP;
         static const ydk::Enum::YLeaf INCOMPLETE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IGP") return 0;
+            if (name == "EGP") return 1;
+            if (name == "INCOMPLETE") return 2;
+            return -1;
+        }
 };
 
 

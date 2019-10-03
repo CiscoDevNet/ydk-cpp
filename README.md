@@ -21,45 +21,54 @@
 
 ## Overview
 
-The YANG Development Kit (YDK) is a Software Development Kit that provides API's that are modeled in YANG. The main goal of YDK is to reduce the learning curve of YANG data models by expressing the model semantics in an API and abstracting protocol/encoding details.  YDK is composed of a core package that defines services and providers, plus one or more module bundles that are based on YANG models.  
+**YDK** is a developer tool that allows generate YANG model API's in multiple languages and provides services
+to apply generated API over multiple communication protocols.
+Currently supported languages are: Python, Go and C++.
+Currently implemented protocols are: Netconf, Restconf, OpenDaylight and gNMI.
+YDK provides CRUD and protocol specific service over above protocols.
+YDK also provides Codec service to translate API models to/from XML and JSON encoded strings.
 
 ## How to Install
 
-You can install YDK-Cpp on MacOS or Linux.  It is not currently supported on Windows.
+You can install YDK-Cpp on MacOS or Linux platforms. It is not currently supported on Windows.
 
 ### System Requirements
+
 #### Linux
 ##### Ubuntu (Debian-based)
-The following packages must be present in your system before installing YDK-Cpp:
-
-If installing from prebuilt binary:
-
-```
-$ sudo apt-get install gdebi-core libtool-bin
-
-```
-If building from source:
-
-```
-$ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev libxslt1-dev libtool-bin cmake
-```
-
-##### Centos (Fedora-based)
 
 The following packages must be present in your system before installing YDK-Cpp:
 
-If installing from prebuilt binary:
+```
+$ sudo apt-get install gdebi-core python3-dev libtool-bin
+$ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev libxslt1-dev cmake
+```
+
+Install gcc-5 for Xenial (Ubuntu 16.04.4):
+
+```
+$ # Upgrade compiler to gcc 5.*
+$ sudo apt-get install gcc-5 g++-5 -y > /dev/null
+$ sudo ln -sf /usr/bin/g++-5 /usr/bin/g++
+$ sudo ln -sf /usr/bin/gcc-5 /usr/bin/gcc
+```
+
+#### CentOS-7.x (Fedora-based)
+
+The following packages must be present in your system before installing YDK-Cpp:
 
 ```
 $ sudo yum install epel-release
-$ sudo yum install libssh-devel gcc-c++
+$ sudo yum install libxml2-devel libxslt-devel libssh-devel libtool gcc-c++ pcre-devel cmake3 python36-devel
 ```
 
-If building from source:
+if your gcc compiler version is below 4.8.1, install gcc-5 and g++-5
 
 ```
-$ sudo yum install epel-release
-$ sudo yum install libxml2-devel libxslt-devel libssh-devel libtool gcc-c++ pcre-devel cmake
+$ yum install centos-release-scl -y > /dev/null
+$ yum install devtoolset-4-gcc* -y > /dev/null
+$ ln -sf /opt/rh/devtoolset-4/root/usr/bin/gcc /usr/bin/gcc
+$ ln -sf /opt/rh/devtoolset-4/root/usr/bin/g++ /usr/bin/g++
 ```
 
 #### Mac OS
@@ -72,11 +81,13 @@ $ brew install pkg-config libssh libxml2 xml2 curl pcre cmake
 $ xcode-select --install
 ```
 
-**Note**. The libssh-0.8.0 and following versions do not support multi-threading feature, which is required by YDK. Therefore it is required to install or reinstall libssh-0.7.x
+#### Libssh installation
+
+Please note that libssh-0.8.0 `does not support <http://api.libssh.org/master/libssh_tutor_threads.html>`_ separate threading library, 
+which is required for YDK. Therefore, if after installation of libssh package you find that the `libssh_threads.a` library is missing, 
+please downgrade the installation of libssh to version 0.7.6, or upgrade to 0.8.1 or higher. Example:
 
 ```
-$ brew reinstall openssl
-$ export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 $ wget https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.7.6.tar.gz
 $ tar zxf libssh-0.7.6.tar.gz && rm -f libssh-0.7.6.tar.gz
 $ mkdir libssh-0.7.6/build && cd libssh-0.7.6/build
@@ -113,11 +124,10 @@ In order to enable YDK support for gNMI protocol, which is optional, the followi
     cd -
 ```
 
-#### Runtime environment
+#### Run-time environment
 
-There is an open issue with gRPC on Centos/Fedora, which requires an extra step before running any YDK gNMI application. 
-See this issue on [GRPC GitHub](https://github.com/grpc/grpc/issues/10942#issuecomment-312565041) for details. 
-As a workaround, the YDK based application runtime environment must include setting of `LD_LIBRARY_PATH` variable:
+There is an open issue with gRPC on Centos/Fedora, which requires an extra step before running any YDK gNMI application. See this issue on `GRPC GitHub <https://github.com/grpc/grpc/issues/10942#issuecomment-312565041>`_ 
+for details. As a workaround, the YDK based application runtime environment must include setting of `LD_LIBRARY_PATH` variable:
 
 ```
     PROTO="/Your-Protobuf-and-Grpc-installation-directory"
@@ -128,85 +138,78 @@ As a workaround, the YDK based application runtime environment must include sett
 #### Linux
 ##### Ubuntu (Debian-based)
 
-You can install the latest YDK core package using prebuilt binaries for Xenial (Ubuntu 16.04.4) and Bionic (Ubuntu 18.04.1) distributions. 
+You can install the latest YDK core package using prebuilt binaries for Xenial and Bionic distributions. 
 For other Ubuntu distributions it is recommended to build core libraries from source.
 
-For Xenial:
+For Xenial (Ubuntu 16.04.4, gcc-5.5.0):
 
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.0/xenial/libydk_0.8.0-1_amd64.deb
-$ sudo gdebi libydk_0.8.0-1_amd64.deb
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.4/xenial/libydk-0.8.4-1.amd64.deb
+$ sudo gdebi libydk-0.8.4-1.amd64.deb
 ```
 
-For Bionic:
+For Bionic (Ubuntu 18.04.1, gcc-7.4.0):
 
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.0/bionic/libydk_0.8.0-1_amd64.deb
-$ sudo gdebi libydk_0.8.0-1_amd64.deb
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.4/bionic/libydk-0.8.4-1.amd64.deb
+$ sudo gdebi libydk-0.8.4-1.amd64.deb
 ```
 
-##### Centos (Fedora-based)
+##### CentOS-7.x (Fedora-based)
 
-You can install the latest YDK core package using prebuilt binaries:
+You can install the latest YDK core package using prebuilt binaries.
+The C++ code was compiled with default gcc compiler version, which is 4.8.5. For other gcc compiler versions
+it is recommended to build `libydk` library [from source](#installing-from-source).
 
 ```
-$ sudo yum install https://devhub.cisco.com/artifactory/rpm-ydk/0.8.0/libydk-0.8.0-1.x86_64.rpm
+$ sudo yum install https://devhub.cisco.com/artifactory/rpm-ydk/0.8.4/libydk-0.8.4-1.x86_64.rpm
 ```
 
 #### MacOS  
 
-You can install the latest YDK core package using prebuilt binaries:
+You can install the latest YDK core package using prebuilt binaries.
+The prebuilt `libydk` package was compiled in MacOS-10.11.6 with clang-8.0.0 compiler. 
+For other C++ compilers it is recommended to build `libydk` [from source](#installing-from-source).
 
 ```
-$ curl -O https://devhub.cisco.com/artifactory/osx-ydk/0.8.0/libydk-0.8.0-Darwin.pkg
-$ sudo installer -pkg libydk-0.8.0-Darwin.pkg -target /
+$ curl -O https://devhub.cisco.com/artifactory/osx-ydk/0.8.4/libydk-0.8.4-Darwin.pkg
+$ sudo installer -pkg libydk-0.8.4-Darwin.pkg -target /
 ```
 
-### gNMI Requirements
+### gNMI Service Installation
 
-In order to enable YDK support for gNMI protocol, which is optional, the following third party software must be installed prior to gNMI YDK component installation.
+#### Install gNMI service library
 
-#### Install protobuf and protoc
+##### Linux
 
-```
-    wget https://github.com/google/protobuf/releases/download/v3.5.0/protobuf-cpp-3.5.0.zip
-    unzip protobuf-cpp-3.5.0.zip
-    cd protobuf-3.5.0
-    ./configure
-    make
-    make check
-    sudo make install
-    sudo ldconfig
-```
-
-#### Install gRPC
+For Ubuntu/Xenial:
 
 ```
-    git clone -b v1.9.1 https://github.com/grpc/grpc
-    cd grpc
-    git submodule update --init
-    make
-    sudo make install
-    sudo ldconfig
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.4/xenial/libydk_gnmi_0.4.0-4.amd64.deb
+$ sudo gdebi libydk_gnmi_0.4.0-4.amd64.deb
 ```
 
-#### Install gNMI library
-
-For Xenial:
+For Ubuntu/Bionic:
 
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.0/xenial/libydk_gnmi_0.4.0-1_amd64.deb
-$ sudo gdebi libydk_gnmi_0.4.0-1_amd64.deb
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.4/bionic/libydk_gnmi_0.4.0-4.amd64.deb
+$ sudo gdebi libydk_gnmi_0.4.0-4.amd64.deb
 ```
 
-For Bionic:
+For CentOS
 
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.0/bionic/libydk_gnmi_0.4.0-1_amd64.deb
-$ sudo gdebi libydk_gnmi_0.4.0-1_amd64.deb
+   sudo yum install https://devhub.cisco.com/artifactory/rpm-ydk/0.8.4/libydk_gnmi_0.4.0-4.x86_64.rpm
 ```
 
-#### Installing from source
+##### MacOS
+
+```
+$ curl -O https://devhub.cisco.com/artifactory/osx-ydk/0.8.4/libydk_gnmi-0.4.0-4.Darwin.pkg
+$ sudo installer -pkg libydk_gnmi-0.4.0-4.Darwin.pkg -target /
+```
+
+### Installing from source
 #### Building YDK
 
 YDK uses ``cmake`` as the build system of choice. To install the core package, execute:
@@ -262,4 +265,4 @@ build$ sudo make install
 - Additional YDK information can be found at [ydk.io](http://ydk.io)
 
 ## Release Notes
-The current YDK release version is 0.8.0. YDK-Cpp is licensed under the Apache 2.0 License.
+The current YDK release version is 0.8.4. YDK-Cpp is licensed under the Apache 2.0 License.

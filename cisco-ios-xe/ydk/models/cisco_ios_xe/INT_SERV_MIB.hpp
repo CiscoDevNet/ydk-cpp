@@ -195,6 +195,12 @@ class QosService : public ydk::Enum
         static const ydk::Enum::YLeaf guaranteedDelay;
         static const ydk::Enum::YLeaf controlledLoad;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bestEffort") return 1;
+            if (name == "guaranteedDelay") return 2;
+            if (name == "controlledLoad") return 5;
+            return -1;
+        }
 };
 
 class INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowOwner : public ydk::Enum
@@ -204,6 +210,12 @@ class INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowOwner : public ydk
         static const ydk::Enum::YLeaf rsvp;
         static const ydk::Enum::YLeaf management;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "rsvp") return 2;
+            if (name == "management") return 3;
+            return -1;
+        }
 };
 
 

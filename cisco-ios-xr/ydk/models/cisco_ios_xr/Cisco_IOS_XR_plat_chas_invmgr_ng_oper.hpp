@@ -4941,6 +4941,12 @@ class InvAdminState : public ydk::Enum
         static const ydk::Enum::YLeaf admin_up;
         static const ydk::Enum::YLeaf admin_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "admin-state-invalid") return 0;
+            if (name == "admin-up") return 1;
+            if (name == "admin-down") return 2;
+            return -1;
+        }
 };
 
 class InvResetReason : public ydk::Enum
@@ -4954,6 +4960,16 @@ class InvResetReason : public ydk::Enum
         static const ydk::Enum::YLeaf module_reset_reason_environment;
         static const ydk::Enum::YLeaf module_reset_reason_user_unpower;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "module-reset-reason-unknown") return 0;
+            if (name == "module-reset-reason-powerup") return 1;
+            if (name == "module-reset-reason-user-shutdown") return 2;
+            if (name == "module-reset-reason-user-reload") return 3;
+            if (name == "module-reset-reason-auto-reload") return 4;
+            if (name == "module-reset-reason-environment") return 5;
+            if (name == "module-reset-reason-user-unpower") return 6;
+            return -1;
+        }
 };
 
 class InvCardState : public ydk::Enum
@@ -4999,6 +5015,48 @@ class InvCardState : public ydk::Enum
         static const ydk::Enum::YLeaf inv_card_updating_fpd;
         static const ydk::Enum::YLeaf inv_card_num_states;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inv-card-not-present") return 0;
+            if (name == "inv-card-present") return 1;
+            if (name == "inv-card-reset") return 2;
+            if (name == "inv-card-booting") return 3;
+            if (name == "inv-card-mbi-booting") return 4;
+            if (name == "inv-card-running-mbi") return 5;
+            if (name == "inv-card-running-ena") return 6;
+            if (name == "inv-card-bring-down") return 7;
+            if (name == "inv-card-ena-failure") return 8;
+            if (name == "inv-card-f-diag-run") return 9;
+            if (name == "inv-card-f-diag-failure") return 10;
+            if (name == "inv-card-powered") return 11;
+            if (name == "inv-card-unpowered") return 12;
+            if (name == "inv-card-mdr") return 13;
+            if (name == "inv-card-mdr-running-mbi") return 14;
+            if (name == "inv-card-main-t-mode") return 15;
+            if (name == "inv-card-admin-down") return 16;
+            if (name == "inv-card-no-mon") return 17;
+            if (name == "inv-card-unknown") return 18;
+            if (name == "inv-card-failed") return 19;
+            if (name == "inv-card-ok") return 20;
+            if (name == "inv-card-missing") return 21;
+            if (name == "inv-card-field-diag-downloading") return 22;
+            if (name == "inv-card-field-diag-unmonitor") return 23;
+            if (name == "inv-card-fabric-field-diag-unmonitor") return 24;
+            if (name == "inv-card-field-diag-rp-launching") return 25;
+            if (name == "inv-card-field-diag-running") return 26;
+            if (name == "inv-card-field-diag-pass") return 27;
+            if (name == "inv-card-field-diag-fail") return 28;
+            if (name == "inv-card-field-diag-timeout") return 29;
+            if (name == "inv-card-disabled") return 30;
+            if (name == "inv-card-spa-booting") return 31;
+            if (name == "inv-card-not-allowed-online") return 32;
+            if (name == "inv-card-stopped") return 33;
+            if (name == "inv-card-incompatible-fw-ver") return 34;
+            if (name == "inv-card-fpd-hold") return 35;
+            if (name == "inv-card-node-prep") return 36;
+            if (name == "inv-card-updating-fpd") return 37;
+            if (name == "inv-card-num-states") return 38;
+            return -1;
+        }
 };
 
 class InvMonitorState : public ydk::Enum
@@ -5007,6 +5065,11 @@ class InvMonitorState : public ydk::Enum
         static const ydk::Enum::YLeaf unmonitored;
         static const ydk::Enum::YLeaf monitored;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unmonitored") return 0;
+            if (name == "monitored") return 1;
+            return -1;
+        }
 };
 
 class NodeState : public ydk::Enum
@@ -5064,6 +5127,60 @@ class NodeState : public ydk::Enum
         static const ydk::Enum::YLeaf max;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-present") return 0;
+            if (name == "present") return 1;
+            if (name == "reset") return 2;
+            if (name == "rommon") return 3;
+            if (name == "mbi-boot") return 4;
+            if (name == "mbi-run") return 5;
+            if (name == "xr-run") return 6;
+            if (name == "bring-down") return 7;
+            if (name == "xr-fail") return 8;
+            if (name == "fdiag-run") return 9;
+            if (name == "fdiag-fail") return 10;
+            if (name == "power") return 11;
+            if (name == "unpower") return 12;
+            if (name == "mdr-warm-reload") return 13;
+            if (name == "mdr-mbi-run") return 14;
+            if (name == "maintenance-mode") return 15;
+            if (name == "admin-down") return 16;
+            if (name == "not-monitor") return 17;
+            if (name == "unknown-card") return 18;
+            if (name == "failed") return 19;
+            if (name == "ok") return 20;
+            if (name == "missing") return 21;
+            if (name == "diag-download") return 22;
+            if (name == "diag-not-monitor") return 23;
+            if (name == "fabric-diag-not-monitor") return 24;
+            if (name == "diag-rp-launch") return 25;
+            if (name == "diag-run") return 26;
+            if (name == "diag-pass") return 27;
+            if (name == "diag-fail") return 28;
+            if (name == "diag-timeout") return 29;
+            if (name == "disable") return 30;
+            if (name == "spa-boot") return 31;
+            if (name == "not-allowed-online") return 32;
+            if (name == "stop") return 33;
+            if (name == "incomp-version") return 34;
+            if (name == "fpd-hold") return 35;
+            if (name == "xr-preparation") return 36;
+            if (name == "sync-ready") return 37;
+            if (name == "xr-isolate") return 38;
+            if (name == "ready") return 39;
+            if (name == "invalid") return 40;
+            if (name == "operational") return 41;
+            if (name == "operational-lock") return 42;
+            if (name == "going-down") return 43;
+            if (name == "going-offline") return 44;
+            if (name == "going-online") return 45;
+            if (name == "offline") return 46;
+            if (name == "up") return 47;
+            if (name == "down") return 48;
+            if (name == "max") return 49;
+            if (name == "unknown") return 50;
+            return -1;
+        }
 };
 
 class CardRedundancyState : public ydk::Enum
@@ -5072,6 +5189,11 @@ class CardRedundancyState : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf standby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "standby") return 2;
+            return -1;
+        }
 };
 
 class InvPowerAdminState : public ydk::Enum
@@ -5081,6 +5203,12 @@ class InvPowerAdminState : public ydk::Enum
         static const ydk::Enum::YLeaf admin_on;
         static const ydk::Enum::YLeaf admin_off;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "admin-power-invalid") return 0;
+            if (name == "admin-on") return 2;
+            if (name == "admin-off") return 3;
+            return -1;
+        }
 };
 
 

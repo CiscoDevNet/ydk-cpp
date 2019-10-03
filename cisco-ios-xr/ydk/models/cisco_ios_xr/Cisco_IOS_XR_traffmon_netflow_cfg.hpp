@@ -591,6 +591,10 @@ class NfSamplingMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf random;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "random") return 2;
+            return -1;
+        }
 };
 
 class NfCacheAgingMode : public ydk::Enum
@@ -600,6 +604,12 @@ class NfCacheAgingMode : public ydk::Enum
         static const ydk::Enum::YLeaf permanent;
         static const ydk::Enum::YLeaf immediate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "permanent") return 1;
+            if (name == "immediate") return 2;
+            return -1;
+        }
 };
 
 

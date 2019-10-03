@@ -579,6 +579,20 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1LineType : public ydk::Enum
         static const ydk::Enum::YLeaf dsx1DS2M12;
         static const ydk::Enum::YLeaf dsx2E2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "dsx1ESF") return 2;
+            if (name == "dsx1D4") return 3;
+            if (name == "dsx1E1") return 4;
+            if (name == "dsx1E1CRC") return 5;
+            if (name == "dsx1E1MF") return 6;
+            if (name == "dsx1E1CRCMF") return 7;
+            if (name == "dsx1Unframed") return 8;
+            if (name == "dsx1E1Unframed") return 9;
+            if (name == "dsx1DS2M12") return 10;
+            if (name == "dsx2E2") return 11;
+            return -1;
+        }
 };
 
 class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1LineCoding : public ydk::Enum
@@ -592,6 +606,16 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1LineCoding : public ydk::Enu
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf dsx1B6ZS;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx1JBZS") return 1;
+            if (name == "dsx1B8ZS") return 2;
+            if (name == "dsx1HDB3") return 3;
+            if (name == "dsx1ZBTSI") return 4;
+            if (name == "dsx1AMI") return 5;
+            if (name == "other") return 6;
+            if (name == "dsx1B6ZS") return 7;
+            return -1;
+        }
 };
 
 class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1SendCode : public ydk::Enum
@@ -606,6 +630,17 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1SendCode : public ydk::Enum
         static const ydk::Enum::YLeaf dsx1Send3in24Pattern;
         static const ydk::Enum::YLeaf dsx1SendOtherTestPattern;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx1SendNoCode") return 1;
+            if (name == "dsx1SendLineCode") return 2;
+            if (name == "dsx1SendPayloadCode") return 3;
+            if (name == "dsx1SendResetCode") return 4;
+            if (name == "dsx1SendQRS") return 5;
+            if (name == "dsx1Send511Pattern") return 6;
+            if (name == "dsx1Send3in24Pattern") return 7;
+            if (name == "dsx1SendOtherTestPattern") return 8;
+            return -1;
+        }
 };
 
 class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1LoopbackConfig : public ydk::Enum
@@ -618,6 +653,15 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1LoopbackConfig : public ydk:
         static const ydk::Enum::YLeaf dsx1InwardLoop;
         static const ydk::Enum::YLeaf dsx1DualLoop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx1NoLoop") return 1;
+            if (name == "dsx1PayloadLoop") return 2;
+            if (name == "dsx1LineLoop") return 3;
+            if (name == "dsx1OtherLoop") return 4;
+            if (name == "dsx1InwardLoop") return 5;
+            if (name == "dsx1DualLoop") return 6;
+            return -1;
+        }
 };
 
 class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1SignalMode : public ydk::Enum
@@ -629,6 +673,14 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1SignalMode : public ydk::Enu
         static const ydk::Enum::YLeaf messageOriented;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "robbedBit") return 2;
+            if (name == "bitOriented") return 3;
+            if (name == "messageOriented") return 4;
+            if (name == "other") return 5;
+            return -1;
+        }
 };
 
 class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1TransmitClockSource : public ydk::Enum
@@ -638,6 +690,12 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1TransmitClockSource : public
         static const ydk::Enum::YLeaf localTiming;
         static const ydk::Enum::YLeaf throughTiming;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "loopTiming") return 1;
+            if (name == "localTiming") return 2;
+            if (name == "throughTiming") return 3;
+            return -1;
+        }
 };
 
 class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1LineStatusChangeTrapEnable : public ydk::Enum
@@ -646,6 +704,11 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1LineStatusChangeTrapEnable :
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1Channelization : public ydk::Enum
@@ -655,6 +718,12 @@ class DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::Dsx1Channelization : public ydk:
         static const ydk::Enum::YLeaf enabledDs0;
         static const ydk::Enum::YLeaf enabledDs1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "enabledDs0") return 2;
+            if (name == "enabledDs1") return 3;
+            return -1;
+        }
 };
 
 

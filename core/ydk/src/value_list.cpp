@@ -293,9 +293,9 @@ YList::build_key(shared_ptr<Entity> ep)
     ostringstream value_buffer;
     string key;
     vector< pair<string, LeafData> > name_leaf_data_vector = ep->get_name_leaf_data();
-    for (auto key : ylist_key_names) {
+    for (auto ylist_key : ylist_key_names) {
         for (auto name_leaf_data : name_leaf_data_vector) {
-            if (key == name_leaf_data.first) {
+            if (ylist_key == name_leaf_data.first) {
                 key = value_buffer.str();
                 if (key.length() > 0) {
                     value_buffer << ",";
@@ -308,7 +308,8 @@ YList::build_key(shared_ptr<Entity> ep)
     key = value_buffer.str();
     if (key.length() == 0) {
         // No key list or no matching key, use internal counter
-        value_buffer << counter++;
+        counter++;
+        value_buffer << counter;
         key = value_buffer.str();
     }
     return key;
@@ -324,6 +325,22 @@ YList::append(shared_ptr<Entity> ep)
         key_vector.push_back(key);
     }
     entity_map[key] = ep;
+    ep->ylist_key = key;
+    ep->ylist = this;
+}
+
+void
+YList::review(shared_ptr<Entity> ep)
+{
+    string key = build_key(ep);
+    if (key != ep->ylist_key) {
+        pop(ep->ylist_key);
+        if (!entity_map[key]) {
+            key_vector.push_back(key);
+        }
+        entity_map[key] = ep;
+        ep->ylist_key = key;
+    }
 }
 
 void
@@ -337,7 +354,13 @@ YList::extend(initializer_list<shared_ptr<Entity>> ep_list)
 shared_ptr<Entity>
 YList::operator [] (const string& key) const
 {
-	return entity_map.at(key);
+    auto it = entity_map.find(key);
+    if (it != entity_map.end())
+        return it->second;
+    else {
+        YLOG_ERROR("Key value '{}' is not in the YList", key);
+        throw(YInvalidArgumentError{"Key value is not in the YList"});
+    }
 }
 
 shared_ptr<Entity>

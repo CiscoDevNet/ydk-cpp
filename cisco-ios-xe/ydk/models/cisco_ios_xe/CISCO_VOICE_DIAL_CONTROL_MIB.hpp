@@ -1314,6 +1314,13 @@ class CvCallVolumeWMIntvlType : public ydk::Enum
         static const ydk::Enum::YLeaf hourStats;
         static const ydk::Enum::YLeaf fromReloadStats;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "secondStats") return 1;
+            if (name == "minuteStats") return 2;
+            if (name == "hourStats") return 3;
+            if (name == "fromReloadStats") return 4;
+            return -1;
+        }
 };
 
 class CvIlbcFrameMode : public ydk::Enum
@@ -1322,6 +1329,11 @@ class CvIlbcFrameMode : public ydk::Enum
         static const ydk::Enum::YLeaf frameMode20;
         static const ydk::Enum::YLeaf frameMode30;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "frameMode20") return 20;
+            if (name == "frameMode30") return 30;
+            return -1;
+        }
 };
 
 class CvAmrNbRtpEncap : public ydk::Enum
@@ -1329,6 +1341,10 @@ class CvAmrNbRtpEncap : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf rfc3267;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rfc3267") return 1;
+            return -1;
+        }
 };
 
 class CvSessionProtocol : public ydk::Enum
@@ -1341,6 +1357,15 @@ class CvSessionProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf sccp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "cisco") return 2;
+            if (name == "sdp") return 3;
+            if (name == "sip") return 4;
+            if (name == "multicast") return 5;
+            if (name == "sccp") return 6;
+            return -1;
+        }
 };
 
 class CvCallConnectionType : public ydk::Enum
@@ -1354,6 +1379,16 @@ class CvCallConnectionType : public ydk::Enum
         static const ydk::Enum::YLeaf cacontrol;
         static const ydk::Enum::YLeaf telephony;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "h323") return 1;
+            if (name == "sip") return 2;
+            if (name == "mgcp") return 3;
+            if (name == "sccp") return 4;
+            if (name == "multicast") return 5;
+            if (name == "cacontrol") return 6;
+            if (name == "telephony") return 7;
+            return -1;
+        }
 };
 
 class CvCallVolumeStatsIntvlType : public ydk::Enum
@@ -1363,6 +1398,12 @@ class CvCallVolumeStatsIntvlType : public ydk::Enum
         static const ydk::Enum::YLeaf minuteStats;
         static const ydk::Enum::YLeaf hourStats;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "secondStats") return 1;
+            if (name == "minuteStats") return 2;
+            if (name == "hourStats") return 3;
+            return -1;
+        }
 };
 
 class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType : public ydk::Enum
@@ -1374,6 +1415,14 @@ class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType : 
         static const ydk::Enum::YLeaf voatm;
         static const ydk::Enum::YLeaf vofr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "voice") return 1;
+            if (name == "voip") return 2;
+            if (name == "mmail") return 3;
+            if (name == "voatm") return 4;
+            if (name == "vofr") return 5;
+            return -1;
+        }
 };
 
 class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgPeerType : public ydk::Enum
@@ -1382,6 +1431,11 @@ class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgPeerTyp
         static const ydk::Enum::YLeaf voice;
         static const ydk::Enum::YLeaf data;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "voice") return 1;
+            if (name == "data") return 2;
+            return -1;
+        }
 };
 
 class CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest : public ydk::Enum
@@ -1401,6 +1455,22 @@ class CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoic
         static const ydk::Enum::YLeaf echoCancellerG168Test5;
         static const ydk::Enum::YLeaf echoCancellerG168Test7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "echoCancellerTestNone") return 1;
+            if (name == "echoCancellerG168Test2A") return 2;
+            if (name == "echoCancellerG168Test2B") return 3;
+            if (name == "echoCancellerG168Test2Ca") return 4;
+            if (name == "echoCancellerG168Test2Cb") return 5;
+            if (name == "echoCancellerG168Test3A") return 6;
+            if (name == "echoCancellerG168Test3B") return 7;
+            if (name == "echoCancellerG168Test3C") return 8;
+            if (name == "echoCancellerG168Test4") return 9;
+            if (name == "echoCancellerG168Test6") return 10;
+            if (name == "echoCancellerG168Test9") return 11;
+            if (name == "echoCancellerG168Test5") return 12;
+            if (name == "echoCancellerG168Test7") return 13;
+            return -1;
+        }
 };
 
 class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgMediaSetting : public ydk::Enum
@@ -1409,6 +1479,11 @@ class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPe
         static const ydk::Enum::YLeaf flowThrough;
         static const ydk::Enum::YLeaf flowAround;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "flowThrough") return 1;
+            if (name == "flowAround") return 2;
+            return -1;
+        }
 };
 
 class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgCodingMode : public ydk::Enum
@@ -1417,6 +1492,11 @@ class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPe
         static const ydk::Enum::YLeaf adaptive;
         static const ydk::Enum::YLeaf independent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "adaptive") return 1;
+            if (name == "independent") return 2;
+            return -1;
+        }
 };
 
 class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgFrameSize : public ydk::Enum
@@ -1427,6 +1507,13 @@ class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPe
         static const ydk::Enum::YLeaf frameSize30fixed;
         static const ydk::Enum::YLeaf frameSize60fixed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "frameSize30") return 1;
+            if (name == "frameSize60") return 2;
+            if (name == "frameSize30fixed") return 3;
+            if (name == "frameSize60fixed") return 4;
+            return -1;
+        }
 };
 
 

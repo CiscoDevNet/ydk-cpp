@@ -108,6 +108,21 @@ class EntitySensorDataType : public ydk::Enum
         static const ydk::Enum::YLeaf cmm;
         static const ydk::Enum::YLeaf truthvalue;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "unknown") return 2;
+            if (name == "voltsAC") return 3;
+            if (name == "voltsDC") return 4;
+            if (name == "amperes") return 5;
+            if (name == "watts") return 6;
+            if (name == "hertz") return 7;
+            if (name == "celsius") return 8;
+            if (name == "percentRH") return 9;
+            if (name == "rpm") return 10;
+            if (name == "cmm") return 11;
+            if (name == "truthvalue") return 12;
+            return -1;
+        }
 };
 
 class EntitySensorStatus : public ydk::Enum
@@ -117,6 +132,12 @@ class EntitySensorStatus : public ydk::Enum
         static const ydk::Enum::YLeaf unavailable;
         static const ydk::Enum::YLeaf nonoperational;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 1;
+            if (name == "unavailable") return 2;
+            if (name == "nonoperational") return 3;
+            return -1;
+        }
 };
 
 class EntitySensorDataScale : public ydk::Enum
@@ -140,6 +161,26 @@ class EntitySensorDataScale : public ydk::Enum
         static const ydk::Enum::YLeaf zetta;
         static const ydk::Enum::YLeaf yotta;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "yocto") return 1;
+            if (name == "zepto") return 2;
+            if (name == "atto") return 3;
+            if (name == "femto") return 4;
+            if (name == "pico") return 5;
+            if (name == "nano") return 6;
+            if (name == "micro") return 7;
+            if (name == "milli") return 8;
+            if (name == "units") return 9;
+            if (name == "kilo") return 10;
+            if (name == "mega") return 11;
+            if (name == "giga") return 12;
+            if (name == "tera") return 13;
+            if (name == "exa") return 14;
+            if (name == "peta") return 15;
+            if (name == "zetta") return 16;
+            if (name == "yotta") return 17;
+            return -1;
+        }
 };
 
 

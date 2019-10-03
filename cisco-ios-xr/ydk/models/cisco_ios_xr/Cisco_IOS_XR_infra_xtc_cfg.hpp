@@ -51,7 +51,7 @@ class Pce : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses> pcc_addresses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Backoff> backoff; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Rest> rest; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Rest> rest;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::StateSyncs> state_syncs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::SegmentRouting> segment_routing;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Timers> timers; // presence node
@@ -1285,6 +1285,11 @@ class PceSegment : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf mpls_label;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-address") return 1;
+            if (name == "mpls-label") return 3;
+            return -1;
+        }
 };
 
 class PceBindingSid : public ydk::Enum
@@ -1293,6 +1298,11 @@ class PceBindingSid : public ydk::Enum
         static const ydk::Enum::YLeaf mpls_label_specified;
         static const ydk::Enum::YLeaf mpls_label_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls-label-specified") return 1;
+            if (name == "mpls-label-any") return 2;
+            return -1;
+        }
 };
 
 class PceExplicitPathHop : public ydk::Enum
@@ -1303,6 +1313,13 @@ class PceExplicitPathHop : public ydk::Enum
         static const ydk::Enum::YLeaf sid_adjancency;
         static const ydk::Enum::YLeaf binding_sid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address") return 1;
+            if (name == "sid-node") return 2;
+            if (name == "sid-adjancency") return 3;
+            if (name == "binding-sid") return 4;
+            return -1;
+        }
 };
 
 class PcePath : public ydk::Enum
@@ -1311,6 +1328,11 @@ class PcePath : public ydk::Enum
         static const ydk::Enum::YLeaf explicit_;
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "explicit") return 1;
+            if (name == "dynamic") return 2;
+            return -1;
+        }
 };
 
 class PceEndPoint : public ydk::Enum
@@ -1319,6 +1341,11 @@ class PceEndPoint : public ydk::Enum
         static const ydk::Enum::YLeaf end_point_type_ipv4;
         static const ydk::Enum::YLeaf end_point_type_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "end-point-type-ipv4") return 1;
+            if (name == "end-point-type-ipv6") return 2;
+            return -1;
+        }
 };
 
 class PcerestAuthentication : public ydk::Enum
@@ -1327,6 +1354,11 @@ class PcerestAuthentication : public ydk::Enum
         static const ydk::Enum::YLeaf basic;
         static const ydk::Enum::YLeaf digest;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "basic") return 1;
+            if (name == "digest") return 2;
+            return -1;
+        }
 };
 
 class PcePathHop : public ydk::Enum
@@ -1335,6 +1367,11 @@ class PcePathHop : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf srv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 1;
+            if (name == "srv6") return 2;
+            return -1;
+        }
 };
 
 class PceMetric : public ydk::Enum
@@ -1342,7 +1379,16 @@ class PceMetric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf te;
+        static const ydk::Enum::YLeaf hopcount;
+        static const ydk::Enum::YLeaf latency;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 1;
+            if (name == "te") return 2;
+            if (name == "hopcount") return 3;
+            if (name == "latency") return 12;
+            return -1;
+        }
 };
 
 class PceDisjointPath : public ydk::Enum
@@ -1353,6 +1399,13 @@ class PceDisjointPath : public ydk::Enum
         static const ydk::Enum::YLeaf srlg;
         static const ydk::Enum::YLeaf srlg_node;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "link") return 1;
+            if (name == "node") return 2;
+            if (name == "srlg") return 3;
+            if (name == "srlg-node") return 4;
+            return -1;
+        }
 };
 
 

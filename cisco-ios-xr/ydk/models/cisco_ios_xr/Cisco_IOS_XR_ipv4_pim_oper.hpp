@@ -41395,6 +41395,26 @@ class PimTopologyEntryFlag : public ydk::Enum
         static const ydk::Enum::YLeaf mfp;
         static const ydk::Enum::YLeaf mfb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "kat") return 0;
+            if (name == "aa") return 1;
+            if (name == "pa") return 2;
+            if (name == "ra") return 3;
+            if (name == "ia") return 4;
+            if (name == "rr") return 5;
+            if (name == "lh") return 6;
+            if (name == "dss") return 7;
+            if (name == "dcc") return 8;
+            if (name == "sr") return 9;
+            if (name == "e") return 10;
+            if (name == "ex") return 11;
+            if (name == "ma") return 12;
+            if (name == "mt") return 13;
+            if (name == "mfa") return 14;
+            if (name == "mfp") return 15;
+            if (name == "mfb") return 16;
+            return -1;
+        }
 };
 
 class PimAfi : public ydk::Enum
@@ -41403,6 +41423,11 @@ class PimAfi : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_unicast;
         static const ydk::Enum::YLeaf ipv6_unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-unicast") return 0;
+            if (name == "ipv6-unicast") return 1;
+            return -1;
+        }
 };
 
 class PimInterface : public ydk::Enum
@@ -41412,6 +41437,12 @@ class PimInterface : public ydk::Enum
         static const ydk::Enum::YLeaf decap_interface;
         static const ydk::Enum::YLeaf mdt_interface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encap-interface") return 0;
+            if (name == "decap-interface") return 1;
+            if (name == "mdt-interface") return 2;
+            return -1;
+        }
 };
 
 class PimShowRangeClient : public ydk::Enum
@@ -41426,6 +41457,17 @@ class PimShowRangeClient : public ydk::Enum
         static const ydk::Enum::YLeaf config;
         static const ydk::Enum::YLeaf static_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-client") return 0;
+            if (name == "embedded-config") return 1;
+            if (name == "embedded") return 2;
+            if (name == "permanent") return 3;
+            if (name == "auto-rp") return 4;
+            if (name == "bsr") return 5;
+            if (name == "config") return 6;
+            if (name == "static") return 7;
+            return -1;
+        }
 };
 
 class PimInternalInterestInfo : public ydk::Enum
@@ -41435,6 +41477,12 @@ class PimInternalInterestInfo : public ydk::Enum
         static const ydk::Enum::YLeaf ii;
         static const ydk::Enum::YLeaf id;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "null") return 21;
+            if (name == "ii") return 22;
+            if (name == "id") return 23;
+            return -1;
+        }
 };
 
 class PimProtocol : public ydk::Enum
@@ -41448,6 +41496,16 @@ class PimProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf maximum;
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "non-routable") return 0;
+            if (name == "sparse-mode") return 1;
+            if (name == "dense-mode") return 2;
+            if (name == "bidir") return 3;
+            if (name == "ssm") return 4;
+            if (name == "maximum") return 5;
+            if (name == "any") return 6;
+            return -1;
+        }
 };
 
 class PimSafi : public ydk::Enum
@@ -41458,6 +41516,13 @@ class PimSafi : public ydk::Enum
         static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf default_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            if (name == "all") return 3;
+            if (name == "default") return 4;
+            return -1;
+        }
 };
 
 class PimShowLocalInterest : public ydk::Enum
@@ -41467,6 +41532,12 @@ class PimShowLocalInterest : public ydk::Enum
         static const ydk::Enum::YLeaf li;
         static const ydk::Enum::YLeaf ld;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "null") return 1;
+            if (name == "li") return 2;
+            if (name == "ld") return 3;
+            return -1;
+        }
 };
 
 class PimClient : public ydk::Enum
@@ -41481,6 +41552,17 @@ class PimClient : public ydk::Enum
         static const ydk::Enum::YLeaf configured;
         static const ydk::Enum::YLeaf static_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "configured-embedded-rp") return 1;
+            if (name == "embedded") return 2;
+            if (name == "permanent") return 3;
+            if (name == "auto-rp") return 4;
+            if (name == "bsr") return 5;
+            if (name == "configured") return 6;
+            if (name == "static") return 7;
+            return -1;
+        }
 };
 
 class PimShowProtocol : public ydk::Enum
@@ -41494,6 +41576,16 @@ class PimShowProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf maximum;
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-route") return 0;
+            if (name == "sm") return 1;
+            if (name == "dm") return 2;
+            if (name == "bidir") return 3;
+            if (name == "ssm") return 4;
+            if (name == "maximum") return 5;
+            if (name == "any") return 6;
+            return -1;
+        }
 };
 
 class PimTopologyInterfaceFlag : public ydk::Enum
@@ -41508,6 +41600,17 @@ class PimTopologyInterfaceFlag : public ydk::Enum
         static const ydk::Enum::YLeaf ab;
         static const ydk::Enum::YLeaf ex;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lh") return 0;
+            if (name == "ld") return 1;
+            if (name == "li") return 2;
+            if (name == "ii") return 3;
+            if (name == "id") return 4;
+            if (name == "as") return 5;
+            if (name == "ab") return 6;
+            if (name == "ex") return 7;
+            return -1;
+        }
 };
 
 

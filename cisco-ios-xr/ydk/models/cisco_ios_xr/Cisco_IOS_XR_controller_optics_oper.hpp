@@ -3311,6 +3311,12 @@ class OpticsAmplifierGainRange : public ydk::Enum
         static const ydk::Enum::YLeaf optics_amplifier_gain_range_normal;
         static const ydk::Enum::YLeaf optics_amplifier_gain_range_ext_end_ed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-amplifier-gain-range-invalid") return 0;
+            if (name == "optics-amplifier-gain-range-normal") return 1;
+            if (name == "optics-amplifier-gain-range-ext-end-ed") return 2;
+            return -1;
+        }
 };
 
 class OpticsModulation : public ydk::Enum
@@ -3328,6 +3334,20 @@ class OpticsModulation : public ydk::Enum
         static const ydk::Enum::YLeaf mode_16qam_32qam;
         static const ydk::Enum::YLeaf mod_32qam_64qam;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mod-bpsk") return 1;
+            if (name == "mod-qpsk") return 2;
+            if (name == "mod-8qam") return 3;
+            if (name == "mod-16qam") return 4;
+            if (name == "mod-32qam") return 5;
+            if (name == "mod-64qam") return 6;
+            if (name == "mod-bpsk-qpsk") return 7;
+            if (name == "mod-qpsk-8qam") return 8;
+            if (name == "mod-8qam-16qam") return 9;
+            if (name == "mode-16qam-32qam") return 10;
+            if (name == "mod-32qam-64qam") return 11;
+            return -1;
+        }
 };
 
 class OpticsAmplifierControlMode : public ydk::Enum
@@ -3336,6 +3356,11 @@ class OpticsAmplifierControlMode : public ydk::Enum
         static const ydk::Enum::YLeaf automatic;
         static const ydk::Enum::YLeaf manual;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "automatic") return 1;
+            if (name == "manual") return 2;
+            return -1;
+        }
 };
 
 class EthernetPmd : public ydk::Enum
@@ -3370,8 +3395,43 @@ class EthernetPmd : public ydk::Enum
         static const ydk::Enum::YLeaf optics_eth_100gbase_cr4;
         static const ydk::Enum::YLeaf optics_eth_100gbase_al;
         static const ydk::Enum::YLeaf optics_eth_100gbase_pl;
+        static const ydk::Enum::YLeaf optics_eth_100gbase_srbd;
         static const ydk::Enum::YLeaf optics_eth_undefined;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-eth-not-set") return 0;
+            if (name == "optics-eth-10gbase-lrm") return 1;
+            if (name == "optics-eth-10gbase-lr") return 2;
+            if (name == "optics-eth-10gbase-zr") return 3;
+            if (name == "optics-eth-10gbase-er") return 4;
+            if (name == "optics-eth-10gbase-sr") return 5;
+            if (name == "optics-eth-10gbase") return 6;
+            if (name == "optics-eth-40gbase-cr4") return 7;
+            if (name == "optics-eth-40gbase-sr4") return 8;
+            if (name == "optics-eth-40gbase-lr4") return 9;
+            if (name == "optics-eth-40gbase-er4") return 10;
+            if (name == "optics-eth-40gbase-psm4") return 11;
+            if (name == "optics-eth-40gbase-csr4") return 12;
+            if (name == "optics-eth-40gbase-sr-bd") return 13;
+            if (name == "optics-eth-40g-aoc") return 14;
+            if (name == "optics-eth-4x10gbase-lr") return 15;
+            if (name == "optics-eth-4x10gbase-sr") return 16;
+            if (name == "optics-eth-100g-aoc") return 17;
+            if (name == "optics-eth-100g-acc") return 18;
+            if (name == "optics-eth-100gbase-sr10") return 19;
+            if (name == "optics-eth-100gbase-sr4") return 20;
+            if (name == "optics-eth-100gbase-lr4") return 21;
+            if (name == "optics-eth-100gbase-er4") return 22;
+            if (name == "optics-eth-100gbase-cwdm4") return 23;
+            if (name == "optics-eth-100gbase-clr4") return 24;
+            if (name == "optics-eth-100gbase-psm4") return 25;
+            if (name == "optics-eth-100gbase-cr4") return 26;
+            if (name == "optics-eth-100gbase-al") return 27;
+            if (name == "optics-eth-100gbase-pl") return 28;
+            if (name == "optics-eth-100gbase-srbd") return 29;
+            if (name == "optics-eth-undefined") return 30;
+            return -1;
+        }
 };
 
 class OpticsWaveBand : public ydk::Enum
@@ -3383,6 +3443,14 @@ class OpticsWaveBand : public ydk::Enum
         static const ydk::Enum::YLeaf c_band_even;
         static const ydk::Enum::YLeaf invalid_band;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "c-band") return 0;
+            if (name == "l-band") return 1;
+            if (name == "c-band-odd") return 2;
+            if (name == "c-band-even") return 3;
+            if (name == "invalid-band") return 4;
+            return -1;
+        }
 };
 
 class OpticsAinsStateEt : public ydk::Enum
@@ -3392,6 +3460,12 @@ class OpticsAinsStateEt : public ydk::Enum
         static const ydk::Enum::YLeaf active_running;
         static const ydk::Enum::YLeaf active_pending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "active-running") return 1;
+            if (name == "active-pending") return 2;
+            return -1;
+        }
 };
 
 class FiberConnector : public ydk::Enum
@@ -3403,6 +3477,14 @@ class FiberConnector : public ydk::Enum
         static const ydk::Enum::YLeaf optics_mpo_connect_or;
         static const ydk::Enum::YLeaf optics_undefined_connect_or;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-connect-or-not-set") return 0;
+            if (name == "optics-sc-connect-or") return 1;
+            if (name == "optics-lc-connect-or") return 2;
+            if (name == "optics-mpo-connect-or") return 3;
+            if (name == "optics-undefined-connect-or") return 4;
+            return -1;
+        }
 };
 
 class OpticsFormFactor : public ydk::Enum
@@ -3427,6 +3509,27 @@ class OpticsFormFactor : public ydk::Enum
         static const ydk::Enum::YLeaf non_pluggable;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "invalid") return 1;
+            if (name == "cpak") return 2;
+            if (name == "cxp") return 3;
+            if (name == "sfp-plus") return 4;
+            if (name == "qsfp") return 5;
+            if (name == "qsfp-plus") return 6;
+            if (name == "qsfp28") return 7;
+            if (name == "sfp") return 8;
+            if (name == "cfp") return 9;
+            if (name == "cfp2") return 10;
+            if (name == "cfp2-aco") return 11;
+            if (name == "cfp2-dco") return 12;
+            if (name == "cfp4") return 13;
+            if (name == "xfp") return 14;
+            if (name == "x2") return 15;
+            if (name == "non-pluggable") return 16;
+            if (name == "other") return 17;
+            return -1;
+        }
 };
 
 class SonetApplicationCode : public ydk::Enum
@@ -3438,6 +3541,14 @@ class SonetApplicationCode : public ydk::Enum
         static const ydk::Enum::YLeaf optics_vsr2000_3r5;
         static const ydk::Enum::YLeaf optics_sonet_undefined;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-sonet-not-set") return 0;
+            if (name == "optics-vsr2000-3r2") return 1;
+            if (name == "optics-vsr2000-3r3") return 2;
+            if (name == "optics-vsr2000-3r5") return 3;
+            if (name == "optics-sonet-undefined") return 4;
+            return -1;
+        }
 };
 
 class OpticsControllerState : public ydk::Enum
@@ -3447,6 +3558,12 @@ class OpticsControllerState : public ydk::Enum
         static const ydk::Enum::YLeaf optics_state_down;
         static const ydk::Enum::YLeaf optics_state_admin_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-state-up") return 0;
+            if (name == "optics-state-down") return 1;
+            if (name == "optics-state-admin-down") return 2;
+            return -1;
+        }
 };
 
 class OpticsAmplifierSafetyControlMode : public ydk::Enum
@@ -3456,6 +3573,12 @@ class OpticsAmplifierSafetyControlMode : public ydk::Enum
         static const ydk::Enum::YLeaf optics_amplifier_safety_mode_auto;
         static const ydk::Enum::YLeaf optics_amplifier_safety_mode_disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-amplifier-safety-mode-invalid") return 0;
+            if (name == "optics-amplifier-safety-mode-auto") return 1;
+            if (name == "optics-amplifier-safety-mode-disabled") return 2;
+            return -1;
+        }
 };
 
 class OpticsLaserState : public ydk::Enum
@@ -3467,6 +3590,14 @@ class OpticsLaserState : public ydk::Enum
         static const ydk::Enum::YLeaf apr;
         static const ydk::Enum::YLeaf na;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 0;
+            if (name == "off") return 1;
+            if (name == "unknown") return 2;
+            if (name == "apr") return 3;
+            if (name == "na") return 4;
+            return -1;
+        }
 };
 
 class OpticsFec : public ydk::Enum
@@ -3481,6 +3612,17 @@ class OpticsFec : public ydk::Enum
         static const ydk::Enum::YLeaf fec_not_set;
         static const ydk::Enum::YLeaf fec_cl91;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fec-none") return 0;
+            if (name == "fec-hg15") return 1;
+            if (name == "fec-hg25") return 2;
+            if (name == "fec-hg15-de") return 4;
+            if (name == "fec-hg25-de") return 8;
+            if (name == "fec-enabled") return 16;
+            if (name == "fec-not-set") return 32;
+            if (name == "fec-cl91") return 64;
+            return -1;
+        }
 };
 
 class OpticsPortStatus : public ydk::Enum
@@ -3489,6 +3631,11 @@ class OpticsPortStatus : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf standby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "standby") return 1;
+            return -1;
+        }
 };
 
 class OpticsPhy : public ydk::Enum
@@ -3561,7 +3708,81 @@ class OpticsPhy : public ydk::Enum
         static const ydk::Enum::YLeaf ten_gig_emrdwdm;
         static const ydk::Enum::YLeaf ten_gig_e_edge_performance;
         static const ydk::Enum::YLeaf one_gig_csfp;
+        static const ydk::Enum::YLeaf short_reach_bd;
+        static const ydk::Enum::YLeaf far_reach;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "invalid") return 1;
+            if (name == "long-reach-four-lanes") return 2;
+            if (name == "short-reach-ten-lanes") return 3;
+            if (name == "short-reach-one-lane") return 4;
+            if (name == "long-reach-one-lane") return 5;
+            if (name == "short-reach-four-lanes") return 6;
+            if (name == "copper-four-lanes") return 7;
+            if (name == "active-optical-cable") return 8;
+            if (name == "fourty-gig-e-long-reach-four-lanes") return 9;
+            if (name == "fourty-gig-e-short-reach-four-lanes") return 10;
+            if (name == "cwdm-four-lanes") return 11;
+            if (name == "extended-reach-four-lanes") return 12;
+            if (name == "psm-four-lanes") return 13;
+            if (name == "active-copper-cable") return 14;
+            if (name == "fourty-gig-e-extended-reach-four-lanes") return 15;
+            if (name == "four-x-ten-gig-e-short-reach-one-lane") return 16;
+            if (name == "fourty-gig-epsm-four-lanes") return 17;
+            if (name == "fourty-gig-e-copper-four-lanes") return 18;
+            if (name == "long-reach-mm-one-lane") return 19;
+            if (name == "copper-short-reach") return 20;
+            if (name == "short-reach-srbd") return 21;
+            if (name == "copper-one-lane") return 22;
+            if (name == "four-x-ten-gig-e-long-reach-one-lane") return 23;
+            if (name == "fourty-gig-eaoc-four-lanes") return 24;
+            if (name == "extended-one-lane") return 25;
+            if (name == "zr-one-lane") return 26;
+            if (name == "dwdm-one-lane") return 27;
+            if (name == "sx-one-lane") return 28;
+            if (name == "lx-one-lane") return 29;
+            if (name == "ex-one-lane") return 30;
+            if (name == "zx-one-lane") return 31;
+            if (name == "ba-set-one-lane") return 32;
+            if (name == "aoc-one-lane") return 33;
+            if (name == "active-copper-one-lane") return 34;
+            if (name == "fourty-gig-eacu-four-lanes") return 35;
+            if (name == "four-x-ten-gig-eacu-one-lanes") return 36;
+            if (name == "four-x-ten-gig-ecu-one-lanes") return 37;
+            if (name == "four-x-ten-gig-eaoc-one-lanes") return 38;
+            if (name == "twenty-five-gig-short-reach-one-lane") return 39;
+            if (name == "twenty-five-gig-long-reach-one-lane") return 40;
+            if (name == "twenty-five-gig-extended-reach-one-lane") return 41;
+            if (name == "twenty-five-gig-copper-one-lane") return 42;
+            if (name == "twenty-five-gig-active-optical-one-lane") return 43;
+            if (name == "hundred-gig-edwdm-two") return 44;
+            if (name == "fourty-gig-plr4-four-lanes") return 45;
+            if (name == "fourty-gig-esr4-four-lanes") return 46;
+            if (name == "smsr-four-lanes") return 47;
+            if (name == "cazadero-rqsa") return 48;
+            if (name == "trunk-port-cfp2") return 49;
+            if (name == "short-reach1-lane") return 50;
+            if (name == "inmd-reach1lane") return 51;
+            if (name == "long-reach1-lane") return 52;
+            if (name == "twenty-five-gig-ecu-one-lanes") return 53;
+            if (name == "hundred-gig-e") return 54;
+            if (name == "ten-gig-bx") return 55;
+            if (name == "one-geige") return 56;
+            if (name == "ten-x-ten-gig-e-long-reach-one-lane") return 57;
+            if (name == "ten-x-ten-gig-e-extended-reach-one-lane") return 58;
+            if (name == "passive-copper-one-lane") return 59;
+            if (name == "ten-gig-ecwdm") return 60;
+            if (name == "one-gig-ecwdm") return 61;
+            if (name == "one-gig-edwdm") return 62;
+            if (name == "fx-one-lane") return 63;
+            if (name == "ten-gig-emrdwdm") return 64;
+            if (name == "ten-gig-e-edge-performance") return 65;
+            if (name == "one-gig-csfp") return 66;
+            if (name == "short-reach-bd") return 67;
+            if (name == "far-reach") return 68;
+            return -1;
+        }
 };
 
 class OpticsTas : public ydk::Enum
@@ -3572,6 +3793,13 @@ class OpticsTas : public ydk::Enum
         static const ydk::Enum::YLeaf tas_ui_is;
         static const ydk::Enum::YLeaf tas_ui_ains;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tas-ui-oos") return 0;
+            if (name == "tas-ui-main") return 1;
+            if (name == "tas-ui-is") return 2;
+            if (name == "tas-ui-ains") return 3;
+            return -1;
+        }
 };
 
 class Optics : public ydk::Enum
@@ -3582,6 +3810,13 @@ class Optics : public ydk::Enum
         static const ydk::Enum::YLeaf optics_dwdm;
         static const ydk::Enum::YLeaf optics_cwdm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-unknown") return 0;
+            if (name == "optics-grey") return 1;
+            if (name == "optics-dwdm") return 2;
+            if (name == "optics-cwdm") return 3;
+            return -1;
+        }
 };
 
 class OtnApplicationCode : public ydk::Enum
@@ -3593,6 +3828,14 @@ class OtnApplicationCode : public ydk::Enum
         static const ydk::Enum::YLeaf optics_p1l1_2d2;
         static const ydk::Enum::YLeaf optics_undefined;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "optics-not-set") return 0;
+            if (name == "optics-p1l1-2d1") return 1;
+            if (name == "optics-p1s1-2d2") return 2;
+            if (name == "optics-p1l1-2d2") return 3;
+            if (name == "optics-undefined") return 4;
+            return -1;
+        }
 };
 
 class OpticsLedState : public ydk::Enum
@@ -3606,6 +3849,16 @@ class OpticsLedState : public ydk::Enum
         static const ydk::Enum::YLeaf red_on;
         static const ydk::Enum::YLeaf red_flashing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 0;
+            if (name == "green-on") return 1;
+            if (name == "green-flashing") return 2;
+            if (name == "yellow-on") return 3;
+            if (name == "yellow-flashing") return 4;
+            if (name == "red-on") return 5;
+            if (name == "red-flashing") return 6;
+            return -1;
+        }
 };
 
 class OpticsPort : public ydk::Enum
@@ -3618,6 +3871,15 @@ class OpticsPort : public ydk::Enum
         static const ydk::Enum::YLeaf work;
         static const ydk::Enum::YLeaf prot;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "com") return 0;
+            if (name == "line") return 1;
+            if (name == "osc") return 2;
+            if (name == "com-check") return 3;
+            if (name == "work") return 4;
+            if (name == "prot") return 5;
+            return -1;
+        }
 };
 
 

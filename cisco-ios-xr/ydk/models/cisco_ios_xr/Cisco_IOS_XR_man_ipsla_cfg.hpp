@@ -3325,9 +3325,11 @@ class Ipsla::Responder : public ydk::Entity
 
         class Twamp; //type: Ipsla::Responder::Twamp
         class Type; //type: Ipsla::Responder::Type
+        class TwampLight; //type: Ipsla::Responder::TwampLight
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Twamp> twamp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Type> type;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight> twamp_light;
         
 }; // Ipsla::Responder
 
@@ -3495,6 +3497,895 @@ class Ipsla::Responder::Type::Udp::Addresses::Address::Ports::Port : public ydk:
 }; // Ipsla::Responder::Type::Udp::Addresses::Address::Ports::Port
 
 
+class Ipsla::Responder::TwampLight : public ydk::Entity
+{
+    public:
+        TwampLight();
+        ~TwampLight();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class SessionIds; //type: Ipsla::Responder::TwampLight::SessionIds
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds> session_ids;
+        
+}; // Ipsla::Responder::TwampLight
+
+
+class Ipsla::Responder::TwampLight::SessionIds : public ydk::Entity
+{
+    public:
+        SessionIds();
+        ~SessionIds();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class SessionId; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId
+
+        ydk::YList session_id;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId : public ydk::Entity
+{
+    public:
+        SessionId();
+        ~SessionId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf twamp_light_timeout; //type: uint32
+        class LocalIp; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp> local_ip;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp : public ydk::Entity
+{
+    public:
+        LocalIp();
+        ~LocalIp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LocalIpv6Addresses; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses
+        class LocalIpv4Addresses; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses> local_ipv6_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses> local_ipv4_addresses;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses : public ydk::Entity
+{
+    public:
+        LocalIpv6Addresses();
+        ~LocalIpv6Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LocalIpv6Address; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address
+
+        ydk::YList local_ipv6_address;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address : public ydk::Entity
+{
+    public:
+        LocalIpv6Address();
+        ~LocalIpv6Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf localv6_address; //type: string
+        class LocalPortNumbers; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers> local_port_numbers;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers : public ydk::Entity
+{
+    public:
+        LocalPortNumbers();
+        ~LocalPortNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LocalPortNumber; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber
+
+        ydk::YList local_port_number;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber : public ydk::Entity
+{
+    public:
+        LocalPortNumber();
+        ~LocalPortNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_port; //type: uint16
+        class RemoteIp; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp> remote_ip;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp : public ydk::Entity
+{
+    public:
+        RemoteIp();
+        ~RemoteIp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemoteIpv4Addresses; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses
+        class RemoteIpv6Addresses; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses> remote_ipv4_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses> remote_ipv6_addresses;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses : public ydk::Entity
+{
+    public:
+        RemoteIpv4Addresses();
+        ~RemoteIpv4Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemoteIpv4Address; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address
+
+        ydk::YList remote_ipv4_address;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address : public ydk::Entity
+{
+    public:
+        RemoteIpv4Address();
+        ~RemoteIpv4Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remotev4_address; //type: string
+        class RemotePortNumbers; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers> remote_port_numbers;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers : public ydk::Entity
+{
+    public:
+        RemotePortNumbers();
+        ~RemotePortNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemotePortNumber; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber
+
+        ydk::YList remote_port_number;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber : public ydk::Entity
+{
+    public:
+        RemotePortNumber();
+        ~RemotePortNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_port; //type: uint16
+        class VrfNames; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames> vrf_names;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames : public ydk::Entity
+{
+    public:
+        VrfNames();
+        ~VrfNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class VrfName; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+        ydk::YList vrf_name;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName : public ydk::Entity
+{
+    public:
+        VrfName();
+        ~VrfName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses : public ydk::Entity
+{
+    public:
+        RemoteIpv6Addresses();
+        ~RemoteIpv6Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemoteIpv6Address; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address
+
+        ydk::YList remote_ipv6_address;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address : public ydk::Entity
+{
+    public:
+        RemoteIpv6Address();
+        ~RemoteIpv6Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remotev6_address; //type: string
+        class RemotePortNumbers; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers> remote_port_numbers;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers : public ydk::Entity
+{
+    public:
+        RemotePortNumbers();
+        ~RemotePortNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemotePortNumber; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber
+
+        ydk::YList remote_port_number;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber : public ydk::Entity
+{
+    public:
+        RemotePortNumber();
+        ~RemotePortNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_port; //type: uint16
+        class VrfNames; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames> vrf_names;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames : public ydk::Entity
+{
+    public:
+        VrfNames();
+        ~VrfNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class VrfName; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+        ydk::YList vrf_name;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName : public ydk::Entity
+{
+    public:
+        VrfName();
+        ~VrfName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv6Addresses::LocalIpv6Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses : public ydk::Entity
+{
+    public:
+        LocalIpv4Addresses();
+        ~LocalIpv4Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LocalIpv4Address; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address
+
+        ydk::YList local_ipv4_address;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address : public ydk::Entity
+{
+    public:
+        LocalIpv4Address();
+        ~LocalIpv4Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf localv4_address; //type: string
+        class LocalPortNumbers; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers> local_port_numbers;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers : public ydk::Entity
+{
+    public:
+        LocalPortNumbers();
+        ~LocalPortNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LocalPortNumber; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber
+
+        ydk::YList local_port_number;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber : public ydk::Entity
+{
+    public:
+        LocalPortNumber();
+        ~LocalPortNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_port; //type: uint16
+        class RemoteIp; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp> remote_ip;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp : public ydk::Entity
+{
+    public:
+        RemoteIp();
+        ~RemoteIp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemoteIpv4Addresses; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses
+        class RemoteIpv6Addresses; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses> remote_ipv4_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses> remote_ipv6_addresses;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses : public ydk::Entity
+{
+    public:
+        RemoteIpv4Addresses();
+        ~RemoteIpv4Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemoteIpv4Address; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address
+
+        ydk::YList remote_ipv4_address;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address : public ydk::Entity
+{
+    public:
+        RemoteIpv4Address();
+        ~RemoteIpv4Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remotev4_address; //type: string
+        class RemotePortNumbers; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers> remote_port_numbers;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers : public ydk::Entity
+{
+    public:
+        RemotePortNumbers();
+        ~RemotePortNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemotePortNumber; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber
+
+        ydk::YList remote_port_number;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber : public ydk::Entity
+{
+    public:
+        RemotePortNumber();
+        ~RemotePortNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_port; //type: uint16
+        class VrfNames; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames> vrf_names;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames : public ydk::Entity
+{
+    public:
+        VrfNames();
+        ~VrfNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class VrfName; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+        ydk::YList vrf_name;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName : public ydk::Entity
+{
+    public:
+        VrfName();
+        ~VrfName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv4Addresses::RemoteIpv4Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses : public ydk::Entity
+{
+    public:
+        RemoteIpv6Addresses();
+        ~RemoteIpv6Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemoteIpv6Address; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address
+
+        ydk::YList remote_ipv6_address;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address : public ydk::Entity
+{
+    public:
+        RemoteIpv6Address();
+        ~RemoteIpv6Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remotev6_address; //type: string
+        class RemotePortNumbers; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers> remote_port_numbers;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers : public ydk::Entity
+{
+    public:
+        RemotePortNumbers();
+        ~RemotePortNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RemotePortNumber; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber
+
+        ydk::YList remote_port_number;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber : public ydk::Entity
+{
+    public:
+        RemotePortNumber();
+        ~RemotePortNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_port; //type: uint16
+        class VrfNames; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames> vrf_names;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames : public ydk::Entity
+{
+    public:
+        VrfNames();
+        ~VrfNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class VrfName; //type: Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+        ydk::YList vrf_name;
+        
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames
+
+
+class Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName : public ydk::Entity
+{
+    public:
+        VrfName();
+        ~VrfName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+
+}; // Ipsla::Responder::TwampLight::SessionIds::SessionId::LocalIp::LocalIpv4Addresses::LocalIpv4Address::LocalPortNumbers::LocalPortNumber::RemoteIp::RemoteIpv6Addresses::RemoteIpv6Address::RemotePortNumbers::RemotePortNumber::VrfNames::VrfName
+
+
 class Ipsla::MplsDiscovery : public ydk::Entity
 {
     public:
@@ -3579,6 +4470,21 @@ class IpslaMonth : public ydk::Enum
         static const ydk::Enum::YLeaf november;
         static const ydk::Enum::YLeaf december;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "january") return 0;
+            if (name == "february") return 1;
+            if (name == "march") return 2;
+            if (name == "april") return 3;
+            if (name == "may") return 4;
+            if (name == "june") return 5;
+            if (name == "july") return 6;
+            if (name == "august") return 7;
+            if (name == "september") return 8;
+            if (name == "october") return 9;
+            if (name == "november") return 10;
+            if (name == "december") return 11;
+            return -1;
+        }
 };
 
 class IpslaLspPingReplyMode : public ydk::Enum
@@ -3587,6 +4493,11 @@ class IpslaLspPingReplyMode : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_udp_router_alert;
         static const ydk::Enum::YLeaf control_channel;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-udp-router-alert") return 3;
+            if (name == "control-channel") return 4;
+            return -1;
+        }
 };
 
 class IpslaHistoryFilter : public ydk::Enum
@@ -3595,6 +4506,11 @@ class IpslaHistoryFilter : public ydk::Enum
         static const ydk::Enum::YLeaf failed;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "failed") return 2;
+            if (name == "all") return 255;
+            return -1;
+        }
 };
 
 class IpslaLspTraceReplyMode : public ydk::Enum
@@ -3602,6 +4518,10 @@ class IpslaLspTraceReplyMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4_udp_router_alert;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-udp-router-alert") return 3;
+            return -1;
+        }
 };
 
 class IpslaSecondaryFrequency : public ydk::Enum
@@ -3611,6 +4531,12 @@ class IpslaSecondaryFrequency : public ydk::Enum
         static const ydk::Enum::YLeaf timeout;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "connection-loss") return 1;
+            if (name == "timeout") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class IpslaLife : public ydk::Enum
@@ -3618,6 +4544,10 @@ class IpslaLife : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf forever;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forever") return 0;
+            return -1;
+        }
 };
 
 class IpslaLspReplyDscp : public ydk::Enum
@@ -3645,6 +4575,30 @@ class IpslaLspReplyDscp : public ydk::Enum
         static const ydk::Enum::YLeaf cs7;
         static const ydk::Enum::YLeaf ef;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "af11") return 10;
+            if (name == "af12") return 12;
+            if (name == "af13") return 14;
+            if (name == "af21") return 18;
+            if (name == "af22") return 20;
+            if (name == "af23") return 22;
+            if (name == "af31") return 26;
+            if (name == "af32") return 28;
+            if (name == "af33") return 30;
+            if (name == "af41") return 34;
+            if (name == "af42") return 36;
+            if (name == "af43") return 38;
+            if (name == "cs1") return 8;
+            if (name == "cs2") return 16;
+            if (name == "cs3") return 24;
+            if (name == "cs4") return 32;
+            if (name == "cs5") return 40;
+            if (name == "cs6") return 48;
+            if (name == "cs7") return 56;
+            if (name == "ef") return 46;
+            return -1;
+        }
 };
 
 class IpslaLspMonitorReplyMode : public ydk::Enum
@@ -3652,6 +4606,10 @@ class IpslaLspMonitorReplyMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4_udp_router_alert;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-udp-router-alert") return 3;
+            return -1;
+        }
 };
 
 class IpslaThresholdTypes : public ydk::Enum
@@ -3662,6 +4620,13 @@ class IpslaThresholdTypes : public ydk::Enum
         static const ydk::Enum::YLeaf xof_y;
         static const ydk::Enum::YLeaf average;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            if (name == "xof-y") return 4;
+            if (name == "average") return 5;
+            return -1;
+        }
 };
 
 class IpslaSched : public ydk::Enum
@@ -3672,6 +4637,13 @@ class IpslaSched : public ydk::Enum
         static const ydk::Enum::YLeaf after;
         static const ydk::Enum::YLeaf at;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pending") return 1;
+            if (name == "now") return 2;
+            if (name == "after") return 3;
+            if (name == "at") return 4;
+            return -1;
+        }
 };
 
 class IpslaLspMonitorThresholdTypes : public ydk::Enum
@@ -3680,6 +4652,11 @@ class IpslaLspMonitorThresholdTypes : public ydk::Enum
         static const ydk::Enum::YLeaf immediate;
         static const ydk::Enum::YLeaf consecutive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            return -1;
+        }
 };
 
 

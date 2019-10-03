@@ -3024,6 +3024,11 @@ class DigestHash : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 0;
+            if (name == "sha1") return 1;
+            return -1;
+        }
 };
 
 

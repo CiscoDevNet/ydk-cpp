@@ -241,6 +241,11 @@ class RFC1315MIB::FrameRelayGlobals::FrTrapState : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState : public ydk::Enum
@@ -251,6 +256,13 @@ class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState : public ydk::Enum
         static const ydk::Enum::YLeaf ansiT1_617_D;
         static const ydk::Enum::YLeaf ansiT1_617_B;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noLmiConfigured") return 1;
+            if (name == "lmiRev1") return 2;
+            if (name == "ansiT1-617-D") return 3;
+            if (name == "ansiT1-617-B") return 4;
+            return -1;
+        }
 };
 
 class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress : public ydk::Enum
@@ -261,6 +273,13 @@ class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress : public ydk::Enum
         static const ydk::Enum::YLeaf q922November90;
         static const ydk::Enum::YLeaf q922;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "q921") return 1;
+            if (name == "q922March90") return 2;
+            if (name == "q922November90") return 3;
+            if (name == "q922") return 4;
+            return -1;
+        }
 };
 
 class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen : public ydk::Enum
@@ -270,6 +289,12 @@ class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen : public ydk::En
         static const ydk::Enum::YLeaf three_octets;
         static const ydk::Enum::YLeaf four_octets;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "two-octets") return 2;
+            if (name == "three-octets") return 3;
+            if (name == "four-octets") return 4;
+            return -1;
+        }
 };
 
 class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast : public ydk::Enum
@@ -278,6 +303,11 @@ class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast : public ydk::Enu
         static const ydk::Enum::YLeaf nonBroadcast;
         static const ydk::Enum::YLeaf broadcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nonBroadcast") return 1;
+            if (name == "broadcast") return 2;
+            return -1;
+        }
 };
 
 class RFC1315MIB::FrCircuitTable::FrCircuitEntry::FrCircuitState : public ydk::Enum
@@ -287,6 +317,12 @@ class RFC1315MIB::FrCircuitTable::FrCircuitEntry::FrCircuitState : public ydk::E
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf inactive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 1;
+            if (name == "active") return 2;
+            if (name == "inactive") return 3;
+            return -1;
+        }
 };
 
 class RFC1315MIB::FrErrTable::FrErrEntry::FrErrType : public ydk::Enum
@@ -303,6 +339,19 @@ class RFC1315MIB::FrErrTable::FrErrEntry::FrErrType : public ydk::Enum
         static const ydk::Enum::YLeaf dlcmiUnknownRpt;
         static const ydk::Enum::YLeaf noErrorSinceReset;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknownError") return 1;
+            if (name == "receiveShort") return 2;
+            if (name == "receiveLong") return 3;
+            if (name == "illegalDLCI") return 4;
+            if (name == "unknownDLCI") return 5;
+            if (name == "dlcmiProtoErr") return 6;
+            if (name == "dlcmiUnknownIE") return 7;
+            if (name == "dlcmiSequenceErr") return 8;
+            if (name == "dlcmiUnknownRpt") return 9;
+            if (name == "noErrorSinceReset") return 10;
+            return -1;
+        }
 };
 
 

@@ -16,6 +16,11 @@ class AggregationType : public ydk::Enum
         static const ydk::Enum::YLeaf LACP;
         static const ydk::Enum::YLeaf STATIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LACP") return 0;
+            if (name == "STATIC") return 1;
+            return -1;
+        }
 };
 
 

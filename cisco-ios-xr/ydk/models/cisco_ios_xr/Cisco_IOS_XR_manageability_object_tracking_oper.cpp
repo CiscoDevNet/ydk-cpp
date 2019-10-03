@@ -418,6 +418,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1355,6 +1356,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrack
 {
     std::ostringstream path_buffer;
     path_buffer << "bool-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1568,6 +1570,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::Thre
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1775,6 +1778,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::In
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-tracking-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2178,6 +2182,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3013,6 +3018,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3950,6 +3956,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::Boo
 {
     std::ostringstream path_buffer;
     path_buffer << "bool-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4163,6 +4170,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4370,6 +4378,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInterac
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-tracking-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4665,6 +4674,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5643,6 +5653,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6531,6 +6542,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "bool-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6730,6 +6742,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::Threshold
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6923,6 +6936,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::Interfa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-tracking-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7211,6 +7225,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8081,6 +8096,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9018,6 +9034,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrack
 {
     std::ostringstream path_buffer;
     path_buffer << "bool-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9231,6 +9248,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::Thre
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-track-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9438,6 +9456,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::In
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-tracking-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9733,6 +9752,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "track-info-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
