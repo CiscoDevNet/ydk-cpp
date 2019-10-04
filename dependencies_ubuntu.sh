@@ -63,7 +63,7 @@ print_msg "OS info: $os_info"
 
 print_msg "Installing OS dependencies"
 apt-get update -y > /dev/null
-apt-get install git gdebi-core libtool-bin wget sudo -y > /dev/null
+apt-get install git gdebi-core libtool wget sudo -y > /dev/null
 
 check_install_gcc
 install_libssh
