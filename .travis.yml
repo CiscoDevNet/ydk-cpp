@@ -31,4 +31,3 @@ script:
     - echo "Compiling openconfig API"
     - mkdir -p build && cd build && cmake .. && sudo make install &> /dev/null
 
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ../../cisco-nx-os && mkdir -p build && cd build && cmake .. && sudo make install &> /dev/null ; fi
