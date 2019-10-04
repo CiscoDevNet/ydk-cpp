@@ -4,6 +4,40 @@ function print_msg {
     echo -e "${MSG_COLOR}*** $(date): dependencies_ubuntu.sh | $@ ${NOCOLOR}"
 }
 
+function install_dependencies {
+    print_msg "Installing dependencies"
+
+    apt update -y > /dev/null
+    apt install sudo -y > /dev/null
+    sudo apt-get install -y --no-install-recommends apt-utils
+    sudo apt-get update -y > /dev/null
+    sudo apt-get install libtool-bin -y > /dev/null
+    local status=$?
+    if [[ ${status} != 0 ]]; then
+        sudo apt-get install libtool -y > /dev/null
+    fi
+    sudo apt-get install -y bison \
+                            curl \
+                            doxygen \
+                            flex \
+                            git \
+                            libcmocka0 \
+                            libcurl4-openssl-dev \
+                            libpcre3-dev \
+                            libpcre++-dev \
+                            libssh-dev \
+                            libxml2-dev \
+                            libxslt1-dev \
+                            pkg-config \
+                            software-properties-common \
+                            unzip \
+                            wget \
+                            zlib1g-dev\
+                            cmake \
+                            gdebi-core\
+                            lcov > /dev/null
+}
+
 function run_cmd {
     print_msg "Running command: $@"
     $@
@@ -61,9 +95,6 @@ MSG_COLOR=$YELLOW
 os_info=$(cat /etc/*-release)
 print_msg "OS info: $os_info"
 
-print_msg "Installing OS dependencies"
-apt-get update -y > /dev/null
-apt-get install git gdebi-core libtool wget sudo -y > /dev/null
-
+install_dependencies
 check_install_gcc
 install_libssh
