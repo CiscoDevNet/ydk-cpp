@@ -117,9 +117,9 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2
 
@@ -170,9 +170,9 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2
 
@@ -3469,8 +3469,8 @@ class Native::Interface::SM::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -3639,8 +3639,8 @@ class Native::Interface::SM::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3740,6 +3740,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Dot1q : public ydk::Enum
@@ -3747,6 +3751,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Etype : public ydk::Enum
@@ -3758,6 +3766,14 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Id : public ydk::Enum
@@ -3765,6 +3781,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::SecondDot1q : public ydk::Enum
@@ -3772,6 +3792,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Etype : public ydk::Enum
@@ -3783,6 +3807,14 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::VlanType : public ydk::Enum
@@ -3792,6 +3824,12 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf Y_0x9100;
         static const ydk::Enum::YLeaf Y_0x9200;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0x88A8") return 0;
+            if (name == "0x9100") return 1;
+            if (name == "0x9200") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::Etype : public ydk::Enum
@@ -3803,6 +3841,14 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Pop::Way : public ydk::Enum
@@ -3811,6 +3857,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Pop::Mode : public ydk::Enum
@@ -3818,6 +3869,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Push::Mode : public ydk::Enum
@@ -3825,6 +3880,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::Mode : public ydk::Enum
@@ -3832,6 +3891,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::Mode : public ydk::Enum
@@ -3839,6 +3902,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::Mode : public ydk::Enum
@@ -3846,6 +3913,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::Mode : public ydk::Enum
@@ -3853,6 +3924,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Violation : public ydk::Enum
@@ -3861,6 +3936,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf protect;
         static const ydk::Enum::YLeaf restrict;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protect") return 0;
+            if (name == "restrict") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol : public ydk::Enum
@@ -3889,6 +3969,31 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol : public ydk::Enum
@@ -3917,6 +4022,31 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol : public ydk::Enum
@@ -3945,6 +4075,31 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol : public ydk::Enum
@@ -3973,6 +4128,31 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::InputOutput : public ydk::Enum
@@ -3981,6 +4161,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::M
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::Direction : public ydk::Enum
@@ -3989,6 +4174,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup:
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::Encapsulation : public ydk::Enum
@@ -3999,6 +4189,13 @@ class Native::Interface::Pseudowire::Encapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf udp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tpv2") return 0;
+            if (name == "l2tpv3") return 1;
+            if (name == "mpls") return 2;
+            if (name == "udp") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::Interworking : public ydk::Enum
@@ -4008,6 +4205,12 @@ class Native::Interface::Pseudowire::Interworking : public ydk::Enum
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf vlan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 0;
+            if (name == "ip") return 1;
+            if (name == "vlan") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::Sequencing : public ydk::Enum
@@ -4018,6 +4221,13 @@ class Native::Interface::Pseudowire::Sequencing : public ydk::Enum
         static const ydk::Enum::YLeaf resync;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "resync") return 2;
+            if (name == "transmit") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::Ip::Protocol : public ydk::Enum
@@ -4026,6 +4236,11 @@ class Native::Interface::Pseudowire::Ip::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf l2tp;
         static const ydk::Enum::YLeaf uti;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tp") return 0;
+            if (name == "uti") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::LoadBalance::Flow::Ethernet : public ydk::Enum
@@ -4035,6 +4250,12 @@ class Native::Interface::Pseudowire::LoadBalance::Flow::Ethernet : public ydk::E
         static const ydk::Enum::YLeaf src_dst_mac;
         static const ydk::Enum::YLeaf src_mac;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dst-mac") return 0;
+            if (name == "src-dst-mac") return 1;
+            if (name == "src-mac") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::ProtocolMpls::Protocol : public ydk::Enum
@@ -4043,6 +4264,11 @@ class Native::Interface::Pseudowire::ProtocolMpls::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp") return 0;
+            if (name == "none") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::ProtocolL2tpv2::Protocol : public ydk::Enum
@@ -4051,6 +4277,11 @@ class Native::Interface::Pseudowire::ProtocolL2tpv2::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf l2tpv2;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tpv2") return 0;
+            if (name == "none") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Pseudowire::ProtocolL2tpv3::Protocol : public ydk::Enum
@@ -4060,6 +4291,12 @@ class Native::Interface::Pseudowire::ProtocolL2tpv3::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf l2tpv3ietf;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tpv3") return 0;
+            if (name == "l2tpv3ietf") return 1;
+            if (name == "none") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::SM::IfState : public ydk::Enum
@@ -4067,6 +4304,10 @@ class Native::Interface::SM::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::SM::ServiceInsertion : public ydk::Enum
@@ -4074,6 +4315,10 @@ class Native::Interface::SM::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::SM::Backup::Delay::Failure : public ydk::Enum
@@ -4081,6 +4326,10 @@ class Native::Interface::SM::Backup::Delay::Failure : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::SM::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -4088,6 +4337,10 @@ class Native::Interface::SM::Backup::Delay::SecondaryDisable : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::SM::Backup::Load::Kickin : public ydk::Enum
@@ -4095,6 +4348,10 @@ class Native::Interface::SM::Backup::Load::Kickin : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::SM::Backup::Load::Kickout : public ydk::Enum
@@ -4102,6 +4359,10 @@ class Native::Interface::SM::Backup::Load::Kickout : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 

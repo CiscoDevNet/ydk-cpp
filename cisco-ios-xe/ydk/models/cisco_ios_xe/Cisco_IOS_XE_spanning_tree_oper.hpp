@@ -194,17 +194,49 @@ class StpDetails::StpGlobal::MstOnly : public ydk::Entity
 
 }; // StpDetails::StpGlobal::MstOnly
 
-class StpPortState : public ydk::Enum
+class StpPortBpduguard : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf stp_disabled;
-        static const ydk::Enum::YLeaf stp_blocking;
-        static const ydk::Enum::YLeaf stp_listening;
-        static const ydk::Enum::YLeaf stp_learning;
-        static const ydk::Enum::YLeaf stp_forwarding;
-        static const ydk::Enum::YLeaf stp_broken;
-        static const ydk::Enum::YLeaf stp_invalid;
+        static const ydk::Enum::YLeaf stp_port_bpduguard_disable;
+        static const ydk::Enum::YLeaf stp_port_bpduguard_enable;
+        static const ydk::Enum::YLeaf stp_port_bpduguard_default;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-port-bpduguard-disable") return 0;
+            if (name == "stp-port-bpduguard-enable") return 1;
+            if (name == "stp-port-bpduguard-default") return 2;
+            return -1;
+        }
+};
+
+class StpLinkRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stp_auto;
+        static const ydk::Enum::YLeaf stp_point_to_point;
+        static const ydk::Enum::YLeaf stp_shared;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-auto") return 0;
+            if (name == "stp-point-to-point") return 1;
+            if (name == "stp-shared") return 2;
+            return -1;
+        }
+};
+
+class StpMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stp_mode_pvst;
+        static const ydk::Enum::YLeaf stp_mode_rapid_pvst;
+        static const ydk::Enum::YLeaf stp_mode_mst;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-mode-pvst") return 0;
+            if (name == "stp-mode-rapid-pvst") return 1;
+            if (name == "stp-mode-mst") return 2;
+            return -1;
+        }
 };
 
 class StpPortRole : public ydk::Enum
@@ -216,15 +248,52 @@ class StpPortRole : public ydk::Enum
         static const ydk::Enum::YLeaf stp_designated;
         static const ydk::Enum::YLeaf stp_backup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-master") return 0;
+            if (name == "stp-alternate") return 1;
+            if (name == "stp-root") return 2;
+            if (name == "stp-designated") return 3;
+            if (name == "stp-backup") return 4;
+            return -1;
+        }
 };
 
-class StpLinkRole : public ydk::Enum
+class StpPortState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf stp_auto;
-        static const ydk::Enum::YLeaf stp_point_to_point;
-        static const ydk::Enum::YLeaf stp_shared;
+        static const ydk::Enum::YLeaf stp_disabled;
+        static const ydk::Enum::YLeaf stp_blocking;
+        static const ydk::Enum::YLeaf stp_listening;
+        static const ydk::Enum::YLeaf stp_learning;
+        static const ydk::Enum::YLeaf stp_forwarding;
+        static const ydk::Enum::YLeaf stp_broken;
+        static const ydk::Enum::YLeaf stp_invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-disabled") return 0;
+            if (name == "stp-blocking") return 1;
+            if (name == "stp-listening") return 2;
+            if (name == "stp-learning") return 3;
+            if (name == "stp-forwarding") return 4;
+            if (name == "stp-broken") return 5;
+            if (name == "stp-invalid") return 6;
+            return -1;
+        }
+};
+
+class StpPortBpdufilter : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stp_port_bpdufilter_disable;
+        static const ydk::Enum::YLeaf stp_port_bpdufilter_enable;
+        static const ydk::Enum::YLeaf stp_port_bpdufilter_default;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-port-bpdufilter-disable") return 0;
+            if (name == "stp-port-bpdufilter-enable") return 1;
+            if (name == "stp-port-bpdufilter-default") return 2;
+            return -1;
+        }
 };
 
 class StpPortGuard : public ydk::Enum
@@ -235,33 +304,13 @@ class StpPortGuard : public ydk::Enum
         static const ydk::Enum::YLeaf stp_port_guard_loop;
         static const ydk::Enum::YLeaf stp_port_guard_none;
 
-};
-
-class StpPortBpduguard : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stp_port_bpduguard_disable;
-        static const ydk::Enum::YLeaf stp_port_bpduguard_enable;
-        static const ydk::Enum::YLeaf stp_port_bpduguard_default;
-
-};
-
-class StpPortBpdufilter : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stp_port_bpdufilter_disable;
-        static const ydk::Enum::YLeaf stp_port_bpdufilter_enable;
-        static const ydk::Enum::YLeaf stp_port_bpdufilter_default;
-
-};
-
-class StpMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stp_mode_pvst;
-        static const ydk::Enum::YLeaf stp_mode_rapid_pvst;
-        static const ydk::Enum::YLeaf stp_mode_mst;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "stp-port-guard-default") return 0;
+            if (name == "stp-port-guard-root") return 1;
+            if (name == "stp-port-guard-loop") return 2;
+            if (name == "stp-port-guard-none") return 3;
+            return -1;
+        }
 };
 
 

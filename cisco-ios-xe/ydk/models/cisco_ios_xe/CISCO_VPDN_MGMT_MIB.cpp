@@ -3905,16 +3905,16 @@ bool CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::has_leaf_or
     return false;
 }
 
-const Enum::YLeaf TunnelType::l2f {1, "l2f"};
-const Enum::YLeaf TunnelType::l2tp {2, "l2tp"};
-const Enum::YLeaf TunnelType::pptp {3, "pptp"};
-
 const Enum::YLeaf EndpointClass::none {1, "none"};
 const Enum::YLeaf EndpointClass::local {2, "local"};
 const Enum::YLeaf EndpointClass::ipV4Address {3, "ipV4Address"};
 const Enum::YLeaf EndpointClass::macAddress {4, "macAddress"};
 const Enum::YLeaf EndpointClass::magicNumber {5, "magicNumber"};
 const Enum::YLeaf EndpointClass::phone {6, "phone"};
+
+const Enum::YLeaf TunnelType::l2f {1, "l2f"};
+const Enum::YLeaf TunnelType::l2tp {2, "l2tp"};
+const Enum::YLeaf TunnelType::pptp {3, "pptp"};
 
 const Enum::YLeaf CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent::up {1, "up"};
 const Enum::YLeaf CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent::down {2, "down"};

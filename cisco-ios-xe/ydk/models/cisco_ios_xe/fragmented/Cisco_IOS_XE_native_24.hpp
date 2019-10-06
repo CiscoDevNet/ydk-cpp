@@ -1949,7 +1949,7 @@ class Native::Interface::ATMSubinterface::ATM::Standby::StandbyList : public ydk
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3593,6 +3593,11 @@ class Native::Interface::ATMSubinterface::ATM::HoldQueue::Direction : public ydk
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
@@ -3601,6 +3606,11 @@ class Native::Interface::ATMSubinterface::ATM::Ip::Verify::Unicast::Source::Reac
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3609,6 +3619,11 @@ class Native::Interface::ATMSubinterface::ATM::Ipv6::TrafficFilter::Direction : 
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3616,6 +3631,10 @@ class Native::Interface::ATMSubinterface::ATM::InterfaceQos::Trust::Device : pub
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Standby::Version : public ydk::Enum
@@ -3624,6 +3643,11 @@ class Native::Interface::ATMSubinterface::ATM::Standby::Version : public ydk::En
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3631,6 +3655,10 @@ class Native::Interface::ATMSubinterface::ATM::Standby::StandbyList::Ipv6 : publ
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3639,6 +3667,11 @@ class Native::Interface::ATMSubinterface::ATM::Standby::StandbyList::Authenticat
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3647,6 +3680,11 @@ class Native::Interface::ATMSubinterface::ATM::Standby::StandbyList::Redirect::A
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::AccessSession::HostMode : public ydk::Enum
@@ -3657,6 +3695,13 @@ class Native::Interface::ATMSubinterface::ATM::AccessSession::HostMode : public 
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Trust::Device : public ydk::Enum
@@ -3667,6 +3712,13 @@ class Native::Interface::ATMSubinterface::ATM::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Atm::Bandwidth : public ydk::Enum
@@ -3674,6 +3726,10 @@ class Native::Interface::ATMSubinterface::ATM::Atm::Bandwidth : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Atm::RouteBridged : public ydk::Enum
@@ -3682,6 +3738,11 @@ class Native::Interface::ATMSubinterface::ATM::Atm::RouteBridged : public ydk::E
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Encapsulation : public ydk::Enum
@@ -3690,6 +3751,11 @@ class Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Encapsulation
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Sequencing : public ydk::Enum
@@ -3699,6 +3765,12 @@ class Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Sequencing : 
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Encapsulation : public ydk::Enum
@@ -3707,6 +3779,11 @@ class Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Encapsulation : pu
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Sequencing : public ydk::Enum
@@ -3716,6 +3793,12 @@ class Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Sequencing : publi
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 

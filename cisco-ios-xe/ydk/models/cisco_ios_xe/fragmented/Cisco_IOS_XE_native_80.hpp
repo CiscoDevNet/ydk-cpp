@@ -202,7 +202,7 @@ class Native::Interface::LISP::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
+        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -577,7 +577,7 @@ class Native::Interface::LISP::Isis::HelloInterval : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class HelloIntervalList; //type: Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList
 
         ydk::YList hello_interval_list;
@@ -603,7 +603,7 @@ class Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class Levels;
         class Value_;
 
@@ -699,7 +699,7 @@ class Native::Interface::LISP::Isis::Ipv6::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::LISP::Isis::Ipv6::Metric::MetricList
 
         ydk::YList metric_list;
@@ -725,7 +725,7 @@ class Native::Interface::LISP::Isis::Ipv6::Metric::MetricList : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -769,7 +769,7 @@ class Native::Interface::LISP::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::LISP::Isis::Metric::MetricList
 
         ydk::YList metric_list;
@@ -795,7 +795,7 @@ class Native::Interface::LISP::Isis::Metric::MetricList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -3035,7 +3035,7 @@ class Native::Interface::LISP::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3585,6 +3585,12 @@ class Native::Interface::LISP::Flowcontrol::Receive : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Flowcontrol::Send : public ydk::Enum
@@ -3594,6 +3600,12 @@ class Native::Interface::LISP::Flowcontrol::Send : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::MeshGroup : public ydk::Enum
@@ -3601,6 +3613,10 @@ class Native::Interface::LISP::Isis::MeshGroup : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf blocked;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blocked") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Network : public ydk::Enum
@@ -3608,6 +3624,10 @@ class Native::Interface::LISP::Isis::Network : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "point-to-point") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Protocol : public ydk::Enum
@@ -3615,6 +3635,10 @@ class Native::Interface::LISP::Isis::Protocol : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shutdown") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::CircuitType::Levels : public ydk::Enum
@@ -3624,6 +3648,12 @@ class Native::Interface::LISP::Isis::CircuitType::Levels : public ydk::Enum
         static const ydk::Enum::YLeaf level_1_2;
         static const ydk::Enum::YLeaf level_2_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-1-2") return 1;
+            if (name == "level-2-only") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::Levels : public ydk::Enum
@@ -3632,6 +3662,11 @@ class Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::Levels : pu
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::HelloInterval::Value_ : public ydk::Enum
@@ -3639,6 +3674,10 @@ class Native::Interface::LISP::Isis::HelloInterval::Value_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::Levels : public ydk::Enum
@@ -3647,6 +3686,11 @@ class Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::Levels : 
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::Value_ : public ydk::Enum
@@ -3654,6 +3698,10 @@ class Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::Value_ : 
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::Levels : public ydk::Enum
@@ -3662,6 +3710,11 @@ class Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::Level
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Ipv6::Metric::Value_ : public ydk::Enum
@@ -3669,6 +3722,10 @@ class Native::Interface::LISP::Isis::Ipv6::Metric::Value_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::Levels : public ydk::Enum
@@ -3677,6 +3734,11 @@ class Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::Levels : public y
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::Value_ : public ydk::Enum
@@ -3684,6 +3746,10 @@ class Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::Value_ : public y
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Metric::Value_ : public ydk::Enum
@@ -3691,6 +3757,10 @@ class Native::Interface::LISP::Isis::Metric::Value_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Metric::MetricList::Levels : public ydk::Enum
@@ -3699,6 +3769,11 @@ class Native::Interface::LISP::Isis::Metric::MetricList::Levels : public ydk::En
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Metric::MetricList::Value_ : public ydk::Enum
@@ -3706,6 +3781,10 @@ class Native::Interface::LISP::Isis::Metric::MetricList::Value_ : public ydk::En
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Password::PasswordList::Levels : public ydk::Enum
@@ -3714,6 +3793,11 @@ class Native::Interface::LISP::Isis::Password::PasswordList::Levels : public ydk
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::Priority::PriorityList::Levels : public ydk::Enum
@@ -3722,6 +3806,11 @@ class Native::Interface::LISP::Isis::Priority::PriorityList::Levels : public ydk
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Isis::ThreeWayHandshake::Implementor : public ydk::Enum
@@ -3730,6 +3819,11 @@ class Native::Interface::LISP::Isis::ThreeWayHandshake::Implementor : public ydk
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco") return 0;
+            if (name == "ietf") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::HoldQueue::Direction : public ydk::Enum
@@ -3738,6 +3832,11 @@ class Native::Interface::LISP::HoldQueue::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
@@ -3746,6 +3845,11 @@ class Native::Interface::LISP::Ip::Verify::Unicast::Source::ReachableVia : publi
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3754,6 +3858,11 @@ class Native::Interface::LISP::Ipv6::TrafficFilter::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3761,6 +3870,10 @@ class Native::Interface::LISP::InterfaceQos::Trust::Device : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Standby::Version : public ydk::Enum
@@ -3769,6 +3882,11 @@ class Native::Interface::LISP::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3776,6 +3894,10 @@ class Native::Interface::LISP::Standby::StandbyList::Ipv6 : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3784,6 +3906,11 @@ class Native::Interface::LISP::Standby::StandbyList::Authentication::Md5::KeyStr
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3792,6 +3919,11 @@ class Native::Interface::LISP::Standby::StandbyList::Redirect::Advertisement::Au
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::AccessSession::HostMode : public ydk::Enum
@@ -3802,6 +3934,13 @@ class Native::Interface::LISP::AccessSession::HostMode : public ydk::Enum
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 

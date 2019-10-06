@@ -149,54 +149,23 @@ class CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCall
 
 }; // CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry
 
-class CvcSpeechCoderRate : public ydk::Enum
+class CvcInBandSignaling : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf g729r8000;
-        static const ydk::Enum::YLeaf g729Ar8000;
-        static const ydk::Enum::YLeaf g726r16000;
-        static const ydk::Enum::YLeaf g726r24000;
-        static const ydk::Enum::YLeaf g726r32000;
-        static const ydk::Enum::YLeaf g711ulawr64000;
-        static const ydk::Enum::YLeaf g711Alawr64000;
-        static const ydk::Enum::YLeaf g728r16000;
-        static const ydk::Enum::YLeaf g723r6300;
-        static const ydk::Enum::YLeaf g723r5300;
-        static const ydk::Enum::YLeaf gsmr13200;
-        static const ydk::Enum::YLeaf g729Br8000;
-        static const ydk::Enum::YLeaf g729ABr8000;
-        static const ydk::Enum::YLeaf g723Ar6300;
-        static const ydk::Enum::YLeaf g723Ar5300;
-        static const ydk::Enum::YLeaf g729IETFr8000;
-        static const ydk::Enum::YLeaf gsmeEr12200;
-        static const ydk::Enum::YLeaf clearChannel;
-        static const ydk::Enum::YLeaf g726r40000;
-        static const ydk::Enum::YLeaf llcc;
-        static const ydk::Enum::YLeaf gsmAmrNb;
-        static const ydk::Enum::YLeaf iLBC;
-        static const ydk::Enum::YLeaf iLBCr15200;
-        static const ydk::Enum::YLeaf iLBCr13330;
-        static const ydk::Enum::YLeaf g722r4800;
-        static const ydk::Enum::YLeaf g722r5600;
-        static const ydk::Enum::YLeaf g722r6400;
-        static const ydk::Enum::YLeaf iSAC;
-        static const ydk::Enum::YLeaf aaclc;
-        static const ydk::Enum::YLeaf aacld;
-
-};
-
-class CvcFaxTransmitRate : public ydk::Enum
-{
-    public:
+        static const ydk::Enum::YLeaf cas;
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf voiceRate;
-        static const ydk::Enum::YLeaf fax2400;
-        static const ydk::Enum::YLeaf fax4800;
-        static const ydk::Enum::YLeaf fax7200;
-        static const ydk::Enum::YLeaf fax9600;
-        static const ydk::Enum::YLeaf fax14400;
-        static const ydk::Enum::YLeaf fax12000;
+        static const ydk::Enum::YLeaf cept;
+        static const ydk::Enum::YLeaf transparent;
+        static const ydk::Enum::YLeaf gr303;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cas") return 1;
+            if (name == "none") return 2;
+            if (name == "cept") return 3;
+            if (name == "transparent") return 4;
+            if (name == "gr303") return 5;
+            return -1;
+        }
 };
 
 class CvcCoderTypeRate : public ydk::Enum
@@ -241,26 +210,47 @@ class CvcCoderTypeRate : public ydk::Enum
         static const ydk::Enum::YLeaf aaclc;
         static const ydk::Enum::YLeaf aacld;
 
-};
-
-class CvcInBandSignaling : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cas;
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf cept;
-        static const ydk::Enum::YLeaf transparent;
-        static const ydk::Enum::YLeaf gr303;
-
-};
-
-class CvcH320CallType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf secondary;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "fax2400") return 2;
+            if (name == "fax4800") return 3;
+            if (name == "fax7200") return 4;
+            if (name == "fax9600") return 5;
+            if (name == "fax14400") return 6;
+            if (name == "fax12000") return 7;
+            if (name == "g729r8000") return 10;
+            if (name == "g729Ar8000") return 11;
+            if (name == "g726r16000") return 12;
+            if (name == "g726r24000") return 13;
+            if (name == "g726r32000") return 14;
+            if (name == "g711ulawr64000") return 15;
+            if (name == "g711Alawr64000") return 16;
+            if (name == "g728r16000") return 17;
+            if (name == "g723r6300") return 18;
+            if (name == "g723r5300") return 19;
+            if (name == "gsmr13200") return 20;
+            if (name == "g729Br8000") return 21;
+            if (name == "g729ABr8000") return 22;
+            if (name == "g723Ar6300") return 23;
+            if (name == "g723Ar5300") return 24;
+            if (name == "ietfg729r8000") return 25;
+            if (name == "gsmeEr12200") return 26;
+            if (name == "clearChannel") return 27;
+            if (name == "g726r40000") return 28;
+            if (name == "llcc") return 29;
+            if (name == "gsmAmrNb") return 30;
+            if (name == "g722") return 31;
+            if (name == "iLBC") return 32;
+            if (name == "iLBCr15200") return 33;
+            if (name == "iLBCr13330") return 34;
+            if (name == "g722r4800") return 35;
+            if (name == "g722r5600") return 36;
+            if (name == "g722r6400") return 37;
+            if (name == "iSAC") return 38;
+            if (name == "aaclc") return 39;
+            if (name == "aacld") return 40;
+            return -1;
+        }
 };
 
 class CvcVideoCoderRate : public ydk::Enum
@@ -272,6 +262,123 @@ class CvcVideoCoderRate : public ydk::Enum
         static const ydk::Enum::YLeaf h263plus;
         static const ydk::Enum::YLeaf h264;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "h261") return 1;
+            if (name == "h263") return 2;
+            if (name == "h263plus") return 3;
+            if (name == "h264") return 4;
+            return -1;
+        }
+};
+
+class CvcH320CallType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf secondary;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "primary") return 1;
+            if (name == "secondary") return 2;
+            return -1;
+        }
+};
+
+class CvcSpeechCoderRate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf g729r8000;
+        static const ydk::Enum::YLeaf g729Ar8000;
+        static const ydk::Enum::YLeaf g726r16000;
+        static const ydk::Enum::YLeaf g726r24000;
+        static const ydk::Enum::YLeaf g726r32000;
+        static const ydk::Enum::YLeaf g711ulawr64000;
+        static const ydk::Enum::YLeaf g711Alawr64000;
+        static const ydk::Enum::YLeaf g728r16000;
+        static const ydk::Enum::YLeaf g723r6300;
+        static const ydk::Enum::YLeaf g723r5300;
+        static const ydk::Enum::YLeaf gsmr13200;
+        static const ydk::Enum::YLeaf g729Br8000;
+        static const ydk::Enum::YLeaf g729ABr8000;
+        static const ydk::Enum::YLeaf g723Ar6300;
+        static const ydk::Enum::YLeaf g723Ar5300;
+        static const ydk::Enum::YLeaf g729IETFr8000;
+        static const ydk::Enum::YLeaf gsmeEr12200;
+        static const ydk::Enum::YLeaf clearChannel;
+        static const ydk::Enum::YLeaf g726r40000;
+        static const ydk::Enum::YLeaf llcc;
+        static const ydk::Enum::YLeaf gsmAmrNb;
+        static const ydk::Enum::YLeaf iLBC;
+        static const ydk::Enum::YLeaf iLBCr15200;
+        static const ydk::Enum::YLeaf iLBCr13330;
+        static const ydk::Enum::YLeaf g722r4800;
+        static const ydk::Enum::YLeaf g722r5600;
+        static const ydk::Enum::YLeaf g722r6400;
+        static const ydk::Enum::YLeaf iSAC;
+        static const ydk::Enum::YLeaf aaclc;
+        static const ydk::Enum::YLeaf aacld;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "g729r8000") return 1;
+            if (name == "g729Ar8000") return 2;
+            if (name == "g726r16000") return 3;
+            if (name == "g726r24000") return 4;
+            if (name == "g726r32000") return 5;
+            if (name == "g711ulawr64000") return 6;
+            if (name == "g711Alawr64000") return 7;
+            if (name == "g728r16000") return 8;
+            if (name == "g723r6300") return 9;
+            if (name == "g723r5300") return 10;
+            if (name == "gsmr13200") return 11;
+            if (name == "g729Br8000") return 12;
+            if (name == "g729ABr8000") return 13;
+            if (name == "g723Ar6300") return 14;
+            if (name == "g723Ar5300") return 15;
+            if (name == "g729IETFr8000") return 16;
+            if (name == "gsmeEr12200") return 17;
+            if (name == "clearChannel") return 18;
+            if (name == "g726r40000") return 19;
+            if (name == "llcc") return 20;
+            if (name == "gsmAmrNb") return 21;
+            if (name == "iLBC") return 22;
+            if (name == "iLBCr15200") return 23;
+            if (name == "iLBCr13330") return 24;
+            if (name == "g722r4800") return 25;
+            if (name == "g722r5600") return 26;
+            if (name == "g722r6400") return 27;
+            if (name == "iSAC") return 28;
+            if (name == "aaclc") return 29;
+            if (name == "aacld") return 30;
+            return -1;
+        }
+};
+
+class CvcFaxTransmitRate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf voiceRate;
+        static const ydk::Enum::YLeaf fax2400;
+        static const ydk::Enum::YLeaf fax4800;
+        static const ydk::Enum::YLeaf fax7200;
+        static const ydk::Enum::YLeaf fax9600;
+        static const ydk::Enum::YLeaf fax14400;
+        static const ydk::Enum::YLeaf fax12000;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "voiceRate") return 2;
+            if (name == "fax2400") return 3;
+            if (name == "fax4800") return 4;
+            if (name == "fax7200") return 5;
+            if (name == "fax9600") return 6;
+            if (name == "fax14400") return 7;
+            if (name == "fax12000") return 8;
+            return -1;
+        }
 };
 
 

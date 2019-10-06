@@ -683,16 +683,6 @@ bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_leaf_or_child_o
     return false;
 }
 
-const Enum::YLeaf FibAddressFamily::fib_addr_fam_unknown {0, "fib-addr-fam-unknown"};
-const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv4 {1, "fib-addr-fam-ipv4"};
-const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv6 {2, "fib-addr-fam-ipv6"};
-
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_unknown {0, "encap-hdr-type-unknown"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_gre {1, "encap-hdr-type-gre"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv4 {2, "encap-hdr-type-ipv4"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv6 {3, "encap-hdr-type-ipv6"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_mpls {4, "encap-hdr-type-mpls"};
-
 const Enum::YLeaf FibPathType::fib_path_type_unknown {0, "fib-path-type-unknown"};
 const Enum::YLeaf FibPathType::fib_path_type_receive {1, "fib-path-type-receive"};
 const Enum::YLeaf FibPathType::fib_path_type_connected {2, "fib-path-type-connected"};
@@ -702,6 +692,16 @@ const Enum::YLeaf FibPathType::fib_path_type_attached_nexthop {5, "fib-path-type
 const Enum::YLeaf FibPathType::fib_path_type_recursive {6, "fib-path-type-recursive"};
 const Enum::YLeaf FibPathType::fib_path_type_adjacency_prefix {7, "fib-path-type-adjacency-prefix"};
 const Enum::YLeaf FibPathType::fib_path_type_special_prefix {8, "fib-path-type-special-prefix"};
+
+const Enum::YLeaf FibAddressFamily::fib_addr_fam_unknown {0, "fib-addr-fam-unknown"};
+const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv4 {1, "fib-addr-fam-ipv4"};
+const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv6 {2, "fib-addr-fam-ipv6"};
+
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_unknown {0, "encap-hdr-type-unknown"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_gre {1, "encap-hdr-type-gre"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv4 {2, "encap-hdr-type-ipv4"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv6 {3, "encap-hdr-type-ipv6"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_mpls {4, "encap-hdr-type-mpls"};
 
 
 }

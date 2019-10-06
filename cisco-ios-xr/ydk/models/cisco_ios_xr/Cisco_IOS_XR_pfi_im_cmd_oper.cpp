@@ -8524,8 +8524,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     bandwidth{YType::uint32, "bandwidth"},
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
-    member_name{YType::str, "member-name"},
-    replication_error{YType::uint32, "replication-error"}
+    member_name{YType::str, "member-name"}
         ,
     counters(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters>())
     , link_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData>())
@@ -8557,7 +8556,6 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInforma
 	|| lacp_enabled.is_set
 	|| member_type.is_set
 	|| member_name.is_set
-	|| replication_error.is_set
 	|| (counters !=  nullptr && counters->has_data())
 	|| (link_data !=  nullptr && link_data->has_data())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_data())
@@ -8577,7 +8575,6 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInforma
 	|| ydk::is_set(lacp_enabled.yfilter)
 	|| ydk::is_set(member_type.yfilter)
 	|| ydk::is_set(member_name.yfilter)
-	|| ydk::is_set(replication_error.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_operation())
@@ -8606,7 +8603,6 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
     if (lacp_enabled.is_set || is_set(lacp_enabled.yfilter)) leaf_name_data.push_back(lacp_enabled.get_name_leafdata());
     if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
     if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (replication_error.is_set || is_set(replication_error.yfilter)) leaf_name_data.push_back(replication_error.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8742,12 +8738,6 @@ void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInforma
         member_name.value_namespace = name_space;
         member_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "replication-error")
-    {
-        replication_error = value;
-        replication_error.value_namespace = name_space;
-        replication_error.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8792,15 +8782,11 @@ void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInforma
     {
         member_name.yfilter = yfilter;
     }
-    if(value_path == "replication-error")
-    {
-        replication_error.yfilter = yfilter;
-    }
 }
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name" || name == "replication-error")
+    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name")
         return true;
     return false;
 }
@@ -14728,27 +14714,58 @@ bool Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::has_leaf_or_c
     return false;
 }
 
-const Enum::YLeaf InterfaceTypeSet::hardware_interfaces {0, "hardware-interfaces"};
+const Enum::YLeaf ImCmdIntfTypeEnum::srp {0, "srp"};
+const Enum::YLeaf ImCmdIntfTypeEnum::tunnel {1, "tunnel"};
+const Enum::YLeaf ImCmdIntfTypeEnum::bundle {2, "bundle"};
+const Enum::YLeaf ImCmdIntfTypeEnum::serial {3, "serial"};
+const Enum::YLeaf ImCmdIntfTypeEnum::sonet_pos {4, "sonet-pos"};
+const Enum::YLeaf ImCmdIntfTypeEnum::tunnel_gre {5, "tunnel-gre"};
+const Enum::YLeaf ImCmdIntfTypeEnum::pseudowire_head_end {6, "pseudowire-head-end"};
+const Enum::YLeaf ImCmdIntfTypeEnum::cem {7, "cem"};
+const Enum::YLeaf ImCmdIntfTypeEnum::gcc {8, "gcc"};
 
-const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
-const Enum::YLeaf ImStateEnum::im_state_up {3, "im-state-up"};
-const Enum::YLeaf ImStateEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::YLeaf ImStateEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::YLeaf ImStateEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::YLeaf ImStateEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::YLeaf ImStateEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::YLeaf ImStateEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::YLeaf ImStateEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::YLeaf ImStateEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::YLeaf ImStateEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::YLeaf ImStateEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::YLeaf ImStateEnum::im_state_reset {14, "im-state-reset"};
-const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"};
-const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf VlanSwitchedMode::none {0, "none"};
+const Enum::YLeaf VlanSwitchedMode::trunk_port {1, "trunk-port"};
+const Enum::YLeaf VlanSwitchedMode::access_port {2, "access-port"};
+
+const Enum::YLeaf ImCmdStatsEnum::full {1, "full"};
+const Enum::YLeaf ImCmdStatsEnum::basic {2, "basic"};
+
+const Enum::YLeaf SrpMgmtFailureStateEt::idle_failure_state {0, "idle-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::wait_to_restore_failure_state {1, "wait-to-restore-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::manual_switch_failure_state {2, "manual-switch-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::signal_degrade_failure_state {3, "signal-degrade-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::signal_fail_failure_state {4, "signal-fail-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::forced_switch_failure_state {5, "forced-switch-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::shutdown_failure_state {6, "shutdown-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::invalid_failure_state {7, "invalid-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::unknown_failure_state {8, "unknown-failure-state"};
+
+const Enum::YLeaf GccDerState::in_service {0, "in-service"};
+const Enum::YLeaf GccDerState::out_of_service {1, "out-of-service"};
+const Enum::YLeaf GccDerState::maintenance {2, "maintenance"};
+const Enum::YLeaf GccDerState::ais {3, "ais"};
+
+const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
+const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
+const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
+
+const Enum::YLeaf TunnelGreMode::unknown {0, "unknown"};
+const Enum::YLeaf TunnelGreMode::gr_eo_ipv4 {1, "gr-eo-ipv4"};
+const Enum::YLeaf TunnelGreMode::gr_eo_ipv6 {2, "gr-eo-ipv6"};
+const Enum::YLeaf TunnelGreMode::mgr_eo_ipv4 {3, "mgr-eo-ipv4"};
+const Enum::YLeaf TunnelGreMode::mgr_eo_ipv6 {4, "mgr-eo-ipv6"};
+const Enum::YLeaf TunnelGreMode::ipv4 {5, "ipv4"};
+const Enum::YLeaf TunnelGreMode::ipv6 {6, "ipv6"};
+
+const Enum::YLeaf GccSecState::normal {0, "normal"};
+const Enum::YLeaf GccSecState::maintenance {1, "maintenance"};
+const Enum::YLeaf GccSecState::ais {2, "ais"};
+
+const Enum::YLeaf SrpMgmtIpsWrapState::idle_wrap_state {0, "idle-wrap-state"};
+const Enum::YLeaf SrpMgmtIpsWrapState::wrapped_state {1, "wrapped-state"};
+const Enum::YLeaf SrpMgmtIpsWrapState::locked_out_wrap_state {2, "locked-out-wrap-state"};
+const Enum::YLeaf SrpMgmtIpsWrapState::unknown_wrap_state {3, "unknown-wrap-state"};
 
 const Enum::YLeaf StatsCounter::stats_counter_rate {0, "stats-counter-rate"};
 const Enum::YLeaf StatsCounter::stats_counter_uint32 {1, "stats-counter-uint32"};
@@ -14770,8 +14787,87 @@ const Enum::YLeaf StatsCounter::stats_counter_comp_accounting {16, "stats-counte
 const Enum::YLeaf StatsCounter::stats_counter_flow {17, "stats-counter-flow"};
 const Enum::YLeaf StatsCounter::stats_counter_comp_flow {18, "stats-counter-comp-flow"};
 
+const Enum::YLeaf SonetApsEt::not_configured {0, "not-configured"};
+const Enum::YLeaf SonetApsEt::working_active {1, "working-active"};
+const Enum::YLeaf SonetApsEt::protect_active {2, "protect-active"};
+const Enum::YLeaf SonetApsEt::working_inactive {3, "working-inactive"};
+const Enum::YLeaf SonetApsEt::protect_inactive {4, "protect-inactive"};
+
+const Enum::YLeaf ImAttrDuplex::im_attr_duplex_unknown {0, "im-attr-duplex-unknown"};
+const Enum::YLeaf ImAttrDuplex::im_attr_duplex_half {1, "im-attr-duplex-half"};
+const Enum::YLeaf ImAttrDuplex::im_attr_duplex_full {2, "im-attr-duplex-full"};
+
+const Enum::YLeaf SrpMgmtIpsPathInd::short_path {0, "short-path"};
+const Enum::YLeaf SrpMgmtIpsPathInd::long_path {1, "long-path"};
+const Enum::YLeaf SrpMgmtIpsPathInd::unknown_path {2, "unknown-path"};
+
+const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+
+const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
+const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
+const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
+const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
+const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
+const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
+const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
+const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
+const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
+
+const Enum::YLeaf ImCmdLoopbackEnum::no_loopback {0, "no-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnum::internal_loopback {1, "internal-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnum::external_loopback {2, "external-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnum::line_loopback {3, "line-loopback"};
+
+const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_cisco {0, "frame-relay-cisco"};
+const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_ietf {1, "frame-relay-ietf"};
+
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_auto {0, "lmi-type-auto"};
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ansi {1, "lmi-type-ansi"};
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ccitt {2, "lmi-type-ccitt"};
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_cisco {3, "lmi-type-cisco"};
+
+const Enum::YLeaf SrpMgmtSrrFailure::idle_srr_failure {0, "idle-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::wait_to_restore_srr_failure {1, "wait-to-restore-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::signal_fail_srr_failure {2, "signal-fail-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::forced_switch_srr_failure {3, "forced-switch-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::unknown_srr_failure {4, "unknown-srr-failure"};
+
+const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+
 const Enum::YLeaf StatsTypeContents::stats_type_single {100, "stats-type-single"};
 const Enum::YLeaf StatsTypeContents::stats_type_variable {101, "stats-type-variable"};
+
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_off {0, "im-attr-flow-control-off"};
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_on {1, "im-attr-flow-control-on"};
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_not_sup {2, "im-attr-flow-control-not-sup"};
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_priority {3, "im-attr-flow-control-priority"};
 
 const Enum::YLeaf StatsId::stats_id_type_unknown {0, "stats-id-type-unknown"};
 const Enum::YLeaf StatsId::stats_id_type_min {1, "stats-id-type-min"};
@@ -14781,87 +14877,19 @@ const Enum::YLeaf StatsId::stats_id_type_other {4, "stats-id-type-other"};
 const Enum::YLeaf StatsId::stats_id_type_feature {5, "stats-id-type-feature"};
 const Enum::YLeaf StatsId::stats_id_type_max {6, "stats-id-type-max"};
 
-const Enum::YLeaf ImCmdStatsEnum::full {1, "full"};
-const Enum::YLeaf ImCmdStatsEnum::basic {2, "basic"};
-
-const Enum::YLeaf GccSecState::normal {0, "normal"};
-const Enum::YLeaf GccSecState::maintenance {1, "maintenance"};
-const Enum::YLeaf GccSecState::ais {2, "ais"};
-
-const Enum::YLeaf GccDerState::in_service {0, "in-service"};
-const Enum::YLeaf GccDerState::out_of_service {1, "out-of-service"};
-const Enum::YLeaf GccDerState::maintenance {2, "maintenance"};
-const Enum::YLeaf GccDerState::ais {3, "ais"};
-
-const Enum::YLeaf TunnelKeyState::absent {0, "absent"};
-const Enum::YLeaf TunnelKeyState::present {1, "present"};
-
-const Enum::YLeaf TunnelKaDfState::disable {0, "disable"};
-const Enum::YLeaf TunnelKaDfState::enable {1, "enable"};
-
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_none {0, "tunl-ip-mode-dir-none"};
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_decap {1, "tunl-ip-mode-dir-decap"};
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_encap {2, "tunl-ip-mode-dir-encap"};
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_max {3, "tunl-ip-mode-dir-max"};
-
-const Enum::YLeaf TunnelGreMode::unknown {0, "unknown"};
-const Enum::YLeaf TunnelGreMode::gr_eo_ipv4 {1, "gr-eo-ipv4"};
-const Enum::YLeaf TunnelGreMode::gr_eo_ipv6 {2, "gr-eo-ipv6"};
-const Enum::YLeaf TunnelGreMode::mgr_eo_ipv4 {3, "mgr-eo-ipv4"};
-const Enum::YLeaf TunnelGreMode::mgr_eo_ipv6 {4, "mgr-eo-ipv6"};
-const Enum::YLeaf TunnelGreMode::ipv4 {5, "ipv4"};
-const Enum::YLeaf TunnelGreMode::ipv6 {6, "ipv6"};
-
 const Enum::YLeaf TunlPfiAfId::tunl_pfi_af_id_none {0, "tunl-pfi-af-id-none"};
 const Enum::YLeaf TunlPfiAfId::tunl_pfi_af_id_ipv4 {2, "tunl-pfi-af-id-ipv4"};
 const Enum::YLeaf TunlPfiAfId::tunl_pfi_af_id_ipv6 {10, "tunl-pfi-af-id-ipv6"};
 
-const Enum::YLeaf SonetApsEt::not_configured {0, "not-configured"};
-const Enum::YLeaf SonetApsEt::working_active {1, "working-active"};
-const Enum::YLeaf SonetApsEt::protect_active {2, "protect-active"};
-const Enum::YLeaf SonetApsEt::working_inactive {3, "working-inactive"};
-const Enum::YLeaf SonetApsEt::protect_inactive {4, "protect-inactive"};
+const Enum::YLeaf TunnelKaDfState::disable {0, "disable"};
+const Enum::YLeaf TunnelKaDfState::enable {1, "enable"};
 
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_local {0, "bmd-mbr-local"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
 
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
-
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
-
-const Enum::YLeaf BmSeverity::ok {0, "ok"};
-const Enum::YLeaf BmSeverity::information {1, "information"};
-const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
-const Enum::YLeaf BmSeverity::warning {3, "warning"};
-const Enum::YLeaf BmSeverity::error {5, "error"};
-
-const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
-const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
+const Enum::YLeaf TunnelKeyState::absent {0, "absent"};
+const Enum::YLeaf TunnelKeyState::present {1, "present"};
 
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
@@ -14938,40 +14966,21 @@ const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-m
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_client_bundle_ctrl {74, "bm-mbr-state-reason-client-bundle-ctrl"};
-const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_lacp_oos {75, "bm-mbr-state-reason-lacp-oos"};
-const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_errdis_bundle_oos {76, "bm-mbr-state-reason-errdis-bundle-oos"};
-const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_count {77, "bm-mbr-state-reason-count"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_count {75, "bm-mbr-state-reason-count"};
 
-const Enum::YLeaf BmMuxstate::detached {1, "detached"};
-const Enum::YLeaf BmMuxstate::waiting {2, "waiting"};
-const Enum::YLeaf BmMuxstate::attached {3, "attached"};
-const Enum::YLeaf BmMuxstate::collecting {4, "collecting"};
-const Enum::YLeaf BmMuxstate::distributing {5, "distributing"};
-const Enum::YLeaf BmMuxstate::collecting_distributing {6, "collecting-distributing"};
+const Enum::YLeaf BmSeverity::ok {0, "ok"};
+const Enum::YLeaf BmSeverity::information {1, "information"};
+const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
+const Enum::YLeaf BmSeverity::warning {3, "warning"};
+const Enum::YLeaf BmSeverity::error {5, "error"};
 
-const Enum::YLeaf SrpMgmtSrrFailure::idle_srr_failure {0, "idle-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::wait_to_restore_srr_failure {1, "wait-to-restore-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::signal_fail_srr_failure {2, "signal-fail-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::forced_switch_srr_failure {3, "forced-switch-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::unknown_srr_failure {4, "unknown-srr-failure"};
-
-const Enum::YLeaf SrpMgmtSrrNodeState::idle_srr_state {0, "idle-srr-state"};
-const Enum::YLeaf SrpMgmtSrrNodeState::discovery_srr_state {1, "discovery-srr-state"};
-const Enum::YLeaf SrpMgmtSrrNodeState::unknown_srr_state {2, "unknown-srr-state"};
-
-const Enum::YLeaf SrpMgmtIpsPathInd::short_path {0, "short-path"};
-const Enum::YLeaf SrpMgmtIpsPathInd::long_path {1, "long-path"};
-const Enum::YLeaf SrpMgmtIpsPathInd::unknown_path {2, "unknown-path"};
-
-const Enum::YLeaf SrpMgmtFailureStateEt::idle_failure_state {0, "idle-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::wait_to_restore_failure_state {1, "wait-to-restore-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::manual_switch_failure_state {2, "manual-switch-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::signal_degrade_failure_state {3, "signal-degrade-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::signal_fail_failure_state {4, "signal-fail-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::forced_switch_failure_state {5, "forced-switch-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::shutdown_failure_state {6, "shutdown-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::invalid_failure_state {7, "invalid-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::unknown_failure_state {8, "unknown-failure-state"};
+const Enum::YLeaf SrpMgmtIpsReq::idle_ips_request {0, "idle-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::wait_to_restore_ips_request {1, "wait-to-restore-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::manual_switch_ips_request {2, "manual-switch-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::signal_degrade_ips_request {3, "signal-degrade-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::signal_fail_ips_request {4, "signal-fail-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::forced_switch_ips_request {5, "forced-switch-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::unknown_ips_request {6, "unknown-ips-request"};
 
 const Enum::YLeaf SrpMgmtFailureEt::hardware_missing_failure {0, "hardware-missing-failure"};
 const Enum::YLeaf SrpMgmtFailureEt::layer1_admin_state_failure {1, "layer1-admin-state-failure"};
@@ -14982,28 +14991,29 @@ const Enum::YLeaf SrpMgmtFailureEt::mate_problem_failure {5, "mate-problem-failu
 const Enum::YLeaf SrpMgmtFailureEt::side_mismatch_failure {6, "side-mismatch-failure"};
 const Enum::YLeaf SrpMgmtFailureEt::unknown_failure {7, "unknown-failure"};
 
-const Enum::YLeaf SrpMgmtIpsReq::idle_ips_request {0, "idle-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::wait_to_restore_ips_request {1, "wait-to-restore-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::manual_switch_ips_request {2, "manual-switch-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::signal_degrade_ips_request {3, "signal-degrade-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::signal_fail_ips_request {4, "signal-fail-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::forced_switch_ips_request {5, "forced-switch-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::unknown_ips_request {6, "unknown-ips-request"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_unknown {0, "im-attr-transport-mode-unknown"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_lan {1, "im-attr-transport-mode-lan"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_wan {2, "im-attr-transport-mode-wan"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu1e {3, "im-attr-transport-mode-otn-bt-opu1e"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu2e {4, "im-attr-transport-mode-otn-bt-opu2e"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu3 {5, "im-attr-transport-mode-otn-opu3"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu4 {6, "im-attr-transport-mode-otn-opu4"};
 
-const Enum::YLeaf SrpMgmtIpsWrapState::idle_wrap_state {0, "idle-wrap-state"};
-const Enum::YLeaf SrpMgmtIpsWrapState::wrapped_state {1, "wrapped-state"};
-const Enum::YLeaf SrpMgmtIpsWrapState::locked_out_wrap_state {2, "locked-out-wrap-state"};
-const Enum::YLeaf SrpMgmtIpsWrapState::unknown_wrap_state {3, "unknown-wrap-state"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_none {0, "tunl-ip-mode-dir-none"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_decap {1, "tunl-ip-mode-dir-decap"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_encap {2, "tunl-ip-mode-dir-encap"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_max {3, "tunl-ip-mode-dir-max"};
 
-const Enum::YLeaf ImCmdIntfTypeEnum::srp {0, "srp"};
-const Enum::YLeaf ImCmdIntfTypeEnum::tunnel {1, "tunnel"};
-const Enum::YLeaf ImCmdIntfTypeEnum::bundle {2, "bundle"};
-const Enum::YLeaf ImCmdIntfTypeEnum::serial {3, "serial"};
-const Enum::YLeaf ImCmdIntfTypeEnum::sonet_pos {4, "sonet-pos"};
-const Enum::YLeaf ImCmdIntfTypeEnum::tunnel_gre {5, "tunnel-gre"};
-const Enum::YLeaf ImCmdIntfTypeEnum::pseudowire_head_end {6, "pseudowire-head-end"};
-const Enum::YLeaf ImCmdIntfTypeEnum::cem {7, "cem"};
-const Enum::YLeaf ImCmdIntfTypeEnum::gcc {8, "gcc"};
+const Enum::YLeaf ImCmdEncapsEnum::frame_relay {0, "frame-relay"};
+const Enum::YLeaf ImCmdEncapsEnum::vlan {1, "vlan"};
+const Enum::YLeaf ImCmdEncapsEnum::ppp {2, "ppp"};
+
+const Enum::YLeaf BmMuxstate::detached {1, "detached"};
+const Enum::YLeaf BmMuxstate::waiting {2, "waiting"};
+const Enum::YLeaf BmMuxstate::attached {3, "attached"};
+const Enum::YLeaf BmMuxstate::collecting {4, "collecting"};
+const Enum::YLeaf BmMuxstate::distributing {5, "distributing"};
+const Enum::YLeaf BmMuxstate::collecting_distributing {6, "collecting-distributing"};
 
 const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
 const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
@@ -15012,38 +15022,36 @@ const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
 const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
 const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
 
-const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
 
-const Enum::YLeaf VlanSwitchedMode::none {0, "none"};
-const Enum::YLeaf VlanSwitchedMode::trunk_port {1, "trunk-port"};
-const Enum::YLeaf VlanSwitchedMode::access_port {2, "access-port"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
 
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
-
-const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
-const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
-const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
-const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
-const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
-const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
-const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
-const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
-const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
-
-const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
-const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
-const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
+const Enum::YLeaf ImAttrLink::im_attr_link_type_auto {0, "im-attr-link-type-auto"};
+const Enum::YLeaf ImAttrLink::im_attr_link_type_force {1, "im-attr-link-type-force"};
 
 const Enum::YLeaf VlanEncaps::no_encapsulation {0, "no-encapsulation"};
 const Enum::YLeaf VlanEncaps::dot1q {1, "dot1q"};
@@ -15056,38 +15064,14 @@ const Enum::YLeaf VlanEncaps::service_instance {7, "service-instance"};
 const Enum::YLeaf VlanEncaps::dot1ad_dot1q {8, "dot1ad-dot1q"};
 const Enum::YLeaf VlanEncaps::dot1ad_any {9, "dot1ad-any"};
 
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_auto {0, "lmi-type-auto"};
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ansi {1, "lmi-type-ansi"};
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ccitt {2, "lmi-type-ccitt"};
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_cisco {3, "lmi-type-cisco"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
 
-const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_cisco {0, "frame-relay-cisco"};
-const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_ietf {1, "frame-relay-ietf"};
+const Enum::YLeaf InterfaceTypeSet::hardware_interfaces {0, "hardware-interfaces"};
 
-const Enum::YLeaf ImCmdEncapsEnum::frame_relay {0, "frame-relay"};
-const Enum::YLeaf ImCmdEncapsEnum::vlan {1, "vlan"};
-const Enum::YLeaf ImCmdEncapsEnum::ppp {2, "ppp"};
-
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_unknown {0, "im-attr-transport-mode-unknown"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_lan {1, "im-attr-transport-mode-lan"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_wan {2, "im-attr-transport-mode-wan"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu1e {3, "im-attr-transport-mode-otn-bt-opu1e"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu2e {4, "im-attr-transport-mode-otn-bt-opu2e"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu3 {5, "im-attr-transport-mode-otn-opu3"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu4 {6, "im-attr-transport-mode-otn-opu4"};
-
-const Enum::YLeaf ImCmdLoopbackEnum::no_loopback {0, "no-loopback"};
-const Enum::YLeaf ImCmdLoopbackEnum::internal_loopback {1, "internal-loopback"};
-const Enum::YLeaf ImCmdLoopbackEnum::external_loopback {2, "external-loopback"};
-const Enum::YLeaf ImCmdLoopbackEnum::line_loopback {3, "line-loopback"};
-
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_off {0, "im-attr-flow-control-off"};
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_on {1, "im-attr-flow-control-on"};
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_not_sup {2, "im-attr-flow-control-not-sup"};
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_priority {3, "im-attr-flow-control-priority"};
-
-const Enum::YLeaf ImAttrLink::im_attr_link_type_auto {0, "im-attr-link-type-auto"};
-const Enum::YLeaf ImAttrLink::im_attr_link_type_force {1, "im-attr-link-type-force"};
+const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
+const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
 
 const Enum::YLeaf ImAttrMedia::im_attr_media_other {0, "im-attr-media-other"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_unknown {1, "im-attr-media-unknown"};
@@ -15472,14 +15456,11 @@ const Enum::YLeaf ImAttrMedia::im_attr_media_25gbase_cu3m {379, "im-attr-media-2
 const Enum::YLeaf ImAttrMedia::im_attr_media_25gbase_cu5m {380, "im-attr-media-25gbase-cu5m"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_100gbase_sm_sr {381, "im-attr-media-100gbase-sm-sr"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_100gbase_sr_bd {382, "im-attr-media-100gbase-sr-bd"};
-const Enum::YLeaf ImAttrMedia::im_attr_media_1000base_2bx_d {383, "im-attr-media-1000base-2bx-d"};
-const Enum::YLeaf ImAttrMedia::im_attr_media_1000base_2bx_d_i {384, "im-attr-media-1000base-2bx-d-i"};
-const Enum::YLeaf ImAttrMedia::im_attr_media_1000base_2bx_u {385, "im-attr-media-1000base-2bx-u"};
-const Enum::YLeaf ImAttrMedia::im_attr_media_1000base_2bx_u_i {386, "im-attr-media-1000base-2bx-u-i"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_100gbase_fr {383, "im-attr-media-100gbase-fr"};
 
-const Enum::YLeaf ImAttrDuplex::im_attr_duplex_unknown {0, "im-attr-duplex-unknown"};
-const Enum::YLeaf ImAttrDuplex::im_attr_duplex_half {1, "im-attr-duplex-half"};
-const Enum::YLeaf ImAttrDuplex::im_attr_duplex_full {2, "im-attr-duplex-full"};
+const Enum::YLeaf SrpMgmtSrrNodeState::idle_srr_state {0, "idle-srr-state"};
+const Enum::YLeaf SrpMgmtSrrNodeState::discovery_srr_state {1, "discovery-srr-state"};
+const Enum::YLeaf SrpMgmtSrrNodeState::unknown_srr_state {2, "unknown-srr-state"};
 
 
 }

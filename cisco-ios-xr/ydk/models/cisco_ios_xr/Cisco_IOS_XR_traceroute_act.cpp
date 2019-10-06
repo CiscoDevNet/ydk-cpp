@@ -270,7 +270,6 @@ Traceroute::Input::Destination::Destination()
     max_ttl{YType::uint16, "max-ttl"},
     port{YType::uint32, "port"},
     verbose{YType::boolean, "verbose"},
-    srv6_header{YType::empty, "srv6-header"},
     priority{YType::uint16, "priority"},
     outgoing_interface{YType::str, "outgoing-interface"}
 {
@@ -295,7 +294,6 @@ bool Traceroute::Input::Destination::has_data() const
 	|| max_ttl.is_set
 	|| port.is_set
 	|| verbose.is_set
-	|| srv6_header.is_set
 	|| priority.is_set
 	|| outgoing_interface.is_set;
 }
@@ -313,7 +311,6 @@ bool Traceroute::Input::Destination::has_operation() const
 	|| ydk::is_set(max_ttl.yfilter)
 	|| ydk::is_set(port.yfilter)
 	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(srv6_header.yfilter)
 	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(outgoing_interface.yfilter);
 }
@@ -346,7 +343,6 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Destination::g
     if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
-    if (srv6_header.is_set || is_set(srv6_header.yfilter)) leaf_name_data.push_back(srv6_header.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
 
@@ -428,12 +424,6 @@ void Traceroute::Input::Destination::set_value(const std::string & value_path, c
         verbose.value_namespace = name_space;
         verbose.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "srv6-header")
-    {
-        srv6_header = value;
-        srv6_header.value_namespace = name_space;
-        srv6_header.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "priority")
     {
         priority = value;
@@ -490,10 +480,6 @@ void Traceroute::Input::Destination::set_filter(const std::string & value_path, 
     {
         verbose.yfilter = yfilter;
     }
-    if(value_path == "srv6-header")
-    {
-        srv6_header.yfilter = yfilter;
-    }
     if(value_path == "priority")
     {
         priority.yfilter = yfilter;
@@ -506,7 +492,7 @@ void Traceroute::Input::Destination::set_filter(const std::string & value_path, 
 
 bool Traceroute::Input::Destination::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose" || name == "srv6-header" || name == "priority" || name == "outgoing-interface")
+    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose" || name == "priority" || name == "outgoing-interface")
         return true;
     return false;
 }
@@ -522,8 +508,7 @@ Traceroute::Input::Ipv4::Ipv4()
     min_ttl{YType::uint16, "min-ttl"},
     max_ttl{YType::uint16, "max-ttl"},
     port{YType::uint32, "port"},
-    verbose{YType::boolean, "verbose"},
-    srv6_header{YType::empty, "srv6-header"}
+    verbose{YType::boolean, "verbose"}
 {
 
     yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
@@ -545,8 +530,7 @@ bool Traceroute::Input::Ipv4::has_data() const
 	|| min_ttl.is_set
 	|| max_ttl.is_set
 	|| port.is_set
-	|| verbose.is_set
-	|| srv6_header.is_set;
+	|| verbose.is_set;
 }
 
 bool Traceroute::Input::Ipv4::has_operation() const
@@ -561,8 +545,7 @@ bool Traceroute::Input::Ipv4::has_operation() const
 	|| ydk::is_set(min_ttl.yfilter)
 	|| ydk::is_set(max_ttl.yfilter)
 	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(srv6_header.yfilter);
+	|| ydk::is_set(verbose.yfilter);
 }
 
 std::string Traceroute::Input::Ipv4::get_absolute_path() const
@@ -593,7 +576,6 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Ipv4::get_name
     if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
-    if (srv6_header.is_set || is_set(srv6_header.yfilter)) leaf_name_data.push_back(srv6_header.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -673,12 +655,6 @@ void Traceroute::Input::Ipv4::set_value(const std::string & value_path, const st
         verbose.value_namespace = name_space;
         verbose.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "srv6-header")
-    {
-        srv6_header = value;
-        srv6_header.value_namespace = name_space;
-        srv6_header.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Traceroute::Input::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
@@ -723,15 +699,11 @@ void Traceroute::Input::Ipv4::set_filter(const std::string & value_path, YFilter
     {
         verbose.yfilter = yfilter;
     }
-    if(value_path == "srv6-header")
-    {
-        srv6_header.yfilter = yfilter;
-    }
 }
 
 bool Traceroute::Input::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose" || name == "srv6-header")
+    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose")
         return true;
     return false;
 }
@@ -748,7 +720,6 @@ Traceroute::Input::Ipv6::Ipv6()
     max_ttl{YType::uint16, "max-ttl"},
     port{YType::uint32, "port"},
     verbose{YType::boolean, "verbose"},
-    srv6_header{YType::empty, "srv6-header"},
     priority{YType::uint16, "priority"},
     outgoing_interface{YType::str, "outgoing-interface"}
 {
@@ -773,7 +744,6 @@ bool Traceroute::Input::Ipv6::has_data() const
 	|| max_ttl.is_set
 	|| port.is_set
 	|| verbose.is_set
-	|| srv6_header.is_set
 	|| priority.is_set
 	|| outgoing_interface.is_set;
 }
@@ -791,7 +761,6 @@ bool Traceroute::Input::Ipv6::has_operation() const
 	|| ydk::is_set(max_ttl.yfilter)
 	|| ydk::is_set(port.yfilter)
 	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(srv6_header.yfilter)
 	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(outgoing_interface.yfilter);
 }
@@ -824,7 +793,6 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Ipv6::get_name
     if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
-    if (srv6_header.is_set || is_set(srv6_header.yfilter)) leaf_name_data.push_back(srv6_header.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
 
@@ -906,12 +874,6 @@ void Traceroute::Input::Ipv6::set_value(const std::string & value_path, const st
         verbose.value_namespace = name_space;
         verbose.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "srv6-header")
-    {
-        srv6_header = value;
-        srv6_header.value_namespace = name_space;
-        srv6_header.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "priority")
     {
         priority = value;
@@ -968,10 +930,6 @@ void Traceroute::Input::Ipv6::set_filter(const std::string & value_path, YFilter
     {
         verbose.yfilter = yfilter;
     }
-    if(value_path == "srv6-header")
-    {
-        srv6_header.yfilter = yfilter;
-    }
     if(value_path == "priority")
     {
         priority.yfilter = yfilter;
@@ -984,7 +942,7 @@ void Traceroute::Input::Ipv6::set_filter(const std::string & value_path, YFilter
 
 bool Traceroute::Input::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose" || name == "srv6-header" || name == "priority" || name == "outgoing-interface")
+    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose" || name == "priority" || name == "outgoing-interface")
         return true;
     return false;
 }
@@ -1634,10 +1592,7 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Probe()
     delta_time{YType::uint32, "delta-time"},
     hop_address{YType::str, "hop-address"},
     hop_hostname{YType::str, "hop-hostname"}
-        ,
-    srv6_header(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header>())
 {
-    srv6_header->parent = this;
 
     yang_name = "probe"; yang_parent_name = "probes"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1653,8 +1608,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::has
 	|| result.is_set
 	|| delta_time.is_set
 	|| hop_address.is_set
-	|| hop_hostname.is_set
-	|| (srv6_header !=  nullptr && srv6_header->has_data());
+	|| hop_hostname.is_set;
 }
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::has_operation() const
@@ -1664,8 +1618,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::has
 	|| ydk::is_set(result.yfilter)
 	|| ydk::is_set(delta_time.yfilter)
 	|| ydk::is_set(hop_address.yfilter)
-	|| ydk::is_set(hop_hostname.yfilter)
-	|| (srv6_header !=  nullptr && srv6_header->has_operation());
+	|| ydk::is_set(hop_hostname.yfilter);
 }
 
 std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::get_segment_path() const
@@ -1692,15 +1645,6 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteRes
 
 std::shared_ptr<ydk::Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "srv6-header")
-    {
-        if(srv6_header == nullptr)
-        {
-            srv6_header = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header>();
-        }
-        return srv6_header;
-    }
-
     return nullptr;
 }
 
@@ -1708,11 +1652,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Traceroute::Output::Tracerou
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(srv6_header != nullptr)
-    {
-        _children["srv6-header"] = srv6_header;
-    }
-
     return _children;
 }
 
@@ -1776,205 +1715,7 @@ void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::set
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "srv6-header" || name == "probe-index" || name == "result" || name == "delta-time" || name == "hop-address" || name == "hop-hostname")
-        return true;
-    return false;
-}
-
-Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Srv6Header()
-    :
-    destination_address{YType::uint32, "destination-address"},
-    segments_left{YType::uint32, "segments-left"}
-        ,
-    segments(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments>())
-{
-    segments->parent = this;
-
-    yang_name = "srv6-header"; yang_parent_name = "probe"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::~Srv6Header()
-{
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::has_data() const
-{
-    if (is_presence_container) return true;
-    return destination_address.is_set
-	|| segments_left.is_set
-	|| (segments !=  nullptr && segments->has_data());
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(segments_left.yfilter)
-	|| (segments !=  nullptr && segments->has_operation());
-}
-
-std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srv6-header";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (segments_left.is_set || is_set(segments_left.yfilter)) leaf_name_data.push_back(segments_left.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "segments")
-    {
-        if(segments == nullptr)
-        {
-            segments = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments>();
-        }
-        return segments;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(segments != nullptr)
-    {
-        _children["segments"] = segments;
-    }
-
-    return _children;
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "segments-left")
-    {
-        segments_left = value;
-        segments_left.value_namespace = name_space;
-        segments_left.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "segments-left")
-    {
-        segments_left.yfilter = yfilter;
-    }
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "segments" || name == "destination-address" || name == "segments-left")
-        return true;
-    return false;
-}
-
-Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::Segments()
-    :
-    segment{YType::str, "segment"}
-{
-
-    yang_name = "segments"; yang_parent_name = "srv6-header"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::~Segments()
-{
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : segment.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::has_operation() const
-{
-    for (auto const & leaf : segment.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(segment.yfilter);
-}
-
-std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "segments";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto segment_name_datas = segment.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), segment_name_datas.begin(), segment_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "segment")
-    {
-        segment.append(value);
-    }
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "segment")
-    {
-        segment.yfilter = yfilter;
-    }
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "segment")
+    if(name == "probe-index" || name == "result" || name == "delta-time" || name == "hop-address" || name == "hop-hostname")
         return true;
     return false;
 }
@@ -2430,10 +2171,7 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Probe()
     delta_time{YType::uint32, "delta-time"},
     hop_address{YType::str, "hop-address"},
     hop_hostname{YType::str, "hop-hostname"}
-        ,
-    srv6_header(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header>())
 {
-    srv6_header->parent = this;
 
     yang_name = "probe"; yang_parent_name = "probes"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -2449,8 +2187,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::has
 	|| result.is_set
 	|| delta_time.is_set
 	|| hop_address.is_set
-	|| hop_hostname.is_set
-	|| (srv6_header !=  nullptr && srv6_header->has_data());
+	|| hop_hostname.is_set;
 }
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::has_operation() const
@@ -2460,8 +2197,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::has
 	|| ydk::is_set(result.yfilter)
 	|| ydk::is_set(delta_time.yfilter)
 	|| ydk::is_set(hop_address.yfilter)
-	|| ydk::is_set(hop_hostname.yfilter)
-	|| (srv6_header !=  nullptr && srv6_header->has_operation());
+	|| ydk::is_set(hop_hostname.yfilter);
 }
 
 std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::get_segment_path() const
@@ -2488,15 +2224,6 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteRes
 
 std::shared_ptr<ydk::Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "srv6-header")
-    {
-        if(srv6_header == nullptr)
-        {
-            srv6_header = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header>();
-        }
-        return srv6_header;
-    }
-
     return nullptr;
 }
 
@@ -2504,11 +2231,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Traceroute::Output::Tracerou
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(srv6_header != nullptr)
-    {
-        _children["srv6-header"] = srv6_header;
-    }
-
     return _children;
 }
 
@@ -2572,205 +2294,7 @@ void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::set
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "srv6-header" || name == "probe-index" || name == "result" || name == "delta-time" || name == "hop-address" || name == "hop-hostname")
-        return true;
-    return false;
-}
-
-Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Srv6Header()
-    :
-    destination_address{YType::uint32, "destination-address"},
-    segments_left{YType::uint32, "segments-left"}
-        ,
-    segments(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments>())
-{
-    segments->parent = this;
-
-    yang_name = "srv6-header"; yang_parent_name = "probe"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::~Srv6Header()
-{
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::has_data() const
-{
-    if (is_presence_container) return true;
-    return destination_address.is_set
-	|| segments_left.is_set
-	|| (segments !=  nullptr && segments->has_data());
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(segments_left.yfilter)
-	|| (segments !=  nullptr && segments->has_operation());
-}
-
-std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srv6-header";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (segments_left.is_set || is_set(segments_left.yfilter)) leaf_name_data.push_back(segments_left.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "segments")
-    {
-        if(segments == nullptr)
-        {
-            segments = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments>();
-        }
-        return segments;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(segments != nullptr)
-    {
-        _children["segments"] = segments;
-    }
-
-    return _children;
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "segments-left")
-    {
-        segments_left = value;
-        segments_left.value_namespace = name_space;
-        segments_left.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "segments-left")
-    {
-        segments_left.yfilter = yfilter;
-    }
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "segments" || name == "destination-address" || name == "segments-left")
-        return true;
-    return false;
-}
-
-Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::Segments()
-    :
-    segment{YType::str, "segment"}
-{
-
-    yang_name = "segments"; yang_parent_name = "srv6-header"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::~Segments()
-{
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : segment.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::has_operation() const
-{
-    for (auto const & leaf : segment.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(segment.yfilter);
-}
-
-std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "segments";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto segment_name_datas = segment.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), segment_name_datas.begin(), segment_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "segment")
-    {
-        segment.append(value);
-    }
-}
-
-void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "segment")
-    {
-        segment.yfilter = yfilter;
-    }
-}
-
-bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "segment")
+    if(name == "probe-index" || name == "result" || name == "delta-time" || name == "hop-address" || name == "hop-hostname")
         return true;
     return false;
 }

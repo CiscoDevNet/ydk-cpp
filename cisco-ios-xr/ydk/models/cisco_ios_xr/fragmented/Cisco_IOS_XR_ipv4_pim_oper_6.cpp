@@ -12,1020 +12,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_oper {
 
-Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IfrsInterface()
-    :
-    interface_name{YType::str, "interface-name"},
-    interface_name_xr{YType::str, "interface-name-xr"},
-    interface_address_mask{YType::uint8, "interface-address-mask"},
-    is_enabled{YType::boolean, "is-enabled"},
-    neighbor_count{YType::uint16, "neighbor-count"},
-    external_neighbor_count{YType::uint16, "external-neighbor-count"},
-    hello_interval{YType::uint16, "hello-interval"},
-    dr_priority{YType::uint32, "dr-priority"},
-    hello_expiry{YType::uint64, "hello-expiry"},
-    are_we_dr{YType::boolean, "are-we-dr"},
-    bfd_enabled{YType::boolean, "bfd-enabled"},
-    bfd_interval{YType::uint32, "bfd-interval"},
-    bfd_multiplier{YType::uint32, "bfd-multiplier"},
-    virtual_interface{YType::boolean, "virtual-interface"},
-    passive_interface{YType::boolean, "passive-interface"},
-    neighbor_filter_name{YType::str, "neighbor-filter-name"},
-    join_prune_interval{YType::uint16, "join-prune-interval"},
-    prune_delay_enabled{YType::boolean, "prune-delay-enabled"},
-    configured_propagation_delay{YType::uint16, "configured-propagation-delay"},
-    propagation_delay{YType::uint16, "propagation-delay"},
-    configured_override_interval{YType::uint16, "configured-override-interval"},
-    override_interval{YType::uint16, "override-interval"},
-    generation_id{YType::uint32, "generation-id"},
-    is_bidirectional_capable{YType::boolean, "is-bidirectional-capable"},
-    is_proxy_capable{YType::boolean, "is-proxy-capable"},
-    is_batch_asserts_capable{YType::boolean, "is-batch-asserts-capable"},
-    idb_oor_enabled{YType::boolean, "idb-oor-enabled"},
-    idb_acl_provided{YType::boolean, "idb-acl-provided"},
-    idb_max_count{YType::uint32, "idb-max-count"},
-    idb_threshold_count{YType::uint32, "idb-threshold-count"},
-    idb_current_count{YType::uint32, "idb-current-count"},
-    idb_acl_name{YType::str, "idb-acl-name"}
-        ,
-    dr_address(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress>())
-    , interface_address(this, {})
-{
-    dr_address->parent = this;
-
-    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::~IfrsInterface()
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<interface_address.len(); index++)
-    {
-        if(interface_address[index]->has_data())
-            return true;
-    }
-    return interface_name.is_set
-	|| interface_name_xr.is_set
-	|| interface_address_mask.is_set
-	|| is_enabled.is_set
-	|| neighbor_count.is_set
-	|| external_neighbor_count.is_set
-	|| hello_interval.is_set
-	|| dr_priority.is_set
-	|| hello_expiry.is_set
-	|| are_we_dr.is_set
-	|| bfd_enabled.is_set
-	|| bfd_interval.is_set
-	|| bfd_multiplier.is_set
-	|| virtual_interface.is_set
-	|| passive_interface.is_set
-	|| neighbor_filter_name.is_set
-	|| join_prune_interval.is_set
-	|| prune_delay_enabled.is_set
-	|| configured_propagation_delay.is_set
-	|| propagation_delay.is_set
-	|| configured_override_interval.is_set
-	|| override_interval.is_set
-	|| generation_id.is_set
-	|| is_bidirectional_capable.is_set
-	|| is_proxy_capable.is_set
-	|| is_batch_asserts_capable.is_set
-	|| idb_oor_enabled.is_set
-	|| idb_acl_provided.is_set
-	|| idb_max_count.is_set
-	|| idb_threshold_count.is_set
-	|| idb_current_count.is_set
-	|| idb_acl_name.is_set
-	|| (dr_address !=  nullptr && dr_address->has_data());
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_operation() const
-{
-    for (std::size_t index=0; index<interface_address.len(); index++)
-    {
-        if(interface_address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(interface_name_xr.yfilter)
-	|| ydk::is_set(interface_address_mask.yfilter)
-	|| ydk::is_set(is_enabled.yfilter)
-	|| ydk::is_set(neighbor_count.yfilter)
-	|| ydk::is_set(external_neighbor_count.yfilter)
-	|| ydk::is_set(hello_interval.yfilter)
-	|| ydk::is_set(dr_priority.yfilter)
-	|| ydk::is_set(hello_expiry.yfilter)
-	|| ydk::is_set(are_we_dr.yfilter)
-	|| ydk::is_set(bfd_enabled.yfilter)
-	|| ydk::is_set(bfd_interval.yfilter)
-	|| ydk::is_set(bfd_multiplier.yfilter)
-	|| ydk::is_set(virtual_interface.yfilter)
-	|| ydk::is_set(passive_interface.yfilter)
-	|| ydk::is_set(neighbor_filter_name.yfilter)
-	|| ydk::is_set(join_prune_interval.yfilter)
-	|| ydk::is_set(prune_delay_enabled.yfilter)
-	|| ydk::is_set(configured_propagation_delay.yfilter)
-	|| ydk::is_set(propagation_delay.yfilter)
-	|| ydk::is_set(configured_override_interval.yfilter)
-	|| ydk::is_set(override_interval.yfilter)
-	|| ydk::is_set(generation_id.yfilter)
-	|| ydk::is_set(is_bidirectional_capable.yfilter)
-	|| ydk::is_set(is_proxy_capable.yfilter)
-	|| ydk::is_set(is_batch_asserts_capable.yfilter)
-	|| ydk::is_set(idb_oor_enabled.yfilter)
-	|| ydk::is_set(idb_acl_provided.yfilter)
-	|| ydk::is_set(idb_max_count.yfilter)
-	|| ydk::is_set(idb_threshold_count.yfilter)
-	|| ydk::is_set(idb_current_count.yfilter)
-	|| ydk::is_set(idb_acl_name.yfilter)
-	|| (dr_address !=  nullptr && dr_address->has_operation());
-}
-
-std::string Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ifrs-interface";
-    ADD_KEY_TOKEN(interface_name, "interface-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (interface_address_mask.is_set || is_set(interface_address_mask.yfilter)) leaf_name_data.push_back(interface_address_mask.get_name_leafdata());
-    if (is_enabled.is_set || is_set(is_enabled.yfilter)) leaf_name_data.push_back(is_enabled.get_name_leafdata());
-    if (neighbor_count.is_set || is_set(neighbor_count.yfilter)) leaf_name_data.push_back(neighbor_count.get_name_leafdata());
-    if (external_neighbor_count.is_set || is_set(external_neighbor_count.yfilter)) leaf_name_data.push_back(external_neighbor_count.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (hello_expiry.is_set || is_set(hello_expiry.yfilter)) leaf_name_data.push_back(hello_expiry.get_name_leafdata());
-    if (are_we_dr.is_set || is_set(are_we_dr.yfilter)) leaf_name_data.push_back(are_we_dr.get_name_leafdata());
-    if (bfd_enabled.is_set || is_set(bfd_enabled.yfilter)) leaf_name_data.push_back(bfd_enabled.get_name_leafdata());
-    if (bfd_interval.is_set || is_set(bfd_interval.yfilter)) leaf_name_data.push_back(bfd_interval.get_name_leafdata());
-    if (bfd_multiplier.is_set || is_set(bfd_multiplier.yfilter)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
-    if (virtual_interface.is_set || is_set(virtual_interface.yfilter)) leaf_name_data.push_back(virtual_interface.get_name_leafdata());
-    if (passive_interface.is_set || is_set(passive_interface.yfilter)) leaf_name_data.push_back(passive_interface.get_name_leafdata());
-    if (neighbor_filter_name.is_set || is_set(neighbor_filter_name.yfilter)) leaf_name_data.push_back(neighbor_filter_name.get_name_leafdata());
-    if (join_prune_interval.is_set || is_set(join_prune_interval.yfilter)) leaf_name_data.push_back(join_prune_interval.get_name_leafdata());
-    if (prune_delay_enabled.is_set || is_set(prune_delay_enabled.yfilter)) leaf_name_data.push_back(prune_delay_enabled.get_name_leafdata());
-    if (configured_propagation_delay.is_set || is_set(configured_propagation_delay.yfilter)) leaf_name_data.push_back(configured_propagation_delay.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
-    if (configured_override_interval.is_set || is_set(configured_override_interval.yfilter)) leaf_name_data.push_back(configured_override_interval.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (generation_id.is_set || is_set(generation_id.yfilter)) leaf_name_data.push_back(generation_id.get_name_leafdata());
-    if (is_bidirectional_capable.is_set || is_set(is_bidirectional_capable.yfilter)) leaf_name_data.push_back(is_bidirectional_capable.get_name_leafdata());
-    if (is_proxy_capable.is_set || is_set(is_proxy_capable.yfilter)) leaf_name_data.push_back(is_proxy_capable.get_name_leafdata());
-    if (is_batch_asserts_capable.is_set || is_set(is_batch_asserts_capable.yfilter)) leaf_name_data.push_back(is_batch_asserts_capable.get_name_leafdata());
-    if (idb_oor_enabled.is_set || is_set(idb_oor_enabled.yfilter)) leaf_name_data.push_back(idb_oor_enabled.get_name_leafdata());
-    if (idb_acl_provided.is_set || is_set(idb_acl_provided.yfilter)) leaf_name_data.push_back(idb_acl_provided.get_name_leafdata());
-    if (idb_max_count.is_set || is_set(idb_max_count.yfilter)) leaf_name_data.push_back(idb_max_count.get_name_leafdata());
-    if (idb_threshold_count.is_set || is_set(idb_threshold_count.yfilter)) leaf_name_data.push_back(idb_threshold_count.get_name_leafdata());
-    if (idb_current_count.is_set || is_set(idb_current_count.yfilter)) leaf_name_data.push_back(idb_current_count.get_name_leafdata());
-    if (idb_acl_name.is_set || is_set(idb_acl_name.yfilter)) leaf_name_data.push_back(idb_acl_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dr-address")
-    {
-        if(dr_address == nullptr)
-        {
-            dr_address = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress>();
-        }
-        return dr_address;
-    }
-
-    if(child_yang_name == "interface-address")
-    {
-        auto ent_ = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress>();
-        ent_->parent = this;
-        interface_address.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(dr_address != nullptr)
-    {
-        _children["dr-address"] = dr_address;
-    }
-
-    count_ = 0;
-    for (auto ent_ : interface_address.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr = value;
-        interface_name_xr.value_namespace = name_space;
-        interface_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-address-mask")
-    {
-        interface_address_mask = value;
-        interface_address_mask.value_namespace = name_space;
-        interface_address_mask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-enabled")
-    {
-        is_enabled = value;
-        is_enabled.value_namespace = name_space;
-        is_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "neighbor-count")
-    {
-        neighbor_count = value;
-        neighbor_count.value_namespace = name_space;
-        neighbor_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-neighbor-count")
-    {
-        external_neighbor_count = value;
-        external_neighbor_count.value_namespace = name_space;
-        external_neighbor_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-interval")
-    {
-        hello_interval = value;
-        hello_interval.value_namespace = name_space;
-        hello_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dr-priority")
-    {
-        dr_priority = value;
-        dr_priority.value_namespace = name_space;
-        dr_priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-expiry")
-    {
-        hello_expiry = value;
-        hello_expiry.value_namespace = name_space;
-        hello_expiry.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "are-we-dr")
-    {
-        are_we_dr = value;
-        are_we_dr.value_namespace = name_space;
-        are_we_dr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bfd-enabled")
-    {
-        bfd_enabled = value;
-        bfd_enabled.value_namespace = name_space;
-        bfd_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bfd-interval")
-    {
-        bfd_interval = value;
-        bfd_interval.value_namespace = name_space;
-        bfd_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bfd-multiplier")
-    {
-        bfd_multiplier = value;
-        bfd_multiplier.value_namespace = name_space;
-        bfd_multiplier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "virtual-interface")
-    {
-        virtual_interface = value;
-        virtual_interface.value_namespace = name_space;
-        virtual_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "passive-interface")
-    {
-        passive_interface = value;
-        passive_interface.value_namespace = name_space;
-        passive_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "neighbor-filter-name")
-    {
-        neighbor_filter_name = value;
-        neighbor_filter_name.value_namespace = name_space;
-        neighbor_filter_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "join-prune-interval")
-    {
-        join_prune_interval = value;
-        join_prune_interval.value_namespace = name_space;
-        join_prune_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prune-delay-enabled")
-    {
-        prune_delay_enabled = value;
-        prune_delay_enabled.value_namespace = name_space;
-        prune_delay_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-propagation-delay")
-    {
-        configured_propagation_delay = value;
-        configured_propagation_delay.value_namespace = name_space;
-        configured_propagation_delay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "propagation-delay")
-    {
-        propagation_delay = value;
-        propagation_delay.value_namespace = name_space;
-        propagation_delay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-override-interval")
-    {
-        configured_override_interval = value;
-        configured_override_interval.value_namespace = name_space;
-        configured_override_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "override-interval")
-    {
-        override_interval = value;
-        override_interval.value_namespace = name_space;
-        override_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "generation-id")
-    {
-        generation_id = value;
-        generation_id.value_namespace = name_space;
-        generation_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-bidirectional-capable")
-    {
-        is_bidirectional_capable = value;
-        is_bidirectional_capable.value_namespace = name_space;
-        is_bidirectional_capable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-proxy-capable")
-    {
-        is_proxy_capable = value;
-        is_proxy_capable.value_namespace = name_space;
-        is_proxy_capable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-batch-asserts-capable")
-    {
-        is_batch_asserts_capable = value;
-        is_batch_asserts_capable.value_namespace = name_space;
-        is_batch_asserts_capable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idb-oor-enabled")
-    {
-        idb_oor_enabled = value;
-        idb_oor_enabled.value_namespace = name_space;
-        idb_oor_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idb-acl-provided")
-    {
-        idb_acl_provided = value;
-        idb_acl_provided.value_namespace = name_space;
-        idb_acl_provided.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idb-max-count")
-    {
-        idb_max_count = value;
-        idb_max_count.value_namespace = name_space;
-        idb_max_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idb-threshold-count")
-    {
-        idb_threshold_count = value;
-        idb_threshold_count.value_namespace = name_space;
-        idb_threshold_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idb-current-count")
-    {
-        idb_current_count = value;
-        idb_current_count.value_namespace = name_space;
-        idb_current_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idb-acl-name")
-    {
-        idb_acl_name = value;
-        idb_acl_name.value_namespace = name_space;
-        idb_acl_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "interface-address-mask")
-    {
-        interface_address_mask.yfilter = yfilter;
-    }
-    if(value_path == "is-enabled")
-    {
-        is_enabled.yfilter = yfilter;
-    }
-    if(value_path == "neighbor-count")
-    {
-        neighbor_count.yfilter = yfilter;
-    }
-    if(value_path == "external-neighbor-count")
-    {
-        external_neighbor_count.yfilter = yfilter;
-    }
-    if(value_path == "hello-interval")
-    {
-        hello_interval.yfilter = yfilter;
-    }
-    if(value_path == "dr-priority")
-    {
-        dr_priority.yfilter = yfilter;
-    }
-    if(value_path == "hello-expiry")
-    {
-        hello_expiry.yfilter = yfilter;
-    }
-    if(value_path == "are-we-dr")
-    {
-        are_we_dr.yfilter = yfilter;
-    }
-    if(value_path == "bfd-enabled")
-    {
-        bfd_enabled.yfilter = yfilter;
-    }
-    if(value_path == "bfd-interval")
-    {
-        bfd_interval.yfilter = yfilter;
-    }
-    if(value_path == "bfd-multiplier")
-    {
-        bfd_multiplier.yfilter = yfilter;
-    }
-    if(value_path == "virtual-interface")
-    {
-        virtual_interface.yfilter = yfilter;
-    }
-    if(value_path == "passive-interface")
-    {
-        passive_interface.yfilter = yfilter;
-    }
-    if(value_path == "neighbor-filter-name")
-    {
-        neighbor_filter_name.yfilter = yfilter;
-    }
-    if(value_path == "join-prune-interval")
-    {
-        join_prune_interval.yfilter = yfilter;
-    }
-    if(value_path == "prune-delay-enabled")
-    {
-        prune_delay_enabled.yfilter = yfilter;
-    }
-    if(value_path == "configured-propagation-delay")
-    {
-        configured_propagation_delay.yfilter = yfilter;
-    }
-    if(value_path == "propagation-delay")
-    {
-        propagation_delay.yfilter = yfilter;
-    }
-    if(value_path == "configured-override-interval")
-    {
-        configured_override_interval.yfilter = yfilter;
-    }
-    if(value_path == "override-interval")
-    {
-        override_interval.yfilter = yfilter;
-    }
-    if(value_path == "generation-id")
-    {
-        generation_id.yfilter = yfilter;
-    }
-    if(value_path == "is-bidirectional-capable")
-    {
-        is_bidirectional_capable.yfilter = yfilter;
-    }
-    if(value_path == "is-proxy-capable")
-    {
-        is_proxy_capable.yfilter = yfilter;
-    }
-    if(value_path == "is-batch-asserts-capable")
-    {
-        is_batch_asserts_capable.yfilter = yfilter;
-    }
-    if(value_path == "idb-oor-enabled")
-    {
-        idb_oor_enabled.yfilter = yfilter;
-    }
-    if(value_path == "idb-acl-provided")
-    {
-        idb_acl_provided.yfilter = yfilter;
-    }
-    if(value_path == "idb-max-count")
-    {
-        idb_max_count.yfilter = yfilter;
-    }
-    if(value_path == "idb-threshold-count")
-    {
-        idb_threshold_count.yfilter = yfilter;
-    }
-    if(value_path == "idb-current-count")
-    {
-        idb_current_count.yfilter = yfilter;
-    }
-    if(value_path == "idb-acl-name")
-    {
-        idb_acl_name.yfilter = yfilter;
-    }
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dr-address" || name == "interface-address" || name == "interface-name" || name == "interface-name-xr" || name == "interface-address-mask" || name == "is-enabled" || name == "neighbor-count" || name == "external-neighbor-count" || name == "hello-interval" || name == "dr-priority" || name == "hello-expiry" || name == "are-we-dr" || name == "bfd-enabled" || name == "bfd-interval" || name == "bfd-multiplier" || name == "virtual-interface" || name == "passive-interface" || name == "neighbor-filter-name" || name == "join-prune-interval" || name == "prune-delay-enabled" || name == "configured-propagation-delay" || name == "propagation-delay" || name == "configured-override-interval" || name == "override-interval" || name == "generation-id" || name == "is-bidirectional-capable" || name == "is-proxy-capable" || name == "is-batch-asserts-capable" || name == "idb-oor-enabled" || name == "idb-acl-provided" || name == "idb-max-count" || name == "idb-threshold-count" || name == "idb-current-count" || name == "idb-acl-name")
-        return true;
-    return false;
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::DrAddress()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-
-    yang_name = "dr-address"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::~DrAddress()
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dr-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::InterfaceAddress()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-
-    yang_name = "interface-address"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::~InterfaceAddress()
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-address";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::Safs::Safs()
-    :
-    saf(this, {})
-{
-
-    yang_name = "safs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::Safs::~Safs()
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<saf.len(); index++)
-    {
-        if(saf[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::has_operation() const
-{
-    for (std::size_t index=0; index<saf.len(); index++)
-    {
-        if(saf[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ipv6Pim::Standby::Vrfs::Vrf::Safs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "safs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::Safs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::Safs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "saf")
-    {
-        auto ent_ = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf>();
-        ent_->parent = this;
-        saf.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Safs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : saf.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::Safs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::Safs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "saf")
-        return true;
-    return false;
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::Saf()
-    :
-    saf_name{YType::enumeration, "saf-name"},
-    topology_name{YType::str, "topology-name"}
-        ,
-    rpf_hash_source_groups(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups>())
-    , rpf_hash_sources(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources>())
-    , rpfs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs>())
-{
-    rpf_hash_source_groups->parent = this;
-    rpf_hash_sources->parent = this;
-    rpfs->parent = this;
-
-    yang_name = "saf"; yang_parent_name = "safs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::~Saf()
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::has_data() const
-{
-    if (is_presence_container) return true;
-    return saf_name.is_set
-	|| topology_name.is_set
-	|| (rpf_hash_source_groups !=  nullptr && rpf_hash_source_groups->has_data())
-	|| (rpf_hash_sources !=  nullptr && rpf_hash_sources->has_data())
-	|| (rpfs !=  nullptr && rpfs->has_data());
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(saf_name.yfilter)
-	|| ydk::is_set(topology_name.yfilter)
-	|| (rpf_hash_source_groups !=  nullptr && rpf_hash_source_groups->has_operation())
-	|| (rpf_hash_sources !=  nullptr && rpf_hash_sources->has_operation())
-	|| (rpfs !=  nullptr && rpfs->has_operation());
-}
-
-std::string Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "saf";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (topology_name.is_set || is_set(topology_name.yfilter)) leaf_name_data.push_back(topology_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rpf-hash-source-groups")
-    {
-        if(rpf_hash_source_groups == nullptr)
-        {
-            rpf_hash_source_groups = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups>();
-        }
-        return rpf_hash_source_groups;
-    }
-
-    if(child_yang_name == "rpf-hash-sources")
-    {
-        if(rpf_hash_sources == nullptr)
-        {
-            rpf_hash_sources = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources>();
-        }
-        return rpf_hash_sources;
-    }
-
-    if(child_yang_name == "rpfs")
-    {
-        if(rpfs == nullptr)
-        {
-            rpfs = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs>();
-        }
-        return rpfs;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(rpf_hash_source_groups != nullptr)
-    {
-        _children["rpf-hash-source-groups"] = rpf_hash_source_groups;
-    }
-
-    if(rpf_hash_sources != nullptr)
-    {
-        _children["rpf-hash-sources"] = rpf_hash_sources;
-    }
-
-    if(rpfs != nullptr)
-    {
-        _children["rpfs"] = rpfs;
-    }
-
-    return _children;
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "saf-name")
-    {
-        saf_name = value;
-        saf_name.value_namespace = name_space;
-        saf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "topology-name")
-    {
-        topology_name = value;
-        topology_name.value_namespace = name_space;
-        topology_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "saf-name")
-    {
-        saf_name.yfilter = yfilter;
-    }
-    if(value_path == "topology-name")
-    {
-        topology_name.yfilter = yfilter;
-    }
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rpf-hash-source-groups" || name == "rpf-hash-sources" || name == "rpfs" || name == "saf-name" || name == "topology-name")
-        return true;
-    return false;
-}
-
 Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroups()
     :
     rpf_hash_source_group(this, {})
@@ -7575,10 +6561,8 @@ Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpB
     candidate_rp_expires{YType::uint16, "candidate-rp-expires"},
     protocol{YType::enumeration, "protocol"}
         ,
-    next_candidate_rp(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>())
-    , candidate_rp_address(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
+    candidate_rp_address(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
 {
-    next_candidate_rp->parent = this;
     candidate_rp_address->parent = this;
 
     yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list"; is_top_level_class = false; has_list_ancestor = true; 
@@ -7596,7 +6580,6 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 	|| candidate_rp_up_time.is_set
 	|| candidate_rp_expires.is_set
 	|| protocol.is_set
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_data())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_data());
 }
 
@@ -7608,7 +6591,6 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 	|| ydk::is_set(candidate_rp_up_time.yfilter)
 	|| ydk::is_set(candidate_rp_expires.yfilter)
 	|| ydk::is_set(protocol.yfilter)
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_operation())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_operation());
 }
 
@@ -7636,15 +6618,6 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::Bsr:
 
 std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "next-candidate-rp")
-    {
-        if(next_candidate_rp == nullptr)
-        {
-            next_candidate_rp = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>();
-        }
-        return next_candidate_rp;
-    }
-
     if(child_yang_name == "candidate-rp-address")
     {
         if(candidate_rp_address == nullptr)
@@ -7661,11 +6634,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf:
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(next_candidate_rp != nullptr)
-    {
-        _children["next-candidate-rp"] = next_candidate_rp;
-    }
-
     if(candidate_rp_address != nullptr)
     {
         _children["candidate-rp-address"] = candidate_rp_address;
@@ -7734,70 +6702,8 @@ void Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "next-candidate-rp" || name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
+    if(name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
         return true;
-    return false;
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::NextCandidateRp()
-{
-
-    yang_name = "next-candidate-rp"; yang_parent_name = "pim-bsr-crp-bag"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::~NextCandidateRp()
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-candidate-rp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_leaf_or_child_of_name(const std::string & name) const
-{
     return false;
 }
 
@@ -25600,6 +24506,789 @@ void Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectR
 bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rpf-address" || name == "interface-name" || name == "uptime" || name == "expiry" || name == "is-rpf-interface" || name == "is-outgoing-interface" || name == "is-snoop-interface")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::RpfAddress()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "rpf-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::~RpfAddress()
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rpf-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterfaces()
+    :
+    bundle_interface(this, {})
+{
+
+    yang_name = "bundle-interfaces"; yang_parent_name = "rpf-redirect"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::~BundleInterfaces()
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
+    {
+        if(bundle_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
+    {
+        if(bundle_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bundle-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bundle-interface")
+    {
+        auto ent_ = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface>();
+        ent_->parent = this;
+        bundle_interface.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bundle_interface.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-interface")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::BundleInterface()
+    :
+    bundle_name{YType::str, "bundle-name"},
+    interface_name{YType::str, "interface-name"},
+    rpf_redirect_bundle_name{YType::str, "rpf-redirect-bundle-name"},
+    rpf_redirect_interface_name{YType::str, "rpf-redirect-interface-name"},
+    available_bandwidth{YType::int32, "available-bandwidth"},
+    allocated_bandwidth{YType::int32, "allocated-bandwidth"},
+    total_bandwidth{YType::int32, "total-bandwidth"},
+    topology_bandwidth_used{YType::int32, "topology-bandwidth-used"},
+    snooping_bandwidth_used{YType::int32, "snooping-bandwidth-used"},
+    allocated_threshold_bandwidth{YType::int32, "allocated-threshold-bandwidth"},
+    available_threshold_bandwidth{YType::int32, "available-threshold-bandwidth"}
+{
+
+    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::~BundleInterface()
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return bundle_name.is_set
+	|| interface_name.is_set
+	|| rpf_redirect_bundle_name.is_set
+	|| rpf_redirect_interface_name.is_set
+	|| available_bandwidth.is_set
+	|| allocated_bandwidth.is_set
+	|| total_bandwidth.is_set
+	|| topology_bandwidth_used.is_set
+	|| snooping_bandwidth_used.is_set
+	|| allocated_threshold_bandwidth.is_set
+	|| available_threshold_bandwidth.is_set;
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_name.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(rpf_redirect_bundle_name.yfilter)
+	|| ydk::is_set(rpf_redirect_interface_name.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(allocated_bandwidth.yfilter)
+	|| ydk::is_set(total_bandwidth.yfilter)
+	|| ydk::is_set(topology_bandwidth_used.yfilter)
+	|| ydk::is_set(snooping_bandwidth_used.yfilter)
+	|| ydk::is_set(allocated_threshold_bandwidth.yfilter)
+	|| ydk::is_set(available_threshold_bandwidth.yfilter);
+}
+
+std::string Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bundle-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bundle_name.is_set || is_set(bundle_name.yfilter)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (rpf_redirect_bundle_name.is_set || is_set(rpf_redirect_bundle_name.yfilter)) leaf_name_data.push_back(rpf_redirect_bundle_name.get_name_leafdata());
+    if (rpf_redirect_interface_name.is_set || is_set(rpf_redirect_interface_name.yfilter)) leaf_name_data.push_back(rpf_redirect_interface_name.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (allocated_bandwidth.is_set || is_set(allocated_bandwidth.yfilter)) leaf_name_data.push_back(allocated_bandwidth.get_name_leafdata());
+    if (total_bandwidth.is_set || is_set(total_bandwidth.yfilter)) leaf_name_data.push_back(total_bandwidth.get_name_leafdata());
+    if (topology_bandwidth_used.is_set || is_set(topology_bandwidth_used.yfilter)) leaf_name_data.push_back(topology_bandwidth_used.get_name_leafdata());
+    if (snooping_bandwidth_used.is_set || is_set(snooping_bandwidth_used.yfilter)) leaf_name_data.push_back(snooping_bandwidth_used.get_name_leafdata());
+    if (allocated_threshold_bandwidth.is_set || is_set(allocated_threshold_bandwidth.yfilter)) leaf_name_data.push_back(allocated_threshold_bandwidth.get_name_leafdata());
+    if (available_threshold_bandwidth.is_set || is_set(available_threshold_bandwidth.yfilter)) leaf_name_data.push_back(available_threshold_bandwidth.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bundle-name")
+    {
+        bundle_name = value;
+        bundle_name.value_namespace = name_space;
+        bundle_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-redirect-bundle-name")
+    {
+        rpf_redirect_bundle_name = value;
+        rpf_redirect_bundle_name.value_namespace = name_space;
+        rpf_redirect_bundle_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-redirect-interface-name")
+    {
+        rpf_redirect_interface_name = value;
+        rpf_redirect_interface_name.value_namespace = name_space;
+        rpf_redirect_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allocated-bandwidth")
+    {
+        allocated_bandwidth = value;
+        allocated_bandwidth.value_namespace = name_space;
+        allocated_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-bandwidth")
+    {
+        total_bandwidth = value;
+        total_bandwidth.value_namespace = name_space;
+        total_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "topology-bandwidth-used")
+    {
+        topology_bandwidth_used = value;
+        topology_bandwidth_used.value_namespace = name_space;
+        topology_bandwidth_used.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "snooping-bandwidth-used")
+    {
+        snooping_bandwidth_used = value;
+        snooping_bandwidth_used.value_namespace = name_space;
+        snooping_bandwidth_used.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allocated-threshold-bandwidth")
+    {
+        allocated_threshold_bandwidth = value;
+        allocated_threshold_bandwidth.value_namespace = name_space;
+        allocated_threshold_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "available-threshold-bandwidth")
+    {
+        available_threshold_bandwidth = value;
+        available_threshold_bandwidth.value_namespace = name_space;
+        available_threshold_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-name")
+    {
+        bundle_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "rpf-redirect-bundle-name")
+    {
+        rpf_redirect_bundle_name.yfilter = yfilter;
+    }
+    if(value_path == "rpf-redirect-interface-name")
+    {
+        rpf_redirect_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "allocated-bandwidth")
+    {
+        allocated_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "total-bandwidth")
+    {
+        total_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "topology-bandwidth-used")
+    {
+        topology_bandwidth_used.yfilter = yfilter;
+    }
+    if(value_path == "snooping-bandwidth-used")
+    {
+        snooping_bandwidth_used.yfilter = yfilter;
+    }
+    if(value_path == "allocated-threshold-bandwidth")
+    {
+        allocated_threshold_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "available-threshold-bandwidth")
+    {
+        available_threshold_bandwidth.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-name" || name == "interface-name" || name == "rpf-redirect-bundle-name" || name == "rpf-redirect-interface-name" || name == "available-bandwidth" || name == "allocated-bandwidth" || name == "total-bandwidth" || name == "topology-bandwidth-used" || name == "snooping-bandwidth-used" || name == "allocated-threshold-bandwidth" || name == "available-threshold-bandwidth")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnels()
+    :
+    tunnel(this, {"tunnel_name"})
+{
+
+    yang_name = "tunnels"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::~Tunnels()
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
+    {
+        if(tunnel[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::has_operation() const
+{
+    for (std::size_t index=0; index<tunnel.len(); index++)
+    {
+        if(tunnel[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tunnels";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tunnel")
+    {
+        auto ent_ = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel>();
+        ent_->parent = this;
+        tunnel.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tunnel.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::Tunnel()
+    :
+    tunnel_name{YType::str, "tunnel-name"},
+    vrf_name{YType::str, "vrf-name"}
+        ,
+    source_address(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress>())
+    , rp_address(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::RpAddress>())
+    , source_address_netio(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddressNetio>())
+    , group_address_netio(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::GroupAddressNetio>())
+{
+    source_address->parent = this;
+    rp_address->parent = this;
+    source_address_netio->parent = this;
+    group_address_netio->parent = this;
+
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::~Tunnel()
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::has_data() const
+{
+    if (is_presence_container) return true;
+    return tunnel_name.is_set
+	|| vrf_name.is_set
+	|| (source_address !=  nullptr && source_address->has_data())
+	|| (rp_address !=  nullptr && rp_address->has_data())
+	|| (source_address_netio !=  nullptr && source_address_netio->has_data())
+	|| (group_address_netio !=  nullptr && group_address_netio->has_data());
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_name.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (rp_address !=  nullptr && rp_address->has_operation())
+	|| (source_address_netio !=  nullptr && source_address_netio->has_operation())
+	|| (group_address_netio !=  nullptr && group_address_netio->has_operation());
+}
+
+std::string Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(tunnel_name, "tunnel-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tunnel_name.is_set || is_set(tunnel_name.yfilter)) leaf_name_data.push_back(tunnel_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "source-address")
+    {
+        if(source_address == nullptr)
+        {
+            source_address = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress>();
+        }
+        return source_address;
+    }
+
+    if(child_yang_name == "rp-address")
+    {
+        if(rp_address == nullptr)
+        {
+            rp_address = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::RpAddress>();
+        }
+        return rp_address;
+    }
+
+    if(child_yang_name == "source-address-netio")
+    {
+        if(source_address_netio == nullptr)
+        {
+            source_address_netio = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddressNetio>();
+        }
+        return source_address_netio;
+    }
+
+    if(child_yang_name == "group-address-netio")
+    {
+        if(group_address_netio == nullptr)
+        {
+            group_address_netio = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::GroupAddressNetio>();
+        }
+        return group_address_netio;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(source_address != nullptr)
+    {
+        _children["source-address"] = source_address;
+    }
+
+    if(rp_address != nullptr)
+    {
+        _children["rp-address"] = rp_address;
+    }
+
+    if(source_address_netio != nullptr)
+    {
+        _children["source-address-netio"] = source_address_netio;
+    }
+
+    if(group_address_netio != nullptr)
+    {
+        _children["group-address-netio"] = group_address_netio;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tunnel-name")
+    {
+        tunnel_name = value;
+        tunnel_name.value_namespace = name_space;
+        tunnel_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-name")
+    {
+        tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "rp-address" || name == "source-address-netio" || name == "group-address-netio" || name == "tunnel-name" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::SourceAddress()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "source-address"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::~SourceAddress()
+{
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
         return true;
     return false;
 }

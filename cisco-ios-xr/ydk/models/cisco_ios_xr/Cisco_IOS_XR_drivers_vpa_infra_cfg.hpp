@@ -114,6 +114,23 @@ class HwModuleSpaPhysicalMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf cem;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cem") return 1;
+            return -1;
+        }
+};
+
+class HwModuleShutdownPowerMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unpowered;
+        static const ydk::Enum::YLeaf powered;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unpowered") return 1;
+            if (name == "powered") return 2;
+            return -1;
+        }
 };
 
 class HwModuleSpaPhysicalInterface : public ydk::Enum
@@ -126,14 +143,15 @@ class HwModuleSpaPhysicalInterface : public ydk::Enum
         static const ydk::Enum::YLeaf sonet;
         static const ydk::Enum::YLeaf sdh;
 
-};
-
-class HwModuleShutdownPowerMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unpowered;
-        static const ydk::Enum::YLeaf powered;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "t3") return 1;
+            if (name == "e3") return 2;
+            if (name == "t1") return 3;
+            if (name == "e1") return 4;
+            if (name == "sonet") return 5;
+            if (name == "sdh") return 6;
+            return -1;
+        }
 };
 
 

@@ -7969,6 +7969,13 @@ const Enum::YLeaf HsrpVmacState::reserved {1, "reserved"};
 const Enum::YLeaf HsrpVmacState::active {2, "active"};
 const Enum::YLeaf HsrpVmacState::reserving {3, "reserving"};
 
+const Enum::YLeaf StandbyGrpState::state_initial {1, "state-initial"};
+const Enum::YLeaf StandbyGrpState::state_learn {2, "state-learn"};
+const Enum::YLeaf StandbyGrpState::state_listen {3, "state-listen"};
+const Enum::YLeaf StandbyGrpState::state_speak {4, "state-speak"};
+const Enum::YLeaf StandbyGrpState::state_standby {5, "state-standby"};
+const Enum::YLeaf StandbyGrpState::state_active {6, "state-active"};
+
 const Enum::YLeaf HsrpStateChangeReason::state_change_bfd_down {0, "state-change-bfd-down"};
 const Enum::YLeaf HsrpStateChangeReason::state_change_vip_learnt {1, "state-change-vip-learnt"};
 const Enum::YLeaf HsrpStateChangeReason::state_change_interface_ip {2, "state-change-interface-ip"};
@@ -7997,21 +8004,14 @@ const Enum::YLeaf HsrpStateChangeReason::state_change_issu_resync {24, "state-ch
 const Enum::YLeaf HsrpStateChangeReason::state_change_reset_to_learn {25, "state-change-reset-to-learn"};
 const Enum::YLeaf HsrpStateChangeReason::state_change_max {26, "state-change-max"};
 
+const Enum::YLeaf HsrpBAf::ipv4 {0, "ipv4"};
+const Enum::YLeaf HsrpBAf::ipv6 {1, "ipv6"};
+const Enum::YLeaf HsrpBAf::count {2, "count"};
+
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_none {0, "bfd-state-none"};
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_inactive {1, "bfd-state-inactive"};
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_up {2, "bfd-state-up"};
 const Enum::YLeaf HsrpBfdSessionState::bfd_state_down {3, "bfd-state-down"};
-
-const Enum::YLeaf StandbyGrpState::state_initial {1, "state-initial"};
-const Enum::YLeaf StandbyGrpState::state_learn {2, "state-learn"};
-const Enum::YLeaf StandbyGrpState::state_listen {3, "state-listen"};
-const Enum::YLeaf StandbyGrpState::state_speak {4, "state-speak"};
-const Enum::YLeaf StandbyGrpState::state_standby {5, "state-standby"};
-const Enum::YLeaf StandbyGrpState::state_active {6, "state-active"};
-
-const Enum::YLeaf HsrpBAf::ipv4 {0, "ipv4"};
-const Enum::YLeaf HsrpBAf::ipv6 {1, "ipv6"};
-const Enum::YLeaf HsrpBAf::count {2, "count"};
 
 
 }

@@ -770,6 +770,23 @@ class Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details : public ydk::Entity
 
 }; // Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details
 
+class AclTcpflagsOperator : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf match_none;
+        static const ydk::Enum::YLeaf match_all;
+        static const ydk::Enum::YLeaf match_any_old;
+        static const ydk::Enum::YLeaf match_any;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-none") return 0;
+            if (name == "match-all") return 1;
+            if (name == "match-any-old") return 2;
+            if (name == "match-any") return 3;
+            return -1;
+        }
+};
+
 class AclPortOperator : public ydk::Enum
 {
     public:
@@ -782,37 +799,32 @@ class AclPortOperator : public ydk::Enum
         static const ydk::Enum::YLeaf onebyte;
         static const ydk::Enum::YLeaf twobytes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "eq") return 1;
+            if (name == "gt") return 2;
+            if (name == "lt") return 3;
+            if (name == "neq") return 4;
+            if (name == "range") return 5;
+            if (name == "onebyte") return 8;
+            if (name == "twobytes") return 9;
+            return -1;
+        }
 };
 
-class BagAclNhAtStatus : public ydk::Enum
+class AclAce1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf not_present;
-        static const ydk::Enum::YLeaf max;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf remark;
+        static const ydk::Enum::YLeaf abf;
 
-};
-
-class BagAclNhStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_present;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf max;
-
-};
-
-class BagAclNh : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf nexthop_none;
-        static const ydk::Enum::YLeaf nexthop_default;
-        static const ydk::Enum::YLeaf nexthop;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "remark") return 1;
+            if (name == "abf") return 2;
+            return -1;
+        }
 };
 
 class AclPortOperator_ : public ydk::Enum
@@ -827,6 +839,51 @@ class AclPortOperator_ : public ydk::Enum
         static const ydk::Enum::YLeaf onebyte;
         static const ydk::Enum::YLeaf twobytes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "eq") return 1;
+            if (name == "gt") return 2;
+            if (name == "lt") return 3;
+            if (name == "neq") return 4;
+            if (name == "range") return 5;
+            if (name == "onebyte") return 8;
+            if (name == "twobytes") return 9;
+            return -1;
+        }
+};
+
+class BagAclNhAtStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf not_present;
+        static const ydk::Enum::YLeaf max;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "not-present") return 3;
+            if (name == "max") return 4;
+            return -1;
+        }
+};
+
+class BagAclNh : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nexthop_none;
+        static const ydk::Enum::YLeaf nexthop_default;
+        static const ydk::Enum::YLeaf nexthop;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "nexthop-none") return 0;
+            if (name == "nexthop-default") return 1;
+            if (name == "nexthop") return 2;
+            return -1;
+        }
 };
 
 class AclPortOperator__ : public ydk::Enum
@@ -841,25 +898,57 @@ class AclPortOperator__ : public ydk::Enum
         static const ydk::Enum::YLeaf onebyte;
         static const ydk::Enum::YLeaf twobytes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "eq") return 1;
+            if (name == "gt") return 2;
+            if (name == "lt") return 3;
+            if (name == "neq") return 4;
+            if (name == "range") return 5;
+            if (name == "onebyte") return 8;
+            if (name == "twobytes") return 9;
+            return -1;
+        }
 };
 
-class AclTcpflagsOperator : public ydk::Enum
+class AclAction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf match_none;
-        static const ydk::Enum::YLeaf match_all;
-        static const ydk::Enum::YLeaf match_any_old;
-        static const ydk::Enum::YLeaf match_any;
+        static const ydk::Enum::YLeaf deny;
+        static const ydk::Enum::YLeaf permit;
+        static const ydk::Enum::YLeaf encrypt;
+        static const ydk::Enum::YLeaf bypass;
+        static const ydk::Enum::YLeaf fallthrough;
+        static const ydk::Enum::YLeaf invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deny") return 0;
+            if (name == "permit") return 1;
+            if (name == "encrypt") return 2;
+            if (name == "bypass") return 3;
+            if (name == "fallthrough") return 4;
+            if (name == "invalid") return 5;
+            return -1;
+        }
 };
 
-class AclLog : public ydk::Enum
+class BagAclNhStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf log_none;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf log_input;
+        static const ydk::Enum::YLeaf not_present;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-present") return 0;
+            if (name == "unknown") return 1;
+            if (name == "down") return 2;
+            if (name == "up") return 3;
+            if (name == "max") return 4;
+            return -1;
+        }
 };
 
 class AclPortOperator___ : public ydk::Enum
@@ -874,27 +963,32 @@ class AclPortOperator___ : public ydk::Enum
         static const ydk::Enum::YLeaf onebyte;
         static const ydk::Enum::YLeaf twobytes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "eq") return 1;
+            if (name == "gt") return 2;
+            if (name == "lt") return 3;
+            if (name == "neq") return 4;
+            if (name == "range") return 5;
+            if (name == "onebyte") return 8;
+            if (name == "twobytes") return 9;
+            return -1;
+        }
 };
 
-class AclAction : public ydk::Enum
+class AclLog : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf deny;
-        static const ydk::Enum::YLeaf permit;
-        static const ydk::Enum::YLeaf encrypt;
-        static const ydk::Enum::YLeaf bypass;
-        static const ydk::Enum::YLeaf fallthrough;
-        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf log_none;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf log_input;
 
-};
-
-class AclAce1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf remark;
-        static const ydk::Enum::YLeaf abf;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "log-none") return 0;
+            if (name == "log") return 1;
+            if (name == "log-input") return 2;
+            return -1;
+        }
 };
 
 class AclAce1_ : public ydk::Enum
@@ -904,6 +998,12 @@ class AclAce1_ : public ydk::Enum
         static const ydk::Enum::YLeaf remark;
         static const ydk::Enum::YLeaf abf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "remark") return 1;
+            if (name == "abf") return 2;
+            return -1;
+        }
 };
 
 

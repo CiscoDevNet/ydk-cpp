@@ -349,22 +349,12 @@ class BfdEchoStartupValidate : public ydk::Enum
         static const ydk::Enum::YLeaf on;
         static const ydk::Enum::YLeaf force;
 
-};
-
-class BfdBundleCoexistenceBobBlb : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inherited;
-        static const ydk::Enum::YLeaf logical;
-
-};
-
-class BfdIfEchoUsage : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 0;
+            if (name == "on") return 1;
+            if (name == "force") return 2;
+            return -1;
+        }
 };
 
 class BfdIfIpv6ChecksumUsage : public ydk::Enum
@@ -373,6 +363,37 @@ class BfdIfIpv6ChecksumUsage : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
+};
+
+class BfdIfEchoUsage : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            if (name == "disable") return 1;
+            return -1;
+        }
+};
+
+class BfdBundleCoexistenceBobBlb : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inherited;
+        static const ydk::Enum::YLeaf logical;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "inherited") return 1;
+            if (name == "logical") return 2;
+            return -1;
+        }
 };
 
 

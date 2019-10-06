@@ -1127,7 +1127,7 @@ class Native::Otv : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf site_identifier; //type: one of string, uint32
+        ydk::YLeaf site_identifier; //type: one of uint32, string
         class Fragmentation; //type: Native::Otv::Fragmentation
         class Isis; //type: Native::Otv::Isis
         class Site; //type: Native::Otv::Site
@@ -2764,7 +2764,7 @@ class Native::SnmpServer : public ydk::Entity
         ydk::YLeaf packetsize; //type: uint32
         ydk::YLeaf queue_length; //type: uint16
         ydk::YLeaf system_shutdown; //type: empty
-        ydk::YLeaf tftp_server_list; //type: one of string, uint8
+        ydk::YLeaf tftp_server_list; //type: one of uint8, string
         class Community; //type: Native::SnmpServer::Community
         class Context; //type: Native::SnmpServer::Context
         class Enable; //type: Native::SnmpServer::Enable
@@ -3641,7 +3641,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Alarms : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm_type; //type: one of enumeration, uint8
+        ydk::YLeaf alarm_type; //type: one of uint8, enumeration
         class AlarmType;
 
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::Alarms
@@ -3938,6 +3938,11 @@ class Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::Encapsula
         static const ydk::Enum::YLeaf copy;
         static const ydk::Enum::YLeaf divert;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "copy") return 0;
+            if (name == "divert") return 1;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::Profile : public ydk::Enum
@@ -3947,6 +3952,12 @@ class Native::Performance::Monitor::Context::Profile : public ydk::Enum
         static const ydk::Enum::YLeaf application_performance;
         static const ydk::Enum::YLeaf application_statistics;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "application-experience") return 0;
+            if (name == "application-performance") return 1;
+            if (name == "application-statistics") return 2;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::Default::Exporter::Transport : public ydk::Enum
@@ -3954,6 +3965,10 @@ class Native::Performance::Monitor::Context::Default::Exporter::Transport : publ
     public:
         static const ydk::Enum::YLeaf udp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "udp") return 0;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::CacheType : public ydk::Enum
@@ -3962,6 +3977,11 @@ class Native::Performance::Monitor::Context::Default::TrafficMonitor::Applicatio
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf synchronized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "synchronized") return 1;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::CacheType : public ydk::Enum
@@ -3970,6 +3990,11 @@ class Native::Performance::Monitor::Context::Default::TrafficMonitor::Conversati
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf synchronized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "synchronized") return 1;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::CacheType : public ydk::Enum
@@ -3978,6 +4003,11 @@ class Native::Performance::Monitor::Context::Default::TrafficMonitor::Applicatio
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf synchronized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "synchronized") return 1;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::Exporter::Transport : public ydk::Enum
@@ -3985,6 +4015,10 @@ class Native::Performance::Monitor::Context::Exporter::Transport : public ydk::E
     public:
         static const ydk::Enum::YLeaf udp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "udp") return 0;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::TrafficMonitor::ApplicationResponseTime::CacheType : public ydk::Enum
@@ -3993,6 +4027,11 @@ class Native::Performance::Monitor::Context::TrafficMonitor::ApplicationResponse
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf synchronized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "synchronized") return 1;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::TrafficMonitor::ConversationTrafficStats::CacheType : public ydk::Enum
@@ -4001,6 +4040,11 @@ class Native::Performance::Monitor::Context::TrafficMonitor::ConversationTraffic
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf synchronized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "synchronized") return 1;
+            return -1;
+        }
 };
 
 class Native::Performance::Monitor::Context::TrafficMonitor::ApplicationClientServerStats::CacheType : public ydk::Enum
@@ -4009,6 +4053,11 @@ class Native::Performance::Monitor::Context::TrafficMonitor::ApplicationClientSe
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf synchronized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "synchronized") return 1;
+            return -1;
+        }
 };
 
 class Native::Otv::Isis::Overlay::Authentication::Mode : public ydk::Enum
@@ -4017,6 +4066,11 @@ class Native::Otv::Isis::Overlay::Authentication::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf text;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 0;
+            if (name == "text") return 1;
+            return -1;
+        }
 };
 
 class Native::Otv::Isis::Overlay::Default::Authentication::Mode : public ydk::Enum
@@ -4025,6 +4079,11 @@ class Native::Otv::Isis::Overlay::Default::Authentication::Mode : public ydk::En
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf text;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 0;
+            if (name == "text") return 1;
+            return -1;
+        }
 };
 
 class Native::Otv::Site::Default::Otv_::Isis::Authentication::Mode : public ydk::Enum
@@ -4033,6 +4092,11 @@ class Native::Otv::Site::Default::Otv_::Isis::Authentication::Mode : public ydk:
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf text;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 0;
+            if (name == "text") return 1;
+            return -1;
+        }
 };
 
 class Native::Otv::Site::Otv_::Isis::Authentication::Mode : public ydk::Enum
@@ -4041,6 +4105,11 @@ class Native::Otv::Site::Otv_::Isis::Authentication::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf text;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 0;
+            if (name == "text") return 1;
+            return -1;
+        }
 };
 
 class Native::Snmp::Mib::Persist::PersistEnum : public ydk::Enum
@@ -4050,6 +4119,12 @@ class Native::Snmp::Mib::Persist::PersistEnum : public ydk::Enum
         static const ydk::Enum::YLeaf circuit;
         static const ydk::Enum::YLeaf v3mibs;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cbqos") return 0;
+            if (name == "circuit") return 1;
+            if (name == "v3mibs") return 2;
+            return -1;
+        }
 };
 
 class Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType : public ydk::Enum
@@ -4060,6 +4135,13 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType : publi
         static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "informational") return 1;
+            if (name == "major") return 2;
+            if (name == "minor") return 3;
+            return -1;
+        }
 };
 
 class Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pvc::Extension::Mibversion : public ydk::Enum
@@ -4068,6 +4150,11 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pvc::Extension::Mibv
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 

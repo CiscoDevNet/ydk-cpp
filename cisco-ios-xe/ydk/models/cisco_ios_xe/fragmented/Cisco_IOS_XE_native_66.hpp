@@ -57,7 +57,7 @@ class Native::Interface::FortyGigabitEthernet::Switchport::Trunk::Native_ : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16
+        ydk::YLeaf vlan; //type: one of uint16, enumeration
         class Vlan;
 
 }; // Native::Interface::FortyGigabitEthernet::Switchport::Trunk::Native_
@@ -152,7 +152,7 @@ class Native::Interface::FortyGigabitEthernet::Switchport::Voice::Vlan : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16, string
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -520,8 +520,8 @@ class Native::Interface::FortyGigabitEthernet::Backup::Delay : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -690,8 +690,8 @@ class Native::Interface::FortyGigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -1081,7 +1081,7 @@ class Native::Interface::FortyGigabitEthernet::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
+        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -1456,7 +1456,7 @@ class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class HelloIntervalList; //type: Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::HelloIntervalList
 
         ydk::YList hello_interval_list;
@@ -1482,7 +1482,7 @@ class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::HelloInterva
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class Levels;
         class Value_;
 
@@ -1578,7 +1578,7 @@ class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::MetricList
 
         ydk::YList metric_list;
@@ -1604,7 +1604,7 @@ class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::MetricList : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -1648,7 +1648,7 @@ class Native::Interface::FortyGigabitEthernet::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::FortyGigabitEthernet::Isis::Metric::MetricList
 
         ydk::YList metric_list;
@@ -1674,7 +1674,7 @@ class Native::Interface::FortyGigabitEthernet::Isis::Metric::MetricList : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -2241,7 +2241,7 @@ class Native::Interface::FortyGigabitEthernet::Mpls::Ldp::Discovery : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::FortyGigabitEthernet::Mpls::Ldp::Discovery
 
@@ -2566,9 +2566,9 @@ class Native::Interface::FortyGigabitEthernet::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::FortyGigabitEthernet::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::FortyGigabitEthernet::Ip::SummaryAddress
         class Verify; //type: Native::Interface::FortyGigabitEthernet::Ip::Verify
-        class Ospf; //type: Native::Interface::FortyGigabitEthernet::Ip::Ospf
         class Flow; //type: Native::Interface::FortyGigabitEthernet::Ip::Flow
         class Igmp; //type: Native::Interface::FortyGigabitEthernet::Ip::Igmp
+        class Ospf; //type: Native::Interface::FortyGigabitEthernet::Ip::Ospf
         class Lisp; //type: Native::Interface::FortyGigabitEthernet::Ip::Lisp
         class Nat; //type: Native::Interface::FortyGigabitEthernet::Ip::Nat
         class Nbar; //type: Native::Interface::FortyGigabitEthernet::Ip::Nbar
@@ -2595,9 +2595,9 @@ class Native::Interface::FortyGigabitEthernet::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Verify> verify;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Flow> flow;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Igmp> igmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Lisp> lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Nat> nat;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Ip::Nbar> nbar;
@@ -3645,6 +3645,10 @@ class Native::Interface::FortyGigabitEthernet::Switchport::Trunk::Native_::Vlan 
     public:
         static const ydk::Enum::YLeaf tag;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tag") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
@@ -3654,6 +3658,12 @@ class Native::Interface::FortyGigabitEthernet::Switchport::Voice::Vlan::Vlan_ : 
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf untagged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1p") return 0;
+            if (name == "none") return 1;
+            if (name == "untagged") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Backup::Delay::Failure : public ydk::Enum
@@ -3661,6 +3671,10 @@ class Native::Interface::FortyGigabitEthernet::Backup::Delay::Failure : public y
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3668,6 +3682,10 @@ class Native::Interface::FortyGigabitEthernet::Backup::Delay::SecondaryDisable :
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Backup::Load::Kickin : public ydk::Enum
@@ -3675,6 +3693,10 @@ class Native::Interface::FortyGigabitEthernet::Backup::Load::Kickin : public ydk
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Backup::Load::Kickout : public ydk::Enum
@@ -3682,6 +3704,10 @@ class Native::Interface::FortyGigabitEthernet::Backup::Load::Kickout : public yd
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Flowcontrol::Receive : public ydk::Enum
@@ -3691,6 +3717,12 @@ class Native::Interface::FortyGigabitEthernet::Flowcontrol::Receive : public ydk
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Flowcontrol::Send : public ydk::Enum
@@ -3700,6 +3732,12 @@ class Native::Interface::FortyGigabitEthernet::Flowcontrol::Send : public ydk::E
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::MeshGroup : public ydk::Enum
@@ -3707,6 +3745,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::MeshGroup : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf blocked;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blocked") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Network : public ydk::Enum
@@ -3714,6 +3756,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::Network : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "point-to-point") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Protocol : public ydk::Enum
@@ -3721,6 +3767,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::Protocol : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shutdown") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::CircuitType::Levels : public ydk::Enum
@@ -3730,6 +3780,12 @@ class Native::Interface::FortyGigabitEthernet::Isis::CircuitType::Levels : publi
         static const ydk::Enum::YLeaf level_1_2;
         static const ydk::Enum::YLeaf level_2_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-1-2") return 1;
+            if (name == "level-2-only") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::CsnpInterval::CsnpIntervalList::Levels : public ydk::Enum
@@ -3738,6 +3794,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::CsnpInterval::CsnpIntervalL
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::Value_ : public ydk::Enum
@@ -3745,6 +3806,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::Value_ : pub
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::HelloIntervalList::Levels : public ydk::Enum
@@ -3753,6 +3818,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::HelloInterva
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::HelloIntervalList::Value_ : public ydk::Enum
@@ -3760,6 +3830,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::HelloInterval::HelloInterva
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::HelloMultiplier::HelloMultiplierList::Levels : public ydk::Enum
@@ -3768,6 +3842,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::HelloMultiplier::HelloMulti
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::Value_ : public ydk::Enum
@@ -3775,6 +3854,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::Value_ : publ
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::MetricList::Levels : public ydk::Enum
@@ -3783,6 +3866,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::MetricList::L
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::MetricList::Value_ : public ydk::Enum
@@ -3790,6 +3878,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::Ipv6::Metric::MetricList::V
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Metric::Value_ : public ydk::Enum
@@ -3797,6 +3889,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::Metric::Value_ : public ydk
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Metric::MetricList::Levels : public ydk::Enum
@@ -3805,6 +3901,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::Metric::MetricList::Levels 
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Metric::MetricList::Value_ : public ydk::Enum
@@ -3812,6 +3913,10 @@ class Native::Interface::FortyGigabitEthernet::Isis::Metric::MetricList::Value_ 
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Password::PasswordList::Levels : public ydk::Enum
@@ -3820,6 +3925,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::Password::PasswordList::Lev
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::Priority::PriorityList::Levels : public ydk::Enum
@@ -3828,6 +3938,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::Priority::PriorityList::Lev
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Isis::ThreeWayHandshake::Implementor : public ydk::Enum
@@ -3836,6 +3951,11 @@ class Native::Interface::FortyGigabitEthernet::Isis::ThreeWayHandshake::Implemen
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco") return 0;
+            if (name == "ietf") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::HoldQueue::Direction : public ydk::Enum
@@ -3844,6 +3964,11 @@ class Native::Interface::FortyGigabitEthernet::HoldQueue::Direction : public ydk
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Mpls::Label::Protocol : public ydk::Enum
@@ -3853,6 +3978,12 @@ class Native::Interface::FortyGigabitEthernet::Mpls::Label::Protocol : public yd
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf tdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "ldp") return 1;
+            if (name == "tdp") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Ip::Pim::PimMode : public ydk::Enum
@@ -3863,6 +3994,13 @@ class Native::Interface::FortyGigabitEthernet::Ip::Pim::PimMode : public ydk::En
         static const ydk::Enum::YLeaf sparse_mode;
         static const ydk::Enum::YLeaf sparse_dense_mode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "passive") return 0;
+            if (name == "dense-mode") return 1;
+            if (name == "sparse-mode") return 2;
+            if (name == "sparse-dense-mode") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::FortyGigabitEthernet::Ip::Pim::SptThreshold : public ydk::Enum
@@ -3870,6 +4008,10 @@ class Native::Interface::FortyGigabitEthernet::Ip::Pim::SptThreshold : public yd
     public:
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "infinity") return 0;
+            return -1;
+        }
 };
 
 

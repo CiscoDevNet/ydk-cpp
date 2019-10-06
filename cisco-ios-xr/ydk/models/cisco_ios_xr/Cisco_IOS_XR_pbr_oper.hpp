@@ -325,6 +325,11 @@ class PolicyState : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf suspended;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "suspended") return 1;
+            return -1;
+        }
 };
 
 

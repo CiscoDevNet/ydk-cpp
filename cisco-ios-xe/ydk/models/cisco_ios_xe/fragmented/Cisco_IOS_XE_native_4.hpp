@@ -3599,6 +3599,18 @@ class Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToSer
         static const ydk::Enum::YLeaf bucket7;
         static const ydk::Enum::YLeaf late;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "bucket1") return 1;
+            if (name == "bucket2") return 2;
+            if (name == "bucket3") return 3;
+            if (name == "bucket4") return 4;
+            if (name == "bucket5") return 5;
+            if (name == "bucket6") return 6;
+            if (name == "bucket7") return 7;
+            if (name == "late") return 8;
+            return -1;
+        }
 };
 
 class Native::Flow::Record::Default::Collect::Datalink::Vlan : public ydk::Enum
@@ -3607,6 +3619,11 @@ class Native::Flow::Record::Default::Collect::Datalink::Vlan : public ydk::Enum
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 

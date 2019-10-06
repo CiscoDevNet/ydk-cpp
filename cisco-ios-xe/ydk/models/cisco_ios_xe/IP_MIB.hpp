@@ -1005,6 +1005,25 @@ class IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry : public ydk::Entity
 
 }; // IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry
 
+class IpAddressPrefixOriginTC : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf wellknown;
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf routeradv;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "manual") return 2;
+            if (name == "wellknown") return 3;
+            if (name == "dhcp") return 4;
+            if (name == "routeradv") return 5;
+            return -1;
+        }
+};
+
 class IpAddressOriginTC : public ydk::Enum
 {
     public:
@@ -1014,6 +1033,14 @@ class IpAddressOriginTC : public ydk::Enum
         static const ydk::Enum::YLeaf linklayer;
         static const ydk::Enum::YLeaf random;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "manual") return 2;
+            if (name == "dhcp") return 4;
+            if (name == "linklayer") return 5;
+            if (name == "random") return 6;
+            return -1;
+        }
 };
 
 class IpAddressStatusTC : public ydk::Enum
@@ -1028,17 +1055,17 @@ class IpAddressStatusTC : public ydk::Enum
         static const ydk::Enum::YLeaf duplicate;
         static const ydk::Enum::YLeaf optimistic;
 
-};
-
-class IpAddressPrefixOriginTC : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf manual;
-        static const ydk::Enum::YLeaf wellknown;
-        static const ydk::Enum::YLeaf dhcp;
-        static const ydk::Enum::YLeaf routeradv;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "preferred") return 1;
+            if (name == "deprecated") return 2;
+            if (name == "invalid") return 3;
+            if (name == "inaccessible") return 4;
+            if (name == "unknown") return 5;
+            if (name == "tentative") return 6;
+            if (name == "duplicate") return 7;
+            if (name == "optimistic") return 8;
+            return -1;
+        }
 };
 
 class IPMIB::Ip::IpForwarding : public ydk::Enum
@@ -1047,6 +1074,11 @@ class IPMIB::Ip::IpForwarding : public ydk::Enum
         static const ydk::Enum::YLeaf forwarding;
         static const ydk::Enum::YLeaf notForwarding;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forwarding") return 1;
+            if (name == "notForwarding") return 2;
+            return -1;
+        }
 };
 
 class IPMIB::Ip::Ipv6IpForwarding : public ydk::Enum
@@ -1055,6 +1087,11 @@ class IPMIB::Ip::Ipv6IpForwarding : public ydk::Enum
         static const ydk::Enum::YLeaf forwarding;
         static const ydk::Enum::YLeaf notForwarding;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forwarding") return 1;
+            if (name == "notForwarding") return 2;
+            return -1;
+        }
 };
 
 class IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType : public ydk::Enum
@@ -1065,6 +1102,13 @@ class IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType : public ydk
         static const ydk::Enum::YLeaf dynamic;
         static const ydk::Enum::YLeaf static_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "dynamic") return 3;
+            if (name == "static") return 4;
+            return -1;
+        }
 };
 
 class IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::Ipv4InterfaceEnableStatus : public ydk::Enum
@@ -1073,6 +1117,11 @@ class IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::Ipv4InterfaceEnableStatus :
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            return -1;
+        }
 };
 
 class IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceEnableStatus : public ydk::Enum
@@ -1081,6 +1130,11 @@ class IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceEnableStatus :
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            return -1;
+        }
 };
 
 class IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceForwarding : public ydk::Enum
@@ -1089,6 +1143,11 @@ class IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceForwarding : p
         static const ydk::Enum::YLeaf forwarding;
         static const ydk::Enum::YLeaf notForwarding;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forwarding") return 1;
+            if (name == "notForwarding") return 2;
+            return -1;
+        }
 };
 
 class IPMIB::IpAddressTable::IpAddressEntry::IpAddressType : public ydk::Enum
@@ -1098,6 +1157,12 @@ class IPMIB::IpAddressTable::IpAddressEntry::IpAddressType : public ydk::Enum
         static const ydk::Enum::YLeaf anycast;
         static const ydk::Enum::YLeaf broadcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "anycast") return 2;
+            if (name == "broadcast") return 3;
+            return -1;
+        }
 };
 
 class IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType : public ydk::Enum
@@ -1109,6 +1174,14 @@ class IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType : p
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "dynamic") return 3;
+            if (name == "static") return 4;
+            if (name == "local") return 5;
+            return -1;
+        }
 };
 
 class IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState : public ydk::Enum
@@ -1122,6 +1195,16 @@ class IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState : 
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reachable") return 1;
+            if (name == "stale") return 2;
+            if (name == "delay") return 3;
+            if (name == "probe") return 4;
+            if (name == "invalid") return 5;
+            if (name == "unknown") return 6;
+            if (name == "incomplete") return 7;
+            return -1;
+        }
 };
 
 class IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterPreference : public ydk::Enum
@@ -1132,6 +1215,13 @@ class IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterPreferen
         static const ydk::Enum::YLeaf medium;
         static const ydk::Enum::YLeaf high;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reserved") return -2;
+            if (name == "low") return -1;
+            if (name == "medium") return 0;
+            if (name == "high") return 1;
+            return -1;
+        }
 };
 
 

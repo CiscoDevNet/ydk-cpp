@@ -15,6 +15,10 @@ class AtmVpiBitsMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf twelve;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "twelve") return 12;
+            return -1;
+        }
 };
 
 class AtmPvcTestMode : public ydk::Enum
@@ -23,6 +27,11 @@ class AtmPvcTestMode : public ydk::Enum
         static const ydk::Enum::YLeaf loop;
         static const ydk::Enum::YLeaf reserved;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "loop") return 1;
+            if (name == "reserved") return 2;
+            return -1;
+        }
 };
 
 class AtmPvpTestMode : public ydk::Enum
@@ -30,6 +39,10 @@ class AtmPvpTestMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf loop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "loop") return 1;
+            return -1;
+        }
 };
 
 

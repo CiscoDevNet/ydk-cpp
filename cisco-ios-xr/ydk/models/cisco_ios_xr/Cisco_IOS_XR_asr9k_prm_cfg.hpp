@@ -85,80 +85,6 @@ class HardwareModuleQosMode::Nodes::Node : public ydk::Entity
 
 }; // HardwareModuleQosMode::Nodes::Node
 
-class HardwareModuleProcessor : public ydk::Entity
-{
-    public:
-        HardwareModuleProcessor();
-        ~HardwareModuleProcessor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-        class Nodes; //type: HardwareModuleProcessor::Nodes
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleProcessor::Nodes> nodes;
-        
-}; // HardwareModuleProcessor
-
-
-class HardwareModuleProcessor::Nodes : public ydk::Entity
-{
-    public:
-        Nodes();
-        ~Nodes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Node; //type: HardwareModuleProcessor::Nodes::Node
-
-        ydk::YList node;
-        
-}; // HardwareModuleProcessor::Nodes
-
-
-class HardwareModuleProcessor::Nodes::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf node_name; //type: string
-        ydk::YLeaf mode; //type: PrmProcessorConfig
-
-}; // HardwareModuleProcessor::Nodes::Node
-
 class HardwareModuleTcpMssAdjust : public ydk::Entity
 {
     public:
@@ -354,86 +280,6 @@ class HardwareModuleTcam::Nodes::Node : public ydk::Entity
         ydk::YLeaf profile; //type: PrmTcamProfile
 
 }; // HardwareModuleTcam::Nodes::Node
-
-class HardwareModuleProfile : public ydk::Entity
-{
-    public:
-        HardwareModuleProfile();
-        ~HardwareModuleProfile();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-        ydk::YLeaf feature; //type: AdminPrmConfigFeatureProfile
-        ydk::YLeaf scale_active; //type: AdminPrmConfigScaleProfile
-        ydk::YLeaf package_bundle; //type: AdminPrmConfigPackageBundle
-        ydk::YLeaf feature_active; //type: AdminPrmConfigFeatureProfile
-        ydk::YLeaf scale; //type: AdminPrmConfigScaleProfile
-        class Nodes; //type: HardwareModuleProfile::Nodes
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleProfile::Nodes> nodes;
-        
-}; // HardwareModuleProfile
-
-
-class HardwareModuleProfile::Nodes : public ydk::Entity
-{
-    public:
-        Nodes();
-        ~Nodes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Node; //type: HardwareModuleProfile::Nodes::Node
-
-        ydk::YList node;
-        
-}; // HardwareModuleProfile::Nodes
-
-
-class HardwareModuleProfile::Nodes::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf node_name; //type: string
-        ydk::YLeaf tcam_partition; //type: AdminPrmConfigTcamPartProfile
-        ydk::YLeaf internal_tcam_partition; //type: AdminPrmConfigInternalTcamPartProfile
-
-}; // HardwareModuleProfile::Nodes::Node
 
 class HardwareModuleEfd : public ydk::Entity
 {
@@ -896,47 +742,17 @@ class HardwareModuleAllQosMode : public ydk::Entity
 
 }; // HardwareModuleAllQosMode
 
-class AdminPrmConfigInternalTcamPartProfile : public ydk::Enum
+class Asr9kEfdMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf to_default;
-        static const ydk::Enum::YLeaf to_profile_se1;
+        static const ydk::Enum::YLeaf only_outer_encap;
+        static const ydk::Enum::YLeaf include_inner_encap;
 
-};
-
-class AdminPrmConfigPackageBundle : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf services;
-
-};
-
-class AdminPrmConfigTcamPartProfile : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf ods2_30_ods8_70;
-        static const ydk::Enum::YLeaf ods2_40_ods8_60;
-        static const ydk::Enum::YLeaf ods2_50_ods8_50;
-        static const ydk::Enum::YLeaf ods2_70_ods8_30;
-
-};
-
-class AdminPrmConfigFeatureProfile : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf l2;
-
-};
-
-class PrmProcessorConfig : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mode_default;
-        static const ydk::Enum::YLeaf mode_full;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "only-outer-encap") return 0;
+            if (name == "include-inner-encap") return 1;
+            return -1;
+        }
 };
 
 class Asr9kEfdOperation : public ydk::Enum
@@ -945,28 +761,11 @@ class Asr9kEfdOperation : public ydk::Enum
         static const ydk::Enum::YLeaf less_than;
         static const ydk::Enum::YLeaf greater_than_or_equal;
 
-};
-
-class Asr9kEfdMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf only_outer_encap;
-        static const ydk::Enum::YLeaf include_inner_encap;
-
-};
-
-class AdminPrmConfigScaleProfile : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf l2;
-        static const ydk::Enum::YLeaf l3;
-        static const ydk::Enum::YLeaf l3xl;
-        static const ydk::Enum::YLeaf bng;
-        static const ydk::Enum::YLeaf lsr;
-        static const ydk::Enum::YLeaf sat;
-        static const ydk::Enum::YLeaf sfp;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "less-than") return 2;
+            if (name == "greater-than-or-equal") return 3;
+            return -1;
+        }
 };
 
 class PrmTcamProfile : public ydk::Enum
@@ -976,6 +775,12 @@ class PrmTcamProfile : public ydk::Enum
         static const ydk::Enum::YLeaf profile1;
         static const ydk::Enum::YLeaf profile2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "profile0") return 0;
+            if (name == "profile1") return 1;
+            if (name == "profile2") return 2;
+            return -1;
+        }
 };
 
 

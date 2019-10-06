@@ -64,6 +64,10 @@ class KeyEncryption : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf type6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type6") return 2;
+            return -1;
+        }
 };
 
 

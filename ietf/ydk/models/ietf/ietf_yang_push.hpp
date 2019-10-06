@@ -12,14 +12,14 @@
 namespace ietf {
 namespace ietf_yang_push {
 
-class ErrorDataNotAuthorized : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+class CustomStream : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
     public:
-        ErrorDataNotAuthorized();
-        ~ErrorDataNotAuthorized();
+        CustomStream();
+        ~CustomStream();
 
 
-}; // ErrorDataNotAuthorized
+}; // CustomStream
 
 class YangPush : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
@@ -30,14 +30,14 @@ class YangPush : public ietf::ietf_event_notifications::Stream, virtual ydk::Ide
 
 }; // YangPush
 
-class CustomStream : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
+class ErrorDataNotAuthorized : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
 {
     public:
-        CustomStream();
-        ~CustomStream();
+        ErrorDataNotAuthorized();
+        ~ErrorDataNotAuthorized();
 
 
-}; // CustomStream
+}; // ErrorDataNotAuthorized
 
 class Http2 : public ietf::ietf_event_notifications::Transport, virtual ydk::Identity
 {
@@ -55,6 +55,12 @@ class ChangeType : public ydk::Enum
         static const ydk::Enum::YLeaf delete_;
         static const ydk::Enum::YLeaf modify;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "create") return 0;
+            if (name == "delete") return 1;
+            if (name == "modify") return 2;
+            return -1;
+        }
 };
 
 

@@ -305,6 +305,12 @@ class CISCOCDPMIB::CdpGlobal::CdpGlobalDeviceIdFormat : public ydk::Enum
         static const ydk::Enum::YLeaf macAddress;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "serialNumber") return 1;
+            if (name == "macAddress") return 2;
+            if (name == "other") return 3;
+            return -1;
+        }
 };
 
 class CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::CdpInterfaceExtendedTrust : public ydk::Enum
@@ -313,6 +319,11 @@ class CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::CdpInterfaceExten
         static const ydk::Enum::YLeaf trusted;
         static const ydk::Enum::YLeaf noTrust;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "trusted") return 1;
+            if (name == "noTrust") return 2;
+            return -1;
+        }
 };
 
 class CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::CdpCacheDuplex : public ydk::Enum
@@ -322,6 +333,12 @@ class CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::CdpCacheDuplex : public ydk::En
         static const ydk::Enum::YLeaf halfduplex;
         static const ydk::Enum::YLeaf fullduplex;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "halfduplex") return 2;
+            if (name == "fullduplex") return 3;
+            return -1;
+        }
 };
 
 

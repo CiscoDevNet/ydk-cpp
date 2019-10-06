@@ -192,7 +192,6 @@ class Vpdn::Templates::Template : public ydk::Entity
 
         ydk::YLeaf template_name; //type: string
         ydk::YLeaf cisco_avp100_format_e_enable; //type: empty
-        ydk::YLeaf rate_convert_speed_avps; //type: empty
         ydk::YLeaf description; //type: string
         ydk::YLeaf l2tp_class; //type: string
         ydk::YLeaf dsl_line_forwarding; //type: empty
@@ -590,6 +589,12 @@ class DfBit : public ydk::Enum
         static const ydk::Enum::YLeaf reflect;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "reflect") return 1;
+            if (name == "set") return 2;
+            return -1;
+        }
 };
 
 class Option : public ydk::Enum
@@ -600,6 +605,13 @@ class Option : public ydk::Enum
         static const ydk::Enum::YLeaf dead_cache;
         static const ydk::Enum::YLeaf tunnel_drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 1;
+            if (name == "user") return 2;
+            if (name == "dead-cache") return 8;
+            if (name == "tunnel-drop") return 16;
+            return -1;
+        }
 };
 
 

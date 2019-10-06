@@ -4306,14 +4306,14 @@ const Enum::YLeaf DapsSergRole::none {0, "none"};
 const Enum::YLeaf DapsSergRole::master {1, "master"};
 const Enum::YLeaf DapsSergRole::slave {2, "slave"};
 
+const Enum::YLeaf IpAddr::ipv4 {2, "ipv4"};
+const Enum::YLeaf IpAddr::ipv6 {10, "ipv6"};
+
 const Enum::YLeaf DapsClient::none {0, "none"};
 const Enum::YLeaf DapsClient::ppp {1, "ppp"};
 const Enum::YLeaf DapsClient::dhcp {2, "dhcp"};
 const Enum::YLeaf DapsClient::dhcpv6 {4, "dhcpv6"};
 const Enum::YLeaf DapsClient::ipv6nd {5, "ipv6nd"};
-
-const Enum::YLeaf IpAddr::ipv4 {2, "ipv4"};
-const Enum::YLeaf IpAddr::ipv6 {10, "ipv6"};
 
 
 }

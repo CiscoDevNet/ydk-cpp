@@ -16,6 +16,11 @@ class ExtendedEthernetLoopback : public ydk::Enum
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf line;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 1;
+            if (name == "line") return 2;
+            return -1;
+        }
 };
 
 

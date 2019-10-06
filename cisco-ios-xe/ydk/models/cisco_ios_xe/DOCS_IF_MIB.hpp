@@ -1051,14 +1051,21 @@ class DOCSIFMIB::DocsIfCmtsUpChannelCounterTable::DocsIfCmtsUpChannelCounterEntr
 
 }; // DOCSIFMIB::DocsIfCmtsUpChannelCounterTable::DocsIfCmtsUpChannelCounterEntry
 
-class DocsisVersion : public ydk::Enum
+class DocsisUpstreamTypeStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf docsis10;
-        static const ydk::Enum::YLeaf docsis11;
-        static const ydk::Enum::YLeaf docsis20;
-        static const ydk::Enum::YLeaf docsis30;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf tdma;
+        static const ydk::Enum::YLeaf atdma;
+        static const ydk::Enum::YLeaf scdma;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "tdma") return 1;
+            if (name == "atdma") return 2;
+            if (name == "scdma") return 3;
+            return -1;
+        }
 };
 
 class DocsisQosVersion : public ydk::Enum
@@ -1067,6 +1074,11 @@ class DocsisQosVersion : public ydk::Enum
         static const ydk::Enum::YLeaf docsis10;
         static const ydk::Enum::YLeaf docsis11;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "docsis10") return 1;
+            if (name == "docsis11") return 2;
+            return -1;
+        }
 };
 
 class DocsisUpstreamType : public ydk::Enum
@@ -1078,16 +1090,31 @@ class DocsisUpstreamType : public ydk::Enum
         static const ydk::Enum::YLeaf scdma;
         static const ydk::Enum::YLeaf tdmaAndAtdma;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "tdma") return 1;
+            if (name == "atdma") return 2;
+            if (name == "scdma") return 3;
+            if (name == "tdmaAndAtdma") return 4;
+            return -1;
+        }
 };
 
-class DocsisUpstreamTypeStatus : public ydk::Enum
+class DocsisVersion : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf tdma;
-        static const ydk::Enum::YLeaf atdma;
-        static const ydk::Enum::YLeaf scdma;
+        static const ydk::Enum::YLeaf docsis10;
+        static const ydk::Enum::YLeaf docsis11;
+        static const ydk::Enum::YLeaf docsis20;
+        static const ydk::Enum::YLeaf docsis30;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "docsis10") return 1;
+            if (name == "docsis11") return 2;
+            if (name == "docsis20") return 3;
+            if (name == "docsis30") return 4;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::DocsIfDownChannelModulation : public ydk::Enum
@@ -1098,6 +1125,13 @@ class DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::Doc
         static const ydk::Enum::YLeaf qam64;
         static const ydk::Enum::YLeaf qam256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "other") return 2;
+            if (name == "qam64") return 3;
+            if (name == "qam256") return 4;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::DocsIfDownChannelInterleave : public ydk::Enum
@@ -1112,6 +1146,17 @@ class DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::Doc
         static const ydk::Enum::YLeaf taps128Increment1;
         static const ydk::Enum::YLeaf taps12increment17;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "other") return 2;
+            if (name == "taps8Increment16") return 3;
+            if (name == "taps16Increment8") return 4;
+            if (name == "taps32Increment4") return 5;
+            if (name == "taps64Increment2") return 6;
+            if (name == "taps128Increment1") return 7;
+            if (name == "taps12increment17") return 8;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::DocsIfDownChannelAnnex : public ydk::Enum
@@ -1123,6 +1168,14 @@ class DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::Doc
         static const ydk::Enum::YLeaf annexB;
         static const ydk::Enum::YLeaf annexC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "other") return 2;
+            if (name == "annexA") return 3;
+            if (name == "annexB") return 4;
+            if (name == "annexC") return 5;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfCmStatusTable::DocsIfCmStatusEntry::DocsIfCmStatusValue : public ydk::Enum
@@ -1142,6 +1195,22 @@ class DOCSIFMIB::DocsIfCmStatusTable::DocsIfCmStatusEntry::DocsIfCmStatusValue :
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf accessDenied;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "notReady") return 2;
+            if (name == "notSynchronized") return 3;
+            if (name == "phySynchronized") return 4;
+            if (name == "usParametersAcquired") return 5;
+            if (name == "rangingComplete") return 6;
+            if (name == "ipComplete") return 7;
+            if (name == "todEstablished") return 8;
+            if (name == "securityEstablished") return 9;
+            if (name == "paramTransferComplete") return 10;
+            if (name == "registrationComplete") return 11;
+            if (name == "operational") return 12;
+            if (name == "accessDenied") return 13;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfCmtsCmStatusTable::DocsIfCmtsCmStatusEntry::DocsIfCmtsCmStatusValue : public ydk::Enum
@@ -1157,6 +1226,18 @@ class DOCSIFMIB::DocsIfCmtsCmStatusTable::DocsIfCmtsCmStatusEntry::DocsIfCmtsCmS
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf registeredBPIInitializing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "ranging") return 2;
+            if (name == "rangingAborted") return 3;
+            if (name == "rangingComplete") return 4;
+            if (name == "ipComplete") return 5;
+            if (name == "registrationComplete") return 6;
+            if (name == "accessDenied") return 7;
+            if (name == "operational") return 8;
+            if (name == "registeredBPIInitializing") return 9;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfCmtsServiceTable::DocsIfCmtsServiceEntry::DocsIfCmtsServiceAdminStatus : public ydk::Enum
@@ -1166,6 +1247,12 @@ class DOCSIFMIB::DocsIfCmtsServiceTable::DocsIfCmtsServiceEntry::DocsIfCmtsServi
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf destroyed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            if (name == "destroyed") return 3;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfCmtsModulationTable::DocsIfCmtsModulationEntry::DocsIfCmtsModIntervalUsageCode : public ydk::Enum
@@ -1181,6 +1268,18 @@ class DOCSIFMIB::DocsIfCmtsModulationTable::DocsIfCmtsModulationEntry::DocsIfCmt
         static const ydk::Enum::YLeaf advPhyLongData;
         static const ydk::Enum::YLeaf ugs;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "request") return 1;
+            if (name == "requestData") return 2;
+            if (name == "initialRanging") return 3;
+            if (name == "periodicRanging") return 4;
+            if (name == "shortData") return 5;
+            if (name == "longData") return 6;
+            if (name == "advPhyShortData") return 9;
+            if (name == "advPhyLongData") return 10;
+            if (name == "ugs") return 11;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfCmtsModulationTable::DocsIfCmtsModulationEntry::DocsIfCmtsModType : public ydk::Enum
@@ -1194,6 +1293,16 @@ class DOCSIFMIB::DocsIfCmtsModulationTable::DocsIfCmtsModulationEntry::DocsIfCmt
         static const ydk::Enum::YLeaf qam64;
         static const ydk::Enum::YLeaf qam128;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "qpsk") return 2;
+            if (name == "qam16") return 3;
+            if (name == "qam8") return 4;
+            if (name == "qam32") return 5;
+            if (name == "qam64") return 6;
+            if (name == "qam128") return 7;
+            return -1;
+        }
 };
 
 class DOCSIFMIB::DocsIfCmtsModulationTable::DocsIfCmtsModulationEntry::DocsIfCmtsModPreambleType : public ydk::Enum
@@ -1203,6 +1312,12 @@ class DOCSIFMIB::DocsIfCmtsModulationTable::DocsIfCmtsModulationEntry::DocsIfCmt
         static const ydk::Enum::YLeaf qpsk0;
         static const ydk::Enum::YLeaf qpsk1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "qpsk0") return 1;
+            if (name == "qpsk1") return 2;
+            return -1;
+        }
 };
 
 

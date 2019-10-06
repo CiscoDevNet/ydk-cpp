@@ -789,17 +789,6 @@ bool CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::has_leaf_or_child_o
     return false;
 }
 
-const Enum::YLeaf ConfigCopyProtocol::tftp {1, "tftp"};
-const Enum::YLeaf ConfigCopyProtocol::ftp {2, "ftp"};
-const Enum::YLeaf ConfigCopyProtocol::rcp {3, "rcp"};
-const Enum::YLeaf ConfigCopyProtocol::scp {4, "scp"};
-const Enum::YLeaf ConfigCopyProtocol::sftp {5, "sftp"};
-
-const Enum::YLeaf ConfigCopyState::waiting {1, "waiting"};
-const Enum::YLeaf ConfigCopyState::running {2, "running"};
-const Enum::YLeaf ConfigCopyState::successful {3, "successful"};
-const Enum::YLeaf ConfigCopyState::failed {4, "failed"};
-
 const Enum::YLeaf ConfigCopyFailCause::unknown {1, "unknown"};
 const Enum::YLeaf ConfigCopyFailCause::badFileName {2, "badFileName"};
 const Enum::YLeaf ConfigCopyFailCause::timeout {3, "timeout"};
@@ -810,12 +799,23 @@ const Enum::YLeaf ConfigCopyFailCause::someConfigApplyFailed {7, "someConfigAppl
 const Enum::YLeaf ConfigCopyFailCause::systemNotReady {8, "systemNotReady"};
 const Enum::YLeaf ConfigCopyFailCause::requestAborted {9, "requestAborted"};
 
+const Enum::YLeaf ConfigCopyState::waiting {1, "waiting"};
+const Enum::YLeaf ConfigCopyState::running {2, "running"};
+const Enum::YLeaf ConfigCopyState::successful {3, "successful"};
+const Enum::YLeaf ConfigCopyState::failed {4, "failed"};
+
 const Enum::YLeaf ConfigFileType::networkFile {1, "networkFile"};
 const Enum::YLeaf ConfigFileType::iosFile {2, "iosFile"};
 const Enum::YLeaf ConfigFileType::startupConfig {3, "startupConfig"};
 const Enum::YLeaf ConfigFileType::runningConfig {4, "runningConfig"};
 const Enum::YLeaf ConfigFileType::terminal {5, "terminal"};
 const Enum::YLeaf ConfigFileType::fabricStartupConfig {6, "fabricStartupConfig"};
+
+const Enum::YLeaf ConfigCopyProtocol::tftp {1, "tftp"};
+const Enum::YLeaf ConfigCopyProtocol::ftp {2, "ftp"};
+const Enum::YLeaf ConfigCopyProtocol::rcp {3, "rcp"};
+const Enum::YLeaf ConfigCopyProtocol::scp {4, "scp"};
+const Enum::YLeaf ConfigCopyProtocol::sftp {5, "sftp"};
 
 
 }

@@ -1163,20 +1163,17 @@ class CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry : public ydk::E
 
 }; // CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry
 
-class IkePeerType : public ydk::Enum
+class TunnelStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipAddrPeer;
-        static const ydk::Enum::YLeaf namePeer;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf destroy;
 
-};
-
-class IkeNegoMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf main;
-        static const ydk::Enum::YLeaf aggressive;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "destroy") return 2;
+            return -1;
+        }
 };
 
 class IkeHashAlgo : public ydk::Enum
@@ -1186,6 +1183,12 @@ class IkeHashAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "md5") return 2;
+            if (name == "sha") return 3;
+            return -1;
+        }
 };
 
 class IkeAuthMethod : public ydk::Enum
@@ -1197,15 +1200,14 @@ class IkeAuthMethod : public ydk::Enum
         static const ydk::Enum::YLeaf rsaEncrypt;
         static const ydk::Enum::YLeaf revPublicKey;
 
-};
-
-class DiffHellmanGrp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf dhGroup1;
-        static const ydk::Enum::YLeaf dhGroup2;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "preSharedKey") return 2;
+            if (name == "rsaSig") return 3;
+            if (name == "rsaEncrypt") return 4;
+            if (name == "revPublicKey") return 5;
+            return -1;
+        }
 };
 
 class KeyType : public ydk::Enum
@@ -1214,14 +1216,37 @@ class KeyType : public ydk::Enum
         static const ydk::Enum::YLeaf ike;
         static const ydk::Enum::YLeaf manual;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ike") return 1;
+            if (name == "manual") return 2;
+            return -1;
+        }
 };
 
-class EncapMode : public ydk::Enum
+class TrapStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf tunnel;
-        static const ydk::Enum::YLeaf transport;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
+};
+
+class CompAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ldf;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "ldf") return 2;
+            return -1;
+        }
 };
 
 class EncryptAlgo : public ydk::Enum
@@ -1231,6 +1256,51 @@ class EncryptAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf des;
         static const ydk::Enum::YLeaf des3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "des") return 2;
+            if (name == "des3") return 3;
+            return -1;
+        }
+};
+
+class IkePeerType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipAddrPeer;
+        static const ydk::Enum::YLeaf namePeer;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipAddrPeer") return 1;
+            if (name == "namePeer") return 2;
+            return -1;
+        }
+};
+
+class IkeNegoMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf main;
+        static const ydk::Enum::YLeaf aggressive;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "main") return 1;
+            if (name == "aggressive") return 2;
+            return -1;
+        }
+};
+
+class EncapMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf transport;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "tunnel") return 1;
+            if (name == "transport") return 2;
+            return -1;
+        }
 };
 
 class AuthAlgo : public ydk::Enum
@@ -1240,14 +1310,12 @@ class AuthAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf hmacMd5;
         static const ydk::Enum::YLeaf hmacSha;
 
-};
-
-class CompAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ldf;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "hmacMd5") return 2;
+            if (name == "hmacSha") return 3;
+            return -1;
+        }
 };
 
 class EndPtType : public ydk::Enum
@@ -1257,22 +1325,27 @@ class EndPtType : public ydk::Enum
         static const ydk::Enum::YLeaf ipAddrRange;
         static const ydk::Enum::YLeaf ipSubnet;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "singleIpAddr") return 1;
+            if (name == "ipAddrRange") return 2;
+            if (name == "ipSubnet") return 3;
+            return -1;
+        }
 };
 
-class TunnelStatus : public ydk::Enum
+class DiffHellmanGrp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf destroy;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf dhGroup1;
+        static const ydk::Enum::YLeaf dhGroup2;
 
-};
-
-class TrapStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "dhGroup1") return 2;
+            if (name == "dhGroup2") return 3;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl::CipSecHistCheckPoint : public ydk::Enum
@@ -1281,6 +1354,11 @@ class CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl::CipSecHistCheckPoint : pub
         static const ydk::Enum::YLeaf ready;
         static const ydk::Enum::YLeaf checkPoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ready") return 1;
+            if (name == "checkPoint") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiDirection : public ydk::Enum
@@ -1289,6 +1367,11 @@ class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiDirecti
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 1;
+            if (name == "out") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiProtocol : public ydk::Enum
@@ -1298,6 +1381,12 @@ class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiProtoco
         static const ydk::Enum::YLeaf esp;
         static const ydk::Enum::YLeaf ipcomp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ah") return 1;
+            if (name == "esp") return 2;
+            if (name == "ipcomp") return 3;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiStatus : public ydk::Enum
@@ -1306,6 +1395,11 @@ class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiStatus 
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf expiring;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "expiring") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable::CikeTunnelHistEntry::CikeTunHistTermReason : public ydk::Enum
@@ -1319,6 +1413,16 @@ class CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable::CikeTunnelHistEntry::CikeTu
         static const ydk::Enum::YLeaf localFailure;
         static const ydk::Enum::YLeaf checkPointReg;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "normal") return 2;
+            if (name == "operRequest") return 3;
+            if (name == "peerDelRequest") return 4;
+            if (name == "peerLost") return 5;
+            if (name == "localFailure") return 6;
+            if (name == "checkPointReg") return 7;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable::CipSecTunnelHistEntry::CipSecTunHistTermReason : public ydk::Enum
@@ -1332,6 +1436,16 @@ class CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable::CipSecTunnelHistEntry::Ci
         static const ydk::Enum::YLeaf seqNumRollOver;
         static const ydk::Enum::YLeaf checkPointReq;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "normal") return 2;
+            if (name == "operRequest") return 3;
+            if (name == "peerDelRequest") return 4;
+            if (name == "peerLost") return 5;
+            if (name == "seqNumRollOver") return 6;
+            if (name == "checkPointReq") return 7;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CikeFailTable::CikeFailEntry::CikeFailReason : public ydk::Enum
@@ -1355,6 +1469,26 @@ class CISCOIPSECFLOWMONITORMIB::CikeFailTable::CikeFailEntry::CikeFailReason : p
         static const ydk::Enum::YLeaf nonExistentSa;
         static const ydk::Enum::YLeaf operRequest;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "peerDelRequest") return 2;
+            if (name == "peerLost") return 3;
+            if (name == "localFailure") return 4;
+            if (name == "authFailure") return 5;
+            if (name == "hashValidation") return 6;
+            if (name == "encryptFailure") return 7;
+            if (name == "internalError") return 8;
+            if (name == "sysCapExceeded") return 9;
+            if (name == "proposalFailure") return 10;
+            if (name == "peerCertUnavailable") return 11;
+            if (name == "peerCertNotValid") return 12;
+            if (name == "localCertExpired") return 13;
+            if (name == "crlFailure") return 14;
+            if (name == "peerEncodingError") return 15;
+            if (name == "nonExistentSa") return 16;
+            if (name == "operRequest") return 17;
+            return -1;
+        }
 };
 
 class CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry::CipSecFailReason : public ydk::Enum
@@ -1377,6 +1511,25 @@ class CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry::CipSecFailReas
         static const ydk::Enum::YLeaf seqNumRollOver;
         static const ydk::Enum::YLeaf operRequest;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "internalError") return 2;
+            if (name == "peerEncodingError") return 3;
+            if (name == "proposalFailure") return 4;
+            if (name == "protocolUseFail") return 5;
+            if (name == "nonExistentSa") return 6;
+            if (name == "decryptFailure") return 7;
+            if (name == "encryptFailure") return 8;
+            if (name == "inAuthFailure") return 9;
+            if (name == "outAuthFailure") return 10;
+            if (name == "compression") return 11;
+            if (name == "sysCapExceeded") return 12;
+            if (name == "peerDelRequest") return 13;
+            if (name == "peerLost") return 14;
+            if (name == "seqNumRollOver") return 15;
+            if (name == "operRequest") return 16;
+            return -1;
+        }
 };
 
 

@@ -80,6 +80,18 @@ class SensorUnitsType : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf revolutions_per_minute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "watts") return 0;
+            if (name == "celsius") return 1;
+            if (name == "millivolts") return 2;
+            if (name == "amperes") return 3;
+            if (name == "volts-dc") return 4;
+            if (name == "volts-ac") return 5;
+            if (name == "milliamperes") return 6;
+            if (name == "unknown") return 7;
+            if (name == "revolutions-per-minute") return 8;
+            return -1;
+        }
 };
 
 

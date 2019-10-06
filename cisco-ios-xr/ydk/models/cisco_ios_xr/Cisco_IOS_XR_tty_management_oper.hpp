@@ -45,6 +45,13 @@ class TransportService : public ydk::Enum
         static const ydk::Enum::YLeaf rlogin;
         static const ydk::Enum::YLeaf ssh;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "telnet") return 1;
+            if (name == "rlogin") return 2;
+            if (name == "ssh") return 3;
+            return -1;
+        }
 };
 
 

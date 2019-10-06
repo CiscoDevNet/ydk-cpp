@@ -31,6 +31,7 @@ class MplsStatic : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf enable; //type: empty
         class Vrfs; //type: MplsStatic::Vrfs
         class Interfaces; //type: MplsStatic::Interfaces
         class DefaultVrf; //type: MplsStatic::DefaultVrf
@@ -84,6 +85,7 @@ class MplsStatic::Vrfs::Vrf : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf enable; //type: empty
         class LabelSwitchedPaths; //type: MplsStatic::Vrfs::Vrf::LabelSwitchedPaths
         class Afs; //type: MplsStatic::Vrfs::Vrf::Afs
 
@@ -133,6 +135,7 @@ class MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_name; //type: string
+        ydk::YLeaf enable; //type: empty
         class BackupPaths; //type: MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths
         class InLabel; //type: MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel
         class Paths; //type: MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths
@@ -317,6 +320,7 @@ class MplsStatic::Vrfs::Vrf::Afs::Af : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf afi; //type: MplsStaticAddressFamily
+        ydk::YLeaf enable; //type: empty
         class TopLabelHash; //type: MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash
         class LocalLabels; //type: MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels
 
@@ -664,6 +668,7 @@ class MplsStatic::DefaultVrf : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        ydk::YLeaf enable; //type: empty
         class LabelSwitchedPaths; //type: MplsStatic::DefaultVrf::LabelSwitchedPaths
         class Afs; //type: MplsStatic::DefaultVrf::Afs
 
@@ -715,6 +720,7 @@ class MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath : public ydk
         std::string get_absolute_path() const override;
 
         ydk::YLeaf lsp_name; //type: string
+        ydk::YLeaf enable; //type: empty
         class BackupPaths; //type: MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths
         class InLabel; //type: MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel
         class Paths; //type: MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths
@@ -901,6 +907,7 @@ class MplsStatic::DefaultVrf::Afs::Af : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi; //type: MplsStaticAddressFamily
+        ydk::YLeaf enable; //type: empty
         class TopLabelHash; //type: MplsStatic::DefaultVrf::Afs::Af::TopLabelHash
         class LocalLabels; //type: MplsStatic::DefaultVrf::Afs::Af::LocalLabels
 
@@ -1184,37 +1191,17 @@ class MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path : pu
 
 }; // MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
 
-class MplsStaticPath : public ydk::Enum
+class MplsStaticNhMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pop_and_lookup;
-        static const ydk::Enum::YLeaf cross_connect;
+        static const ydk::Enum::YLeaf configured;
+        static const ydk::Enum::YLeaf resolve;
 
-};
-
-class MplsStaticAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4_unicast;
-
-};
-
-class MplsStaticLabelMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf per_vrf;
-        static const ydk::Enum::YLeaf per_prefix;
-        static const ydk::Enum::YLeaf lsp;
-
-};
-
-class MplsStaticPathRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf primary_backup;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "configured") return 0;
+            if (name == "resolve") return 1;
+            return -1;
+        }
 };
 
 class MplsStaticNhAddressFamily : public ydk::Enum
@@ -1223,14 +1210,35 @@ class MplsStaticNhAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
-class MplsStaticNhMode : public ydk::Enum
+class MplsStaticPath : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf configured;
-        static const ydk::Enum::YLeaf resolve;
+        static const ydk::Enum::YLeaf pop_and_lookup;
+        static const ydk::Enum::YLeaf cross_connect;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pop-and-lookup") return 1;
+            if (name == "cross-connect") return 2;
+            return -1;
+        }
+};
+
+class MplsStaticAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_unicast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-unicast") return 1;
+            return -1;
+        }
 };
 
 class MplsStaticOutLabelTypes : public ydk::Enum
@@ -1242,6 +1250,44 @@ class MplsStaticOutLabelTypes : public ydk::Enum
         static const ydk::Enum::YLeaf exp_null;
         static const ydk::Enum::YLeaf ipv6_explicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "out-label") return 1;
+            if (name == "pop") return 2;
+            if (name == "exp-null") return 3;
+            if (name == "ipv6-explicit-null") return 4;
+            return -1;
+        }
+};
+
+class MplsStaticLabelMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf per_vrf;
+        static const ydk::Enum::YLeaf per_prefix;
+        static const ydk::Enum::YLeaf lsp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "per-vrf") return 1;
+            if (name == "per-prefix") return 2;
+            if (name == "lsp") return 3;
+            return -1;
+        }
+};
+
+class MplsStaticPathRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf primary_backup;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "primary") return 0;
+            if (name == "backup") return 1;
+            if (name == "primary-backup") return 2;
+            return -1;
+        }
 };
 
 

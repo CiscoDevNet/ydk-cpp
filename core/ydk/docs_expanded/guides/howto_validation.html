@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to Disable Validation &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../index.html"/>
+        <link rel="up" title="Developer Guides" href="guides.html"/>
+        <link rel="next" title="API Guide" href="../api/api.html"/>
+        <link rel="prev" title="Using gNMI with YDK" href="howto_gnmi.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="guides.html">Developer Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_opendaylight.html">Using OpenDaylight with YDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_path.html">Using YDK Path API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_rpc.html">RPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presence_class.html">Presence Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_gnmi.html">Using gNMI with YDK</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">How to Disable Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="guides.html">Developer Guides</a> &raquo;</li>
+      
+    <li>How to Disable Validation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-disable-validation">
+<span id="ref-howto-validation"></span><h1>How to Disable Validation<a class="headerlink" href="#how-to-disable-validation" title="Permalink to this headline">¶</a></h1>
+<p>By default all the data sent to Yang enabled server are validated against Yang model constraints like data type, number range and string patterns.
+This is one of the major features of YDK. However there is sometime a need to disable data validation in order to see how the server reacts to invalid data.
+For this sole purpose the YDK has possibility to disable data validation. This feature currently implemented only for <a class="reference internal" href="../api/ydk/providers/netconf_provider.html#_CPPv2N3ydk22NetconfServiceProviderE" title="ydk::NetconfServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code></a>
+through <a class="reference internal" href="../api/ydk/services/crud_service.html#_CPPv2N3ydk11CrudServiceE" title="ydk::CrudService"><code class="xref cpp cpp-class docutils literal"><span class="pre">CrudService</span></code></a> and <a class="reference internal" href="../api/ydk/services/netconf_service.html#_CPPv214NetconfService" title="NetconfService"><code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfService</span></code></a>.</p>
+<p>In order to disable validation of object/entity the <a class="reference internal" href="../api/ydk/types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> class member <cite>ignore_validation</cite> must be set to <code class="docutils literal"><span class="pre">true</span></code>.
+Please note that this setting disables validation on the entire entity including leafs, and children entities.
+If the flag is set to non-top-level entity, the validation will be also disabled on all parent entities up to the top-level.
+Actually, it is important to note, when validation is disabled on non-top-level entity it must be a part of complete hierarchy of a top-level entity.</p>
+<p>Here is an example of a negative test, which disables validation of an entity containing data of invalid type.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">int8_invalid_ignore_validation</span><span class="s">&quot;()</span>
+<span class="p">{</span>
+  <span class="n">NetconfServiceProvider</span> <span class="n">provider</span><span class="p">{</span><span class="s">&quot;10.10.10.10&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">};</span>
+  <span class="n">CrudService</span> <span class="n">crud</span><span class="p">{};</span>
+
+  <span class="c1">//CREATE</span>
+  <span class="k">auto</span> <span class="n">r</span> <span class="o">=</span> <span class="n">ydktest_sanity</span><span class="o">::</span><span class="n">Runner</span><span class="p">();</span>
+  <span class="n">r</span><span class="p">.</span><span class="n">ignore_validation</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="n">r</span><span class="p">.</span><span class="n">ytypes</span><span class="o">-&gt;</span><span class="n">built_in_t</span><span class="o">-&gt;</span><span class="n">number8</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
+  <span class="n">CHECK_THROWS_WITH</span><span class="p">(</span><span class="n">crud</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">Catch</span><span class="o">::</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">test</span><span class="se">\&quot;</span><span class="s"> is not a valid value&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In response to this request the Netconf Server returns an error message, which is then captured and processed.</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span><span class="o">[</span><span class="m">2019</span>-02-08 <span class="m">08</span>:43:54.025<span class="o">]</span> <span class="o">[</span>ydk<span class="o">]</span> <span class="o">[</span>error<span class="o">]</span> RPC error occurred: &lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span>?&gt;
+&lt;rpc-reply <span class="nv">xmlns</span><span class="o">=</span><span class="s2">&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot;</span> message-id<span class="o">=</span><span class="s2">&quot;4&quot;</span>&gt;
+  &lt;rpc-error&gt;
+    &lt;error-type&gt;application&lt;/error-type&gt;
+    &lt;error-tag&gt;invalid-value&lt;/error-tag&gt;
+    &lt;error-severity&gt;error&lt;/error-severity&gt;
+    &lt;error-path xmlns:ydkut<span class="o">=</span><span class="s2">&quot;http://cisco.com/ns/yang/ydktest-sanity&quot;</span>&gt;
+    /rpc/edit-config/config/ydkut:runner/ydkut:ytypes/ydkut:built-in-t/ydkut:number8
+  &lt;/error-path&gt;
+    &lt;error-message xml:lang<span class="o">=</span><span class="s2">&quot;en&quot;</span>&gt;<span class="s2">&quot;test&quot;</span> is not a valid value.&lt;/error-message&gt;
+    &lt;error-info&gt;
+      &lt;bad-element&gt;number8&lt;/bad-element&gt;
+    &lt;/error-info&gt;
+  &lt;/rpc-error&gt;
+&lt;/rpc-reply&gt;
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/api.html" class="btn btn-neutral float-right" title="API Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="howto_gnmi.html" class="btn btn-neutral" title="Using gNMI with YDK" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gNMI Service &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="Service" href="services.html"/>
+        <link rel="next" title="ServiceProvider" href="../providers/providers.html"/>
+        <link rel="prev" title="ValidationService" href="validation_service.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ydk.html">YDK API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="services.html">Service</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html">Codec Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html#xmlsubtreecodec">XmlSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html#jsonsubtreecodec">JsonSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="crud_service.html">CRUD Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="executor_service.html">Executor Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netconf_service.html">Netconf Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_service.html">ValidationService</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">gNMI Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../providers/providers.html">ServiceProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/errors.html">Errors Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filters.html">YDK Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../types.html">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../path/path.html">YDK Path API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../ydk.html">YDK API</a> &raquo;</li>
+      
+          <li><a href="services.html">Service</a> &raquo;</li>
+      
+    <li>gNMI Service</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gnmi-service">
+<span id="id1"></span><h1>gNMI Service<a class="headerlink" href="#gnmi-service" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk11gNMIServiceE">
+<span id="ydk::gNMIService"></span><em class="property">class </em><code class="descclassname">ydk::</code><code class="descname">gNMIService</code><a class="headerlink" href="#_CPPv2N3ydk11gNMIServiceE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supports gNMI Set/Get/Subscribe operations on model API entities. It also allows to get gNMI server capabilities.</p>
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService11gNMIServiceEv">
+<span id="ydk::gNMIService::gNMIService"></span><code class="descclassname"></code><code class="descname">gNMIService</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService11gNMIServiceEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an instance of gNMIService.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService3setER19gNMIServiceProviderR6Entity">
+<span id="ydk::gNMIService::set__gNMIServiceProviderR.EntityR"></span>bool <code class="descclassname"></code><code class="descname">set</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider">gNMIServiceProvider</a> &amp;<em>provider</em>, <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> &amp;<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService3setER19gNMIServiceProviderR6Entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create, update, or delete single entity in the server configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; (<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a>) gNMI service provider instance.</li>
+<li><strong>entity</strong> &#8211; <p>(<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>) instance, which represents single container in device supported model.
+The <strong>Entity</strong> instance must be annotated with <a class="reference internal" href="../filters.html#_CPPv2N3ydk7YFilterE" title="ydk::YFilter"><code class="xref cpp cpp-class docutils literal"><span class="pre">YFilter</span></code></a>, which defines set operation:</p>
+<ul>
+<li>YFilter::replace - add new configuration or replace the whole configuration tree</li>
+<li>YFilter::update  - update or create configuration in existing tree</li>
+<li>YFilter::delete_ - delete part or entire configuration tree</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(<code class="docutils literal"><span class="pre">bool</span></code>) <code class="docutils literal"><span class="pre">true</span></code> if operation is successful, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YServiceError if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService3setER19gNMIServiceProviderNSt6vectorIP6EntityEE">
+<span id="ydk::gNMIService::set__gNMIServiceProviderR.std::vector:EntityP:"></span>bool <code class="descclassname"></code><code class="descname">set</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider">gNMIServiceProvider</a> &amp;<em>provider</em>, std::vector&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> *&gt; <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService3setER19gNMIServiceProviderNSt6vectorIP6EntityEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create, update, or delete multiple entities in the server configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; (<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a>) gNMI service provider instance.</li>
+<li><strong>entities</strong> &#8211; <p>(std::vector&lt;ydk::Entity*&gt;) multiple containers of the <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> instances encapsulated into <code class="docutils literal"><span class="pre">std::vector&lt;ydk::Entity*&gt;</span></code>.
+Each <strong>Entity</strong> instance must be annotated with <a class="reference internal" href="../filters.html#_CPPv2N3ydk7YFilterE" title="ydk::YFilter"><code class="xref cpp cpp-class docutils literal"><span class="pre">YFilter</span></code></a>, which defines set operation:</p>
+<ul>
+<li>YFilter::replace - add new configuration or replace the whole configuration tree</li>
+<li>YFilter::update  - update or create configuration in existing tree</li>
+<li>YFilter::delete_ - delete part or entire configuration tree</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(<code class="docutils literal"><span class="pre">bool</span></code>) <code class="docutils literal"><span class="pre">true</span></code>, if operation is successful, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YServiceError if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService3getER19gNMIServiceProviderR6EntityRKNSt6stringE">
+<span id="ydk::gNMIService::get__gNMIServiceProviderR.EntityR.ssCR"></span>std::shared_ptr&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt; <code class="descclassname"></code><code class="descname">get</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider">gNMIServiceProvider</a> &amp;<em>provider</em>, <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> &amp;<em>read_filter</em>, <em class="property">const</em> std::string &amp;<em>read_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService3getER19gNMIServiceProviderR6EntityRKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read single entity from the server configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; (<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a>) gNMI service provider instance.</li>
+<li><strong>read_filter</strong> &#8211; (<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>) instance, which represents single container in device supported model.</li>
+<li><strong>read_mode</strong> &#8211; (<code class="docutils literal"><span class="pre">std::string</span></code>) One of the values: <code class="docutils literal"><span class="pre">CONFIG</span></code>, <code class="docutils literal"><span class="pre">STATE</span></code>, <code class="docutils literal"><span class="pre">OPERATIONAL</span></code>, or <code class="docutils literal"><span class="pre">ALL</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(std::shared_ptr&lt;ydk::Entity&gt;) An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> as identified by the <strong>read_filter</strong> or <code class="docutils literal"><span class="pre">nullptr</span></code>, if operation fails.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YServiceError if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService3getER19gNMIServiceProviderNSt6vectorIP6EntityEERKNSt6stringE">
+<span id="ydk::gNMIService::get__gNMIServiceProviderR.std::vector:EntityP:.ssCR"></span>std::vector&lt;std::shared_ptr&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a>&gt;&gt; <code class="descclassname"></code><code class="descname">get</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider">gNMIServiceProvider</a> &amp;<em>provider</em>, std::vector&lt;<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> *&gt; <em>read_filters</em>, <em class="property">const</em> std::string &amp;<em>read_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService3getER19gNMIServiceProviderNSt6vectorIP6EntityEERKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read multiple entities from the server configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; (<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a>) gNMI service provider instance.</li>
+<li><strong>read_filters</strong> &#8211; (std::vector&lt;ydk::Entity*&gt;) multiple containers of the <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> instances encapsulated into <code class="docutils literal"><span class="pre">std::vector&lt;ydk::Entity*&gt;</span></code>.</li>
+<li><strong>read_mode</strong> &#8211; (<code class="docutils literal"><span class="pre">std::string</span></code>) One of the values: <code class="docutils literal"><span class="pre">CONFIG</span></code>, <code class="docutils literal"><span class="pre">STATE</span></code>, <code class="docutils literal"><span class="pre">OPERATIONAL</span></code>, or <code class="docutils literal"><span class="pre">ALL</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The requested data encapsulated into <strong>std::vector&lt;std::shared_ptr&lt;Entity&gt;&gt;</strong> instance; if request fails - empty <strong>std::vector</strong>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YServiceError if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService9subscribeER19gNMIServiceProviderR16gNMISubscription4uintRNSt6stringERNSt6stringE8callback">
+<span id="ydk::gNMIService::subscribe__gNMIServiceProviderR.gNMISubscriptionR.uint.ssR.ssR.callback"></span><code class="descclassname"></code><code class="descname">subscribe</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider">gNMIServiceProvider</a> &amp;<em>provider</em>, <a class="reference internal" href="#_CPPv2N3ydk16gNMISubscriptionE" title="ydk::gNMISubscription">gNMISubscription</a> &amp;<em>subscription</em>, uint <em>qos</em>, std::string &amp;<em>mode</em>, std::string &amp;<em>encoding</em>, callback<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService9subscribeER19gNMIServiceProviderR16gNMISubscription4uintRNSt6stringERNSt6stringE8callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to telemetry updates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; (<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a>) gNMI service provider instance.</li>
+<li><strong>subscription</strong> &#8211; (<a class="reference internal" href="#_CPPv2N3ydk16gNMISubscriptionE" title="ydk::gNMISubscription"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMISubscription</span></code></a>) An instance of structure, which represent the subscription.</li>
+<li><strong>qos</strong> &#8211; (<code class="docutils literal"><span class="pre">uint</span></code>) QOS indicating the packet marking.</li>
+<li><strong>mode</strong> &#8211; (<code class="docutils literal"><span class="pre">std::string</span></code>) Subscription mode: one of <code class="docutils literal"><span class="pre">STREAM</span></code>, <code class="docutils literal"><span class="pre">ONCE</span></code> or <code class="docutils literal"><span class="pre">POLL</span></code>.</li>
+<li><strong>encoding</strong> &#8211; (<code class="docutils literal"><span class="pre">std::string</span></code>) Encoding method for the output: one of <code class="docutils literal"><span class="pre">JSON</span></code>, <code class="docutils literal"><span class="pre">BYTES</span></code>, <code class="docutils literal"><span class="pre">PROTO</span></code>, <code class="docutils literal"><span class="pre">ASCII</span></code>, or <code class="docutils literal"><span class="pre">JSON_IETF</span></code>.</li>
+<li><strong>callback</strong> &#8211; (<code class="docutils literal"><span class="pre">void*(const</span> <span class="pre">char*)</span></code>) Callback function, which is used to process the subscription data. The subscription data returned to the user as a string representation of protobuf <code class="docutils literal"><span class="pre">SubscribeResponse</span></code> message.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YServiceError if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService9subscribeER19gNMIServiceProviderRNSt6vectorIPN3ydk16gNMISubscriptionEEE4uintRNSt6stringERNSt6stringE8callback">
+<span id="ydk::gNMIService::subscribe__gNMIServiceProviderR.std::vector:ydk::gNMISubscriptionP:R.uint.ssR.ssR.callback"></span><code class="descclassname"></code><code class="descname">subscribe</code><span class="sig-paren">(</span><a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider">gNMIServiceProvider</a> &amp;<em>provider</em>, std::vector&lt;ydk::<a class="reference internal" href="#_CPPv2N3ydk16gNMISubscriptionE" title="ydk::gNMISubscription">gNMISubscription</a> *&gt; &amp;<em>subscription</em>, uint <em>qos</em>, std::string &amp;<em>mode</em>, std::string &amp;<em>encoding</em>, callback<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService9subscribeER19gNMIServiceProviderRNSt6vectorIPN3ydk16gNMISubscriptionEEE4uintRNSt6stringERNSt6stringE8callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to telemetry updates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; (<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a>) gNMI service provider instance.</li>
+<li><strong>subscription</strong> &#8211; Set of (<a class="reference internal" href="#_CPPv2N3ydk16gNMISubscriptionE" title="ydk::gNMISubscription"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMISubscription</span></code></a>) instances incapsulated into <code class="docutils literal"><span class="pre">std::vector</span></code>, which represent the subscription.</li>
+<li><strong>qos</strong> &#8211; (<code class="docutils literal"><span class="pre">uint</span></code>) QOS indicating the packet marking.</li>
+<li><strong>mode</strong> &#8211; (<code class="docutils literal"><span class="pre">std::string</span></code>) Subscription mode: one of <code class="docutils literal"><span class="pre">STREAM</span></code>, <code class="docutils literal"><span class="pre">ONCE</span></code> or <code class="docutils literal"><span class="pre">POLL</span></code>.</li>
+<li><strong>encoding</strong> &#8211; (<code class="docutils literal"><span class="pre">std::string</span></code>) Encoding method for the output: one of <code class="docutils literal"><span class="pre">JSON</span></code>, <code class="docutils literal"><span class="pre">BYTES</span></code>, <code class="docutils literal"><span class="pre">PROTO</span></code>, <code class="docutils literal"><span class="pre">ASCII</span></code>, or <code class="docutils literal"><span class="pre">JSON_IETF</span></code>.</li>
+<li><strong>callback</strong> &#8211; (<code class="docutils literal"><span class="pre">void*(const</span> <span class="pre">char*)</span></code>) Callback function, which is used to process the subscription data. The subscription data returned to the user as a string representation of protobuf <code class="docutils literal"><span class="pre">SubscribeResponse</span></code> message.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YServiceError if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk11gNMIService12capabilitiesERN3ydk19gNMIServiceProviderE">
+<span id="ydk::gNMIService::capabilities__ydk::gNMIServiceProviderR"></span>std::string <code class="descclassname"></code><code class="descname">capabilities</code><span class="sig-paren">(</span>ydk::<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider">gNMIServiceProvider</a> &amp;<em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk11gNMIService12capabilitiesERN3ydk19gNMIServiceProviderE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get gNMI server capabilities</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>provider</strong> &#8211; (<a class="reference internal" href="../providers/gnmi_provider.html#_CPPv2N3ydk19gNMIServiceProviderE" title="ydk::gNMIServiceProvider"><code class="xref cpp cpp-class docutils literal"><span class="pre">gNMIServiceProvider</span></code></a>) gNMI service provider instance.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(<code class="docutils literal"><span class="pre">std::string</span></code>) JSON encoded string, which represents gNMI server capabilities.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">YServiceError if an error has occurred.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv2N3ydk16gNMISubscriptionE">
+<span id="ydk::gNMISubscription"></span><em class="property">class </em><code class="descclassname">ydk::</code><code class="descname">gNMISubscription</code><a class="headerlink" href="#_CPPv2N3ydk16gNMISubscriptionE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instance of this structure defines subscription for a single entity. Members of the structure are:</p>
+<ul class="simple">
+<li>entity: (<a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>) Instance of the subscription entity. This parameter must be set by the user.</li>
+<li>subscription_mode: (<code class="docutils literal"><span class="pre">std::string</span></code>) Expected one of the following string values: <code class="docutils literal"><span class="pre">TARGET_DEFINED</span></code>, <code class="docutils literal"><span class="pre">ON_CHANGE</span></code>, or <code class="docutils literal"><span class="pre">SAMPLE</span></code>; default value is <code class="docutils literal"><span class="pre">ON_CHANGE</span></code>.</li>
+<li>sample_interval: (<code class="docutils literal"><span class="pre">longlong</span></code>) Time interval in nanoseconds between samples in <code class="docutils literal"><span class="pre">STREAM</span></code> mode; default value is 60000000000 (1 minute).</li>
+<li>suppress_redundant: (<code class="docutils literal"><span class="pre">bool</span></code>) Indicates whether values that not changed should be sent in a <code class="docutils literal"><span class="pre">STREAM</span></code> subscription; default value is <code class="docutils literal"><span class="pre">false</span></code></li>
+<li>heartbeat_interval: (<code class="docutils literal"><span class="pre">longlong</span></code>) Specifies the maximum allowable silent period in nanoseconds when <strong>suppress_redundant</strong> is True. If not specified, the <strong>heartbeat_interval</strong> is set to 360000000000 (10 minutes) or <strong>sample_interval</strong> whatever is bigger.</li>
+</ul>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../providers/providers.html" class="btn btn-neutral float-right" title="ServiceProvider" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="validation_service.html" class="btn btn-neutral" title="ValidationService" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

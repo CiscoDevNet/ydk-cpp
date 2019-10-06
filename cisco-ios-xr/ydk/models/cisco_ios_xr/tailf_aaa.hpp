@@ -35,19 +35,19 @@ class Aaa : public ydk::Entity
         class Authorization; //type: Aaa::Authorization
         class Accounting; //type: Aaa::Accounting
         class Ios; //type: Aaa::Ios
+        class DisasterRecovery; //type: Aaa::DisasterRecovery
         class PrivilegedAccess; //type: Aaa::PrivilegedAccess
         class CiscoIOSXRSysadminAaaAaaShowAccounting; //type: Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting
         class UserGroup; //type: Aaa::UserGroup
-        class DisasterRecovery; //type: Aaa::DisasterRecovery
 
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication> authentication;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization> authorization;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Accounting> accounting;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios> ios; // presence node
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::DisasterRecovery> disaster_recovery;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::PrivilegedAccess> privileged_access;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting> cisco_ios_xr_sysadmin_aaa_aaa_show_accounting;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::UserGroup> user_group;
-        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::DisasterRecovery> disaster_recovery;
         
 }; // Aaa
 
@@ -594,6 +594,30 @@ class Aaa::Ios::Privilege::Level::Command : public ydk::Entity
 }; // Aaa::Ios::Privilege::Level::Command
 
 
+class Aaa::DisasterRecovery : public ydk::Entity
+{
+    public:
+        DisasterRecovery();
+        ~DisasterRecovery();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xr::tailf_aaa::Aaa::Authentication::Users::User::name)
+        ydk::YLeaf username;
+        ydk::YLeaf password; //type: string
+
+}; // Aaa::DisasterRecovery
+
+
 class Aaa::PrivilegedAccess : public ydk::Entity
 {
     public:
@@ -661,30 +685,6 @@ class Aaa::UserGroup : public ydk::Entity
         ydk::YLeaf grp_data; //type: string
 
 }; // Aaa::UserGroup
-
-
-class Aaa::DisasterRecovery : public ydk::Entity
-{
-    public:
-        DisasterRecovery();
-        ~DisasterRecovery();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: string (refers to cisco_ios_xr::tailf_aaa::Aaa::Authentication::Users::User::name)
-        ydk::YLeaf username;
-        ydk::YLeaf password; //type: string
-
-}; // Aaa::DisasterRecovery
 
 class Alias : public ydk::Entity
 {
@@ -866,6 +866,68 @@ class DataOperationType : public ydk::Enum
         static const ydk::Enum::YLeaf d;
         static const ydk::Enum::YLeaf dx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "r") return 0;
+            if (name == "rx") return 1;
+            if (name == "x") return 2;
+            if (name == "rw") return 3;
+            if (name == "rwx") return 4;
+            if (name == "wx") return 5;
+            if (name == "w") return 6;
+            if (name == "c") return 7;
+            if (name == "cr") return 8;
+            if (name == "cu") return 9;
+            if (name == "cd") return 10;
+            if (name == "cx") return 11;
+            if (name == "cru") return 12;
+            if (name == "crd") return 13;
+            if (name == "crx") return 14;
+            if (name == "cud") return 15;
+            if (name == "cux") return 16;
+            if (name == "cdx") return 17;
+            if (name == "crud") return 18;
+            if (name == "crux") return 19;
+            if (name == "crdx") return 20;
+            if (name == "cudx") return 21;
+            if (name == "crudx") return 22;
+            if (name == "ru") return 23;
+            if (name == "rd") return 24;
+            if (name == "rud") return 25;
+            if (name == "rux") return 26;
+            if (name == "rdx") return 27;
+            if (name == "u") return 28;
+            if (name == "ud") return 29;
+            if (name == "ux") return 30;
+            if (name == "d") return 31;
+            if (name == "dx") return 32;
+            return -1;
+        }
+};
+
+class BuiltinModes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exec;
+        static const ydk::Enum::YLeaf configure;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "exec") return 0;
+            if (name == "configure") return 1;
+            return -1;
+        }
+};
+
+class BuiltinModes_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exec;
+        static const ydk::Enum::YLeaf configure;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "exec") return 0;
+            if (name == "configure") return 1;
+            return -1;
+        }
 };
 
 class CmdOperationType : public ydk::Enum
@@ -875,6 +937,12 @@ class CmdOperationType : public ydk::Enum
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf x;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "r") return 0;
+            if (name == "rx") return 1;
+            if (name == "x") return 2;
+            return -1;
+        }
 };
 
 class Action : public ydk::Enum
@@ -884,22 +952,12 @@ class Action : public ydk::Enum
         static const ydk::Enum::YLeaf reject;
         static const ydk::Enum::YLeaf accept_log;
 
-};
-
-class BuiltinModes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exec;
-        static const ydk::Enum::YLeaf configure;
-
-};
-
-class BuiltinModes_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exec;
-        static const ydk::Enum::YLeaf configure;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "accept") return 0;
+            if (name == "reject") return 1;
+            if (name == "accept_log") return 2;
+            return -1;
+        }
 };
 
 

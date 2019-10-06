@@ -251,6 +251,7 @@ class MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAt
         std::string get_absolute_path() const override;
 
         ydk::YLeaf attribute_set_name; //type: string
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf record_route; //type: empty
         class SignalledName; //type: MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::SignalledName
         class AutoBackupLogging; //type: MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::AutoBackupLogging
@@ -779,6 +780,7 @@ class MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute : 
         ydk::YLeaf aps_protection_mode; //type: MplsTeOtnApsProtectionMode
         ydk::YLeaf aps_restoration_style; //type: MplsTeOtnApsRestorationStyle
         ydk::YLeaf aps_protection_type; //type: MplsTeOtnApsProtection
+        ydk::YLeaf enable; //type: empty
         class RevertScheduleNames; //type: MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::RevertScheduleNames
         class SubNetworkConnectionMode; //type: MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::SubNetworkConnectionMode
         class Timers; //type: MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::Timers
@@ -1001,6 +1003,7 @@ class MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttrib
         ydk::YLeaf autoroute_announce; //type: empty
         ydk::YLeaf interface_bandwidth; //type: uint32
         ydk::YLeaf forward_class; //type: uint32
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf record_route; //type: empty
         ydk::YLeaf collection_only; //type: empty
         ydk::YLeaf soft_preemption; //type: empty
@@ -1555,6 +1558,7 @@ class MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute : publ
         std::string get_absolute_path() const override;
 
         ydk::YLeaf attribute_set_name; //type: string
+        ydk::YLeaf enable; //type: empty
         class PathDiversity; //type: MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity
         class PathSelection; //type: MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathSelection
 
@@ -2034,6 +2038,7 @@ class MplsTe::GlobalAttributes::PceAttributes::Peers::Peer : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf pce_peer_address; //type: string
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf password; //type: string
         ydk::YLeaf keychain; //type: string
         ydk::YLeaf precedence; //type: uint32

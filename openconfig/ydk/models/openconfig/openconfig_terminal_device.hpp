@@ -745,6 +745,11 @@ class TerminalDevice::LogicalChannels::Channel::State::LinkState : public ydk::E
         static const ydk::Enum::YLeaf UP;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::AssignmentType : public ydk::Enum
@@ -753,6 +758,11 @@ class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assig
         static const ydk::Enum::YLeaf LOGICAL_CHANNEL;
         static const ydk::Enum::YLeaf OPTICAL_CHANNEL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LOGICAL_CHANNEL") return 0;
+            if (name == "OPTICAL_CHANNEL") return 1;
+            return -1;
+        }
 };
 
 class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::AssignmentType : public ydk::Enum
@@ -761,6 +771,11 @@ class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assig
         static const ydk::Enum::YLeaf LOGICAL_CHANNEL;
         static const ydk::Enum::YLeaf OPTICAL_CHANNEL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LOGICAL_CHANNEL") return 0;
+            if (name == "OPTICAL_CHANNEL") return 1;
+            return -1;
+        }
 };
 
 

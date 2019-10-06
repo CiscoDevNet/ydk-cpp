@@ -262,6 +262,14 @@ class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerState : public ydk::En
         static const ydk::Enum::YLeaf established;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inactive") return 1;
+            if (name == "listen") return 2;
+            if (name == "connecting") return 3;
+            if (name == "established") return 4;
+            if (name == "disabled") return 5;
+            return -1;
+        }
 };
 
 class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState : public ydk::Enum
@@ -274,6 +282,15 @@ class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState : p
         static const ydk::Enum::YLeaf agreed;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 1;
+            if (name == "received") return 2;
+            if (name == "advertising") return 3;
+            if (name == "sent") return 4;
+            if (name == "agreed") return 5;
+            if (name == "failed") return 6;
+            return -1;
+        }
 };
 
 class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationType : public ydk::Enum
@@ -283,6 +300,12 @@ class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationType : pu
         static const ydk::Enum::YLeaf udp;
         static const ydk::Enum::YLeaf gre;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tcp") return 1;
+            if (name == "udp") return 2;
+            if (name == "gre") return 3;
+            return -1;
+        }
 };
 
 

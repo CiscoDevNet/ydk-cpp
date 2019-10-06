@@ -2151,22 +2151,44 @@ class Pppoe::Nodes::Node::SummaryTotal : public ydk::Entity
 
 }; // Pppoe::Nodes::Node::SummaryTotal
 
-class PppoeMaThrottleState : public ydk::Enum
+class PppoeMaSessionState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf monitor;
-        static const ydk::Enum::YLeaf block;
+        static const ydk::Enum::YLeaf destroying;
+        static const ydk::Enum::YLeaf deleting;
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf created;
+        static const ydk::Enum::YLeaf stopping;
+        static const ydk::Enum::YLeaf started;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf complete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "destroying") return 0;
+            if (name == "deleting") return 1;
+            if (name == "initializing") return 2;
+            if (name == "created") return 3;
+            if (name == "stopping") return 4;
+            if (name == "started") return 5;
+            if (name == "activated") return 6;
+            if (name == "complete") return 7;
+            return -1;
+        }
 };
 
-class PppoeMaLimitState : public ydk::Enum
+class PppoeMaSessionIdbSrgState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf block;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "active") return 1;
+            if (name == "standby") return 2;
+            return -1;
+        }
 };
 
 class PppoeMaSessionTrig : public ydk::Enum
@@ -2194,29 +2216,60 @@ class PppoeMaSessionTrig : public ydk::Enum
         static const ydk::Enum::YLeaf pppoe_ma_session_trig_srg_sweep;
         static const ydk::Enum::YLeaf pppoe_ma_session_trig_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pppoe-ma-session-trig-error") return 0;
+            if (name == "pppoe-ma-session-trig-publish-encaps-attr-fail") return 1;
+            if (name == "pppoe-ma-session-trig-if-create-fail") return 2;
+            if (name == "pppoe-ma-session-trig-iedge-session-start-fail") return 3;
+            if (name == "pppoe-ma-session-trig-iedge-session-update-fail") return 4;
+            if (name == "pppoe-ma-session-trig-sub-db-activate-fail") return 5;
+            if (name == "pppoe-ma-session-trig-in-flight-timeout") return 6;
+            if (name == "pppoe-ma-session-trig-down") return 7;
+            if (name == "pppoe-ma-session-trig-parent") return 8;
+            if (name == "pppoe-ma-session-trig-padt") return 9;
+            if (name == "pppoe-ma-session-trig-session-pak") return 10;
+            if (name == "pppoe-ma-session-trig-final") return 11;
+            if (name == "pppoe-ma-session-trig-no-im-or") return 12;
+            if (name == "pppoe-ma-session-trig-restart") return 13;
+            if (name == "pppoe-ma-session-trig-admissions-config-change") return 14;
+            if (name == "pppoe-ma-session-trig-iedge-disconnect") return 15;
+            if (name == "pppoe-ma-session-trig-invalid-vlan-tags") return 16;
+            if (name == "pppoe-ma-session-trig-port-limit-disconnect") return 17;
+            if (name == "pppoe-ma-session-trig-srg-disconnect") return 18;
+            if (name == "pppoe-ma-session-trig-srg-sweep") return 19;
+            if (name == "pppoe-ma-session-trig-count") return 20;
+            return -1;
+        }
 };
 
-class PppoeMaSessionIdbSrgState : public ydk::Enum
+class PppoeMaLimitState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf block;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 0;
+            if (name == "warning") return 1;
+            if (name == "block") return 2;
+            return -1;
+        }
 };
 
-class PppoeMaSessionState : public ydk::Enum
+class PppoeMaThrottleState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf destroying;
-        static const ydk::Enum::YLeaf deleting;
-        static const ydk::Enum::YLeaf initializing;
-        static const ydk::Enum::YLeaf created;
-        static const ydk::Enum::YLeaf stopping;
-        static const ydk::Enum::YLeaf started;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf complete;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf monitor;
+        static const ydk::Enum::YLeaf block;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 0;
+            if (name == "monitor") return 1;
+            if (name == "block") return 2;
+            return -1;
+        }
 };
 
 

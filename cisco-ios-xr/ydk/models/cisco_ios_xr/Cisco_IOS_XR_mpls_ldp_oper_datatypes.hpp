@@ -17,6 +17,12 @@ class MplsLdpOperAfName : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "all") return 65535;
+            return -1;
+        }
 };
 
 

@@ -231,6 +231,17 @@ class SyslogSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf info;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 1;
+            if (name == "alert") return 2;
+            if (name == "critical") return 3;
+            if (name == "error") return 4;
+            if (name == "warning") return 5;
+            if (name == "notice") return 6;
+            if (name == "info") return 7;
+            if (name == "debug") return 8;
+            return -1;
+        }
 };
 
 class CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType : public ydk::Enum
@@ -243,6 +254,15 @@ class CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType : public ydk::Enum
         static const ydk::Enum::YLeaf contextName;
         static const ydk::Enum::YLeaf userDefined;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "other") return 2;
+            if (name == "hostName") return 3;
+            if (name == "ipv4Address") return 4;
+            if (name == "contextName") return 5;
+            if (name == "userDefined") return 6;
+            return -1;
+        }
 };
 
 

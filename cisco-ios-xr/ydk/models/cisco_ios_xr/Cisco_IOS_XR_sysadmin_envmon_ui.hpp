@@ -121,6 +121,8 @@ class Environment::Oper::Temperatures::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
+        ydk::YLeaf loc_header; //type: uint32
+        ydk::YLeaf print_header; //type: boolean
         class SensorAttributes; //type: Environment::Oper::Temperatures::Location::SensorAttributes
 
         ydk::YList sensor_attributes;
@@ -145,9 +147,6 @@ class Environment::Oper::Temperatures::Location::SensorAttributes : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf sensor; //type: string
-        ydk::YLeaf loc_header; //type: boolean
-        ydk::YLeaf print_header; //type: boolean
-        ydk::YLeaf location; //type: string
         ydk::YLeaf sensor_id; //type: string
         ydk::YLeaf alarm; //type: string
         ydk::YLeaf temperature_value; //type: string
@@ -204,6 +203,8 @@ class Environment::Oper::Voltages::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
+        ydk::YLeaf print_header; //type: boolean
+        ydk::YLeaf loc_header; //type: uint32
         class SensorAttributes; //type: Environment::Oper::Voltages::Location::SensorAttributes
 
         ydk::YList sensor_attributes;
@@ -228,9 +229,6 @@ class Environment::Oper::Voltages::Location::SensorAttributes : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf sensor; //type: string
-        ydk::YLeaf loc_header; //type: boolean
-        ydk::YLeaf print_header; //type: boolean
-        ydk::YLeaf location; //type: string
         ydk::YLeaf sensor_id; //type: string
         ydk::YLeaf alarm; //type: string
         ydk::YLeaf value_; //type: string
@@ -287,6 +285,8 @@ class Environment::Oper::Current::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
+        ydk::YLeaf print_header; //type: boolean
+        ydk::YLeaf loc_header; //type: uint32
         class SensorAttributes; //type: Environment::Oper::Current::Location::SensorAttributes
 
         ydk::YList sensor_attributes;
@@ -311,9 +311,6 @@ class Environment::Oper::Current::Location::SensorAttributes : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf sensor; //type: string
-        ydk::YLeaf loc_header; //type: boolean
-        ydk::YLeaf print_header; //type: boolean
-        ydk::YLeaf location; //type: string
         ydk::YLeaf sensor_id; //type: string
         ydk::YLeaf alarm; //type: string
         ydk::YLeaf value_; //type: string
@@ -979,20 +976,23 @@ class Environment::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf raise_fan_speed; //type: uint32
-        ydk::YLeaf fan_ctrl_optics; //type: uint32
-        ydk::YLeaf graceful_shutdown; //type: uint32
         class Router; //type: Environment::Config::Router
         class AirFilter; //type: Environment::Config::AirFilter
         class FanCtrl; //type: Environment::Config::FanCtrl
         class Temperature; //type: Environment::Config::Temperature
         class Monitoring; //type: Environment::Config::Monitoring
+        class RaiseFanSpeed; //type: Environment::Config::RaiseFanSpeed
+        class FanCtrlOptics; //type: Environment::Config::FanCtrlOptics
+        class GracefulShutdown; //type: Environment::Config::GracefulShutdown
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Router> router;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::AirFilter> air_filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrl> fan_ctrl;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Temperature> temperature;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Monitoring> monitoring;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::RaiseFanSpeed> raise_fan_speed;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrlOptics> fan_ctrl_optics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::GracefulShutdown> graceful_shutdown;
         
 }; // Environment::Config
 
@@ -1518,6 +1518,291 @@ class Environment::Config::Monitoring::Disable::RackLoc::Location : public ydk::
         ydk::YLeaf rackid; //type: RackId
 
 }; // Environment::Config::Monitoring::Disable::RackLoc::Location
+
+
+class Environment::Config::RaiseFanSpeed : public ydk::Entity
+{
+    public:
+        RaiseFanSpeed();
+        ~RaiseFanSpeed();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class All; //type: Environment::Config::RaiseFanSpeed::All
+        class RackLoc; //type: Environment::Config::RaiseFanSpeed::RackLoc
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::RaiseFanSpeed::All> all;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::RaiseFanSpeed::RackLoc> rack_loc;
+        
+}; // Environment::Config::RaiseFanSpeed
+
+
+class Environment::Config::RaiseFanSpeed::All : public ydk::Entity
+{
+    public:
+        All();
+        ~All();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf speed_pwm; //type: uint32
+
+}; // Environment::Config::RaiseFanSpeed::All
+
+
+class Environment::Config::RaiseFanSpeed::RackLoc : public ydk::Entity
+{
+    public:
+        RackLoc();
+        ~RackLoc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Location; //type: Environment::Config::RaiseFanSpeed::RackLoc::Location
+
+        ydk::YList location;
+        
+}; // Environment::Config::RaiseFanSpeed::RackLoc
+
+
+class Environment::Config::RaiseFanSpeed::RackLoc::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rackid; //type: RackId
+        ydk::YLeaf speed_pwm; //type: uint32
+
+}; // Environment::Config::RaiseFanSpeed::RackLoc::Location
+
+
+class Environment::Config::FanCtrlOptics : public ydk::Entity
+{
+    public:
+        FanCtrlOptics();
+        ~FanCtrlOptics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Enable; //type: Environment::Config::FanCtrlOptics::Enable
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrlOptics::Enable> enable;
+        
+}; // Environment::Config::FanCtrlOptics
+
+
+class Environment::Config::FanCtrlOptics::Enable : public ydk::Entity
+{
+    public:
+        Enable();
+        ~Enable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RackLoc; //type: Environment::Config::FanCtrlOptics::Enable::RackLoc
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrlOptics::Enable::RackLoc> rack_loc;
+        
+}; // Environment::Config::FanCtrlOptics::Enable
+
+
+class Environment::Config::FanCtrlOptics::Enable::RackLoc : public ydk::Entity
+{
+    public:
+        RackLoc();
+        ~RackLoc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf all; //type: empty
+        class Location; //type: Environment::Config::FanCtrlOptics::Enable::RackLoc::Location
+
+        ydk::YList location;
+        
+}; // Environment::Config::FanCtrlOptics::Enable::RackLoc
+
+
+class Environment::Config::FanCtrlOptics::Enable::RackLoc::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rackid; //type: RackId
+
+}; // Environment::Config::FanCtrlOptics::Enable::RackLoc::Location
+
+
+class Environment::Config::GracefulShutdown : public ydk::Entity
+{
+    public:
+        GracefulShutdown();
+        ~GracefulShutdown();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Disable; //type: Environment::Config::GracefulShutdown::Disable
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::GracefulShutdown::Disable> disable;
+        
+}; // Environment::Config::GracefulShutdown
+
+
+class Environment::Config::GracefulShutdown::Disable : public ydk::Entity
+{
+    public:
+        Disable();
+        ~Disable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RackLoc; //type: Environment::Config::GracefulShutdown::Disable::RackLoc
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::GracefulShutdown::Disable::RackLoc> rack_loc;
+        
+}; // Environment::Config::GracefulShutdown::Disable
+
+
+class Environment::Config::GracefulShutdown::Disable::RackLoc : public ydk::Entity
+{
+    public:
+        RackLoc();
+        ~RackLoc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf all; //type: empty
+        class Location; //type: Environment::Config::GracefulShutdown::Disable::RackLoc::Location
+
+        ydk::YList location;
+        
+}; // Environment::Config::GracefulShutdown::Disable::RackLoc
+
+
+class Environment::Config::GracefulShutdown::Disable::RackLoc::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rackid; //type: RackId
+
+}; // Environment::Config::GracefulShutdown::Disable::RackLoc::Location
 
 
 class Environment::Trace : public ydk::Entity
@@ -2154,6 +2439,10 @@ class PowerMgmt::Config::Progressive::Enable::Enabled : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            return -1;
+        }
 };
 
 

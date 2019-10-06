@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Annotation &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="YDK Path API" href="../path.html"/>
+        <link rel="next" title="Statement" href="statement.html"/>
+        <link rel="prev" title="YDK Path API" href="../path.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../path.html#path-api-nodes">Path API Nodes</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">Annotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statement.html">Statement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_node.html">DataNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="schema_node.html">SchemaNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="root_schema_node.html">RootSchemaNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-errors">Path API Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api">Path API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>Annotation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="annotation">
+<h1>Annotation<a class="headerlink" href="#annotation" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path10AnnotationE">
+<span id="ydk::path::Annotation"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">Annotation</code><a class="headerlink" href="#_CPPv2N3ydk4path10AnnotationE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class represents an annotation.</p>
+<p>An annotation has a namespace and a name and an associated value.
+Annotations are not defined in the YANG model and hence just provide a means of hanging some useful data to <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a>. For example netconf edit-config rpc operation uses the annotation <code class="docutils literal"><span class="pre">nc:operation</span></code> (<code class="docutils literal"><span class="pre">nc</span></code> refers to the netconf namespace) on the data nodes to describe the kind of operation one needs to perform on the given <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a>.</p>
+<dl class="member">
+<dt id="_CPPv24m_ns">
+<span id="ydk::path::Annotation::m_ns__ss"></span>std::string <code class="descclassname"></code><code class="descname">m_ns</code><a class="headerlink" href="#_CPPv24m_ns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Annotation&#8217;s namespace.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv26m_name">
+<span id="ydk::path::Annotation::m_name__ss"></span>std::string <code class="descclassname"></code><code class="descname">m_name</code><a class="headerlink" href="#_CPPv26m_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Annotation&#8217;s name.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv25m_val">
+<span id="ydk::path::Annotation::m_val__ss"></span>std::string <code class="descclassname"></code><code class="descname">m_val</code><a class="headerlink" href="#_CPPv25m_val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Annotation&#8217;s value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Annotation10AnnotationERKNSt6stringERKNSt6stringERKNSt6stringE">
+<span id="ydk::path::Annotation::Annotation__ssCR.ssCR.ssCR"></span>void <code class="descclassname"></code><code class="descname">Annotation</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>ns</em>, <em class="property">const</em> std::string &amp;<em>name</em>, <em class="property">const</em> std::string &amp;<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Annotation10AnnotationERKNSt6stringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Annotation10AnnotationERK10Annotation">
+<span id="ydk::path::Annotation::Annotation__AnnotationCR"></span>void <code class="descclassname"></code><code class="descname">Annotation</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv2N3ydk4path10AnnotationE" title="ydk::path::Annotation">Annotation</a> &amp;<em>an</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Annotation10AnnotationERK10Annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10Annotation10AnnotationERR10Annotation">
+<span id="ydk::path::Annotation::Annotation__AnnotationRR"></span>void <code class="descclassname"></code><code class="descname">Annotation</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv2N3ydk4path10AnnotationE" title="ydk::path::Annotation">Annotation</a> &amp;&amp;<em>an</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10Annotation10AnnotationERR10Annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10AnnotationaSERK10Annotation">
+<span id="ydk::path::Annotation::assign-operator__AnnotationCR"></span><a class="reference internal" href="#_CPPv2N3ydk4path10AnnotationE" title="ydk::path::Annotation">Annotation</a> &amp;<code class="descclassname"></code><code class="descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv2N3ydk4path10AnnotationE" title="ydk::path::Annotation">Annotation</a> &amp;<em>an</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10AnnotationaSERK10Annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path10AnnotationaSERR10Annotation">
+<span id="ydk::path::Annotation::assign-operator__AnnotationRR"></span><a class="reference internal" href="#_CPPv2N3ydk4path10AnnotationE" title="ydk::path::Annotation">Annotation</a> &amp;<code class="descclassname"></code><code class="descname">operator=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv2N3ydk4path10AnnotationE" title="ydk::path::Annotation">Annotation</a> &amp;&amp;<em>an</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path10AnnotationaSERR10Annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path10AnnotationeqERK10Annotation">
+<span id="ydk::path::Annotation::eq-operator__AnnotationCRC"></span>bool <code class="descclassname"></code><code class="descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv2N3ydk4path10AnnotationE" title="ydk::path::Annotation">Annotation</a> &amp;<em>an</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path10AnnotationeqERK10Annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="statement.html" class="btn btn-neutral float-right" title="Statement" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../path.html" class="btn btn-neutral" title="YDK Path API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

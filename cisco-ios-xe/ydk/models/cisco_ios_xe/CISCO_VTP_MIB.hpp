@@ -795,6 +795,15 @@ class VlanType : public ydk::Enum
         static const ydk::Enum::YLeaf trNet;
         static const ydk::Enum::YLeaf deprecated;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 1;
+            if (name == "fddi") return 2;
+            if (name == "tokenRing") return 3;
+            if (name == "fddiNet") return 4;
+            if (name == "trNet") return 5;
+            if (name == "deprecated") return 6;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpStatus::VtpVersion : public ydk::Enum
@@ -805,6 +814,13 @@ class CISCOVTPMIB::VtpStatus::VtpVersion : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf three;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "one") return 1;
+            if (name == "two") return 2;
+            if (name == "none") return 3;
+            if (name == "three") return 4;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::InternalVlanInfo::VtpInternalVlanAllocPolicy : public ydk::Enum
@@ -813,6 +829,11 @@ class CISCOVTPMIB::InternalVlanInfo::VtpInternalVlanAllocPolicy : public ydk::En
         static const ydk::Enum::YLeaf ascending;
         static const ydk::Enum::YLeaf descending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ascending") return 1;
+            if (name == "descending") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainLocalMode : public ydk::Enum
@@ -823,6 +844,13 @@ class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomai
         static const ydk::Enum::YLeaf transparent;
         static const ydk::Enum::YLeaf off;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "client") return 1;
+            if (name == "server") return 2;
+            if (name == "transparent") return 3;
+            if (name == "off") return 4;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningState : public ydk::Enum
@@ -831,6 +859,11 @@ class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomai
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainVersionInUse : public ydk::Enum
@@ -841,6 +874,13 @@ class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomai
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf version3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "version1") return 1;
+            if (name == "version2") return 2;
+            if (name == "none") return 3;
+            if (name == "version3") return 4;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningStateOper : public ydk::Enum
@@ -849,6 +889,11 @@ class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomai
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOperation : public ydk::Enum
@@ -860,6 +905,14 @@ class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOper
         static const ydk::Enum::YLeaf release;
         static const ydk::Enum::YLeaf restartTimer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "copy") return 2;
+            if (name == "apply") return 3;
+            if (name == "release") return 4;
+            if (name == "restartTimer") return 5;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus : public ydk::Enum
@@ -876,6 +929,19 @@ class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplySta
         static const ydk::Enum::YLeaf someOtherError;
         static const ydk::Enum::YLeaf notPrimaryServer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inProgress") return 1;
+            if (name == "succeeded") return 2;
+            if (name == "configNumberError") return 3;
+            if (name == "inconsistentEdit") return 4;
+            if (name == "tooBig") return 5;
+            if (name == "localNVStoreFail") return 6;
+            if (name == "remoteNVStoreFail") return 7;
+            if (name == "editBufferEmpty") return 8;
+            if (name == "someOtherError") return 9;
+            if (name == "notPrimaryServer") return 10;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanState : public ydk::Enum
@@ -886,6 +952,13 @@ class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanState : public ydk::Enum
         static const ydk::Enum::YLeaf mtuTooBigForDevice;
         static const ydk::Enum::YLeaf mtuTooBigForTrunk;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "operational") return 1;
+            if (name == "suspended") return 2;
+            if (name == "mtuTooBigForDevice") return 3;
+            if (name == "mtuTooBigForTrunk") return 4;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanStpType : public ydk::Enum
@@ -895,6 +968,12 @@ class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanStpType : public ydk::Enum
         static const ydk::Enum::YLeaf ibm;
         static const ydk::Enum::YLeaf hybrid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ieee") return 1;
+            if (name == "ibm") return 2;
+            if (name == "hybrid") return 3;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanBridgeType : public ydk::Enum
@@ -904,6 +983,12 @@ class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanBridgeType : public ydk::E
         static const ydk::Enum::YLeaf srt;
         static const ydk::Enum::YLeaf srb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "srt") return 1;
+            if (name == "srb") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditState : public ydk::Enum
@@ -912,6 +997,11 @@ class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditState : public
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf suspended;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "operational") return 1;
+            if (name == "suspended") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditStpType : public ydk::Enum
@@ -921,6 +1011,12 @@ class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditStpType : publ
         static const ydk::Enum::YLeaf ibm;
         static const ydk::Enum::YLeaf auto_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ieee") return 1;
+            if (name == "ibm") return 2;
+            if (name == "auto") return 3;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditBridgeType : public ydk::Enum
@@ -929,6 +1025,11 @@ class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditBridgeType : p
         static const ydk::Enum::YLeaf srt;
         static const ydk::Enum::YLeaf srb;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "srt") return 1;
+            if (name == "srb") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::VtpVlanLocalShutdown : public ydk::Enum
@@ -937,6 +1038,11 @@ class CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::VtpVlan
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationType : public ydk::Enum
@@ -948,6 +1054,14 @@ class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsul
         static const ydk::Enum::YLeaf dot1Q;
         static const ydk::Enum::YLeaf negotiate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isl") return 1;
+            if (name == "dot10") return 2;
+            if (name == "lane") return 3;
+            if (name == "dot1Q") return 4;
+            if (name == "negotiate") return 5;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicState : public ydk::Enum
@@ -959,6 +1073,14 @@ class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicS
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf onNoNegotiate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            if (name == "off") return 2;
+            if (name == "desirable") return 3;
+            if (name == "auto") return 4;
+            if (name == "onNoNegotiate") return 5;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicStatus : public ydk::Enum
@@ -967,6 +1089,11 @@ class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicS
         static const ydk::Enum::YLeaf trunking;
         static const ydk::Enum::YLeaf notTrunking;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "trunking") return 1;
+            if (name == "notTrunking") return 2;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType : public ydk::Enum
@@ -979,6 +1106,15 @@ class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsul
         static const ydk::Enum::YLeaf negotiating;
         static const ydk::Enum::YLeaf notApplicable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isl") return 1;
+            if (name == "dot10") return 2;
+            if (name == "lane") return 3;
+            if (name == "dot1Q") return 4;
+            if (name == "negotiating") return 5;
+            if (name == "notApplicable") return 6;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDot1qTunnel : public ydk::Enum
@@ -988,6 +1124,12 @@ class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDot1qTun
         static const ydk::Enum::YLeaf access;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "trunk") return 1;
+            if (name == "access") return 2;
+            if (name == "disabled") return 3;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverAction : public ydk::Enum
@@ -997,6 +1139,12 @@ class CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverAction : publi
         static const ydk::Enum::YLeaf noOperation;
         static const ydk::Enum::YLeaf purgeResult;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discover") return 1;
+            if (name == "noOperation") return 2;
+            if (name == "purgeResult") return 3;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverStatus : public ydk::Enum
@@ -1007,6 +1155,13 @@ class CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverStatus : publi
         static const ydk::Enum::YLeaf resourceUnavailable;
         static const ydk::Enum::YLeaf someOtherError;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inProgress") return 1;
+            if (name == "succeeded") return 2;
+            if (name == "resourceUnavailable") return 3;
+            if (name == "someOtherError") return 4;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseLocalMode : public ydk::Enum
@@ -1017,6 +1172,13 @@ class CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseLocalMode : pu
         static const ydk::Enum::YLeaf transparent;
         static const ydk::Enum::YLeaf off;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "client") return 1;
+            if (name == "server") return 2;
+            if (name == "transparent") return 3;
+            if (name == "off") return 4;
+            return -1;
+        }
 };
 
 class CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::VtpAuthPasswordType : public ydk::Enum
@@ -1025,6 +1187,11 @@ class CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::VtpAuthPasswordType : p
         static const ydk::Enum::YLeaf plaintext;
         static const ydk::Enum::YLeaf hidden;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "plaintext") return 1;
+            if (name == "hidden") return 2;
+            return -1;
+        }
 };
 
 

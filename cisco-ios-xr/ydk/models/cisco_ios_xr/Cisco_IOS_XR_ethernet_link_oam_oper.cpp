@@ -4759,9 +4759,6 @@ bool EtherLinkOam::StatsInterfaces::StatsInterface::has_leaf_or_child_of_name(co
     return false;
 }
 
-const Enum::YLeaf LogLocation::log_location_local {1, "log-location-local"};
-const Enum::YLeaf LogLocation::log_location_remote {2, "log-location-remote"};
-
 const Enum::YLeaf Log::log_type_symbol_event {1, "log-type-symbol-event"};
 const Enum::YLeaf Log::log_type_period_event {2, "log-type-period-event"};
 const Enum::YLeaf Log::log_type_frame_event {3, "log-type-frame-event"};
@@ -4770,22 +4767,8 @@ const Enum::YLeaf Log::log_type_link_fault {256, "log-type-link-fault"};
 const Enum::YLeaf Log::log_type_dying_gasp {257, "log-type-dying-gasp"};
 const Enum::YLeaf Log::log_type_critical_event {258, "log-type-critical-event"};
 
-const Enum::YLeaf Action::no_action {1, "no-action"};
-const Enum::YLeaf Action::disable_interface {2, "disable-interface"};
-const Enum::YLeaf Action::log {3, "log"};
-const Enum::YLeaf Action::efd {4, "efd"};
-
-const Enum::YLeaf ProtocolState::protocol_state_inactive {0, "protocol-state-inactive"};
-const Enum::YLeaf ProtocolState::protocol_state_fault {1, "protocol-state-fault"};
-const Enum::YLeaf ProtocolState::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
-const Enum::YLeaf ProtocolState::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
-const Enum::YLeaf ProtocolState::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
-const Enum::YLeaf ProtocolState::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
-const Enum::YLeaf ProtocolState::protocol_state_send_any {6, "protocol-state-send-any"};
-
-const Enum::YLeaf Mode::passive {0, "passive"};
-const Enum::YLeaf Mode::active {1, "active"};
-const Enum::YLeaf Mode::dont_care {2, "dont-care"};
+const Enum::YLeaf LogLocation::log_location_local {1, "log-location-local"};
+const Enum::YLeaf LogLocation::log_location_remote {2, "log-location-remote"};
 
 const Enum::YLeaf LoopbackStatus::none {1, "none"};
 const Enum::YLeaf LoopbackStatus::initiating {2, "initiating"};
@@ -4804,6 +4787,23 @@ const Enum::YLeaf OperationalState::peering_locally_rejected {7, "peering-locall
 const Enum::YLeaf OperationalState::peering_remotely_rejected {8, "peering-remotely-rejected"};
 const Enum::YLeaf OperationalState::operational {9, "operational"};
 const Enum::YLeaf OperationalState::operational_half_duplex {10, "operational-half-duplex"};
+
+const Enum::YLeaf Mode::passive {0, "passive"};
+const Enum::YLeaf Mode::active {1, "active"};
+const Enum::YLeaf Mode::dont_care {2, "dont-care"};
+
+const Enum::YLeaf Action::no_action {1, "no-action"};
+const Enum::YLeaf Action::disable_interface {2, "disable-interface"};
+const Enum::YLeaf Action::log {3, "log"};
+const Enum::YLeaf Action::efd {4, "efd"};
+
+const Enum::YLeaf ProtocolState::protocol_state_inactive {0, "protocol-state-inactive"};
+const Enum::YLeaf ProtocolState::protocol_state_fault {1, "protocol-state-fault"};
+const Enum::YLeaf ProtocolState::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
+const Enum::YLeaf ProtocolState::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
+const Enum::YLeaf ProtocolState::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
+const Enum::YLeaf ProtocolState::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
+const Enum::YLeaf ProtocolState::protocol_state_send_any {6, "protocol-state-send-any"};
 
 
 }

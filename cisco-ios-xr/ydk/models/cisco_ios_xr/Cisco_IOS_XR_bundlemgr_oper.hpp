@@ -109,7 +109,6 @@ class LacpBundles::Bundles::Bundle::Data : public ydk::Entity
         ydk::YLeaf partner_system_priority; //type: uint16
         ydk::YLeaf partner_system_mac_address; //type: string
         ydk::YLeaf partner_operational_key; //type: uint16
-        ydk::YLeaf applied_lacp_mode; //type: BmdLacpMode
         class ActorBundleData; //type: LacpBundles::Bundles::Bundle::Data::ActorBundleData
         class BundleSystemId; //type: LacpBundles::Bundles::Bundle::Data::BundleSystemId
 
@@ -352,7 +351,6 @@ class LacpBundles::Bundles::Bundle::Members::Member : public ydk::Entity
         ydk::YLeaf lacp_enabled; //type: string
         ydk::YLeaf member_type; //type: BmdMemberTypeEnum
         ydk::YLeaf member_name; //type: string
-        ydk::YLeaf replication_error; //type: uint32
         class Counters; //type: LacpBundles::Bundles::Bundle::Members::Member::Counters
         class LinkData; //type: LacpBundles::Bundles::Bundle::Members::Member::LinkData
         class MemberMuxData; //type: LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData
@@ -1256,7 +1254,6 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
         ydk::YLeaf lacp_enabled; //type: string
         ydk::YLeaf member_type; //type: BmdMemberTypeEnum
         ydk::YLeaf member_name; //type: string
-        ydk::YLeaf replication_error; //type: uint32
         class Counters; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData
@@ -1457,7 +1454,6 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
         ydk::YLeaf lacp_enabled; //type: string
         ydk::YLeaf member_type; //type: BmdMemberTypeEnum
         ydk::YLeaf member_name; //type: string
-        ydk::YLeaf replication_error; //type: uint32
         class Counters; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData
@@ -1986,7 +1982,6 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
         ydk::YLeaf lacp_enabled; //type: string
         ydk::YLeaf member_type; //type: BmdMemberTypeEnum
         ydk::YLeaf member_name; //type: string
-        ydk::YLeaf replication_error; //type: uint32
         class Counters; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData
@@ -2163,7 +2158,6 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem :
         ydk::YLeaf lacp_enabled; //type: string
         ydk::YLeaf member_type; //type: BmdMemberTypeEnum
         ydk::YLeaf member_name; //type: string
-        ydk::YLeaf replication_error; //type: uint32
         class Counters; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData
@@ -3185,7 +3179,6 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem : public 
         ydk::YLeaf partner_system_priority; //type: uint16
         ydk::YLeaf partner_system_mac_address; //type: string
         ydk::YLeaf partner_operational_key; //type: uint16
-        ydk::YLeaf applied_lacp_mode; //type: BmdLacpMode
         class ActorBundleData; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData
         class BundleSystemId; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId
 
@@ -3423,7 +3416,6 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
         ydk::YLeaf partner_system_priority; //type: uint16
         ydk::YLeaf partner_system_mac_address; //type: string
         ydk::YLeaf partner_operational_key; //type: uint16
-        ydk::YLeaf applied_lacp_mode; //type: BmdLacpMode
         class ActorBundleData; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData
         class BundleSystemId; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId
 
@@ -4418,7 +4410,6 @@ class BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bund
         ydk::YLeaf partner_system_priority; //type: uint16
         ydk::YLeaf partner_system_mac_address; //type: string
         ydk::YLeaf partner_operational_key; //type: uint16
-        ydk::YLeaf applied_lacp_mode; //type: BmdLacpMode
         class ActorBundleData; //type: BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData
         class BundleSystemId; //type: BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId
 
@@ -14944,36 +14935,13 @@ class Bundles::Bundles_::Bundle : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf bundle_interface; //type: string
-        class AppliedLacpMode; //type: Bundles::Bundles_::Bundle::AppliedLacpMode
         class Data; //type: Bundles::Bundles_::Bundle::Data
         class Members; //type: Bundles::Bundles_::Bundle::Members
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::AppliedLacpMode> applied_lacp_mode;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Data> data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Members> members;
         
 }; // Bundles::Bundles_::Bundle
-
-
-class Bundles::Bundles_::Bundle::AppliedLacpMode : public ydk::Entity
-{
-    public:
-        AppliedLacpMode();
-        ~AppliedLacpMode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf applied_lacp_mode; //type: BmdLacpMode
-
-}; // Bundles::Bundles_::Bundle::AppliedLacpMode
 
 
 class Bundles::Bundles_::Bundle::Data : public ydk::Entity
@@ -15164,7 +15132,6 @@ class Bundles::Bundles_::Bundle::Members::Member : public ydk::Entity
         ydk::YLeaf lacp_enabled; //type: string
         ydk::YLeaf member_type; //type: BmdMemberTypeEnum
         ydk::YLeaf member_name; //type: string
-        ydk::YLeaf replication_error; //type: uint32
         class Counters; //type: Bundles::Bundles_::Bundle::Members::Member::Counters
         class LinkData; //type: Bundles::Bundles_::Bundle::Members::Member::LinkData
         class MemberMuxData; //type: Bundles::Bundles_::Bundle::Members::Member::MemberMuxData
@@ -15961,17 +15928,109 @@ class BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::
 
 }; // BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData
 
-class BmdMlacpMbrStateEnum : public ydk::Enum
+class BmdMlacpSwitchover : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mbr_state_nak;
-        static const ydk::Enum::YLeaf mbr_state_unknown;
-        static const ydk::Enum::YLeaf mbr_state_up;
-        static const ydk::Enum::YLeaf mbr_state_down;
-        static const ydk::Enum::YLeaf mbr_state_admin_down;
-        static const ydk::Enum::YLeaf mbr_state_test;
-        static const ydk::Enum::YLeaf mbr_state_error;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_nonrevertive;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_brute_force;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_revertive;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-mlacp-switchover-nonrevertive") return 0;
+            if (name == "bmd-mlacp-switchover-brute-force") return 1;
+            if (name == "bmd-mlacp-switchover-revertive") return 2;
+            if (name == "bmd-mlacp-switchover-count") return 3;
+            return -1;
+        }
+};
+
+class LoadBalance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf source_ip;
+        static const ydk::Enum::YLeaf destination_ip;
+        static const ydk::Enum::YLeaf unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "auto") return 1;
+            if (name == "value") return 2;
+            if (name == "source-ip") return 3;
+            if (name == "destination-ip") return 4;
+            if (name == "unknown") return 5;
+            return -1;
+        }
+};
+
+class BmBdlState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_bdl_state_admin_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_client_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_ptnr_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_bundle_shutdown;
+        static const ydk::Enum::YLeaf bm_bdl_state_pe_isolated;
+        static const ydk::Enum::YLeaf bm_bdl_state_nak;
+        static const ydk::Enum::YLeaf bm_bdl_state_up_active;
+        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_hot_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_cold_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_unknown;
+        static const ydk::Enum::YLeaf bm_bdl_state_cold_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_error_disabled;
+        static const ydk::Enum::YLeaf bm_bdl_state_efd_disabled;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-bdl-state-admin-down") return 0;
+            if (name == "bm-bdl-state-down") return 1;
+            if (name == "bm-bdl-state-client-down") return 2;
+            if (name == "bm-bdl-state-ptnr-down") return 3;
+            if (name == "bm-bdl-state-bundle-shutdown") return 4;
+            if (name == "bm-bdl-state-pe-isolated") return 5;
+            if (name == "bm-bdl-state-nak") return 6;
+            if (name == "bm-bdl-state-up-active") return 7;
+            if (name == "bm-bdl-state-mlacp-hot-standby") return 8;
+            if (name == "bm-bdl-state-mlacp-cold-standby") return 9;
+            if (name == "bm-bdl-state-unknown") return 10;
+            if (name == "bm-bdl-state-cold-standby") return 11;
+            if (name == "bm-bdl-state-error-disabled") return 12;
+            if (name == "bm-bdl-state-efd-disabled") return 13;
+            return -1;
+        }
+};
+
+class LacpPeriodState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf period_s_low;
+        static const ydk::Enum::YLeaf period_fast;
+        static const ydk::Enum::YLeaf period_none;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "period-s-low") return 0;
+            if (name == "period-fast") return 1;
+            if (name == "period-none") return 2;
+            return -1;
+        }
+};
+
+class BundleMedia : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bundle_media_ethernet;
+        static const ydk::Enum::YLeaf bundle_media_pos;
+        static const ydk::Enum::YLeaf bundle_media_count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bundle-media-ethernet") return 0;
+            if (name == "bundle-media-pos") return 1;
+            if (name == "bundle-media-count") return 2;
+            return -1;
+        }
 };
 
 class BmdMlacpBdlStateEnum : public ydk::Enum
@@ -15987,46 +16046,31 @@ class BmdMlacpBdlStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf bdl_state_test;
         static const ydk::Enum::YLeaf bdl_state_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bdl-state-nak") return 0;
+            if (name == "bdl-state-unknown") return 1;
+            if (name == "bdl-state-no-sync") return 2;
+            if (name == "bdl-state-rec-delay") return 3;
+            if (name == "bdl-state-up") return 4;
+            if (name == "bdl-state-down") return 5;
+            if (name == "bdl-state-admin-down") return 6;
+            if (name == "bdl-state-test") return 7;
+            if (name == "bdl-state-error") return 8;
+            return -1;
+        }
 };
 
-class BmdMlacpNodeSyncEnum : public ydk::Enum
+class BundleMedia1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf node_sync_req;
-        static const ydk::Enum::YLeaf node_sync_done;
-        static const ydk::Enum::YLeaf node_sync_start;
-        static const ydk::Enum::YLeaf node_sync_init;
-        static const ydk::Enum::YLeaf node_sync_singleton;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf pos;
 
-};
-
-class BmdMlacpNodeStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf node_state_incomplete;
-        static const ydk::Enum::YLeaf node_state_conn_rejected;
-        static const ydk::Enum::YLeaf node_state_connect_sent;
-        static const ydk::Enum::YLeaf node_state_unconfigured;
-        static const ydk::Enum::YLeaf node_state_unreachable;
-        static const ydk::Enum::YLeaf node_state_iccp_down;
-        static const ydk::Enum::YLeaf node_state_nak;
-        static const ydk::Enum::YLeaf node_state_unknown;
-        static const ydk::Enum::YLeaf node_state_mlacp_down;
-        static const ydk::Enum::YLeaf node_state_admin_down;
-        static const ydk::Enum::YLeaf node_state_pe_isolated;
-        static const ydk::Enum::YLeaf node_state_error;
-        static const ydk::Enum::YLeaf node_state_test;
-        static const ydk::Enum::YLeaf node_state_up;
-
-};
-
-class LacpChurnstates : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_churn;
-        static const ydk::Enum::YLeaf churn;
-        static const ydk::Enum::YLeaf churn_monitor;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 0;
+            if (name == "pos") return 1;
+            return -1;
+        }
 };
 
 class Rxstates : public ydk::Enum
@@ -16039,70 +16083,30 @@ class Rxstates : public ydk::Enum
         static const ydk::Enum::YLeaf lacp_disabled;
         static const ydk::Enum::YLeaf port_disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "current-rx") return 1;
+            if (name == "expired") return 2;
+            if (name == "defaulted") return 3;
+            if (name == "initialize") return 4;
+            if (name == "lacp-disabled") return 5;
+            if (name == "port-disabled") return 6;
+            return -1;
+        }
 };
 
-class LacpPeriodState : public ydk::Enum
+class LacpChurnstates : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf period_s_low;
-        static const ydk::Enum::YLeaf period_fast;
-        static const ydk::Enum::YLeaf period_none;
+        static const ydk::Enum::YLeaf no_churn;
+        static const ydk::Enum::YLeaf churn;
+        static const ydk::Enum::YLeaf churn_monitor;
 
-};
-
-class LacpSelState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unselected;
-        static const ydk::Enum::YLeaf standby;
-        static const ydk::Enum::YLeaf selected;
-
-};
-
-class BmdBagEventRgItem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_event_rg_idb_create;
-        static const ydk::Enum::YLeaf bmd_event_rg_configured;
-        static const ydk::Enum::YLeaf bmd_event_rg_user_config;
-        static const ydk::Enum::YLeaf bmd_event_rg_connect_ion;
-        static const ydk::Enum::YLeaf bmd_event_rg_data;
-        static const ydk::Enum::YLeaf bmd_event_rg_sync;
-        static const ydk::Enum::YLeaf bmd_event_rg_first_retry;
-        static const ydk::Enum::YLeaf bmd_event_rg_error;
-        static const ydk::Enum::YLeaf bmd_event_rg_mlacp_tlv;
-        static const ydk::Enum::YLeaf bmd_event_rg_iccp_event;
-        static const ydk::Enum::YLeaf bmd_event_rg_count;
-
-};
-
-class BmdBagEventBdlItem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_event_bdl_idb_create;
-        static const ydk::Enum::YLeaf bmd_event_bdl_configured;
-        static const ydk::Enum::YLeaf bmd_event_bdl_im_state;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_added;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_deleted;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mac_addr;
-        static const ydk::Enum::YLeaf bmd_event_bdl_first_retry;
-        static const ydk::Enum::YLeaf bmd_event_bdl_user_config;
-        static const ydk::Enum::YLeaf bmd_event_bdl_error;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mlacp_tlv;
-        static const ydk::Enum::YLeaf bmd_event_bdl_redundancy_role;
-        static const ydk::Enum::YLeaf bdl_bfd_state_change;
-        static const ydk::Enum::YLeaf bmd_event_bdl_icl;
-        static const ydk::Enum::YLeaf bmd_event_bdl_count;
-
-};
-
-class BmdBagEventData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_bag_evt_data_none;
-        static const ydk::Enum::YLeaf bmd_bag_evt_data_error;
-        static const ydk::Enum::YLeaf bmd_bag_evt_data_string;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-churn") return 1;
+            if (name == "churn") return 2;
+            if (name == "churn-monitor") return 3;
+            return -1;
+        }
 };
 
 class BmdBagEventMbrItem : public ydk::Enum
@@ -16123,16 +16127,38 @@ class BmdBagEventMbrItem : public ydk::Enum
         static const ydk::Enum::YLeaf bmd_event_mbr_redundancy_role;
         static const ydk::Enum::YLeaf bmd_event_mbr_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-event-mbr-idb-create") return 0;
+            if (name == "bmd-event-mbr-bdl-add") return 1;
+            if (name == "bmd-event-mbr-im-state") return 2;
+            if (name == "bmd-event-mbr-sel-logic") return 3;
+            if (name == "bmd-event-mbr-mux") return 4;
+            if (name == "bmd-event-mbr-bfd") return 5;
+            if (name == "bmd-event-mbr-expired") return 6;
+            if (name == "bmd-event-mbr-defaulted") return 7;
+            if (name == "bmd-event-mbr-first-retry") return 8;
+            if (name == "bmd-event-mbr-msg") return 9;
+            if (name == "bmd-event-mbr-error") return 10;
+            if (name == "bmd-event-mbr-mlacp-tlv") return 11;
+            if (name == "bmd-event-mbr-redundancy-role") return 12;
+            if (name == "bmd-event-mbr-count") return 13;
+            return -1;
+        }
 };
 
-class BmdBagTarget : public ydk::Enum
+class BmdBagEventData : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_bag_target_mbr;
-        static const ydk::Enum::YLeaf bm_bag_target_bdl;
-        static const ydk::Enum::YLeaf bm_bag_target_node;
-        static const ydk::Enum::YLeaf bm_bag_target_rg;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_none;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_error;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_string;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-bag-evt-data-none") return 0;
+            if (name == "bmd-bag-evt-data-error") return 1;
+            if (name == "bmd-bag-evt-data-string") return 2;
+            return -1;
+        }
 };
 
 class BmdSwitchReason : public ydk::Enum
@@ -16148,14 +16174,18 @@ class BmdSwitchReason : public ydk::Enum
         static const ydk::Enum::YLeaf bm_switch_reason_wrong_order;
         static const ydk::Enum::YLeaf bm_switch_reason_singleton;
 
-};
-
-class BmdBagMlacpSchActionItem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf switchover;
-        static const ydk::Enum::YLeaf switchback;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-switch-reason-none") return 0;
+            if (name == "bm-switch-reason-noop") return 1;
+            if (name == "bm-switch-reason-not-mlacp") return 2;
+            if (name == "bm-switch-reason-revertive") return 3;
+            if (name == "bm-switch-reason-bdl-down") return 4;
+            if (name == "bm-switch-reason-recovery") return 5;
+            if (name == "bm-switch-reason-preceding-error") return 6;
+            if (name == "bm-switch-reason-wrong-order") return 7;
+            if (name == "bm-switch-reason-singleton") return 8;
+            return -1;
+        }
 };
 
 class BmdMemberTypeEnum : public ydk::Enum
@@ -16165,63 +16195,25 @@ class BmdMemberTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf bmd_mbr_foreign;
         static const ydk::Enum::YLeaf bmd_mbr_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-mbr-local") return 0;
+            if (name == "bmd-mbr-foreign") return 1;
+            if (name == "bmd-mbr-unknown") return 2;
+            return -1;
+        }
 };
 
-class BmMuxreason : public ydk::Enum
+class BmAfId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_mux_reason_no_reason;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_down;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_deleted;
-        static const ydk::Enum::YLeaf bm_mux_reason_duplex;
-        static const ydk::Enum::YLeaf bm_mux_reason_bandwidth;
-        static const ydk::Enum::YLeaf bm_mux_reason_loop_back;
-        static const ydk::Enum::YLeaf bm_mux_reason_activity_type;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_limit;
-        static const ydk::Enum::YLeaf bm_mux_reason_shared;
-        static const ydk::Enum::YLeaf bm_mux_reason_lagid;
-        static const ydk::Enum::YLeaf bm_mux_reason_no_bundle;
-        static const ydk::Enum::YLeaf bm_mux_reason_no_primary;
-        static const ydk::Enum::YLeaf bm_mux_reason_bundle_down;
-        static const ydk::Enum::YLeaf bm_mux_reason_individual;
-        static const ydk::Enum::YLeaf bm_mux_reason_defaulted;
-        static const ydk::Enum::YLeaf bm_mux_reason_in_sync;
-        static const ydk::Enum::YLeaf bm_mux_reason_collecting;
-        static const ydk::Enum::YLeaf bm_mux_reason_active_link_limit;
-        static const ydk::Enum::YLeaf bm_mux_reason_distributing;
-        static const ydk::Enum::YLeaf bm_mux_reason_count;
+        static const ydk::Enum::YLeaf bm_af_id_ipv4;
+        static const ydk::Enum::YLeaf bm_af_id_ipv6;
 
-};
-
-class BmdMemberState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_mbr_state_configured;
-        static const ydk::Enum::YLeaf bmd_mbr_state_standby;
-        static const ydk::Enum::YLeaf bmd_mbr_state_hot_standby;
-        static const ydk::Enum::YLeaf bmd_mbr_state_negotiating;
-        static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
-        static const ydk::Enum::YLeaf bmd_mbr_state_active;
-
-};
-
-class BmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf misconfiguration;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf error;
-
-};
-
-class BmStateReasonTarget : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf member_reason;
-        static const ydk::Enum::YLeaf bundle_reason;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-af-id-ipv4") return 1136568623;
+            if (name == "bm-af-id-ipv6") return 1136568624;
+            return -1;
+        }
 };
 
 class BmMbrStateReason : public ydk::Enum
@@ -16302,10 +16294,262 @@ class BmMbrStateReason : public ydk::Enum
         static const ydk::Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_nbr_unconfig;
         static const ydk::Enum::YLeaf bm_mbr_state_reason_timer_running;
         static const ydk::Enum::YLeaf bm_mbr_state_reason_client_bundle_ctrl;
-        static const ydk::Enum::YLeaf bm_mbr_state_reason_lacp_oos;
-        static const ydk::Enum::YLeaf bm_mbr_state_reason_errdis_bundle_oos;
         static const ydk::Enum::YLeaf bm_mbr_state_reason_count;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-mbr-state-reason-unknown") return 0;
+            if (name == "bm-mbr-state-reason-unselectable-unknown") return 1;
+            if (name == "bm-mbr-state-reason-link-down") return 2;
+            if (name == "bm-mbr-state-reason-link-deleting") return 3;
+            if (name == "bm-mbr-state-reason-creating") return 4;
+            if (name == "bm-mbr-state-reason-bundle-creating") return 5;
+            if (name == "bm-mbr-state-reason-bundle-deleting") return 6;
+            if (name == "bm-mbr-state-reason-bundle-admin-down") return 7;
+            if (name == "bm-mbr-state-reason-replicating") return 8;
+            if (name == "bm-mbr-state-reason-bandwidth") return 9;
+            if (name == "bm-mbr-state-reason-loop-back") return 10;
+            if (name == "bm-mbr-state-reason-activity-type") return 11;
+            if (name == "bm-mbr-state-reason-bundle-shutdown") return 12;
+            if (name == "bm-mbr-state-reason-min-selected") return 13;
+            if (name == "bm-mbr-state-reason-max-selected") return 14;
+            if (name == "bm-mbr-state-reason-link-limit") return 15;
+            if (name == "bm-mbr-state-reason-active-limit") return 16;
+            if (name == "bm-mbr-state-reason-standby-unknown") return 17;
+            if (name == "bm-mbr-state-reason-expired") return 18;
+            if (name == "bm-mbr-state-reason-defaulted") return 19;
+            if (name == "bm-mbr-state-reason-act-or-not-agg") return 20;
+            if (name == "bm-mbr-state-reason-partner-not-agg") return 21;
+            if (name == "bm-mbr-state-reason-lagid") return 22;
+            if (name == "bm-mbr-state-reason-bundle-not-cfgd") return 23;
+            if (name == "bm-mbr-state-reason-bundle-not-ready") return 24;
+            if (name == "bm-mbr-state-reason-partner-ood") return 25;
+            if (name == "bm-mbr-state-reason-partner-not-in-sync") return 26;
+            if (name == "bm-mbr-state-reason-foreign-partner-oos") return 27;
+            if (name == "bm-mbr-state-reason-attach-unknown") return 28;
+            if (name == "bm-mbr-state-reason-partner-not-collecting") return 29;
+            if (name == "bm-mbr-state-reason-collect-unknown") return 30;
+            if (name == "bm-mbr-state-reason-standby-foreign") return 31;
+            if (name == "bm-mbr-state-reason-bfd-starting") return 32;
+            if (name == "bm-mbr-state-reason-bfd-down") return 33;
+            if (name == "bm-mbr-state-reason-bfd-nbr-unconfig") return 34;
+            if (name == "bm-mbr-state-reason-mlacp") return 35;
+            if (name == "bm-mbr-state-reason-pe-isolated") return 36;
+            if (name == "bm-mbr-state-reason-forced-switchover") return 37;
+            if (name == "bm-mbr-state-reason-errdis-unknown") return 38;
+            if (name == "bm-mbr-state-reason-mlacp-no-mbr-state-info") return 39;
+            if (name == "bm-mbr-state-reason-active") return 40;
+            if (name == "bm-mbr-state-reason-mlacp-no-bdl-state-info") return 41;
+            if (name == "bm-mbr-state-reason-mlacp-no-bdl-config-info") return 42;
+            if (name == "bm-mbr-state-reason-mlacp-no-bdl-sync") return 43;
+            if (name == "bm-mbr-state-reason-mlacp-bdl-has-no-peer") return 44;
+            if (name == "bm-mbr-state-reason-mlacp-nak") return 45;
+            if (name == "bm-mbr-state-reason-mlacp-transport-unavailable") return 46;
+            if (name == "bm-mbr-state-reason-mlacp-not-configured") return 47;
+            if (name == "bm-mbr-state-reason-recovery-timer") return 48;
+            if (name == "bm-mbr-state-reason-mlacp-standby") return 49;
+            if (name == "bm-mbr-state-reason-maximized-out") return 50;
+            if (name == "bm-mbr-state-reason-mlacp-peer-selected") return 51;
+            if (name == "bm-mbr-state-reason-mlacp-connect-timer-running") return 52;
+            if (name == "bm-mbr-state-reason-bundle-not-mlacp") return 53;
+            if (name == "bm-mbr-state-reason-no-lon") return 54;
+            if (name == "bm-mbr-state-reason-cumul-rel-bw-limit") return 55;
+            if (name == "bm-mbr-state-reason-no-mac") return 56;
+            if (name == "bm-mbr-state-reason-no-system-id") return 57;
+            if (name == "bm-mbr-state-reason-link-shutdown") return 58;
+            if (name == "bm-mbr-state-reason-activity-mlacp") return 59;
+            if (name == "bm-mbr-state-reason-activity-iccp") return 60;
+            if (name == "bm-mbr-state-reason-bundle-icpe-mlacp") return 61;
+            if (name == "bm-mbr-state-reason-no-link-num") return 62;
+            if (name == "bm-mbr-state-reason-standby-peer-higher-prio") return 63;
+            if (name == "bm-mbr-state-reason-red-state-standby") return 64;
+            if (name == "bm-mbr-state-reason-other-red-state-standby") return 65;
+            if (name == "bm-mbr-state-reason-hold-ing") return 66;
+            if (name == "bm-mbr-state-reason-bundle-error-disabled") return 67;
+            if (name == "bm-mbr-state-reason-bundle-efd-disabled") return 68;
+            if (name == "bm-mbr-state-reason-singleton-pe-isolated") return 69;
+            if (name == "bm-mbr-state-reason-bfd-ipv6-starting") return 70;
+            if (name == "bm-mbr-state-reason-bfd-ipv6-down") return 71;
+            if (name == "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig") return 72;
+            if (name == "bm-mbr-state-reason-timer-running") return 73;
+            if (name == "bm-mbr-state-reason-client-bundle-ctrl") return 74;
+            if (name == "bm-mbr-state-reason-count") return 75;
+            return -1;
+        }
+};
+
+class BmdBagEventBdlItem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bmd_event_bdl_idb_create;
+        static const ydk::Enum::YLeaf bmd_event_bdl_configured;
+        static const ydk::Enum::YLeaf bmd_event_bdl_im_state;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_added;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_deleted;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mac_addr;
+        static const ydk::Enum::YLeaf bmd_event_bdl_first_retry;
+        static const ydk::Enum::YLeaf bmd_event_bdl_user_config;
+        static const ydk::Enum::YLeaf bmd_event_bdl_error;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mlacp_tlv;
+        static const ydk::Enum::YLeaf bmd_event_bdl_redundancy_role;
+        static const ydk::Enum::YLeaf bdl_bfd_state_change;
+        static const ydk::Enum::YLeaf bmd_event_bdl_icl;
+        static const ydk::Enum::YLeaf bmd_event_bdl_count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-event-bdl-idb-create") return 0;
+            if (name == "bmd-event-bdl-configured") return 1;
+            if (name == "bmd-event-bdl-im-state") return 2;
+            if (name == "bmd-event-bdl-mbr-added") return 3;
+            if (name == "bmd-event-bdl-mbr-deleted") return 4;
+            if (name == "bmd-event-bdl-mac-addr") return 5;
+            if (name == "bmd-event-bdl-first-retry") return 6;
+            if (name == "bmd-event-bdl-user-config") return 7;
+            if (name == "bmd-event-bdl-error") return 8;
+            if (name == "bmd-event-bdl-mlacp-tlv") return 9;
+            if (name == "bmd-event-bdl-redundancy-role") return 10;
+            if (name == "bdl-bfd-state-change") return 11;
+            if (name == "bmd-event-bdl-icl") return 12;
+            if (name == "bmd-event-bdl-count") return 13;
+            return -1;
+        }
+};
+
+class BmdMlacpNodeStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf node_state_incomplete;
+        static const ydk::Enum::YLeaf node_state_conn_rejected;
+        static const ydk::Enum::YLeaf node_state_connect_sent;
+        static const ydk::Enum::YLeaf node_state_unconfigured;
+        static const ydk::Enum::YLeaf node_state_unreachable;
+        static const ydk::Enum::YLeaf node_state_iccp_down;
+        static const ydk::Enum::YLeaf node_state_nak;
+        static const ydk::Enum::YLeaf node_state_unknown;
+        static const ydk::Enum::YLeaf node_state_mlacp_down;
+        static const ydk::Enum::YLeaf node_state_admin_down;
+        static const ydk::Enum::YLeaf node_state_pe_isolated;
+        static const ydk::Enum::YLeaf node_state_error;
+        static const ydk::Enum::YLeaf node_state_test;
+        static const ydk::Enum::YLeaf node_state_up;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "node-state-incomplete") return 0;
+            if (name == "node-state-conn-rejected") return 1;
+            if (name == "node-state-connect-sent") return 2;
+            if (name == "node-state-unconfigured") return 3;
+            if (name == "node-state-unreachable") return 4;
+            if (name == "node-state-iccp-down") return 5;
+            if (name == "node-state-nak") return 6;
+            if (name == "node-state-unknown") return 7;
+            if (name == "node-state-mlacp-down") return 8;
+            if (name == "node-state-admin-down") return 9;
+            if (name == "node-state-pe-isolated") return 10;
+            if (name == "node-state-error") return 11;
+            if (name == "node-state-test") return 12;
+            if (name == "node-state-up") return 13;
+            return -1;
+        }
+};
+
+class BmdBagEventRgItem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bmd_event_rg_idb_create;
+        static const ydk::Enum::YLeaf bmd_event_rg_configured;
+        static const ydk::Enum::YLeaf bmd_event_rg_user_config;
+        static const ydk::Enum::YLeaf bmd_event_rg_connect_ion;
+        static const ydk::Enum::YLeaf bmd_event_rg_data;
+        static const ydk::Enum::YLeaf bmd_event_rg_sync;
+        static const ydk::Enum::YLeaf bmd_event_rg_first_retry;
+        static const ydk::Enum::YLeaf bmd_event_rg_error;
+        static const ydk::Enum::YLeaf bmd_event_rg_mlacp_tlv;
+        static const ydk::Enum::YLeaf bmd_event_rg_iccp_event;
+        static const ydk::Enum::YLeaf bmd_event_rg_count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-event-rg-idb-create") return 0;
+            if (name == "bmd-event-rg-configured") return 1;
+            if (name == "bmd-event-rg-user-config") return 2;
+            if (name == "bmd-event-rg-connect-ion") return 3;
+            if (name == "bmd-event-rg-data") return 4;
+            if (name == "bmd-event-rg-sync") return 5;
+            if (name == "bmd-event-rg-first-retry") return 6;
+            if (name == "bmd-event-rg-error") return 7;
+            if (name == "bmd-event-rg-mlacp-tlv") return 8;
+            if (name == "bmd-event-rg-iccp-event") return 9;
+            if (name == "bmd-event-rg-count") return 10;
+            return -1;
+        }
+};
+
+class BmWhichSystem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_which_system_actr;
+        static const ydk::Enum::YLeaf bm_which_system_ptnr;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-which-system-actr") return 0;
+            if (name == "bm-which-system-ptnr") return 1;
+            return -1;
+        }
+};
+
+class BmdBfdBdlState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_down;
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_unknown;
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_up;
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-bfd-bdl-down") return 0;
+            if (name == "bmd-bfd-bdl-unknown") return 1;
+            if (name == "bmd-bfd-bdl-up") return 2;
+            if (name == "bmd-bfd-bdl-count") return 3;
+            return -1;
+        }
+};
+
+class BmdMlacpMbrStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mbr_state_nak;
+        static const ydk::Enum::YLeaf mbr_state_unknown;
+        static const ydk::Enum::YLeaf mbr_state_up;
+        static const ydk::Enum::YLeaf mbr_state_down;
+        static const ydk::Enum::YLeaf mbr_state_admin_down;
+        static const ydk::Enum::YLeaf mbr_state_test;
+        static const ydk::Enum::YLeaf mbr_state_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "mbr-state-nak") return 0;
+            if (name == "mbr-state-unknown") return 1;
+            if (name == "mbr-state-up") return 2;
+            if (name == "mbr-state-down") return 3;
+            if (name == "mbr-state-admin-down") return 4;
+            if (name == "mbr-state-test") return 5;
+            if (name == "mbr-state-error") return 6;
+            return -1;
+        }
+};
+
+class BmdBagTarget : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_bag_target_mbr;
+        static const ydk::Enum::YLeaf bm_bag_target_bdl;
+        static const ydk::Enum::YLeaf bm_bag_target_node;
+        static const ydk::Enum::YLeaf bm_bag_target_rg;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-bag-target-mbr") return 0;
+            if (name == "bm-bag-target-bdl") return 1;
+            if (name == "bm-bag-target-node") return 2;
+            if (name == "bm-bag-target-rg") return 3;
+            return -1;
+        }
 };
 
 class BmMuxstate : public ydk::Enum
@@ -16318,26 +16562,100 @@ class BmMuxstate : public ydk::Enum
         static const ydk::Enum::YLeaf distributing;
         static const ydk::Enum::YLeaf collecting_distributing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "detached") return 1;
+            if (name == "waiting") return 2;
+            if (name == "attached") return 3;
+            if (name == "collecting") return 4;
+            if (name == "distributing") return 5;
+            if (name == "collecting-distributing") return 6;
+            return -1;
+        }
 };
 
-class BmdLacpMode : public ydk::Enum
+class LacpSelState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bmd_mode_on;
-        static const ydk::Enum::YLeaf bmd_mode_active;
-        static const ydk::Enum::YLeaf bmd_mode_passive;
-        static const ydk::Enum::YLeaf bmd_mode_count;
+        static const ydk::Enum::YLeaf unselected;
+        static const ydk::Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf selected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unselected") return 0;
+            if (name == "standby") return 1;
+            if (name == "selected") return 2;
+            return -1;
+        }
 };
 
-class BmdMlacpSwitchover : public ydk::Enum
+class BmdMemberState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_nonrevertive;
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_brute_force;
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_revertive;
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_count;
+        static const ydk::Enum::YLeaf bmd_mbr_state_configured;
+        static const ydk::Enum::YLeaf bmd_mbr_state_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_hot_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_negotiating;
+        static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
+        static const ydk::Enum::YLeaf bmd_mbr_state_active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bmd-mbr-state-configured") return 1;
+            if (name == "bmd-mbr-state-standby") return 2;
+            if (name == "bmd-mbr-state-hot-standby") return 3;
+            if (name == "bmd-mbr-state-negotiating") return 4;
+            if (name == "bmd-mbr-state-bfd-running") return 5;
+            if (name == "bmd-mbr-state-active") return 6;
+            return -1;
+        }
+};
+
+class BmMuxreason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_mux_reason_no_reason;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_deleted;
+        static const ydk::Enum::YLeaf bm_mux_reason_duplex;
+        static const ydk::Enum::YLeaf bm_mux_reason_bandwidth;
+        static const ydk::Enum::YLeaf bm_mux_reason_loop_back;
+        static const ydk::Enum::YLeaf bm_mux_reason_activity_type;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_shared;
+        static const ydk::Enum::YLeaf bm_mux_reason_lagid;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_bundle;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_primary;
+        static const ydk::Enum::YLeaf bm_mux_reason_bundle_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_individual;
+        static const ydk::Enum::YLeaf bm_mux_reason_defaulted;
+        static const ydk::Enum::YLeaf bm_mux_reason_in_sync;
+        static const ydk::Enum::YLeaf bm_mux_reason_collecting;
+        static const ydk::Enum::YLeaf bm_mux_reason_active_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_distributing;
+        static const ydk::Enum::YLeaf bm_mux_reason_count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-mux-reason-no-reason") return 0;
+            if (name == "bm-mux-reason-link-down") return 1;
+            if (name == "bm-mux-reason-link-deleted") return 2;
+            if (name == "bm-mux-reason-duplex") return 3;
+            if (name == "bm-mux-reason-bandwidth") return 4;
+            if (name == "bm-mux-reason-loop-back") return 5;
+            if (name == "bm-mux-reason-activity-type") return 6;
+            if (name == "bm-mux-reason-link-limit") return 7;
+            if (name == "bm-mux-reason-shared") return 8;
+            if (name == "bm-mux-reason-lagid") return 9;
+            if (name == "bm-mux-reason-no-bundle") return 10;
+            if (name == "bm-mux-reason-no-primary") return 11;
+            if (name == "bm-mux-reason-bundle-down") return 12;
+            if (name == "bm-mux-reason-individual") return 13;
+            if (name == "bm-mux-reason-defaulted") return 14;
+            if (name == "bm-mux-reason-in-sync") return 15;
+            if (name == "bm-mux-reason-collecting") return 16;
+            if (name == "bm-mux-reason-active-link-limit") return 17;
+            if (name == "bm-mux-reason-distributing") return 18;
+            if (name == "bm-mux-reason-count") return 19;
+            return -1;
+        }
 };
 
 class BmFeatureStatus : public ydk::Enum
@@ -16347,6 +16665,91 @@ class BmFeatureStatus : public ydk::Enum
         static const ydk::Enum::YLeaf bm_feature_not_operational;
         static const ydk::Enum::YLeaf bm_feature_operational;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-feature-not-configured") return 0;
+            if (name == "bm-feature-not-operational") return 1;
+            if (name == "bm-feature-operational") return 2;
+            return -1;
+        }
+};
+
+class BmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf misconfiguration;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 0;
+            if (name == "information") return 1;
+            if (name == "misconfiguration") return 2;
+            if (name == "warning") return 3;
+            if (name == "error") return 5;
+            return -1;
+        }
+};
+
+class BundleMlacpMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bundle_mlacp_mode_standby;
+        static const ydk::Enum::YLeaf bundle_mlacp_mode_active;
+        static const ydk::Enum::YLeaf bundle_mlacp_mode_count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bundle-mlacp-mode-standby") return 0;
+            if (name == "bundle-mlacp-mode-active") return 1;
+            if (name == "bundle-mlacp-mode-count") return 2;
+            return -1;
+        }
+};
+
+class BmdBagMlacpSchActionItem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf switchover;
+        static const ydk::Enum::YLeaf switchback;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "switchover") return 0;
+            if (name == "switchback") return 1;
+            return -1;
+        }
+};
+
+class BmStateReasonTarget : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf member_reason;
+        static const ydk::Enum::YLeaf bundle_reason;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "member-reason") return 0;
+            if (name == "bundle-reason") return 1;
+            return -1;
+        }
+};
+
+class BmdMlacpNodeSyncEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf node_sync_req;
+        static const ydk::Enum::YLeaf node_sync_done;
+        static const ydk::Enum::YLeaf node_sync_start;
+        static const ydk::Enum::YLeaf node_sync_init;
+        static const ydk::Enum::YLeaf node_sync_singleton;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "node-sync-req") return 0;
+            if (name == "node-sync-done") return 1;
+            if (name == "node-sync-start") return 2;
+            if (name == "node-sync-init") return 3;
+            if (name == "node-sync-singleton") return 4;
+            return -1;
+        }
 };
 
 class BmBdlMacSource : public ydk::Enum
@@ -16358,91 +16761,14 @@ class BmBdlMacSource : public ydk::Enum
         static const ydk::Enum::YLeaf bm_bdl_mac_source_member;
         static const ydk::Enum::YLeaf bm_bdl_mac_source_peer;
 
-};
-
-class BmBdlState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bm_bdl_state_admin_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_client_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_ptnr_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_bundle_shutdown;
-        static const ydk::Enum::YLeaf bm_bdl_state_pe_isolated;
-        static const ydk::Enum::YLeaf bm_bdl_state_nak;
-        static const ydk::Enum::YLeaf bm_bdl_state_up_active;
-        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_hot_standby;
-        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_cold_standby;
-        static const ydk::Enum::YLeaf bm_bdl_state_unknown;
-        static const ydk::Enum::YLeaf bm_bdl_state_cold_standby;
-        static const ydk::Enum::YLeaf bm_bdl_state_error_disabled;
-        static const ydk::Enum::YLeaf bm_bdl_state_efd_disabled;
-        static const ydk::Enum::YLeaf bm_bdl_state_lacp_oos;
-
-};
-
-class BmAfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bm_af_id_ipv4;
-        static const ydk::Enum::YLeaf bm_af_id_ipv6;
-
-};
-
-class BmdBfdBdlState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_bfd_bdl_down;
-        static const ydk::Enum::YLeaf bmd_bfd_bdl_unknown;
-        static const ydk::Enum::YLeaf bmd_bfd_bdl_up;
-        static const ydk::Enum::YLeaf bmd_bfd_bdl_count;
-
-};
-
-class BmWhichSystem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bm_which_system_actr;
-        static const ydk::Enum::YLeaf bm_which_system_ptnr;
-
-};
-
-class BundleMedia1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf pos;
-
-};
-
-class LoadBalance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf auto_;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf source_ip;
-        static const ydk::Enum::YLeaf destination_ip;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class BundleMedia : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bundle_media_ethernet;
-        static const ydk::Enum::YLeaf bundle_media_pos;
-        static const ydk::Enum::YLeaf bundle_media_count;
-
-};
-
-class BundleMlacpMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bundle_mlacp_mode_standby;
-        static const ydk::Enum::YLeaf bundle_mlacp_mode_active;
-        static const ydk::Enum::YLeaf bundle_mlacp_mode_count;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "bm-bdl-mac-source-unknown") return 0;
+            if (name == "bm-bdl-mac-source-chassis") return 1;
+            if (name == "bm-bdl-mac-source-configured") return 2;
+            if (name == "bm-bdl-mac-source-member") return 3;
+            if (name == "bm-bdl-mac-source-peer") return 4;
+            return -1;
+        }
 };
 
 

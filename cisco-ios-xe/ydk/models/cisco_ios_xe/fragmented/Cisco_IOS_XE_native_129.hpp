@@ -3699,6 +3699,12 @@ class Native::Crypto::Pki::Trustpoint::RevocationCheck : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf ocsp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "crl") return 0;
+            if (name == "none") return 1;
+            if (name == "ocsp") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Pki::Certificate::Chain::Certificate_::Certtype : public ydk::Enum
@@ -3711,6 +3717,15 @@ class Native::Crypto::Pki::Certificate::Chain::Certificate_::Certtype : public y
         static const ydk::Enum::YLeaf rollover;
         static const ydk::Enum::YLeaf self_signed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ca") return 0;
+            if (name == "ra-encrypt") return 1;
+            if (name == "ra-general") return 2;
+            if (name == "ra-sign") return 3;
+            if (name == "rollover") return 4;
+            if (name == "self-signed") return 5;
+            return -1;
+        }
 };
 
 class Native::Crypto::Pki::Crl::Download::Schedule::Time::Date : public ydk::Enum
@@ -3724,6 +3739,16 @@ class Native::Crypto::Pki::Crl::Download::Schedule::Time::Date : public ydk::Enu
         static const ydk::Enum::YLeaf Tuesday;
         static const ydk::Enum::YLeaf Wednesday;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Friday") return 0;
+            if (name == "Monday") return 1;
+            if (name == "Saturday") return 2;
+            if (name == "Sunday") return 3;
+            if (name == "Thursday") return 4;
+            if (name == "Tuesday") return 5;
+            if (name == "Wednesday") return 6;
+            return -1;
+        }
 };
 
 class Native::Crypto::Pki::Export::Pem::Url::Encrypt : public ydk::Enum
@@ -3732,6 +3757,11 @@ class Native::Crypto::Pki::Export::Pem::Url::Encrypt : public ydk::Enum
         static const ydk::Enum::YLeaf Y_3des;
         static const ydk::Enum::YLeaf des;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "3des") return 0;
+            if (name == "des") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Pki::Server::Grant : public ydk::Enum
@@ -3741,6 +3771,12 @@ class Native::Crypto::Pki::Server::Grant : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf ra_auto;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "none") return 1;
+            if (name == "ra-auto") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_ : public ydk::Enum
@@ -3751,6 +3787,13 @@ class Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_ : public
         static const ydk::Enum::YLeaf psk_aes128_cbc_sha1;
         static const ydk::Enum::YLeaf psk_aes256_cbc_sha1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dhe-psk-aes128-cbc-sha1") return 0;
+            if (name == "dhe-psk-aes256-cbc-sha1") return 1;
+            if (name == "psk-aes128-cbc-sha1") return 2;
+            if (name == "psk-aes256-cbc-sha1") return 3;
+            return -1;
+        }
 };
 
 class Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::Encryption : public ydk::Enum
@@ -3759,6 +3802,11 @@ class Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::Encryption : publi
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Cts::Logging : public ydk::Enum
@@ -3766,6 +3814,10 @@ class Native::Cts::Logging : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf verbose;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "verbose") return 0;
+            return -1;
+        }
 };
 
 class Native::Cts::SgEpg : public ydk::Enum
@@ -3773,6 +3825,10 @@ class Native::Cts::SgEpg : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf translation;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "translation") return 0;
+            return -1;
+        }
 };
 
 class Native::Cts::Cache::NvStorage::NvStorage_ : public ydk::Enum
@@ -3784,6 +3840,14 @@ class Native::Cts::Cache::NvStorage::NvStorage_ : public ydk::Enum
         static const ydk::Enum::YLeaf slot0__COLON__;
         static const ydk::Enum::YLeaf usb0__COLON__;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bootflash:") return 0;
+            if (name == "crashinfo:") return 1;
+            if (name == "kinfo:") return 2;
+            if (name == "slot0:") return 3;
+            if (name == "usb0:") return 4;
+            return -1;
+        }
 };
 
 

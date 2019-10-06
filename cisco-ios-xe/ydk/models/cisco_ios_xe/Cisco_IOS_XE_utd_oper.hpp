@@ -206,6 +206,14 @@ class UtdOperStatusVal : public ydk::Enum
         static const ydk::Enum::YLeaf utd_oper_status_red;
         static const ydk::Enum::YLeaf utd_oper_status_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "utd-oper-status-unknown") return 0;
+            if (name == "utd-oper-status-green") return 1;
+            if (name == "utd-oper-status-yellow") return 2;
+            if (name == "utd-oper-status-red") return 3;
+            if (name == "utd-oper-status-down") return 4;
+            return -1;
+        }
 };
 
 

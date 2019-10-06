@@ -1298,6 +1298,12 @@ class HsrpLinklocal : public ydk::Enum
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf legacy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "manual") return 0;
+            if (name == "auto") return 1;
+            if (name == "legacy") return 2;
+            return -1;
+        }
 };
 
 

@@ -3072,7 +3072,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Neighbor::Transport::Config
 
@@ -3096,7 +3096,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf remote_port; //type: uint16
@@ -3700,6 +3700,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         static const ydk::Enum::YLeaf OPENCONFIRM;
         static const ydk::Enum::YLeaf ESTABLISHED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IDLE") return 0;
+            if (name == "CONNECT") return 1;
+            if (name == "ACTIVE") return 2;
+            if (name == "OPENSENT") return 3;
+            if (name == "OPENCONFIRM") return 4;
+            if (name == "ESTABLISHED") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode : public ydk::Enum
@@ -3709,6 +3718,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         static const ydk::Enum::YLeaf BILATERAL;
         static const ydk::Enum::YLeaf REMOTE_HELPER;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "HELPER_ONLY") return 0;
+            if (name == "BILATERAL") return 1;
+            if (name == "REMOTE_HELPER") return 2;
+            return -1;
+        }
 };
 
 

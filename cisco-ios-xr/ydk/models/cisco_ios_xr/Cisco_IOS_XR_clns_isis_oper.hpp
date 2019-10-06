@@ -577,12 +577,12 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         class Lsp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Lsp
         class Iih; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Iih
         class Psnp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Psnp
-        class Csnp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp
+        class Cnsp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Lsp> lsp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Iih> iih;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Psnp> psnp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp> csnp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp> cnsp;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters
 
@@ -725,11 +725,11 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Psnp::State
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp : public ydk::Entity
 {
     public:
-        Csnp();
-        ~Csnp();
+        Cnsp();
+        ~Cnsp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -741,14 +741,14 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State> state;
         
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State : public ydk::Entity
 {
     public:
         State();
@@ -768,7 +768,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         ydk::YLeaf processed; //type: uint32
         ydk::YLeaf sent; //type: uint32
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::Adjacencies : public ydk::Entity
@@ -2609,7 +2609,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList area_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State
 
@@ -2698,7 +2698,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv4_interface_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State
 
@@ -2772,7 +2772,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
         ydk::YLeaf instance_number; //type: uint32
         ydk::YLeaf router_id; //type: string
-        ydk::YLeafList flags; //type: list of  OpenconfigIsisLspCapabilityStateFlagsEnum
+        ydk::YLeafList flags; //type: list of  OpenconfigIsisLspRouterCapabilityStateFlagsEnum
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::RouterCapabilitiesState
 
@@ -2935,14 +2935,39 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State
+        class SegmentRoutingAlgorithm; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State> state;
+        ydk::YList segment_routing_algorithm;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm : public ydk::Entity
+{
+    public:
+        SegmentRoutingAlgorithm();
+        ~SegmentRoutingAlgorithm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf algorithm; //type: Algorithm
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State> state;
+                class Algorithm;
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State : public ydk::Entity
 {
     public:
         State();
@@ -2958,9 +2983,9 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList algorithm; //type: list of  OpenconfigIsisLspAlgorithmEnum
+        ydk::YLeaf algorithm; //type: OpenconfigIsisLspAlgorithmEnum
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability : public ydk::Entity
@@ -2979,20 +3004,20 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SegmentRoutingCapabilityState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State
         class SrgbDescriptors; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState> segment_routing_capability_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State> state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors> srgb_descriptors;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State : public ydk::Entity
 {
     public:
-        SegmentRoutingCapabilityState();
-        ~SegmentRoutingCapabilityState();
+        State();
+        ~State();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3006,7 +3031,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
         ydk::YLeafList flags; //type: list of  OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors : public ydk::Entity
@@ -3048,7 +3073,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: uint32
         class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::State
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::State> state;
@@ -3456,7 +3480,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv4_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv4SourceRouterId::State
 
@@ -3501,7 +3525,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv6_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv6SourceRouterId::State
 
@@ -3747,7 +3771,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         class SubtlvsTeDefaultMetric; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsTeDefaultMetric
         class SubtlvsIpv6InterfaceAddress; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6InterfaceAddress
         class SubtlvsAdminGroup; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdminGroup
-        class MtIsnNeighborsSubtlvsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::MtIsnNeighborsSubtlvsState
         class SubtlvsLanAdjacencySids; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsLanAdjacencySids
         class SubtlvsExtendedAdminGroup; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsExtendedAdminGroup
 
@@ -3762,7 +3785,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsTeDefaultMetric> subtlvs_te_default_metric;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6InterfaceAddress> subtlvs_ipv6_interface_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdminGroup> subtlvs_admin_group;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::MtIsnNeighborsSubtlvsState> mt_isn_neighbors_subtlvs_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsLanAdjacencySids> subtlvs_lan_adjacency_sids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsExtendedAdminGroup> subtlvs_extended_admin_group;
         
@@ -3808,7 +3830,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv6_neighbor_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress::State
 
@@ -3852,7 +3874,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv4_interface_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress::State
 
@@ -3896,7 +3918,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bandwidth; //type: string
+        ydk::YLeaf max_reservable_link_bandwidth; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth::State
 
@@ -3940,7 +3962,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bandwidth; //type: string
+        ydk::YLeaf max_link_bandwidth; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth::State
 
@@ -4218,7 +4240,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: uint8
-        ydk::YLeaf bandwidth; //type: string
+        ydk::YLeaf unreserved_bandwidth; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths::SubtlvsUnreservedBandwidth::State
 
@@ -4262,7 +4284,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv4_neighbor_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4NeighborAddress::State
 
@@ -4306,7 +4328,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf te_default_metric; //type: uint32
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsTeDefaultMetric::State
 
@@ -4350,7 +4372,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv6_interface_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6InterfaceAddress::State
 
@@ -4397,27 +4419,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         ydk::YLeafList admin_group; //type: list of  uint32
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdminGroup::State
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::MtIsnNeighborsSubtlvsState : public ydk::Entity
-{
-    public:
-        MtIsnNeighborsSubtlvsState();
-        ~MtIsnNeighborsSubtlvsState();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf type; //type: string
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::MtIsnNeighborsSubtlvsState
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsLanAdjacencySids : public ydk::Entity
@@ -4904,7 +4905,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf up_down; //type: boolean
-        ydk::YLeaf xbit; //type: boolean
         ydk::YLeaf sbit; //type: boolean
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf metric; //type: uint32
@@ -5169,7 +5169,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv4_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv6Reachability::Ipv6ReachabilityPrefixes::Ipv6ReachabilityPrefixe::Ipv6ReachabilityPrefixesSubtlvs::Ipv6ReachabilityPrefixesSubtlv::SubtlvsIpv4SourceRouterId::State
 
@@ -5235,7 +5235,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv6_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv6Reachability::Ipv6ReachabilityPrefixes::Ipv6ReachabilityPrefixe::Ipv6ReachabilityPrefixesSubtlvs::Ipv6ReachabilityPrefixesSubtlv::SubtlvsIpv6SourceRouterId::State
 
@@ -5539,7 +5539,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf flags; //type: OpenconfigIsisLspDefaultMetricStateFlagsEnum
-        ydk::YLeaf metric; //type: uint8
+        ydk::YLeaf default_metric; //type: uint8
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InternalReachability::Prefixes::Prefixe::DefaultMetric::State
 
@@ -5718,7 +5718,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv6_interface_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv6InterfaceAddresses::State
 
@@ -5850,7 +5850,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         class Ipv4InterfaceAddress; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv4InterfaceAddress
         class Ipv4NeighborAddress; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv4NeighborAddress
         class BandwidthConstraints; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::BandwidthConstraints
-        class NeighborsSubtlvsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::NeighborsSubtlvsState
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::MaxLinkBandwidth> max_link_bandwidth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv6NeighborAddress> ipv6_neighbor_address;
@@ -5865,7 +5864,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv4InterfaceAddress> ipv4_interface_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv4NeighborAddress> ipv4_neighbor_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::BandwidthConstraints> bandwidth_constraints;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::NeighborsSubtlvsState> neighbors_subtlvs_state;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv
 
@@ -5909,7 +5907,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bandwidth; //type: string
+        ydk::YLeaf max_link_bandwidth; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::MaxLinkBandwidth::State
 
@@ -5953,7 +5951,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv6_neighbor_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv6NeighborAddress::State
 
@@ -5997,7 +5995,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv6_interface_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv6InterfaceAddress::State
 
@@ -6182,7 +6180,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf te_default_metric; //type: uint32
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::TeDefaultMetric::State
 
@@ -6270,7 +6268,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bandwidth; //type: string
+        ydk::YLeaf max_reservable_link_bandwidth; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::MaxReservableLinkBandwidth::State
 
@@ -6383,7 +6381,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: uint8
-        ydk::YLeaf bandwidth; //type: string
+        ydk::YLeaf unreserved_bandwidth; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::UnreservedBandwidths::UnreservedBandwidth::State
 
@@ -6427,7 +6425,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv4_interface_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv4InterfaceAddress::State
 
@@ -6471,7 +6469,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address; //type: list of  string
+        ydk::YLeafList ipv4_neighbor_address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::Ipv4NeighborAddress::State
 
@@ -6613,27 +6611,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         ydk::YLeaf model_id; //type: uint8
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::BandwidthConstraints::BandwidthConstraint::BandwidthConstraintsState
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::NeighborsSubtlvsState : public ydk::Entity
-{
-    public:
-        NeighborsSubtlvsState();
-        ~NeighborsSubtlvsState();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf type; //type: string
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsSubtlvs::NeighborsSubtlv::NeighborsSubtlvsState
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIsReachability::ExtendedIsReachabilityNeighbors::ExtendedIsReachabilityNeighbor::NeighborsUndefinedSubtlvs : public ydk::Entity
@@ -7010,7 +6987,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf flags; //type: OpenconfigIsisLspDefaultMetricStateFlagsEnum
-        ydk::YLeaf metric; //type: uint8
+        ydk::YLeaf default_metric; //type: uint8
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::IsReachability::Neighbors::Neighbor::DefaultMetric::State
 
@@ -7479,7 +7456,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv4_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State
 
@@ -7524,7 +7501,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv6_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State
 
@@ -8011,7 +7988,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf flags; //type: OpenconfigIsisLspDefaultMetricStateFlagsEnum
-        ydk::YLeaf metric; //type: uint8
+        ydk::YLeaf default_metric; //type: uint8
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State
 
@@ -8466,7 +8443,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv4_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State
 
@@ -8555,7 +8532,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf ipv6_source_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State
 
@@ -12334,2664 +12311,27 @@ class Isis::Instances::Instance::Topologies::Topology : public ydk::Entity
         ydk::YLeaf af_name; //type: IsisAddressFamily
         ydk::YLeaf saf_name; //type: IsisSubAddressFamily
         ydk::YLeaf topology_name; //type: string
-        class Ipv4frrFlexTables; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables
         class Ipv6FlexRouteTables; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables
         class FrrSummary; //type: Isis::Instances::Instance::Topologies::Topology::FrrSummary
         class Srv6Locators; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators
         class TopologyLevels; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels
         class Ipv6Routes; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes
-        class Ipv6frrFlexTables; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables
         class Ipv6frrBackups; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups
         class Ipv4frrBackups; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups
         class Ipv4FlexRouteTables; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
         class Ipv4Routes; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables> ipv4frr_flex_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables> ipv6_flex_route_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::FrrSummary> frr_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Srv6Locators> srv6_locators;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels> topology_levels;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes> ipv6_routes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables> ipv6frr_flex_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups> ipv6frr_backups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups> ipv4frr_backups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables> ipv4_flex_route_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes> ipv4_routes;
         
 }; // Isis::Instances::Instance::Topologies::Topology
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables : public ydk::Entity
-{
-    public:
-        Ipv4frrFlexTables();
-        ~Ipv4frrFlexTables();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ipv4frrFlexTable; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable
-
-        ydk::YList ipv4frr_flex_table;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable : public ydk::Entity
-{
-    public:
-        Ipv4frrFlexTable();
-        ~Ipv4frrFlexTable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flex_alg; //type: uint32
-        class Ipv4frrFlexBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup
-
-        ydk::YList ipv4frr_flex_backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup : public ydk::Entity
-{
-    public:
-        Ipv4frrFlexBackup();
-        ~Ipv4frrFlexBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: uint32
-        class ConnectedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus
-        class RedistributedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus
-        class NativeStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus
-        class PerLevelAdvertisingDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus> connected_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus> redistributed_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus> native_status;
-        ydk::YList per_level_advertising_detail;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus : public ydk::Entity
-{
-    public:
-        ConnectedStatus();
-        ~ConnectedStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class ConnectedDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus::ConnectedDetails
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus::ConnectedDetails> connected_details;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus::ConnectedDetails : public ydk::Entity
-{
-    public:
-        ConnectedDetails();
-        ~ConnectedDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus::ConnectedDetails::Interface
-
-        ydk::YList interface;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus::ConnectedDetails
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus::ConnectedDetails::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::ConnectedStatus::ConnectedDetails::Interface
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus : public ydk::Entity
-{
-    public:
-        RedistributedStatus();
-        ~RedistributedStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class RedistributionDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails> redistribution_details;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails : public ydk::Entity
-{
-    public:
-        RedistributionDetails();
-        ~RedistributionDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class IsisShRouteRedistDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
-
-        ydk::YList isis_sh_route_redist_detail;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail : public ydk::Entity
-{
-    public:
-        IsisShRouteRedistDetail();
-        ~IsisShRouteRedistDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf level; //type: IsisLevel
-        class Owner; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner : public ydk::Entity
-{
-    public:
-        Owner();
-        ~Owner();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf protocol; //type: IsisRedistProto
-        ydk::YLeaf isis_instance_id; //type: string
-        ydk::YLeaf ospf_process_id; //type: string
-        ydk::YLeaf ospfv3_process_id; //type: string
-        ydk::YLeaf bgp_as_number; //type: string
-        ydk::YLeaf eigrp_as_number; //type: string
-        ydk::YLeaf application_name; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus : public ydk::Entity
-{
-    public:
-        NativeStatus();
-        ~NativeStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class NativeDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails> native_details;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails : public ydk::Entity
-{
-    public:
-        NativeDetails();
-        ~NativeDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
-        ydk::YLeaf local_label; //type: uint32
-        class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary
-        class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary> primary;
-        ydk::YList backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary : public ydk::Entity
-{
-    public:
-        Primary();
-        ~Primary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf origin; //type: IsisPrefixOrigin
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf multicast_metric; //type: uint32
-        ydk::YLeaf is_external_metric; //type: boolean
-        ydk::YLeaf administrative_distance; //type: uint16
-        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths
-        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop
-        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath
-        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath
-        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath
-        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source
-        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource
-
-        ydk::YList paths;
-        ydk::YList ucmp_next_hop;
-        ydk::YList multicast_path;
-        ydk::YList srte_path;
-        ydk::YList explicit_path;
-        ydk::YList source;
-        ydk::YList multicast_source;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths : public ydk::Entity
-{
-    public:
-        Paths();
-        ~Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop : public ydk::Entity
-{
-    public:
-        UcmpNextHop();
-        ~UcmpNextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf total_ucmp_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath : public ydk::Entity
-{
-    public:
-        MulticastPath();
-        ~MulticastPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath : public ydk::Entity
-{
-    public:
-        SrtePath();
-        ~SrtePath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath : public ydk::Entity
-{
-    public:
-        ExplicitPath();
-        ~ExplicitPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source : public ydk::Entity
-{
-    public:
-        Source();
-        ~Source();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource : public ydk::Entity
-{
-    public:
-        MulticastSource();
-        ~MulticastSource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup : public ydk::Entity
-{
-    public:
-        Backup();
-        ~Backup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf origin; //type: IsisPrefixOrigin
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf multicast_metric; //type: uint32
-        ydk::YLeaf is_external_metric; //type: boolean
-        ydk::YLeaf administrative_distance; //type: uint16
-        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths
-        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop
-        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath
-        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath
-        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath
-        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source
-        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource
-
-        ydk::YList paths;
-        ydk::YList ucmp_next_hop;
-        ydk::YList multicast_path;
-        ydk::YList srte_path;
-        ydk::YList explicit_path;
-        ydk::YList source;
-        ydk::YList multicast_source;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths : public ydk::Entity
-{
-    public:
-        Paths();
-        ~Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop : public ydk::Entity
-{
-    public:
-        UcmpNextHop();
-        ~UcmpNextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf total_ucmp_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath : public ydk::Entity
-{
-    public:
-        MulticastPath();
-        ~MulticastPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath : public ydk::Entity
-{
-    public:
-        SrtePath();
-        ~SrtePath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath : public ydk::Entity
-{
-    public:
-        ExplicitPath();
-        ~ExplicitPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source : public ydk::Entity
-{
-    public:
-        Source();
-        ~Source();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource : public ydk::Entity
-{
-    public:
-        MulticastSource();
-        ~MulticastSource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail : public ydk::Entity
-{
-    public:
-        PerLevelAdvertisingDetail();
-        ~PerLevelAdvertisingDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf level; //type: IsisLevel
-        ydk::YLeaf advertising_origin; //type: IsisShRouteAdvOrigin
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf is_propagated; //type: boolean
-        ydk::YLeaf is_external_metric; //type: boolean
-        ydk::YLeaf is_external_reachability; //type: boolean
-        ydk::YLeaf is_interarea; //type: boolean
-        class SummarizationStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::NodalSid
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus : public ydk::Entity
-{
-    public:
-        SummarizationStatus();
-        ~SummarizationStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class SummaryPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix : public ydk::Entity
-{
-    public:
-        SummaryPrefix();
-        ~SummaryPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrFlexTables::Ipv4frrFlexTable::Ipv4frrFlexBackup::PerLevelAdvertisingDetail::NodalSid
 
 
 class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables : public ydk::Entity
@@ -15279,7 +12619,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
         ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup
@@ -15356,7 +12695,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
@@ -15408,7 +12746,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -15464,10 +12801,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -15494,10 +12827,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -15599,7 +12928,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -15655,10 +12983,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -15689,7 +13013,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
@@ -15741,7 +13064,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -15797,10 +13119,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -15827,10 +13145,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -15885,7 +13199,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
@@ -15937,7 +13250,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -15993,10 +13305,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -16023,10 +13331,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -16081,7 +13385,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
@@ -16133,7 +13436,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -16189,10 +13491,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -16219,10 +13517,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -16469,7 +13763,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
@@ -16521,7 +13814,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -16577,10 +13869,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -16607,10 +13895,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -16712,7 +13996,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -16768,10 +14051,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -16802,7 +14081,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
@@ -16854,7 +14132,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -16910,10 +14187,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -16940,10 +14213,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -16998,7 +14267,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
@@ -17050,7 +14318,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -17106,10 +14373,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -17136,10 +14399,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -17194,7 +14453,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
@@ -17246,7 +14504,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -17302,10 +14559,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -17332,10 +14585,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -17933,92 +15182,18 @@ class Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf locator_name; //type: string
         ydk::YLeaf locator_id; //type: uint32
         ydk::YLeaf locator_format; //type: uint32
         ydk::YLeaf locator_flags; //type: uint16
         ydk::YLeaf number_of_reserved_opcodes; //type: uint8
-        ydk::YLeaf active; //type: uint8
-        ydk::YLeaf out_of_resources; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-        class LocatorPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix
         class Opcode; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::Opcode
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix> locator_prefix;
         ydk::YList opcode;
         
 }; // Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator
-
-
-class Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix : public ydk::Entity
-{
-    public:
-        LocatorPrefix();
-        ~LocatorPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf af_name; //type: IsisAfId
-        class Ipv4; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv4
-        class Ipv6; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv6
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv6> ipv6;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix
-
-
-class Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv4 : public ydk::Entity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv4
-
-
-class Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::LocatorPrefix::Ipv6
 
 
 class Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::Opcode : public ydk::Entity
@@ -19830,10 +17005,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair
 
@@ -19860,10 +17031,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit
 
@@ -20024,10 +17191,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair
 
@@ -20054,10 +17217,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit
 
@@ -20359,7 +17518,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit
@@ -20411,7 +17569,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -20467,10 +17624,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair
 
@@ -20497,10 +17650,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit
 
@@ -20555,7 +17704,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit
@@ -20607,7 +17755,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -20663,10 +17810,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair
 
@@ -20693,10 +17836,6 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit
 
@@ -21054,7 +18193,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
         ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup
@@ -21131,7 +18269,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
@@ -21183,7 +18320,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -21239,10 +18375,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -21269,10 +18401,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -21374,7 +18502,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -21430,10 +18557,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -21464,7 +18587,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
@@ -21516,7 +18638,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -21572,10 +18693,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -21602,10 +18719,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -21660,7 +18773,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
@@ -21712,7 +18824,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -21768,10 +18879,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -21798,10 +18905,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -21856,7 +18959,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
@@ -21908,7 +19010,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -21964,10 +19065,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -21994,10 +19091,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -22244,7 +19337,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
@@ -22296,7 +19388,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -22352,10 +19443,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -22382,10 +19469,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -22487,7 +19570,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -22543,10 +19625,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -22577,7 +19655,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
@@ -22629,7 +19706,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -22685,10 +19761,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -22715,10 +19787,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -22773,7 +19841,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
@@ -22825,7 +19892,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -22881,10 +19947,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -22911,10 +19973,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -22969,7 +20027,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
@@ -23021,7 +20078,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -23077,10 +20133,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -23107,10 +20159,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -23420,2657 +20468,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Pe
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid
 
 
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables : public ydk::Entity
-{
-    public:
-        Ipv6frrFlexTables();
-        ~Ipv6frrFlexTables();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ipv6frrFlexTable; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable
-
-        ydk::YList ipv6frr_flex_table;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable : public ydk::Entity
-{
-    public:
-        Ipv6frrFlexTable();
-        ~Ipv6frrFlexTable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flex_alg; //type: uint32
-        class Ipv6frrFlexBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup
-
-        ydk::YList ipv6frr_flex_backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup : public ydk::Entity
-{
-    public:
-        Ipv6frrFlexBackup();
-        ~Ipv6frrFlexBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: uint32
-        class ConnectedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus
-        class RedistributedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus
-        class NativeStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus
-        class PerLevelAdvertisingDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus> connected_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus> redistributed_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus> native_status;
-        ydk::YList per_level_advertising_detail;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus : public ydk::Entity
-{
-    public:
-        ConnectedStatus();
-        ~ConnectedStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class ConnectedDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus::ConnectedDetails
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus::ConnectedDetails> connected_details;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus::ConnectedDetails : public ydk::Entity
-{
-    public:
-        ConnectedDetails();
-        ~ConnectedDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus::ConnectedDetails::Interface
-
-        ydk::YList interface;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus::ConnectedDetails
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus::ConnectedDetails::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::ConnectedStatus::ConnectedDetails::Interface
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus : public ydk::Entity
-{
-    public:
-        RedistributedStatus();
-        ~RedistributedStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class RedistributionDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails> redistribution_details;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails : public ydk::Entity
-{
-    public:
-        RedistributionDetails();
-        ~RedistributionDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class IsisShRouteRedistDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
-
-        ydk::YList isis_sh_route_redist_detail;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail : public ydk::Entity
-{
-    public:
-        IsisShRouteRedistDetail();
-        ~IsisShRouteRedistDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf level; //type: IsisLevel
-        class Owner; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner : public ydk::Entity
-{
-    public:
-        Owner();
-        ~Owner();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf protocol; //type: IsisRedistProto
-        ydk::YLeaf isis_instance_id; //type: string
-        ydk::YLeaf ospf_process_id; //type: string
-        ydk::YLeaf ospfv3_process_id; //type: string
-        ydk::YLeaf bgp_as_number; //type: string
-        ydk::YLeaf eigrp_as_number; //type: string
-        ydk::YLeaf application_name; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus : public ydk::Entity
-{
-    public:
-        NativeStatus();
-        ~NativeStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class NativeDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails> native_details;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails : public ydk::Entity
-{
-    public:
-        NativeDetails();
-        ~NativeDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
-        ydk::YLeaf local_label; //type: uint32
-        class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary
-        class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary> primary;
-        ydk::YList backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary : public ydk::Entity
-{
-    public:
-        Primary();
-        ~Primary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf origin; //type: IsisPrefixOrigin
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf multicast_metric; //type: uint32
-        ydk::YLeaf is_external_metric; //type: boolean
-        ydk::YLeaf administrative_distance; //type: uint16
-        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths
-        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop
-        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath
-        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath
-        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath
-        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source
-        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource
-
-        ydk::YList paths;
-        ydk::YList ucmp_next_hop;
-        ydk::YList multicast_path;
-        ydk::YList srte_path;
-        ydk::YList explicit_path;
-        ydk::YList source;
-        ydk::YList multicast_source;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths : public ydk::Entity
-{
-    public:
-        Paths();
-        ~Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop : public ydk::Entity
-{
-    public:
-        UcmpNextHop();
-        ~UcmpNextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf total_ucmp_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath : public ydk::Entity
-{
-    public:
-        MulticastPath();
-        ~MulticastPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath : public ydk::Entity
-{
-    public:
-        SrtePath();
-        ~SrtePath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath : public ydk::Entity
-{
-    public:
-        ExplicitPath();
-        ~ExplicitPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source : public ydk::Entity
-{
-    public:
-        Source();
-        ~Source();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource : public ydk::Entity
-{
-    public:
-        MulticastSource();
-        ~MulticastSource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup : public ydk::Entity
-{
-    public:
-        Backup();
-        ~Backup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf origin; //type: IsisPrefixOrigin
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf multicast_metric; //type: uint32
-        ydk::YLeaf is_external_metric; //type: boolean
-        ydk::YLeaf administrative_distance; //type: uint16
-        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths
-        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop
-        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath
-        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath
-        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath
-        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source
-        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource
-
-        ydk::YList paths;
-        ydk::YList ucmp_next_hop;
-        ydk::YList multicast_path;
-        ydk::YList srte_path;
-        ydk::YList explicit_path;
-        ydk::YList source;
-        ydk::YList multicast_source;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths : public ydk::Entity
-{
-    public:
-        Paths();
-        ~Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop : public ydk::Entity
-{
-    public:
-        UcmpNextHop();
-        ~UcmpNextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf total_ucmp_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath : public ydk::Entity
-{
-    public:
-        MulticastPath();
-        ~MulticastPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath : public ydk::Entity
-{
-    public:
-        SrtePath();
-        ~SrtePath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath : public ydk::Entity
-{
-    public:
-        ExplicitPath();
-        ~ExplicitPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf tag; //type: uint32
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf is_te_tunnel_interface; //type: boolean
-        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf outgoing_label; //type: uint32
-        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
-        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
-        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup> frr_backup;
-        ydk::YList uloop_explicit;
-        ydk::YList nnh;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup : public ydk::Entity
-{
-    public:
-        FrrBackup();
-        ~FrrBackup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf egress_interface; //type: string
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf tunnel_egress_interface; //type: string
-        ydk::YLeaf neighbor_snpa; //type: string
-        ydk::YLeaf remote_lfa_system_id; //type: string
-        ydk::YLeaf remote_lfa_router_id; //type: string
-        ydk::YLeaf remote_lfa_system_pid; //type: string
-        ydk::YLeaf remote_lfa_router_pid; //type: string
-        ydk::YLeaf total_backup_distance; //type: uint32
-        ydk::YLeaf segment_routing_sid_value; //type: uint32
-        ydk::YLeaf num_sid; //type: uint32
-        ydk::YLeaf backup_repair_list_size; //type: uint32
-        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
-        ydk::YLeaf prefix_source_node_id; //type: string
-        ydk::YLeaf is_downstream; //type: boolean
-        ydk::YLeaf is_lc_disjoint; //type: boolean
-        ydk::YLeaf is_node_protecting; //type: boolean
-        ydk::YLeaf is_primary_path; //type: boolean
-        ydk::YLeaf is_srlg_disjoint; //type: boolean
-        ydk::YLeaf is_remote_lfa; //type: boolean
-        ydk::YLeaf is_epcfrr_lfa; //type: boolean
-        ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
-        ydk::YLeaf is_tunnel_requested; //type: boolean
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf outgoing_label; //type: uint32
-        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
-
-        ydk::YList segment_routing_sid_value_entry;
-        ydk::YList backup_repair;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
-{
-    public:
-        SegmentRoutingSidValueEntry();
-        ~SegmentRoutingSidValueEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
-{
-    public:
-        BackupRepair();
-        ~BackupRepair();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit : public ydk::Entity
-{
-    public:
-        UloopExplicit();
-        ~UloopExplicit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf repair_element_node_id; //type: string
-        ydk::YLeaf repair_ipv4_addr; //type: string
-        ydk::YLeaf repair_ipv6_addr; //type: string
-        ydk::YLeaf repair_label; //type: uint32
-        ydk::YLeaf repair_element_type; //type: uint32
-        ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh : public ydk::Entity
-{
-    public:
-        Nnh();
-        ~Nnh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_id_set; //type: boolean
-        ydk::YLeaf ipv4_set; //type: boolean
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source : public ydk::Entity
-{
-    public:
-        Source();
-        ~Source();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource : public ydk::Entity
-{
-    public:
-        MulticastSource();
-        ~MulticastSource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_lsp_id; //type: string
-        ydk::YLeaf source_address; //type: string
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
-
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail : public ydk::Entity
-{
-    public:
-        PerLevelAdvertisingDetail();
-        ~PerLevelAdvertisingDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf level; //type: IsisLevel
-        ydk::YLeaf advertising_origin; //type: IsisShRouteAdvOrigin
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf is_propagated; //type: boolean
-        ydk::YLeaf is_external_metric; //type: boolean
-        ydk::YLeaf is_external_reachability; //type: boolean
-        ydk::YLeaf is_interarea; //type: boolean
-        class SummarizationStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus
-        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::Tags
-        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::NodalSid
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-        ydk::YList tags;
-        ydk::YList nodal_sid;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus : public ydk::Entity
-{
-    public:
-        SummarizationStatus();
-        ~SummarizationStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_valid; //type: IsisValid
-        class SummaryPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-        
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix : public ydk::Entity
-{
-    public:
-        SummaryPrefix();
-        ~SummaryPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::Tags : public ydk::Entity
-{
-    public:
-        Tags();
-        ~Tags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::Tags
-
-
-class Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::NodalSid : public ydk::Entity
-{
-    public:
-        NodalSid();
-        ~NodalSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf rflag; //type: uint8
-        ydk::YLeaf nflag; //type: uint8
-        ydk::YLeaf pflag; //type: uint8
-        ydk::YLeaf eflag; //type: uint8
-        ydk::YLeaf vflag; //type: uint8
-        ydk::YLeaf lflag; //type: uint8
-        ydk::YLeaf algorithm; //type: uint8
-
-}; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrFlexTables::Ipv6frrFlexTable::Ipv6frrFlexBackup::PerLevelAdvertisingDetail::NodalSid
-
-
 class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups : public ydk::Entity
 {
     public:
@@ -26332,7 +20729,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
         ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup
@@ -26409,7 +20805,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
@@ -26461,7 +20856,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -26517,10 +20911,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -26547,10 +20937,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -26652,7 +21038,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -26708,10 +21093,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -26742,7 +21123,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
@@ -26794,7 +21174,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -26850,10 +21229,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -26880,10 +21255,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -26938,7 +21309,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
@@ -26990,7 +21360,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -27046,10 +21415,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -27076,10 +21441,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -27134,7 +21495,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
@@ -27186,7 +21546,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -27242,10 +21601,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -27272,10 +21627,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -27522,7 +21873,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
@@ -27574,7 +21924,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -27630,10 +21979,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -27660,10 +22005,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -27765,7 +22106,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -27821,10 +22161,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -27855,7 +22191,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
@@ -27907,7 +22242,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -27963,10 +22297,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -27993,10 +22323,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -28051,7 +22377,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
@@ -28103,7 +22428,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -28159,10 +22483,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -28189,10 +22509,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -28247,7 +22563,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
@@ -28299,7 +22614,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_remote_lfa; //type: boolean
         ydk::YLeaf is_epcfrr_lfa; //type: boolean
         ydk::YLeaf is_strict_spflfa; //type: boolean
-        ydk::YLeaf is_s_rv6; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf outgoing_label; //type: uint32
@@ -28355,10 +22669,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -28385,10 +22695,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -28959,7 +23265,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
         ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup
@@ -29142,10 +23447,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -29172,10 +23473,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -29332,10 +23629,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -29472,10 +23765,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -29502,10 +23791,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -29666,10 +23951,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -29696,10 +23977,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -29860,10 +24137,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -29890,10 +24163,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -30246,10 +24515,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -30276,10 +24541,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -30436,10 +24697,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -30576,10 +24833,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -30606,10 +24859,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -30770,10 +25019,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -30800,10 +25045,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -30964,10 +25205,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -30994,10 +25231,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -31592,7 +25825,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
         ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup
@@ -31775,10 +26007,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -31805,10 +26033,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -31965,10 +26189,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -32105,10 +26325,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -32135,10 +26351,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -32299,10 +26511,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -32329,10 +26537,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -32493,10 +26697,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -32523,10 +26723,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -32879,10 +27075,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -32909,10 +27101,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -33069,10 +27257,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -33209,10 +27393,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -33239,10 +27419,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -33403,10 +27579,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -33433,10 +27605,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -33597,10 +27765,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -33627,10 +27791,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -34201,7 +28361,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
-        ydk::YLeaf is_filtered_by_dl; //type: boolean
         ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup
@@ -34384,10 +28543,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -34414,10 +28569,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -34574,10 +28725,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -34714,10 +28861,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -34744,10 +28887,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -34908,10 +29047,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -34938,10 +29073,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -35102,10 +29233,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -35132,10 +29259,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -35488,10 +29611,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -35518,10 +29637,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -35678,10 +29793,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -35818,10 +29929,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -35848,10 +29955,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -36012,10 +30115,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -36042,10 +30141,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -36206,10 +30301,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -36236,10 +30327,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf repair_label; //type: uint32
         ydk::YLeaf repair_element_type; //type: uint32
         ydk::YLeaf repair_strict_spf_label; //type: uint32
-        ydk::YLeaf repair_s_rv6sid; //type: string
-        ydk::YLeaf repair_s_rv6_end_func; //type: uint16
-        ydk::YLeaf repair_s_rv6_strict_spfsid; //type: string
-        ydk::YLeaf repair_s_rv6_strict_spf_end_func; //type: uint16
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -38904,37 +32991,13 @@ class Isis::Instances::Instance::FlexAlgos::FlexAlgo : public ydk::Entity
         ydk::YLeaf flex_alg; //type: uint32
         ydk::YLeaf number; //type: uint32
         ydk::YLeaf local_priority; //type: uint32
-        class Area; //type: Isis::Instances::Instance::FlexAlgos::FlexAlgo::Area
-
-        ydk::YList area;
-        
-}; // Isis::Instances::Instance::FlexAlgos::FlexAlgo
-
-
-class Isis::Instances::Instance::FlexAlgos::FlexAlgo::Area : public ydk::Entity
-{
-    public:
-        Area();
-        ~Area();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf level; //type: IsisLevel
         ydk::YLeaf disabled; //type: boolean
         ydk::YLeaf definition_prioroty; //type: uint32
         ydk::YLeaf definition_local; //type: boolean
         ydk::YLeaf definition_equal_local; //type: boolean
-        ydk::YLeaf definition_node_id; //type: string
+        ydk::YLeaf definiion_node_id; //type: string
 
-}; // Isis::Instances::Instance::FlexAlgos::FlexAlgo::Area
+}; // Isis::Instances::Instance::FlexAlgos::FlexAlgo
 
 
 class Isis::Instances::Instance::Srms : public ydk::Entity
@@ -39930,12 +33993,10 @@ class Isis::Instances::Instance::Protocol : public ydk::Entity
         class ManualAreaAddress; //type: Isis::Instances::Instance::Protocol::ManualAreaAddress
         class ActiveAreaAddress; //type: Isis::Instances::Instance::Protocol::ActiveAreaAddress
         class PerTopoData; //type: Isis::Instances::Instance::Protocol::PerTopoData
-        class PerAreaData; //type: Isis::Instances::Instance::Protocol::PerAreaData
 
         ydk::YList manual_area_address;
         ydk::YList active_area_address;
         ydk::YList per_topo_data;
-        ydk::YList per_area_data;
         
 }; // Isis::Instances::Instance::Protocol
 
@@ -40001,18 +34062,13 @@ class Isis::Instances::Instance::Protocol::PerTopoData : public ydk::Entity
         ydk::YLeaf default_admin_distance; //type: uint32
         ydk::YLeaf advertise_passive_only; //type: boolean
         ydk::YLeaf wait_redist_complete; //type: boolean
-        ydk::YLeaf rib_connected; //type: boolean
-        ydk::YLeaf sr_mpls_enabled; //type: boolean
-        ydk::YLeaf srv6_enabled; //type: boolean
         class Id; //type: Isis::Instances::Instance::Protocol::PerTopoData::Id
         class RedistProtocolsList; //type: Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList
         class PerAreaData; //type: Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData
-        class Srv6ConfiguredLocator; //type: Isis::Instances::Instance::Protocol::PerTopoData::Srv6ConfiguredLocator
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Protocol::PerTopoData::Id> id;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList> redist_protocols_list;
         ydk::YList per_area_data;
-        ydk::YList srv6_configured_locator;
         
 }; // Isis::Instances::Instance::Protocol::PerTopoData
 
@@ -40146,49 +34202,6 @@ class Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData : public ydk
         ydk::YLeaf sr_uloop_far_node_id; //type: string
 
 }; // Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData
-
-
-class Isis::Instances::Instance::Protocol::PerTopoData::Srv6ConfiguredLocator : public ydk::Entity
-{
-    public:
-        Srv6ConfiguredLocator();
-        ~Srv6ConfiguredLocator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf locator_active; //type: boolean
-        ydk::YLeaf locator_name; //type: string
-
-}; // Isis::Instances::Instance::Protocol::PerTopoData::Srv6ConfiguredLocator
-
-
-class Isis::Instances::Instance::Protocol::PerAreaData : public ydk::Entity
-{
-    public:
-        PerAreaData();
-        ~PerAreaData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf lsp_mtu; //type: uint32
-
-}; // Isis::Instances::Instance::Protocol::PerAreaData
 
 
 class Isis::Instances::Instance::NeighborSummaries : public ydk::Entity
@@ -40424,31 +34437,8 @@ class Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::I
 
         ydk::YLeaf mesh_group_interface; //type: string
         ydk::YLeaf mesh_group_number; //type: uint32
-        class NextMeshGroup; //type: Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::NextMeshGroup
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::NextMeshGroup> next_mesh_group;
-        
 }; // Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry
-
-
-class Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::NextMeshGroup : public ydk::Entity
-{
-    public:
-        NextMeshGroup();
-        ~NextMeshGroup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::NextMeshGroup
 
 
 class Isis::Instances::Instance::NsrStatistics : public ydk::Entity
@@ -40619,319 +34609,17 @@ class Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel : publi
 
 }; // Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel
 
-class OpenconfigIsisLspAttributesEnum : public ydk::Enum
+class IsisSubAfId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf overload;
-        static const ydk::Enum::YLeaf attached;
-
-};
-
-class OpenconfigIsisLspNlpidEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf numbered;
-
-};
-
-class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf unsupported;
-
-};
-
-class OpenconfigIsisLspDefaultMetricStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-
-};
-
-class OpenconfigIsisLspIpv6SrlgStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf na;
-
-};
-
-class OpenconfigIsisLspLanAdjacencySidStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address_family;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf set;
-
-};
-
-class OpenconfigIsisLspAdjacencySidStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address_family;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf set;
-
-};
-
-class OpenconfigIsisLspFlagsStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf external_flag;
-        static const ydk::Enum::YLeaf readvertisement_flag;
-        static const ydk::Enum::YLeaf node_flag;
-
-};
-
-class OpenconfigIsisLspPrefixSidStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf readvertisement;
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf no_php;
-        static const ydk::Enum::YLeaf explicit_null;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf local;
-
-};
-
-class OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4_mpls;
-        static const ydk::Enum::YLeaf ipv6_mpls;
-        static const ydk::Enum::YLeaf ipv6_sr;
-
-};
-
-class OpenconfigIsisLspAlgorithmEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf spf;
-        static const ydk::Enum::YLeaf strict_spf;
-
-};
-
-class OpenconfigIsisLspCapabilityStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flood;
-        static const ydk::Enum::YLeaf down;
-
-};
-
-class OpenconfigIsisLspCryptoTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf hmac_md5;
-        static const ydk::Enum::YLeaf cleartext;
-
-};
-
-class OpenconfigIsisLspFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf partition_repair;
-        static const ydk::Enum::YLeaf attached_error;
-        static const ydk::Enum::YLeaf attached_expense;
-        static const ydk::Enum::YLeaf attached_delay;
-        static const ydk::Enum::YLeaf attached_default;
-        static const ydk::Enum::YLeaf overload;
-
-};
-
-class OpenconfigIsisLspPduTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-
-};
-
-class OpenconfigIsisTypesMetricStyleEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf narrow_metric;
-        static const ydk::Enum::YLeaf wide_metric;
-
-};
-
-class OpenconfigIsisTypesAdaptiveTimerTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf linear;
-        static const ydk::Enum::YLeaf exponential;
-
-};
-
-class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_php;
-        static const ydk::Enum::YLeaf explicit_null;
-
-};
-
-class OpenconfigIsisAdjacencyStateNlpidEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class OpenconfigIsisTypesIsisInterfaceAdjStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf failed;
-
-};
-
-class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level12;
-
-};
-
-class OpenconfigIsisTypesCircuitTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf broadcast;
-
-};
-
-class OpenconfigIsisTypesHelloPaddingTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf strict;
-        static const ydk::Enum::YLeaf loose;
-        static const ydk::Enum::YLeaf adaptive;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class SrmsMiFlagEB : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class SrmsMiAfEB : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class SrmsMiSrcEB : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf remote;
-
-};
-
-class IsisUloopEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_u_loop_event_none;
-        static const ydk::Enum::YLeaf isis_u_loop_event_link_down;
-        static const ydk::Enum::YLeaf isis_u_loop_event_link_up;
-        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_set;
-        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_unset;
-
-};
-
-class IsisUloopAvoidance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_none;
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_all;
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_protected;
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_sr;
-
-};
-
-class IsisMetricStyle : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_metric_style_narrow;
-        static const ydk::Enum::YLeaf isis_metric_style_wide;
-        static const ydk::Enum::YLeaf isis_metric_style_transition;
-        static const ydk::Enum::YLeaf isis_metric_style_narrow_transition;
-        static const ydk::Enum::YLeaf isis_metric_style_wide_transition;
-
-};
-
-class IsisStartupStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_startup_ssm_active;
-        static const ydk::Enum::YLeaf isis_startup_ssm_complete;
-        static const ydk::Enum::YLeaf isis_startup_ssm_aborted;
-        static const ydk::Enum::YLeaf isis_startup_ssm_not_run;
-
-};
-
-class IsisNsfFlavor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_nsf_protocol_none;
-        static const ydk::Enum::YLeaf isis_nsf_protocol_cisco;
-        static const ydk::Enum::YLeaf isis_nsf_protocol_ietf;
-        static const ydk::Enum::YLeaf isis_nsf_protocol_nsr;
-
-};
-
-class IsisEdmLabelTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_edm_label_alloc_prefix_sid;
-        static const ydk::Enum::YLeaf isis_edm_label_alloc_local_sid;
-        static const ydk::Enum::YLeaf isis_edm_label_alloc_max;
-
-};
-
-class IsisErrLogLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_err_log_level_info;
-        static const ydk::Enum::YLeaf isis_err_log_level_warn;
-        static const ydk::Enum::YLeaf isis_err_log_level_critical;
-
-};
-
-class IsisIfAfPrefixUnknownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
-
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            if (name == "multicast") return 1;
+            return -1;
+        }
 };
 
 class IsisIfAfFwdAddrUnknownReason : public ydk::Enum
@@ -40945,60 +34633,144 @@ class IsisIfAfFwdAddrUnknownReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_af_fwd_addr_unknown_vrf_enabled;
         static const ydk::Enum::YLeaf isis_intf_af_fwd_addr_unknown_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-fwd-addr-unknown-cfg-passive") return 0;
+            if (name == "isis-intf-af-fwd-addr-unknown-proto-doesnt-exist") return 1;
+            if (name == "isis-intf-af-fwd-addr-unknown-next-hop-reg-error") return 2;
+            if (name == "isis-intf-af-fwd-addr-unknown-no-link-local-add") return 3;
+            if (name == "isis-intf-af-fwd-addr-unknown-af-not-up") return 4;
+            if (name == "isis-intf-af-fwd-addr-unknown-vrf-enabled") return 5;
+            if (name == "isis-intf-af-fwd-addr-unknown-internal-error") return 6;
+            return -1;
+        }
 };
 
-class IsisIfAfProtoDownReason : public ydk::Enum
+class IsisUloopEvent : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_conn_fail;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_node_doesnt_exist;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_exist_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_state_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_af_not_up;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_internal_error;
+        static const ydk::Enum::YLeaf isis_u_loop_event_none;
+        static const ydk::Enum::YLeaf isis_u_loop_event_link_down;
+        static const ydk::Enum::YLeaf isis_u_loop_event_link_up;
+        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_set;
+        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_unset;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-u-loop-event-none") return 0;
+            if (name == "isis-u-loop-event-link-down") return 1;
+            if (name == "isis-u-loop-event-link-up") return 2;
+            if (name == "isis-u-loop-event-ol-bit-set") return 3;
+            if (name == "isis-u-loop-event-ol-bit-unset") return 4;
+            return -1;
+        }
 };
 
-class IsisIfAfDisabledReason : public ydk::Enum
+class SrmsMiSrcEB : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_af_disabled_no_topo_enabled;
-        static const ydk::Enum::YLeaf isis_intf_af_disabled_internal_error;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "local") return 1;
+            if (name == "remote") return 2;
+            return -1;
+        }
 };
 
-class IsisFrrTiebreaker : public ydk::Enum
+class IsisLspDbOp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_down_stream;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_lc_disjoint;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_low_est_backup_metric;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_node_protecting;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_primary_path;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_secondary_path;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_srlg_disjoint;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_default;
+        static const ydk::Enum::YLeaf isis_lsp_db_clear;
+        static const ydk::Enum::YLeaf isis_lsp_db_insert_new_lsp;
+        static const ydk::Enum::YLeaf isis_lsp_db_replace_lsp_with_lsp;
+        static const ydk::Enum::YLeaf isis_lsp_db_purge_lsp;
+        static const ydk::Enum::YLeaf isis_lsp_db_delete_lsp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-lsp-db-clear") return 0;
+            if (name == "isis-lsp-db-insert-new-lsp") return 1;
+            if (name == "isis-lsp-db-replace-lsp-with-lsp") return 2;
+            if (name == "isis-lsp-db-purge-lsp") return 3;
+            if (name == "isis-lsp-db-delete-lsp") return 4;
+            return -1;
+        }
 };
 
-class IsisFrr : public ydk::Enum
+class OpenconfigIsisLspRouterCapabilityStateFlagsEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_frr_type_none;
-        static const ydk::Enum::YLeaf isis_frr_type_per_link;
-        static const ydk::Enum::YLeaf isis_frr_type_per_prefix;
-        static const ydk::Enum::YLeaf isis_frr_type_sr_u_loop;
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "flood") return 0;
+            if (name == "down") return 1;
+            return -1;
+        }
 };
 
-class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
+class IsisStartupStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_intf_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_not_up;
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown;
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_internal_error;
+        static const ydk::Enum::YLeaf isis_startup_ssm_active;
+        static const ydk::Enum::YLeaf isis_startup_ssm_complete;
+        static const ydk::Enum::YLeaf isis_startup_ssm_aborted;
+        static const ydk::Enum::YLeaf isis_startup_ssm_not_run;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-startup-ssm-active") return 0;
+            if (name == "isis-startup-ssm-complete") return 1;
+            if (name == "isis-startup-ssm-aborted") return 2;
+            if (name == "isis-startup-ssm-not-run") return 3;
+            return -1;
+        }
+};
+
+class IsisUp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_down;
+        static const ydk::Enum::YLeaf isis_up;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-down") return 0;
+            if (name == "isis-up") return 1;
+            return -1;
+        }
+};
+
+class IsisErrLogLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_err_log_level_info;
+        static const ydk::Enum::YLeaf isis_err_log_level_warn;
+        static const ydk::Enum::YLeaf isis_err_log_level_critical;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-err-log-level-info") return 0;
+            if (name == "isis-err-log-level-warn") return 1;
+            if (name == "isis-err-log-level-critical") return 2;
+            return -1;
+        }
+};
+
+class OpenconfigIsisTypesHelloPaddingTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf strict;
+        static const ydk::Enum::YLeaf loose;
+        static const ydk::Enum::YLeaf adaptive;
+        static const ydk::Enum::YLeaf disable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 0;
+            if (name == "loose") return 1;
+            if (name == "adaptive") return 2;
+            if (name == "disable") return 3;
+            return -1;
+        }
 };
 
 class IsisIfTopoAdjFormDisabledReason : public ydk::Enum
@@ -41015,88 +34787,244 @@ class IsisIfTopoAdjFormDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_topo_adj_form_disabled_snpa;
         static const ydk::Enum::YLeaf isis_intf_topo_adj_form_disabled_mcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-topo-adj-form-disabled-intf-passive") return 0;
+            if (name == "isis-intf-topo-adj-form-disabled-af-not-up") return 1;
+            if (name == "isis-intf-topo-adj-form-disabled-af-fwd-addr-unknown") return 2;
+            if (name == "isis-intf-topo-adj-form-disabled-topo-not-cfg") return 3;
+            if (name == "isis-intf-topo-adj-form-disabled-topo-can-not-participate") return 4;
+            if (name == "isis-intf-topo-adj-form-disabled-idle") return 5;
+            if (name == "isis-intf-topo-adj-form-disabled-internal-error") return 6;
+            if (name == "isis-intf-topo-adj-form-disabled-mtu") return 7;
+            if (name == "isis-intf-topo-adj-form-disabled-snpa") return 8;
+            if (name == "isis-intf-topo-adj-form-disabled-mcast") return 9;
+            return -1;
+        }
 };
 
-class IsisIfTopoDisabledReason : public ydk::Enum
+class IsisTilfaComputation : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_topo_disabled_not_cfg;
-        static const ydk::Enum::YLeaf isis_intf_topo_disabled_internal_error;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_none;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_link;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_node;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_srlg;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_node_srlg;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-tilfa-comp-none") return 0;
+            if (name == "isis-tilfa-comp-link") return 1;
+            if (name == "isis-tilfa-comp-node") return 2;
+            if (name == "isis-tilfa-comp-srlg") return 3;
+            if (name == "isis-tilfa-comp-node-srlg") return 4;
+            return -1;
+        }
 };
 
-class IsisIfMcastInvalidReason : public ydk::Enum
+class IsisAdjStateReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_join_error;
-        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_internal_error;
-        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_not_yet_needed;
+        static const ydk::Enum::YLeaf isis_adj_up_nsf_restart;
+        static const ydk::Enum::YLeaf isis_adj_up_new_adj;
+        static const ydk::Enum::YLeaf isis_adj_up_restarted;
+        static const ydk::Enum::YLeaf isis_adj_up_nsf_restored;
+        static const ydk::Enum::YLeaf isis_adj_up_chkpt_restored;
+        static const ydk::Enum::YLeaf isis_adj_init_reason;
+        static const ydk::Enum::YLeaf isis_adj_init_neighbor_forgot;
+        static const ydk::Enum::YLeaf isis_adj_down_hold_time;
+        static const ydk::Enum::YLeaf isis_adj_down_if_down;
+        static const ydk::Enum::YLeaf isis_adj_down_cfg_mismatch;
+        static const ydk::Enum::YLeaf isis_adj_down_circ_id;
+        static const ydk::Enum::YLeaf isis_adj_down_nsf_ack_fail;
+        static const ydk::Enum::YLeaf isis_adj_down_db_clear;
+        static const ydk::Enum::YLeaf isis_adj_down_no_common_topology;
+        static const ydk::Enum::YLeaf isis_adj_down_restart_tlv_missing;
+        static const ydk::Enum::YLeaf isis_adj_down_bfd_down;
+        static const ydk::Enum::YLeaf isis_adj_down_3way_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-up-nsf-restart") return 0;
+            if (name == "isis-adj-up-new-adj") return 1;
+            if (name == "isis-adj-up-restarted") return 2;
+            if (name == "isis-adj-up-nsf-restored") return 3;
+            if (name == "isis-adj-up-chkpt-restored") return 4;
+            if (name == "isis-adj-init-reason") return 5;
+            if (name == "isis-adj-init-neighbor-forgot") return 6;
+            if (name == "isis-adj-down-hold-time") return 7;
+            if (name == "isis-adj-down-if-down") return 8;
+            if (name == "isis-adj-down-cfg-mismatch") return 9;
+            if (name == "isis-adj-down-circ-id") return 10;
+            if (name == "isis-adj-down-nsf-ack-fail") return 11;
+            if (name == "isis-adj-down-db-clear") return 12;
+            if (name == "isis-adj-down-no-common-topology") return 13;
+            if (name == "isis-adj-down-restart-tlv-missing") return 14;
+            if (name == "isis-adj-down-bfd-down") return 15;
+            if (name == "isis-adj-down-3way-down") return 16;
+            return -1;
+        }
 };
 
-class IsisIfClnsSnpaUnknownReason : public ydk::Enum
+class SrmsMiAfEB : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_access_error;
-        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_not_lan;
-        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_internal_error;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
-class IsisKnown : public ydk::Enum
+class IsisAdjBfdState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_unknown;
-        static const ydk::Enum::YLeaf isis_known;
+        static const ydk::Enum::YLeaf isis_adj_bfd_no_state;
+        static const ydk::Enum::YLeaf isis_adj_bfd_down_state;
+        static const ydk::Enum::YLeaf isis_adj_bfd_init_state;
+        static const ydk::Enum::YLeaf isis_adj_bfd_up_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-bfd-no-state") return 0;
+            if (name == "isis-adj-bfd-down-state") return 1;
+            if (name == "isis-adj-bfd-init-state") return 2;
+            if (name == "isis-adj-bfd-up-state") return 3;
+            return -1;
+        }
 };
 
-class IsisIfClnsMtuInvalidReason : public ydk::Enum
+class IsisRedistProto : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_too_small;
-        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_internal_error;
+        static const ydk::Enum::YLeaf isis_redist_connected;
+        static const ydk::Enum::YLeaf isis_redist_static;
+        static const ydk::Enum::YLeaf isis_redist_ospf;
+        static const ydk::Enum::YLeaf isis_redist_bgp;
+        static const ydk::Enum::YLeaf isis_redist_isis;
+        static const ydk::Enum::YLeaf isis_redist_ospfv3;
+        static const ydk::Enum::YLeaf isis_redist_rip;
+        static const ydk::Enum::YLeaf isis_redist_eigrp;
+        static const ydk::Enum::YLeaf isis_redist_subscriber;
+        static const ydk::Enum::YLeaf isis_redist_application;
+        static const ydk::Enum::YLeaf isis_redist_mobile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-redist-connected") return 0;
+            if (name == "isis-redist-static") return 1;
+            if (name == "isis-redist-ospf") return 2;
+            if (name == "isis-redist-bgp") return 3;
+            if (name == "isis-redist-isis") return 4;
+            if (name == "isis-redist-ospfv3") return 5;
+            if (name == "isis-redist-rip") return 6;
+            if (name == "isis-redist-eigrp") return 7;
+            if (name == "isis-redist-subscriber") return 8;
+            if (name == "isis-redist-application") return 9;
+            if (name == "isis-redist-mobile") return 10;
+            return -1;
+        }
 };
 
-class IsisIfClnsProtoDownReason : public ydk::Enum
+class IsisShRouteAdvOrigin : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_add_to_intf_stack_fail;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_no_imd_conn;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_node_doesnt_exist;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_exist_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_state_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_clns_not_up;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_interface;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_redistributed;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_native;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_summary;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_default;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-sh-route-adv-origin-interface") return 0;
+            if (name == "isis-sh-route-adv-origin-redistributed") return 1;
+            if (name == "isis-sh-route-adv-origin-native") return 2;
+            if (name == "isis-sh-route-adv-origin-summary") return 3;
+            if (name == "isis-sh-route-adv-origin-default") return 4;
+            return -1;
+        }
 };
 
-class IsisUp : public ydk::Enum
+class IsisEnabled : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_down;
-        static const ydk::Enum::YLeaf isis_up;
+        static const ydk::Enum::YLeaf isis_disabled;
+        static const ydk::Enum::YLeaf isis_enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-disabled") return 0;
+            if (name == "isis-enabled") return 1;
+            return -1;
+        }
 };
 
-class IsisIfAdvPrefixDisabledReason : public ydk::Enum
+class IsisLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_if_cfg_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_no_topo_participate;
-        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_internal_error;
+        static const ydk::Enum::YLeaf isis_level0;
+        static const ydk::Enum::YLeaf isis_level1;
+        static const ydk::Enum::YLeaf isis_level2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-level0") return 0;
+            if (name == "isis-level1") return 1;
+            if (name == "isis-level2") return 2;
+            return -1;
+        }
 };
 
-class IsisIfAdjFormDisabledReason : public ydk::Enum
+class IsisFrrTiebreaker : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_cfg_passive;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_no_topo_participate;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_add_to_intf_stack_fail;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_clns_io;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_internal_error;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_down_stream;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_lc_disjoint;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_low_est_backup_metric;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_node_protecting;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_primary_path;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_secondary_path;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_srlg_disjoint;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_default;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-frr-tiebreaker-down-stream") return 0;
+            if (name == "isis-frr-tiebreaker-lc-disjoint") return 1;
+            if (name == "isis-frr-tiebreaker-low-est-backup-metric") return 2;
+            if (name == "isis-frr-tiebreaker-node-protecting") return 3;
+            if (name == "isis-frr-tiebreaker-primary-path") return 4;
+            if (name == "isis-frr-tiebreaker-secondary-path") return 5;
+            if (name == "isis-frr-tiebreaker-srlg-disjoint") return 6;
+            if (name == "isis-frr-tiebreaker-default") return 7;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspIpv6SrlgStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf na;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "na") return 0;
+            return -1;
+        }
+};
+
+class IsisFrr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_frr_type_none;
+        static const ydk::Enum::YLeaf isis_frr_type_per_link;
+        static const ydk::Enum::YLeaf isis_frr_type_per_prefix;
+        static const ydk::Enum::YLeaf isis_frr_type_sr_u_loop;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-frr-type-none") return 0;
+            if (name == "isis-frr-type-per-link") return 1;
+            if (name == "isis-frr-type-per-prefix") return 2;
+            if (name == "isis-frr-type-sr-u-loop") return 3;
+            return -1;
+        }
 };
 
 class IsisIfDisabledReason : public ydk::Enum
@@ -41114,22 +35042,614 @@ class IsisIfDisabledReason : public ydk::Enum
         static const ydk::Enum::YLeaf isis_intf_disabled_intf_shutdown;
         static const ydk::Enum::YLeaf isis_intf_disabled_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-disabled-no-net-cfg") return 0;
+            if (name == "isis-intf-disabled-area-missing") return 1;
+            if (name == "isis-intf-disabled-no-area-running") return 2;
+            if (name == "isis-intf-disabled-no-topos-cfg") return 3;
+            if (name == "isis-intf-disabled-no-imd-conn") return 4;
+            if (name == "isis-intf-disabled-imd-reg-error") return 5;
+            if (name == "isis-intf-disabled-level-mismatch") return 6;
+            if (name == "isis-intf-disabled-base-caps-error") return 7;
+            if (name == "isis-intf-disabled-intf-doesnt-exist") return 8;
+            if (name == "isis-intf-disabled-intf-shutdown") return 9;
+            if (name == "isis-intf-disabled-internal-error") return 10;
+            return -1;
+        }
 };
 
-class IsisEnabled : public ydk::Enum
+class IsisShTeLink : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_disabled;
-        static const ydk::Enum::YLeaf isis_enabled;
+        static const ydk::Enum::YLeaf isis_sh_te_link_p2p;
+        static const ydk::Enum::YLeaf isis_sh_te_link_broadcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-sh-te-link-p2p") return 0;
+            if (name == "isis-sh-te-link-broadcast") return 1;
+            return -1;
+        }
 };
 
-class IsisReachable : public ydk::Enum
+class IsisMediaClass : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_unreachable;
-        static const ydk::Enum::YLeaf isis_reachable;
+        static const ydk::Enum::YLeaf isis_media_class_lan;
+        static const ydk::Enum::YLeaf isis_media_class_p2p;
+        static const ydk::Enum::YLeaf isis_media_class_loop_back;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-media-class-lan") return 0;
+            if (name == "isis-media-class-p2p") return 1;
+            if (name == "isis-media-class-loop-back") return 2;
+            return -1;
+        }
+};
+
+class OpenconfigIsisTypesAdaptiveTimerTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf linear;
+        static const ydk::Enum::YLeaf exponential;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "linear") return 0;
+            if (name == "exponential") return 1;
+            return -1;
+        }
+};
+
+class IsisIfMcastInvalidReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_join_error;
+        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_internal_error;
+        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_not_yet_needed;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-mcast-invalid-join-error") return 0;
+            if (name == "isis-intf-mcast-invalid-internal-error") return 1;
+            if (name == "isis-intf-mcast-invalid-not-yet-needed") return 2;
+            return -1;
+        }
+};
+
+class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_intf_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_not_up;
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown;
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-topo-adv-prefix-disabled-intf-suppressed") return 0;
+            if (name == "isis-intf-topo-adv-prefix-disabled-af-not-up") return 1;
+            if (name == "isis-intf-topo-adv-prefix-disabled-af-prefixes-unknown") return 2;
+            if (name == "isis-intf-topo-adv-prefix-disabled-internal-error") return 3;
+            return -1;
+        }
+};
+
+class IsisAdjState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_adj_up_state;
+        static const ydk::Enum::YLeaf isis_adj_init_state;
+        static const ydk::Enum::YLeaf isis_adj_failed_state;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-up-state") return 0;
+            if (name == "isis-adj-init-state") return 1;
+            if (name == "isis-adj-failed-state") return 2;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspNlpidEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
+};
+
+class IsisIfClnsProtoDownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_add_to_intf_stack_fail;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_no_imd_conn;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_node_doesnt_exist;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_exist_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_state_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_clns_not_up;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-clns-proto-down-add-to-intf-stack-fail") return 0;
+            if (name == "isis-intf-clns-proto-down-no-imd-conn") return 1;
+            if (name == "isis-intf-clns-proto-down-imd-node-doesnt-exist") return 2;
+            if (name == "isis-intf-clns-proto-down-imd-exist-reg-error") return 3;
+            if (name == "isis-intf-clns-proto-down-imd-state-reg-error") return 4;
+            if (name == "isis-intf-clns-proto-down-clns-not-up") return 5;
+            return -1;
+        }
+};
+
+class SrmsMiFlagEB : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 1;
+            return -1;
+        }
+};
+
+class IsisAdjTopoStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ok;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_configured;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_running;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_init_state;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_neighbor_doesnt_participate;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_missing;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_empty;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_missing;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_empty;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_matches_ours;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_matches_ours;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_subnet_mismatch;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_not_link_local;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-topo-status-ok") return 0;
+            if (name == "isis-adj-topo-status-intf-not-configured") return 1;
+            if (name == "isis-adj-topo-status-intf-not-running") return 2;
+            if (name == "isis-adj-topo-status-init-state") return 3;
+            if (name == "isis-adj-topo-status-neighbor-doesnt-participate") return 4;
+            if (name == "isis-adj-topo-status-ipv4-address-tlv-missing") return 5;
+            if (name == "isis-adj-topo-status-ipv4-address-tlv-empty") return 6;
+            if (name == "isis-adj-topo-status-ipv6-address-tlv-missing") return 7;
+            if (name == "isis-adj-topo-status-ipv6-address-tlv-empty") return 8;
+            if (name == "isis-adj-topo-status-ipv4-address-matches-ours") return 9;
+            if (name == "isis-adj-topo-status-ipv6-address-matches-ours") return 10;
+            if (name == "isis-adj-topo-status-ipv4-address-subnet-mismatch") return 11;
+            if (name == "isis-adj-topo-status-ipv6-address-not-link-local") return 12;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspLanAdjacencySidStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address_family;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf set;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-family") return 0;
+            if (name == "backup") return 1;
+            if (name == "value") return 2;
+            if (name == "local") return 3;
+            if (name == "set") return 4;
+            return -1;
+        }
+};
+
+class IsisIfTopoDisabledReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_topo_disabled_not_cfg;
+        static const ydk::Enum::YLeaf isis_intf_topo_disabled_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-topo-disabled-not-cfg") return 0;
+            if (name == "isis-intf-topo-disabled-internal-error") return 1;
+            return -1;
+        }
+};
+
+class IsisIfAdjFormDisabledReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_cfg_passive;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_no_topo_participate;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_add_to_intf_stack_fail;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_clns_io;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-adj-form-disabled-cfg-passive") return 0;
+            if (name == "isis-intf-adj-form-disabled-no-topo-participate") return 1;
+            if (name == "isis-intf-adj-form-disabled-add-to-intf-stack-fail") return 2;
+            if (name == "isis-intf-adj-form-disabled-clns-io") return 3;
+            if (name == "isis-intf-adj-form-disabled-internal-error") return 4;
+            return -1;
+        }
+};
+
+class IsisEdmLabelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_prefix_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_local_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_max;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-edm-label-alloc-prefix-sid") return 0;
+            if (name == "isis-edm-label-alloc-local-sid") return 1;
+            if (name == "isis-edm-label-alloc-max") return 2;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf unsupported;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            if (name == "unsupported") return 1;
+            return -1;
+        }
+};
+
+class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_php;
+        static const ydk::Enum::YLeaf explicit_null;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-php") return 0;
+            if (name == "explicit-null") return 1;
+            return -1;
+        }
+};
+
+class IsisLevels : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_levels_none;
+        static const ydk::Enum::YLeaf isis_levels_1;
+        static const ydk::Enum::YLeaf isis_levels_2;
+        static const ydk::Enum::YLeaf isis_levels_12;
+        static const ydk::Enum::YLeaf isis_levels_total;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-levels-none") return 0;
+            if (name == "isis-levels-1") return 1;
+            if (name == "isis-levels-2") return 2;
+            if (name == "isis-levels-12") return 3;
+            if (name == "isis-levels-total") return 4;
+            return -1;
+        }
+};
+
+class OpenconfigIsisTypesCircuitTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf broadcast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "point-to-point") return 0;
+            if (name == "broadcast") return 1;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspCryptoTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hmac_md5;
+        static const ydk::Enum::YLeaf cleartext;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "hmac-md5") return 0;
+            if (name == "cleartext") return 1;
+            return -1;
+        }
+};
+
+class IsisIfAfDisabledReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_af_disabled_no_topo_enabled;
+        static const ydk::Enum::YLeaf isis_intf_af_disabled_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-disabled-no-topo-enabled") return 0;
+            if (name == "isis-intf-af-disabled-internal-error") return 1;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf numbered;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "numbered") return 0;
+            return -1;
+        }
+};
+
+class OpenconfigIsisTypesMetricStyleEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf narrow_metric;
+        static const ydk::Enum::YLeaf wide_metric;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "narrow-metric") return 0;
+            if (name == "wide-metric") return 1;
+            return -1;
+        }
+};
+
+class IsisNsfFlavor : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_nsf_flav_or_none;
+        static const ydk::Enum::YLeaf isis_nsf_flav_or_cisco;
+        static const ydk::Enum::YLeaf isis_nsf_flav_or_ietf;
+        static const ydk::Enum::YLeaf isis_nsf_flav_or_nsr;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-nsf-flav-or-none") return 0;
+            if (name == "isis-nsf-flav-or-cisco") return 1;
+            if (name == "isis-nsf-flav-or-ietf") return 2;
+            if (name == "isis-nsf-flav-or-nsr") return 3;
+            return -1;
+        }
+};
+
+class IsisAdjTopoChange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_adj_topo_up_change;
+        static const ydk::Enum::YLeaf isis_adj_topo_next_hop_change;
+        static const ydk::Enum::YLeaf isis_adj_topo_down_change;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-adj-topo-up-change") return 0;
+            if (name == "isis-adj-topo-next-hop-change") return 1;
+            if (name == "isis-adj-topo-down-change") return 2;
+            return -1;
+        }
+};
+
+class IsisShTePceFloodingScope : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf area;
+        static const ydk::Enum::YLeaf domain;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "area") return 1;
+            if (name == "domain") return 2;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspAlgorithmEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf spf;
+        static const ydk::Enum::YLeaf strict_spf;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "spf") return 0;
+            if (name == "strict-spf") return 1;
+            return -1;
+        }
+};
+
+class IsisPrefixPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_prefix_priority_critical;
+        static const ydk::Enum::YLeaf isis_prefix_priority_high;
+        static const ydk::Enum::YLeaf isis_prefix_priority_med;
+        static const ydk::Enum::YLeaf isis_prefix_priority_low;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-prefix-priority-critical") return 0;
+            if (name == "isis-prefix-priority-high") return 1;
+            if (name == "isis-prefix-priority-med") return 2;
+            if (name == "isis-prefix-priority-low") return 3;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspFlagsStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf external_flag;
+        static const ydk::Enum::YLeaf readvertisement_flag;
+        static const ydk::Enum::YLeaf node_flag;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "external-flag") return 0;
+            if (name == "readvertisement-flag") return 1;
+            if (name == "node-flag") return 2;
+            return -1;
+        }
+};
+
+class IsisAfId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
+};
+
+class IsisKnown : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_unknown;
+        static const ydk::Enum::YLeaf isis_known;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-unknown") return 0;
+            if (name == "isis-known") return 1;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspAdjacencySidStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address_family;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf set;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-family") return 0;
+            if (name == "backup") return 1;
+            if (name == "value") return 2;
+            if (name == "local") return 3;
+            if (name == "set") return 4;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspPrefixSidStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf readvertisement;
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf php;
+        static const ydk::Enum::YLeaf explicit_null;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf local;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "readvertisement") return 0;
+            if (name == "node") return 1;
+            if (name == "php") return 2;
+            if (name == "explicit-null") return 3;
+            if (name == "value") return 4;
+            if (name == "local") return 5;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf partition_repair;
+        static const ydk::Enum::YLeaf attached_error;
+        static const ydk::Enum::YLeaf attached_expense;
+        static const ydk::Enum::YLeaf attached_delay;
+        static const ydk::Enum::YLeaf attached_default;
+        static const ydk::Enum::YLeaf overload;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "partition-repair") return 0;
+            if (name == "attached-error") return 1;
+            if (name == "attached-expense") return 2;
+            if (name == "attached-delay") return 3;
+            if (name == "attached-default") return 4;
+            if (name == "overload") return 5;
+            return -1;
+        }
+};
+
+class IsisValid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_invalid;
+        static const ydk::Enum::YLeaf isis_valid;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-invalid") return 0;
+            if (name == "isis-valid") return 1;
+            return -1;
+        }
+};
+
+class IsisIfClnsMtuInvalidReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_too_small;
+        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-clns-mtu-invalid-too-small") return 0;
+            if (name == "isis-intf-clns-mtu-invalid-internal-error") return 1;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspDefaultMetricStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            return -1;
+        }
+};
+
+class OpenconfigIsisAdjacencyStateNlpidEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
+};
+
+class IsisIfAfProtoDownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_conn_fail;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_node_doesnt_exist;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_exist_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_state_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_af_not_up;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-proto-down-imd-conn-fail") return 0;
+            if (name == "isis-intf-af-proto-down-imd-node-doesnt-exist") return 1;
+            if (name == "isis-intf-af-proto-down-imd-exist-reg-error") return 2;
+            if (name == "isis-intf-af-proto-down-imd-state-reg-error") return 3;
+            if (name == "isis-intf-af-proto-down-af-not-up") return 4;
+            if (name == "isis-intf-af-proto-down-internal-error") return 5;
+            return -1;
+        }
 };
 
 class IsisMetricMode : public ydk::Enum
@@ -41139,6 +35659,118 @@ class IsisMetricMode : public ydk::Enum
         static const ydk::Enum::YLeaf isis_metric_mode_relative;
         static const ydk::Enum::YLeaf isis_metric_mode_absolute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-metric-mode-fixed") return 0;
+            if (name == "isis-metric-mode-relative") return 1;
+            if (name == "isis-metric-mode-absolute") return 2;
+            return -1;
+        }
+};
+
+class OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_mpls;
+        static const ydk::Enum::YLeaf ipv6_mpls;
+        static const ydk::Enum::YLeaf ipv6_sr;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-mpls") return 0;
+            if (name == "ipv6-mpls") return 1;
+            if (name == "ipv6-sr") return 2;
+            return -1;
+        }
+};
+
+class IsisMetricStyle : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_metric_style_narrow;
+        static const ydk::Enum::YLeaf isis_metric_style_wide;
+        static const ydk::Enum::YLeaf isis_metric_style_transition;
+        static const ydk::Enum::YLeaf isis_metric_style_narrow_transition;
+        static const ydk::Enum::YLeaf isis_metric_style_wide_transition;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-metric-style-narrow") return 0;
+            if (name == "isis-metric-style-wide") return 1;
+            if (name == "isis-metric-style-transition") return 2;
+            if (name == "isis-metric-style-narrow-transition") return 3;
+            if (name == "isis-metric-style-wide-transition") return 4;
+            return -1;
+        }
+};
+
+class IsisIfAdvPrefixDisabledReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_if_cfg_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_no_topo_participate;
+        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-adv-prefix-disabled-if-cfg-suppressed") return 0;
+            if (name == "isis-intf-adv-prefix-disabled-no-topo-participate") return 1;
+            if (name == "isis-intf-adv-prefix-disabled-internal-error") return 2;
+            return -1;
+        }
+};
+
+class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level12;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 0;
+            if (name == "level2") return 1;
+            if (name == "level12") return 2;
+            return -1;
+        }
+};
+
+class IsisIfAfPrefixUnknownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-af-prefix-unknown-adv-suppressed") return 0;
+            if (name == "isis-intf-af-prefix-unknown-global-addr-reg-error") return 1;
+            if (name == "isis-intf-af-prefix-unknown-internal-error") return 2;
+            return -1;
+        }
+};
+
+class IsisSpfClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_spf_frr_sr_u_loop;
+        static const ydk::Enum::YLeaf isis_spf_frr_per_link;
+        static const ydk::Enum::YLeaf isis_spf_partial;
+        static const ydk::Enum::YLeaf isis_spf_frr_per_prefix;
+        static const ydk::Enum::YLeaf isis_spf_ucmp_calc;
+        static const ydk::Enum::YLeaf isis_spf_flex;
+        static const ydk::Enum::YLeaf isis_spf_next_hop;
+        static const ydk::Enum::YLeaf isis_spf_incremental;
+        static const ydk::Enum::YLeaf isis_spf_full;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-spf-frr-sr-u-loop") return 0;
+            if (name == "isis-spf-frr-per-link") return 1;
+            if (name == "isis-spf-partial") return 2;
+            if (name == "isis-spf-frr-per-prefix") return 3;
+            if (name == "isis-spf-ucmp-calc") return 4;
+            if (name == "isis-spf-flex") return 5;
+            if (name == "isis-spf-next-hop") return 6;
+            if (name == "isis-spf-incremental") return 7;
+            if (name == "isis-spf-full") return 8;
+            return -1;
+        }
 };
 
 class IsisSpfTrigger : public ydk::Enum
@@ -41176,156 +35808,89 @@ class IsisSpfTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf isis_spf_trig_ip_addr;
         static const ydk::Enum::YLeaf isis_spf_trig_rtrid;
         static const ydk::Enum::YLeaf isis_spf_trig_flex_algo;
-        static const ydk::Enum::YLeaf isis_spf_trig_srv6_cap;
-        static const ydk::Enum::YLeaf isis_spf_trig_srv6_locator;
         static const ydk::Enum::YLeaf isis_spf_trig_prefix_policy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-spf-trig-config") return 0;
+            if (name == "isis-spf-trig-nsr-fo") return 1;
+            if (name == "isis-spf-trig-periodic") return 2;
+            if (name == "isis-spf-trig-clear") return 3;
+            if (name == "isis-spf-trig-newadj") return 4;
+            if (name == "isis-spf-trig-deladj") return 5;
+            if (name == "isis-spf-trig-next-hop") return 6;
+            if (name == "isis-spf-trig-metric") return 7;
+            if (name == "isis-spf-trig-dis") return 8;
+            if (name == "isis-spf-trig-frr-per-link") return 9;
+            if (name == "isis-spf-trig-frr-per-prefix") return 10;
+            if (name == "isis-spf-trig-ucmp") return 11;
+            if (name == "isis-spf-trig-new-tunnel") return 12;
+            if (name == "isis-spf-trig-del-tunnel") return 13;
+            if (name == "isis-spf-trig-chg-tunnel") return 14;
+            if (name == "isis-spf-trig-new-node") return 15;
+            if (name == "isis-spf-trig-del-node") return 16;
+            if (name == "isis-spf-trig-newlsp") return 17;
+            if (name == "isis-spf-trig-lsp-expiry") return 18;
+            if (name == "isis-spf-trig-attach-set") return 19;
+            if (name == "isis-spf-trig-attach-clr") return 20;
+            if (name == "isis-spf-trig-overload-set") return 21;
+            if (name == "isis-spf-trig-overload-clr") return 22;
+            if (name == "isis-spf-trig-link-good") return 23;
+            if (name == "isis-spf-trig-link-bad") return 24;
+            if (name == "isis-spf-trig-prefix-good") return 25;
+            if (name == "isis-spf-trig-prefix-bad") return 26;
+            if (name == "isis-spf-trig-prefix") return 27;
+            if (name == "isis-spf-trig-area-addr") return 28;
+            if (name == "isis-spf-trig-ip-addr") return 29;
+            if (name == "isis-spf-trig-rtrid") return 30;
+            if (name == "isis-spf-trig-flex-algo") return 31;
+            if (name == "isis-spf-trig-prefix-policy") return 32;
+            return -1;
+        }
 };
 
-class IsisSpfClass : public ydk::Enum
+class IsisIfClnsSnpaUnknownReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_spf_frr_sr_u_loop;
-        static const ydk::Enum::YLeaf isis_spf_frr_per_link;
-        static const ydk::Enum::YLeaf isis_spf_partial;
-        static const ydk::Enum::YLeaf isis_spf_frr_per_prefix;
-        static const ydk::Enum::YLeaf isis_spf_ucmp_calc;
-        static const ydk::Enum::YLeaf isis_spf_flex;
-        static const ydk::Enum::YLeaf isis_spf_next_hop;
-        static const ydk::Enum::YLeaf isis_spf_incremental;
-        static const ydk::Enum::YLeaf isis_spf_full;
+        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_access_error;
+        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_not_lan;
+        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_internal_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-intf-clns-snpa-unknown-access-error") return 0;
+            if (name == "isis-intf-clns-snpa-unknown-not-lan") return 1;
+            if (name == "isis-intf-clns-snpa-unknown-internal-error") return 2;
+            return -1;
+        }
 };
 
-class IsisShTePceFloodingScope : public ydk::Enum
+class OpenconfigIsisTypesIsisInterfaceAdjStateEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf area;
-        static const ydk::Enum::YLeaf domain;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            if (name == "init") return 2;
+            if (name == "failed") return 3;
+            return -1;
+        }
 };
 
-class IsisShTeLink : public ydk::Enum
+class IsisReachable : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_sh_te_link_p2p;
-        static const ydk::Enum::YLeaf isis_sh_te_link_broadcast;
+        static const ydk::Enum::YLeaf isis_unreachable;
+        static const ydk::Enum::YLeaf isis_reachable;
 
-};
-
-class Srv6EndFunction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf end;
-        static const ydk::Enum::YLeaf end_with_psp;
-        static const ydk::Enum::YLeaf end_with_usp;
-        static const ydk::Enum::YLeaf end_with_psp_usp;
-        static const ydk::Enum::YLeaf end_x;
-        static const ydk::Enum::YLeaf end_x_with_psp;
-        static const ydk::Enum::YLeaf end_x_with_usp;
-        static const ydk::Enum::YLeaf end_x_with_psp_usp;
-        static const ydk::Enum::YLeaf end_tn;
-        static const ydk::Enum::YLeaf end_t_with_psp;
-        static const ydk::Enum::YLeaf end_t_with_usp;
-        static const ydk::Enum::YLeaf end_t_with_psp_usp;
-        static const ydk::Enum::YLeaf end_b6;
-        static const ydk::Enum::YLeaf end_b6_encaps;
-        static const ydk::Enum::YLeaf end_bm;
-        static const ydk::Enum::YLeaf end_dx6;
-        static const ydk::Enum::YLeaf end_dx4;
-        static const ydk::Enum::YLeaf end_dt6;
-        static const ydk::Enum::YLeaf end_dt4;
-        static const ydk::Enum::YLeaf end_dt46;
-        static const ydk::Enum::YLeaf end_dx2;
-        static const ydk::Enum::YLeaf end_dx2v;
-        static const ydk::Enum::YLeaf end_dx2u;
-        static const ydk::Enum::YLeaf end_dx2m;
-        static const ydk::Enum::YLeaf end_otp;
-        static const ydk::Enum::YLeaf end_s;
-
-};
-
-class IsisShRouteAdvOrigin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_interface;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_redistributed;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_native;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_summary;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_default;
-
-};
-
-class IsisPrefixPriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_prefix_priority_critical;
-        static const ydk::Enum::YLeaf isis_prefix_priority_high;
-        static const ydk::Enum::YLeaf isis_prefix_priority_med;
-        static const ydk::Enum::YLeaf isis_prefix_priority_low;
-
-};
-
-class IsisTilfaComputation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_tilfa_comp_none;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_link;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_node;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_srlg;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_node_srlg;
-
-};
-
-class IsisPrefixOrigin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_prefix_origin_l1_summary_null;
-        static const ydk::Enum::YLeaf isis_prefix_origin_l1;
-        static const ydk::Enum::YLeaf isis_prefix_origin_l2_summary_null;
-        static const ydk::Enum::YLeaf isis_prefix_origin_l2;
-        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area_summary_null;
-        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area;
-        static const ydk::Enum::YLeaf isis_prefix_origin_default_nearest_attached;
-
-};
-
-class IsisRedistProto : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_redist_connected;
-        static const ydk::Enum::YLeaf isis_redist_static;
-        static const ydk::Enum::YLeaf isis_redist_ospf;
-        static const ydk::Enum::YLeaf isis_redist_bgp;
-        static const ydk::Enum::YLeaf isis_redist_isis;
-        static const ydk::Enum::YLeaf isis_redist_ospfv3;
-        static const ydk::Enum::YLeaf isis_redist_rip;
-        static const ydk::Enum::YLeaf isis_redist_eigrp;
-        static const ydk::Enum::YLeaf isis_redist_subscriber;
-        static const ydk::Enum::YLeaf isis_redist_application;
-        static const ydk::Enum::YLeaf isis_redist_mobile;
-
-};
-
-class IsisValid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_invalid;
-        static const ydk::Enum::YLeaf isis_valid;
-
-};
-
-class IsisLspDbOp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_lsp_db_clear;
-        static const ydk::Enum::YLeaf isis_lsp_db_insert_new_lsp;
-        static const ydk::Enum::YLeaf isis_lsp_db_replace_lsp_with_lsp;
-        static const ydk::Enum::YLeaf isis_lsp_db_purge_lsp;
-        static const ydk::Enum::YLeaf isis_lsp_db_delete_lsp;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-unreachable") return 0;
+            if (name == "isis-reachable") return 1;
+            return -1;
+        }
 };
 
 class IsisLspTrigger : public ydk::Enum
@@ -41365,121 +35930,184 @@ class IsisLspTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
         static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-lsp-trig-config") return 0;
+            if (name == "isis-lsp-trig-newadj") return 1;
+            if (name == "isis-lsp-trig-deladj") return 2;
+            if (name == "isis-lsp-trig-dr-change") return 3;
+            if (name == "isis-lsp-trig-area-set") return 4;
+            if (name == "isis-lsp-trig-attach") return 5;
+            if (name == "isis-lsp-trig-hippity") return 6;
+            if (name == "isis-lsp-trig-regen") return 7;
+            if (name == "isis-lsp-trig-ip-if-up") return 8;
+            if (name == "isis-lsp-trig-ip-if-down") return 9;
+            if (name == "isis-lsp-trig-ip-inter-area") return 10;
+            if (name == "isis-lsp-trig-ip-external") return 11;
+            if (name == "isis-lsp-trig-ip-external-full") return 12;
+            if (name == "isis-lsp-trig-ip-def-orig") return 13;
+            if (name == "isis-lsp-trig-ip-addr-chg") return 14;
+            if (name == "isis-lsp-trig-te-info") return 15;
+            if (name == "isis-lsp-trig-te-pce-info") return 16;
+            if (name == "isis-lsp-trig-te-fa-info") return 17;
+            if (name == "isis-lsp-trig-nsr-fo") return 18;
+            if (name == "isis-lsp-trig-pn-cancel") return 19;
+            if (name == "isis-lsp-trig-lkgp") return 20;
+            if (name == "isis-lsp-trig-pp") return 21;
+            if (name == "isis-lsp-trig-config-force-send") return 22;
+            if (name == "isis-lsp-trig-config-force-init") return 23;
+            if (name == "isis-lsp-trig-adj-sid-add") return 24;
+            if (name == "isis-lsp-trig-adj-sid-delete") return 25;
+            if (name == "isis-lsp-trig-adj-sid-change") return 26;
+            if (name == "isis-lsp-trig-msd") return 27;
+            if (name == "isis-lsp-trig-adj-sid-wait-timer") return 28;
+            if (name == "isis-lsp-trig-direct-gen") return 29;
+            if (name == "isis-lsp-trig-flex-algo-enable-disable") return 30;
+            if (name == "isis-lsp-trig-pm-delay-loss") return 31;
+            if (name == "isis-lsp-trig-pm-bw-util") return 32;
+            return -1;
+        }
 };
 
-class IsisAdjTopoStatus : public ydk::Enum
+class IsisUloopAvoidance : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ok;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_configured;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_running;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_init_state;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_neighbor_doesnt_participate;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_missing;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_empty;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_missing;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_empty;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_matches_ours;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_matches_ours;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_subnet_mismatch;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_not_link_local;
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_none;
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_all;
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_protected;
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_sr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-u-loop-avoidance-type-none") return 0;
+            if (name == "isis-u-loop-avoidance-type-all") return 1;
+            if (name == "isis-u-loop-avoidance-type-protected") return 2;
+            if (name == "isis-u-loop-avoidance-type-sr") return 3;
+            return -1;
+        }
 };
 
-class IsisAdjBfdState : public ydk::Enum
+class Srv6EndFunction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_adj_bfd_no_state;
-        static const ydk::Enum::YLeaf isis_adj_bfd_down_state;
-        static const ydk::Enum::YLeaf isis_adj_bfd_init_state;
-        static const ydk::Enum::YLeaf isis_adj_bfd_up_state;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf end;
+        static const ydk::Enum::YLeaf end_with_psp;
+        static const ydk::Enum::YLeaf end_with_usp;
+        static const ydk::Enum::YLeaf end_with_psp_usp;
+        static const ydk::Enum::YLeaf end_x;
+        static const ydk::Enum::YLeaf end_x_with_psp;
+        static const ydk::Enum::YLeaf end_x_with_usp;
+        static const ydk::Enum::YLeaf end_x_with_psp_usp;
+        static const ydk::Enum::YLeaf end_tn;
+        static const ydk::Enum::YLeaf end_t_with_psp;
+        static const ydk::Enum::YLeaf end_t_with_usp;
+        static const ydk::Enum::YLeaf end_t_with_psp_usp;
+        static const ydk::Enum::YLeaf end_b6;
+        static const ydk::Enum::YLeaf end_b6_encaps;
+        static const ydk::Enum::YLeaf end_bm;
+        static const ydk::Enum::YLeaf end_dx6;
+        static const ydk::Enum::YLeaf end_dx4;
+        static const ydk::Enum::YLeaf end_dt6;
+        static const ydk::Enum::YLeaf end_dt4;
+        static const ydk::Enum::YLeaf end_dt46;
+        static const ydk::Enum::YLeaf end_dx2;
+        static const ydk::Enum::YLeaf end_dx2v;
+        static const ydk::Enum::YLeaf end_dx2u;
+        static const ydk::Enum::YLeaf end_dx2m;
+        static const ydk::Enum::YLeaf end_otp;
+        static const ydk::Enum::YLeaf end_s;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "end") return 1;
+            if (name == "end-with-psp") return 2;
+            if (name == "end-with-usp") return 3;
+            if (name == "end-with-psp-usp") return 4;
+            if (name == "end-x") return 5;
+            if (name == "end-x-with-psp") return 6;
+            if (name == "end-x-with-usp") return 7;
+            if (name == "end-x-with-psp-usp") return 8;
+            if (name == "end-tn") return 9;
+            if (name == "end-t-with-psp") return 10;
+            if (name == "end-t-with-usp") return 11;
+            if (name == "end-t-with-psp-usp") return 12;
+            if (name == "end-b6") return 13;
+            if (name == "end-b6-encaps") return 14;
+            if (name == "end-bm") return 15;
+            if (name == "end-dx6") return 16;
+            if (name == "end-dx4") return 17;
+            if (name == "end-dt6") return 18;
+            if (name == "end-dt4") return 19;
+            if (name == "end-dt46") return 20;
+            if (name == "end-dx2") return 21;
+            if (name == "end-dx2v") return 22;
+            if (name == "end-dx2u") return 23;
+            if (name == "end-dx2m") return 24;
+            if (name == "end-otp") return 25;
+            if (name == "end-s") return 26;
+            return -1;
+        }
 };
 
-class IsisAdjTopoChange : public ydk::Enum
+class IsisPrefixOrigin : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_adj_topo_up_change;
-        static const ydk::Enum::YLeaf isis_adj_topo_next_hop_change;
-        static const ydk::Enum::YLeaf isis_adj_topo_down_change;
+        static const ydk::Enum::YLeaf isis_prefix_origin_l1_summary_null;
+        static const ydk::Enum::YLeaf isis_prefix_origin_l1;
+        static const ydk::Enum::YLeaf isis_prefix_origin_l2_summary_null;
+        static const ydk::Enum::YLeaf isis_prefix_origin_l2;
+        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area_summary_null;
+        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area;
+        static const ydk::Enum::YLeaf isis_prefix_origin_default_nearest_attached;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis-prefix-origin-l1-summary-null") return 0;
+            if (name == "isis-prefix-origin-l1") return 1;
+            if (name == "isis-prefix-origin-l2-summary-null") return 2;
+            if (name == "isis-prefix-origin-l2") return 3;
+            if (name == "isis-prefix-origin-inter-area-summary-null") return 4;
+            if (name == "isis-prefix-origin-inter-area") return 5;
+            if (name == "isis-prefix-origin-default-nearest-attached") return 6;
+            return -1;
+        }
 };
 
-class IsisAdjStateReason : public ydk::Enum
+class OpenconfigIsisLspAttributesEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_adj_up_nsf_restart;
-        static const ydk::Enum::YLeaf isis_adj_up_new_adj;
-        static const ydk::Enum::YLeaf isis_adj_up_restarted;
-        static const ydk::Enum::YLeaf isis_adj_up_nsf_restored;
-        static const ydk::Enum::YLeaf isis_adj_up_chkpt_restored;
-        static const ydk::Enum::YLeaf isis_adj_init_reason;
-        static const ydk::Enum::YLeaf isis_adj_init_neighbor_forgot;
-        static const ydk::Enum::YLeaf isis_adj_down_hold_time;
-        static const ydk::Enum::YLeaf isis_adj_down_if_down;
-        static const ydk::Enum::YLeaf isis_adj_down_cfg_mismatch;
-        static const ydk::Enum::YLeaf isis_adj_down_circ_id;
-        static const ydk::Enum::YLeaf isis_adj_down_nsf_ack_fail;
-        static const ydk::Enum::YLeaf isis_adj_down_db_clear;
-        static const ydk::Enum::YLeaf isis_adj_down_no_common_topology;
-        static const ydk::Enum::YLeaf isis_adj_down_restart_tlv_missing;
-        static const ydk::Enum::YLeaf isis_adj_down_bfd_down;
-        static const ydk::Enum::YLeaf isis_adj_down_3way_down;
+        static const ydk::Enum::YLeaf overload;
+        static const ydk::Enum::YLeaf attached;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "overload") return 0;
+            if (name == "attached") return 1;
+            return -1;
+        }
 };
 
-class IsisLevel : public ydk::Enum
+class OpenconfigIsisLspPduTypeEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_level0;
-        static const ydk::Enum::YLeaf isis_level1;
-        static const ydk::Enum::YLeaf isis_level2;
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 0;
+            if (name == "level2") return 1;
+            return -1;
+        }
 };
 
-class IsisSubAfId : public ydk::Enum
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::Algorithm : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf spf;
+        static const ydk::Enum::YLeaf strict_spf;
 
-};
-
-class IsisAfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class IsisMediaClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_media_class_lan;
-        static const ydk::Enum::YLeaf isis_media_class_p2p;
-        static const ydk::Enum::YLeaf isis_media_class_loop_back;
-
-};
-
-class IsisLevels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_levels_none;
-        static const ydk::Enum::YLeaf isis_levels_1;
-        static const ydk::Enum::YLeaf isis_levels_2;
-        static const ydk::Enum::YLeaf isis_levels_12;
-        static const ydk::Enum::YLeaf isis_levels_total;
-
-};
-
-class IsisAdjState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_adj_up_state;
-        static const ydk::Enum::YLeaf isis_adj_init_state;
-        static const ydk::Enum::YLeaf isis_adj_failed_state;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "spf") return 0;
+            if (name == "strict-spf") return 1;
+            return -1;
+        }
 };
 
 

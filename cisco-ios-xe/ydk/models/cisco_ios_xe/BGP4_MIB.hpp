@@ -271,6 +271,15 @@ class BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState : public ydk::Enum
         static const ydk::Enum::YLeaf openconfirm;
         static const ydk::Enum::YLeaf established;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "connect") return 2;
+            if (name == "active") return 3;
+            if (name == "opensent") return 4;
+            if (name == "openconfirm") return 5;
+            if (name == "established") return 6;
+            return -1;
+        }
 };
 
 class BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerAdminStatus : public ydk::Enum
@@ -279,6 +288,11 @@ class BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerAdminStatus : public ydk::Enum
         static const ydk::Enum::YLeaf stop;
         static const ydk::Enum::YLeaf start;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stop") return 1;
+            if (name == "start") return 2;
+            return -1;
+        }
 };
 
 class BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState : public ydk::Enum
@@ -292,6 +306,16 @@ class BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState : public ydk::Enum
         static const ydk::Enum::YLeaf openconfirm;
         static const ydk::Enum::YLeaf established;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "idle") return 1;
+            if (name == "connect") return 2;
+            if (name == "active") return 3;
+            if (name == "opensent") return 4;
+            if (name == "openconfirm") return 5;
+            if (name == "established") return 6;
+            return -1;
+        }
 };
 
 class BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::BgpPathAttrOrigin : public ydk::Enum
@@ -301,6 +325,12 @@ class BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::BgpPathAttrOrigin : publi
         static const ydk::Enum::YLeaf egp;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 1;
+            if (name == "egp") return 2;
+            if (name == "incomplete") return 3;
+            return -1;
+        }
 };
 
 class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrOrigin : public ydk::Enum
@@ -310,6 +340,12 @@ class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrOrigin : public
         static const ydk::Enum::YLeaf egp;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 1;
+            if (name == "egp") return 2;
+            if (name == "incomplete") return 3;
+            return -1;
+        }
 };
 
 class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrAtomicAggregate : public ydk::Enum
@@ -318,6 +354,11 @@ class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrAtomicAggregate
         static const ydk::Enum::YLeaf lessSpecificRrouteNotSelected;
         static const ydk::Enum::YLeaf lessSpecificRouteSelected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lessSpecificRrouteNotSelected") return 1;
+            if (name == "lessSpecificRouteSelected") return 2;
+            return -1;
+        }
 };
 
 class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrBest : public ydk::Enum
@@ -326,6 +367,11 @@ class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrBest : public y
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 1;
+            if (name == "true") return 2;
+            return -1;
+        }
 };
 
 

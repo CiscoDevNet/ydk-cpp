@@ -108,11 +108,11 @@ class gNMIClient : public NetconfClient
                const std::string & server_certificate="", const std::string & private_key="");
     ~gNMIClient();
 
-    std::vector<std::string> execute_get_operation(const std::vector<GnmiClientRequest> get_request_list, const std::string& operation);
+    std::vector<std::string> execute_get_operation(const std::vector<GnmiClientRequest> & get_request_list, const std::string & operation);
 
-    bool execute_set_operation(const std::vector<GnmiClientRequest> get_request_list);
+    bool execute_set_operation(const std::vector<GnmiClientRequest> & get_request_list);
 
-    void execute_subscribe_operation(std::vector<GnmiClientSubscription> subscription_list,
+    void execute_subscribe_operation(const std::vector<GnmiClientSubscription> & subscription_list,
                                      uint32 qos, const std::string & mode,
 									 const std::string & encoding,
                                      std::function<void(const char * response)> out_func,

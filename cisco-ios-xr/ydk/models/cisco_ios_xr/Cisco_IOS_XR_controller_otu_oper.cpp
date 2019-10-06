@@ -5727,64 +5727,17 @@ bool Otu::Controllers::Controller::Info::AinsInfo::has_leaf_or_child_of_name(con
     return false;
 }
 
-const Enum::YLeaf OtuAinsStateEt::none {0, "none"};
-const Enum::YLeaf OtuAinsStateEt::active_running {1, "active-running"};
-const Enum::YLeaf OtuAinsStateEt::active_pending {2, "active-pending"};
+const Enum::YLeaf OtuPrbsStatus::locked {0, "locked"};
+const Enum::YLeaf OtuPrbsStatus::unlocked {1, "unlocked"};
+const Enum::YLeaf OtuPrbsStatus::not_applicable {2, "not-applicable"};
 
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
-
-const Enum::YLeaf OtuPpIntfState::otu_pp_intf_up {0, "otu-pp-intf-up"};
-const Enum::YLeaf OtuPpIntfState::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
-const Enum::YLeaf OtuPpIntfState::otu_pp_intf_down {2, "otu-pp-intf-down"};
-
-const Enum::YLeaf OtuPpFsmState::otu_in_active {0, "otu-in-active"};
-const Enum::YLeaf OtuPpFsmState::otu_disabled {1, "otu-disabled"};
-const Enum::YLeaf OtuPpFsmState::otu_normal_state {2, "otu-normal-state"};
-const Enum::YLeaf OtuPpFsmState::otu_local_failing {3, "otu-local-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_remote_failing {4, "otu-remote-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_main_t_failing {5, "otu-main-t-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_regen_failing {6, "otu-regen-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_local_failed {7, "otu-local-failed"};
-const Enum::YLeaf OtuPpFsmState::otu_remote_failed {8, "otu-remote-failed"};
-const Enum::YLeaf OtuPpFsmState::otu_main_t_failed {9, "otu-main-t-failed"};
-const Enum::YLeaf OtuPpFsmState::otu_regen_failed {10, "otu-regen-failed"};
-
-const Enum::YLeaf OtuPerMon::disable {0, "disable"};
-const Enum::YLeaf OtuPerMon::enable {1, "enable"};
-
-const Enum::YLeaf OtuSecState::normal {0, "normal"};
-const Enum::YLeaf OtuSecState::maintenance {1, "maintenance"};
-const Enum::YLeaf OtuSecState::ains {2, "ains"};
-
-const Enum::YLeaf OtuDerState::out_of_service {0, "out-of-service"};
-const Enum::YLeaf OtuDerState::in_service {1, "in-service"};
-const Enum::YLeaf OtuDerState::maintenance {2, "maintenance"};
-const Enum::YLeaf OtuDerState::ains {3, "ains"};
-
-const Enum::YLeaf OtuG709fecMode::otu_bag_none_fec {1, "otu-bag-none-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_sd15_fec {512, "otu-bag-sd15-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_sd27_fec {1024, "otu-bag-sd27-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_all_fec {2048, "otu-bag-all-fec"};
-
-const Enum::YLeaf OtuLoopBackMode::none {1, "none"};
-const Enum::YLeaf OtuLoopBackMode::line {2, "line"};
-const Enum::YLeaf OtuLoopBackMode::internal {4, "internal"};
-
-const Enum::YLeaf OtuTtiEt::ascii {0, "ascii"};
-const Enum::YLeaf OtuTtiEt::hex {1, "hex"};
-const Enum::YLeaf OtuTtiEt::full_ascii {2, "full-ascii"};
-const Enum::YLeaf OtuTtiEt::full_hex {3, "full-hex"};
+const Enum::YLeaf OtuPrbsPattern::not_applicable {0, "not-applicable"};
+const Enum::YLeaf OtuPrbsPattern::pn31 {1, "pn31"};
+const Enum::YLeaf OtuPrbsPattern::pn23 {2, "pn23"};
+const Enum::YLeaf OtuPrbsPattern::pn11 {4, "pn11"};
+const Enum::YLeaf OtuPrbsPattern::inverted_pn31 {8, "inverted-pn31"};
+const Enum::YLeaf OtuPrbsPattern::inverted_pn11 {16, "inverted-pn11"};
+const Enum::YLeaf OtuPrbsPattern::pn15 {32, "pn15"};
 
 const Enum::YLeaf OtuStateEt::not_ready {0, "not-ready"};
 const Enum::YLeaf OtuStateEt::admin_down {1, "admin-down"};
@@ -5806,25 +5759,72 @@ const Enum::YLeaf OtuStateEt::not_operational {16, "not-operational"};
 const Enum::YLeaf OtuStateEt::unknown {17, "unknown"};
 const Enum::YLeaf OtuStateEt::last {18, "last"};
 
-const Enum::YLeaf OtuPrbsStatus::locked {0, "locked"};
-const Enum::YLeaf OtuPrbsStatus::unlocked {1, "unlocked"};
-const Enum::YLeaf OtuPrbsStatus::not_applicable {2, "not-applicable"};
+const Enum::YLeaf OtuPrbsTest::disable {0, "disable"};
+const Enum::YLeaf OtuPrbsTest::enable {1, "enable"};
 
-const Enum::YLeaf OtuPrbsPattern::not_applicable {0, "not-applicable"};
-const Enum::YLeaf OtuPrbsPattern::pn31 {1, "pn31"};
-const Enum::YLeaf OtuPrbsPattern::pn23 {2, "pn23"};
-const Enum::YLeaf OtuPrbsPattern::pn11 {4, "pn11"};
-const Enum::YLeaf OtuPrbsPattern::inverted_pn31 {8, "inverted-pn31"};
-const Enum::YLeaf OtuPrbsPattern::inverted_pn11 {16, "inverted-pn11"};
-const Enum::YLeaf OtuPrbsPattern::pn15 {32, "pn15"};
+const Enum::YLeaf OtuAinsStateEt::none {0, "none"};
+const Enum::YLeaf OtuAinsStateEt::active_running {1, "active-running"};
+const Enum::YLeaf OtuAinsStateEt::active_pending {2, "active-pending"};
+
+const Enum::YLeaf OtuPpFsmState::otu_in_active {0, "otu-in-active"};
+const Enum::YLeaf OtuPpFsmState::otu_disabled {1, "otu-disabled"};
+const Enum::YLeaf OtuPpFsmState::otu_normal_state {2, "otu-normal-state"};
+const Enum::YLeaf OtuPpFsmState::otu_local_failing {3, "otu-local-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_remote_failing {4, "otu-remote-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_main_t_failing {5, "otu-main-t-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_regen_failing {6, "otu-regen-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_local_failed {7, "otu-local-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_remote_failed {8, "otu-remote-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_main_t_failed {9, "otu-main-t-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_regen_failed {10, "otu-regen-failed"};
+
+const Enum::YLeaf OtuG709fecMode::otu_bag_none_fec {1, "otu-bag-none-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd15_fec {512, "otu-bag-sd15-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd27_fec {1024, "otu-bag-sd27-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_all_fec {2048, "otu-bag-all-fec"};
 
 const Enum::YLeaf OtuPrbsMode::not_applicable {0, "not-applicable"};
 const Enum::YLeaf OtuPrbsMode::source {1, "source"};
 const Enum::YLeaf OtuPrbsMode::sink {2, "sink"};
 const Enum::YLeaf OtuPrbsMode::source_sink {3, "source-sink"};
 
-const Enum::YLeaf OtuPrbsTest::disable {0, "disable"};
-const Enum::YLeaf OtuPrbsTest::enable {1, "enable"};
+const Enum::YLeaf OtuPerMon::disable {0, "disable"};
+const Enum::YLeaf OtuPerMon::enable {1, "enable"};
+
+const Enum::YLeaf OtuTtiEt::ascii {0, "ascii"};
+const Enum::YLeaf OtuTtiEt::hex {1, "hex"};
+const Enum::YLeaf OtuTtiEt::full_ascii {2, "full-ascii"};
+const Enum::YLeaf OtuTtiEt::full_hex {3, "full-hex"};
+
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_up {0, "otu-pp-intf-up"};
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_down {2, "otu-pp-intf-down"};
+
+const Enum::YLeaf OtuSecState::normal {0, "normal"};
+const Enum::YLeaf OtuSecState::maintenance {1, "maintenance"};
+const Enum::YLeaf OtuSecState::ains {2, "ains"};
+
+const Enum::YLeaf OtuLoopBackMode::none {1, "none"};
+const Enum::YLeaf OtuLoopBackMode::line {2, "line"};
+const Enum::YLeaf OtuLoopBackMode::internal {4, "internal"};
+
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
+
+const Enum::YLeaf OtuDerState::out_of_service {0, "out-of-service"};
+const Enum::YLeaf OtuDerState::in_service {1, "in-service"};
+const Enum::YLeaf OtuDerState::maintenance {2, "maintenance"};
+const Enum::YLeaf OtuDerState::ains {3, "ains"};
 
 
 }

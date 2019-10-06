@@ -867,45 +867,6 @@ bool Fpd_::Packages::AllPackage::has_leaf_or_child_of_name(const std::string & n
     return false;
 }
 
-const Enum::YLeaf FpdSub::fpga1 {0, "fpga1"};
-const Enum::YLeaf FpdSub::rommon {1, "rommon"};
-const Enum::YLeaf FpdSub::rommona {2, "rommona"};
-const Enum::YLeaf FpdSub::fabldr {3, "fabldr"};
-const Enum::YLeaf FpdSub::fpga2 {4, "fpga2"};
-const Enum::YLeaf FpdSub::fpga3 {5, "fpga3"};
-const Enum::YLeaf FpdSub::fpga4 {6, "fpga4"};
-const Enum::YLeaf FpdSub::fpga5 {7, "fpga5"};
-const Enum::YLeaf FpdSub::fpga6 {8, "fpga6"};
-const Enum::YLeaf FpdSub::fpga7 {9, "fpga7"};
-const Enum::YLeaf FpdSub::fpga8 {10, "fpga8"};
-const Enum::YLeaf FpdSub::fpga9 {11, "fpga9"};
-const Enum::YLeaf FpdSub::fpga10 {12, "fpga10"};
-const Enum::YLeaf FpdSub::fpga11 {13, "fpga11"};
-const Enum::YLeaf FpdSub::fpga12 {14, "fpga12"};
-const Enum::YLeaf FpdSub::fpga13 {15, "fpga13"};
-const Enum::YLeaf FpdSub::fpga14 {16, "fpga14"};
-const Enum::YLeaf FpdSub::cpld1 {17, "cpld1"};
-const Enum::YLeaf FpdSub::cpld2 {18, "cpld2"};
-const Enum::YLeaf FpdSub::cpld3 {19, "cpld3"};
-const Enum::YLeaf FpdSub::cpld4 {20, "cpld4"};
-const Enum::YLeaf FpdSub::cpld5 {21, "cpld5"};
-const Enum::YLeaf FpdSub::cpld6 {22, "cpld6"};
-const Enum::YLeaf FpdSub::cbc {23, "cbc"};
-const Enum::YLeaf FpdSub::hsbi {24, "hsbi"};
-const Enum::YLeaf FpdSub::txpod {25, "txpod"};
-const Enum::YLeaf FpdSub::rxpod {26, "rxpod"};
-const Enum::YLeaf FpdSub::ibmc {27, "ibmc"};
-const Enum::YLeaf FpdSub::fsbl {28, "fsbl"};
-const Enum::YLeaf FpdSub::lnx {29, "lnx"};
-const Enum::YLeaf FpdSub::fpga15 {30, "fpga15"};
-const Enum::YLeaf FpdSub::fpga16 {31, "fpga16"};
-const Enum::YLeaf FpdSub::fc_fsbl {32, "fc-fsbl"};
-const Enum::YLeaf FpdSub::fc_lnx {33, "fc-lnx"};
-
-const Enum::YLeaf Fpd::spa {0, "spa"};
-const Enum::YLeaf Fpd::lc {1, "lc"};
-const Enum::YLeaf Fpd::sam {2, "sam"};
-
 const Enum::YLeaf FpdSub1::fpga1 {0, "fpga1"};
 const Enum::YLeaf FpdSub1::rommon {1, "rommon"};
 const Enum::YLeaf FpdSub1::rommona {2, "rommona"};
@@ -941,9 +902,48 @@ const Enum::YLeaf FpdSub1::fpga16 {31, "fpga16"};
 const Enum::YLeaf FpdSub1::fc_fsbl {32, "fc-fsbl"};
 const Enum::YLeaf FpdSub1::fc_lnx {33, "fc-lnx"};
 
+const Enum::YLeaf Fpd::spa {0, "spa"};
+const Enum::YLeaf Fpd::lc {1, "lc"};
+const Enum::YLeaf Fpd::sam {2, "sam"};
+
 const Enum::YLeaf Fpd1::spa {0, "spa"};
 const Enum::YLeaf Fpd1::lc {1, "lc"};
 const Enum::YLeaf Fpd1::sam {2, "sam"};
+
+const Enum::YLeaf FpdSub::fpga1 {0, "fpga1"};
+const Enum::YLeaf FpdSub::rommon {1, "rommon"};
+const Enum::YLeaf FpdSub::rommona {2, "rommona"};
+const Enum::YLeaf FpdSub::fabldr {3, "fabldr"};
+const Enum::YLeaf FpdSub::fpga2 {4, "fpga2"};
+const Enum::YLeaf FpdSub::fpga3 {5, "fpga3"};
+const Enum::YLeaf FpdSub::fpga4 {6, "fpga4"};
+const Enum::YLeaf FpdSub::fpga5 {7, "fpga5"};
+const Enum::YLeaf FpdSub::fpga6 {8, "fpga6"};
+const Enum::YLeaf FpdSub::fpga7 {9, "fpga7"};
+const Enum::YLeaf FpdSub::fpga8 {10, "fpga8"};
+const Enum::YLeaf FpdSub::fpga9 {11, "fpga9"};
+const Enum::YLeaf FpdSub::fpga10 {12, "fpga10"};
+const Enum::YLeaf FpdSub::fpga11 {13, "fpga11"};
+const Enum::YLeaf FpdSub::fpga12 {14, "fpga12"};
+const Enum::YLeaf FpdSub::fpga13 {15, "fpga13"};
+const Enum::YLeaf FpdSub::fpga14 {16, "fpga14"};
+const Enum::YLeaf FpdSub::cpld1 {17, "cpld1"};
+const Enum::YLeaf FpdSub::cpld2 {18, "cpld2"};
+const Enum::YLeaf FpdSub::cpld3 {19, "cpld3"};
+const Enum::YLeaf FpdSub::cpld4 {20, "cpld4"};
+const Enum::YLeaf FpdSub::cpld5 {21, "cpld5"};
+const Enum::YLeaf FpdSub::cpld6 {22, "cpld6"};
+const Enum::YLeaf FpdSub::cbc {23, "cbc"};
+const Enum::YLeaf FpdSub::hsbi {24, "hsbi"};
+const Enum::YLeaf FpdSub::txpod {25, "txpod"};
+const Enum::YLeaf FpdSub::rxpod {26, "rxpod"};
+const Enum::YLeaf FpdSub::ibmc {27, "ibmc"};
+const Enum::YLeaf FpdSub::fsbl {28, "fsbl"};
+const Enum::YLeaf FpdSub::lnx {29, "lnx"};
+const Enum::YLeaf FpdSub::fpga15 {30, "fpga15"};
+const Enum::YLeaf FpdSub::fpga16 {31, "fpga16"};
+const Enum::YLeaf FpdSub::fc_fsbl {32, "fc-fsbl"};
+const Enum::YLeaf FpdSub::fc_lnx {33, "fc-lnx"};
 
 
 }

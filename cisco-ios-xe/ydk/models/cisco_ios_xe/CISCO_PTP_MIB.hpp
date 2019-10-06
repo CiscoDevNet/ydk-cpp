@@ -854,6 +854,12 @@ class ClockMechanismType : public ydk::Enum
         static const ydk::Enum::YLeaf p2p;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "e2e") return 1;
+            if (name == "p2p") return 2;
+            if (name == "disabled") return 254;
+            return -1;
+        }
 };
 
 class ClockPortState : public ydk::Enum
@@ -869,6 +875,43 @@ class ClockPortState : public ydk::Enum
         static const ydk::Enum::YLeaf uncalibrated;
         static const ydk::Enum::YLeaf slave;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initializing") return 1;
+            if (name == "faulty") return 2;
+            if (name == "disabled") return 3;
+            if (name == "listening") return 4;
+            if (name == "preMaster") return 5;
+            if (name == "master") return 6;
+            if (name == "passive") return 7;
+            if (name == "uncalibrated") return 8;
+            if (name == "slave") return 9;
+            return -1;
+        }
+};
+
+class ClockTimeSourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf atomicClock;
+        static const ydk::Enum::YLeaf gps;
+        static const ydk::Enum::YLeaf terrestrialRadio;
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf ntp;
+        static const ydk::Enum::YLeaf handSet;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf internalOsillator;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "atomicClock") return 16;
+            if (name == "gps") return 32;
+            if (name == "terrestrialRadio") return 48;
+            if (name == "ptp") return 64;
+            if (name == "ntp") return 80;
+            if (name == "handSet") return 96;
+            if (name == "other") return 144;
+            if (name == "internalOsillator") return 160;
+            return -1;
+        }
 };
 
 class ClockProfileType : public ydk::Enum
@@ -878,6 +921,57 @@ class ClockProfileType : public ydk::Enum
         static const ydk::Enum::YLeaf telecom;
         static const ydk::Enum::YLeaf vendorspecific;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 1;
+            if (name == "telecom") return 2;
+            if (name == "vendorspecific") return 3;
+            return -1;
+        }
+};
+
+class ClockRoleType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "master") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
+};
+
+class ClockType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ordinaryClock;
+        static const ydk::Enum::YLeaf boundaryClock;
+        static const ydk::Enum::YLeaf transparentClock;
+        static const ydk::Enum::YLeaf boundaryNode;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ordinaryClock") return 1;
+            if (name == "boundaryClock") return 2;
+            if (name == "transparentClock") return 3;
+            if (name == "boundaryNode") return 4;
+            return -1;
+        }
+};
+
+class ClockTxModeType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf multicastmix;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            if (name == "multicastmix") return 3;
+            return -1;
+        }
 };
 
 class ClockQualityAccuracyType : public ydk::Enum
@@ -905,14 +999,30 @@ class ClockQualityAccuracyType : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf reserved255;
 
-};
-
-class ClockRoleType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "reserved00") return 1;
+            if (name == "nanoSecond25") return 32;
+            if (name == "nanoSecond100") return 33;
+            if (name == "nanoSecond250") return 34;
+            if (name == "microSec1") return 35;
+            if (name == "microSec2dot5") return 36;
+            if (name == "microSec10") return 37;
+            if (name == "microSec25") return 38;
+            if (name == "microSec100") return 39;
+            if (name == "microSec250") return 40;
+            if (name == "milliSec1") return 41;
+            if (name == "milliSec2dot5") return 42;
+            if (name == "milliSec10") return 43;
+            if (name == "milliSec25") return 44;
+            if (name == "milliSec100") return 45;
+            if (name == "milliSec250") return 46;
+            if (name == "second1") return 47;
+            if (name == "second10") return 48;
+            if (name == "secondGreater10") return 49;
+            if (name == "unknown") return 254;
+            if (name == "reserved255") return 255;
+            return -1;
+        }
 };
 
 class ClockStateType : public ydk::Enum
@@ -924,39 +1034,14 @@ class ClockStateType : public ydk::Enum
         static const ydk::Enum::YLeaf frequencyLocked;
         static const ydk::Enum::YLeaf phaseAligned;
 
-};
-
-class ClockTimeSourceType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf atomicClock;
-        static const ydk::Enum::YLeaf gps;
-        static const ydk::Enum::YLeaf terrestrialRadio;
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf ntp;
-        static const ydk::Enum::YLeaf handSet;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf internalOsillator;
-
-};
-
-class ClockTxModeType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf multicastmix;
-
-};
-
-class ClockType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ordinaryClock;
-        static const ydk::Enum::YLeaf boundaryClock;
-        static const ydk::Enum::YLeaf transparentClock;
-        static const ydk::Enum::YLeaf boundaryNode;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "freerun") return 1;
+            if (name == "holdover") return 2;
+            if (name == "acquiring") return 3;
+            if (name == "frequencyLocked") return 4;
+            if (name == "phaseAligned") return 5;
+            return -1;
+        }
 };
 
 

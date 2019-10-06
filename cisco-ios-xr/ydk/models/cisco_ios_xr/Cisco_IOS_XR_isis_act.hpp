@@ -493,6 +493,18 @@ class ClearIsis::Input::RtType : public ydk::Enum
         static const ydk::Enum::YLeaf IPv6_SAFI_ALL;
         static const ydk::Enum::YLeaf IPv6_UNICAST;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "AFI-ALL-MULTICAST") return 0;
+            if (name == "AFI-ALL-SAFI-ALL") return 1;
+            if (name == "AFI-ALL-UNICAST") return 2;
+            if (name == "IPv4-MULTICAST") return 3;
+            if (name == "IPv4-SAFI-ALL") return 4;
+            if (name == "IPv4-UNICAST") return 5;
+            if (name == "IPv6-MULTICAST") return 6;
+            if (name == "IPv6-SAFI-ALL") return 7;
+            if (name == "IPv6-UNICAST") return 8;
+            return -1;
+        }
 };
 
 

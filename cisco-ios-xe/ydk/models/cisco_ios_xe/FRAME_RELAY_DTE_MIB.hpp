@@ -257,6 +257,11 @@ class FRAMERELAYDTEMIB::FrameRelayTrapControl::FrTrapState : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState : public ydk::Enum
@@ -269,6 +274,15 @@ class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState : public ydk::E
         static const ydk::Enum::YLeaf itut933A;
         static const ydk::Enum::YLeaf ansiT1617D1994;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noLmiConfigured") return 1;
+            if (name == "lmiRev1") return 2;
+            if (name == "ansiT1617D") return 3;
+            if (name == "ansiT1617B") return 4;
+            if (name == "itut933A") return 5;
+            if (name == "ansiT1617D1994") return 6;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress : public ydk::Enum
@@ -279,6 +293,13 @@ class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress : public ydk:
         static const ydk::Enum::YLeaf q922November90;
         static const ydk::Enum::YLeaf q922;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "q921") return 1;
+            if (name == "q922March90") return 2;
+            if (name == "q922November90") return 3;
+            if (name == "q922") return 4;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen : public ydk::Enum
@@ -288,6 +309,12 @@ class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen : public y
         static const ydk::Enum::YLeaf threeOctets;
         static const ydk::Enum::YLeaf fourOctets;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "twoOctets") return 2;
+            if (name == "threeOctets") return 3;
+            if (name == "fourOctets") return 4;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast : public ydk::Enum
@@ -296,6 +323,11 @@ class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast : public yd
         static const ydk::Enum::YLeaf nonBroadcast;
         static const ydk::Enum::YLeaf broadcast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nonBroadcast") return 1;
+            if (name == "broadcast") return 2;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiStatus : public ydk::Enum
@@ -305,6 +337,12 @@ class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiStatus : public ydk::
         static const ydk::Enum::YLeaf fault;
         static const ydk::Enum::YLeaf initializing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 1;
+            if (name == "fault") return 2;
+            if (name == "initializing") return 3;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitState : public ydk::Enum
@@ -314,6 +352,12 @@ class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitState : public 
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf inactive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 1;
+            if (name == "active") return 2;
+            if (name == "inactive") return 3;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitMulticast : public ydk::Enum
@@ -324,6 +368,13 @@ class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitMulticast : pub
         static const ydk::Enum::YLeaf twoWay;
         static const ydk::Enum::YLeaf nWay;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "oneWay") return 2;
+            if (name == "twoWay") return 3;
+            if (name == "nWay") return 4;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitType : public ydk::Enum
@@ -332,6 +383,11 @@ class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitType : public y
         static const ydk::Enum::YLeaf static_;
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static") return 1;
+            if (name == "dynamic") return 2;
+            return -1;
+        }
 };
 
 class FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::FrErrType : public ydk::Enum
@@ -348,6 +404,19 @@ class FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::FrErrType : public ydk::Enum
         static const ydk::Enum::YLeaf dlcmiUnknownRpt;
         static const ydk::Enum::YLeaf noErrorSinceReset;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknownError") return 1;
+            if (name == "receiveShort") return 2;
+            if (name == "receiveLong") return 3;
+            if (name == "illegalAddress") return 4;
+            if (name == "unknownAddress") return 5;
+            if (name == "dlcmiProtoErr") return 6;
+            if (name == "dlcmiUnknownIE") return 7;
+            if (name == "dlcmiSequenceErr") return 8;
+            if (name == "dlcmiUnknownRpt") return 9;
+            if (name == "noErrorSinceReset") return 10;
+            return -1;
+        }
 };
 
 

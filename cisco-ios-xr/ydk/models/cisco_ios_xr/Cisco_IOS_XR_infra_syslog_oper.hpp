@@ -696,6 +696,18 @@ class SystemMessageSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf message_severity_informational;
         static const ydk::Enum::YLeaf message_severity_debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "message-severity-unknown") return -1;
+            if (name == "message-severity-emergency") return 0;
+            if (name == "message-severity-alert") return 1;
+            if (name == "message-severity-critical") return 2;
+            if (name == "message-severity-error") return 3;
+            if (name == "message-severity-warning") return 4;
+            if (name == "message-severity-notice") return 5;
+            if (name == "message-severity-informational") return 6;
+            if (name == "message-severity-debug") return 7;
+            return -1;
+        }
 };
 
 

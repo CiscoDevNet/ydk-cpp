@@ -1311,14 +1311,14 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     line_state{YType::enumeration, "line-state"},
     mtu{YType::uint32, "mtu"},
     operation_state{YType::enumeration, "operation-state"},
-    ipv6_config_flag{YType::uint32, "ipv6-config-flag"},
-    ipv6_oper_flag{YType::uint32, "ipv6-oper-flag"},
     vrf_name{YType::str, "vrf-name"},
     is_icmp_unreach_enabled{YType::boolean, "is-icmp-unreach-enabled"},
     rg_id_exists{YType::boolean, "rg-id-exists"},
     mlacp_active{YType::boolean, "mlacp-active"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
     flow_tag_dst{YType::boolean, "flow-tag-dst"},
+    ipv6_config_flag{YType::uint32, "ipv6-config-flag"},
+    ipv6_oper_flag{YType::uint32, "ipv6-oper-flag"},
     idb_pointer{YType::uint64, "idb-pointer"}
         ,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress>())
@@ -1326,6 +1326,11 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     , multi_access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList>())
     , rpf(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf>())
     , bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa>())
+    , utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime>())
+    , idb_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime>())
     , multicast_group(this, {})
     , address(this, {})
     , client_multicast_group(this, {})
@@ -1335,6 +1340,11 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     multi_access_control_list->parent = this;
     rpf->parent = this;
     bgp_pa->parent = this;
+    utime->parent = this;
+    idb_utime->parent = this;
+    caps_utime->parent = this;
+    fwd_en_utime->parent = this;
+    fwd_dis_utime->parent = this;
 
     yang_name = "global-detail"; yang_parent_name = "global-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1365,20 +1375,25 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 	|| line_state.is_set
 	|| mtu.is_set
 	|| operation_state.is_set
-	|| ipv6_config_flag.is_set
-	|| ipv6_oper_flag.is_set
 	|| vrf_name.is_set
 	|| is_icmp_unreach_enabled.is_set
 	|| rg_id_exists.is_set
 	|| mlacp_active.is_set
 	|| flow_tag_src.is_set
 	|| flow_tag_dst.is_set
+	|| ipv6_config_flag.is_set
+	|| ipv6_oper_flag.is_set
 	|| idb_pointer.is_set
 	|| (link_local_address !=  nullptr && link_local_address->has_data())
 	|| (access_control_list !=  nullptr && access_control_list->has_data())
 	|| (multi_access_control_list !=  nullptr && multi_access_control_list->has_data())
 	|| (rpf !=  nullptr && rpf->has_data())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_data());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_data())
+	|| (utime !=  nullptr && utime->has_data())
+	|| (idb_utime !=  nullptr && idb_utime->has_data())
+	|| (caps_utime !=  nullptr && caps_utime->has_data())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_data())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_data());
 }
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::has_operation() const
@@ -1403,20 +1418,25 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 	|| ydk::is_set(line_state.yfilter)
 	|| ydk::is_set(mtu.yfilter)
 	|| ydk::is_set(operation_state.yfilter)
-	|| ydk::is_set(ipv6_config_flag.yfilter)
-	|| ydk::is_set(ipv6_oper_flag.yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| ydk::is_set(is_icmp_unreach_enabled.yfilter)
 	|| ydk::is_set(rg_id_exists.yfilter)
 	|| ydk::is_set(mlacp_active.yfilter)
 	|| ydk::is_set(flow_tag_src.yfilter)
 	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(ipv6_config_flag.yfilter)
+	|| ydk::is_set(ipv6_oper_flag.yfilter)
 	|| ydk::is_set(idb_pointer.yfilter)
 	|| (link_local_address !=  nullptr && link_local_address->has_operation())
 	|| (access_control_list !=  nullptr && access_control_list->has_operation())
 	|| (multi_access_control_list !=  nullptr && multi_access_control_list->has_operation())
 	|| (rpf !=  nullptr && rpf->has_operation())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_operation());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
+	|| (utime !=  nullptr && utime->has_operation())
+	|| (idb_utime !=  nullptr && idb_utime->has_operation())
+	|| (caps_utime !=  nullptr && caps_utime->has_operation())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_operation())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::get_segment_path() const
@@ -1435,14 +1455,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::Interfa
     if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
     if (operation_state.is_set || is_set(operation_state.yfilter)) leaf_name_data.push_back(operation_state.get_name_leafdata());
-    if (ipv6_config_flag.is_set || is_set(ipv6_config_flag.yfilter)) leaf_name_data.push_back(ipv6_config_flag.get_name_leafdata());
-    if (ipv6_oper_flag.is_set || is_set(ipv6_oper_flag.yfilter)) leaf_name_data.push_back(ipv6_oper_flag.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
     if (is_icmp_unreach_enabled.is_set || is_set(is_icmp_unreach_enabled.yfilter)) leaf_name_data.push_back(is_icmp_unreach_enabled.get_name_leafdata());
     if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
     if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
     if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
     if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (ipv6_config_flag.is_set || is_set(ipv6_config_flag.yfilter)) leaf_name_data.push_back(ipv6_config_flag.get_name_leafdata());
+    if (ipv6_oper_flag.is_set || is_set(ipv6_oper_flag.yfilter)) leaf_name_data.push_back(ipv6_oper_flag.get_name_leafdata());
     if (idb_pointer.is_set || is_set(idb_pointer.yfilter)) leaf_name_data.push_back(idb_pointer.get_name_leafdata());
 
     return leaf_name_data;
@@ -1494,6 +1514,51 @@ std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf:
             bgp_pa = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa>();
         }
         return bgp_pa;
+    }
+
+    if(child_yang_name == "utime")
+    {
+        if(utime == nullptr)
+        {
+            utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime>();
+        }
+        return utime;
+    }
+
+    if(child_yang_name == "idb-utime")
+    {
+        if(idb_utime == nullptr)
+        {
+            idb_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime>();
+        }
+        return idb_utime;
+    }
+
+    if(child_yang_name == "caps-utime")
+    {
+        if(caps_utime == nullptr)
+        {
+            caps_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime>();
+        }
+        return caps_utime;
+    }
+
+    if(child_yang_name == "fwd-en-utime")
+    {
+        if(fwd_en_utime == nullptr)
+        {
+            fwd_en_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime>();
+        }
+        return fwd_en_utime;
+    }
+
+    if(child_yang_name == "fwd-dis-utime")
+    {
+        if(fwd_dis_utime == nullptr)
+        {
+            fwd_dis_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime>();
+        }
+        return fwd_dis_utime;
     }
 
     if(child_yang_name == "multicast-group")
@@ -1552,6 +1617,31 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::In
         _children["bgp-pa"] = bgp_pa;
     }
 
+    if(utime != nullptr)
+    {
+        _children["utime"] = utime;
+    }
+
+    if(idb_utime != nullptr)
+    {
+        _children["idb-utime"] = idb_utime;
+    }
+
+    if(caps_utime != nullptr)
+    {
+        _children["caps-utime"] = caps_utime;
+    }
+
+    if(fwd_en_utime != nullptr)
+    {
+        _children["fwd-en-utime"] = fwd_en_utime;
+    }
+
+    if(fwd_dis_utime != nullptr)
+    {
+        _children["fwd-dis-utime"] = fwd_dis_utime;
+    }
+
     count_ = 0;
     for (auto ent_ : multicast_group.entities())
     {
@@ -1608,18 +1698,6 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
         operation_state.value_namespace = name_space;
         operation_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipv6-config-flag")
-    {
-        ipv6_config_flag = value;
-        ipv6_config_flag.value_namespace = name_space;
-        ipv6_config_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-oper-flag")
-    {
-        ipv6_oper_flag = value;
-        ipv6_oper_flag.value_namespace = name_space;
-        ipv6_oper_flag.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
@@ -1656,6 +1734,18 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
         flow_tag_dst.value_namespace = name_space;
         flow_tag_dst.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv6-config-flag")
+    {
+        ipv6_config_flag = value;
+        ipv6_config_flag.value_namespace = name_space;
+        ipv6_config_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-oper-flag")
+    {
+        ipv6_oper_flag = value;
+        ipv6_oper_flag.value_namespace = name_space;
+        ipv6_oper_flag.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "idb-pointer")
     {
         idb_pointer = value;
@@ -1682,14 +1772,6 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
     {
         operation_state.yfilter = yfilter;
     }
-    if(value_path == "ipv6-config-flag")
-    {
-        ipv6_config_flag.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-oper-flag")
-    {
-        ipv6_oper_flag.yfilter = yfilter;
-    }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
@@ -1714,6 +1796,14 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
     {
         flow_tag_dst.yfilter = yfilter;
     }
+    if(value_path == "ipv6-config-flag")
+    {
+        ipv6_config_flag.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-oper-flag")
+    {
+        ipv6_oper_flag.yfilter = yfilter;
+    }
     if(value_path == "idb-pointer")
     {
         idb_pointer.yfilter = yfilter;
@@ -1722,7 +1812,7 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "link-local-address" || name == "access-control-list" || name == "multi-access-control-list" || name == "rpf" || name == "bgp-pa" || name == "multicast-group" || name == "address" || name == "client-multicast-group" || name == "interface-name" || name == "line-state" || name == "mtu" || name == "operation-state" || name == "ipv6-config-flag" || name == "ipv6-oper-flag" || name == "vrf-name" || name == "is-icmp-unreach-enabled" || name == "rg-id-exists" || name == "mlacp-active" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "idb-pointer")
+    if(name == "link-local-address" || name == "access-control-list" || name == "multi-access-control-list" || name == "rpf" || name == "bgp-pa" || name == "utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "address" || name == "client-multicast-group" || name == "interface-name" || name == "line-state" || name == "mtu" || name == "operation-state" || name == "vrf-name" || name == "is-icmp-unreach-enabled" || name == "rg-id-exists" || name == "mlacp-active" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "ipv6-config-flag" || name == "ipv6-oper-flag" || name == "idb-pointer")
         return true;
     return false;
 }
@@ -2813,6 +2903,316 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
     return false;
 }
 
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::Utime()
+{
+
+    yang_name = "utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::~Utime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::IdbUtime()
+{
+
+    yang_name = "idb-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::~IdbUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idb-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::CapsUtime()
+{
+
+    yang_name = "caps-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::~CapsUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "caps-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::FwdEnUtime()
+{
+
+    yang_name = "fwd-en-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::~FwdEnUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-en-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::FwdDisUtime()
+{
+
+    yang_name = "fwd-dis-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::~FwdDisUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-dis-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::MulticastGroup()
     :
     address{YType::str, "address"}
@@ -3763,14 +4163,14 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     line_state{YType::enumeration, "line-state"},
     mtu{YType::uint32, "mtu"},
     operation_state{YType::enumeration, "operation-state"},
-    ipv6_config_flag{YType::uint32, "ipv6-config-flag"},
-    ipv6_oper_flag{YType::uint32, "ipv6-oper-flag"},
     vrf_name{YType::str, "vrf-name"},
     is_icmp_unreach_enabled{YType::boolean, "is-icmp-unreach-enabled"},
     rg_id_exists{YType::boolean, "rg-id-exists"},
     mlacp_active{YType::boolean, "mlacp-active"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
     flow_tag_dst{YType::boolean, "flow-tag-dst"},
+    ipv6_config_flag{YType::uint32, "ipv6-config-flag"},
+    ipv6_oper_flag{YType::uint32, "ipv6-oper-flag"},
     idb_pointer{YType::uint64, "idb-pointer"}
         ,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress>())
@@ -3778,6 +4178,11 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     , multi_access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList>())
     , rpf(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>())
     , bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>())
+    , utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime>())
+    , idb_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>())
     , multicast_group(this, {})
     , address(this, {})
     , client_multicast_group(this, {})
@@ -3787,6 +4192,11 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     multi_access_control_list->parent = this;
     rpf->parent = this;
     bgp_pa->parent = this;
+    utime->parent = this;
+    idb_utime->parent = this;
+    caps_utime->parent = this;
+    fwd_en_utime->parent = this;
+    fwd_dis_utime->parent = this;
 
     yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -3817,20 +4227,25 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_da
 	|| line_state.is_set
 	|| mtu.is_set
 	|| operation_state.is_set
-	|| ipv6_config_flag.is_set
-	|| ipv6_oper_flag.is_set
 	|| vrf_name.is_set
 	|| is_icmp_unreach_enabled.is_set
 	|| rg_id_exists.is_set
 	|| mlacp_active.is_set
 	|| flow_tag_src.is_set
 	|| flow_tag_dst.is_set
+	|| ipv6_config_flag.is_set
+	|| ipv6_oper_flag.is_set
 	|| idb_pointer.is_set
 	|| (link_local_address !=  nullptr && link_local_address->has_data())
 	|| (access_control_list !=  nullptr && access_control_list->has_data())
 	|| (multi_access_control_list !=  nullptr && multi_access_control_list->has_data())
 	|| (rpf !=  nullptr && rpf->has_data())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_data());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_data())
+	|| (utime !=  nullptr && utime->has_data())
+	|| (idb_utime !=  nullptr && idb_utime->has_data())
+	|| (caps_utime !=  nullptr && caps_utime->has_data())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_data())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_data());
 }
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_operation() const
@@ -3855,20 +4270,25 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
 	|| ydk::is_set(line_state.yfilter)
 	|| ydk::is_set(mtu.yfilter)
 	|| ydk::is_set(operation_state.yfilter)
-	|| ydk::is_set(ipv6_config_flag.yfilter)
-	|| ydk::is_set(ipv6_oper_flag.yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| ydk::is_set(is_icmp_unreach_enabled.yfilter)
 	|| ydk::is_set(rg_id_exists.yfilter)
 	|| ydk::is_set(mlacp_active.yfilter)
 	|| ydk::is_set(flow_tag_src.yfilter)
 	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(ipv6_config_flag.yfilter)
+	|| ydk::is_set(ipv6_oper_flag.yfilter)
 	|| ydk::is_set(idb_pointer.yfilter)
 	|| (link_local_address !=  nullptr && link_local_address->has_operation())
 	|| (access_control_list !=  nullptr && access_control_list->has_operation())
 	|| (multi_access_control_list !=  nullptr && multi_access_control_list->has_operation())
 	|| (rpf !=  nullptr && rpf->has_operation())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_operation());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
+	|| (utime !=  nullptr && utime->has_operation())
+	|| (idb_utime !=  nullptr && idb_utime->has_operation())
+	|| (caps_utime !=  nullptr && caps_utime->has_operation())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_operation())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_segment_path() const
@@ -3887,14 +4307,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::Interfa
     if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
     if (operation_state.is_set || is_set(operation_state.yfilter)) leaf_name_data.push_back(operation_state.get_name_leafdata());
-    if (ipv6_config_flag.is_set || is_set(ipv6_config_flag.yfilter)) leaf_name_data.push_back(ipv6_config_flag.get_name_leafdata());
-    if (ipv6_oper_flag.is_set || is_set(ipv6_oper_flag.yfilter)) leaf_name_data.push_back(ipv6_oper_flag.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
     if (is_icmp_unreach_enabled.is_set || is_set(is_icmp_unreach_enabled.yfilter)) leaf_name_data.push_back(is_icmp_unreach_enabled.get_name_leafdata());
     if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
     if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
     if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
     if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (ipv6_config_flag.is_set || is_set(ipv6_config_flag.yfilter)) leaf_name_data.push_back(ipv6_config_flag.get_name_leafdata());
+    if (ipv6_oper_flag.is_set || is_set(ipv6_oper_flag.yfilter)) leaf_name_data.push_back(ipv6_oper_flag.get_name_leafdata());
     if (idb_pointer.is_set || is_set(idb_pointer.yfilter)) leaf_name_data.push_back(idb_pointer.get_name_leafdata());
 
     return leaf_name_data;
@@ -3946,6 +4366,51 @@ std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf:
             bgp_pa = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>();
         }
         return bgp_pa;
+    }
+
+    if(child_yang_name == "utime")
+    {
+        if(utime == nullptr)
+        {
+            utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime>();
+        }
+        return utime;
+    }
+
+    if(child_yang_name == "idb-utime")
+    {
+        if(idb_utime == nullptr)
+        {
+            idb_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>();
+        }
+        return idb_utime;
+    }
+
+    if(child_yang_name == "caps-utime")
+    {
+        if(caps_utime == nullptr)
+        {
+            caps_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>();
+        }
+        return caps_utime;
+    }
+
+    if(child_yang_name == "fwd-en-utime")
+    {
+        if(fwd_en_utime == nullptr)
+        {
+            fwd_en_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>();
+        }
+        return fwd_en_utime;
+    }
+
+    if(child_yang_name == "fwd-dis-utime")
+    {
+        if(fwd_dis_utime == nullptr)
+        {
+            fwd_dis_utime = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>();
+        }
+        return fwd_dis_utime;
     }
 
     if(child_yang_name == "multicast-group")
@@ -4004,6 +4469,31 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::In
         _children["bgp-pa"] = bgp_pa;
     }
 
+    if(utime != nullptr)
+    {
+        _children["utime"] = utime;
+    }
+
+    if(idb_utime != nullptr)
+    {
+        _children["idb-utime"] = idb_utime;
+    }
+
+    if(caps_utime != nullptr)
+    {
+        _children["caps-utime"] = caps_utime;
+    }
+
+    if(fwd_en_utime != nullptr)
+    {
+        _children["fwd-en-utime"] = fwd_en_utime;
+    }
+
+    if(fwd_dis_utime != nullptr)
+    {
+        _children["fwd-dis-utime"] = fwd_dis_utime;
+    }
+
     count_ = 0;
     for (auto ent_ : multicast_group.entities())
     {
@@ -4060,18 +4550,6 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_va
         operation_state.value_namespace = name_space;
         operation_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipv6-config-flag")
-    {
-        ipv6_config_flag = value;
-        ipv6_config_flag.value_namespace = name_space;
-        ipv6_config_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-oper-flag")
-    {
-        ipv6_oper_flag = value;
-        ipv6_oper_flag.value_namespace = name_space;
-        ipv6_oper_flag.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
@@ -4108,6 +4586,18 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_va
         flow_tag_dst.value_namespace = name_space;
         flow_tag_dst.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv6-config-flag")
+    {
+        ipv6_config_flag = value;
+        ipv6_config_flag.value_namespace = name_space;
+        ipv6_config_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-oper-flag")
+    {
+        ipv6_oper_flag = value;
+        ipv6_oper_flag.value_namespace = name_space;
+        ipv6_oper_flag.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "idb-pointer")
     {
         idb_pointer = value;
@@ -4134,14 +4624,6 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_fi
     {
         operation_state.yfilter = yfilter;
     }
-    if(value_path == "ipv6-config-flag")
-    {
-        ipv6_config_flag.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-oper-flag")
-    {
-        ipv6_oper_flag.yfilter = yfilter;
-    }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
@@ -4166,6 +4648,14 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_fi
     {
         flow_tag_dst.yfilter = yfilter;
     }
+    if(value_path == "ipv6-config-flag")
+    {
+        ipv6_config_flag.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-oper-flag")
+    {
+        ipv6_oper_flag.yfilter = yfilter;
+    }
     if(value_path == "idb-pointer")
     {
         idb_pointer.yfilter = yfilter;
@@ -4174,7 +4664,7 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_fi
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "link-local-address" || name == "access-control-list" || name == "multi-access-control-list" || name == "rpf" || name == "bgp-pa" || name == "multicast-group" || name == "address" || name == "client-multicast-group" || name == "interface-name" || name == "line-state" || name == "mtu" || name == "operation-state" || name == "ipv6-config-flag" || name == "ipv6-oper-flag" || name == "vrf-name" || name == "is-icmp-unreach-enabled" || name == "rg-id-exists" || name == "mlacp-active" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "idb-pointer")
+    if(name == "link-local-address" || name == "access-control-list" || name == "multi-access-control-list" || name == "rpf" || name == "bgp-pa" || name == "utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "address" || name == "client-multicast-group" || name == "interface-name" || name == "line-state" || name == "mtu" || name == "operation-state" || name == "vrf-name" || name == "is-icmp-unreach-enabled" || name == "rg-id-exists" || name == "mlacp-active" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "ipv6-config-flag" || name == "ipv6-oper-flag" || name == "idb-pointer")
         return true;
     return false;
 }
@@ -5265,6 +5755,316 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
     return false;
 }
 
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::Utime()
+{
+
+    yang_name = "utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::~Utime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::IdbUtime()
+{
+
+    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::~IdbUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idb-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::CapsUtime()
+{
+
+    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::~CapsUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "caps-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::FwdEnUtime()
+{
+
+    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::~FwdEnUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-en-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::FwdDisUtime()
+{
+
+    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::~FwdDisUtime()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-dis-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::MulticastGroup()
     :
     address{YType::str, "address"}
@@ -6150,16 +6950,16 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_leaf_
 const Enum::YLeaf Ipv6MaOperState::oper_up {1, "oper-up"};
 const Enum::YLeaf Ipv6MaOperState::oper_down {2, "oper-down"};
 
+const Enum::YLeaf Ipv6MaIfLineState::down {1, "down"};
+const Enum::YLeaf Ipv6MaIfLineState::up {2, "up"};
+const Enum::YLeaf Ipv6MaIfLineState::unknown {3, "unknown"};
+const Enum::YLeaf Ipv6MaIfLineState::error {4, "error"};
+
 const Enum::YLeaf Ipv6MaIfAddrState::active {1, "active"};
 const Enum::YLeaf Ipv6MaIfAddrState::deprecated {2, "deprecated"};
 const Enum::YLeaf Ipv6MaIfAddrState::duplicate {3, "duplicate"};
 const Enum::YLeaf Ipv6MaIfAddrState::inaccessible {4, "inaccessible"};
 const Enum::YLeaf Ipv6MaIfAddrState::tentative {5, "tentative"};
-
-const Enum::YLeaf Ipv6MaIfLineState::down {1, "down"};
-const Enum::YLeaf Ipv6MaIfLineState::up {2, "up"};
-const Enum::YLeaf Ipv6MaIfLineState::unknown {3, "unknown"};
-const Enum::YLeaf Ipv6MaIfLineState::error {4, "error"};
 
 
 }

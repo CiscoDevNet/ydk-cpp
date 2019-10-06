@@ -1926,7 +1926,7 @@ class Native::Interface::BDI::Pppoe::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
         class Group;
 
 }; // Native::Interface::BDI::Pppoe::Enable
@@ -2056,9 +2056,9 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Cos2
 
@@ -2109,9 +2109,9 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q : public y
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::Cos2
 
@@ -3574,6 +3574,13 @@ class Native::Interface::BDI::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::ChannelGroup::Mode : public ydk::Enum
@@ -3585,6 +3592,14 @@ class Native::Interface::BDI::ChannelGroup::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf on;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "auto") return 1;
+            if (name == "desirable") return 2;
+            if (name == "on") return 3;
+            if (name == "passive") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Ethernet::Oam::Mode : public ydk::Enum
@@ -3593,6 +3608,11 @@ class Native::Interface::BDI::Ethernet::Oam::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "passive") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Pppoe::Enable::Group : public ydk::Enum
@@ -3600,6 +3620,10 @@ class Native::Interface::BDI::Pppoe::Enable::Group : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf global;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "global") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Id : public ydk::Enum
@@ -3607,6 +3631,10 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Id : pub
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Dot1q : public ydk::Enum
@@ -3614,6 +3642,10 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Dot1q : 
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Etype : public ydk::Enum
@@ -3625,6 +3657,14 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Etype : 
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::Id : public ydk::Enum
@@ -3632,6 +3672,10 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::Id : publ
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::SecondDot1q : public ydk::Enum
@@ -3639,6 +3683,10 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::SecondDot
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::Etype : public ydk::Enum
@@ -3650,6 +3698,14 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::Etype : p
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::VlanType : public ydk::Enum
@@ -3659,6 +3715,12 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::VlanType 
         static const ydk::Enum::YLeaf Y_0x9100;
         static const ydk::Enum::YLeaf Y_0x9200;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0x88A8") return 0;
+            if (name == "0x9100") return 1;
+            if (name == "0x9200") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Encapsulation::PriorityTagged::Etype : public ydk::Enum
@@ -3670,6 +3732,14 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::PriorityTagged::
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Way : public ydk::Enum
@@ -3678,6 +3748,11 @@ class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Way
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Mode : public ydk::Enum
@@ -3685,6 +3760,10 @@ class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Mod
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::Mode : public ydk::Enum
@@ -3692,6 +3771,10 @@ class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::Mo
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::Mode : public ydk::Enum
@@ -3699,6 +3782,10 @@ class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translat
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::Mode : public ydk::Enum
@@ -3706,6 +3793,10 @@ class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translat
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::Mode : public ydk::Enum
@@ -3713,6 +3804,10 @@ class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translat
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::Mode : public ydk::Enum
@@ -3720,6 +3815,10 @@ class Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translat
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::Mac::Security::Violation : public ydk::Enum
@@ -3728,6 +3827,11 @@ class Native::Interface::BDI::Service::Instance::Mac::Security::Violation : publ
         static const ydk::Enum::YLeaf protect;
         static const ydk::Enum::YLeaf restrict;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protect") return 0;
+            if (name == "restrict") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol : public ydk::Enum
@@ -3756,6 +3860,31 @@ class Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol :
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol : public ydk::Enum
@@ -3784,6 +3913,31 @@ class Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol : pu
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol : public ydk::Enum
@@ -3812,6 +3966,31 @@ class Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol :
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol : public ydk::Enum
@@ -3840,6 +4019,31 @@ class Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol : 
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::Direction : public ydk::Enum
@@ -3848,6 +4052,11 @@ class Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::Direction
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 

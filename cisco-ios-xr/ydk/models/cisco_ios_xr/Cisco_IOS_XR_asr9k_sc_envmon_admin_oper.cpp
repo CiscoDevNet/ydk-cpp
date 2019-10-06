@@ -1503,11 +1503,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     precision{YType::uint32, "precision"},
     status{YType::uint32, "status"},
     age_time_stamp{YType::uint32, "age-time-stamp"},
-    update_rate{YType::uint32, "update-rate"},
-    average{YType::int32, "average"},
-    minimum{YType::int32, "minimum"},
-    maximum{YType::int32, "maximum"},
-    interval{YType::int32, "interval"}
+    update_rate{YType::uint32, "update-rate"}
 {
 
     yang_name = "value-detailed"; yang_parent_name = "sensor-name"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1531,11 +1527,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 	|| precision.is_set
 	|| status.is_set
 	|| age_time_stamp.is_set
-	|| update_rate.is_set
-	|| average.is_set
-	|| minimum.is_set
-	|| maximum.is_set
-	|| interval.is_set;
+	|| update_rate.is_set;
 }
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::has_operation() const
@@ -1552,11 +1544,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 	|| ydk::is_set(precision.yfilter)
 	|| ydk::is_set(status.yfilter)
 	|| ydk::is_set(age_time_stamp.yfilter)
-	|| ydk::is_set(update_rate.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(interval.yfilter);
+	|| ydk::is_set(update_rate.yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_segment_path() const
@@ -1582,10 +1570,6 @@ std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::R
     if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
     if (age_time_stamp.is_set || is_set(age_time_stamp.yfilter)) leaf_name_data.push_back(age_time_stamp.get_name_leafdata());
     if (update_rate.is_set || is_set(update_rate.yfilter)) leaf_name_data.push_back(update_rate.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1677,30 +1661,6 @@ void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
         update_rate.value_namespace = name_space;
         update_rate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1753,27 +1713,11 @@ void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
     {
         update_rate.yfilter = yfilter;
     }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
 }
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "field-validity-bitmap" || name == "device-description" || name == "units" || name == "device-id" || name == "value" || name == "alarm-type" || name == "data-type" || name == "scale" || name == "precision" || name == "status" || name == "age-time-stamp" || name == "update-rate" || name == "average" || name == "minimum" || name == "maximum" || name == "interval")
+    if(name == "field-validity-bitmap" || name == "device-description" || name == "units" || name == "device-id" || name == "value" || name == "alarm-type" || name == "data-type" || name == "scale" || name == "precision" || name == "status" || name == "age-time-stamp" || name == "update-rate")
         return true;
     return false;
 }

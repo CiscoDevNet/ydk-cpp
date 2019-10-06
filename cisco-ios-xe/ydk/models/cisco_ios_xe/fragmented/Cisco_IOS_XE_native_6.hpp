@@ -3556,6 +3556,11 @@ class Native::Flow::Record::Match::Datalink::Vlan : public ydk::Enum
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 

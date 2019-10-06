@@ -5,16 +5,16 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_133.hpp"
-#include "Cisco_IOS_XE_native_140.hpp"
-#include "Cisco_IOS_XE_native_146.hpp"
-#include "Cisco_IOS_XE_native_135.hpp"
-#include "Cisco_IOS_XE_native_176.hpp"
-#include "Cisco_IOS_XE_native_136.hpp"
-#include "Cisco_IOS_XE_native_217.hpp"
-#include "Cisco_IOS_XE_native_134.hpp"
 #include "Cisco_IOS_XE_native_175.hpp"
+#include "Cisco_IOS_XE_native_136.hpp"
+#include "Cisco_IOS_XE_native_195.hpp"
+#include "Cisco_IOS_XE_native_215.hpp"
+#include "Cisco_IOS_XE_native_135.hpp"
 #include "Cisco_IOS_XE_native_138.hpp"
-#include "Cisco_IOS_XE_native_196.hpp"
+#include "Cisco_IOS_XE_native_217.hpp"
+#include "Cisco_IOS_XE_native_146.hpp"
+#include "Cisco_IOS_XE_native_140.hpp"
+#include "Cisco_IOS_XE_native_134.hpp"
 
 using namespace ydk;
 
@@ -11981,9 +11981,9 @@ Native::Router::Router()
     , ospf(this, {"id"})
     , ospfv3(this, {"id"})
     , bgp(this, {"id"})
-    , eigrp(this, {"id"})
     , lisp(nullptr) // presence node
     , lisp_list(this, {"lisp"})
+    , eigrp(this, {"id"})
     , rip(nullptr) // presence node
 {
     isis_container->parent = this;
@@ -12013,14 +12013,14 @@ bool Native::Router::has_data() const
         if(bgp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.len(); index++)
-    {
-        if(eigrp[index]->has_data())
-            return true;
-    }
     for (std::size_t index=0; index<lisp_list.len(); index++)
     {
         if(lisp_list[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<eigrp.len(); index++)
+    {
+        if(eigrp[index]->has_data())
             return true;
     }
     return (isis !=  nullptr && isis->has_data())
@@ -12046,14 +12046,14 @@ bool Native::Router::has_operation() const
         if(bgp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.len(); index++)
-    {
-        if(eigrp[index]->has_operation())
-            return true;
-    }
     for (std::size_t index=0; index<lisp_list.len(); index++)
     {
         if(lisp_list[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<eigrp.len(); index++)
+    {
+        if(eigrp[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -12130,14 +12130,6 @@ std::shared_ptr<ydk::Entity> Native::Router::get_child_by_name(const std::string
         return ent_;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-eigrp:eigrp")
-    {
-        auto ent_ = std::make_shared<Native::Router::Eigrp>();
-        ent_->parent = this;
-        eigrp.append(ent_);
-        return ent_;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
     {
         if(lisp == nullptr)
@@ -12152,6 +12144,14 @@ std::shared_ptr<ydk::Entity> Native::Router::get_child_by_name(const std::string
         auto ent_ = std::make_shared<Native::Router::LispList>();
         ent_->parent = this;
         lisp_list.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-eigrp:eigrp")
+    {
+        auto ent_ = std::make_shared<Native::Router::Eigrp>();
+        ent_->parent = this;
+        eigrp.append(ent_);
         return ent_;
     }
 
@@ -12208,15 +12208,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::get_children
             _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count_ = 0;
-    for (auto ent_ : eigrp.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
     if(lisp != nullptr)
     {
         _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
@@ -12224,6 +12215,15 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::get_children
 
     count_ = 0;
     for (auto ent_ : lisp_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : eigrp.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -12249,7 +12249,7 @@ void Native::Router::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Native::Router::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "isis" || name == "isis-container" || name == "ospf" || name == "ospfv3" || name == "bgp" || name == "eigrp" || name == "lisp" || name == "lisp-list" || name == "rip")
+    if(name == "isis" || name == "isis-container" || name == "ospf" || name == "ospfv3" || name == "bgp" || name == "lisp" || name == "lisp-list" || name == "eigrp" || name == "rip")
         return true;
     return false;
 }

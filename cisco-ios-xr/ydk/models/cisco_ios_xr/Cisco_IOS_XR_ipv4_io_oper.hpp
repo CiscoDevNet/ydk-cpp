@@ -285,6 +285,11 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail : publ
         class HelperAddress; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress
         class Rpf; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf
         class BgpPa; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa
+        class PubUtime; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime
+        class IdbUtime; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime
+        class CapsUtime; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime
+        class FwdEnUtime; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime
+        class FwdDisUtime; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime
         class MulticastGroup; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup
         class SecondaryAddress; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress
 
@@ -293,6 +298,11 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail : publ
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress> helper_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf> rpf;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa> bgp_pa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime> pub_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime> idb_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime> caps_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime> fwd_en_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime> fwd_dis_utime;
         ydk::YList multicast_group;
         ydk::YList secondary_address;
         
@@ -550,6 +560,106 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa
         ydk::YLeaf destination; //type: boolean
 
 }; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output
+
+
+class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime : public ydk::Entity
+{
+    public:
+        PubUtime();
+        ~PubUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime
+
+
+class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime : public ydk::Entity
+{
+    public:
+        IdbUtime();
+        ~IdbUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime
+
+
+class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime : public ydk::Entity
+{
+    public:
+        CapsUtime();
+        ~CapsUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime
+
+
+class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime : public ydk::Entity
+{
+    public:
+        FwdEnUtime();
+        ~FwdEnUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime
+
+
+class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime : public ydk::Entity
+{
+    public:
+        FwdDisUtime();
+        ~FwdDisUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime
 
 
 class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup : public ydk::Entity
@@ -1033,6 +1143,11 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail : public ydk::Entity
         class HelperAddress; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress
         class Rpf; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf
         class BgpPa; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa
+        class PubUtime; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime
+        class IdbUtime; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime
+        class CapsUtime; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime
+        class FwdEnUtime; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime
+        class FwdDisUtime; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime
         class MulticastGroup; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup
         class SecondaryAddress; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress
 
@@ -1041,6 +1156,11 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress> helper_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf> rpf;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa> bgp_pa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime> pub_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime> idb_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime> caps_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime> fwd_en_utime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime> fwd_dis_utime;
         ydk::YList multicast_group;
         ydk::YList secondary_address;
         
@@ -1300,6 +1420,106 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output : pub
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output
 
 
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime : public ydk::Entity
+{
+    public:
+        PubUtime();
+        ~PubUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime : public ydk::Entity
+{
+    public:
+        IdbUtime();
+        ~IdbUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime : public ydk::Entity
+{
+    public:
+        CapsUtime();
+        ~CapsUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime : public ydk::Entity
+{
+    public:
+        FwdEnUtime();
+        ~FwdEnUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime : public ydk::Entity
+{
+    public:
+        FwdDisUtime();
+        ~FwdDisUtime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime
+
+
 class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup : public ydk::Entity
 {
     public:
@@ -1390,6 +1610,28 @@ class ImStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf im_state_unknown;
         static const ydk::Enum::YLeaf im_state_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-state-not-ready") return 0;
+            if (name == "im-state-admin-down") return 1;
+            if (name == "im-state-down") return 2;
+            if (name == "im-state-up") return 3;
+            if (name == "im-state-shutdown") return 4;
+            if (name == "im-state-err-disable") return 5;
+            if (name == "im-state-down-immediate") return 6;
+            if (name == "im-state-down-immediate-admin") return 7;
+            if (name == "im-state-down-graceful") return 8;
+            if (name == "im-state-begin-shutdown") return 9;
+            if (name == "im-state-end-shutdown") return 10;
+            if (name == "im-state-begin-error-disable") return 11;
+            if (name == "im-state-end-error-disable") return 12;
+            if (name == "im-state-begin-down-graceful") return 13;
+            if (name == "im-state-reset") return 14;
+            if (name == "im-state-operational") return 15;
+            if (name == "im-state-not-operational") return 16;
+            if (name == "im-state-unknown") return 17;
+            if (name == "im-state-last") return 18;
+            return -1;
+        }
 };
 
 class Ipv4MaOperConfig : public ydk::Enum
@@ -1399,6 +1641,12 @@ class Ipv4MaOperConfig : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_ma_oper_non_oc_client;
         static const ydk::Enum::YLeaf ipv4_ma_oper_oc_client;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-ma-oper-client-none") return 0;
+            if (name == "ipv4-ma-oper-non-oc-client") return 1;
+            if (name == "ipv4-ma-oper-oc-client") return 2;
+            return -1;
+        }
 };
 
 class RpfMode : public ydk::Enum
@@ -1407,6 +1655,11 @@ class RpfMode : public ydk::Enum
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf loose;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 0;
+            if (name == "loose") return 1;
+            return -1;
+        }
 };
 
 class Ipv4MaOperLineState : public ydk::Enum
@@ -1417,6 +1670,13 @@ class Ipv4MaOperLineState : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "shutdown") return 1;
+            if (name == "down") return 2;
+            if (name == "up") return 3;
+            return -1;
+        }
 };
 
 

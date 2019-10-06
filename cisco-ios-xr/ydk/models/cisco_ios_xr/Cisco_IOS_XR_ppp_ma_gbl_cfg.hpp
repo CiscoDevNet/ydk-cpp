@@ -17,6 +17,12 @@ class PppAuthenticationMethodGbl : public ydk::Enum
         static const ydk::Enum::YLeaf chap;
         static const ydk::Enum::YLeaf ms_chap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pap") return 1;
+            if (name == "chap") return 2;
+            if (name == "ms-chap") return 3;
+            return -1;
+        }
 };
 
 

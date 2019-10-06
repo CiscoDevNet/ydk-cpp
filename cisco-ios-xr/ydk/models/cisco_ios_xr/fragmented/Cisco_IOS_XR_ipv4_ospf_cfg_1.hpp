@@ -13,72 +13,6 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_cfg {
 
 
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces : public ydk::Entity
-{
-    public:
-        ExcludeInterfaces();
-        ~ExcludeInterfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
-
-        ydk::YList exclude_interface;
-        
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface : public ydk::Entity
-{
-    public:
-        ExcludeInterface();
-        ~ExcludeInterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback : public ydk::Entity
-{
-    public:
-        CostFallback();
-        ~CostFallback();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cost; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback
-
-
 class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes : public ydk::Entity
 {
     public:
@@ -127,6 +61,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiArea
         ydk::YLeaf packet_size; //type: uint32
         ydk::YLeaf database_filter; //type: boolean
         ydk::YLeaf retransmit_interval; //type: uint32
+        ydk::YLeaf running; //type: empty
         class DistributeList; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList
         class Authentication; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication
         class Neighbors; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors
@@ -775,6 +710,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId : public yd
         ydk::YLeaf external_out; //type: boolean
         ydk::YLeaf summary_in; //type: boolean
         ydk::YLeaf segment_routing; //type: OspfSegmentRouting
+        ydk::YLeaf running; //type: empty
         class VirtualLinkScopes; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes
         class ShamLinkScopes; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes
         class AreaScope; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
@@ -837,6 +773,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLin
         ydk::YLeaf hello_interval; //type: uint32
         ydk::YLeaf transmit_delay; //type: uint32
         ydk::YLeaf retransmit_interval; //type: uint32
+        ydk::YLeaf running; //type: empty
         class Authentication; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication
         class DeadIntervalMinimal; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal
 
@@ -1008,6 +945,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSc
         ydk::YLeaf hello_interval; //type: uint32
         ydk::YLeaf transmit_delay; //type: uint32
         ydk::YLeaf retransmit_interval; //type: uint32
+        ydk::YLeaf running; //type: empty
         class Authentication; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication
         class DeadIntervalMinimal; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal
 
@@ -1150,7 +1088,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf cost; //type: uint32
-        ydk::YLeaf weight; //type: uint32
         ydk::YLeaf prefix_suppression_primary; //type: boolean
         ydk::YLeaf mtu_ignore; //type: boolean
         ydk::YLeaf ldp_sync_igp_shortcuts; //type: boolean
@@ -1784,7 +1721,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes
 
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf cost; //type: uint32
-        ydk::YLeaf weight; //type: uint32
         ydk::YLeaf prefix_suppression_primary; //type: boolean
         ydk::YLeaf mtu_ignore; //type: boolean
         ydk::YLeaf ldp_sync_igp_shortcuts; //type: boolean
@@ -1804,7 +1740,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes
         ydk::YLeaf retransmit_interval; //type: uint32
         ydk::YLeaf priority; //type: uint32
         ydk::YLeaf flood_reduction; //type: boolean
-        class AdjacencySids; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids
+        ydk::YLeaf running; //type: empty
         class PrefixSid; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid
         class PrefixSidStrict; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict
         class DistributeList; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList
@@ -1816,7 +1752,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes
         class FastReroute; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute
         class CostFallback; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids> adjacency_sids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid> prefix_sid; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict> prefix_sid_strict; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList> distribute_list; // presence node
@@ -1829,53 +1764,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback> cost_fallback;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids : public ydk::Entity
-{
-    public:
-        AdjacencySids();
-        ~AdjacencySids();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AdjacencySid; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid
-
-        ydk::YList adjacency_sid;
-        
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid : public ydk::Entity
-{
-    public:
-        AdjacencySid();
-        ~AdjacencySid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_type; //type: OspfSid
-        ydk::YLeaf sid_value; //type: uint32
-        ydk::YLeaf protected_; //type: boolean
-        ydk::YLeaf neighbor_address; //type: string
-
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid
 
 
 class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid : public ydk::Entity
@@ -2576,6 +2464,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaI
         ydk::YLeaf packet_size; //type: uint32
         ydk::YLeaf database_filter; //type: boolean
         ydk::YLeaf retransmit_interval; //type: uint32
+        ydk::YLeaf running; //type: empty
         class DistributeList; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList
         class Authentication; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication
         class Neighbors; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors
@@ -3383,7 +3272,6 @@ class Ospf::Processes::Process::DefaultVrf : public ydk::Entity
         class MaxLsa; //type: Ospf::Processes::Process::DefaultVrf::MaxLsa
         class AutoCost; //type: Ospf::Processes::Process::DefaultVrf::AutoCost
         class Ucmp; //type: Ospf::Processes::Process::DefaultVrf::Ucmp
-        class ApplyWeight; //type: Ospf::Processes::Process::DefaultVrf::ApplyWeight
         class FastReroute; //type: Ospf::Processes::Process::DefaultVrf::FastReroute
         class SummaryPrefixes; //type: Ospf::Processes::Process::DefaultVrf::SummaryPrefixes
         class OutgoingRouteUpdates; //type: Ospf::Processes::Process::DefaultVrf::OutgoingRouteUpdates
@@ -3407,7 +3295,6 @@ class Ospf::Processes::Process::DefaultVrf : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::MaxLsa> max_lsa; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AutoCost> auto_cost;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::Ucmp> ucmp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::ApplyWeight> apply_weight; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::FastReroute> fast_reroute;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::SummaryPrefixes> summary_prefixes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::OutgoingRouteUpdates> outgoing_route_updates;
@@ -3711,6 +3598,139 @@ class Ospf::Processes::Process::DefaultVrf::MaxMetric : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover> max_metric_on_switchover;
         
 }; // Ospf::Processes::Process::DefaultVrf::MaxMetric
+
+
+class Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart : public ydk::Entity
+{
+    public:
+        MaxMetricOnProcRestart();
+        ~MaxMetricOnProcRestart();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wait_for_bgp; //type: boolean
+        ydk::YLeaf startup_max; //type: uint32
+        ydk::YLeaf include_stub; //type: boolean
+        ydk::YLeaf summary_lsa; //type: boolean
+        ydk::YLeaf summary_lsa_maximum_metric; //type: uint32
+        ydk::YLeaf external_lsa; //type: boolean
+        ydk::YLeaf external_lsa_maximum_metric; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart
+
+
+class Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup : public ydk::Entity
+{
+    public:
+        MaxMetricOnStartup();
+        ~MaxMetricOnStartup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wait_for_bgp; //type: boolean
+        ydk::YLeaf startup_max; //type: uint32
+        ydk::YLeaf include_stub; //type: boolean
+        ydk::YLeaf summary_lsa; //type: boolean
+        ydk::YLeaf summary_lsa_maximum_metric; //type: uint32
+        ydk::YLeaf external_lsa; //type: boolean
+        ydk::YLeaf external_lsa_maximum_metric; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup
+
+
+class Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration : public ydk::Entity
+{
+    public:
+        MaxMetricOnProcMigration();
+        ~MaxMetricOnProcMigration();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wait_for_bgp; //type: boolean
+        ydk::YLeaf startup_max; //type: uint32
+        ydk::YLeaf include_stub; //type: boolean
+        ydk::YLeaf summary_lsa; //type: boolean
+        ydk::YLeaf summary_lsa_maximum_metric; //type: uint32
+        ydk::YLeaf external_lsa; //type: boolean
+        ydk::YLeaf external_lsa_maximum_metric; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration
+
+
+class Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways : public ydk::Entity
+{
+    public:
+        MaxMetricAlways();
+        ~MaxMetricAlways();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf include_stub; //type: boolean
+        ydk::YLeaf summary_lsa; //type: boolean
+        ydk::YLeaf summary_lsa_maximum_metric; //type: uint32
+        ydk::YLeaf external_lsa; //type: boolean
+        ydk::YLeaf external_lsa_maximum_metric; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways
+
+
+class Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover : public ydk::Entity
+{
+    public:
+        MaxMetricOnSwitchover();
+        ~MaxMetricOnSwitchover();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wait_for_bgp; //type: boolean
+        ydk::YLeaf startup_max; //type: uint32
+        ydk::YLeaf include_stub; //type: boolean
+        ydk::YLeaf summary_lsa; //type: boolean
+        ydk::YLeaf summary_lsa_maximum_metric; //type: uint32
+        ydk::YLeaf external_lsa; //type: boolean
+        ydk::YLeaf external_lsa_maximum_metric; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover
 
 
 }

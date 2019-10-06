@@ -3885,6 +3885,14 @@ class Group : public ydk::Enum
         static const ydk::Enum::YLeaf neighbor;
         static const ydk::Enum::YLeaf error_group;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address-family-group") return 0;
+            if (name == "session-group") return 1;
+            if (name == "neighbor-group") return 2;
+            if (name == "neighbor") return 3;
+            if (name == "error-group") return 4;
+            return -1;
+        }
 };
 
 class AttachPointDirection : public ydk::Enum
@@ -3893,6 +3901,11 @@ class AttachPointDirection : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class SubAddressFamily : public ydk::Enum
@@ -3913,6 +3926,23 @@ class SubAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf saf_none;
         static const ydk::Enum::YLeaf saf_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            if (name == "multicast") return 1;
+            if (name == "label") return 2;
+            if (name == "tunnel") return 3;
+            if (name == "vpn") return 4;
+            if (name == "mdt") return 5;
+            if (name == "vpls") return 6;
+            if (name == "rt-constraint") return 7;
+            if (name == "mvpn") return 8;
+            if (name == "flow") return 9;
+            if (name == "vpn-mcast") return 10;
+            if (name == "evpn") return 11;
+            if (name == "saf-none") return 12;
+            if (name == "saf-unknown") return 13;
+            return -1;
+        }
 };
 
 class AddressFamily : public ydk::Enum
@@ -3925,6 +3955,15 @@ class AddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf af_none;
         static const ydk::Enum::YLeaf af_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "l2vpn") return 2;
+            if (name == "ls") return 3;
+            if (name == "af-none") return 4;
+            if (name == "af-unknown") return 5;
+            return -1;
+        }
 };
 
 class ObjectStatus : public ydk::Enum
@@ -3934,6 +3973,12 @@ class ObjectStatus : public ydk::Enum
         static const ydk::Enum::YLeaf inactive;
         static const ydk::Enum::YLeaf unused;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "inactive") return 1;
+            if (name == "unused") return 2;
+            return -1;
+        }
 };
 
 

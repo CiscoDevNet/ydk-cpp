@@ -959,13 +959,13 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::IccpGroup()
         ,
     backbones(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones>())
     , members(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members>())
-    , mlacp(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>())
     , nv_satellite(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>())
+    , mlacp(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>())
 {
     backbones->parent = this;
     members->parent = this;
-    mlacp->parent = this;
     nv_satellite->parent = this;
+    mlacp->parent = this;
 
     yang_name = "iccp-group"; yang_parent_name = "iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -982,8 +982,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_data() const
 	|| mode.is_set
 	|| (backbones !=  nullptr && backbones->has_data())
 	|| (members !=  nullptr && members->has_data())
-	|| (mlacp !=  nullptr && mlacp->has_data())
-	|| (nv_satellite !=  nullptr && nv_satellite->has_data());
+	|| (nv_satellite !=  nullptr && nv_satellite->has_data())
+	|| (mlacp !=  nullptr && mlacp->has_data());
 }
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_operation() const
@@ -994,8 +994,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_operation() const
 	|| ydk::is_set(mode.yfilter)
 	|| (backbones !=  nullptr && backbones->has_operation())
 	|| (members !=  nullptr && members->has_operation())
-	|| (mlacp !=  nullptr && mlacp->has_operation())
-	|| (nv_satellite !=  nullptr && nv_satellite->has_operation());
+	|| (nv_satellite !=  nullptr && nv_satellite->has_operation())
+	|| (mlacp !=  nullptr && mlacp->has_operation());
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_absolute_path() const
@@ -1045,15 +1045,6 @@ std::shared_ptr<ydk::Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup
         return members;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:mlacp")
-    {
-        if(mlacp == nullptr)
-        {
-            mlacp = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>();
-        }
-        return mlacp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite")
     {
         if(nv_satellite == nullptr)
@@ -1061,6 +1052,15 @@ std::shared_ptr<ydk::Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup
             nv_satellite = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>();
         }
         return nv_satellite;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:mlacp")
+    {
+        if(mlacp == nullptr)
+        {
+            mlacp = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>();
+        }
+        return mlacp;
     }
 
     return nullptr;
@@ -1080,14 +1080,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> RedundancyGroupManager::Iccp
         _children["members"] = members;
     }
 
-    if(mlacp != nullptr)
-    {
-        _children["Cisco-IOS-XR-bundlemgr-cfg:mlacp"] = mlacp;
-    }
-
     if(nv_satellite != nullptr)
     {
         _children["Cisco-IOS-XR-icpe-infra-cfg:nv-satellite"] = nv_satellite;
+    }
+
+    if(mlacp != nullptr)
+    {
+        _children["Cisco-IOS-XR-bundlemgr-cfg:mlacp"] = mlacp;
     }
 
     return _children;
@@ -1133,7 +1133,7 @@ void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::set_filter(const std::
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "backbones" || name == "members" || name == "mlacp" || name == "nv-satellite" || name == "group-number" || name == "isolation-recovery-delay" || name == "mode")
+    if(name == "backbones" || name == "members" || name == "nv-satellite" || name == "mlacp" || name == "group-number" || name == "isolation-recovery-delay" || name == "mode")
         return true;
     return false;
 }
@@ -1482,6 +1482,84 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::has_l
     return false;
 }
 
+RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
+    :
+    system_mac{YType::str, "system-mac"}
+{
+
+    yang_name = "nv-satellite"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::~NvSatellite()
+{
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_data() const
+{
+    if (is_presence_container) return true;
+    return system_mac.is_set;
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(system_mac.yfilter);
+}
+
+std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "system-mac")
+    {
+        system_mac = value;
+        system_mac.value_namespace = name_space;
+        system_mac.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-mac")
+    {
+        system_mac.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac")
+        return true;
+    return false;
+}
+
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::Mlacp()
     :
     connect_timeout{YType::uint32, "connect-timeout"},
@@ -1598,84 +1676,6 @@ void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::set_filter(cons
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "connect-timeout" || name == "system-mac" || name == "node" || name == "system-priority")
-        return true;
-    return false;
-}
-
-RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
-    :
-    system_mac{YType::str, "system-mac"}
-{
-
-    yang_name = "nv-satellite"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::~NvSatellite()
-{
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_data() const
-{
-    if (is_presence_container) return true;
-    return system_mac.is_set;
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(system_mac.yfilter);
-}
-
-std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "system-mac")
-    {
-        system_mac = value;
-        system_mac.value_namespace = name_space;
-        system_mac.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "system-mac")
-    {
-        system_mac.yfilter = yfilter;
-    }
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "system-mac")
         return true;
     return false;
 }

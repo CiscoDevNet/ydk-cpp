@@ -658,6 +658,19 @@ class LptsPifib : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_any;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isis") return 0;
+            if (name == "ipv4-frag") return 1;
+            if (name == "ipv4-echo") return 2;
+            if (name == "ipv4-any") return 3;
+            if (name == "ipv6-frag") return 4;
+            if (name == "ipv6-echo") return 5;
+            if (name == "ipv6-nd") return 6;
+            if (name == "ipv6-any") return 7;
+            if (name == "bfd-any") return 8;
+            if (name == "all") return 9;
+            return -1;
+        }
 };
 
 

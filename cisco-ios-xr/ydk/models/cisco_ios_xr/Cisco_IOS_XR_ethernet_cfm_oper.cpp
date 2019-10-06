@@ -397,7 +397,7 @@ bool Cfm::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAises()
     :
-    interface_ais(this, {"interface", "direction"})
+    interface_ais(this, {"interface_name", "direction"})
 {
 
     yang_name = "interface-aises"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
@@ -490,9 +490,9 @@ bool Cfm::Nodes::Node::InterfaceAises::has_leaf_or_child_of_name(const std::stri
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAis::InterfaceAis()
     :
-    interface{YType::str, "interface"},
+    interface_name{YType::str, "interface-name"},
     direction{YType::enumeration, "direction"},
-    interface_xr{YType::str, "interface-xr"},
+    interface{YType::str, "interface"},
     interface_state{YType::str, "interface-state"},
     interworking_state{YType::enumeration, "interworking-state"},
     stp_state{YType::enumeration, "stp-state"}
@@ -511,9 +511,9 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::~InterfaceAis()
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_data() const
 {
     if (is_presence_container) return true;
-    return interface.is_set
+    return interface_name.is_set
 	|| direction.is_set
-	|| interface_xr.is_set
+	|| interface.is_set
 	|| interface_state.is_set
 	|| interworking_state.is_set
 	|| stp_state.is_set
@@ -523,9 +523,9 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_data() const
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(interface_xr.yfilter)
+	|| ydk::is_set(interface.yfilter)
 	|| ydk::is_set(interface_state.yfilter)
 	|| ydk::is_set(interworking_state.yfilter)
 	|| ydk::is_set(stp_state.yfilter)
@@ -536,7 +536,7 @@ std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ais";
-    ADD_KEY_TOKEN(interface, "interface");
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
@@ -545,9 +545,9 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Nodes::Node::InterfaceAises:
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (interface_xr.is_set || is_set(interface_xr.yfilter)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (interface_state.is_set || is_set(interface_state.yfilter)) leaf_name_data.push_back(interface_state.get_name_leafdata());
     if (interworking_state.is_set || is_set(interworking_state.yfilter)) leaf_name_data.push_back(interworking_state.get_name_leafdata());
     if (stp_state.is_set || is_set(stp_state.yfilter)) leaf_name_data.push_back(stp_state.get_name_leafdata());
@@ -584,11 +584,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Cfm::Nodes::Node::InterfaceA
 
 void Cfm::Nodes::Node::InterfaceAises::InterfaceAis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interface")
+    if(value_path == "interface-name")
     {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
@@ -596,11 +596,11 @@ void Cfm::Nodes::Node::InterfaceAises::InterfaceAis::set_value(const std::string
         direction.value_namespace = name_space;
         direction.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interface-xr")
+    if(value_path == "interface")
     {
-        interface_xr = value;
-        interface_xr.value_namespace = name_space;
-        interface_xr.value_namespace_prefix = name_space_prefix;
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-state")
     {
@@ -624,17 +624,17 @@ void Cfm::Nodes::Node::InterfaceAises::InterfaceAis::set_value(const std::string
 
 void Cfm::Nodes::Node::InterfaceAises::InterfaceAis::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "interface")
+    if(value_path == "interface-name")
     {
-        interface.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
     if(value_path == "direction")
     {
         direction.yfilter = yfilter;
     }
-    if(value_path == "interface-xr")
+    if(value_path == "interface")
     {
-        interface_xr.yfilter = yfilter;
+        interface.yfilter = yfilter;
     }
     if(value_path == "interface-state")
     {
@@ -652,7 +652,7 @@ void Cfm::Nodes::Node::InterfaceAises::InterfaceAis::set_filter(const std::strin
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "statistics" || name == "interface" || name == "direction" || name == "interface-xr" || name == "interface-state" || name == "interworking-state" || name == "stp-state")
+    if(name == "statistics" || name == "interface-name" || name == "direction" || name == "interface" || name == "interface-state" || name == "interworking-state" || name == "stp-state")
         return true;
     return false;
 }
@@ -15743,8 +15743,14 @@ bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTim
     return false;
 }
 
-const Enum::YLeaf CfmAisDir::up {0, "up"};
-const Enum::YLeaf CfmAisDir::down {1, "down"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_ok {1, "elr-ingress-ok"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_down {2, "elr-ingress-down"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_blocked {3, "elr-ingress-blocked"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_vid {4, "elr-ingress-vid"};
+
+const Enum::YLeaf CfmPmRelayAction::relay_hit {1, "relay-hit"};
+const Enum::YLeaf CfmPmRelayAction::relay_fdb {2, "relay-fdb"};
+const Enum::YLeaf CfmPmRelayAction::relay_mpdb {3, "relay-mpdb"};
 
 const Enum::YLeaf CfmBagSmanFmt::sman_vlan_id {1, "sman-vlan-id"};
 const Enum::YLeaf CfmBagSmanFmt::sman_string {2, "sman-string"};
@@ -15753,15 +15759,23 @@ const Enum::YLeaf CfmBagSmanFmt::sman_vpn_id {4, "sman-vpn-id"};
 const Enum::YLeaf CfmBagSmanFmt::sman_icc {32, "sman-icc"};
 const Enum::YLeaf CfmBagSmanFmt::sman_unknown {33, "sman-unknown"};
 
-const Enum::YLeaf CfmBagMdidFmt::mdid_null {1, "mdid-null"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_dns_like {2, "mdid-dns-like"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_mac_address {3, "mdid-mac-address"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_string {4, "mdid-string"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_unknown {5, "mdid-unknown"};
+const Enum::YLeaf CfmPmMepDefect::defect_none {0, "defect-none"};
+const Enum::YLeaf CfmPmMepDefect::defect_rdi_ccm {1, "defect-rdi-ccm"};
+const Enum::YLeaf CfmPmMepDefect::defect_ma_cstatus {2, "defect-ma-cstatus"};
+const Enum::YLeaf CfmPmMepDefect::defect_remote_ccm {3, "defect-remote-ccm"};
+const Enum::YLeaf CfmPmMepDefect::defect_error_ccm {4, "defect-error-ccm"};
+const Enum::YLeaf CfmPmMepDefect::defect_cross_connect_ccm {5, "defect-cross-connect-ccm"};
 
-const Enum::YLeaf CfmBagCcmOffload::offload_none {0, "offload-none"};
-const Enum::YLeaf CfmBagCcmOffload::offload_software {1, "offload-software"};
-const Enum::YLeaf CfmBagCcmOffload::offload_hardware {2, "offload-hardware"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_ok {1, "elr-egress-ok"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_down {2, "elr-egress-down"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_blocked {3, "elr-egress-blocked"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_vid {4, "elr-egress-vid"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_mac {255, "elr-egress-mac"};
+
+const Enum::YLeaf CfmPmIngressAction::ingress_ok {1, "ingress-ok"};
+const Enum::YLeaf CfmPmIngressAction::ingress_down {2, "ingress-down"};
+const Enum::YLeaf CfmPmIngressAction::ingress_blocked {3, "ingress-blocked"};
+const Enum::YLeaf CfmPmIngressAction::ingress_vid {4, "ingress-vid"};
 
 const Enum::YLeaf CfmBagCcmInterval::interval_none {0, "interval-none"};
 const Enum::YLeaf CfmBagCcmInterval::interval3_3ms {1, "interval3-3ms"};
@@ -15772,146 +15786,6 @@ const Enum::YLeaf CfmBagCcmInterval::interval10s {5, "interval10s"};
 const Enum::YLeaf CfmBagCcmInterval::interval1m {6, "interval1m"};
 const Enum::YLeaf CfmBagCcmInterval::interval10m {7, "interval10m"};
 
-const Enum::YLeaf CfmBagBdidFmt::invalid {0, "invalid"};
-const Enum::YLeaf CfmBagBdidFmt::bd_id {1, "bd-id"};
-const Enum::YLeaf CfmBagBdidFmt::xc_p2p_id {2, "xc-p2p-id"};
-const Enum::YLeaf CfmBagBdidFmt::xc_mp2mp_id {3, "xc-mp2mp-id"};
-const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_aware_id {4, "fxc-vlan-aware-id"};
-const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_unaware_id {5, "fxc-vlan-unaware-id"};
-const Enum::YLeaf CfmBagBdidFmt::down_only {6, "down-only"};
-
-const Enum::YLeaf CfmMaMpVariety::mip {0, "mip"};
-const Enum::YLeaf CfmMaMpVariety::up_mep {1, "up-mep"};
-const Enum::YLeaf CfmMaMpVariety::downmep {2, "downmep"};
-const Enum::YLeaf CfmMaMpVariety::unknown_mep {3, "unknown-mep"};
-
-const Enum::YLeaf CfmBagIssuRole::unknown {0, "unknown"};
-const Enum::YLeaf CfmBagIssuRole::primary {1, "primary"};
-const Enum::YLeaf CfmBagIssuRole::secondary {2, "secondary"};
-
-const Enum::YLeaf CfmBagOpcode::reserved {0, "reserved"};
-const Enum::YLeaf CfmBagOpcode::ccm {1, "ccm"};
-const Enum::YLeaf CfmBagOpcode::lbr {2, "lbr"};
-const Enum::YLeaf CfmBagOpcode::lbm {3, "lbm"};
-const Enum::YLeaf CfmBagOpcode::ltr {4, "ltr"};
-const Enum::YLeaf CfmBagOpcode::ltm {5, "ltm"};
-
-const Enum::YLeaf CfmBagAisInterval::ais_interval_none {0, "ais-interval-none"};
-const Enum::YLeaf CfmBagAisInterval::ais_interval1s {4, "ais-interval1s"};
-const Enum::YLeaf CfmBagAisInterval::ais_interval1m {6, "ais-interval1m"};
-
-const Enum::YLeaf CfmBagMdLevel::level0 {0, "level0"};
-const Enum::YLeaf CfmBagMdLevel::level1 {1, "level1"};
-const Enum::YLeaf CfmBagMdLevel::level2 {2, "level2"};
-const Enum::YLeaf CfmBagMdLevel::level3 {3, "level3"};
-const Enum::YLeaf CfmBagMdLevel::level4 {4, "level4"};
-const Enum::YLeaf CfmBagMdLevel::level5 {5, "level5"};
-const Enum::YLeaf CfmBagMdLevel::level6 {6, "level6"};
-const Enum::YLeaf CfmBagMdLevel::level7 {7, "level7"};
-const Enum::YLeaf CfmBagMdLevel::level_invalid {8, "level-invalid"};
-
-const Enum::YLeaf CfmBagDirection::direction_up {0, "direction-up"};
-const Enum::YLeaf CfmBagDirection::direction_down {1, "direction-down"};
-const Enum::YLeaf CfmBagDirection::direction_invalid {2, "direction-invalid"};
-
-const Enum::YLeaf CfmBagStpState::stp_up {0, "stp-up"};
-const Enum::YLeaf CfmBagStpState::stp_blocked {1, "stp-blocked"};
-const Enum::YLeaf CfmBagStpState::stp_unknown {2, "stp-unknown"};
-
-const Enum::YLeaf CfmBagIwState::interworking_up {0, "interworking-up"};
-const Enum::YLeaf CfmBagIwState::interworking_test {1, "interworking-test"};
-
-const Enum::YLeaf CfmPmAddlIntfStatus::unknown {0, "unknown"};
-const Enum::YLeaf CfmPmAddlIntfStatus::administratively_down {1, "administratively-down"};
-const Enum::YLeaf CfmPmAddlIntfStatus::remote_excessive_errors {2, "remote-excessive-errors"};
-const Enum::YLeaf CfmPmAddlIntfStatus::local_excessive_errors {3, "local-excessive-errors"};
-
-const Enum::YLeaf CfmPmIntfStatus::interface_status_up {1, "interface-status-up"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_down {2, "interface-status-down"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_testing {3, "interface-status-testing"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_unknown {4, "interface-status-unknown"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_dormant {5, "interface-status-dormant"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_not_present {6, "interface-status-not-present"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_lower_layer_down {7, "interface-status-lower-layer-down"};
-
-const Enum::YLeaf CfmPmPortStatus::port_status_blocked {1, "port-status-blocked"};
-const Enum::YLeaf CfmPmPortStatus::port_status_up {2, "port-status-up"};
-const Enum::YLeaf CfmPmPortStatus::port_status_unknown {3, "port-status-unknown"};
-
-const Enum::YLeaf CfmPmRmepState::peer_mep_idle {1, "peer-mep-idle"};
-const Enum::YLeaf CfmPmRmepState::peer_mep_start {2, "peer-mep-start"};
-const Enum::YLeaf CfmPmRmepState::peer_mep_failed {3, "peer-mep-failed"};
-const Enum::YLeaf CfmPmRmepState::peer_mep_ok {4, "peer-mep-ok"};
-
-const Enum::YLeaf CfmPmRmepXcState::cross_check_ok {0, "cross-check-ok"};
-const Enum::YLeaf CfmPmRmepXcState::cross_check_missing {1, "cross-check-missing"};
-const Enum::YLeaf CfmPmRmepXcState::cross_check_extra {2, "cross-check-extra"};
-
-const Enum::YLeaf CfmPmAisReceive::receive_none {0, "receive-none"};
-const Enum::YLeaf CfmPmAisReceive::receive_ais {1, "receive-ais"};
-const Enum::YLeaf CfmPmAisReceive::receive_lck {2, "receive-lck"};
-const Enum::YLeaf CfmPmAisReceive::receive_direct {3, "receive-direct"};
-
-const Enum::YLeaf CfmPmAisTransmit::transmit_none {0, "transmit-none"};
-const Enum::YLeaf CfmPmAisTransmit::transmit_ais {1, "transmit-ais"};
-const Enum::YLeaf CfmPmAisTransmit::transmit_ais_direct {2, "transmit-ais-direct"};
-
-const Enum::YLeaf CfmPmMepDefect::defect_none {0, "defect-none"};
-const Enum::YLeaf CfmPmMepDefect::defect_rdi_ccm {1, "defect-rdi-ccm"};
-const Enum::YLeaf CfmPmMepDefect::defect_ma_cstatus {2, "defect-ma-cstatus"};
-const Enum::YLeaf CfmPmMepDefect::defect_remote_ccm {3, "defect-remote-ccm"};
-const Enum::YLeaf CfmPmMepDefect::defect_error_ccm {4, "defect-error-ccm"};
-const Enum::YLeaf CfmPmMepDefect::defect_cross_connect_ccm {5, "defect-cross-connect-ccm"};
-
-const Enum::YLeaf CfmPmMepFngState::fng_reset {1, "fng-reset"};
-const Enum::YLeaf CfmPmMepFngState::fng_defect {2, "fng-defect"};
-const Enum::YLeaf CfmPmMepFngState::fng_report_defect {3, "fng-report-defect"};
-const Enum::YLeaf CfmPmMepFngState::fng_defect_reported {4, "fng-defect-reported"};
-const Enum::YLeaf CfmPmMepFngState::fng_defect_clearing {5, "fng-defect-clearing"};
-
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_ok {1, "elr-egress-ok"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_down {2, "elr-egress-down"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_blocked {3, "elr-egress-blocked"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_vid {4, "elr-egress-vid"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_mac {255, "elr-egress-mac"};
-
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_ok {1, "elr-ingress-ok"};
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_down {2, "elr-ingress-down"};
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_blocked {3, "elr-ingress-blocked"};
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_vid {4, "elr-ingress-vid"};
-
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_hit {1, "elr-relay-hit"};
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_fdb {2, "elr-relay-fdb"};
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_flood {3, "elr-relay-flood"};
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_drop {4, "elr-relay-drop"};
-
-const Enum::YLeaf CfmPmLastHopFmt::last_hop_none {0, "last-hop-none"};
-const Enum::YLeaf CfmPmLastHopFmt::last_hop_host_name {1, "last-hop-host-name"};
-const Enum::YLeaf CfmPmLastHopFmt::last_hop_egress_id {2, "last-hop-egress-id"};
-
-const Enum::YLeaf CfmPmEgressAction::egress_ok {1, "egress-ok"};
-const Enum::YLeaf CfmPmEgressAction::egress_down {2, "egress-down"};
-const Enum::YLeaf CfmPmEgressAction::egress_blocked {3, "egress-blocked"};
-const Enum::YLeaf CfmPmEgressAction::egress_vid {4, "egress-vid"};
-
-const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_alias {1, "port-id-interface-alias"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_port_component {2, "port-id-port-component"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_mac_address {3, "port-id-mac-address"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_network_address {4, "port-id-network-address"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_name {5, "port-id-interface-name"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_agent_circuit_id {6, "port-id-agent-circuit-id"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_local {7, "port-id-local"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_unknown {8, "port-id-unknown"};
-
-const Enum::YLeaf CfmPmIngressAction::ingress_ok {1, "ingress-ok"};
-const Enum::YLeaf CfmPmIngressAction::ingress_down {2, "ingress-down"};
-const Enum::YLeaf CfmPmIngressAction::ingress_blocked {3, "ingress-blocked"};
-const Enum::YLeaf CfmPmIngressAction::ingress_vid {4, "ingress-vid"};
-
-const Enum::YLeaf CfmPmIdFmt::id_format_is_string {0, "id-format-is-string"};
-const Enum::YLeaf CfmPmIdFmt::id_format_is_mac_address {1, "id-format-is-mac-address"};
-const Enum::YLeaf CfmPmIdFmt::id_format_is_raw_hex {2, "id-format-is-raw-hex"};
-
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_chassis_component {1, "chassis-id-chassis-component"};
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_interface_alias {2, "chassis-id-interface-alias"};
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_port_component {3, "chassis-id-port-component"};
@@ -15921,22 +15795,35 @@ const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_interface_name {6, "chassis-id-i
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_local {7, "chassis-id-local"};
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_unknown_type {8, "chassis-id-unknown-type"};
 
-const Enum::YLeaf CfmPmRelayAction::relay_hit {1, "relay-hit"};
-const Enum::YLeaf CfmPmRelayAction::relay_fdb {2, "relay-fdb"};
-const Enum::YLeaf CfmPmRelayAction::relay_mpdb {3, "relay-mpdb"};
+const Enum::YLeaf SlaOperOperation::operation_type_configured {0, "operation-type-configured"};
+const Enum::YLeaf SlaOperOperation::operation_type_ondemand {1, "operation-type-ondemand"};
 
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_not_present {0, "reply-filter-not-present"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_default {1, "reply-filter-default"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_vlan_topology {2, "reply-filter-vlan-topology"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_spanning_tree {3, "reply-filter-spanning-tree"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_all_ports {4, "reply-filter-all-ports"};
+const Enum::YLeaf CfmPmLastHopFmt::last_hop_none {0, "last-hop-none"};
+const Enum::YLeaf CfmPmLastHopFmt::last_hop_host_name {1, "last-hop-host-name"};
+const Enum::YLeaf CfmPmLastHopFmt::last_hop_egress_id {2, "last-hop-egress-id"};
 
-const Enum::YLeaf CfmPmEltDelayModel::delay_model_invalid {0, "delay-model-invalid"};
-const Enum::YLeaf CfmPmEltDelayModel::delay_model_logarithmic {1, "delay-model-logarithmic"};
-const Enum::YLeaf CfmPmEltDelayModel::delay_model_constant {2, "delay-model-constant"};
+const Enum::YLeaf CfmPmIdFmt::id_format_is_string {0, "id-format-is-string"};
+const Enum::YLeaf CfmPmIdFmt::id_format_is_mac_address {1, "id-format-is-mac-address"};
+const Enum::YLeaf CfmPmIdFmt::id_format_is_raw_hex {2, "id-format-is-raw-hex"};
 
-const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_basic {1, "cfm-pm-lt-mode-basic"};
-const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_exploratory {2, "cfm-pm-lt-mode-exploratory"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_idle {1, "peer-mep-idle"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_start {2, "peer-mep-start"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_failed {3, "peer-mep-failed"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_ok {4, "peer-mep-ok"};
+
+const Enum::YLeaf CfmBagCcmOffload::offload_none {0, "offload-none"};
+const Enum::YLeaf CfmBagCcmOffload::offload_software {1, "offload-software"};
+const Enum::YLeaf CfmBagCcmOffload::offload_hardware {2, "offload-hardware"};
+
+const Enum::YLeaf CfmPmAisReceive::receive_none {0, "receive-none"};
+const Enum::YLeaf CfmPmAisReceive::receive_ais {1, "receive-ais"};
+const Enum::YLeaf CfmPmAisReceive::receive_lck {2, "receive-lck"};
+const Enum::YLeaf CfmPmAisReceive::receive_direct {3, "receive-direct"};
+
+const Enum::YLeaf CfmMaMpVariety::mip {0, "mip"};
+const Enum::YLeaf CfmMaMpVariety::up_mep {1, "up-mep"};
+const Enum::YLeaf CfmMaMpVariety::downmep {2, "downmep"};
+const Enum::YLeaf CfmMaMpVariety::unknown_mep {3, "unknown-mep"};
 
 const Enum::YLeaf CfmPmPktAction::packet_processed {0, "packet-processed"};
 const Enum::YLeaf CfmPmPktAction::packet_forwarded {1, "packet-forwarded"};
@@ -16032,17 +15919,133 @@ const Enum::YLeaf CfmPmPktAction::filter_foward_issu_secondary {120, "filter-fow
 const Enum::YLeaf CfmPmPktAction::filter_response_standby {121, "filter-response-standby"};
 const Enum::YLeaf CfmPmPktAction::filter_response_issu_secondary {122, "filter-response-issu-secondary"};
 
+const Enum::YLeaf SlaBucketSize::buckets_per_probe {0, "buckets-per-probe"};
+const Enum::YLeaf SlaBucketSize::probes_per_bucket {1, "probes-per-bucket"};
+
+const Enum::YLeaf CfmPmEltDelayModel::delay_model_invalid {0, "delay-model-invalid"};
+const Enum::YLeaf CfmPmEltDelayModel::delay_model_logarithmic {1, "delay-model-logarithmic"};
+const Enum::YLeaf CfmPmEltDelayModel::delay_model_constant {2, "delay-model-constant"};
+
+const Enum::YLeaf CfmPmAisTransmit::transmit_none {0, "transmit-none"};
+const Enum::YLeaf CfmPmAisTransmit::transmit_ais {1, "transmit-ais"};
+const Enum::YLeaf CfmPmAisTransmit::transmit_ais_direct {2, "transmit-ais-direct"};
+
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_hit {1, "elr-relay-hit"};
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_fdb {2, "elr-relay-fdb"};
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_flood {3, "elr-relay-flood"};
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_drop {4, "elr-relay-drop"};
+
+const Enum::YLeaf CfmPmPortStatus::port_status_blocked {1, "port-status-blocked"};
+const Enum::YLeaf CfmPmPortStatus::port_status_up {2, "port-status-up"};
+const Enum::YLeaf CfmPmPortStatus::port_status_unknown {3, "port-status-unknown"};
+
+const Enum::YLeaf CfmBagIwState::interworking_up {0, "interworking-up"};
+const Enum::YLeaf CfmBagIwState::interworking_test {1, "interworking-test"};
+
+const Enum::YLeaf CfmBagMdidFmt::mdid_null {1, "mdid-null"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_dns_like {2, "mdid-dns-like"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_mac_address {3, "mdid-mac-address"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_string {4, "mdid-string"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_unknown {5, "mdid-unknown"};
+
+const Enum::YLeaf CfmBagBdidFmt::invalid {0, "invalid"};
+const Enum::YLeaf CfmBagBdidFmt::bd_id {1, "bd-id"};
+const Enum::YLeaf CfmBagBdidFmt::xc_p2p_id {2, "xc-p2p-id"};
+const Enum::YLeaf CfmBagBdidFmt::xc_mp2mp_id {3, "xc-mp2mp-id"};
+const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_aware_id {4, "fxc-vlan-aware-id"};
+const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_unaware_id {5, "fxc-vlan-unaware-id"};
+const Enum::YLeaf CfmBagBdidFmt::down_only {6, "down-only"};
+
+const Enum::YLeaf CfmBagIssuRole::unknown {0, "unknown"};
+const Enum::YLeaf CfmBagIssuRole::primary {1, "primary"};
+const Enum::YLeaf CfmBagIssuRole::secondary {2, "secondary"};
+
+const Enum::YLeaf CfmBagStpState::stp_up {0, "stp-up"};
+const Enum::YLeaf CfmBagStpState::stp_blocked {1, "stp-blocked"};
+const Enum::YLeaf CfmBagStpState::stp_unknown {2, "stp-unknown"};
+
+const Enum::YLeaf CfmBagMdLevel::level0 {0, "level0"};
+const Enum::YLeaf CfmBagMdLevel::level1 {1, "level1"};
+const Enum::YLeaf CfmBagMdLevel::level2 {2, "level2"};
+const Enum::YLeaf CfmBagMdLevel::level3 {3, "level3"};
+const Enum::YLeaf CfmBagMdLevel::level4 {4, "level4"};
+const Enum::YLeaf CfmBagMdLevel::level5 {5, "level5"};
+const Enum::YLeaf CfmBagMdLevel::level6 {6, "level6"};
+const Enum::YLeaf CfmBagMdLevel::level7 {7, "level7"};
+const Enum::YLeaf CfmBagMdLevel::level_invalid {8, "level-invalid"};
+
 const Enum::YLeaf SlaOperPacketPriority::priority_none {0, "priority-none"};
 const Enum::YLeaf SlaOperPacketPriority::priority_cos {1, "priority-cos"};
+
+const Enum::YLeaf CfmBagAisInterval::ais_interval_none {0, "ais-interval-none"};
+const Enum::YLeaf CfmBagAisInterval::ais_interval1s {4, "ais-interval1s"};
+const Enum::YLeaf CfmBagAisInterval::ais_interval1m {6, "ais-interval1m"};
+
+const Enum::YLeaf CfmPmRmepXcState::cross_check_ok {0, "cross-check-ok"};
+const Enum::YLeaf CfmPmRmepXcState::cross_check_missing {1, "cross-check-missing"};
+const Enum::YLeaf CfmPmRmepXcState::cross_check_extra {2, "cross-check-extra"};
+
+const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_basic {1, "cfm-pm-lt-mode-basic"};
+const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_exploratory {2, "cfm-pm-lt-mode-exploratory"};
+
+const Enum::YLeaf CfmPmIntfStatus::interface_status_up {1, "interface-status-up"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_down {2, "interface-status-down"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_testing {3, "interface-status-testing"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_unknown {4, "interface-status-unknown"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_dormant {5, "interface-status-dormant"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_not_present {6, "interface-status-not-present"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_lower_layer_down {7, "interface-status-lower-layer-down"};
+
+const Enum::YLeaf CfmBagDirection::direction_up {0, "direction-up"};
+const Enum::YLeaf CfmBagDirection::direction_down {1, "direction-down"};
+const Enum::YLeaf CfmBagDirection::direction_invalid {2, "direction-invalid"};
+
+const Enum::YLeaf CfmPmEgressAction::egress_ok {1, "egress-ok"};
+const Enum::YLeaf CfmPmEgressAction::egress_down {2, "egress-down"};
+const Enum::YLeaf CfmPmEgressAction::egress_blocked {3, "egress-blocked"};
+const Enum::YLeaf CfmPmEgressAction::egress_vid {4, "egress-vid"};
+
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_not_present {0, "reply-filter-not-present"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_default {1, "reply-filter-default"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_vlan_topology {2, "reply-filter-vlan-topology"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_spanning_tree {3, "reply-filter-spanning-tree"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_all_ports {4, "reply-filter-all-ports"};
+
+const Enum::YLeaf CfmAisDir::up {0, "up"};
+const Enum::YLeaf CfmAisDir::down {1, "down"};
+
+const Enum::YLeaf CfmPmAddlIntfStatus::unknown {0, "unknown"};
+const Enum::YLeaf CfmPmAddlIntfStatus::administratively_down {1, "administratively-down"};
+const Enum::YLeaf CfmPmAddlIntfStatus::remote_excessive_errors {2, "remote-excessive-errors"};
+const Enum::YLeaf CfmPmAddlIntfStatus::local_excessive_errors {3, "local-excessive-errors"};
+
+const Enum::YLeaf CfmBagOpcode::reserved {0, "reserved"};
+const Enum::YLeaf CfmBagOpcode::ccm {1, "ccm"};
+const Enum::YLeaf CfmBagOpcode::lbr {2, "lbr"};
+const Enum::YLeaf CfmBagOpcode::lbm {3, "lbm"};
+const Enum::YLeaf CfmBagOpcode::ltr {4, "ltr"};
+const Enum::YLeaf CfmBagOpcode::ltm {5, "ltm"};
 
 const Enum::YLeaf SlaOperTestPatternScheme::hex {0, "hex"};
 const Enum::YLeaf SlaOperTestPatternScheme::pseudo_random {1, "pseudo-random"};
 
+const Enum::YLeaf CfmPmMepFngState::fng_reset {1, "fng-reset"};
+const Enum::YLeaf CfmPmMepFngState::fng_defect {2, "fng-defect"};
+const Enum::YLeaf CfmPmMepFngState::fng_report_defect {3, "fng-report-defect"};
+const Enum::YLeaf CfmPmMepFngState::fng_defect_reported {4, "fng-defect-reported"};
+const Enum::YLeaf CfmPmMepFngState::fng_defect_clearing {5, "fng-defect-clearing"};
+
+const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_alias {1, "port-id-interface-alias"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_port_component {2, "port-id-port-component"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_mac_address {3, "port-id-mac-address"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_network_address {4, "port-id-network-address"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_name {5, "port-id-interface-name"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_agent_circuit_id {6, "port-id-agent-circuit-id"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_local {7, "port-id-local"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_unknown {8, "port-id-unknown"};
+
 const Enum::YLeaf SlaOperBucket::bucket_type_bins {0, "bucket-type-bins"};
 const Enum::YLeaf SlaOperBucket::bucket_type_samples {1, "bucket-type-samples"};
-
-const Enum::YLeaf SlaBucketSize::buckets_per_probe {0, "buckets-per-probe"};
-const Enum::YLeaf SlaBucketSize::probes_per_bucket {1, "probes-per-bucket"};
 
 const Enum::YLeaf SlaRecordableMetric::metric_invalid {0, "metric-invalid"};
 const Enum::YLeaf SlaRecordableMetric::metric_round_trip_delay {1, "metric-round-trip-delay"};
@@ -16053,9 +16056,6 @@ const Enum::YLeaf SlaRecordableMetric::metric_one_way_jitter_sd {5, "metric-one-
 const Enum::YLeaf SlaRecordableMetric::metric_one_way_jitter_ds {6, "metric-one-way-jitter-ds"};
 const Enum::YLeaf SlaRecordableMetric::metric_one_way_flr_sd {7, "metric-one-way-flr-sd"};
 const Enum::YLeaf SlaRecordableMetric::metric_one_way_flr_ds {8, "metric-one-way-flr-ds"};
-
-const Enum::YLeaf SlaOperOperation::operation_type_configured {0, "operation-type-configured"};
-const Enum::YLeaf SlaOperOperation::operation_type_ondemand {1, "operation-type-ondemand"};
 
 
 }

@@ -2954,15 +2954,15 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::
     return false;
 }
 
-const Enum::YLeaf SfcMetadataType1AllocFormat::dc_allocation {1, "dc-allocation"};
-
 const Enum::YLeaf SfcSfTransport::vxlan_gpe {1, "vxlan-gpe"};
 
 const Enum::YLeaf SfcMetadataDispositionMatch::type1_dcalloc_tenant_id {1, "type1-dcalloc-tenant-id"};
 
-const Enum::YLeaf SfcMetadataDispositionAction::redirect_nexthop {1, "redirect-nexthop"};
-
 const Enum::YLeaf SfcMetadataAlloc::type1 {1, "type1"};
+
+const Enum::YLeaf SfcMetadataType1AllocFormat::dc_allocation {1, "dc-allocation"};
+
+const Enum::YLeaf SfcMetadataDispositionAction::redirect_nexthop {1, "redirect-nexthop"};
 
 
 }

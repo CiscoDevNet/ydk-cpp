@@ -9485,6 +9485,14 @@ const Enum::YLeaf QosMatchType::qos_match_src_port {3, "qos-match-src-port"};
 const Enum::YLeaf QosMatchType::qos_match_dst_port {4, "qos-match-dst-port"};
 const Enum::YLeaf QosMatchType::qos_match_proto {5, "qos-match-proto"};
 
+const Enum::YLeaf EtherDuplex::full_duplex {0, "full-duplex"};
+const Enum::YLeaf EtherDuplex::half_duplex {1, "half-duplex"};
+const Enum::YLeaf EtherDuplex::auto_duplex {2, "auto-duplex"};
+const Enum::YLeaf EtherDuplex::unknown_duplex {3, "unknown-duplex"};
+
+const Enum::YLeaf SerialCrc::serial_crc32 {0, "serial-crc32"};
+const Enum::YLeaf SerialCrc::serial_crc16 {1, "serial-crc16"};
+
 const Enum::YLeaf ThreshUnit::thresh_units_default {0, "thresh-units-default"};
 const Enum::YLeaf ThreshUnit::thresh_units_bytes {1, "thresh-units-bytes"};
 const Enum::YLeaf ThreshUnit::thresh_units_sec {2, "thresh-units-sec"};
@@ -9492,34 +9500,27 @@ const Enum::YLeaf ThreshUnit::thresh_units_packets {3, "thresh-units-packets"};
 const Enum::YLeaf ThreshUnit::thresh_units_cells {4, "thresh-units-cells"};
 const Enum::YLeaf ThreshUnit::thresh_units_percent {5, "thresh-units-percent"};
 
-const Enum::YLeaf QosDirection::qos_inbound {0, "qos-inbound"};
-const Enum::YLeaf QosDirection::qos_outbound {1, "qos-outbound"};
-
-const Enum::YLeaf AggregationType::lag_off {0, "lag-off"};
-const Enum::YLeaf AggregationType::lag_auto {1, "lag-auto"};
-const Enum::YLeaf AggregationType::lag_active {2, "lag-active"};
-const Enum::YLeaf AggregationType::lag_passive {3, "lag-passive"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_no_loopback {0, "t1e1-no-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_cli_local_loopback {1, "t1e1-cli-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_cli_local_loopback {2, "t1e1-line-cli-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_cli_local_loopback {3, "t1e1-payload-cli-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_local_line_loopback {4, "t1e1-local-line-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_local_payload_loopback {5, "t1e1-local-payload-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_local_ansi_fdl_remote_loopback {6, "t1e1-local-ansi-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_att_fdl_remote_loopback {7, "t1e1-line-att-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_ansi_fdl_remote_loopback {8, "t1e1-payload-ansi-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_att_fdl_remote_loopback {9, "t1e1-payload-att-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_iboc_remote_loopback {10, "t1e1-line-iboc-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_ansi_fdl_local_loopback {11, "t1e1-line-ansi-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_att_fdl_local_loopback {12, "t1e1-line-att-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_ansi_fdl_local_loopback {13, "t1e1-payload-ansi-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_att_fdl_local_loopback {14, "t1e1-payload-att-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_iboc_local_loopback {15, "t1e1-line-iboc-local-loopback"};
 
 const Enum::YLeaf IntfState::if_state_unknown {0, "if-state-unknown"};
 const Enum::YLeaf IntfState::if_state_up {1, "if-state-up"};
 const Enum::YLeaf IntfState::if_state_down {2, "if-state-down"};
 const Enum::YLeaf IntfState::if_state_test {3, "if-state-test"};
-
-const Enum::YLeaf EtherDuplex::full_duplex {0, "full-duplex"};
-const Enum::YLeaf EtherDuplex::half_duplex {1, "half-duplex"};
-const Enum::YLeaf EtherDuplex::auto_duplex {2, "auto-duplex"};
-const Enum::YLeaf EtherDuplex::unknown_duplex {3, "unknown-duplex"};
-
-const Enum::YLeaf EtherSpeed::speed_10mb {0, "speed-10mb"};
-const Enum::YLeaf EtherSpeed::speed_100mb {1, "speed-100mb"};
-const Enum::YLeaf EtherSpeed::speed_1gb {2, "speed-1gb"};
-const Enum::YLeaf EtherSpeed::speed_10gb {3, "speed-10gb"};
-const Enum::YLeaf EtherSpeed::speed_25gb {4, "speed-25gb"};
-const Enum::YLeaf EtherSpeed::speed_40gb {5, "speed-40gb"};
-const Enum::YLeaf EtherSpeed::speed_50gb {6, "speed-50gb"};
-const Enum::YLeaf EtherSpeed::speed_100gb {7, "speed-100gb"};
-const Enum::YLeaf EtherSpeed::speed_unknown {8, "speed-unknown"};
-const Enum::YLeaf EtherSpeed::speed_auto {9, "speed-auto"};
 
 const Enum::YLeaf OperState::if_oper_state_invalid {0, "if-oper-state-invalid"};
 const Enum::YLeaf OperState::if_oper_state_ready {1, "if-oper-state-ready"};
@@ -9529,6 +9530,14 @@ const Enum::YLeaf OperState::if_oper_state_unknown {4, "if-oper-state-unknown"};
 const Enum::YLeaf OperState::if_oper_state_dormant {5, "if-oper-state-dormant"};
 const Enum::YLeaf OperState::if_oper_state_not_present {6, "if-oper-state-not-present"};
 const Enum::YLeaf OperState::if_oper_state_lower_layer_down {7, "if-oper-state-lower-layer-down"};
+
+const Enum::YLeaf AggregationType::lag_off {0, "lag-off"};
+const Enum::YLeaf AggregationType::lag_auto {1, "lag-auto"};
+const Enum::YLeaf AggregationType::lag_active {2, "lag-active"};
+const Enum::YLeaf AggregationType::lag_passive {3, "lag-passive"};
+
+const Enum::YLeaf SubrateSpeed::dsx1_subrate_56kbps {0, "dsx1-subrate-56kbps"};
+const Enum::YLeaf SubrateSpeed::dsx1_subrate_64kbps {1, "dsx1-subrate-64kbps"};
 
 const Enum::YLeaf IetfIntfType::iana_iftype_other {1, "iana-iftype-other"};
 const Enum::YLeaf IetfIntfType::iana_iftype_regular1822 {2, "iana-iftype-regular1822"};
@@ -9809,28 +9818,19 @@ const Enum::YLeaf IetfIntfType::iana_iftype_sdci {280, "iana-iftype-sdci"};
 const Enum::YLeaf IetfIntfType::iana_iftype_xbox_wireless {281, "iana-iftype-xbox-wireless"};
 const Enum::YLeaf IetfIntfType::iana_iftype_fastdsl {282, "iana-iftype-fastdsl"};
 
-const Enum::YLeaf SerialCrc::serial_crc32 {0, "serial-crc32"};
-const Enum::YLeaf SerialCrc::serial_crc16 {1, "serial-crc16"};
+const Enum::YLeaf QosDirection::qos_inbound {0, "qos-inbound"};
+const Enum::YLeaf QosDirection::qos_outbound {1, "qos-outbound"};
 
-const Enum::YLeaf SubrateSpeed::dsx1_subrate_56kbps {0, "dsx1-subrate-56kbps"};
-const Enum::YLeaf SubrateSpeed::dsx1_subrate_64kbps {1, "dsx1-subrate-64kbps"};
-
-const Enum::YLeaf T1e1LoopbackMode::t1e1_no_loopback {0, "t1e1-no-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_cli_local_loopback {1, "t1e1-cli-local-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_line_cli_local_loopback {2, "t1e1-line-cli-local-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_cli_local_loopback {3, "t1e1-payload-cli-local-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_local_line_loopback {4, "t1e1-local-line-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_local_payload_loopback {5, "t1e1-local-payload-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_local_ansi_fdl_remote_loopback {6, "t1e1-local-ansi-fdl-remote-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_line_att_fdl_remote_loopback {7, "t1e1-line-att-fdl-remote-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_ansi_fdl_remote_loopback {8, "t1e1-payload-ansi-fdl-remote-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_att_fdl_remote_loopback {9, "t1e1-payload-att-fdl-remote-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_line_iboc_remote_loopback {10, "t1e1-line-iboc-remote-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_line_ansi_fdl_local_loopback {11, "t1e1-line-ansi-fdl-local-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_line_att_fdl_local_loopback {12, "t1e1-line-att-fdl-local-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_ansi_fdl_local_loopback {13, "t1e1-payload-ansi-fdl-local-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_att_fdl_local_loopback {14, "t1e1-payload-att-fdl-local-loopback"};
-const Enum::YLeaf T1e1LoopbackMode::t1e1_line_iboc_local_loopback {15, "t1e1-line-iboc-local-loopback"};
+const Enum::YLeaf EtherSpeed::speed_10mb {0, "speed-10mb"};
+const Enum::YLeaf EtherSpeed::speed_100mb {1, "speed-100mb"};
+const Enum::YLeaf EtherSpeed::speed_1gb {2, "speed-1gb"};
+const Enum::YLeaf EtherSpeed::speed_10gb {3, "speed-10gb"};
+const Enum::YLeaf EtherSpeed::speed_25gb {4, "speed-25gb"};
+const Enum::YLeaf EtherSpeed::speed_40gb {5, "speed-40gb"};
+const Enum::YLeaf EtherSpeed::speed_50gb {6, "speed-50gb"};
+const Enum::YLeaf EtherSpeed::speed_100gb {7, "speed-100gb"};
+const Enum::YLeaf EtherSpeed::speed_unknown {8, "speed-unknown"};
+const Enum::YLeaf EtherSpeed::speed_auto {9, "speed-auto"};
 
 
 }

@@ -294,6 +294,12 @@ class IFMIB::IfTable::IfEntry::IfAdminStatus : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            return -1;
+        }
 };
 
 class IFMIB::IfTable::IfEntry::IfOperStatus : public ydk::Enum
@@ -307,6 +313,16 @@ class IFMIB::IfTable::IfEntry::IfOperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf notPresent;
         static const ydk::Enum::YLeaf lowerLayerDown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            if (name == "unknown") return 4;
+            if (name == "dormant") return 5;
+            if (name == "notPresent") return 6;
+            if (name == "lowerLayerDown") return 7;
+            return -1;
+        }
 };
 
 class IFMIB::IfTable::IfEntry::IfLinkUpDownTrapEnable : public ydk::Enum
@@ -315,6 +331,11 @@ class IFMIB::IfTable::IfEntry::IfLinkUpDownTrapEnable : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class IFMIB::IfTable::IfEntry::IfTestStatus : public ydk::Enum
@@ -323,6 +344,11 @@ class IFMIB::IfTable::IfEntry::IfTestStatus : public ydk::Enum
         static const ydk::Enum::YLeaf notInUse;
         static const ydk::Enum::YLeaf inUse;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notInUse") return 1;
+            if (name == "inUse") return 2;
+            return -1;
+        }
 };
 
 class IFMIB::IfTable::IfEntry::IfTestResult : public ydk::Enum
@@ -336,6 +362,16 @@ class IFMIB::IfTable::IfEntry::IfTestResult : public ydk::Enum
         static const ydk::Enum::YLeaf aborted;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "success") return 2;
+            if (name == "inProgress") return 3;
+            if (name == "notSupported") return 4;
+            if (name == "unAbleToRun") return 5;
+            if (name == "aborted") return 6;
+            if (name == "failed") return 7;
+            return -1;
+        }
 };
 
 class IFMIB::IfRcvAddressTable::IfRcvAddressEntry::IfRcvAddressType : public ydk::Enum
@@ -345,6 +381,12 @@ class IFMIB::IfRcvAddressTable::IfRcvAddressEntry::IfRcvAddressType : public ydk
         static const ydk::Enum::YLeaf volatile_;
         static const ydk::Enum::YLeaf nonVolatile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "volatile") return 2;
+            if (name == "nonVolatile") return 3;
+            return -1;
+        }
 };
 
 

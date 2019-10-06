@@ -78,11 +78,11 @@ NetconfSSHClient::NetconfSSHClient(
 ):
     NetconfClient(),
     username(username),
-    private_key_path(private_key_path),
-    public_key_path(public_key_path),
     hostname(server_ip),
     port(port),
-    timeout(timeout)
+    timeout(timeout),
+    private_key_path(private_key_path),
+    public_key_path(public_key_path)
 {
     nc_verbosity(NC_VERB_DEBUG);
     nc_callback_print(clb_print);

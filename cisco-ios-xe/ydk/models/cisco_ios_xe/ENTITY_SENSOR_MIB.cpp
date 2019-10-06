@@ -429,6 +429,10 @@ const Enum::YLeaf EntitySensorDataType::rpm {10, "rpm"};
 const Enum::YLeaf EntitySensorDataType::cmm {11, "cmm"};
 const Enum::YLeaf EntitySensorDataType::truthvalue {12, "truthvalue"};
 
+const Enum::YLeaf EntitySensorStatus::ok {1, "ok"};
+const Enum::YLeaf EntitySensorStatus::unavailable {2, "unavailable"};
+const Enum::YLeaf EntitySensorStatus::nonoperational {3, "nonoperational"};
+
 const Enum::YLeaf EntitySensorDataScale::yocto {1, "yocto"};
 const Enum::YLeaf EntitySensorDataScale::zepto {2, "zepto"};
 const Enum::YLeaf EntitySensorDataScale::atto {3, "atto"};
@@ -446,10 +450,6 @@ const Enum::YLeaf EntitySensorDataScale::exa {14, "exa"};
 const Enum::YLeaf EntitySensorDataScale::peta {15, "peta"};
 const Enum::YLeaf EntitySensorDataScale::zetta {16, "zetta"};
 const Enum::YLeaf EntitySensorDataScale::yotta {17, "yotta"};
-
-const Enum::YLeaf EntitySensorStatus::ok {1, "ok"};
-const Enum::YLeaf EntitySensorStatus::unavailable {2, "unavailable"};
-const Enum::YLeaf EntitySensorStatus::nonoperational {3, "nonoperational"};
 
 
 }

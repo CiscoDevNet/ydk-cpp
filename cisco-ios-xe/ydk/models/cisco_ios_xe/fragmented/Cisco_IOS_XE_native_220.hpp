@@ -1891,7 +1891,7 @@ class Native::SnmpServer::Group::V3 : public ydk::Entity
         ydk::YLeaf read; //type: string
         ydk::YLeaf write; //type: string
         ydk::YLeaf notify; //type: string
-        ydk::YLeaf access; //type: one of string, uint8
+        ydk::YLeaf access; //type: one of uint8, string
         class SecurityLevel;
         class Match;
 
@@ -3856,6 +3856,12 @@ class Native::SnmpServer::Group::V3::SecurityLevel : public ydk::Enum
         static const ydk::Enum::YLeaf noauth;
         static const ydk::Enum::YLeaf priv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auth") return 0;
+            if (name == "noauth") return 1;
+            if (name == "priv") return 2;
+            return -1;
+        }
 };
 
 class Native::SnmpServer::Group::V3::Match : public ydk::Enum
@@ -3864,6 +3870,11 @@ class Native::SnmpServer::Group::V3::Match : public ydk::Enum
         static const ydk::Enum::YLeaf exact;
         static const ydk::Enum::YLeaf prefix;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "exact") return 0;
+            if (name == "prefix") return 1;
+            return -1;
+        }
 };
 
 class Native::SnmpServer::Host::Version : public ydk::Enum
@@ -3873,6 +3884,12 @@ class Native::SnmpServer::Host::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_2c;
         static const ydk::Enum::YLeaf Y_3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2c") return 1;
+            if (name == "3") return 2;
+            return -1;
+        }
 };
 
 class Native::SnmpServer::Host::SecurityLevel : public ydk::Enum
@@ -3882,6 +3899,12 @@ class Native::SnmpServer::Host::SecurityLevel : public ydk::Enum
         static const ydk::Enum::YLeaf noauth;
         static const ydk::Enum::YLeaf priv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auth") return 0;
+            if (name == "noauth") return 1;
+            if (name == "priv") return 2;
+            return -1;
+        }
 };
 
 class Native::SnmpServer::View::IncExl : public ydk::Enum
@@ -3890,6 +3913,11 @@ class Native::SnmpServer::View::IncExl : public ydk::Enum
         static const ydk::Enum::YLeaf excluded;
         static const ydk::Enum::YLeaf included;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "excluded") return 0;
+            if (name == "included") return 1;
+            return -1;
+        }
 };
 
 

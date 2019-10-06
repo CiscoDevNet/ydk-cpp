@@ -24,6 +24,7 @@
 #include <set>
 
 #include "common_utilities.hpp"
+#include "entity_util.hpp"
 #include "entity_data_node_walker.hpp"
 #include "xml_subtree_codec.hpp"
 #include "json_subtree_codec.hpp"
@@ -58,17 +59,15 @@ bool replace(string& subject, const string& search, const string& replace)
     return replace_count>0;
 }
 
-bool has_xml_escape_sequences(const string& xml)
+size_t has_xml_escape_sequences(const string& xml)
 {
-    if (xml.find("&lt;") != string::npos  ||
-        xml.find("&gt;") != string::npos  ||
-        xml.find("&amp;") != string::npos ||
-        xml.find("&quot;")!= string::npos ||
-        xml.find("&#13;") != string::npos)
-    {
-        return true;
-    }
-    return false;
+    size_t pos;
+    if ((pos = xml.find("&lt;"))  != string::npos ||
+        (pos = xml.find("&gt;"))  != string::npos ||
+        (pos = xml.find("&amp;")) != string::npos ||
+        (pos = xml.find("&quot;"))!= string::npos ||
+        (pos = xml.find("&#13;")) != string::npos) {;}
+    return pos;
 }
 
 string replace_xml_escape_sequences(const string& xml)
@@ -112,10 +111,10 @@ string entity_vector_to_string(vector<Entity*> & entity_list)
 static shared_ptr<Entity>
 find_child_entity(shared_ptr<Entity> parent_entity, Entity & filter_entity)
 {
-    auto filter_absolute_path = filter_entity.get_absolute_path();
-    auto parent_absolute_path = parent_entity->get_absolute_path();
+    auto filter_absolute_path = absolute_path(filter_entity);
+    auto parent_absolute_path = absolute_path(*parent_entity);
 
-    if (filter_absolute_path == parent_entity->get_absolute_path()) {
+    if (filter_absolute_path == parent_absolute_path) {
         YLOG_DEBUG("find_child_entity: Filter matches with parent entity, returning");
         return parent_entity;
     }
@@ -130,8 +129,9 @@ find_child_entity(shared_ptr<Entity> parent_entity, Entity & filter_entity)
     auto filter_segment_path = filter_entity.get_segment_path();
     auto it = children.find(filter_segment_path);
     if (it != children.end()) {
-    	YLOG_DEBUG("Got child with matching segment path; absolute path is '{}'", it->second->get_absolute_path());
-        if (it->second->get_absolute_path() == filter_absolute_path)
+        auto child_abs_path = absolute_path(*it->second);
+        YLOG_DEBUG("Got child with matching segment path; absolute path is '{}'", child_abs_path);
+        if (child_abs_path == filter_absolute_path)
             return it->second;
     }
     YLOG_DEBUG("No matching child found");
@@ -146,38 +146,38 @@ find_child_entity(shared_ptr<Entity> parent_entity, Entity & filter_entity)
 shared_ptr<Entity>
 get_child_entity_from_top(shared_ptr<Entity> top_entity, Entity & filter_entity)
 {
-	shared_ptr<Entity> child_entity;
-	if (filter_entity.is_top_level_class) {
-        if (filter_entity.get_absolute_path() == top_entity->get_absolute_path()) {
+    shared_ptr<Entity> child_entity;
+    if (filter_entity.is_top_level_class) {
+        if (absolute_path(filter_entity) == absolute_path(*top_entity)) {
         	return top_entity;
         }
         else {
-            YLOG_ERROR("get_child_entity_from_top: The filter '{}' points to a different top-entity", filter_entity.get_absolute_path());
+            YLOG_ERROR("get_child_entity_from_top: The filter '{}' points to a different top-entity", absolute_path(filter_entity));
         }
     }
     else {
-        YLOG_DEBUG("Searching for child entity matching non-top level filter '{}'", filter_entity.get_absolute_path());
+        YLOG_DEBUG("Searching for child entity matching non-top level filter '{}'", absolute_path(filter_entity));
         child_entity = find_child_entity(top_entity, filter_entity);
         if (child_entity != nullptr) {
-        	YLOG_DEBUG("Found matching child entity '{}'", child_entity->get_absolute_path());
+            YLOG_DEBUG("Found matching child entity '{}'", absolute_path(*child_entity));
             child_entity->parent = nullptr;
         }
         else {
         	YLOG_DEBUG("Matching child entity was not found");
         }
     }
-	return child_entity;
+    return child_entity;
 }
 
 shared_ptr<Entity> get_top_entity_from_filter(Entity & filter)
 {
     if (filter.parent == nullptr) {
-    	if (filter.is_top_level_class)
+        if (filter.is_top_level_class)
             return filter.clone_ptr();
-    	else {
-    		YLOG_ERROR("get_top_entity_from_filter: Could not traverse from filter '{}' up to top-entity", filter.get_absolute_path());
-    	    return nullptr;
-    	}
+        else {
+            YLOG_ERROR("get_top_entity_from_filter: Could not traverse from filter '{}' up to top-entity", absolute_path(filter));
+            return nullptr;
+        }
     }
 
     return get_top_entity_from_filter(*(filter.parent));
@@ -313,9 +313,7 @@ execute_rpc(ydk::ServiceProvider & provider, vector<Entity*> & filter_list,
 
     // Build resulting list of entities
     for (Entity* entity : filter_list) {
-        string internal_key = entity->get_absolute_path();
-        if (internal_key.empty())
-        	internal_key = entity->get_segment_path();
+        string internal_key = absolute_path(*entity);
         shared_ptr<path::DataNode> datanode;
         for (auto dn_entry : path_to_datanode) {
             if (internal_key.find(dn_entry.first) == 0) {

@@ -1223,12 +1223,19 @@ class CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry : public ydk::Entity
 
 }; // CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry
 
-class CiiAdminState : public ydk::Enum
+class CiiMetricStyle : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf narrow;
+        static const ydk::Enum::YLeaf wide;
+        static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "narrow") return 1;
+            if (name == "wide") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class CiiLevelState : public ydk::Enum
@@ -1239,6 +1246,13 @@ class CiiLevelState : public ydk::Enum
         static const ydk::Enum::YLeaf waiting;
         static const ydk::Enum::YLeaf overloaded;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            if (name == "waiting") return 3;
+            if (name == "overloaded") return 4;
+            return -1;
+        }
 };
 
 class CiiSupportedProtocol : public ydk::Enum
@@ -1248,6 +1262,25 @@ class CiiSupportedProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf ipV6;
         static const ydk::Enum::YLeaf ip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "iso8473") return 129;
+            if (name == "ipV6") return 142;
+            if (name == "ip") return 204;
+            return -1;
+        }
+};
+
+class CiiAdminState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            if (name == "off") return 2;
+            return -1;
+        }
 };
 
 class CiiMetricType : public ydk::Enum
@@ -1256,15 +1289,11 @@ class CiiMetricType : public ydk::Enum
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf external;
 
-};
-
-class CiiMetricStyle : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf narrow;
-        static const ydk::Enum::YLeaf wide;
-        static const ydk::Enum::YLeaf both;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 1;
+            if (name == "external") return 2;
+            return -1;
+        }
 };
 
 class CiiISLevel : public ydk::Enum
@@ -1274,6 +1303,12 @@ class CiiISLevel : public ydk::Enum
         static const ydk::Enum::YLeaf area;
         static const ydk::Enum::YLeaf domain;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "area") return 1;
+            if (name == "domain") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiSysObject::CiiSysVersion : public ydk::Enum
@@ -1282,6 +1317,11 @@ class CISCOIETFISISMIB::CiiSysObject::CiiSysVersion : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf one;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "one") return 1;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiSysObject::CiiSysType : public ydk::Enum
@@ -1291,6 +1331,12 @@ class CISCOIETFISISMIB::CiiSysObject::CiiSysType : public ydk::Enum
         static const ydk::Enum::YLeaf level2IS;
         static const ydk::Enum::YLeaf level1L2IS;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1IS") return 1;
+            if (name == "level2IS") return 2;
+            if (name == "level1L2IS") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::CiiSysLevelIndex : public ydk::Enum
@@ -1299,6 +1345,11 @@ class CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::CiiSysLevelIndex : p
         static const ydk::Enum::YLeaf level1IS;
         static const ydk::Enum::YLeaf level2IS;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1IS") return 1;
+            if (name == "level2IS") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType : public ydk::Enum
@@ -1310,6 +1361,14 @@ class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType : public ydk::En
         static const ydk::Enum::YLeaf staticOut;
         static const ydk::Enum::YLeaf dA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 1;
+            if (name == "ptToPt") return 2;
+            if (name == "staticIn") return 3;
+            if (name == "staticOut") return 4;
+            if (name == "dA") return 5;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircLevel : public ydk::Enum
@@ -1319,6 +1378,12 @@ class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircLevel : public ydk::E
         static const ydk::Enum::YLeaf level2;
         static const ydk::Enum::YLeaf level1L2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 1;
+            if (name == "level2") return 2;
+            if (name == "level1L2") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircMeshGroupEnabled : public ydk::Enum
@@ -1328,6 +1393,12 @@ class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircMeshGroupEnabled : pu
         static const ydk::Enum::YLeaf blocked;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inactive") return 1;
+            if (name == "blocked") return 2;
+            if (name == "set") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::CiiCircLevelIndex : public ydk::Enum
@@ -1336,6 +1407,11 @@ class CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::CiiCircLevelIndex 
         static const ydk::Enum::YLeaf level1IS;
         static const ydk::Enum::YLeaf level2IS;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1IS") return 1;
+            if (name == "level2IS") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::CiiSysStatLevel : public ydk::Enum
@@ -1344,6 +1420,11 @@ class CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::CiiSysStat
         static const ydk::Enum::YLeaf level1IS;
         static const ydk::Enum::YLeaf level2IS;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1IS") return 1;
+            if (name == "level2IS") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::CiiCircuitType : public ydk::Enum
@@ -1353,6 +1434,12 @@ class CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::CiiCircu
         static const ydk::Enum::YLeaf lanlevel2;
         static const ydk::Enum::YLeaf p2pcircuit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lanlevel1") return 1;
+            if (name == "lanlevel2") return 2;
+            if (name == "p2pcircuit") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountLevel : public ydk::Enum
@@ -1361,6 +1448,11 @@ class CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketC
         static const ydk::Enum::YLeaf level1;
         static const ydk::Enum::YLeaf level2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 1;
+            if (name == "level2") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountDirection : public ydk::Enum
@@ -1369,6 +1461,11 @@ class CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketC
         static const ydk::Enum::YLeaf sending;
         static const ydk::Enum::YLeaf receiving;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sending") return 1;
+            if (name == "receiving") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjState : public ydk::Enum
@@ -1379,6 +1476,13 @@ class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjState : public ydk
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "initializing") return 2;
+            if (name == "up") return 3;
+            if (name == "failed") return 4;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdj3WayState : public ydk::Enum
@@ -1389,6 +1493,13 @@ class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdj3WayState : public
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf failed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "initializing") return 1;
+            if (name == "down") return 2;
+            if (name == "failed") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjNeighSysType : public ydk::Enum
@@ -1399,6 +1510,13 @@ class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjNeighSysType : pub
         static const ydk::Enum::YLeaf l1L2IntermediateSystem;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l1IntermediateSystem") return 1;
+            if (name == "l2IntermediateSystem") return 2;
+            if (name == "l1L2IntermediateSystem") return 3;
+            if (name == "unknown") return 4;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjUsage : public ydk::Enum
@@ -1408,6 +1526,12 @@ class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjUsage : public ydk
         static const ydk::Enum::YLeaf level2;
         static const ydk::Enum::YLeaf level1and2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 1;
+            if (name == "level2") return 2;
+            if (name == "level1and2") return 3;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAMapType : public ydk::Enum
@@ -1418,6 +1542,13 @@ class CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAMapType : public ydk::Enum
         static const ydk::Enum::YLeaf extractIDI;
         static const ydk::Enum::YLeaf extractDSP;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "explicit") return 2;
+            if (name == "extractIDI") return 3;
+            if (name == "extractDSP") return 4;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAType : public ydk::Enum
@@ -1426,6 +1557,11 @@ class CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAType : public ydk::Enum
         static const ydk::Enum::YLeaf manual;
         static const ydk::Enum::YLeaf automatic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "manual") return 1;
+            if (name == "automatic") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRAType : public ydk::Enum
@@ -1434,6 +1570,11 @@ class CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRAType : public ydk::En
         static const ydk::Enum::YLeaf manual;
         static const ydk::Enum::YLeaf automatic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "manual") return 1;
+            if (name == "automatic") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType : public ydk::Enum
@@ -1450,6 +1591,19 @@ class CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType : public y
         static const ydk::Enum::YLeaf bgp;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static") return 1;
+            if (name == "direct") return 2;
+            if (name == "ospfv2") return 3;
+            if (name == "ospfv3") return 4;
+            if (name == "isis") return 5;
+            if (name == "rip") return 6;
+            if (name == "igrp") return 7;
+            if (name == "eigrp") return 8;
+            if (name == "bgp") return 9;
+            if (name == "other") return 10;
+            return -1;
+        }
 };
 
 

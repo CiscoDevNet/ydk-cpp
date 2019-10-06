@@ -9,8 +9,8 @@ void cisco_nx_os_augment_lookup_tables()
 {
 
     ydk::ydk_global_capabilities_lookup_tables.clear();
-    ydk::ydk_global_capabilities_lookup_tables.insert(std::make_pair<std::string, ydk::path::Capability>(std::string("Cisco-NX-OS-device"), ydk::path::Capability{std::string{"Cisco-NX-OS-device"}, "2019-02-17", {}, {}}));
-    ydk::ydk_global_capabilities_lookup_tables.insert(std::make_pair<std::string, ydk::path::Capability>(std::string("http://cisco.com/ns/yang/cisco-nx-os-device"), ydk::path::Capability{std::string{"Cisco-NX-OS-device"}, "2019-02-17", {}, {}}));
+    ydk::ydk_global_capabilities_lookup_tables.insert(std::make_pair<std::string, ydk::path::Capability>(std::string("Cisco-NX-OS-device"), ydk::path::Capability{std::string{"Cisco-NX-OS-device"}, "2019-07-18", {}, {}}));
+    ydk::ydk_global_capabilities_lookup_tables.insert(std::make_pair<std::string, ydk::path::Capability>(std::string("http://cisco.com/ns/yang/cisco-nx-os-device"), ydk::path::Capability{std::string{"Cisco-NX-OS-device"}, "2019-07-18", {}, {}}));
 
 }
 

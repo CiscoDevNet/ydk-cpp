@@ -870,7 +870,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Bgp : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of string, uint32
+        ydk::YLeaf as_number; //type: one of uint32, string
         class RipMetricRouteMap; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Bgp::RipMetricRouteMap
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Bgp::RipMetricRouteMap> rip_metric_route_map;
@@ -2580,7 +2580,7 @@ class Native::Router::Rip::Default::Redistribute::Bgp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of string, uint32
+        ydk::YLeaf as_number; //type: one of uint32, string
         class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap> rip_metric_route_map;
@@ -3672,6 +3672,12 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistP
         static const ydk::Enum::YLeaf gateway;
         static const ydk::Enum::YLeaf route_map;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix") return 0;
+            if (name == "gateway") return 1;
+            if (name == "route-map") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway : public ydk::Enum
@@ -3681,6 +3687,12 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistP
         static const ydk::Enum::YLeaf gateway;
         static const ydk::Enum::YLeaf route_map;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix") return 0;
+            if (name == "gateway") return 1;
+            if (name == "route-map") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
@@ -3690,6 +3702,12 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::IsisAre
         static const ydk::Enum::YLeaf level_2;
         static const ydk::Enum::YLeaf level_1_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            if (name == "level-1-2") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
@@ -3699,6 +3717,12 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::RipIsis
         static const ydk::Enum::YLeaf level_2;
         static const ydk::Enum::YLeaf level_1_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            if (name == "level-1-2") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::PrefixGateway : public ydk::Enum
@@ -3708,6 +3732,12 @@ class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::Pre
         static const ydk::Enum::YLeaf gateway;
         static const ydk::Enum::YLeaf route_map;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix") return 0;
+            if (name == "gateway") return 1;
+            if (name == "route-map") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway : public ydk::Enum
@@ -3717,6 +3747,12 @@ class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfnam
         static const ydk::Enum::YLeaf gateway;
         static const ydk::Enum::YLeaf route_map;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix") return 0;
+            if (name == "gateway") return 1;
+            if (name == "route-map") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
@@ -3726,6 +3762,12 @@ class Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist:
         static const ydk::Enum::YLeaf level_2;
         static const ydk::Enum::YLeaf level_1_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            if (name == "level-1-2") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
@@ -3735,6 +3777,12 @@ class Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::IsisLevel
         static const ydk::Enum::YLeaf level_2;
         static const ydk::Enum::YLeaf level_1_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            if (name == "level-1-2") return 2;
+            return -1;
+        }
 };
 
 

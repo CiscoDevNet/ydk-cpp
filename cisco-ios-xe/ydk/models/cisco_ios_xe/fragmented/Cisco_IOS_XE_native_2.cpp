@@ -7,8 +7,8 @@
 #include "Cisco_IOS_XE_native_2.hpp"
 #include "Cisco_IOS_XE_native_7.hpp"
 #include "Cisco_IOS_XE_native_4.hpp"
-#include "Cisco_IOS_XE_native_3.hpp"
 #include "Cisco_IOS_XE_native_6.hpp"
+#include "Cisco_IOS_XE_native_3.hpp"
 
 using namespace ydk;
 

@@ -9905,11 +9905,11 @@ bool Native::ParameterMap::Type::Umbrella::Global::Resolver::Ipv6::has_leaf_or_c
 
 Native::Ppp::Ppp()
     :
-    analysis_module(std::make_shared<Native::Ppp::AnalysisModule>())
-    , packet(std::make_shared<Native::Ppp::Packet>())
+    packet(std::make_shared<Native::Ppp::Packet>())
+    , analysis_module(std::make_shared<Native::Ppp::AnalysisModule>())
 {
-    analysis_module->parent = this;
     packet->parent = this;
+    analysis_module->parent = this;
 
     yang_name = "ppp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -9921,15 +9921,15 @@ Native::Ppp::~Ppp()
 bool Native::Ppp::has_data() const
 {
     if (is_presence_container) return true;
-    return (analysis_module !=  nullptr && analysis_module->has_data())
-	|| (packet !=  nullptr && packet->has_data());
+    return (packet !=  nullptr && packet->has_data())
+	|| (analysis_module !=  nullptr && analysis_module->has_data());
 }
 
 bool Native::Ppp::has_operation() const
 {
     return is_set(yfilter)
-	|| (analysis_module !=  nullptr && analysis_module->has_operation())
-	|| (packet !=  nullptr && packet->has_operation());
+	|| (packet !=  nullptr && packet->has_operation())
+	|| (analysis_module !=  nullptr && analysis_module->has_operation());
 }
 
 std::string Native::Ppp::get_absolute_path() const
@@ -9957,15 +9957,6 @@ std::vector<std::pair<std::string, LeafData> > Native::Ppp::get_name_leaf_data()
 
 std::shared_ptr<ydk::Entity> Native::Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
-    {
-        if(analysis_module == nullptr)
-        {
-            analysis_module = std::make_shared<Native::Ppp::AnalysisModule>();
-        }
-        return analysis_module;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-ppp:packet")
     {
         if(packet == nullptr)
@@ -9975,6 +9966,15 @@ std::shared_ptr<ydk::Entity> Native::Ppp::get_child_by_name(const std::string & 
         return packet;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
+    {
+        if(analysis_module == nullptr)
+        {
+            analysis_module = std::make_shared<Native::Ppp::AnalysisModule>();
+        }
+        return analysis_module;
+    }
+
     return nullptr;
 }
 
@@ -9982,14 +9982,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ppp::get_children() 
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(analysis_module != nullptr)
-    {
-        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
-    }
-
     if(packet != nullptr)
     {
         _children["Cisco-IOS-XE-ppp:packet"] = packet;
+    }
+
+    if(analysis_module != nullptr)
+    {
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
     }
 
     return _children;
@@ -10005,7 +10005,120 @@ void Native::Ppp::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Native::Ppp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "analysis-module" || name == "packet")
+    if(name == "packet" || name == "analysis-module")
+        return true;
+    return false;
+}
+
+Native::Ppp::Packet::Packet()
+    :
+    throttle{YType::uint32, "throttle"},
+    allow_time{YType::uint32, "allow_time"},
+    block_time{YType::uint32, "block_time"}
+{
+
+    yang_name = "packet"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Ppp::Packet::~Packet()
+{
+}
+
+bool Native::Ppp::Packet::has_data() const
+{
+    if (is_presence_container) return true;
+    return throttle.is_set
+	|| allow_time.is_set
+	|| block_time.is_set;
+}
+
+bool Native::Ppp::Packet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(throttle.yfilter)
+	|| ydk::is_set(allow_time.yfilter)
+	|| ydk::is_set(block_time.yfilter);
+}
+
+std::string Native::Ppp::Packet::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/ppp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Ppp::Packet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ppp:packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Ppp::Packet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (allow_time.is_set || is_set(allow_time.yfilter)) leaf_name_data.push_back(allow_time.get_name_leafdata());
+    if (block_time.is_set || is_set(block_time.yfilter)) leaf_name_data.push_back(block_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Ppp::Packet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ppp::Packet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Ppp::Packet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "throttle")
+    {
+        throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allow_time")
+    {
+        allow_time = value;
+        allow_time.value_namespace = name_space;
+        allow_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "block_time")
+    {
+        block_time = value;
+        block_time.value_namespace = name_space;
+        block_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Ppp::Packet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+    if(value_path == "allow_time")
+    {
+        allow_time.yfilter = yfilter;
+    }
+    if(value_path == "block_time")
+    {
+        block_time.yfilter = yfilter;
+    }
+}
+
+bool Native::Ppp::Packet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "throttle" || name == "allow_time" || name == "block_time")
         return true;
     return false;
 }
@@ -10180,119 +10293,6 @@ void Native::Ppp::AnalysisModule::Monitoring::set_filter(const std::string & val
 bool Native::Ppp::AnalysisModule::Monitoring::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name")
-        return true;
-    return false;
-}
-
-Native::Ppp::Packet::Packet()
-    :
-    throttle{YType::uint32, "throttle"},
-    allow_time{YType::uint32, "allow_time"},
-    block_time{YType::uint32, "block_time"}
-{
-
-    yang_name = "packet"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Ppp::Packet::~Packet()
-{
-}
-
-bool Native::Ppp::Packet::has_data() const
-{
-    if (is_presence_container) return true;
-    return throttle.is_set
-	|| allow_time.is_set
-	|| block_time.is_set;
-}
-
-bool Native::Ppp::Packet::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(throttle.yfilter)
-	|| ydk::is_set(allow_time.yfilter)
-	|| ydk::is_set(block_time.yfilter);
-}
-
-std::string Native::Ppp::Packet::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/ppp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Ppp::Packet::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ppp:packet";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Ppp::Packet::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
-    if (allow_time.is_set || is_set(allow_time.yfilter)) leaf_name_data.push_back(allow_time.get_name_leafdata());
-    if (block_time.is_set || is_set(block_time.yfilter)) leaf_name_data.push_back(block_time.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Ppp::Packet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ppp::Packet::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Ppp::Packet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "throttle")
-    {
-        throttle = value;
-        throttle.value_namespace = name_space;
-        throttle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "allow_time")
-    {
-        allow_time = value;
-        allow_time.value_namespace = name_space;
-        allow_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "block_time")
-    {
-        block_time = value;
-        block_time.value_namespace = name_space;
-        block_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Ppp::Packet::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "throttle")
-    {
-        throttle.yfilter = yfilter;
-    }
-    if(value_path == "allow_time")
-    {
-        allow_time.yfilter = yfilter;
-    }
-    if(value_path == "block_time")
-    {
-        block_time.yfilter = yfilter;
-    }
-}
-
-bool Native::Ppp::Packet::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "throttle" || name == "allow_time" || name == "block_time")
         return true;
     return false;
 }

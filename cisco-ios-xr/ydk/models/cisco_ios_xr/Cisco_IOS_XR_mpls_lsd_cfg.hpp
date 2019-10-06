@@ -169,6 +169,12 @@ class MplsIpTtlPropagateDisable : public ydk::Enum
         static const ydk::Enum::YLeaf forward;
         static const ydk::Enum::YLeaf local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "forward") return 1;
+            if (name == "local") return 2;
+            return -1;
+        }
 };
 
 

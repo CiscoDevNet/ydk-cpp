@@ -903,6 +903,11 @@ class TelemetryStreamProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf TCP;
         static const ydk::Enum::YLeaf UDP;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "TCP") return 0;
+            if (name == "UDP") return 1;
+            return -1;
+        }
 };
 
 

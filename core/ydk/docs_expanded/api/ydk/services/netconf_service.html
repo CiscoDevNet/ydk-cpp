@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Netconf Service &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="Service" href="services.html"/>
+        <link rel="next" title="ValidationService" href="validation_service.html"/>
+        <link rel="prev" title="Executor Service" href="executor_service.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ydk.html">YDK API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="services.html">Service</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html">Codec Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html#xmlsubtreecodec">XmlSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html#jsonsubtreecodec">JsonSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="crud_service.html">CRUD Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="executor_service.html">Executor Service</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">Netconf Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_service.html">ValidationService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gnmi_service.html">gNMI Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../providers/providers.html">ServiceProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/errors.html">Errors Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filters.html">YDK Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../types.html">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../path/path.html">YDK Path API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../ydk.html">YDK API</a> &raquo;</li>
+      
+          <li><a href="services.html">Service</a> &raquo;</li>
+      
+    <li>Netconf Service</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="netconf-service">
+<h1>Netconf Service<a class="headerlink" href="#netconf-service" title="Permalink to this headline">¶</a></h1>
+<dl class="enum-class">
+<dt id="_CPPv2N3ydk9DataStoreE">
+<em class="property">enum class </em><code class="descclassname">ydk::</code><code class="descname">DataStore</code><a class="headerlink" href="#_CPPv2N3ydk9DataStoreE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of datastore to perform operation on.</p>
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk9DataStore9candidateE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">candidate</code><a class="headerlink" href="#_CPPv2N3ydk9DataStore9candidateE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk9DataStore7runningE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">running</code><a class="headerlink" href="#_CPPv2N3ydk9DataStore7runningE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk9DataStore7startupE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">startup</code><a class="headerlink" href="#_CPPv2N3ydk9DataStore7startupE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk9DataStore3urlE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">url</code><a class="headerlink" href="#_CPPv2N3ydk9DataStore3urlE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk9DataStore2naE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">na</code><a class="headerlink" href="#_CPPv2N3ydk9DataStore2naE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv214NetconfService">
+<span id="NetconfService"></span><em class="property">class </em><code class="descclassname"></code><code class="descname">NetconfService</code><a class="headerlink" href="#_CPPv214NetconfService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Netconf Service class for supporting encoding and decoding C++ model API objects of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+<dl class="function">
+<dt id="_CPPv2N14NetconfService14NetconfServiceEv">
+<span id="NetconfService::NetconfService"></span><code class="descclassname"></code><code class="descname">NetconfService</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService14NetconfServiceEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an instance of NetconfService.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService13cancel_commitER22NetconfServiceProviderNSt6stringE">
+<span id="NetconfService::cancel_commit__NetconfServiceProviderR.ss"></span>bool <code class="descclassname"></code><code class="descname">cancel_commit</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, std::string <em>persist_id</em> = &quot;&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService13cancel_commitER22NetconfServiceProviderNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancels an ongoing confirmed commit.  If the <strong>persist_id</strong> parameter is not given, the operation MUST be issued on the same provider that issued the confirmed commit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>persist_id</strong> &#8211; Cancels a persistent confirmed commit with <strong>persist_id</strong>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService14close_providerER22NetconfServiceProvider">
+<span id="NetconfService::close_provider__NetconfServiceProviderR"></span>bool <code class="descclassname"></code><code class="descname">close_provider</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService14close_providerER22NetconfServiceProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request graceful termination of a NETCONF provider.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">YError, if an error has occurred.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService6commitER22NetconfServiceProviderNSt6stringENSt6stringENSt6stringENSt6stringE">
+<span id="NetconfService::commit__NetconfServiceProviderR.ss.ss.ss.ss"></span>bool <code class="descclassname"></code><code class="descname">commit</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, std::string <em>confirmed</em> = &quot;&quot;, std::string <em>confirm_timeout</em> = &quot;&quot;, std::string <em>persist</em> = &quot;&quot;, std::string <em>persist_id</em> = &quot;&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService6commitER22NetconfServiceProviderNSt6stringENSt6stringENSt6stringENSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instructs the device to implement the configuration data contained in the candidate configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>confirmed</strong> &#8211; An optional argument.</li>
+<li><strong>confirm_timeout</strong> &#8211; An optional argument.</li>
+<li><strong>persist</strong> &#8211; An optional argument.</li>
+<li><strong>persist_id</strong> &#8211; An optional argument.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService11copy_configER22NetconfServiceProvider9DataStore9DataStore">
+<span id="NetconfService::copy_config__NetconfServiceProviderR.DataStore.DataStore"></span>bool <code class="descclassname"></code><code class="descname">copy_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em>, DataStore <em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService11copy_configER22NetconfServiceProvider9DataStore9DataStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create or replace an entire configuration datastore with the contents of another complete configuration datastore.  If target datastore exists, it gets overwritten.  Otherwise, new datastore is created, if allowed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code></li>
+<li><strong>target</strong> &#8211; The configuration being used as the destination of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code></li>
+<li><strong>source</strong> &#8211; The configuration being used as the source of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService11copy_configER22NetconfServiceProvider9DataStoreR6Entity">
+<span id="NetconfService::copy_config__NetconfServiceProviderR.DataStore.EntityR"></span>bool <code class="descclassname"></code><code class="descname">copy_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em>, Entity &amp;<em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService11copy_configER22NetconfServiceProvider9DataStoreR6Entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create or replace part of <strong>target</strong> configuration datastore with content of <strong>source</strong> entity.  If target datastore exists, it gets overwritten.  Otherwise, new datastore is created, if allowed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>target</strong> &#8211; The configuration being used as the destination of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code>.</li>
+<li><strong>source</strong> &#8211; The configuration being used as the source of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService11copy_configER22NetconfServiceProvider9DataStoreRNSt6vectorIP6EntityEE">
+<span id="NetconfService::copy_config__NetconfServiceProviderR.DataStore.std::vector:EntityP:R"></span>bool <code class="descclassname"></code><code class="descname">copy_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em>, std::vector&lt;Entity *&gt; &amp;<em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService11copy_configER22NetconfServiceProvider9DataStoreRNSt6vectorIP6EntityEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create or replace part of <strong>target</strong> configuration datastore with content of <strong>source</strong> multiple entities.  If target datastore exists, it gets overwritten.  Otherwise, new datastore is created, if allowed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>target</strong> &#8211; The configuration being used as the destination of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code>.</li>
+<li><strong>source</strong> &#8211; The configuration being used as the source of type <strong>std::vector&lt;Entity*&gt;</strong> for multiple entities.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService13delete_configER22NetconfServiceProvider9DataStoreNSt6stringE">
+<span id="NetconfService::delete_config__NetconfServiceProviderR.DataStore.ss"></span>bool <code class="descclassname"></code><code class="descname">delete_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em>, std::string <em>url</em> = &quot;&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService13delete_configER22NetconfServiceProvider9DataStoreNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a configuration datastore.  The RUNNING configuration datastore cannot be deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>target</strong> &#8211; The configuration of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code> to be deleted.</li>
+<li><strong>url</strong> &#8211; Required only when target is set to <code class="xref cpp cpp-enumerator docutils literal"><span class="pre">url</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService15discard_changesER22NetconfServiceProvider">
+<span id="NetconfService::discard_changes__NetconfServiceProviderR"></span>bool <code class="descclassname"></code><code class="descname">discard_changes</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService15discard_changesER22NetconfServiceProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revert candidate configuration to the current running configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">YError, if an error has occurred.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService11edit_configER22NetconfServiceProvider9DataStoreR6EntityNSt6stringENSt6stringENSt6stringE">
+<span id="NetconfService::edit_config__NetconfServiceProviderR.DataStore.EntityR.ss.ss.ss"></span>bool <code class="descclassname"></code><code class="descname">edit_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em>, Entity &amp;<em>config</em>, std::string <em>default_operation</em> = &quot;&quot;, std::string <em>test_option</em> = &quot;&quot;, std::string <em>error_option</em> = &quot;&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService11edit_configER22NetconfServiceProvider9DataStoreR6EntityNSt6stringENSt6stringENSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads entity configuration to specified target configuration datastore. If target configuration datastore does not exist, it will be created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>target</strong> &#8211; The configuration being edited of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code>.</li>
+<li><strong>config</strong> &#8211; An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> that is a hierarchy configuration of data as defined by one of the device&#8217;s data models.</li>
+<li><strong>default_operation</strong> &#8211; Selects the default operation (merge, replace, or none). The default value for this parameter is &#8220;merge&#8221;.</li>
+<li><strong>test_option</strong> &#8211; Optionally set to &#8220;test-then-set&#8221;, &#8220;set&#8221;, or &#8220;test-only&#8221; if the device advertises the :validate:1.1 capability.</li>
+<li><strong>error_option</strong> &#8211; Optionally set to &#8220;stop-on-error&#8221;, &#8220;continue-on-error&#8221;, or &#8220;rollback-on-error&#8221;.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService11edit_configER22NetconfServiceProvider9DataStoreRNSt6vectorIP6EntityEENSt6stringENSt6stringENSt6stringE">
+<span id="NetconfService::edit_config__NetconfServiceProviderR.DataStore.std::vector:EntityP:R.ss.ss.ss"></span>bool <code class="descclassname"></code><code class="descname">edit_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em>, std::vector&lt;Entity *&gt; &amp;<em>config</em>, std::string <em>default_operation</em> = &quot;&quot;, std::string <em>test_option</em> = &quot;&quot;, std::string <em>error_option</em> = &quot;&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService11edit_configER22NetconfServiceProvider9DataStoreRNSt6vectorIP6EntityEENSt6stringENSt6stringENSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads configuration of multiple entities to specified target configuration datastore. If target configuration datastore does not exist, it will be created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>target</strong> &#8211; The configuration being edited of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code>.</li>
+<li><strong>config</strong> &#8211; An instance of <strong>std::vector&lt;Entity*&gt;</strong> for multiple entities. That is a hierarchy configuration of data as defined by one of the device&#8217;s data models.</li>
+<li><strong>default_operation</strong> &#8211; Selects the default operation (merge, replace, or none). The default value for this parameter is &#8220;merge&#8221;.</li>
+<li><strong>test_option</strong> &#8211; Optionally set to &#8220;test-then-set&#8221;, &#8220;set&#8221;, or &#8220;test-only&#8221; if the device advertises the :validate:1.1 capability.</li>
+<li><strong>error_option</strong> &#8211; Optionally set to &#8220;stop-on-error&#8221;, &#8220;continue-on-error&#8221;, or &#8220;rollback-on-error&#8221;.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService10get_configER22NetconfServiceProvider9DataStoreR6Entity">
+<span id="NetconfService::get_config__NetconfServiceProviderR.DataStore.EntityR"></span>std::shared_ptr&lt;Entity&gt; <code class="descclassname"></code><code class="descname">get_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>source</em>, Entity &amp;<em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService10get_configER22NetconfServiceProvider9DataStoreR6Entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all or part of a specified configuration datastore for specified <strong>filter</strong>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>source</strong> &#8211; The configuration being queried of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The requested data as <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService10get_configER22NetconfServiceProvider9DataStoreRNSt6vectorIP6EntityEE">
+<span id="NetconfService::get_config__NetconfServiceProviderR.DataStore.std::vector:EntityP:R"></span>std::vector&lt;std::shared_ptr&lt;Entity&gt;&gt; <code class="descclassname"></code><code class="descname">get_config</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>source</em>, std::vector&lt;Entity *&gt; &amp;<em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService10get_configER22NetconfServiceProvider9DataStoreRNSt6vectorIP6EntityEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all or part of a specified configuration datastore for specified in <strong>filter</strong> multiple entities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>source</strong> &#8211; The configuration being queried of type <strong>std::vector&lt;Entity*&gt;</strong>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The requested data as <strong>std::vector&lt;std::shared_ptr&lt;Entity&gt;&gt;</strong> instance; if request fails - empty <strong>std::vector</strong>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService3getER22NetconfServiceProviderR6Entity">
+<span id="NetconfService::get__NetconfServiceProviderR.EntityR"></span>std::shared_ptr&lt;Entity&gt; <code class="descclassname"></code><code class="descname">get</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, Entity &amp;<em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService3getER22NetconfServiceProviderR6Entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve running configuration and device state information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>filter</strong> &#8211; An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> that contains requested part of the device configuration and state data to be retrieved as defined by one of the device’s data models.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The requested data as <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService3getER22NetconfServiceProviderRNSt6vectorIP6EntityEE">
+<span id="NetconfService::get__NetconfServiceProviderR.std::vector:EntityP:R"></span>std::vector&lt;std::shared_ptr&lt;Entity&gt;&gt; <code class="descclassname"></code><code class="descname">get</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, std::vector&lt;Entity *&gt; &amp;<em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService3getER22NetconfServiceProviderRNSt6vectorIP6EntityEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve running configuration and device state information for multiple entities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>filter</strong> &#8211; An instance of <strong>std::vector&lt;Entity*&gt;</strong> that contains requested part of device configuration and state data; if request fails - empty <strong>std::vector</strong>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The requested data as <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService13kill_providerER22NetconfServiceProvideri">
+<span id="NetconfService::kill_provider__NetconfServiceProviderR.i"></span>bool <code class="descclassname"></code><code class="descname">kill_provider</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, int <em>provider_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService13kill_providerER22NetconfServiceProvideri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force the termination of a NETCONF provider</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>provider_id</strong> &#8211; An instance of int that is the provider identifier of the NETCONF provider to be terminated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService4lockER22NetconfServiceProvider9DataStore">
+<span id="NetconfService::lock__NetconfServiceProviderR.DataStore"></span>bool <code class="descclassname"></code><code class="descname">lock</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService4lockER22NetconfServiceProvider9DataStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows the client to lock the entire configuration datastore system of a device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>target</strong> &#8211; The configuration of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code> to lock.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService6unlockER22NetconfServiceProvider9DataStore">
+<span id="NetconfService::unlock__NetconfServiceProviderR.DataStore"></span>bool <code class="descclassname"></code><code class="descname">unlock</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService6unlockER22NetconfServiceProvider9DataStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to release a configuration lock, previously obtained with the LOCK operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>target</strong> &#8211; The configuration of type <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code> to unlock.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService8validateER22NetconfServiceProvider9DataStore">
+<span id="NetconfService::validate__NetconfServiceProviderR.DataStore"></span>bool <code class="descclassname"></code><code class="descname">validate</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, DataStore <em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService8validateER22NetconfServiceProvider9DataStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks a complete configuration for syntactical and semantic errors before applying the configuration to the device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>source</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">DataStore</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N14NetconfService8validateER22NetconfServiceProviderR6Entity">
+<span id="NetconfService::validate__NetconfServiceProviderR.EntityR"></span>bool <code class="descclassname"></code><code class="descname">validate</code><span class="sig-paren">(</span>NetconfServiceProvider &amp;<em>provider</em>, Entity &amp;<em>source_config</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N14NetconfService8validateER22NetconfServiceProviderR6Entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks a complete configuration for syntactical and semantic errors before applying the configuration to the device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">NetconfServiceProvider</span></code>.</li>
+<li><strong>source</strong> &#8211; An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>true</strong>, if the operation succeeds, <strong>false</strong> - otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">YError, if an error has occurred.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="validation_service.html" class="btn btn-neutral float-right" title="ValidationService" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="executor_service.html" class="btn btn-neutral" title="Executor Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

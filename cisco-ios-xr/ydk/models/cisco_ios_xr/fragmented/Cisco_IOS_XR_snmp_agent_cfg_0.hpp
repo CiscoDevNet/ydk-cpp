@@ -815,92 +815,94 @@ class Snmp::Notification : public ydk::Entity
 
         ydk::YLeaf ipsla; //type: boolean
         class Snmp_; //type: Snmp::Notification::Snmp_
-        class Diametermib; //type: Snmp::Notification::Diametermib
+        class SelectiveVrfDownload; //type: Snmp::Notification::SelectiveVrfDownload
         class Vpls; //type: Snmp::Notification::Vpls
         class L2vpn; //type: Snmp::Notification::L2vpn
-        class Isis; //type: Snmp::Notification::Isis
-        class ConfigMan; //type: Snmp::Notification::ConfigMan
         class IpSec; //type: Snmp::Notification::IpSec
         class Isakmp; //type: Snmp::Notification::Isakmp
-        class Cfm; //type: Snmp::Notification::Cfm
-        class Oam; //type: Snmp::Notification::Oam
-        class Flash; //type: Snmp::Notification::Flash
         class FrequencySynchronization; //type: Snmp::Notification::FrequencySynchronization
-        class EntityRedundancy; //type: Snmp::Notification::EntityRedundancy
-        class ConfigCopy; //type: Snmp::Notification::ConfigCopy
-        class SelectiveVrfDownload; //type: Snmp::Notification::SelectiveVrfDownload
-        class System; //type: Snmp::Notification::System
-        class Bfd; //type: Snmp::Notification::Bfd
-        class AddresspoolMib; //type: Snmp::Notification::AddresspoolMib
-        class Ntp; //type: Snmp::Notification::Ntp
-        class Rsvp; //type: Snmp::Notification::Rsvp
-        class Bgp; //type: Snmp::Notification::Bgp
+        class Rf; //type: Snmp::Notification::Rf
+        class FabricCrs; //type: Snmp::Notification::FabricCrs
+        class FruControl; //type: Snmp::Notification::FruControl
         class Hsrp; //type: Snmp::Notification::Hsrp
-        class Ospf; //type: Snmp::Notification::Ospf
-        class Vrrp; //type: Snmp::Notification::Vrrp
+        class MplsL3vpn; //type: Snmp::Notification::MplsL3vpn
+        class L2tun; //type: Snmp::Notification::L2tun
+        class Bfd; //type: Snmp::Notification::Bfd
         class Ospfv3; //type: Snmp::Notification::Ospfv3
+        class Flash; //type: Snmp::Notification::Flash
+        class Vrrp; //type: Snmp::Notification::Vrrp
+        class AddresspoolMib; //type: Snmp::Notification::AddresspoolMib
+        class Cfm; //type: Snmp::Notification::Cfm
+        class Bridge; //type: Snmp::Notification::Bridge
+        class Optical; //type: Snmp::Notification::Optical
+        class CiscoEntityExt; //type: Snmp::Notification::CiscoEntityExt
+        class OpticalOts; //type: Snmp::Notification::OpticalOts
+        class Entity; //type: Snmp::Notification::Entity
+        class Diametermib; //type: Snmp::Notification::Diametermib
         class MplsLdp; //type: Snmp::Notification::MplsLdp
+        class System; //type: Snmp::Notification::System
+        class SubscriberMib; //type: Snmp::Notification::SubscriberMib
+        class Oam; //type: Snmp::Notification::Oam
+        class Sensor; //type: Snmp::Notification::Sensor
+        class Otn; //type: Snmp::Notification::Otn
+        class Rsvp; //type: Snmp::Notification::Rsvp
+        class EntityRedundancy; //type: Snmp::Notification::EntityRedundancy
+        class Ospf; //type: Snmp::Notification::Ospf
+        class Syslog; //type: Snmp::Notification::Syslog
+        class ConfigCopy; //type: Snmp::Notification::ConfigCopy
+        class Isis; //type: Snmp::Notification::Isis
+        class ConfigMan; //type: Snmp::Notification::ConfigMan
         class MplsTeP2mp; //type: Snmp::Notification::MplsTeP2mp
         class MplsTe; //type: Snmp::Notification::MplsTe
         class MplsFrr; //type: Snmp::Notification::MplsFrr
-        class MplsL3vpn; //type: Snmp::Notification::MplsL3vpn
-        class Optical; //type: Snmp::Notification::Optical
-        class OpticalOts; //type: Snmp::Notification::OpticalOts
-        class Otn; //type: Snmp::Notification::Otn
-        class Bridge; //type: Snmp::Notification::Bridge
-        class Sensor; //type: Snmp::Notification::Sensor
-        class CiscoEntityExt; //type: Snmp::Notification::CiscoEntityExt
-        class Entity; //type: Snmp::Notification::Entity
         class EntityState; //type: Snmp::Notification::EntityState
-        class FruControl; //type: Snmp::Notification::FruControl
-        class Rf; //type: Snmp::Notification::Rf
-        class Syslog; //type: Snmp::Notification::Syslog
-        class SubscriberMib; //type: Snmp::Notification::SubscriberMib
-        class L2tun; //type: Snmp::Notification::L2tun
+        class Bgp; //type: Snmp::Notification::Bgp
+        class Ntp; //type: Snmp::Notification::Ntp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Snmp_> snmp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Diametermib> diametermib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SelectiveVrfDownload> selective_vrf_download;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Vpls> vpls;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::L2vpn> l2vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::ConfigMan> config_man;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::IpSec> ip_sec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Isakmp> isakmp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Cfm> cfm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Oam> oam;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Flash> flash;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FrequencySynchronization> frequency_synchronization;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::EntityRedundancy> entity_redundancy;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::ConfigCopy> config_copy;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SelectiveVrfDownload> selective_vrf_download;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::System> system;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bfd> bfd;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::AddresspoolMib> addresspool_mib;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Rsvp> rsvp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Rf> rf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FabricCrs> fabric_crs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FruControl> fru_control;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Hsrp> hsrp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsL3vpn> mpls_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::L2tun> l2tun;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bfd> bfd;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Flash> flash;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::AddresspoolMib> addresspool_mib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Cfm> cfm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bridge> bridge;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Optical> optical;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::CiscoEntityExt> cisco_entity_ext;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::OpticalOts> optical_ots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Entity> entity_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Diametermib> diametermib;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsLdp> mpls_ldp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::System> system;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SubscriberMib> subscriber_mib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Oam> oam;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Sensor> sensor;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Otn> otn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Rsvp> rsvp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::EntityRedundancy> entity_redundancy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Syslog> syslog;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::ConfigCopy> config_copy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::ConfigMan> config_man;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsTeP2mp> mpls_te_p2mp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsTe> mpls_te;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsFrr> mpls_frr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsL3vpn> mpls_l3vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Optical> optical;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::OpticalOts> optical_ots;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Otn> otn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bridge> bridge;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Sensor> sensor;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::CiscoEntityExt> cisco_entity_ext;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Entity> entity_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::EntityState> entity_state;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FruControl> fru_control;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Rf> rf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Syslog> syslog;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SubscriberMib> subscriber_mib;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::L2tun> l2tun;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ntp> ntp;
         
 }; // Snmp::Notification
 
@@ -932,11 +934,11 @@ class Snmp::Notification::Snmp_ : public ydk::Entity
 }; // Snmp::Notification::Snmp_
 
 
-class Snmp::Notification::Diametermib : public ydk::Entity
+class Snmp::Notification::SelectiveVrfDownload : public ydk::Entity
 {
     public:
-        Diametermib();
-        ~Diametermib();
+        SelectiveVrfDownload();
+        ~SelectiveVrfDownload();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -949,13 +951,9 @@ class Snmp::Notification::Diametermib : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf protocolerror; //type: boolean
-        ydk::YLeaf permanentfail; //type: boolean
-        ydk::YLeaf peerdown; //type: boolean
-        ydk::YLeaf peerup; //type: boolean
-        ydk::YLeaf transientfail; //type: boolean
+        ydk::YLeaf role_change; //type: empty
 
-}; // Snmp::Notification::Diametermib
+}; // Snmp::Notification::SelectiveVrfDownload
 
 
 class Snmp::Notification::Vpls : public ydk::Entity
@@ -1008,68 +1006,6 @@ class Snmp::Notification::L2vpn : public ydk::Entity
 }; // Snmp::Notification::L2vpn
 
 
-class Snmp::Notification::Isis : public ydk::Entity
-{
-    public:
-        Isis();
-        ~Isis();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf database_overflow; //type: IsisMibDatabaseOverFlowBoolean
-        ydk::YLeaf manual_address_drops; //type: IsisMibManualAddressDropsBoolean
-        ydk::YLeaf corrupted_lsp_detected; //type: IsisMibCorruptedLspDetectedBoolean
-        ydk::YLeaf attempt_to_exceed_max_sequence; //type: IsisMibAttemptToExceedMaxSequenceBoolean
-        ydk::YLeaf id_length_mismatch; //type: IsisMibIdLengthMismatchBoolean
-        ydk::YLeaf max_area_address_mismatch; //type: IsisMibMaxAreaAddressMismatchBoolean
-        ydk::YLeaf own_lsp_purge; //type: IsisMibOwnLspPurgeBoolean
-        ydk::YLeaf sequence_number_skip; //type: IsisMibSequenceNumberSkipBoolean
-        ydk::YLeaf authentication_type_failure; //type: IsisMibAuthenticationTypeFailureBoolean
-        ydk::YLeaf authentication_failure; //type: IsisMibAuthenticationFailureBoolean
-        ydk::YLeaf version_skew; //type: IsisMibVersionSkewBoolean
-        ydk::YLeaf area_mismatch; //type: IsisMibAreaMismatchBoolean
-        ydk::YLeaf rejected_adjacency; //type: IsisMibRejectedAdjacencyBoolean
-        ydk::YLeaf lsp_too_large_to_propagate; //type: IsisMibLspTooLargeToPropagateBoolean
-        ydk::YLeaf originated_lsp_buffer_size_mismatch; //type: IsisMibOriginatedLspBufferSizeMismatchBoolean
-        ydk::YLeaf protocols_supported_mismatch; //type: IsisMibProtocolsSupportedMismatchBoolean
-        ydk::YLeaf adjacency_change; //type: IsisMibAdjacencyChangeBoolean
-        ydk::YLeaf lsp_error_detected; //type: IsisMibLspErrorDetectedBoolean
-        ydk::YLeaf all; //type: IsisMibAllBoolean
-
-}; // Snmp::Notification::Isis
-
-
-class Snmp::Notification::ConfigMan : public ydk::Entity
-{
-    public:
-        ConfigMan();
-        ~ConfigMan();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::ConfigMan
-
-
 class Snmp::Notification::IpSec : public ydk::Entity
 {
     public:
@@ -1116,11 +1052,11 @@ class Snmp::Notification::Isakmp : public ydk::Entity
 }; // Snmp::Notification::Isakmp
 
 
-class Snmp::Notification::Cfm : public ydk::Entity
+class Snmp::Notification::FrequencySynchronization : public ydk::Entity
 {
     public:
-        Cfm();
-        ~Cfm();
+        FrequencySynchronization();
+        ~FrequencySynchronization();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1135,14 +1071,14 @@ class Snmp::Notification::Cfm : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::Cfm
+}; // Snmp::Notification::FrequencySynchronization
 
 
-class Snmp::Notification::Oam : public ydk::Entity
+class Snmp::Notification::Rf : public ydk::Entity
 {
     public:
-        Oam();
-        ~Oam();
+        Rf();
+        ~Rf();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1157,7 +1093,230 @@ class Snmp::Notification::Oam : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::Oam
+}; // Snmp::Notification::Rf
+
+
+class Snmp::Notification::FabricCrs : public ydk::Entity
+{
+    public:
+        FabricCrs();
+        ~FabricCrs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf bundle_state; //type: empty
+        ydk::YLeaf plane_state; //type: empty
+        ydk::YLeaf bundle_downed_link; //type: empty
+
+}; // Snmp::Notification::FabricCrs
+
+
+class Snmp::Notification::FruControl : public ydk::Entity
+{
+    public:
+        FruControl();
+        ~FruControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::FruControl
+
+
+class Snmp::Notification::Hsrp : public ydk::Entity
+{
+    public:
+        Hsrp();
+        ~Hsrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Hsrp
+
+
+class Snmp::Notification::MplsL3vpn : public ydk::Entity
+{
+    public:
+        MplsL3vpn();
+        ~MplsL3vpn();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf max_threshold_reissue_notification_time; //type: uint32
+        ydk::YLeaf max_threshold_exceeded; //type: empty
+        ydk::YLeaf max_threshold_cleared; //type: empty
+        ydk::YLeaf mid_threshold_exceeded; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf vrf_down; //type: empty
+        ydk::YLeaf vrf_up; //type: empty
+
+}; // Snmp::Notification::MplsL3vpn
+
+
+class Snmp::Notification::L2tun : public ydk::Entity
+{
+    public:
+        L2tun();
+        ~L2tun();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tunnel_up; //type: boolean
+        ydk::YLeaf tunnel_down; //type: boolean
+        ydk::YLeaf pseudowire_status; //type: boolean
+        ydk::YLeaf sessions; //type: boolean
+
+}; // Snmp::Notification::L2tun
+
+
+class Snmp::Notification::Bfd : public ydk::Entity
+{
+    public:
+        Bfd();
+        ~Bfd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Bfd
+
+
+class Snmp::Notification::Ospfv3 : public ydk::Entity
+{
+    public:
+        Ospfv3();
+        ~Ospfv3();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Error; //type: Snmp::Notification::Ospfv3::Error
+        class StateChange; //type: Snmp::Notification::Ospfv3::StateChange
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ospfv3::Error> error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ospfv3::StateChange> state_change;
+        
+}; // Snmp::Notification::Ospfv3
+
+
+class Snmp::Notification::Ospfv3::Error : public ydk::Entity
+{
+    public:
+        Error();
+        ~Error();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf config_error; //type: empty
+        ydk::YLeaf bad_packet; //type: empty
+        ydk::YLeaf virtual_bad_packet; //type: empty
+        ydk::YLeaf virtual_config_error; //type: empty
+
+}; // Snmp::Notification::Ospfv3::Error
+
+
+class Snmp::Notification::Ospfv3::StateChange : public ydk::Entity
+{
+    public:
+        StateChange();
+        ~StateChange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf restart_virtual_helper; //type: empty
+        ydk::YLeaf nssa_translator; //type: empty
+        ydk::YLeaf interface; //type: empty
+        ydk::YLeaf restart; //type: empty
+        ydk::YLeaf neighbor; //type: empty
+        ydk::YLeaf virtual_interface; //type: empty
+        ydk::YLeaf restart_helper; //type: empty
+        ydk::YLeaf virtual_neighbor; //type: empty
+
+}; // Snmp::Notification::Ospfv3::StateChange
 
 
 class Snmp::Notification::Flash : public ydk::Entity
@@ -1183,11 +1342,11 @@ class Snmp::Notification::Flash : public ydk::Entity
 }; // Snmp::Notification::Flash
 
 
-class Snmp::Notification::FrequencySynchronization : public ydk::Entity
+class Snmp::Notification::Vrrp : public ydk::Entity
 {
     public:
-        FrequencySynchronization();
-        ~FrequencySynchronization();
+        Vrrp();
+        ~Vrrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1202,119 +1361,7 @@ class Snmp::Notification::FrequencySynchronization : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::FrequencySynchronization
-
-
-class Snmp::Notification::EntityRedundancy : public ydk::Entity
-{
-    public:
-        EntityRedundancy();
-        ~EntityRedundancy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf switchover; //type: empty
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf status; //type: empty
-
-}; // Snmp::Notification::EntityRedundancy
-
-
-class Snmp::Notification::ConfigCopy : public ydk::Entity
-{
-    public:
-        ConfigCopy();
-        ~ConfigCopy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf completion; //type: empty
-
-}; // Snmp::Notification::ConfigCopy
-
-
-class Snmp::Notification::SelectiveVrfDownload : public ydk::Entity
-{
-    public:
-        SelectiveVrfDownload();
-        ~SelectiveVrfDownload();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf role_change; //type: empty
-
-}; // Snmp::Notification::SelectiveVrfDownload
-
-
-class Snmp::Notification::System : public ydk::Entity
-{
-    public:
-        System();
-        ~System();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::System
-
-
-class Snmp::Notification::Bfd : public ydk::Entity
-{
-    public:
-        Bfd();
-        ~Bfd();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Bfd
+}; // Snmp::Notification::Vrrp
 
 
 class Snmp::Notification::AddresspoolMib : public ydk::Entity
@@ -1340,11 +1387,11 @@ class Snmp::Notification::AddresspoolMib : public ydk::Entity
 }; // Snmp::Notification::AddresspoolMib
 
 
-class Snmp::Notification::Ntp : public ydk::Entity
+class Snmp::Notification::Cfm : public ydk::Entity
 {
     public:
-        Ntp();
-        ~Ntp();
+        Cfm();
+        ~Cfm();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1359,7 +1406,302 @@ class Snmp::Notification::Ntp : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::Ntp
+}; // Snmp::Notification::Cfm
+
+
+class Snmp::Notification::Bridge : public ydk::Entity
+{
+    public:
+        Bridge();
+        ~Bridge();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Bridge
+
+
+class Snmp::Notification::Optical : public ydk::Entity
+{
+    public:
+        Optical();
+        ~Optical();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Optical
+
+
+class Snmp::Notification::CiscoEntityExt : public ydk::Entity
+{
+    public:
+        CiscoEntityExt();
+        ~CiscoEntityExt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::CiscoEntityExt
+
+
+class Snmp::Notification::OpticalOts : public ydk::Entity
+{
+    public:
+        OpticalOts();
+        ~OpticalOts();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::OpticalOts
+
+
+class Snmp::Notification::Entity : public ydk::Entity
+{
+    public:
+        Entity();
+        ~Entity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Entity
+
+
+class Snmp::Notification::Diametermib : public ydk::Entity
+{
+    public:
+        Diametermib();
+        ~Diametermib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf protocolerror; //type: boolean
+        ydk::YLeaf permanentfail; //type: boolean
+        ydk::YLeaf peerdown; //type: boolean
+        ydk::YLeaf peerup; //type: boolean
+        ydk::YLeaf transientfail; //type: boolean
+
+}; // Snmp::Notification::Diametermib
+
+
+class Snmp::Notification::MplsLdp : public ydk::Entity
+{
+    public:
+        MplsLdp();
+        ~MplsLdp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf session_up; //type: empty
+        ydk::YLeaf init_session_threshold_exceeded; //type: empty
+        ydk::YLeaf session_down; //type: empty
+
+}; // Snmp::Notification::MplsLdp
+
+
+class Snmp::Notification::System : public ydk::Entity
+{
+    public:
+        System();
+        ~System();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::System
+
+
+class Snmp::Notification::SubscriberMib : public ydk::Entity
+{
+    public:
+        SubscriberMib();
+        ~SubscriberMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class SessionAggregate; //type: Snmp::Notification::SubscriberMib::SessionAggregate
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SubscriberMib::SessionAggregate> session_aggregate;
+        
+}; // Snmp::Notification::SubscriberMib
+
+
+class Snmp::Notification::SubscriberMib::SessionAggregate : public ydk::Entity
+{
+    public:
+        SessionAggregate();
+        ~SessionAggregate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf node; //type: empty
+        ydk::YLeaf access_interface; //type: empty
+
+}; // Snmp::Notification::SubscriberMib::SessionAggregate
+
+
+class Snmp::Notification::Oam : public ydk::Entity
+{
+    public:
+        Oam();
+        ~Oam();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Oam
+
+
+class Snmp::Notification::Sensor : public ydk::Entity
+{
+    public:
+        Sensor();
+        ~Sensor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Sensor
+
+
+class Snmp::Notification::Otn : public ydk::Entity
+{
+    public:
+        Otn();
+        ~Otn();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Otn
 
 
 class Snmp::Notification::Rsvp : public ydk::Entity
@@ -1386,11 +1728,11 @@ class Snmp::Notification::Rsvp : public ydk::Entity
 }; // Snmp::Notification::Rsvp
 
 
-class Snmp::Notification::Bgp : public ydk::Entity
+class Snmp::Notification::EntityRedundancy : public ydk::Entity
 {
     public:
-        Bgp();
-        ~Bgp();
+        EntityRedundancy();
+        ~EntityRedundancy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1403,81 +1745,11 @@ class Snmp::Notification::Bgp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Bgp4mib; //type: Snmp::Notification::Bgp::Bgp4mib
-        class CiscoBgp4mib; //type: Snmp::Notification::Bgp::CiscoBgp4mib
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bgp::Bgp4mib> bgp4mib;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bgp::CiscoBgp4mib> cisco_bgp4mib;
-        
-}; // Snmp::Notification::Bgp
-
-
-class Snmp::Notification::Bgp::Bgp4mib : public ydk::Entity
-{
-    public:
-        Bgp4mib();
-        ~Bgp4mib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
+        ydk::YLeaf switchover; //type: empty
         ydk::YLeaf enable; //type: empty
-        ydk::YLeaf up_down; //type: empty
+        ydk::YLeaf status; //type: empty
 
-}; // Snmp::Notification::Bgp::Bgp4mib
-
-
-class Snmp::Notification::Bgp::CiscoBgp4mib : public ydk::Entity
-{
-    public:
-        CiscoBgp4mib();
-        ~CiscoBgp4mib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf up_down; //type: empty
-
-}; // Snmp::Notification::Bgp::CiscoBgp4mib
-
-
-class Snmp::Notification::Hsrp : public ydk::Entity
-{
-    public:
-        Hsrp();
-        ~Hsrp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Hsrp
+}; // Snmp::Notification::EntityRedundancy
 
 
 class Snmp::Notification::Ospf : public ydk::Entity
@@ -1608,11 +1880,11 @@ class Snmp::Notification::Ospf::Error : public ydk::Entity
 }; // Snmp::Notification::Ospf::Error
 
 
-class Snmp::Notification::Vrrp : public ydk::Entity
+class Snmp::Notification::Syslog : public ydk::Entity
 {
     public:
-        Vrrp();
-        ~Vrrp();
+        Syslog();
+        ~Syslog();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1627,14 +1899,14 @@ class Snmp::Notification::Vrrp : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::Vrrp
+}; // Snmp::Notification::Syslog
 
 
-class Snmp::Notification::Ospfv3 : public ydk::Entity
+class Snmp::Notification::ConfigCopy : public ydk::Entity
 {
     public:
-        Ospfv3();
-        ~Ospfv3();
+        ConfigCopy();
+        ~ConfigCopy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1647,20 +1919,16 @@ class Snmp::Notification::Ospfv3 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Error; //type: Snmp::Notification::Ospfv3::Error
-        class StateChange; //type: Snmp::Notification::Ospfv3::StateChange
+        ydk::YLeaf completion; //type: empty
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ospfv3::Error> error;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Ospfv3::StateChange> state_change;
-        
-}; // Snmp::Notification::Ospfv3
+}; // Snmp::Notification::ConfigCopy
 
 
-class Snmp::Notification::Ospfv3::Error : public ydk::Entity
+class Snmp::Notification::Isis : public ydk::Entity
 {
     public:
-        Error();
-        ~Error();
+        Isis();
+        ~Isis();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1673,19 +1941,34 @@ class Snmp::Notification::Ospfv3::Error : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf config_error; //type: empty
-        ydk::YLeaf bad_packet; //type: empty
-        ydk::YLeaf virtual_bad_packet; //type: empty
-        ydk::YLeaf virtual_config_error; //type: empty
+        ydk::YLeaf database_overflow; //type: IsisMibDatabaseOverFlowBoolean
+        ydk::YLeaf manual_address_drops; //type: IsisMibManualAddressDropsBoolean
+        ydk::YLeaf corrupted_lsp_detected; //type: IsisMibCorruptedLspDetectedBoolean
+        ydk::YLeaf attempt_to_exceed_max_sequence; //type: IsisMibAttemptToExceedMaxSequenceBoolean
+        ydk::YLeaf id_length_mismatch; //type: IsisMibIdLengthMismatchBoolean
+        ydk::YLeaf max_area_address_mismatch; //type: IsisMibMaxAreaAddressMismatchBoolean
+        ydk::YLeaf own_lsp_purge; //type: IsisMibOwnLspPurgeBoolean
+        ydk::YLeaf sequence_number_skip; //type: IsisMibSequenceNumberSkipBoolean
+        ydk::YLeaf authentication_type_failure; //type: IsisMibAuthenticationTypeFailureBoolean
+        ydk::YLeaf authentication_failure; //type: IsisMibAuthenticationFailureBoolean
+        ydk::YLeaf version_skew; //type: IsisMibVersionSkewBoolean
+        ydk::YLeaf area_mismatch; //type: IsisMibAreaMismatchBoolean
+        ydk::YLeaf rejected_adjacency; //type: IsisMibRejectedAdjacencyBoolean
+        ydk::YLeaf lsp_too_large_to_propagate; //type: IsisMibLspTooLargeToPropagateBoolean
+        ydk::YLeaf originated_lsp_buffer_size_mismatch; //type: IsisMibOriginatedLspBufferSizeMismatchBoolean
+        ydk::YLeaf protocols_supported_mismatch; //type: IsisMibProtocolsSupportedMismatchBoolean
+        ydk::YLeaf adjacency_change; //type: IsisMibAdjacencyChangeBoolean
+        ydk::YLeaf lsp_error_detected; //type: IsisMibLspErrorDetectedBoolean
+        ydk::YLeaf all; //type: IsisMibAllBoolean
 
-}; // Snmp::Notification::Ospfv3::Error
+}; // Snmp::Notification::Isis
 
 
-class Snmp::Notification::Ospfv3::StateChange : public ydk::Entity
+class Snmp::Notification::ConfigMan : public ydk::Entity
 {
     public:
-        StateChange();
-        ~StateChange();
+        ConfigMan();
+        ~ConfigMan();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1698,40 +1981,9 @@ class Snmp::Notification::Ospfv3::StateChange : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf restart_virtual_helper; //type: empty
-        ydk::YLeaf nssa_translator; //type: empty
-        ydk::YLeaf interface; //type: empty
-        ydk::YLeaf restart; //type: empty
-        ydk::YLeaf neighbor; //type: empty
-        ydk::YLeaf virtual_interface; //type: empty
-        ydk::YLeaf restart_helper; //type: empty
-        ydk::YLeaf virtual_neighbor; //type: empty
+        ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::Ospfv3::StateChange
-
-
-class Snmp::Notification::MplsLdp : public ydk::Entity
-{
-    public:
-        MplsLdp();
-        ~MplsLdp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf session_up; //type: empty
-        ydk::YLeaf init_session_threshold_exceeded; //type: empty
-        ydk::YLeaf session_down; //type: empty
-
-}; // Snmp::Notification::MplsLdp
+}; // Snmp::Notification::ConfigMan
 
 
 class Snmp::Notification::MplsTeP2mp : public ydk::Entity
@@ -1836,188 +2088,6 @@ class Snmp::Notification::MplsFrr : public ydk::Entity
 }; // Snmp::Notification::MplsFrr
 
 
-class Snmp::Notification::MplsL3vpn : public ydk::Entity
-{
-    public:
-        MplsL3vpn();
-        ~MplsL3vpn();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf max_threshold_reissue_notification_time; //type: uint32
-        ydk::YLeaf max_threshold_exceeded; //type: empty
-        ydk::YLeaf max_threshold_cleared; //type: empty
-        ydk::YLeaf mid_threshold_exceeded; //type: empty
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf vrf_down; //type: empty
-        ydk::YLeaf vrf_up; //type: empty
-
-}; // Snmp::Notification::MplsL3vpn
-
-
-class Snmp::Notification::Optical : public ydk::Entity
-{
-    public:
-        Optical();
-        ~Optical();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Optical
-
-
-class Snmp::Notification::OpticalOts : public ydk::Entity
-{
-    public:
-        OpticalOts();
-        ~OpticalOts();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::OpticalOts
-
-
-class Snmp::Notification::Otn : public ydk::Entity
-{
-    public:
-        Otn();
-        ~Otn();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Otn
-
-
-class Snmp::Notification::Bridge : public ydk::Entity
-{
-    public:
-        Bridge();
-        ~Bridge();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Bridge
-
-
-class Snmp::Notification::Sensor : public ydk::Entity
-{
-    public:
-        Sensor();
-        ~Sensor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Sensor
-
-
-class Snmp::Notification::CiscoEntityExt : public ydk::Entity
-{
-    public:
-        CiscoEntityExt();
-        ~CiscoEntityExt();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::CiscoEntityExt
-
-
-class Snmp::Notification::Entity : public ydk::Entity
-{
-    public:
-        Entity();
-        ~Entity();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Entity
-
-
 class Snmp::Notification::EntityState : public ydk::Entity
 {
     public:
@@ -2041,11 +2111,11 @@ class Snmp::Notification::EntityState : public ydk::Entity
 }; // Snmp::Notification::EntityState
 
 
-class Snmp::Notification::FruControl : public ydk::Entity
+class Snmp::Notification::Bgp : public ydk::Entity
 {
     public:
-        FruControl();
-        ~FruControl();
+        Bgp();
+        ~Bgp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2058,84 +2128,20 @@ class Snmp::Notification::FruControl : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf enable; //type: empty
+        class Bgp4mib; //type: Snmp::Notification::Bgp::Bgp4mib
+        class CiscoBgp4mib; //type: Snmp::Notification::Bgp::CiscoBgp4mib
 
-}; // Snmp::Notification::FruControl
-
-
-class Snmp::Notification::Rf : public ydk::Entity
-{
-    public:
-        Rf();
-        ~Rf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Rf
-
-
-class Snmp::Notification::Syslog : public ydk::Entity
-{
-    public:
-        Syslog();
-        ~Syslog();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::Syslog
-
-
-class Snmp::Notification::SubscriberMib : public ydk::Entity
-{
-    public:
-        SubscriberMib();
-        ~SubscriberMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class SessionAggregate; //type: Snmp::Notification::SubscriberMib::SessionAggregate
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SubscriberMib::SessionAggregate> session_aggregate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bgp::Bgp4mib> bgp4mib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bgp::CiscoBgp4mib> cisco_bgp4mib;
         
-}; // Snmp::Notification::SubscriberMib
+}; // Snmp::Notification::Bgp
 
 
-class Snmp::Notification::SubscriberMib::SessionAggregate : public ydk::Entity
+class Snmp::Notification::Bgp::Bgp4mib : public ydk::Entity
 {
     public:
-        SessionAggregate();
-        ~SessionAggregate();
+        Bgp4mib();
+        ~Bgp4mib();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2148,17 +2154,17 @@ class Snmp::Notification::SubscriberMib::SessionAggregate : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf node; //type: empty
-        ydk::YLeaf access_interface; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf up_down; //type: empty
 
-}; // Snmp::Notification::SubscriberMib::SessionAggregate
+}; // Snmp::Notification::Bgp::Bgp4mib
 
 
-class Snmp::Notification::L2tun : public ydk::Entity
+class Snmp::Notification::Bgp::CiscoBgp4mib : public ydk::Entity
 {
     public:
-        L2tun();
-        ~L2tun();
+        CiscoBgp4mib();
+        ~CiscoBgp4mib();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2171,12 +2177,32 @@ class Snmp::Notification::L2tun : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf tunnel_up; //type: boolean
-        ydk::YLeaf tunnel_down; //type: boolean
-        ydk::YLeaf pseudowire_status; //type: boolean
-        ydk::YLeaf sessions; //type: boolean
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf up_down; //type: empty
 
-}; // Snmp::Notification::L2tun
+}; // Snmp::Notification::Bgp::CiscoBgp4mib
+
+
+class Snmp::Notification::Ntp : public ydk::Entity
+{
+    public:
+        Ntp();
+        ~Ntp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::Ntp
 
 
 class Snmp::Correlator : public ydk::Entity
@@ -3793,37 +3819,6 @@ class Snmp::TrapHosts::TrapHost::InformHost : public ydk::Entity
         
 }; // Snmp::TrapHosts::TrapHost::InformHost
 
-
-class Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities : public ydk::Entity
-{
-    public:
-        InformUserCommunities();
-        ~InformUserCommunities();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class InformUserCommunity; //type: Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity
-
-        ydk::YList inform_user_community;
-        
-}; // Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities
-
-class SnmpTos : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf precedence;
-        static const ydk::Enum::YLeaf dscp;
-
-};
-
 class SnmpHashAlgorithm : public ydk::Enum
 {
     public:
@@ -3831,26 +3826,25 @@ class SnmpHashAlgorithm : public ydk::Enum
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "md5") return 1;
+            if (name == "sha") return 2;
+            return -1;
+        }
 };
 
-class SnmpPrivAlgorithm : public ydk::Enum
+class SnmpAccessLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf des;
-        static const ydk::Enum::YLeaf Y_3des;
-        static const ydk::Enum::YLeaf aes128;
-        static const ydk::Enum::YLeaf aes192;
-        static const ydk::Enum::YLeaf aes256;
+        static const ydk::Enum::YLeaf read_only;
+        static const ydk::Enum::YLeaf read_write;
 
-};
-
-class SnmpOwnerAccess : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sdr_owner;
-        static const ydk::Enum::YLeaf system_owner;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "read-only") return 0;
+            if (name == "read-write") return 1;
+            return -1;
+        }
 };
 
 class SnmpBulkstatSchema : public ydk::Enum
@@ -3863,6 +3857,86 @@ class SnmpBulkstatSchema : public ydk::Enum
         static const ydk::Enum::YLeaf range_oid;
         static const ydk::Enum::YLeaf repeat_oid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "exact-interface") return 1;
+            if (name == "exact-oid") return 2;
+            if (name == "wild-interface") return 3;
+            if (name == "wild-oid") return 4;
+            if (name == "range-oid") return 5;
+            if (name == "repeat-oid") return 6;
+            return -1;
+        }
+};
+
+class GroupSnmpVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf v1;
+        static const ydk::Enum::YLeaf v2c;
+        static const ydk::Enum::YLeaf v3;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "v1") return 0;
+            if (name == "v2c") return 1;
+            if (name == "v3") return 2;
+            return -1;
+        }
+};
+
+class SnmpOwnerAccess : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sdr_owner;
+        static const ydk::Enum::YLeaf system_owner;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "sdr-owner") return 0;
+            if (name == "system-owner") return 1;
+            return -1;
+        }
+};
+
+class SnmpBulkstatFileFormat : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf schema_ascii;
+        static const ydk::Enum::YLeaf bulk_ascii;
+        static const ydk::Enum::YLeaf bulk_binary;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "schema-ascii") return 1;
+            if (name == "bulk-ascii") return 2;
+            if (name == "bulk-binary") return 3;
+            return -1;
+        }
+};
+
+class SnmpSecurityModel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_authentication;
+        static const ydk::Enum::YLeaf authentication;
+        static const ydk::Enum::YLeaf privacy;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-authentication") return 0;
+            if (name == "authentication") return 1;
+            if (name == "privacy") return 2;
+            return -1;
+        }
+};
+
+class SnmpTos : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf precedence;
+        static const ydk::Enum::YLeaf dscp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "precedence") return 0;
+            if (name == "dscp") return 1;
+            return -1;
+        }
 };
 
 class Snmpacl : public ydk::Enum
@@ -3871,6 +3945,11 @@ class Snmpacl : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class SnmpDscpValue : public ydk::Enum
@@ -3898,6 +3977,45 @@ class SnmpDscpValue : public ydk::Enum
         static const ydk::Enum::YLeaf cs6;
         static const ydk::Enum::YLeaf cs7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "af11") return 10;
+            if (name == "af12") return 12;
+            if (name == "af13") return 14;
+            if (name == "af21") return 18;
+            if (name == "af22") return 20;
+            if (name == "af23") return 22;
+            if (name == "af31") return 26;
+            if (name == "af32") return 28;
+            if (name == "af33") return 30;
+            if (name == "af41") return 34;
+            if (name == "af42") return 36;
+            if (name == "af43") return 38;
+            if (name == "ef") return 46;
+            if (name == "cs1") return 8;
+            if (name == "cs2") return 16;
+            if (name == "cs3") return 24;
+            if (name == "cs4") return 32;
+            if (name == "cs5") return 40;
+            if (name == "cs6") return 48;
+            if (name == "cs7") return 56;
+            return -1;
+        }
+};
+
+class UserSnmpVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf v1;
+        static const ydk::Enum::YLeaf v2c;
+        static const ydk::Enum::YLeaf v3;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "v1") return 1;
+            if (name == "v2c") return 2;
+            if (name == "v3") return 3;
+            return -1;
+        }
 };
 
 class SnmpPrecedenceValue1 : public ydk::Enum
@@ -3912,15 +4030,38 @@ class SnmpPrecedenceValue1 : public ydk::Enum
         static const ydk::Enum::YLeaf internet;
         static const ydk::Enum::YLeaf network;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "routine") return 0;
+            if (name == "priority") return 1;
+            if (name == "immediate") return 2;
+            if (name == "flash") return 3;
+            if (name == "flash-override") return 4;
+            if (name == "critical") return 5;
+            if (name == "internet") return 6;
+            if (name == "network") return 7;
+            return -1;
+        }
 };
 
-class SnmpSecurityModel : public ydk::Enum
+class SnmpPrivAlgorithm : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_authentication;
-        static const ydk::Enum::YLeaf authentication;
-        static const ydk::Enum::YLeaf privacy;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf des;
+        static const ydk::Enum::YLeaf Y_3des;
+        static const ydk::Enum::YLeaf aes128;
+        static const ydk::Enum::YLeaf aes192;
+        static const ydk::Enum::YLeaf aes256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "des") return 1;
+            if (name == "3des") return 2;
+            if (name == "aes128") return 3;
+            if (name == "aes192") return 4;
+            if (name == "aes256") return 5;
+            return -1;
+        }
 };
 
 class SnmpMibViewInclusion : public ydk::Enum
@@ -3929,23 +4070,11 @@ class SnmpMibViewInclusion : public ydk::Enum
         static const ydk::Enum::YLeaf included;
         static const ydk::Enum::YLeaf excluded;
 
-};
-
-class SnmpBulkstatFileFormat : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf schema_ascii;
-        static const ydk::Enum::YLeaf bulk_ascii;
-        static const ydk::Enum::YLeaf bulk_binary;
-
-};
-
-class SnmpAccessLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf read_only;
-        static const ydk::Enum::YLeaf read_write;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "included") return 1;
+            if (name == "excluded") return 2;
+            return -1;
+        }
 };
 
 class SnmpContext : public ydk::Enum
@@ -3956,24 +4085,13 @@ class SnmpContext : public ydk::Enum
         static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf ospfv3;
 
-};
-
-class GroupSnmpVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf v1;
-        static const ydk::Enum::YLeaf v2c;
-        static const ydk::Enum::YLeaf v3;
-
-};
-
-class UserSnmpVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf v1;
-        static const ydk::Enum::YLeaf v2c;
-        static const ydk::Enum::YLeaf v3;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "vrf") return 1;
+            if (name == "bridge") return 4;
+            if (name == "ospf") return 5;
+            if (name == "ospfv3") return 6;
+            return -1;
+        }
 };
 
 

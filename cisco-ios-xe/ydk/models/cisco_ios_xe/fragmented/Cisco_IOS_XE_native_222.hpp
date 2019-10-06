@@ -274,8 +274,8 @@ class Native::Line::Console : public ydk::Entity
         ydk::YLeaf session_limit; //type: uint32
         ydk::YLeaf special_character_bits; //type: uint8
         ydk::YLeaf speed; //type: uint32
-        ydk::YLeaf start_character; //type: one of string, uint8
-        ydk::YLeaf stop_character; //type: one of string, uint8
+        ydk::YLeaf start_character; //type: one of uint8, string
+        ydk::YLeaf stop_character; //type: one of uint8, string
         ydk::YLeaf stopbits; //type: Stopbits
         ydk::YLeaf terminal_type; //type: string
         ydk::YLeaf txspeed; //type: uint32
@@ -545,7 +545,7 @@ class Native::Line::Console::AutocommandOptions::AbortCharacter : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of string, uint8
+        ydk::YLeaf character; //type: one of uint8, string
 
 }; // Native::Line::Console::AutocommandOptions::AbortCharacter
 
@@ -633,7 +633,7 @@ class Native::Line::Console::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of enumeration, string, uint8
+        ydk::YLeaf char_; //type: one of uint8, enumeration, string
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -1016,7 +1016,7 @@ class Native::Line::Console::Padding : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of string, uint8
+        ydk::YLeaf character; //type: one of uint8, string
         ydk::YLeaf null; //type: uint8
 
 }; // Native::Line::Console::Padding
@@ -1354,8 +1354,8 @@ class Native::Line::Vty : public ydk::Entity
         ydk::YLeaf session_limit; //type: uint32
         ydk::YLeaf special_character_bits; //type: uint8
         ydk::YLeaf speed; //type: uint32
-        ydk::YLeaf start_character; //type: one of string, uint8
-        ydk::YLeaf stop_character; //type: one of string, uint8
+        ydk::YLeaf start_character; //type: one of uint8, string
+        ydk::YLeaf stop_character; //type: one of uint8, string
         ydk::YLeaf stopbits; //type: Stopbits
         ydk::YLeaf terminal_type; //type: string
         ydk::YLeaf txspeed; //type: uint32
@@ -1624,7 +1624,7 @@ class Native::Line::Vty::AutocommandOptions::AbortCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of string, uint8
+        ydk::YLeaf character; //type: one of uint8, string
 
 }; // Native::Line::Vty::AutocommandOptions::AbortCharacter
 
@@ -1712,7 +1712,7 @@ class Native::Line::Vty::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of enumeration, string, uint8
+        ydk::YLeaf char_; //type: one of uint8, enumeration, string
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -2095,7 +2095,7 @@ class Native::Line::Vty::Padding : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of string, uint8
+        ydk::YLeaf character; //type: one of uint8, string
         ydk::YLeaf null; //type: uint8
 
 }; // Native::Line::Vty::Padding
@@ -3807,6 +3807,22 @@ class Native::Line::Aux::Transport::Input::Input_ : public ydk::Enum
         static const ydk::Enum::YLeaf udptn;
         static const ydk::Enum::YLeaf v120;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "all") return 1;
+            if (name == "lapb-ta") return 2;
+            if (name == "lat") return 3;
+            if (name == "mop") return 4;
+            if (name == "nasi") return 5;
+            if (name == "none") return 6;
+            if (name == "pad") return 7;
+            if (name == "rlogin") return 8;
+            if (name == "ssh") return 9;
+            if (name == "telnet") return 10;
+            if (name == "udptn") return 11;
+            if (name == "v120") return 12;
+            return -1;
+        }
 };
 
 class Native::Line::Aux::Transport::Output::Output_ : public ydk::Enum
@@ -3826,6 +3842,22 @@ class Native::Line::Aux::Transport::Output::Output_ : public ydk::Enum
         static const ydk::Enum::YLeaf udptn;
         static const ydk::Enum::YLeaf v120;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "all") return 1;
+            if (name == "lapb-ta") return 2;
+            if (name == "lat") return 3;
+            if (name == "mop") return 4;
+            if (name == "nasi") return 5;
+            if (name == "none") return 6;
+            if (name == "pad") return 7;
+            if (name == "rlogin") return 8;
+            if (name == "ssh") return 9;
+            if (name == "telnet") return 10;
+            if (name == "udptn") return 11;
+            if (name == "v120") return 12;
+            return -1;
+        }
 };
 
 class Native::Line::Aux::Transport::Preferred::Protocol : public ydk::Enum
@@ -3842,6 +3874,19 @@ class Native::Line::Aux::Transport::Preferred::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf telnet;
         static const ydk::Enum::YLeaf udptn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "lat") return 1;
+            if (name == "mop") return 2;
+            if (name == "nasi") return 3;
+            if (name == "none") return 4;
+            if (name == "pad") return 5;
+            if (name == "rlogin") return 6;
+            if (name == "ssh") return 7;
+            if (name == "telnet") return 8;
+            if (name == "udptn") return 9;
+            return -1;
+        }
 };
 
 class Native::Line::Console::First : public ydk::Enum
@@ -3849,6 +3894,10 @@ class Native::Line::Console::First : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf Y_0;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            return -1;
+        }
 };
 
 class Native::Line::Console::Stopbits : public ydk::Enum
@@ -3858,6 +3907,12 @@ class Native::Line::Console::Stopbits : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1__DOT__5;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "1.5") return 1;
+            if (name == "2") return 2;
+            return -1;
+        }
 };
 
 class Native::Line::Console::AccessClass::AcccessList::Direction : public ydk::Enum
@@ -3866,6 +3921,11 @@ class Native::Line::Console::AccessClass::AcccessList::Direction : public ydk::E
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Line::Console::EscapeCharacter::Char_ : public ydk::Enum
@@ -3875,6 +3935,12 @@ class Native::Line::Console::EscapeCharacter::Char_ : public ydk::Enum
         static const ydk::Enum::YLeaf DEFAULT;
         static const ydk::Enum::YLeaf NONE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "BREAK") return 0;
+            if (name == "DEFAULT") return 1;
+            if (name == "NONE") return 2;
+            return -1;
+        }
 };
 
 class Native::Line::Console::Ip::NetmaskFormat::Format : public ydk::Enum
@@ -3884,6 +3950,12 @@ class Native::Line::Console::Ip::NetmaskFormat::Format : public ydk::Enum
         static const ydk::Enum::YLeaf decimal;
         static const ydk::Enum::YLeaf hexadecimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bit-count") return 0;
+            if (name == "decimal") return 1;
+            if (name == "hexadecimal") return 2;
+            return -1;
+        }
 };
 
 class Native::Line::Console::Ipv6::AccessClass::AccessClass_::EnumerationInOut : public ydk::Enum
@@ -3892,6 +3964,11 @@ class Native::Line::Console::Ipv6::AccessClass::AccessClass_::EnumerationInOut :
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Line::Console::Password::Type : public ydk::Enum
@@ -3900,6 +3977,11 @@ class Native::Line::Console::Password::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Line::Console::Transport::Input::Input_ : public ydk::Enum
@@ -3919,6 +4001,22 @@ class Native::Line::Console::Transport::Input::Input_ : public ydk::Enum
         static const ydk::Enum::YLeaf udptn;
         static const ydk::Enum::YLeaf v120;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "all") return 1;
+            if (name == "lapb-ta") return 2;
+            if (name == "lat") return 3;
+            if (name == "mop") return 4;
+            if (name == "nasi") return 5;
+            if (name == "none") return 6;
+            if (name == "pad") return 7;
+            if (name == "rlogin") return 8;
+            if (name == "ssh") return 9;
+            if (name == "telnet") return 10;
+            if (name == "udptn") return 11;
+            if (name == "v120") return 12;
+            return -1;
+        }
 };
 
 class Native::Line::Console::Transport::Output::Output_ : public ydk::Enum
@@ -3938,6 +4036,22 @@ class Native::Line::Console::Transport::Output::Output_ : public ydk::Enum
         static const ydk::Enum::YLeaf udptn;
         static const ydk::Enum::YLeaf v120;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "all") return 1;
+            if (name == "lapb-ta") return 2;
+            if (name == "lat") return 3;
+            if (name == "mop") return 4;
+            if (name == "nasi") return 5;
+            if (name == "none") return 6;
+            if (name == "pad") return 7;
+            if (name == "rlogin") return 8;
+            if (name == "ssh") return 9;
+            if (name == "telnet") return 10;
+            if (name == "udptn") return 11;
+            if (name == "v120") return 12;
+            return -1;
+        }
 };
 
 class Native::Line::Console::Transport::Preferred::Protocol : public ydk::Enum
@@ -3954,6 +4068,19 @@ class Native::Line::Console::Transport::Preferred::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf telnet;
         static const ydk::Enum::YLeaf udptn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "lat") return 1;
+            if (name == "mop") return 2;
+            if (name == "nasi") return 3;
+            if (name == "none") return 4;
+            if (name == "pad") return 5;
+            if (name == "rlogin") return 6;
+            if (name == "ssh") return 7;
+            if (name == "telnet") return 8;
+            if (name == "udptn") return 9;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::Stopbits : public ydk::Enum
@@ -3963,6 +4090,12 @@ class Native::Line::Vty::Stopbits : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1__DOT__5;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "1.5") return 1;
+            if (name == "2") return 2;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::AccessClass::AcccessList::Direction : public ydk::Enum
@@ -3971,6 +4104,11 @@ class Native::Line::Vty::AccessClass::AcccessList::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::EscapeCharacter::Char_ : public ydk::Enum
@@ -3980,6 +4118,12 @@ class Native::Line::Vty::EscapeCharacter::Char_ : public ydk::Enum
         static const ydk::Enum::YLeaf DEFAULT;
         static const ydk::Enum::YLeaf NONE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "BREAK") return 0;
+            if (name == "DEFAULT") return 1;
+            if (name == "NONE") return 2;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::Ip::NetmaskFormat::Format : public ydk::Enum
@@ -3989,6 +4133,12 @@ class Native::Line::Vty::Ip::NetmaskFormat::Format : public ydk::Enum
         static const ydk::Enum::YLeaf decimal;
         static const ydk::Enum::YLeaf hexadecimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bit-count") return 0;
+            if (name == "decimal") return 1;
+            if (name == "hexadecimal") return 2;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::Ipv6::AccessClass::AccessClass_::EnumerationInOut : public ydk::Enum
@@ -3997,6 +4147,11 @@ class Native::Line::Vty::Ipv6::AccessClass::AccessClass_::EnumerationInOut : pub
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::Password::Type : public ydk::Enum
@@ -4005,6 +4160,11 @@ class Native::Line::Vty::Password::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::Transport::Input::Input_ : public ydk::Enum
@@ -4024,6 +4184,22 @@ class Native::Line::Vty::Transport::Input::Input_ : public ydk::Enum
         static const ydk::Enum::YLeaf udptn;
         static const ydk::Enum::YLeaf v120;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "all") return 1;
+            if (name == "lapb-ta") return 2;
+            if (name == "lat") return 3;
+            if (name == "mop") return 4;
+            if (name == "nasi") return 5;
+            if (name == "none") return 6;
+            if (name == "pad") return 7;
+            if (name == "rlogin") return 8;
+            if (name == "ssh") return 9;
+            if (name == "telnet") return 10;
+            if (name == "udptn") return 11;
+            if (name == "v120") return 12;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::Transport::Output::Output_ : public ydk::Enum
@@ -4043,6 +4219,22 @@ class Native::Line::Vty::Transport::Output::Output_ : public ydk::Enum
         static const ydk::Enum::YLeaf udptn;
         static const ydk::Enum::YLeaf v120;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "all") return 1;
+            if (name == "lapb-ta") return 2;
+            if (name == "lat") return 3;
+            if (name == "mop") return 4;
+            if (name == "nasi") return 5;
+            if (name == "none") return 6;
+            if (name == "pad") return 7;
+            if (name == "rlogin") return 8;
+            if (name == "ssh") return 9;
+            if (name == "telnet") return 10;
+            if (name == "udptn") return 11;
+            if (name == "v120") return 12;
+            return -1;
+        }
 };
 
 class Native::Line::Vty::Transport::Preferred::Protocol : public ydk::Enum
@@ -4059,6 +4251,19 @@ class Native::Line::Vty::Transport::Preferred::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf telnet;
         static const ydk::Enum::YLeaf udptn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acercon") return 0;
+            if (name == "lat") return 1;
+            if (name == "mop") return 2;
+            if (name == "nasi") return 3;
+            if (name == "none") return 4;
+            if (name == "pad") return 5;
+            if (name == "rlogin") return 6;
+            if (name == "ssh") return 7;
+            if (name == "telnet") return 8;
+            if (name == "udptn") return 9;
+            return -1;
+        }
 };
 
 class Native::Wsma::Profile::Listener::Transport : public ydk::Enum
@@ -4069,6 +4274,13 @@ class Native::Wsma::Profile::Listener::Transport : public ydk::Enum
         static const ydk::Enum::YLeaf ssh;
         static const ydk::Enum::YLeaf tls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "http") return 0;
+            if (name == "https") return 1;
+            if (name == "ssh") return 2;
+            if (name == "tls") return 3;
+            return -1;
+        }
 };
 
 

@@ -12,14 +12,14 @@
 namespace cisco_ios_xe {
 namespace tailf_netconf_monitoring {
 
-class CliConsole : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class RestHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        CliConsole();
-        ~CliConsole();
+        RestHttps();
+        ~RestHttps();
 
 
-}; // CliConsole
+}; // RestHttps
 
 class CliSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
@@ -30,23 +30,14 @@ class CliSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Ide
 
 }; // CliSsh
 
-class CliTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class CliConsole : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        CliTcp();
-        ~CliTcp();
+        CliConsole();
+        ~CliConsole();
 
 
-}; // CliTcp
-
-class WebuiHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        WebuiHttp();
-        ~WebuiHttp();
-
-
-}; // WebuiHttp
+}; // CliConsole
 
 class WebuiHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
@@ -57,15 +48,6 @@ class WebuiHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk:
 
 }; // WebuiHttps
 
-class NetconfTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfTcp();
-        ~NetconfTcp();
-
-
-}; // NetconfTcp
-
 class SnmpUdp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
@@ -74,6 +56,15 @@ class SnmpUdp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Id
 
 
 }; // SnmpUdp
+
+class WebuiHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        WebuiHttp();
+        ~WebuiHttp();
+
+
+}; // WebuiHttp
 
 class RestHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
@@ -84,14 +75,23 @@ class RestHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::I
 
 }; // RestHttp
 
-class RestHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class NetconfTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        RestHttps();
-        ~RestHttps();
+        NetconfTcp();
+        ~NetconfTcp();
 
 
-}; // RestHttps
+}; // NetconfTcp
+
+class CliTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        CliTcp();
+        ~CliTcp();
+
+
+}; // CliTcp
 
 
 }

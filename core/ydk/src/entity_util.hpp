@@ -35,6 +35,14 @@ bool is_set(const YFilter & yfilter);
 
 const EntityPath get_entity_path(const Entity & entity, Entity* ancestor);
 
+std::string absolute_path(Entity & entity);
+
+Entity* path_to_entity(Entity & entity, std::string & abs_path);
+
+std::map<std::string,std::string> entity_to_dict(Entity & entity);
+
+std::map<std::string, std::pair<std::string,std::string>> entity_diff(Entity & ent1, Entity & ent2);
+
 }
 
 #define ADD_KEY_TOKEN(attr, attr_name) {\

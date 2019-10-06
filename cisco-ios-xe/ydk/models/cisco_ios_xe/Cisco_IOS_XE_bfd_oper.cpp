@@ -1625,6 +1625,16 @@ bool BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::has_leaf_or_chi
     return false;
 }
 
+const Enum::YLeaf BfdRemoteStateType::remote_up {0, "remote-up"};
+const Enum::YLeaf BfdRemoteStateType::remote_down {1, "remote-down"};
+const Enum::YLeaf BfdRemoteStateType::remote_init {2, "remote-init"};
+const Enum::YLeaf BfdRemoteStateType::remote_admindown {3, "remote-admindown"};
+const Enum::YLeaf BfdRemoteStateType::remote_invalid {4, "remote-invalid"};
+
+const Enum::YLeaf BfdLspType::working {0, "working"};
+const Enum::YLeaf BfdLspType::protect {1, "protect"};
+const Enum::YLeaf BfdLspType::unknown {2, "unknown"};
+
 const Enum::YLeaf BfdOperSessionType::ipv4 {0, "ipv4"};
 const Enum::YLeaf BfdOperSessionType::ipv6 {1, "ipv6"};
 const Enum::YLeaf BfdOperSessionType::vccv {2, "vccv"};
@@ -1632,22 +1642,12 @@ const Enum::YLeaf BfdOperSessionType::mpls_tp {3, "mpls-tp"};
 const Enum::YLeaf BfdOperSessionType::ipv4_multihop {4, "ipv4-multihop"};
 const Enum::YLeaf BfdOperSessionType::ipv6_multihop {5, "ipv6-multihop"};
 
-const Enum::YLeaf BfdRemoteStateType::remote_up {0, "remote-up"};
-const Enum::YLeaf BfdRemoteStateType::remote_down {1, "remote-down"};
-const Enum::YLeaf BfdRemoteStateType::remote_init {2, "remote-init"};
-const Enum::YLeaf BfdRemoteStateType::remote_admindown {3, "remote-admindown"};
-const Enum::YLeaf BfdRemoteStateType::remote_invalid {4, "remote-invalid"};
-
 const Enum::YLeaf BfdStateType::admindown {0, "admindown"};
 const Enum::YLeaf BfdStateType::down {1, "down"};
 const Enum::YLeaf BfdStateType::fail {2, "fail"};
 const Enum::YLeaf BfdStateType::init {3, "init"};
 const Enum::YLeaf BfdStateType::up {4, "up"};
 const Enum::YLeaf BfdStateType::invalid {5, "invalid"};
-
-const Enum::YLeaf BfdLspType::working {0, "working"};
-const Enum::YLeaf BfdLspType::protect {1, "protect"};
-const Enum::YLeaf BfdLspType::unknown {2, "unknown"};
 
 
 }

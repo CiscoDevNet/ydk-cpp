@@ -19,15 +19,6 @@ class OVERLOADRESETTRIGGERTYPE : public virtual ydk::Identity
 
 }; // OVERLOADRESETTRIGGERTYPE
 
-class MTTYPE : public virtual ydk::Identity
-{
-    public:
-        MTTYPE();
-        ~MTTYPE();
-
-
-}; // MTTYPE
-
 class SAFITYPE : public virtual ydk::Identity
 {
     public:
@@ -37,14 +28,14 @@ class SAFITYPE : public virtual ydk::Identity
 
 }; // SAFITYPE
 
-class AFITYPE : public virtual ydk::Identity
+class MTTYPE : public virtual ydk::Identity
 {
     public:
-        AFITYPE();
-        ~AFITYPE();
+        MTTYPE();
+        ~MTTYPE();
 
 
-}; // AFITYPE
+}; // MTTYPE
 
 class AFISAFITYPE : public virtual ydk::Identity
 {
@@ -55,14 +46,14 @@ class AFISAFITYPE : public virtual ydk::Identity
 
 }; // AFISAFITYPE
 
-class WAITFORBGP : public openconfig::openconfig_isis_types::OVERLOADRESETTRIGGERTYPE, virtual ydk::Identity
+class AFITYPE : public virtual ydk::Identity
 {
     public:
-        WAITFORBGP();
-        ~WAITFORBGP();
+        AFITYPE();
+        ~AFITYPE();
 
 
-}; // WAITFORBGP
+}; // AFITYPE
 
 class WAITFORSYSTEM : public openconfig::openconfig_isis_types::OVERLOADRESETTRIGGERTYPE, virtual ydk::Identity
 {
@@ -72,33 +63,6 @@ class WAITFORSYSTEM : public openconfig::openconfig_isis_types::OVERLOADRESETTRI
 
 
 }; // WAITFORSYSTEM
-
-class IPV4UNICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        IPV4UNICAST();
-        ~IPV4UNICAST();
-
-
-}; // IPV4UNICAST
-
-class IPV6MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        IPV6MULTICAST();
-        ~IPV6MULTICAST();
-
-
-}; // IPV6MULTICAST
-
-class IPV4MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        IPV4MULTICAST();
-        ~IPV4MULTICAST();
-
-
-}; // IPV4MULTICAST
 
 class IPV6UNICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
 {
@@ -145,6 +109,59 @@ class IPV6 : public openconfig::openconfig_isis_types::AFITYPE, virtual ydk::Ide
 
 }; // IPV6
 
+class IPV4MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        IPV4MULTICAST();
+        ~IPV4MULTICAST();
+
+
+}; // IPV4MULTICAST
+
+class WAITFORBGP : public openconfig::openconfig_isis_types::OVERLOADRESETTRIGGERTYPE, virtual ydk::Identity
+{
+    public:
+        WAITFORBGP();
+        ~WAITFORBGP();
+
+
+}; // WAITFORBGP
+
+class IPV6MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        IPV6MULTICAST();
+        ~IPV6MULTICAST();
+
+
+}; // IPV6MULTICAST
+
+class IPV4UNICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        IPV4UNICAST();
+        ~IPV4UNICAST();
+
+
+}; // IPV4UNICAST
+
+class IsisInterfaceAdjState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf UP;
+        static const ydk::Enum::YLeaf DOWN;
+        static const ydk::Enum::YLeaf INIT;
+        static const ydk::Enum::YLeaf FAILED;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            if (name == "INIT") return 2;
+            if (name == "FAILED") return 3;
+            return -1;
+        }
+};
+
 class LevelType : public ydk::Enum
 {
     public:
@@ -152,14 +169,25 @@ class LevelType : public ydk::Enum
         static const ydk::Enum::YLeaf LEVEL_2;
         static const ydk::Enum::YLeaf LEVEL_1_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LEVEL_1") return 0;
+            if (name == "LEVEL_2") return 1;
+            if (name == "LEVEL_1_2") return 2;
+            return -1;
+        }
 };
 
-class AdaptiveTimerType : public ydk::Enum
+class MetricType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf LINEAR;
-        static const ydk::Enum::YLeaf EXPONENTIAL;
+        static const ydk::Enum::YLeaf INTERNAL;
+        static const ydk::Enum::YLeaf EXTERNAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERNAL") return 0;
+            if (name == "EXTERNAL") return 1;
+            return -1;
+        }
 };
 
 class HelloPaddingType : public ydk::Enum
@@ -170,6 +198,26 @@ class HelloPaddingType : public ydk::Enum
         static const ydk::Enum::YLeaf ADAPTIVE;
         static const ydk::Enum::YLeaf DISABLE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "STRICT") return 0;
+            if (name == "LOOSE") return 1;
+            if (name == "ADAPTIVE") return 2;
+            if (name == "DISABLE") return 3;
+            return -1;
+        }
+};
+
+class AdaptiveTimerType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf LINEAR;
+        static const ydk::Enum::YLeaf EXPONENTIAL;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "LINEAR") return 0;
+            if (name == "EXPONENTIAL") return 1;
+            return -1;
+        }
 };
 
 class CircuitType : public ydk::Enum
@@ -178,14 +226,11 @@ class CircuitType : public ydk::Enum
         static const ydk::Enum::YLeaf POINT_TO_POINT;
         static const ydk::Enum::YLeaf BROADCAST;
 
-};
-
-class MetricType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf INTERNAL;
-        static const ydk::Enum::YLeaf EXTERNAL;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "POINT_TO_POINT") return 0;
+            if (name == "BROADCAST") return 1;
+            return -1;
+        }
 };
 
 class MetricStyle : public ydk::Enum
@@ -194,16 +239,11 @@ class MetricStyle : public ydk::Enum
         static const ydk::Enum::YLeaf NARROW_METRIC;
         static const ydk::Enum::YLeaf WIDE_METRIC;
 
-};
-
-class IsisInterfaceAdjState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf UP;
-        static const ydk::Enum::YLeaf DOWN;
-        static const ydk::Enum::YLeaf INIT;
-        static const ydk::Enum::YLeaf FAILED;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "NARROW_METRIC") return 0;
+            if (name == "WIDE_METRIC") return 1;
+            return -1;
+        }
 };
 
 

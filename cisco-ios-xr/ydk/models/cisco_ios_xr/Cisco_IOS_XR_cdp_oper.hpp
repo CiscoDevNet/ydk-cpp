@@ -868,6 +868,12 @@ class CdpDuplex : public ydk::Enum
         static const ydk::Enum::YLeaf cdp_dplx_half;
         static const ydk::Enum::YLeaf cdp_dplx_full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdp-dplx-none") return 0;
+            if (name == "cdp-dplx-half") return 1;
+            if (name == "cdp-dplx-full") return 2;
+            return -1;
+        }
 };
 
 class CdpL3AddrProtocol : public ydk::Enum
@@ -876,6 +882,11 @@ class CdpL3AddrProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 

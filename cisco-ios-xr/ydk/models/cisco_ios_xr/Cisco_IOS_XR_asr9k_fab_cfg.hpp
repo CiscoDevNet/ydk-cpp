@@ -65,6 +65,10 @@ class Asr9kFabMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf a99_highbandwidth;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "a99-highbandwidth") return 2;
+            return -1;
+        }
 };
 
 

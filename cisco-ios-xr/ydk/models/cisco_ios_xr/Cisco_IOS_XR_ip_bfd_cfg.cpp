@@ -1562,14 +1562,14 @@ const Enum::YLeaf BfdEchoStartupValidate::off {0, "off"};
 const Enum::YLeaf BfdEchoStartupValidate::on {1, "on"};
 const Enum::YLeaf BfdEchoStartupValidate::force {2, "force"};
 
-const Enum::YLeaf BfdBundleCoexistenceBobBlb::inherited {1, "inherited"};
-const Enum::YLeaf BfdBundleCoexistenceBobBlb::logical {2, "logical"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::disable {0, "disable"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::enable {1, "enable"};
 
 const Enum::YLeaf BfdIfEchoUsage::enable {0, "enable"};
 const Enum::YLeaf BfdIfEchoUsage::disable {1, "disable"};
 
-const Enum::YLeaf BfdIfIpv6ChecksumUsage::disable {0, "disable"};
-const Enum::YLeaf BfdIfIpv6ChecksumUsage::enable {1, "enable"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::inherited {1, "inherited"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::logical {2, "logical"};
 
 
 }

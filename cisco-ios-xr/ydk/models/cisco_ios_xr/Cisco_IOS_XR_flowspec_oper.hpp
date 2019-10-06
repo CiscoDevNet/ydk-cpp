@@ -477,6 +477,14 @@ class FsClient : public ydk::Enum
         static const ydk::Enum::YLeaf ha;
         static const ydk::Enum::YLeaf test;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp") return 0;
+            if (name == "one-pk") return 1;
+            if (name == "policy") return 2;
+            if (name == "ha") return 3;
+            if (name == "test") return 4;
+            return -1;
+        }
 };
 
 class FsMgrClientState : public ydk::Enum
@@ -487,6 +495,13 @@ class FsMgrClientState : public ydk::Enum
         static const ydk::Enum::YLeaf replay;
         static const ydk::Enum::YLeaf unconfigured;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dormant") return 0;
+            if (name == "connected") return 1;
+            if (name == "replay") return 2;
+            if (name == "unconfigured") return 3;
+            return -1;
+        }
 };
 
 

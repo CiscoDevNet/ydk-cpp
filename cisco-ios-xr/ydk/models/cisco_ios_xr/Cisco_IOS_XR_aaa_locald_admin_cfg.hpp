@@ -163,6 +163,12 @@ class AaaAdminPassword : public ydk::Enum
         static const ydk::Enum::YLeaf type8;
         static const ydk::Enum::YLeaf type9;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type5") return 5;
+            if (name == "type8") return 8;
+            if (name == "type9") return 9;
+            return -1;
+        }
 };
 
 

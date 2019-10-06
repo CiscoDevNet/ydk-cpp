@@ -122,6 +122,11 @@ class ModulesState::Module::ConformanceType : public ydk::Enum
         static const ydk::Enum::YLeaf implement;
         static const ydk::Enum::YLeaf import;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "implement") return 0;
+            if (name == "import") return 1;
+            return -1;
+        }
 };
 
 

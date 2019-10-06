@@ -11,6 +11,10 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_FIREWALL_TC {
 
+const Enum::YLeaf CFWUrlServerStatus::online {1, "online"};
+const Enum::YLeaf CFWUrlServerStatus::offline {2, "offline"};
+const Enum::YLeaf CFWUrlServerStatus::indeterminate {3, "indeterminate"};
+
 const Enum::YLeaf CFWNetworkProtocol::none {1, "none"};
 const Enum::YLeaf CFWNetworkProtocol::other {2, "other"};
 const Enum::YLeaf CFWNetworkProtocol::ip {3, "ip"};
@@ -18,6 +22,10 @@ const Enum::YLeaf CFWNetworkProtocol::icmp {4, "icmp"};
 const Enum::YLeaf CFWNetworkProtocol::gre {5, "gre"};
 const Enum::YLeaf CFWNetworkProtocol::udp {6, "udp"};
 const Enum::YLeaf CFWNetworkProtocol::tcp {7, "tcp"};
+
+const Enum::YLeaf CFWUrlfVendorId::other {1, "other"};
+const Enum::YLeaf CFWUrlfVendorId::websense {2, "websense"};
+const Enum::YLeaf CFWUrlfVendorId::n2h2 {3, "n2h2"};
 
 const Enum::YLeaf CFWApplicationProtocol::none {1, "none"};
 const Enum::YLeaf CFWApplicationProtocol::other {2, "other"};
@@ -198,14 +206,6 @@ const Enum::YLeaf CFWPolicyTargetType::zonepair {5, "zonepair"};
 const Enum::YLeaf CFWPolicyTargetType::user {6, "user"};
 const Enum::YLeaf CFWPolicyTargetType::usergroup {7, "usergroup"};
 const Enum::YLeaf CFWPolicyTargetType::context {8, "context"};
-
-const Enum::YLeaf CFWUrlfVendorId::other {1, "other"};
-const Enum::YLeaf CFWUrlfVendorId::websense {2, "websense"};
-const Enum::YLeaf CFWUrlfVendorId::n2h2 {3, "n2h2"};
-
-const Enum::YLeaf CFWUrlServerStatus::online {1, "online"};
-const Enum::YLeaf CFWUrlServerStatus::offline {2, "offline"};
-const Enum::YLeaf CFWUrlServerStatus::indeterminate {3, "indeterminate"};
 
 
 }

@@ -551,6 +551,13 @@ class StartQuery::Input::Select::ResultType : public ydk::Enum
         static const ydk::Enum::YLeaf leaf_value;
         static const ydk::Enum::YLeaf inline_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "string") return 0;
+            if (name == "path") return 1;
+            if (name == "leaf-value") return 2;
+            if (name == "inline") return 3;
+            return -1;
+        }
 };
 
 class ImmediateQuery::Input::Select::ResultType : public ydk::Enum
@@ -561,6 +568,13 @@ class ImmediateQuery::Input::Select::ResultType : public ydk::Enum
         static const ydk::Enum::YLeaf leaf_value;
         static const ydk::Enum::YLeaf inline_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "string") return 0;
+            if (name == "path") return 1;
+            if (name == "leaf-value") return 2;
+            if (name == "inline") return 3;
+            return -1;
+        }
 };
 
 

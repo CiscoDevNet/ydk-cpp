@@ -21,93 +21,13 @@ SyslogFacility::~SyslogFacility()
 {
 }
 
-Kern::Kern()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:kern")
+Cron2::Cron2()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron2")
 {
 
 }
 
-Kern::~Kern()
-{
-}
-
-User::User()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:user")
-{
-
-}
-
-User::~User()
-{
-}
-
-Mail::Mail()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:mail")
-{
-
-}
-
-Mail::~Mail()
-{
-}
-
-Daemon::Daemon()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:daemon")
-{
-
-}
-
-Daemon::~Daemon()
-{
-}
-
-Auth::Auth()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:auth")
-{
-
-}
-
-Auth::~Auth()
-{
-}
-
-Syslog::Syslog()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:syslog")
-{
-
-}
-
-Syslog::~Syslog()
-{
-}
-
-Lpr::Lpr()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:lpr")
-{
-
-}
-
-Lpr::~Lpr()
-{
-}
-
-News::News()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:news")
-{
-
-}
-
-News::~News()
-{
-}
-
-Uucp::Uucp()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:uucp")
-{
-
-}
-
-Uucp::~Uucp()
+Cron2::~Cron2()
 {
 }
 
@@ -121,103 +41,13 @@ Cron::~Cron()
 {
 }
 
-Authpriv::Authpriv()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:authpriv")
+Syslog::Syslog()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:syslog")
 {
 
 }
 
-Authpriv::~Authpriv()
-{
-}
-
-Ftp::Ftp()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ftp")
-{
-
-}
-
-Ftp::~Ftp()
-{
-}
-
-Ntp::Ntp()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ntp")
-{
-
-}
-
-Ntp::~Ntp()
-{
-}
-
-Audit::Audit()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:audit")
-{
-
-}
-
-Audit::~Audit()
-{
-}
-
-Console::Console()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:console")
-{
-
-}
-
-Console::~Console()
-{
-}
-
-Cron2::Cron2()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron2")
-{
-
-}
-
-Cron2::~Cron2()
-{
-}
-
-Local0::Local0()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local0")
-{
-
-}
-
-Local0::~Local0()
-{
-}
-
-Local1::Local1()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local1")
-{
-
-}
-
-Local1::~Local1()
-{
-}
-
-Local2::Local2()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local2")
-{
-
-}
-
-Local2::~Local2()
-{
-}
-
-Local3::Local3()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local3")
-{
-
-}
-
-Local3::~Local3()
+Syslog::~Syslog()
 {
 }
 
@@ -231,6 +61,86 @@ Local4::~Local4()
 {
 }
 
+Ftp::Ftp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ftp")
+{
+
+}
+
+Ftp::~Ftp()
+{
+}
+
+Uucp::Uucp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:uucp")
+{
+
+}
+
+Uucp::~Uucp()
+{
+}
+
+Console::Console()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:console")
+{
+
+}
+
+Console::~Console()
+{
+}
+
+Mail::Mail()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:mail")
+{
+
+}
+
+Mail::~Mail()
+{
+}
+
+Authpriv::Authpriv()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:authpriv")
+{
+
+}
+
+Authpriv::~Authpriv()
+{
+}
+
+Ntp::Ntp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ntp")
+{
+
+}
+
+Ntp::~Ntp()
+{
+}
+
+Auth::Auth()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:auth")
+{
+
+}
+
+Auth::~Auth()
+{
+}
+
+User::User()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:user")
+{
+
+}
+
+User::~User()
+{
+}
+
 Local5::Local5()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local5")
 {
@@ -238,6 +148,26 @@ Local5::Local5()
 }
 
 Local5::~Local5()
+{
+}
+
+News::News()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:news")
+{
+
+}
+
+News::~News()
+{
+}
+
+Local7::Local7()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local7")
+{
+
+}
+
+Local7::~Local7()
 {
 }
 
@@ -251,13 +181,83 @@ Local6::~Local6()
 {
 }
 
-Local7::Local7()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local7")
+Local1::Local1()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local1")
 {
 
 }
 
-Local7::~Local7()
+Local1::~Local1()
+{
+}
+
+Local0::Local0()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local0")
+{
+
+}
+
+Local0::~Local0()
+{
+}
+
+Local3::Local3()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local3")
+{
+
+}
+
+Local3::~Local3()
+{
+}
+
+Local2::Local2()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local2")
+{
+
+}
+
+Local2::~Local2()
+{
+}
+
+Audit::Audit()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:audit")
+{
+
+}
+
+Audit::~Audit()
+{
+}
+
+Daemon::Daemon()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:daemon")
+{
+
+}
+
+Daemon::~Daemon()
+{
+}
+
+Lpr::Lpr()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:lpr")
+{
+
+}
+
+Lpr::~Lpr()
+{
+}
+
+Kern::Kern()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:kern")
+{
+
+}
+
+Kern::~Kern()
 {
 }
 

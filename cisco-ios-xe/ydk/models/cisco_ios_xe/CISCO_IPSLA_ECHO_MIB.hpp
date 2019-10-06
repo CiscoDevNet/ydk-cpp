@@ -244,6 +244,13 @@ class CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry::Cipsl
         static const ydk::Enum::YLeaf overThreshold;
         static const ydk::Enum::YLeaf failures;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "all") return 2;
+            if (name == "overThreshold") return 3;
+            if (name == "failures") return 4;
+            return -1;
+        }
 };
 
 class CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::CipslaUdpEchoTmplHistFilter : public ydk::Enum
@@ -254,6 +261,13 @@ class CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::CipslaU
         static const ydk::Enum::YLeaf overThreshold;
         static const ydk::Enum::YLeaf failures;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "all") return 2;
+            if (name == "overThreshold") return 3;
+            if (name == "failures") return 4;
+            return -1;
+        }
 };
 
 class CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::CipslaTcpConnTmplHistFilter : public ydk::Enum
@@ -264,6 +278,13 @@ class CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::CipslaT
         static const ydk::Enum::YLeaf overThreshold;
         static const ydk::Enum::YLeaf failures;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "all") return 2;
+            if (name == "overThreshold") return 3;
+            if (name == "failures") return 4;
+            return -1;
+        }
 };
 
 

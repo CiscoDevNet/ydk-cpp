@@ -831,6 +831,12 @@ class KeyGenerateEcdsa::Input::KeyModulus : public ydk::Enum
         static const ydk::Enum::YLeaf nistp384;
         static const ydk::Enum::YLeaf nistp521;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nistp256") return 0;
+            if (name == "nistp384") return 1;
+            if (name == "nistp521") return 2;
+            return -1;
+        }
 };
 
 class KeyZeroizeEcdsa::Input::KeyModulus : public ydk::Enum
@@ -840,6 +846,12 @@ class KeyZeroizeEcdsa::Input::KeyModulus : public ydk::Enum
         static const ydk::Enum::YLeaf nistp384;
         static const ydk::Enum::YLeaf nistp521;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nistp256") return 0;
+            if (name == "nistp384") return 1;
+            if (name == "nistp521") return 2;
+            return -1;
+        }
 };
 
 

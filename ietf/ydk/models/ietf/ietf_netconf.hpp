@@ -872,6 +872,19 @@ class Validate::Input::Source : public ydk::Entity
 
 }; // Validate::Input::Source
 
+class ErrorSeverityType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "error") return 0;
+            if (name == "warning") return 1;
+            return -1;
+        }
+};
+
 class ErrorTagType : public ydk::Enum
 {
     public:
@@ -896,14 +909,29 @@ class ErrorTagType : public ydk::Enum
         static const ydk::Enum::YLeaf partial_operation;
         static const ydk::Enum::YLeaf malformed_message;
 
-};
-
-class ErrorSeverityType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf warning;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "in-use") return 0;
+            if (name == "invalid-value") return 1;
+            if (name == "too-big") return 2;
+            if (name == "missing-attribute") return 3;
+            if (name == "bad-attribute") return 4;
+            if (name == "unknown-attribute") return 5;
+            if (name == "missing-element") return 6;
+            if (name == "bad-element") return 7;
+            if (name == "unknown-element") return 8;
+            if (name == "unknown-namespace") return 9;
+            if (name == "access-denied") return 10;
+            if (name == "lock-denied") return 11;
+            if (name == "resource-denied") return 12;
+            if (name == "rollback-failed") return 13;
+            if (name == "data-exists") return 14;
+            if (name == "data-missing") return 15;
+            if (name == "operation-not-supported") return 16;
+            if (name == "operation-failed") return 17;
+            if (name == "partial-operation") return 18;
+            if (name == "malformed-message") return 19;
+            return -1;
+        }
 };
 
 class EditOperationType : public ydk::Enum
@@ -915,6 +943,14 @@ class EditOperationType : public ydk::Enum
         static const ydk::Enum::YLeaf delete_;
         static const ydk::Enum::YLeaf remove;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "merge") return 0;
+            if (name == "replace") return 1;
+            if (name == "create") return 2;
+            if (name == "delete") return 3;
+            if (name == "remove") return 4;
+            return -1;
+        }
 };
 
 class EditConfig::Input::DefaultOperation : public ydk::Enum
@@ -924,6 +960,12 @@ class EditConfig::Input::DefaultOperation : public ydk::Enum
         static const ydk::Enum::YLeaf replace;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "merge") return 0;
+            if (name == "replace") return 1;
+            if (name == "none") return 2;
+            return -1;
+        }
 };
 
 class EditConfig::Input::TestOption : public ydk::Enum
@@ -933,6 +975,12 @@ class EditConfig::Input::TestOption : public ydk::Enum
         static const ydk::Enum::YLeaf set;
         static const ydk::Enum::YLeaf test_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "test-then-set") return 0;
+            if (name == "set") return 1;
+            if (name == "test-only") return 2;
+            return -1;
+        }
 };
 
 class EditConfig::Input::ErrorOption : public ydk::Enum
@@ -942,6 +990,12 @@ class EditConfig::Input::ErrorOption : public ydk::Enum
         static const ydk::Enum::YLeaf continue_on_error;
         static const ydk::Enum::YLeaf rollback_on_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stop-on-error") return 0;
+            if (name == "continue-on-error") return 1;
+            if (name == "rollback-on-error") return 2;
+            return -1;
+        }
 };
 
 

@@ -6021,6 +6021,13 @@ bool SelectiveVrfDownload::State::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
+const Enum::YLeaf Priority::critical {0, "critical"};
+const Enum::YLeaf Priority::high {1, "high"};
+const Enum::YLeaf Priority::medium {2, "medium"};
+const Enum::YLeaf Priority::low {3, "low"};
+const Enum::YLeaf Priority::very_low {4, "very-low"};
+const Enum::YLeaf Priority::invald {5, "invald"};
+
 const Enum::YLeaf Source::configured {1, "configured"};
 const Enum::YLeaf Source::from_group {2, "from-group"};
 const Enum::YLeaf Source::inherited {4, "inherited"};
@@ -6029,13 +6036,6 @@ const Enum::YLeaf Source::configured_and_notified {17, "configured-and-notified"
 const Enum::YLeaf Source::from_group_and_notified {18, "from-group-and-notified"};
 const Enum::YLeaf Source::inherited_and_notified {20, "inherited-and-notified"};
 const Enum::YLeaf Source::from_optical_and_notified {24, "from-optical-and-notified"};
-
-const Enum::YLeaf Priority::critical {0, "critical"};
-const Enum::YLeaf Priority::high {1, "high"};
-const Enum::YLeaf Priority::medium {2, "medium"};
-const Enum::YLeaf Priority::low {3, "low"};
-const Enum::YLeaf Priority::very_low {4, "very-low"};
-const Enum::YLeaf Priority::invald {5, "invald"};
 
 
 }

@@ -727,13 +727,61 @@ class AtmVcm::Nodes::Node::VpTunnels::VpTunnel : public ydk::Entity
 
 }; // AtmVcm::Nodes::Node::VpTunnels::VpTunnel
 
-class VcCellPackingMode : public ydk::Enum
+class Vc : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vp;
-        static const ydk::Enum::YLeaf vc;
-        static const ydk::Enum::YLeaf port_mode;
+        static const ydk::Enum::YLeaf layer3_vc;
+        static const ydk::Enum::YLeaf layer2_vc;
+        static const ydk::Enum::YLeaf layer2_vp;
+        static const ydk::Enum::YLeaf vc_type_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "layer3-vc") return 0;
+            if (name == "layer2-vc") return 1;
+            if (name == "layer2-vp") return 2;
+            if (name == "vc-type-unknown") return 3;
+            return -1;
+        }
+};
+
+class VcEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ilmi;
+        static const ydk::Enum::YLeaf qsaal;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf mux;
+        static const ydk::Enum::YLeaf nlpid;
+        static const ydk::Enum::YLeaf f4oam;
+        static const ydk::Enum::YLeaf aal0;
+        static const ydk::Enum::YLeaf aal5;
+        static const ydk::Enum::YLeaf encap_unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ilmi") return 1;
+            if (name == "qsaal") return 2;
+            if (name == "snap") return 3;
+            if (name == "mux") return 4;
+            if (name == "nlpid") return 5;
+            if (name == "f4oam") return 6;
+            if (name == "aal0") return 7;
+            if (name == "aal5") return 8;
+            if (name == "encap-unknown") return 9;
+            return -1;
+        }
+};
+
+class VcManageLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf manage;
+        static const ydk::Enum::YLeaf not_managed;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "manage") return 1;
+            if (name == "not-managed") return 2;
+            return -1;
+        }
 };
 
 class VcTestMode : public ydk::Enum
@@ -743,6 +791,35 @@ class VcTestMode : public ydk::Enum
         static const ydk::Enum::YLeaf loop;
         static const ydk::Enum::YLeaf reserved;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "test-mode-none") return 1;
+            if (name == "loop") return 2;
+            if (name == "reserved") return 3;
+            return -1;
+        }
+};
+
+class VpTrafShaping : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vp_cbr;
+        static const ydk::Enum::YLeaf vp_vbr_nrt;
+        static const ydk::Enum::YLeaf vp_vbr_rt;
+        static const ydk::Enum::YLeaf vp_abr;
+        static const ydk::Enum::YLeaf vp_ubr_plus;
+        static const ydk::Enum::YLeaf vp_ubr;
+        static const ydk::Enum::YLeaf vp_traf_shaping_unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "vp-cbr") return 1;
+            if (name == "vp-vbr-nrt") return 2;
+            if (name == "vp-vbr-rt") return 3;
+            if (name == "vp-abr") return 4;
+            if (name == "vp-ubr-plus") return 5;
+            if (name == "vp-ubr") return 6;
+            if (name == "vp-traf-shaping-unknown") return 7;
+            return -1;
+        }
 };
 
 class VcState : public ydk::Enum
@@ -761,57 +838,21 @@ class VcState : public ydk::Enum
         static const ydk::Enum::YLeaf deleted;
         static const ydk::Enum::YLeaf state_unknown;
 
-};
-
-class VcInheritLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf directly_configured_onvc;
-        static const ydk::Enum::YLeaf vc_class_configured_onvc;
-        static const ydk::Enum::YLeaf vc_class_configured_on_sub_interface;
-        static const ydk::Enum::YLeaf vc_class_configured_on_main_interface;
-        static const ydk::Enum::YLeaf global_default;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_supported;
-
-};
-
-class VcTrafShaping : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cbr;
-        static const ydk::Enum::YLeaf vbr_nrt;
-        static const ydk::Enum::YLeaf vbr_rt;
-        static const ydk::Enum::YLeaf abr;
-        static const ydk::Enum::YLeaf ubr_plus;
-        static const ydk::Enum::YLeaf ubr;
-        static const ydk::Enum::YLeaf traf_shaping_unknown;
-
-};
-
-class VcEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ilmi;
-        static const ydk::Enum::YLeaf qsaal;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf mux;
-        static const ydk::Enum::YLeaf nlpid;
-        static const ydk::Enum::YLeaf f4oam;
-        static const ydk::Enum::YLeaf aal0;
-        static const ydk::Enum::YLeaf aal5;
-        static const ydk::Enum::YLeaf encap_unknown;
-
-};
-
-class Vc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf layer3_vc;
-        static const ydk::Enum::YLeaf layer2_vc;
-        static const ydk::Enum::YLeaf layer2_vp;
-        static const ydk::Enum::YLeaf vc_type_unknown;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "initialized") return 0;
+            if (name == "modifying") return 1;
+            if (name == "modified") return 2;
+            if (name == "activating") return 3;
+            if (name == "activated") return 4;
+            if (name == "not-verified") return 5;
+            if (name == "ready") return 6;
+            if (name == "deactivating") return 7;
+            if (name == "inactive") return 8;
+            if (name == "deleting") return 9;
+            if (name == "deleted") return 10;
+            if (name == "state-unknown") return 11;
+            return -1;
+        }
 };
 
 class ClassLinkOamInheritLevel : public ydk::Enum
@@ -824,23 +865,15 @@ class ClassLinkOamInheritLevel : public ydk::Enum
         static const ydk::Enum::YLeaf vc_global_default;
         static const ydk::Enum::YLeaf vc_inherit_level_unknown;
 
-};
-
-class VcManageLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf manage;
-        static const ydk::Enum::YLeaf not_managed;
-
-};
-
-class VcmPort : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_type_layer_2;
-        static const ydk::Enum::YLeaf port_type_layer_3;
-        static const ydk::Enum::YLeaf port_type_unknown;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "vc-configured-onvc") return 0;
+            if (name == "vc-class-onvc") return 1;
+            if (name == "vc-class-on-sub-interface") return 2;
+            if (name == "vc-class-on-main-interface") return 3;
+            if (name == "vc-global-default") return 4;
+            if (name == "vc-inherit-level-unknown") return 5;
+            return -1;
+        }
 };
 
 class VpState : public ydk::Enum
@@ -854,19 +887,92 @@ class VpState : public ydk::Enum
         static const ydk::Enum::YLeaf vp_deleted;
         static const ydk::Enum::YLeaf vp_state_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vp-initialized") return 0;
+            if (name == "vp-modifying") return 1;
+            if (name == "vp-ready") return 2;
+            if (name == "vp-mgd-down") return 3;
+            if (name == "vp-deleting") return 4;
+            if (name == "vp-deleted") return 5;
+            if (name == "vp-state-unknown") return 6;
+            return -1;
+        }
 };
 
-class VpTrafShaping : public ydk::Enum
+class VcTrafShaping : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vp_cbr;
-        static const ydk::Enum::YLeaf vp_vbr_nrt;
-        static const ydk::Enum::YLeaf vp_vbr_rt;
-        static const ydk::Enum::YLeaf vp_abr;
-        static const ydk::Enum::YLeaf vp_ubr_plus;
-        static const ydk::Enum::YLeaf vp_ubr;
-        static const ydk::Enum::YLeaf vp_traf_shaping_unknown;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf vbr_nrt;
+        static const ydk::Enum::YLeaf vbr_rt;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf ubr_plus;
+        static const ydk::Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf traf_shaping_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cbr") return 1;
+            if (name == "vbr-nrt") return 2;
+            if (name == "vbr-rt") return 3;
+            if (name == "abr") return 4;
+            if (name == "ubr-plus") return 5;
+            if (name == "ubr") return 6;
+            if (name == "traf-shaping-unknown") return 7;
+            return -1;
+        }
+};
+
+class VcCellPackingMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vp;
+        static const ydk::Enum::YLeaf vc;
+        static const ydk::Enum::YLeaf port_mode;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "vp") return 1;
+            if (name == "vc") return 2;
+            if (name == "port-mode") return 3;
+            return -1;
+        }
+};
+
+class VcmPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port_type_layer_2;
+        static const ydk::Enum::YLeaf port_type_layer_3;
+        static const ydk::Enum::YLeaf port_type_unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "port-type-layer-2") return 0;
+            if (name == "port-type-layer-3") return 1;
+            if (name == "port-type-unknown") return 3;
+            return -1;
+        }
+};
+
+class VcInheritLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf directly_configured_onvc;
+        static const ydk::Enum::YLeaf vc_class_configured_onvc;
+        static const ydk::Enum::YLeaf vc_class_configured_on_sub_interface;
+        static const ydk::Enum::YLeaf vc_class_configured_on_main_interface;
+        static const ydk::Enum::YLeaf global_default;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_supported;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "directly-configured-onvc") return 0;
+            if (name == "vc-class-configured-onvc") return 1;
+            if (name == "vc-class-configured-on-sub-interface") return 2;
+            if (name == "vc-class-configured-on-main-interface") return 3;
+            if (name == "global-default") return 4;
+            if (name == "unknown") return 5;
+            if (name == "not-supported") return 6;
+            return -1;
+        }
 };
 
 

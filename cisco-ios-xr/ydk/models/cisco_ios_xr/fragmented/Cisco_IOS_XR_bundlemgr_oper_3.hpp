@@ -3253,36 +3253,13 @@ class Bundles::Bundles_::Bundle : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf bundle_interface; //type: string
-        class AppliedLacpMode; //type: Bundles::Bundles_::Bundle::AppliedLacpMode
         class Data; //type: Bundles::Bundles_::Bundle::Data
         class Members; //type: Bundles::Bundles_::Bundle::Members
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::AppliedLacpMode> applied_lacp_mode;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Data> data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Members> members;
         
 }; // Bundles::Bundles_::Bundle
-
-
-class Bundles::Bundles_::Bundle::AppliedLacpMode : public ydk::Entity
-{
-    public:
-        AppliedLacpMode();
-        ~AppliedLacpMode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf applied_lacp_mode; //type: BmdLacpMode
-
-}; // Bundles::Bundles_::Bundle::AppliedLacpMode
 
 
 class Bundles::Bundles_::Bundle::Data : public ydk::Entity
@@ -3473,7 +3450,6 @@ class Bundles::Bundles_::Bundle::Members::Member : public ydk::Entity
         ydk::YLeaf lacp_enabled; //type: string
         ydk::YLeaf member_type; //type: BmdMemberTypeEnum
         ydk::YLeaf member_name; //type: string
-        ydk::YLeaf replication_error; //type: uint32
         class Counters; //type: Bundles::Bundles_::Bundle::Members::Member::Counters
         class LinkData; //type: Bundles::Bundles_::Bundle::Members::Member::LinkData
         class MemberMuxData; //type: Bundles::Bundles_::Bundle::Members::Member::MemberMuxData
@@ -3975,6 +3951,30 @@ class BundlesAdjacency::Nodes::Node::Brief::BundleData : public ydk::Entity
         ydk::YList sub_interface;
         
 }; // BundlesAdjacency::Nodes::Node::Brief::BundleData
+
+
+class BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface : public ydk::Entity
+{
+    public:
+        SubInterface();
+        ~SubInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        class LoadBalanceData; //type: BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData> load_balance_data;
+        
+}; // BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface
 
 
 }

@@ -1357,6 +1357,14 @@ class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeType : pub
         static const ydk::Enum::YLeaf mst;
         static const ydk::Enum::YLeaf rapidPvstPlus;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pvstPlus") return 1;
+            if (name == "mistp") return 2;
+            if (name == "mistpPvstPlus") return 3;
+            if (name == "mst") return 4;
+            if (name == "rapidPvstPlus") return 5;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostMode : public ydk::Enum
@@ -1365,6 +1373,11 @@ class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostMo
         static const ydk::Enum::YLeaf short_;
         static const ydk::Enum::YLeaf long_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "short") return 1;
+            if (name == "long") return 2;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostOperMode : public ydk::Enum
@@ -1373,6 +1386,11 @@ class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostOp
         static const ydk::Enum::YLeaf short_;
         static const ydk::Enum::YLeaf long_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "short") return 1;
+            if (name == "long") return 2;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::StpxLoopGuardGlobalDefaultMode : public ydk::Enum
@@ -1381,6 +1399,11 @@ class CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::StpxLoopGuardGlobalDefaultMod
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::StpxFastStartGlobalDefaultMode : public ydk::Enum
@@ -1389,6 +1412,11 @@ class CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::StpxFastStartGlobalDefaultMod
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferStatus : public ydk::Enum
@@ -1398,6 +1426,12 @@ class CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferStatus : pub
         static const ydk::Enum::YLeaf acquiredBySnmp;
         static const ydk::Enum::YLeaf acquiredByNonSnmp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "released") return 1;
+            if (name == "acquiredBySnmp") return 2;
+            if (name == "acquiredByNonSnmp") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation : public ydk::Enum
@@ -1409,6 +1443,14 @@ class CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation : 
         static const ydk::Enum::YLeaf commit;
         static const ydk::Enum::YLeaf rollBack;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "acquire") return 2;
+            if (name == "releaseWithForce") return 3;
+            if (name == "commit") return 4;
+            if (name == "rollBack") return 5;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::StpxPVSTVlanEnable : public ydk::Enum
@@ -1418,6 +1460,12 @@ class CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::StpxPVSTVlanE
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf notApplicable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            if (name == "notApplicable") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::StpxLoopGuardConfigMode : public ydk::Enum
@@ -1427,6 +1475,12 @@ class CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry:
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf default_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            if (name == "default") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortMode : public ydk::Enum
@@ -1438,6 +1492,14 @@ class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::Stp
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf network;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            if (name == "enableForTrunk") return 3;
+            if (name == "default") return 4;
+            if (name == "network") return 5;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduGuardMode : public ydk::Enum
@@ -1447,6 +1509,12 @@ class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::Stp
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf default_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            if (name == "default") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduFilterMode : public ydk::Enum
@@ -1456,6 +1524,12 @@ class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::Stp
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf default_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            if (name == "default") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::StpxFastStartOperMode : public ydk::Enum
@@ -1464,6 +1538,11 @@ class CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEn
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortAdminLinkType : public ydk::Enum
@@ -1473,6 +1552,12 @@ class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortAdmi
         static const ydk::Enum::YLeaf shared;
         static const ydk::Enum::YLeaf auto_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pointToPoint") return 1;
+            if (name == "shared") return 2;
+            if (name == "auto") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortOperLinkType : public ydk::Enum
@@ -1482,6 +1567,12 @@ class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortOper
         static const ydk::Enum::YLeaf shared;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pointToPoint") return 1;
+            if (name == "shared") return 2;
+            if (name == "other") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue : public ydk::Enum
@@ -1495,6 +1586,16 @@ class CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMST
         static const ydk::Enum::YLeaf boundary;
         static const ydk::Enum::YLeaf master;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "root") return 2;
+            if (name == "designated") return 3;
+            if (name == "alternate") return 4;
+            if (name == "backUp") return 5;
+            if (name == "boundary") return 6;
+            if (name == "master") return 7;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortAdminLinkType : public ydk::Enum
@@ -1504,6 +1605,12 @@ class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortA
         static const ydk::Enum::YLeaf shared;
         static const ydk::Enum::YLeaf auto_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pointToPoint") return 1;
+            if (name == "shared") return 2;
+            if (name == "auto") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortOperLinkType : public ydk::Enum
@@ -1513,6 +1620,12 @@ class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortO
         static const ydk::Enum::YLeaf shared;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pointToPoint") return 1;
+            if (name == "shared") return 2;
+            if (name == "other") return 3;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue : public ydk::Enum
@@ -1526,6 +1639,16 @@ class CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxR
         static const ydk::Enum::YLeaf boundary;
         static const ydk::Enum::YLeaf master;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "root") return 2;
+            if (name == "designated") return 3;
+            if (name == "alternate") return 4;
+            if (name == "backUp") return 5;
+            if (name == "boundary") return 6;
+            if (name == "master") return 7;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortAdminMSTMode : public ydk::Enum
@@ -1534,6 +1657,11 @@ class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortA
         static const ydk::Enum::YLeaf preStandard;
         static const ydk::Enum::YLeaf auto_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "preStandard") return 1;
+            if (name == "auto") return 2;
+            return -1;
+        }
 };
 
 class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortOperMSTMode : public ydk::Enum
@@ -1543,6 +1671,12 @@ class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortO
         static const ydk::Enum::YLeaf preStandard;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "preStandard") return 2;
+            if (name == "standard") return 3;
+            return -1;
+        }
 };
 
 

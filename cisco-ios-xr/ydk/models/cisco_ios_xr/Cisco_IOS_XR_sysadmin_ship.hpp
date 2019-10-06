@@ -205,6 +205,43 @@ class Stat::ShipComp::Process::Client::Cat::CatName : public ydk::Enum
         static const ydk::Enum::YLeaf SHIP_WATERMARK_COUNTERS;
         static const ydk::Enum::YLeaf SHIP_NODE_COUNTERS;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SHIP_TRANSPORT_COUNTERS") return 0;
+            if (name == "SHIP_SERVER_COUNTERS") return 1;
+            if (name == "SHIP_CLIENT_LIB_COUNTERS") return 2;
+            if (name == "SHIP_REPLICATION_COUNTERS") return 3;
+            if (name == "SHIP_READER_REPLICA_COUNTERS") return 4;
+            if (name == "SHIP_WRITER_REPLICA_COUNTERS") return 5;
+            if (name == "SHIP_TRANSPORT_COUNTERS_FAILOVER") return 6;
+            if (name == "SHIP_SERVER_COUNTERS_FAILOVER") return 7;
+            if (name == "SHIP_CLIENT_LIB_COUNTERS_FAILOVER") return 8;
+            if (name == "SHIP_REPLICATION_COUNTERS_FAILOVER") return 9;
+            if (name == "SHIP_TRANSPORT_ERRORS") return 10;
+            if (name == "SHIP_SERVER_ERRORS") return 11;
+            if (name == "SHIP_CLIENT_LIB_ERRORS") return 12;
+            if (name == "SHIP_REPLICATION_ERRORS") return 13;
+            if (name == "SHIP_READER_REPLICA_ERRORS") return 14;
+            if (name == "SHIP_WRITER_REPLICA_ERRORS") return 15;
+            if (name == "SHIP_TRANSPORT_ERRORS_FAILOVER") return 16;
+            if (name == "SHIP_SERVER_ERRORS_FAILOVER") return 17;
+            if (name == "SHIP_CLIENT_LIB_ERRORS_FAILOVER") return 18;
+            if (name == "SHIP_REPLICATION_ERRORS_FAILOVER") return 19;
+            if (name == "FEATURE_MA_COUNTERS") return 20;
+            if (name == "FEATURE_MA_COUNTERS_ERRORS") return 21;
+            if (name == "FEATURE_MA_COUNTERS_FAILOVER") return 22;
+            if (name == "VIRTUAL_INTERFACE_MA_COUNTERS") return 23;
+            if (name == "VIRTUAL_INTERFACE_MA_COUNTERS_ERRORS") return 24;
+            if (name == "VIRTUAL_INTERFACE_MA_COUNTERS_FAILOVER") return 25;
+            if (name == "FEATURE_EA_COUNTERS") return 26;
+            if (name == "FEATURE_EA_COUNTERS_ERRORS") return 27;
+            if (name == "VIRTUAL_INTERFACE_EA_COUNTERS") return 28;
+            if (name == "VIRTUAL_INTERFACE_EA_COUNTERS_ERRORS") return 29;
+            if (name == "VIRTUAL_INTERFACE_EA_COUNTERS_FAILOVER") return 30;
+            if (name == "SHIP_HISTOGRAM_COUNTERS") return 31;
+            if (name == "SHIP_WATERMARK_COUNTERS") return 32;
+            if (name == "SHIP_NODE_COUNTERS") return 33;
+            return -1;
+        }
 };
 
 

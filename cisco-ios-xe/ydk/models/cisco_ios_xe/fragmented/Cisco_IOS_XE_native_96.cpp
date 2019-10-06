@@ -4050,17 +4050,17 @@ Native::Interface::Vlan::Ipv6::Ipv6()
     , nd(std::make_shared<Native::Interface::Vlan::Ipv6::Nd>())
     , tcp(std::make_shared<Native::Interface::Vlan::Ipv6::Tcp>())
     , traffic_filter(this, {"direction"})
-    , crypto(std::make_shared<Native::Interface::Vlan::Ipv6::Crypto>())
     , no_pim(std::make_shared<Native::Interface::Vlan::Ipv6::NoPim>())
     , pim(std::make_shared<Native::Interface::Vlan::Ipv6::Pim>())
+    , crypto(std::make_shared<Native::Interface::Vlan::Ipv6::Crypto>())
 {
     dhcp->parent = this;
     address->parent = this;
     nd->parent = this;
     tcp->parent = this;
-    crypto->parent = this;
     no_pim->parent = this;
     pim->parent = this;
+    crypto->parent = this;
 
     yang_name = "ipv6"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -4087,9 +4087,9 @@ bool Native::Interface::Vlan::Ipv6::has_data() const
 	|| (address !=  nullptr && address->has_data())
 	|| (nd !=  nullptr && nd->has_data())
 	|| (tcp !=  nullptr && tcp->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
 	|| (no_pim !=  nullptr && no_pim->has_data())
-	|| (pim !=  nullptr && pim->has_data());
+	|| (pim !=  nullptr && pim->has_data())
+	|| (crypto !=  nullptr && crypto->has_data());
 }
 
 bool Native::Interface::Vlan::Ipv6::has_operation() const
@@ -4110,9 +4110,9 @@ bool Native::Interface::Vlan::Ipv6::has_operation() const
 	|| (address !=  nullptr && address->has_operation())
 	|| (nd !=  nullptr && nd->has_operation())
 	|| (tcp !=  nullptr && tcp->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
 	|| (no_pim !=  nullptr && no_pim->has_operation())
-	|| (pim !=  nullptr && pim->has_operation());
+	|| (pim !=  nullptr && pim->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation());
 }
 
 std::string Native::Interface::Vlan::Ipv6::get_segment_path() const
@@ -4199,15 +4199,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ipv6::get_child_by_name(co
         return ent_;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::Vlan::Ipv6::Crypto>();
-        }
-        return crypto;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-multicast:no-pim")
     {
         if(no_pim == nullptr)
@@ -4224,6 +4215,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ipv6::get_child_by_name(co
             pim = std::make_shared<Native::Interface::Vlan::Ipv6::Pim>();
         }
         return pim;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
+    {
+        if(crypto == nullptr)
+        {
+            crypto = std::make_shared<Native::Interface::Vlan::Ipv6::Crypto>();
+        }
+        return crypto;
     }
 
     return nullptr;
@@ -4272,11 +4272,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ipv
             _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    if(crypto != nullptr)
-    {
-        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
     if(no_pim != nullptr)
     {
         _children["Cisco-IOS-XE-multicast:no-pim"] = no_pim;
@@ -4285,6 +4280,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ipv
     if(pim != nullptr)
     {
         _children["Cisco-IOS-XE-multicast:pim"] = pim;
+    }
+
+    if(crypto != nullptr)
+    {
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
     return _children;
@@ -4340,7 +4340,7 @@ void Native::Interface::Vlan::Ipv6::set_filter(const std::string & value_path, Y
 
 bool Native::Interface::Vlan::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination-guard" || name == "source-guard" || name == "dhcp" || name == "address" || name == "nd" || name == "tcp" || name == "traffic-filter" || name == "crypto" || name == "no-pim" || name == "pim" || name == "unnumbered" || name == "enable" || name == "mtu" || name == "redirects")
+    if(name == "destination-guard" || name == "source-guard" || name == "dhcp" || name == "address" || name == "nd" || name == "tcp" || name == "traffic-filter" || name == "no-pim" || name == "pim" || name == "crypto" || name == "unnumbered" || name == "enable" || name == "mtu" || name == "redirects")
         return true;
     return false;
 }
@@ -5702,84 +5702,6 @@ bool Native::Interface::Vlan::Ipv6::TrafficFilter::has_leaf_or_child_of_name(con
     return false;
 }
 
-Native::Interface::Vlan::Ipv6::Crypto::Crypto()
-    :
-    map{YType::str, "map"}
-{
-
-    yang_name = "crypto"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ipv6::Crypto::~Crypto()
-{
-}
-
-bool Native::Interface::Vlan::Ipv6::Crypto::has_data() const
-{
-    if (is_presence_container) return true;
-    return map.is_set;
-}
-
-bool Native::Interface::Vlan::Ipv6::Crypto::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(map.yfilter);
-}
-
-std::string Native::Interface::Vlan::Ipv6::Crypto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-crypto:crypto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ipv6::Crypto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (map.is_set || is_set(map.yfilter)) leaf_name_data.push_back(map.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ipv6::Crypto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ipv6::Crypto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Ipv6::Crypto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "map")
-    {
-        map = value;
-        map.value_namespace = name_space;
-        map.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ipv6::Crypto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "map")
-    {
-        map.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ipv6::Crypto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "map")
-        return true;
-    return false;
-}
-
 Native::Interface::Vlan::Ipv6::NoPim::NoPim()
     :
     pim{YType::boolean, "pim"}
@@ -6043,6 +5965,84 @@ void Native::Interface::Vlan::Ipv6::Pim::Bsr::set_filter(const std::string & val
 bool Native::Interface::Vlan::Ipv6::Pim::Bsr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "border")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::Ipv6::Crypto::Crypto()
+    :
+    map{YType::str, "map"}
+{
+
+    yang_name = "crypto"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::Ipv6::Crypto::~Crypto()
+{
+}
+
+bool Native::Interface::Vlan::Ipv6::Crypto::has_data() const
+{
+    if (is_presence_container) return true;
+    return map.is_set;
+}
+
+bool Native::Interface::Vlan::Ipv6::Crypto::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(map.yfilter);
+}
+
+std::string Native::Interface::Vlan::Ipv6::Crypto::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-crypto:crypto";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ipv6::Crypto::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (map.is_set || is_set(map.yfilter)) leaf_name_data.push_back(map.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ipv6::Crypto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ipv6::Crypto::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::Ipv6::Crypto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "map")
+    {
+        map = value;
+        map.value_namespace = name_space;
+        map.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::Ipv6::Crypto::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "map")
+    {
+        map.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::Ipv6::Crypto::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "map")
         return true;
     return false;
 }

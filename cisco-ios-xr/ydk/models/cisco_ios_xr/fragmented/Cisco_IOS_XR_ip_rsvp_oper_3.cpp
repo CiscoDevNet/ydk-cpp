@@ -1036,7 +1036,7 @@ bool Rsvp::RxsbDetails::RxsbDetail::GenericFlowSpec::G709otnFlowSpec::has_leaf_o
 Rsvp::RxsbDetails::RxsbDetail::Hop::Hop()
     :
     neighbor_address{YType::str, "neighbor-address"},
-    neighbor_logical_interface_handle{YType::uint32, "neighbor-logical-interface-handle"}
+    neighbor_logical_interface_name{YType::str, "neighbor-logical-interface-name"}
 {
 
     yang_name = "hop"; yang_parent_name = "rxsb-detail"; is_top_level_class = false; has_list_ancestor = false; 
@@ -1050,14 +1050,14 @@ bool Rsvp::RxsbDetails::RxsbDetail::Hop::has_data() const
 {
     if (is_presence_container) return true;
     return neighbor_address.is_set
-	|| neighbor_logical_interface_handle.is_set;
+	|| neighbor_logical_interface_name.is_set;
 }
 
 bool Rsvp::RxsbDetails::RxsbDetail::Hop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(neighbor_logical_interface_handle.yfilter);
+	|| ydk::is_set(neighbor_logical_interface_name.yfilter);
 }
 
 std::string Rsvp::RxsbDetails::RxsbDetail::Hop::get_absolute_path() const
@@ -1079,7 +1079,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RxsbDetails::RxsbDetail::Ho
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_logical_interface_handle.is_set || is_set(neighbor_logical_interface_handle.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_handle.get_name_leafdata());
+    if (neighbor_logical_interface_name.is_set || is_set(neighbor_logical_interface_name.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1105,11 +1105,11 @@ void Rsvp::RxsbDetails::RxsbDetail::Hop::set_value(const std::string & value_pat
         neighbor_address.value_namespace = name_space;
         neighbor_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle = value;
-        neighbor_logical_interface_handle.value_namespace = name_space;
-        neighbor_logical_interface_handle.value_namespace_prefix = name_space_prefix;
+        neighbor_logical_interface_name = value;
+        neighbor_logical_interface_name.value_namespace = name_space;
+        neighbor_logical_interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1119,15 +1119,15 @@ void Rsvp::RxsbDetails::RxsbDetail::Hop::set_filter(const std::string & value_pa
     {
         neighbor_address.yfilter = yfilter;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle.yfilter = yfilter;
+        neighbor_logical_interface_name.yfilter = yfilter;
     }
 }
 
 bool Rsvp::RxsbDetails::RxsbDetail::Hop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "neighbor-logical-interface-handle")
+    if(name == "neighbor-address" || name == "neighbor-logical-interface-name")
         return true;
     return false;
 }
@@ -6630,7 +6630,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::PathFlags::has_leaf_or_child_of_name(const
 Rsvp::PsbDetaileds::PsbDetailed::Hop::Hop()
     :
     neighbor_address{YType::str, "neighbor-address"},
-    neighbor_logical_interface_handle{YType::uint32, "neighbor-logical-interface-handle"}
+    neighbor_logical_interface_name{YType::str, "neighbor-logical-interface-name"}
 {
 
     yang_name = "hop"; yang_parent_name = "psb-detailed"; is_top_level_class = false; has_list_ancestor = false; 
@@ -6644,14 +6644,14 @@ bool Rsvp::PsbDetaileds::PsbDetailed::Hop::has_data() const
 {
     if (is_presence_container) return true;
     return neighbor_address.is_set
-	|| neighbor_logical_interface_handle.is_set;
+	|| neighbor_logical_interface_name.is_set;
 }
 
 bool Rsvp::PsbDetaileds::PsbDetailed::Hop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(neighbor_logical_interface_handle.yfilter);
+	|| ydk::is_set(neighbor_logical_interface_name.yfilter);
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::Hop::get_absolute_path() const
@@ -6673,7 +6673,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::PsbDetaileds::PsbDetailed::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_logical_interface_handle.is_set || is_set(neighbor_logical_interface_handle.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_handle.get_name_leafdata());
+    if (neighbor_logical_interface_name.is_set || is_set(neighbor_logical_interface_name.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6699,11 +6699,11 @@ void Rsvp::PsbDetaileds::PsbDetailed::Hop::set_value(const std::string & value_p
         neighbor_address.value_namespace = name_space;
         neighbor_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle = value;
-        neighbor_logical_interface_handle.value_namespace = name_space;
-        neighbor_logical_interface_handle.value_namespace_prefix = name_space_prefix;
+        neighbor_logical_interface_name = value;
+        neighbor_logical_interface_name.value_namespace = name_space;
+        neighbor_logical_interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -6713,15 +6713,15 @@ void Rsvp::PsbDetaileds::PsbDetailed::Hop::set_filter(const std::string & value_
     {
         neighbor_address.yfilter = yfilter;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle.yfilter = yfilter;
+        neighbor_logical_interface_name.yfilter = yfilter;
     }
 }
 
 bool Rsvp::PsbDetaileds::PsbDetailed::Hop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "neighbor-logical-interface-handle")
+    if(name == "neighbor-address" || name == "neighbor-logical-interface-name")
         return true;
     return false;
 }
@@ -15010,7 +15010,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::RsbFlags::has_leaf_or_child_of_name(const 
 Rsvp::RsbDetaileds::RsbDetailed::Hop::Hop()
     :
     neighbor_address{YType::str, "neighbor-address"},
-    neighbor_logical_interface_handle{YType::uint32, "neighbor-logical-interface-handle"}
+    neighbor_logical_interface_name{YType::str, "neighbor-logical-interface-name"}
 {
 
     yang_name = "hop"; yang_parent_name = "rsb-detailed"; is_top_level_class = false; has_list_ancestor = false; 
@@ -15024,14 +15024,14 @@ bool Rsvp::RsbDetaileds::RsbDetailed::Hop::has_data() const
 {
     if (is_presence_container) return true;
     return neighbor_address.is_set
-	|| neighbor_logical_interface_handle.is_set;
+	|| neighbor_logical_interface_name.is_set;
 }
 
 bool Rsvp::RsbDetaileds::RsbDetailed::Hop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(neighbor_logical_interface_handle.yfilter);
+	|| ydk::is_set(neighbor_logical_interface_name.yfilter);
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::Hop::get_absolute_path() const
@@ -15053,7 +15053,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbDetaileds::RsbDetailed::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_logical_interface_handle.is_set || is_set(neighbor_logical_interface_handle.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_handle.get_name_leafdata());
+    if (neighbor_logical_interface_name.is_set || is_set(neighbor_logical_interface_name.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15079,11 +15079,11 @@ void Rsvp::RsbDetaileds::RsbDetailed::Hop::set_value(const std::string & value_p
         neighbor_address.value_namespace = name_space;
         neighbor_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle = value;
-        neighbor_logical_interface_handle.value_namespace = name_space;
-        neighbor_logical_interface_handle.value_namespace_prefix = name_space_prefix;
+        neighbor_logical_interface_name = value;
+        neighbor_logical_interface_name.value_namespace = name_space;
+        neighbor_logical_interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -15093,15 +15093,15 @@ void Rsvp::RsbDetaileds::RsbDetailed::Hop::set_filter(const std::string & value_
     {
         neighbor_address.yfilter = yfilter;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle.yfilter = yfilter;
+        neighbor_logical_interface_name.yfilter = yfilter;
     }
 }
 
 bool Rsvp::RsbDetaileds::RsbDetailed::Hop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "neighbor-logical-interface-handle")
+    if(name == "neighbor-address" || name == "neighbor-logical-interface-name")
         return true;
     return false;
 }

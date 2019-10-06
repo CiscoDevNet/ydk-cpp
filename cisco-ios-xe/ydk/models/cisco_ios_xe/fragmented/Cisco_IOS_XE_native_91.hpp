@@ -1116,7 +1116,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Standby::StandbyL
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3494,7 +3494,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
         class Group;
 
 }; // Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable
@@ -3528,6 +3528,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ip::Verify::Unica
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3536,6 +3541,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ipv6::TrafficFilt
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3543,6 +3553,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::InterfaceQos::Tru
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Standby::Version : public ydk::Enum
@@ -3551,6 +3565,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Standby::Version 
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3558,6 +3577,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Standby::StandbyL
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3566,6 +3589,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Standby::StandbyL
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3574,6 +3602,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Standby::StandbyL
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::AccessSession::HostMode : public ydk::Enum
@@ -3584,6 +3617,13 @@ class Native::Interface::PortChannelSubinterface::PortChannel::AccessSession::Ho
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Trust::Device : public ydk::Enum
@@ -3594,6 +3634,13 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Trust::Device : p
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::Mode : public ydk::Enum
@@ -3605,6 +3652,14 @@ class Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::Mod
         static const ydk::Enum::YLeaf on;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "auto") return 1;
+            if (name == "desirable") return 2;
+            if (name == "on") return 3;
+            if (name == "passive") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::Mode : public ydk::Enum
@@ -3613,6 +3668,11 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::Mo
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "passive") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::Group : public ydk::Enum
@@ -3620,6 +3680,10 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::Gr
     public:
         static const ydk::Enum::YLeaf global;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "global") return 0;
+            return -1;
+        }
 };
 
 

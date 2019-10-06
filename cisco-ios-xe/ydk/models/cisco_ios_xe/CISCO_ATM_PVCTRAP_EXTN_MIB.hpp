@@ -754,6 +754,13 @@ class CatmOAMRecoveryType : public ydk::Enum
         static const ydk::Enum::YLeaf catmEndCCOAMRecover;
         static const ydk::Enum::YLeaf catmAISRDIOAMRecover;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "catmLoopbackOAMRecover") return 1;
+            if (name == "catmSegmentCCOAMRecover") return 2;
+            if (name == "catmEndCCOAMRecover") return 4;
+            if (name == "catmAISRDIOAMRecover") return 8;
+            return -1;
+        }
 };
 
 class CatmOAMFailureType : public ydk::Enum
@@ -764,6 +771,13 @@ class CatmOAMFailureType : public ydk::Enum
         static const ydk::Enum::YLeaf catmEndCCOAMFailure;
         static const ydk::Enum::YLeaf catmAISRDIOAMFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "catmLoopbackOAMFailure") return 1;
+            if (name == "catmSegmentCCOAMFailure") return 2;
+            if (name == "catmEndCCOAMFailure") return 4;
+            if (name == "catmAISRDIOAMFailure") return 8;
+            return -1;
+        }
 };
 
 

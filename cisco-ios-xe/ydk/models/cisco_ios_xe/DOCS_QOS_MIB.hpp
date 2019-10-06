@@ -741,6 +741,11 @@ class IfDirection : public ydk::Enum
         static const ydk::Enum::YLeaf downstream;
         static const ydk::Enum::YLeaf upstream;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "downstream") return 1;
+            if (name == "upstream") return 2;
+            return -1;
+        }
 };
 
 class SchedulingType : public ydk::Enum
@@ -753,6 +758,15 @@ class SchedulingType : public ydk::Enum
         static const ydk::Enum::YLeaf unsolictedGrantServiceWithAD;
         static const ydk::Enum::YLeaf unsolictedGrantService;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "undefined") return 1;
+            if (name == "bestEffort") return 2;
+            if (name == "nonRealTimePollingService") return 3;
+            if (name == "realTimePollingService") return 4;
+            if (name == "unsolictedGrantServiceWithAD") return 5;
+            if (name == "unsolictedGrantService") return 6;
+            return -1;
+        }
 };
 
 class DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::DocsQosPktClassEnetProtocolType : public ydk::Enum
@@ -764,6 +778,14 @@ class DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::DocsQosPktClassEne
         static const ydk::Enum::YLeaf mac;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ethertype") return 1;
+            if (name == "dsap") return 2;
+            if (name == "mac") return 3;
+            if (name == "all") return 4;
+            return -1;
+        }
 };
 
 class DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::DocsQosPktClassState : public ydk::Enum
@@ -772,6 +794,11 @@ class DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::DocsQosPktClassSta
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf inactive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "inactive") return 2;
+            return -1;
+        }
 };
 
 class DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry::DocsQosParamSetType : public ydk::Enum
@@ -781,6 +808,12 @@ class DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry::DocsQosParamSetTyp
         static const ydk::Enum::YLeaf admitted;
         static const ydk::Enum::YLeaf provisioned;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "admitted") return 2;
+            if (name == "provisioned") return 3;
+            return -1;
+        }
 };
 
 class DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry::DocsQosServiceFlowLogControl : public ydk::Enum
@@ -789,6 +822,11 @@ class DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry::DocsQo
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf destroy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "destroy") return 6;
+            return -1;
+        }
 };
 
 

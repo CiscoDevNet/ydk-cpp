@@ -10,6 +10,21 @@
 namespace cisco_ios_xe {
 namespace MPLS_TC_MIB {
 
+class MplsLdpLabelTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf generic;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf frameRelay;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "generic") return 1;
+            if (name == "atm") return 2;
+            if (name == "frameRelay") return 3;
+            return -1;
+        }
+};
+
 class MplsInitialCreationSource : public ydk::Enum
 {
     public:
@@ -21,15 +36,16 @@ class MplsInitialCreationSource : public ydk::Enum
         static const ydk::Enum::YLeaf policyAgent;
         static const ydk::Enum::YLeaf unknown;
 
-};
-
-class MplsLdpLabelTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf generic;
-        static const ydk::Enum::YLeaf atm;
-        static const ydk::Enum::YLeaf frameRelay;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "snmp") return 2;
+            if (name == "ldp") return 3;
+            if (name == "rsvp") return 4;
+            if (name == "crldp") return 5;
+            if (name == "policyAgent") return 6;
+            if (name == "unknown") return 7;
+            return -1;
+        }
 };
 
 

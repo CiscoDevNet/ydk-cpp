@@ -982,11 +982,11 @@ bool BridgeInstances::BridgeEntry::BridgeMatmEntries::BridgeMatmEntry::has_leaf_
     return false;
 }
 
-const Enum::YLeaf IntfStatusType::up {0, "up"};
-const Enum::YLeaf IntfStatusType::down {1, "down"};
-
 const Enum::YLeaf BridgeMacType::bridge_mac_type_static {0, "bridge-mac-type-static"};
 const Enum::YLeaf BridgeMacType::bridge_mac_type_dynamic {1, "bridge-mac-type-dynamic"};
+
+const Enum::YLeaf IntfStatusType::up {0, "up"};
+const Enum::YLeaf IntfStatusType::down {1, "down"};
 
 
 }

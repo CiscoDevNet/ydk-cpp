@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RPC &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../index.html"/>
+        <link rel="up" title="Developer Guides" href="guides.html"/>
+        <link rel="next" title="Presence Classes" href="presence_class.html"/>
+        <link rel="prev" title="Using YDK Path API" href="howto_path.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="guides.html">Developer Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_opendaylight.html">Using OpenDaylight with YDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_path.html">Using YDK Path API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">RPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presence_class.html">Presence Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_gnmi.html">Using gNMI with YDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_validation.html">How to Disable Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="guides.html">Developer Guides</a> &raquo;</li>
+      
+    <li>RPC</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rpc">
+<h1>RPC<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h1>
+<p>An <a class="reference internal" href="../api/path/rpc.html#_CPPv2N3ydk4path3RpcE" title="ydk::path::Rpc"><code class="xref cpp cpp-class docutils literal"><span class="pre">Rpc</span></code></a> represents an instance of the YANG RPC schema node. To invoke a rpc the user first creates an <a class="reference internal" href="../api/path/rpc.html#_CPPv2N3ydk4path3RpcE" title="ydk::path::Rpc"><code class="xref cpp cpp-class docutils literal"><span class="pre">Rpc</span></code></a> using the <a class="reference internal" href="../api/path/nodes/root_schema_node.html#_CPPv2NK3ydk4path14RootSchemaNode10create_rpcERKNSt6stringE" title="ydk::path::RootSchemaNode::create_rpc"><code class="xref cpp cpp-func docutils literal"><span class="pre">RootSchemaNode::create_rpc()</span></code></a> call passing in a path with the name of the rpc. For example:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">get_config</span> <span class="o">=</span> <span class="n">root_schema</span><span class="o">-&gt;</span><span class="n">create_rpc</span><span class="p">(</span><span class="s">&quot;ietf-netconf:get-config&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The input <a class="reference internal" href="../api/path/nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> can be obtained using <a class="reference internal" href="../api/path/rpc.html#_CPPv2NK3ydk4path3Rpc14get_input_nodeEv" title="ydk::path::Rpc::get_input_node"><code class="xref cpp cpp-func docutils literal"><span class="pre">Rpc::get_input_node()</span></code></a>. This can be used to populate/create the child nodes of input as per this rpc&#8217;s schema. The <a class="reference internal" href="../api/path/rpc.html#_CPPv2N3ydk4path3RpcE" title="ydk::path::Rpc"><code class="xref cpp cpp-class docutils literal"><span class="pre">Rpc</span></code></a> is a callable that takes a single argument which is the <a class="reference internal" href="../api/path/sessions/session.html#_CPPv2N3ydk4path7SessionE" title="ydk::path::Session"><code class="xref cpp cpp-class docutils literal"><span class="pre">Session</span></code></a>. To invoke the rpc do this</p>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="n">session</span><span class="p">);</span> <span class="c1">/// session is a Session</span>
+</pre></div>
+</div>
+<p>The config variable above is the <a class="reference internal" href="../api/path/nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> representing the output of the rpc.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="presence_class.html" class="btn btn-neutral float-right" title="Presence Classes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="howto_path.html" class="btn btn-neutral" title="Using YDK Path API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

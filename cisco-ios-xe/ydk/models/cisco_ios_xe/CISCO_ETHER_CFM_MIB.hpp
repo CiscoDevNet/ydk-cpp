@@ -139,6 +139,17 @@ class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEvent
         static const ydk::Enum::YLeaf xcheckUnknown;
         static const ydk::Enum::YLeaf xcheckServiceUp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mepUp") return 1;
+            if (name == "mepDown") return 2;
+            if (name == "xconnect") return 3;
+            if (name == "loop") return 4;
+            if (name == "config") return 5;
+            if (name == "xcheckMissing") return 6;
+            if (name == "xcheckUnknown") return 7;
+            if (name == "xcheckServiceUp") return 8;
+            return -1;
+        }
 };
 
 class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState : public ydk::Enum
@@ -152,6 +163,16 @@ class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEvent
         static const ydk::Enum::YLeaf localExcessiveErrors;
         static const ydk::Enum::YLeaf localNoData;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "adminDown") return 3;
+            if (name == "test") return 4;
+            if (name == "remoteExcessiveErrors") return 5;
+            if (name == "localExcessiveErrors") return 6;
+            if (name == "localNoData") return 7;
+            return -1;
+        }
 };
 
 class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode : public ydk::Enum
@@ -167,6 +188,18 @@ class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEvent
         static const ydk::Enum::YLeaf xconnectClear;
         static const ydk::Enum::YLeaf unknownClear;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "new") return 1;
+            if (name == "returning") return 2;
+            if (name == "portState") return 3;
+            if (name == "lastGasp") return 4;
+            if (name == "timeout") return 5;
+            if (name == "configClear") return 6;
+            if (name == "loopClear") return 7;
+            if (name == "xconnectClear") return 8;
+            if (name == "unknownClear") return 9;
+            return -1;
+        }
 };
 
 class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventDeleteRow : public ydk::Enum
@@ -175,6 +208,11 @@ class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEvent
         static const ydk::Enum::YLeaf noop;
         static const ydk::Enum::YLeaf delete_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noop") return 1;
+            if (name == "delete") return 2;
+            return -1;
+        }
 };
 
 

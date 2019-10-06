@@ -2219,7 +2219,6 @@ class MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead : public ydk::Entity
         ydk::YLeaf persistent_bytes; //type: uint64
         ydk::YLeaf persistent_packets; //type: uint64
         ydk::YLeaf autoroute_announce_exclude_segment_routing; //type: boolean
-        ydk::YLeaf last_working_lsp_id; //type: uint16
         class Config; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::Config
         class TunnelCurrentLsp; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp
         class ReoptimizedP2mpLsp; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::ReoptimizedP2mpLsp
@@ -2618,7 +2617,6 @@ class MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp : public 
         ydk::YLeaf last_path_change; //type: uint32
         ydk::YLeaf persistent_bytes; //type: uint64
         ydk::YLeaf persistent_packets; //type: uint64
-        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
         class LspFec; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::LspFec
         class S2l; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::S2l
 

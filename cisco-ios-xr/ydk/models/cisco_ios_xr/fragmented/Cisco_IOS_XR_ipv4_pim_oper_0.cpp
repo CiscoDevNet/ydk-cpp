@@ -12586,10 +12586,8 @@ Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrp
     candidate_rp_expires{YType::uint16, "candidate-rp-expires"},
     protocol{YType::enumeration, "protocol"}
         ,
-    next_candidate_rp(std::make_shared<Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>())
-    , candidate_rp_address(std::make_shared<Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
+    candidate_rp_address(std::make_shared<Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
 {
-    next_candidate_rp->parent = this;
     candidate_rp_address->parent = this;
 
     yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list"; is_top_level_class = false; has_list_ancestor = true; 
@@ -12607,7 +12605,6 @@ bool Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimB
 	|| candidate_rp_up_time.is_set
 	|| candidate_rp_expires.is_set
 	|| protocol.is_set
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_data())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_data());
 }
 
@@ -12619,7 +12616,6 @@ bool Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimB
 	|| ydk::is_set(candidate_rp_up_time.yfilter)
 	|| ydk::is_set(candidate_rp_expires.yfilter)
 	|| ydk::is_set(protocol.yfilter)
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_operation())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_operation());
 }
 
@@ -12647,15 +12643,6 @@ std::vector<std::pair<std::string, LeafData> > Pim::Standby::DefaultContext::Bsr
 
 std::shared_ptr<ydk::Entity> Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "next-candidate-rp")
-    {
-        if(next_candidate_rp == nullptr)
-        {
-            next_candidate_rp = std::make_shared<Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>();
-        }
-        return next_candidate_rp;
-    }
-
     if(child_yang_name == "candidate-rp-address")
     {
         if(candidate_rp_address == nullptr)
@@ -12672,11 +12659,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::DefaultContext
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(next_candidate_rp != nullptr)
-    {
-        _children["next-candidate-rp"] = next_candidate_rp;
-    }
-
     if(candidate_rp_address != nullptr)
     {
         _children["candidate-rp-address"] = candidate_rp_address;
@@ -12745,70 +12727,8 @@ void Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimB
 
 bool Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "next-candidate-rp" || name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
+    if(name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
         return true;
-    return false;
-}
-
-Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::NextCandidateRp()
-{
-
-    yang_name = "next-candidate-rp"; yang_parent_name = "pim-bsr-crp-bag"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::~NextCandidateRp()
-{
-}
-
-bool Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-candidate-rp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_leaf_or_child_of_name(const std::string & name) const
-{
     return false;
 }
 
@@ -24749,28 +24669,105 @@ bool Pim::Standby::DefaultContext::Gre::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-const Enum::YLeaf PimTopologyInterfaceFlag::lh {0, "lh"};
-const Enum::YLeaf PimTopologyInterfaceFlag::ld {1, "ld"};
-const Enum::YLeaf PimTopologyInterfaceFlag::li {2, "li"};
-const Enum::YLeaf PimTopologyInterfaceFlag::ii {3, "ii"};
-const Enum::YLeaf PimTopologyInterfaceFlag::id {4, "id"};
-const Enum::YLeaf PimTopologyInterfaceFlag::as {5, "as"};
-const Enum::YLeaf PimTopologyInterfaceFlag::ab {6, "ab"};
-const Enum::YLeaf PimTopologyInterfaceFlag::ex {7, "ex"};
+Pim::Standby::DefaultContext::Gre::GreHashes::GreHashes()
+    :
+    gre_hash(this, {"source_address", "destination_address", "ifname"})
+{
 
-const Enum::YLeaf PimSafi::unicast {1, "unicast"};
-const Enum::YLeaf PimSafi::multicast {2, "multicast"};
-const Enum::YLeaf PimSafi::all {3, "all"};
-const Enum::YLeaf PimSafi::default_ {4, "default"};
+    yang_name = "gre-hashes"; yang_parent_name = "gre"; is_top_level_class = false; has_list_ancestor = false; 
+}
 
-const Enum::YLeaf PimClient::none {0, "none"};
-const Enum::YLeaf PimClient::configured_embedded_rp {1, "configured-embedded-rp"};
-const Enum::YLeaf PimClient::embedded {2, "embedded"};
-const Enum::YLeaf PimClient::permanent {3, "permanent"};
-const Enum::YLeaf PimClient::auto_rp {4, "auto-rp"};
-const Enum::YLeaf PimClient::bsr {5, "bsr"};
-const Enum::YLeaf PimClient::configured {6, "configured"};
-const Enum::YLeaf PimClient::static_ {7, "static"};
+Pim::Standby::DefaultContext::Gre::GreHashes::~GreHashes()
+{
+}
+
+bool Pim::Standby::DefaultContext::Gre::GreHashes::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<gre_hash.len(); index++)
+    {
+        if(gre_hash[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pim::Standby::DefaultContext::Gre::GreHashes::has_operation() const
+{
+    for (std::size_t index=0; index<gre_hash.len(); index++)
+    {
+        if(gre_hash[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pim::Standby::DefaultContext::Gre::GreHashes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:pim/standby/default-context/gre/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pim::Standby::DefaultContext::Gre::GreHashes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gre-hashes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::Standby::DefaultContext::Gre::GreHashes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pim::Standby::DefaultContext::Gre::GreHashes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "gre-hash")
+    {
+        auto ent_ = std::make_shared<Pim::Standby::DefaultContext::Gre::GreHashes::GreHash>();
+        ent_->parent = this;
+        gre_hash.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::DefaultContext::Gre::GreHashes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : gre_hash.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Pim::Standby::DefaultContext::Gre::GreHashes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pim::Standby::DefaultContext::Gre::GreHashes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Standby::DefaultContext::Gre::GreHashes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gre-hash")
+        return true;
+    return false;
+}
 
 const Enum::YLeaf PimTopologyEntryFlag::kat {0, "kat"};
 const Enum::YLeaf PimTopologyEntryFlag::aa {1, "aa"};
@@ -24790,28 +24787,12 @@ const Enum::YLeaf PimTopologyEntryFlag::mfa {14, "mfa"};
 const Enum::YLeaf PimTopologyEntryFlag::mfp {15, "mfp"};
 const Enum::YLeaf PimTopologyEntryFlag::mfb {16, "mfb"};
 
-const Enum::YLeaf PimProtocol::non_routable {0, "non-routable"};
-const Enum::YLeaf PimProtocol::sparse_mode {1, "sparse-mode"};
-const Enum::YLeaf PimProtocol::dense_mode {2, "dense-mode"};
-const Enum::YLeaf PimProtocol::bidir {3, "bidir"};
-const Enum::YLeaf PimProtocol::ssm {4, "ssm"};
-const Enum::YLeaf PimProtocol::maximum {5, "maximum"};
-const Enum::YLeaf PimProtocol::any {6, "any"};
-
 const Enum::YLeaf PimAfi::ipv4_unicast {0, "ipv4-unicast"};
 const Enum::YLeaf PimAfi::ipv6_unicast {1, "ipv6-unicast"};
 
 const Enum::YLeaf PimInterface::encap_interface {0, "encap-interface"};
 const Enum::YLeaf PimInterface::decap_interface {1, "decap-interface"};
 const Enum::YLeaf PimInterface::mdt_interface {2, "mdt-interface"};
-
-const Enum::YLeaf PimShowLocalInterest::null {1, "null"};
-const Enum::YLeaf PimShowLocalInterest::li {2, "li"};
-const Enum::YLeaf PimShowLocalInterest::ld {3, "ld"};
-
-const Enum::YLeaf PimInternalInterestInfo::null {21, "null"};
-const Enum::YLeaf PimInternalInterestInfo::ii {22, "ii"};
-const Enum::YLeaf PimInternalInterestInfo::id {23, "id"};
 
 const Enum::YLeaf PimShowRangeClient::no_client {0, "no-client"};
 const Enum::YLeaf PimShowRangeClient::embedded_config {1, "embedded-config"};
@@ -24822,6 +24803,36 @@ const Enum::YLeaf PimShowRangeClient::bsr {5, "bsr"};
 const Enum::YLeaf PimShowRangeClient::config {6, "config"};
 const Enum::YLeaf PimShowRangeClient::static_ {7, "static"};
 
+const Enum::YLeaf PimInternalInterestInfo::null {21, "null"};
+const Enum::YLeaf PimInternalInterestInfo::ii {22, "ii"};
+const Enum::YLeaf PimInternalInterestInfo::id {23, "id"};
+
+const Enum::YLeaf PimProtocol::non_routable {0, "non-routable"};
+const Enum::YLeaf PimProtocol::sparse_mode {1, "sparse-mode"};
+const Enum::YLeaf PimProtocol::dense_mode {2, "dense-mode"};
+const Enum::YLeaf PimProtocol::bidir {3, "bidir"};
+const Enum::YLeaf PimProtocol::ssm {4, "ssm"};
+const Enum::YLeaf PimProtocol::maximum {5, "maximum"};
+const Enum::YLeaf PimProtocol::any {6, "any"};
+
+const Enum::YLeaf PimSafi::unicast {1, "unicast"};
+const Enum::YLeaf PimSafi::multicast {2, "multicast"};
+const Enum::YLeaf PimSafi::all {3, "all"};
+const Enum::YLeaf PimSafi::default_ {4, "default"};
+
+const Enum::YLeaf PimShowLocalInterest::null {1, "null"};
+const Enum::YLeaf PimShowLocalInterest::li {2, "li"};
+const Enum::YLeaf PimShowLocalInterest::ld {3, "ld"};
+
+const Enum::YLeaf PimClient::none {0, "none"};
+const Enum::YLeaf PimClient::configured_embedded_rp {1, "configured-embedded-rp"};
+const Enum::YLeaf PimClient::embedded {2, "embedded"};
+const Enum::YLeaf PimClient::permanent {3, "permanent"};
+const Enum::YLeaf PimClient::auto_rp {4, "auto-rp"};
+const Enum::YLeaf PimClient::bsr {5, "bsr"};
+const Enum::YLeaf PimClient::configured {6, "configured"};
+const Enum::YLeaf PimClient::static_ {7, "static"};
+
 const Enum::YLeaf PimShowProtocol::no_route {0, "no-route"};
 const Enum::YLeaf PimShowProtocol::sm {1, "sm"};
 const Enum::YLeaf PimShowProtocol::dm {2, "dm"};
@@ -24829,6 +24840,15 @@ const Enum::YLeaf PimShowProtocol::bidir {3, "bidir"};
 const Enum::YLeaf PimShowProtocol::ssm {4, "ssm"};
 const Enum::YLeaf PimShowProtocol::maximum {5, "maximum"};
 const Enum::YLeaf PimShowProtocol::any {6, "any"};
+
+const Enum::YLeaf PimTopologyInterfaceFlag::lh {0, "lh"};
+const Enum::YLeaf PimTopologyInterfaceFlag::ld {1, "ld"};
+const Enum::YLeaf PimTopologyInterfaceFlag::li {2, "li"};
+const Enum::YLeaf PimTopologyInterfaceFlag::ii {3, "ii"};
+const Enum::YLeaf PimTopologyInterfaceFlag::id {4, "id"};
+const Enum::YLeaf PimTopologyInterfaceFlag::as {5, "as"};
+const Enum::YLeaf PimTopologyInterfaceFlag::ab {6, "ab"};
+const Enum::YLeaf PimTopologyInterfaceFlag::ex {7, "ex"};
 
 
 }

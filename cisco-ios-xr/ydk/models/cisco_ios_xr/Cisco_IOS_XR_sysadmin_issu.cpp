@@ -11,93 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_issu {
 
-IssuAction::IssuAction()
-{
-
-    yang_name = "issu_action"; yang_parent_name = "Cisco-IOS-XR-sysadmin-issu"; is_top_level_class = true; has_list_ancestor = false; 
-}
-
-IssuAction::~IssuAction()
-{
-}
-
-bool IssuAction::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool IssuAction::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string IssuAction::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-issu:issu_action";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IssuAction::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> IssuAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> IssuAction::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void IssuAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IssuAction::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<ydk::Entity> IssuAction::clone_ptr() const
-{
-    return std::make_shared<IssuAction>();
-}
-
-std::string IssuAction::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string IssuAction::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function IssuAction::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> IssuAction::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool IssuAction::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
 Issu::Issu()
     :
     status(std::make_shared<Issu::Status>())
@@ -4660,25 +4573,6 @@ bool Issu::Internals::InventoryMonitor::Inventory::Node::has_leaf_or_child_of_na
     return false;
 }
 
-const Enum::YLeaf OpStartResult::start_success {0, "start-success"};
-const Enum::YLeaf OpStartResult::error_operation_in_progress {1, "error-operation-in-progress"};
-const Enum::YLeaf OpStartResult::activate_error_no_prepare {2, "activate-error-no-prepare"};
-const Enum::YLeaf OpStartResult::prepare_error_previous_prepare {3, "prepare-error-previous-prepare"};
-const Enum::YLeaf OpStartResult::recover_error_unrecoverable {4, "recover-error-unrecoverable"};
-const Enum::YLeaf OpStartResult::start_error_internal {5, "start-error-internal"};
-const Enum::YLeaf OpStartResult::prepare_error_previous_operation_not_committed {6, "prepare-error-previous-operation-not-committed"};
-const Enum::YLeaf OpStartResult::prepare_error_already_in_progress {7, "prepare-error-already-in-progress"};
-
-const Enum::YLeaf OpResult::success {0, "success"};
-const Enum::YLeaf OpResult::error_input {1, "error-input"};
-const Enum::YLeaf OpResult::error_orchestration {2, "error-orchestration"};
-const Enum::YLeaf OpResult::error_install {3, "error-install"};
-const Enum::YLeaf OpResult::error_node_redundancy {4, "error-node-redundancy"};
-
-const Enum::YLeaf IssuNotif::notif_sysadmin_op_start {0, "notif-sysadmin-op-start"};
-const Enum::YLeaf IssuNotif::notif_sysadmin_phase_start {1, "notif-sysadmin-phase-start"};
-const Enum::YLeaf IssuNotif::notif_sysadmin_op_end {2, "notif-sysadmin-op-end"};
-
 const Enum::YLeaf OpStage::prepare_preamble {0, "prepare-preamble"};
 const Enum::YLeaf OpStage::prepare_host {1, "prepare-host"};
 const Enum::YLeaf OpStage::prepare_sysadmin {2, "prepare-sysadmin"};
@@ -4693,6 +4587,25 @@ const Enum::YLeaf OpStage::activate_aborting {10, "activate-aborting"};
 const Enum::YLeaf OpStage::activate_paused {11, "activate-paused"};
 const Enum::YLeaf OpStage::activate_postamble {12, "activate-postamble"};
 const Enum::YLeaf OpStage::activate_complete {13, "activate-complete"};
+
+const Enum::YLeaf IssuNotif::notif_sysadmin_op_start {0, "notif-sysadmin-op-start"};
+const Enum::YLeaf IssuNotif::notif_sysadmin_phase_start {1, "notif-sysadmin-phase-start"};
+const Enum::YLeaf IssuNotif::notif_sysadmin_op_end {2, "notif-sysadmin-op-end"};
+
+const Enum::YLeaf OpResult::success {0, "success"};
+const Enum::YLeaf OpResult::error_input {1, "error-input"};
+const Enum::YLeaf OpResult::error_orchestration {2, "error-orchestration"};
+const Enum::YLeaf OpResult::error_install {3, "error-install"};
+const Enum::YLeaf OpResult::error_node_redundancy {4, "error-node-redundancy"};
+
+const Enum::YLeaf OpStartResult::start_success {0, "start-success"};
+const Enum::YLeaf OpStartResult::error_operation_in_progress {1, "error-operation-in-progress"};
+const Enum::YLeaf OpStartResult::activate_error_no_prepare {2, "activate-error-no-prepare"};
+const Enum::YLeaf OpStartResult::prepare_error_previous_prepare {3, "prepare-error-previous-prepare"};
+const Enum::YLeaf OpStartResult::recover_error_unrecoverable {4, "recover-error-unrecoverable"};
+const Enum::YLeaf OpStartResult::start_error_internal {5, "start-error-internal"};
+const Enum::YLeaf OpStartResult::prepare_error_previous_operation_not_committed {6, "prepare-error-previous-operation-not-committed"};
+const Enum::YLeaf OpStartResult::prepare_error_already_in_progress {7, "prepare-error-already-in-progress"};
 
 const Enum::YLeaf Issu::Status::OperationType::no_operation {0, "no-operation"};
 const Enum::YLeaf Issu::Status::OperationType::activate_operation {1, "activate-operation"};
@@ -4716,6 +4629,9 @@ const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_timeout {5, "notif
 const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_send_error {6, "notif-resp-send-error"};
 const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_client_error {7, "notif-resp-client-error"};
 const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_client_abort {8, "notif-resp-client-abort"};
+
+const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_one {0, "calvados-activate-phase-one"};
+const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_two {1, "calvados-activate-phase-two"};
 
 const Enum::YLeaf Issu::Internals::OpRequestType::operation_request_prepare {0, "operation-request-prepare"};
 const Enum::YLeaf Issu::Internals::OpRequestType::operation_request_activate {1, "operation-request-activate"};
@@ -4750,9 +4666,6 @@ const Enum::YLeaf Issu::Internals::StageType::activate_abort_unrecoverable {24, 
 const Enum::YLeaf Issu::Internals::StageType::activate_error_pause {25, "activate-error-pause"};
 const Enum::YLeaf Issu::Internals::StageType::activate_calvados_recovery {26, "activate-calvados-recovery"};
 const Enum::YLeaf Issu::Internals::StageType::activate_recovery_postamble {27, "activate-recovery-postamble"};
-
-const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_one {0, "calvados-activate-phase-one"};
-const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_two {1, "calvados-activate-phase-two"};
 
 const Enum::YLeaf Issu::Internals::Agents::Requests::Request::RequestType::requests_node_ready {0, "requests-node-ready"};
 const Enum::YLeaf Issu::Internals::Agents::Requests::Request::RequestType::requests_checkpoint {1, "requests-checkpoint"};

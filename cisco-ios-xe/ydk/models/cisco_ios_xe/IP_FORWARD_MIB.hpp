@@ -209,6 +209,24 @@ class IPFORWARDMIB::IpForwardTable::IpForwardEntry::IpForwardProto : public ydk:
         static const ydk::Enum::YLeaf bgp;
         static const ydk::Enum::YLeaf idpr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "local") return 2;
+            if (name == "netmgmt") return 3;
+            if (name == "icmp") return 4;
+            if (name == "egp") return 5;
+            if (name == "ggp") return 6;
+            if (name == "hello") return 7;
+            if (name == "rip") return 8;
+            if (name == "is-is") return 9;
+            if (name == "es-is") return 10;
+            if (name == "ciscoIgrp") return 11;
+            if (name == "bbnSpfIgp") return 12;
+            if (name == "ospf") return 13;
+            if (name == "bgp") return 14;
+            if (name == "idpr") return 15;
+            return -1;
+        }
 };
 
 class IPFORWARDMIB::IpForwardTable::IpForwardEntry::IpForwardType : public ydk::Enum
@@ -219,6 +237,13 @@ class IPFORWARDMIB::IpForwardTable::IpForwardEntry::IpForwardType : public ydk::
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "local") return 3;
+            if (name == "remote") return 4;
+            return -1;
+        }
 };
 
 class IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::IpCidrRouteType : public ydk::Enum
@@ -229,6 +254,13 @@ class IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::IpCidrRouteType : public
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "reject") return 2;
+            if (name == "local") return 3;
+            if (name == "remote") return 4;
+            return -1;
+        }
 };
 
 class IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::IpCidrRouteProto : public ydk::Enum
@@ -251,6 +283,25 @@ class IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::IpCidrRouteProto : publi
         static const ydk::Enum::YLeaf idpr;
         static const ydk::Enum::YLeaf ciscoEigrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "local") return 2;
+            if (name == "netmgmt") return 3;
+            if (name == "icmp") return 4;
+            if (name == "egp") return 5;
+            if (name == "ggp") return 6;
+            if (name == "hello") return 7;
+            if (name == "rip") return 8;
+            if (name == "isIs") return 9;
+            if (name == "esIs") return 10;
+            if (name == "ciscoIgrp") return 11;
+            if (name == "bbnSpfIgp") return 12;
+            if (name == "ospf") return 13;
+            if (name == "bgp") return 14;
+            if (name == "idpr") return 15;
+            if (name == "ciscoEigrp") return 16;
+            return -1;
+        }
 };
 
 

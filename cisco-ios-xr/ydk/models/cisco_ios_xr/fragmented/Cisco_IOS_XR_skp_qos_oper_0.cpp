@@ -16234,6 +16234,30 @@ const Enum::YLeaf Wred::wred_dei_cmd {7, "wred-dei-cmd"};
 const Enum::YLeaf Wred::wred_ecn_cmd {8, "wred-ecn-cmd"};
 const Enum::YLeaf Wred::wred_invalid_cmd {9, "wred-invalid-cmd"};
 
+const Enum::YLeaf ActionOpcode::precedence {0, "precedence"};
+const Enum::YLeaf ActionOpcode::dscp {1, "dscp"};
+const Enum::YLeaf ActionOpcode::discard_class {2, "discard-class"};
+const Enum::YLeaf ActionOpcode::qos_group {3, "qos-group"};
+const Enum::YLeaf ActionOpcode::cos_inner {4, "cos-inner"};
+const Enum::YLeaf ActionOpcode::cos {5, "cos"};
+const Enum::YLeaf ActionOpcode::exp_top {6, "exp-top"};
+const Enum::YLeaf ActionOpcode::exp_imp {7, "exp-imp"};
+const Enum::YLeaf ActionOpcode::tunnel_precedence {8, "tunnel-precedence"};
+const Enum::YLeaf ActionOpcode::tunnel_dscp {9, "tunnel-dscp"};
+const Enum::YLeaf ActionOpcode::itag_dei {10, "itag-dei"};
+const Enum::YLeaf ActionOpcode::itag_cos {11, "itag-cos"};
+const Enum::YLeaf ActionOpcode::cos_imposition {12, "cos-imposition"};
+const Enum::YLeaf ActionOpcode::dei_imposition {13, "dei-imposition"};
+const Enum::YLeaf ActionOpcode::dei {14, "dei"};
+const Enum::YLeaf ActionOpcode::no_marking {15, "no-marking"};
+
+const Enum::YLeaf TbAlgorithm::inactive {0, "inactive"};
+const Enum::YLeaf TbAlgorithm::single {1, "single"};
+const Enum::YLeaf TbAlgorithm::single_rate_tcm {2, "single-rate-tcm"};
+const Enum::YLeaf TbAlgorithm::two_rate_tcm {3, "two-rate-tcm"};
+const Enum::YLeaf TbAlgorithm::mef_tcm {4, "mef-tcm"};
+const Enum::YLeaf TbAlgorithm::dummy {5, "dummy"};
+
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_kbytes {2, "policy-param-unit-kbytes"};
@@ -16259,42 +16283,15 @@ const Enum::YLeaf PolicyParamUnit::policy_param_unit_mhz {21, "policy-param-unit
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_max {23, "policy-param-unit-max"};
 
-const Enum::YLeaf CacState::unknown {0, "unknown"};
-const Enum::YLeaf CacState::admit {1, "admit"};
-const Enum::YLeaf CacState::redirect {2, "redirect"};
-const Enum::YLeaf CacState::ubrl {3, "ubrl"};
-
-const Enum::YLeaf PolicyState::active {0, "active"};
-const Enum::YLeaf PolicyState::suspended {1, "suspended"};
-
 const Enum::YLeaf Action::police_transmit {0, "police-transmit"};
 const Enum::YLeaf Action::police_set_transmit {1, "police-set-transmit"};
 const Enum::YLeaf Action::police_drop {2, "police-drop"};
 const Enum::YLeaf Action::police_unknown {3, "police-unknown"};
 
-const Enum::YLeaf ActionOpcode::precedence {0, "precedence"};
-const Enum::YLeaf ActionOpcode::dscp {1, "dscp"};
-const Enum::YLeaf ActionOpcode::discard_class {2, "discard-class"};
-const Enum::YLeaf ActionOpcode::qos_group {3, "qos-group"};
-const Enum::YLeaf ActionOpcode::cos_inner {4, "cos-inner"};
-const Enum::YLeaf ActionOpcode::cos {5, "cos"};
-const Enum::YLeaf ActionOpcode::exp_top {6, "exp-top"};
-const Enum::YLeaf ActionOpcode::exp_imp {7, "exp-imp"};
-const Enum::YLeaf ActionOpcode::tunnel_precedence {8, "tunnel-precedence"};
-const Enum::YLeaf ActionOpcode::tunnel_dscp {9, "tunnel-dscp"};
-const Enum::YLeaf ActionOpcode::itag_dei {10, "itag-dei"};
-const Enum::YLeaf ActionOpcode::itag_cos {11, "itag-cos"};
-const Enum::YLeaf ActionOpcode::cos_imposition {12, "cos-imposition"};
-const Enum::YLeaf ActionOpcode::dei_imposition {13, "dei-imposition"};
-const Enum::YLeaf ActionOpcode::dei {14, "dei"};
-const Enum::YLeaf ActionOpcode::no_marking {15, "no-marking"};
-
-const Enum::YLeaf TbAlgorithm::inactive {0, "inactive"};
-const Enum::YLeaf TbAlgorithm::single {1, "single"};
-const Enum::YLeaf TbAlgorithm::single_rate_tcm {2, "single-rate-tcm"};
-const Enum::YLeaf TbAlgorithm::two_rate_tcm {3, "two-rate-tcm"};
-const Enum::YLeaf TbAlgorithm::mef_tcm {4, "mef-tcm"};
-const Enum::YLeaf TbAlgorithm::dummy {5, "dummy"};
+const Enum::YLeaf CacState::unknown {0, "unknown"};
+const Enum::YLeaf CacState::admit {1, "admit"};
+const Enum::YLeaf CacState::redirect {2, "redirect"};
+const Enum::YLeaf CacState::ubrl {3, "ubrl"};
 
 const Enum::YLeaf QosUnit::invalid {0, "invalid"};
 const Enum::YLeaf QosUnit::bytes {1, "bytes"};
@@ -16313,6 +16310,9 @@ const Enum::YLeaf QosUnit::packets {13, "packets"};
 const Enum::YLeaf QosUnit::cells {14, "cells"};
 const Enum::YLeaf QosUnit::percentage {15, "percentage"};
 const Enum::YLeaf QosUnit::ratio {16, "ratio"};
+
+const Enum::YLeaf PolicyState::active {0, "active"};
+const Enum::YLeaf PolicyState::suspended {1, "suspended"};
 
 
 }

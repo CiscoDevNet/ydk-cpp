@@ -1569,9 +1569,8 @@ class Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary : public y
         ydk::YLeaf lisp_eid_prefixes; //type: uint32
         ydk::YLeaf lisp_eid_valid_prefixes; //type: uint32
         ydk::YLeaf lisp_rloc_objects; //type: uint32
-        ydk::YLeaf number_routes_srv6_transit; //type: uint32
-        ydk::YLeaf number_routes_srv6_end; //type: uint32
         ydk::YLeaf number_of_sr_labels; //type: uint32
+        ydk::YLeaf ss_vxlan_ltep_ifh; //type: string
         ydk::YLeaf ss_drop_pl_count; //type: uint32
         class ExclusiveLoadSharingElement; //type: Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement
         class SharedLoadSharingElement; //type: Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement
@@ -1981,7 +1980,7 @@ class Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf log_index; //type: uint32
-        ydk::YLeaf frr_protocol_type; //type: FibBagProtocol
+        ydk::YLeaf frr_protocol_type; //type: FibFrrProtocolShow
         ydk::YLeaf frr_interface_name; //type: string
         ydk::YLeaf frr_prefix; //type: string
         ydk::YLeaf frr_switching_time; //type: uint32
@@ -2183,7 +2182,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_attr_is_tunnel; //type: boolean
         ydk::YLeaf si_attr_is_tunnel_srte; //type: boolean
         ydk::YLeaf si_attr_is_gre_tunnel; //type: boolean
-        ydk::YLeaf si_gre_ti; //type: uint64
+        ydk::YLeaf si_gre_ti; //type: uint32
         ydk::YLeaf si_gre_ti_flags; //type: uint32
         ydk::YLeaf si_gre_ti_refcnt; //type: uint32
         ydk::YLeaf si_gre_tos_propagate; //type: boolean
@@ -2191,7 +2190,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_nhinfo_ptr; //type: uint32
         ydk::YLeaf si_fnb_idb_ptr; //type: uint32
         ydk::YLeaf si_anc_ifh; //type: uint32
-        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint64
+        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint32
         ydk::YLeaf si_gre_dest_addr; //type: string
         ydk::YLeaf si_nhid; //type: uint32
         ydk::YLeaf si_upd_ts; //type: uint64
@@ -2346,10 +2345,8 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
 
         ydk::YLeaf type; //type: FibNhinfoExtBag
         class SnecdNhr; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-        class SnecdTep; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr> snecd_nhr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep> snecd_tep;
         
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_
 
@@ -2376,28 +2373,6 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-
-
-class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep : public ydk::Entity
-{
-    public:
-        SnecdTep();
-        ~SnecdTep();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nh_info_tep_type; //type: uint8
-        ydk::YLeaf is_tep_single_pass; //type: boolean
-
-}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
 
 class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress : public ydk::Entity
@@ -2451,7 +2426,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_attr_is_tunnel; //type: boolean
         ydk::YLeaf si_attr_is_tunnel_srte; //type: boolean
         ydk::YLeaf si_attr_is_gre_tunnel; //type: boolean
-        ydk::YLeaf si_gre_ti; //type: uint64
+        ydk::YLeaf si_gre_ti; //type: uint32
         ydk::YLeaf si_gre_ti_flags; //type: uint32
         ydk::YLeaf si_gre_ti_refcnt; //type: uint32
         ydk::YLeaf si_gre_tos_propagate; //type: boolean
@@ -2459,7 +2434,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_nhinfo_ptr; //type: uint32
         ydk::YLeaf si_fnb_idb_ptr; //type: uint32
         ydk::YLeaf si_anc_ifh; //type: uint32
-        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint64
+        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint32
         ydk::YLeaf si_gre_dest_addr; //type: string
         ydk::YLeaf si_nhid; //type: uint32
         ydk::YLeaf si_upd_ts; //type: uint64
@@ -2614,10 +2589,8 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
 
         ydk::YLeaf type; //type: FibNhinfoExtBag
         class SnecdNhr; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-        class SnecdTep; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr> snecd_nhr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep> snecd_tep;
         
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_
 
@@ -2644,28 +2617,6 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-
-
-class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep : public ydk::Entity
-{
-    public:
-        SnecdTep();
-        ~SnecdTep();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nh_info_tep_type; //type: uint8
-        ydk::YLeaf is_tep_single_pass; //type: boolean
-
-}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
 
 class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress : public ydk::Entity
@@ -2719,7 +2670,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_attr_is_tunnel; //type: boolean
         ydk::YLeaf si_attr_is_tunnel_srte; //type: boolean
         ydk::YLeaf si_attr_is_gre_tunnel; //type: boolean
-        ydk::YLeaf si_gre_ti; //type: uint64
+        ydk::YLeaf si_gre_ti; //type: uint32
         ydk::YLeaf si_gre_ti_flags; //type: uint32
         ydk::YLeaf si_gre_ti_refcnt; //type: uint32
         ydk::YLeaf si_gre_tos_propagate; //type: boolean
@@ -2727,7 +2678,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_nhinfo_ptr; //type: uint32
         ydk::YLeaf si_fnb_idb_ptr; //type: uint32
         ydk::YLeaf si_anc_ifh; //type: uint32
-        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint64
+        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint32
         ydk::YLeaf si_gre_dest_addr; //type: string
         ydk::YLeaf si_nhid; //type: uint32
         ydk::YLeaf si_upd_ts; //type: uint64
@@ -2882,10 +2833,8 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
 
         ydk::YLeaf type; //type: FibNhinfoExtBag
         class SnecdNhr; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-        class SnecdTep; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr> snecd_nhr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep> snecd_tep;
         
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_
 
@@ -2912,28 +2861,6 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-
-
-class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep : public ydk::Entity
-{
-    public:
-        SnecdTep();
-        ~SnecdTep();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nh_info_tep_type; //type: uint8
-        ydk::YLeaf is_tep_single_pass; //type: boolean
-
-}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
 
 class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress : public ydk::Entity
@@ -2987,7 +2914,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_attr_is_tunnel; //type: boolean
         ydk::YLeaf si_attr_is_tunnel_srte; //type: boolean
         ydk::YLeaf si_attr_is_gre_tunnel; //type: boolean
-        ydk::YLeaf si_gre_ti; //type: uint64
+        ydk::YLeaf si_gre_ti; //type: uint32
         ydk::YLeaf si_gre_ti_flags; //type: uint32
         ydk::YLeaf si_gre_ti_refcnt; //type: uint32
         ydk::YLeaf si_gre_tos_propagate; //type: boolean
@@ -2995,7 +2922,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_nhinfo_ptr; //type: uint32
         ydk::YLeaf si_fnb_idb_ptr; //type: uint32
         ydk::YLeaf si_anc_ifh; //type: uint32
-        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint64
+        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint32
         ydk::YLeaf si_gre_dest_addr; //type: string
         ydk::YLeaf si_nhid; //type: uint32
         ydk::YLeaf si_upd_ts; //type: uint64
@@ -3150,10 +3077,8 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
 
         ydk::YLeaf type; //type: FibNhinfoExtBag
         class SnecdNhr; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-        class SnecdTep; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr> snecd_nhr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep> snecd_tep;
         
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_
 
@@ -3180,28 +3105,6 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-
-
-class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep : public ydk::Entity
-{
-    public:
-        SnecdTep();
-        ~SnecdTep();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nh_info_tep_type; //type: uint8
-        ydk::YLeaf is_tep_single_pass; //type: boolean
-
-}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
 
 class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses : public ydk::Entity
@@ -3282,7 +3185,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_attr_is_tunnel; //type: boolean
         ydk::YLeaf si_attr_is_tunnel_srte; //type: boolean
         ydk::YLeaf si_attr_is_gre_tunnel; //type: boolean
-        ydk::YLeaf si_gre_ti; //type: uint64
+        ydk::YLeaf si_gre_ti; //type: uint32
         ydk::YLeaf si_gre_ti_flags; //type: uint32
         ydk::YLeaf si_gre_ti_refcnt; //type: uint32
         ydk::YLeaf si_gre_tos_propagate; //type: boolean
@@ -3290,7 +3193,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_nhinfo_ptr; //type: uint32
         ydk::YLeaf si_fnb_idb_ptr; //type: uint32
         ydk::YLeaf si_anc_ifh; //type: uint32
-        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint64
+        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint32
         ydk::YLeaf si_gre_dest_addr; //type: string
         ydk::YLeaf si_nhid; //type: uint32
         ydk::YLeaf si_upd_ts; //type: uint64
@@ -3445,10 +3348,8 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
 
         ydk::YLeaf type; //type: FibNhinfoExtBag
         class SnecdNhr; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-        class SnecdTep; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr> snecd_nhr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep> snecd_tep;
         
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_
 
@@ -3475,28 +3376,6 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-
-
-class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep : public ydk::Entity
-{
-    public:
-        SnecdTep();
-        ~SnecdTep();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nh_info_tep_type; //type: uint8
-        ydk::YLeaf is_tep_single_pass; //type: boolean
-
-}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
 
 class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses : public ydk::Entity
@@ -3577,7 +3456,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_attr_is_tunnel; //type: boolean
         ydk::YLeaf si_attr_is_tunnel_srte; //type: boolean
         ydk::YLeaf si_attr_is_gre_tunnel; //type: boolean
-        ydk::YLeaf si_gre_ti; //type: uint64
+        ydk::YLeaf si_gre_ti; //type: uint32
         ydk::YLeaf si_gre_ti_flags; //type: uint32
         ydk::YLeaf si_gre_ti_refcnt; //type: uint32
         ydk::YLeaf si_gre_tos_propagate; //type: boolean
@@ -3585,7 +3464,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf si_nhinfo_ptr; //type: uint32
         ydk::YLeaf si_fnb_idb_ptr; //type: uint32
         ydk::YLeaf si_anc_ifh; //type: uint32
-        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint64
+        ydk::YLeaf si_gre_ti_resolving_leafp; //type: uint32
         ydk::YLeaf si_gre_dest_addr; //type: string
         ydk::YLeaf si_nhid; //type: uint32
         ydk::YLeaf si_upd_ts; //type: uint64
@@ -3740,10 +3619,8 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
 
         ydk::YLeaf type; //type: FibNhinfoExtBag
         class SnecdNhr; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-        class SnecdTep; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr> snecd_nhr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep> snecd_tep;
         
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_
 
@@ -3770,28 +3647,6 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgre
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
-
-
-class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep : public ydk::Entity
-{
-    public:
-        SnecdTep();
-        ~SnecdTep();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nh_info_tep_type; //type: uint8
-        ydk::YLeaf is_tep_single_pass; //type: boolean
-
-}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdTep
 
 
 class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails : public ydk::Entity
@@ -3875,9 +3730,6 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefi
         ydk::YLeaf route_for_external_reach_linecard_flag; //type: boolean
         ydk::YLeaf route_source_not_preferred; //type: boolean
         ydk::YLeaf route_is_sr_flag; //type: boolean
-        ydk::YLeaf route_is_srv6_transit; //type: boolean
-        ydk::YLeaf route_is_srv6_end; //type: boolean
-        ydk::YLeaf srv6_operation_type; //type: string
         class DetailFibEntryInformation; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation
         class FibEntryPath; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath
         class ExtensionObject; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject
@@ -4243,153 +4095,210 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefi
         ydk::YLeaf next_hop_index; //type: uint32
         ydk::YLeaf parent_interface_handle; //type: string
         ydk::YLeaf recursionvia_len; //type: uint8
-        class NextFibEntryPath; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::NextFibEntryPath
         class MoreDetailAboutPath; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath
         class MplsInformationForPath; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath
-        class Srv6InformationForPath; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::Srv6InformationForPath
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::NextFibEntryPath> next_fib_entry_path;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath> more_detail_about_path;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath> mpls_information_for_path;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::Srv6InformationForPath> srv6_information_for_path;
         
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath
 
-class FibRouteSource : public ydk::Enum
+
+class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf lsd;
-        static const ydk::Enum::YLeaf rib;
-        static const ydk::Enum::YLeaf mrib;
+        MoreDetailAboutPath();
+        ~MoreDetailAboutPath();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class FibProtocol : public ydk::Enum
+        ydk::YLeaf ip_address_to_recurse; //type: string
+        ydk::YLeaf label_to_recurse; //type: uint32
+        ydk::YLeaf detail_next_hop_prefix; //type: string
+        ydk::YLeaf next_hop_mask_length; //type: uint8
+        ydk::YLeaf interface_associated_path; //type: string
+        ydk::YLeaf next_hop_interface; //type: string
+        ydk::YLeaf next_hop_vrf; //type: string
+        ydk::YLeaf tunnle_endpoint_id; //type: uint32
+        ydk::YLeaf lisprlocid; //type: uint32
+        ydk::YLeaf number_of_dependencies_this_path; //type: uint32
+        ydk::YLeaf robin_reset_value; //type: uint8
+        ydk::YLeaf recurse_prefix_object; //type: boolean
+        ydk::YLeaf next_prefix_recursion; //type: string
+        ydk::YLeaf next_prefix_length; //type: uint8
+        ydk::YLeaf recurse_prefix_object2; //type: boolean
+        ydk::YLeaf next_prefix_recursion2; //type: string
+        ydk::YLeaf next_prefix_length2; //type: uint8
+        ydk::YLeaf detail_fib_adjacency_type; //type: FibAdjacencyShow
+        ydk::YLeaf current_path_flag; //type: boolean
+        ydk::YLeaf recursive_path_information; //type: boolean
+        ydk::YLeaf external_adjacency; //type: boolean
+        ydk::YLeaf fib_path_nh_information_type; //type: FibNeh
+        ydk::YLeaf fib_path_nh_information_type_special; //type: FibNehSpecial
+        ydk::YLeaf weight_of_path; //type: uint32
+        ydk::YLeaf tunnel_class; //type: uint8
+        ydk::YLeaf tunnel_is_forward_class; //type: boolean
+        class SpdIpencap; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap
+        class NextNextHop; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop
+
+        ydk::YList spd_ipencap;
+        ydk::YList next_next_hop;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf mpls;
+        SpdIpencap();
+        ~SpdIpencap();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class FibafiProto : public ydk::Enum
+        ydk::YLeaf ip_encap_hdr_count; //type: uint8
+        ydk::YLeaf ip_encap_locks; //type: uint32
+        ydk::YLeaf ip_encap_transport_tbl; //type: uint32
+        ydk::YLeaf ipe_transport_vrf_name; //type: string
+        ydk::YLeaf ip_encap_transport_af; //type: uint32
+        ydk::YLeaf ip_encap_payload_af; //type: uint32
+        ydk::YLeaf ip_encap_payload_mtu; //type: uint16
+        ydk::YLeaf ip_encap_parent; //type: uint32
+        ydk::YLeaf ip_encap_parent_type; //type: uint32
+        class IpEncapHdr; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr
+
+        ydk::YList ip_encap_hdr;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv4_mpls;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf ipv6_mpls;
+        IpEncapHdr();
+        ~IpEncapHdr();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class FibllcEntry : public ydk::Enum
+        ydk::YLeaf ip_encap_hdr_type; //type: FibShIpencapHdr
+        ydk::YLeaf ip_encap_hdrp; //type: string
+        ydk::YLeaf ip_encap_hdr_dyn; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf xc;
-        static const ydk::Enum::YLeaf pfx;
+        NextNextHop();
+        ~NextNextHop();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class FibnhInfoRepl : public ydk::Enum
+        ydk::YLeaf next_next_hop_index; //type: uint8
+        ydk::YLeaf next_next_hop_prefix; //type: string
+        ydk::YLeaf next_next_hop_interface; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf fib_nh_repl_none;
-        static const ydk::Enum::YLeaf fib_nh_repl_rsvpte;
-        static const ydk::Enum::YLeaf fib_nh_repl_sr_mpls;
-        static const ydk::Enum::YLeaf fib_nh_repl_bm;
+        MplsInformationForPath();
+        ~MplsInformationForPath();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class Fibfrr : public ydk::Enum
+        ydk::YLeaf local_lable; //type: uint32
+        ydk::YLeaf recursive_fwd_chain; //type: boolean
+        ydk::YLeaf number_of_igp_paths; //type: uint32
+        ydk::YLeaf remote_backup; //type: boolean
+        class RecursiveLblStack; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack
+        class IgpLabelStackArray; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray
+
+        ydk::YList recursive_lbl_stack;
+        ydk::YList igp_label_stack_array;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf fib_te_frr_node;
-        static const ydk::Enum::YLeaf fib_te_frr_intf;
-        static const ydk::Enum::YLeaf fib_te_frr_protected_nh;
-        static const ydk::Enum::YLeaf fib_te_frr_backup_nh;
-        static const ydk::Enum::YLeaf fib_per_link_frr_protected_nh;
-        static const ydk::Enum::YLeaf fib_per_link_frr_backup_nh;
-        static const ydk::Enum::YLeaf fib_prefix_frr_protected_nh;
-        static const ydk::Enum::YLeaf fib_prefix_frr_backup_nh;
-        static const ydk::Enum::YLeaf fib_pic_frr_protected_nh;
-        static const ydk::Enum::YLeaf fib_pic_frr_backup_nh;
+        RecursiveLblStack();
+        ~RecursiveLblStack();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class FibLink : public ydk::Enum
+        ydk::YLeaf entry; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack
+
+class MgmtFibMplsFrrState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf link_ipv4;
-        static const ydk::Enum::YLeaf link_ipv6;
-        static const ydk::Enum::YLeaf link_mpls;
+        static const ydk::Enum::YLeaf partial;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf ready;
+        static const ydk::Enum::YLeaf complete;
+        static const ydk::Enum::YLeaf any;
 
-};
-
-class Mplseos : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf eos0;
-        static const ydk::Enum::YLeaf eos1;
-
-};
-
-class FibMplsLlcEntryBag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_xc;
-        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_pfx;
-        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_lsm;
-        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_max;
-
-};
-
-class FibRpfMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fib_rpf_mode_strict;
-        static const ydk::Enum::YLeaf fib_rpf_mode_loose;
-        static const ydk::Enum::YLeaf fib_rpf_mode_unknown;
-
-};
-
-class FibidbOper : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fibidb_none;
-        static const ydk::Enum::YLeaf fibidb_create;
-        static const ydk::Enum::YLeaf fibidb_delete;
-        static const ydk::Enum::YLeaf fibidb_modify;
-        static const ydk::Enum::YLeaf fibidb_max;
-
-};
-
-class FibShTblFibExtBag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf leaf_extension;
-
-};
-
-class FibUpdatePathLfaProtection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_lfa_protected;
-        static const ydk::Enum::YLeaf local_lfa_protected;
-        static const ydk::Enum::YLeaf remote_lfa_protected;
-        static const ydk::Enum::YLeaf ti_lfa_protected;
-
-};
-
-class FibShIpencapHdr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fib_sh_ip_encap_none;
-        static const ydk::Enum::YLeaf fib_sh_ip_encap_ip4;
-        static const ydk::Enum::YLeaf fib_sh_ip_encap_ip6;
-        static const ydk::Enum::YLeaf fib_sh_ip_encap_udp;
-        static const ydk::Enum::YLeaf fib_sh_ip_encap_lisp;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "partial") return 0;
+            if (name == "active") return 1;
+            if (name == "ready") return 2;
+            if (name == "complete") return 3;
+            if (name == "any") return 4;
+            return -1;
+        }
 };
 
 class FibNehSpecial : public ydk::Enum
@@ -4407,15 +4316,54 @@ class FibNehSpecial : public ydk::Enum
         static const ydk::Enum::YLeaf nh_lookup;
         static const ydk::Enum::YLeaf nh_max_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nh-not-found") return 0;
+            if (name == "nh-null0") return 1;
+            if (name == "nh-punt") return 2;
+            if (name == "nh-drop") return 3;
+            if (name == "nh-glean") return 4;
+            if (name == "nh-receive") return 5;
+            if (name == "nh-broadcast") return 6;
+            if (name == "nh-external") return 7;
+            if (name == "nh-lisp") return 8;
+            if (name == "nh-lookup") return 9;
+            if (name == "nh-max-type") return 10;
+            return -1;
+        }
 };
 
-class FibNeh : public ydk::Enum
+class Proto : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nh_local;
-        static const ydk::Enum::YLeaf nh_remote;
-        static const ydk::Enum::YLeaf nh_special;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "mpls") return 2;
+            return -1;
+        }
+};
+
+class FibShIpencapHdr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fib_sh_ip_encap_none;
+        static const ydk::Enum::YLeaf fib_sh_ip_encap_ip4;
+        static const ydk::Enum::YLeaf fib_sh_ip_encap_ip6;
+        static const ydk::Enum::YLeaf fib_sh_ip_encap_udp;
+        static const ydk::Enum::YLeaf fib_sh_ip_encap_lisp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-sh-ip-encap-none") return 0;
+            if (name == "fib-sh-ip-encap-ip4") return 1;
+            if (name == "fib-sh-ip-encap-ip6") return 2;
+            if (name == "fib-sh-ip-encap-udp") return 3;
+            if (name == "fib-sh-ip-encap-lisp") return 4;
+            return -1;
+        }
 };
 
 class FibAdjacencyShow : public ydk::Enum
@@ -4432,6 +4380,180 @@ class FibAdjacencyShow : public ydk::Enum
         static const ydk::Enum::YLeaf fib_adjacency_lisp;
         static const ydk::Enum::YLeaf fib_adjacency_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-adjacency-normal") return 0;
+            if (name == "fib-adjacency-null") return 1;
+            if (name == "fib-adjacency-punt") return 2;
+            if (name == "fib-adjacency-drop") return 3;
+            if (name == "fib-adjacency-glean") return 4;
+            if (name == "fib-adjacency-discard") return 5;
+            if (name == "fib-adjacency-broadcast") return 6;
+            if (name == "fib-adjacency-external") return 7;
+            if (name == "fib-adjacency-lisp") return 8;
+            if (name == "fib-adjacency-unknown") return 9;
+            return -1;
+        }
+};
+
+class FibNhinfoExtBag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf replicated_nh_info;
+        static const ydk::Enum::YLeaf shared_nh_info;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "replicated-nh-info") return 0;
+            if (name == "shared-nh-info") return 1;
+            return -1;
+        }
+};
+
+class SsLbaState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf l3;
+        static const ydk::Enum::YLeaf l4;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "l3") return 0;
+            if (name == "l4") return 1;
+            return -1;
+        }
+};
+
+class FibRouteSource : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lsd;
+        static const ydk::Enum::YLeaf rib;
+        static const ydk::Enum::YLeaf mrib;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "lsd") return 5;
+            if (name == "rib") return 7;
+            if (name == "mrib") return 13;
+            return -1;
+        }
+};
+
+class FibMplsLlcEntryBag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_xc;
+        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_pfx;
+        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_lsm;
+        static const ydk::Enum::YLeaf fib_mpls_llc_bag_type_max;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-mpls-llc-bag-type-xc") return 1;
+            if (name == "fib-mpls-llc-bag-type-pfx") return 2;
+            if (name == "fib-mpls-llc-bag-type-lsm") return 3;
+            if (name == "fib-mpls-llc-bag-type-max") return 4;
+            return -1;
+        }
+};
+
+class FibRpfMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fib_rpf_mode_strict;
+        static const ydk::Enum::YLeaf fib_rpf_mode_loose;
+        static const ydk::Enum::YLeaf fib_rpf_mode_unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-rpf-mode-strict") return 0;
+            if (name == "fib-rpf-mode-loose") return 1;
+            if (name == "fib-rpf-mode-unknown") return 2;
+            return -1;
+        }
+};
+
+class FibafiProto : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv4_mpls;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv6_mpls;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv4-mpls") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "ipv6-mpls") return 3;
+            return -1;
+        }
+};
+
+class Mplseos : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf eos0;
+        static const ydk::Enum::YLeaf eos1;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "eos0") return 0;
+            if (name == "eos1") return 1;
+            return -1;
+        }
+};
+
+class FibFrrProtocolShow : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf frr_protocol_ipv4;
+        static const ydk::Enum::YLeaf frr_protocol_ipv6;
+        static const ydk::Enum::YLeaf frr_protocol_mpls;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "frr-protocol-ipv4") return 0;
+            if (name == "frr-protocol-ipv6") return 1;
+            if (name == "frr-protocol-mpls") return 2;
+            return -1;
+        }
+};
+
+class FibShTblFibExtBag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf leaf_extension;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "leaf-extension") return 1;
+            return -1;
+        }
+};
+
+class FibLink : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link_ipv4;
+        static const ydk::Enum::YLeaf link_ipv6;
+        static const ydk::Enum::YLeaf link_mpls;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "link-ipv4") return 0;
+            if (name == "link-ipv6") return 1;
+            if (name == "link-mpls") return 2;
+            return -1;
+        }
+};
+
+class FibUpdatePathLfaProtection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_lfa_protected;
+        static const ydk::Enum::YLeaf local_lfa_protected;
+        static const ydk::Enum::YLeaf remote_lfa_protected;
+        static const ydk::Enum::YLeaf ti_lfa_protected;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-lfa-protected") return 0;
+            if (name == "local-lfa-protected") return 1;
+            if (name == "remote-lfa-protected") return 2;
+            if (name == "ti-lfa-protected") return 3;
+            return -1;
+        }
 };
 
 class FibLoadshareShow : public ydk::Enum
@@ -4441,32 +4563,40 @@ class FibLoadshareShow : public ydk::Enum
         static const ydk::Enum::YLeaf fib_load_share_per_packet;
         static const ydk::Enum::YLeaf fib_load_share_dest_sharing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-load-share-none") return 0;
+            if (name == "fib-load-share-per-packet") return 1;
+            if (name == "fib-load-share-dest-sharing") return 2;
+            return -1;
+        }
 };
 
-class FibNhinfoExtBag : public ydk::Enum
+class FibllcEntry : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf replicated_nh_info;
-        static const ydk::Enum::YLeaf shared_nh_info;
-        static const ydk::Enum::YLeaf tunnel_endpoint;
+        static const ydk::Enum::YLeaf xc;
+        static const ydk::Enum::YLeaf pfx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "xc") return 1;
+            if (name == "pfx") return 2;
+            return -1;
+        }
 };
 
-class FibBagProtocol : public ydk::Enum
+class FibNeh : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf nh_local;
+        static const ydk::Enum::YLeaf nh_remote;
+        static const ydk::Enum::YLeaf nh_special;
 
-};
-
-class SsLbaState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf l3;
-        static const ydk::Enum::YLeaf l4;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "nh-local") return 0;
+            if (name == "nh-remote") return 1;
+            if (name == "nh-special") return 2;
+            return -1;
+        }
 };
 
 class NextHop : public ydk::Enum
@@ -4476,26 +4606,12 @@ class NextHop : public ydk::Enum
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf special;
 
-};
-
-class Proto : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf mpls;
-
-};
-
-class MgmtFibMplsFrrState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf partial;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf ready;
-        static const ydk::Enum::YLeaf complete;
-        static const ydk::Enum::YLeaf any;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "tx") return 0;
+            if (name == "rx") return 1;
+            if (name == "special") return 2;
+            return -1;
+        }
 };
 
 class MgmtFibMplsLspRole : public ydk::Enum
@@ -4504,6 +4620,91 @@ class MgmtFibMplsLspRole : public ydk::Enum
         static const ydk::Enum::YLeaf head;
         static const ydk::Enum::YLeaf midpoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "head") return 0;
+            if (name == "midpoint") return 1;
+            return -1;
+        }
+};
+
+class FibProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf mpls;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "mpls") return 2;
+            return -1;
+        }
+};
+
+class FibnhInfoRepl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fib_nh_repl_none;
+        static const ydk::Enum::YLeaf fib_nh_repl_rsvpte;
+        static const ydk::Enum::YLeaf fib_nh_repl_sr_mpls;
+        static const ydk::Enum::YLeaf fib_nh_repl_bm;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-nh-repl-none") return 0;
+            if (name == "fib-nh-repl-rsvpte") return 1;
+            if (name == "fib-nh-repl-sr-mpls") return 2;
+            if (name == "fib-nh-repl-bm") return 3;
+            return -1;
+        }
+};
+
+class FibidbOper : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fibidb_none;
+        static const ydk::Enum::YLeaf fibidb_create;
+        static const ydk::Enum::YLeaf fibidb_delete;
+        static const ydk::Enum::YLeaf fibidb_modify;
+        static const ydk::Enum::YLeaf fibidb_max;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fibidb-none") return 0;
+            if (name == "fibidb-create") return 1;
+            if (name == "fibidb-delete") return 2;
+            if (name == "fibidb-modify") return 3;
+            if (name == "fibidb-max") return 4;
+            return -1;
+        }
+};
+
+class Fibfrr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fib_te_frr_node;
+        static const ydk::Enum::YLeaf fib_te_frr_intf;
+        static const ydk::Enum::YLeaf fib_te_frr_protected_nh;
+        static const ydk::Enum::YLeaf fib_te_frr_backup_nh;
+        static const ydk::Enum::YLeaf fib_per_link_frr_protected_nh;
+        static const ydk::Enum::YLeaf fib_per_link_frr_backup_nh;
+        static const ydk::Enum::YLeaf fib_prefix_frr_protected_nh;
+        static const ydk::Enum::YLeaf fib_prefix_frr_backup_nh;
+        static const ydk::Enum::YLeaf fib_pic_frr_protected_nh;
+        static const ydk::Enum::YLeaf fib_pic_frr_backup_nh;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fib-te-frr-node") return 0;
+            if (name == "fib-te-frr-intf") return 1;
+            if (name == "fib-te-frr-protected-nh") return 2;
+            if (name == "fib-te-frr-backup-nh") return 3;
+            if (name == "fib-per-link-frr-protected-nh") return 4;
+            if (name == "fib-per-link-frr-backup-nh") return 5;
+            if (name == "fib-prefix-frr-protected-nh") return 6;
+            if (name == "fib-prefix-frr-backup-nh") return 7;
+            if (name == "fib-pic-frr-protected-nh") return 8;
+            if (name == "fib-pic-frr-backup-nh") return 9;
+            return -1;
+        }
 };
 
 

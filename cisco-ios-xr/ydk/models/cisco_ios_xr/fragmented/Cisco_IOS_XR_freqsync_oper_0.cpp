@@ -19849,17 +19849,10 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelD
     return false;
 }
 
-const Enum::YLeaf FsyncStream::local {1, "local"};
-const Enum::YLeaf FsyncStream::selection_point {2, "selection-point"};
-
-const Enum::YLeaf FsyncSource::ethernet {1, "ethernet"};
-const Enum::YLeaf FsyncSource::sonet {2, "sonet"};
-const Enum::YLeaf FsyncSource::clock_ {3, "clock"};
-const Enum::YLeaf FsyncSource::internal {4, "internal"};
-const Enum::YLeaf FsyncSource::ptp {5, "ptp"};
-const Enum::YLeaf FsyncSource::satellite_access {6, "satellite-access"};
-const Enum::YLeaf FsyncSource::ntp {7, "ntp"};
-const Enum::YLeaf FsyncSource::gnss {8, "gnss"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_down {0, "damping-state-down"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_coming_up {1, "damping-state-coming-up"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_up {2, "damping-state-up"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_going_down {3, "damping-state-going-down"};
 
 const Enum::YLeaf FsyncBagStreamState::stream_invalid {0, "stream-invalid"};
 const Enum::YLeaf FsyncBagStreamState::stream_unqualified {1, "stream-unqualified"};
@@ -19872,74 +19865,10 @@ const Enum::YLeaf FsyncBagStreamState::stream_failed {7, "stream-failed"};
 const Enum::YLeaf FsyncBagStreamState::stream_unmonitored {8, "stream-unmonitored"};
 const Enum::YLeaf FsyncBagStreamState::stream_error {9, "stream-error"};
 
-const Enum::YLeaf FsyncBagStreamInput::invalid_input {0, "invalid-input"};
-const Enum::YLeaf FsyncBagStreamInput::source_input {1, "source-input"};
-const Enum::YLeaf FsyncBagStreamInput::selection_point_input {2, "selection-point-input"};
-
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitst1 {0, "clock-class-bitst1"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitse1 {1, "clock-class-bitse1"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits2m {2, "clock-class-bits2m"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits6m {3, "clock-class-bits6m"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits64k {4, "clock-class-bits64k"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_dti {5, "clock-class-dti"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_gps {6, "clock-class-gps"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_chassis_sync {7, "clock-class-chassis-sync"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitsj1 {8, "clock-class-bitsj1"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_unknown {255, "clock-class-unknown"};
-
-const Enum::YLeaf FsyncBagSourceState::source_state_unknown {0, "source-state-unknown"};
-const Enum::YLeaf FsyncBagSourceState::source_state_up {1, "source-state-up"};
-const Enum::YLeaf FsyncBagSourceState::source_state_down {2, "source-state-down"};
-const Enum::YLeaf FsyncBagSourceState::source_state_unavailable {3, "source-state-unavailable"};
-
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_down {1808240398, "peer-down"};
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_up {1808240399, "peer-up"};
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_timed_out {1808240400, "peer-timed-out"};
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_unknown {1808240401, "peer-unknown"};
-
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_invalid {0, "option2-generation2-invalid"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_do_not_use {1, "option2-generation2-do-not-use"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_failed {2, "option2-generation2-failed"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_none {3, "option2-generation2-none"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2prs {30, "option2-generation2prs"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2stu {31, "option2-generation2stu"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum2 {32, "option2-generation2-stratum2"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3 {33, "option2-generation2-stratum3"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2tnc {34, "option2-generation2tnc"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3e {35, "option2-generation2-stratum3e"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2smc {36, "option2-generation2smc"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum4 {37, "option2-generation2-stratum4"};
-
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_invalid {0, "option2-generation1-invalid"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_do_not_use {1, "option2-generation1-do-not-use"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_failed {2, "option2-generation1-failed"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_none {3, "option2-generation1-none"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1prs {20, "option2-generation1prs"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1stu {21, "option2-generation1stu"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum2 {22, "option2-generation1-stratum2"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum3 {23, "option2-generation1-stratum3"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1smc {24, "option2-generation1smc"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum4 {25, "option2-generation1-stratum4"};
-
-const Enum::YLeaf FsyncBagQlO1Value::option1_invalid {0, "option1-invalid"};
-const Enum::YLeaf FsyncBagQlO1Value::option1_do_not_use {1, "option1-do-not-use"};
-const Enum::YLeaf FsyncBagQlO1Value::option1_failed {2, "option1-failed"};
-const Enum::YLeaf FsyncBagQlO1Value::option1_none {3, "option1-none"};
-const Enum::YLeaf FsyncBagQlO1Value::option1prc {10, "option1prc"};
-const Enum::YLeaf FsyncBagQlO1Value::option1ssu_a {11, "option1ssu-a"};
-const Enum::YLeaf FsyncBagQlO1Value::option1ssu_b {12, "option1ssu-b"};
-const Enum::YLeaf FsyncBagQlO1Value::option1sec {13, "option1sec"};
-
-const Enum::YLeaf FsyncBagQlOption::no_quality_level_option {0, "no-quality-level-option"};
-const Enum::YLeaf FsyncBagQlOption::option1 {1, "option1"};
-const Enum::YLeaf FsyncBagQlOption::option2_generation1 {2, "option2-generation1"};
-const Enum::YLeaf FsyncBagQlOption::option2_generation2 {3, "option2-generation2"};
-const Enum::YLeaf FsyncBagQlOption::invalid_quality_level_option {4, "invalid-quality-level-option"};
-
-const Enum::YLeaf FsyncBagDampingState::damping_state_down {0, "damping-state-down"};
-const Enum::YLeaf FsyncBagDampingState::damping_state_coming_up {1, "damping-state-coming-up"};
-const Enum::YLeaf FsyncBagDampingState::damping_state_up {2, "damping-state-up"};
-const Enum::YLeaf FsyncBagDampingState::damping_state_going_down {3, "damping-state-going-down"};
 
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
@@ -19961,8 +19890,59 @@ const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-opera
 const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
 const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
 
+const Enum::YLeaf FsyncBagStreamInput::invalid_input {0, "invalid-input"};
+const Enum::YLeaf FsyncBagStreamInput::source_input {1, "source-input"};
+const Enum::YLeaf FsyncBagStreamInput::selection_point_input {2, "selection-point-input"};
+
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_invalid {0, "option2-generation2-invalid"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_do_not_use {1, "option2-generation2-do-not-use"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_failed {2, "option2-generation2-failed"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_none {3, "option2-generation2-none"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2prs {30, "option2-generation2prs"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2stu {31, "option2-generation2stu"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum2 {32, "option2-generation2-stratum2"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3 {33, "option2-generation2-stratum3"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2tnc {34, "option2-generation2tnc"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3e {35, "option2-generation2-stratum3e"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2smc {36, "option2-generation2smc"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum4 {37, "option2-generation2-stratum4"};
+
+const Enum::YLeaf FsyncBagQlOption::no_quality_level_option {0, "no-quality-level-option"};
+const Enum::YLeaf FsyncBagQlOption::option1 {1, "option1"};
+const Enum::YLeaf FsyncBagQlOption::option2_generation1 {2, "option2-generation1"};
+const Enum::YLeaf FsyncBagQlOption::option2_generation2 {3, "option2-generation2"};
+const Enum::YLeaf FsyncBagQlOption::invalid_quality_level_option {4, "invalid-quality-level-option"};
+
+const Enum::YLeaf FsyncBagSourceState::source_state_unknown {0, "source-state-unknown"};
+const Enum::YLeaf FsyncBagSourceState::source_state_up {1, "source-state-up"};
+const Enum::YLeaf FsyncBagSourceState::source_state_down {2, "source-state-down"};
+const Enum::YLeaf FsyncBagSourceState::source_state_unavailable {3, "source-state-unavailable"};
+
 const Enum::YLeaf FsyncBagForwardtraceNode::forward_trace_node_selection_point {0, "forward-trace-node-selection-point"};
 const Enum::YLeaf FsyncBagForwardtraceNode::forward_trace_node_source {1, "forward-trace-node-source"};
+
+const Enum::YLeaf FsyncStream::local {1, "local"};
+const Enum::YLeaf FsyncStream::selection_point {2, "selection-point"};
+
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitst1 {0, "clock-class-bitst1"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitse1 {1, "clock-class-bitse1"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits2m {2, "clock-class-bits2m"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits6m {3, "clock-class-bits6m"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits64k {4, "clock-class-bits64k"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_dti {5, "clock-class-dti"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_gps {6, "clock-class-gps"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_chassis_sync {7, "clock-class-chassis-sync"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitsj1 {8, "clock-class-bitsj1"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_unknown {255, "clock-class-unknown"};
+
+const Enum::YLeaf FsyncBagQlO1Value::option1_invalid {0, "option1-invalid"};
+const Enum::YLeaf FsyncBagQlO1Value::option1_do_not_use {1, "option1-do-not-use"};
+const Enum::YLeaf FsyncBagQlO1Value::option1_failed {2, "option1-failed"};
+const Enum::YLeaf FsyncBagQlO1Value::option1_none {3, "option1-none"};
+const Enum::YLeaf FsyncBagQlO1Value::option1prc {10, "option1prc"};
+const Enum::YLeaf FsyncBagQlO1Value::option1ssu_a {11, "option1ssu-a"};
+const Enum::YLeaf FsyncBagQlO1Value::option1ssu_b {12, "option1ssu-b"};
+const Enum::YLeaf FsyncBagQlO1Value::option1sec {13, "option1sec"};
 
 const Enum::YLeaf FsyncBagSourceClass::invalid_source {0, "invalid-source"};
 const Enum::YLeaf FsyncBagSourceClass::ethernet_interface_source {1, "ethernet-interface-source"};
@@ -19973,6 +19953,25 @@ const Enum::YLeaf FsyncBagSourceClass::ptp_source {5, "ptp-source"};
 const Enum::YLeaf FsyncBagSourceClass::satellite_access_interface_source {6, "satellite-access-interface-source"};
 const Enum::YLeaf FsyncBagSourceClass::ntp_source {7, "ntp-source"};
 const Enum::YLeaf FsyncBagSourceClass::gnss_receiver {8, "gnss-receiver"};
+
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_invalid {0, "option2-generation1-invalid"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_do_not_use {1, "option2-generation1-do-not-use"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_failed {2, "option2-generation1-failed"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_none {3, "option2-generation1-none"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1prs {20, "option2-generation1prs"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1stu {21, "option2-generation1stu"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum2 {22, "option2-generation1-stratum2"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum3 {23, "option2-generation1-stratum3"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1smc {24, "option2-generation1smc"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum4 {25, "option2-generation1-stratum4"};
+
+const Enum::YLeaf FsyncSource::ethernet {1, "ethernet"};
+const Enum::YLeaf FsyncSource::sonet {2, "sonet"};
+const Enum::YLeaf FsyncSource::clock_ {3, "clock"};
+const Enum::YLeaf FsyncSource::internal {4, "internal"};
+const Enum::YLeaf FsyncSource::ptp {5, "ptp"};
+const Enum::YLeaf FsyncSource::satellite_access {6, "satellite-access"};
+const Enum::YLeaf FsyncSource::ntp {7, "ntp"};
 
 
 }

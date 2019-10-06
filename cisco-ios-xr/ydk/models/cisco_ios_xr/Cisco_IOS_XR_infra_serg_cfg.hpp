@@ -95,7 +95,6 @@ class SessionRedundancy::Groups::Group : public ydk::Entity
         ydk::YLeaf access_tracking_object; //type: string
         ydk::YLeaf preferred_role; //type: SessionRedundancyGroupRole
         ydk::YLeaf hold_timer; //type: uint32
-        ydk::YLeaf mode_active; //type: empty
         class Peer; //type: SessionRedundancy::Groups::Group::Peer
         class RevertiveTimer; //type: SessionRedundancy::Groups::Group::RevertiveTimer
         class InterfaceList; //type: SessionRedundancy::Groups::Group::InterfaceList
@@ -385,20 +384,30 @@ class SessionRedundancy::RevertiveTimer : public ydk::Entity
 
 }; // SessionRedundancy::RevertiveTimer
 
-class SessionRedundancyGroupRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
 class SergAddrFamily : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 2;
+            if (name == "ipv6") return 10;
+            return -1;
+        }
+};
+
+class SessionRedundancyGroupRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "master") return 1;
+            if (name == "slave") return 2;
+            return -1;
+        }
 };
 
 

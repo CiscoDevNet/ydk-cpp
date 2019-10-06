@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Codec &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../index.html"/>
+        <link rel="up" title="YDK Path API" href="path.html"/>
+        <link rel="next" title="ModelProvider" href="model_provider.html"/>
+        <link rel="prev" title="Capability" href="capability.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-nodes">Path API Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-errors">Path API Errors</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="path.html#path-api">Path API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="capability.html">Capability</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">Codec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model_provider.html">ModelProvider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="repository.html">Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc.html">Rpc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html">Path API types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_service.html">ValidationService</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>Codec</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="codec">
+<span id="ref-codecservice"></span><h1>Codec<a class="headerlink" href="#codec" title="Permalink to this headline">¶</a></h1>
+<p>Codec class is part of YDK path API, which operates on generic path-based YANG data nodes.</p>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path5CodecE">
+<span id="ydk::path::Codec"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">Codec</code><a class="headerlink" href="#_CPPv2N3ydk4path5CodecE" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="function">
+<dt id="_CPPv2N3ydk4path5Codec6encodeEKNSt10unique_ptrI8DataNodeEE14EncodingFormatb">
+<span id="ydk::path::Codec::encode__std::unique_ptr:DataNode:C.EncodingFormat.b"></span><em class="property">virtual</em> std::string <code class="descclassname"></code><code class="descname">encode</code><span class="sig-paren">(</span><em class="property">const</em> std::unique_ptr&lt;<a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode">DataNode</a>&gt; <em>datanode</em>, <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormatE" title="ydk::EncodingFormat">EncodingFormat</a> <em>format</em>, bool <em>pretty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path5Codec6encodeEKNSt10unique_ptrI8DataNodeEE14EncodingFormatb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode the given DataNode Tree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>datanode</strong> &#8211; The <a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> to encode.</li>
+<li><strong>format</strong> &#8211; format to encode to, either <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat4JSONE" title="ydk::EncodingFormat::JSON"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">JSON</span></code></a> or <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat3XMLE" title="ydk::EncodingFormat::XML"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">XML</span></code></a>.</li>
+<li><strong>pretty</strong> &#8211; The output is indented for human consumption, if pretty is <code class="docutils literal"><span class="pre">true</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The encoded string.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a>, if errors appear during encoding.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path5Codec6encodeENSt6vectorIP8DataNodeEE14EncodingFormatb">
+<span id="ydk::path::Codec::encode__std::vector:DataNodeP:.EncodingFormat.b"></span><em class="property">virtual</em> std::string <code class="descclassname"></code><code class="descname">encode</code><span class="sig-paren">(</span>std::vector&lt;<a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode">DataNode</a> *&gt; <em>data_nodes</em>, <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormatE" title="ydk::EncodingFormat">EncodingFormat</a> <em>format</em>, bool <em>pretty</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path5Codec6encodeENSt6vectorIP8DataNodeEE14EncodingFormatb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode multiple DataNodes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_nodes</strong> &#8211; An instance of <strong>std::vector&lt;DataNode*&gt;</strong> class, which contains one or more data nodes.</li>
+<li><strong>format</strong> &#8211; format to encode to, either <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat4JSONE" title="ydk::EncodingFormat::JSON"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">JSON</span></code></a> or <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat3XMLE" title="ydk::EncodingFormat::XML"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">XML</span></code></a>.</li>
+<li><strong>pretty</strong> &#8211; The output is indented for human consumption. if <strong>pretty</strong> is <code class="docutils literal"><span class="pre">true</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The encoded string.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a>, errors appear during encoding.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path5Codec6decodeERK14RootSchemaNodeRKNSt6stringE6Format">
+<span id="ydk::path::Codec::decode__RootSchemaNodeCR.ssCR.Format"></span>std::shared_ptr&lt;<a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode">DataNode</a>&gt; <code class="descclassname"></code><code class="descname">decode</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode">RootSchemaNode</a> &amp;<em>root_schema</em>, <em class="property">const</em> std::string &amp;<em>payload</em>, Format <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path5Codec6decodeERK14RootSchemaNodeRKNSt6stringE6Format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decode the buffer to return a DataNode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>root_schema</strong> &#8211; The root schema to use.</li>
+<li><strong>payload</strong> &#8211; The string representation of the <a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a>.</li>
+<li><strong>format</strong> &#8211; Format of the <strong>payload</strong>: either <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat4JSONE" title="ydk::EncodingFormat::JSON"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">JSON</span></code></a> or <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat3XMLE" title="ydk::EncodingFormat::XML"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">XML</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The <a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> instance or <code class="docutils literal"><span class="pre">nullptr</span></code> in case of error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a>, if errors appear during decoding.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path5Codec17decode_rpc_outputER14RootSchemaNodeRKNSt6stringERKNSt6stringE14EncodingFormat">
+<span id="ydk::path::Codec::decode_rpc_output__RootSchemaNodeR.ssCR.ssCR.EncodingFormat"></span>std::shared_ptr&lt;<a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode">DataNode</a>&gt; <code class="descclassname"></code><code class="descname">decode_rpc_output</code><span class="sig-paren">(</span><a class="reference internal" href="nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode">RootSchemaNode</a> &amp;<em>root_schema</em>, <em class="property">const</em> std::string &amp;<em>payload</em>, <em class="property">const</em> std::string &amp;<em>rpc_path</em>, <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormatE" title="ydk::EncodingFormat">EncodingFormat</a> <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path5Codec17decode_rpc_outputER14RootSchemaNodeRKNSt6stringERKNSt6stringE14EncodingFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decode the rpc output to return a DataNode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>root_schema</strong> &#8211; The root schema to use.</li>
+<li><strong>payload</strong> &#8211; String representation of one or multiple <a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a>.</li>
+<li><strong>format</strong> &#8211; Format of the <strong>payload</strong>: either <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat4JSONE" title="ydk::EncodingFormat::JSON"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">JSON</span></code></a> or <a class="reference internal" href="../ydk/types.html#_CPPv2N3ydk14EncodingFormat3XMLE" title="ydk::EncodingFormat::XML"><code class="xref cpp cpp-enumerator docutils literal"><span class="pre">XML</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The <a class="reference internal" href="nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> instance or <code class="docutils literal"><span class="pre">nullptr</span></code> in case of error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a>, if errors appear during decoding.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="model_provider.html" class="btn btn-neutral float-right" title="ModelProvider" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="capability.html" class="btn btn-neutral" title="Capability" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -12,3365 +12,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_oper {
 
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::SiDuration()
-    :
-    second{YType::uint32, "second"},
-    nanosecond{YType::uint32, "nanosecond"}
-{
-
-    yang_name = "si-duration"; yang_parent_name = "os-runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::~SiDuration()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::has_data() const
-{
-    if (is_presence_container) return true;
-    return second.is_set
-	|| nanosecond.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(second.yfilter)
-	|| ydk::is_set(nanosecond.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "si-duration";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
-    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "second")
-    {
-        second = value;
-        second.value_namespace = name_space;
-        second.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond = value;
-        nanosecond.value_namespace = name_space;
-        nanosecond.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "second")
-    {
-        second.yfilter = yfilter;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "second" || name == "nanosecond")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::OsSumRuntime()
-    :
-    sp_adv_rtr_id{YType::uint32, "sp-adv-rtr-id"},
-    sp_dest_count{YType::uint32, "sp-dest-count"},
-    sp_dest_addr{YType::uint32, "sp-dest-addr"}
-        ,
-    sp_start_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime>())
-    , sp_duration(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration>())
-{
-    sp_start_time->parent = this;
-    sp_duration->parent = this;
-
-    yang_name = "os-sum-runtime"; yang_parent_name = "spf-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::~OsSumRuntime()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::has_data() const
-{
-    if (is_presence_container) return true;
-    return sp_adv_rtr_id.is_set
-	|| sp_dest_count.is_set
-	|| sp_dest_addr.is_set
-	|| (sp_start_time !=  nullptr && sp_start_time->has_data())
-	|| (sp_duration !=  nullptr && sp_duration->has_data());
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sp_adv_rtr_id.yfilter)
-	|| ydk::is_set(sp_dest_count.yfilter)
-	|| ydk::is_set(sp_dest_addr.yfilter)
-	|| (sp_start_time !=  nullptr && sp_start_time->has_operation())
-	|| (sp_duration !=  nullptr && sp_duration->has_operation());
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "os-sum-runtime";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sp_adv_rtr_id.is_set || is_set(sp_adv_rtr_id.yfilter)) leaf_name_data.push_back(sp_adv_rtr_id.get_name_leafdata());
-    if (sp_dest_count.is_set || is_set(sp_dest_count.yfilter)) leaf_name_data.push_back(sp_dest_count.get_name_leafdata());
-    if (sp_dest_addr.is_set || is_set(sp_dest_addr.yfilter)) leaf_name_data.push_back(sp_dest_addr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sp-start-time")
-    {
-        if(sp_start_time == nullptr)
-        {
-            sp_start_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime>();
-        }
-        return sp_start_time;
-    }
-
-    if(child_yang_name == "sp-duration")
-    {
-        if(sp_duration == nullptr)
-        {
-            sp_duration = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration>();
-        }
-        return sp_duration;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(sp_start_time != nullptr)
-    {
-        _children["sp-start-time"] = sp_start_time;
-    }
-
-    if(sp_duration != nullptr)
-    {
-        _children["sp-duration"] = sp_duration;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sp-adv-rtr-id")
-    {
-        sp_adv_rtr_id = value;
-        sp_adv_rtr_id.value_namespace = name_space;
-        sp_adv_rtr_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sp-dest-count")
-    {
-        sp_dest_count = value;
-        sp_dest_count.value_namespace = name_space;
-        sp_dest_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sp-dest-addr")
-    {
-        sp_dest_addr = value;
-        sp_dest_addr.value_namespace = name_space;
-        sp_dest_addr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sp-adv-rtr-id")
-    {
-        sp_adv_rtr_id.yfilter = yfilter;
-    }
-    if(value_path == "sp-dest-count")
-    {
-        sp_dest_count.yfilter = yfilter;
-    }
-    if(value_path == "sp-dest-addr")
-    {
-        sp_dest_addr.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sp-start-time" || name == "sp-duration" || name == "sp-adv-rtr-id" || name == "sp-dest-count" || name == "sp-dest-addr")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::SpStartTime()
-    :
-    second{YType::uint32, "second"},
-    nanosecond{YType::uint32, "nanosecond"}
-{
-
-    yang_name = "sp-start-time"; yang_parent_name = "os-sum-runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::~SpStartTime()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::has_data() const
-{
-    if (is_presence_container) return true;
-    return second.is_set
-	|| nanosecond.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(second.yfilter)
-	|| ydk::is_set(nanosecond.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sp-start-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
-    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "second")
-    {
-        second = value;
-        second.value_namespace = name_space;
-        second.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond = value;
-        nanosecond.value_namespace = name_space;
-        nanosecond.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "second")
-    {
-        second.yfilter = yfilter;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "second" || name == "nanosecond")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::SpDuration()
-    :
-    second{YType::uint32, "second"},
-    nanosecond{YType::uint32, "nanosecond"}
-{
-
-    yang_name = "sp-duration"; yang_parent_name = "os-sum-runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::~SpDuration()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::has_data() const
-{
-    if (is_presence_container) return true;
-    return second.is_set
-	|| nanosecond.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(second.yfilter)
-	|| ydk::is_set(nanosecond.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sp-duration";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
-    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "second")
-    {
-        second = value;
-        second.value_namespace = name_space;
-        second.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond = value;
-        nanosecond.value_namespace = name_space;
-        nanosecond.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "second")
-    {
-        second.yfilter = yfilter;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "second" || name == "nanosecond")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::OsExRuntime()
-    :
-    sp_adv_rtr_id{YType::uint32, "sp-adv-rtr-id"},
-    sp_dest_count{YType::uint32, "sp-dest-count"},
-    sp_dest_addr{YType::uint32, "sp-dest-addr"}
-        ,
-    sp_start_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime>())
-    , sp_duration(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration>())
-{
-    sp_start_time->parent = this;
-    sp_duration->parent = this;
-
-    yang_name = "os-ex-runtime"; yang_parent_name = "spf-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::~OsExRuntime()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::has_data() const
-{
-    if (is_presence_container) return true;
-    return sp_adv_rtr_id.is_set
-	|| sp_dest_count.is_set
-	|| sp_dest_addr.is_set
-	|| (sp_start_time !=  nullptr && sp_start_time->has_data())
-	|| (sp_duration !=  nullptr && sp_duration->has_data());
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sp_adv_rtr_id.yfilter)
-	|| ydk::is_set(sp_dest_count.yfilter)
-	|| ydk::is_set(sp_dest_addr.yfilter)
-	|| (sp_start_time !=  nullptr && sp_start_time->has_operation())
-	|| (sp_duration !=  nullptr && sp_duration->has_operation());
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "os-ex-runtime";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sp_adv_rtr_id.is_set || is_set(sp_adv_rtr_id.yfilter)) leaf_name_data.push_back(sp_adv_rtr_id.get_name_leafdata());
-    if (sp_dest_count.is_set || is_set(sp_dest_count.yfilter)) leaf_name_data.push_back(sp_dest_count.get_name_leafdata());
-    if (sp_dest_addr.is_set || is_set(sp_dest_addr.yfilter)) leaf_name_data.push_back(sp_dest_addr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sp-start-time")
-    {
-        if(sp_start_time == nullptr)
-        {
-            sp_start_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime>();
-        }
-        return sp_start_time;
-    }
-
-    if(child_yang_name == "sp-duration")
-    {
-        if(sp_duration == nullptr)
-        {
-            sp_duration = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration>();
-        }
-        return sp_duration;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(sp_start_time != nullptr)
-    {
-        _children["sp-start-time"] = sp_start_time;
-    }
-
-    if(sp_duration != nullptr)
-    {
-        _children["sp-duration"] = sp_duration;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sp-adv-rtr-id")
-    {
-        sp_adv_rtr_id = value;
-        sp_adv_rtr_id.value_namespace = name_space;
-        sp_adv_rtr_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sp-dest-count")
-    {
-        sp_dest_count = value;
-        sp_dest_count.value_namespace = name_space;
-        sp_dest_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sp-dest-addr")
-    {
-        sp_dest_addr = value;
-        sp_dest_addr.value_namespace = name_space;
-        sp_dest_addr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sp-adv-rtr-id")
-    {
-        sp_adv_rtr_id.yfilter = yfilter;
-    }
-    if(value_path == "sp-dest-count")
-    {
-        sp_dest_count.yfilter = yfilter;
-    }
-    if(value_path == "sp-dest-addr")
-    {
-        sp_dest_addr.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sp-start-time" || name == "sp-duration" || name == "sp-adv-rtr-id" || name == "sp-dest-count" || name == "sp-dest-addr")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::SpStartTime()
-    :
-    second{YType::uint32, "second"},
-    nanosecond{YType::uint32, "nanosecond"}
-{
-
-    yang_name = "sp-start-time"; yang_parent_name = "os-ex-runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::~SpStartTime()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::has_data() const
-{
-    if (is_presence_container) return true;
-    return second.is_set
-	|| nanosecond.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(second.yfilter)
-	|| ydk::is_set(nanosecond.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sp-start-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
-    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "second")
-    {
-        second = value;
-        second.value_namespace = name_space;
-        second.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond = value;
-        nanosecond.value_namespace = name_space;
-        nanosecond.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "second")
-    {
-        second.yfilter = yfilter;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "second" || name == "nanosecond")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::SpDuration()
-    :
-    second{YType::uint32, "second"},
-    nanosecond{YType::uint32, "nanosecond"}
-{
-
-    yang_name = "sp-duration"; yang_parent_name = "os-ex-runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::~SpDuration()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::has_data() const
-{
-    if (is_presence_container) return true;
-    return second.is_set
-	|| nanosecond.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(second.yfilter)
-	|| ydk::is_set(nanosecond.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sp-duration";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
-    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "second")
-    {
-        second = value;
-        second.value_namespace = name_space;
-        second.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond = value;
-        nanosecond.value_namespace = name_space;
-        nanosecond.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "second")
-    {
-        second.yfilter = yfilter;
-    }
-    if(value_path == "nanosecond")
-    {
-        nanosecond.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "second" || name == "nanosecond")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::Runtime()
-    :
-    spf_start_time{YType::uint32, "spf-start-time"},
-    lsa_change_cnt{YType::int16, "lsa-change-cnt"}
-        ,
-    gbl_spf_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime>())
-    , lsa_info(this, {})
-    , area_stat(this, {})
-{
-    gbl_spf_time->parent = this;
-
-    yang_name = "runtime"; yang_parent_name = "spf-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::~Runtime()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<lsa_info.len(); index++)
-    {
-        if(lsa_info[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<area_stat.len(); index++)
-    {
-        if(area_stat[index]->has_data())
-            return true;
-    }
-    return spf_start_time.is_set
-	|| lsa_change_cnt.is_set
-	|| (gbl_spf_time !=  nullptr && gbl_spf_time->has_data());
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::has_operation() const
-{
-    for (std::size_t index=0; index<lsa_info.len(); index++)
-    {
-        if(lsa_info[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<area_stat.len(); index++)
-    {
-        if(area_stat[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(spf_start_time.yfilter)
-	|| ydk::is_set(lsa_change_cnt.yfilter)
-	|| (gbl_spf_time !=  nullptr && gbl_spf_time->has_operation());
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "runtime";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (spf_start_time.is_set || is_set(spf_start_time.yfilter)) leaf_name_data.push_back(spf_start_time.get_name_leafdata());
-    if (lsa_change_cnt.is_set || is_set(lsa_change_cnt.yfilter)) leaf_name_data.push_back(lsa_change_cnt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "gbl-spf-time")
-    {
-        if(gbl_spf_time == nullptr)
-        {
-            gbl_spf_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime>();
-        }
-        return gbl_spf_time;
-    }
-
-    if(child_yang_name == "lsa-info")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo>();
-        ent_->parent = this;
-        lsa_info.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "area-stat")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat>();
-        ent_->parent = this;
-        area_stat.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(gbl_spf_time != nullptr)
-    {
-        _children["gbl-spf-time"] = gbl_spf_time;
-    }
-
-    count_ = 0;
-    for (auto ent_ : lsa_info.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : area_stat.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "spf-start-time")
-    {
-        spf_start_time = value;
-        spf_start_time.value_namespace = name_space;
-        spf_start_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lsa-change-cnt")
-    {
-        lsa_change_cnt = value;
-        lsa_change_cnt.value_namespace = name_space;
-        lsa_change_cnt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "spf-start-time")
-    {
-        spf_start_time.yfilter = yfilter;
-    }
-    if(value_path == "lsa-change-cnt")
-    {
-        lsa_change_cnt.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gbl-spf-time" || name == "lsa-info" || name == "area-stat" || name == "spf-start-time" || name == "lsa-change-cnt")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::GblSpfTime()
-    :
-    spf_dijkstra{YType::uint32, "spf-dijkstra"},
-    spf_intra_prefix{YType::uint32, "spf-intra-prefix"},
-    spf_intra_prefix_del{YType::uint32, "spf-intra-prefix-del"},
-    spf_inter_prefix{YType::uint32, "spf-inter-prefix"},
-    spf_inter_prefix_del{YType::uint32, "spf-inter-prefix-del"},
-    spf_ext_prefix{YType::uint32, "spf-ext-prefix"},
-    spf_ext_prefix_del{YType::uint32, "spf-ext-prefix-del"}
-{
-
-    yang_name = "gbl-spf-time"; yang_parent_name = "runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::~GblSpfTime()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::has_data() const
-{
-    if (is_presence_container) return true;
-    return spf_dijkstra.is_set
-	|| spf_intra_prefix.is_set
-	|| spf_intra_prefix_del.is_set
-	|| spf_inter_prefix.is_set
-	|| spf_inter_prefix_del.is_set
-	|| spf_ext_prefix.is_set
-	|| spf_ext_prefix_del.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(spf_dijkstra.yfilter)
-	|| ydk::is_set(spf_intra_prefix.yfilter)
-	|| ydk::is_set(spf_intra_prefix_del.yfilter)
-	|| ydk::is_set(spf_inter_prefix.yfilter)
-	|| ydk::is_set(spf_inter_prefix_del.yfilter)
-	|| ydk::is_set(spf_ext_prefix.yfilter)
-	|| ydk::is_set(spf_ext_prefix_del.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gbl-spf-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (spf_dijkstra.is_set || is_set(spf_dijkstra.yfilter)) leaf_name_data.push_back(spf_dijkstra.get_name_leafdata());
-    if (spf_intra_prefix.is_set || is_set(spf_intra_prefix.yfilter)) leaf_name_data.push_back(spf_intra_prefix.get_name_leafdata());
-    if (spf_intra_prefix_del.is_set || is_set(spf_intra_prefix_del.yfilter)) leaf_name_data.push_back(spf_intra_prefix_del.get_name_leafdata());
-    if (spf_inter_prefix.is_set || is_set(spf_inter_prefix.yfilter)) leaf_name_data.push_back(spf_inter_prefix.get_name_leafdata());
-    if (spf_inter_prefix_del.is_set || is_set(spf_inter_prefix_del.yfilter)) leaf_name_data.push_back(spf_inter_prefix_del.get_name_leafdata());
-    if (spf_ext_prefix.is_set || is_set(spf_ext_prefix.yfilter)) leaf_name_data.push_back(spf_ext_prefix.get_name_leafdata());
-    if (spf_ext_prefix_del.is_set || is_set(spf_ext_prefix_del.yfilter)) leaf_name_data.push_back(spf_ext_prefix_del.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "spf-dijkstra")
-    {
-        spf_dijkstra = value;
-        spf_dijkstra.value_namespace = name_space;
-        spf_dijkstra.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-intra-prefix")
-    {
-        spf_intra_prefix = value;
-        spf_intra_prefix.value_namespace = name_space;
-        spf_intra_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-intra-prefix-del")
-    {
-        spf_intra_prefix_del = value;
-        spf_intra_prefix_del.value_namespace = name_space;
-        spf_intra_prefix_del.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-inter-prefix")
-    {
-        spf_inter_prefix = value;
-        spf_inter_prefix.value_namespace = name_space;
-        spf_inter_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-inter-prefix-del")
-    {
-        spf_inter_prefix_del = value;
-        spf_inter_prefix_del.value_namespace = name_space;
-        spf_inter_prefix_del.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-ext-prefix")
-    {
-        spf_ext_prefix = value;
-        spf_ext_prefix.value_namespace = name_space;
-        spf_ext_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-ext-prefix-del")
-    {
-        spf_ext_prefix_del = value;
-        spf_ext_prefix_del.value_namespace = name_space;
-        spf_ext_prefix_del.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "spf-dijkstra")
-    {
-        spf_dijkstra.yfilter = yfilter;
-    }
-    if(value_path == "spf-intra-prefix")
-    {
-        spf_intra_prefix.yfilter = yfilter;
-    }
-    if(value_path == "spf-intra-prefix-del")
-    {
-        spf_intra_prefix_del.yfilter = yfilter;
-    }
-    if(value_path == "spf-inter-prefix")
-    {
-        spf_inter_prefix.yfilter = yfilter;
-    }
-    if(value_path == "spf-inter-prefix-del")
-    {
-        spf_inter_prefix_del.yfilter = yfilter;
-    }
-    if(value_path == "spf-ext-prefix")
-    {
-        spf_ext_prefix.yfilter = yfilter;
-    }
-    if(value_path == "spf-ext-prefix-del")
-    {
-        spf_ext_prefix_del.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "spf-dijkstra" || name == "spf-intra-prefix" || name == "spf-intra-prefix-del" || name == "spf-inter-prefix" || name == "spf-inter-prefix-del" || name == "spf-ext-prefix" || name == "spf-ext-prefix-del")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::LsaInfo()
-    :
-    area_id{YType::uint32, "area-id"},
-    adv_rtr{YType::str, "adv-rtr"},
-    id{YType::str, "id"},
-    type{YType::uint8, "type"},
-    flush{YType::boolean, "flush"}
-{
-
-    yang_name = "lsa-info"; yang_parent_name = "runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::~LsaInfo()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::has_data() const
-{
-    if (is_presence_container) return true;
-    return area_id.is_set
-	|| adv_rtr.is_set
-	|| id.is_set
-	|| type.is_set
-	|| flush.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(area_id.yfilter)
-	|| ydk::is_set(adv_rtr.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(flush.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsa-info";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (adv_rtr.is_set || is_set(adv_rtr.yfilter)) leaf_name_data.push_back(adv_rtr.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (flush.is_set || is_set(flush.yfilter)) leaf_name_data.push_back(flush.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "area-id")
-    {
-        area_id = value;
-        area_id.value_namespace = name_space;
-        area_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adv-rtr")
-    {
-        adv_rtr = value;
-        adv_rtr.value_namespace = name_space;
-        adv_rtr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flush")
-    {
-        flush = value;
-        flush.value_namespace = name_space;
-        flush.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "area-id")
-    {
-        area_id.yfilter = yfilter;
-    }
-    if(value_path == "adv-rtr")
-    {
-        adv_rtr.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "flush")
-    {
-        flush.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "area-id" || name == "adv-rtr" || name == "id" || name == "type" || name == "flush")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::AreaStat()
-    :
-    area_id{YType::uint32, "area-id"}
-        ,
-    spf_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime>())
-    , lsa_type_cnt(this, {})
-{
-    spf_time->parent = this;
-
-    yang_name = "area-stat"; yang_parent_name = "runtime"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::~AreaStat()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<lsa_type_cnt.len(); index++)
-    {
-        if(lsa_type_cnt[index]->has_data())
-            return true;
-    }
-    return area_id.is_set
-	|| (spf_time !=  nullptr && spf_time->has_data());
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::has_operation() const
-{
-    for (std::size_t index=0; index<lsa_type_cnt.len(); index++)
-    {
-        if(lsa_type_cnt[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(area_id.yfilter)
-	|| (spf_time !=  nullptr && spf_time->has_operation());
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "area-stat";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "spf-time")
-    {
-        if(spf_time == nullptr)
-        {
-            spf_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime>();
-        }
-        return spf_time;
-    }
-
-    if(child_yang_name == "lsa-type-cnt")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt>();
-        ent_->parent = this;
-        lsa_type_cnt.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(spf_time != nullptr)
-    {
-        _children["spf-time"] = spf_time;
-    }
-
-    count_ = 0;
-    for (auto ent_ : lsa_type_cnt.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "area-id")
-    {
-        area_id = value;
-        area_id.value_namespace = name_space;
-        area_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "area-id")
-    {
-        area_id.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "spf-time" || name == "lsa-type-cnt" || name == "area-id")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::SpfTime()
-    :
-    spf_dijkstra{YType::uint32, "spf-dijkstra"},
-    spf_intra_prefix{YType::uint32, "spf-intra-prefix"},
-    spf_intra_prefix_del{YType::uint32, "spf-intra-prefix-del"},
-    spf_inter_prefix{YType::uint32, "spf-inter-prefix"},
-    spf_inter_prefix_del{YType::uint32, "spf-inter-prefix-del"},
-    spf_ext_prefix{YType::uint32, "spf-ext-prefix"},
-    spf_ext_prefix_del{YType::uint32, "spf-ext-prefix-del"}
-{
-
-    yang_name = "spf-time"; yang_parent_name = "area-stat"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::~SpfTime()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::has_data() const
-{
-    if (is_presence_container) return true;
-    return spf_dijkstra.is_set
-	|| spf_intra_prefix.is_set
-	|| spf_intra_prefix_del.is_set
-	|| spf_inter_prefix.is_set
-	|| spf_inter_prefix_del.is_set
-	|| spf_ext_prefix.is_set
-	|| spf_ext_prefix_del.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(spf_dijkstra.yfilter)
-	|| ydk::is_set(spf_intra_prefix.yfilter)
-	|| ydk::is_set(spf_intra_prefix_del.yfilter)
-	|| ydk::is_set(spf_inter_prefix.yfilter)
-	|| ydk::is_set(spf_inter_prefix_del.yfilter)
-	|| ydk::is_set(spf_ext_prefix.yfilter)
-	|| ydk::is_set(spf_ext_prefix_del.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "spf-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (spf_dijkstra.is_set || is_set(spf_dijkstra.yfilter)) leaf_name_data.push_back(spf_dijkstra.get_name_leafdata());
-    if (spf_intra_prefix.is_set || is_set(spf_intra_prefix.yfilter)) leaf_name_data.push_back(spf_intra_prefix.get_name_leafdata());
-    if (spf_intra_prefix_del.is_set || is_set(spf_intra_prefix_del.yfilter)) leaf_name_data.push_back(spf_intra_prefix_del.get_name_leafdata());
-    if (spf_inter_prefix.is_set || is_set(spf_inter_prefix.yfilter)) leaf_name_data.push_back(spf_inter_prefix.get_name_leafdata());
-    if (spf_inter_prefix_del.is_set || is_set(spf_inter_prefix_del.yfilter)) leaf_name_data.push_back(spf_inter_prefix_del.get_name_leafdata());
-    if (spf_ext_prefix.is_set || is_set(spf_ext_prefix.yfilter)) leaf_name_data.push_back(spf_ext_prefix.get_name_leafdata());
-    if (spf_ext_prefix_del.is_set || is_set(spf_ext_prefix_del.yfilter)) leaf_name_data.push_back(spf_ext_prefix_del.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "spf-dijkstra")
-    {
-        spf_dijkstra = value;
-        spf_dijkstra.value_namespace = name_space;
-        spf_dijkstra.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-intra-prefix")
-    {
-        spf_intra_prefix = value;
-        spf_intra_prefix.value_namespace = name_space;
-        spf_intra_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-intra-prefix-del")
-    {
-        spf_intra_prefix_del = value;
-        spf_intra_prefix_del.value_namespace = name_space;
-        spf_intra_prefix_del.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-inter-prefix")
-    {
-        spf_inter_prefix = value;
-        spf_inter_prefix.value_namespace = name_space;
-        spf_inter_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-inter-prefix-del")
-    {
-        spf_inter_prefix_del = value;
-        spf_inter_prefix_del.value_namespace = name_space;
-        spf_inter_prefix_del.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-ext-prefix")
-    {
-        spf_ext_prefix = value;
-        spf_ext_prefix.value_namespace = name_space;
-        spf_ext_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-ext-prefix-del")
-    {
-        spf_ext_prefix_del = value;
-        spf_ext_prefix_del.value_namespace = name_space;
-        spf_ext_prefix_del.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "spf-dijkstra")
-    {
-        spf_dijkstra.yfilter = yfilter;
-    }
-    if(value_path == "spf-intra-prefix")
-    {
-        spf_intra_prefix.yfilter = yfilter;
-    }
-    if(value_path == "spf-intra-prefix-del")
-    {
-        spf_intra_prefix_del.yfilter = yfilter;
-    }
-    if(value_path == "spf-inter-prefix")
-    {
-        spf_inter_prefix.yfilter = yfilter;
-    }
-    if(value_path == "spf-inter-prefix-del")
-    {
-        spf_inter_prefix_del.yfilter = yfilter;
-    }
-    if(value_path == "spf-ext-prefix")
-    {
-        spf_ext_prefix.yfilter = yfilter;
-    }
-    if(value_path == "spf-ext-prefix-del")
-    {
-        spf_ext_prefix_del.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "spf-dijkstra" || name == "spf-intra-prefix" || name == "spf-intra-prefix-del" || name == "spf-inter-prefix" || name == "spf-inter-prefix-del" || name == "spf-ext-prefix" || name == "spf-ext-prefix-del")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::LsaTypeCnt()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "lsa-type-cnt"; yang_parent_name = "area-stat"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::~LsaTypeCnt()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsa-type-cnt";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::RibBatchStats()
-    :
-    priority_batch(this, {})
-{
-
-    yang_name = "rib-batch-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::~RibBatchStats()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<priority_batch.len(); index++)
-    {
-        if(priority_batch[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::has_operation() const
-{
-    for (std::size_t index=0; index<priority_batch.len(); index++)
-    {
-        if(priority_batch[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rib-batch-stats";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "priority-batch")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch>();
-        ent_->parent = this;
-        priority_batch.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : priority_batch.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "priority-batch")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::PriorityBatch()
-    :
-    batches_sent{YType::uint32, "batches-sent"},
-    routes_sent{YType::uint32, "routes-sent"},
-    routes_pending{YType::uint32, "routes-pending"},
-    max_routes{YType::uint32, "max-routes"},
-    paths_sent{YType::uint32, "paths-sent"},
-    paths_pending{YType::uint32, "paths-pending"},
-    paths_add{YType::uint32, "paths-add"},
-    paths_add_errs{YType::uint32, "paths-add-errs"},
-    paths_del{YType::uint32, "paths-del"},
-    paths_del_errs{YType::uint32, "paths-del-errs"},
-    lfas_pending{YType::uint32, "lfas-pending"},
-    lfas_add{YType::uint32, "lfas-add"},
-    lfas_del{YType::uint32, "lfas-del"},
-    lfas_sent{YType::uint32, "lfas-sent"},
-    priority_level{YType::str, "priority-level"}
-{
-
-    yang_name = "priority-batch"; yang_parent_name = "rib-batch-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::~PriorityBatch()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::has_data() const
-{
-    if (is_presence_container) return true;
-    return batches_sent.is_set
-	|| routes_sent.is_set
-	|| routes_pending.is_set
-	|| max_routes.is_set
-	|| paths_sent.is_set
-	|| paths_pending.is_set
-	|| paths_add.is_set
-	|| paths_add_errs.is_set
-	|| paths_del.is_set
-	|| paths_del_errs.is_set
-	|| lfas_pending.is_set
-	|| lfas_add.is_set
-	|| lfas_del.is_set
-	|| lfas_sent.is_set
-	|| priority_level.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(batches_sent.yfilter)
-	|| ydk::is_set(routes_sent.yfilter)
-	|| ydk::is_set(routes_pending.yfilter)
-	|| ydk::is_set(max_routes.yfilter)
-	|| ydk::is_set(paths_sent.yfilter)
-	|| ydk::is_set(paths_pending.yfilter)
-	|| ydk::is_set(paths_add.yfilter)
-	|| ydk::is_set(paths_add_errs.yfilter)
-	|| ydk::is_set(paths_del.yfilter)
-	|| ydk::is_set(paths_del_errs.yfilter)
-	|| ydk::is_set(lfas_pending.yfilter)
-	|| ydk::is_set(lfas_add.yfilter)
-	|| ydk::is_set(lfas_del.yfilter)
-	|| ydk::is_set(lfas_sent.yfilter)
-	|| ydk::is_set(priority_level.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-batch";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (batches_sent.is_set || is_set(batches_sent.yfilter)) leaf_name_data.push_back(batches_sent.get_name_leafdata());
-    if (routes_sent.is_set || is_set(routes_sent.yfilter)) leaf_name_data.push_back(routes_sent.get_name_leafdata());
-    if (routes_pending.is_set || is_set(routes_pending.yfilter)) leaf_name_data.push_back(routes_pending.get_name_leafdata());
-    if (max_routes.is_set || is_set(max_routes.yfilter)) leaf_name_data.push_back(max_routes.get_name_leafdata());
-    if (paths_sent.is_set || is_set(paths_sent.yfilter)) leaf_name_data.push_back(paths_sent.get_name_leafdata());
-    if (paths_pending.is_set || is_set(paths_pending.yfilter)) leaf_name_data.push_back(paths_pending.get_name_leafdata());
-    if (paths_add.is_set || is_set(paths_add.yfilter)) leaf_name_data.push_back(paths_add.get_name_leafdata());
-    if (paths_add_errs.is_set || is_set(paths_add_errs.yfilter)) leaf_name_data.push_back(paths_add_errs.get_name_leafdata());
-    if (paths_del.is_set || is_set(paths_del.yfilter)) leaf_name_data.push_back(paths_del.get_name_leafdata());
-    if (paths_del_errs.is_set || is_set(paths_del_errs.yfilter)) leaf_name_data.push_back(paths_del_errs.get_name_leafdata());
-    if (lfas_pending.is_set || is_set(lfas_pending.yfilter)) leaf_name_data.push_back(lfas_pending.get_name_leafdata());
-    if (lfas_add.is_set || is_set(lfas_add.yfilter)) leaf_name_data.push_back(lfas_add.get_name_leafdata());
-    if (lfas_del.is_set || is_set(lfas_del.yfilter)) leaf_name_data.push_back(lfas_del.get_name_leafdata());
-    if (lfas_sent.is_set || is_set(lfas_sent.yfilter)) leaf_name_data.push_back(lfas_sent.get_name_leafdata());
-    if (priority_level.is_set || is_set(priority_level.yfilter)) leaf_name_data.push_back(priority_level.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "batches-sent")
-    {
-        batches_sent = value;
-        batches_sent.value_namespace = name_space;
-        batches_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "routes-sent")
-    {
-        routes_sent = value;
-        routes_sent.value_namespace = name_space;
-        routes_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "routes-pending")
-    {
-        routes_pending = value;
-        routes_pending.value_namespace = name_space;
-        routes_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-routes")
-    {
-        max_routes = value;
-        max_routes.value_namespace = name_space;
-        max_routes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paths-sent")
-    {
-        paths_sent = value;
-        paths_sent.value_namespace = name_space;
-        paths_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paths-pending")
-    {
-        paths_pending = value;
-        paths_pending.value_namespace = name_space;
-        paths_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paths-add")
-    {
-        paths_add = value;
-        paths_add.value_namespace = name_space;
-        paths_add.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paths-add-errs")
-    {
-        paths_add_errs = value;
-        paths_add_errs.value_namespace = name_space;
-        paths_add_errs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paths-del")
-    {
-        paths_del = value;
-        paths_del.value_namespace = name_space;
-        paths_del.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paths-del-errs")
-    {
-        paths_del_errs = value;
-        paths_del_errs.value_namespace = name_space;
-        paths_del_errs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lfas-pending")
-    {
-        lfas_pending = value;
-        lfas_pending.value_namespace = name_space;
-        lfas_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lfas-add")
-    {
-        lfas_add = value;
-        lfas_add.value_namespace = name_space;
-        lfas_add.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lfas-del")
-    {
-        lfas_del = value;
-        lfas_del.value_namespace = name_space;
-        lfas_del.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lfas-sent")
-    {
-        lfas_sent = value;
-        lfas_sent.value_namespace = name_space;
-        lfas_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-level")
-    {
-        priority_level = value;
-        priority_level.value_namespace = name_space;
-        priority_level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "batches-sent")
-    {
-        batches_sent.yfilter = yfilter;
-    }
-    if(value_path == "routes-sent")
-    {
-        routes_sent.yfilter = yfilter;
-    }
-    if(value_path == "routes-pending")
-    {
-        routes_pending.yfilter = yfilter;
-    }
-    if(value_path == "max-routes")
-    {
-        max_routes.yfilter = yfilter;
-    }
-    if(value_path == "paths-sent")
-    {
-        paths_sent.yfilter = yfilter;
-    }
-    if(value_path == "paths-pending")
-    {
-        paths_pending.yfilter = yfilter;
-    }
-    if(value_path == "paths-add")
-    {
-        paths_add.yfilter = yfilter;
-    }
-    if(value_path == "paths-add-errs")
-    {
-        paths_add_errs.yfilter = yfilter;
-    }
-    if(value_path == "paths-del")
-    {
-        paths_del.yfilter = yfilter;
-    }
-    if(value_path == "paths-del-errs")
-    {
-        paths_del_errs.yfilter = yfilter;
-    }
-    if(value_path == "lfas-pending")
-    {
-        lfas_pending.yfilter = yfilter;
-    }
-    if(value_path == "lfas-add")
-    {
-        lfas_add.yfilter = yfilter;
-    }
-    if(value_path == "lfas-del")
-    {
-        lfas_del.yfilter = yfilter;
-    }
-    if(value_path == "lfas-sent")
-    {
-        lfas_sent.yfilter = yfilter;
-    }
-    if(value_path == "priority-level")
-    {
-        priority_level.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "batches-sent" || name == "routes-sent" || name == "routes-pending" || name == "max-routes" || name == "paths-sent" || name == "paths-pending" || name == "paths-add" || name == "paths-add-errs" || name == "paths-del" || name == "paths-del-errs" || name == "lfas-pending" || name == "lfas-add" || name == "lfas-del" || name == "lfas-sent" || name == "priority-level")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::IssuStats()
-    :
-    nsr_rev{YType::int32, "nsr-rev"},
-    nsr_fsm_state{YType::int32, "nsr-fsm-state"},
-    nsr_version{YType::uint32, "nsr-version"},
-    nsr_nodeid{YType::uint32, "nsr-nodeid"},
-    nsr_peer_version{YType::uint32, "nsr-peer-version"},
-    nsr_peer_nodeid{YType::uint32, "nsr-peer-nodeid"},
-    nsr_peer_ep_len{YType::uint32, "nsr-peer-ep-len"},
-    nsr_peer_ep_version{YType::uint32, "nsr-peer-ep-version"},
-    nsr_local_ep_len{YType::uint32, "nsr-local-ep-len"},
-    nsr_local_ep_version{YType::uint32, "nsr-local-ep-version"},
-    nsr_fabric_mtu{YType::uint32, "nsr-fabric-mtu"},
-    nsr_nbr_qad_qid{YType::uint32, "nsr-nbr-qad-qid"},
-    nsr_lsa_qad_qid{YType::uint32, "nsr-lsa-qad-qid"},
-    nsr_nbr_qad_mdata_count{YType::uint32, "nsr-nbr-qad-mdata-count"},
-    nsr_lsa_qad_mdata_count{YType::uint32, "nsr-lsa-qad-mdata-count"},
-    nsr_nbr_init_sync_pend_count{YType::int32, "nsr-nbr-init-sync-pend-count"},
-    nsr_lsa_init_sync_pend_count{YType::int32, "nsr-lsa-init-sync-pend-count"},
-    nsr_nbr_seq_no{YType::uint32, "nsr-nbr-seq-no"},
-    nsr_intf_seq_no{YType::uint32, "nsr-intf-seq-no"},
-    nsr_tmr_quant{YType::int32, "nsr-tmr-quant"},
-    nsr_peer_ds_hdl{YType::uint64, "nsr-peer-ds-hdl"},
-    nsr_local_ds_hdl{YType::uint64, "nsr-local-ds-hdl"},
-    nsr_conn_to_active_attempts{YType::uint64, "nsr-conn-to-active-attempts"},
-    nsr_conn_to_active_fails{YType::uint64, "nsr-conn-to-active-fails"},
-    nsr_conn_to_active_opens{YType::uint64, "nsr-conn-to-active-opens"},
-    nsr_conn_to_active_closes{YType::uint64, "nsr-conn-to-active-closes"},
-    nsr_conn_to_active_errors{YType::uint64, "nsr-conn-to-active-errors"},
-    nsr_peer_ep{YType::str, "nsr-peer-ep"},
-    nsr_local_ep{YType::str, "nsr-local-ep"}
-        ,
-    nsr_thd_sched(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched>())
-    , nsr_rtr_thd_sched(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched>())
-    , nsr_fsm_flag(this, {})
-    , nsr_fsm_running_timer(this, {})
-    , nsr_issu_milestone(this, {})
-    , nsr_err_history(this, {})
-{
-    nsr_thd_sched->parent = this;
-    nsr_rtr_thd_sched->parent = this;
-
-    yang_name = "issu-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::~IssuStats()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<nsr_fsm_flag.len(); index++)
-    {
-        if(nsr_fsm_flag[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<nsr_fsm_running_timer.len(); index++)
-    {
-        if(nsr_fsm_running_timer[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<nsr_issu_milestone.len(); index++)
-    {
-        if(nsr_issu_milestone[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<nsr_err_history.len(); index++)
-    {
-        if(nsr_err_history[index]->has_data())
-            return true;
-    }
-    return nsr_rev.is_set
-	|| nsr_fsm_state.is_set
-	|| nsr_version.is_set
-	|| nsr_nodeid.is_set
-	|| nsr_peer_version.is_set
-	|| nsr_peer_nodeid.is_set
-	|| nsr_peer_ep_len.is_set
-	|| nsr_peer_ep_version.is_set
-	|| nsr_local_ep_len.is_set
-	|| nsr_local_ep_version.is_set
-	|| nsr_fabric_mtu.is_set
-	|| nsr_nbr_qad_qid.is_set
-	|| nsr_lsa_qad_qid.is_set
-	|| nsr_nbr_qad_mdata_count.is_set
-	|| nsr_lsa_qad_mdata_count.is_set
-	|| nsr_nbr_init_sync_pend_count.is_set
-	|| nsr_lsa_init_sync_pend_count.is_set
-	|| nsr_nbr_seq_no.is_set
-	|| nsr_intf_seq_no.is_set
-	|| nsr_tmr_quant.is_set
-	|| nsr_peer_ds_hdl.is_set
-	|| nsr_local_ds_hdl.is_set
-	|| nsr_conn_to_active_attempts.is_set
-	|| nsr_conn_to_active_fails.is_set
-	|| nsr_conn_to_active_opens.is_set
-	|| nsr_conn_to_active_closes.is_set
-	|| nsr_conn_to_active_errors.is_set
-	|| nsr_peer_ep.is_set
-	|| nsr_local_ep.is_set
-	|| (nsr_thd_sched !=  nullptr && nsr_thd_sched->has_data())
-	|| (nsr_rtr_thd_sched !=  nullptr && nsr_rtr_thd_sched->has_data());
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::has_operation() const
-{
-    for (std::size_t index=0; index<nsr_fsm_flag.len(); index++)
-    {
-        if(nsr_fsm_flag[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<nsr_fsm_running_timer.len(); index++)
-    {
-        if(nsr_fsm_running_timer[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<nsr_issu_milestone.len(); index++)
-    {
-        if(nsr_issu_milestone[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<nsr_err_history.len(); index++)
-    {
-        if(nsr_err_history[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(nsr_rev.yfilter)
-	|| ydk::is_set(nsr_fsm_state.yfilter)
-	|| ydk::is_set(nsr_version.yfilter)
-	|| ydk::is_set(nsr_nodeid.yfilter)
-	|| ydk::is_set(nsr_peer_version.yfilter)
-	|| ydk::is_set(nsr_peer_nodeid.yfilter)
-	|| ydk::is_set(nsr_peer_ep_len.yfilter)
-	|| ydk::is_set(nsr_peer_ep_version.yfilter)
-	|| ydk::is_set(nsr_local_ep_len.yfilter)
-	|| ydk::is_set(nsr_local_ep_version.yfilter)
-	|| ydk::is_set(nsr_fabric_mtu.yfilter)
-	|| ydk::is_set(nsr_nbr_qad_qid.yfilter)
-	|| ydk::is_set(nsr_lsa_qad_qid.yfilter)
-	|| ydk::is_set(nsr_nbr_qad_mdata_count.yfilter)
-	|| ydk::is_set(nsr_lsa_qad_mdata_count.yfilter)
-	|| ydk::is_set(nsr_nbr_init_sync_pend_count.yfilter)
-	|| ydk::is_set(nsr_lsa_init_sync_pend_count.yfilter)
-	|| ydk::is_set(nsr_nbr_seq_no.yfilter)
-	|| ydk::is_set(nsr_intf_seq_no.yfilter)
-	|| ydk::is_set(nsr_tmr_quant.yfilter)
-	|| ydk::is_set(nsr_peer_ds_hdl.yfilter)
-	|| ydk::is_set(nsr_local_ds_hdl.yfilter)
-	|| ydk::is_set(nsr_conn_to_active_attempts.yfilter)
-	|| ydk::is_set(nsr_conn_to_active_fails.yfilter)
-	|| ydk::is_set(nsr_conn_to_active_opens.yfilter)
-	|| ydk::is_set(nsr_conn_to_active_closes.yfilter)
-	|| ydk::is_set(nsr_conn_to_active_errors.yfilter)
-	|| ydk::is_set(nsr_peer_ep.yfilter)
-	|| ydk::is_set(nsr_local_ep.yfilter)
-	|| (nsr_thd_sched !=  nullptr && nsr_thd_sched->has_operation())
-	|| (nsr_rtr_thd_sched !=  nullptr && nsr_rtr_thd_sched->has_operation());
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "issu-stats";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nsr_rev.is_set || is_set(nsr_rev.yfilter)) leaf_name_data.push_back(nsr_rev.get_name_leafdata());
-    if (nsr_fsm_state.is_set || is_set(nsr_fsm_state.yfilter)) leaf_name_data.push_back(nsr_fsm_state.get_name_leafdata());
-    if (nsr_version.is_set || is_set(nsr_version.yfilter)) leaf_name_data.push_back(nsr_version.get_name_leafdata());
-    if (nsr_nodeid.is_set || is_set(nsr_nodeid.yfilter)) leaf_name_data.push_back(nsr_nodeid.get_name_leafdata());
-    if (nsr_peer_version.is_set || is_set(nsr_peer_version.yfilter)) leaf_name_data.push_back(nsr_peer_version.get_name_leafdata());
-    if (nsr_peer_nodeid.is_set || is_set(nsr_peer_nodeid.yfilter)) leaf_name_data.push_back(nsr_peer_nodeid.get_name_leafdata());
-    if (nsr_peer_ep_len.is_set || is_set(nsr_peer_ep_len.yfilter)) leaf_name_data.push_back(nsr_peer_ep_len.get_name_leafdata());
-    if (nsr_peer_ep_version.is_set || is_set(nsr_peer_ep_version.yfilter)) leaf_name_data.push_back(nsr_peer_ep_version.get_name_leafdata());
-    if (nsr_local_ep_len.is_set || is_set(nsr_local_ep_len.yfilter)) leaf_name_data.push_back(nsr_local_ep_len.get_name_leafdata());
-    if (nsr_local_ep_version.is_set || is_set(nsr_local_ep_version.yfilter)) leaf_name_data.push_back(nsr_local_ep_version.get_name_leafdata());
-    if (nsr_fabric_mtu.is_set || is_set(nsr_fabric_mtu.yfilter)) leaf_name_data.push_back(nsr_fabric_mtu.get_name_leafdata());
-    if (nsr_nbr_qad_qid.is_set || is_set(nsr_nbr_qad_qid.yfilter)) leaf_name_data.push_back(nsr_nbr_qad_qid.get_name_leafdata());
-    if (nsr_lsa_qad_qid.is_set || is_set(nsr_lsa_qad_qid.yfilter)) leaf_name_data.push_back(nsr_lsa_qad_qid.get_name_leafdata());
-    if (nsr_nbr_qad_mdata_count.is_set || is_set(nsr_nbr_qad_mdata_count.yfilter)) leaf_name_data.push_back(nsr_nbr_qad_mdata_count.get_name_leafdata());
-    if (nsr_lsa_qad_mdata_count.is_set || is_set(nsr_lsa_qad_mdata_count.yfilter)) leaf_name_data.push_back(nsr_lsa_qad_mdata_count.get_name_leafdata());
-    if (nsr_nbr_init_sync_pend_count.is_set || is_set(nsr_nbr_init_sync_pend_count.yfilter)) leaf_name_data.push_back(nsr_nbr_init_sync_pend_count.get_name_leafdata());
-    if (nsr_lsa_init_sync_pend_count.is_set || is_set(nsr_lsa_init_sync_pend_count.yfilter)) leaf_name_data.push_back(nsr_lsa_init_sync_pend_count.get_name_leafdata());
-    if (nsr_nbr_seq_no.is_set || is_set(nsr_nbr_seq_no.yfilter)) leaf_name_data.push_back(nsr_nbr_seq_no.get_name_leafdata());
-    if (nsr_intf_seq_no.is_set || is_set(nsr_intf_seq_no.yfilter)) leaf_name_data.push_back(nsr_intf_seq_no.get_name_leafdata());
-    if (nsr_tmr_quant.is_set || is_set(nsr_tmr_quant.yfilter)) leaf_name_data.push_back(nsr_tmr_quant.get_name_leafdata());
-    if (nsr_peer_ds_hdl.is_set || is_set(nsr_peer_ds_hdl.yfilter)) leaf_name_data.push_back(nsr_peer_ds_hdl.get_name_leafdata());
-    if (nsr_local_ds_hdl.is_set || is_set(nsr_local_ds_hdl.yfilter)) leaf_name_data.push_back(nsr_local_ds_hdl.get_name_leafdata());
-    if (nsr_conn_to_active_attempts.is_set || is_set(nsr_conn_to_active_attempts.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_attempts.get_name_leafdata());
-    if (nsr_conn_to_active_fails.is_set || is_set(nsr_conn_to_active_fails.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_fails.get_name_leafdata());
-    if (nsr_conn_to_active_opens.is_set || is_set(nsr_conn_to_active_opens.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_opens.get_name_leafdata());
-    if (nsr_conn_to_active_closes.is_set || is_set(nsr_conn_to_active_closes.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_closes.get_name_leafdata());
-    if (nsr_conn_to_active_errors.is_set || is_set(nsr_conn_to_active_errors.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_errors.get_name_leafdata());
-    if (nsr_peer_ep.is_set || is_set(nsr_peer_ep.yfilter)) leaf_name_data.push_back(nsr_peer_ep.get_name_leafdata());
-    if (nsr_local_ep.is_set || is_set(nsr_local_ep.yfilter)) leaf_name_data.push_back(nsr_local_ep.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nsr-thd-sched")
-    {
-        if(nsr_thd_sched == nullptr)
-        {
-            nsr_thd_sched = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched>();
-        }
-        return nsr_thd_sched;
-    }
-
-    if(child_yang_name == "nsr-rtr-thd-sched")
-    {
-        if(nsr_rtr_thd_sched == nullptr)
-        {
-            nsr_rtr_thd_sched = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched>();
-        }
-        return nsr_rtr_thd_sched;
-    }
-
-    if(child_yang_name == "nsr-fsm-flag")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag>();
-        ent_->parent = this;
-        nsr_fsm_flag.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "nsr-fsm-running-timer")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer>();
-        ent_->parent = this;
-        nsr_fsm_running_timer.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "nsr-issu-milestone")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone>();
-        ent_->parent = this;
-        nsr_issu_milestone.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "nsr-err-history")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory>();
-        ent_->parent = this;
-        nsr_err_history.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(nsr_thd_sched != nullptr)
-    {
-        _children["nsr-thd-sched"] = nsr_thd_sched;
-    }
-
-    if(nsr_rtr_thd_sched != nullptr)
-    {
-        _children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
-    }
-
-    count_ = 0;
-    for (auto ent_ : nsr_fsm_flag.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : nsr_fsm_running_timer.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : nsr_issu_milestone.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : nsr_err_history.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nsr-rev")
-    {
-        nsr_rev = value;
-        nsr_rev.value_namespace = name_space;
-        nsr_rev.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-fsm-state")
-    {
-        nsr_fsm_state = value;
-        nsr_fsm_state.value_namespace = name_space;
-        nsr_fsm_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-version")
-    {
-        nsr_version = value;
-        nsr_version.value_namespace = name_space;
-        nsr_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-nodeid")
-    {
-        nsr_nodeid = value;
-        nsr_nodeid.value_namespace = name_space;
-        nsr_nodeid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-peer-version")
-    {
-        nsr_peer_version = value;
-        nsr_peer_version.value_namespace = name_space;
-        nsr_peer_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-peer-nodeid")
-    {
-        nsr_peer_nodeid = value;
-        nsr_peer_nodeid.value_namespace = name_space;
-        nsr_peer_nodeid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-peer-ep-len")
-    {
-        nsr_peer_ep_len = value;
-        nsr_peer_ep_len.value_namespace = name_space;
-        nsr_peer_ep_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-peer-ep-version")
-    {
-        nsr_peer_ep_version = value;
-        nsr_peer_ep_version.value_namespace = name_space;
-        nsr_peer_ep_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ep-len")
-    {
-        nsr_local_ep_len = value;
-        nsr_local_ep_len.value_namespace = name_space;
-        nsr_local_ep_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ep-version")
-    {
-        nsr_local_ep_version = value;
-        nsr_local_ep_version.value_namespace = name_space;
-        nsr_local_ep_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-fabric-mtu")
-    {
-        nsr_fabric_mtu = value;
-        nsr_fabric_mtu.value_namespace = name_space;
-        nsr_fabric_mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-nbr-qad-qid")
-    {
-        nsr_nbr_qad_qid = value;
-        nsr_nbr_qad_qid.value_namespace = name_space;
-        nsr_nbr_qad_qid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-lsa-qad-qid")
-    {
-        nsr_lsa_qad_qid = value;
-        nsr_lsa_qad_qid.value_namespace = name_space;
-        nsr_lsa_qad_qid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-nbr-qad-mdata-count")
-    {
-        nsr_nbr_qad_mdata_count = value;
-        nsr_nbr_qad_mdata_count.value_namespace = name_space;
-        nsr_nbr_qad_mdata_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-lsa-qad-mdata-count")
-    {
-        nsr_lsa_qad_mdata_count = value;
-        nsr_lsa_qad_mdata_count.value_namespace = name_space;
-        nsr_lsa_qad_mdata_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-nbr-init-sync-pend-count")
-    {
-        nsr_nbr_init_sync_pend_count = value;
-        nsr_nbr_init_sync_pend_count.value_namespace = name_space;
-        nsr_nbr_init_sync_pend_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-lsa-init-sync-pend-count")
-    {
-        nsr_lsa_init_sync_pend_count = value;
-        nsr_lsa_init_sync_pend_count.value_namespace = name_space;
-        nsr_lsa_init_sync_pend_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-nbr-seq-no")
-    {
-        nsr_nbr_seq_no = value;
-        nsr_nbr_seq_no.value_namespace = name_space;
-        nsr_nbr_seq_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-intf-seq-no")
-    {
-        nsr_intf_seq_no = value;
-        nsr_intf_seq_no.value_namespace = name_space;
-        nsr_intf_seq_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-tmr-quant")
-    {
-        nsr_tmr_quant = value;
-        nsr_tmr_quant.value_namespace = name_space;
-        nsr_tmr_quant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-peer-ds-hdl")
-    {
-        nsr_peer_ds_hdl = value;
-        nsr_peer_ds_hdl.value_namespace = name_space;
-        nsr_peer_ds_hdl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ds-hdl")
-    {
-        nsr_local_ds_hdl = value;
-        nsr_local_ds_hdl.value_namespace = name_space;
-        nsr_local_ds_hdl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-conn-to-active-attempts")
-    {
-        nsr_conn_to_active_attempts = value;
-        nsr_conn_to_active_attempts.value_namespace = name_space;
-        nsr_conn_to_active_attempts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-conn-to-active-fails")
-    {
-        nsr_conn_to_active_fails = value;
-        nsr_conn_to_active_fails.value_namespace = name_space;
-        nsr_conn_to_active_fails.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-conn-to-active-opens")
-    {
-        nsr_conn_to_active_opens = value;
-        nsr_conn_to_active_opens.value_namespace = name_space;
-        nsr_conn_to_active_opens.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-conn-to-active-closes")
-    {
-        nsr_conn_to_active_closes = value;
-        nsr_conn_to_active_closes.value_namespace = name_space;
-        nsr_conn_to_active_closes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-conn-to-active-errors")
-    {
-        nsr_conn_to_active_errors = value;
-        nsr_conn_to_active_errors.value_namespace = name_space;
-        nsr_conn_to_active_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-peer-ep")
-    {
-        nsr_peer_ep = value;
-        nsr_peer_ep.value_namespace = name_space;
-        nsr_peer_ep.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ep")
-    {
-        nsr_local_ep = value;
-        nsr_local_ep.value_namespace = name_space;
-        nsr_local_ep.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nsr-rev")
-    {
-        nsr_rev.yfilter = yfilter;
-    }
-    if(value_path == "nsr-fsm-state")
-    {
-        nsr_fsm_state.yfilter = yfilter;
-    }
-    if(value_path == "nsr-version")
-    {
-        nsr_version.yfilter = yfilter;
-    }
-    if(value_path == "nsr-nodeid")
-    {
-        nsr_nodeid.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-version")
-    {
-        nsr_peer_version.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-nodeid")
-    {
-        nsr_peer_nodeid.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-ep-len")
-    {
-        nsr_peer_ep_len.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-ep-version")
-    {
-        nsr_peer_ep_version.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ep-len")
-    {
-        nsr_local_ep_len.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ep-version")
-    {
-        nsr_local_ep_version.yfilter = yfilter;
-    }
-    if(value_path == "nsr-fabric-mtu")
-    {
-        nsr_fabric_mtu.yfilter = yfilter;
-    }
-    if(value_path == "nsr-nbr-qad-qid")
-    {
-        nsr_nbr_qad_qid.yfilter = yfilter;
-    }
-    if(value_path == "nsr-lsa-qad-qid")
-    {
-        nsr_lsa_qad_qid.yfilter = yfilter;
-    }
-    if(value_path == "nsr-nbr-qad-mdata-count")
-    {
-        nsr_nbr_qad_mdata_count.yfilter = yfilter;
-    }
-    if(value_path == "nsr-lsa-qad-mdata-count")
-    {
-        nsr_lsa_qad_mdata_count.yfilter = yfilter;
-    }
-    if(value_path == "nsr-nbr-init-sync-pend-count")
-    {
-        nsr_nbr_init_sync_pend_count.yfilter = yfilter;
-    }
-    if(value_path == "nsr-lsa-init-sync-pend-count")
-    {
-        nsr_lsa_init_sync_pend_count.yfilter = yfilter;
-    }
-    if(value_path == "nsr-nbr-seq-no")
-    {
-        nsr_nbr_seq_no.yfilter = yfilter;
-    }
-    if(value_path == "nsr-intf-seq-no")
-    {
-        nsr_intf_seq_no.yfilter = yfilter;
-    }
-    if(value_path == "nsr-tmr-quant")
-    {
-        nsr_tmr_quant.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-ds-hdl")
-    {
-        nsr_peer_ds_hdl.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ds-hdl")
-    {
-        nsr_local_ds_hdl.yfilter = yfilter;
-    }
-    if(value_path == "nsr-conn-to-active-attempts")
-    {
-        nsr_conn_to_active_attempts.yfilter = yfilter;
-    }
-    if(value_path == "nsr-conn-to-active-fails")
-    {
-        nsr_conn_to_active_fails.yfilter = yfilter;
-    }
-    if(value_path == "nsr-conn-to-active-opens")
-    {
-        nsr_conn_to_active_opens.yfilter = yfilter;
-    }
-    if(value_path == "nsr-conn-to-active-closes")
-    {
-        nsr_conn_to_active_closes.yfilter = yfilter;
-    }
-    if(value_path == "nsr-conn-to-active-errors")
-    {
-        nsr_conn_to_active_errors.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-ep")
-    {
-        nsr_peer_ep.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ep")
-    {
-        nsr_local_ep.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nsr-thd-sched" || name == "nsr-rtr-thd-sched" || name == "nsr-fsm-flag" || name == "nsr-fsm-running-timer" || name == "nsr-issu-milestone" || name == "nsr-err-history" || name == "nsr-rev" || name == "nsr-fsm-state" || name == "nsr-version" || name == "nsr-nodeid" || name == "nsr-peer-version" || name == "nsr-peer-nodeid" || name == "nsr-peer-ep-len" || name == "nsr-peer-ep-version" || name == "nsr-local-ep-len" || name == "nsr-local-ep-version" || name == "nsr-fabric-mtu" || name == "nsr-nbr-qad-qid" || name == "nsr-lsa-qad-qid" || name == "nsr-nbr-qad-mdata-count" || name == "nsr-lsa-qad-mdata-count" || name == "nsr-nbr-init-sync-pend-count" || name == "nsr-lsa-init-sync-pend-count" || name == "nsr-nbr-seq-no" || name == "nsr-intf-seq-no" || name == "nsr-tmr-quant" || name == "nsr-peer-ds-hdl" || name == "nsr-local-ds-hdl" || name == "nsr-conn-to-active-attempts" || name == "nsr-conn-to-active-fails" || name == "nsr-conn-to-active-opens" || name == "nsr-conn-to-active-closes" || name == "nsr-conn-to-active-errors" || name == "nsr-peer-ep" || name == "nsr-local-ep")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrThdSched()
-    :
-    nsr_pulse_quant{YType::int32, "nsr-pulse-quant"},
-    nsr_events_in_q{YType::uint32, "nsr-events-in-q"},
-    nsr_events_tx{YType::uint64, "nsr-events-tx"},
-    nsr_events_rx{YType::uint64, "nsr-events-rx"},
-    nsr_bad_pulses_rx{YType::uint64, "nsr-bad-pulses-rx"},
-    nsr_good_pulses_rx{YType::uint64, "nsr-good-pulses-rx"},
-    nsr_pulses_tx{YType::uint64, "nsr-pulses-tx"},
-    nsr_pulse_tx_fails{YType::uint64, "nsr-pulse-tx-fails"}
-        ,
-    nsr_pri(this, {})
-{
-
-    yang_name = "nsr-thd-sched"; yang_parent_name = "issu-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::~NsrThdSched()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<nsr_pri.len(); index++)
-    {
-        if(nsr_pri[index]->has_data())
-            return true;
-    }
-    return nsr_pulse_quant.is_set
-	|| nsr_events_in_q.is_set
-	|| nsr_events_tx.is_set
-	|| nsr_events_rx.is_set
-	|| nsr_bad_pulses_rx.is_set
-	|| nsr_good_pulses_rx.is_set
-	|| nsr_pulses_tx.is_set
-	|| nsr_pulse_tx_fails.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::has_operation() const
-{
-    for (std::size_t index=0; index<nsr_pri.len(); index++)
-    {
-        if(nsr_pri[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(nsr_pulse_quant.yfilter)
-	|| ydk::is_set(nsr_events_in_q.yfilter)
-	|| ydk::is_set(nsr_events_tx.yfilter)
-	|| ydk::is_set(nsr_events_rx.yfilter)
-	|| ydk::is_set(nsr_bad_pulses_rx.yfilter)
-	|| ydk::is_set(nsr_good_pulses_rx.yfilter)
-	|| ydk::is_set(nsr_pulses_tx.yfilter)
-	|| ydk::is_set(nsr_pulse_tx_fails.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-thd-sched";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nsr_pulse_quant.is_set || is_set(nsr_pulse_quant.yfilter)) leaf_name_data.push_back(nsr_pulse_quant.get_name_leafdata());
-    if (nsr_events_in_q.is_set || is_set(nsr_events_in_q.yfilter)) leaf_name_data.push_back(nsr_events_in_q.get_name_leafdata());
-    if (nsr_events_tx.is_set || is_set(nsr_events_tx.yfilter)) leaf_name_data.push_back(nsr_events_tx.get_name_leafdata());
-    if (nsr_events_rx.is_set || is_set(nsr_events_rx.yfilter)) leaf_name_data.push_back(nsr_events_rx.get_name_leafdata());
-    if (nsr_bad_pulses_rx.is_set || is_set(nsr_bad_pulses_rx.yfilter)) leaf_name_data.push_back(nsr_bad_pulses_rx.get_name_leafdata());
-    if (nsr_good_pulses_rx.is_set || is_set(nsr_good_pulses_rx.yfilter)) leaf_name_data.push_back(nsr_good_pulses_rx.get_name_leafdata());
-    if (nsr_pulses_tx.is_set || is_set(nsr_pulses_tx.yfilter)) leaf_name_data.push_back(nsr_pulses_tx.get_name_leafdata());
-    if (nsr_pulse_tx_fails.is_set || is_set(nsr_pulse_tx_fails.yfilter)) leaf_name_data.push_back(nsr_pulse_tx_fails.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nsr-pri")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri>();
-        ent_->parent = this;
-        nsr_pri.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : nsr_pri.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nsr-pulse-quant")
-    {
-        nsr_pulse_quant = value;
-        nsr_pulse_quant.value_namespace = name_space;
-        nsr_pulse_quant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-events-in-q")
-    {
-        nsr_events_in_q = value;
-        nsr_events_in_q.value_namespace = name_space;
-        nsr_events_in_q.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-events-tx")
-    {
-        nsr_events_tx = value;
-        nsr_events_tx.value_namespace = name_space;
-        nsr_events_tx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-events-rx")
-    {
-        nsr_events_rx = value;
-        nsr_events_rx.value_namespace = name_space;
-        nsr_events_rx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-bad-pulses-rx")
-    {
-        nsr_bad_pulses_rx = value;
-        nsr_bad_pulses_rx.value_namespace = name_space;
-        nsr_bad_pulses_rx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-good-pulses-rx")
-    {
-        nsr_good_pulses_rx = value;
-        nsr_good_pulses_rx.value_namespace = name_space;
-        nsr_good_pulses_rx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-pulses-tx")
-    {
-        nsr_pulses_tx = value;
-        nsr_pulses_tx.value_namespace = name_space;
-        nsr_pulses_tx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-pulse-tx-fails")
-    {
-        nsr_pulse_tx_fails = value;
-        nsr_pulse_tx_fails.value_namespace = name_space;
-        nsr_pulse_tx_fails.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nsr-pulse-quant")
-    {
-        nsr_pulse_quant.yfilter = yfilter;
-    }
-    if(value_path == "nsr-events-in-q")
-    {
-        nsr_events_in_q.yfilter = yfilter;
-    }
-    if(value_path == "nsr-events-tx")
-    {
-        nsr_events_tx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-events-rx")
-    {
-        nsr_events_rx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-bad-pulses-rx")
-    {
-        nsr_bad_pulses_rx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-good-pulses-rx")
-    {
-        nsr_good_pulses_rx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-pulses-tx")
-    {
-        nsr_pulses_tx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-pulse-tx-fails")
-    {
-        nsr_pulse_tx_fails.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nsr-pri" || name == "nsr-pulse-quant" || name == "nsr-events-in-q" || name == "nsr-events-tx" || name == "nsr-events-rx" || name == "nsr-bad-pulses-rx" || name == "nsr-good-pulses-rx" || name == "nsr-pulses-tx" || name == "nsr-pulse-tx-fails")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::NsrPri()
-    :
-    nsr_sched_pri{YType::uint32, "nsr-sched-pri"},
-    nsr_sched_quant{YType::uint8, "nsr-sched-quant"},
-    nsr_sched_remain_quant{YType::uint8, "nsr-sched-remain-quant"},
-    nsr_sched_evs_in_q{YType::uint16, "nsr-sched-evs-in-q"},
-    nsr_sched_max_evs{YType::uint16, "nsr-sched-max-evs"},
-    nsr_sched_peak_q_len{YType::uint16, "nsr-sched-peak-q-len"},
-    nsr_sched_evs_qd{YType::uint64, "nsr-sched-evs-qd"},
-    nsr_sched_enq_fails{YType::uint64, "nsr-sched-enq-fails"},
-    nsr_sched_evs_deqd{YType::uint64, "nsr-sched-evs-deqd"}
-{
-
-    yang_name = "nsr-pri"; yang_parent_name = "nsr-thd-sched"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::~NsrPri()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::has_data() const
-{
-    if (is_presence_container) return true;
-    return nsr_sched_pri.is_set
-	|| nsr_sched_quant.is_set
-	|| nsr_sched_remain_quant.is_set
-	|| nsr_sched_evs_in_q.is_set
-	|| nsr_sched_max_evs.is_set
-	|| nsr_sched_peak_q_len.is_set
-	|| nsr_sched_evs_qd.is_set
-	|| nsr_sched_enq_fails.is_set
-	|| nsr_sched_evs_deqd.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nsr_sched_pri.yfilter)
-	|| ydk::is_set(nsr_sched_quant.yfilter)
-	|| ydk::is_set(nsr_sched_remain_quant.yfilter)
-	|| ydk::is_set(nsr_sched_evs_in_q.yfilter)
-	|| ydk::is_set(nsr_sched_max_evs.yfilter)
-	|| ydk::is_set(nsr_sched_peak_q_len.yfilter)
-	|| ydk::is_set(nsr_sched_evs_qd.yfilter)
-	|| ydk::is_set(nsr_sched_enq_fails.yfilter)
-	|| ydk::is_set(nsr_sched_evs_deqd.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-pri";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nsr_sched_pri.is_set || is_set(nsr_sched_pri.yfilter)) leaf_name_data.push_back(nsr_sched_pri.get_name_leafdata());
-    if (nsr_sched_quant.is_set || is_set(nsr_sched_quant.yfilter)) leaf_name_data.push_back(nsr_sched_quant.get_name_leafdata());
-    if (nsr_sched_remain_quant.is_set || is_set(nsr_sched_remain_quant.yfilter)) leaf_name_data.push_back(nsr_sched_remain_quant.get_name_leafdata());
-    if (nsr_sched_evs_in_q.is_set || is_set(nsr_sched_evs_in_q.yfilter)) leaf_name_data.push_back(nsr_sched_evs_in_q.get_name_leafdata());
-    if (nsr_sched_max_evs.is_set || is_set(nsr_sched_max_evs.yfilter)) leaf_name_data.push_back(nsr_sched_max_evs.get_name_leafdata());
-    if (nsr_sched_peak_q_len.is_set || is_set(nsr_sched_peak_q_len.yfilter)) leaf_name_data.push_back(nsr_sched_peak_q_len.get_name_leafdata());
-    if (nsr_sched_evs_qd.is_set || is_set(nsr_sched_evs_qd.yfilter)) leaf_name_data.push_back(nsr_sched_evs_qd.get_name_leafdata());
-    if (nsr_sched_enq_fails.is_set || is_set(nsr_sched_enq_fails.yfilter)) leaf_name_data.push_back(nsr_sched_enq_fails.get_name_leafdata());
-    if (nsr_sched_evs_deqd.is_set || is_set(nsr_sched_evs_deqd.yfilter)) leaf_name_data.push_back(nsr_sched_evs_deqd.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nsr-sched-pri")
-    {
-        nsr_sched_pri = value;
-        nsr_sched_pri.value_namespace = name_space;
-        nsr_sched_pri.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-quant")
-    {
-        nsr_sched_quant = value;
-        nsr_sched_quant.value_namespace = name_space;
-        nsr_sched_quant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-remain-quant")
-    {
-        nsr_sched_remain_quant = value;
-        nsr_sched_remain_quant.value_namespace = name_space;
-        nsr_sched_remain_quant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-evs-in-q")
-    {
-        nsr_sched_evs_in_q = value;
-        nsr_sched_evs_in_q.value_namespace = name_space;
-        nsr_sched_evs_in_q.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-max-evs")
-    {
-        nsr_sched_max_evs = value;
-        nsr_sched_max_evs.value_namespace = name_space;
-        nsr_sched_max_evs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-peak-q-len")
-    {
-        nsr_sched_peak_q_len = value;
-        nsr_sched_peak_q_len.value_namespace = name_space;
-        nsr_sched_peak_q_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-evs-qd")
-    {
-        nsr_sched_evs_qd = value;
-        nsr_sched_evs_qd.value_namespace = name_space;
-        nsr_sched_evs_qd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-enq-fails")
-    {
-        nsr_sched_enq_fails = value;
-        nsr_sched_enq_fails.value_namespace = name_space;
-        nsr_sched_enq_fails.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-evs-deqd")
-    {
-        nsr_sched_evs_deqd = value;
-        nsr_sched_evs_deqd.value_namespace = name_space;
-        nsr_sched_evs_deqd.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nsr-sched-pri")
-    {
-        nsr_sched_pri.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-quant")
-    {
-        nsr_sched_quant.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-remain-quant")
-    {
-        nsr_sched_remain_quant.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-evs-in-q")
-    {
-        nsr_sched_evs_in_q.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-max-evs")
-    {
-        nsr_sched_max_evs.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-peak-q-len")
-    {
-        nsr_sched_peak_q_len.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-evs-qd")
-    {
-        nsr_sched_evs_qd.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-enq-fails")
-    {
-        nsr_sched_enq_fails.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-evs-deqd")
-    {
-        nsr_sched_evs_deqd.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nsr-sched-pri" || name == "nsr-sched-quant" || name == "nsr-sched-remain-quant" || name == "nsr-sched-evs-in-q" || name == "nsr-sched-max-evs" || name == "nsr-sched-peak-q-len" || name == "nsr-sched-evs-qd" || name == "nsr-sched-enq-fails" || name == "nsr-sched-evs-deqd")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrRtrThdSched()
-    :
-    nsr_pulse_quant{YType::int32, "nsr-pulse-quant"},
-    nsr_events_in_q{YType::uint32, "nsr-events-in-q"},
-    nsr_events_tx{YType::uint64, "nsr-events-tx"},
-    nsr_events_rx{YType::uint64, "nsr-events-rx"},
-    nsr_bad_pulses_rx{YType::uint64, "nsr-bad-pulses-rx"},
-    nsr_good_pulses_rx{YType::uint64, "nsr-good-pulses-rx"},
-    nsr_pulses_tx{YType::uint64, "nsr-pulses-tx"},
-    nsr_pulse_tx_fails{YType::uint64, "nsr-pulse-tx-fails"}
-        ,
-    nsr_pri(this, {})
-{
-
-    yang_name = "nsr-rtr-thd-sched"; yang_parent_name = "issu-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::~NsrRtrThdSched()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<nsr_pri.len(); index++)
-    {
-        if(nsr_pri[index]->has_data())
-            return true;
-    }
-    return nsr_pulse_quant.is_set
-	|| nsr_events_in_q.is_set
-	|| nsr_events_tx.is_set
-	|| nsr_events_rx.is_set
-	|| nsr_bad_pulses_rx.is_set
-	|| nsr_good_pulses_rx.is_set
-	|| nsr_pulses_tx.is_set
-	|| nsr_pulse_tx_fails.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::has_operation() const
-{
-    for (std::size_t index=0; index<nsr_pri.len(); index++)
-    {
-        if(nsr_pri[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(nsr_pulse_quant.yfilter)
-	|| ydk::is_set(nsr_events_in_q.yfilter)
-	|| ydk::is_set(nsr_events_tx.yfilter)
-	|| ydk::is_set(nsr_events_rx.yfilter)
-	|| ydk::is_set(nsr_bad_pulses_rx.yfilter)
-	|| ydk::is_set(nsr_good_pulses_rx.yfilter)
-	|| ydk::is_set(nsr_pulses_tx.yfilter)
-	|| ydk::is_set(nsr_pulse_tx_fails.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-rtr-thd-sched";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nsr_pulse_quant.is_set || is_set(nsr_pulse_quant.yfilter)) leaf_name_data.push_back(nsr_pulse_quant.get_name_leafdata());
-    if (nsr_events_in_q.is_set || is_set(nsr_events_in_q.yfilter)) leaf_name_data.push_back(nsr_events_in_q.get_name_leafdata());
-    if (nsr_events_tx.is_set || is_set(nsr_events_tx.yfilter)) leaf_name_data.push_back(nsr_events_tx.get_name_leafdata());
-    if (nsr_events_rx.is_set || is_set(nsr_events_rx.yfilter)) leaf_name_data.push_back(nsr_events_rx.get_name_leafdata());
-    if (nsr_bad_pulses_rx.is_set || is_set(nsr_bad_pulses_rx.yfilter)) leaf_name_data.push_back(nsr_bad_pulses_rx.get_name_leafdata());
-    if (nsr_good_pulses_rx.is_set || is_set(nsr_good_pulses_rx.yfilter)) leaf_name_data.push_back(nsr_good_pulses_rx.get_name_leafdata());
-    if (nsr_pulses_tx.is_set || is_set(nsr_pulses_tx.yfilter)) leaf_name_data.push_back(nsr_pulses_tx.get_name_leafdata());
-    if (nsr_pulse_tx_fails.is_set || is_set(nsr_pulse_tx_fails.yfilter)) leaf_name_data.push_back(nsr_pulse_tx_fails.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nsr-pri")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri>();
-        ent_->parent = this;
-        nsr_pri.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : nsr_pri.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nsr-pulse-quant")
-    {
-        nsr_pulse_quant = value;
-        nsr_pulse_quant.value_namespace = name_space;
-        nsr_pulse_quant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-events-in-q")
-    {
-        nsr_events_in_q = value;
-        nsr_events_in_q.value_namespace = name_space;
-        nsr_events_in_q.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-events-tx")
-    {
-        nsr_events_tx = value;
-        nsr_events_tx.value_namespace = name_space;
-        nsr_events_tx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-events-rx")
-    {
-        nsr_events_rx = value;
-        nsr_events_rx.value_namespace = name_space;
-        nsr_events_rx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-bad-pulses-rx")
-    {
-        nsr_bad_pulses_rx = value;
-        nsr_bad_pulses_rx.value_namespace = name_space;
-        nsr_bad_pulses_rx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-good-pulses-rx")
-    {
-        nsr_good_pulses_rx = value;
-        nsr_good_pulses_rx.value_namespace = name_space;
-        nsr_good_pulses_rx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-pulses-tx")
-    {
-        nsr_pulses_tx = value;
-        nsr_pulses_tx.value_namespace = name_space;
-        nsr_pulses_tx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-pulse-tx-fails")
-    {
-        nsr_pulse_tx_fails = value;
-        nsr_pulse_tx_fails.value_namespace = name_space;
-        nsr_pulse_tx_fails.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nsr-pulse-quant")
-    {
-        nsr_pulse_quant.yfilter = yfilter;
-    }
-    if(value_path == "nsr-events-in-q")
-    {
-        nsr_events_in_q.yfilter = yfilter;
-    }
-    if(value_path == "nsr-events-tx")
-    {
-        nsr_events_tx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-events-rx")
-    {
-        nsr_events_rx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-bad-pulses-rx")
-    {
-        nsr_bad_pulses_rx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-good-pulses-rx")
-    {
-        nsr_good_pulses_rx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-pulses-tx")
-    {
-        nsr_pulses_tx.yfilter = yfilter;
-    }
-    if(value_path == "nsr-pulse-tx-fails")
-    {
-        nsr_pulse_tx_fails.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nsr-pri" || name == "nsr-pulse-quant" || name == "nsr-events-in-q" || name == "nsr-events-tx" || name == "nsr-events-rx" || name == "nsr-bad-pulses-rx" || name == "nsr-good-pulses-rx" || name == "nsr-pulses-tx" || name == "nsr-pulse-tx-fails")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::NsrPri()
-    :
-    nsr_sched_pri{YType::uint32, "nsr-sched-pri"},
-    nsr_sched_quant{YType::uint8, "nsr-sched-quant"},
-    nsr_sched_remain_quant{YType::uint8, "nsr-sched-remain-quant"},
-    nsr_sched_evs_in_q{YType::uint16, "nsr-sched-evs-in-q"},
-    nsr_sched_max_evs{YType::uint16, "nsr-sched-max-evs"},
-    nsr_sched_peak_q_len{YType::uint16, "nsr-sched-peak-q-len"},
-    nsr_sched_evs_qd{YType::uint64, "nsr-sched-evs-qd"},
-    nsr_sched_enq_fails{YType::uint64, "nsr-sched-enq-fails"},
-    nsr_sched_evs_deqd{YType::uint64, "nsr-sched-evs-deqd"}
-{
-
-    yang_name = "nsr-pri"; yang_parent_name = "nsr-rtr-thd-sched"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::~NsrPri()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::has_data() const
-{
-    if (is_presence_container) return true;
-    return nsr_sched_pri.is_set
-	|| nsr_sched_quant.is_set
-	|| nsr_sched_remain_quant.is_set
-	|| nsr_sched_evs_in_q.is_set
-	|| nsr_sched_max_evs.is_set
-	|| nsr_sched_peak_q_len.is_set
-	|| nsr_sched_evs_qd.is_set
-	|| nsr_sched_enq_fails.is_set
-	|| nsr_sched_evs_deqd.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nsr_sched_pri.yfilter)
-	|| ydk::is_set(nsr_sched_quant.yfilter)
-	|| ydk::is_set(nsr_sched_remain_quant.yfilter)
-	|| ydk::is_set(nsr_sched_evs_in_q.yfilter)
-	|| ydk::is_set(nsr_sched_max_evs.yfilter)
-	|| ydk::is_set(nsr_sched_peak_q_len.yfilter)
-	|| ydk::is_set(nsr_sched_evs_qd.yfilter)
-	|| ydk::is_set(nsr_sched_enq_fails.yfilter)
-	|| ydk::is_set(nsr_sched_evs_deqd.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-pri";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nsr_sched_pri.is_set || is_set(nsr_sched_pri.yfilter)) leaf_name_data.push_back(nsr_sched_pri.get_name_leafdata());
-    if (nsr_sched_quant.is_set || is_set(nsr_sched_quant.yfilter)) leaf_name_data.push_back(nsr_sched_quant.get_name_leafdata());
-    if (nsr_sched_remain_quant.is_set || is_set(nsr_sched_remain_quant.yfilter)) leaf_name_data.push_back(nsr_sched_remain_quant.get_name_leafdata());
-    if (nsr_sched_evs_in_q.is_set || is_set(nsr_sched_evs_in_q.yfilter)) leaf_name_data.push_back(nsr_sched_evs_in_q.get_name_leafdata());
-    if (nsr_sched_max_evs.is_set || is_set(nsr_sched_max_evs.yfilter)) leaf_name_data.push_back(nsr_sched_max_evs.get_name_leafdata());
-    if (nsr_sched_peak_q_len.is_set || is_set(nsr_sched_peak_q_len.yfilter)) leaf_name_data.push_back(nsr_sched_peak_q_len.get_name_leafdata());
-    if (nsr_sched_evs_qd.is_set || is_set(nsr_sched_evs_qd.yfilter)) leaf_name_data.push_back(nsr_sched_evs_qd.get_name_leafdata());
-    if (nsr_sched_enq_fails.is_set || is_set(nsr_sched_enq_fails.yfilter)) leaf_name_data.push_back(nsr_sched_enq_fails.get_name_leafdata());
-    if (nsr_sched_evs_deqd.is_set || is_set(nsr_sched_evs_deqd.yfilter)) leaf_name_data.push_back(nsr_sched_evs_deqd.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nsr-sched-pri")
-    {
-        nsr_sched_pri = value;
-        nsr_sched_pri.value_namespace = name_space;
-        nsr_sched_pri.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-quant")
-    {
-        nsr_sched_quant = value;
-        nsr_sched_quant.value_namespace = name_space;
-        nsr_sched_quant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-remain-quant")
-    {
-        nsr_sched_remain_quant = value;
-        nsr_sched_remain_quant.value_namespace = name_space;
-        nsr_sched_remain_quant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-evs-in-q")
-    {
-        nsr_sched_evs_in_q = value;
-        nsr_sched_evs_in_q.value_namespace = name_space;
-        nsr_sched_evs_in_q.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-max-evs")
-    {
-        nsr_sched_max_evs = value;
-        nsr_sched_max_evs.value_namespace = name_space;
-        nsr_sched_max_evs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-peak-q-len")
-    {
-        nsr_sched_peak_q_len = value;
-        nsr_sched_peak_q_len.value_namespace = name_space;
-        nsr_sched_peak_q_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-evs-qd")
-    {
-        nsr_sched_evs_qd = value;
-        nsr_sched_evs_qd.value_namespace = name_space;
-        nsr_sched_evs_qd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-enq-fails")
-    {
-        nsr_sched_enq_fails = value;
-        nsr_sched_enq_fails.value_namespace = name_space;
-        nsr_sched_enq_fails.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-sched-evs-deqd")
-    {
-        nsr_sched_evs_deqd = value;
-        nsr_sched_evs_deqd.value_namespace = name_space;
-        nsr_sched_evs_deqd.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nsr-sched-pri")
-    {
-        nsr_sched_pri.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-quant")
-    {
-        nsr_sched_quant.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-remain-quant")
-    {
-        nsr_sched_remain_quant.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-evs-in-q")
-    {
-        nsr_sched_evs_in_q.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-max-evs")
-    {
-        nsr_sched_max_evs.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-peak-q-len")
-    {
-        nsr_sched_peak_q_len.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-evs-qd")
-    {
-        nsr_sched_evs_qd.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-enq-fails")
-    {
-        nsr_sched_enq_fails.yfilter = yfilter;
-    }
-    if(value_path == "nsr-sched-evs-deqd")
-    {
-        nsr_sched_evs_deqd.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nsr-sched-pri" || name == "nsr-sched-quant" || name == "nsr-sched-remain-quant" || name == "nsr-sched-evs-in-q" || name == "nsr-sched-max-evs" || name == "nsr-sched-peak-q-len" || name == "nsr-sched-evs-qd" || name == "nsr-sched-enq-fails" || name == "nsr-sched-evs-deqd")
-        return true;
-    return false;
-}
-
 Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::NsrFsmFlag()
     :
     entry{YType::str, "entry"}
@@ -5780,10 +2421,6 @@ Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrStats()
     nsr_nodeid{YType::uint32, "nsr-nodeid"},
     nsr_peer_version{YType::uint32, "nsr-peer-version"},
     nsr_peer_nodeid{YType::uint32, "nsr-peer-nodeid"},
-    nsr_peer_ep_len{YType::uint32, "nsr-peer-ep-len"},
-    nsr_peer_ep_version{YType::uint32, "nsr-peer-ep-version"},
-    nsr_local_ep_len{YType::uint32, "nsr-local-ep-len"},
-    nsr_local_ep_version{YType::uint32, "nsr-local-ep-version"},
     nsr_fabric_mtu{YType::uint32, "nsr-fabric-mtu"},
     nsr_nbr_qad_qid{YType::uint32, "nsr-nbr-qad-qid"},
     nsr_lsa_qad_qid{YType::uint32, "nsr-lsa-qad-qid"},
@@ -5794,15 +2431,11 @@ Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrStats()
     nsr_nbr_seq_no{YType::uint32, "nsr-nbr-seq-no"},
     nsr_intf_seq_no{YType::uint32, "nsr-intf-seq-no"},
     nsr_tmr_quant{YType::int32, "nsr-tmr-quant"},
-    nsr_peer_ds_hdl{YType::uint64, "nsr-peer-ds-hdl"},
-    nsr_local_ds_hdl{YType::uint64, "nsr-local-ds-hdl"},
     nsr_conn_to_active_attempts{YType::uint64, "nsr-conn-to-active-attempts"},
     nsr_conn_to_active_fails{YType::uint64, "nsr-conn-to-active-fails"},
     nsr_conn_to_active_opens{YType::uint64, "nsr-conn-to-active-opens"},
     nsr_conn_to_active_closes{YType::uint64, "nsr-conn-to-active-closes"},
-    nsr_conn_to_active_errors{YType::uint64, "nsr-conn-to-active-errors"},
-    nsr_peer_ep{YType::str, "nsr-peer-ep"},
-    nsr_local_ep{YType::str, "nsr-local-ep"}
+    nsr_conn_to_active_errors{YType::uint64, "nsr-conn-to-active-errors"}
         ,
     nsr_thd_sched(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrThdSched>())
     , nsr_rtr_thd_sched(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::NsrRtrThdSched>())
@@ -5850,10 +2483,6 @@ bool Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::has_data() cons
 	|| nsr_nodeid.is_set
 	|| nsr_peer_version.is_set
 	|| nsr_peer_nodeid.is_set
-	|| nsr_peer_ep_len.is_set
-	|| nsr_peer_ep_version.is_set
-	|| nsr_local_ep_len.is_set
-	|| nsr_local_ep_version.is_set
 	|| nsr_fabric_mtu.is_set
 	|| nsr_nbr_qad_qid.is_set
 	|| nsr_lsa_qad_qid.is_set
@@ -5864,15 +2493,11 @@ bool Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::has_data() cons
 	|| nsr_nbr_seq_no.is_set
 	|| nsr_intf_seq_no.is_set
 	|| nsr_tmr_quant.is_set
-	|| nsr_peer_ds_hdl.is_set
-	|| nsr_local_ds_hdl.is_set
 	|| nsr_conn_to_active_attempts.is_set
 	|| nsr_conn_to_active_fails.is_set
 	|| nsr_conn_to_active_opens.is_set
 	|| nsr_conn_to_active_closes.is_set
 	|| nsr_conn_to_active_errors.is_set
-	|| nsr_peer_ep.is_set
-	|| nsr_local_ep.is_set
 	|| (nsr_thd_sched !=  nullptr && nsr_thd_sched->has_data())
 	|| (nsr_rtr_thd_sched !=  nullptr && nsr_rtr_thd_sched->has_data());
 }
@@ -5906,10 +2531,6 @@ bool Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::has_operation()
 	|| ydk::is_set(nsr_nodeid.yfilter)
 	|| ydk::is_set(nsr_peer_version.yfilter)
 	|| ydk::is_set(nsr_peer_nodeid.yfilter)
-	|| ydk::is_set(nsr_peer_ep_len.yfilter)
-	|| ydk::is_set(nsr_peer_ep_version.yfilter)
-	|| ydk::is_set(nsr_local_ep_len.yfilter)
-	|| ydk::is_set(nsr_local_ep_version.yfilter)
 	|| ydk::is_set(nsr_fabric_mtu.yfilter)
 	|| ydk::is_set(nsr_nbr_qad_qid.yfilter)
 	|| ydk::is_set(nsr_lsa_qad_qid.yfilter)
@@ -5920,15 +2541,11 @@ bool Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::has_operation()
 	|| ydk::is_set(nsr_nbr_seq_no.yfilter)
 	|| ydk::is_set(nsr_intf_seq_no.yfilter)
 	|| ydk::is_set(nsr_tmr_quant.yfilter)
-	|| ydk::is_set(nsr_peer_ds_hdl.yfilter)
-	|| ydk::is_set(nsr_local_ds_hdl.yfilter)
 	|| ydk::is_set(nsr_conn_to_active_attempts.yfilter)
 	|| ydk::is_set(nsr_conn_to_active_fails.yfilter)
 	|| ydk::is_set(nsr_conn_to_active_opens.yfilter)
 	|| ydk::is_set(nsr_conn_to_active_closes.yfilter)
 	|| ydk::is_set(nsr_conn_to_active_errors.yfilter)
-	|| ydk::is_set(nsr_peer_ep.yfilter)
-	|| ydk::is_set(nsr_local_ep.yfilter)
 	|| (nsr_thd_sched !=  nullptr && nsr_thd_sched->has_operation())
 	|| (nsr_rtr_thd_sched !=  nullptr && nsr_rtr_thd_sched->has_operation());
 }
@@ -5950,10 +2567,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (nsr_nodeid.is_set || is_set(nsr_nodeid.yfilter)) leaf_name_data.push_back(nsr_nodeid.get_name_leafdata());
     if (nsr_peer_version.is_set || is_set(nsr_peer_version.yfilter)) leaf_name_data.push_back(nsr_peer_version.get_name_leafdata());
     if (nsr_peer_nodeid.is_set || is_set(nsr_peer_nodeid.yfilter)) leaf_name_data.push_back(nsr_peer_nodeid.get_name_leafdata());
-    if (nsr_peer_ep_len.is_set || is_set(nsr_peer_ep_len.yfilter)) leaf_name_data.push_back(nsr_peer_ep_len.get_name_leafdata());
-    if (nsr_peer_ep_version.is_set || is_set(nsr_peer_ep_version.yfilter)) leaf_name_data.push_back(nsr_peer_ep_version.get_name_leafdata());
-    if (nsr_local_ep_len.is_set || is_set(nsr_local_ep_len.yfilter)) leaf_name_data.push_back(nsr_local_ep_len.get_name_leafdata());
-    if (nsr_local_ep_version.is_set || is_set(nsr_local_ep_version.yfilter)) leaf_name_data.push_back(nsr_local_ep_version.get_name_leafdata());
     if (nsr_fabric_mtu.is_set || is_set(nsr_fabric_mtu.yfilter)) leaf_name_data.push_back(nsr_fabric_mtu.get_name_leafdata());
     if (nsr_nbr_qad_qid.is_set || is_set(nsr_nbr_qad_qid.yfilter)) leaf_name_data.push_back(nsr_nbr_qad_qid.get_name_leafdata());
     if (nsr_lsa_qad_qid.is_set || is_set(nsr_lsa_qad_qid.yfilter)) leaf_name_data.push_back(nsr_lsa_qad_qid.get_name_leafdata());
@@ -5964,15 +2577,11 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (nsr_nbr_seq_no.is_set || is_set(nsr_nbr_seq_no.yfilter)) leaf_name_data.push_back(nsr_nbr_seq_no.get_name_leafdata());
     if (nsr_intf_seq_no.is_set || is_set(nsr_intf_seq_no.yfilter)) leaf_name_data.push_back(nsr_intf_seq_no.get_name_leafdata());
     if (nsr_tmr_quant.is_set || is_set(nsr_tmr_quant.yfilter)) leaf_name_data.push_back(nsr_tmr_quant.get_name_leafdata());
-    if (nsr_peer_ds_hdl.is_set || is_set(nsr_peer_ds_hdl.yfilter)) leaf_name_data.push_back(nsr_peer_ds_hdl.get_name_leafdata());
-    if (nsr_local_ds_hdl.is_set || is_set(nsr_local_ds_hdl.yfilter)) leaf_name_data.push_back(nsr_local_ds_hdl.get_name_leafdata());
     if (nsr_conn_to_active_attempts.is_set || is_set(nsr_conn_to_active_attempts.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_attempts.get_name_leafdata());
     if (nsr_conn_to_active_fails.is_set || is_set(nsr_conn_to_active_fails.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_fails.get_name_leafdata());
     if (nsr_conn_to_active_opens.is_set || is_set(nsr_conn_to_active_opens.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_opens.get_name_leafdata());
     if (nsr_conn_to_active_closes.is_set || is_set(nsr_conn_to_active_closes.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_closes.get_name_leafdata());
     if (nsr_conn_to_active_errors.is_set || is_set(nsr_conn_to_active_errors.yfilter)) leaf_name_data.push_back(nsr_conn_to_active_errors.get_name_leafdata());
-    if (nsr_peer_ep.is_set || is_set(nsr_peer_ep.yfilter)) leaf_name_data.push_back(nsr_peer_ep.get_name_leafdata());
-    if (nsr_local_ep.is_set || is_set(nsr_local_ep.yfilter)) leaf_name_data.push_back(nsr_local_ep.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6124,30 +2733,6 @@ void Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::set_value(const
         nsr_peer_nodeid.value_namespace = name_space;
         nsr_peer_nodeid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nsr-peer-ep-len")
-    {
-        nsr_peer_ep_len = value;
-        nsr_peer_ep_len.value_namespace = name_space;
-        nsr_peer_ep_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-peer-ep-version")
-    {
-        nsr_peer_ep_version = value;
-        nsr_peer_ep_version.value_namespace = name_space;
-        nsr_peer_ep_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ep-len")
-    {
-        nsr_local_ep_len = value;
-        nsr_local_ep_len.value_namespace = name_space;
-        nsr_local_ep_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ep-version")
-    {
-        nsr_local_ep_version = value;
-        nsr_local_ep_version.value_namespace = name_space;
-        nsr_local_ep_version.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "nsr-fabric-mtu")
     {
         nsr_fabric_mtu = value;
@@ -6208,18 +2793,6 @@ void Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::set_value(const
         nsr_tmr_quant.value_namespace = name_space;
         nsr_tmr_quant.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nsr-peer-ds-hdl")
-    {
-        nsr_peer_ds_hdl = value;
-        nsr_peer_ds_hdl.value_namespace = name_space;
-        nsr_peer_ds_hdl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ds-hdl")
-    {
-        nsr_local_ds_hdl = value;
-        nsr_local_ds_hdl.value_namespace = name_space;
-        nsr_local_ds_hdl.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "nsr-conn-to-active-attempts")
     {
         nsr_conn_to_active_attempts = value;
@@ -6250,18 +2823,6 @@ void Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::set_value(const
         nsr_conn_to_active_errors.value_namespace = name_space;
         nsr_conn_to_active_errors.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nsr-peer-ep")
-    {
-        nsr_peer_ep = value;
-        nsr_peer_ep.value_namespace = name_space;
-        nsr_peer_ep.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-local-ep")
-    {
-        nsr_local_ep = value;
-        nsr_local_ep.value_namespace = name_space;
-        nsr_local_ep.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6289,22 +2850,6 @@ void Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::set_filter(cons
     if(value_path == "nsr-peer-nodeid")
     {
         nsr_peer_nodeid.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-ep-len")
-    {
-        nsr_peer_ep_len.yfilter = yfilter;
-    }
-    if(value_path == "nsr-peer-ep-version")
-    {
-        nsr_peer_ep_version.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ep-len")
-    {
-        nsr_local_ep_len.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ep-version")
-    {
-        nsr_local_ep_version.yfilter = yfilter;
     }
     if(value_path == "nsr-fabric-mtu")
     {
@@ -6346,14 +2891,6 @@ void Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::set_filter(cons
     {
         nsr_tmr_quant.yfilter = yfilter;
     }
-    if(value_path == "nsr-peer-ds-hdl")
-    {
-        nsr_peer_ds_hdl.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ds-hdl")
-    {
-        nsr_local_ds_hdl.yfilter = yfilter;
-    }
     if(value_path == "nsr-conn-to-active-attempts")
     {
         nsr_conn_to_active_attempts.yfilter = yfilter;
@@ -6374,19 +2911,11 @@ void Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::set_filter(cons
     {
         nsr_conn_to_active_errors.yfilter = yfilter;
     }
-    if(value_path == "nsr-peer-ep")
-    {
-        nsr_peer_ep.yfilter = yfilter;
-    }
-    if(value_path == "nsr-local-ep")
-    {
-        nsr_local_ep.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nsr-thd-sched" || name == "nsr-rtr-thd-sched" || name == "nsr-fsm-flag" || name == "nsr-fsm-running-timer" || name == "nsr-issu-milestone" || name == "nsr-err-history" || name == "nsr-rev" || name == "nsr-fsm-state" || name == "nsr-version" || name == "nsr-nodeid" || name == "nsr-peer-version" || name == "nsr-peer-nodeid" || name == "nsr-peer-ep-len" || name == "nsr-peer-ep-version" || name == "nsr-local-ep-len" || name == "nsr-local-ep-version" || name == "nsr-fabric-mtu" || name == "nsr-nbr-qad-qid" || name == "nsr-lsa-qad-qid" || name == "nsr-nbr-qad-mdata-count" || name == "nsr-lsa-qad-mdata-count" || name == "nsr-nbr-init-sync-pend-count" || name == "nsr-lsa-init-sync-pend-count" || name == "nsr-nbr-seq-no" || name == "nsr-intf-seq-no" || name == "nsr-tmr-quant" || name == "nsr-peer-ds-hdl" || name == "nsr-local-ds-hdl" || name == "nsr-conn-to-active-attempts" || name == "nsr-conn-to-active-fails" || name == "nsr-conn-to-active-opens" || name == "nsr-conn-to-active-closes" || name == "nsr-conn-to-active-errors" || name == "nsr-peer-ep" || name == "nsr-local-ep")
+    if(name == "nsr-thd-sched" || name == "nsr-rtr-thd-sched" || name == "nsr-fsm-flag" || name == "nsr-fsm-running-timer" || name == "nsr-issu-milestone" || name == "nsr-err-history" || name == "nsr-rev" || name == "nsr-fsm-state" || name == "nsr-version" || name == "nsr-nodeid" || name == "nsr-peer-version" || name == "nsr-peer-nodeid" || name == "nsr-fabric-mtu" || name == "nsr-nbr-qad-qid" || name == "nsr-lsa-qad-qid" || name == "nsr-nbr-qad-mdata-count" || name == "nsr-lsa-qad-mdata-count" || name == "nsr-nbr-init-sync-pend-count" || name == "nsr-lsa-init-sync-pend-count" || name == "nsr-nbr-seq-no" || name == "nsr-intf-seq-no" || name == "nsr-tmr-quant" || name == "nsr-conn-to-active-attempts" || name == "nsr-conn-to-active-fails" || name == "nsr-conn-to-active-opens" || name == "nsr-conn-to-active-closes" || name == "nsr-conn-to-active-errors")
         return true;
     return false;
 }
@@ -11260,12 +7789,14 @@ Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::Nei
     lfa_neighbor_revision{YType::uint32, "lfa-neighbor-revision"},
     neighbor_ack_list_count{YType::uint32, "neighbor-ack-list-count"},
     neighbor_ack_list_high_watermark{YType::uint32, "neighbor-ack-list-high-watermark"},
+    adjacency_sid_label{YType::uint32, "adjacency-sid-label"},
+    adjacency_sid_protected{YType::boolean, "adjacency-sid-protected"},
+    adjacency_sid_unprotected_label{YType::uint32, "adjacency-sid-unprotected-label"},
     neighbor_interface_id{YType::uint16, "neighbor-interface-id"}
         ,
     neighbor_summary(std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary>())
     , neighbor_bfd_information(std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborBfdInformation>())
     , neighbor_retransmission_information(std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborRetransmissionInformation>())
-    , adjacency_sid(this, {})
 {
     neighbor_summary->parent = this;
     neighbor_bfd_information->parent = this;
@@ -11281,11 +7812,6 @@ Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::Nei
 bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<adjacency_sid.len(); index++)
-    {
-        if(adjacency_sid[index]->has_data())
-            return true;
-    }
     return interface_name.is_set
 	|| neighbor_address.is_set
 	|| neighbor_area_id.is_set
@@ -11309,6 +7835,9 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 	|| lfa_neighbor_revision.is_set
 	|| neighbor_ack_list_count.is_set
 	|| neighbor_ack_list_high_watermark.is_set
+	|| adjacency_sid_label.is_set
+	|| adjacency_sid_protected.is_set
+	|| adjacency_sid_unprotected_label.is_set
 	|| neighbor_interface_id.is_set
 	|| (neighbor_summary !=  nullptr && neighbor_summary->has_data())
 	|| (neighbor_bfd_information !=  nullptr && neighbor_bfd_information->has_data())
@@ -11317,11 +7846,6 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 
 bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::has_operation() const
 {
-    for (std::size_t index=0; index<adjacency_sid.len(); index++)
-    {
-        if(adjacency_sid[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
@@ -11346,6 +7870,9 @@ bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 	|| ydk::is_set(lfa_neighbor_revision.yfilter)
 	|| ydk::is_set(neighbor_ack_list_count.yfilter)
 	|| ydk::is_set(neighbor_ack_list_high_watermark.yfilter)
+	|| ydk::is_set(adjacency_sid_label.yfilter)
+	|| ydk::is_set(adjacency_sid_protected.yfilter)
+	|| ydk::is_set(adjacency_sid_unprotected_label.yfilter)
 	|| ydk::is_set(neighbor_interface_id.yfilter)
 	|| (neighbor_summary !=  nullptr && neighbor_summary->has_operation())
 	|| (neighbor_bfd_information !=  nullptr && neighbor_bfd_information->has_operation())
@@ -11387,6 +7914,9 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (lfa_neighbor_revision.is_set || is_set(lfa_neighbor_revision.yfilter)) leaf_name_data.push_back(lfa_neighbor_revision.get_name_leafdata());
     if (neighbor_ack_list_count.is_set || is_set(neighbor_ack_list_count.yfilter)) leaf_name_data.push_back(neighbor_ack_list_count.get_name_leafdata());
     if (neighbor_ack_list_high_watermark.is_set || is_set(neighbor_ack_list_high_watermark.yfilter)) leaf_name_data.push_back(neighbor_ack_list_high_watermark.get_name_leafdata());
+    if (adjacency_sid_label.is_set || is_set(adjacency_sid_label.yfilter)) leaf_name_data.push_back(adjacency_sid_label.get_name_leafdata());
+    if (adjacency_sid_protected.is_set || is_set(adjacency_sid_protected.yfilter)) leaf_name_data.push_back(adjacency_sid_protected.get_name_leafdata());
+    if (adjacency_sid_unprotected_label.is_set || is_set(adjacency_sid_unprotected_label.yfilter)) leaf_name_data.push_back(adjacency_sid_unprotected_label.get_name_leafdata());
     if (neighbor_interface_id.is_set || is_set(neighbor_interface_id.yfilter)) leaf_name_data.push_back(neighbor_interface_id.get_name_leafdata());
 
     return leaf_name_data;
@@ -11422,14 +7952,6 @@ std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::AdjacencyInfo
         return neighbor_retransmission_information;
     }
 
-    if(child_yang_name == "adjacency-sid")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid>();
-        ent_->parent = this;
-        adjacency_sid.append(ent_);
-        return ent_;
-    }
-
     return nullptr;
 }
 
@@ -11450,15 +7972,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::De
     if(neighbor_retransmission_information != nullptr)
     {
         _children["neighbor-retransmission-information"] = neighbor_retransmission_information;
-    }
-
-    count_ = 0;
-    for (auto ent_ : adjacency_sid.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     return _children;
@@ -11604,6 +8117,24 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
         neighbor_ack_list_high_watermark.value_namespace = name_space;
         neighbor_ack_list_high_watermark.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "adjacency-sid-label")
+    {
+        adjacency_sid_label = value;
+        adjacency_sid_label.value_namespace = name_space;
+        adjacency_sid_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-sid-protected")
+    {
+        adjacency_sid_protected = value;
+        adjacency_sid_protected.value_namespace = name_space;
+        adjacency_sid_protected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-sid-unprotected-label")
+    {
+        adjacency_sid_unprotected_label = value;
+        adjacency_sid_unprotected_label.value_namespace = name_space;
+        adjacency_sid_unprotected_label.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "neighbor-interface-id")
     {
         neighbor_interface_id = value;
@@ -11706,6 +8237,18 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
     {
         neighbor_ack_list_high_watermark.yfilter = yfilter;
     }
+    if(value_path == "adjacency-sid-label")
+    {
+        adjacency_sid_label.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-sid-protected")
+    {
+        adjacency_sid_protected.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-sid-unprotected-label")
+    {
+        adjacency_sid_unprotected_label.yfilter = yfilter;
+    }
     if(value_path == "neighbor-interface-id")
     {
         neighbor_interface_id.yfilter = yfilter;
@@ -11714,7 +8257,7 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 
 bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-summary" || name == "neighbor-bfd-information" || name == "neighbor-retransmission-information" || name == "adjacency-sid" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-area-id" || name == "state-change-count" || name == "neighbor-cost" || name == "neighbor-filter" || name == "neighbor-designated-router-address" || name == "neighbor-backup-designated-router-address" || name == "interface-type" || name == "poll-interval" || name == "next-poll-interval" || name == "neighbor-option" || name == "pending-events" || name == "neighbor-lls-option" || name == "oob-resynchronization" || name == "nsf-router-state" || name == "last-oob-time" || name == "lfa-interface" || name == "lfa-next-hop" || name == "lfa-neighbor-id" || name == "lfa-neighbor-revision" || name == "neighbor-ack-list-count" || name == "neighbor-ack-list-high-watermark" || name == "neighbor-interface-id")
+    if(name == "neighbor-summary" || name == "neighbor-bfd-information" || name == "neighbor-retransmission-information" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-area-id" || name == "state-change-count" || name == "neighbor-cost" || name == "neighbor-filter" || name == "neighbor-designated-router-address" || name == "neighbor-backup-designated-router-address" || name == "interface-type" || name == "poll-interval" || name == "next-poll-interval" || name == "neighbor-option" || name == "pending-events" || name == "neighbor-lls-option" || name == "oob-resynchronization" || name == "nsf-router-state" || name == "last-oob-time" || name == "lfa-interface" || name == "lfa-next-hop" || name == "lfa-neighbor-id" || name == "lfa-neighbor-revision" || name == "neighbor-ack-list-count" || name == "neighbor-ack-list-high-watermark" || name == "adjacency-sid-label" || name == "adjacency-sid-protected" || name == "adjacency-sid-unprotected-label" || name == "neighbor-interface-id")
         return true;
     return false;
 }
@@ -12438,127 +8981,6 @@ void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails
 bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborRetransmissionInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dbd-retransmission-count" || name == "dbd-retransmission-total-count" || name == "area-flooding-index" || name == "as-flood-index" || name == "neighbor-retransmission-count" || name == "number-of-retransmissions" || name == "area-first-flood-information" || name == "area-first-flood-information-index" || name == "as-first-flood-information" || name == "as-first-flood-information-index" || name == "area-next-flood-information" || name == "area-next-flood-information-index" || name == "as-next-flood-information" || name == "as-next-flood-information-index" || name == "last-retransmission-length" || name == "maximum-retransmission-length" || name == "last-retransmission-time" || name == "maximum-retransmission-time" || name == "lsa-retransmission-timer")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::AdjacencySid()
-    :
-    adj_sid_label{YType::uint32, "adj-sid-label"},
-    protected_adj_sid{YType::boolean, "protected-adj-sid"},
-    adj_sid_has_backup{YType::boolean, "adj-sid-has-backup"},
-    configured_adj_sid{YType::boolean, "configured-adj-sid"}
-{
-
-    yang_name = "adjacency-sid"; yang_parent_name = "neighbor-detail"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::~AdjacencySid()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::has_data() const
-{
-    if (is_presence_container) return true;
-    return adj_sid_label.is_set
-	|| protected_adj_sid.is_set
-	|| adj_sid_has_backup.is_set
-	|| configured_adj_sid.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adj_sid_label.yfilter)
-	|| ydk::is_set(protected_adj_sid.yfilter)
-	|| ydk::is_set(adj_sid_has_backup.yfilter)
-	|| ydk::is_set(configured_adj_sid.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adj_sid_label.is_set || is_set(adj_sid_label.yfilter)) leaf_name_data.push_back(adj_sid_label.get_name_leafdata());
-    if (protected_adj_sid.is_set || is_set(protected_adj_sid.yfilter)) leaf_name_data.push_back(protected_adj_sid.get_name_leafdata());
-    if (adj_sid_has_backup.is_set || is_set(adj_sid_has_backup.yfilter)) leaf_name_data.push_back(adj_sid_has_backup.get_name_leafdata());
-    if (configured_adj_sid.is_set || is_set(configured_adj_sid.yfilter)) leaf_name_data.push_back(configured_adj_sid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adj-sid-label")
-    {
-        adj_sid_label = value;
-        adj_sid_label.value_namespace = name_space;
-        adj_sid_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protected-adj-sid")
-    {
-        protected_adj_sid = value;
-        protected_adj_sid.value_namespace = name_space;
-        protected_adj_sid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adj-sid-has-backup")
-    {
-        adj_sid_has_backup = value;
-        adj_sid_has_backup.value_namespace = name_space;
-        adj_sid_has_backup.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-adj-sid")
-    {
-        configured_adj_sid = value;
-        configured_adj_sid.value_namespace = name_space;
-        configured_adj_sid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adj-sid-label")
-    {
-        adj_sid_label.yfilter = yfilter;
-    }
-    if(value_path == "protected-adj-sid")
-    {
-        protected_adj_sid.yfilter = yfilter;
-    }
-    if(value_path == "adj-sid-has-backup")
-    {
-        adj_sid_has_backup.yfilter = yfilter;
-    }
-    if(value_path == "configured-adj-sid")
-    {
-        configured_adj_sid.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adj-sid-label" || name == "protected-adj-sid" || name == "adj-sid-has-backup" || name == "configured-adj-sid")
         return true;
     return false;
 }
@@ -15445,8 +11867,7 @@ Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRouteTabl
     route_path_is_rsvp_te_path{YType::boolean, "route-path-is-rsvp-te-path"},
     route_path_is_sr_te_path{YType::boolean, "route-path-is-sr-te-path"},
     route_path_is_sr_excl_path{YType::boolean, "route-path-is-sr-excl-path"},
-    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"},
-    weight{YType::uint32, "weight"}
+    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"}
         ,
     sr_microloop_avoidance_path(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath::SrMicroloopAvoidancePath>())
     , neighbor_next_hop(this, {})
@@ -15484,7 +11905,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRout
 	|| route_path_is_sr_te_path.is_set
 	|| route_path_is_sr_excl_path.is_set
 	|| route_path_is_sr_te_sspf_path.is_set
-	|| weight.is_set
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_data());
 }
 
@@ -15512,7 +11932,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRout
 	|| ydk::is_set(route_path_is_sr_te_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_excl_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_te_sspf_path.yfilter)
-	|| ydk::is_set(weight.yfilter)
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_operation());
 }
 
@@ -15544,7 +11963,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (route_path_is_sr_te_path.is_set || is_set(route_path_is_sr_te_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_path.get_name_leafdata());
     if (route_path_is_sr_excl_path.is_set || is_set(route_path_is_sr_excl_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_excl_path.get_name_leafdata());
     if (route_path_is_sr_te_sspf_path.is_set || is_set(route_path_is_sr_te_sspf_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_sspf_path.get_name_leafdata());
-    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15691,12 +12109,6 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRout
         route_path_is_sr_te_sspf_path.value_namespace = name_space;
         route_path_is_sr_te_sspf_path.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "weight")
-    {
-        weight = value;
-        weight.value_namespace = name_space;
-        weight.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15765,15 +12177,11 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRout
     {
         route_path_is_sr_te_sspf_path.yfilter = yfilter;
     }
-    if(value_path == "weight")
-    {
-        weight.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path" || name == "weight")
+    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path")
         return true;
     return false;
 }
@@ -19166,8 +15574,7 @@ Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::Connect
     route_path_is_rsvp_te_path{YType::boolean, "route-path-is-rsvp-te-path"},
     route_path_is_sr_te_path{YType::boolean, "route-path-is-sr-te-path"},
     route_path_is_sr_excl_path{YType::boolean, "route-path-is-sr-excl-path"},
-    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"},
-    weight{YType::uint32, "weight"}
+    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"}
         ,
     sr_microloop_avoidance_path(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath::SrMicroloopAvoidancePath>())
     , neighbor_next_hop(this, {})
@@ -19205,7 +15612,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::Co
 	|| route_path_is_sr_te_path.is_set
 	|| route_path_is_sr_excl_path.is_set
 	|| route_path_is_sr_te_sspf_path.is_set
-	|| weight.is_set
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_data());
 }
 
@@ -19233,7 +15639,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::Co
 	|| ydk::is_set(route_path_is_sr_te_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_excl_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_te_sspf_path.yfilter)
-	|| ydk::is_set(weight.yfilter)
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_operation());
 }
 
@@ -19265,7 +15670,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (route_path_is_sr_te_path.is_set || is_set(route_path_is_sr_te_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_path.get_name_leafdata());
     if (route_path_is_sr_excl_path.is_set || is_set(route_path_is_sr_excl_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_excl_path.get_name_leafdata());
     if (route_path_is_sr_te_sspf_path.is_set || is_set(route_path_is_sr_te_sspf_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_sspf_path.get_name_leafdata());
-    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -19412,12 +15816,6 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::Co
         route_path_is_sr_te_sspf_path.value_namespace = name_space;
         route_path_is_sr_te_sspf_path.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "weight")
-    {
-        weight = value;
-        weight.value_namespace = name_space;
-        weight.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -19486,15 +15884,11 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::Co
     {
         route_path_is_sr_te_sspf_path.yfilter = yfilter;
     }
-    if(value_path == "weight")
-    {
-        weight.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path" || name == "weight")
+    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path")
         return true;
     return false;
 }
@@ -20635,8 +17029,7 @@ Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalRoute:
     route_path_is_rsvp_te_path{YType::boolean, "route-path-is-rsvp-te-path"},
     route_path_is_sr_te_path{YType::boolean, "route-path-is-sr-te-path"},
     route_path_is_sr_excl_path{YType::boolean, "route-path-is-sr-excl-path"},
-    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"},
-    weight{YType::uint32, "weight"}
+    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"}
         ,
     sr_microloop_avoidance_path(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath::SrMicroloopAvoidancePath>())
     , neighbor_next_hop(this, {})
@@ -20674,7 +17067,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalR
 	|| route_path_is_sr_te_path.is_set
 	|| route_path_is_sr_excl_path.is_set
 	|| route_path_is_sr_te_sspf_path.is_set
-	|| weight.is_set
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_data());
 }
 
@@ -20702,7 +17094,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalR
 	|| ydk::is_set(route_path_is_sr_te_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_excl_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_te_sspf_path.yfilter)
-	|| ydk::is_set(weight.yfilter)
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_operation());
 }
 
@@ -20734,7 +17125,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (route_path_is_sr_te_path.is_set || is_set(route_path_is_sr_te_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_path.get_name_leafdata());
     if (route_path_is_sr_excl_path.is_set || is_set(route_path_is_sr_excl_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_excl_path.get_name_leafdata());
     if (route_path_is_sr_te_sspf_path.is_set || is_set(route_path_is_sr_te_sspf_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_sspf_path.get_name_leafdata());
-    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -20881,12 +17271,6 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalR
         route_path_is_sr_te_sspf_path.value_namespace = name_space;
         route_path_is_sr_te_sspf_path.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "weight")
-    {
-        weight = value;
-        weight.value_namespace = name_space;
-        weight.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -20955,15 +17339,11 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalR
     {
         route_path_is_sr_te_sspf_path.yfilter = yfilter;
     }
-    if(value_path == "weight")
-    {
-        weight.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path" || name == "weight")
+    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path")
         return true;
     return false;
 }
@@ -24272,8 +20652,7 @@ Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::C
     route_path_is_rsvp_te_path{YType::boolean, "route-path-is-rsvp-te-path"},
     route_path_is_sr_te_path{YType::boolean, "route-path-is-sr-te-path"},
     route_path_is_sr_excl_path{YType::boolean, "route-path-is-sr-excl-path"},
-    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"},
-    weight{YType::uint32, "weight"}
+    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"}
         ,
     sr_microloop_avoidance_path(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::SrMicroloopAvoidancePath>())
     , neighbor_next_hop(this, {})
@@ -24311,7 +20690,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteAr
 	|| route_path_is_sr_te_path.is_set
 	|| route_path_is_sr_excl_path.is_set
 	|| route_path_is_sr_te_sspf_path.is_set
-	|| weight.is_set
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_data());
 }
 
@@ -24339,7 +20717,6 @@ bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteAr
 	|| ydk::is_set(route_path_is_sr_te_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_excl_path.yfilter)
 	|| ydk::is_set(route_path_is_sr_te_sspf_path.yfilter)
-	|| ydk::is_set(weight.yfilter)
 	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_operation());
 }
 
@@ -24371,7 +20748,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (route_path_is_sr_te_path.is_set || is_set(route_path_is_sr_te_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_path.get_name_leafdata());
     if (route_path_is_sr_excl_path.is_set || is_set(route_path_is_sr_excl_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_excl_path.get_name_leafdata());
     if (route_path_is_sr_te_sspf_path.is_set || is_set(route_path_is_sr_te_sspf_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_sspf_path.get_name_leafdata());
-    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -24518,12 +20894,6 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteAr
         route_path_is_sr_te_sspf_path.value_namespace = name_space;
         route_path_is_sr_te_sspf_path.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "weight")
-    {
-        weight = value;
-        weight.value_namespace = name_space;
-        weight.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -24592,15 +20962,11 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteAr
     {
         route_path_is_sr_te_sspf_path.yfilter = yfilter;
     }
-    if(value_path == "weight")
-    {
-        weight.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path" || name == "weight")
+    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path")
         return true;
     return false;
 }
@@ -24843,6 +21209,3437 @@ void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteAr
 bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "repair-element-id" || name == "repair-label" || name == "repair-element-type")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::NeighborNextHop()
+    :
+    neighbor_next_hop_value_type{YType::enumeration, "neighbor-next-hop-value-type"},
+    neighbor_next_hop_ip_addr{YType::str, "neighbor-next-hop-ip-addr"},
+    neighbor_next_hop_intf_index{YType::uint32, "neighbor-next-hop-intf-index"}
+{
+
+    yang_name = "neighbor-next-hop"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::~NeighborNextHop()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::has_data() const
+{
+    if (is_presence_container) return true;
+    return neighbor_next_hop_value_type.is_set
+	|| neighbor_next_hop_ip_addr.is_set
+	|| neighbor_next_hop_intf_index.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_next_hop_value_type.yfilter)
+	|| ydk::is_set(neighbor_next_hop_ip_addr.yfilter)
+	|| ydk::is_set(neighbor_next_hop_intf_index.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (neighbor_next_hop_value_type.is_set || is_set(neighbor_next_hop_value_type.yfilter)) leaf_name_data.push_back(neighbor_next_hop_value_type.get_name_leafdata());
+    if (neighbor_next_hop_ip_addr.is_set || is_set(neighbor_next_hop_ip_addr.yfilter)) leaf_name_data.push_back(neighbor_next_hop_ip_addr.get_name_leafdata());
+    if (neighbor_next_hop_intf_index.is_set || is_set(neighbor_next_hop_intf_index.yfilter)) leaf_name_data.push_back(neighbor_next_hop_intf_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "neighbor-next-hop-value-type")
+    {
+        neighbor_next_hop_value_type = value;
+        neighbor_next_hop_value_type.value_namespace = name_space;
+        neighbor_next_hop_value_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-next-hop-ip-addr")
+    {
+        neighbor_next_hop_ip_addr = value;
+        neighbor_next_hop_ip_addr.value_namespace = name_space;
+        neighbor_next_hop_ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-next-hop-intf-index")
+    {
+        neighbor_next_hop_intf_index = value;
+        neighbor_next_hop_intf_index.value_namespace = name_space;
+        neighbor_next_hop_intf_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-next-hop-value-type")
+    {
+        neighbor_next_hop_value_type.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-next-hop-ip-addr")
+    {
+        neighbor_next_hop_ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-next-hop-intf-index")
+    {
+        neighbor_next_hop_intf_index.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::NeighborNextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-next-hop-value-type" || name == "neighbor-next-hop-ip-addr" || name == "neighbor-next-hop-intf-index")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteAreas()
+    :
+    backup_route_area(this, {})
+{
+
+    yang_name = "backup-route-areas"; yang_parent_name = "route-area"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::~BackupRouteAreas()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<backup_route_area.len(); index++)
+    {
+        if(backup_route_area[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::has_operation() const
+{
+    for (std::size_t index=0; index<backup_route_area.len(); index++)
+    {
+        if(backup_route_area[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-route-areas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "backup-route-area")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea>();
+        ent_->parent = this;
+        backup_route_area.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_route_area.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-route-area")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::BackupRouteArea()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    route_prefix{YType::str, "route-prefix"},
+    route_prefix_length{YType::uint32, "route-prefix-length"},
+    route_metric{YType::uint32, "route-metric"},
+    route_type{YType::enumeration, "route-type"},
+    route_connected{YType::boolean, "route-connected"}
+        ,
+    route_info(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo>())
+    , route_path(this, {})
+{
+    route_info->parent = this;
+
+    yang_name = "backup-route-area"; yang_parent_name = "backup-route-areas"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::~BackupRouteArea()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_path.len(); index++)
+    {
+        if(route_path[index]->has_data())
+            return true;
+    }
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| route_prefix.is_set
+	|| route_prefix_length.is_set
+	|| route_metric.is_set
+	|| route_type.is_set
+	|| route_connected.is_set
+	|| (route_info !=  nullptr && route_info->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::has_operation() const
+{
+    for (std::size_t index=0; index<route_path.len(); index++)
+    {
+        if(route_path[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_prefix.yfilter)
+	|| ydk::is_set(route_prefix_length.yfilter)
+	|| ydk::is_set(route_metric.yfilter)
+	|| ydk::is_set(route_type.yfilter)
+	|| ydk::is_set(route_connected.yfilter)
+	|| (route_info !=  nullptr && route_info->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-route-area";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_prefix.is_set || is_set(route_prefix.yfilter)) leaf_name_data.push_back(route_prefix.get_name_leafdata());
+    if (route_prefix_length.is_set || is_set(route_prefix_length.yfilter)) leaf_name_data.push_back(route_prefix_length.get_name_leafdata());
+    if (route_metric.is_set || is_set(route_metric.yfilter)) leaf_name_data.push_back(route_metric.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_connected.is_set || is_set(route_connected.yfilter)) leaf_name_data.push_back(route_connected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-info")
+    {
+        if(route_info == nullptr)
+        {
+            route_info = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo>();
+        }
+        return route_info;
+    }
+
+    if(child_yang_name == "route-path")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath>();
+        ent_->parent = this;
+        route_path.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(route_info != nullptr)
+    {
+        _children["route-info"] = route_info;
+    }
+
+    count_ = 0;
+    for (auto ent_ : route_path.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-prefix")
+    {
+        route_prefix = value;
+        route_prefix.value_namespace = name_space;
+        route_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-prefix-length")
+    {
+        route_prefix_length = value;
+        route_prefix_length.value_namespace = name_space;
+        route_prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric = value;
+        route_metric.value_namespace = name_space;
+        route_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-type")
+    {
+        route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-connected")
+    {
+        route_connected = value;
+        route_connected.value_namespace = name_space;
+        route_connected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-prefix")
+    {
+        route_prefix.yfilter = yfilter;
+    }
+    if(value_path == "route-prefix-length")
+    {
+        route_prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+    if(value_path == "route-connected")
+    {
+        route_connected.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-info" || name == "route-path" || name == "prefix" || name == "prefix-length" || name == "route-prefix" || name == "route-prefix-length" || name == "route-metric" || name == "route-type" || name == "route-connected")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteInfo()
+    :
+    route_area_id{YType::uint32, "route-area-id"},
+    route_te_metric{YType::uint32, "route-te-metric"},
+    route_rib_version{YType::uint32, "route-rib-version"},
+    route_spf_version{YType::uint64, "route-spf-version"},
+    route_forward_distance{YType::uint32, "route-forward-distance"},
+    route_source{YType::uint16, "route-source"},
+    route_spf_priority{YType::uint8, "route-spf-priority"},
+    route_auto_excluded{YType::boolean, "route-auto-excluded"},
+    route_srte_prefix_registered{YType::boolean, "route-srte-prefix-registered"},
+    route_srte_nbr_registered{YType::uint16, "route-srte-nbr-registered"},
+    route_label_type{YType::uint8, "route-label-type"},
+    route_label{YType::uint32, "route-label"},
+    route_sspf_label{YType::uint32, "route-sspf-label"}
+        ,
+    route_update_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime>())
+    , route_fail_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime>())
+{
+    route_update_time->parent = this;
+    route_fail_time->parent = this;
+
+    yang_name = "route-info"; yang_parent_name = "backup-route-area"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::~RouteInfo()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return route_area_id.is_set
+	|| route_te_metric.is_set
+	|| route_rib_version.is_set
+	|| route_spf_version.is_set
+	|| route_forward_distance.is_set
+	|| route_source.is_set
+	|| route_spf_priority.is_set
+	|| route_auto_excluded.is_set
+	|| route_srte_prefix_registered.is_set
+	|| route_srte_nbr_registered.is_set
+	|| route_label_type.is_set
+	|| route_label.is_set
+	|| route_sspf_label.is_set
+	|| (route_update_time !=  nullptr && route_update_time->has_data())
+	|| (route_fail_time !=  nullptr && route_fail_time->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(route_area_id.yfilter)
+	|| ydk::is_set(route_te_metric.yfilter)
+	|| ydk::is_set(route_rib_version.yfilter)
+	|| ydk::is_set(route_spf_version.yfilter)
+	|| ydk::is_set(route_forward_distance.yfilter)
+	|| ydk::is_set(route_source.yfilter)
+	|| ydk::is_set(route_spf_priority.yfilter)
+	|| ydk::is_set(route_auto_excluded.yfilter)
+	|| ydk::is_set(route_srte_prefix_registered.yfilter)
+	|| ydk::is_set(route_srte_nbr_registered.yfilter)
+	|| ydk::is_set(route_label_type.yfilter)
+	|| ydk::is_set(route_label.yfilter)
+	|| ydk::is_set(route_sspf_label.yfilter)
+	|| (route_update_time !=  nullptr && route_update_time->has_operation())
+	|| (route_fail_time !=  nullptr && route_fail_time->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_area_id.is_set || is_set(route_area_id.yfilter)) leaf_name_data.push_back(route_area_id.get_name_leafdata());
+    if (route_te_metric.is_set || is_set(route_te_metric.yfilter)) leaf_name_data.push_back(route_te_metric.get_name_leafdata());
+    if (route_rib_version.is_set || is_set(route_rib_version.yfilter)) leaf_name_data.push_back(route_rib_version.get_name_leafdata());
+    if (route_spf_version.is_set || is_set(route_spf_version.yfilter)) leaf_name_data.push_back(route_spf_version.get_name_leafdata());
+    if (route_forward_distance.is_set || is_set(route_forward_distance.yfilter)) leaf_name_data.push_back(route_forward_distance.get_name_leafdata());
+    if (route_source.is_set || is_set(route_source.yfilter)) leaf_name_data.push_back(route_source.get_name_leafdata());
+    if (route_spf_priority.is_set || is_set(route_spf_priority.yfilter)) leaf_name_data.push_back(route_spf_priority.get_name_leafdata());
+    if (route_auto_excluded.is_set || is_set(route_auto_excluded.yfilter)) leaf_name_data.push_back(route_auto_excluded.get_name_leafdata());
+    if (route_srte_prefix_registered.is_set || is_set(route_srte_prefix_registered.yfilter)) leaf_name_data.push_back(route_srte_prefix_registered.get_name_leafdata());
+    if (route_srte_nbr_registered.is_set || is_set(route_srte_nbr_registered.yfilter)) leaf_name_data.push_back(route_srte_nbr_registered.get_name_leafdata());
+    if (route_label_type.is_set || is_set(route_label_type.yfilter)) leaf_name_data.push_back(route_label_type.get_name_leafdata());
+    if (route_label.is_set || is_set(route_label.yfilter)) leaf_name_data.push_back(route_label.get_name_leafdata());
+    if (route_sspf_label.is_set || is_set(route_sspf_label.yfilter)) leaf_name_data.push_back(route_sspf_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-update-time")
+    {
+        if(route_update_time == nullptr)
+        {
+            route_update_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime>();
+        }
+        return route_update_time;
+    }
+
+    if(child_yang_name == "route-fail-time")
+    {
+        if(route_fail_time == nullptr)
+        {
+            route_fail_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime>();
+        }
+        return route_fail_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(route_update_time != nullptr)
+    {
+        _children["route-update-time"] = route_update_time;
+    }
+
+    if(route_fail_time != nullptr)
+    {
+        _children["route-fail-time"] = route_fail_time;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-area-id")
+    {
+        route_area_id = value;
+        route_area_id.value_namespace = name_space;
+        route_area_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-te-metric")
+    {
+        route_te_metric = value;
+        route_te_metric.value_namespace = name_space;
+        route_te_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-rib-version")
+    {
+        route_rib_version = value;
+        route_rib_version.value_namespace = name_space;
+        route_rib_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-spf-version")
+    {
+        route_spf_version = value;
+        route_spf_version.value_namespace = name_space;
+        route_spf_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-forward-distance")
+    {
+        route_forward_distance = value;
+        route_forward_distance.value_namespace = name_space;
+        route_forward_distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-source")
+    {
+        route_source = value;
+        route_source.value_namespace = name_space;
+        route_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-spf-priority")
+    {
+        route_spf_priority = value;
+        route_spf_priority.value_namespace = name_space;
+        route_spf_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-auto-excluded")
+    {
+        route_auto_excluded = value;
+        route_auto_excluded.value_namespace = name_space;
+        route_auto_excluded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-srte-prefix-registered")
+    {
+        route_srte_prefix_registered = value;
+        route_srte_prefix_registered.value_namespace = name_space;
+        route_srte_prefix_registered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-srte-nbr-registered")
+    {
+        route_srte_nbr_registered = value;
+        route_srte_nbr_registered.value_namespace = name_space;
+        route_srte_nbr_registered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-label-type")
+    {
+        route_label_type = value;
+        route_label_type.value_namespace = name_space;
+        route_label_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-label")
+    {
+        route_label = value;
+        route_label.value_namespace = name_space;
+        route_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-sspf-label")
+    {
+        route_sspf_label = value;
+        route_sspf_label.value_namespace = name_space;
+        route_sspf_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-area-id")
+    {
+        route_area_id.yfilter = yfilter;
+    }
+    if(value_path == "route-te-metric")
+    {
+        route_te_metric.yfilter = yfilter;
+    }
+    if(value_path == "route-rib-version")
+    {
+        route_rib_version.yfilter = yfilter;
+    }
+    if(value_path == "route-spf-version")
+    {
+        route_spf_version.yfilter = yfilter;
+    }
+    if(value_path == "route-forward-distance")
+    {
+        route_forward_distance.yfilter = yfilter;
+    }
+    if(value_path == "route-source")
+    {
+        route_source.yfilter = yfilter;
+    }
+    if(value_path == "route-spf-priority")
+    {
+        route_spf_priority.yfilter = yfilter;
+    }
+    if(value_path == "route-auto-excluded")
+    {
+        route_auto_excluded.yfilter = yfilter;
+    }
+    if(value_path == "route-srte-prefix-registered")
+    {
+        route_srte_prefix_registered.yfilter = yfilter;
+    }
+    if(value_path == "route-srte-nbr-registered")
+    {
+        route_srte_nbr_registered.yfilter = yfilter;
+    }
+    if(value_path == "route-label-type")
+    {
+        route_label_type.yfilter = yfilter;
+    }
+    if(value_path == "route-label")
+    {
+        route_label.yfilter = yfilter;
+    }
+    if(value_path == "route-sspf-label")
+    {
+        route_sspf_label.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-update-time" || name == "route-fail-time" || name == "route-area-id" || name == "route-te-metric" || name == "route-rib-version" || name == "route-spf-version" || name == "route-forward-distance" || name == "route-source" || name == "route-spf-priority" || name == "route-auto-excluded" || name == "route-srte-prefix-registered" || name == "route-srte-nbr-registered" || name == "route-label-type" || name == "route-label" || name == "route-sspf-label")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::RouteUpdateTime()
+    :
+    second{YType::uint32, "second"},
+    nanosecond{YType::uint32, "nanosecond"}
+{
+
+    yang_name = "route-update-time"; yang_parent_name = "route-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::~RouteUpdateTime()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nanosecond.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nanosecond.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-update-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nanosecond")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::RouteFailTime()
+    :
+    second{YType::uint32, "second"},
+    nanosecond{YType::uint32, "nanosecond"}
+{
+
+    yang_name = "route-fail-time"; yang_parent_name = "route-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::~RouteFailTime()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nanosecond.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nanosecond.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-fail-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nanosecond")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RoutePath()
+    :
+    route_interface_name{YType::str, "route-interface-name"},
+    route_interface_snmp_index{YType::uint32, "route-interface-snmp-index"},
+    route_next_hop_address{YType::str, "route-next-hop-address"},
+    route_source{YType::str, "route-source"},
+    route_lsaid{YType::str, "route-lsaid"},
+    route_path_is_mcast_intact{YType::boolean, "route-path-is-mcast-intact"},
+    route_path_is_ucmp_path{YType::boolean, "route-path-is-ucmp-path"},
+    route_metric{YType::uint32, "route-metric"},
+    route_path_id{YType::uint32, "route-path-id"},
+    lsa_type{YType::uint8, "lsa-type"},
+    area_id{YType::uint32, "area-id"},
+    area_format{YType::boolean, "area-format"},
+    route_path_is_rsvp_te_path{YType::boolean, "route-path-is-rsvp-te-path"},
+    route_path_is_sr_te_path{YType::boolean, "route-path-is-sr-te-path"},
+    route_path_is_sr_excl_path{YType::boolean, "route-path-is-sr-excl-path"},
+    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"}
+        ,
+    route_backup_path(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath>())
+    , sr_microloop_avoidance_path(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath>())
+    , neighbor_next_hop(this, {})
+{
+    route_backup_path->parent = this;
+    sr_microloop_avoidance_path->parent = this;
+
+    yang_name = "route-path"; yang_parent_name = "backup-route-area"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::~RoutePath()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_next_hop.len(); index++)
+    {
+        if(neighbor_next_hop[index]->has_data())
+            return true;
+    }
+    return route_interface_name.is_set
+	|| route_interface_snmp_index.is_set
+	|| route_next_hop_address.is_set
+	|| route_source.is_set
+	|| route_lsaid.is_set
+	|| route_path_is_mcast_intact.is_set
+	|| route_path_is_ucmp_path.is_set
+	|| route_metric.is_set
+	|| route_path_id.is_set
+	|| lsa_type.is_set
+	|| area_id.is_set
+	|| area_format.is_set
+	|| route_path_is_rsvp_te_path.is_set
+	|| route_path_is_sr_te_path.is_set
+	|| route_path_is_sr_excl_path.is_set
+	|| route_path_is_sr_te_sspf_path.is_set
+	|| (route_backup_path !=  nullptr && route_backup_path->has_data())
+	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::has_operation() const
+{
+    for (std::size_t index=0; index<neighbor_next_hop.len(); index++)
+    {
+        if(neighbor_next_hop[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(route_interface_name.yfilter)
+	|| ydk::is_set(route_interface_snmp_index.yfilter)
+	|| ydk::is_set(route_next_hop_address.yfilter)
+	|| ydk::is_set(route_source.yfilter)
+	|| ydk::is_set(route_lsaid.yfilter)
+	|| ydk::is_set(route_path_is_mcast_intact.yfilter)
+	|| ydk::is_set(route_path_is_ucmp_path.yfilter)
+	|| ydk::is_set(route_metric.yfilter)
+	|| ydk::is_set(route_path_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(area_format.yfilter)
+	|| ydk::is_set(route_path_is_rsvp_te_path.yfilter)
+	|| ydk::is_set(route_path_is_sr_te_path.yfilter)
+	|| ydk::is_set(route_path_is_sr_excl_path.yfilter)
+	|| ydk::is_set(route_path_is_sr_te_sspf_path.yfilter)
+	|| (route_backup_path !=  nullptr && route_backup_path->has_operation())
+	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_interface_name.is_set || is_set(route_interface_name.yfilter)) leaf_name_data.push_back(route_interface_name.get_name_leafdata());
+    if (route_interface_snmp_index.is_set || is_set(route_interface_snmp_index.yfilter)) leaf_name_data.push_back(route_interface_snmp_index.get_name_leafdata());
+    if (route_next_hop_address.is_set || is_set(route_next_hop_address.yfilter)) leaf_name_data.push_back(route_next_hop_address.get_name_leafdata());
+    if (route_source.is_set || is_set(route_source.yfilter)) leaf_name_data.push_back(route_source.get_name_leafdata());
+    if (route_lsaid.is_set || is_set(route_lsaid.yfilter)) leaf_name_data.push_back(route_lsaid.get_name_leafdata());
+    if (route_path_is_mcast_intact.is_set || is_set(route_path_is_mcast_intact.yfilter)) leaf_name_data.push_back(route_path_is_mcast_intact.get_name_leafdata());
+    if (route_path_is_ucmp_path.is_set || is_set(route_path_is_ucmp_path.yfilter)) leaf_name_data.push_back(route_path_is_ucmp_path.get_name_leafdata());
+    if (route_metric.is_set || is_set(route_metric.yfilter)) leaf_name_data.push_back(route_metric.get_name_leafdata());
+    if (route_path_id.is_set || is_set(route_path_id.yfilter)) leaf_name_data.push_back(route_path_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (area_format.is_set || is_set(area_format.yfilter)) leaf_name_data.push_back(area_format.get_name_leafdata());
+    if (route_path_is_rsvp_te_path.is_set || is_set(route_path_is_rsvp_te_path.yfilter)) leaf_name_data.push_back(route_path_is_rsvp_te_path.get_name_leafdata());
+    if (route_path_is_sr_te_path.is_set || is_set(route_path_is_sr_te_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_path.get_name_leafdata());
+    if (route_path_is_sr_excl_path.is_set || is_set(route_path_is_sr_excl_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_excl_path.get_name_leafdata());
+    if (route_path_is_sr_te_sspf_path.is_set || is_set(route_path_is_sr_te_sspf_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_sspf_path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-backup-path")
+    {
+        if(route_backup_path == nullptr)
+        {
+            route_backup_path = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath>();
+        }
+        return route_backup_path;
+    }
+
+    if(child_yang_name == "sr-microloop-avoidance-path")
+    {
+        if(sr_microloop_avoidance_path == nullptr)
+        {
+            sr_microloop_avoidance_path = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath>();
+        }
+        return sr_microloop_avoidance_path;
+    }
+
+    if(child_yang_name == "neighbor-next-hop")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop>();
+        ent_->parent = this;
+        neighbor_next_hop.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(route_backup_path != nullptr)
+    {
+        _children["route-backup-path"] = route_backup_path;
+    }
+
+    if(sr_microloop_avoidance_path != nullptr)
+    {
+        _children["sr-microloop-avoidance-path"] = sr_microloop_avoidance_path;
+    }
+
+    count_ = 0;
+    for (auto ent_ : neighbor_next_hop.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-interface-name")
+    {
+        route_interface_name = value;
+        route_interface_name.value_namespace = name_space;
+        route_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-interface-snmp-index")
+    {
+        route_interface_snmp_index = value;
+        route_interface_snmp_index.value_namespace = name_space;
+        route_interface_snmp_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-next-hop-address")
+    {
+        route_next_hop_address = value;
+        route_next_hop_address.value_namespace = name_space;
+        route_next_hop_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-source")
+    {
+        route_source = value;
+        route_source.value_namespace = name_space;
+        route_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-lsaid")
+    {
+        route_lsaid = value;
+        route_lsaid.value_namespace = name_space;
+        route_lsaid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-mcast-intact")
+    {
+        route_path_is_mcast_intact = value;
+        route_path_is_mcast_intact.value_namespace = name_space;
+        route_path_is_mcast_intact.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-ucmp-path")
+    {
+        route_path_is_ucmp_path = value;
+        route_path_is_ucmp_path.value_namespace = name_space;
+        route_path_is_ucmp_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric = value;
+        route_metric.value_namespace = name_space;
+        route_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-id")
+    {
+        route_path_id = value;
+        route_path_id.value_namespace = name_space;
+        route_path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "area-id")
+    {
+        area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "area-format")
+    {
+        area_format = value;
+        area_format.value_namespace = name_space;
+        area_format.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-rsvp-te-path")
+    {
+        route_path_is_rsvp_te_path = value;
+        route_path_is_rsvp_te_path.value_namespace = name_space;
+        route_path_is_rsvp_te_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-sr-te-path")
+    {
+        route_path_is_sr_te_path = value;
+        route_path_is_sr_te_path.value_namespace = name_space;
+        route_path_is_sr_te_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-sr-excl-path")
+    {
+        route_path_is_sr_excl_path = value;
+        route_path_is_sr_excl_path.value_namespace = name_space;
+        route_path_is_sr_excl_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-sr-te-sspf-path")
+    {
+        route_path_is_sr_te_sspf_path = value;
+        route_path_is_sr_te_sspf_path.value_namespace = name_space;
+        route_path_is_sr_te_sspf_path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-interface-name")
+    {
+        route_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "route-interface-snmp-index")
+    {
+        route_interface_snmp_index.yfilter = yfilter;
+    }
+    if(value_path == "route-next-hop-address")
+    {
+        route_next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "route-source")
+    {
+        route_source.yfilter = yfilter;
+    }
+    if(value_path == "route-lsaid")
+    {
+        route_lsaid.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-mcast-intact")
+    {
+        route_path_is_mcast_intact.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-ucmp-path")
+    {
+        route_path_is_ucmp_path.yfilter = yfilter;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric.yfilter = yfilter;
+    }
+    if(value_path == "route-path-id")
+    {
+        route_path_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "area-format")
+    {
+        area_format.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-rsvp-te-path")
+    {
+        route_path_is_rsvp_te_path.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-sr-te-path")
+    {
+        route_path_is_sr_te_path.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-sr-excl-path")
+    {
+        route_path_is_sr_excl_path.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-sr-te-sspf-path")
+    {
+        route_path_is_sr_te_sspf_path.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-backup-path" || name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "route-path-id" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::RouteBackupPath()
+    :
+    backup_route_interface_name{YType::str, "backup-route-interface-name"},
+    backup_route_next_hop_address{YType::str, "backup-route-next-hop-address"},
+    backup_route_source{YType::str, "backup-route-source"},
+    backup_metric{YType::uint32, "backup-metric"},
+    primary_path{YType::boolean, "primary-path"},
+    line_card_disjoint{YType::boolean, "line-card-disjoint"},
+    downstream{YType::boolean, "downstream"},
+    node_protect{YType::boolean, "node-protect"},
+    srlg_disjoint{YType::boolean, "srlg-disjoint"},
+    lfa_type{YType::enumeration, "lfa-type"},
+    backup_remote_lfa{YType::str, "backup-remote-lfa"},
+    backup_repair_list_size{YType::uint32, "backup-repair-list-size"},
+    backup_tunnel_interface_name{YType::str, "backup-tunnel-interface-name"},
+    interface_disjoint{YType::boolean, "interface-disjoint"}
+        ,
+    backup_repair(this, {})
+{
+
+    yang_name = "route-backup-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::~RouteBackupPath()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<backup_repair.len(); index++)
+    {
+        if(backup_repair[index]->has_data())
+            return true;
+    }
+    return backup_route_interface_name.is_set
+	|| backup_route_next_hop_address.is_set
+	|| backup_route_source.is_set
+	|| backup_metric.is_set
+	|| primary_path.is_set
+	|| line_card_disjoint.is_set
+	|| downstream.is_set
+	|| node_protect.is_set
+	|| srlg_disjoint.is_set
+	|| lfa_type.is_set
+	|| backup_remote_lfa.is_set
+	|| backup_repair_list_size.is_set
+	|| backup_tunnel_interface_name.is_set
+	|| interface_disjoint.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::has_operation() const
+{
+    for (std::size_t index=0; index<backup_repair.len(); index++)
+    {
+        if(backup_repair[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(backup_route_interface_name.yfilter)
+	|| ydk::is_set(backup_route_next_hop_address.yfilter)
+	|| ydk::is_set(backup_route_source.yfilter)
+	|| ydk::is_set(backup_metric.yfilter)
+	|| ydk::is_set(primary_path.yfilter)
+	|| ydk::is_set(line_card_disjoint.yfilter)
+	|| ydk::is_set(downstream.yfilter)
+	|| ydk::is_set(node_protect.yfilter)
+	|| ydk::is_set(srlg_disjoint.yfilter)
+	|| ydk::is_set(lfa_type.yfilter)
+	|| ydk::is_set(backup_remote_lfa.yfilter)
+	|| ydk::is_set(backup_repair_list_size.yfilter)
+	|| ydk::is_set(backup_tunnel_interface_name.yfilter)
+	|| ydk::is_set(interface_disjoint.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-backup-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (backup_route_interface_name.is_set || is_set(backup_route_interface_name.yfilter)) leaf_name_data.push_back(backup_route_interface_name.get_name_leafdata());
+    if (backup_route_next_hop_address.is_set || is_set(backup_route_next_hop_address.yfilter)) leaf_name_data.push_back(backup_route_next_hop_address.get_name_leafdata());
+    if (backup_route_source.is_set || is_set(backup_route_source.yfilter)) leaf_name_data.push_back(backup_route_source.get_name_leafdata());
+    if (backup_metric.is_set || is_set(backup_metric.yfilter)) leaf_name_data.push_back(backup_metric.get_name_leafdata());
+    if (primary_path.is_set || is_set(primary_path.yfilter)) leaf_name_data.push_back(primary_path.get_name_leafdata());
+    if (line_card_disjoint.is_set || is_set(line_card_disjoint.yfilter)) leaf_name_data.push_back(line_card_disjoint.get_name_leafdata());
+    if (downstream.is_set || is_set(downstream.yfilter)) leaf_name_data.push_back(downstream.get_name_leafdata());
+    if (node_protect.is_set || is_set(node_protect.yfilter)) leaf_name_data.push_back(node_protect.get_name_leafdata());
+    if (srlg_disjoint.is_set || is_set(srlg_disjoint.yfilter)) leaf_name_data.push_back(srlg_disjoint.get_name_leafdata());
+    if (lfa_type.is_set || is_set(lfa_type.yfilter)) leaf_name_data.push_back(lfa_type.get_name_leafdata());
+    if (backup_remote_lfa.is_set || is_set(backup_remote_lfa.yfilter)) leaf_name_data.push_back(backup_remote_lfa.get_name_leafdata());
+    if (backup_repair_list_size.is_set || is_set(backup_repair_list_size.yfilter)) leaf_name_data.push_back(backup_repair_list_size.get_name_leafdata());
+    if (backup_tunnel_interface_name.is_set || is_set(backup_tunnel_interface_name.yfilter)) leaf_name_data.push_back(backup_tunnel_interface_name.get_name_leafdata());
+    if (interface_disjoint.is_set || is_set(interface_disjoint.yfilter)) leaf_name_data.push_back(interface_disjoint.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "backup-repair")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair>();
+        ent_->parent = this;
+        backup_repair.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_repair.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "backup-route-interface-name")
+    {
+        backup_route_interface_name = value;
+        backup_route_interface_name.value_namespace = name_space;
+        backup_route_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-route-next-hop-address")
+    {
+        backup_route_next_hop_address = value;
+        backup_route_next_hop_address.value_namespace = name_space;
+        backup_route_next_hop_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-route-source")
+    {
+        backup_route_source = value;
+        backup_route_source.value_namespace = name_space;
+        backup_route_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-metric")
+    {
+        backup_metric = value;
+        backup_metric.value_namespace = name_space;
+        backup_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-path")
+    {
+        primary_path = value;
+        primary_path.value_namespace = name_space;
+        primary_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "line-card-disjoint")
+    {
+        line_card_disjoint = value;
+        line_card_disjoint.value_namespace = name_space;
+        line_card_disjoint.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "downstream")
+    {
+        downstream = value;
+        downstream.value_namespace = name_space;
+        downstream.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-protect")
+    {
+        node_protect = value;
+        node_protect.value_namespace = name_space;
+        node_protect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg-disjoint")
+    {
+        srlg_disjoint = value;
+        srlg_disjoint.value_namespace = name_space;
+        srlg_disjoint.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lfa-type")
+    {
+        lfa_type = value;
+        lfa_type.value_namespace = name_space;
+        lfa_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-remote-lfa")
+    {
+        backup_remote_lfa = value;
+        backup_remote_lfa.value_namespace = name_space;
+        backup_remote_lfa.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-repair-list-size")
+    {
+        backup_repair_list_size = value;
+        backup_repair_list_size.value_namespace = name_space;
+        backup_repair_list_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-tunnel-interface-name")
+    {
+        backup_tunnel_interface_name = value;
+        backup_tunnel_interface_name.value_namespace = name_space;
+        backup_tunnel_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-disjoint")
+    {
+        interface_disjoint = value;
+        interface_disjoint.value_namespace = name_space;
+        interface_disjoint.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backup-route-interface-name")
+    {
+        backup_route_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-next-hop-address")
+    {
+        backup_route_next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-source")
+    {
+        backup_route_source.yfilter = yfilter;
+    }
+    if(value_path == "backup-metric")
+    {
+        backup_metric.yfilter = yfilter;
+    }
+    if(value_path == "primary-path")
+    {
+        primary_path.yfilter = yfilter;
+    }
+    if(value_path == "line-card-disjoint")
+    {
+        line_card_disjoint.yfilter = yfilter;
+    }
+    if(value_path == "downstream")
+    {
+        downstream.yfilter = yfilter;
+    }
+    if(value_path == "node-protect")
+    {
+        node_protect.yfilter = yfilter;
+    }
+    if(value_path == "srlg-disjoint")
+    {
+        srlg_disjoint.yfilter = yfilter;
+    }
+    if(value_path == "lfa-type")
+    {
+        lfa_type.yfilter = yfilter;
+    }
+    if(value_path == "backup-remote-lfa")
+    {
+        backup_remote_lfa.yfilter = yfilter;
+    }
+    if(value_path == "backup-repair-list-size")
+    {
+        backup_repair_list_size.yfilter = yfilter;
+    }
+    if(value_path == "backup-tunnel-interface-name")
+    {
+        backup_tunnel_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-disjoint")
+    {
+        interface_disjoint.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-repair" || name == "backup-route-interface-name" || name == "backup-route-next-hop-address" || name == "backup-route-source" || name == "backup-metric" || name == "primary-path" || name == "line-card-disjoint" || name == "downstream" || name == "node-protect" || name == "srlg-disjoint" || name == "lfa-type" || name == "backup-remote-lfa" || name == "backup-repair-list-size" || name == "backup-tunnel-interface-name" || name == "interface-disjoint")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::BackupRepair()
+    :
+    repair_element_id{YType::str, "repair-element-id"},
+    repair_label{YType::uint32, "repair-label"},
+    repair_element_type{YType::uint32, "repair-element-type"}
+{
+
+    yang_name = "backup-repair"; yang_parent_name = "route-backup-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::~BackupRepair()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::has_data() const
+{
+    if (is_presence_container) return true;
+    return repair_element_id.is_set
+	|| repair_label.is_set
+	|| repair_element_type.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(repair_element_id.yfilter)
+	|| ydk::is_set(repair_label.yfilter)
+	|| ydk::is_set(repair_element_type.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (repair_element_id.is_set || is_set(repair_element_id.yfilter)) leaf_name_data.push_back(repair_element_id.get_name_leafdata());
+    if (repair_label.is_set || is_set(repair_label.yfilter)) leaf_name_data.push_back(repair_label.get_name_leafdata());
+    if (repair_element_type.is_set || is_set(repair_element_type.yfilter)) leaf_name_data.push_back(repair_element_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "repair-element-id")
+    {
+        repair_element_id = value;
+        repair_element_id.value_namespace = name_space;
+        repair_element_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "repair-label")
+    {
+        repair_label = value;
+        repair_label.value_namespace = name_space;
+        repair_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "repair-element-type")
+    {
+        repair_element_type = value;
+        repair_element_type.value_namespace = name_space;
+        repair_element_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "repair-element-id")
+    {
+        repair_element_id.yfilter = yfilter;
+    }
+    if(value_path == "repair-label")
+    {
+        repair_label.yfilter = yfilter;
+    }
+    if(value_path == "repair-element-type")
+    {
+        repair_element_type.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "repair-element-id" || name == "repair-label" || name == "repair-element-type")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::SrMicroloopAvoidancePath()
+    :
+    microloop_repair_list_size{YType::uint32, "microloop-repair-list-size"},
+    microloop_tunnel_interface_name{YType::str, "microloop-tunnel-interface-name"},
+    microloop_strict_spf{YType::boolean, "microloop-strict-spf"}
+        ,
+    microloop_repair(this, {})
+{
+
+    yang_name = "sr-microloop-avoidance-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::~SrMicroloopAvoidancePath()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<microloop_repair.len(); index++)
+    {
+        if(microloop_repair[index]->has_data())
+            return true;
+    }
+    return microloop_repair_list_size.is_set
+	|| microloop_tunnel_interface_name.is_set
+	|| microloop_strict_spf.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::has_operation() const
+{
+    for (std::size_t index=0; index<microloop_repair.len(); index++)
+    {
+        if(microloop_repair[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(microloop_repair_list_size.yfilter)
+	|| ydk::is_set(microloop_tunnel_interface_name.yfilter)
+	|| ydk::is_set(microloop_strict_spf.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-microloop-avoidance-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (microloop_repair_list_size.is_set || is_set(microloop_repair_list_size.yfilter)) leaf_name_data.push_back(microloop_repair_list_size.get_name_leafdata());
+    if (microloop_tunnel_interface_name.is_set || is_set(microloop_tunnel_interface_name.yfilter)) leaf_name_data.push_back(microloop_tunnel_interface_name.get_name_leafdata());
+    if (microloop_strict_spf.is_set || is_set(microloop_strict_spf.yfilter)) leaf_name_data.push_back(microloop_strict_spf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "microloop-repair")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
+        ent_->parent = this;
+        microloop_repair.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : microloop_repair.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "microloop-repair-list-size")
+    {
+        microloop_repair_list_size = value;
+        microloop_repair_list_size.value_namespace = name_space;
+        microloop_repair_list_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "microloop-tunnel-interface-name")
+    {
+        microloop_tunnel_interface_name = value;
+        microloop_tunnel_interface_name.value_namespace = name_space;
+        microloop_tunnel_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "microloop-strict-spf")
+    {
+        microloop_strict_spf = value;
+        microloop_strict_spf.value_namespace = name_space;
+        microloop_strict_spf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "microloop-repair-list-size")
+    {
+        microloop_repair_list_size.yfilter = yfilter;
+    }
+    if(value_path == "microloop-tunnel-interface-name")
+    {
+        microloop_tunnel_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "microloop-strict-spf")
+    {
+        microloop_strict_spf.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "microloop-repair" || name == "microloop-repair-list-size" || name == "microloop-tunnel-interface-name" || name == "microloop-strict-spf")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::MicroloopRepair()
+    :
+    repair_element_id{YType::str, "repair-element-id"},
+    repair_label{YType::uint32, "repair-label"},
+    repair_element_type{YType::uint32, "repair-element-type"}
+{
+
+    yang_name = "microloop-repair"; yang_parent_name = "sr-microloop-avoidance-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::~MicroloopRepair()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::has_data() const
+{
+    if (is_presence_container) return true;
+    return repair_element_id.is_set
+	|| repair_label.is_set
+	|| repair_element_type.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(repair_element_id.yfilter)
+	|| ydk::is_set(repair_label.yfilter)
+	|| ydk::is_set(repair_element_type.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (repair_element_id.is_set || is_set(repair_element_id.yfilter)) leaf_name_data.push_back(repair_element_id.get_name_leafdata());
+    if (repair_label.is_set || is_set(repair_label.yfilter)) leaf_name_data.push_back(repair_label.get_name_leafdata());
+    if (repair_element_type.is_set || is_set(repair_element_type.yfilter)) leaf_name_data.push_back(repair_element_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "repair-element-id")
+    {
+        repair_element_id = value;
+        repair_element_id.value_namespace = name_space;
+        repair_element_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "repair-label")
+    {
+        repair_label = value;
+        repair_label.value_namespace = name_space;
+        repair_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "repair-element-type")
+    {
+        repair_element_type = value;
+        repair_element_type.value_namespace = name_space;
+        repair_element_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "repair-element-id")
+    {
+        repair_element_id.yfilter = yfilter;
+    }
+    if(value_path == "repair-label")
+    {
+        repair_label.yfilter = yfilter;
+    }
+    if(value_path == "repair-element-type")
+    {
+        repair_element_type.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "repair-element-id" || name == "repair-label" || name == "repair-element-type")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::NeighborNextHop()
+    :
+    neighbor_next_hop_value_type{YType::enumeration, "neighbor-next-hop-value-type"},
+    neighbor_next_hop_ip_addr{YType::str, "neighbor-next-hop-ip-addr"},
+    neighbor_next_hop_intf_index{YType::uint32, "neighbor-next-hop-intf-index"}
+{
+
+    yang_name = "neighbor-next-hop"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::~NeighborNextHop()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::has_data() const
+{
+    if (is_presence_container) return true;
+    return neighbor_next_hop_value_type.is_set
+	|| neighbor_next_hop_ip_addr.is_set
+	|| neighbor_next_hop_intf_index.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_next_hop_value_type.yfilter)
+	|| ydk::is_set(neighbor_next_hop_ip_addr.yfilter)
+	|| ydk::is_set(neighbor_next_hop_intf_index.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (neighbor_next_hop_value_type.is_set || is_set(neighbor_next_hop_value_type.yfilter)) leaf_name_data.push_back(neighbor_next_hop_value_type.get_name_leafdata());
+    if (neighbor_next_hop_ip_addr.is_set || is_set(neighbor_next_hop_ip_addr.yfilter)) leaf_name_data.push_back(neighbor_next_hop_ip_addr.get_name_leafdata());
+    if (neighbor_next_hop_intf_index.is_set || is_set(neighbor_next_hop_intf_index.yfilter)) leaf_name_data.push_back(neighbor_next_hop_intf_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "neighbor-next-hop-value-type")
+    {
+        neighbor_next_hop_value_type = value;
+        neighbor_next_hop_value_type.value_namespace = name_space;
+        neighbor_next_hop_value_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-next-hop-ip-addr")
+    {
+        neighbor_next_hop_ip_addr = value;
+        neighbor_next_hop_ip_addr.value_namespace = name_space;
+        neighbor_next_hop_ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-next-hop-intf-index")
+    {
+        neighbor_next_hop_intf_index = value;
+        neighbor_next_hop_intf_index.value_namespace = name_space;
+        neighbor_next_hop_intf_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-next-hop-value-type")
+    {
+        neighbor_next_hop_value_type.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-next-hop-ip-addr")
+    {
+        neighbor_next_hop_ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-next-hop-intf-index")
+    {
+        neighbor_next_hop_intf_index.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::NeighborNextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-next-hop-value-type" || name == "neighbor-next-hop-ip-addr" || name == "neighbor-next-hop-intf-index")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformations()
+    :
+    route_area_information(this, {})
+{
+
+    yang_name = "route-area-informations"; yang_parent_name = "route-area"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::~RouteAreaInformations()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_area_information.len(); index++)
+    {
+        if(route_area_information[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::has_operation() const
+{
+    for (std::size_t index=0; index<route_area_information.len(); index++)
+    {
+        if(route_area_information[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-area-informations";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-area-information")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation>();
+        ent_->parent = this;
+        route_area_information.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route_area_information.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-area-information")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteAreaInformation()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    route_prefix{YType::str, "route-prefix"},
+    route_prefix_length{YType::uint32, "route-prefix-length"},
+    route_metric{YType::uint32, "route-metric"},
+    route_type{YType::enumeration, "route-type"},
+    route_connected{YType::boolean, "route-connected"}
+        ,
+    route_info(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo>())
+    , route_path(this, {})
+{
+    route_info->parent = this;
+
+    yang_name = "route-area-information"; yang_parent_name = "route-area-informations"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::~RouteAreaInformation()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_path.len(); index++)
+    {
+        if(route_path[index]->has_data())
+            return true;
+    }
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| route_prefix.is_set
+	|| route_prefix_length.is_set
+	|| route_metric.is_set
+	|| route_type.is_set
+	|| route_connected.is_set
+	|| (route_info !=  nullptr && route_info->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::has_operation() const
+{
+    for (std::size_t index=0; index<route_path.len(); index++)
+    {
+        if(route_path[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_prefix.yfilter)
+	|| ydk::is_set(route_prefix_length.yfilter)
+	|| ydk::is_set(route_metric.yfilter)
+	|| ydk::is_set(route_type.yfilter)
+	|| ydk::is_set(route_connected.yfilter)
+	|| (route_info !=  nullptr && route_info->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-area-information";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_prefix.is_set || is_set(route_prefix.yfilter)) leaf_name_data.push_back(route_prefix.get_name_leafdata());
+    if (route_prefix_length.is_set || is_set(route_prefix_length.yfilter)) leaf_name_data.push_back(route_prefix_length.get_name_leafdata());
+    if (route_metric.is_set || is_set(route_metric.yfilter)) leaf_name_data.push_back(route_metric.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_connected.is_set || is_set(route_connected.yfilter)) leaf_name_data.push_back(route_connected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-info")
+    {
+        if(route_info == nullptr)
+        {
+            route_info = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo>();
+        }
+        return route_info;
+    }
+
+    if(child_yang_name == "route-path")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath>();
+        ent_->parent = this;
+        route_path.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(route_info != nullptr)
+    {
+        _children["route-info"] = route_info;
+    }
+
+    count_ = 0;
+    for (auto ent_ : route_path.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-prefix")
+    {
+        route_prefix = value;
+        route_prefix.value_namespace = name_space;
+        route_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-prefix-length")
+    {
+        route_prefix_length = value;
+        route_prefix_length.value_namespace = name_space;
+        route_prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric = value;
+        route_metric.value_namespace = name_space;
+        route_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-type")
+    {
+        route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-connected")
+    {
+        route_connected = value;
+        route_connected.value_namespace = name_space;
+        route_connected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-prefix")
+    {
+        route_prefix.yfilter = yfilter;
+    }
+    if(value_path == "route-prefix-length")
+    {
+        route_prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+    if(value_path == "route-connected")
+    {
+        route_connected.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-info" || name == "route-path" || name == "prefix" || name == "prefix-length" || name == "route-prefix" || name == "route-prefix-length" || name == "route-metric" || name == "route-type" || name == "route-connected")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteInfo()
+    :
+    route_area_id{YType::uint32, "route-area-id"},
+    route_te_metric{YType::uint32, "route-te-metric"},
+    route_rib_version{YType::uint32, "route-rib-version"},
+    route_spf_version{YType::uint64, "route-spf-version"},
+    route_forward_distance{YType::uint32, "route-forward-distance"},
+    route_source{YType::uint16, "route-source"},
+    route_spf_priority{YType::uint8, "route-spf-priority"},
+    route_auto_excluded{YType::boolean, "route-auto-excluded"},
+    route_srte_prefix_registered{YType::boolean, "route-srte-prefix-registered"},
+    route_srte_nbr_registered{YType::uint16, "route-srte-nbr-registered"},
+    route_label_type{YType::uint8, "route-label-type"},
+    route_label{YType::uint32, "route-label"},
+    route_sspf_label{YType::uint32, "route-sspf-label"}
+        ,
+    route_update_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime>())
+    , route_fail_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime>())
+{
+    route_update_time->parent = this;
+    route_fail_time->parent = this;
+
+    yang_name = "route-info"; yang_parent_name = "route-area-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::~RouteInfo()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return route_area_id.is_set
+	|| route_te_metric.is_set
+	|| route_rib_version.is_set
+	|| route_spf_version.is_set
+	|| route_forward_distance.is_set
+	|| route_source.is_set
+	|| route_spf_priority.is_set
+	|| route_auto_excluded.is_set
+	|| route_srte_prefix_registered.is_set
+	|| route_srte_nbr_registered.is_set
+	|| route_label_type.is_set
+	|| route_label.is_set
+	|| route_sspf_label.is_set
+	|| (route_update_time !=  nullptr && route_update_time->has_data())
+	|| (route_fail_time !=  nullptr && route_fail_time->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(route_area_id.yfilter)
+	|| ydk::is_set(route_te_metric.yfilter)
+	|| ydk::is_set(route_rib_version.yfilter)
+	|| ydk::is_set(route_spf_version.yfilter)
+	|| ydk::is_set(route_forward_distance.yfilter)
+	|| ydk::is_set(route_source.yfilter)
+	|| ydk::is_set(route_spf_priority.yfilter)
+	|| ydk::is_set(route_auto_excluded.yfilter)
+	|| ydk::is_set(route_srte_prefix_registered.yfilter)
+	|| ydk::is_set(route_srte_nbr_registered.yfilter)
+	|| ydk::is_set(route_label_type.yfilter)
+	|| ydk::is_set(route_label.yfilter)
+	|| ydk::is_set(route_sspf_label.yfilter)
+	|| (route_update_time !=  nullptr && route_update_time->has_operation())
+	|| (route_fail_time !=  nullptr && route_fail_time->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_area_id.is_set || is_set(route_area_id.yfilter)) leaf_name_data.push_back(route_area_id.get_name_leafdata());
+    if (route_te_metric.is_set || is_set(route_te_metric.yfilter)) leaf_name_data.push_back(route_te_metric.get_name_leafdata());
+    if (route_rib_version.is_set || is_set(route_rib_version.yfilter)) leaf_name_data.push_back(route_rib_version.get_name_leafdata());
+    if (route_spf_version.is_set || is_set(route_spf_version.yfilter)) leaf_name_data.push_back(route_spf_version.get_name_leafdata());
+    if (route_forward_distance.is_set || is_set(route_forward_distance.yfilter)) leaf_name_data.push_back(route_forward_distance.get_name_leafdata());
+    if (route_source.is_set || is_set(route_source.yfilter)) leaf_name_data.push_back(route_source.get_name_leafdata());
+    if (route_spf_priority.is_set || is_set(route_spf_priority.yfilter)) leaf_name_data.push_back(route_spf_priority.get_name_leafdata());
+    if (route_auto_excluded.is_set || is_set(route_auto_excluded.yfilter)) leaf_name_data.push_back(route_auto_excluded.get_name_leafdata());
+    if (route_srte_prefix_registered.is_set || is_set(route_srte_prefix_registered.yfilter)) leaf_name_data.push_back(route_srte_prefix_registered.get_name_leafdata());
+    if (route_srte_nbr_registered.is_set || is_set(route_srte_nbr_registered.yfilter)) leaf_name_data.push_back(route_srte_nbr_registered.get_name_leafdata());
+    if (route_label_type.is_set || is_set(route_label_type.yfilter)) leaf_name_data.push_back(route_label_type.get_name_leafdata());
+    if (route_label.is_set || is_set(route_label.yfilter)) leaf_name_data.push_back(route_label.get_name_leafdata());
+    if (route_sspf_label.is_set || is_set(route_sspf_label.yfilter)) leaf_name_data.push_back(route_sspf_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-update-time")
+    {
+        if(route_update_time == nullptr)
+        {
+            route_update_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime>();
+        }
+        return route_update_time;
+    }
+
+    if(child_yang_name == "route-fail-time")
+    {
+        if(route_fail_time == nullptr)
+        {
+            route_fail_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime>();
+        }
+        return route_fail_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(route_update_time != nullptr)
+    {
+        _children["route-update-time"] = route_update_time;
+    }
+
+    if(route_fail_time != nullptr)
+    {
+        _children["route-fail-time"] = route_fail_time;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-area-id")
+    {
+        route_area_id = value;
+        route_area_id.value_namespace = name_space;
+        route_area_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-te-metric")
+    {
+        route_te_metric = value;
+        route_te_metric.value_namespace = name_space;
+        route_te_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-rib-version")
+    {
+        route_rib_version = value;
+        route_rib_version.value_namespace = name_space;
+        route_rib_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-spf-version")
+    {
+        route_spf_version = value;
+        route_spf_version.value_namespace = name_space;
+        route_spf_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-forward-distance")
+    {
+        route_forward_distance = value;
+        route_forward_distance.value_namespace = name_space;
+        route_forward_distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-source")
+    {
+        route_source = value;
+        route_source.value_namespace = name_space;
+        route_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-spf-priority")
+    {
+        route_spf_priority = value;
+        route_spf_priority.value_namespace = name_space;
+        route_spf_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-auto-excluded")
+    {
+        route_auto_excluded = value;
+        route_auto_excluded.value_namespace = name_space;
+        route_auto_excluded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-srte-prefix-registered")
+    {
+        route_srte_prefix_registered = value;
+        route_srte_prefix_registered.value_namespace = name_space;
+        route_srte_prefix_registered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-srte-nbr-registered")
+    {
+        route_srte_nbr_registered = value;
+        route_srte_nbr_registered.value_namespace = name_space;
+        route_srte_nbr_registered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-label-type")
+    {
+        route_label_type = value;
+        route_label_type.value_namespace = name_space;
+        route_label_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-label")
+    {
+        route_label = value;
+        route_label.value_namespace = name_space;
+        route_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-sspf-label")
+    {
+        route_sspf_label = value;
+        route_sspf_label.value_namespace = name_space;
+        route_sspf_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-area-id")
+    {
+        route_area_id.yfilter = yfilter;
+    }
+    if(value_path == "route-te-metric")
+    {
+        route_te_metric.yfilter = yfilter;
+    }
+    if(value_path == "route-rib-version")
+    {
+        route_rib_version.yfilter = yfilter;
+    }
+    if(value_path == "route-spf-version")
+    {
+        route_spf_version.yfilter = yfilter;
+    }
+    if(value_path == "route-forward-distance")
+    {
+        route_forward_distance.yfilter = yfilter;
+    }
+    if(value_path == "route-source")
+    {
+        route_source.yfilter = yfilter;
+    }
+    if(value_path == "route-spf-priority")
+    {
+        route_spf_priority.yfilter = yfilter;
+    }
+    if(value_path == "route-auto-excluded")
+    {
+        route_auto_excluded.yfilter = yfilter;
+    }
+    if(value_path == "route-srte-prefix-registered")
+    {
+        route_srte_prefix_registered.yfilter = yfilter;
+    }
+    if(value_path == "route-srte-nbr-registered")
+    {
+        route_srte_nbr_registered.yfilter = yfilter;
+    }
+    if(value_path == "route-label-type")
+    {
+        route_label_type.yfilter = yfilter;
+    }
+    if(value_path == "route-label")
+    {
+        route_label.yfilter = yfilter;
+    }
+    if(value_path == "route-sspf-label")
+    {
+        route_sspf_label.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-update-time" || name == "route-fail-time" || name == "route-area-id" || name == "route-te-metric" || name == "route-rib-version" || name == "route-spf-version" || name == "route-forward-distance" || name == "route-source" || name == "route-spf-priority" || name == "route-auto-excluded" || name == "route-srte-prefix-registered" || name == "route-srte-nbr-registered" || name == "route-label-type" || name == "route-label" || name == "route-sspf-label")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::RouteUpdateTime()
+    :
+    second{YType::uint32, "second"},
+    nanosecond{YType::uint32, "nanosecond"}
+{
+
+    yang_name = "route-update-time"; yang_parent_name = "route-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::~RouteUpdateTime()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nanosecond.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nanosecond.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-update-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nanosecond")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::RouteFailTime()
+    :
+    second{YType::uint32, "second"},
+    nanosecond{YType::uint32, "nanosecond"}
+{
+
+    yang_name = "route-fail-time"; yang_parent_name = "route-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::~RouteFailTime()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nanosecond.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nanosecond.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-fail-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nanosecond")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::RoutePath()
+    :
+    route_interface_name{YType::str, "route-interface-name"},
+    route_interface_snmp_index{YType::uint32, "route-interface-snmp-index"},
+    route_next_hop_address{YType::str, "route-next-hop-address"},
+    route_source{YType::str, "route-source"},
+    route_lsaid{YType::str, "route-lsaid"},
+    route_path_is_mcast_intact{YType::boolean, "route-path-is-mcast-intact"},
+    route_path_is_ucmp_path{YType::boolean, "route-path-is-ucmp-path"},
+    route_metric{YType::uint32, "route-metric"},
+    lsa_type{YType::uint8, "lsa-type"},
+    area_id{YType::uint32, "area-id"},
+    area_format{YType::boolean, "area-format"},
+    route_path_id{YType::uint32, "route-path-id"},
+    route_path_is_rsvp_te_path{YType::boolean, "route-path-is-rsvp-te-path"},
+    route_path_is_sr_te_path{YType::boolean, "route-path-is-sr-te-path"},
+    route_path_is_sr_excl_path{YType::boolean, "route-path-is-sr-excl-path"},
+    route_path_is_sr_te_sspf_path{YType::boolean, "route-path-is-sr-te-sspf-path"}
+        ,
+    sr_microloop_avoidance_path(std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath>())
+    , neighbor_next_hop(this, {})
+{
+    sr_microloop_avoidance_path->parent = this;
+
+    yang_name = "route-path"; yang_parent_name = "route-area-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::~RoutePath()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_next_hop.len(); index++)
+    {
+        if(neighbor_next_hop[index]->has_data())
+            return true;
+    }
+    return route_interface_name.is_set
+	|| route_interface_snmp_index.is_set
+	|| route_next_hop_address.is_set
+	|| route_source.is_set
+	|| route_lsaid.is_set
+	|| route_path_is_mcast_intact.is_set
+	|| route_path_is_ucmp_path.is_set
+	|| route_metric.is_set
+	|| lsa_type.is_set
+	|| area_id.is_set
+	|| area_format.is_set
+	|| route_path_id.is_set
+	|| route_path_is_rsvp_te_path.is_set
+	|| route_path_is_sr_te_path.is_set
+	|| route_path_is_sr_excl_path.is_set
+	|| route_path_is_sr_te_sspf_path.is_set
+	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::has_operation() const
+{
+    for (std::size_t index=0; index<neighbor_next_hop.len(); index++)
+    {
+        if(neighbor_next_hop[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(route_interface_name.yfilter)
+	|| ydk::is_set(route_interface_snmp_index.yfilter)
+	|| ydk::is_set(route_next_hop_address.yfilter)
+	|| ydk::is_set(route_source.yfilter)
+	|| ydk::is_set(route_lsaid.yfilter)
+	|| ydk::is_set(route_path_is_mcast_intact.yfilter)
+	|| ydk::is_set(route_path_is_ucmp_path.yfilter)
+	|| ydk::is_set(route_metric.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(area_format.yfilter)
+	|| ydk::is_set(route_path_id.yfilter)
+	|| ydk::is_set(route_path_is_rsvp_te_path.yfilter)
+	|| ydk::is_set(route_path_is_sr_te_path.yfilter)
+	|| ydk::is_set(route_path_is_sr_excl_path.yfilter)
+	|| ydk::is_set(route_path_is_sr_te_sspf_path.yfilter)
+	|| (sr_microloop_avoidance_path !=  nullptr && sr_microloop_avoidance_path->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_interface_name.is_set || is_set(route_interface_name.yfilter)) leaf_name_data.push_back(route_interface_name.get_name_leafdata());
+    if (route_interface_snmp_index.is_set || is_set(route_interface_snmp_index.yfilter)) leaf_name_data.push_back(route_interface_snmp_index.get_name_leafdata());
+    if (route_next_hop_address.is_set || is_set(route_next_hop_address.yfilter)) leaf_name_data.push_back(route_next_hop_address.get_name_leafdata());
+    if (route_source.is_set || is_set(route_source.yfilter)) leaf_name_data.push_back(route_source.get_name_leafdata());
+    if (route_lsaid.is_set || is_set(route_lsaid.yfilter)) leaf_name_data.push_back(route_lsaid.get_name_leafdata());
+    if (route_path_is_mcast_intact.is_set || is_set(route_path_is_mcast_intact.yfilter)) leaf_name_data.push_back(route_path_is_mcast_intact.get_name_leafdata());
+    if (route_path_is_ucmp_path.is_set || is_set(route_path_is_ucmp_path.yfilter)) leaf_name_data.push_back(route_path_is_ucmp_path.get_name_leafdata());
+    if (route_metric.is_set || is_set(route_metric.yfilter)) leaf_name_data.push_back(route_metric.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (area_format.is_set || is_set(area_format.yfilter)) leaf_name_data.push_back(area_format.get_name_leafdata());
+    if (route_path_id.is_set || is_set(route_path_id.yfilter)) leaf_name_data.push_back(route_path_id.get_name_leafdata());
+    if (route_path_is_rsvp_te_path.is_set || is_set(route_path_is_rsvp_te_path.yfilter)) leaf_name_data.push_back(route_path_is_rsvp_te_path.get_name_leafdata());
+    if (route_path_is_sr_te_path.is_set || is_set(route_path_is_sr_te_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_path.get_name_leafdata());
+    if (route_path_is_sr_excl_path.is_set || is_set(route_path_is_sr_excl_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_excl_path.get_name_leafdata());
+    if (route_path_is_sr_te_sspf_path.is_set || is_set(route_path_is_sr_te_sspf_path.yfilter)) leaf_name_data.push_back(route_path_is_sr_te_sspf_path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-microloop-avoidance-path")
+    {
+        if(sr_microloop_avoidance_path == nullptr)
+        {
+            sr_microloop_avoidance_path = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath>();
+        }
+        return sr_microloop_avoidance_path;
+    }
+
+    if(child_yang_name == "neighbor-next-hop")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop>();
+        ent_->parent = this;
+        neighbor_next_hop.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(sr_microloop_avoidance_path != nullptr)
+    {
+        _children["sr-microloop-avoidance-path"] = sr_microloop_avoidance_path;
+    }
+
+    count_ = 0;
+    for (auto ent_ : neighbor_next_hop.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-interface-name")
+    {
+        route_interface_name = value;
+        route_interface_name.value_namespace = name_space;
+        route_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-interface-snmp-index")
+    {
+        route_interface_snmp_index = value;
+        route_interface_snmp_index.value_namespace = name_space;
+        route_interface_snmp_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-next-hop-address")
+    {
+        route_next_hop_address = value;
+        route_next_hop_address.value_namespace = name_space;
+        route_next_hop_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-source")
+    {
+        route_source = value;
+        route_source.value_namespace = name_space;
+        route_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-lsaid")
+    {
+        route_lsaid = value;
+        route_lsaid.value_namespace = name_space;
+        route_lsaid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-mcast-intact")
+    {
+        route_path_is_mcast_intact = value;
+        route_path_is_mcast_intact.value_namespace = name_space;
+        route_path_is_mcast_intact.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-ucmp-path")
+    {
+        route_path_is_ucmp_path = value;
+        route_path_is_ucmp_path.value_namespace = name_space;
+        route_path_is_ucmp_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric = value;
+        route_metric.value_namespace = name_space;
+        route_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "area-id")
+    {
+        area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "area-format")
+    {
+        area_format = value;
+        area_format.value_namespace = name_space;
+        area_format.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-id")
+    {
+        route_path_id = value;
+        route_path_id.value_namespace = name_space;
+        route_path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-rsvp-te-path")
+    {
+        route_path_is_rsvp_te_path = value;
+        route_path_is_rsvp_te_path.value_namespace = name_space;
+        route_path_is_rsvp_te_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-sr-te-path")
+    {
+        route_path_is_sr_te_path = value;
+        route_path_is_sr_te_path.value_namespace = name_space;
+        route_path_is_sr_te_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-sr-excl-path")
+    {
+        route_path_is_sr_excl_path = value;
+        route_path_is_sr_excl_path.value_namespace = name_space;
+        route_path_is_sr_excl_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-path-is-sr-te-sspf-path")
+    {
+        route_path_is_sr_te_sspf_path = value;
+        route_path_is_sr_te_sspf_path.value_namespace = name_space;
+        route_path_is_sr_te_sspf_path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-interface-name")
+    {
+        route_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "route-interface-snmp-index")
+    {
+        route_interface_snmp_index.yfilter = yfilter;
+    }
+    if(value_path == "route-next-hop-address")
+    {
+        route_next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "route-source")
+    {
+        route_source.yfilter = yfilter;
+    }
+    if(value_path == "route-lsaid")
+    {
+        route_lsaid.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-mcast-intact")
+    {
+        route_path_is_mcast_intact.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-ucmp-path")
+    {
+        route_path_is_ucmp_path.yfilter = yfilter;
+    }
+    if(value_path == "route-metric")
+    {
+        route_metric.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "area-format")
+    {
+        area_format.yfilter = yfilter;
+    }
+    if(value_path == "route-path-id")
+    {
+        route_path_id.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-rsvp-te-path")
+    {
+        route_path_is_rsvp_te_path.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-sr-te-path")
+    {
+        route_path_is_sr_te_path.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-sr-excl-path")
+    {
+        route_path_is_sr_excl_path.yfilter = yfilter;
+    }
+    if(value_path == "route-path-is-sr-te-sspf-path")
+    {
+        route_path_is_sr_te_sspf_path.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-microloop-avoidance-path" || name == "neighbor-next-hop" || name == "route-interface-name" || name == "route-interface-snmp-index" || name == "route-next-hop-address" || name == "route-source" || name == "route-lsaid" || name == "route-path-is-mcast-intact" || name == "route-path-is-ucmp-path" || name == "route-metric" || name == "lsa-type" || name == "area-id" || name == "area-format" || name == "route-path-id" || name == "route-path-is-rsvp-te-path" || name == "route-path-is-sr-te-path" || name == "route-path-is-sr-excl-path" || name == "route-path-is-sr-te-sspf-path")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::SrMicroloopAvoidancePath()
+    :
+    microloop_repair_list_size{YType::uint32, "microloop-repair-list-size"},
+    microloop_tunnel_interface_name{YType::str, "microloop-tunnel-interface-name"},
+    microloop_strict_spf{YType::boolean, "microloop-strict-spf"}
+        ,
+    microloop_repair(this, {})
+{
+
+    yang_name = "sr-microloop-avoidance-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::~SrMicroloopAvoidancePath()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<microloop_repair.len(); index++)
+    {
+        if(microloop_repair[index]->has_data())
+            return true;
+    }
+    return microloop_repair_list_size.is_set
+	|| microloop_tunnel_interface_name.is_set
+	|| microloop_strict_spf.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::has_operation() const
+{
+    for (std::size_t index=0; index<microloop_repair.len(); index++)
+    {
+        if(microloop_repair[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(microloop_repair_list_size.yfilter)
+	|| ydk::is_set(microloop_tunnel_interface_name.yfilter)
+	|| ydk::is_set(microloop_strict_spf.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-microloop-avoidance-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (microloop_repair_list_size.is_set || is_set(microloop_repair_list_size.yfilter)) leaf_name_data.push_back(microloop_repair_list_size.get_name_leafdata());
+    if (microloop_tunnel_interface_name.is_set || is_set(microloop_tunnel_interface_name.yfilter)) leaf_name_data.push_back(microloop_tunnel_interface_name.get_name_leafdata());
+    if (microloop_strict_spf.is_set || is_set(microloop_strict_spf.yfilter)) leaf_name_data.push_back(microloop_strict_spf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "microloop-repair")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
+        ent_->parent = this;
+        microloop_repair.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : microloop_repair.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "microloop-repair-list-size")
+    {
+        microloop_repair_list_size = value;
+        microloop_repair_list_size.value_namespace = name_space;
+        microloop_repair_list_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "microloop-tunnel-interface-name")
+    {
+        microloop_tunnel_interface_name = value;
+        microloop_tunnel_interface_name.value_namespace = name_space;
+        microloop_tunnel_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "microloop-strict-spf")
+    {
+        microloop_strict_spf = value;
+        microloop_strict_spf.value_namespace = name_space;
+        microloop_strict_spf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "microloop-repair-list-size")
+    {
+        microloop_repair_list_size.yfilter = yfilter;
+    }
+    if(value_path == "microloop-tunnel-interface-name")
+    {
+        microloop_tunnel_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "microloop-strict-spf")
+    {
+        microloop_strict_spf.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "microloop-repair" || name == "microloop-repair-list-size" || name == "microloop-tunnel-interface-name" || name == "microloop-strict-spf")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::MicroloopRepair()
+    :
+    repair_element_id{YType::str, "repair-element-id"},
+    repair_label{YType::uint32, "repair-label"},
+    repair_element_type{YType::uint32, "repair-element-type"}
+{
+
+    yang_name = "microloop-repair"; yang_parent_name = "sr-microloop-avoidance-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::~MicroloopRepair()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::has_data() const
+{
+    if (is_presence_container) return true;
+    return repair_element_id.is_set
+	|| repair_label.is_set
+	|| repair_element_type.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(repair_element_id.yfilter)
+	|| ydk::is_set(repair_label.yfilter)
+	|| ydk::is_set(repair_element_type.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (repair_element_id.is_set || is_set(repair_element_id.yfilter)) leaf_name_data.push_back(repair_element_id.get_name_leafdata());
+    if (repair_label.is_set || is_set(repair_label.yfilter)) leaf_name_data.push_back(repair_label.get_name_leafdata());
+    if (repair_element_type.is_set || is_set(repair_element_type.yfilter)) leaf_name_data.push_back(repair_element_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "repair-element-id")
+    {
+        repair_element_id = value;
+        repair_element_id.value_namespace = name_space;
+        repair_element_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "repair-label")
+    {
+        repair_label = value;
+        repair_label.value_namespace = name_space;
+        repair_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "repair-element-type")
+    {
+        repair_element_type = value;
+        repair_element_type.value_namespace = name_space;
+        repair_element_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "repair-element-id")
+    {
+        repair_element_id.yfilter = yfilter;
+    }
+    if(value_path == "repair-label")
+    {
+        repair_label.yfilter = yfilter;
+    }
+    if(value_path == "repair-element-type")
+    {
+        repair_element_type.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "repair-element-id" || name == "repair-label" || name == "repair-element-type")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::NeighborNextHop()
+    :
+    neighbor_next_hop_value_type{YType::enumeration, "neighbor-next-hop-value-type"},
+    neighbor_next_hop_ip_addr{YType::str, "neighbor-next-hop-ip-addr"},
+    neighbor_next_hop_intf_index{YType::uint32, "neighbor-next-hop-intf-index"}
+{
+
+    yang_name = "neighbor-next-hop"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::~NeighborNextHop()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::has_data() const
+{
+    if (is_presence_container) return true;
+    return neighbor_next_hop_value_type.is_set
+	|| neighbor_next_hop_ip_addr.is_set
+	|| neighbor_next_hop_intf_index.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_next_hop_value_type.yfilter)
+	|| ydk::is_set(neighbor_next_hop_ip_addr.yfilter)
+	|| ydk::is_set(neighbor_next_hop_intf_index.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (neighbor_next_hop_value_type.is_set || is_set(neighbor_next_hop_value_type.yfilter)) leaf_name_data.push_back(neighbor_next_hop_value_type.get_name_leafdata());
+    if (neighbor_next_hop_ip_addr.is_set || is_set(neighbor_next_hop_ip_addr.yfilter)) leaf_name_data.push_back(neighbor_next_hop_ip_addr.get_name_leafdata());
+    if (neighbor_next_hop_intf_index.is_set || is_set(neighbor_next_hop_intf_index.yfilter)) leaf_name_data.push_back(neighbor_next_hop_intf_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "neighbor-next-hop-value-type")
+    {
+        neighbor_next_hop_value_type = value;
+        neighbor_next_hop_value_type.value_namespace = name_space;
+        neighbor_next_hop_value_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-next-hop-ip-addr")
+    {
+        neighbor_next_hop_ip_addr = value;
+        neighbor_next_hop_ip_addr.value_namespace = name_space;
+        neighbor_next_hop_ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-next-hop-intf-index")
+    {
+        neighbor_next_hop_intf_index = value;
+        neighbor_next_hop_intf_index.value_namespace = name_space;
+        neighbor_next_hop_intf_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-next-hop-value-type")
+    {
+        neighbor_next_hop_value_type.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-next-hop-ip-addr")
+    {
+        neighbor_next_hop_ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-next-hop-intf-index")
+    {
+        neighbor_next_hop_intf_index.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::NeighborNextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-next-hop-value-type" || name == "neighbor-next-hop-ip-addr" || name == "neighbor-next-hop-intf-index")
         return true;
     return false;
 }

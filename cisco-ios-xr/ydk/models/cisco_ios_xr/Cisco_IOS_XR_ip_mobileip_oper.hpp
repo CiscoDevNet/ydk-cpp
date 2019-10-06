@@ -1631,6 +1631,27 @@ class Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust : public ydk::Entity
 
 }; // Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust
 
+class Pmipv6Role : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf wlan;
+        static const ydk::Enum::YLeaf gpp;
+        static const ydk::Enum::YLeaf lte;
+        static const ydk::Enum::YLeaf wi_max;
+        static const ydk::Enum::YLeaf gma;
+        static const ydk::Enum::YLeaf rmax;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "wlan") return 0;
+            if (name == "gpp") return 1;
+            if (name == "lte") return 2;
+            if (name == "wi-max") return 3;
+            if (name == "gma") return 4;
+            if (name == "rmax") return 5;
+            return -1;
+        }
+};
+
 class Pmipv6Encap : public ydk::Enum
 {
     public:
@@ -1647,6 +1668,21 @@ class Pmipv6Encap : public ydk::Enum
         static const ydk::Enum::YLeaf mip_mudp;
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "ipv6-ipv4") return 2;
+            if (name == "ipv6-udp") return 3;
+            if (name == "gre-ipv4") return 4;
+            if (name == "gre-ipv6") return 5;
+            if (name == "gre") return 6;
+            if (name == "mgre-ipv4") return 7;
+            if (name == "mgre-ipv6") return 8;
+            if (name == "mip-udp") return 9;
+            if (name == "mip-mudp") return 10;
+            if (name == "max") return 11;
+            return -1;
+        }
 };
 
 class Pmipv6Addr : public ydk::Enum
@@ -1657,18 +1693,13 @@ class Pmipv6Addr : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf pmipv6_addr_ipv4_ipv6;
 
-};
-
-class Pmipv6Role : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf wlan;
-        static const ydk::Enum::YLeaf gpp;
-        static const ydk::Enum::YLeaf lte;
-        static const ydk::Enum::YLeaf wi_max;
-        static const ydk::Enum::YLeaf gma;
-        static const ydk::Enum::YLeaf rmax;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "pmipv6-addr-ipv4-ipv6") return 3;
+            return -1;
+        }
 };
 
 

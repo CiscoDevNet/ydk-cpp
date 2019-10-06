@@ -564,6 +564,13 @@ class CiscoSbcPeriodicStatsInterval : public ydk::Enum
         static const ydk::Enum::YLeaf oneHour;
         static const ydk::Enum::YLeaf oneDay;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fiveMinute") return 1;
+            if (name == "fifteenMinute") return 2;
+            if (name == "oneHour") return 3;
+            if (name == "oneDay") return 4;
+            return -1;
+        }
 };
 
 class CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::CsbPerFlowStatsSideId : public ydk::Enum
@@ -572,6 +579,11 @@ class CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEnt
         static const ydk::Enum::YLeaf sideA;
         static const ydk::Enum::YLeaf sideB;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sideA") return 1;
+            if (name == "sideB") return 2;
+            return -1;
+        }
 };
 
 class CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::CsbPerFlowStatsFlowType : public ydk::Enum
@@ -580,6 +592,11 @@ class CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEnt
         static const ydk::Enum::YLeaf media;
         static const ydk::Enum::YLeaf signalling;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "media") return 1;
+            if (name == "signalling") return 2;
+            return -1;
+        }
 };
 
 

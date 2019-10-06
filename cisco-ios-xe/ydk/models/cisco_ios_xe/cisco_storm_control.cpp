@@ -21,13 +21,13 @@ StormControlAction::~StormControlAction()
 {
 }
 
-ActionDrop::ActionDrop()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:action-drop")
+ActionShutdown::ActionShutdown()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:action-shutdown")
 {
 
 }
 
-ActionDrop::~ActionDrop()
+ActionShutdown::~ActionShutdown()
 {
 }
 
@@ -41,13 +41,13 @@ ActionSnmpTrap::~ActionSnmpTrap()
 {
 }
 
-ActionShutdown::ActionShutdown()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:action-shutdown")
+ActionDrop::ActionDrop()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:action-drop")
 {
 
 }
 
-ActionShutdown::~ActionShutdown()
+ActionDrop::~ActionDrop()
 {
 }
 

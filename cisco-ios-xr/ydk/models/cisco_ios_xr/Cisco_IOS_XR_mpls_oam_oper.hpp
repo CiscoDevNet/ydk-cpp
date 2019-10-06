@@ -2392,6 +2392,27 @@ class LspvBagInterfaceState : public ydk::Enum
         static const ydk::Enum::YLeaf not_operational;
         static const ydk::Enum::YLeaf not_known;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-ready") return 0;
+            if (name == "admin-down") return 1;
+            if (name == "down") return 2;
+            if (name == "up") return 3;
+            if (name == "shutdown") return 4;
+            if (name == "error-disable") return 5;
+            if (name == "down-immediate") return 6;
+            if (name == "admin-immediate") return 7;
+            if (name == "graceful-down") return 8;
+            if (name == "begin-shutdown") return 9;
+            if (name == "end-shutdown") return 10;
+            if (name == "begin-error-disable") return 11;
+            if (name == "end-error-disable") return 12;
+            if (name == "begin-graceful-down") return 13;
+            if (name == "reset") return 14;
+            if (name == "operational") return 15;
+            if (name == "not-operational") return 16;
+            if (name == "not-known") return 17;
+            return -1;
+        }
 };
 
 

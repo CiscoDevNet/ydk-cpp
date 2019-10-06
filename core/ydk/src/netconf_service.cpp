@@ -243,7 +243,7 @@ bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore tar
     auto top_entity = get_top_entity(&config);
     std::string payload = (config.ignore_validation && top_entity->is_top_level_class) ?
             get_xml_subtree_filter_payload(*top_entity, provider) :
-            get_data_payload(config, provider);
+            get_data_payload(*top_entity, provider);
 
     return edit_payload(provider, target, payload, default_operation, test_option, error_option);
 }
@@ -262,7 +262,7 @@ bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore tar
         auto top_entity = get_top_entity(entity);
         payload += (entity->ignore_validation && top_entity->is_top_level_class) ?
                 get_xml_subtree_filter_payload(*top_entity, provider) :
-                get_data_payload(*entity, provider);
+                get_data_payload(*top_entity, provider);
     }
 
     return edit_payload(provider, target, payload, default_operation, test_option, error_option);
@@ -291,6 +291,10 @@ get_from_list(NetconfServiceProvider& provider, DataStore source, vector<Entity*
     size_t bypass_validation = 0;
     string filter_string = "";
     for (auto entity : filter_list) {
+        YFilter original_yfilter = entity->yfilter;
+        if (!entity->is_top_level_class && original_yfilter == YFilter::not_set) {
+            entity->yfilter = YFilter::read;
+        }
         auto top_entity = get_top_entity(entity);
         if (top_entity->is_top_level_class) {
             filter_string += get_xml_subtree_filter_payload(*top_entity, provider);
@@ -300,6 +304,7 @@ get_from_list(NetconfServiceProvider& provider, DataStore source, vector<Entity*
         else {
             filter_string += get_data_payload(*entity, provider);
         }
+        entity->yfilter = original_yfilter;
     }
     rpc->get_input_node().create_datanode("filter", filter_string);
 
@@ -410,11 +415,16 @@ get_entity(NetconfServiceProvider& provider, DataStore source, Entity& filter, c
         create_input_leaf(rpc->get_input_node(), source, "source");
     }
 
+    YFilter original_yfilter = filter.yfilter;
+    if (!filter.is_top_level_class && original_yfilter == YFilter::not_set) {
+        filter.yfilter = YFilter::read;
+    }
     auto top_entity = get_top_entity(&filter);
     string filter_string = (top_entity->is_top_level_class) ?
         get_xml_subtree_filter_payload(*top_entity, provider) :
         get_data_payload(filter, provider);
     rpc->get_input_node().create_datanode("filter", filter_string);
+    filter.yfilter = original_yfilter;
 
     if (filter.ignore_validation && top_entity->is_top_level_class) {
         // Bypass libyang validation

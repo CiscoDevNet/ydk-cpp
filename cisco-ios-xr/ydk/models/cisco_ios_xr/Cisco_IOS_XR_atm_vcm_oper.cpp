@@ -4018,13 +4018,35 @@ bool AtmVcm::Nodes::Node::VpTunnels::VpTunnel::has_leaf_or_child_of_name(const s
     return false;
 }
 
-const Enum::YLeaf VcCellPackingMode::vp {1, "vp"};
-const Enum::YLeaf VcCellPackingMode::vc {2, "vc"};
-const Enum::YLeaf VcCellPackingMode::port_mode {3, "port-mode"};
+const Enum::YLeaf Vc::layer3_vc {0, "layer3-vc"};
+const Enum::YLeaf Vc::layer2_vc {1, "layer2-vc"};
+const Enum::YLeaf Vc::layer2_vp {2, "layer2-vp"};
+const Enum::YLeaf Vc::vc_type_unknown {3, "vc-type-unknown"};
+
+const Enum::YLeaf VcEncap::ilmi {1, "ilmi"};
+const Enum::YLeaf VcEncap::qsaal {2, "qsaal"};
+const Enum::YLeaf VcEncap::snap {3, "snap"};
+const Enum::YLeaf VcEncap::mux {4, "mux"};
+const Enum::YLeaf VcEncap::nlpid {5, "nlpid"};
+const Enum::YLeaf VcEncap::f4oam {6, "f4oam"};
+const Enum::YLeaf VcEncap::aal0 {7, "aal0"};
+const Enum::YLeaf VcEncap::aal5 {8, "aal5"};
+const Enum::YLeaf VcEncap::encap_unknown {9, "encap-unknown"};
+
+const Enum::YLeaf VcManageLevel::manage {1, "manage"};
+const Enum::YLeaf VcManageLevel::not_managed {2, "not-managed"};
 
 const Enum::YLeaf VcTestMode::test_mode_none {1, "test-mode-none"};
 const Enum::YLeaf VcTestMode::loop {2, "loop"};
 const Enum::YLeaf VcTestMode::reserved {3, "reserved"};
+
+const Enum::YLeaf VpTrafShaping::vp_cbr {1, "vp-cbr"};
+const Enum::YLeaf VpTrafShaping::vp_vbr_nrt {2, "vp-vbr-nrt"};
+const Enum::YLeaf VpTrafShaping::vp_vbr_rt {3, "vp-vbr-rt"};
+const Enum::YLeaf VpTrafShaping::vp_abr {4, "vp-abr"};
+const Enum::YLeaf VpTrafShaping::vp_ubr_plus {5, "vp-ubr-plus"};
+const Enum::YLeaf VpTrafShaping::vp_ubr {6, "vp-ubr"};
+const Enum::YLeaf VpTrafShaping::vp_traf_shaping_unknown {7, "vp-traf-shaping-unknown"};
 
 const Enum::YLeaf VcState::initialized {0, "initialized"};
 const Enum::YLeaf VcState::modifying {1, "modifying"};
@@ -4039,50 +4061,12 @@ const Enum::YLeaf VcState::deleting {9, "deleting"};
 const Enum::YLeaf VcState::deleted {10, "deleted"};
 const Enum::YLeaf VcState::state_unknown {11, "state-unknown"};
 
-const Enum::YLeaf VcInheritLevel::directly_configured_onvc {0, "directly-configured-onvc"};
-const Enum::YLeaf VcInheritLevel::vc_class_configured_onvc {1, "vc-class-configured-onvc"};
-const Enum::YLeaf VcInheritLevel::vc_class_configured_on_sub_interface {2, "vc-class-configured-on-sub-interface"};
-const Enum::YLeaf VcInheritLevel::vc_class_configured_on_main_interface {3, "vc-class-configured-on-main-interface"};
-const Enum::YLeaf VcInheritLevel::global_default {4, "global-default"};
-const Enum::YLeaf VcInheritLevel::unknown {5, "unknown"};
-const Enum::YLeaf VcInheritLevel::not_supported {6, "not-supported"};
-
-const Enum::YLeaf VcTrafShaping::cbr {1, "cbr"};
-const Enum::YLeaf VcTrafShaping::vbr_nrt {2, "vbr-nrt"};
-const Enum::YLeaf VcTrafShaping::vbr_rt {3, "vbr-rt"};
-const Enum::YLeaf VcTrafShaping::abr {4, "abr"};
-const Enum::YLeaf VcTrafShaping::ubr_plus {5, "ubr-plus"};
-const Enum::YLeaf VcTrafShaping::ubr {6, "ubr"};
-const Enum::YLeaf VcTrafShaping::traf_shaping_unknown {7, "traf-shaping-unknown"};
-
-const Enum::YLeaf VcEncap::ilmi {1, "ilmi"};
-const Enum::YLeaf VcEncap::qsaal {2, "qsaal"};
-const Enum::YLeaf VcEncap::snap {3, "snap"};
-const Enum::YLeaf VcEncap::mux {4, "mux"};
-const Enum::YLeaf VcEncap::nlpid {5, "nlpid"};
-const Enum::YLeaf VcEncap::f4oam {6, "f4oam"};
-const Enum::YLeaf VcEncap::aal0 {7, "aal0"};
-const Enum::YLeaf VcEncap::aal5 {8, "aal5"};
-const Enum::YLeaf VcEncap::encap_unknown {9, "encap-unknown"};
-
-const Enum::YLeaf Vc::layer3_vc {0, "layer3-vc"};
-const Enum::YLeaf Vc::layer2_vc {1, "layer2-vc"};
-const Enum::YLeaf Vc::layer2_vp {2, "layer2-vp"};
-const Enum::YLeaf Vc::vc_type_unknown {3, "vc-type-unknown"};
-
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_configured_onvc {0, "vc-configured-onvc"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_class_onvc {1, "vc-class-onvc"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_class_on_sub_interface {2, "vc-class-on-sub-interface"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_class_on_main_interface {3, "vc-class-on-main-interface"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_global_default {4, "vc-global-default"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_inherit_level_unknown {5, "vc-inherit-level-unknown"};
-
-const Enum::YLeaf VcManageLevel::manage {1, "manage"};
-const Enum::YLeaf VcManageLevel::not_managed {2, "not-managed"};
-
-const Enum::YLeaf VcmPort::port_type_layer_2 {0, "port-type-layer-2"};
-const Enum::YLeaf VcmPort::port_type_layer_3 {1, "port-type-layer-3"};
-const Enum::YLeaf VcmPort::port_type_unknown {3, "port-type-unknown"};
 
 const Enum::YLeaf VpState::vp_initialized {0, "vp-initialized"};
 const Enum::YLeaf VpState::vp_modifying {1, "vp-modifying"};
@@ -4092,13 +4076,29 @@ const Enum::YLeaf VpState::vp_deleting {4, "vp-deleting"};
 const Enum::YLeaf VpState::vp_deleted {5, "vp-deleted"};
 const Enum::YLeaf VpState::vp_state_unknown {6, "vp-state-unknown"};
 
-const Enum::YLeaf VpTrafShaping::vp_cbr {1, "vp-cbr"};
-const Enum::YLeaf VpTrafShaping::vp_vbr_nrt {2, "vp-vbr-nrt"};
-const Enum::YLeaf VpTrafShaping::vp_vbr_rt {3, "vp-vbr-rt"};
-const Enum::YLeaf VpTrafShaping::vp_abr {4, "vp-abr"};
-const Enum::YLeaf VpTrafShaping::vp_ubr_plus {5, "vp-ubr-plus"};
-const Enum::YLeaf VpTrafShaping::vp_ubr {6, "vp-ubr"};
-const Enum::YLeaf VpTrafShaping::vp_traf_shaping_unknown {7, "vp-traf-shaping-unknown"};
+const Enum::YLeaf VcTrafShaping::cbr {1, "cbr"};
+const Enum::YLeaf VcTrafShaping::vbr_nrt {2, "vbr-nrt"};
+const Enum::YLeaf VcTrafShaping::vbr_rt {3, "vbr-rt"};
+const Enum::YLeaf VcTrafShaping::abr {4, "abr"};
+const Enum::YLeaf VcTrafShaping::ubr_plus {5, "ubr-plus"};
+const Enum::YLeaf VcTrafShaping::ubr {6, "ubr"};
+const Enum::YLeaf VcTrafShaping::traf_shaping_unknown {7, "traf-shaping-unknown"};
+
+const Enum::YLeaf VcCellPackingMode::vp {1, "vp"};
+const Enum::YLeaf VcCellPackingMode::vc {2, "vc"};
+const Enum::YLeaf VcCellPackingMode::port_mode {3, "port-mode"};
+
+const Enum::YLeaf VcmPort::port_type_layer_2 {0, "port-type-layer-2"};
+const Enum::YLeaf VcmPort::port_type_layer_3 {1, "port-type-layer-3"};
+const Enum::YLeaf VcmPort::port_type_unknown {3, "port-type-unknown"};
+
+const Enum::YLeaf VcInheritLevel::directly_configured_onvc {0, "directly-configured-onvc"};
+const Enum::YLeaf VcInheritLevel::vc_class_configured_onvc {1, "vc-class-configured-onvc"};
+const Enum::YLeaf VcInheritLevel::vc_class_configured_on_sub_interface {2, "vc-class-configured-on-sub-interface"};
+const Enum::YLeaf VcInheritLevel::vc_class_configured_on_main_interface {3, "vc-class-configured-on-main-interface"};
+const Enum::YLeaf VcInheritLevel::global_default {4, "global-default"};
+const Enum::YLeaf VcInheritLevel::unknown {5, "unknown"};
+const Enum::YLeaf VcInheritLevel::not_supported {6, "not-supported"};
 
 
 }

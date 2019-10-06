@@ -237,6 +237,11 @@ class Dot1xServerDeadAction : public ydk::Enum
         static const ydk::Enum::YLeaf auth_fail;
         static const ydk::Enum::YLeaf auth_retry;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auth-fail") return 0;
+            if (name == "auth-retry") return 1;
+            return -1;
+        }
 };
 
 

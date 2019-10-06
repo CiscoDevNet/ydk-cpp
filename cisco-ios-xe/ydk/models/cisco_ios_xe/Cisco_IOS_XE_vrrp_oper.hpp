@@ -114,13 +114,6 @@ class VrrpOperData::VrrpOperState::TrackList : public ydk::Entity
 
 }; // VrrpOperData::VrrpOperState::TrackList
 
-class ProtoVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vrrp_v3;
-
-};
-
 class MasterReason : public ydk::Enum
 {
     public:
@@ -129,6 +122,13 @@ class MasterReason : public ydk::Enum
         static const ydk::Enum::YLeaf reason_preempt;
         static const ydk::Enum::YLeaf reason_master_no_response;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reason-not-master") return 0;
+            if (name == "reason-priority") return 1;
+            if (name == "reason-preempt") return 2;
+            if (name == "reason-master-no-response") return 3;
+            return -1;
+        }
 };
 
 class VrrpProtoState : public ydk::Enum
@@ -139,14 +139,24 @@ class VrrpProtoState : public ydk::Enum
         static const ydk::Enum::YLeaf proto_state_master;
         static const ydk::Enum::YLeaf proto_state_recover;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "proto-state-init") return 1;
+            if (name == "proto-state-backup") return 2;
+            if (name == "proto-state-master") return 3;
+            if (name == "proto-state-recover") return 4;
+            return -1;
+        }
 };
 
-class OmpStateUpdown : public ydk::Enum
+class ProtoVersion : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf omp_up;
-        static const ydk::Enum::YLeaf omp_down;
+        static const ydk::Enum::YLeaf vrrp_v3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vrrp-v3") return 1;
+            return -1;
+        }
 };
 
 class TrackState : public ydk::Enum
@@ -155,6 +165,24 @@ class TrackState : public ydk::Enum
         static const ydk::Enum::YLeaf vrrp_track_state_resolved;
         static const ydk::Enum::YLeaf vrrp_track_state_unresolved;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vrrp-track-state-resolved") return 0;
+            if (name == "vrrp-track-state-unresolved") return 1;
+            return -1;
+        }
+};
+
+class OmpStateUpdown : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf omp_up;
+        static const ydk::Enum::YLeaf omp_down;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "omp-up") return 0;
+            if (name == "omp-down") return 1;
+            return -1;
+        }
 };
 
 

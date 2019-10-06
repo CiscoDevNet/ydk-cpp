@@ -237,7 +237,7 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
         {
             YLOG_DEBUG("Going into child {} in parent {}", child_name, node->get_path());
             shared_ptr<Entity> child_entity;
-            if(data_node_is_list(*child_data_node))
+            if (data_node_is_list(*child_data_node))
             {
                 child_entity = entity->get_child_by_name(child_name, get_segment_path(child_data_node->get_path()));
             }
@@ -257,6 +257,11 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
             }
             child_entity->parent = entity.get();
             get_entity_from_data_node(child_data_node.get(), child_entity);
+            if (data_node_is_list(*child_data_node) &&
+                child_entity->ylist && child_entity->ylist->ylist_key_names.size() > 0)
+            {
+                child_entity->ylist->review(child_entity);
+            }
         }
     }
 }

@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_rsvp_oper_0.hpp"
-#include "Cisco_IOS_XR_ip_rsvp_oper_2.hpp"
 #include "Cisco_IOS_XR_ip_rsvp_oper_1.hpp"
+#include "Cisco_IOS_XR_ip_rsvp_oper_2.hpp"
 
 using namespace ydk;
 
@@ -5971,7 +5971,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::has_leaf_or_child_of_nam
 RsvpStandby::PsbDetaileds::PsbDetailed::Hop::Hop()
     :
     neighbor_address{YType::str, "neighbor-address"},
-    neighbor_logical_interface_handle{YType::uint32, "neighbor-logical-interface-handle"}
+    neighbor_logical_interface_name{YType::str, "neighbor-logical-interface-name"}
 {
 
     yang_name = "hop"; yang_parent_name = "psb-detailed"; is_top_level_class = false; has_list_ancestor = false; 
@@ -5985,14 +5985,14 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Hop::has_data() const
 {
     if (is_presence_container) return true;
     return neighbor_address.is_set
-	|| neighbor_logical_interface_handle.is_set;
+	|| neighbor_logical_interface_name.is_set;
 }
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::Hop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(neighbor_logical_interface_handle.yfilter);
+	|| ydk::is_set(neighbor_logical_interface_name.yfilter);
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::Hop::get_absolute_path() const
@@ -6014,7 +6014,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_logical_interface_handle.is_set || is_set(neighbor_logical_interface_handle.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_handle.get_name_leafdata());
+    if (neighbor_logical_interface_name.is_set || is_set(neighbor_logical_interface_name.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6040,11 +6040,11 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Hop::set_value(const std::string & 
         neighbor_address.value_namespace = name_space;
         neighbor_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle = value;
-        neighbor_logical_interface_handle.value_namespace = name_space;
-        neighbor_logical_interface_handle.value_namespace_prefix = name_space_prefix;
+        neighbor_logical_interface_name = value;
+        neighbor_logical_interface_name.value_namespace = name_space;
+        neighbor_logical_interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -6054,15 +6054,15 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Hop::set_filter(const std::string &
     {
         neighbor_address.yfilter = yfilter;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle.yfilter = yfilter;
+        neighbor_logical_interface_name.yfilter = yfilter;
     }
 }
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::Hop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "neighbor-logical-interface-handle")
+    if(name == "neighbor-address" || name == "neighbor-logical-interface-name")
         return true;
     return false;
 }
@@ -14351,7 +14351,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::has_leaf_or_child_of_name
 RsvpStandby::RsbDetaileds::RsbDetailed::Hop::Hop()
     :
     neighbor_address{YType::str, "neighbor-address"},
-    neighbor_logical_interface_handle{YType::uint32, "neighbor-logical-interface-handle"}
+    neighbor_logical_interface_name{YType::str, "neighbor-logical-interface-name"}
 {
 
     yang_name = "hop"; yang_parent_name = "rsb-detailed"; is_top_level_class = false; has_list_ancestor = false; 
@@ -14365,14 +14365,14 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::Hop::has_data() const
 {
     if (is_presence_container) return true;
     return neighbor_address.is_set
-	|| neighbor_logical_interface_handle.is_set;
+	|| neighbor_logical_interface_name.is_set;
 }
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::Hop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(neighbor_logical_interface_handle.yfilter);
+	|| ydk::is_set(neighbor_logical_interface_name.yfilter);
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::Hop::get_absolute_path() const
@@ -14394,7 +14394,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_logical_interface_handle.is_set || is_set(neighbor_logical_interface_handle.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_handle.get_name_leafdata());
+    if (neighbor_logical_interface_name.is_set || is_set(neighbor_logical_interface_name.yfilter)) leaf_name_data.push_back(neighbor_logical_interface_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14420,11 +14420,11 @@ void RsvpStandby::RsbDetaileds::RsbDetailed::Hop::set_value(const std::string & 
         neighbor_address.value_namespace = name_space;
         neighbor_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle = value;
-        neighbor_logical_interface_handle.value_namespace = name_space;
-        neighbor_logical_interface_handle.value_namespace_prefix = name_space_prefix;
+        neighbor_logical_interface_name = value;
+        neighbor_logical_interface_name.value_namespace = name_space;
+        neighbor_logical_interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -14434,15 +14434,15 @@ void RsvpStandby::RsbDetaileds::RsbDetailed::Hop::set_filter(const std::string &
     {
         neighbor_address.yfilter = yfilter;
     }
-    if(value_path == "neighbor-logical-interface-handle")
+    if(value_path == "neighbor-logical-interface-name")
     {
-        neighbor_logical_interface_handle.yfilter = yfilter;
+        neighbor_logical_interface_name.yfilter = yfilter;
     }
 }
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::Hop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "neighbor-logical-interface-handle")
+    if(name == "neighbor-address" || name == "neighbor-logical-interface-name")
         return true;
     return false;
 }
@@ -20302,43 +20302,26 @@ bool RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::has_leaf_or_c
     return false;
 }
 
-const Enum::YLeaf RsvpMode::send {0, "send"};
-const Enum::YLeaf RsvpMode::receive {1, "receive"};
-
-const Enum::YLeaf RsvpSession::ipv4 {1, "ipv4"};
-const Enum::YLeaf RsvpSession::p2p_lsp_ipv4 {7, "p2p-lsp-ipv4"};
-const Enum::YLeaf RsvpSession::ouni_ipv4 {9, "ouni-ipv4"};
-const Enum::YLeaf RsvpSession::p2mp_lsp_ipv4 {13, "p2mp-lsp-ipv4"};
-
-const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
-const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
-const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
-
-const Enum::YLeaf RsvpMgmtRestartState::done {0, "done"};
-const Enum::YLeaf RsvpMgmtRestartState::recovery {1, "recovery"};
-const Enum::YLeaf RsvpMgmtRestartState::abort {2, "abort"};
-
-const Enum::YLeaf RsvpMgmtHelloDownReason::not_applicable {0, "not-applicable"};
-const Enum::YLeaf RsvpMgmtHelloDownReason::wrong_destination_instance {1, "wrong-destination-instance"};
-const Enum::YLeaf RsvpMgmtHelloDownReason::wrong_source_instance {2, "wrong-source-instance"};
-const Enum::YLeaf RsvpMgmtHelloDownReason::hello_missed {3, "hello-missed"};
-const Enum::YLeaf RsvpMgmtHelloDownReason::interface_down {4, "interface-down"};
-const Enum::YLeaf RsvpMgmtHelloDownReason::neighbor_disabled_hello {5, "neighbor-disabled-hello"};
-const Enum::YLeaf RsvpMgmtHelloDownReason::control_channel_down {6, "control-channel-down"};
-
-const Enum::YLeaf RsvpMgmtHelloInstanceOwner::mpls_graceful_restart {0, "mpls-graceful-restart"};
-const Enum::YLeaf RsvpMgmtHelloInstanceOwner::mpls_ouni {1, "mpls-ouni"};
-
 const Enum::YLeaf RsvpMgmtAssociation::none {0, "none"};
 const Enum::YLeaf RsvpMgmtAssociation::ipv4 {1, "ipv4"};
 const Enum::YLeaf RsvpMgmtAssociation::ipv6 {2, "ipv6"};
 const Enum::YLeaf RsvpMgmtAssociation::extended_ipv4 {3, "extended-ipv4"};
 const Enum::YLeaf RsvpMgmtAssociation::extended_ipv6 {4, "extended-ipv6"};
 
-const Enum::YLeaf RsvpMgmtRroSubobj::ipv4rro_type {1, "ipv4rro-type"};
-const Enum::YLeaf RsvpMgmtRroSubobj::label_rro_type {3, "label-rro-type"};
-const Enum::YLeaf RsvpMgmtRroSubobj::unnumbered_rro_type {4, "unnumbered-rro-type"};
-const Enum::YLeaf RsvpMgmtRroSubobj::srlg_rro_type {34, "srlg-rro-type"};
+const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_ipv4 {1, "rsvp-mgmt-ero-type-ipv4"};
+const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_un_num {4, "rsvp-mgmt-ero-type-un-num"};
+
+const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_unknown {0, "rsvp-mgmt-qos-unknown"};
+const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_guaranteed {3, "rsvp-mgmt-qos-guaranteed"};
+const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_controlled_load {5, "rsvp-mgmt-qos-controlled-load"};
+const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_qualitative {6, "rsvp-mgmt-qos-qualitative"};
+
+const Enum::YLeaf RsvpMgmtHelloInstance::active {0, "active"};
+const Enum::YLeaf RsvpMgmtHelloInstance::passive {1, "passive"};
+
+const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
+const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
+const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
 
 const Enum::YLeaf RsvpMgmtFrrStateEnum::ready_state {0, "ready-state"};
 const Enum::YLeaf RsvpMgmtFrrStateEnum::pending_state {1, "pending-state"};
@@ -20349,11 +20332,25 @@ const Enum::YLeaf RsvpProcNsrNotReadyReason::collab_conntection_idt {1, "collab-
 const Enum::YLeaf RsvpProcNsrNotReadyReason::nsr_peer_not_connected {2, "nsr-peer-not-connected"};
 const Enum::YLeaf RsvpProcNsrNotReadyReason::nsr_peer_not_in_sync {3, "nsr-peer-not-in-sync"};
 
-const Enum::YLeaf RsvpSyncStatus::not_ready {0, "not-ready"};
-const Enum::YLeaf RsvpSyncStatus::ready {1, "ready"};
+const Enum::YLeaf RsvpMgmtDsteModes::pre_standard {1, "pre-standard"};
+const Enum::YLeaf RsvpMgmtDsteModes::standard {3, "standard"};
 
-const Enum::YLeaf RsvpMgmtGrApp::ouni {0, "ouni"};
-const Enum::YLeaf RsvpMgmtGrApp::gmpls {1, "gmpls"};
+const Enum::YLeaf RsvpMgmtRestartState::done {0, "done"};
+const Enum::YLeaf RsvpMgmtRestartState::recovery {1, "recovery"};
+const Enum::YLeaf RsvpMgmtRestartState::abort {2, "abort"};
+
+const Enum::YLeaf RsvpMgmtReservationTypeEnum::rsvp_mgmt_ff_option {10, "rsvp-mgmt-ff-option"};
+const Enum::YLeaf RsvpMgmtReservationTypeEnum::rsvp_mgmt_wf_option {17, "rsvp-mgmt-wf-option"};
+const Enum::YLeaf RsvpMgmtReservationTypeEnum::rsvp_mgmt_se_option {18, "rsvp-mgmt-se-option"};
+
+const Enum::YLeaf RsvpMgmtTspec::g709otn {5, "g709otn"};
+const Enum::YLeaf RsvpMgmtTspec::intsrv {12, "intsrv"};
+
+const Enum::YLeaf RsvpMgmtAuthDirection::rsvp_mgmt_auth_direction_send {0, "rsvp-mgmt-auth-direction-send"};
+const Enum::YLeaf RsvpMgmtAuthDirection::rsvp_mgmt_auth_direction_recv {1, "rsvp-mgmt-auth-direction-recv"};
+
+const Enum::YLeaf RsvpMgmtFilter::rsvp_mgmt_filter_type_ipv4 {1, "rsvp-mgmt-filter-type-ipv4"};
+const Enum::YLeaf RsvpMgmtFilter::rsvp_mgmt_filter_type_p2mp_lsp_ipv4 {12, "rsvp-mgmt-filter-type-p2mp-lsp-ipv4"};
 
 const Enum::YLeaf RsvpProcRole::unknown {0, "unknown"};
 const Enum::YLeaf RsvpProcRole::v1_active {1, "v1-active"};
@@ -20364,64 +20361,67 @@ const Enum::YLeaf RsvpProcRole::v1_active_post_big_bang {5, "v1-active-post-big-
 const Enum::YLeaf RsvpProcRole::v1_standby_post_big_bang {6, "v1-standby-post-big-bang"};
 const Enum::YLeaf RsvpProcRole::count {7, "count"};
 
-const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_not_cfg {0, "rsvp-mgmt-auth-cs-not-cfg"};
-const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_completed {1, "rsvp-mgmt-auth-cs-completed"};
-const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_in_progress {2, "rsvp-mgmt-auth-cs-in-progress"};
-const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_failure {3, "rsvp-mgmt-auth-cs-failure"};
-const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_not_supported {4, "rsvp-mgmt-auth-cs-not-supported"};
-
-const Enum::YLeaf RsvpMgmtHelloInstance::active {0, "active"};
-const Enum::YLeaf RsvpMgmtHelloInstance::passive {1, "passive"};
+const Enum::YLeaf RsvpSession::ipv4 {1, "ipv4"};
+const Enum::YLeaf RsvpSession::p2p_lsp_ipv4 {7, "p2p-lsp-ipv4"};
+const Enum::YLeaf RsvpSession::ouni_ipv4 {9, "ouni-ipv4"};
+const Enum::YLeaf RsvpSession::p2mp_lsp_ipv4 {13, "p2mp-lsp-ipv4"};
 
 const Enum::YLeaf RsvpMgmtHelloState::hello_state_init {0, "hello-state-init"};
 const Enum::YLeaf RsvpMgmtHelloState::hello_state_up {1, "hello-state-up"};
 const Enum::YLeaf RsvpMgmtHelloState::hello_state_down {2, "hello-state-down"};
 
-const Enum::YLeaf RsvpMgmtReservationTypeEnum::rsvp_mgmt_ff_option {10, "rsvp-mgmt-ff-option"};
-const Enum::YLeaf RsvpMgmtReservationTypeEnum::rsvp_mgmt_wf_option {17, "rsvp-mgmt-wf-option"};
-const Enum::YLeaf RsvpMgmtReservationTypeEnum::rsvp_mgmt_se_option {18, "rsvp-mgmt-se-option"};
-
 const Enum::YLeaf RsvpMgmtFlowSpec::g709otn {5, "g709otn"};
 
-const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_unknown {0, "rsvp-mgmt-qos-unknown"};
-const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_guaranteed {3, "rsvp-mgmt-qos-guaranteed"};
-const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_controlled_load {5, "rsvp-mgmt-qos-controlled-load"};
-const Enum::YLeaf RsvpMgmtQosServiceEnum::rsvp_mgmt_qos_qualitative {6, "rsvp-mgmt-qos-qualitative"};
+const Enum::YLeaf RsvpMgmtHelloInstanceOwner::mpls_graceful_restart {0, "mpls-graceful-restart"};
+const Enum::YLeaf RsvpMgmtHelloInstanceOwner::mpls_ouni {1, "mpls-ouni"};
 
-const Enum::YLeaf RsvpTimerState::rsvp_timer_running_and_sleeping {1, "rsvp-timer-running-and-sleeping"};
-const Enum::YLeaf RsvpTimerState::rsvp_timer_running {2, "rsvp-timer-running"};
-const Enum::YLeaf RsvpTimerState::rsvp_timer_not_running {3, "rsvp-timer-not-running"};
-
-const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_not_available {0, "rsvp-mgmt-ero-status-not-available"};
-const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_available {1, "rsvp-mgmt-ero-status-available"};
-const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_bw_not_available {2, "rsvp-mgmt-ero-status-bw-not-available"};
-
-const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_ipv4 {1, "rsvp-mgmt-ero-type-ipv4"};
-const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_un_num {4, "rsvp-mgmt-ero-type-un-num"};
-
-const Enum::YLeaf RsvpMgmtGenericLabel::rsvp_mgmt_label_type_gmpls {2, "rsvp-mgmt-label-type-gmpls"};
-
-const Enum::YLeaf RsvpMgmtTspec::g709otn {5, "g709otn"};
-const Enum::YLeaf RsvpMgmtTspec::intsrv {12, "intsrv"};
-
-const Enum::YLeaf RsvpMgmtFilter::rsvp_mgmt_filter_type_ipv4 {1, "rsvp-mgmt-filter-type-ipv4"};
-const Enum::YLeaf RsvpMgmtFilter::rsvp_mgmt_filter_type_p2mp_lsp_ipv4 {12, "rsvp-mgmt-filter-type-p2mp-lsp-ipv4"};
+const Enum::YLeaf RsvpMgmtRroSubobj::ipv4rro_type {1, "ipv4rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobj::label_rro_type {3, "label-rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobj::unnumbered_rro_type {4, "unnumbered-rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobj::srlg_rro_type {34, "srlg-rro-type"};
 
 const Enum::YLeaf RsvpMgmtSession::rsvp_mgmt_session_type_udp_ipv4 {1, "rsvp-mgmt-session-type-udp-ipv4"};
 const Enum::YLeaf RsvpMgmtSession::rsvp_mgmt_session_type_lsp_ipv4 {7, "rsvp-mgmt-session-type-lsp-ipv4"};
 const Enum::YLeaf RsvpMgmtSession::rsvp_mgmt_session_type_uni_ipv4 {9, "rsvp-mgmt-session-type-uni-ipv4"};
 const Enum::YLeaf RsvpMgmtSession::rsvp_mgmt_session_type_p2mp_lsp_ipv4 {13, "rsvp-mgmt-session-type-p2mp-lsp-ipv4"};
 
+const Enum::YLeaf RsvpMgmtHelloDownReason::not_applicable {0, "not-applicable"};
+const Enum::YLeaf RsvpMgmtHelloDownReason::wrong_destination_instance {1, "wrong-destination-instance"};
+const Enum::YLeaf RsvpMgmtHelloDownReason::wrong_source_instance {2, "wrong-source-instance"};
+const Enum::YLeaf RsvpMgmtHelloDownReason::hello_missed {3, "hello-missed"};
+const Enum::YLeaf RsvpMgmtHelloDownReason::interface_down {4, "interface-down"};
+const Enum::YLeaf RsvpMgmtHelloDownReason::neighbor_disabled_hello {5, "neighbor-disabled-hello"};
+const Enum::YLeaf RsvpMgmtHelloDownReason::control_channel_down {6, "control-channel-down"};
+
+const Enum::YLeaf RsvpMgmtGenericLabel::rsvp_mgmt_label_type_gmpls {2, "rsvp-mgmt-label-type-gmpls"};
+
+const Enum::YLeaf RsvpMgmtGrApp::ouni {0, "ouni"};
+const Enum::YLeaf RsvpMgmtGrApp::gmpls {1, "gmpls"};
+
+const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_not_cfg {0, "rsvp-mgmt-auth-cs-not-cfg"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_completed {1, "rsvp-mgmt-auth-cs-completed"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_in_progress {2, "rsvp-mgmt-auth-cs-in-progress"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_failure {3, "rsvp-mgmt-auth-cs-failure"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatus::rsvp_mgmt_auth_cs_not_supported {4, "rsvp-mgmt-auth-cs-not-supported"};
+
 const Enum::YLeaf RsvpMgmtAuthKi::rsvp_mgmt_auth_ki_type_none {0, "rsvp-mgmt-auth-ki-type-none"};
 const Enum::YLeaf RsvpMgmtAuthKi::rsvp_mgmt_auth_ki_type_global {1, "rsvp-mgmt-auth-ki-type-global"};
 const Enum::YLeaf RsvpMgmtAuthKi::rsvp_mgmt_auth_ki_type_interface {2, "rsvp-mgmt-auth-ki-type-interface"};
 const Enum::YLeaf RsvpMgmtAuthKi::rsvp_mgmt_auth_ki_type_neighbor {3, "rsvp-mgmt-auth-ki-type-neighbor"};
 
-const Enum::YLeaf RsvpMgmtAuthDirection::rsvp_mgmt_auth_direction_send {0, "rsvp-mgmt-auth-direction-send"};
-const Enum::YLeaf RsvpMgmtAuthDirection::rsvp_mgmt_auth_direction_recv {1, "rsvp-mgmt-auth-direction-recv"};
+const Enum::YLeaf RsvpTimerState::rsvp_timer_running_and_sleeping {1, "rsvp-timer-running-and-sleeping"};
+const Enum::YLeaf RsvpTimerState::rsvp_timer_running {2, "rsvp-timer-running"};
+const Enum::YLeaf RsvpTimerState::rsvp_timer_not_running {3, "rsvp-timer-not-running"};
 
-const Enum::YLeaf RsvpMgmtDsteModes::pre_standard {1, "pre-standard"};
-const Enum::YLeaf RsvpMgmtDsteModes::standard {3, "standard"};
+const Enum::YLeaf RsvpSyncStatus::not_ready {0, "not-ready"};
+const Enum::YLeaf RsvpSyncStatus::ready {1, "ready"};
+
+const Enum::YLeaf RsvpMode::send {0, "send"};
+const Enum::YLeaf RsvpMode::receive {1, "receive"};
+
+const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_not_available {0, "rsvp-mgmt-ero-status-not-available"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_available {1, "rsvp-mgmt-ero-status-available"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_bw_not_available {2, "rsvp-mgmt-ero-status-bw-not-available"};
 
 
 }

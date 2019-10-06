@@ -81,11 +81,11 @@ static shared_ptr<Entity> json_codec_payload_to_entity(const std::string & paylo
 static vector<string>
 get_json_from_path(gNMIServiceProvider& provider, vector<gnmi::Path*> path_list, const string & operation)
 {
-	YLOG_DEBUG("Executing 'get' gRPC on multiple paths");
+    YLOG_DEBUG("Executing 'get' gRPC on multiple paths");
 
     vector<GnmiClientRequest> get_request_list{};
     for (auto path : path_list) {
-        GnmiClientRequest request{};
+        GnmiClientRequest request;
         request.path = path;
         request.type = "get";
         request.operation = operation;
@@ -115,9 +115,14 @@ gNMIService::get(gNMIServiceProvider& provider, Entity& filter, const string & o
 
     shared_ptr<Entity> response = nullptr;
 
+    YFilter original_yfilter = filter.yfilter;
+    if (!filter.is_top_level_class && original_yfilter == YFilter::not_set) {
+    	filter.yfilter = YFilter::read;
+    }
     auto top_entity = get_top_entity(&filter);
     gnmi::Path* path = new gnmi::Path;
     parse_entity_to_path(*top_entity, path);
+    filter.yfilter = original_yfilter;
     vector<gnmi::Path*> path_list;
     path_list.push_back(path);
 
@@ -151,9 +156,14 @@ gNMIService::get(gNMIServiceProvider & provider, vector<Entity*> & filter_list, 
     size_t bypass_validation = 0;
     vector<gnmi::Path*> path_list;
     for (auto filter : filter_list) {
+        YFilter original_yfilter = filter->yfilter;
+        if (!filter->is_top_level_class && original_yfilter == YFilter::not_set) {
+        	filter->yfilter = YFilter::read;
+        }
         auto top_entity = get_top_entity(filter);
         gnmi::Path* path = new gnmi::Path;
         parse_entity_to_path(*top_entity, path);
+        filter->yfilter = original_yfilter;
         path_list.push_back(path);
         if (top_entity->is_top_level_class && filter->ignore_validation)
             bypass_validation++;
@@ -219,8 +229,8 @@ gNMIService::get(gNMIServiceProvider & provider, vector<Entity*> & filter_list, 
 //set
 static GnmiClientRequest build_set_request(gNMIServiceProvider& provider, Entity& entity)
 {
-	string operation = to_string(entity.yfilter);
-	if (operation != "replace" && operation != "update" && operation != "delete")
+    string operation = to_string(entity.yfilter);
+    if (operation != "replace" && operation != "update" && operation != "delete")
     {
         YLOG_ERROR("gNMIService::set: {} operation not supported", operation );
         throw(YServiceProviderError{operation + " operation not supported"});
@@ -244,7 +254,7 @@ static GnmiClientRequest build_set_request(gNMIServiceProvider& provider, Entity
         }
     }
 
-    GnmiClientRequest request{};
+    GnmiClientRequest request;
     request.alias = "entity";
     request.path = path;
     request.payload = payload;
@@ -272,7 +282,7 @@ bool gNMIService::set(gNMIServiceProvider& provider, Entity& entity) const
 
 bool gNMIService::set(gNMIServiceProvider& provider, vector<Entity*> & entity_list) const
 {
-	YLOG_DEBUG("Executing set gRPC for multiple entities");
+    YLOG_DEBUG("Executing set gRPC for multiple entities");
     bool result;
     vector<GnmiClientRequest> set_request_list{};
     int count = 1;
@@ -315,8 +325,8 @@ static void check_subscription_params(gNMISubscription& subscription)
 static string check_subscribe_mode(const string & mode)
 {
     string list_mode = mode;
-	if (mode.length() == 0) {
-		list_mode = "ONCE";
+    if (mode.length() == 0) {
+        list_mode = "ONCE";
     }
     else if (mode != "ONCE" && mode != "STREAM" && mode != "POLL")
     {
@@ -329,8 +339,8 @@ static string check_subscribe_mode(const string & mode)
 static string check_subscribe_encoding(const string & encoding)
 {
     string list_encoding = encoding;
-	if (encoding.length() == 0) {
-		list_encoding = "PROTO";
+    if (encoding.length() == 0) {
+        list_encoding = "PROTO";
     }
     else if (encoding != "JSON" && encoding != "BYTES" && encoding != "PROTO" && encoding != "ASCII" && encoding != "JSON_IETF")
     {
@@ -344,7 +354,7 @@ static string check_subscribe_encoding(const string & encoding)
 void gNMIService::subscribe(gNMIServiceProvider& provider,
                             gNMISubscription& subscription,
                             uint32 qos, const std::string & mode,
-							const std::string & encoding,
+                            const std::string & encoding,
                             std::function<void(const char * response)> out_func,
                             std::function<bool(const char * response)> poll_func) const
 {
@@ -354,7 +364,7 @@ void gNMIService::subscribe(gNMIServiceProvider& provider,
     string list_encoding = check_subscribe_encoding(encoding);
     check_subscription_params(subscription);
 
-    GnmiClientSubscription sub{};
+    GnmiClientSubscription sub;
     sub.path = new gnmi::Path;
     parse_entity_to_path(*subscription.entity, sub.path);
     sub.subscription_mode = subscription.subscription_mode;
@@ -377,7 +387,7 @@ void gNMIService::subscribe(gNMIServiceProvider& provider,
 void gNMIService::subscribe(gNMIServiceProvider& provider,
                             vector<gNMISubscription*> & subscription_list,
                             uint32 qos, const std::string & mode,
-							const std::string & encoding,
+                            const std::string & encoding,
                             std::function<void(const char * response)> out_func,
                             std::function<bool(const char * response)> poll_func) const
 {
@@ -388,7 +398,7 @@ void gNMIService::subscribe(gNMIServiceProvider& provider,
     vector<GnmiClientSubscription> sub_list{};
     for (auto subscription : subscription_list) {
         check_subscription_params(*subscription);
-        GnmiClientSubscription sub{};
+        GnmiClientSubscription sub;
         sub.path = new gnmi::Path;
         parse_entity_to_path(*subscription->entity, sub.path);
         sub.subscription_mode = subscription->subscription_mode;

@@ -127,74 +127,21 @@ class HardwareModuleNp::Nodes::Node::Nps::Np : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf np_name; //type: string
-        class NpUidb; //type: HardwareModuleNp::Nodes::Node::Nps::Np::NpUidb
         class ChnLoad; //type: HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad
         class LoadUtilization; //type: HardwareModuleNp::Nodes::Node::Nps::Np::LoadUtilization
         class TcamSummary; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary
-        class L2rmHwResource; //type: HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource
-        class Profile; //type: HardwareModuleNp::Nodes::Node::Nps::Np::Profile
         class Counters; //type: HardwareModuleNp::Nodes::Node::Nps::Np::Counters
         class FastDrop; //type: HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop
         class Efd; //type: HardwareModuleNp::Nodes::Node::Nps::Np::Efd
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::NpUidb> np_uidb;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad> chn_load;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::LoadUtilization> load_utilization;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary> tcam_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource> l2rm_hw_resource;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::Profile> profile;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::Counters> counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop> fast_drop;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::Efd> efd;
         
 }; // HardwareModuleNp::Nodes::Node::Nps::Np
-
-
-class HardwareModuleNp::Nodes::Node::Nps::Np::NpUidb : public ydk::Entity
-{
-    public:
-        NpUidb();
-        ~NpUidb();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class UidbIndex; //type: HardwareModuleNp::Nodes::Node::Nps::Np::NpUidb::UidbIndex
-
-        ydk::YList uidb_index;
-        
-}; // HardwareModuleNp::Nodes::Node::Nps::Np::NpUidb
-
-
-class HardwareModuleNp::Nodes::Node::Nps::Np::NpUidb::UidbIndex : public ydk::Entity
-{
-    public:
-        UidbIndex();
-        ~UidbIndex();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_handle; //type: uint32
-        ydk::YLeaf index_; //type: uint16
-        ydk::YLeaf interface_type; //type: string
-
-}; // HardwareModuleNp::Nodes::Node::Nps::Np::NpUidb::UidbIndex
 
 
 class HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad : public ydk::Entity
@@ -1232,124 +1179,6 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2 : 
         ydk::YLeaf free_entries; //type: uint32
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2
-
-
-class HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource : public ydk::Entity
-{
-    public:
-        L2rmHwResource();
-        ~L2rmHwResource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ppt_alloc; //type: uint64
-        ydk::YLeaf ppt_write; //type: uint64
-        ydk::YLeaf ppt_free; //type: uint64
-        class HwResource; //type: HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource> hw_resource;
-        
-}; // HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource
-
-
-class HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource : public ydk::Entity
-{
-    public:
-        HwResource();
-        ~HwResource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class HashBlock; //type: HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource::HashBlock
-        class TcamPartition; //type: HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource::TcamPartition
-
-        ydk::YList hash_block;
-        ydk::YList tcam_partition;
-        
-}; // HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource
-
-
-class HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource::HashBlock : public ydk::Entity
-{
-    public:
-        HashBlock();
-        ~HashBlock();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hash_blk; //type: uint32
-        ydk::YLeaf total; //type: uint32
-        ydk::YLeaf free; //type: uint32
-
-}; // HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource::HashBlock
-
-
-class HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource::TcamPartition : public ydk::Entity
-{
-    public:
-        TcamPartition();
-        ~TcamPartition();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tcam_par; //type: uint32
-        ydk::YLeaf total; //type: uint32
-        ydk::YLeaf free; //type: uint32
-
-}; // HardwareModuleNp::Nodes::Node::Nps::Np::L2rmHwResource::HwResource::TcamPartition
-
-
-class HardwareModuleNp::Nodes::Node::Nps::Np::Profile : public ydk::Entity
-{
-    public:
-        Profile();
-        ~Profile();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf scale; //type: string
-
-}; // HardwareModuleNp::Nodes::Node::Nps::Np::Profile
 
 
 class HardwareModuleNp::Nodes::Node::Nps::Np::Counters : public ydk::Entity

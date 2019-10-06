@@ -3892,26 +3892,21 @@ class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevel
 
 }; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped
 
-class FsyncStream : public ydk::Enum
+class FsyncBagDampingState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf selection_point;
+        static const ydk::Enum::YLeaf damping_state_down;
+        static const ydk::Enum::YLeaf damping_state_coming_up;
+        static const ydk::Enum::YLeaf damping_state_up;
+        static const ydk::Enum::YLeaf damping_state_going_down;
 
-};
-
-class FsyncSource : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf sonet;
-        static const ydk::Enum::YLeaf clock_;
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf satellite_access;
-        static const ydk::Enum::YLeaf ntp;
-        static const ydk::Enum::YLeaf gnss;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "damping-state-down") return 0;
+            if (name == "damping-state-coming-up") return 1;
+            if (name == "damping-state-up") return 2;
+            if (name == "damping-state-going-down") return 3;
+            return -1;
+        }
 };
 
 class FsyncBagStreamState : public ydk::Enum
@@ -3928,41 +3923,19 @@ class FsyncBagStreamState : public ydk::Enum
         static const ydk::Enum::YLeaf stream_unmonitored;
         static const ydk::Enum::YLeaf stream_error;
 
-};
-
-class FsyncBagStreamInput : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid_input;
-        static const ydk::Enum::YLeaf source_input;
-        static const ydk::Enum::YLeaf selection_point_input;
-
-};
-
-class FsyncBagClockIntfClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf clock_class_bitst1;
-        static const ydk::Enum::YLeaf clock_class_bitse1;
-        static const ydk::Enum::YLeaf clock_class_bits2m;
-        static const ydk::Enum::YLeaf clock_class_bits6m;
-        static const ydk::Enum::YLeaf clock_class_bits64k;
-        static const ydk::Enum::YLeaf clock_class_dti;
-        static const ydk::Enum::YLeaf clock_class_gps;
-        static const ydk::Enum::YLeaf clock_class_chassis_sync;
-        static const ydk::Enum::YLeaf clock_class_bitsj1;
-        static const ydk::Enum::YLeaf clock_class_unknown;
-
-};
-
-class FsyncBagSourceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf source_state_unknown;
-        static const ydk::Enum::YLeaf source_state_up;
-        static const ydk::Enum::YLeaf source_state_down;
-        static const ydk::Enum::YLeaf source_state_unavailable;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "stream-invalid") return 0;
+            if (name == "stream-unqualified") return 1;
+            if (name == "stream-available") return 2;
+            if (name == "stream-acquiring") return 3;
+            if (name == "stream-locked") return 4;
+            if (name == "stream-holdover") return 5;
+            if (name == "stream-freerun") return 6;
+            if (name == "stream-failed") return 7;
+            if (name == "stream-unmonitored") return 8;
+            if (name == "stream-error") return 9;
+            return -1;
+        }
 };
 
 class FsyncBagEsmcPeerState : public ydk::Enum
@@ -3973,75 +3946,13 @@ class FsyncBagEsmcPeerState : public ydk::Enum
         static const ydk::Enum::YLeaf peer_timed_out;
         static const ydk::Enum::YLeaf peer_unknown;
 
-};
-
-class FsyncBagQlO2G2Value : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf option2_generation2_invalid;
-        static const ydk::Enum::YLeaf option2_generation2_do_not_use;
-        static const ydk::Enum::YLeaf option2_generation2_failed;
-        static const ydk::Enum::YLeaf option2_generation2_none;
-        static const ydk::Enum::YLeaf option2_generation2prs;
-        static const ydk::Enum::YLeaf option2_generation2stu;
-        static const ydk::Enum::YLeaf option2_generation2_stratum2;
-        static const ydk::Enum::YLeaf option2_generation2_stratum3;
-        static const ydk::Enum::YLeaf option2_generation2tnc;
-        static const ydk::Enum::YLeaf option2_generation2_stratum3e;
-        static const ydk::Enum::YLeaf option2_generation2smc;
-        static const ydk::Enum::YLeaf option2_generation2_stratum4;
-
-};
-
-class FsyncBagQlO2G1Value : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf option2_generation1_invalid;
-        static const ydk::Enum::YLeaf option2_generation1_do_not_use;
-        static const ydk::Enum::YLeaf option2_generation1_failed;
-        static const ydk::Enum::YLeaf option2_generation1_none;
-        static const ydk::Enum::YLeaf option2_generation1prs;
-        static const ydk::Enum::YLeaf option2_generation1stu;
-        static const ydk::Enum::YLeaf option2_generation1_stratum2;
-        static const ydk::Enum::YLeaf option2_generation1_stratum3;
-        static const ydk::Enum::YLeaf option2_generation1smc;
-        static const ydk::Enum::YLeaf option2_generation1_stratum4;
-
-};
-
-class FsyncBagQlO1Value : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf option1_invalid;
-        static const ydk::Enum::YLeaf option1_do_not_use;
-        static const ydk::Enum::YLeaf option1_failed;
-        static const ydk::Enum::YLeaf option1_none;
-        static const ydk::Enum::YLeaf option1prc;
-        static const ydk::Enum::YLeaf option1ssu_a;
-        static const ydk::Enum::YLeaf option1ssu_b;
-        static const ydk::Enum::YLeaf option1sec;
-
-};
-
-class FsyncBagQlOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_quality_level_option;
-        static const ydk::Enum::YLeaf option1;
-        static const ydk::Enum::YLeaf option2_generation1;
-        static const ydk::Enum::YLeaf option2_generation2;
-        static const ydk::Enum::YLeaf invalid_quality_level_option;
-
-};
-
-class FsyncBagDampingState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf damping_state_down;
-        static const ydk::Enum::YLeaf damping_state_coming_up;
-        static const ydk::Enum::YLeaf damping_state_up;
-        static const ydk::Enum::YLeaf damping_state_going_down;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "peer-down") return 1808240398;
+            if (name == "peer-up") return 1808240399;
+            if (name == "peer-timed-out") return 1808240400;
+            if (name == "peer-unknown") return 1808240401;
+            return -1;
+        }
 };
 
 class ImStateEnum : public ydk::Enum
@@ -4067,6 +3978,112 @@ class ImStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf im_state_unknown;
         static const ydk::Enum::YLeaf im_state_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-state-not-ready") return 0;
+            if (name == "im-state-admin-down") return 1;
+            if (name == "im-state-down") return 2;
+            if (name == "im-state-up") return 3;
+            if (name == "im-state-shutdown") return 4;
+            if (name == "im-state-err-disable") return 5;
+            if (name == "im-state-down-immediate") return 6;
+            if (name == "im-state-down-immediate-admin") return 7;
+            if (name == "im-state-down-graceful") return 8;
+            if (name == "im-state-begin-shutdown") return 9;
+            if (name == "im-state-end-shutdown") return 10;
+            if (name == "im-state-begin-error-disable") return 11;
+            if (name == "im-state-end-error-disable") return 12;
+            if (name == "im-state-begin-down-graceful") return 13;
+            if (name == "im-state-reset") return 14;
+            if (name == "im-state-operational") return 15;
+            if (name == "im-state-not-operational") return 16;
+            if (name == "im-state-unknown") return 17;
+            if (name == "im-state-last") return 18;
+            return -1;
+        }
+};
+
+class FsyncBagStreamInput : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid_input;
+        static const ydk::Enum::YLeaf source_input;
+        static const ydk::Enum::YLeaf selection_point_input;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid-input") return 0;
+            if (name == "source-input") return 1;
+            if (name == "selection-point-input") return 2;
+            return -1;
+        }
+};
+
+class FsyncBagQlO2G2Value : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf option2_generation2_invalid;
+        static const ydk::Enum::YLeaf option2_generation2_do_not_use;
+        static const ydk::Enum::YLeaf option2_generation2_failed;
+        static const ydk::Enum::YLeaf option2_generation2_none;
+        static const ydk::Enum::YLeaf option2_generation2prs;
+        static const ydk::Enum::YLeaf option2_generation2stu;
+        static const ydk::Enum::YLeaf option2_generation2_stratum2;
+        static const ydk::Enum::YLeaf option2_generation2_stratum3;
+        static const ydk::Enum::YLeaf option2_generation2tnc;
+        static const ydk::Enum::YLeaf option2_generation2_stratum3e;
+        static const ydk::Enum::YLeaf option2_generation2smc;
+        static const ydk::Enum::YLeaf option2_generation2_stratum4;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "option2-generation2-invalid") return 0;
+            if (name == "option2-generation2-do-not-use") return 1;
+            if (name == "option2-generation2-failed") return 2;
+            if (name == "option2-generation2-none") return 3;
+            if (name == "option2-generation2prs") return 30;
+            if (name == "option2-generation2stu") return 31;
+            if (name == "option2-generation2-stratum2") return 32;
+            if (name == "option2-generation2-stratum3") return 33;
+            if (name == "option2-generation2tnc") return 34;
+            if (name == "option2-generation2-stratum3e") return 35;
+            if (name == "option2-generation2smc") return 36;
+            if (name == "option2-generation2-stratum4") return 37;
+            return -1;
+        }
+};
+
+class FsyncBagQlOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_quality_level_option;
+        static const ydk::Enum::YLeaf option1;
+        static const ydk::Enum::YLeaf option2_generation1;
+        static const ydk::Enum::YLeaf option2_generation2;
+        static const ydk::Enum::YLeaf invalid_quality_level_option;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-quality-level-option") return 0;
+            if (name == "option1") return 1;
+            if (name == "option2-generation1") return 2;
+            if (name == "option2-generation2") return 3;
+            if (name == "invalid-quality-level-option") return 4;
+            return -1;
+        }
+};
+
+class FsyncBagSourceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf source_state_unknown;
+        static const ydk::Enum::YLeaf source_state_up;
+        static const ydk::Enum::YLeaf source_state_down;
+        static const ydk::Enum::YLeaf source_state_unavailable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "source-state-unknown") return 0;
+            if (name == "source-state-up") return 1;
+            if (name == "source-state-down") return 2;
+            if (name == "source-state-unavailable") return 3;
+            return -1;
+        }
 };
 
 class FsyncBagForwardtraceNode : public ydk::Enum
@@ -4075,6 +4092,78 @@ class FsyncBagForwardtraceNode : public ydk::Enum
         static const ydk::Enum::YLeaf forward_trace_node_selection_point;
         static const ydk::Enum::YLeaf forward_trace_node_source;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forward-trace-node-selection-point") return 0;
+            if (name == "forward-trace-node-source") return 1;
+            return -1;
+        }
+};
+
+class FsyncStream : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf selection_point;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 1;
+            if (name == "selection-point") return 2;
+            return -1;
+        }
+};
+
+class FsyncBagClockIntfClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf clock_class_bitst1;
+        static const ydk::Enum::YLeaf clock_class_bitse1;
+        static const ydk::Enum::YLeaf clock_class_bits2m;
+        static const ydk::Enum::YLeaf clock_class_bits6m;
+        static const ydk::Enum::YLeaf clock_class_bits64k;
+        static const ydk::Enum::YLeaf clock_class_dti;
+        static const ydk::Enum::YLeaf clock_class_gps;
+        static const ydk::Enum::YLeaf clock_class_chassis_sync;
+        static const ydk::Enum::YLeaf clock_class_bitsj1;
+        static const ydk::Enum::YLeaf clock_class_unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "clock-class-bitst1") return 0;
+            if (name == "clock-class-bitse1") return 1;
+            if (name == "clock-class-bits2m") return 2;
+            if (name == "clock-class-bits6m") return 3;
+            if (name == "clock-class-bits64k") return 4;
+            if (name == "clock-class-dti") return 5;
+            if (name == "clock-class-gps") return 6;
+            if (name == "clock-class-chassis-sync") return 7;
+            if (name == "clock-class-bitsj1") return 8;
+            if (name == "clock-class-unknown") return 255;
+            return -1;
+        }
+};
+
+class FsyncBagQlO1Value : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf option1_invalid;
+        static const ydk::Enum::YLeaf option1_do_not_use;
+        static const ydk::Enum::YLeaf option1_failed;
+        static const ydk::Enum::YLeaf option1_none;
+        static const ydk::Enum::YLeaf option1prc;
+        static const ydk::Enum::YLeaf option1ssu_a;
+        static const ydk::Enum::YLeaf option1ssu_b;
+        static const ydk::Enum::YLeaf option1sec;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "option1-invalid") return 0;
+            if (name == "option1-do-not-use") return 1;
+            if (name == "option1-failed") return 2;
+            if (name == "option1-none") return 3;
+            if (name == "option1prc") return 10;
+            if (name == "option1ssu-a") return 11;
+            if (name == "option1ssu-b") return 12;
+            if (name == "option1sec") return 13;
+            return -1;
+        }
 };
 
 class FsyncBagSourceClass : public ydk::Enum
@@ -4090,6 +4179,70 @@ class FsyncBagSourceClass : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_source;
         static const ydk::Enum::YLeaf gnss_receiver;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid-source") return 0;
+            if (name == "ethernet-interface-source") return 1;
+            if (name == "sonet-interface-source") return 2;
+            if (name == "clock-interface-source") return 3;
+            if (name == "internal-clock-source") return 4;
+            if (name == "ptp-source") return 5;
+            if (name == "satellite-access-interface-source") return 6;
+            if (name == "ntp-source") return 7;
+            if (name == "gnss-receiver") return 8;
+            return -1;
+        }
+};
+
+class FsyncBagQlO2G1Value : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf option2_generation1_invalid;
+        static const ydk::Enum::YLeaf option2_generation1_do_not_use;
+        static const ydk::Enum::YLeaf option2_generation1_failed;
+        static const ydk::Enum::YLeaf option2_generation1_none;
+        static const ydk::Enum::YLeaf option2_generation1prs;
+        static const ydk::Enum::YLeaf option2_generation1stu;
+        static const ydk::Enum::YLeaf option2_generation1_stratum2;
+        static const ydk::Enum::YLeaf option2_generation1_stratum3;
+        static const ydk::Enum::YLeaf option2_generation1smc;
+        static const ydk::Enum::YLeaf option2_generation1_stratum4;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "option2-generation1-invalid") return 0;
+            if (name == "option2-generation1-do-not-use") return 1;
+            if (name == "option2-generation1-failed") return 2;
+            if (name == "option2-generation1-none") return 3;
+            if (name == "option2-generation1prs") return 20;
+            if (name == "option2-generation1stu") return 21;
+            if (name == "option2-generation1-stratum2") return 22;
+            if (name == "option2-generation1-stratum3") return 23;
+            if (name == "option2-generation1smc") return 24;
+            if (name == "option2-generation1-stratum4") return 25;
+            return -1;
+        }
+};
+
+class FsyncSource : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf sonet;
+        static const ydk::Enum::YLeaf clock_;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf satellite_access;
+        static const ydk::Enum::YLeaf ntp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 1;
+            if (name == "sonet") return 2;
+            if (name == "clock") return 3;
+            if (name == "internal") return 4;
+            if (name == "ptp") return 5;
+            if (name == "satellite-access") return 6;
+            if (name == "ntp") return 7;
+            return -1;
+        }
 };
 
 

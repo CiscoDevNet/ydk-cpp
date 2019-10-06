@@ -439,7 +439,8 @@ bool SdrConfig::Sdr::has_leaf_or_child_of_name(const std::string & name) const
 SdrConfig::Sdr::Resources::Resources()
     :
     fgid{YType::uint32, "fgid"},
-    mgmt_ext_vlan{YType::uint32, "mgmt_ext_vlan"}
+    mgmt_ext_vlan{YType::uint32, "mgmt_ext_vlan"},
+    disk_space_size{YType::uint32, "disk-space-size"}
         ,
     card_type(this, {"type"})
 {
@@ -460,7 +461,8 @@ bool SdrConfig::Sdr::Resources::has_data() const
             return true;
     }
     return fgid.is_set
-	|| mgmt_ext_vlan.is_set;
+	|| mgmt_ext_vlan.is_set
+	|| disk_space_size.is_set;
 }
 
 bool SdrConfig::Sdr::Resources::has_operation() const
@@ -472,7 +474,8 @@ bool SdrConfig::Sdr::Resources::has_operation() const
     }
     return is_set(yfilter)
 	|| ydk::is_set(fgid.yfilter)
-	|| ydk::is_set(mgmt_ext_vlan.yfilter);
+	|| ydk::is_set(mgmt_ext_vlan.yfilter)
+	|| ydk::is_set(disk_space_size.yfilter);
 }
 
 std::string SdrConfig::Sdr::Resources::get_segment_path() const
@@ -488,6 +491,7 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Resources::get_na
 
     if (fgid.is_set || is_set(fgid.yfilter)) leaf_name_data.push_back(fgid.get_name_leafdata());
     if (mgmt_ext_vlan.is_set || is_set(mgmt_ext_vlan.yfilter)) leaf_name_data.push_back(mgmt_ext_vlan.get_name_leafdata());
+    if (disk_space_size.is_set || is_set(disk_space_size.yfilter)) leaf_name_data.push_back(disk_space_size.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -536,6 +540,12 @@ void SdrConfig::Sdr::Resources::set_value(const std::string & value_path, const 
         mgmt_ext_vlan.value_namespace = name_space;
         mgmt_ext_vlan.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "disk-space-size")
+    {
+        disk_space_size = value;
+        disk_space_size.value_namespace = name_space;
+        disk_space_size.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SdrConfig::Sdr::Resources::set_filter(const std::string & value_path, YFilter yfilter)
@@ -548,11 +558,15 @@ void SdrConfig::Sdr::Resources::set_filter(const std::string & value_path, YFilt
     {
         mgmt_ext_vlan.yfilter = yfilter;
     }
+    if(value_path == "disk-space-size")
+    {
+        disk_space_size.yfilter = yfilter;
+    }
 }
 
 bool SdrConfig::Sdr::Resources::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "card-type" || name == "fgid" || name == "mgmt_ext_vlan")
+    if(name == "card-type" || name == "fgid" || name == "mgmt_ext_vlan" || name == "disk-space-size")
         return true;
     return false;
 }
@@ -666,8 +680,7 @@ bool SdrConfig::Sdr::Resources::CardType::has_leaf_or_child_of_name(const std::s
 
 SdrConfig::Sdr::Location::Location()
     :
-    node_location{YType::str, "node-location"},
-    slice{YType::uint8, "slice"}
+    node_location{YType::str, "node-location"}
 {
 
     yang_name = "location"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
@@ -680,24 +693,13 @@ SdrConfig::Sdr::Location::~Location()
 bool SdrConfig::Sdr::Location::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : slice.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
     return node_location.is_set;
 }
 
 bool SdrConfig::Sdr::Location::has_operation() const
 {
-    for (auto const & leaf : slice.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(node_location.yfilter)
-	|| ydk::is_set(slice.yfilter);
+	|| ydk::is_set(node_location.yfilter);
 }
 
 std::string SdrConfig::Sdr::Location::get_segment_path() const
@@ -714,8 +716,6 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Location::get_nam
 
     if (node_location.is_set || is_set(node_location.yfilter)) leaf_name_data.push_back(node_location.get_name_leafdata());
 
-    auto slice_name_datas = slice.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), slice_name_datas.begin(), slice_name_datas.end());
     return leaf_name_data;
 
 }
@@ -740,10 +740,6 @@ void SdrConfig::Sdr::Location::set_value(const std::string & value_path, const s
         node_location.value_namespace = name_space;
         node_location.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "slice")
-    {
-        slice.append(value);
-    }
 }
 
 void SdrConfig::Sdr::Location::set_filter(const std::string & value_path, YFilter yfilter)
@@ -752,15 +748,11 @@ void SdrConfig::Sdr::Location::set_filter(const std::string & value_path, YFilte
     {
         node_location.yfilter = yfilter;
     }
-    if(value_path == "slice")
-    {
-        slice.yfilter = yfilter;
-    }
 }
 
 bool SdrConfig::Sdr::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node-location" || name == "slice")
+    if(name == "node-location")
         return true;
     return false;
 }
@@ -1045,7 +1037,6 @@ SdrConfig::Sdr::Detail::Location::Location()
     card_type{YType::str, "card-type"},
     card_serial{YType::str, "card_serial"},
     rack_type{YType::str, "rack-type"},
-    slice{YType::str, "slice"},
     chassis_serial{YType::str, "chassis_serial"},
     hw_version{YType::str, "hw_version"},
     mgmt_ext_vlan{YType::str, "mgmt_ext_vlan"},
@@ -1070,11 +1061,6 @@ bool SdrConfig::Sdr::Detail::Location::has_data() const
     for (std::size_t index=0; index<reboot_hist1.len(); index++)
     {
         if(reboot_hist1[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : slice.getYLeafs())
-    {
-        if(leaf.is_set)
             return true;
     }
     return node_location.is_set
@@ -1106,11 +1092,6 @@ bool SdrConfig::Sdr::Detail::Location::has_operation() const
         if(reboot_hist1[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : slice.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
 	|| ydk::is_set(node_location.yfilter)
 	|| ydk::is_set(sdr_id.yfilter)
@@ -1125,7 +1106,6 @@ bool SdrConfig::Sdr::Detail::Location::has_operation() const
 	|| ydk::is_set(card_type.yfilter)
 	|| ydk::is_set(card_serial.yfilter)
 	|| ydk::is_set(rack_type.yfilter)
-	|| ydk::is_set(slice.yfilter)
 	|| ydk::is_set(chassis_serial.yfilter)
 	|| ydk::is_set(hw_version.yfilter)
 	|| ydk::is_set(mgmt_ext_vlan.yfilter)
@@ -1168,8 +1148,6 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Detail::Location:
     if (reboot_count.is_set || is_set(reboot_count.yfilter)) leaf_name_data.push_back(reboot_count.get_name_leafdata());
     if (rh_count.is_set || is_set(rh_count.yfilter)) leaf_name_data.push_back(rh_count.get_name_leafdata());
 
-    auto slice_name_datas = slice.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), slice_name_datas.begin(), slice_name_datas.end());
     return leaf_name_data;
 
 }
@@ -1283,10 +1261,6 @@ void SdrConfig::Sdr::Detail::Location::set_value(const std::string & value_path,
         rack_type.value_namespace = name_space;
         rack_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "slice")
-    {
-        slice.append(value);
-    }
     if(value_path == "chassis_serial")
     {
         chassis_serial = value;
@@ -1385,10 +1359,6 @@ void SdrConfig::Sdr::Detail::Location::set_filter(const std::string & value_path
     {
         rack_type.yfilter = yfilter;
     }
-    if(value_path == "slice")
-    {
-        slice.yfilter = yfilter;
-    }
     if(value_path == "chassis_serial")
     {
         chassis_serial.yfilter = yfilter;
@@ -1421,7 +1391,7 @@ void SdrConfig::Sdr::Detail::Location::set_filter(const std::string & value_path
 
 bool SdrConfig::Sdr::Detail::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "reboot_hist1" || name == "node-location" || name == "sdr-id" || name == "ip-addr" || name == "mac-address" || name == "boot_part" || name == "data_part" || name == "big_disk" || name == "vm_id" || name == "vmcpu" || name == "vmmemory" || name == "card-type" || name == "card_serial" || name == "rack-type" || name == "slice" || name == "chassis_serial" || name == "hw_version" || name == "mgmt_ext_vlan" || name == "state" || name == "start-time" || name == "reboot_count" || name == "rh_count")
+    if(name == "reboot_hist1" || name == "node-location" || name == "sdr-id" || name == "ip-addr" || name == "mac-address" || name == "boot_part" || name == "data_part" || name == "big_disk" || name == "vm_id" || name == "vmcpu" || name == "vmmemory" || name == "card-type" || name == "card_serial" || name == "rack-type" || name == "chassis_serial" || name == "hw_version" || name == "mgmt_ext_vlan" || name == "state" || name == "start-time" || name == "reboot_count" || name == "rh_count")
         return true;
     return false;
 }
@@ -4499,10 +4469,6 @@ bool PrivateSdr::SdrName::Pairing::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-const Enum::YLeaf CardType::RP {0, "RP"};
-const Enum::YLeaf CardType::LC {1, "LC"};
-const Enum::YLeaf CardType::CC {2, "CC"};
-
 const Enum::YLeaf VmReloadReason::CARD_OFFLINE {0, "CARD_OFFLINE"};
 const Enum::YLeaf VmReloadReason::CARD_SHUTDOWN {1, "CARD_SHUTDOWN"};
 const Enum::YLeaf VmReloadReason::ALL_VM_RELOAD {2, "ALL_VM_RELOAD"};
@@ -4514,6 +4480,10 @@ const Enum::YLeaf VmReloadReason::SDR_HEARTBEAT_FAILURE {7, "SDR_HEARTBEAT_FAILU
 const Enum::YLeaf VmReloadReason::FIRST_BOOT {8, "FIRST_BOOT"};
 const Enum::YLeaf VmReloadReason::SMU {9, "SMU"};
 const Enum::YLeaf VmReloadReason::REASON_UNKNOWN {10, "REASON_UNKNOWN"};
+
+const Enum::YLeaf CardType::RP {0, "RP"};
+const Enum::YLeaf CardType::LC {1, "LC"};
+const Enum::YLeaf CardType::CC {2, "CC"};
 
 const Enum::YLeaf SdrConfig::Sdr::PairingMode::intra_rack {0, "intra-rack"};
 const Enum::YLeaf SdrConfig::Sdr::PairingMode::inter_rack {1, "inter-rack"};

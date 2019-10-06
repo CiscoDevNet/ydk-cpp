@@ -6,8 +6,8 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_oper_0.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_oper_2.hpp"
-#include "Cisco_IOS_XR_mpls_ldp_oper_1.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_oper_5.hpp"
+#include "Cisco_IOS_XR_mpls_ldp_oper_1.hpp"
 
 using namespace ydk;
 
@@ -21315,23 +21315,43 @@ bool MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformat
     return false;
 }
 
-const Enum::YLeaf MplsLdpOperAfName::ipv4 {1, "ipv4"};
-const Enum::YLeaf MplsLdpOperAfName::ipv6 {2, "ipv6"};
-const Enum::YLeaf MplsLdpOperAfName::all {65535, "all"};
-
-const Enum::YLeaf L2vpnLdpPwAii::local_id {0, "local-id"};
-const Enum::YLeaf L2vpnLdpPwAii::type2 {1, "type2"};
-
-const Enum::YLeaf L2vpnLdpPwAgi::rd {0, "rd"};
-
-const Enum::YLeaf L2vpnLdpPwFec::fec128 {0, "fec128"};
-const Enum::YLeaf L2vpnLdpPwFec::fec129 {1, "fec129"};
-const Enum::YLeaf L2vpnLdpPwFec::fec130 {2, "fec130"};
-const Enum::YLeaf L2vpnLdpPwFec::invalid {3, "invalid"};
-
 const Enum::YLeaf MgmtLdpNbrBgpAdvtState::not_applicable {0, "not-applicable"};
 const Enum::YLeaf MgmtLdpNbrBgpAdvtState::permit {1, "permit"};
 const Enum::YLeaf MgmtLdpNbrBgpAdvtState::deny {2, "deny"};
+
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_none {0, "mgmt-ldp-nsr-peer-sync-st-none"};
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_wait {1, "mgmt-ldp-nsr-peer-sync-st-wait"};
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_ready {2, "mgmt-ldp-nsr-peer-sync-st-ready"};
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_prep {3, "mgmt-ldp-nsr-peer-sync-st-prep"};
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_app_wait {4, "mgmt-ldp-nsr-peer-sync-st-app-wait"};
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_oper {5, "mgmt-ldp-nsr-peer-sync-st-oper"};
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_tcp_phase1 {6, "mgmt-ldp-nsr-peer-sync-st-tcp-phase1"};
+const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_tcp_phase2 {7, "mgmt-ldp-nsr-peer-sync-st-tcp-phase2"};
+
+const Enum::YLeaf LdpRoutePathFlags::ip_path_no_flag {0, "ip-path-no-flag"};
+const Enum::YLeaf LdpRoutePathFlags::ip_path_protected {1, "ip-path-protected"};
+const Enum::YLeaf LdpRoutePathFlags::ip_path_backup {2, "ip-path-backup"};
+const Enum::YLeaf LdpRoutePathFlags::ip_path_backup_remote {3, "ip-path-backup-remote"};
+const Enum::YLeaf LdpRoutePathFlags::ip_path_bgp_backup {4, "ip-path-bgp-backup"};
+
+const Enum::YLeaf LdpAfId::ldp_af_id_none {0, "ldp-af-id-none"};
+const Enum::YLeaf LdpAfId::ldp_af_id_ipv4 {2, "ldp-af-id-ipv4"};
+const Enum::YLeaf LdpAfId::ldp_af_id_ipv6 {10, "ldp-af-id-ipv6"};
+
+const Enum::YLeaf LdpIgpSyncState::isync_ready {0, "isync-ready"};
+const Enum::YLeaf LdpIgpSyncState::isync_not_ready {1, "isync-not-ready"};
+const Enum::YLeaf LdpIgpSyncState::isync_deferred {2, "isync-deferred"};
+
+const Enum::YLeaf LdpIgpSyncDownReason::igp_sync_down_reason_not_applicable {0, "igp-sync-down-reason-not-applicable"};
+const Enum::YLeaf LdpIgpSyncDownReason::no_hello_adjacency {1, "no-hello-adjacency"};
+const Enum::YLeaf LdpIgpSyncDownReason::no_peer_session {2, "no-peer-session"};
+const Enum::YLeaf LdpIgpSyncDownReason::initial_update_to_peer_not_done {3, "initial-update-to-peer-not-done"};
+const Enum::YLeaf LdpIgpSyncDownReason::initial_update_from_peer_not_received {4, "initial-update-from-peer-not-received"};
+const Enum::YLeaf LdpIgpSyncDownReason::internal_reason {5, "internal-reason"};
+
+const Enum::YLeaf LocalLabelState::local_label_state_none {1, "local-label-state-none"};
+const Enum::YLeaf LocalLabelState::local_label_state_assigned {2, "local-label-state-assigned"};
+const Enum::YLeaf LocalLabelState::local_label_state_withdrawn {3, "local-label-state-withdrawn"};
 
 const Enum::YLeaf MgmtLdpNsrPeerLdpSyncNackRsn::mgmt_ldp_nsr_peer_ldp_sync_nack_rsn_none {0, "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-none"};
 const Enum::YLeaf MgmtLdpNsrPeerLdpSyncNackRsn::mgmt_ldp_nsr_peer_ldp_sync_nack_rsn_tbl_id_mismatch {1, "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-tbl-id-mismatch"};
@@ -21372,25 +21392,7 @@ const Enum::YLeaf MgmtLdpNsrPeerSyncErr::mgmt_ldp_nsr_peer_sync_err_app_fail {7,
 const Enum::YLeaf MgmtLdpNsrPeerSyncErr::mgmt_ldp_nsr_peer_sync_err_sync_tcp_phase1 {8, "mgmt-ldp-nsr-peer-sync-err-sync-tcp-phase1"};
 const Enum::YLeaf MgmtLdpNsrPeerSyncErr::mgmt_ldp_nsr_peer_sync_err_sync_tcp_phase2 {9, "mgmt-ldp-nsr-peer-sync-err-sync-tcp-phase2"};
 
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_none {0, "mgmt-ldp-nsr-peer-sync-st-none"};
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_wait {1, "mgmt-ldp-nsr-peer-sync-st-wait"};
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_ready {2, "mgmt-ldp-nsr-peer-sync-st-ready"};
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_prep {3, "mgmt-ldp-nsr-peer-sync-st-prep"};
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_app_wait {4, "mgmt-ldp-nsr-peer-sync-st-app-wait"};
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_oper {5, "mgmt-ldp-nsr-peer-sync-st-oper"};
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_tcp_phase1 {6, "mgmt-ldp-nsr-peer-sync-st-tcp-phase1"};
-const Enum::YLeaf MgmtLdpNsrPeerSyncState::mgmt_ldp_nsr_peer_sync_st_tcp_phase2 {7, "mgmt-ldp-nsr-peer-sync-st-tcp-phase2"};
-
-const Enum::YLeaf LdpAdjUnionDiscrim::link_hello {0, "link-hello"};
-const Enum::YLeaf LdpAdjUnionDiscrim::targeted_hello {1, "targeted-hello"};
-
-const Enum::YLeaf ShowNsrState::nsr_ready {0, "nsr-ready"};
-const Enum::YLeaf ShowNsrState::nsr_not_ready {1, "nsr-not-ready"};
-const Enum::YLeaf ShowNsrState::nsr_na {2, "nsr-na"};
-
-const Enum::YLeaf LdpRoutePathLblOwner::ip_path_lbl_owner_none {0, "ip-path-lbl-owner-none"};
-const Enum::YLeaf LdpRoutePathLblOwner::ip_path_lbl_owner_ldp {1, "ip-path-lbl-owner-ldp"};
-const Enum::YLeaf LdpRoutePathLblOwner::ip_path_lbl_owner_bgp {2, "ip-path-lbl-owner-bgp"};
+const Enum::YLeaf L2vpnLdpPwAgi::rd {0, "rd"};
 
 const Enum::YLeaf LabelValue::mpls_label {0, "mpls-label"};
 const Enum::YLeaf LabelValue::un_labelled {1, "un-labelled"};
@@ -21406,40 +21408,38 @@ const Enum::YLeaf LdpFwdUnlblRsn::ldp_fwd_un_labelled_no_ldp_adj {6, "ldp-fwd-un
 const Enum::YLeaf LdpFwdUnlblRsn::ldp_fwd_un_labelled_no_session {7, "ldp-fwd-un-labelled-no-session"};
 const Enum::YLeaf LdpFwdUnlblRsn::ldp_fwd_un_labelled_unknown {8, "ldp-fwd-un-labelled-unknown"};
 
-const Enum::YLeaf LdpRoutePathFlags::ip_path_no_flag {0, "ip-path-no-flag"};
-const Enum::YLeaf LdpRoutePathFlags::ip_path_protected {1, "ip-path-protected"};
-const Enum::YLeaf LdpRoutePathFlags::ip_path_backup {2, "ip-path-backup"};
-const Enum::YLeaf LdpRoutePathFlags::ip_path_backup_remote {3, "ip-path-backup-remote"};
-const Enum::YLeaf LdpRoutePathFlags::ip_path_bgp_backup {4, "ip-path-bgp-backup"};
+const Enum::YLeaf LdpAdjUnionDiscrim::link_hello {0, "link-hello"};
+const Enum::YLeaf LdpAdjUnionDiscrim::targeted_hello {1, "targeted-hello"};
 
-const Enum::YLeaf DhcbState::none {0, "none"};
-const Enum::YLeaf DhcbState::dhcb_active {1, "dhcb-active"};
-const Enum::YLeaf DhcbState::dhcb_passive {2, "dhcb-passive"};
-const Enum::YLeaf DhcbState::dhcb_active_passive {3, "dhcb-active-passive"};
+const Enum::YLeaf LdpRoutePathLblOwner::ip_path_lbl_owner_none {0, "ip-path-lbl-owner-none"};
+const Enum::YLeaf LdpRoutePathLblOwner::ip_path_lbl_owner_ldp {1, "ip-path-lbl-owner-ldp"};
+const Enum::YLeaf LdpRoutePathLblOwner::ip_path_lbl_owner_bgp {2, "ip-path-lbl-owner-bgp"};
 
-const Enum::YLeaf LdpIgpSyncDownReason::igp_sync_down_reason_not_applicable {0, "igp-sync-down-reason-not-applicable"};
-const Enum::YLeaf LdpIgpSyncDownReason::no_hello_adjacency {1, "no-hello-adjacency"};
-const Enum::YLeaf LdpIgpSyncDownReason::no_peer_session {2, "no-peer-session"};
-const Enum::YLeaf LdpIgpSyncDownReason::initial_update_to_peer_not_done {3, "initial-update-to-peer-not-done"};
-const Enum::YLeaf LdpIgpSyncDownReason::initial_update_from_peer_not_received {4, "initial-update-from-peer-not-received"};
-const Enum::YLeaf LdpIgpSyncDownReason::internal_reason {5, "internal-reason"};
+const Enum::YLeaf L2vpnLdpPwFec::fec128 {0, "fec128"};
+const Enum::YLeaf L2vpnLdpPwFec::fec129 {1, "fec129"};
+const Enum::YLeaf L2vpnLdpPwFec::fec130 {2, "fec130"};
+const Enum::YLeaf L2vpnLdpPwFec::invalid {3, "invalid"};
 
-const Enum::YLeaf LdpIgpSyncState::isync_ready {0, "isync-ready"};
-const Enum::YLeaf LdpIgpSyncState::isync_not_ready {1, "isync-not-ready"};
-const Enum::YLeaf LdpIgpSyncState::isync_deferred {2, "isync-deferred"};
-
-const Enum::YLeaf LocalLabelState::local_label_state_none {1, "local-label-state-none"};
-const Enum::YLeaf LocalLabelState::local_label_state_assigned {2, "local-label-state-assigned"};
-const Enum::YLeaf LocalLabelState::local_label_state_withdrawn {3, "local-label-state-withdrawn"};
+const Enum::YLeaf MplsLdpOperAfName::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsLdpOperAfName::ipv6 {2, "ipv6"};
+const Enum::YLeaf MplsLdpOperAfName::all {65535, "all"};
 
 const Enum::YLeaf LdpAf::ldp_show_af_none {0, "ldp-show-af-none"};
 const Enum::YLeaf LdpAf::ldp_show_af_ipv4 {1, "ldp-show-af-ipv4"};
 const Enum::YLeaf LdpAf::ldp_show_af_ipv6 {2, "ldp-show-af-ipv6"};
 const Enum::YLeaf LdpAf::ldp_show_af_ipv4_ipv6 {3, "ldp-show-af-ipv4-ipv6"};
 
-const Enum::YLeaf LdpAfId::ldp_af_id_none {0, "ldp-af-id-none"};
-const Enum::YLeaf LdpAfId::ldp_af_id_ipv4 {2, "ldp-af-id-ipv4"};
-const Enum::YLeaf LdpAfId::ldp_af_id_ipv6 {10, "ldp-af-id-ipv6"};
+const Enum::YLeaf L2vpnLdpPwAii::local_id {0, "local-id"};
+const Enum::YLeaf L2vpnLdpPwAii::type2 {1, "type2"};
+
+const Enum::YLeaf DhcbState::none {0, "none"};
+const Enum::YLeaf DhcbState::dhcb_active {1, "dhcb-active"};
+const Enum::YLeaf DhcbState::dhcb_passive {2, "dhcb-passive"};
+const Enum::YLeaf DhcbState::dhcb_active_passive {3, "dhcb-active-passive"};
+
+const Enum::YLeaf ShowNsrState::nsr_ready {0, "nsr-ready"};
+const Enum::YLeaf ShowNsrState::nsr_not_ready {1, "nsr-not-ready"};
+const Enum::YLeaf ShowNsrState::nsr_na {2, "nsr-na"};
 
 
 }

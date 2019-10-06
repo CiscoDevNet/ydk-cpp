@@ -10,20 +10,19 @@
 namespace cisco_ios_xe {
 namespace cisco_ospf {
 
-class OspfExternalType : public ydk::Enum
+class OspfLogAdj : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Y_1;
-        static const ydk::Enum::YLeaf Y_2;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf detail;
+        static const ydk::Enum::YLeaf disable;
 
-};
-
-class AccessListInOutType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf out;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            if (name == "detail") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class PrefixApplicability : public ydk::Enum
@@ -32,15 +31,37 @@ class PrefixApplicability : public ydk::Enum
         static const ydk::Enum::YLeaf protected_;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protected") return 1;
+            if (name == "all") return 2;
+            return -1;
+        }
 };
 
-class OspfLogAdj : public ydk::Enum
+class AccessListInOutType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf detail;
-        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
+};
+
+class OspfExternalType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 

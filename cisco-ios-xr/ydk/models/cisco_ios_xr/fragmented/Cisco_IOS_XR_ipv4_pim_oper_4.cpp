@@ -13,439 +13,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_oper {
 
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::GroupPrefixXr()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-
-    yang_name = "group-prefix-xr"; yang_parent_name = "rp-cache"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::~GroupPrefixXr()
-{
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "group-prefix-xr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::CandidateRpList()
-    :
-    pim_bsr_crp_bag(this, {})
-{
-
-    yang_name = "candidate-rp-list"; yang_parent_name = "rp-cache"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::~CandidateRpList()
-{
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<pim_bsr_crp_bag.len(); index++)
-    {
-        if(pim_bsr_crp_bag[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::has_operation() const
-{
-    for (std::size_t index=0; index<pim_bsr_crp_bag.len(); index++)
-    {
-        if(pim_bsr_crp_bag[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "candidate-rp-list";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pim-bsr-crp-bag")
-    {
-        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag>();
-        ent_->parent = this;
-        pim_bsr_crp_bag.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : pim_bsr_crp_bag.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pim-bsr-crp-bag")
-        return true;
-    return false;
-}
-
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::PimBsrCrpBag()
-    :
-    candidate_rp_holdtime{YType::uint16, "candidate-rp-holdtime"},
-    candidate_rp_priority{YType::uint8, "candidate-rp-priority"},
-    candidate_rp_up_time{YType::uint16, "candidate-rp-up-time"},
-    candidate_rp_expires{YType::uint16, "candidate-rp-expires"},
-    protocol{YType::enumeration, "protocol"}
-        ,
-    next_candidate_rp(std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>())
-    , candidate_rp_address(std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
-{
-    next_candidate_rp->parent = this;
-    candidate_rp_address->parent = this;
-
-    yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::~PimBsrCrpBag()
-{
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_data() const
-{
-    if (is_presence_container) return true;
-    return candidate_rp_holdtime.is_set
-	|| candidate_rp_priority.is_set
-	|| candidate_rp_up_time.is_set
-	|| candidate_rp_expires.is_set
-	|| protocol.is_set
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_data())
-	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_data());
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(candidate_rp_holdtime.yfilter)
-	|| ydk::is_set(candidate_rp_priority.yfilter)
-	|| ydk::is_set(candidate_rp_up_time.yfilter)
-	|| ydk::is_set(candidate_rp_expires.yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_operation())
-	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_operation());
-}
-
-std::string Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pim-bsr-crp-bag";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (candidate_rp_holdtime.is_set || is_set(candidate_rp_holdtime.yfilter)) leaf_name_data.push_back(candidate_rp_holdtime.get_name_leafdata());
-    if (candidate_rp_priority.is_set || is_set(candidate_rp_priority.yfilter)) leaf_name_data.push_back(candidate_rp_priority.get_name_leafdata());
-    if (candidate_rp_up_time.is_set || is_set(candidate_rp_up_time.yfilter)) leaf_name_data.push_back(candidate_rp_up_time.get_name_leafdata());
-    if (candidate_rp_expires.is_set || is_set(candidate_rp_expires.yfilter)) leaf_name_data.push_back(candidate_rp_expires.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "next-candidate-rp")
-    {
-        if(next_candidate_rp == nullptr)
-        {
-            next_candidate_rp = std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>();
-        }
-        return next_candidate_rp;
-    }
-
-    if(child_yang_name == "candidate-rp-address")
-    {
-        if(candidate_rp_address == nullptr)
-        {
-            candidate_rp_address = std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>();
-        }
-        return candidate_rp_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(next_candidate_rp != nullptr)
-    {
-        _children["next-candidate-rp"] = next_candidate_rp;
-    }
-
-    if(candidate_rp_address != nullptr)
-    {
-        _children["candidate-rp-address"] = candidate_rp_address;
-    }
-
-    return _children;
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "candidate-rp-holdtime")
-    {
-        candidate_rp_holdtime = value;
-        candidate_rp_holdtime.value_namespace = name_space;
-        candidate_rp_holdtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "candidate-rp-priority")
-    {
-        candidate_rp_priority = value;
-        candidate_rp_priority.value_namespace = name_space;
-        candidate_rp_priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "candidate-rp-up-time")
-    {
-        candidate_rp_up_time = value;
-        candidate_rp_up_time.value_namespace = name_space;
-        candidate_rp_up_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "candidate-rp-expires")
-    {
-        candidate_rp_expires = value;
-        candidate_rp_expires.value_namespace = name_space;
-        candidate_rp_expires.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "candidate-rp-holdtime")
-    {
-        candidate_rp_holdtime.yfilter = yfilter;
-    }
-    if(value_path == "candidate-rp-priority")
-    {
-        candidate_rp_priority.yfilter = yfilter;
-    }
-    if(value_path == "candidate-rp-up-time")
-    {
-        candidate_rp_up_time.yfilter = yfilter;
-    }
-    if(value_path == "candidate-rp-expires")
-    {
-        candidate_rp_expires.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-candidate-rp" || name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
-        return true;
-    return false;
-}
-
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::NextCandidateRp()
-{
-
-    yang_name = "next-candidate-rp"; yang_parent_name = "pim-bsr-crp-bag"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::~NextCandidateRp()
-{
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-candidate-rp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
 Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::CandidateRpAddress()
     :
     af_name{YType::enumeration, "af-name"},
@@ -26169,6 +25736,729 @@ void Ipv6Pim::Standby::DefaultContext::JpStatistics::JpStatistic::set_filter(con
 bool Ipv6Pim::Standby::DefaultContext::JpStatistics::JpStatistic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "interface-name-xr" || name == "mtu" || name == "transmitted" || name == "transmitted100" || name == "transmitted-1k" || name == "transmitted-10k" || name == "transmitted-50k" || name == "received" || name == "received100" || name == "received-1k" || name == "received-10k" || name == "received-50k")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabases()
+    :
+    mib_database(this, {})
+{
+
+    yang_name = "mib-databases"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::~MibDatabases()
+{
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mib_database.len(); index++)
+    {
+        if(mib_database[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::has_operation() const
+{
+    for (std::size_t index=0; index<mib_database.len(); index++)
+    {
+        if(mib_database[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:ipv6-pim/standby/default-context/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mib-databases";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::DefaultContext::MibDatabases::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::DefaultContext::MibDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mib-database")
+    {
+        auto ent_ = std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase>();
+        ent_->parent = this;
+        mib_database.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::DefaultContext::MibDatabases::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mib_database.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-database")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::MibDatabase()
+    :
+    source_address{YType::str, "source-address"},
+    group_address{YType::str, "group-address"},
+    source_netmask{YType::uint32, "source-netmask"},
+    upstream_assert_timer{YType::int32, "upstream-assert-timer"},
+    assert_metric{YType::uint32, "assert-metric"},
+    assert_metric_preference{YType::uint32, "assert-metric-preference"},
+    assert_rpt_bit{YType::boolean, "assert-rpt-bit"},
+    spt_bit{YType::boolean, "spt-bit"},
+    rpf_mask{YType::uint32, "rpf-mask"},
+    rpf_safi{YType::uint8, "rpf-safi"},
+    rpf_table_name{YType::str, "rpf-table-name"},
+    rpf_drop{YType::boolean, "rpf-drop"},
+    rpf_extranet{YType::boolean, "rpf-extranet"},
+    rpf_interface_name{YType::str, "rpf-interface-name"},
+    rpf_vrf_name{YType::str, "rpf-vrf-name"},
+    bidirectional_route{YType::boolean, "bidirectional-route"},
+    uptime{YType::uint64, "uptime"},
+    protocol{YType::enumeration, "protocol"}
+        ,
+    source_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr>())
+    , group_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr>())
+    , rpf_neighbor(std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor>())
+    , rpf_root(std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfRoot>())
+{
+    source_address_xr->parent = this;
+    group_address_xr->parent = this;
+    rpf_neighbor->parent = this;
+    rpf_root->parent = this;
+
+    yang_name = "mib-database"; yang_parent_name = "mib-databases"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::~MibDatabase()
+{
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::has_data() const
+{
+    if (is_presence_container) return true;
+    return source_address.is_set
+	|| group_address.is_set
+	|| source_netmask.is_set
+	|| upstream_assert_timer.is_set
+	|| assert_metric.is_set
+	|| assert_metric_preference.is_set
+	|| assert_rpt_bit.is_set
+	|| spt_bit.is_set
+	|| rpf_mask.is_set
+	|| rpf_safi.is_set
+	|| rpf_table_name.is_set
+	|| rpf_drop.is_set
+	|| rpf_extranet.is_set
+	|| rpf_interface_name.is_set
+	|| rpf_vrf_name.is_set
+	|| bidirectional_route.is_set
+	|| uptime.is_set
+	|| protocol.is_set
+	|| (source_address_xr !=  nullptr && source_address_xr->has_data())
+	|| (group_address_xr !=  nullptr && group_address_xr->has_data())
+	|| (rpf_neighbor !=  nullptr && rpf_neighbor->has_data())
+	|| (rpf_root !=  nullptr && rpf_root->has_data());
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_netmask.yfilter)
+	|| ydk::is_set(upstream_assert_timer.yfilter)
+	|| ydk::is_set(assert_metric.yfilter)
+	|| ydk::is_set(assert_metric_preference.yfilter)
+	|| ydk::is_set(assert_rpt_bit.yfilter)
+	|| ydk::is_set(spt_bit.yfilter)
+	|| ydk::is_set(rpf_mask.yfilter)
+	|| ydk::is_set(rpf_safi.yfilter)
+	|| ydk::is_set(rpf_table_name.yfilter)
+	|| ydk::is_set(rpf_drop.yfilter)
+	|| ydk::is_set(rpf_extranet.yfilter)
+	|| ydk::is_set(rpf_interface_name.yfilter)
+	|| ydk::is_set(rpf_vrf_name.yfilter)
+	|| ydk::is_set(bidirectional_route.yfilter)
+	|| ydk::is_set(uptime.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| (source_address_xr !=  nullptr && source_address_xr->has_operation())
+	|| (group_address_xr !=  nullptr && group_address_xr->has_operation())
+	|| (rpf_neighbor !=  nullptr && rpf_neighbor->has_operation())
+	|| (rpf_root !=  nullptr && rpf_root->has_operation());
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:ipv6-pim/standby/default-context/mib-databases/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mib-database";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_netmask.is_set || is_set(source_netmask.yfilter)) leaf_name_data.push_back(source_netmask.get_name_leafdata());
+    if (upstream_assert_timer.is_set || is_set(upstream_assert_timer.yfilter)) leaf_name_data.push_back(upstream_assert_timer.get_name_leafdata());
+    if (assert_metric.is_set || is_set(assert_metric.yfilter)) leaf_name_data.push_back(assert_metric.get_name_leafdata());
+    if (assert_metric_preference.is_set || is_set(assert_metric_preference.yfilter)) leaf_name_data.push_back(assert_metric_preference.get_name_leafdata());
+    if (assert_rpt_bit.is_set || is_set(assert_rpt_bit.yfilter)) leaf_name_data.push_back(assert_rpt_bit.get_name_leafdata());
+    if (spt_bit.is_set || is_set(spt_bit.yfilter)) leaf_name_data.push_back(spt_bit.get_name_leafdata());
+    if (rpf_mask.is_set || is_set(rpf_mask.yfilter)) leaf_name_data.push_back(rpf_mask.get_name_leafdata());
+    if (rpf_safi.is_set || is_set(rpf_safi.yfilter)) leaf_name_data.push_back(rpf_safi.get_name_leafdata());
+    if (rpf_table_name.is_set || is_set(rpf_table_name.yfilter)) leaf_name_data.push_back(rpf_table_name.get_name_leafdata());
+    if (rpf_drop.is_set || is_set(rpf_drop.yfilter)) leaf_name_data.push_back(rpf_drop.get_name_leafdata());
+    if (rpf_extranet.is_set || is_set(rpf_extranet.yfilter)) leaf_name_data.push_back(rpf_extranet.get_name_leafdata());
+    if (rpf_interface_name.is_set || is_set(rpf_interface_name.yfilter)) leaf_name_data.push_back(rpf_interface_name.get_name_leafdata());
+    if (rpf_vrf_name.is_set || is_set(rpf_vrf_name.yfilter)) leaf_name_data.push_back(rpf_vrf_name.get_name_leafdata());
+    if (bidirectional_route.is_set || is_set(bidirectional_route.yfilter)) leaf_name_data.push_back(bidirectional_route.get_name_leafdata());
+    if (uptime.is_set || is_set(uptime.yfilter)) leaf_name_data.push_back(uptime.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "source-address-xr")
+    {
+        if(source_address_xr == nullptr)
+        {
+            source_address_xr = std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr>();
+        }
+        return source_address_xr;
+    }
+
+    if(child_yang_name == "group-address-xr")
+    {
+        if(group_address_xr == nullptr)
+        {
+            group_address_xr = std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr>();
+        }
+        return group_address_xr;
+    }
+
+    if(child_yang_name == "rpf-neighbor")
+    {
+        if(rpf_neighbor == nullptr)
+        {
+            rpf_neighbor = std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor>();
+        }
+        return rpf_neighbor;
+    }
+
+    if(child_yang_name == "rpf-root")
+    {
+        if(rpf_root == nullptr)
+        {
+            rpf_root = std::make_shared<Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfRoot>();
+        }
+        return rpf_root;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(source_address_xr != nullptr)
+    {
+        _children["source-address-xr"] = source_address_xr;
+    }
+
+    if(group_address_xr != nullptr)
+    {
+        _children["group-address-xr"] = group_address_xr;
+    }
+
+    if(rpf_neighbor != nullptr)
+    {
+        _children["rpf-neighbor"] = rpf_neighbor;
+    }
+
+    if(rpf_root != nullptr)
+    {
+        _children["rpf-root"] = rpf_root;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-address")
+    {
+        group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-netmask")
+    {
+        source_netmask = value;
+        source_netmask.value_namespace = name_space;
+        source_netmask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upstream-assert-timer")
+    {
+        upstream_assert_timer = value;
+        upstream_assert_timer.value_namespace = name_space;
+        upstream_assert_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "assert-metric")
+    {
+        assert_metric = value;
+        assert_metric.value_namespace = name_space;
+        assert_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "assert-metric-preference")
+    {
+        assert_metric_preference = value;
+        assert_metric_preference.value_namespace = name_space;
+        assert_metric_preference.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "assert-rpt-bit")
+    {
+        assert_rpt_bit = value;
+        assert_rpt_bit.value_namespace = name_space;
+        assert_rpt_bit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "spt-bit")
+    {
+        spt_bit = value;
+        spt_bit.value_namespace = name_space;
+        spt_bit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-mask")
+    {
+        rpf_mask = value;
+        rpf_mask.value_namespace = name_space;
+        rpf_mask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-safi")
+    {
+        rpf_safi = value;
+        rpf_safi.value_namespace = name_space;
+        rpf_safi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-table-name")
+    {
+        rpf_table_name = value;
+        rpf_table_name.value_namespace = name_space;
+        rpf_table_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-drop")
+    {
+        rpf_drop = value;
+        rpf_drop.value_namespace = name_space;
+        rpf_drop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-extranet")
+    {
+        rpf_extranet = value;
+        rpf_extranet.value_namespace = name_space;
+        rpf_extranet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-interface-name")
+    {
+        rpf_interface_name = value;
+        rpf_interface_name.value_namespace = name_space;
+        rpf_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf-vrf-name")
+    {
+        rpf_vrf_name = value;
+        rpf_vrf_name.value_namespace = name_space;
+        rpf_vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bidirectional-route")
+    {
+        bidirectional_route = value;
+        bidirectional_route.value_namespace = name_space;
+        bidirectional_route.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uptime")
+    {
+        uptime = value;
+        uptime.value_namespace = name_space;
+        uptime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-netmask")
+    {
+        source_netmask.yfilter = yfilter;
+    }
+    if(value_path == "upstream-assert-timer")
+    {
+        upstream_assert_timer.yfilter = yfilter;
+    }
+    if(value_path == "assert-metric")
+    {
+        assert_metric.yfilter = yfilter;
+    }
+    if(value_path == "assert-metric-preference")
+    {
+        assert_metric_preference.yfilter = yfilter;
+    }
+    if(value_path == "assert-rpt-bit")
+    {
+        assert_rpt_bit.yfilter = yfilter;
+    }
+    if(value_path == "spt-bit")
+    {
+        spt_bit.yfilter = yfilter;
+    }
+    if(value_path == "rpf-mask")
+    {
+        rpf_mask.yfilter = yfilter;
+    }
+    if(value_path == "rpf-safi")
+    {
+        rpf_safi.yfilter = yfilter;
+    }
+    if(value_path == "rpf-table-name")
+    {
+        rpf_table_name.yfilter = yfilter;
+    }
+    if(value_path == "rpf-drop")
+    {
+        rpf_drop.yfilter = yfilter;
+    }
+    if(value_path == "rpf-extranet")
+    {
+        rpf_extranet.yfilter = yfilter;
+    }
+    if(value_path == "rpf-interface-name")
+    {
+        rpf_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "rpf-vrf-name")
+    {
+        rpf_vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "bidirectional-route")
+    {
+        bidirectional_route.yfilter = yfilter;
+    }
+    if(value_path == "uptime")
+    {
+        uptime.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address-xr" || name == "group-address-xr" || name == "rpf-neighbor" || name == "rpf-root" || name == "source-address" || name == "group-address" || name == "source-netmask" || name == "upstream-assert-timer" || name == "assert-metric" || name == "assert-metric-preference" || name == "assert-rpt-bit" || name == "spt-bit" || name == "rpf-mask" || name == "rpf-safi" || name == "rpf-table-name" || name == "rpf-drop" || name == "rpf-extranet" || name == "rpf-interface-name" || name == "rpf-vrf-name" || name == "bidirectional-route" || name == "uptime" || name == "protocol")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::SourceAddressXr()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "source-address-xr"; yang_parent_name = "mib-database"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::~SourceAddressXr()
+{
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:ipv6-pim/standby/default-context/mib-databases/mib-database/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-address-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::GroupAddressXr()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "group-address-xr"; yang_parent_name = "mib-database"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::~GroupAddressXr()
+{
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:ipv6-pim/standby/default-context/mib-databases/mib-database/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group-address-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
         return true;
     return false;
 }

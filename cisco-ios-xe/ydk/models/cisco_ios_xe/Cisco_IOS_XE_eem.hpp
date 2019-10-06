@@ -20,6 +20,15 @@ class OperatorType : public ydk::Enum
         static const ydk::Enum::YLeaf lt;
         static const ydk::Enum::YLeaf ne;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "eq") return 0;
+            if (name == "ge") return 1;
+            if (name == "gt") return 2;
+            if (name == "le") return 3;
+            if (name == "lt") return 4;
+            if (name == "ne") return 5;
+            return -1;
+        }
 };
 
 

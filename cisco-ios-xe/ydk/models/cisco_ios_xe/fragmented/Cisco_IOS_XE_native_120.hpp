@@ -3625,6 +3625,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::Type : public ydk::Enum
@@ -3633,6 +3638,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::Type : public ydk::Enum
@@ -3641,6 +3651,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::Type : public ydk::Enum
@@ -3649,6 +3664,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::Type : public ydk::Enum
@@ -3657,6 +3677,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::Type : public ydk::Enum
@@ -3665,6 +3690,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::Type : public ydk::Enum
@@ -3673,6 +3703,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::Type : public ydk::Enum
@@ -3681,6 +3716,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::Type : public ydk::Enum
@@ -3689,6 +3729,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::Type : public ydk::Enum
@@ -3697,6 +3742,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::Type : public ydk::Enum
@@ -3705,6 +3755,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::Type : public ydk::Enum
@@ -3713,6 +3768,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId:
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key::Key_ : public ydk::Enum
@@ -3722,6 +3782,12 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key::Key_ : publi
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Default::Type : public ydk::Enum
@@ -3730,6 +3796,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Ietf::Type : public ydk::Enum
@@ -3738,6 +3809,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::Type : public ydk::Enum
@@ -3746,6 +3822,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::Type : public ydk::Enum
@@ -3754,6 +3835,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::Type : public ydk::Enum
@@ -3762,6 +3848,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::Type : public ydk::Enum
@@ -3770,6 +3861,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::Type : public ydk::Enum
@@ -3778,6 +3874,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::Type : public ydk::Enum
@@ -3786,6 +3887,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::Type : public ydk::Enum
@@ -3794,6 +3900,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::Type : public ydk::Enum
@@ -3802,6 +3913,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::Type : public ydk::Enum
@@ -3810,6 +3926,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Unformatted::Type : public ydk::Enum
@@ -3818,6 +3939,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStatio
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key::Key_ : public ydk::Enum
@@ -3827,6 +3953,12 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key::Key_ : p
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Sesm::Client::Vrf::Key::Key_ : public ydk::Enum
@@ -3836,6 +3968,12 @@ class Native::Aaa::Server::Radius::Sesm::Client::Vrf::Key::Key_ : public ydk::En
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Sesm::Client::Key::Key_ : public ydk::Enum
@@ -3845,6 +3983,12 @@ class Native::Aaa::Server::Radius::Sesm::Client::Key::Key_ : public ydk::Enum
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 class Native::Aaa::Server::Radius::Sesm::Key::Key_ : public ydk::Enum
@@ -3854,6 +3998,12 @@ class Native::Aaa::Server::Radius::Sesm::Key::Key_ : public ydk::Enum
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 class Native::Aaa::Login::Display : public ydk::Enum
@@ -3863,6 +4013,12 @@ class Native::Aaa::Login::Display : public ydk::Enum
         static const ydk::Enum::YLeaf last_success;
         static const ydk::Enum::YLeaf number_failures;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "last-failure") return 0;
+            if (name == "last-success") return 1;
+            if (name == "number-failures") return 2;
+            return -1;
+        }
 };
 
 class Native::Aaa::Policy::InterfaceConfig : public ydk::Enum
@@ -3870,6 +4026,10 @@ class Native::Aaa::Policy::InterfaceConfig : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf allow_subinterface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "allow-subinterface") return 0;
+            return -1;
+        }
 };
 
 class Native::Privilege::Mode::Name : public ydk::Enum
@@ -3880,6 +4040,13 @@ class Native::Privilege::Mode::Name : public ydk::Enum
         static const ydk::Enum::YLeaf interface;
         static const ydk::Enum::YLeaf router;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "configure") return 0;
+            if (name == "exec") return 1;
+            if (name == "interface") return 2;
+            if (name == "router") return 3;
+            return -1;
+        }
 };
 
 class Native::Multilink::BundleName : public ydk::Enum
@@ -3890,6 +4057,13 @@ class Native::Multilink::BundleName : public ydk::Enum
         static const ydk::Enum::YLeaf endpoint;
         static const ydk::Enum::YLeaf rfc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "authenticated") return 0;
+            if (name == "both") return 1;
+            if (name == "endpoint") return 2;
+            if (name == "rfc") return 3;
+            return -1;
+        }
 };
 
 class Native::MacAddressTable::Limit::Bdomain::Action : public ydk::Enum
@@ -3899,6 +4073,12 @@ class Native::MacAddressTable::Limit::Bdomain::Action : public ydk::Enum
         static const ydk::Enum::YLeaf limit;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "warning") return 0;
+            if (name == "limit") return 1;
+            if (name == "shutdown") return 2;
+            return -1;
+        }
 };
 
 class Native::Redundancy::Mode : public ydk::Enum
@@ -3909,6 +4089,13 @@ class Native::Redundancy::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf sso;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rpr") return 0;
+            if (name == "rpr-plus") return 1;
+            if (name == "sso") return 2;
+            if (name == "none") return 3;
+            return -1;
+        }
 };
 
 

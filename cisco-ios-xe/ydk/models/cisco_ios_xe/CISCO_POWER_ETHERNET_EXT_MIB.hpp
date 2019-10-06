@@ -263,6 +263,13 @@ class CpeExtLldpPwrType : public ydk::Enum
         static const ydk::Enum::YLeaf type2Pd;
         static const ydk::Enum::YLeaf type2Pse;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type1Pd") return 1;
+            if (name == "type1Pse") return 2;
+            if (name == "type2Pd") return 3;
+            if (name == "type2Pse") return 4;
+            return -1;
+        }
 };
 
 class CpeExtLldpPwrSrc : public ydk::Enum
@@ -275,16 +282,15 @@ class CpeExtLldpPwrSrc : public ydk::Enum
         static const ydk::Enum::YLeaf primarySrc;
         static const ydk::Enum::YLeaf unknown;
 
-};
-
-class CpeExtPwrPriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf low;
-        static const ydk::Enum::YLeaf unknown;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "pseAndLocal") return 1;
+            if (name == "local") return 2;
+            if (name == "pse") return 3;
+            if (name == "backupSrc") return 4;
+            if (name == "primarySrc") return 5;
+            if (name == "unknown") return 6;
+            return -1;
+        }
 };
 
 class CpeExtLldpPwrClassOrZero : public ydk::Enum
@@ -297,6 +303,32 @@ class CpeExtLldpPwrClassOrZero : public ydk::Enum
         static const ydk::Enum::YLeaf class3;
         static const ydk::Enum::YLeaf class4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "class0") return 1;
+            if (name == "class1") return 2;
+            if (name == "class2") return 3;
+            if (name == "class3") return 4;
+            if (name == "class4") return 5;
+            return -1;
+        }
+};
+
+class CpeExtPwrPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 1;
+            if (name == "high") return 2;
+            if (name == "low") return 3;
+            if (name == "unknown") return 4;
+            return -1;
+        }
 };
 
 class CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass : public ydk::Enum
@@ -309,6 +341,15 @@ class CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPd
         static const ydk::Enum::YLeaf class3;
         static const ydk::Enum::YLeaf class4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco") return 1;
+            if (name == "class0") return 2;
+            if (name == "class1") return 3;
+            if (name == "class2") return 4;
+            if (name == "class3") return 5;
+            if (name == "class4") return 6;
+            return -1;
+        }
 };
 
 class CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::CpeExtPsePortLldpPdPwrPairsOrZero : public ydk::Enum
@@ -318,6 +359,12 @@ class CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::
         static const ydk::Enum::YLeaf signal;
         static const ydk::Enum::YLeaf spare;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "signal") return 1;
+            if (name == "spare") return 2;
+            return -1;
+        }
 };
 
 

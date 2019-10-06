@@ -640,6 +640,14 @@ class MPLSLDPSTDMIB::MplsLdpLsrObjects::MplsLdpLsrLoopDetectionCapable : public 
         static const ydk::Enum::YLeaf pathVector;
         static const ydk::Enum::YLeaf hopCountAndPathVector;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "other") return 2;
+            if (name == "hopCount") return 3;
+            if (name == "pathVector") return 4;
+            if (name == "hopCountAndPathVector") return 5;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityAdminStatus : public ydk::Enum
@@ -648,6 +656,11 @@ class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityAdminS
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityOperStatus : public ydk::Enum
@@ -657,6 +670,12 @@ class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityOperSt
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "enabled") return 2;
+            if (name == "disabled") return 3;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityTransportAddrKind : public ydk::Enum
@@ -665,6 +684,11 @@ class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityTransp
         static const ydk::Enum::YLeaf interface;
         static const ydk::Enum::YLeaf loopback;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface") return 1;
+            if (name == "loopback") return 2;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::MplsLdpSessionState : public ydk::Enum
@@ -676,6 +700,14 @@ class MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::MplsLdpSessionState : p
         static const ydk::Enum::YLeaf opensent;
         static const ydk::Enum::YLeaf operational;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nonexistent") return 1;
+            if (name == "initialized") return 2;
+            if (name == "openrec") return 3;
+            if (name == "opensent") return 4;
+            if (name == "operational") return 5;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::MplsLdpSessionRole : public ydk::Enum
@@ -685,6 +717,12 @@ class MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::MplsLdpSessionRole : pu
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "active") return 2;
+            if (name == "passive") return 3;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable::MplsLdpHelloAdjacencyEntry::MplsLdpHelloAdjacencyType : public ydk::Enum
@@ -693,6 +731,11 @@ class MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable::MplsLdpHelloAdjacencyEntry::Mpl
         static const ydk::Enum::YLeaf link;
         static const ydk::Enum::YLeaf targeted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "link") return 1;
+            if (name == "targeted") return 2;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsFecTable::MplsFecEntry::MplsFecType : public ydk::Enum
@@ -701,6 +744,11 @@ class MPLSLDPSTDMIB::MplsFecTable::MplsFecEntry::MplsFecType : public ydk::Enum
         static const ydk::Enum::YLeaf prefix;
         static const ydk::Enum::YLeaf hostAddress;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix") return 1;
+            if (name == "hostAddress") return 2;
+            return -1;
+        }
 };
 
 class MPLSLDPSTDMIB::MplsLdpLspFecTable::MplsLdpLspFecEntry::MplsLdpLspFecSegment : public ydk::Enum
@@ -709,6 +757,11 @@ class MPLSLDPSTDMIB::MplsLdpLspFecTable::MplsLdpLspFecEntry::MplsLdpLspFecSegmen
         static const ydk::Enum::YLeaf inSegment;
         static const ydk::Enum::YLeaf outSegment;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inSegment") return 1;
+            if (name == "outSegment") return 2;
+            return -1;
+        }
 };
 
 

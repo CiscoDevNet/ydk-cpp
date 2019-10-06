@@ -245,6 +245,14 @@ class TCPMIB::Tcp::TcpRtoAlgorithm : public ydk::Enum
         static const ydk::Enum::YLeaf vanj;
         static const ydk::Enum::YLeaf rfc2988;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "constant") return 2;
+            if (name == "rsre") return 3;
+            if (name == "vanj") return 4;
+            if (name == "rfc2988") return 5;
+            return -1;
+        }
 };
 
 class TCPMIB::TcpConnTable::TcpConnEntry::TcpConnState : public ydk::Enum
@@ -263,6 +271,21 @@ class TCPMIB::TcpConnTable::TcpConnEntry::TcpConnState : public ydk::Enum
         static const ydk::Enum::YLeaf timeWait;
         static const ydk::Enum::YLeaf deleteTCB;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "closed") return 1;
+            if (name == "listen") return 2;
+            if (name == "synSent") return 3;
+            if (name == "synReceived") return 4;
+            if (name == "established") return 5;
+            if (name == "finWait1") return 6;
+            if (name == "finWait2") return 7;
+            if (name == "closeWait") return 8;
+            if (name == "lastAck") return 9;
+            if (name == "closing") return 10;
+            if (name == "timeWait") return 11;
+            if (name == "deleteTCB") return 12;
+            return -1;
+        }
 };
 
 class TCPMIB::TcpConnectionTable::TcpConnectionEntry::TcpConnectionState : public ydk::Enum
@@ -281,6 +304,21 @@ class TCPMIB::TcpConnectionTable::TcpConnectionEntry::TcpConnectionState : publi
         static const ydk::Enum::YLeaf timeWait;
         static const ydk::Enum::YLeaf deleteTCB;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "closed") return 1;
+            if (name == "listen") return 2;
+            if (name == "synSent") return 3;
+            if (name == "synReceived") return 4;
+            if (name == "established") return 5;
+            if (name == "finWait1") return 6;
+            if (name == "finWait2") return 7;
+            if (name == "closeWait") return 8;
+            if (name == "lastAck") return 9;
+            if (name == "closing") return 10;
+            if (name == "timeWait") return 11;
+            if (name == "deleteTCB") return 12;
+            return -1;
+        }
 };
 
 

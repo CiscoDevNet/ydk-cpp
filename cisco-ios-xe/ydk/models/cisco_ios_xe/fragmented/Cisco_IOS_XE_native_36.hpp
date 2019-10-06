@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Preempt::Delay : public ydk::Entity
+class Native::Interface::FastEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac : public ydk::Entity
 {
     public:
-        Delay();
-        ~Delay();
+        Gmac();
+        ~Gmac();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,16 +32,16 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Pre
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf minimum; //type: uint16
+        ydk::YLeaf gcm_encrypt; //type: empty
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Preempt::Delay
+}; // Native::Interface::FastEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Timers : public ydk::Entity
+class Native::Interface::FastEthernet::Cts::Manual::Propagate : public ydk::Entity
 {
     public:
-        Timers();
-        ~Timers();
+        Propagate();
+        ~Propagate();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -53,16 +53,16 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Tim
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf advertise; //type: uint16
+        ydk::YLeaf sgt; //type: boolean
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Timers
+}; // Native::Interface::FastEthernet::Cts::Manual::Propagate
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Track : public ydk::Entity
+class Native::Interface::FastEthernet::Cts::RoleBased : public ydk::Entity
 {
     public:
-        Track();
-        ~Track();
+        RoleBased();
+        ~RoleBased();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -74,18 +74,66 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Tra
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Event; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Track::Event
+        ydk::YLeaf enforcement; //type: empty
+        ydk::YLeafList sgt_cache; //type: list of  SgtCache
+        class SgtMap; //type: Native::Interface::FastEthernet::Cts::RoleBased::SgtMap
 
-        ydk::YList event;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cts::RoleBased::SgtMap> sgt_map;
+                class SgtCache;
+
+}; // Native::Interface::FastEthernet::Cts::RoleBased
+
+
+class Native::Interface::FastEthernet::Cts::RoleBased::SgtMap : public ydk::Entity
+{
+    public:
+        SgtMap();
+        ~SgtMap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf security_group; //type: string
+        ydk::YLeaf sgt; //type: uint16
+
+}; // Native::Interface::FastEthernet::Cts::RoleBased::SgtMap
+
+
+class Native::Interface::FastEthernet::Udld : public ydk::Entity
+{
+    public:
+        Udld();
+        ~Udld();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Port; //type: Native::Interface::FastEthernet::Udld::Port
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Udld::Port> port; // presence node
         
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Track
+}; // Native::Interface::FastEthernet::Udld
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Track::Event : public ydk::Entity
+class Native::Interface::FastEthernet::Udld::Port : public ydk::Entity
 {
     public:
-        Event();
-        ~Event();
+        Port();
+        ~Port();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -97,18 +145,17 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Tra
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf object_id; //type: uint16
-        ydk::YLeaf decrement; //type: uint8
-        ydk::YLeaf shutdown; //type: empty
+        ydk::YLeaf aggressive; //type: empty
+        ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Track::Event
+}; // Native::Interface::FastEthernet::Udld::Port
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Vrrs : public ydk::Entity
+class Native::Interface::FastEthernet::Cdp : public ydk::Entity
 {
     public:
-        Vrrs();
-        ~Vrrs();
+        Cdp();
+        ~Cdp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -120,54 +167,19 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Vrr
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf leader; //type: string
+        ydk::YLeaf enable; //type: boolean
+        class Tlv; //type: Native::Interface::FastEthernet::Cdp::Tlv
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroup::AddressFamily::Ipv6::Vrrs
-
-
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2 : public ydk::Entity
-{
-    public:
-        VrrpGroupV2();
-        ~VrrpGroupV2();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf group_id; //type: uint8
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf priority; //type: uint8
-        ydk::YLeaf shutdown; //type: empty
-        class Authentication; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Authentication
-        class Ip; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip
-        class PreemptConfig; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::PreemptConfig
-        class Preempt; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt
-        class Timers; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers
-        class Track; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip> ip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::PreemptConfig> preempt_config;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt> preempt;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers> timers;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track> track;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cdp::Tlv> tlv;
         
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2
+}; // Native::Interface::FastEthernet::Cdp
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Authentication : public ydk::Entity
+class Native::Interface::FastEthernet::Cdp::Tlv : public ydk::Entity
 {
     public:
-        Authentication();
-        ~Authentication();
+        Tlv();
+        ~Tlv();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -179,41 +191,20 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Authentication : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf text; //type: string
+        ydk::YLeaf server_location; //type: empty
+        ydk::YLeaf location; //type: empty
+        class App; //type: Native::Interface::FastEthernet::Cdp::Tlv::App
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Authentication
-
-
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip : public ydk::Entity
-{
-    public:
-        Ip();
-        ~Ip();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Primary; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Primary
-        class Secondary; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Secondary
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Primary> primary;
-        ydk::YList secondary;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cdp::Tlv::App> app; // presence node
         
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip
+}; // Native::Interface::FastEthernet::Cdp::Tlv
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Primary : public ydk::Entity
+class Native::Interface::FastEthernet::Cdp::Tlv::App : public ydk::Entity
 {
     public:
-        Primary();
-        ~Primary();
+        App();
+        ~App();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -225,16 +216,17 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Primary : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: string
+        ydk::YLeaf tlvtype; //type: uint16
+        ydk::YLeaf value_; //type: string
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Primary
+}; // Native::Interface::FastEthernet::Cdp::Tlv::App
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Secondary : public ydk::Entity
+class Native::Interface::FastEthernet::Mvrp : public ydk::Entity
 {
     public:
-        Secondary();
-        ~Secondary();
+        Mvrp();
+        ~Mvrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -246,61 +238,21 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Secondary : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: string
-        ydk::YLeaf secondary; //type: empty
+        ydk::YLeaf mvrp; //type: empty
+        class Registration; //type: Native::Interface::FastEthernet::Mvrp::Registration
+        class Timer; //type: Native::Interface::FastEthernet::Mvrp::Timer
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Ip::Secondary
-
-
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::PreemptConfig : public ydk::Entity
-{
-    public:
-        PreemptConfig();
-        ~PreemptConfig();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf preempt; //type: boolean
-
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::PreemptConfig
-
-
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt : public ydk::Entity
-{
-    public:
-        Preempt();
-        ~Preempt();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Delay; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt::Delay
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt::Delay> delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp::Registration> registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp::Timer> timer;
         
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt
+}; // Native::Interface::FastEthernet::Mvrp
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt::Delay : public ydk::Entity
+class Native::Interface::FastEthernet::Mvrp::Registration : public ydk::Entity
 {
     public:
-        Delay();
-        ~Delay();
+        Registration();
+        ~Registration();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -312,16 +264,18 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt::Delay : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf minimum; //type: uint16
+        ydk::YLeaf fixed; //type: empty
+        ydk::YLeaf forbidden; //type: empty
+        ydk::YLeaf normal; //type: empty
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Preempt::Delay
+}; // Native::Interface::FastEthernet::Mvrp::Registration
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers : public ydk::Entity
+class Native::Interface::FastEthernet::Mvrp::Timer : public ydk::Entity
 {
     public:
-        Timers();
-        ~Timers();
+        Timer();
+        ~Timer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -333,19 +287,23 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf learn; //type: empty
-        class Advertise; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers::Advertise
+        ydk::YLeaf periodic; //type: empty
+        class Join; //type: Native::Interface::FastEthernet::Mvrp::Timer::Join
+        class Leave; //type: Native::Interface::FastEthernet::Mvrp::Timer::Leave
+        class LeaveAll; //type: Native::Interface::FastEthernet::Mvrp::Timer::LeaveAll
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers::Advertise> advertise;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp::Timer::Join> join; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp::Timer::Leave> leave; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp::Timer::LeaveAll> leave_all; // presence node
         
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers
+}; // Native::Interface::FastEthernet::Mvrp::Timer
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers::Advertise : public ydk::Entity
+class Native::Interface::FastEthernet::Mvrp::Timer::Join : public ydk::Entity
 {
     public:
-        Advertise();
-        ~Advertise();
+        Join();
+        ~Join();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -357,17 +315,16 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers::Advertise : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interval; //type: uint8
-        ydk::YLeaf msec; //type: uint16
+        ydk::YLeaf y_range; //type: uint32
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Timers::Advertise
+}; // Native::Interface::FastEthernet::Mvrp::Timer::Join
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track : public ydk::Entity
+class Native::Interface::FastEthernet::Mvrp::Timer::Leave : public ydk::Entity
 {
     public:
-        Track();
-        ~Track();
+        Leave();
+        ~Leave();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -379,18 +336,61 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Event; //type: Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track::Event
+        ydk::YLeaf y_range; //type: uint32
 
-        ydk::YList event;
+}; // Native::Interface::FastEthernet::Mvrp::Timer::Leave
+
+
+class Native::Interface::FastEthernet::Mvrp::Timer::LeaveAll : public ydk::Entity
+{
+    public:
+        LeaveAll();
+        ~LeaveAll();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf y_range; //type: uint32
+
+}; // Native::Interface::FastEthernet::Mvrp::Timer::LeaveAll
+
+
+class Native::Interface::FastEthernet::Ntp : public ydk::Entity
+{
+    public:
+        Ntp();
+        ~Ntp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf broadcast; //type: empty
+        class BroadcastOption; //type: Native::Interface::FastEthernet::Ntp::BroadcastOption
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ntp::BroadcastOption> broadcast_option;
         
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track
+}; // Native::Interface::FastEthernet::Ntp
 
 
-class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track::Event : public ydk::Entity
+class Native::Interface::FastEthernet::Ntp::BroadcastOption : public ydk::Entity
 {
     public:
-        Event();
-        ~Event();
+        BroadcastOption();
+        ~BroadcastOption();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -402,17 +402,18 @@ class Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track::Event : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf object_id; //type: uint16
-        ydk::YLeaf decrement; //type: uint8
+        class Broadcast; //type: Native::Interface::FastEthernet::Ntp::BroadcastOption::Broadcast
 
-}; // Native::Interface::FastEthernet::Vrrp::VrrpGroupV2::Track::Event
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ntp::BroadcastOption::Broadcast> broadcast;
+        
+}; // Native::Interface::FastEthernet::Ntp::BroadcastOption
 
 
-class Native::Interface::FastEthernet::Vrrp::Delay : public ydk::Entity
+class Native::Interface::FastEthernet::Ntp::BroadcastOption::Broadcast : public ydk::Entity
 {
     public:
-        Delay();
-        ~Delay();
+        Broadcast();
+        ~Broadcast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -424,17 +425,16 @@ class Native::Interface::FastEthernet::Vrrp::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf reload; //type: uint16
-        ydk::YLeaf minimum; //type: uint16
+        ydk::YLeaf client; //type: empty
 
-}; // Native::Interface::FastEthernet::Vrrp::Delay
+}; // Native::Interface::FastEthernet::Ntp::BroadcastOption::Broadcast
 
 
-class Native::Interface::FastEthernet::ZoneMember : public ydk::Entity
+class Native::Interface::FastEthernet::Utd : public ydk::Entity
 {
     public:
-        ZoneMember();
-        ~ZoneMember();
+        Utd();
+        ~Utd();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -446,9 +446,9 @@ class Native::Interface::FastEthernet::ZoneMember : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf security; //type: string
+        ydk::YLeaf enable; //type: empty
 
-}; // Native::Interface::FastEthernet::ZoneMember
+}; // Native::Interface::FastEthernet::Utd
 
 
 class Native::Interface::Ucse : public ydk::Entity
@@ -878,8 +878,8 @@ class Native::Interface::Ucse::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -1048,8 +1048,8 @@ class Native::Interface::Ucse::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3538,7 +3538,7 @@ class Native::Interface::Ucse::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3654,11 +3654,28 @@ class Native::Interface::Ucse::Standby::StandbyList::Ip : public ydk::Entity
 
 }; // Native::Interface::Ucse::Standby::StandbyList::Ip
 
+class Native::Interface::FastEthernet::Cts::RoleBased::SgtCache : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf egress;
+        static const ydk::Enum::YLeaf ingress;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "egress") return 0;
+            if (name == "ingress") return 1;
+            return -1;
+        }
+};
+
 class Native::Interface::Ucse::IfState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::ServiceInsertion : public ydk::Enum
@@ -3666,6 +3683,10 @@ class Native::Interface::Ucse::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::SwitchportWrapper::Switchport::Mode : public ydk::Enum
@@ -3674,6 +3695,11 @@ class Native::Interface::Ucse::SwitchportWrapper::Switchport::Mode : public ydk:
         static const ydk::Enum::YLeaf access;
         static const ydk::Enum::YLeaf trunk;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "access") return 0;
+            if (name == "trunk") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Backup::Delay::Failure : public ydk::Enum
@@ -3681,6 +3707,10 @@ class Native::Interface::Ucse::Backup::Delay::Failure : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3688,6 +3718,10 @@ class Native::Interface::Ucse::Backup::Delay::SecondaryDisable : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Backup::Load::Kickin : public ydk::Enum
@@ -3695,6 +3729,10 @@ class Native::Interface::Ucse::Backup::Load::Kickin : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Backup::Load::Kickout : public ydk::Enum
@@ -3702,6 +3740,10 @@ class Native::Interface::Ucse::Backup::Load::Kickout : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Flowcontrol::Receive : public ydk::Enum
@@ -3711,6 +3753,12 @@ class Native::Interface::Ucse::Flowcontrol::Receive : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Flowcontrol::Send : public ydk::Enum
@@ -3720,6 +3768,12 @@ class Native::Interface::Ucse::Flowcontrol::Send : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::HoldQueue::Direction : public ydk::Enum
@@ -3728,6 +3782,11 @@ class Native::Interface::Ucse::HoldQueue::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
@@ -3736,6 +3795,11 @@ class Native::Interface::Ucse::Ip::Verify::Unicast::Source::ReachableVia : publi
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3744,6 +3808,11 @@ class Native::Interface::Ucse::Ipv6::TrafficFilter::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3751,6 +3820,10 @@ class Native::Interface::Ucse::InterfaceQos::Trust::Device : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Standby::Version : public ydk::Enum
@@ -3759,6 +3832,11 @@ class Native::Interface::Ucse::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3766,6 +3844,10 @@ class Native::Interface::Ucse::Standby::StandbyList::Ipv6 : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3774,6 +3856,11 @@ class Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::KeyStr
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 

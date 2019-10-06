@@ -1461,6 +1461,11 @@ class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsDocsisLBEnable : public yd
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBEnable : public ydk::Enum
@@ -1469,6 +1474,11 @@ class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBEnable : public ydk::
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBUpstreamEnable : public ydk::Enum
@@ -1477,6 +1487,11 @@ class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBUpstreamEnable : publ
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBStaticEnable : public ydk::Enum
@@ -1485,6 +1500,11 @@ class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBStaticEnable : public
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBDynEnable : public ydk::Enum
@@ -1493,6 +1513,11 @@ class CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::CdxCmtsD30LBDynEnable : public yd
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::CdxQosIfRateLimitAlgm : public ydk::Enum
@@ -1504,6 +1529,14 @@ class CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::CdxQosIfR
         static const ydk::Enum::YLeaf wtExPacketDiscard;
         static const ydk::Enum::YLeaf shaping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noRateLimit") return 1;
+            if (name == "oneSecBurst") return 2;
+            if (name == "carLike") return 3;
+            if (name == "wtExPacketDiscard") return 4;
+            if (name == "shaping") return 5;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::CdxQosIfRateLimitShpMaxDelay : public ydk::Enum
@@ -1515,6 +1548,14 @@ class CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::CdxQosIfR
         static const ydk::Enum::YLeaf msec512;
         static const ydk::Enum::YLeaf msec1024;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "na") return 1;
+            if (name == "msec128") return 2;
+            if (name == "msec256") return 3;
+            if (name == "msec512") return 4;
+            if (name == "msec1024") return 5;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::CdxQosIfRateLimitShpGranularity : public ydk::Enum
@@ -1527,6 +1568,15 @@ class CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::CdxQosIfR
         static const ydk::Enum::YLeaf msec8;
         static const ydk::Enum::YLeaf msec16;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "na") return 1;
+            if (name == "msec1") return 2;
+            if (name == "msec2") return 3;
+            if (name == "msec4") return 4;
+            if (name == "msec8") return 5;
+            if (name == "msec16") return 6;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry::CdxUpInfoElemStatsNameCode : public ydk::Enum
@@ -1539,6 +1589,15 @@ class CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry::CdxUpIn
         static const ydk::Enum::YLeaf shortGrantIE;
         static const ydk::Enum::YLeaf longGrantIE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reqIE") return 1;
+            if (name == "reqOrDataIE") return 2;
+            if (name == "initMtnIE") return 3;
+            if (name == "stnMtnIE") return 4;
+            if (name == "shortGrantIE") return 5;
+            if (name == "longGrantIE") return 6;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::CdxBWQueueNameCode : public ydk::Enum
@@ -1556,6 +1615,20 @@ class CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::CdxBWQueueNameCode : pu
         static const ydk::Enum::YLeaf p7BEGrantQ;
         static const ydk::Enum::YLeaf rngPollQ;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cirQ") return 1;
+            if (name == "tbeQ") return 2;
+            if (name == "p0BEGrantQ") return 3;
+            if (name == "p1BEGrantQ") return 4;
+            if (name == "p2BEGrantQ") return 5;
+            if (name == "p3BEGrantQ") return 6;
+            if (name == "p4BEGrantQ") return 7;
+            if (name == "p5BEGrantQ") return 8;
+            if (name == "p6BEGrantQ") return 9;
+            if (name == "p7BEGrantQ") return 10;
+            if (name == "rngPollQ") return 11;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::CdxBWQueueType : public ydk::Enum
@@ -1566,6 +1639,13 @@ class CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::CdxBWQueueType : public
         static const ydk::Enum::YLeaf fifo;
         static const ydk::Enum::YLeaf priority;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "other") return 2;
+            if (name == "fifo") return 3;
+            if (name == "priority") return 4;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry::CdxCmCpeType : public ydk::Enum
@@ -1574,6 +1654,11 @@ class CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry::CdxCmCpeType : public ydk::
         static const ydk::Enum::YLeaf cm;
         static const ydk::Enum::YLeaf cpe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cm") return 1;
+            if (name == "cpe") return 2;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry::CdxCmtsCmStatusValue : public ydk::Enum
@@ -1607,6 +1692,36 @@ class CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry::CdxCmts
         static const ydk::Enum::YLeaf channelChgInitRangingRcvd;
         static const ydk::Enum::YLeaf channelChgRangingInProgress;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "offline") return 1;
+            if (name == "others") return 2;
+            if (name == "initRangingRcvd") return 3;
+            if (name == "initDhcpReqRcvd") return 4;
+            if (name == "onlineNetAccessDisabled") return 5;
+            if (name == "onlineKekAssigned") return 6;
+            if (name == "onlineTekAssigned") return 7;
+            if (name == "rejectBadMic") return 8;
+            if (name == "rejectBadCos") return 9;
+            if (name == "kekRejected") return 10;
+            if (name == "tekRejected") return 11;
+            if (name == "online") return 12;
+            if (name == "initTftpPacketRcvd") return 13;
+            if (name == "initTodRequestRcvd") return 14;
+            if (name == "reset") return 15;
+            if (name == "rangingInProgress") return 16;
+            if (name == "rangingCompleted") return 17;
+            if (name == "dhcpGotIpAddr") return 18;
+            if (name == "rejStaleConfig") return 19;
+            if (name == "rejIpSpoof") return 20;
+            if (name == "rejClassFail") return 21;
+            if (name == "rejRegNack") return 22;
+            if (name == "bpiKekExpired") return 23;
+            if (name == "bpiTekExpired") return 24;
+            if (name == "shutdown") return 25;
+            if (name == "channelChgInitRangingRcvd") return 26;
+            if (name == "channelChgRangingInProgress") return 27;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry::CdxCmtsCmDMICMode : public ydk::Enum
@@ -1617,6 +1732,13 @@ class CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry::CdxCmtsCmDMICMode
         static const ydk::Enum::YLeaf lock;
         static const ydk::Enum::YLeaf reject;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notConfigured") return 1;
+            if (name == "mark") return 2;
+            if (name == "lock") return 3;
+            if (name == "reject") return 4;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry::CdxCmtsCmChOverState : public ydk::Enum
@@ -1629,6 +1751,15 @@ class CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry::CdxCmtsCmChOv
         static const ydk::Enum::YLeaf waitToSendMessage;
         static const ydk::Enum::YLeaf timeOut;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "messageSent") return 1;
+            if (name == "commandNotActive") return 2;
+            if (name == "noOpNeeded") return 3;
+            if (name == "modemNotFound") return 4;
+            if (name == "waitToSendMessage") return 5;
+            if (name == "timeOut") return 6;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry::CdxCmtsCmStatusDMICMode : public ydk::Enum
@@ -1638,6 +1769,12 @@ class CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry::CdxCm
         static const ydk::Enum::YLeaf lock;
         static const ydk::Enum::YLeaf reject;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mark") return 1;
+            if (name == "lock") return 2;
+            if (name == "reject") return 3;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::CdxRPDGS7KTriSwitch : public ydk::Enum
@@ -1647,6 +1784,12 @@ class CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::CdxRPDGS7KTriSwitch : p
         static const ydk::Enum::YLeaf high;
         static const ydk::Enum::YLeaf pad;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "low") return 1;
+            if (name == "high") return 2;
+            if (name == "pad") return 3;
+            return -1;
+        }
 };
 
 class CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::CdxRPDGS7KTamp : public ydk::Enum
@@ -1655,6 +1798,11 @@ class CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::CdxRPDGS7KTamp : public
         static const ydk::Enum::YLeaf intact;
         static const ydk::Enum::YLeaf compromised;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "intact") return 1;
+            if (name == "compromised") return 2;
+            return -1;
+        }
 };
 
 

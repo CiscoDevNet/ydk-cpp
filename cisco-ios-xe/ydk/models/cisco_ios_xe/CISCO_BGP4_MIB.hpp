@@ -547,6 +547,13 @@ class CbgpSafi : public ydk::Enum
         static const ydk::Enum::YLeaf unicastAndMulticast;
         static const ydk::Enum::YLeaf vpn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            if (name == "unicastAndMulticast") return 3;
+            if (name == "vpn") return 128;
+            return -1;
+        }
 };
 
 class CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteOrigin : public ydk::Enum
@@ -556,6 +563,12 @@ class CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteOrigin : public ydk
         static const ydk::Enum::YLeaf egp;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 1;
+            if (name == "egp") return 2;
+            if (name == "incomplete") return 3;
+            return -1;
+        }
 };
 
 class CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteAtomicAggregate : public ydk::Enum
@@ -564,6 +577,11 @@ class CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteAtomicAggregate : p
         static const ydk::Enum::YLeaf lessSpecificRouteNotSelected;
         static const ydk::Enum::YLeaf lessSpecificRouteSelected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lessSpecificRouteNotSelected") return 1;
+            if (name == "lessSpecificRouteSelected") return 2;
+            return -1;
+        }
 };
 
 class CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapCode : public ydk::Enum
@@ -574,6 +592,13 @@ class CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapCode : publ
         static const ydk::Enum::YLeaf gracefulRestart;
         static const ydk::Enum::YLeaf routeRefreshOld;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multiProtocol") return 1;
+            if (name == "routeRefresh") return 2;
+            if (name == "gracefulRestart") return 64;
+            if (name == "routeRefreshOld") return 128;
+            return -1;
+        }
 };
 
 class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State : public ydk::Enum
@@ -586,6 +611,15 @@ class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State : public ydk:
         static const ydk::Enum::YLeaf openconfirm;
         static const ydk::Enum::YLeaf established;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "connect") return 2;
+            if (name == "active") return 3;
+            if (name == "opensent") return 4;
+            if (name == "openconfirm") return 5;
+            if (name == "established") return 6;
+            return -1;
+        }
 };
 
 class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2AdminStatus : public ydk::Enum
@@ -594,6 +628,11 @@ class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2AdminStatus : publi
         static const ydk::Enum::YLeaf stop;
         static const ydk::Enum::YLeaf start;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stop") return 1;
+            if (name == "start") return 2;
+            return -1;
+        }
 };
 
 class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState : public ydk::Enum
@@ -607,6 +646,16 @@ class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState : public 
         static const ydk::Enum::YLeaf openconfirm;
         static const ydk::Enum::YLeaf established;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "idle") return 1;
+            if (name == "connect") return 2;
+            if (name == "active") return 3;
+            if (name == "opensent") return 4;
+            if (name == "openconfirm") return 5;
+            if (name == "established") return 6;
+            return -1;
+        }
 };
 
 class CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode : public ydk::Enum
@@ -619,6 +668,15 @@ class CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode : p
         static const ydk::Enum::YLeaf addPath;
         static const ydk::Enum::YLeaf routeRefreshOld;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multiProtocol") return 1;
+            if (name == "routeRefresh") return 2;
+            if (name == "gracefulRestart") return 64;
+            if (name == "fourByteAs") return 65;
+            if (name == "addPath") return 69;
+            if (name == "routeRefreshOld") return 128;
+            return -1;
+        }
 };
 
 

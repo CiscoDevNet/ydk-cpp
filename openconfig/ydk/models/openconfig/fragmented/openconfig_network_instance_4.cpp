@@ -6,8 +6,8 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_network_instance_4.hpp"
 #include "openconfig_network_instance_5.hpp"
-#include "openconfig_network_instance_7.hpp"
 #include "openconfig_network_instance_6.hpp"
+#include "openconfig_network_instance_7.hpp"
 
 using namespace ydk;
 

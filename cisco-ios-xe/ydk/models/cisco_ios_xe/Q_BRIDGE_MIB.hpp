@@ -841,6 +841,10 @@ class QBRIDGEMIB::Dot1qBase::Dot1qVlanVersionNumber : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf version1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "version1") return 1;
+            return -1;
+        }
 };
 
 class QBRIDGEMIB::Dot1qVlan::Dot1qConstraintTypeDefault : public ydk::Enum
@@ -849,6 +853,11 @@ class QBRIDGEMIB::Dot1qVlan::Dot1qConstraintTypeDefault : public ydk::Enum
         static const ydk::Enum::YLeaf independent;
         static const ydk::Enum::YLeaf shared;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "independent") return 1;
+            if (name == "shared") return 2;
+            return -1;
+        }
 };
 
 class QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus : public ydk::Enum
@@ -860,6 +869,14 @@ class QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus : public yd
         static const ydk::Enum::YLeaf self;
         static const ydk::Enum::YLeaf mgmt;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "learned") return 3;
+            if (name == "self") return 4;
+            if (name == "mgmt") return 5;
+            return -1;
+        }
 };
 
 class QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastStatus : public ydk::Enum
@@ -871,6 +888,14 @@ class QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticU
         static const ydk::Enum::YLeaf deleteOnReset;
         static const ydk::Enum::YLeaf deleteOnTimeout;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "permanent") return 3;
+            if (name == "deleteOnReset") return 4;
+            if (name == "deleteOnTimeout") return 5;
+            return -1;
+        }
 };
 
 class QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastStatus : public ydk::Enum
@@ -882,6 +907,14 @@ class QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qSta
         static const ydk::Enum::YLeaf deleteOnReset;
         static const ydk::Enum::YLeaf deleteOnTimeout;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "permanent") return 3;
+            if (name == "deleteOnReset") return 4;
+            if (name == "deleteOnTimeout") return 5;
+            return -1;
+        }
 };
 
 class QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::Dot1qVlanStatus : public ydk::Enum
@@ -891,6 +924,12 @@ class QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::Dot1qVlanStatus 
         static const ydk::Enum::YLeaf permanent;
         static const ydk::Enum::YLeaf dynamicGvrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "permanent") return 2;
+            if (name == "dynamicGvrp") return 3;
+            return -1;
+        }
 };
 
 class QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::Dot1qConstraintType : public ydk::Enum
@@ -899,6 +938,11 @@ class QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::
         static const ydk::Enum::YLeaf independent;
         static const ydk::Enum::YLeaf shared;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "independent") return 1;
+            if (name == "shared") return 2;
+            return -1;
+        }
 };
 
 class QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolTemplateFrameType : public ydk::Enum
@@ -910,6 +954,14 @@ class QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtoco
         static const ydk::Enum::YLeaf snapOther;
         static const ydk::Enum::YLeaf llcOther;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 1;
+            if (name == "rfc1042") return 2;
+            if (name == "snap8021H") return 3;
+            if (name == "snapOther") return 4;
+            if (name == "llcOther") return 5;
+            return -1;
+        }
 };
 
 

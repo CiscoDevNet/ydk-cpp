@@ -17842,6 +17842,21 @@ bool Install::Logs::Log::Communication::LogContents::has_leaf_or_child_of_name(c
     return false;
 }
 
+const Enum::YLeaf InstmgrIssuAbortMethod::method_undefined {0, "method-undefined"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_no_operation {1, "method-no-operation"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_standby_reload {2, "method-standby-reload"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_system_reload {3, "method-system-reload"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_rollback {4, "method-rollback"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_not_possible {5, "method-not-possible"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_admin_only {6, "method-admin-only"};
+
+const Enum::YLeaf InstmgrBagRequestTrigger::cli {1, "cli"};
+const Enum::YLeaf InstmgrBagRequestTrigger::xr_xml {2, "xr-xml"};
+
+const Enum::YLeaf InstmgrGroup::inst_pkg_group_undefined {0, "inst-pkg-group-undefined"};
+const Enum::YLeaf InstmgrGroup::inst_pkg_group_grouped {1, "inst-pkg-group-grouped"};
+const Enum::YLeaf InstmgrGroup::inst_pkg_group_individual {2, "inst-pkg-group-individual"};
+
 const Enum::YLeaf IsmCardTypeFamily::ndsc_active_rp {1, "ndsc-active-rp"};
 const Enum::YLeaf IsmCardTypeFamily::ndsc_standby_rp {2, "ndsc-standby-rp"};
 const Enum::YLeaf IsmCardTypeFamily::active_drp {3, "active-drp"};
@@ -17857,44 +17872,30 @@ const Enum::YLeaf IsmCardTypeFamily::sp {12, "sp"};
 const Enum::YLeaf IsmCardTypeFamily::fabric_sp {13, "fabric-sp"};
 const Enum::YLeaf IsmCardTypeFamily::spa {14, "spa"};
 
-const Enum::YLeaf InstmgrIsmFsmState::idle {0, "idle"};
-const Enum::YLeaf InstmgrIsmFsmState::init_done {1, "init-done"};
-const Enum::YLeaf InstmgrIsmFsmState::load_shut {2, "load-shut"};
-const Enum::YLeaf InstmgrIsmFsmState::load_wait {3, "load-wait"};
-const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_before {4, "load-stp-root-before"};
-const Enum::YLeaf InstmgrIsmFsmState::load_standby_root_sc_upgrade {5, "load-standby-root-sc-upgrade"};
-const Enum::YLeaf InstmgrIsmFsmState::load_standby_management_upgrade {6, "load-standby-management-upgrade"};
-const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_after {7, "load-stp-root-after"};
-const Enum::YLeaf InstmgrIsmFsmState::load_fabric_upgrade {8, "load-fabric-upgrade"};
-const Enum::YLeaf InstmgrIsmFsmState::load_management_issu_ready {9, "load-management-issu-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::load_done {10, "load-done"};
-const Enum::YLeaf InstmgrIsmFsmState::run_prep {11, "run-prep"};
-const Enum::YLeaf InstmgrIsmFsmState::run_wait {12, "run-wait"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_prep {13, "runi-mdr-prep"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_start {14, "runi-mdr-start"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_complete {15, "runi-mdr-complete"};
-const Enum::YLeaf InstmgrIsmFsmState::run_make_standby_ready {16, "run-make-standby-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::run_root_scfo {17, "run-root-scfo"};
-const Enum::YLeaf InstmgrIsmFsmState::run_ndscfo {18, "run-ndscfo"};
-const Enum::YLeaf InstmgrIsmFsmState::run_transient1 {19, "run-transient1"};
-const Enum::YLeaf InstmgrIsmFsmState::run_dscfo {20, "run-dscfo"};
-const Enum::YLeaf InstmgrIsmFsmState::run_fo_complete {21, "run-fo-complete"};
-const Enum::YLeaf InstmgrIsmFsmState::run_stp_root_return {22, "run-stp-root-return"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_continue {23, "runi-mdr-continue"};
-const Enum::YLeaf InstmgrIsmFsmState::run_am_i_ready_afteri_mdr {24, "run-am-i-ready-afteri-mdr"};
-const Enum::YLeaf InstmgrIsmFsmState::run_nsf_ready {25, "run-nsf-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::run_nsf_begin {26, "run-nsf-begin"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_done {27, "runi-mdr-done"};
-const Enum::YLeaf InstmgrIsmFsmState::run_management_issu_ready {28, "run-management-issu-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::run_un_shut {29, "run-un-shut"};
-const Enum::YLeaf InstmgrIsmFsmState::run_is_done {30, "run-is-done"};
-const Enum::YLeaf InstmgrIsmFsmState::state_max {31, "state-max"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::user_error {1, "user-error"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::non_specific {2, "non-specific"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::warning {3, "warning"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::information {4, "information"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::user_prompt {5, "user-prompt"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::log {6, "log"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::system_error {7, "system-error"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::user_response {8, "user-response"};
 
 const Enum::YLeaf InstallmgrIsmNodeConforming::conforming {0, "conforming"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::none_conforming {1, "none-conforming"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::upgrade_fail {2, "upgrade-fail"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::none_conforming_spa {3, "none-conforming-spa"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::spa_upgrade_fail {4, "spa-upgrade-fail"};
+
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_unknown {0, "inst-phase-unknown"};
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_download {10, "inst-phase-download"};
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_sw_change {50, "inst-phase-sw-change"};
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_cleaning_up {1000, "inst-phase-cleaning-up"};
+
+const Enum::YLeaf InstmgrIssuAbortImpact::undefined {0, "undefined"};
+const Enum::YLeaf InstmgrIssuAbortImpact::hitless {1, "hitless"};
+const Enum::YLeaf InstmgrIssuAbortImpact::traffic_outage {2, "traffic-outage"};
+const Enum::YLeaf InstmgrIssuAbortImpact::not_applicable {3, "not-applicable"};
 
 const Enum::YLeaf InstmgrIsmNodeState::none {0, "none"};
 const Enum::YLeaf InstmgrIsmNodeState::issu_node_gsp_ready {1, "issu-node-gsp-ready"};
@@ -17929,17 +17930,10 @@ const Enum::YLeaf InstmgrIsmNodeState::unsupported_hw {29, "unsupported-hw"};
 const Enum::YLeaf InstmgrIsmNodeState::not_reachable {30, "not-reachable"};
 const Enum::YLeaf InstmgrIsmNodeState::max {32, "max"};
 
-const Enum::YLeaf InstmgrPiCard::type_rp {0, "type-rp"};
-const Enum::YLeaf InstmgrPiCard::type_drp {1, "type-drp"};
-const Enum::YLeaf InstmgrPiCard::type_lc {2, "type-lc"};
-const Enum::YLeaf InstmgrPiCard::type_sc {3, "type-sc"};
-const Enum::YLeaf InstmgrPiCard::type_sp {4, "type-sp"};
-const Enum::YLeaf InstmgrPiCard::type_other {5, "type-other"};
-
-const Enum::YLeaf InstmgrNodeRole::redundency_unknown {0, "redundency-unknown"};
-const Enum::YLeaf InstmgrNodeRole::redundency_active {1, "redundency-active"};
-const Enum::YLeaf InstmgrNodeRole::redundency_standby {2, "redundency-standby"};
-const Enum::YLeaf InstmgrNodeRole::redundency_unusable {3, "redundency-unusable"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_undefined {0, "inst-pkg-type-undefined"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_root {1, "inst-pkg-type-root"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_standard {2, "inst-pkg-type-standard"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_internal {3, "inst-pkg-type-internal"};
 
 const Enum::YLeaf InstmgrCardState::instmgr_card_not_present {0, "instmgr-card-not-present"};
 const Enum::YLeaf InstmgrCardState::instmgr_card_present {1, "instmgr-card-present"};
@@ -17980,56 +17974,10 @@ const Enum::YLeaf InstmgrCardState::instmgr_card_fpd_hold {35, "instmgr-card-fpd
 const Enum::YLeaf InstmgrCardState::instmgr_card_updating_fpd {37, "instmgr-card-updating-fpd"};
 const Enum::YLeaf InstmgrCardState::instmgr_card_num_states {38, "instmgr-card-num-states"};
 
-const Enum::YLeaf InstmgrGroup::inst_pkg_group_undefined {0, "inst-pkg-group-undefined"};
-const Enum::YLeaf InstmgrGroup::inst_pkg_group_grouped {1, "inst-pkg-group-grouped"};
-const Enum::YLeaf InstmgrGroup::inst_pkg_group_individual {2, "inst-pkg-group-individual"};
-
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_undefined {0, "inst-pkg-type-undefined"};
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_root {1, "inst-pkg-type-root"};
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_standard {2, "inst-pkg-type-standard"};
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_internal {3, "inst-pkg-type-internal"};
-
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_unknown {0, "inst-phase-unknown"};
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_download {10, "inst-phase-download"};
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_sw_change {50, "inst-phase-sw-change"};
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_cleaning_up {1000, "inst-phase-cleaning-up"};
-
-const Enum::YLeaf InstmgrBagIiState::idle {1, "idle"};
-const Enum::YLeaf InstmgrBagIiState::in_progress {2, "in-progress"};
-const Enum::YLeaf InstmgrBagIiState::completed {3, "completed"};
-const Enum::YLeaf InstmgrBagIiState::aborted {4, "aborted"};
-const Enum::YLeaf InstmgrBagIiState::rebooted {5, "rebooted"};
-
-const Enum::YLeaf InstmgrBagIiDirection::not_incremental {0, "not-incremental"};
-const Enum::YLeaf InstmgrBagIiDirection::installing {1, "installing"};
-const Enum::YLeaf InstmgrBagIiDirection::unwinding {2, "unwinding"};
-
-const Enum::YLeaf InstmgrBagUserMsgCategory::user_error {1, "user-error"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::non_specific {2, "non-specific"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::warning {3, "warning"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::information {4, "information"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::user_prompt {5, "user-prompt"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::log {6, "log"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::system_error {7, "system-error"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::user_response {8, "user-response"};
-
-const Enum::YLeaf InstmgrIssuAbortImpact::undefined {0, "undefined"};
-const Enum::YLeaf InstmgrIssuAbortImpact::hitless {1, "hitless"};
-const Enum::YLeaf InstmgrIssuAbortImpact::traffic_outage {2, "traffic-outage"};
-const Enum::YLeaf InstmgrIssuAbortImpact::not_applicable {3, "not-applicable"};
-
-const Enum::YLeaf InstmgrIssuAbortMethod::method_undefined {0, "method-undefined"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_no_operation {1, "method-no-operation"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_standby_reload {2, "method-standby-reload"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_system_reload {3, "method-system-reload"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_rollback {4, "method-rollback"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_not_possible {5, "method-not-possible"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_admin_only {6, "method-admin-only"};
-
-const Enum::YLeaf InstmgrBagAbortState::abortable {1, "abortable"};
-const Enum::YLeaf InstmgrBagAbortState::no_longer_abortable {2, "no-longer-abortable"};
-const Enum::YLeaf InstmgrBagAbortState::never_abortable {3, "never-abortable"};
-const Enum::YLeaf InstmgrBagAbortState::already_aborted {4, "already-aborted"};
+const Enum::YLeaf InstmgrNodeRole::redundency_unknown {0, "redundency-unknown"};
+const Enum::YLeaf InstmgrNodeRole::redundency_active {1, "redundency-active"};
+const Enum::YLeaf InstmgrNodeRole::redundency_standby {2, "redundency-standby"};
+const Enum::YLeaf InstmgrNodeRole::redundency_unusable {3, "redundency-unusable"};
 
 const Enum::YLeaf InstmgrRequest::add {1, "add"};
 const Enum::YLeaf InstmgrRequest::accept {2, "accept"};
@@ -18048,8 +17996,55 @@ const Enum::YLeaf InstmgrRequest::label {14, "label"};
 const Enum::YLeaf InstmgrRequest::clear_label {15, "clear-label"};
 const Enum::YLeaf InstmgrRequest::extend {16, "extend"};
 
-const Enum::YLeaf InstmgrBagRequestTrigger::cli {1, "cli"};
-const Enum::YLeaf InstmgrBagRequestTrigger::xr_xml {2, "xr-xml"};
+const Enum::YLeaf InstmgrIsmFsmState::idle {0, "idle"};
+const Enum::YLeaf InstmgrIsmFsmState::init_done {1, "init-done"};
+const Enum::YLeaf InstmgrIsmFsmState::load_shut {2, "load-shut"};
+const Enum::YLeaf InstmgrIsmFsmState::load_wait {3, "load-wait"};
+const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_before {4, "load-stp-root-before"};
+const Enum::YLeaf InstmgrIsmFsmState::load_standby_root_sc_upgrade {5, "load-standby-root-sc-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmState::load_standby_management_upgrade {6, "load-standby-management-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_after {7, "load-stp-root-after"};
+const Enum::YLeaf InstmgrIsmFsmState::load_fabric_upgrade {8, "load-fabric-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmState::load_management_issu_ready {9, "load-management-issu-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::load_done {10, "load-done"};
+const Enum::YLeaf InstmgrIsmFsmState::run_prep {11, "run-prep"};
+const Enum::YLeaf InstmgrIsmFsmState::run_wait {12, "run-wait"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_prep {13, "runi-mdr-prep"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_start {14, "runi-mdr-start"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_complete {15, "runi-mdr-complete"};
+const Enum::YLeaf InstmgrIsmFsmState::run_make_standby_ready {16, "run-make-standby-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::run_root_scfo {17, "run-root-scfo"};
+const Enum::YLeaf InstmgrIsmFsmState::run_ndscfo {18, "run-ndscfo"};
+const Enum::YLeaf InstmgrIsmFsmState::run_transient1 {19, "run-transient1"};
+const Enum::YLeaf InstmgrIsmFsmState::run_dscfo {20, "run-dscfo"};
+const Enum::YLeaf InstmgrIsmFsmState::run_fo_complete {21, "run-fo-complete"};
+const Enum::YLeaf InstmgrIsmFsmState::run_stp_root_return {22, "run-stp-root-return"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_continue {23, "runi-mdr-continue"};
+const Enum::YLeaf InstmgrIsmFsmState::run_am_i_ready_afteri_mdr {24, "run-am-i-ready-afteri-mdr"};
+const Enum::YLeaf InstmgrIsmFsmState::run_nsf_ready {25, "run-nsf-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::run_nsf_begin {26, "run-nsf-begin"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_done {27, "runi-mdr-done"};
+const Enum::YLeaf InstmgrIsmFsmState::run_management_issu_ready {28, "run-management-issu-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::run_un_shut {29, "run-un-shut"};
+const Enum::YLeaf InstmgrIsmFsmState::run_is_done {30, "run-is-done"};
+const Enum::YLeaf InstmgrIsmFsmState::state_max {31, "state-max"};
+
+const Enum::YLeaf InstmgrBagIiDirection::not_incremental {0, "not-incremental"};
+const Enum::YLeaf InstmgrBagIiDirection::installing {1, "installing"};
+const Enum::YLeaf InstmgrBagIiDirection::unwinding {2, "unwinding"};
+
+const Enum::YLeaf InstmgrPiCard::type_rp {0, "type-rp"};
+const Enum::YLeaf InstmgrPiCard::type_drp {1, "type-drp"};
+const Enum::YLeaf InstmgrPiCard::type_lc {2, "type-lc"};
+const Enum::YLeaf InstmgrPiCard::type_sc {3, "type-sc"};
+const Enum::YLeaf InstmgrPiCard::type_sp {4, "type-sp"};
+const Enum::YLeaf InstmgrPiCard::type_other {5, "type-other"};
+
+const Enum::YLeaf InstmgrBagIiState::idle {1, "idle"};
+const Enum::YLeaf InstmgrBagIiState::in_progress {2, "in-progress"};
+const Enum::YLeaf InstmgrBagIiState::completed {3, "completed"};
+const Enum::YLeaf InstmgrBagIiState::aborted {4, "aborted"};
+const Enum::YLeaf InstmgrBagIiState::rebooted {5, "rebooted"};
 
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::user_error {1, "user-error"};
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::non_specific {2, "non-specific"};
@@ -18059,6 +18054,11 @@ const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::user_prompt {5, "user-promp
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::log {6, "log"};
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::system_error {7, "system-error"};
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::user_response {8, "user-response"};
+
+const Enum::YLeaf InstmgrBagAbortState::abortable {1, "abortable"};
+const Enum::YLeaf InstmgrBagAbortState::no_longer_abortable {2, "no-longer-abortable"};
+const Enum::YLeaf InstmgrBagAbortState::never_abortable {3, "never-abortable"};
+const Enum::YLeaf InstmgrBagAbortState::already_aborted {4, "already-aborted"};
 
 
 }

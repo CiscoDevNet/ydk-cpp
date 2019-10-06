@@ -1685,7 +1685,6 @@ class MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelRestorationLsp : pub
         ydk::YLeaf last_path_change; //type: uint32
         ydk::YLeaf persistent_bytes; //type: uint64
         ydk::YLeaf persistent_packets; //type: uint64
-        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
         class LspFec; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelRestorationLsp::LspFec
         class S2l; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelRestorationLsp::S2l
 

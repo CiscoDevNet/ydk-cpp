@@ -128,6 +128,12 @@ class AlAlarmBistate : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf clear;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-available") return 0;
+            if (name == "active") return 1;
+            if (name == "clear") return 2;
+            return -1;
+        }
 };
 
 class AlAlarmSeverity : public ydk::Enum
@@ -143,6 +149,18 @@ class AlAlarmSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf informational;
         static const ydk::Enum::YLeaf debugging;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return -1;
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "informational") return 6;
+            if (name == "debugging") return 7;
+            return -1;
+        }
 };
 
 

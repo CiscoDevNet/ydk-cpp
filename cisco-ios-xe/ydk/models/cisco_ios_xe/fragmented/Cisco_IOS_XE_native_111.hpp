@@ -405,7 +405,7 @@ class Native::Interface::VirtualPortGroup::Standby::StandbyList : public ydk::En
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -2783,7 +2783,7 @@ class Native::Interface::VirtualPortGroup::Pppoe::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
         class Group;
 
 }; // Native::Interface::VirtualPortGroup::Pppoe::Enable
@@ -2913,9 +2913,9 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1ad::Cos2
 
@@ -2966,9 +2966,9 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1q::Cos2
 
@@ -3593,6 +3593,11 @@ class Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter::Direction : publ
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3600,6 +3605,10 @@ class Native::Interface::VirtualPortGroup::InterfaceQos::Trust::Device : public 
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Standby::Version : public ydk::Enum
@@ -3608,6 +3617,11 @@ class Native::Interface::VirtualPortGroup::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3615,6 +3629,10 @@ class Native::Interface::VirtualPortGroup::Standby::StandbyList::Ipv6 : public y
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3623,6 +3641,11 @@ class Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication:
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3631,6 +3654,11 @@ class Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Adver
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::AccessSession::HostMode : public ydk::Enum
@@ -3641,6 +3669,13 @@ class Native::Interface::VirtualPortGroup::AccessSession::HostMode : public ydk:
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Trust::Device : public ydk::Enum
@@ -3651,6 +3686,13 @@ class Native::Interface::VirtualPortGroup::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::ChannelGroup::Mode : public ydk::Enum
@@ -3662,6 +3704,14 @@ class Native::Interface::VirtualPortGroup::ChannelGroup::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf on;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "auto") return 1;
+            if (name == "desirable") return 2;
+            if (name == "on") return 3;
+            if (name == "passive") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Ethernet::Oam::Mode : public ydk::Enum
@@ -3670,6 +3720,11 @@ class Native::Interface::VirtualPortGroup::Ethernet::Oam::Mode : public ydk::Enu
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "passive") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Pppoe::Enable::Group : public ydk::Enum
@@ -3677,6 +3732,10 @@ class Native::Interface::VirtualPortGroup::Pppoe::Enable::Group : public ydk::En
     public:
         static const ydk::Enum::YLeaf global;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "global") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1ad::Id : public ydk::Enum
@@ -3684,6 +3743,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1ad::Dot1q : public ydk::Enum
@@ -3691,6 +3754,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1ad::Etype : public ydk::Enum
@@ -3702,6 +3769,14 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1q::Id : public ydk::Enum
@@ -3709,6 +3784,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1q::SecondDot1q : public ydk::Enum
@@ -3716,6 +3795,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1q::Etype : public ydk::Enum
@@ -3727,6 +3810,14 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot1q::VlanType : public ydk::Enum
@@ -3736,6 +3827,12 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Dot
         static const ydk::Enum::YLeaf Y_0x9100;
         static const ydk::Enum::YLeaf Y_0x9200;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0x88A8") return 0;
+            if (name == "0x9100") return 1;
+            if (name == "0x9200") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::PriorityTagged::Etype : public ydk::Enum
@@ -3747,6 +3844,14 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Encapsulation::Pri
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::Tag::Pop::Way : public ydk::Enum
@@ -3755,6 +3860,11 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::Tag::Pop::Mode : public ydk::Enum
@@ -3762,6 +3872,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::Tag::Push::Mode : public ydk::Enum
@@ -3769,6 +3883,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::Mode : public ydk::Enum
@@ -3776,6 +3894,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::Mode : public ydk::Enum
@@ -3783,6 +3905,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::Mode : public ydk::Enum
@@ -3790,6 +3916,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::Mode : public ydk::Enum
@@ -3797,6 +3927,10 @@ class Native::Interface::VirtualPortGroup::Service::Instance::Rewrite::Ingress::
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 

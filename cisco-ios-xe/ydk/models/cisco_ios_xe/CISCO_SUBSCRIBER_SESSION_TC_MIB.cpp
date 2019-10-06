@@ -25,14 +25,14 @@ const Enum::YLeaf SubSessionType::l2MacSubscriber {11, "l2MacSubscriber"};
 const Enum::YLeaf SubSessionType::l2Dhcpv4Subscriber {12, "l2Dhcpv4Subscriber"};
 const Enum::YLeaf SubSessionType::l2RadiusSubscriber {13, "l2RadiusSubscriber"};
 
-const Enum::YLeaf SubSessionState::other {1, "other"};
-const Enum::YLeaf SubSessionState::pending {2, "pending"};
-const Enum::YLeaf SubSessionState::up {3, "up"};
-
 const Enum::YLeaf SubSessionRedundancyMode::none {1, "none"};
 const Enum::YLeaf SubSessionRedundancyMode::other {2, "other"};
 const Enum::YLeaf SubSessionRedundancyMode::active {3, "active"};
 const Enum::YLeaf SubSessionRedundancyMode::standby {4, "standby"};
+
+const Enum::YLeaf SubSessionState::other {1, "other"};
+const Enum::YLeaf SubSessionState::pending {2, "pending"};
+const Enum::YLeaf SubSessionState::up {3, "up"};
 
 
 }

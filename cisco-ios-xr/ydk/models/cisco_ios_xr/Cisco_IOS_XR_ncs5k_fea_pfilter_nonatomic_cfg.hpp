@@ -65,6 +65,11 @@ class AtomicDisableDfltActn : public ydk::Enum
         static const ydk::Enum::YLeaf default_action_deny;
         static const ydk::Enum::YLeaf default_action_permit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default-action-deny") return 1;
+            if (name == "default-action-permit") return 2;
+            return -1;
+        }
 };
 
 

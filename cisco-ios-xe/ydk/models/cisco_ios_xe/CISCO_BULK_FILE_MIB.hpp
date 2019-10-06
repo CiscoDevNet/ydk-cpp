@@ -269,6 +269,12 @@ class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileSto
         static const ydk::Enum::YLeaf volatile_;
         static const ydk::Enum::YLeaf permanent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ephemeral") return 1;
+            if (name == "volatile") return 2;
+            if (name == "permanent") return 3;
+            return -1;
+        }
 };
 
 class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFormat : public ydk::Enum
@@ -280,6 +286,14 @@ class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFor
         static const ydk::Enum::YLeaf variantBERWithCksum;
         static const ydk::Enum::YLeaf variantBinWithCksum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "standardBER") return 1;
+            if (name == "bulkBinary") return 2;
+            if (name == "bulkASCII") return 3;
+            if (name == "variantBERWithCksum") return 4;
+            if (name == "variantBinWithCksum") return 5;
+            return -1;
+        }
 };
 
 class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow : public ydk::Enum
@@ -291,6 +305,14 @@ class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow
         static const ydk::Enum::YLeaf running;
         static const ydk::Enum::YLeaf forcedCreate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notActive") return 1;
+            if (name == "ready") return 2;
+            if (name == "create") return 3;
+            if (name == "running") return 4;
+            if (name == "forcedCreate") return 5;
+            return -1;
+        }
 };
 
 class CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::CbfDefineObjectClass : public ydk::Enum
@@ -300,6 +322,12 @@ class CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::CbfDefineObj
         static const ydk::Enum::YLeaf lexicalTable;
         static const ydk::Enum::YLeaf leastCpuTable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "object") return 1;
+            if (name == "lexicalTable") return 2;
+            if (name == "leastCpuTable") return 3;
+            return -1;
+        }
 };
 
 class CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState : public ydk::Enum
@@ -315,6 +343,18 @@ class CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileSta
         static const ydk::Enum::YLeaf buffErr;
         static const ydk::Enum::YLeaf aborted;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 1;
+            if (name == "ready") return 2;
+            if (name == "emptied") return 3;
+            if (name == "noSpace") return 4;
+            if (name == "badName") return 5;
+            if (name == "writeErr") return 6;
+            if (name == "noMem") return 7;
+            if (name == "buffErr") return 8;
+            if (name == "aborted") return 9;
+            return -1;
+        }
 };
 
 

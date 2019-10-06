@@ -574,6 +574,12 @@ class IfIndexPersistenceState : public ydk::Enum
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf global;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 1;
+            if (name == "enable") return 2;
+            if (name == "global") return 3;
+            return -1;
+        }
 };
 
 class CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::CieStandardLinkUpDownVarbinds : public ydk::Enum
@@ -583,6 +589,12 @@ class CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::CieStandardLinkUpDownVarbinds
         static const ydk::Enum::YLeaf additional;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard") return 1;
+            if (name == "additional") return 2;
+            if (name == "other") return 3;
+            return -1;
+        }
 };
 
 class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSharedConfig : public ydk::Enum
@@ -593,6 +605,13 @@ class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfShared
         static const ydk::Enum::YLeaf ownerShared;
         static const ydk::Enum::YLeaf sharedOnly;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "ownerDedicated") return 2;
+            if (name == "ownerShared") return 3;
+            if (name == "sharedOnly") return 4;
+            return -1;
+        }
 };
 
 class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSpeedGroupConfig : public ydk::Enum
@@ -603,6 +622,13 @@ class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSpeedG
         static const ydk::Enum::YLeaf oneTwoFourEightG;
         static const ydk::Enum::YLeaf twoFourEightSixteenG;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "tenG") return 2;
+            if (name == "oneTwoFourEightG") return 3;
+            if (name == "twoFourEightSixteenG") return 4;
+            return -1;
+        }
 };
 
 class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfTransceiverFrequencyConfig : public ydk::Enum
@@ -612,6 +638,12 @@ class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfTransc
         static const ydk::Enum::YLeaf fibreChannel;
         static const ydk::Enum::YLeaf ethernet;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "fibreChannel") return 2;
+            if (name == "ethernet") return 3;
+            return -1;
+        }
 };
 
 class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfFillPatternConfig : public ydk::Enum
@@ -620,6 +652,11 @@ class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfFillPa
         static const ydk::Enum::YLeaf arbff8G;
         static const ydk::Enum::YLeaf idle8G;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "arbff8G") return 1;
+            if (name == "idle8G") return 2;
+            return -1;
+        }
 };
 
 

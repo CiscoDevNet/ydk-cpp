@@ -1459,7 +1459,7 @@ class Native::Interface::Vasileft::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -2829,27 +2829,6 @@ class Native::Interface::Vasileft::Umbrella : public ydk::Entity
 }; // Native::Interface::Vasileft::Umbrella
 
 
-class Native::Interface::Vasileft::Utd : public ydk::Entity
-{
-    public:
-        Utd();
-        ~Utd();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Native::Interface::Vasileft::Utd
-
-
 class Native::Interface::Vasileft::ZoneMember : public ydk::Entity
 {
     public:
@@ -2869,6 +2848,27 @@ class Native::Interface::Vasileft::ZoneMember : public ydk::Entity
         ydk::YLeaf security; //type: string
 
 }; // Native::Interface::Vasileft::ZoneMember
+
+
+class Native::Interface::Vasileft::Utd : public ydk::Entity
+{
+    public:
+        Utd();
+        ~Utd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Native::Interface::Vasileft::Utd
 
 
 class Native::Interface::Vasiright : public ydk::Entity
@@ -2939,8 +2939,8 @@ class Native::Interface::Vasiright : public ydk::Entity
         class EtAnalytics; //type: Native::Interface::Vasiright::EtAnalytics
         class ServicePolicy; //type: Native::Interface::Vasiright::ServicePolicy
         class Umbrella; //type: Native::Interface::Vasiright::Umbrella
-        class Utd; //type: Native::Interface::Vasiright::Utd
         class ZoneMember; //type: Native::Interface::Vasiright::ZoneMember
+        class Utd; //type: Native::Interface::Vasiright::Utd
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Switchport> switchport;
@@ -2982,8 +2982,8 @@ class Native::Interface::Vasiright : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::EtAnalytics> et_analytics;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Utd> utd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Utd> utd;
                 class IfState;
         class ServiceInsertion;
 
@@ -3117,8 +3117,8 @@ class Native::Interface::Vasiright::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -3287,8 +3287,8 @@ class Native::Interface::Vasiright::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3642,6 +3642,11 @@ class Native::Interface::Vasileft::Ip::Verify::Unicast::Source::ReachableVia : p
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3650,6 +3655,11 @@ class Native::Interface::Vasileft::Ipv6::TrafficFilter::Direction : public ydk::
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3657,6 +3667,10 @@ class Native::Interface::Vasileft::InterfaceQos::Trust::Device : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::Standby::Version : public ydk::Enum
@@ -3665,6 +3679,11 @@ class Native::Interface::Vasileft::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3672,6 +3691,10 @@ class Native::Interface::Vasileft::Standby::StandbyList::Ipv6 : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3680,6 +3703,11 @@ class Native::Interface::Vasileft::Standby::StandbyList::Authentication::Md5::Ke
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3688,6 +3716,11 @@ class Native::Interface::Vasileft::Standby::StandbyList::Redirect::Advertisement
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::AccessSession::HostMode : public ydk::Enum
@@ -3698,6 +3731,13 @@ class Native::Interface::Vasileft::AccessSession::HostMode : public ydk::Enum
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::Trust::Device : public ydk::Enum
@@ -3708,6 +3748,13 @@ class Native::Interface::Vasileft::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasileft::ServicePolicy::Type::PerformanceMonitor::Direction : public ydk::Enum
@@ -3716,6 +3763,11 @@ class Native::Interface::Vasileft::ServicePolicy::Type::PerformanceMonitor::Dire
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::IfState : public ydk::Enum
@@ -3723,6 +3775,10 @@ class Native::Interface::Vasiright::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::ServiceInsertion : public ydk::Enum
@@ -3730,6 +3786,10 @@ class Native::Interface::Vasiright::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Backup::Delay::Failure : public ydk::Enum
@@ -3737,6 +3797,10 @@ class Native::Interface::Vasiright::Backup::Delay::Failure : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3744,6 +3808,10 @@ class Native::Interface::Vasiright::Backup::Delay::SecondaryDisable : public ydk
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Backup::Load::Kickin : public ydk::Enum
@@ -3751,6 +3819,10 @@ class Native::Interface::Vasiright::Backup::Load::Kickin : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Backup::Load::Kickout : public ydk::Enum
@@ -3758,6 +3830,10 @@ class Native::Interface::Vasiright::Backup::Load::Kickout : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 

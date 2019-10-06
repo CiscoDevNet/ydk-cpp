@@ -300,6 +300,25 @@ class MplsVpnRt : public ydk::Enum
         static const ydk::Enum::YLeaf export_;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "import") return 1;
+            if (name == "export") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
+};
+
+class MplsVpnAfi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class MplsVpnSafi : public ydk::Enum
@@ -309,14 +328,12 @@ class MplsVpnSafi : public ydk::Enum
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf flowspec;
 
-};
-
-class MplsVpnAfi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            if (name == "flowspec") return 133;
+            return -1;
+        }
 };
 
 

@@ -1573,10 +1573,10 @@ bool ServicesStats::AllLocations::Stats::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-const Enum::YLeaf ServiceScope::None {0, "None"};
-const Enum::YLeaf ServiceScope::Rack {1, "Rack"};
-const Enum::YLeaf ServiceScope::System {2, "System"};
-const Enum::YLeaf ServiceScope::Node {3, "Node"};
+const Enum::YLeaf ProcessIssuRole::Primary {1, "Primary"};
+const Enum::YLeaf ProcessIssuRole::Secondary {2, "Secondary"};
+const Enum::YLeaf ProcessIssuRole::Tertiary {3, "Tertiary"};
+const Enum::YLeaf ProcessIssuRole::Unknown {254, "Unknown"};
 
 const Enum::YLeaf ProcessRole::NoRole {0, "NoRole"};
 const Enum::YLeaf ProcessRole::Active {1, "Active"};
@@ -1584,10 +1584,10 @@ const Enum::YLeaf ProcessRole::Standby {2, "Standby"};
 const Enum::YLeaf ProcessRole::None {3, "None"};
 const Enum::YLeaf ProcessRole::Unknown {254, "Unknown"};
 
-const Enum::YLeaf ProcessIssuRole::Primary {1, "Primary"};
-const Enum::YLeaf ProcessIssuRole::Secondary {2, "Secondary"};
-const Enum::YLeaf ProcessIssuRole::Tertiary {3, "Tertiary"};
-const Enum::YLeaf ProcessIssuRole::Unknown {254, "Unknown"};
+const Enum::YLeaf ServiceScope::None {0, "None"};
+const Enum::YLeaf ServiceScope::Rack {1, "Rack"};
+const Enum::YLeaf ServiceScope::System {2, "System"};
+const Enum::YLeaf ServiceScope::Node {3, "Node"};
 
 
 }

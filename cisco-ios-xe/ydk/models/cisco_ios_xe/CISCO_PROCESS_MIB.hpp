@@ -641,6 +641,14 @@ class CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::CpmProcExtPriority : pu
         static const ydk::Enum::YLeaf low;
         static const ydk::Enum::YLeaf notAssigned;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 1;
+            if (name == "high") return 2;
+            if (name == "normal") return 3;
+            if (name == "low") return 4;
+            if (name == "notAssigned") return 5;
+            return -1;
+        }
 };
 
 class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcExtPriorityRev : public ydk::Enum
@@ -652,6 +660,14 @@ class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcExtP
         static const ydk::Enum::YLeaf low;
         static const ydk::Enum::YLeaf notAssigned;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 1;
+            if (name == "high") return 2;
+            if (name == "normal") return 3;
+            if (name == "low") return 4;
+            if (name == "notAssigned") return 5;
+            return -1;
+        }
 };
 
 class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcessType : public ydk::Enum
@@ -662,6 +678,13 @@ class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcessT
         static const ydk::Enum::YLeaf posix;
         static const ydk::Enum::YLeaf ios;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "other") return 1;
+            if (name == "posix") return 2;
+            if (name == "ios") return 3;
+            return -1;
+        }
 };
 
 class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcessMemoryCore : public ydk::Enum
@@ -677,6 +700,18 @@ class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcessM
         static const ydk::Enum::YLeaf sparse;
         static const ydk::Enum::YLeaf off;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "other") return 1;
+            if (name == "mainmem") return 2;
+            if (name == "mainmemSharedmem") return 3;
+            if (name == "mainmemText") return 4;
+            if (name == "mainmemTextSharedmem") return 5;
+            if (name == "sharedmem") return 6;
+            if (name == "sparse") return 7;
+            if (name == "off") return 8;
+            return -1;
+        }
 };
 
 class CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::CpmCPUThresholdClass : public ydk::Enum
@@ -686,6 +721,12 @@ class CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::CpmCPUThresho
         static const ydk::Enum::YLeaf interrupt;
         static const ydk::Enum::YLeaf process;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "total") return 1;
+            if (name == "interrupt") return 2;
+            if (name == "process") return 3;
+            return -1;
+        }
 };
 
 class CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::CpmThreadState : public ydk::Enum
@@ -710,6 +751,27 @@ class CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::CpmThreadState : public y
         static const ydk::Enum::YLeaf intr;
         static const ydk::Enum::YLeaf sem;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "dead") return 2;
+            if (name == "running") return 3;
+            if (name == "ready") return 4;
+            if (name == "stopped") return 5;
+            if (name == "send") return 6;
+            if (name == "receive") return 7;
+            if (name == "reply") return 8;
+            if (name == "stack") return 9;
+            if (name == "waitpage") return 10;
+            if (name == "sigsuspend") return 11;
+            if (name == "sigwaitinfo") return 12;
+            if (name == "nanosleep") return 13;
+            if (name == "mutex") return 14;
+            if (name == "condvar") return 15;
+            if (name == "join") return 16;
+            if (name == "intr") return 17;
+            if (name == "sem") return 18;
+            return -1;
+        }
 };
 
 

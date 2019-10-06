@@ -6228,26 +6228,26 @@ bool Rip::Vrfs::Vrf::Timers::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-const Enum::YLeaf RipExtCommunity::as {0, "as"};
-const Enum::YLeaf RipExtCommunity::ipv4_address {1, "ipv4-address"};
-const Enum::YLeaf RipExtCommunity::four_byte_as {2, "four-byte-as"};
-
-const Enum::YLeaf DefaultRedistRoute::all {0, "all"};
-
-const Enum::YLeaf DefaultInformationOption::always {0, "always"};
-const Enum::YLeaf DefaultInformationOption::policy {1, "policy"};
+const Enum::YLeaf RipAuthMode::text {2, "text"};
+const Enum::YLeaf RipAuthMode::md5 {3, "md5"};
 
 const Enum::YLeaf IsisRedistRoute::level1 {1, "level1"};
 const Enum::YLeaf IsisRedistRoute::level2 {2, "level2"};
 const Enum::YLeaf IsisRedistRoute::level1_and2 {3, "level1-and2"};
+
+const Enum::YLeaf DefaultInformationOption::always {0, "always"};
+const Enum::YLeaf DefaultInformationOption::policy {1, "policy"};
 
 const Enum::YLeaf BgpRedistRoute::all {0, "all"};
 const Enum::YLeaf BgpRedistRoute::internal {512, "internal"};
 const Enum::YLeaf BgpRedistRoute::external {1024, "external"};
 const Enum::YLeaf BgpRedistRoute::local {2048, "local"};
 
-const Enum::YLeaf RipAuthMode::text {2, "text"};
-const Enum::YLeaf RipAuthMode::md5 {3, "md5"};
+const Enum::YLeaf RipExtCommunity::as {0, "as"};
+const Enum::YLeaf RipExtCommunity::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf RipExtCommunity::four_byte_as {2, "four-byte-as"};
+
+const Enum::YLeaf DefaultRedistRoute::all {0, "all"};
 
 
 }

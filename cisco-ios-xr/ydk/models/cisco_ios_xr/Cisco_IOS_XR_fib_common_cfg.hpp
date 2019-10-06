@@ -137,13 +137,6 @@ class Fib::Platform::LabelSwitchedMulticast : public ydk::Entity
 
 }; // Fib::Platform::LabelSwitchedMulticast
 
-class FibPbtsForwardClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf any;
-
-};
-
 class FibPbtsFallback : public ydk::Enum
 {
     public:
@@ -151,6 +144,23 @@ class FibPbtsFallback : public ydk::Enum
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf drop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "list") return 1;
+            if (name == "any") return 2;
+            if (name == "drop") return 3;
+            return -1;
+        }
+};
+
+class FibPbtsForwardClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 8;
+            return -1;
+        }
 };
 
 

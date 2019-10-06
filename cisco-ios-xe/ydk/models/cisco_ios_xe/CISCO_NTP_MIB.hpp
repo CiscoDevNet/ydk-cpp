@@ -211,6 +211,13 @@ class NTPLeapIndicator : public ydk::Enum
         static const ydk::Enum::YLeaf subtractSecond;
         static const ydk::Enum::YLeaf alarm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noWarning") return 0;
+            if (name == "addSecond") return 1;
+            if (name == "subtractSecond") return 2;
+            if (name == "alarm") return 3;
+            return -1;
+        }
 };
 
 class CISCONTPMIB::CntpSystem::CntpSysSrvStatus : public ydk::Enum
@@ -223,6 +230,15 @@ class CISCONTPMIB::CntpSystem::CntpSysSrvStatus : public ydk::Enum
         static const ydk::Enum::YLeaf syncToRefclock;
         static const ydk::Enum::YLeaf syncToRemoteServer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "notRunning") return 2;
+            if (name == "notSynchronized") return 3;
+            if (name == "syncToLocal") return 4;
+            if (name == "syncToRefclock") return 5;
+            if (name == "syncToRemoteServer") return 6;
+            return -1;
+        }
 };
 
 class CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode : public ydk::Enum
@@ -237,6 +253,17 @@ class CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode : public 
         static const ydk::Enum::YLeaf reservedControl;
         static const ydk::Enum::YLeaf reservedPrivate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unspecified") return 0;
+            if (name == "symmetricActive") return 1;
+            if (name == "symmetricPassive") return 2;
+            if (name == "client") return 3;
+            if (name == "server") return 4;
+            if (name == "broadcast") return 5;
+            if (name == "reservedControl") return 6;
+            if (name == "reservedPrivate") return 7;
+            return -1;
+        }
 };
 
 

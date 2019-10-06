@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YCodecError &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="YDK Path API" href="../path.html"/>
+        <link rel="next" title="YCoreError" href="core_error.html"/>
+        <link rel="prev" title="RestconfSession" href="../sessions/restconf_session.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-nodes">Path API Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../path.html#path-api-errors">Path API Errors</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">YCodecError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_error.html">YCoreError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_validation_error.html">YDataValidationError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="path_error.html">YPathError</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api">Path API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>YCodecError</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ycodecerror">
+<h1>YCodecError<a class="headerlink" href="#ycodecerror" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path11YCodecErrorE">
+<span id="ydk::path::YCodecError"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">YCodecError</code> : <em class="property">public</em> <a class="reference internal" href="core_error.html#_CPPv2N3ydk4path10YCoreErrorE" title="ydk::path::YCoreError">YCoreError</a><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecErrorE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception that encapsulates the validation errors for YDK <a class="reference internal" href="../../ydk/services/codec_service.html#_CPPv2N3ydk12CodecServiceE" title="ydk::CodecService"><code class="xref cpp cpp-class docutils literal"><span class="pre">CodecService</span></code></a>.</p>
+<dl class="function">
+<dt id="_CPPv2N3ydk4path11YCodecError11YCodecErrorEN11YCodecError5ErrorE">
+<span id="ydk::path::YCodecError::YCodecError__YCodecError::Error"></span><code class="descclassname"></code><code class="descname">YCodecError</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv2N3ydk4path11YCodecErrorE" title="ydk::path::YCodecError">YCodecError</a>::<a class="reference internal" href="#_CPPv2N3ydk4path11YCodecError5ErrorE" title="ydk::path::YCodecError::Error">Error</a> <em>merror</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecError11YCodecErrorEN11YCodecError5ErrorE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="enum-class">
+<dt id="_CPPv2N3ydk4path11YCodecError5ErrorE">
+<em class="property">enum class </em><code class="descclassname"></code><code class="descname">Error</code><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecError5ErrorE" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="enumerator">
+<dt id="_CPPv2N3ydk4path11YCodecError5Error7SUCCESSE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">SUCCESS</code><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecError5Error7SUCCESSE" title="Permalink to this definition">¶</a></dt>
+<dd><p>No error.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path11YCodecError5Error8XML_MISSE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">XML_MISS</code><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecError5Error8XML_MISSE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Missing XML object.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path11YCodecError5Error9XML_INVALE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">XML_INVAL</code><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecError5Error9XML_INVALE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid XML object.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path11YCodecError5Error10XML_INCHARE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">XML_INCHAR</code><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecError5Error10XML_INCHARE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid XML character.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path11YCodecError5Error7EOF_ERRE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">EOF_ERR</code><a class="headerlink" href="#_CPPv2N3ydk4path11YCodecError5Error7EOF_ERRE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unexpected end of input data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="core_error.html" class="btn btn-neutral float-right" title="YCoreError" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../sessions/restconf_session.html" class="btn btn-neutral" title="RestconfSession" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

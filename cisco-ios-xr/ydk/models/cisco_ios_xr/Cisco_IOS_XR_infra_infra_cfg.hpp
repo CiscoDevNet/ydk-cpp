@@ -70,6 +70,15 @@ class Banner : public ydk::Enum
         static const ydk::Enum::YLeaf slip_ppp;
         static const ydk::Enum::YLeaf prompt_timeout;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "exec") return 0;
+            if (name == "incoming") return 1;
+            if (name == "motd") return 2;
+            if (name == "login") return 3;
+            if (name == "slip-ppp") return 4;
+            if (name == "prompt-timeout") return 5;
+            return -1;
+        }
 };
 
 

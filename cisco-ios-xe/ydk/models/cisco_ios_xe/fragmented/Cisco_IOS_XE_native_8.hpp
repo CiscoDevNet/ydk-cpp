@@ -3533,7 +3533,7 @@ class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of enumeration, string
+        ydk::YLeaf fwd; //type: one of string, enumeration
         ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf metric; //type: uint8
         ydk::YLeaf global; //type: empty
@@ -3651,7 +3651,7 @@ class Native::Ip::Route::Static::Bfd::IfaceName : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interface; //type: one of enumeration, string
+        ydk::YLeaf interface; //type: one of string, enumeration
         ydk::YLeaf ipv4_source; //type: string
         ydk::YLeaf group; //type: string
         ydk::YLeaf passive; //type: empty
@@ -3770,6 +3770,11 @@ class Native::Ip::Dhcp::Route::Route_ : public ydk::Enum
         static const ydk::Enum::YLeaf connected;
         static const ydk::Enum::YLeaf static_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "connected") return 0;
+            if (name == "static") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::ForwardProtocol::Protocol : public ydk::Enum
@@ -3779,6 +3784,12 @@ class Native::Ip::ForwardProtocol::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf sdns;
         static const ydk::Enum::YLeaf turbo_flood;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nd") return 0;
+            if (name == "sdns") return 1;
+            if (name == "turbo-flood") return 2;
+            return -1;
+        }
 };
 
 class Native::Ip::Multicast::Multipath::SGHash : public ydk::Enum
@@ -3787,6 +3798,11 @@ class Native::Ip::Multicast::Multipath::SGHash : public ydk::Enum
         static const ydk::Enum::YLeaf basic;
         static const ydk::Enum::YLeaf next_hop_based;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "basic") return 0;
+            if (name == "next-hop-based") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::Multicast::Vrf::Multipath::SGHash : public ydk::Enum
@@ -3795,6 +3811,11 @@ class Native::Ip::Multicast::Vrf::Multipath::SGHash : public ydk::Enum
         static const ydk::Enum::YLeaf basic;
         static const ydk::Enum::YLeaf next_hop_based;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "basic") return 0;
+            if (name == "next-hop-based") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::Pim::SptThreshold::How : public ydk::Enum
@@ -3803,6 +3824,11 @@ class Native::Ip::Pim::SptThreshold::How : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "infinity") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::Pim::SptThresholdContainer::SptThreshold::How : public ydk::Enum
@@ -3811,6 +3837,11 @@ class Native::Ip::Pim::SptThresholdContainer::SptThreshold::How : public ydk::En
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "infinity") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::Pim::Vrf::SptThreshold::How : public ydk::Enum
@@ -3819,6 +3850,11 @@ class Native::Ip::Pim::Vrf::SptThreshold::How : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "infinity") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::Pim::Vrf::SptThresholdContainer::SptThreshold::How : public ydk::Enum
@@ -3827,6 +3863,11 @@ class Native::Ip::Pim::Vrf::SptThresholdContainer::SptThreshold::How : public yd
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "infinity") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::PrefixList::Prefixes::Seq::Action : public ydk::Enum
@@ -3835,6 +3876,11 @@ class Native::Ip::PrefixList::Prefixes::Seq::Action : public ydk::Enum
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "permit") return 0;
+            if (name == "deny") return 1;
+            return -1;
+        }
 };
 
 class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::Fwd : public ydk::Enum
@@ -3842,6 +3888,10 @@ class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::Fwd : public y
     public:
         static const ydk::Enum::YLeaf Null0;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Null0") return 0;
+            return -1;
+        }
 };
 
 class Native::Ip::Route::Static::Bfd::IfaceName::Interface : public ydk::Enum
@@ -3849,6 +3899,10 @@ class Native::Ip::Route::Static::Bfd::IfaceName::Interface : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf Null0;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "Null0") return 0;
+            return -1;
+        }
 };
 
 

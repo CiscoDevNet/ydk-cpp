@@ -3257,6 +3257,12 @@ bool Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::has_leaf_or_chi
     return false;
 }
 
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_none {0, "cipher-suite-none"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_128 {1, "cipher-suite-gcm-aes-128"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_256 {2, "cipher-suite-gcm-aes-256"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_128_xpn {3, "cipher-suite-gcm-aes-128-xpn"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_256_xpn {4, "cipher-suite-gcm-aes-256-xpn"};
+
 const Enum::YLeaf MkaAuthenticationMode::auth_mode_invalid {0, "auth-mode-invalid"};
 const Enum::YLeaf MkaAuthenticationMode::auth_mode_psk {1, "auth-mode-psk"};
 const Enum::YLeaf MkaAuthenticationMode::auth_mode_eap {2, "auth-mode-eap"};
@@ -3264,12 +3270,6 @@ const Enum::YLeaf MkaAuthenticationMode::auth_mode_eap {2, "auth-mode-eap"};
 const Enum::YLeaf MacsecServicePort::macsec_service_port_none {0, "macsec-service-port-none"};
 const Enum::YLeaf MacsecServicePort::macsec_service_port_encryption {1, "macsec-service-port-encryption"};
 const Enum::YLeaf MacsecServicePort::macsec_service_port_decryption {2, "macsec-service-port-decryption"};
-
-const Enum::YLeaf MacsecCipherSuite::cipher_suite_none {0, "cipher-suite-none"};
-const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_128 {1, "cipher-suite-gcm-aes-128"};
-const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_256 {2, "cipher-suite-gcm-aes-256"};
-const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_128_xpn {3, "cipher-suite-gcm-aes-128-xpn"};
-const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_256_xpn {4, "cipher-suite-gcm-aes-256-xpn"};
 
 
 }

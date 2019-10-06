@@ -940,16 +940,15 @@ bool Native::L2::Vfi::Neighbor::has_leaf_or_child_of_name(const std::string & na
 
 Native::System::System()
     :
-    mode(std::make_shared<Native::System::Mode>())
-    , debug(std::make_shared<Native::System::Debug>())
+    debug(std::make_shared<Native::System::Debug>())
     , disable(std::make_shared<Native::System::Disable>())
     , environment(std::make_shared<Native::System::Environment>())
     , fnf(std::make_shared<Native::System::Fnf>())
     , ignore(std::make_shared<Native::System::Ignore>())
     , mode_button(std::make_shared<Native::System::ModeButton>())
     , mtu(std::make_shared<Native::System::Mtu>())
+    , mode(std::make_shared<Native::System::Mode>())
 {
-    mode->parent = this;
     debug->parent = this;
     disable->parent = this;
     environment->parent = this;
@@ -957,6 +956,7 @@ Native::System::System()
     ignore->parent = this;
     mode_button->parent = this;
     mtu->parent = this;
+    mode->parent = this;
 
     yang_name = "system"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -968,27 +968,27 @@ Native::System::~System()
 bool Native::System::has_data() const
 {
     if (is_presence_container) return true;
-    return (mode !=  nullptr && mode->has_data())
-	|| (debug !=  nullptr && debug->has_data())
+    return (debug !=  nullptr && debug->has_data())
 	|| (disable !=  nullptr && disable->has_data())
 	|| (environment !=  nullptr && environment->has_data())
 	|| (fnf !=  nullptr && fnf->has_data())
 	|| (ignore !=  nullptr && ignore->has_data())
 	|| (mode_button !=  nullptr && mode_button->has_data())
-	|| (mtu !=  nullptr && mtu->has_data());
+	|| (mtu !=  nullptr && mtu->has_data())
+	|| (mode !=  nullptr && mode->has_data());
 }
 
 bool Native::System::has_operation() const
 {
     return is_set(yfilter)
-	|| (mode !=  nullptr && mode->has_operation())
 	|| (debug !=  nullptr && debug->has_operation())
 	|| (disable !=  nullptr && disable->has_operation())
 	|| (environment !=  nullptr && environment->has_operation())
 	|| (fnf !=  nullptr && fnf->has_operation())
 	|| (ignore !=  nullptr && ignore->has_operation())
 	|| (mode_button !=  nullptr && mode_button->has_operation())
-	|| (mtu !=  nullptr && mtu->has_operation());
+	|| (mtu !=  nullptr && mtu->has_operation())
+	|| (mode !=  nullptr && mode->has_operation());
 }
 
 std::string Native::System::get_absolute_path() const
@@ -1016,15 +1016,6 @@ std::vector<std::pair<std::string, LeafData> > Native::System::get_name_leaf_dat
 
 std::shared_ptr<ydk::Entity> Native::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XE-mmode:mode")
-    {
-        if(mode == nullptr)
-        {
-            mode = std::make_shared<Native::System::Mode>();
-        }
-        return mode;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-switch:debug")
     {
         if(debug == nullptr)
@@ -1088,6 +1079,15 @@ std::shared_ptr<ydk::Entity> Native::System::get_child_by_name(const std::string
         return mtu;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-mmode:mode")
+    {
+        if(mode == nullptr)
+        {
+            mode = std::make_shared<Native::System::Mode>();
+        }
+        return mode;
+    }
+
     return nullptr;
 }
 
@@ -1095,11 +1095,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::get_children
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(mode != nullptr)
-    {
-        _children["Cisco-IOS-XE-mmode:mode"] = mode;
-    }
-
     if(debug != nullptr)
     {
         _children["Cisco-IOS-XE-switch:debug"] = debug;
@@ -1135,6 +1130,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::get_children
         _children["Cisco-IOS-XE-switch:mtu"] = mtu;
     }
 
+    if(mode != nullptr)
+    {
+        _children["Cisco-IOS-XE-mmode:mode"] = mode;
+    }
+
     return _children;
 }
 
@@ -1148,490 +1148,7 @@ void Native::System::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Native::System::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mode" || name == "debug" || name == "disable" || name == "environment" || name == "fnf" || name == "ignore" || name == "mode-button" || name == "mtu")
-        return true;
-    return false;
-}
-
-Native::System::Mode::Mode()
-    :
-    maintenance(nullptr) // presence node
-{
-
-    yang_name = "mode"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::System::Mode::~Mode()
-{
-}
-
-bool Native::System::Mode::has_data() const
-{
-    if (is_presence_container) return true;
-    return (maintenance !=  nullptr && maintenance->has_data());
-}
-
-bool Native::System::Mode::has_operation() const
-{
-    return is_set(yfilter)
-	|| (maintenance !=  nullptr && maintenance->has_operation());
-}
-
-std::string Native::System::Mode::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/system/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::System::Mode::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-mmode:mode";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::System::Mode::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::System::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "maintenance")
-    {
-        if(maintenance == nullptr)
-        {
-            maintenance = std::make_shared<Native::System::Mode::Maintenance>();
-        }
-        return maintenance;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(maintenance != nullptr)
-    {
-        _children["maintenance"] = maintenance;
-    }
-
-    return _children;
-}
-
-void Native::System::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::System::Mode::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::System::Mode::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "maintenance")
-        return true;
-    return false;
-}
-
-Native::System::Mode::Maintenance::Maintenance()
-    :
-    config_maintenance(std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance>())
-{
-    config_maintenance->parent = this;
-
-    yang_name = "maintenance"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::System::Mode::Maintenance::~Maintenance()
-{
-}
-
-bool Native::System::Mode::Maintenance::has_data() const
-{
-    if (is_presence_container) return true;
-    return (config_maintenance !=  nullptr && config_maintenance->has_data());
-}
-
-bool Native::System::Mode::Maintenance::has_operation() const
-{
-    return is_set(yfilter)
-	|| (config_maintenance !=  nullptr && config_maintenance->has_operation());
-}
-
-std::string Native::System::Mode::Maintenance::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::System::Mode::Maintenance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "maintenance";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config-maintenance")
-    {
-        if(config_maintenance == nullptr)
-        {
-            config_maintenance = std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance>();
-        }
-        return config_maintenance;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(config_maintenance != nullptr)
-    {
-        _children["config-maintenance"] = config_maintenance;
-    }
-
-    return _children;
-}
-
-void Native::System::Mode::Maintenance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::System::Mode::Maintenance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::System::Mode::Maintenance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config-maintenance")
-        return true;
-    return false;
-}
-
-Native::System::Mode::Maintenance::ConfigMaintenance::ConfigMaintenance()
-    :
-    failsafe{YType::uint8, "failsafe"},
-    template_{YType::str, "template"},
-    timeout{YType::uint8, "timeout"}
-        ,
-    on_reload(std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload>())
-{
-    on_reload->parent = this;
-
-    yang_name = "config-maintenance"; yang_parent_name = "maintenance"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::System::Mode::Maintenance::ConfigMaintenance::~ConfigMaintenance()
-{
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::has_data() const
-{
-    if (is_presence_container) return true;
-    return failsafe.is_set
-	|| template_.is_set
-	|| timeout.is_set
-	|| (on_reload !=  nullptr && on_reload->has_data());
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(failsafe.yfilter)
-	|| ydk::is_set(template_.yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| (on_reload !=  nullptr && on_reload->has_operation());
-}
-
-std::string Native::System::Mode::Maintenance::ConfigMaintenance::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/maintenance/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::System::Mode::Maintenance::ConfigMaintenance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config-maintenance";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::ConfigMaintenance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (failsafe.is_set || is_set(failsafe.yfilter)) leaf_name_data.push_back(failsafe.get_name_leafdata());
-    if (template_.is_set || is_set(template_.yfilter)) leaf_name_data.push_back(template_.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::ConfigMaintenance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "on-reload")
-    {
-        if(on_reload == nullptr)
-        {
-            on_reload = std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload>();
-        }
-        return on_reload;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::ConfigMaintenance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(on_reload != nullptr)
-    {
-        _children["on-reload"] = on_reload;
-    }
-
-    return _children;
-}
-
-void Native::System::Mode::Maintenance::ConfigMaintenance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "failsafe")
-    {
-        failsafe = value;
-        failsafe.value_namespace = name_space;
-        failsafe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "template")
-    {
-        template_ = value;
-        template_.value_namespace = name_space;
-        template_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::System::Mode::Maintenance::ConfigMaintenance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "failsafe")
-    {
-        failsafe.yfilter = yfilter;
-    }
-    if(value_path == "template")
-    {
-        template_.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "on-reload" || name == "failsafe" || name == "template" || name == "timeout")
-        return true;
-    return false;
-}
-
-Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::OnReload()
-    :
-    reset_reason(std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason>())
-{
-    reset_reason->parent = this;
-
-    yang_name = "on-reload"; yang_parent_name = "config-maintenance"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::~OnReload()
-{
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::has_data() const
-{
-    if (is_presence_container) return true;
-    return (reset_reason !=  nullptr && reset_reason->has_data());
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::has_operation() const
-{
-    return is_set(yfilter)
-	|| (reset_reason !=  nullptr && reset_reason->has_operation());
-}
-
-std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/maintenance/config-maintenance/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "on-reload";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "reset-reason")
-    {
-        if(reset_reason == nullptr)
-        {
-            reset_reason = std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason>();
-        }
-        return reset_reason;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(reset_reason != nullptr)
-    {
-        _children["reset-reason"] = reset_reason;
-    }
-
-    return _children;
-}
-
-void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "reset-reason")
-        return true;
-    return false;
-}
-
-Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::ResetReason()
-    :
-    maintenance{YType::empty, "maintenance"}
-{
-
-    yang_name = "reset-reason"; yang_parent_name = "on-reload"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::~ResetReason()
-{
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::has_data() const
-{
-    if (is_presence_container) return true;
-    return maintenance.is_set;
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(maintenance.yfilter);
-}
-
-std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/maintenance/config-maintenance/on-reload/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "reset-reason";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (maintenance.is_set || is_set(maintenance.yfilter)) leaf_name_data.push_back(maintenance.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "maintenance")
-    {
-        maintenance = value;
-        maintenance.value_namespace = name_space;
-        maintenance.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "maintenance")
-    {
-        maintenance.yfilter = yfilter;
-    }
-}
-
-bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "maintenance")
+    if(name == "debug" || name == "disable" || name == "environment" || name == "fnf" || name == "ignore" || name == "mode-button" || name == "mtu" || name == "mode")
         return true;
     return false;
 }
@@ -3393,6 +2910,489 @@ void Native::System::Mtu::set_filter(const std::string & value_path, YFilter yfi
 bool Native::System::Mtu::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "size" || name == "jumbo" || name == "routing")
+        return true;
+    return false;
+}
+
+Native::System::Mode::Mode()
+    :
+    maintenance(nullptr) // presence node
+{
+
+    yang_name = "mode"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::System::Mode::~Mode()
+{
+}
+
+bool Native::System::Mode::has_data() const
+{
+    if (is_presence_container) return true;
+    return (maintenance !=  nullptr && maintenance->has_data());
+}
+
+bool Native::System::Mode::has_operation() const
+{
+    return is_set(yfilter)
+	|| (maintenance !=  nullptr && maintenance->has_operation());
+}
+
+std::string Native::System::Mode::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/system/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::System::Mode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-mmode:mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::System::Mode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::System::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "maintenance")
+    {
+        if(maintenance == nullptr)
+        {
+            maintenance = std::make_shared<Native::System::Mode::Maintenance>();
+        }
+        return maintenance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(maintenance != nullptr)
+    {
+        _children["maintenance"] = maintenance;
+    }
+
+    return _children;
+}
+
+void Native::System::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::System::Mode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::System::Mode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maintenance")
+        return true;
+    return false;
+}
+
+Native::System::Mode::Maintenance::Maintenance()
+    :
+    config_maintenance(std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance>())
+{
+    config_maintenance->parent = this;
+
+    yang_name = "maintenance"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::System::Mode::Maintenance::~Maintenance()
+{
+}
+
+bool Native::System::Mode::Maintenance::has_data() const
+{
+    if (is_presence_container) return true;
+    return (config_maintenance !=  nullptr && config_maintenance->has_data());
+}
+
+bool Native::System::Mode::Maintenance::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config_maintenance !=  nullptr && config_maintenance->has_operation());
+}
+
+std::string Native::System::Mode::Maintenance::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::System::Mode::Maintenance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "maintenance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config-maintenance")
+    {
+        if(config_maintenance == nullptr)
+        {
+            config_maintenance = std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance>();
+        }
+        return config_maintenance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(config_maintenance != nullptr)
+    {
+        _children["config-maintenance"] = config_maintenance;
+    }
+
+    return _children;
+}
+
+void Native::System::Mode::Maintenance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::System::Mode::Maintenance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::System::Mode::Maintenance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config-maintenance")
+        return true;
+    return false;
+}
+
+Native::System::Mode::Maintenance::ConfigMaintenance::ConfigMaintenance()
+    :
+    failsafe{YType::uint8, "failsafe"},
+    template_{YType::str, "template"},
+    timeout{YType::uint8, "timeout"}
+        ,
+    on_reload(std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload>())
+{
+    on_reload->parent = this;
+
+    yang_name = "config-maintenance"; yang_parent_name = "maintenance"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::System::Mode::Maintenance::ConfigMaintenance::~ConfigMaintenance()
+{
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::has_data() const
+{
+    if (is_presence_container) return true;
+    return failsafe.is_set
+	|| template_.is_set
+	|| timeout.is_set
+	|| (on_reload !=  nullptr && on_reload->has_data());
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(failsafe.yfilter)
+	|| ydk::is_set(template_.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| (on_reload !=  nullptr && on_reload->has_operation());
+}
+
+std::string Native::System::Mode::Maintenance::ConfigMaintenance::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/maintenance/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::System::Mode::Maintenance::ConfigMaintenance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config-maintenance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::ConfigMaintenance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (failsafe.is_set || is_set(failsafe.yfilter)) leaf_name_data.push_back(failsafe.get_name_leafdata());
+    if (template_.is_set || is_set(template_.yfilter)) leaf_name_data.push_back(template_.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::ConfigMaintenance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "on-reload")
+    {
+        if(on_reload == nullptr)
+        {
+            on_reload = std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload>();
+        }
+        return on_reload;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::ConfigMaintenance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(on_reload != nullptr)
+    {
+        _children["on-reload"] = on_reload;
+    }
+
+    return _children;
+}
+
+void Native::System::Mode::Maintenance::ConfigMaintenance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "failsafe")
+    {
+        failsafe = value;
+        failsafe.value_namespace = name_space;
+        failsafe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "template")
+    {
+        template_ = value;
+        template_.value_namespace = name_space;
+        template_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::System::Mode::Maintenance::ConfigMaintenance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "failsafe")
+    {
+        failsafe.yfilter = yfilter;
+    }
+    if(value_path == "template")
+    {
+        template_.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-reload" || name == "failsafe" || name == "template" || name == "timeout")
+        return true;
+    return false;
+}
+
+Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::OnReload()
+    :
+    reset_reason(std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason>())
+{
+    reset_reason->parent = this;
+
+    yang_name = "on-reload"; yang_parent_name = "config-maintenance"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::~OnReload()
+{
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::has_data() const
+{
+    if (is_presence_container) return true;
+    return (reset_reason !=  nullptr && reset_reason->has_data());
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::has_operation() const
+{
+    return is_set(yfilter)
+	|| (reset_reason !=  nullptr && reset_reason->has_operation());
+}
+
+std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/maintenance/config-maintenance/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on-reload";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "reset-reason")
+    {
+        if(reset_reason == nullptr)
+        {
+            reset_reason = std::make_shared<Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason>();
+        }
+        return reset_reason;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(reset_reason != nullptr)
+    {
+        _children["reset-reason"] = reset_reason;
+    }
+
+    return _children;
+}
+
+void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reset-reason")
+        return true;
+    return false;
+}
+
+Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::ResetReason()
+    :
+    maintenance{YType::empty, "maintenance"}
+{
+
+    yang_name = "reset-reason"; yang_parent_name = "on-reload"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::~ResetReason()
+{
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::has_data() const
+{
+    if (is_presence_container) return true;
+    return maintenance.is_set;
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(maintenance.yfilter);
+}
+
+std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/system/Cisco-IOS-XE-mmode:mode/maintenance/config-maintenance/on-reload/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reset-reason";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (maintenance.is_set || is_set(maintenance.yfilter)) leaf_name_data.push_back(maintenance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "maintenance")
+    {
+        maintenance = value;
+        maintenance.value_namespace = name_space;
+        maintenance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maintenance")
+    {
+        maintenance.yfilter = yfilter;
+    }
+}
+
+bool Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maintenance")
         return true;
     return false;
 }

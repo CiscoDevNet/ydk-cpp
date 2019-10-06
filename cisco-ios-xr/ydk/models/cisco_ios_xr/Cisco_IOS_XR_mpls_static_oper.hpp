@@ -1098,6 +1098,45 @@ class MgmtMplsStaticPathStatus : public ydk::Enum
         static const ydk::Enum::YLeaf frr_backup;
         static const ydk::Enum::YLeaf backup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "path-next-hop-none") return 0;
+            if (name == "path-next-hop-interface-down") return 1;
+            if (name == "path-next-hop-valid") return 2;
+            if (name == "resolve-failed") return 3;
+            if (name == "frr-backup") return 4;
+            if (name == "backup") return 5;
+            return -1;
+        }
+};
+
+class MgmtStaticPath : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cross_connect_path;
+        static const ydk::Enum::YLeaf pop_lookup_path;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "cross-connect-path") return 0;
+            if (name == "pop-lookup-path") return 1;
+            return -1;
+        }
+};
+
+class MgmtMplsStaticLabelMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf per_prefix;
+        static const ydk::Enum::YLeaf per_vrf;
+        static const ydk::Enum::YLeaf cross_connect;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "per-prefix") return 1;
+            if (name == "per-vrf") return 2;
+            if (name == "cross-connect") return 3;
+            return -1;
+        }
 };
 
 class MgmtStaticLspAfi : public ydk::Enum
@@ -1107,32 +1146,12 @@ class MgmtStaticLspAfi : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
-};
-
-class MplsStaticPathRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf primary_and_backup;
-
-};
-
-class MgmtStaticPath : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cross_connect_path;
-        static const ydk::Enum::YLeaf pop_lookup_path;
-
-};
-
-class MgmtStaticAddr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-applicable") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class MgmtMplsStaticLabelStatus : public ydk::Enum
@@ -1153,16 +1172,53 @@ class MgmtMplsStaticLabelStatus : public ydk::Enum
         static const ydk::Enum::YLeaf rewrite_nexthop_unresolved;
         static const ydk::Enum::YLeaf label_status_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-created") return 0;
+            if (name == "vrf-down") return 1;
+            if (name == "rewrite-vrf-down") return 2;
+            if (name == "lsd-disconnected") return 3;
+            if (name == "lsd-failed") return 4;
+            if (name == "wait-for-lsd-reply") return 5;
+            if (name == "label-created") return 6;
+            if (name == "label-create-failed") return 7;
+            if (name == "label-rewrite-failed") return 8;
+            if (name == "rewrite-next-hop-interface-down") return 9;
+            if (name == "label-discrepancy") return 10;
+            if (name == "rewrite-discrepancy") return 11;
+            if (name == "rewrite-nexthop-unresolved") return 12;
+            if (name == "label-status-unknown") return 13;
+            return -1;
+        }
 };
 
-class MgmtMplsStaticLabelMode : public ydk::Enum
+class MgmtStaticAddr : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf per_prefix;
-        static const ydk::Enum::YLeaf per_vrf;
-        static const ydk::Enum::YLeaf cross_connect;
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-applicable") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
+};
+
+class MplsStaticPathRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf primary_and_backup;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "primary") return 0;
+            if (name == "backup") return 1;
+            if (name == "primary-and-backup") return 2;
+            return -1;
+        }
 };
 
 

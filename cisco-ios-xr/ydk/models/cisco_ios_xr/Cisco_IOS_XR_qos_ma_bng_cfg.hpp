@@ -15,6 +15,10 @@ class Qosl2DataLink : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf aal5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "aal5") return 0;
+            return -1;
+        }
 };
 
 class Qosl2Encap : public ydk::Enum
@@ -29,6 +33,17 @@ class Qosl2Encap : public ydk::Enum
         static const ydk::Enum::YLeaf mux_rbe;
         static const ydk::Enum::YLeaf mux_dot1qrbe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "snap-pppoa") return 1;
+            if (name == "mux-pppoa") return 2;
+            if (name == "snap1483-routed") return 3;
+            if (name == "mux1483-routed") return 4;
+            if (name == "snap-rbe") return 5;
+            if (name == "snap-dot1qrbe") return 6;
+            if (name == "mux-rbe") return 7;
+            if (name == "mux-dot1qrbe") return 8;
+            return -1;
+        }
 };
 
 

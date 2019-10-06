@@ -187,6 +187,13 @@ class IpArmConflictPolicy : public ydk::Enum
         static const ydk::Enum::YLeaf longest_prefix;
         static const ydk::Enum::YLeaf highest_ip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lowest-rack-slot") return 0;
+            if (name == "static") return 1;
+            if (name == "longest-prefix") return 2;
+            if (name == "highest-ip") return 4;
+            return -1;
+        }
 };
 
 

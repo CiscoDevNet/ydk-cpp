@@ -1283,28 +1283,17 @@ class Rip::Vrfs::Vrf::Timers : public ydk::Entity
 
 }; // Rip::Vrfs::Vrf::Timers
 
-class RipExtCommunity : public ydk::Enum
+class RipAuthMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf as;
-        static const ydk::Enum::YLeaf ipv4_address;
-        static const ydk::Enum::YLeaf four_byte_as;
+        static const ydk::Enum::YLeaf text;
+        static const ydk::Enum::YLeaf md5;
 
-};
-
-class DefaultRedistRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class DefaultInformationOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf always;
-        static const ydk::Enum::YLeaf policy;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "text") return 2;
+            if (name == "md5") return 3;
+            return -1;
+        }
 };
 
 class IsisRedistRoute : public ydk::Enum
@@ -1314,6 +1303,25 @@ class IsisRedistRoute : public ydk::Enum
         static const ydk::Enum::YLeaf level2;
         static const ydk::Enum::YLeaf level1_and2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 1;
+            if (name == "level2") return 2;
+            if (name == "level1-and2") return 3;
+            return -1;
+        }
+};
+
+class DefaultInformationOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf policy;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "always") return 0;
+            if (name == "policy") return 1;
+            return -1;
+        }
 };
 
 class BgpRedistRoute : public ydk::Enum
@@ -1324,14 +1332,39 @@ class BgpRedistRoute : public ydk::Enum
         static const ydk::Enum::YLeaf external;
         static const ydk::Enum::YLeaf local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "internal") return 512;
+            if (name == "external") return 1024;
+            if (name == "local") return 2048;
+            return -1;
+        }
 };
 
-class RipAuthMode : public ydk::Enum
+class RipExtCommunity : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf text;
-        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf as;
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf four_byte_as;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "as") return 0;
+            if (name == "ipv4-address") return 1;
+            if (name == "four-byte-as") return 2;
+            return -1;
+        }
+};
+
+class DefaultRedistRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            return -1;
+        }
 };
 
 

@@ -245,6 +245,11 @@ class NotifySource : public ydk::Enum
         static const ydk::Enum::YLeaf server;
         static const ydk::Enum::YLeaf policy;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "server") return 1;
+            if (name == "policy") return 2;
+            return -1;
+        }
 };
 
 class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::CeemRegisteredPolicyStatus : public ydk::Enum
@@ -253,6 +258,11 @@ class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyE
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::CeemRegisteredPolicyType : public ydk::Enum
@@ -261,6 +271,11 @@ class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyE
         static const ydk::Enum::YLeaf user;
         static const ydk::Enum::YLeaf system;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "user") return 1;
+            if (name == "system") return 2;
+            return -1;
+        }
 };
 
 

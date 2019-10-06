@@ -2604,6 +2604,12 @@ class IgmpFilter : public ydk::Enum
         static const ydk::Enum::YLeaf exclude;
         static const ydk::Enum::YLeaf star_g;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "include") return 0;
+            if (name == "exclude") return 1;
+            if (name == "star-g") return 2;
+            return -1;
+        }
 };
 
 

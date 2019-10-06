@@ -828,15 +828,6 @@ class CallHome::Authorization : public ydk::Entity
 
 }; // CallHome::Authorization
 
-class CallHomeMailSendInterval : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf daily;
-        static const ydk::Enum::YLeaf weekly;
-        static const ydk::Enum::YLeaf monthly;
-
-};
-
 class CallHomeDayOfWeek : public ydk::Enum
 {
     public:
@@ -848,6 +839,46 @@ class CallHomeDayOfWeek : public ydk::Enum
         static const ydk::Enum::YLeaf friday;
         static const ydk::Enum::YLeaf saturday;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sunday") return 0;
+            if (name == "monday") return 1;
+            if (name == "tuesday") return 2;
+            if (name == "wednesday") return 3;
+            if (name == "thursday") return 4;
+            if (name == "friday") return 5;
+            if (name == "saturday") return 6;
+            return -1;
+        }
+};
+
+class DataPrivacyLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf host_name;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "high") return 1;
+            if (name == "host-name") return 2;
+            return -1;
+        }
+};
+
+class CallHomeMailSendInterval : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf daily;
+        static const ydk::Enum::YLeaf weekly;
+        static const ydk::Enum::YLeaf monthly;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "daily") return 0;
+            if (name == "weekly") return 1;
+            if (name == "monthly") return 2;
+            return -1;
+        }
 };
 
 class CallHomeEventSeverity : public ydk::Enum
@@ -864,6 +895,19 @@ class CallHomeEventSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf disaster;
         static const ydk::Enum::YLeaf catastrophic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "debugging") return 0;
+            if (name == "normal") return 1;
+            if (name == "notification") return 2;
+            if (name == "warning") return 3;
+            if (name == "minor") return 4;
+            if (name == "major") return 5;
+            if (name == "critical") return 6;
+            if (name == "fatal") return 7;
+            if (name == "disaster") return 8;
+            if (name == "catastrophic") return 9;
+            return -1;
+        }
 };
 
 class SnapshotInterval : public ydk::Enum
@@ -873,6 +917,12 @@ class SnapshotInterval : public ydk::Enum
         static const ydk::Enum::YLeaf weekly;
         static const ydk::Enum::YLeaf monthly;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "daily") return 0;
+            if (name == "weekly") return 1;
+            if (name == "monthly") return 2;
+            return -1;
+        }
 };
 
 class CallHomeTransMethod : public ydk::Enum
@@ -881,15 +931,11 @@ class CallHomeTransMethod : public ydk::Enum
         static const ydk::Enum::YLeaf email;
         static const ydk::Enum::YLeaf http;
 
-};
-
-class DataPrivacyLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf host_name;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "email") return 1;
+            if (name == "http") return 2;
+            return -1;
+        }
 };
 
 

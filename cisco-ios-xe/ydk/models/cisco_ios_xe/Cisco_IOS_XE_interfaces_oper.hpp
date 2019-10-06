@@ -1640,6 +1640,45 @@ class QosMatchType : public ydk::Enum
         static const ydk::Enum::YLeaf qos_match_dst_port;
         static const ydk::Enum::YLeaf qos_match_proto;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos-match-dscp") return 0;
+            if (name == "qos-match-src-ip") return 1;
+            if (name == "qos-match-dst-ip") return 2;
+            if (name == "qos-match-src-port") return 3;
+            if (name == "qos-match-dst-port") return 4;
+            if (name == "qos-match-proto") return 5;
+            return -1;
+        }
+};
+
+class EtherDuplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf full_duplex;
+        static const ydk::Enum::YLeaf half_duplex;
+        static const ydk::Enum::YLeaf auto_duplex;
+        static const ydk::Enum::YLeaf unknown_duplex;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "full-duplex") return 0;
+            if (name == "half-duplex") return 1;
+            if (name == "auto-duplex") return 2;
+            if (name == "unknown-duplex") return 3;
+            return -1;
+        }
+};
+
+class SerialCrc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf serial_crc32;
+        static const ydk::Enum::YLeaf serial_crc16;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "serial-crc32") return 0;
+            if (name == "serial-crc16") return 1;
+            return -1;
+        }
 };
 
 class ThreshUnit : public ydk::Enum
@@ -1652,24 +1691,56 @@ class ThreshUnit : public ydk::Enum
         static const ydk::Enum::YLeaf thresh_units_cells;
         static const ydk::Enum::YLeaf thresh_units_percent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "thresh-units-default") return 0;
+            if (name == "thresh-units-bytes") return 1;
+            if (name == "thresh-units-sec") return 2;
+            if (name == "thresh-units-packets") return 3;
+            if (name == "thresh-units-cells") return 4;
+            if (name == "thresh-units-percent") return 5;
+            return -1;
+        }
 };
 
-class QosDirection : public ydk::Enum
+class T1e1LoopbackMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf qos_inbound;
-        static const ydk::Enum::YLeaf qos_outbound;
+        static const ydk::Enum::YLeaf t1e1_no_loopback;
+        static const ydk::Enum::YLeaf t1e1_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_line_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_payload_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_ansi_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_att_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_iboc_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_ansi_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_att_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_iboc_local_loopback;
 
-};
-
-class AggregationType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lag_off;
-        static const ydk::Enum::YLeaf lag_auto;
-        static const ydk::Enum::YLeaf lag_active;
-        static const ydk::Enum::YLeaf lag_passive;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "t1e1-no-loopback") return 0;
+            if (name == "t1e1-cli-local-loopback") return 1;
+            if (name == "t1e1-line-cli-local-loopback") return 2;
+            if (name == "t1e1-payload-cli-local-loopback") return 3;
+            if (name == "t1e1-local-line-loopback") return 4;
+            if (name == "t1e1-local-payload-loopback") return 5;
+            if (name == "t1e1-local-ansi-fdl-remote-loopback") return 6;
+            if (name == "t1e1-line-att-fdl-remote-loopback") return 7;
+            if (name == "t1e1-payload-ansi-fdl-remote-loopback") return 8;
+            if (name == "t1e1-payload-att-fdl-remote-loopback") return 9;
+            if (name == "t1e1-line-iboc-remote-loopback") return 10;
+            if (name == "t1e1-line-ansi-fdl-local-loopback") return 11;
+            if (name == "t1e1-line-att-fdl-local-loopback") return 12;
+            if (name == "t1e1-payload-ansi-fdl-local-loopback") return 13;
+            if (name == "t1e1-payload-att-fdl-local-loopback") return 14;
+            if (name == "t1e1-line-iboc-local-loopback") return 15;
+            return -1;
+        }
 };
 
 class IntfState : public ydk::Enum
@@ -1680,32 +1751,13 @@ class IntfState : public ydk::Enum
         static const ydk::Enum::YLeaf if_state_down;
         static const ydk::Enum::YLeaf if_state_test;
 
-};
-
-class EtherDuplex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf full_duplex;
-        static const ydk::Enum::YLeaf half_duplex;
-        static const ydk::Enum::YLeaf auto_duplex;
-        static const ydk::Enum::YLeaf unknown_duplex;
-
-};
-
-class EtherSpeed : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf speed_10mb;
-        static const ydk::Enum::YLeaf speed_100mb;
-        static const ydk::Enum::YLeaf speed_1gb;
-        static const ydk::Enum::YLeaf speed_10gb;
-        static const ydk::Enum::YLeaf speed_25gb;
-        static const ydk::Enum::YLeaf speed_40gb;
-        static const ydk::Enum::YLeaf speed_50gb;
-        static const ydk::Enum::YLeaf speed_100gb;
-        static const ydk::Enum::YLeaf speed_unknown;
-        static const ydk::Enum::YLeaf speed_auto;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "if-state-unknown") return 0;
+            if (name == "if-state-up") return 1;
+            if (name == "if-state-down") return 2;
+            if (name == "if-state-test") return 3;
+            return -1;
+        }
 };
 
 class OperState : public ydk::Enum
@@ -1720,6 +1772,47 @@ class OperState : public ydk::Enum
         static const ydk::Enum::YLeaf if_oper_state_not_present;
         static const ydk::Enum::YLeaf if_oper_state_lower_layer_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "if-oper-state-invalid") return 0;
+            if (name == "if-oper-state-ready") return 1;
+            if (name == "if-oper-state-no-pass") return 2;
+            if (name == "if-oper-state-test") return 3;
+            if (name == "if-oper-state-unknown") return 4;
+            if (name == "if-oper-state-dormant") return 5;
+            if (name == "if-oper-state-not-present") return 6;
+            if (name == "if-oper-state-lower-layer-down") return 7;
+            return -1;
+        }
+};
+
+class AggregationType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lag_off;
+        static const ydk::Enum::YLeaf lag_auto;
+        static const ydk::Enum::YLeaf lag_active;
+        static const ydk::Enum::YLeaf lag_passive;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "lag-off") return 0;
+            if (name == "lag-auto") return 1;
+            if (name == "lag-active") return 2;
+            if (name == "lag-passive") return 3;
+            return -1;
+        }
+};
+
+class SubrateSpeed : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dsx1_subrate_56kbps;
+        static const ydk::Enum::YLeaf dsx1_subrate_64kbps;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsx1-subrate-56kbps") return 0;
+            if (name == "dsx1-subrate-64kbps") return 1;
+            return -1;
+        }
 };
 
 class IetfIntfType : public ydk::Enum
@@ -2004,44 +2097,329 @@ class IetfIntfType : public ydk::Enum
         static const ydk::Enum::YLeaf iana_iftype_xbox_wireless;
         static const ydk::Enum::YLeaf iana_iftype_fastdsl;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "iana-iftype-other") return 1;
+            if (name == "iana-iftype-regular1822") return 2;
+            if (name == "iana-iftype-hdh1822") return 3;
+            if (name == "iana-iftype-ddnx25") return 4;
+            if (name == "iana-iftype-rfc877x25") return 5;
+            if (name == "iana-iftype-ethernet-csmacd") return 6;
+            if (name == "iana-iftype-iso88023-csmacd") return 7;
+            if (name == "iana-iftype-iso88024-tokenbus") return 8;
+            if (name == "iana-iftype-iso88025-tokenring") return 9;
+            if (name == "iana-iftype-iso88026-man") return 10;
+            if (name == "iana-iftype-starlan") return 11;
+            if (name == "iana-iftype-proteon10mbit") return 12;
+            if (name == "iana-iftype-proteon80mbit") return 13;
+            if (name == "iana-iftype-hyperchannel") return 14;
+            if (name == "iana-iftype-fddi") return 15;
+            if (name == "iana-iftype-lapb") return 16;
+            if (name == "iana-iftype-sdlc") return 17;
+            if (name == "iana-iftype-ds1") return 18;
+            if (name == "iana-iftype-e1") return 19;
+            if (name == "iana-iftype-basicisdn") return 20;
+            if (name == "iana-iftype-primaryisdn") return 21;
+            if (name == "iana-iftype-prop-p2p-serial") return 22;
+            if (name == "iana-iftype-ppp") return 23;
+            if (name == "iana-iftype-sw-loopback") return 24;
+            if (name == "iana-iftype-eon") return 25;
+            if (name == "iana-iftype-ethernet3mbit") return 26;
+            if (name == "iana-iftype-nsip") return 27;
+            if (name == "iana-iftype-slip") return 28;
+            if (name == "iana-iftype-ultra") return 29;
+            if (name == "iana-iftype-ds3") return 30;
+            if (name == "iana-iftype-sip") return 31;
+            if (name == "iana-iftype-framerelay") return 32;
+            if (name == "iana-iftype-rs232") return 33;
+            if (name == "iana-iftype-para") return 34;
+            if (name == "iana-iftype-arcnet") return 35;
+            if (name == "iana-iftype-arcnetplus") return 36;
+            if (name == "iana-iftype-atm") return 37;
+            if (name == "iana-iftype-miox25") return 38;
+            if (name == "iana-iftype-sonet") return 39;
+            if (name == "iana-iftype-x25ple") return 40;
+            if (name == "iana-iftype-iso88022-llc") return 41;
+            if (name == "iana-iftype-localtalk") return 42;
+            if (name == "iana-iftype-smdsdxi") return 43;
+            if (name == "iana-iftype-framerelay-service") return 44;
+            if (name == "iana-iftype-v35") return 45;
+            if (name == "iana-iftype-hssi") return 46;
+            if (name == "iana-iftype-hippi") return 47;
+            if (name == "iana-iftype-modem") return 48;
+            if (name == "iana-iftype-aal5") return 49;
+            if (name == "iana-iftype-sonetpath") return 50;
+            if (name == "iana-iftype-sonetvt") return 51;
+            if (name == "iana-iftype-smdsicip") return 52;
+            if (name == "iana-iftype-propvirtual") return 53;
+            if (name == "iana-iftype-propmultiplexor") return 54;
+            if (name == "iana-iftype-ieee80212") return 55;
+            if (name == "iana-iftype-fiberchannel") return 56;
+            if (name == "iana-iftype-hippi-interface") return 57;
+            if (name == "iana-iftype-framerelay-interconnect") return 58;
+            if (name == "iana-iftype-aflane8023") return 59;
+            if (name == "iana-iftype-aflane8025") return 60;
+            if (name == "iana-iftype-cctemul") return 61;
+            if (name == "iana-iftype-fastether") return 62;
+            if (name == "iana-iftype-isdn") return 63;
+            if (name == "iana-iftype-v11") return 64;
+            if (name == "iana-iftype-v36") return 65;
+            if (name == "iana-iftype-g703at64k") return 66;
+            if (name == "iana-iftype-g703at2mb") return 67;
+            if (name == "iana-iftype-qllc") return 68;
+            if (name == "iana-iftype-fastetherfx") return 69;
+            if (name == "iana-iftype-channel") return 70;
+            if (name == "iana-iftype-ieee80211") return 71;
+            if (name == "iana-iftype-ibm370parchan") return 72;
+            if (name == "iana-iftype-escon") return 73;
+            if (name == "iana-iftype-dlsw") return 74;
+            if (name == "iana-iftype-isdns") return 75;
+            if (name == "iana-iftype-isdnu") return 76;
+            if (name == "iana-iftype-lapd") return 77;
+            if (name == "iana-iftype-ipswitch") return 78;
+            if (name == "iana-iftype-rsrb") return 79;
+            if (name == "iana-iftype-atmlogical") return 80;
+            if (name == "iana-iftype-ds0") return 81;
+            if (name == "iana-iftype-ds0bundle") return 82;
+            if (name == "iana-iftype-bsc") return 83;
+            if (name == "iana-iftype-async") return 84;
+            if (name == "iana-iftype-cnr") return 85;
+            if (name == "iana-iftype-iso88025-dtr") return 86;
+            if (name == "iana-iftype-eplrs") return 87;
+            if (name == "iana-iftype-arap") return 88;
+            if (name == "iana-iftype-propcnls") return 89;
+            if (name == "iana-iftype-hostpad") return 90;
+            if (name == "iana-iftype-termpad") return 91;
+            if (name == "iana-iftype-framerelay-mpi") return 92;
+            if (name == "iana-iftype-x213") return 93;
+            if (name == "iana-iftype-adsl") return 94;
+            if (name == "iana-iftype-radsl") return 95;
+            if (name == "iana-iftype-sdsl") return 96;
+            if (name == "iana-iftype-vdsl") return 97;
+            if (name == "iana-iftype-iso88025-crfpint") return 98;
+            if (name == "iana-iftype-myrinet") return 99;
+            if (name == "iana-iftype-voiceem") return 100;
+            if (name == "iana-iftype-voicefxo") return 101;
+            if (name == "iana-iftype-voicefxs") return 102;
+            if (name == "iana-iftype-voiceencap") return 103;
+            if (name == "iana-iftype-voip") return 104;
+            if (name == "iana-iftype-atmdxi") return 105;
+            if (name == "iana-iftype-atmfuni") return 106;
+            if (name == "iana-iftype-atmima") return 107;
+            if (name == "iana-iftype-ppp-multilinkbundle") return 108;
+            if (name == "iana-iftype-ipovercdlc") return 109;
+            if (name == "iana-iftype-ipoverclaw") return 110;
+            if (name == "iana-iftype-stack2stack") return 111;
+            if (name == "iana-iftype-virtualipaddress") return 112;
+            if (name == "iana-iftype-mpc") return 113;
+            if (name == "iana-iftype-ipoveratm") return 114;
+            if (name == "iana-iftype-iso88025-fiber") return 115;
+            if (name == "iana-iftype-tdlc") return 116;
+            if (name == "iana-iftype-gige") return 117;
+            if (name == "iana-iftype-hdlc") return 118;
+            if (name == "iana-iftype-lapf") return 119;
+            if (name == "iana-iftype-v37") return 120;
+            if (name == "iana-iftype-x25mlp") return 121;
+            if (name == "iana-iftype-x25huntgroup") return 122;
+            if (name == "iana-iftype-transphdlc") return 123;
+            if (name == "iana-iftype-interleave") return 124;
+            if (name == "iana-iftype-fast") return 125;
+            if (name == "iana-iftype-ip") return 126;
+            if (name == "iana-iftype-docs-cable-maclayer") return 127;
+            if (name == "iana-iftype-docs-cable-downstream") return 128;
+            if (name == "iana-iftype-docs-cable-upstream") return 129;
+            if (name == "iana-iftype-a12mppswitch") return 130;
+            if (name == "iana-iftype-tunnel") return 131;
+            if (name == "iana-iftype-coffee") return 132;
+            if (name == "iana-iftype-ces") return 133;
+            if (name == "iana-iftype-atmsubinterface") return 134;
+            if (name == "iana-iftype-l2vlan") return 135;
+            if (name == "iana-iftype-l3ipvlan") return 136;
+            if (name == "iana-iftype-l3ipxvlan") return 137;
+            if (name == "iana-iftype-digital-powerline") return 138;
+            if (name == "iana-iftype-media-mailoverip") return 139;
+            if (name == "iana-iftype-dtm") return 140;
+            if (name == "iana-iftype-dcn") return 141;
+            if (name == "iana-iftype-ipforward") return 142;
+            if (name == "iana-iftype-msdsl") return 143;
+            if (name == "iana-iftype-ieee1394") return 144;
+            if (name == "iana-iftype-gsn") return 145;
+            if (name == "iana-iftype-dvbrcc-maclayer") return 146;
+            if (name == "iana-iftype-dvbrcc-downstream") return 147;
+            if (name == "iana-iftype-dvbrcc-upstream") return 148;
+            if (name == "iana-iftype-atmvirtual") return 149;
+            if (name == "iana-iftype-mplstunnel") return 150;
+            if (name == "iana-iftype-srp") return 151;
+            if (name == "iana-iftype-voiceoveratm") return 152;
+            if (name == "iana-iftype-voiceoverframerelay") return 153;
+            if (name == "iana-iftype-idsl") return 154;
+            if (name == "iana-iftype-compositelink") return 155;
+            if (name == "iana-iftype-ss7siglink") return 156;
+            if (name == "iana-iftype-propwireless-p2p") return 157;
+            if (name == "iana-iftype-frforward") return 158;
+            if (name == "iana-iftype-rfc1483") return 159;
+            if (name == "iana-iftype-usb") return 160;
+            if (name == "iana-iftype-ieee8023-adlag") return 161;
+            if (name == "iana-iftype-bgppolicy-accounting") return 162;
+            if (name == "iana-iftype-frf16mfrbundle") return 163;
+            if (name == "iana-iftype-h323gatekeeper") return 164;
+            if (name == "iana-iftype-h323proxy") return 165;
+            if (name == "iana-iftype-mpls") return 166;
+            if (name == "iana-iftype-mfsiglink") return 167;
+            if (name == "iana-iftype-hdsl2") return 168;
+            if (name == "iana-iftype-shdsl") return 169;
+            if (name == "iana-iftype-ds1fdl") return 170;
+            if (name == "iana-iftype-pos") return 171;
+            if (name == "iana-iftype-dvbasiin") return 172;
+            if (name == "iana-iftype-dvbasiout") return 173;
+            if (name == "iana-iftype-plc") return 174;
+            if (name == "iana-iftype-nfas") return 175;
+            if (name == "iana-iftype-tr008") return 176;
+            if (name == "iana-iftype-gr303rdt") return 177;
+            if (name == "iana-iftype-gr303idt") return 178;
+            if (name == "iana-iftype-isup") return 179;
+            if (name == "iana-iftype-prop-docs-wireless-maclayer") return 180;
+            if (name == "iana-iftype-prop-docs-wireless-downstream") return 181;
+            if (name == "iana-iftype-prop-docs-wireless-upstream") return 182;
+            if (name == "iana-iftype-hiperlan2") return 183;
+            if (name == "iana-iftype-prop-bwap2mp") return 184;
+            if (name == "iana-iftype-sonetoverheadchannel") return 185;
+            if (name == "iana-iftype-digital-wrapperoverheadchannel") return 186;
+            if (name == "iana-iftype-aal2") return 187;
+            if (name == "iana-iftype-radiomac") return 188;
+            if (name == "iana-iftype-atmradio") return 189;
+            if (name == "iana-iftype-imt") return 190;
+            if (name == "iana-iftype-mvl") return 191;
+            if (name == "iana-iftype-reachhdsl") return 192;
+            if (name == "iana-iftype-frdlciendpt") return 193;
+            if (name == "iana-iftype-atmvciendpt") return 194;
+            if (name == "iana-iftype-opticalchannel") return 195;
+            if (name == "iana-iftype-opticaltransport") return 196;
+            if (name == "iana-iftype-propatm") return 197;
+            if (name == "iana-iftype-voiceovercable") return 198;
+            if (name == "iana-iftype-infiniband") return 199;
+            if (name == "iana-iftype-telink") return 200;
+            if (name == "iana-iftype-q2931") return 201;
+            if (name == "iana-iftype-virtualatg") return 202;
+            if (name == "iana-iftype-siptg") return 203;
+            if (name == "iana-iftype-sipsig") return 204;
+            if (name == "iana-iftype-docs-cable-upstreamchannel") return 205;
+            if (name == "iana-iftype-econet") return 206;
+            if (name == "iana-iftype-pon155") return 207;
+            if (name == "iana-iftype-pon622") return 208;
+            if (name == "iana-iftype-bridge-if") return 209;
+            if (name == "iana-iftype-linegroup") return 210;
+            if (name == "iana-iftype-voiceemfgd") return 211;
+            if (name == "iana-iftype-voiceefgdeana") return 212;
+            if (name == "iana-iftype-voicedid") return 213;
+            if (name == "iana-iftype-mpegtransport") return 214;
+            if (name == "iana-iftype-sixtofour") return 215;
+            if (name == "iana-iftype-gtp") return 216;
+            if (name == "iana-iftype-pdnetherloop1") return 217;
+            if (name == "iana-iftype-pdnetherloop2") return 218;
+            if (name == "iana-iftype-opticalchannel-group") return 219;
+            if (name == "iana-iftype-homepna") return 220;
+            if (name == "iana-iftype-gfp") return 221;
+            if (name == "iana-iftype-ciscoislvlan") return 222;
+            if (name == "iana-iftype-actelismetaloop") return 223;
+            if (name == "iana-iftype-fciplink") return 224;
+            if (name == "iana-iftype-rpr") return 225;
+            if (name == "iana-iftype-qam") return 226;
+            if (name == "iana-iftype-lmp") return 227;
+            if (name == "iana-iftype-cblvectastar") return 228;
+            if (name == "iana-iftype-docs-cable-mcmts-downtream") return 229;
+            if (name == "iana-iftype-adsl2") return 230;
+            if (name == "iana-iftype-macseccontrolledif") return 231;
+            if (name == "iana-iftype-macsecuncontrolledif") return 232;
+            if (name == "iana-iftype-aviciopticalether") return 233;
+            if (name == "iana-iftype-atmbond") return 234;
+            if (name == "iana-iftype-voicefgdos") return 235;
+            if (name == "iana-iftype-mocaversion1") return 236;
+            if (name == "iana-iftype-ieee80216-wman") return 237;
+            if (name == "iana-iftype-adsl2plus") return 238;
+            if (name == "iana-iftype-dvbrcsmaclayer") return 239;
+            if (name == "iana-iftype-dvbtdm") return 240;
+            if (name == "iana-iftype-dvbrcstdma") return 241;
+            if (name == "iana-iftype-x86laps") return 242;
+            if (name == "iana-iftype-wwanpp") return 243;
+            if (name == "iana-iftype-wwanpp2") return 244;
+            if (name == "iana-iftype-voiceebs") return 245;
+            if (name == "iana-iftype-ifpwtype") return 246;
+            if (name == "iana-iftype-ilan") return 247;
+            if (name == "iana-iftype-pip") return 248;
+            if (name == "iana-iftype-aluelp") return 249;
+            if (name == "iana-iftype-gpon") return 250;
+            if (name == "iana-iftype-vdsl2") return 251;
+            if (name == "iana-iftype-capwapdot11-profile") return 252;
+            if (name == "iana-iftype-capwapdot11-bss") return 253;
+            if (name == "iana-iftype-capwapwtp-virtualradio") return 254;
+            if (name == "iana-iftype-bits") return 255;
+            if (name == "iana-iftype-docs-cable-upstreamrfport") return 256;
+            if (name == "iana-iftype-cable-downstreamrfport") return 257;
+            if (name == "iana-iftype-vmware-virtualnic") return 258;
+            if (name == "iana-iftype-ieee802154") return 259;
+            if (name == "iana-iftype-otnodu") return 260;
+            if (name == "iana-iftype-otnotu") return 261;
+            if (name == "iana-iftype-ifvfitype") return 262;
+            if (name == "iana-iftype-g9981") return 263;
+            if (name == "iana-iftype-g9982") return 264;
+            if (name == "iana-iftype-g9983") return 265;
+            if (name == "iana-iftype-aluepon") return 266;
+            if (name == "iana-iftype-aluepon-onu") return 267;
+            if (name == "iana-iftype-aluepon-physicaluni") return 268;
+            if (name == "iana-iftype-aluepon-logicalink") return 269;
+            if (name == "iana-iftype-alugpon-onu") return 270;
+            if (name == "iana-iftype-alugpon-physicaluni") return 271;
+            if (name == "iana-iftype-vmwarenicteam") return 272;
+            if (name == "iana-iftype-docs-ofdm-downstream") return 277;
+            if (name == "iana-iftype-docs-ofdma-upstream") return 278;
+            if (name == "iana-iftype-gfast") return 279;
+            if (name == "iana-iftype-sdci") return 280;
+            if (name == "iana-iftype-xbox-wireless") return 281;
+            if (name == "iana-iftype-fastdsl") return 282;
+            return -1;
+        }
 };
 
-class SerialCrc : public ydk::Enum
+class QosDirection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf serial_crc32;
-        static const ydk::Enum::YLeaf serial_crc16;
+        static const ydk::Enum::YLeaf qos_inbound;
+        static const ydk::Enum::YLeaf qos_outbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos-inbound") return 0;
+            if (name == "qos-outbound") return 1;
+            return -1;
+        }
 };
 
-class SubrateSpeed : public ydk::Enum
+class EtherSpeed : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf dsx1_subrate_56kbps;
-        static const ydk::Enum::YLeaf dsx1_subrate_64kbps;
+        static const ydk::Enum::YLeaf speed_10mb;
+        static const ydk::Enum::YLeaf speed_100mb;
+        static const ydk::Enum::YLeaf speed_1gb;
+        static const ydk::Enum::YLeaf speed_10gb;
+        static const ydk::Enum::YLeaf speed_25gb;
+        static const ydk::Enum::YLeaf speed_40gb;
+        static const ydk::Enum::YLeaf speed_50gb;
+        static const ydk::Enum::YLeaf speed_100gb;
+        static const ydk::Enum::YLeaf speed_unknown;
+        static const ydk::Enum::YLeaf speed_auto;
 
-};
-
-class T1e1LoopbackMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf t1e1_no_loopback;
-        static const ydk::Enum::YLeaf t1e1_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_line_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_payload_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_ansi_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_att_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_iboc_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_ansi_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_att_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_iboc_local_loopback;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "speed-10mb") return 0;
+            if (name == "speed-100mb") return 1;
+            if (name == "speed-1gb") return 2;
+            if (name == "speed-10gb") return 3;
+            if (name == "speed-25gb") return 4;
+            if (name == "speed-40gb") return 5;
+            if (name == "speed-50gb") return 6;
+            if (name == "speed-100gb") return 7;
+            if (name == "speed-unknown") return 8;
+            if (name == "speed-auto") return 9;
+            return -1;
+        }
 };
 
 

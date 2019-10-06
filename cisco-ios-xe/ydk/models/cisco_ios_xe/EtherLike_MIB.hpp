@@ -12,24 +12,6 @@
 namespace cisco_ios_xe {
 namespace EtherLike_MIB {
 
-class Dot3TestTdr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot3TestTdr();
-        ~Dot3TestTdr();
-
-
-}; // Dot3TestTdr
-
-class Dot3TestLoopBack : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot3TestLoopBack();
-        ~Dot3TestLoopBack();
-
-
-}; // Dot3TestLoopBack
-
 class Dot3ErrorInitError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -39,6 +21,15 @@ class Dot3ErrorInitError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual
 
 }; // Dot3ErrorInitError
 
+class Dot3TestTdr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot3TestTdr();
+        ~Dot3TestTdr();
+
+
+}; // Dot3TestTdr
+
 class Dot3ErrorLoopbackError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -47,6 +38,15 @@ class Dot3ErrorLoopbackError : public ietf::ietf_yang_smiv2::ObjectIdentity, vir
 
 
 }; // Dot3ErrorLoopbackError
+
+class Dot3TestLoopBack : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot3TestLoopBack();
+        ~Dot3TestLoopBack();
+
+
+}; // Dot3TestLoopBack
 
 class EtherLikeMIB : public ydk::Entity
 {
@@ -362,6 +362,12 @@ class EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsDuplexStatus : publ
         static const ydk::Enum::YLeaf halfDuplex;
         static const ydk::Enum::YLeaf fullDuplex;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "halfDuplex") return 2;
+            if (name == "fullDuplex") return 3;
+            return -1;
+        }
 };
 
 class EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsRateControlStatus : public ydk::Enum
@@ -371,6 +377,12 @@ class EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsRateControlStatus :
         static const ydk::Enum::YLeaf rateControlOn;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rateControlOff") return 1;
+            if (name == "rateControlOn") return 2;
+            if (name == "unknown") return 3;
+            return -1;
+        }
 };
 
 class EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseAdminMode : public ydk::Enum
@@ -381,6 +393,13 @@ class EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseAdminMode : public 
         static const ydk::Enum::YLeaf enabledRcv;
         static const ydk::Enum::YLeaf enabledXmitAndRcv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "enabledXmit") return 2;
+            if (name == "enabledRcv") return 3;
+            if (name == "enabledXmitAndRcv") return 4;
+            return -1;
+        }
 };
 
 class EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseOperMode : public ydk::Enum
@@ -391,6 +410,13 @@ class EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseOperMode : public y
         static const ydk::Enum::YLeaf enabledRcv;
         static const ydk::Enum::YLeaf enabledXmitAndRcv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "enabledXmit") return 2;
+            if (name == "enabledRcv") return 3;
+            if (name == "enabledXmitAndRcv") return 4;
+            return -1;
+        }
 };
 
 

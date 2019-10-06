@@ -1293,6 +1293,17 @@ class Diag::Racks::Rack::Summary::Summary_ : public ydk::Entity
 
 }; // Diag::Racks::Rack::Summary::Summary_
 
+class DiagProcessor : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mpc8614d;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpc8614d") return 0;
+            return -1;
+        }
+};
+
 class DiagSlot : public ydk::Enum
 {
     public:
@@ -1300,21 +1311,12 @@ class DiagSlot : public ydk::Enum
         static const ydk::Enum::YLeaf power_module;
         static const ydk::Enum::YLeaf module;
 
-};
-
-class DiagNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf spa;
-
-};
-
-class DiagProcessor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpc8614d;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "fan-tray") return 0;
+            if (name == "power-module") return 1;
+            if (name == "module") return 2;
+            return -1;
+        }
 };
 
 class NodeState : public ydk::Enum
@@ -1372,6 +1374,73 @@ class NodeState : public ydk::Enum
         static const ydk::Enum::YLeaf max;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-present") return 0;
+            if (name == "present") return 1;
+            if (name == "reset") return 2;
+            if (name == "rommon") return 3;
+            if (name == "mbi-boot") return 4;
+            if (name == "mbi-run") return 5;
+            if (name == "xr-run") return 6;
+            if (name == "bring-down") return 7;
+            if (name == "xr-fail") return 8;
+            if (name == "fdiag-run") return 9;
+            if (name == "fdiag-fail") return 10;
+            if (name == "power") return 11;
+            if (name == "unpower") return 12;
+            if (name == "mdr-warm-reload") return 13;
+            if (name == "mdr-mbi-run") return 14;
+            if (name == "maintenance-mode") return 15;
+            if (name == "admin-down") return 16;
+            if (name == "not-monitor") return 17;
+            if (name == "unknown-card") return 18;
+            if (name == "failed") return 19;
+            if (name == "ok") return 20;
+            if (name == "missing") return 21;
+            if (name == "diag-download") return 22;
+            if (name == "diag-not-monitor") return 23;
+            if (name == "fabric-diag-not-monitor") return 24;
+            if (name == "diag-rp-launch") return 25;
+            if (name == "diag-run") return 26;
+            if (name == "diag-pass") return 27;
+            if (name == "diag-fail") return 28;
+            if (name == "diag-timeout") return 29;
+            if (name == "disable") return 30;
+            if (name == "spa-boot") return 31;
+            if (name == "not-allowed-online") return 32;
+            if (name == "stop") return 33;
+            if (name == "incomp-version") return 34;
+            if (name == "fpd-hold") return 35;
+            if (name == "xr-preparation") return 36;
+            if (name == "sync-ready") return 37;
+            if (name == "xr-isolate") return 38;
+            if (name == "ready") return 39;
+            if (name == "invalid") return 40;
+            if (name == "operational") return 41;
+            if (name == "operational-lock") return 42;
+            if (name == "going-down") return 43;
+            if (name == "going-offline") return 44;
+            if (name == "going-online") return 45;
+            if (name == "offline") return 46;
+            if (name == "up") return 47;
+            if (name == "down") return 48;
+            if (name == "max") return 49;
+            if (name == "unknown") return 50;
+            return -1;
+        }
+};
+
+class DiagNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf spa;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "node") return 0;
+            if (name == "spa") return 1;
+            return -1;
+        }
 };
 
 

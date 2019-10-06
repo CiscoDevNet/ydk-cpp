@@ -457,6 +457,18 @@ class CiscoPdDataType : public ydk::Enum
         static const ydk::Enum::YLeaf packetCountOut;
         static const ydk::Enum::YLeaf packetCountSum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bitRateIn") return 1;
+            if (name == "bitRateOut") return 2;
+            if (name == "bitRateSum") return 3;
+            if (name == "byteCountIn") return 4;
+            if (name == "byteCountOut") return 5;
+            if (name == "byteCountSum") return 6;
+            if (name == "packetCountIn") return 7;
+            if (name == "packetCountOut") return 8;
+            if (name == "packetCountSum") return 9;
+            return -1;
+        }
 };
 
 class CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigSampleType : public ydk::Enum
@@ -465,6 +477,11 @@ class CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConf
         static const ydk::Enum::YLeaf absoluteValue;
         static const ydk::Enum::YLeaf deltaValue;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absoluteValue") return 1;
+            if (name == "deltaValue") return 2;
+            return -1;
+        }
 };
 
 class CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigStartup : public ydk::Enum
@@ -474,6 +491,12 @@ class CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConf
         static const ydk::Enum::YLeaf falling;
         static const ydk::Enum::YLeaf risingOrFalling;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rising") return 1;
+            if (name == "falling") return 2;
+            if (name == "risingOrFalling") return 3;
+            return -1;
+        }
 };
 
 class CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::CnpdThresholdHistoryType : public ydk::Enum
@@ -482,6 +505,11 @@ class CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHis
         static const ydk::Enum::YLeaf risingBreach;
         static const ydk::Enum::YLeaf fallingBreach;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "risingBreach") return 1;
+            if (name == "fallingBreach") return 2;
+            return -1;
+        }
 };
 
 

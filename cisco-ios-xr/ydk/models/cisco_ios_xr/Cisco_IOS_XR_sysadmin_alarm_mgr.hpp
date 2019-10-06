@@ -1262,28 +1262,6 @@ class AlarmMgr::Detail::System::Suppressed : public ydk::Entity
 
 }; // AlarmMgr::Detail::System::Suppressed
 
-class SeverityTd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_reported;
-        static const ydk::Enum::YLeaf not_alarmed;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-
-};
-
-class StatusTd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf set;
-        static const ydk::Enum::YLeaf clear;
-        static const ydk::Enum::YLeaf suppress;
-
-};
-
 class GroupTd : public ydk::Enum
 {
     public:
@@ -1307,6 +1285,45 @@ class GroupTd : public ydk::Enum
         static const ydk::Enum::YLeaf timing;
         static const ydk::Enum::YLeaf last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "environ") return 1;
+            if (name == "ethernet") return 2;
+            if (name == "fabric") return 3;
+            if (name == "power") return 4;
+            if (name == "software") return 5;
+            if (name == "slice") return 7;
+            if (name == "cpu") return 8;
+            if (name == "controller") return 9;
+            if (name == "sonet") return 10;
+            if (name == "otn") return 11;
+            if (name == "sdh_controller") return 12;
+            if (name == "asic") return 13;
+            if (name == "fpd_infra") return 14;
+            if (name == "shelf") return 15;
+            if (name == "mpa") return 16;
+            if (name == "ots") return 17;
+            if (name == "timing") return 18;
+            if (name == "last") return 19;
+            return -1;
+        }
+};
+
+class StatusTd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf suppress;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "set") return 1;
+            if (name == "clear") return 2;
+            if (name == "suppress") return 3;
+            return -1;
+        }
 };
 
 class AgentStateTd : public ydk::Enum
@@ -1319,6 +1336,15 @@ class AgentStateTd : public ydk::Enum
         static const ydk::Enum::YLeaf registered;
         static const ydk::Enum::YLeaf disconnected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "start") return 0;
+            if (name == "init") return 1;
+            if (name == "connecting") return 2;
+            if (name == "connected") return 3;
+            if (name == "registered") return 4;
+            if (name == "disconnected") return 5;
+            return -1;
+        }
 };
 
 class AgentTypeTd : public ydk::Enum
@@ -1329,6 +1355,34 @@ class AgentTypeTd : public ydk::Enum
         static const ydk::Enum::YLeaf consumer;
         static const ydk::Enum::YLeaf subscriber;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "producer") return 1;
+            if (name == "consumer") return 2;
+            if (name == "subscriber") return 3;
+            return -1;
+        }
+};
+
+class SeverityTd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_reported;
+        static const ydk::Enum::YLeaf not_alarmed;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "not_reported") return 1;
+            if (name == "not_alarmed") return 2;
+            if (name == "minor") return 3;
+            if (name == "major") return 4;
+            if (name == "critical") return 5;
+            return -1;
+        }
 };
 
 

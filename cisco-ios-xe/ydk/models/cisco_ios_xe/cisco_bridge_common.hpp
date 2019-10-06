@@ -19,14 +19,14 @@ class MacLimitNotificationType : public virtual ydk::Identity
 
 }; // MacLimitNotificationType
 
-class NotifNone : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifSyslog : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifNone();
-        ~NotifNone();
+        NotifSyslog();
+        ~NotifSyslog();
 
 
-}; // NotifNone
+}; // NotifSyslog
 
 class NotifSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
@@ -37,14 +37,14 @@ class NotifSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotifica
 
 }; // NotifSnmpTrap
 
-class NotifSyslog : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifNone : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifSyslog();
-        ~NotifSyslog();
+        NotifNone();
+        ~NotifNone();
 
 
-}; // NotifSyslog
+}; // NotifNone
 
 class NotifSyslogAndSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
@@ -55,23 +55,6 @@ class NotifSyslogAndSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimi
 
 }; // NotifSyslogAndSnmpTrap
 
-class EthTrafficClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unknown_unicast;
-
-};
-
-class MacAgingType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inactivity;
-        static const ydk::Enum::YLeaf absolute;
-
-};
-
 class MacLimitAction : public ydk::Enum
 {
     public:
@@ -80,6 +63,41 @@ class MacLimitAction : public ydk::Enum
         static const ydk::Enum::YLeaf drop;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "flood") return 1;
+            if (name == "drop") return 2;
+            if (name == "shutdown") return 3;
+            return -1;
+        }
+};
+
+class EthTrafficClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unknown_unicast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 0;
+            if (name == "multicast") return 1;
+            if (name == "unknown-unicast") return 2;
+            return -1;
+        }
+};
+
+class MacAgingType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inactivity;
+        static const ydk::Enum::YLeaf absolute;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "inactivity") return 0;
+            if (name == "absolute") return 1;
+            return -1;
+        }
 };
 
 class MacSecureAction : public ydk::Enum
@@ -89,6 +107,12 @@ class MacSecureAction : public ydk::Enum
         static const ydk::Enum::YLeaf restrict;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "restrict") return 1;
+            if (name == "shutdown") return 2;
+            return -1;
+        }
 };
 
 

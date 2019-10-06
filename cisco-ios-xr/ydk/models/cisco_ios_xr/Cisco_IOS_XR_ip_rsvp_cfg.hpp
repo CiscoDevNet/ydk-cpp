@@ -380,6 +380,7 @@ class Rsvp::Interfaces::Interface : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
+        ydk::YLeaf enable; //type: empty
         class IfSignalling; //type: Rsvp::Interfaces::Interface::IfSignalling
         class Bandwidth; //type: Rsvp::Interfaces::Interface::Bandwidth
         class Authentication; //type: Rsvp::Interfaces::Interface::Authentication
@@ -815,13 +816,17 @@ class Rsvp::Authentication : public ydk::Entity
 
 }; // Rsvp::Authentication
 
-class RsvpRdm : public ydk::Enum
+class RsvpBwCfg : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rdm;
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf use_default_bandwidth;
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf percentage;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absolute") return 0;
+            if (name == "percentage") return 1;
+            return -1;
+        }
 };
 
 class RsvpBc0 : public ydk::Enum
@@ -831,14 +836,12 @@ class RsvpBc0 : public ydk::Enum
         static const ydk::Enum::YLeaf global_pool;
         static const ydk::Enum::YLeaf not_specified;
 
-};
-
-class RsvpBwCfg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf percentage;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "bc0") return 1;
+            if (name == "global-pool") return 2;
+            if (name == "not-specified") return 3;
+            return -1;
+        }
 };
 
 class RsvpBc1 : public ydk::Enum
@@ -847,6 +850,26 @@ class RsvpBc1 : public ydk::Enum
         static const ydk::Enum::YLeaf bc1;
         static const ydk::Enum::YLeaf sub_pool;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bc1") return 1;
+            if (name == "sub-pool") return 2;
+            return -1;
+        }
+};
+
+class RsvpRdm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rdm;
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf use_default_bandwidth;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "rdm") return 1;
+            if (name == "not-specified") return 2;
+            if (name == "use-default-bandwidth") return 3;
+            return -1;
+        }
 };
 
 

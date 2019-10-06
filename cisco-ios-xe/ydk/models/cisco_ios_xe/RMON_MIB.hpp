@@ -1087,6 +1087,13 @@ class EntryStatus : public ydk::Enum
         static const ydk::Enum::YLeaf underCreation;
         static const ydk::Enum::YLeaf invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "valid") return 1;
+            if (name == "createRequest") return 2;
+            if (name == "underCreation") return 3;
+            if (name == "invalid") return 4;
+            return -1;
+        }
 };
 
 class RMONMIB::AlarmTable::AlarmEntry::AlarmSampleType : public ydk::Enum
@@ -1095,6 +1102,11 @@ class RMONMIB::AlarmTable::AlarmEntry::AlarmSampleType : public ydk::Enum
         static const ydk::Enum::YLeaf absoluteValue;
         static const ydk::Enum::YLeaf deltaValue;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absoluteValue") return 1;
+            if (name == "deltaValue") return 2;
+            return -1;
+        }
 };
 
 class RMONMIB::AlarmTable::AlarmEntry::AlarmStartupAlarm : public ydk::Enum
@@ -1104,6 +1116,12 @@ class RMONMIB::AlarmTable::AlarmEntry::AlarmStartupAlarm : public ydk::Enum
         static const ydk::Enum::YLeaf fallingAlarm;
         static const ydk::Enum::YLeaf risingOrFallingAlarm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "risingAlarm") return 1;
+            if (name == "fallingAlarm") return 2;
+            if (name == "risingOrFallingAlarm") return 3;
+            return -1;
+        }
 };
 
 class RMONMIB::HostTopNControlTable::HostTopNControlEntry::HostTopNRateBase : public ydk::Enum
@@ -1117,6 +1135,16 @@ class RMONMIB::HostTopNControlTable::HostTopNControlEntry::HostTopNRateBase : pu
         static const ydk::Enum::YLeaf hostTopNOutBroadcastPkts;
         static const ydk::Enum::YLeaf hostTopNOutMulticastPkts;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hostTopNInPkts") return 1;
+            if (name == "hostTopNOutPkts") return 2;
+            if (name == "hostTopNInOctets") return 3;
+            if (name == "hostTopNOutOctets") return 4;
+            if (name == "hostTopNOutErrors") return 5;
+            if (name == "hostTopNOutBroadcastPkts") return 6;
+            if (name == "hostTopNOutMulticastPkts") return 7;
+            return -1;
+        }
 };
 
 class RMONMIB::ChannelTable::ChannelEntry::ChannelAcceptType : public ydk::Enum
@@ -1125,6 +1153,11 @@ class RMONMIB::ChannelTable::ChannelEntry::ChannelAcceptType : public ydk::Enum
         static const ydk::Enum::YLeaf acceptMatched;
         static const ydk::Enum::YLeaf acceptFailed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acceptMatched") return 1;
+            if (name == "acceptFailed") return 2;
+            return -1;
+        }
 };
 
 class RMONMIB::ChannelTable::ChannelEntry::ChannelDataControl : public ydk::Enum
@@ -1133,6 +1166,11 @@ class RMONMIB::ChannelTable::ChannelEntry::ChannelDataControl : public ydk::Enum
         static const ydk::Enum::YLeaf on;
         static const ydk::Enum::YLeaf off;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            if (name == "off") return 2;
+            return -1;
+        }
 };
 
 class RMONMIB::ChannelTable::ChannelEntry::ChannelEventStatus : public ydk::Enum
@@ -1142,6 +1180,12 @@ class RMONMIB::ChannelTable::ChannelEntry::ChannelEventStatus : public ydk::Enum
         static const ydk::Enum::YLeaf eventFired;
         static const ydk::Enum::YLeaf eventAlwaysReady;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "eventReady") return 1;
+            if (name == "eventFired") return 2;
+            if (name == "eventAlwaysReady") return 3;
+            return -1;
+        }
 };
 
 class RMONMIB::BufferControlTable::BufferControlEntry::BufferControlFullStatus : public ydk::Enum
@@ -1150,6 +1194,11 @@ class RMONMIB::BufferControlTable::BufferControlEntry::BufferControlFullStatus :
         static const ydk::Enum::YLeaf spaceAvailable;
         static const ydk::Enum::YLeaf full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "spaceAvailable") return 1;
+            if (name == "full") return 2;
+            return -1;
+        }
 };
 
 class RMONMIB::BufferControlTable::BufferControlEntry::BufferControlFullAction : public ydk::Enum
@@ -1158,6 +1207,11 @@ class RMONMIB::BufferControlTable::BufferControlEntry::BufferControlFullAction :
         static const ydk::Enum::YLeaf lockWhenFull;
         static const ydk::Enum::YLeaf wrapWhenFull;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lockWhenFull") return 1;
+            if (name == "wrapWhenFull") return 2;
+            return -1;
+        }
 };
 
 class RMONMIB::EventTable::EventEntry::EventType : public ydk::Enum
@@ -1168,6 +1222,13 @@ class RMONMIB::EventTable::EventEntry::EventType : public ydk::Enum
         static const ydk::Enum::YLeaf snmptrap;
         static const ydk::Enum::YLeaf logandtrap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "log") return 2;
+            if (name == "snmptrap") return 3;
+            if (name == "logandtrap") return 4;
+            return -1;
+        }
 };
 
 

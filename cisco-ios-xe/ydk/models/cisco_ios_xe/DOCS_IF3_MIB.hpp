@@ -1942,6 +1942,85 @@ class DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry : public yd
 
 }; // DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry
 
+class CmtsCmRegState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf initialRanging;
+        static const ydk::Enum::YLeaf rangingAutoAdjComplete;
+        static const ydk::Enum::YLeaf dhcpv4Complete;
+        static const ydk::Enum::YLeaf registrationComplete;
+        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf bpiInit;
+        static const ydk::Enum::YLeaf startEae;
+        static const ydk::Enum::YLeaf startDhcpv4;
+        static const ydk::Enum::YLeaf startDhcpv6;
+        static const ydk::Enum::YLeaf dhcpv6Complete;
+        static const ydk::Enum::YLeaf startConfigFileDownload;
+        static const ydk::Enum::YLeaf configFileDownloadComplete;
+        static const ydk::Enum::YLeaf startRegistration;
+        static const ydk::Enum::YLeaf forwardingDisabled;
+        static const ydk::Enum::YLeaf rfMuteAll;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "initialRanging") return 2;
+            if (name == "rangingAutoAdjComplete") return 4;
+            if (name == "dhcpv4Complete") return 5;
+            if (name == "registrationComplete") return 6;
+            if (name == "operational") return 8;
+            if (name == "bpiInit") return 9;
+            if (name == "startEae") return 10;
+            if (name == "startDhcpv4") return 11;
+            if (name == "startDhcpv6") return 12;
+            if (name == "dhcpv6Complete") return 13;
+            if (name == "startConfigFileDownload") return 14;
+            if (name == "configFileDownloadComplete") return 15;
+            if (name == "startRegistration") return 16;
+            if (name == "forwardingDisabled") return 17;
+            if (name == "rfMuteAll") return 18;
+            return -1;
+        }
+};
+
+class IfDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf upstream;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "downstream") return 1;
+            if (name == "upstream") return 2;
+            return -1;
+        }
+};
+
+class SpectrumAnalysisWindowFunction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf hann;
+        static const ydk::Enum::YLeaf blackmanHarris;
+        static const ydk::Enum::YLeaf rectangular;
+        static const ydk::Enum::YLeaf hamming;
+        static const ydk::Enum::YLeaf flatTop;
+        static const ydk::Enum::YLeaf gaussian;
+        static const ydk::Enum::YLeaf chebyshev;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 0;
+            if (name == "hann") return 1;
+            if (name == "blackmanHarris") return 2;
+            if (name == "rectangular") return 3;
+            if (name == "hamming") return 4;
+            if (name == "flatTop") return 5;
+            if (name == "gaussian") return 6;
+            if (name == "chebyshev") return 7;
+            return -1;
+        }
+};
+
 class CmRegState : public ydk::Enum
 {
     public:
@@ -1969,42 +2048,32 @@ class CmRegState : public ydk::Enum
         static const ydk::Enum::YLeaf rangingInProgress;
         static const ydk::Enum::YLeaf rfMuteAll;
 
-};
-
-class CmtsCmRegState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf initialRanging;
-        static const ydk::Enum::YLeaf rangingAutoAdjComplete;
-        static const ydk::Enum::YLeaf dhcpv4Complete;
-        static const ydk::Enum::YLeaf registrationComplete;
-        static const ydk::Enum::YLeaf operational;
-        static const ydk::Enum::YLeaf bpiInit;
-        static const ydk::Enum::YLeaf startEae;
-        static const ydk::Enum::YLeaf startDhcpv4;
-        static const ydk::Enum::YLeaf startDhcpv6;
-        static const ydk::Enum::YLeaf dhcpv6Complete;
-        static const ydk::Enum::YLeaf startConfigFileDownload;
-        static const ydk::Enum::YLeaf configFileDownloadComplete;
-        static const ydk::Enum::YLeaf startRegistration;
-        static const ydk::Enum::YLeaf forwardingDisabled;
-        static const ydk::Enum::YLeaf rfMuteAll;
-
-};
-
-class SpectrumAnalysisWindowFunction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf hann;
-        static const ydk::Enum::YLeaf blackmanHarris;
-        static const ydk::Enum::YLeaf rectangular;
-        static const ydk::Enum::YLeaf hamming;
-        static const ydk::Enum::YLeaf flatTop;
-        static const ydk::Enum::YLeaf gaussian;
-        static const ydk::Enum::YLeaf chebyshev;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "notReady") return 2;
+            if (name == "notSynchronized") return 3;
+            if (name == "phySynchronized") return 4;
+            if (name == "usParametersAcquired") return 5;
+            if (name == "rangingComplete") return 6;
+            if (name == "dhcpv4Complete") return 7;
+            if (name == "todEstablished") return 8;
+            if (name == "securityEstablished") return 9;
+            if (name == "configFileDownloadComplete") return 10;
+            if (name == "registrationComplete") return 11;
+            if (name == "operational") return 12;
+            if (name == "accessDenied") return 13;
+            if (name == "eaeInProgress") return 14;
+            if (name == "dhcpv4InProgress") return 15;
+            if (name == "dhcpv6InProgress") return 16;
+            if (name == "dhcpv6Complete") return 17;
+            if (name == "registrationInProgress") return 18;
+            if (name == "bpiInit") return 19;
+            if (name == "forwardingDisabled") return 20;
+            if (name == "dsTopologyResolutionInProgress") return 21;
+            if (name == "rangingInProgress") return 22;
+            if (name == "rfMuteAll") return 23;
+            return -1;
+        }
 };
 
 class RangingState : public ydk::Enum
@@ -2017,14 +2086,15 @@ class RangingState : public ydk::Enum
         static const ydk::Enum::YLeaf continue_;
         static const ydk::Enum::YLeaf timeoutT4;
 
-};
-
-class IfDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf downstream;
-        static const ydk::Enum::YLeaf upstream;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "aborted") return 2;
+            if (name == "retriesExceeded") return 3;
+            if (name == "success") return 4;
+            if (name == "continue") return 5;
+            if (name == "timeoutT4") return 6;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3CmtsCmCtrl::DocsIf3CmtsCmCtrlCmdCommit : public ydk::Enum
@@ -2034,6 +2104,12 @@ class DOCSIF3MIB::DocsIf3CmtsCmCtrl::DocsIf3CmtsCmCtrlCmdCommit : public ydk::En
         static const ydk::Enum::YLeaf cmReinit;
         static const ydk::Enum::YLeaf disableForwarding;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mute") return 1;
+            if (name == "cmReinit") return 2;
+            if (name == "disableForwarding") return 3;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry::DocsIf3RccStatusValidityCode : public ydk::Enum
@@ -2049,6 +2125,18 @@ class DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry::DocsIf3RccStatus
         static const ydk::Enum::YLeaf wrongFrequencyRange;
         static const ydk::Enum::YLeaf wrongConnectivity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "valid") return 2;
+            if (name == "invalid") return 3;
+            if (name == "wrongPrimaryDs") return 4;
+            if (name == "missingPrimaryDs") return 5;
+            if (name == "multiplePrimaryDs") return 6;
+            if (name == "duplicateDs") return 7;
+            if (name == "wrongFrequencyRange") return 8;
+            if (name == "wrongConnectivity") return 9;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgIpProvMode : public ydk::Enum
@@ -2059,6 +2147,13 @@ class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgIpProvMode :
         static const ydk::Enum::YLeaf alternate;
         static const ydk::Enum::YLeaf dualStack;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4Only") return 0;
+            if (name == "ipv6Only") return 1;
+            if (name == "alternate") return 2;
+            if (name == "dualStack") return 3;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgUsFreqRange : public ydk::Enum
@@ -2067,6 +2162,11 @@ class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgUsFreqRange 
         static const ydk::Enum::YLeaf standard;
         static const ydk::Enum::YLeaf extended;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard") return 0;
+            if (name == "extended") return 1;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgEarlyAuthEncrCtrl : public ydk::Enum
@@ -2077,6 +2177,13 @@ class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgEarlyAuthEnc
         static const ydk::Enum::YLeaf enableEaeCapabilityBasedEnforcement;
         static const ydk::Enum::YLeaf enableEaeTotalEnforcement;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disableEae") return 1;
+            if (name == "enableEaeRangingBasedEnforcement") return 2;
+            if (name == "enableEaeCapabilityBasedEnforcement") return 3;
+            if (name == "enableEaeTotalEnforcement") return 4;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgDownChannelAnnex : public ydk::Enum
@@ -2088,6 +2195,14 @@ class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgDownChannelA
         static const ydk::Enum::YLeaf annexB;
         static const ydk::Enum::YLeaf annexC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "other") return 2;
+            if (name == "annexA") return 3;
+            if (name == "annexB") return 4;
+            if (name == "annexC") return 5;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgBpi2EnforceCtrl : public ydk::Enum
@@ -2099,6 +2214,14 @@ class DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::DocsIf3MdCfgBpi2EnforceC
         static const ydk::Enum::YLeaf qosCfgFile;
         static const ydk::Enum::YLeaf total;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "qosCfgFileWithBpi2AndCapabPrivSupportEnabled") return 1;
+            if (name == "qosCfgFileWithBpi2Enabled") return 2;
+            if (name == "qosCfgFile") return 3;
+            if (name == "total") return 4;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry::DocsIf3UsChExtSacCodeHoppingSelectionMode : public ydk::Enum
@@ -2110,6 +2233,14 @@ class DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry::DocsIf3UsChExtSacCod
         static const ydk::Enum::YLeaf sac2CodeHoppingMode2;
         static const ydk::Enum::YLeaf sac2NoCodeHopping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "sac1NoCodeHopping") return 1;
+            if (name == "sac1CodeHoppingMode1") return 2;
+            if (name == "sac2CodeHoppingMode2") return 3;
+            if (name == "sac2NoCodeHopping") return 4;
+            return -1;
+        }
 };
 
 class DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry::DocsIf3CmMdCfgIpProvMode : public ydk::Enum
@@ -2119,6 +2250,12 @@ class DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry::DocsIf3CmMdCfgIpProv
         static const ydk::Enum::YLeaf ipv6Only;
         static const ydk::Enum::YLeaf honorMdd;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4Only") return 0;
+            if (name == "ipv6Only") return 1;
+            if (name == "honorMdd") return 4;
+            return -1;
+        }
 };
 
 

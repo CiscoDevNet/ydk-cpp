@@ -504,6 +504,12 @@ class PIMMIB::PimInterfaceTable::PimInterfaceEntry::PimInterfaceMode : public yd
         static const ydk::Enum::YLeaf sparse;
         static const ydk::Enum::YLeaf sparseDense;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dense") return 1;
+            if (name == "sparse") return 2;
+            if (name == "sparseDense") return 3;
+            return -1;
+        }
 };
 
 class PIMMIB::PimNeighborTable::PimNeighborEntry::PimNeighborMode : public ydk::Enum
@@ -512,6 +518,11 @@ class PIMMIB::PimNeighborTable::PimNeighborEntry::PimNeighborMode : public ydk::
         static const ydk::Enum::YLeaf dense;
         static const ydk::Enum::YLeaf sparse;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dense") return 1;
+            if (name == "sparse") return 2;
+            return -1;
+        }
 };
 
 class PIMMIB::PimRPTable::PimRPEntry::PimRPState : public ydk::Enum
@@ -520,6 +531,11 @@ class PIMMIB::PimRPTable::PimRPEntry::PimRPState : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            return -1;
+        }
 };
 
 class PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::PimIpMRouteNextHopPruneReason : public ydk::Enum
@@ -529,6 +545,12 @@ class PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::PimIpMRouteNextH
         static const ydk::Enum::YLeaf prune;
         static const ydk::Enum::YLeaf assert;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "prune") return 2;
+            if (name == "assert") return 3;
+            return -1;
+        }
 };
 
 

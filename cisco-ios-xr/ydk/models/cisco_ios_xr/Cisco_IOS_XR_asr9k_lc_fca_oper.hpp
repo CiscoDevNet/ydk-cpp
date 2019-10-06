@@ -343,6 +343,25 @@ class Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail : public ydk::Entity
 
 }; // Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail
 
+class SpaResetReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf spa_reset_reason_unknown;
+        static const ydk::Enum::YLeaf spa_reset_reason_manual;
+        static const ydk::Enum::YLeaf spa_reset_reason_fpd_upgrade;
+        static const ydk::Enum::YLeaf spa_reset_reason_audit_fail;
+        static const ydk::Enum::YLeaf spa_reset_reason_failure;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "spa-reset-reason-unknown") return 1;
+            if (name == "spa-reset-reason-manual") return 2;
+            if (name == "spa-reset-reason-fpd-upgrade") return 3;
+            if (name == "spa-reset-reason-audit-fail") return 4;
+            if (name == "spa-reset-reason-failure") return 5;
+            return -1;
+        }
+};
+
 class SpaFailureReason : public ydk::Enum
 {
     public:
@@ -355,17 +374,17 @@ class SpaFailureReason : public ydk::Enum
         static const ydk::Enum::YLeaf spa_failure_reason_check_fpd;
         static const ydk::Enum::YLeaf spa_failure_reason_read_type;
 
-};
-
-class SpaResetReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf spa_reset_reason_unknown;
-        static const ydk::Enum::YLeaf spa_reset_reason_manual;
-        static const ydk::Enum::YLeaf spa_reset_reason_fpd_upgrade;
-        static const ydk::Enum::YLeaf spa_reset_reason_audit_fail;
-        static const ydk::Enum::YLeaf spa_reset_reason_failure;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "spa-failure-reason-unknown") return 1;
+            if (name == "spa-failure-reason-spi-failure") return 2;
+            if (name == "spa-failure-reason-boot") return 3;
+            if (name == "spa-failure-reason-hw-failed") return 4;
+            if (name == "spa-failure-reason-sw-failed") return 5;
+            if (name == "spa-failure-reason-sw-restart") return 6;
+            if (name == "spa-failure-reason-check-fpd") return 7;
+            if (name == "spa-failure-reason-read-type") return 8;
+            return -1;
+        }
 };
 
 class SpaOperState : public ydk::Enum
@@ -376,6 +395,13 @@ class SpaOperState : public ydk::Enum
         static const ydk::Enum::YLeaf spa_state_booting;
         static const ydk::Enum::YLeaf spa_state_ready;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "spa-state-reset") return 1;
+            if (name == "spa-state-failed") return 2;
+            if (name == "spa-state-booting") return 3;
+            if (name == "spa-state-ready") return 4;
+            return -1;
+        }
 };
 
 

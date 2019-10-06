@@ -4235,6 +4235,48 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::L
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
+class BfdSession : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf bundle_member;
+        static const ydk::Enum::YLeaf bundle_interface;
+        static const ydk::Enum::YLeaf state_inheriting;
+        static const ydk::Enum::YLeaf bundle_vlan;
+        static const ydk::Enum::YLeaf mpls_tp;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf pseudowire_headend;
+        static const ydk::Enum::YLeaf ip_single_hop;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "undefined") return 0;
+            if (name == "bundle-member") return 1;
+            if (name == "bundle-interface") return 2;
+            if (name == "state-inheriting") return 3;
+            if (name == "bundle-vlan") return 4;
+            if (name == "mpls-tp") return 5;
+            if (name == "gre") return 6;
+            if (name == "pseudowire-headend") return 7;
+            if (name == "ip-single-hop") return 8;
+            return -1;
+        }
+};
+
+class BfdAfId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bfd_af_id_none;
+        static const ydk::Enum::YLeaf bfd_af_id_ipv4;
+        static const ydk::Enum::YLeaf bfd_af_id_ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-af-id-none") return 0;
+            if (name == "bfd-af-id-ipv4") return 2;
+            if (name == "bfd-af-id-ipv6") return 10;
+            return -1;
+        }
+};
+
 class BfdMpDownloadState : public ydk::Enum
 {
     public:
@@ -4245,6 +4287,36 @@ class BfdMpDownloadState : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_mp_download_nack;
         static const ydk::Enum::YLeaf bfd_mp_download_delete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-mp-download-none") return 0;
+            if (name == "bfd-mp-download-no-lc") return 1;
+            if (name == "bfd-mp-download-downloaded") return 2;
+            if (name == "bfd-mp-download-ack") return 3;
+            if (name == "bfd-mp-download-nack") return 4;
+            if (name == "bfd-mp-download-delete") return 5;
+            return -1;
+        }
+};
+
+class BfdMgmtSessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_admin_down;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_down;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_init;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_up;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_failing;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-mgmt-session-state-admin-down") return 0;
+            if (name == "bfd-mgmt-session-state-down") return 1;
+            if (name == "bfd-mgmt-session-state-init") return 2;
+            if (name == "bfd-mgmt-session-state-up") return 3;
+            if (name == "bfd-mgmt-session-state-failing") return 4;
+            if (name == "bfd-mgmt-session-state-unknown") return 6;
+            return -1;
+        }
 };
 
 class BfdMgmtSessionDiag : public ydk::Enum
@@ -4261,15 +4333,19 @@ class BfdMgmtSessionDiag : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_mgmt_session_diag_rev_conc_path_down;
         static const ydk::Enum::YLeaf bfd_mgmt_session_diag_num;
 
-};
-
-class BfdAfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bfd_af_id_none;
-        static const ydk::Enum::YLeaf bfd_af_id_ipv4;
-        static const ydk::Enum::YLeaf bfd_af_id_ipv6;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-mgmt-session-diag-none") return 0;
+            if (name == "bfd-mgmt-session-diag-control-detect-expired") return 1;
+            if (name == "bfd-mgmt-session-diag-echo-function-failed") return 2;
+            if (name == "bfd-mgmt-session-diag-nb-or-signaled-down") return 3;
+            if (name == "bfd-mgmt-session-diag-fwding-plane-reset") return 4;
+            if (name == "bfd-mgmt-session-diag-path-down") return 5;
+            if (name == "bfd-mgmt-session-diag-conc-path-down") return 6;
+            if (name == "bfd-mgmt-session-diag-admin-down") return 7;
+            if (name == "bfd-mgmt-session-diag-rev-conc-path-down") return 8;
+            if (name == "bfd-mgmt-session-diag-num") return 10;
+            return -1;
+        }
 };
 
 class BfdMgmtPktDisplay : public ydk::Enum
@@ -4279,33 +4355,12 @@ class BfdMgmtPktDisplay : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_mgmt_pkt_display_type_bob_mbr;
         static const ydk::Enum::YLeaf bfd_mgmt_pkt_display_type_max;
 
-};
-
-class BfdSession : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf undefined;
-        static const ydk::Enum::YLeaf bundle_member;
-        static const ydk::Enum::YLeaf bundle_interface;
-        static const ydk::Enum::YLeaf state_inheriting;
-        static const ydk::Enum::YLeaf bundle_vlan;
-        static const ydk::Enum::YLeaf mpls_tp;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf pseudowire_headend;
-        static const ydk::Enum::YLeaf ip_single_hop;
-
-};
-
-class BfdMgmtSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_admin_down;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_down;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_init;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_up;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_failing;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_unknown;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-mgmt-pkt-display-type-none") return 0;
+            if (name == "bfd-mgmt-pkt-display-type-bob-mbr") return 1;
+            if (name == "bfd-mgmt-pkt-display-type-max") return 2;
+            return -1;
+        }
 };
 
 

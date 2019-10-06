@@ -736,6 +736,14 @@ class DocsNsiEncapSubtype : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "ieee8021q") return 2;
+            if (name == "ieee8021ad") return 3;
+            if (name == "mpls") return 4;
+            if (name == "l2tpv3") return 5;
+            return -1;
+        }
 };
 
 

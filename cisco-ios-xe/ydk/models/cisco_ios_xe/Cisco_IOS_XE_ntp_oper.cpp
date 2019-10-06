@@ -1335,26 +1335,6 @@ bool NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::has_leaf_or_child_
     return false;
 }
 
-const Enum::YLeaf RefClockSourceType::ntp_ref_goes {0, "ntp-ref-goes"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_gps {1, "ntp-ref-gps"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_gal {2, "ntp-ref-gal"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_pps {3, "ntp-ref-pps"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_irig {4, "ntp-ref-irig"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_wwvb {5, "ntp-ref-wwvb"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_dcf {6, "ntp-ref-dcf"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_hbg {7, "ntp-ref-hbg"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_msf {8, "ntp-ref-msf"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_jjy {9, "ntp-ref-jjy"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_lorc {10, "ntp-ref-lorc"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_tdf {11, "ntp-ref-tdf"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_chu {12, "ntp-ref-chu"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_wwv {13, "ntp-ref-wwv"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_wwvh {14, "ntp-ref-wwvh"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_nist {15, "ntp-ref-nist"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_acts {16, "ntp-ref-acts"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_usno {17, "ntp-ref-usno"};
-const Enum::YLeaf RefClockSourceType::ntp_ref_ptb {18, "ntp-ref-ptb"};
-
 const Enum::YLeaf KissCodeType::ntp_ref_acst {0, "ntp-ref-acst"};
 const Enum::YLeaf KissCodeType::ntp_ref_auth {1, "ntp-ref-auth"};
 const Enum::YLeaf KissCodeType::ntp_ref_auto {2, "ntp-ref-auto"};
@@ -1369,34 +1349,6 @@ const Enum::YLeaf KissCodeType::ntp_ref_nkey {10, "ntp-ref-nkey"};
 const Enum::YLeaf KissCodeType::ntp_ref_rate {11, "ntp-ref-rate"};
 const Enum::YLeaf KissCodeType::ntp_ref_rmot {12, "ntp-ref-rmot"};
 const Enum::YLeaf KissCodeType::ntp_ref_step {13, "ntp-ref-step"};
-
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_kod {0, "ntp-ref-state-kod"};
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_clk_source {1, "ntp-ref-state-resolved-with-clk-source"};
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_ip_addr {2, "ntp-ref-state-resolved-with-ip-addr"};
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_bad_state {3, "ntp-ref-state-bad-state"};
-
-const Enum::YLeaf PeerSelectStatus::ntp_peer_as_backup {0, "ntp-peer-as-backup"};
-const Enum::YLeaf PeerSelectStatus::ntp_peer_rejected {1, "ntp-peer-rejected"};
-const Enum::YLeaf PeerSelectStatus::ntp_peer_false_ticker {2, "ntp-peer-false-ticker"};
-const Enum::YLeaf PeerSelectStatus::ntp_peer_excess {3, "ntp-peer-excess"};
-const Enum::YLeaf PeerSelectStatus::ntp_peer_outlier {4, "ntp-peer-outlier"};
-const Enum::YLeaf PeerSelectStatus::ntp_peer_candidate {5, "ntp-peer-candidate"};
-const Enum::YLeaf PeerSelectStatus::ntp_peer_sys_peer {6, "ntp-peer-sys-peer"};
-const Enum::YLeaf PeerSelectStatus::ntp_peer_pps_peer {7, "ntp-peer-pps-peer"};
-
-const Enum::YLeaf PeerAuthStatus::ntp_auth_ok {0, "ntp-auth-ok"};
-const Enum::YLeaf PeerAuthStatus::ntp_auth_bad_auth {1, "ntp-auth-bad-auth"};
-const Enum::YLeaf PeerAuthStatus::ntp_auth_auth_not_configured {2, "ntp-auth-auth-not-configured"};
-const Enum::YLeaf PeerAuthStatus::ntp_auth_status_not_available {3, "ntp-auth-status-not-available"};
-const Enum::YLeaf PeerAuthStatus::ntp_auth_none {4, "ntp-auth-none"};
-const Enum::YLeaf PeerAuthStatus::ntp_auth_crypto {5, "ntp-auth-crypto"};
-
-const Enum::YLeaf PeerStatusWord::crypto_flag_sig {0, "crypto-flag-sig"};
-const Enum::YLeaf PeerStatusWord::crypto_flag_leap {1, "crypto-flag-leap"};
-const Enum::YLeaf PeerStatusWord::crypto_flag_vrfy {2, "crypto-flag-vrfy"};
-const Enum::YLeaf PeerStatusWord::crypto_flag_cook {3, "crypto-flag-cook"};
-const Enum::YLeaf PeerStatusWord::crypto_flag_auto {4, "crypto-flag-auto"};
-const Enum::YLeaf PeerStatusWord::crypto_flag_cert {5, "crypto-flag-cert"};
 
 const Enum::YLeaf PeerEvent::ntp_peer_event_mobilize {0, "ntp-peer-event-mobilize"};
 const Enum::YLeaf PeerEvent::ntp_peer_event_demobilize {1, "ntp-peer-event-demobilize"};
@@ -1419,6 +1371,54 @@ const Enum::YLeaf PeerEvent::ntp_peer_event_tai {16, "ntp-peer-event-tai"};
 const Enum::YLeaf ServerType::ntp_peer {0, "ntp-peer"};
 const Enum::YLeaf ServerType::ntp_server {1, "ntp-server"};
 const Enum::YLeaf ServerType::ntp_unknown_type {2, "ntp-unknown-type"};
+
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_kod {0, "ntp-ref-state-kod"};
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_clk_source {1, "ntp-ref-state-resolved-with-clk-source"};
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_ip_addr {2, "ntp-ref-state-resolved-with-ip-addr"};
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_bad_state {3, "ntp-ref-state-bad-state"};
+
+const Enum::YLeaf PeerStatusWord::crypto_flag_sig {0, "crypto-flag-sig"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_leap {1, "crypto-flag-leap"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_vrfy {2, "crypto-flag-vrfy"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_cook {3, "crypto-flag-cook"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_auto {4, "crypto-flag-auto"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_cert {5, "crypto-flag-cert"};
+
+const Enum::YLeaf PeerSelectStatus::ntp_peer_as_backup {0, "ntp-peer-as-backup"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_rejected {1, "ntp-peer-rejected"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_false_ticker {2, "ntp-peer-false-ticker"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_excess {3, "ntp-peer-excess"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_outlier {4, "ntp-peer-outlier"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_candidate {5, "ntp-peer-candidate"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_sys_peer {6, "ntp-peer-sys-peer"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_pps_peer {7, "ntp-peer-pps-peer"};
+
+const Enum::YLeaf RefClockSourceType::ntp_ref_goes {0, "ntp-ref-goes"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_gps {1, "ntp-ref-gps"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_gal {2, "ntp-ref-gal"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_pps {3, "ntp-ref-pps"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_irig {4, "ntp-ref-irig"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_wwvb {5, "ntp-ref-wwvb"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_dcf {6, "ntp-ref-dcf"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_hbg {7, "ntp-ref-hbg"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_msf {8, "ntp-ref-msf"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_jjy {9, "ntp-ref-jjy"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_lorc {10, "ntp-ref-lorc"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_tdf {11, "ntp-ref-tdf"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_chu {12, "ntp-ref-chu"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_wwv {13, "ntp-ref-wwv"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_wwvh {14, "ntp-ref-wwvh"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_nist {15, "ntp-ref-nist"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_acts {16, "ntp-ref-acts"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_usno {17, "ntp-ref-usno"};
+const Enum::YLeaf RefClockSourceType::ntp_ref_ptb {18, "ntp-ref-ptb"};
+
+const Enum::YLeaf PeerAuthStatus::ntp_auth_ok {0, "ntp-auth-ok"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_bad_auth {1, "ntp-auth-bad-auth"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_auth_not_configured {2, "ntp-auth-auth-not-configured"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_status_not_available {3, "ntp-auth-status-not-available"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_none {4, "ntp-auth-none"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_crypto {5, "ntp-auth-crypto"};
 
 
 }

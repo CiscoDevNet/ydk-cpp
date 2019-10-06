@@ -111,6 +111,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::MaxMetric()
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
     include_stub{YType::empty, "include-stub"},
+    enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
     on_proc_restart{YType::uint32, "on-proc-restart"}
         ,
@@ -118,7 +119,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::MaxMetric()
 {
     on_startup->parent = this;
 
-    yang_name = "max-metric"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "max-metric"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::~MaxMetric()
@@ -133,6 +134,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::has_data() c
 	|| on_switchover.is_set
 	|| always.is_set
 	|| include_stub.is_set
+	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
@@ -146,6 +148,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::has_operatio
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
 	|| ydk::is_set(include_stub.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
@@ -167,6 +170,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
     if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
 
@@ -232,6 +236,12 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::set_value(co
         include_stub.value_namespace = name_space;
         include_stub.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration = value;
@@ -268,6 +278,10 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::set_filter(c
     {
         include_stub.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration.yfilter = yfilter;
@@ -280,7 +294,7 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::set_filter(c
 
 bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "external-lsa" || name == "summary-lsa" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "on-proc-migration" || name == "on-proc-restart")
+    if(name == "on-startup" || name == "external-lsa" || name == "summary-lsa" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }
@@ -2669,6 +2683,7 @@ bool Ospfv3::Processes::Process::Vrfs::has_leaf_or_child_of_name(const std::stri
 Ospfv3::Processes::Process::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"},
+    enable{YType::empty, "enable"},
     snmpvrf_trap{YType::empty, "snmpvrf-trap"},
     prefix_suppression{YType::boolean, "prefix-suppression"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
@@ -2745,6 +2760,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_data() const
 {
     if (is_presence_container) return true;
     return vrf_name.is_set
+	|| enable.is_set
 	|| snmpvrf_trap.is_set
 	|| prefix_suppression.is_set
 	|| retransmit_interval.is_set
@@ -2792,6 +2808,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(snmpvrf_trap.yfilter)
 	|| ydk::is_set(prefix_suppression.yfilter)
 	|| ydk::is_set(retransmit_interval.yfilter)
@@ -2848,6 +2865,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (snmpvrf_trap.is_set || is_set(snmpvrf_trap.yfilter)) leaf_name_data.push_back(snmpvrf_trap.get_name_leafdata());
     if (prefix_suppression.is_set || is_set(prefix_suppression.yfilter)) leaf_name_data.push_back(prefix_suppression.get_name_leafdata());
     if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
@@ -3200,6 +3218,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::set_value(const std::string & value_
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "snmpvrf-trap")
     {
         snmpvrf_trap = value;
@@ -3322,6 +3346,10 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::set_filter(const std::string & value
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
     if(value_path == "snmpvrf-trap")
     {
         snmpvrf_trap.yfilter = yfilter;
@@ -3402,7 +3430,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::set_filter(const std::string & value
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "domain-id" || name == "area-addresses" || name == "timers" || name == "summary-prefixes" || name == "snmp" || name == "fast-reroute" || name == "distance" || name == "maximum" || name == "redistributes" || name == "ignore" || name == "distribute-list-out" || name == "distribute-list" || name == "stub-router" || name == "bfd" || name == "database-filter" || name == "capability" || name == "authentication" || name == "graceful-restart" || name == "default-information" || name == "process-scope" || name == "encryption" || name == "auto-cost" || name == "vrf-name" || name == "snmpvrf-trap" || name == "prefix-suppression" || name == "retransmit-interval" || name == "passive" || name == "default-metric" || name == "flood-reduction" || name == "hello-interval" || name == "priority" || name == "cost" || name == "dead-interval" || name == "packet-size" || name == "instance" || name == "spf-prefix-priority-policy" || name == "router-id" || name == "network" || name == "mtu-ignore" || name == "log-adjacency-changes" || name == "demand-circuit" || name == "transmit-delay")
+    if(name == "domain-id" || name == "area-addresses" || name == "timers" || name == "summary-prefixes" || name == "snmp" || name == "fast-reroute" || name == "distance" || name == "maximum" || name == "redistributes" || name == "ignore" || name == "distribute-list-out" || name == "distribute-list" || name == "stub-router" || name == "bfd" || name == "database-filter" || name == "capability" || name == "authentication" || name == "graceful-restart" || name == "default-information" || name == "process-scope" || name == "encryption" || name == "auto-cost" || name == "vrf-name" || name == "enable" || name == "snmpvrf-trap" || name == "prefix-suppression" || name == "retransmit-interval" || name == "passive" || name == "default-metric" || name == "flood-reduction" || name == "hello-interval" || name == "priority" || name == "cost" || name == "dead-interval" || name == "packet-size" || name == "instance" || name == "spf-prefix-priority-policy" || name == "router-id" || name == "network" || name == "mtu-ignore" || name == "log-adjacency-changes" || name == "demand-circuit" || name == "transmit-delay")
         return true;
     return false;
 }

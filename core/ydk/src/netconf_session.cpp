@@ -553,6 +553,19 @@ static string get_netconf_payload(path::DataNode & input, const string &  data_t
     return payload;
 }
 
+static string extract_rpc_error(const string & reply)
+{
+    string msg = "RPC error occurred; check log file for details";
+    auto error_tag_pos = reply.find("<error-message");
+    auto error_tag_close_pos = reply.find("</error-message>");
+    if (error_tag_pos != string::npos && error_tag_close_pos != string::npos)
+    {
+        auto msg_start = reply.find(">", error_tag_pos) + 1;
+        msg = reply.substr(msg_start, error_tag_close_pos-msg_start);
+    }
+    return msg;
+}
+
 static shared_ptr<path::DataNode> handle_crud_edit_reply(string reply, NetconfClient & client, bool candidate_supported)
 {
     if(reply.find("<ok/>") == string::npos)
@@ -572,8 +585,9 @@ static shared_ptr<path::DataNode> handle_crud_edit_reply(string reply, NetconfCl
         YLOG_INFO("============= RPC received from device =============\n{}", reply);
         if(reply.find("<ok/>") == string::npos)
         {
-            YLOG_ERROR("RPC error occurred: {}", reply);
-            throw(YServiceProviderError{reply});
+            YLOG_ERROR("RPC error occurred:\n{}", reply);
+            auto msg = extract_rpc_error(reply);
+            throw(YServiceProviderError(msg));
         }
     }
 
@@ -603,7 +617,7 @@ std::string get_netconf_output(const string & reply)
     if (rpc_output.length() == reply.length())
     {
         YLOG_ERROR( "Cannot find 'data' tag in RPC reply from device\n{}", reply);
-        throw(YServiceProviderError{reply});
+        throw(YServiceProviderError{"Cannot find 'data' tag in RPC reply"});
     }
 
     return rpc_output;
@@ -741,8 +755,9 @@ static void check_rpc_reply_for_error(const string& reply)
 {
     if(reply.find("<rpc-error") != string::npos)
     {
-        YLOG_ERROR("RPC error occurred: {}", reply);
-        throw(YServiceProviderError{reply});
+        YLOG_ERROR("RPC error occurred:\n{}", reply);
+        auto msg = extract_rpc_error(reply);
+        throw(YServiceProviderError(msg));
     }
 }
 

@@ -1061,16 +1061,16 @@ const Enum::YLeaf CtsOdmBindingSource::from_local {6, "from-local"};
 const Enum::YLeaf CtsOdmBindingSource::from_sgt_caching {7, "from-sgt-caching"};
 const Enum::YLeaf CtsOdmBindingSource::from_cli_hi {8, "from-cli-hi"};
 
+const Enum::YLeaf SxpConMode::con_mode_invalid {0, "con-mode-invalid"};
+const Enum::YLeaf SxpConMode::con_mode_speaker {1, "con-mode-speaker"};
+const Enum::YLeaf SxpConMode::con_mode_listener {2, "con-mode-listener"};
+const Enum::YLeaf SxpConMode::con_mode_both {3, "con-mode-both"};
+
 const Enum::YLeaf SxpConState::state_off {0, "state-off"};
 const Enum::YLeaf SxpConState::state_pending_on {1, "state-pending-on"};
 const Enum::YLeaf SxpConState::state_on {2, "state-on"};
 const Enum::YLeaf SxpConState::state_delete_hold_down {3, "state-delete-hold-down"};
 const Enum::YLeaf SxpConState::state_not_applicable {4, "state-not-applicable"};
-
-const Enum::YLeaf SxpConMode::con_mode_invalid {0, "con-mode-invalid"};
-const Enum::YLeaf SxpConMode::con_mode_speaker {1, "con-mode-speaker"};
-const Enum::YLeaf SxpConMode::con_mode_listener {2, "con-mode-listener"};
-const Enum::YLeaf SxpConMode::con_mode_both {3, "con-mode-both"};
 
 
 }

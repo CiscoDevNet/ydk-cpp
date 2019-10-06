@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv6_ospfv3_cfg_0.hpp"
-#include "Cisco_IOS_XR_ipv6_ospfv3_cfg_2.hpp"
 #include "Cisco_IOS_XR_ipv6_ospfv3_cfg_1.hpp"
+#include "Cisco_IOS_XR_ipv6_ospfv3_cfg_2.hpp"
 
 using namespace ydk;
 
@@ -239,7 +239,8 @@ Ospfv3::Processes::Process::Process()
     :
     process_name{YType::str, "process-name"},
     nsr{YType::enumeration, "nsr"},
-    protocol_shutdown{YType::empty, "protocol-shutdown"}
+    protocol_shutdown{YType::empty, "protocol-shutdown"},
+    enable{YType::empty, "enable"}
         ,
     default_vrf(std::make_shared<Ospfv3::Processes::Process::DefaultVrf>())
     , vrfs(std::make_shared<Ospfv3::Processes::Process::Vrfs>())
@@ -263,6 +264,7 @@ bool Ospfv3::Processes::Process::has_data() const
     return process_name.is_set
 	|| nsr.is_set
 	|| protocol_shutdown.is_set
+	|| enable.is_set
 	|| (default_vrf !=  nullptr && default_vrf->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (af !=  nullptr && af->has_data())
@@ -275,6 +277,7 @@ bool Ospfv3::Processes::Process::has_operation() const
 	|| ydk::is_set(process_name.yfilter)
 	|| ydk::is_set(nsr.yfilter)
 	|| ydk::is_set(protocol_shutdown.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation())
 	|| (af !=  nullptr && af->has_operation())
@@ -303,6 +306,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::get_n
     if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
     if (nsr.is_set || is_set(nsr.yfilter)) leaf_name_data.push_back(nsr.get_name_leafdata());
     if (protocol_shutdown.is_set || is_set(protocol_shutdown.yfilter)) leaf_name_data.push_back(protocol_shutdown.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -396,6 +400,12 @@ void Ospfv3::Processes::Process::set_value(const std::string & value_path, const
         protocol_shutdown.value_namespace = name_space;
         protocol_shutdown.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospfv3::Processes::Process::set_filter(const std::string & value_path, YFilter yfilter)
@@ -412,11 +422,15 @@ void Ospfv3::Processes::Process::set_filter(const std::string & value_path, YFil
     {
         protocol_shutdown.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
 }
 
 bool Ospfv3::Processes::Process::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "default-vrf" || name == "vrfs" || name == "af" || name == "trace-bufs" || name == "process-name" || name == "nsr" || name == "protocol-shutdown")
+    if(name == "default-vrf" || name == "vrfs" || name == "af" || name == "trace-bufs" || name == "process-name" || name == "nsr" || name == "protocol-shutdown" || name == "enable")
         return true;
     return false;
 }
@@ -18070,10 +18084,13 @@ bool Ospfv3::Processes::Process::DefaultVrf::DistributeList::In::has_leaf_or_chi
 
 Ospfv3::Processes::Process::DefaultVrf::StubRouter::StubRouter()
     :
-    rbit(nullptr) // presence node
-    , v6bit(nullptr) // presence node
-    , max_metric(nullptr) // presence node
+    rbit(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit>())
+    , v6bit(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit>())
+    , max_metric(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric>())
 {
+    rbit->parent = this;
+    v6bit->parent = this;
+    max_metric->parent = this;
 
     yang_name = "stub-router"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -18188,6 +18205,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::Rbit()
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
     include_stub{YType::empty, "include-stub"},
+    enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
     on_proc_restart{YType::uint32, "on-proc-restart"}
         ,
@@ -18195,7 +18213,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::Rbit()
 {
     on_startup->parent = this;
 
-    yang_name = "rbit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "rbit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::~Rbit()
@@ -18208,6 +18226,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::has_data() const
     return on_switchover.is_set
 	|| always.is_set
 	|| include_stub.is_set
+	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
@@ -18219,6 +18238,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::has_operation() c
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
 	|| ydk::is_set(include_stub.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
@@ -18238,6 +18258,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
     if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
 
@@ -18291,6 +18312,12 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::set_value(const s
         include_stub.value_namespace = name_space;
         include_stub.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration = value;
@@ -18319,6 +18346,10 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::set_filter(const 
     {
         include_stub.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration.yfilter = yfilter;
@@ -18331,7 +18362,7 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::set_filter(const 
 
 bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "on-proc-migration" || name == "on-proc-restart")
+    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }
@@ -18432,6 +18463,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::V6bit()
     :
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
+    enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
     on_proc_restart{YType::uint32, "on-proc-restart"}
         ,
@@ -18439,7 +18471,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::V6bit()
 {
     on_startup->parent = this;
 
-    yang_name = "v6bit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "v6bit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::~V6bit()
@@ -18451,6 +18483,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::has_data() const
     if (is_presence_container) return true;
     return on_switchover.is_set
 	|| always.is_set
+	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
@@ -18461,6 +18494,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::has_operation() 
     return is_set(yfilter)
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
@@ -18479,6 +18513,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
 
@@ -18526,6 +18561,12 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::set_value(const 
         always.value_namespace = name_space;
         always.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration = value;
@@ -18550,6 +18591,10 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::set_filter(const
     {
         always.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration.yfilter = yfilter;
@@ -18562,30 +18607,33 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::set_filter(const
 
 bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "on-proc-migration" || name == "on-proc-restart")
+    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }
 
-const Enum::YLeaf Ospfv3Protocol::all {0, "all"};
-const Enum::YLeaf Ospfv3Protocol::connected {1, "connected"};
-const Enum::YLeaf Ospfv3Protocol::static_ {3, "static"};
-const Enum::YLeaf Ospfv3Protocol::bgp {4, "bgp"};
-const Enum::YLeaf Ospfv3Protocol::isis {6, "isis"};
-const Enum::YLeaf Ospfv3Protocol::ospfv3 {7, "ospfv3"};
-const Enum::YLeaf Ospfv3Protocol::eigrp {8, "eigrp"};
+const Enum::YLeaf Ospfv3DomainId::type0005 {5, "type0005"};
+const Enum::YLeaf Ospfv3DomainId::type0105 {261, "type0105"};
+const Enum::YLeaf Ospfv3DomainId::type0205 {517, "type0205"};
+const Enum::YLeaf Ospfv3DomainId::type8005 {32773, "type8005"};
 
-const Enum::YLeaf Ospfv3FastRerouteTiebreakers::downstream {0, "downstream"};
-const Enum::YLeaf Ospfv3FastRerouteTiebreakers::line_card_disjoint {1, "line-card-disjoint"};
-const Enum::YLeaf Ospfv3FastRerouteTiebreakers::lowest_metric {2, "lowest-metric"};
-const Enum::YLeaf Ospfv3FastRerouteTiebreakers::node_protect {3, "node-protect"};
-const Enum::YLeaf Ospfv3FastRerouteTiebreakers::primary_path {4, "primary-path"};
-const Enum::YLeaf Ospfv3FastRerouteTiebreakers::secondary_path {5, "secondary-path"};
-const Enum::YLeaf Ospfv3FastRerouteTiebreakers::srlg_disjoint {6, "srlg-disjoint"};
+const Enum::YLeaf Ospfv3Network::broadcast {1, "broadcast"};
+const Enum::YLeaf Ospfv3Network::non_broadcast {2, "non-broadcast"};
+const Enum::YLeaf Ospfv3Network::point_to_point {3, "point-to-point"};
+const Enum::YLeaf Ospfv3Network::point_to_multipoint {4, "point-to-multipoint"};
+const Enum::YLeaf Ospfv3Network::non_broadcast_point_to_multipoint {5, "non-broadcast-point-to-multipoint"};
 
-const Enum::YLeaf Ospfv3isisRoute::level1 {64, "level1"};
-const Enum::YLeaf Ospfv3isisRoute::level2 {128, "level2"};
-const Enum::YLeaf Ospfv3isisRoute::level1_and2 {192, "level1-and2"};
+const Enum::YLeaf Ospfv3Metric::type1 {1, "type1"};
+const Enum::YLeaf Ospfv3Metric::type2 {2, "type2"};
+
+const Enum::YLeaf Ospfv3AuthenticationType2::null {0, "null"};
+const Enum::YLeaf Ospfv3AuthenticationType2::md5 {1, "md5"};
+const Enum::YLeaf Ospfv3AuthenticationType2::sha1 {2, "sha1"};
+
+const Enum::YLeaf Ospfv3FastReroutePriority::critical {0, "critical"};
+const Enum::YLeaf Ospfv3FastReroutePriority::high {1, "high"};
+const Enum::YLeaf Ospfv3FastReroutePriority::medium {2, "medium"};
+const Enum::YLeaf Ospfv3FastReroutePriority::low {3, "low"};
 
 const Enum::YLeaf Ospfv3bfdEnableMode::disable {0, "disable"};
 const Enum::YLeaf Ospfv3bfdEnableMode::default_ {1, "default"};
@@ -18594,19 +18642,6 @@ const Enum::YLeaf Ospfv3bfdEnableMode::strict {2, "strict"};
 const Enum::YLeaf Ospfv3LogAdj::suppress {0, "suppress"};
 const Enum::YLeaf Ospfv3LogAdj::brief {1, "brief"};
 const Enum::YLeaf Ospfv3LogAdj::detail {2, "detail"};
-
-const Enum::YLeaf Ospfv3ProtocolType2::connected {1, "connected"};
-const Enum::YLeaf Ospfv3ProtocolType2::static_ {3, "static"};
-const Enum::YLeaf Ospfv3ProtocolType2::bgp {4, "bgp"};
-const Enum::YLeaf Ospfv3ProtocolType2::isis {6, "isis"};
-const Enum::YLeaf Ospfv3ProtocolType2::ospfv3 {7, "ospfv3"};
-const Enum::YLeaf Ospfv3ProtocolType2::eigrp {8, "eigrp"};
-const Enum::YLeaf Ospfv3ProtocolType2::subscriber {9, "subscriber"};
-const Enum::YLeaf Ospfv3ProtocolType2::application {10, "application"};
-const Enum::YLeaf Ospfv3ProtocolType2::mobile {11, "mobile"};
-
-const Enum::YLeaf Ospfv3Metric::type1 {1, "type1"};
-const Enum::YLeaf Ospfv3Metric::type2 {2, "type2"};
 
 const Enum::YLeaf Ospfv3TraceBufSize::size0 {0, "size0"};
 const Enum::YLeaf Ospfv3TraceBufSize::size256 {256, "size256"};
@@ -18619,31 +18654,34 @@ const Enum::YLeaf Ospfv3TraceBufSize::size16384 {16384, "size16384"};
 const Enum::YLeaf Ospfv3TraceBufSize::size32768 {32768, "size32768"};
 const Enum::YLeaf Ospfv3TraceBufSize::size65536 {65536, "size65536"};
 
-const Enum::YLeaf Ospfv3ExternalRoute::external1 {8, "external1"};
-const Enum::YLeaf Ospfv3ExternalRoute::external2 {16, "external2"};
-const Enum::YLeaf Ospfv3ExternalRoute::external {24, "external"};
-
-const Enum::YLeaf Ospfv3SubsequentAddressFamily::unicast {1, "unicast"};
-
-const Enum::YLeaf Ospfv3InternalRoute::internal {6, "internal"};
-
 const Enum::YLeaf Ospfv3FastReroute::none {0, "none"};
 const Enum::YLeaf Ospfv3FastReroute::per_link {1, "per-link"};
 const Enum::YLeaf Ospfv3FastReroute::per_prefix {2, "per-prefix"};
 
-const Enum::YLeaf Ospfv3DomainId::type0005 {5, "type0005"};
-const Enum::YLeaf Ospfv3DomainId::type0105 {261, "type0105"};
-const Enum::YLeaf Ospfv3DomainId::type0205 {517, "type0205"};
-const Enum::YLeaf Ospfv3DomainId::type8005 {32773, "type8005"};
+const Enum::YLeaf Ospfv3isisRoute::level1 {64, "level1"};
+const Enum::YLeaf Ospfv3isisRoute::level2 {128, "level2"};
+const Enum::YLeaf Ospfv3isisRoute::level1_and2 {192, "level1-and2"};
 
-const Enum::YLeaf Ospfv3AuthenticationType2::null {0, "null"};
-const Enum::YLeaf Ospfv3AuthenticationType2::md5 {1, "md5"};
-const Enum::YLeaf Ospfv3AuthenticationType2::sha1 {2, "sha1"};
+const Enum::YLeaf Ospfv3nssaExternalRoute::external1 {4096, "external1"};
+const Enum::YLeaf Ospfv3nssaExternalRoute::external2 {8192, "external2"};
+const Enum::YLeaf Ospfv3nssaExternalRoute::external {12288, "external"};
+
+const Enum::YLeaf Ospfv3ExternalRoute::external1 {8, "external1"};
+const Enum::YLeaf Ospfv3ExternalRoute::external2 {16, "external2"};
+const Enum::YLeaf Ospfv3ExternalRoute::external {24, "external"};
+
+const Enum::YLeaf Ospfv3nsr::true_ {1, "true"};
+const Enum::YLeaf Ospfv3nsr::false_ {2, "false"};
 
 const Enum::YLeaf Ospfv3AddressFamily::ipv6 {1, "ipv6"};
 
-const Enum::YLeaf Ospfv3Authentication::md5 {1, "md5"};
-const Enum::YLeaf Ospfv3Authentication::sha1 {2, "sha1"};
+const Enum::YLeaf Ospfv3Protocol::all {0, "all"};
+const Enum::YLeaf Ospfv3Protocol::connected {1, "connected"};
+const Enum::YLeaf Ospfv3Protocol::static_ {3, "static"};
+const Enum::YLeaf Ospfv3Protocol::bgp {4, "bgp"};
+const Enum::YLeaf Ospfv3Protocol::isis {6, "isis"};
+const Enum::YLeaf Ospfv3Protocol::ospfv3 {7, "ospfv3"};
+const Enum::YLeaf Ospfv3Protocol::eigrp {8, "eigrp"};
 
 const Enum::YLeaf Ospfv3EncryptionAlgorithm::null {0, "null"};
 const Enum::YLeaf Ospfv3EncryptionAlgorithm::des {1, "des"};
@@ -18652,26 +18690,33 @@ const Enum::YLeaf Ospfv3EncryptionAlgorithm::aes {3, "aes"};
 const Enum::YLeaf Ospfv3EncryptionAlgorithm::aes192 {4, "aes192"};
 const Enum::YLeaf Ospfv3EncryptionAlgorithm::aes256 {5, "aes256"};
 
-const Enum::YLeaf Ospfv3nsr::true_ {1, "true"};
-const Enum::YLeaf Ospfv3nsr::false_ {2, "false"};
+const Enum::YLeaf Ospfv3ProtocolType2::connected {1, "connected"};
+const Enum::YLeaf Ospfv3ProtocolType2::static_ {3, "static"};
+const Enum::YLeaf Ospfv3ProtocolType2::bgp {4, "bgp"};
+const Enum::YLeaf Ospfv3ProtocolType2::isis {6, "isis"};
+const Enum::YLeaf Ospfv3ProtocolType2::ospfv3 {7, "ospfv3"};
+const Enum::YLeaf Ospfv3ProtocolType2::eigrp {8, "eigrp"};
+const Enum::YLeaf Ospfv3ProtocolType2::subscriber {9, "subscriber"};
+const Enum::YLeaf Ospfv3ProtocolType2::application {10, "application"};
+const Enum::YLeaf Ospfv3ProtocolType2::mobile {11, "mobile"};
 
-const Enum::YLeaf Ospfv3nssaExternalRoute::external1 {4096, "external1"};
-const Enum::YLeaf Ospfv3nssaExternalRoute::external2 {8192, "external2"};
-const Enum::YLeaf Ospfv3nssaExternalRoute::external {12288, "external"};
+const Enum::YLeaf Ospfv3SubsequentAddressFamily::unicast {1, "unicast"};
 
 const Enum::YLeaf Ospfv3EigrpRoute::internal {16384, "internal"};
 const Enum::YLeaf Ospfv3EigrpRoute::external {32768, "external"};
 
-const Enum::YLeaf Ospfv3FastReroutePriority::critical {0, "critical"};
-const Enum::YLeaf Ospfv3FastReroutePriority::high {1, "high"};
-const Enum::YLeaf Ospfv3FastReroutePriority::medium {2, "medium"};
-const Enum::YLeaf Ospfv3FastReroutePriority::low {3, "low"};
+const Enum::YLeaf Ospfv3FastRerouteTiebreakers::downstream {0, "downstream"};
+const Enum::YLeaf Ospfv3FastRerouteTiebreakers::line_card_disjoint {1, "line-card-disjoint"};
+const Enum::YLeaf Ospfv3FastRerouteTiebreakers::lowest_metric {2, "lowest-metric"};
+const Enum::YLeaf Ospfv3FastRerouteTiebreakers::node_protect {3, "node-protect"};
+const Enum::YLeaf Ospfv3FastRerouteTiebreakers::primary_path {4, "primary-path"};
+const Enum::YLeaf Ospfv3FastRerouteTiebreakers::secondary_path {5, "secondary-path"};
+const Enum::YLeaf Ospfv3FastRerouteTiebreakers::srlg_disjoint {6, "srlg-disjoint"};
 
-const Enum::YLeaf Ospfv3Network::broadcast {1, "broadcast"};
-const Enum::YLeaf Ospfv3Network::non_broadcast {2, "non-broadcast"};
-const Enum::YLeaf Ospfv3Network::point_to_point {3, "point-to-point"};
-const Enum::YLeaf Ospfv3Network::point_to_multipoint {4, "point-to-multipoint"};
-const Enum::YLeaf Ospfv3Network::non_broadcast_point_to_multipoint {5, "non-broadcast-point-to-multipoint"};
+const Enum::YLeaf Ospfv3Authentication::md5 {1, "md5"};
+const Enum::YLeaf Ospfv3Authentication::sha1 {2, "sha1"};
+
+const Enum::YLeaf Ospfv3InternalRoute::internal {6, "internal"};
 
 
 }

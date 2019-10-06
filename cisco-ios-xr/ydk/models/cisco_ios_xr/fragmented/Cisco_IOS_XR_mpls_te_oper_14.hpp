@@ -492,7 +492,6 @@ class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::CurrentSetup : publ
         ydk::YLeaf current_setup_timer; //type: uint32
         ydk::YLeaf selection_reason; //type: string
         ydk::YLeaf current_setup_last_error; //type: string
-        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
         class ConnectedUptimes; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::CurrentSetup::ConnectedUptimes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::CurrentSetup::ConnectedUptimes> connected_uptimes;
@@ -541,7 +540,6 @@ class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::ReoptSetup : public
         ydk::YLeaf reoptimized_setup_uptime; //type: uint32
         ydk::YLeaf reoptimized_setup_timer; //type: uint32
         ydk::YLeaf reoptimized_setup_last_error; //type: string
-        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
 
 }; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::ReoptSetup
 
@@ -679,7 +677,6 @@ class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbySetup : publ
 
         ydk::YLeaf standby_lsp_uptime; //type: uint32
         ydk::YLeaf standby_setup_timer; //type: uint32
-        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
 
 }; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbySetup
 
@@ -703,7 +700,6 @@ class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbyReoptSetup :
         ydk::YLeaf reoptimized_setup_uptime; //type: uint32
         ydk::YLeaf reoptimized_setup_timer; //type: uint32
         ydk::YLeaf reoptimized_setup_last_error; //type: string
-        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
 
 }; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbyReoptSetup
 

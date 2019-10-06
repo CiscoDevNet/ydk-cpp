@@ -441,6 +441,21 @@ class CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry : public y
 
 }; // CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry
 
+class IkeHashAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "md5") return 2;
+            if (name == "sha") return 3;
+            return -1;
+        }
+};
+
 class CryptomapType : public ydk::Enum
 {
     public:
@@ -451,24 +466,58 @@ class CryptomapType : public ydk::Enum
         static const ydk::Enum::YLeaf cryptomapTypeDYNAMIC;
         static const ydk::Enum::YLeaf cryptomapTypeDYNAMICDISCOVERY;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cryptomapTypeNONE") return 0;
+            if (name == "cryptomapTypeMANUAL") return 1;
+            if (name == "cryptomapTypeISAKMP") return 2;
+            if (name == "cryptomapTypeCET") return 3;
+            if (name == "cryptomapTypeDYNAMIC") return 4;
+            if (name == "cryptomapTypeDYNAMICDISCOVERY") return 5;
+            return -1;
+        }
 };
 
-class CryptomapSetBindStatus : public ydk::Enum
+class IkeIdentityType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf attached;
-        static const ydk::Enum::YLeaf detached;
+        static const ydk::Enum::YLeaf isakmpIdTypeUNKNOWN;
+        static const ydk::Enum::YLeaf isakmpIdTypeADDRESS;
+        static const ydk::Enum::YLeaf isakmpIdTypeHOSTNAME;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "isakmpIdTypeUNKNOWN") return 0;
+            if (name == "isakmpIdTypeADDRESS") return 1;
+            if (name == "isakmpIdTypeHOSTNAME") return 2;
+            return -1;
+        }
 };
 
-class IkeHashAlgo : public ydk::Enum
+class TrapStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
+};
+
+class EncryptAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha;
+        static const ydk::Enum::YLeaf des;
+        static const ydk::Enum::YLeaf des3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "des") return 2;
+            if (name == "des3") return 3;
+            return -1;
+        }
 };
 
 class IkeAuthMethod : public ydk::Enum
@@ -480,15 +529,29 @@ class IkeAuthMethod : public ydk::Enum
         static const ydk::Enum::YLeaf rsaEncrypt;
         static const ydk::Enum::YLeaf revPublicKey;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "preSharedKey") return 2;
+            if (name == "rsaSig") return 3;
+            if (name == "rsaEncrypt") return 4;
+            if (name == "revPublicKey") return 5;
+            return -1;
+        }
 };
 
-class IkeIdentityType : public ydk::Enum
+class CryptomapSetBindStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isakmpIdTypeUNKNOWN;
-        static const ydk::Enum::YLeaf isakmpIdTypeADDRESS;
-        static const ydk::Enum::YLeaf isakmpIdTypeHOSTNAME;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf detached;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "attached") return 1;
+            if (name == "detached") return 2;
+            return -1;
+        }
 };
 
 class DiffHellmanGrp : public ydk::Enum
@@ -498,23 +561,12 @@ class DiffHellmanGrp : public ydk::Enum
         static const ydk::Enum::YLeaf dhGroup1;
         static const ydk::Enum::YLeaf dhGroup2;
 
-};
-
-class EncryptAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf des;
-        static const ydk::Enum::YLeaf des3;
-
-};
-
-class TrapStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "dhGroup1") return 2;
+            if (name == "dhGroup2") return 3;
+            return -1;
+        }
 };
 
 

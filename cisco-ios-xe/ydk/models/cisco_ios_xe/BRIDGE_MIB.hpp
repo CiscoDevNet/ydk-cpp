@@ -420,6 +420,13 @@ class BRIDGEMIB::Dot1dBase::Dot1dBaseType : public ydk::Enum
         static const ydk::Enum::YLeaf sourceroute_only;
         static const ydk::Enum::YLeaf srt;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "transparent-only") return 2;
+            if (name == "sourceroute-only") return 3;
+            if (name == "srt") return 4;
+            return -1;
+        }
 };
 
 class BRIDGEMIB::Dot1dStp::Dot1dStpProtocolSpecification : public ydk::Enum
@@ -429,6 +436,12 @@ class BRIDGEMIB::Dot1dStp::Dot1dStpProtocolSpecification : public ydk::Enum
         static const ydk::Enum::YLeaf decLb100;
         static const ydk::Enum::YLeaf ieee8021d;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "decLb100") return 2;
+            if (name == "ieee8021d") return 3;
+            return -1;
+        }
 };
 
 class BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::Dot1qPortAcceptableFrameTypes : public ydk::Enum
@@ -437,6 +450,11 @@ class BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::Dot1qPortAcceptableFram
         static const ydk::Enum::YLeaf admitAll;
         static const ydk::Enum::YLeaf admitOnlyVlanTagged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "admitAll") return 1;
+            if (name == "admitOnlyVlanTagged") return 2;
+            return -1;
+        }
 };
 
 class BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState : public ydk::Enum
@@ -449,6 +467,15 @@ class BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState : publi
         static const ydk::Enum::YLeaf forwarding;
         static const ydk::Enum::YLeaf broken;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "blocking") return 2;
+            if (name == "listening") return 3;
+            if (name == "learning") return 4;
+            if (name == "forwarding") return 5;
+            if (name == "broken") return 6;
+            return -1;
+        }
 };
 
 class BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortEnable : public ydk::Enum
@@ -457,6 +484,11 @@ class BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortEnable : publ
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus : public ydk::Enum
@@ -468,6 +500,14 @@ class BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus : public ydk
         static const ydk::Enum::YLeaf self;
         static const ydk::Enum::YLeaf mgmt;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "learned") return 3;
+            if (name == "self") return 4;
+            if (name == "mgmt") return 5;
+            return -1;
+        }
 };
 
 class BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus : public ydk::Enum
@@ -479,6 +519,14 @@ class BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus : public 
         static const ydk::Enum::YLeaf deleteOnReset;
         static const ydk::Enum::YLeaf deleteOnTimeout;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "permanent") return 3;
+            if (name == "deleteOnReset") return 4;
+            if (name == "deleteOnTimeout") return 5;
+            return -1;
+        }
 };
 
 

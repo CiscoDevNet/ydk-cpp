@@ -3936,33 +3936,94 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath
 
-class RcmdShowInstState : public ydk::Enum
+class RcmdBagEnblDsbl : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf in_active;
-        static const ydk::Enum::YLeaf na;
+        static const ydk::Enum::YLeaf dsbl;
+        static const ydk::Enum::YLeaf enbl;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dsbl") return 0;
+            if (name == "enbl") return 1;
+            return -1;
+        }
 };
 
-class RcmdShowIntfEvent : public ydk::Enum
+class RcmdBoolYesNo : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf create;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf link_up;
-        static const ydk::Enum::YLeaf link_down;
-        static const ydk::Enum::YLeaf primary_address;
-        static const ydk::Enum::YLeaf secondary_address;
-        static const ydk::Enum::YLeaf ipv6_link_local_address;
-        static const ydk::Enum::YLeaf ipv6_global_address;
-        static const ydk::Enum::YLeaf mtu;
-        static const ydk::Enum::YLeaf band_width;
-        static const ydk::Enum::YLeaf ldp_sync;
-        static const ydk::Enum::YLeaf forward_reference;
-        static const ydk::Enum::YLeaf ldp_no_sync;
+        static const ydk::Enum::YLeaf no;
+        static const ydk::Enum::YLeaf yes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no") return 0;
+            if (name == "yes") return 1;
+            return -1;
+        }
+};
+
+class RcmdPriorityLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "high") return 1;
+            if (name == "medium") return 2;
+            if (name == "low") return 3;
+            return -1;
+        }
+};
+
+class RcmdSpfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf complete;
+        static const ydk::Enum::YLeaf in_complete;
+        static const ydk::Enum::YLeaf collecting;
+        static const ydk::Enum::YLeaf no_route_change;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "complete") return 0;
+            if (name == "in-complete") return 1;
+            if (name == "collecting") return 2;
+            if (name == "no-route-change") return 3;
+            return -1;
+        }
+};
+
+class RcmdShowIpfrrLfa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf remote;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "local") return 1;
+            if (name == "remote") return 2;
+            return -1;
+        }
+};
+
+class RcmdShowPrcsState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf success;
+        static const ydk::Enum::YLeaf cpu;
+        static const ydk::Enum::YLeaf memory;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "success") return 0;
+            if (name == "cpu") return 1;
+            if (name == "memory") return 2;
+            return -1;
+        }
 };
 
 class RcmdShowCompId : public ydk::Enum
@@ -3972,17 +4033,12 @@ class RcmdShowCompId : public ydk::Enum
         static const ydk::Enum::YLeaf isis;
         static const ydk::Enum::YLeaf un_known;
 
-};
-
-class RcmdShowLdpConvState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_full;
-        static const ydk::Enum::YLeaf fully_covered;
-        static const ydk::Enum::YLeaf coverage_above_threshold;
-        static const ydk::Enum::YLeaf coverage_below_threshold;
-        static const ydk::Enum::YLeaf coverage_flapping;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf") return 0;
+            if (name == "isis") return 1;
+            if (name == "un-known") return 2;
+            return -1;
+        }
 };
 
 class RcmdShowLdpSessionState : public ydk::Enum
@@ -3996,6 +4052,16 @@ class RcmdShowLdpSessionState : public ydk::Enum
         static const ydk::Enum::YLeaf retrying;
         static const ydk::Enum::YLeaf total;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "gr-down") return 0;
+            if (name == "gr-converging") return 1;
+            if (name == "establishing") return 2;
+            if (name == "converging") return 3;
+            if (name == "converged") return 4;
+            if (name == "retrying") return 5;
+            if (name == "total") return 6;
+            return -1;
+        }
 };
 
 class RcmdProtocolId : public ydk::Enum
@@ -4005,6 +4071,61 @@ class RcmdProtocolId : public ydk::Enum
         static const ydk::Enum::YLeaf isis;
         static const ydk::Enum::YLeaf na;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf") return 0;
+            if (name == "isis") return 1;
+            if (name == "na") return 2;
+            return -1;
+        }
+};
+
+class RcmdShowLdpConvState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_full;
+        static const ydk::Enum::YLeaf fully_covered;
+        static const ydk::Enum::YLeaf coverage_above_threshold;
+        static const ydk::Enum::YLeaf coverage_below_threshold;
+        static const ydk::Enum::YLeaf coverage_flapping;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-full") return 0;
+            if (name == "fully-covered") return 1;
+            if (name == "coverage-above-threshold") return 2;
+            if (name == "coverage-below-threshold") return 3;
+            if (name == "coverage-flapping") return 4;
+            return -1;
+        }
+};
+
+class RcmdLinecardSpeed : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf fastest;
+        static const ydk::Enum::YLeaf slowest;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 0;
+            if (name == "fastest") return 1;
+            if (name == "slowest") return 2;
+            return -1;
+        }
+};
+
+class RcmdShowNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf lc;
+        static const ydk::Enum::YLeaf rp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "lc") return 1;
+            if (name == "rp") return 2;
+            return -1;
+        }
 };
 
 class RcmdShowLdpNeighbourStatus : public ydk::Enum
@@ -4013,26 +4134,11 @@ class RcmdShowLdpNeighbourStatus : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
 
-};
-
-class RcmdLdpEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf neighbor;
-        static const ydk::Enum::YLeaf adjacency;
-
-};
-
-class RcmdShowMem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf chunk;
-        static const ydk::Enum::YLeaf edm;
-        static const ydk::Enum::YLeaf string;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf unknown;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 0;
+            if (name == "up") return 1;
+            return -1;
+        }
 };
 
 class RcmdIsisSpf : public ydk::Enum
@@ -4043,65 +4149,13 @@ class RcmdIsisSpf : public ydk::Enum
         static const ydk::Enum::YLeaf next_hop;
         static const ydk::Enum::YLeaf partial_route;
 
-};
-
-class RcmdIsisLvl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf l1;
-        static const ydk::Enum::YLeaf l2;
-
-};
-
-class RcmdBagEnblDsbl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dsbl;
-        static const ydk::Enum::YLeaf enbl;
-
-};
-
-class RcmdShowNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf lc;
-        static const ydk::Enum::YLeaf rp;
-
-};
-
-class RcmdBoolYesNo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no;
-        static const ydk::Enum::YLeaf yes;
-
-};
-
-class RcmdShowPrcsState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf success;
-        static const ydk::Enum::YLeaf cpu;
-        static const ydk::Enum::YLeaf memory;
-
-};
-
-class RcmdBagEnableDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
-class RcmdShowIpfrrLfa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf remote;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "full") return 0;
+            if (name == "incremental") return 1;
+            if (name == "next-hop") return 2;
+            if (name == "partial-route") return 3;
+            return -1;
+        }
 };
 
 class RcmdShowRoutePathChange : public ydk::Enum
@@ -4110,49 +4164,24 @@ class RcmdShowRoutePathChange : public ydk::Enum
         static const ydk::Enum::YLeaf primary;
         static const ydk::Enum::YLeaf backup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "primary") return 0;
+            if (name == "backup") return 1;
+            return -1;
+        }
 };
 
-class RcmdLinecardSpeed : public ydk::Enum
+class RcmdIsisLvl : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf fastest;
-        static const ydk::Enum::YLeaf slowest;
+        static const ydk::Enum::YLeaf l1;
+        static const ydk::Enum::YLeaf l2;
 
-};
-
-class RcmdLsChange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf new_;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf modify;
-        static const ydk::Enum::YLeaf noop;
-
-};
-
-class RcmdLsa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf router;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf summary;
-        static const ydk::Enum::YLeaf asbr;
-        static const ydk::Enum::YLeaf external;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf nssa;
-
-};
-
-class RcmdSpfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf complete;
-        static const ydk::Enum::YLeaf in_complete;
-        static const ydk::Enum::YLeaf collecting;
-        static const ydk::Enum::YLeaf no_route_change;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "l1") return 0;
+            if (name == "l2") return 1;
+            return -1;
+        }
 };
 
 class RcmdChange : public ydk::Enum
@@ -4164,6 +4193,14 @@ class RcmdChange : public ydk::Enum
         static const ydk::Enum::YLeaf modify;
         static const ydk::Enum::YLeaf no_change;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "add") return 1;
+            if (name == "delete") return 2;
+            if (name == "modify") return 3;
+            if (name == "no-change") return 4;
+            return -1;
+        }
 };
 
 class RcmdShowRoute : public ydk::Enum
@@ -4185,16 +4222,165 @@ class RcmdShowRoute : public ydk::Enum
         static const ydk::Enum::YLeaf inter_area;
         static const ydk::Enum::YLeaf default_attached;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ospf") return 0;
+            if (name == "intra") return 1;
+            if (name == "inter") return 2;
+            if (name == "ext-1") return 3;
+            if (name == "ext-2") return 4;
+            if (name == "nssa-1") return 5;
+            if (name == "nssa-2") return 6;
+            if (name == "isis") return 7;
+            if (name == "l1-summary") return 8;
+            if (name == "l1") return 9;
+            if (name == "l2-summary") return 10;
+            if (name == "l2") return 11;
+            if (name == "inter-area-summary") return 12;
+            if (name == "inter-area") return 13;
+            if (name == "default-attached") return 14;
+            return -1;
+        }
 };
 
-class RcmdPriorityLevel : public ydk::Enum
+class RcmdLdpEvent : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf neighbor;
+        static const ydk::Enum::YLeaf adjacency;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "neighbor") return 1;
+            if (name == "adjacency") return 2;
+            return -1;
+        }
+};
+
+class RcmdLsa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf summary;
+        static const ydk::Enum::YLeaf asbr;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf nssa;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "router") return 1;
+            if (name == "network") return 2;
+            if (name == "summary") return 3;
+            if (name == "asbr") return 4;
+            if (name == "external") return 5;
+            if (name == "multicast") return 6;
+            if (name == "nssa") return 7;
+            return -1;
+        }
+};
+
+class RcmdShowMem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf chunk;
+        static const ydk::Enum::YLeaf edm;
+        static const ydk::Enum::YLeaf string;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard") return 0;
+            if (name == "chunk") return 1;
+            if (name == "edm") return 2;
+            if (name == "string") return 3;
+            if (name == "static") return 4;
+            if (name == "unknown") return 5;
+            return -1;
+        }
+};
+
+class RcmdBagEnableDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
+};
+
+class RcmdShowInstState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf in_active;
+        static const ydk::Enum::YLeaf na;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "active") return 1;
+            if (name == "in-active") return 2;
+            if (name == "na") return 3;
+            return -1;
+        }
+};
+
+class RcmdLsChange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf new_;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf modify;
+        static const ydk::Enum::YLeaf noop;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "new") return 0;
+            if (name == "delete") return 1;
+            if (name == "modify") return 2;
+            if (name == "noop") return 3;
+            return -1;
+        }
+};
+
+class RcmdShowIntfEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf create;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf link_up;
+        static const ydk::Enum::YLeaf link_down;
+        static const ydk::Enum::YLeaf primary_address;
+        static const ydk::Enum::YLeaf secondary_address;
+        static const ydk::Enum::YLeaf ipv6_link_local_address;
+        static const ydk::Enum::YLeaf ipv6_global_address;
+        static const ydk::Enum::YLeaf mtu;
+        static const ydk::Enum::YLeaf band_width;
+        static const ydk::Enum::YLeaf ldp_sync;
+        static const ydk::Enum::YLeaf forward_reference;
+        static const ydk::Enum::YLeaf ldp_no_sync;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "create") return 1;
+            if (name == "delete") return 2;
+            if (name == "link-up") return 3;
+            if (name == "link-down") return 4;
+            if (name == "primary-address") return 5;
+            if (name == "secondary-address") return 6;
+            if (name == "ipv6-link-local-address") return 7;
+            if (name == "ipv6-global-address") return 8;
+            if (name == "mtu") return 9;
+            if (name == "band-width") return 10;
+            if (name == "ldp-sync") return 11;
+            if (name == "forward-reference") return 12;
+            if (name == "ldp-no-sync") return 13;
+            return -1;
+        }
 };
 
 

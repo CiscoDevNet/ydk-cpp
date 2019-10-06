@@ -52,8 +52,8 @@ TEST_CASE( "test_replace_xml_escape_sequences"  )
     std::string source   = R"(Testing: &lt;tag&gt;; ampersand - &amp;; &quot;quotes&quot;; huawei end-of-line&#13;)";
     std::string expected = R"(Testing: <tag>; ampersand - &; "quotes"; huawei end-of-line)";
 
-    REQUIRE( ydk::has_xml_escape_sequences(source));
-    REQUIRE( !ydk::has_xml_escape_sequences(expected));
+    REQUIRE( ydk::has_xml_escape_sequences(source) != std::string::npos);
+    REQUIRE( ydk::has_xml_escape_sequences(expected) == std::string::npos);
 
     std::string converted = ydk::replace_xml_escape_sequences(source);
 

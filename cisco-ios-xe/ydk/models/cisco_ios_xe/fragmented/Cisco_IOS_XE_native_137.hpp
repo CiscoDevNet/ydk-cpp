@@ -1385,7 +1385,7 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Bg
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of string, uint32
+        ydk::YLeaf as_number; //type: one of uint32, string
         ydk::YLeaf include_connected; //type: empty
         ydk::YLeaf levels; //type: IsisRoutesLevelType
         ydk::YLeaf metric; //type: uint32
@@ -2091,7 +2091,7 @@ class Native::Router::IsisContainer::Isis::Redistribute::Bgp : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of string, uint32
+        ydk::YLeaf as_number; //type: one of uint32, string
         ydk::YLeaf levels; //type: IsisRoutesLevelType
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType
@@ -2985,7 +2985,7 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bp_as_num; //type: one of string, uint32
+        ydk::YLeaf bp_as_num; //type: one of uint32, string
         ydk::YLeaf levels; //type: IsisRoutesLevelType
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType
@@ -3628,7 +3628,7 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsN
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bp_as_num; //type: one of string, uint32
+        ydk::YLeaf bp_as_num; //type: one of uint32, string
         ydk::YLeaf levels; //type: IsisRoutesLevelType
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType
@@ -3846,6 +3846,11 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::Metric
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SpfInterval::Level12::Level : public ydk::Enum
@@ -3854,6 +3859,11 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SpfInt
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Metric::Metrics::Level : public ydk::Enum
@@ -3862,6 +3872,11 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Metric::Metrics:
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SpfInterval::Level12::Level : public ydk::Enum
@@ -3870,6 +3885,11 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SpfInterval::Lev
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Application::MetricType : public ydk::Enum
@@ -3880,6 +3900,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ap
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Bgp::MetricType : public ydk::Enum
@@ -3890,6 +3917,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Bg
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Connected::MetricType : public ydk::Enum
@@ -3900,6 +3934,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Co
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Eigrp::MetricType : public ydk::Enum
@@ -3910,6 +3951,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ei
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute::MetricType : public ydk::Enum
@@ -3920,6 +3968,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Is
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::IsisRedistLevels1 : public ydk::Enum
@@ -3928,6 +3983,11 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Is
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::IsisRedistLevels2 : public ydk::Enum
@@ -3936,6 +3996,11 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Is
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Lisp::MetricType : public ydk::Enum
@@ -3946,6 +4011,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Li
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Nd::MetricType : public ydk::Enum
@@ -3956,6 +4028,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Nd
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Nemo::MetricType : public ydk::Enum
@@ -3966,6 +4045,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ne
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::MetricType : public ydk::Enum
@@ -3976,6 +4062,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Os
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::Internal::MetricType : public ydk::Enum
@@ -3986,6 +4079,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Os
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::External::MetricType : public ydk::Enum
@@ -3996,6 +4096,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Os
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::NssaExternal::MetricType : public ydk::Enum
@@ -4006,6 +4113,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Os
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Rip::MetricType : public ydk::Enum
@@ -4016,6 +4130,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ri
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::MetricType : public ydk::Enum
@@ -4026,6 +4147,13 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::St
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SummaryPrefix::Levels : public ydk::Enum
@@ -4035,6 +4163,12 @@ class Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SummaryPrefix::L
         static const ydk::Enum::YLeaf level_1_2;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-1-2") return 1;
+            if (name == "level-2") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Application::MetricType : public ydk::Enum
@@ -4045,6 +4179,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Application::MetricType
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Bgp::MetricType : public ydk::Enum
@@ -4055,6 +4196,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Bgp::MetricType : publi
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Bgp::Clns::MetricType : public ydk::Enum
@@ -4065,6 +4213,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Bgp::Clns::MetricType :
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Bgp::Ip::MetricType : public ydk::Enum
@@ -4075,6 +4230,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Bgp::Ip::MetricType : p
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Connected::MetricType : public ydk::Enum
@@ -4085,6 +4247,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Connected::MetricType :
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Eigrp::MetricType : public ydk::Enum
@@ -4095,6 +4264,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Eigrp::MetricType : pub
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Isis_::IsisRedistribute::Ip::MetricType : public ydk::Enum
@@ -4105,6 +4281,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Isis_::IsisRedistribute
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Isis_::Ip::IsisRedistLevels1 : public ydk::Enum
@@ -4113,6 +4296,11 @@ class Native::Router::IsisContainer::Isis::Redistribute::Isis_::Ip::IsisRedistLe
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Isis_::Ip::IsisRedistLevels2 : public ydk::Enum
@@ -4121,6 +4309,11 @@ class Native::Router::IsisContainer::Isis::Redistribute::Isis_::Ip::IsisRedistLe
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::IsoIgrp::MetricType : public ydk::Enum
@@ -4131,6 +4324,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::IsoIgrp::MetricType : p
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Lisp::MetricType : public ydk::Enum
@@ -4141,6 +4341,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Lisp::MetricType : publ
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Mobile::MetricType : public ydk::Enum
@@ -4151,6 +4358,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Mobile::MetricType : pu
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Odr::MetricType : public ydk::Enum
@@ -4161,6 +4375,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Odr::MetricType : publi
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospf::MetricType : public ydk::Enum
@@ -4171,6 +4392,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospf::MetricType : publ
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::Internal::MetricType : public ydk::Enum
@@ -4181,6 +4409,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::Internal::
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::External::MetricType : public ydk::Enum
@@ -4191,6 +4426,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::External::
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::NssaExternal::MetricType : public ydk::Enum
@@ -4201,6 +4443,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::NssaExtern
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::MetricType : public ydk::Enum
@@ -4211,6 +4460,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::MetricType : pu
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::Internal::MetricType : public ydk::Enum
@@ -4221,6 +4477,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::Internal
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::External::MetricType : public ydk::Enum
@@ -4231,6 +4494,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::External
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::NssaExternal::MetricType : public ydk::Enum
@@ -4241,6 +4511,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::NssaExte
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Rip::MetricType : public ydk::Enum
@@ -4251,6 +4528,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Rip::MetricType : publi
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::MetricType : public ydk::Enum
@@ -4261,6 +4545,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::MetricTyp
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::MetricType : public ydk::Enum
@@ -4271,6 +4562,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::MetricType 
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Application::Appname::MetricType : public ydk::Enum
@@ -4281,6 +4579,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Application
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::MetricType : public ydk::Enum
@@ -4291,6 +4596,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNu
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Clns::MetricType : public ydk::Enum
@@ -4301,6 +4613,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNu
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Ip::MetricType : public ydk::Enum
@@ -4311,6 +4630,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNu
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Connected::MetricType : public ydk::Enum
@@ -4321,6 +4647,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Connected::
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs::MetricType : public ydk::Enum
@@ -4331,6 +4664,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Eigrp::Eigr
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::Ip::MetricType : public ydk::Enum
@@ -4341,6 +4681,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::Isis
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::MetricType : public ydk::Enum
@@ -4351,6 +4698,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Lisp::MetricType : public ydk::Enum
@@ -4361,6 +4715,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Lisp::Metri
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Mobile::MetricType : public ydk::Enum
@@ -4371,6 +4732,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Mobile::Met
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id::MetricType : public ydk::Enum
@@ -4381,6 +4749,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Rip::MetricType : public ydk::Enum
@@ -4391,6 +4766,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Rip::Metric
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::MetricType : public ydk::Enum
@@ -4401,6 +4783,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Met
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::MetricType : public ydk::Enum
@@ -4411,6 +4800,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Cln
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::MetricType : public ydk::Enum
@@ -4421,6 +4817,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip:
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Application::Appname::MetricType : public ydk::Enum
@@ -4431,6 +4834,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Applicatio
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::MetricType : public ydk::Enum
@@ -4441,6 +4851,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsN
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Clns::MetricType : public ydk::Enum
@@ -4451,6 +4868,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsN
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Ip::MetricType : public ydk::Enum
@@ -4461,6 +4885,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsN
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Connected::MetricType : public ydk::Enum
@@ -4471,6 +4902,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Connected:
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs::MetricType : public ydk::Enum
@@ -4481,6 +4919,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Eigrp::Eig
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::Ip::MetricType : public ydk::Enum
@@ -4491,6 +4936,13 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Isis_::Isi
         static const ydk::Enum::YLeaf rib_metric_as_external;
         static const ydk::Enum::YLeaf rib_metric_as_internal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "rib-metric-as-external") return 2;
+            if (name == "rib-metric-as-internal") return 3;
+            return -1;
+        }
 };
 
 

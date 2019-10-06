@@ -216,6 +216,35 @@ class CtsOdmBindingSource : public ydk::Enum
         static const ydk::Enum::YLeaf from_sgt_caching;
         static const ydk::Enum::YLeaf from_cli_hi;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "from-vlan") return 1;
+            if (name == "from-cli") return 2;
+            if (name == "from-l3if") return 3;
+            if (name == "from-cfp") return 4;
+            if (name == "from-ip-arp") return 5;
+            if (name == "from-local") return 6;
+            if (name == "from-sgt-caching") return 7;
+            if (name == "from-cli-hi") return 8;
+            return -1;
+        }
+};
+
+class SxpConMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf con_mode_invalid;
+        static const ydk::Enum::YLeaf con_mode_speaker;
+        static const ydk::Enum::YLeaf con_mode_listener;
+        static const ydk::Enum::YLeaf con_mode_both;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "con-mode-invalid") return 0;
+            if (name == "con-mode-speaker") return 1;
+            if (name == "con-mode-listener") return 2;
+            if (name == "con-mode-both") return 3;
+            return -1;
+        }
 };
 
 class SxpConState : public ydk::Enum
@@ -227,16 +256,14 @@ class SxpConState : public ydk::Enum
         static const ydk::Enum::YLeaf state_delete_hold_down;
         static const ydk::Enum::YLeaf state_not_applicable;
 
-};
-
-class SxpConMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf con_mode_invalid;
-        static const ydk::Enum::YLeaf con_mode_speaker;
-        static const ydk::Enum::YLeaf con_mode_listener;
-        static const ydk::Enum::YLeaf con_mode_both;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-off") return 0;
+            if (name == "state-pending-on") return 1;
+            if (name == "state-on") return 2;
+            if (name == "state-delete-hold-down") return 3;
+            if (name == "state-not-applicable") return 4;
+            return -1;
+        }
 };
 
 

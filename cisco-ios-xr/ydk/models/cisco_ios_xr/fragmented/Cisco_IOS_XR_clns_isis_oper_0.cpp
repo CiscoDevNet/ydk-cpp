@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_clns_isis_oper_0.hpp"
-#include "Cisco_IOS_XR_clns_isis_oper_2.hpp"
 #include "Cisco_IOS_XR_clns_isis_oper_1.hpp"
+#include "Cisco_IOS_XR_clns_isis_oper_2.hpp"
 
 using namespace ydk;
 
@@ -2409,12 +2409,12 @@ OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInte
     lsp(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Lsp>())
     , iih(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Iih>())
     , psnp(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Psnp>())
-    , csnp(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp>())
+    , cnsp(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp>())
 {
     lsp->parent = this;
     iih->parent = this;
     psnp->parent = this;
-    csnp->parent = this;
+    cnsp->parent = this;
 
     yang_name = "packet-counters"; yang_parent_name = "interfaces-level"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -2429,7 +2429,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
     return (lsp !=  nullptr && lsp->has_data())
 	|| (iih !=  nullptr && iih->has_data())
 	|| (psnp !=  nullptr && psnp->has_data())
-	|| (csnp !=  nullptr && csnp->has_data());
+	|| (cnsp !=  nullptr && cnsp->has_data());
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::has_operation() const
@@ -2438,7 +2438,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
 	|| (lsp !=  nullptr && lsp->has_operation())
 	|| (iih !=  nullptr && iih->has_operation())
 	|| (psnp !=  nullptr && psnp->has_operation())
-	|| (csnp !=  nullptr && csnp->has_operation());
+	|| (cnsp !=  nullptr && cnsp->has_operation());
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::get_segment_path() const
@@ -2486,13 +2486,13 @@ std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protoc
         return psnp;
     }
 
-    if(child_yang_name == "csnp")
+    if(child_yang_name == "cnsp")
     {
-        if(csnp == nullptr)
+        if(cnsp == nullptr)
         {
-            csnp = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp>();
+            cnsp = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp>();
         }
-        return csnp;
+        return cnsp;
     }
 
     return nullptr;
@@ -2517,9 +2517,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::
         _children["psnp"] = psnp;
     }
 
-    if(csnp != nullptr)
+    if(cnsp != nullptr)
     {
-        _children["csnp"] = csnp;
+        _children["cnsp"] = cnsp;
     }
 
     return _children;
@@ -2535,7 +2535,7 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lsp" || name == "iih" || name == "psnp" || name == "csnp")
+    if(name == "lsp" || name == "iih" || name == "psnp" || name == "cnsp")
         return true;
     return false;
 }
@@ -3104,39 +3104,39 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
     return false;
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::Csnp()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::Cnsp()
     :
-    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State>())
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State>())
 {
     state->parent = this;
 
-    yang_name = "csnp"; yang_parent_name = "packet-counters"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "cnsp"; yang_parent_name = "packet-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::~Csnp()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::~Cnsp()
 {
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::has_data() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::has_data() const
 {
     if (is_presence_container) return true;
     return (state !=  nullptr && state->has_data());
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::has_operation() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::has_operation() const
 {
     return is_set(yfilter)
 	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::get_segment_path() const
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csnp";
+    path_buffer << "cnsp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3145,13 +3145,13 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
         if(state == nullptr)
         {
-            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State>();
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State>();
         }
         return state;
     }
@@ -3159,7 +3159,7 @@ std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -3171,36 +3171,36 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::
     return _children;
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::set_filter(const std::string & value_path, YFilter yfilter)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::has_leaf_or_child_of_name(const std::string & name) const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "state")
         return true;
     return false;
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::State()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::State()
     :
     received{YType::uint32, "received"},
     processed{YType::uint32, "processed"},
     sent{YType::uint32, "sent"}
 {
 
-    yang_name = "state"; yang_parent_name = "csnp"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "state"; yang_parent_name = "cnsp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::~State()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::~State()
 {
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::has_data() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::has_data() const
 {
     if (is_presence_container) return true;
     return received.is_set
@@ -3208,7 +3208,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
 	|| sent.is_set;
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::has_operation() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(received.yfilter)
@@ -3216,14 +3216,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
 	|| ydk::is_set(sent.yfilter);
 }
 
-std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::get_segment_path() const
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3235,19 +3235,19 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "received")
     {
@@ -3269,7 +3269,7 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
     }
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::set_filter(const std::string & value_path, YFilter yfilter)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "received")
     {
@@ -3285,7 +3285,7 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Isi
     }
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State::has_leaf_or_child_of_name(const std::string & name) const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "received" || name == "processed" || name == "sent")
         return true;
@@ -11463,7 +11463,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State::State()
     :
-    address{YType::str, "address"}
+    area_address{YType::str, "area-address"}
 {
 
     yang_name = "state"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11476,7 +11476,7 @@ OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : address.getYLeafs())
+    for (auto const & leaf : area_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11486,13 +11486,13 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State::has_operation() const
 {
-    for (auto const & leaf : address.getYLeafs())
+    for (auto const & leaf : area_address.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(address.yfilter);
+	|| ydk::is_set(area_address.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State::get_segment_path() const
@@ -11507,8 +11507,8 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto address_name_datas = address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), address_name_datas.begin(), address_name_datas.end());
+    auto area_address_name_datas = area_address.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), area_address_name_datas.begin(), area_address_name_datas.end());
     return leaf_name_data;
 
 }
@@ -11527,23 +11527,23 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address")
+    if(value_path == "area-address")
     {
-        address.append(value);
+        area_address.append(value);
     }
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address")
+    if(value_path == "area-address")
     {
-        address.yfilter = yfilter;
+        area_address.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address")
+    if(name == "area-address")
         return true;
     return false;
 }
@@ -11806,7 +11806,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State::State()
     :
-    address{YType::str, "address"}
+    ipv4_interface_address{YType::str, "ipv4-interface-address"}
 {
 
     yang_name = "state"; yang_parent_name = "ipv4-interface-addresses"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11819,7 +11819,7 @@ OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : address.getYLeafs())
+    for (auto const & leaf : ipv4_interface_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11829,13 +11829,13 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State::has_operation() const
 {
-    for (auto const & leaf : address.getYLeafs())
+    for (auto const & leaf : ipv4_interface_address.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(address.yfilter);
+	|| ydk::is_set(ipv4_interface_address.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State::get_segment_path() const
@@ -11850,8 +11850,8 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto address_name_datas = address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), address_name_datas.begin(), address_name_datas.end());
+    auto ipv4_interface_address_name_datas = ipv4_interface_address.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), ipv4_interface_address_name_datas.begin(), ipv4_interface_address_name_datas.end());
     return leaf_name_data;
 
 }
@@ -11870,23 +11870,23 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address")
+    if(value_path == "ipv4-interface-address")
     {
-        address.append(value);
+        ipv4_interface_address.append(value);
     }
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address")
+    if(value_path == "ipv4-interface-address")
     {
-        address.yfilter = yfilter;
+        ipv4_interface_address.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address")
+    if(name == "ipv4-interface-address")
         return true;
     return false;
 }
@@ -12836,9 +12836,8 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithms()
     :
-    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State>())
+    segment_routing_algorithm(this, {"algorithm"})
 {
-    state->parent = this;
 
     yang_name = "segment-routing-algorithms"; yang_parent_name = "subtlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -12850,13 +12849,22 @@ OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::has_data() const
 {
     if (is_presence_container) return true;
-    return (state !=  nullptr && state->has_data());
+    for (std::size_t index=0; index<segment_routing_algorithm.len(); index++)
+    {
+        if(segment_routing_algorithm[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::has_operation() const
 {
-    return is_set(yfilter)
-	|| (state !=  nullptr && state->has_operation());
+    for (std::size_t index=0; index<segment_routing_algorithm.len(); index++)
+    {
+        if(segment_routing_algorithm[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::get_segment_path() const
@@ -12877,13 +12885,12 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "state")
+    if(child_yang_name == "segment-routing-algorithm")
     {
-        if(state == nullptr)
-        {
-            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State>();
-        }
-        return state;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm>();
+        ent_->parent = this;
+        segment_routing_algorithm.append(ent_);
+        return ent_;
     }
 
     return nullptr;
@@ -12893,9 +12900,13 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(state != nullptr)
+    count_ = 0;
+    for (auto ent_ : segment_routing_algorithm.entities())
     {
-        _children["state"] = state;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     return _children;
@@ -12911,84 +12922,95 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state")
+    if(name == "segment-routing-algorithm")
         return true;
     return false;
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::State()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::SegmentRoutingAlgorithm()
     :
     algorithm{YType::enumeration, "algorithm"}
+        ,
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State>())
 {
+    state->parent = this;
 
-    yang_name = "state"; yang_parent_name = "segment-routing-algorithms"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "segment-routing-algorithm"; yang_parent_name = "segment-routing-algorithms"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::~State()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::~SegmentRoutingAlgorithm()
 {
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::has_data() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : algorithm.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
+    return algorithm.is_set
+	|| (state !=  nullptr && state->has_data());
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::has_operation() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::has_operation() const
 {
-    for (auto const & leaf : algorithm.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(algorithm.yfilter);
+	|| ydk::is_set(algorithm.yfilter)
+	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::get_segment_path() const
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "state";
+    path_buffer << "segment-routing-algorithm";
+    ADD_KEY_TOKEN(algorithm, "algorithm");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (algorithm.is_set || is_set(algorithm.yfilter)) leaf_name_data.push_back(algorithm.get_name_leafdata());
 
-    auto algorithm_name_datas = algorithm.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), algorithm_name_datas.begin(), algorithm_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State>();
+        }
+        return state;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(state != nullptr)
+    {
+        _children["state"] = state;
+    }
+
     return _children;
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "algorithm")
     {
-        algorithm.append(value);
+        algorithm = value;
+        algorithm.value_namespace = name_space;
+        algorithm.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::set_filter(const std::string & value_path, YFilter yfilter)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "algorithm")
     {
@@ -12996,7 +13018,85 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     }
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State::has_leaf_or_child_of_name(const std::string & name) const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state" || name == "algorithm")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::State()
+    :
+    algorithm{YType::enumeration, "algorithm"}
+{
+
+    yang_name = "state"; yang_parent_name = "segment-routing-algorithm"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return algorithm.is_set;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(algorithm.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (algorithm.is_set || is_set(algorithm.yfilter)) leaf_name_data.push_back(algorithm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "algorithm")
+    {
+        algorithm = value;
+        algorithm.value_namespace = name_space;
+        algorithm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "algorithm")
+    {
+        algorithm.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "algorithm")
         return true;
@@ -13005,10 +13105,10 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapability()
     :
-    segment_routing_capability_state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState>())
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State>())
     , srgb_descriptors(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors>())
 {
-    segment_routing_capability_state->parent = this;
+    state->parent = this;
     srgb_descriptors->parent = this;
 
     yang_name = "segment-routing-capability"; yang_parent_name = "subtlv"; is_top_level_class = false; has_list_ancestor = true; 
@@ -13021,14 +13121,14 @@ OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::has_data() const
 {
     if (is_presence_container) return true;
-    return (segment_routing_capability_state !=  nullptr && segment_routing_capability_state->has_data())
+    return (state !=  nullptr && state->has_data())
 	|| (srgb_descriptors !=  nullptr && srgb_descriptors->has_data());
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::has_operation() const
 {
     return is_set(yfilter)
-	|| (segment_routing_capability_state !=  nullptr && segment_routing_capability_state->has_operation())
+	|| (state !=  nullptr && state->has_operation())
 	|| (srgb_descriptors !=  nullptr && srgb_descriptors->has_operation());
 }
 
@@ -13050,13 +13150,13 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "segment-routing-capability-state")
+    if(child_yang_name == "state")
     {
-        if(segment_routing_capability_state == nullptr)
+        if(state == nullptr)
         {
-            segment_routing_capability_state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState>();
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State>();
         }
-        return segment_routing_capability_state;
+        return state;
     }
 
     if(child_yang_name == "srgb-descriptors")
@@ -13075,9 +13175,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(segment_routing_capability_state != nullptr)
+    if(state != nullptr)
     {
-        _children["segment-routing-capability-state"] = segment_routing_capability_state;
+        _children["state"] = state;
     }
 
     if(srgb_descriptors != nullptr)
@@ -13098,24 +13198,24 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing-capability-state" || name == "srgb-descriptors")
+    if(name == "state" || name == "srgb-descriptors")
         return true;
     return false;
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::SegmentRoutingCapabilityState()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::State()
     :
     flags{YType::enumeration, "flags"}
 {
 
-    yang_name = "segment-routing-capability-state"; yang_parent_name = "segment-routing-capability"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "state"; yang_parent_name = "segment-routing-capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::~SegmentRoutingCapabilityState()
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::~State()
 {
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::has_data() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::has_data() const
 {
     if (is_presence_container) return true;
     for (auto const & leaf : flags.getYLeafs())
@@ -13126,7 +13226,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     return false;
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::has_operation() const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::has_operation() const
 {
     for (auto const & leaf : flags.getYLeafs())
     {
@@ -13137,14 +13237,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 	|| ydk::is_set(flags.yfilter);
 }
 
-std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::get_segment_path() const
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "segment-routing-capability-state";
+    path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13155,19 +13255,19 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flags")
     {
@@ -13175,7 +13275,7 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     }
 }
 
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::set_filter(const std::string & value_path, YFilter yfilter)
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flags")
     {
@@ -13183,7 +13283,7 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     }
 }
 
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState::has_leaf_or_child_of_name(const std::string & name) const
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flags")
         return true;
@@ -13192,7 +13292,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptors()
     :
-    srgb_descriptor(this, {"range"})
+    srgb_descriptor(this, {})
 {
 
     yang_name = "srgb-descriptors"; yang_parent_name = "segment-routing-capability"; is_top_level_class = false; has_list_ancestor = true; 
@@ -13285,8 +13385,6 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::SrgbDescriptor()
     :
-    range{YType::uint32, "range"}
-        ,
     state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::State>())
 {
     state->parent = this;
@@ -13301,14 +13399,12 @@ OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::has_data() const
 {
     if (is_presence_container) return true;
-    return range.is_set
-	|| (state !=  nullptr && state->has_data());
+    return (state !=  nullptr && state->has_data());
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(range.yfilter)
 	|| (state !=  nullptr && state->has_operation());
 }
 
@@ -13316,7 +13412,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-descriptor";
-    ADD_KEY_TOKEN(range, "range");
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13324,7 +13420,6 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13358,25 +13453,15 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "range")
-    {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "range")
-    {
-        range.yfilter = yfilter;
-    }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state" || name == "range")
+    if(name == "state")
         return true;
     return false;
 }
@@ -15027,7 +15112,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv4SourceRouterId::State::State()
     :
     type{YType::str, "type"},
-    router_id{YType::str, "router-id"}
+    ipv4_source_router_id{YType::str, "ipv4-source-router-id"}
 {
 
     yang_name = "state"; yang_parent_name = "prefixes-subtlvs-ipv4-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
@@ -15041,14 +15126,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 {
     if (is_presence_container) return true;
     return type.is_set
-	|| router_id.is_set;
+	|| ipv4_source_router_id.is_set;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv4SourceRouterId::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(router_id.yfilter);
+	|| ydk::is_set(ipv4_source_router_id.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv4SourceRouterId::State::get_segment_path() const
@@ -15063,7 +15148,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (ipv4_source_router_id.is_set || is_set(ipv4_source_router_id.yfilter)) leaf_name_data.push_back(ipv4_source_router_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15089,11 +15174,11 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv4-source-router-id")
     {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
+        ipv4_source_router_id = value;
+        ipv4_source_router_id.value_namespace = name_space;
+        ipv4_source_router_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -15103,15 +15188,15 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     {
         type.yfilter = yfilter;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv4-source-router-id")
     {
-        router_id.yfilter = yfilter;
+        ipv4_source_router_id.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv4SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "router-id")
+    if(name == "type" || name == "ipv4-source-router-id")
         return true;
     return false;
 }
@@ -15201,7 +15286,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv6SourceRouterId::State::State()
     :
     type{YType::str, "type"},
-    router_id{YType::str, "router-id"}
+    ipv6_source_router_id{YType::str, "ipv6-source-router-id"}
 {
 
     yang_name = "state"; yang_parent_name = "prefixes-subtlvs-ipv6-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
@@ -15215,14 +15300,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 {
     if (is_presence_container) return true;
     return type.is_set
-	|| router_id.is_set;
+	|| ipv6_source_router_id.is_set;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv6SourceRouterId::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(router_id.yfilter);
+	|| ydk::is_set(ipv6_source_router_id.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv6SourceRouterId::State::get_segment_path() const
@@ -15237,7 +15322,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (ipv6_source_router_id.is_set || is_set(ipv6_source_router_id.yfilter)) leaf_name_data.push_back(ipv6_source_router_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15263,11 +15348,11 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv6-source-router-id")
     {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
+        ipv6_source_router_id = value;
+        ipv6_source_router_id.value_namespace = name_space;
+        ipv6_source_router_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -15277,15 +15362,15 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     {
         type.yfilter = yfilter;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv6-source-router-id")
     {
-        router_id.yfilter = yfilter;
+        ipv6_source_router_id.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv6SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "router-id")
+    if(name == "type" || name == "ipv6-source-router-id")
         return true;
     return false;
 }
@@ -15777,227 +15862,8 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     return false;
 }
 
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsn()
-    :
-    mt_isn_neighbors(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors>())
-{
-    mt_isn_neighbors->parent = this;
-
-    yang_name = "mt-isn"; yang_parent_name = "tlvs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::~MtIsn()
-{
-}
-
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::has_data() const
-{
-    if (is_presence_container) return true;
-    return (mt_isn_neighbors !=  nullptr && mt_isn_neighbors->has_data());
-}
-
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mt_isn_neighbors !=  nullptr && mt_isn_neighbors->has_operation());
-}
-
-std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mt-isn";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mt-isn-neighbors")
-    {
-        if(mt_isn_neighbors == nullptr)
-        {
-            mt_isn_neighbors = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors>();
-        }
-        return mt_isn_neighbors;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(mt_isn_neighbors != nullptr)
-    {
-        _children["mt-isn-neighbors"] = mt_isn_neighbors;
-    }
-
-    return _children;
-}
-
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mt-isn-neighbors")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf OpenconfigIsisLspAttributesEnum::overload {0, "overload"};
-const Enum::YLeaf OpenconfigIsisLspAttributesEnum::attached {1, "attached"};
-
-const Enum::YLeaf OpenconfigIsisLspNlpidEnum::ipv4 {0, "ipv4"};
-const Enum::YLeaf OpenconfigIsisLspNlpidEnum::ipv6 {1, "ipv6"};
-
-const Enum::YLeaf OpenconfigIsisLspStateFlagsEnum::numbered {0, "numbered"};
-
-const Enum::YLeaf OpenconfigIsisLspIsisMetricFlagsEnum::internal {0, "internal"};
-const Enum::YLeaf OpenconfigIsisLspIsisMetricFlagsEnum::unsupported {1, "unsupported"};
-
-const Enum::YLeaf OpenconfigIsisLspDefaultMetricStateFlagsEnum::internal {0, "internal"};
-
-const Enum::YLeaf OpenconfigIsisLspIpv6SrlgStateFlagsEnum::na {0, "na"};
-
-const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::address_family {0, "address-family"};
-const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::backup {1, "backup"};
-const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::value_ {2, "value"};
-const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::local {3, "local"};
-const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::set {4, "set"};
-
-const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::address_family {0, "address-family"};
-const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::backup {1, "backup"};
-const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::value_ {2, "value"};
-const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::local {3, "local"};
-const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::set {4, "set"};
-
-const Enum::YLeaf OpenconfigIsisLspFlagsStateFlagsEnum::external_flag {0, "external-flag"};
-const Enum::YLeaf OpenconfigIsisLspFlagsStateFlagsEnum::readvertisement_flag {1, "readvertisement-flag"};
-const Enum::YLeaf OpenconfigIsisLspFlagsStateFlagsEnum::node_flag {2, "node-flag"};
-
-const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::readvertisement {0, "readvertisement"};
-const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::node {1, "node"};
-const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::no_php {2, "no-php"};
-const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::explicit_null {3, "explicit-null"};
-const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::value_ {4, "value"};
-const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::local {5, "local"};
-
-const Enum::YLeaf OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum::ipv4_mpls {0, "ipv4-mpls"};
-const Enum::YLeaf OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum::ipv6_mpls {1, "ipv6-mpls"};
-const Enum::YLeaf OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum::ipv6_sr {2, "ipv6-sr"};
-
-const Enum::YLeaf OpenconfigIsisLspAlgorithmEnum::spf {0, "spf"};
-const Enum::YLeaf OpenconfigIsisLspAlgorithmEnum::strict_spf {1, "strict-spf"};
-
-const Enum::YLeaf OpenconfigIsisLspCapabilityStateFlagsEnum::flood {0, "flood"};
-const Enum::YLeaf OpenconfigIsisLspCapabilityStateFlagsEnum::down {1, "down"};
-
-const Enum::YLeaf OpenconfigIsisLspCryptoTypeEnum::hmac_md5 {0, "hmac-md5"};
-const Enum::YLeaf OpenconfigIsisLspCryptoTypeEnum::cleartext {1, "cleartext"};
-
-const Enum::YLeaf OpenconfigIsisLspFlagsEnum::partition_repair {0, "partition-repair"};
-const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_error {1, "attached-error"};
-const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_expense {2, "attached-expense"};
-const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_delay {3, "attached-delay"};
-const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_default {4, "attached-default"};
-const Enum::YLeaf OpenconfigIsisLspFlagsEnum::overload {5, "overload"};
-
-const Enum::YLeaf OpenconfigIsisLspPduTypeEnum::level1 {0, "level1"};
-const Enum::YLeaf OpenconfigIsisLspPduTypeEnum::level2 {1, "level2"};
-
-const Enum::YLeaf OpenconfigIsisTypesMetricStyleEnum::narrow_metric {0, "narrow-metric"};
-const Enum::YLeaf OpenconfigIsisTypesMetricStyleEnum::wide_metric {1, "wide-metric"};
-
-const Enum::YLeaf OpenconfigIsisTypesAdaptiveTimerTypeEnum::linear {0, "linear"};
-const Enum::YLeaf OpenconfigIsisTypesAdaptiveTimerTypeEnum::exponential {1, "exponential"};
-
-const Enum::YLeaf OpenconfigSegmentRoutingLabelOptionsEnum::no_php {0, "no-php"};
-const Enum::YLeaf OpenconfigSegmentRoutingLabelOptionsEnum::explicit_null {1, "explicit-null"};
-
-const Enum::YLeaf OpenconfigIsisAdjacencyStateNlpidEnum::ipv4 {0, "ipv4"};
-const Enum::YLeaf OpenconfigIsisAdjacencyStateNlpidEnum::ipv6 {1, "ipv6"};
-
-const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::up {0, "up"};
-const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::down {1, "down"};
-const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::init {2, "init"};
-const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::failed {3, "failed"};
-
-const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level1 {0, "level1"};
-const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level2 {1, "level2"};
-const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level12 {2, "level12"};
-
-const Enum::YLeaf OpenconfigIsisTypesCircuitTypeEnum::point_to_point {0, "point-to-point"};
-const Enum::YLeaf OpenconfigIsisTypesCircuitTypeEnum::broadcast {1, "broadcast"};
-
-const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::strict {0, "strict"};
-const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::loose {1, "loose"};
-const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::adaptive {2, "adaptive"};
-const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::disable {3, "disable"};
-
-const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
-const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
-
-const Enum::YLeaf SrmsMiAfEB::none {0, "none"};
-const Enum::YLeaf SrmsMiAfEB::ipv4 {1, "ipv4"};
-const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
-const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
-const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
-
-const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_none {0, "isis-u-loop-event-none"};
-const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_link_down {1, "isis-u-loop-event-link-down"};
-const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_link_up {2, "isis-u-loop-event-link-up"};
-const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_ol_bit_set {3, "isis-u-loop-event-ol-bit-set"};
-const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_ol_bit_unset {4, "isis-u-loop-event-ol-bit-unset"};
-
-const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_none {0, "isis-u-loop-avoidance-type-none"};
-const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_all {1, "isis-u-loop-avoidance-type-all"};
-const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_protected {2, "isis-u-loop-avoidance-type-protected"};
-const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_sr {3, "isis-u-loop-avoidance-type-sr"};
-
-const Enum::YLeaf IsisMetricStyle::isis_metric_style_narrow {0, "isis-metric-style-narrow"};
-const Enum::YLeaf IsisMetricStyle::isis_metric_style_wide {1, "isis-metric-style-wide"};
-const Enum::YLeaf IsisMetricStyle::isis_metric_style_transition {2, "isis-metric-style-transition"};
-const Enum::YLeaf IsisMetricStyle::isis_metric_style_narrow_transition {3, "isis-metric-style-narrow-transition"};
-const Enum::YLeaf IsisMetricStyle::isis_metric_style_wide_transition {4, "isis-metric-style-wide-transition"};
-
-const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_active {0, "isis-startup-ssm-active"};
-const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_complete {1, "isis-startup-ssm-complete"};
-const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_aborted {2, "isis-startup-ssm-aborted"};
-const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_not_run {3, "isis-startup-ssm-not-run"};
-
-const Enum::YLeaf IsisNsfFlavor::isis_nsf_protocol_none {0, "isis-nsf-protocol-none"};
-const Enum::YLeaf IsisNsfFlavor::isis_nsf_protocol_cisco {1, "isis-nsf-protocol-cisco"};
-const Enum::YLeaf IsisNsfFlavor::isis_nsf_protocol_ietf {2, "isis-nsf-protocol-ietf"};
-const Enum::YLeaf IsisNsfFlavor::isis_nsf_protocol_nsr {3, "isis-nsf-protocol-nsr"};
-
-const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_prefix_sid {0, "isis-edm-label-alloc-prefix-sid"};
-const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_local_sid {1, "isis-edm-label-alloc-local-sid"};
-const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_max {2, "isis-edm-label-alloc-max"};
-
-const Enum::YLeaf IsisErrLogLevel::isis_err_log_level_info {0, "isis-err-log-level-info"};
-const Enum::YLeaf IsisErrLogLevel::isis_err_log_level_warn {1, "isis-err-log-level-warn"};
-const Enum::YLeaf IsisErrLogLevel::isis_err_log_level_critical {2, "isis-err-log-level-critical"};
-
-const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_adv_suppressed {0, "isis-intf-af-prefix-unknown-adv-suppressed"};
-const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_global_addr_reg_error {1, "isis-intf-af-prefix-unknown-global-addr-reg-error"};
-const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_internal_error {2, "isis-intf-af-prefix-unknown-internal-error"};
+const Enum::YLeaf IsisSubAfId::unicast {0, "unicast"};
+const Enum::YLeaf IsisSubAfId::multicast {1, "multicast"};
 
 const Enum::YLeaf IsisIfAfFwdAddrUnknownReason::isis_intf_af_fwd_addr_unknown_cfg_passive {0, "isis-intf-af-fwd-addr-unknown-cfg-passive"};
 const Enum::YLeaf IsisIfAfFwdAddrUnknownReason::isis_intf_af_fwd_addr_unknown_proto_doesnt_exist {1, "isis-intf-af-fwd-addr-unknown-proto-doesnt-exist"};
@@ -16007,34 +15873,41 @@ const Enum::YLeaf IsisIfAfFwdAddrUnknownReason::isis_intf_af_fwd_addr_unknown_af
 const Enum::YLeaf IsisIfAfFwdAddrUnknownReason::isis_intf_af_fwd_addr_unknown_vrf_enabled {5, "isis-intf-af-fwd-addr-unknown-vrf-enabled"};
 const Enum::YLeaf IsisIfAfFwdAddrUnknownReason::isis_intf_af_fwd_addr_unknown_internal_error {6, "isis-intf-af-fwd-addr-unknown-internal-error"};
 
-const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_conn_fail {0, "isis-intf-af-proto-down-imd-conn-fail"};
-const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_node_doesnt_exist {1, "isis-intf-af-proto-down-imd-node-doesnt-exist"};
-const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_exist_reg_error {2, "isis-intf-af-proto-down-imd-exist-reg-error"};
-const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_state_reg_error {3, "isis-intf-af-proto-down-imd-state-reg-error"};
-const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_af_not_up {4, "isis-intf-af-proto-down-af-not-up"};
-const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_internal_error {5, "isis-intf-af-proto-down-internal-error"};
+const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_none {0, "isis-u-loop-event-none"};
+const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_link_down {1, "isis-u-loop-event-link-down"};
+const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_link_up {2, "isis-u-loop-event-link-up"};
+const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_ol_bit_set {3, "isis-u-loop-event-ol-bit-set"};
+const Enum::YLeaf IsisUloopEvent::isis_u_loop_event_ol_bit_unset {4, "isis-u-loop-event-ol-bit-unset"};
 
-const Enum::YLeaf IsisIfAfDisabledReason::isis_intf_af_disabled_no_topo_enabled {0, "isis-intf-af-disabled-no-topo-enabled"};
-const Enum::YLeaf IsisIfAfDisabledReason::isis_intf_af_disabled_internal_error {1, "isis-intf-af-disabled-internal-error"};
+const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
+const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
+const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
 
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_down_stream {0, "isis-frr-tiebreaker-down-stream"};
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_lc_disjoint {1, "isis-frr-tiebreaker-lc-disjoint"};
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_low_est_backup_metric {2, "isis-frr-tiebreaker-low-est-backup-metric"};
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_node_protecting {3, "isis-frr-tiebreaker-node-protecting"};
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_primary_path {4, "isis-frr-tiebreaker-primary-path"};
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_secondary_path {5, "isis-frr-tiebreaker-secondary-path"};
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_srlg_disjoint {6, "isis-frr-tiebreaker-srlg-disjoint"};
-const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_default {7, "isis-frr-tiebreaker-default"};
+const Enum::YLeaf IsisLspDbOp::isis_lsp_db_clear {0, "isis-lsp-db-clear"};
+const Enum::YLeaf IsisLspDbOp::isis_lsp_db_insert_new_lsp {1, "isis-lsp-db-insert-new-lsp"};
+const Enum::YLeaf IsisLspDbOp::isis_lsp_db_replace_lsp_with_lsp {2, "isis-lsp-db-replace-lsp-with-lsp"};
+const Enum::YLeaf IsisLspDbOp::isis_lsp_db_purge_lsp {3, "isis-lsp-db-purge-lsp"};
+const Enum::YLeaf IsisLspDbOp::isis_lsp_db_delete_lsp {4, "isis-lsp-db-delete-lsp"};
 
-const Enum::YLeaf IsisFrr::isis_frr_type_none {0, "isis-frr-type-none"};
-const Enum::YLeaf IsisFrr::isis_frr_type_per_link {1, "isis-frr-type-per-link"};
-const Enum::YLeaf IsisFrr::isis_frr_type_per_prefix {2, "isis-frr-type-per-prefix"};
-const Enum::YLeaf IsisFrr::isis_frr_type_sr_u_loop {3, "isis-frr-type-sr-u-loop"};
+const Enum::YLeaf OpenconfigIsisLspRouterCapabilityStateFlagsEnum::flood {0, "flood"};
+const Enum::YLeaf OpenconfigIsisLspRouterCapabilityStateFlagsEnum::down {1, "down"};
 
-const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_intf_suppressed {0, "isis-intf-topo-adv-prefix-disabled-intf-suppressed"};
-const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_af_not_up {1, "isis-intf-topo-adv-prefix-disabled-af-not-up"};
-const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown {2, "isis-intf-topo-adv-prefix-disabled-af-prefixes-unknown"};
-const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_internal_error {3, "isis-intf-topo-adv-prefix-disabled-internal-error"};
+const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_active {0, "isis-startup-ssm-active"};
+const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_complete {1, "isis-startup-ssm-complete"};
+const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_aborted {2, "isis-startup-ssm-aborted"};
+const Enum::YLeaf IsisStartupStatus::isis_startup_ssm_not_run {3, "isis-startup-ssm-not-run"};
+
+const Enum::YLeaf IsisUp::isis_down {0, "isis-down"};
+const Enum::YLeaf IsisUp::isis_up {1, "isis-up"};
+
+const Enum::YLeaf IsisErrLogLevel::isis_err_log_level_info {0, "isis-err-log-level-info"};
+const Enum::YLeaf IsisErrLogLevel::isis_err_log_level_warn {1, "isis-err-log-level-warn"};
+const Enum::YLeaf IsisErrLogLevel::isis_err_log_level_critical {2, "isis-err-log-level-critical"};
+
+const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::strict {0, "strict"};
+const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::loose {1, "loose"};
+const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::adaptive {2, "adaptive"};
+const Enum::YLeaf OpenconfigIsisTypesHelloPaddingTypeEnum::disable {3, "disable"};
 
 const Enum::YLeaf IsisIfTopoAdjFormDisabledReason::isis_intf_topo_adj_form_disabled_intf_passive {0, "isis-intf-topo-adj-form-disabled-intf-passive"};
 const Enum::YLeaf IsisIfTopoAdjFormDisabledReason::isis_intf_topo_adj_form_disabled_af_not_up {1, "isis-intf-topo-adj-form-disabled-af-not-up"};
@@ -16047,42 +15920,79 @@ const Enum::YLeaf IsisIfTopoAdjFormDisabledReason::isis_intf_topo_adj_form_disab
 const Enum::YLeaf IsisIfTopoAdjFormDisabledReason::isis_intf_topo_adj_form_disabled_snpa {8, "isis-intf-topo-adj-form-disabled-snpa"};
 const Enum::YLeaf IsisIfTopoAdjFormDisabledReason::isis_intf_topo_adj_form_disabled_mcast {9, "isis-intf-topo-adj-form-disabled-mcast"};
 
-const Enum::YLeaf IsisIfTopoDisabledReason::isis_intf_topo_disabled_not_cfg {0, "isis-intf-topo-disabled-not-cfg"};
-const Enum::YLeaf IsisIfTopoDisabledReason::isis_intf_topo_disabled_internal_error {1, "isis-intf-topo-disabled-internal-error"};
+const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_none {0, "isis-tilfa-comp-none"};
+const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_link {1, "isis-tilfa-comp-link"};
+const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_node {2, "isis-tilfa-comp-node"};
+const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_srlg {3, "isis-tilfa-comp-srlg"};
+const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_node_srlg {4, "isis-tilfa-comp-node-srlg"};
 
-const Enum::YLeaf IsisIfMcastInvalidReason::isis_intf_mcast_invalid_join_error {0, "isis-intf-mcast-invalid-join-error"};
-const Enum::YLeaf IsisIfMcastInvalidReason::isis_intf_mcast_invalid_internal_error {1, "isis-intf-mcast-invalid-internal-error"};
-const Enum::YLeaf IsisIfMcastInvalidReason::isis_intf_mcast_invalid_not_yet_needed {2, "isis-intf-mcast-invalid-not-yet-needed"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_up_nsf_restart {0, "isis-adj-up-nsf-restart"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_up_new_adj {1, "isis-adj-up-new-adj"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_up_restarted {2, "isis-adj-up-restarted"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_up_nsf_restored {3, "isis-adj-up-nsf-restored"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_up_chkpt_restored {4, "isis-adj-up-chkpt-restored"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_init_reason {5, "isis-adj-init-reason"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_init_neighbor_forgot {6, "isis-adj-init-neighbor-forgot"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_hold_time {7, "isis-adj-down-hold-time"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_if_down {8, "isis-adj-down-if-down"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_cfg_mismatch {9, "isis-adj-down-cfg-mismatch"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_circ_id {10, "isis-adj-down-circ-id"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_nsf_ack_fail {11, "isis-adj-down-nsf-ack-fail"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_db_clear {12, "isis-adj-down-db-clear"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_no_common_topology {13, "isis-adj-down-no-common-topology"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_restart_tlv_missing {14, "isis-adj-down-restart-tlv-missing"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_bfd_down {15, "isis-adj-down-bfd-down"};
+const Enum::YLeaf IsisAdjStateReason::isis_adj_down_3way_down {16, "isis-adj-down-3way-down"};
 
-const Enum::YLeaf IsisIfClnsSnpaUnknownReason::isis_intf_clns_snpa_unknown_access_error {0, "isis-intf-clns-snpa-unknown-access-error"};
-const Enum::YLeaf IsisIfClnsSnpaUnknownReason::isis_intf_clns_snpa_unknown_not_lan {1, "isis-intf-clns-snpa-unknown-not-lan"};
-const Enum::YLeaf IsisIfClnsSnpaUnknownReason::isis_intf_clns_snpa_unknown_internal_error {2, "isis-intf-clns-snpa-unknown-internal-error"};
+const Enum::YLeaf SrmsMiAfEB::none {0, "none"};
+const Enum::YLeaf SrmsMiAfEB::ipv4 {1, "ipv4"};
+const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
 
-const Enum::YLeaf IsisKnown::isis_unknown {0, "isis-unknown"};
-const Enum::YLeaf IsisKnown::isis_known {1, "isis-known"};
+const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_no_state {0, "isis-adj-bfd-no-state"};
+const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_down_state {1, "isis-adj-bfd-down-state"};
+const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_init_state {2, "isis-adj-bfd-init-state"};
+const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_up_state {3, "isis-adj-bfd-up-state"};
 
-const Enum::YLeaf IsisIfClnsMtuInvalidReason::isis_intf_clns_mtu_invalid_too_small {0, "isis-intf-clns-mtu-invalid-too-small"};
-const Enum::YLeaf IsisIfClnsMtuInvalidReason::isis_intf_clns_mtu_invalid_internal_error {1, "isis-intf-clns-mtu-invalid-internal-error"};
+const Enum::YLeaf IsisRedistProto::isis_redist_connected {0, "isis-redist-connected"};
+const Enum::YLeaf IsisRedistProto::isis_redist_static {1, "isis-redist-static"};
+const Enum::YLeaf IsisRedistProto::isis_redist_ospf {2, "isis-redist-ospf"};
+const Enum::YLeaf IsisRedistProto::isis_redist_bgp {3, "isis-redist-bgp"};
+const Enum::YLeaf IsisRedistProto::isis_redist_isis {4, "isis-redist-isis"};
+const Enum::YLeaf IsisRedistProto::isis_redist_ospfv3 {5, "isis-redist-ospfv3"};
+const Enum::YLeaf IsisRedistProto::isis_redist_rip {6, "isis-redist-rip"};
+const Enum::YLeaf IsisRedistProto::isis_redist_eigrp {7, "isis-redist-eigrp"};
+const Enum::YLeaf IsisRedistProto::isis_redist_subscriber {8, "isis-redist-subscriber"};
+const Enum::YLeaf IsisRedistProto::isis_redist_application {9, "isis-redist-application"};
+const Enum::YLeaf IsisRedistProto::isis_redist_mobile {10, "isis-redist-mobile"};
 
-const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_add_to_intf_stack_fail {0, "isis-intf-clns-proto-down-add-to-intf-stack-fail"};
-const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_no_imd_conn {1, "isis-intf-clns-proto-down-no-imd-conn"};
-const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_imd_node_doesnt_exist {2, "isis-intf-clns-proto-down-imd-node-doesnt-exist"};
-const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_imd_exist_reg_error {3, "isis-intf-clns-proto-down-imd-exist-reg-error"};
-const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_imd_state_reg_error {4, "isis-intf-clns-proto-down-imd-state-reg-error"};
-const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_clns_not_up {5, "isis-intf-clns-proto-down-clns-not-up"};
+const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_interface {0, "isis-sh-route-adv-origin-interface"};
+const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_redistributed {1, "isis-sh-route-adv-origin-redistributed"};
+const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_native {2, "isis-sh-route-adv-origin-native"};
+const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_summary {3, "isis-sh-route-adv-origin-summary"};
+const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_default {4, "isis-sh-route-adv-origin-default"};
 
-const Enum::YLeaf IsisUp::isis_down {0, "isis-down"};
-const Enum::YLeaf IsisUp::isis_up {1, "isis-up"};
+const Enum::YLeaf IsisEnabled::isis_disabled {0, "isis-disabled"};
+const Enum::YLeaf IsisEnabled::isis_enabled {1, "isis-enabled"};
 
-const Enum::YLeaf IsisIfAdvPrefixDisabledReason::isis_intf_adv_prefix_disabled_if_cfg_suppressed {0, "isis-intf-adv-prefix-disabled-if-cfg-suppressed"};
-const Enum::YLeaf IsisIfAdvPrefixDisabledReason::isis_intf_adv_prefix_disabled_no_topo_participate {1, "isis-intf-adv-prefix-disabled-no-topo-participate"};
-const Enum::YLeaf IsisIfAdvPrefixDisabledReason::isis_intf_adv_prefix_disabled_internal_error {2, "isis-intf-adv-prefix-disabled-internal-error"};
+const Enum::YLeaf IsisLevel::isis_level0 {0, "isis-level0"};
+const Enum::YLeaf IsisLevel::isis_level1 {1, "isis-level1"};
+const Enum::YLeaf IsisLevel::isis_level2 {2, "isis-level2"};
 
-const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_cfg_passive {0, "isis-intf-adj-form-disabled-cfg-passive"};
-const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_no_topo_participate {1, "isis-intf-adj-form-disabled-no-topo-participate"};
-const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_add_to_intf_stack_fail {2, "isis-intf-adj-form-disabled-add-to-intf-stack-fail"};
-const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_clns_io {3, "isis-intf-adj-form-disabled-clns-io"};
-const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_internal_error {4, "isis-intf-adj-form-disabled-internal-error"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_down_stream {0, "isis-frr-tiebreaker-down-stream"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_lc_disjoint {1, "isis-frr-tiebreaker-lc-disjoint"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_low_est_backup_metric {2, "isis-frr-tiebreaker-low-est-backup-metric"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_node_protecting {3, "isis-frr-tiebreaker-node-protecting"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_primary_path {4, "isis-frr-tiebreaker-primary-path"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_secondary_path {5, "isis-frr-tiebreaker-secondary-path"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_srlg_disjoint {6, "isis-frr-tiebreaker-srlg-disjoint"};
+const Enum::YLeaf IsisFrrTiebreaker::isis_frr_tiebreaker_default {7, "isis-frr-tiebreaker-default"};
+
+const Enum::YLeaf OpenconfigIsisLspIpv6SrlgStateFlagsEnum::na {0, "na"};
+
+const Enum::YLeaf IsisFrr::isis_frr_type_none {0, "isis-frr-type-none"};
+const Enum::YLeaf IsisFrr::isis_frr_type_per_link {1, "isis-frr-type-per-link"};
+const Enum::YLeaf IsisFrr::isis_frr_type_per_prefix {2, "isis-frr-type-per-prefix"};
+const Enum::YLeaf IsisFrr::isis_frr_type_sr_u_loop {3, "isis-frr-type-sr-u-loop"};
 
 const Enum::YLeaf IsisIfDisabledReason::isis_intf_disabled_no_net_cfg {0, "isis-intf-disabled-no-net-cfg"};
 const Enum::YLeaf IsisIfDisabledReason::isis_intf_disabled_area_missing {1, "isis-intf-disabled-area-missing"};
@@ -16096,15 +16006,205 @@ const Enum::YLeaf IsisIfDisabledReason::isis_intf_disabled_intf_doesnt_exist {8,
 const Enum::YLeaf IsisIfDisabledReason::isis_intf_disabled_intf_shutdown {9, "isis-intf-disabled-intf-shutdown"};
 const Enum::YLeaf IsisIfDisabledReason::isis_intf_disabled_internal_error {10, "isis-intf-disabled-internal-error"};
 
-const Enum::YLeaf IsisEnabled::isis_disabled {0, "isis-disabled"};
-const Enum::YLeaf IsisEnabled::isis_enabled {1, "isis-enabled"};
+const Enum::YLeaf IsisShTeLink::isis_sh_te_link_p2p {0, "isis-sh-te-link-p2p"};
+const Enum::YLeaf IsisShTeLink::isis_sh_te_link_broadcast {1, "isis-sh-te-link-broadcast"};
 
-const Enum::YLeaf IsisReachable::isis_unreachable {0, "isis-unreachable"};
-const Enum::YLeaf IsisReachable::isis_reachable {1, "isis-reachable"};
+const Enum::YLeaf IsisMediaClass::isis_media_class_lan {0, "isis-media-class-lan"};
+const Enum::YLeaf IsisMediaClass::isis_media_class_p2p {1, "isis-media-class-p2p"};
+const Enum::YLeaf IsisMediaClass::isis_media_class_loop_back {2, "isis-media-class-loop-back"};
+
+const Enum::YLeaf OpenconfigIsisTypesAdaptiveTimerTypeEnum::linear {0, "linear"};
+const Enum::YLeaf OpenconfigIsisTypesAdaptiveTimerTypeEnum::exponential {1, "exponential"};
+
+const Enum::YLeaf IsisIfMcastInvalidReason::isis_intf_mcast_invalid_join_error {0, "isis-intf-mcast-invalid-join-error"};
+const Enum::YLeaf IsisIfMcastInvalidReason::isis_intf_mcast_invalid_internal_error {1, "isis-intf-mcast-invalid-internal-error"};
+const Enum::YLeaf IsisIfMcastInvalidReason::isis_intf_mcast_invalid_not_yet_needed {2, "isis-intf-mcast-invalid-not-yet-needed"};
+
+const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_intf_suppressed {0, "isis-intf-topo-adv-prefix-disabled-intf-suppressed"};
+const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_af_not_up {1, "isis-intf-topo-adv-prefix-disabled-af-not-up"};
+const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown {2, "isis-intf-topo-adv-prefix-disabled-af-prefixes-unknown"};
+const Enum::YLeaf IsisIfTopoAdvPrefixDisabledReason::isis_intf_topo_adv_prefix_disabled_internal_error {3, "isis-intf-topo-adv-prefix-disabled-internal-error"};
+
+const Enum::YLeaf IsisAdjState::isis_adj_up_state {0, "isis-adj-up-state"};
+const Enum::YLeaf IsisAdjState::isis_adj_init_state {1, "isis-adj-init-state"};
+const Enum::YLeaf IsisAdjState::isis_adj_failed_state {2, "isis-adj-failed-state"};
+
+const Enum::YLeaf OpenconfigIsisLspNlpidEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf OpenconfigIsisLspNlpidEnum::ipv6 {1, "ipv6"};
+
+const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_add_to_intf_stack_fail {0, "isis-intf-clns-proto-down-add-to-intf-stack-fail"};
+const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_no_imd_conn {1, "isis-intf-clns-proto-down-no-imd-conn"};
+const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_imd_node_doesnt_exist {2, "isis-intf-clns-proto-down-imd-node-doesnt-exist"};
+const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_imd_exist_reg_error {3, "isis-intf-clns-proto-down-imd-exist-reg-error"};
+const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_imd_state_reg_error {4, "isis-intf-clns-proto-down-imd-state-reg-error"};
+const Enum::YLeaf IsisIfClnsProtoDownReason::isis_intf_clns_proto_down_clns_not_up {5, "isis-intf-clns-proto-down-clns-not-up"};
+
+const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
+const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
+
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ok {0, "isis-adj-topo-status-ok"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_intf_not_configured {1, "isis-adj-topo-status-intf-not-configured"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_intf_not_running {2, "isis-adj-topo-status-intf-not-running"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_init_state {3, "isis-adj-topo-status-init-state"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_neighbor_doesnt_participate {4, "isis-adj-topo-status-neighbor-doesnt-participate"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_tlv_missing {5, "isis-adj-topo-status-ipv4-address-tlv-missing"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_tlv_empty {6, "isis-adj-topo-status-ipv4-address-tlv-empty"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_tlv_missing {7, "isis-adj-topo-status-ipv6-address-tlv-missing"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_tlv_empty {8, "isis-adj-topo-status-ipv6-address-tlv-empty"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_matches_ours {9, "isis-adj-topo-status-ipv4-address-matches-ours"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_matches_ours {10, "isis-adj-topo-status-ipv6-address-matches-ours"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_subnet_mismatch {11, "isis-adj-topo-status-ipv4-address-subnet-mismatch"};
+const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_not_link_local {12, "isis-adj-topo-status-ipv6-address-not-link-local"};
+
+const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::address_family {0, "address-family"};
+const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::backup {1, "backup"};
+const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::value_ {2, "value"};
+const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::local {3, "local"};
+const Enum::YLeaf OpenconfigIsisLspLanAdjacencySidStateFlagsEnum::set {4, "set"};
+
+const Enum::YLeaf IsisIfTopoDisabledReason::isis_intf_topo_disabled_not_cfg {0, "isis-intf-topo-disabled-not-cfg"};
+const Enum::YLeaf IsisIfTopoDisabledReason::isis_intf_topo_disabled_internal_error {1, "isis-intf-topo-disabled-internal-error"};
+
+const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_cfg_passive {0, "isis-intf-adj-form-disabled-cfg-passive"};
+const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_no_topo_participate {1, "isis-intf-adj-form-disabled-no-topo-participate"};
+const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_add_to_intf_stack_fail {2, "isis-intf-adj-form-disabled-add-to-intf-stack-fail"};
+const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_clns_io {3, "isis-intf-adj-form-disabled-clns-io"};
+const Enum::YLeaf IsisIfAdjFormDisabledReason::isis_intf_adj_form_disabled_internal_error {4, "isis-intf-adj-form-disabled-internal-error"};
+
+const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_prefix_sid {0, "isis-edm-label-alloc-prefix-sid"};
+const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_local_sid {1, "isis-edm-label-alloc-local-sid"};
+const Enum::YLeaf IsisEdmLabelTypeEnum::isis_edm_label_alloc_max {2, "isis-edm-label-alloc-max"};
+
+const Enum::YLeaf OpenconfigIsisLspIsisMetricFlagsEnum::internal {0, "internal"};
+const Enum::YLeaf OpenconfigIsisLspIsisMetricFlagsEnum::unsupported {1, "unsupported"};
+
+const Enum::YLeaf OpenconfigSegmentRoutingLabelOptionsEnum::no_php {0, "no-php"};
+const Enum::YLeaf OpenconfigSegmentRoutingLabelOptionsEnum::explicit_null {1, "explicit-null"};
+
+const Enum::YLeaf IsisLevels::isis_levels_none {0, "isis-levels-none"};
+const Enum::YLeaf IsisLevels::isis_levels_1 {1, "isis-levels-1"};
+const Enum::YLeaf IsisLevels::isis_levels_2 {2, "isis-levels-2"};
+const Enum::YLeaf IsisLevels::isis_levels_12 {3, "isis-levels-12"};
+const Enum::YLeaf IsisLevels::isis_levels_total {4, "isis-levels-total"};
+
+const Enum::YLeaf OpenconfigIsisTypesCircuitTypeEnum::point_to_point {0, "point-to-point"};
+const Enum::YLeaf OpenconfigIsisTypesCircuitTypeEnum::broadcast {1, "broadcast"};
+
+const Enum::YLeaf OpenconfigIsisLspCryptoTypeEnum::hmac_md5 {0, "hmac-md5"};
+const Enum::YLeaf OpenconfigIsisLspCryptoTypeEnum::cleartext {1, "cleartext"};
+
+const Enum::YLeaf IsisIfAfDisabledReason::isis_intf_af_disabled_no_topo_enabled {0, "isis-intf-af-disabled-no-topo-enabled"};
+const Enum::YLeaf IsisIfAfDisabledReason::isis_intf_af_disabled_internal_error {1, "isis-intf-af-disabled-internal-error"};
+
+const Enum::YLeaf OpenconfigIsisLspStateFlagsEnum::numbered {0, "numbered"};
+
+const Enum::YLeaf OpenconfigIsisTypesMetricStyleEnum::narrow_metric {0, "narrow-metric"};
+const Enum::YLeaf OpenconfigIsisTypesMetricStyleEnum::wide_metric {1, "wide-metric"};
+
+const Enum::YLeaf IsisNsfFlavor::isis_nsf_flav_or_none {0, "isis-nsf-flav-or-none"};
+const Enum::YLeaf IsisNsfFlavor::isis_nsf_flav_or_cisco {1, "isis-nsf-flav-or-cisco"};
+const Enum::YLeaf IsisNsfFlavor::isis_nsf_flav_or_ietf {2, "isis-nsf-flav-or-ietf"};
+const Enum::YLeaf IsisNsfFlavor::isis_nsf_flav_or_nsr {3, "isis-nsf-flav-or-nsr"};
+
+const Enum::YLeaf IsisAdjTopoChange::isis_adj_topo_up_change {0, "isis-adj-topo-up-change"};
+const Enum::YLeaf IsisAdjTopoChange::isis_adj_topo_next_hop_change {1, "isis-adj-topo-next-hop-change"};
+const Enum::YLeaf IsisAdjTopoChange::isis_adj_topo_down_change {2, "isis-adj-topo-down-change"};
+
+const Enum::YLeaf IsisShTePceFloodingScope::none {0, "none"};
+const Enum::YLeaf IsisShTePceFloodingScope::area {1, "area"};
+const Enum::YLeaf IsisShTePceFloodingScope::domain {2, "domain"};
+
+const Enum::YLeaf OpenconfigIsisLspAlgorithmEnum::spf {0, "spf"};
+const Enum::YLeaf OpenconfigIsisLspAlgorithmEnum::strict_spf {1, "strict-spf"};
+
+const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_critical {0, "isis-prefix-priority-critical"};
+const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_high {1, "isis-prefix-priority-high"};
+const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_med {2, "isis-prefix-priority-med"};
+const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_low {3, "isis-prefix-priority-low"};
+
+const Enum::YLeaf OpenconfigIsisLspFlagsStateFlagsEnum::external_flag {0, "external-flag"};
+const Enum::YLeaf OpenconfigIsisLspFlagsStateFlagsEnum::readvertisement_flag {1, "readvertisement-flag"};
+const Enum::YLeaf OpenconfigIsisLspFlagsStateFlagsEnum::node_flag {2, "node-flag"};
+
+const Enum::YLeaf IsisAfId::ipv4 {0, "ipv4"};
+const Enum::YLeaf IsisAfId::ipv6 {1, "ipv6"};
+
+const Enum::YLeaf IsisKnown::isis_unknown {0, "isis-unknown"};
+const Enum::YLeaf IsisKnown::isis_known {1, "isis-known"};
+
+const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::address_family {0, "address-family"};
+const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::backup {1, "backup"};
+const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::value_ {2, "value"};
+const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::local {3, "local"};
+const Enum::YLeaf OpenconfigIsisLspAdjacencySidStateFlagsEnum::set {4, "set"};
+
+const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::readvertisement {0, "readvertisement"};
+const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::node {1, "node"};
+const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::php {2, "php"};
+const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::explicit_null {3, "explicit-null"};
+const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::value_ {4, "value"};
+const Enum::YLeaf OpenconfigIsisLspPrefixSidStateFlagsEnum::local {5, "local"};
+
+const Enum::YLeaf OpenconfigIsisLspFlagsEnum::partition_repair {0, "partition-repair"};
+const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_error {1, "attached-error"};
+const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_expense {2, "attached-expense"};
+const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_delay {3, "attached-delay"};
+const Enum::YLeaf OpenconfigIsisLspFlagsEnum::attached_default {4, "attached-default"};
+const Enum::YLeaf OpenconfigIsisLspFlagsEnum::overload {5, "overload"};
+
+const Enum::YLeaf IsisValid::isis_invalid {0, "isis-invalid"};
+const Enum::YLeaf IsisValid::isis_valid {1, "isis-valid"};
+
+const Enum::YLeaf IsisIfClnsMtuInvalidReason::isis_intf_clns_mtu_invalid_too_small {0, "isis-intf-clns-mtu-invalid-too-small"};
+const Enum::YLeaf IsisIfClnsMtuInvalidReason::isis_intf_clns_mtu_invalid_internal_error {1, "isis-intf-clns-mtu-invalid-internal-error"};
+
+const Enum::YLeaf OpenconfigIsisLspDefaultMetricStateFlagsEnum::internal {0, "internal"};
+
+const Enum::YLeaf OpenconfigIsisAdjacencyStateNlpidEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf OpenconfigIsisAdjacencyStateNlpidEnum::ipv6 {1, "ipv6"};
+
+const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_conn_fail {0, "isis-intf-af-proto-down-imd-conn-fail"};
+const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_node_doesnt_exist {1, "isis-intf-af-proto-down-imd-node-doesnt-exist"};
+const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_exist_reg_error {2, "isis-intf-af-proto-down-imd-exist-reg-error"};
+const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_imd_state_reg_error {3, "isis-intf-af-proto-down-imd-state-reg-error"};
+const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_af_not_up {4, "isis-intf-af-proto-down-af-not-up"};
+const Enum::YLeaf IsisIfAfProtoDownReason::isis_intf_af_proto_down_internal_error {5, "isis-intf-af-proto-down-internal-error"};
 
 const Enum::YLeaf IsisMetricMode::isis_metric_mode_fixed {0, "isis-metric-mode-fixed"};
 const Enum::YLeaf IsisMetricMode::isis_metric_mode_relative {1, "isis-metric-mode-relative"};
 const Enum::YLeaf IsisMetricMode::isis_metric_mode_absolute {2, "isis-metric-mode-absolute"};
+
+const Enum::YLeaf OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum::ipv4_mpls {0, "ipv4-mpls"};
+const Enum::YLeaf OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum::ipv6_mpls {1, "ipv6-mpls"};
+const Enum::YLeaf OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum::ipv6_sr {2, "ipv6-sr"};
+
+const Enum::YLeaf IsisMetricStyle::isis_metric_style_narrow {0, "isis-metric-style-narrow"};
+const Enum::YLeaf IsisMetricStyle::isis_metric_style_wide {1, "isis-metric-style-wide"};
+const Enum::YLeaf IsisMetricStyle::isis_metric_style_transition {2, "isis-metric-style-transition"};
+const Enum::YLeaf IsisMetricStyle::isis_metric_style_narrow_transition {3, "isis-metric-style-narrow-transition"};
+const Enum::YLeaf IsisMetricStyle::isis_metric_style_wide_transition {4, "isis-metric-style-wide-transition"};
+
+const Enum::YLeaf IsisIfAdvPrefixDisabledReason::isis_intf_adv_prefix_disabled_if_cfg_suppressed {0, "isis-intf-adv-prefix-disabled-if-cfg-suppressed"};
+const Enum::YLeaf IsisIfAdvPrefixDisabledReason::isis_intf_adv_prefix_disabled_no_topo_participate {1, "isis-intf-adv-prefix-disabled-no-topo-participate"};
+const Enum::YLeaf IsisIfAdvPrefixDisabledReason::isis_intf_adv_prefix_disabled_internal_error {2, "isis-intf-adv-prefix-disabled-internal-error"};
+
+const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level1 {0, "level1"};
+const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level2 {1, "level2"};
+const Enum::YLeaf OpenconfigIsisTypesLevelTypeEnum::level12 {2, "level12"};
+
+const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_adv_suppressed {0, "isis-intf-af-prefix-unknown-adv-suppressed"};
+const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_global_addr_reg_error {1, "isis-intf-af-prefix-unknown-global-addr-reg-error"};
+const Enum::YLeaf IsisIfAfPrefixUnknownReason::isis_intf_af_prefix_unknown_internal_error {2, "isis-intf-af-prefix-unknown-internal-error"};
+
+const Enum::YLeaf IsisSpfClass::isis_spf_frr_sr_u_loop {0, "isis-spf-frr-sr-u-loop"};
+const Enum::YLeaf IsisSpfClass::isis_spf_frr_per_link {1, "isis-spf-frr-per-link"};
+const Enum::YLeaf IsisSpfClass::isis_spf_partial {2, "isis-spf-partial"};
+const Enum::YLeaf IsisSpfClass::isis_spf_frr_per_prefix {3, "isis-spf-frr-per-prefix"};
+const Enum::YLeaf IsisSpfClass::isis_spf_ucmp_calc {4, "isis-spf-ucmp-calc"};
+const Enum::YLeaf IsisSpfClass::isis_spf_flex {5, "isis-spf-flex"};
+const Enum::YLeaf IsisSpfClass::isis_spf_next_hop {6, "isis-spf-next-hop"};
+const Enum::YLeaf IsisSpfClass::isis_spf_incremental {7, "isis-spf-incremental"};
+const Enum::YLeaf IsisSpfClass::isis_spf_full {8, "isis-spf-full"};
 
 const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_config {0, "isis-spf-trig-config"};
 const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_nsr_fo {1, "isis-spf-trig-nsr-fo"};
@@ -16138,100 +16238,19 @@ const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_area_addr {28, "isis-spf-trig-ar
 const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_ip_addr {29, "isis-spf-trig-ip-addr"};
 const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_rtrid {30, "isis-spf-trig-rtrid"};
 const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_flex_algo {31, "isis-spf-trig-flex-algo"};
-const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_srv6_cap {32, "isis-spf-trig-srv6-cap"};
-const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_srv6_locator {33, "isis-spf-trig-srv6-locator"};
-const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_prefix_policy {34, "isis-spf-trig-prefix-policy"};
+const Enum::YLeaf IsisSpfTrigger::isis_spf_trig_prefix_policy {32, "isis-spf-trig-prefix-policy"};
 
-const Enum::YLeaf IsisSpfClass::isis_spf_frr_sr_u_loop {0, "isis-spf-frr-sr-u-loop"};
-const Enum::YLeaf IsisSpfClass::isis_spf_frr_per_link {1, "isis-spf-frr-per-link"};
-const Enum::YLeaf IsisSpfClass::isis_spf_partial {2, "isis-spf-partial"};
-const Enum::YLeaf IsisSpfClass::isis_spf_frr_per_prefix {3, "isis-spf-frr-per-prefix"};
-const Enum::YLeaf IsisSpfClass::isis_spf_ucmp_calc {4, "isis-spf-ucmp-calc"};
-const Enum::YLeaf IsisSpfClass::isis_spf_flex {5, "isis-spf-flex"};
-const Enum::YLeaf IsisSpfClass::isis_spf_next_hop {6, "isis-spf-next-hop"};
-const Enum::YLeaf IsisSpfClass::isis_spf_incremental {7, "isis-spf-incremental"};
-const Enum::YLeaf IsisSpfClass::isis_spf_full {8, "isis-spf-full"};
+const Enum::YLeaf IsisIfClnsSnpaUnknownReason::isis_intf_clns_snpa_unknown_access_error {0, "isis-intf-clns-snpa-unknown-access-error"};
+const Enum::YLeaf IsisIfClnsSnpaUnknownReason::isis_intf_clns_snpa_unknown_not_lan {1, "isis-intf-clns-snpa-unknown-not-lan"};
+const Enum::YLeaf IsisIfClnsSnpaUnknownReason::isis_intf_clns_snpa_unknown_internal_error {2, "isis-intf-clns-snpa-unknown-internal-error"};
 
-const Enum::YLeaf IsisShTePceFloodingScope::none {0, "none"};
-const Enum::YLeaf IsisShTePceFloodingScope::area {1, "area"};
-const Enum::YLeaf IsisShTePceFloodingScope::domain {2, "domain"};
+const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::up {0, "up"};
+const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::down {1, "down"};
+const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::init {2, "init"};
+const Enum::YLeaf OpenconfigIsisTypesIsisInterfaceAdjStateEnum::failed {3, "failed"};
 
-const Enum::YLeaf IsisShTeLink::isis_sh_te_link_p2p {0, "isis-sh-te-link-p2p"};
-const Enum::YLeaf IsisShTeLink::isis_sh_te_link_broadcast {1, "isis-sh-te-link-broadcast"};
-
-const Enum::YLeaf Srv6EndFunction::unknown {0, "unknown"};
-const Enum::YLeaf Srv6EndFunction::end {1, "end"};
-const Enum::YLeaf Srv6EndFunction::end_with_psp {2, "end-with-psp"};
-const Enum::YLeaf Srv6EndFunction::end_with_usp {3, "end-with-usp"};
-const Enum::YLeaf Srv6EndFunction::end_with_psp_usp {4, "end-with-psp-usp"};
-const Enum::YLeaf Srv6EndFunction::end_x {5, "end-x"};
-const Enum::YLeaf Srv6EndFunction::end_x_with_psp {6, "end-x-with-psp"};
-const Enum::YLeaf Srv6EndFunction::end_x_with_usp {7, "end-x-with-usp"};
-const Enum::YLeaf Srv6EndFunction::end_x_with_psp_usp {8, "end-x-with-psp-usp"};
-const Enum::YLeaf Srv6EndFunction::end_tn {9, "end-tn"};
-const Enum::YLeaf Srv6EndFunction::end_t_with_psp {10, "end-t-with-psp"};
-const Enum::YLeaf Srv6EndFunction::end_t_with_usp {11, "end-t-with-usp"};
-const Enum::YLeaf Srv6EndFunction::end_t_with_psp_usp {12, "end-t-with-psp-usp"};
-const Enum::YLeaf Srv6EndFunction::end_b6 {13, "end-b6"};
-const Enum::YLeaf Srv6EndFunction::end_b6_encaps {14, "end-b6-encaps"};
-const Enum::YLeaf Srv6EndFunction::end_bm {15, "end-bm"};
-const Enum::YLeaf Srv6EndFunction::end_dx6 {16, "end-dx6"};
-const Enum::YLeaf Srv6EndFunction::end_dx4 {17, "end-dx4"};
-const Enum::YLeaf Srv6EndFunction::end_dt6 {18, "end-dt6"};
-const Enum::YLeaf Srv6EndFunction::end_dt4 {19, "end-dt4"};
-const Enum::YLeaf Srv6EndFunction::end_dt46 {20, "end-dt46"};
-const Enum::YLeaf Srv6EndFunction::end_dx2 {21, "end-dx2"};
-const Enum::YLeaf Srv6EndFunction::end_dx2v {22, "end-dx2v"};
-const Enum::YLeaf Srv6EndFunction::end_dx2u {23, "end-dx2u"};
-const Enum::YLeaf Srv6EndFunction::end_dx2m {24, "end-dx2m"};
-const Enum::YLeaf Srv6EndFunction::end_otp {25, "end-otp"};
-const Enum::YLeaf Srv6EndFunction::end_s {26, "end-s"};
-
-const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_interface {0, "isis-sh-route-adv-origin-interface"};
-const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_redistributed {1, "isis-sh-route-adv-origin-redistributed"};
-const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_native {2, "isis-sh-route-adv-origin-native"};
-const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_summary {3, "isis-sh-route-adv-origin-summary"};
-const Enum::YLeaf IsisShRouteAdvOrigin::isis_sh_route_adv_origin_default {4, "isis-sh-route-adv-origin-default"};
-
-const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_critical {0, "isis-prefix-priority-critical"};
-const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_high {1, "isis-prefix-priority-high"};
-const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_med {2, "isis-prefix-priority-med"};
-const Enum::YLeaf IsisPrefixPriority::isis_prefix_priority_low {3, "isis-prefix-priority-low"};
-
-const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_none {0, "isis-tilfa-comp-none"};
-const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_link {1, "isis-tilfa-comp-link"};
-const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_node {2, "isis-tilfa-comp-node"};
-const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_srlg {3, "isis-tilfa-comp-srlg"};
-const Enum::YLeaf IsisTilfaComputation::isis_tilfa_comp_node_srlg {4, "isis-tilfa-comp-node-srlg"};
-
-const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l1_summary_null {0, "isis-prefix-origin-l1-summary-null"};
-const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l1 {1, "isis-prefix-origin-l1"};
-const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l2_summary_null {2, "isis-prefix-origin-l2-summary-null"};
-const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l2 {3, "isis-prefix-origin-l2"};
-const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_inter_area_summary_null {4, "isis-prefix-origin-inter-area-summary-null"};
-const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_inter_area {5, "isis-prefix-origin-inter-area"};
-const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_default_nearest_attached {6, "isis-prefix-origin-default-nearest-attached"};
-
-const Enum::YLeaf IsisRedistProto::isis_redist_connected {0, "isis-redist-connected"};
-const Enum::YLeaf IsisRedistProto::isis_redist_static {1, "isis-redist-static"};
-const Enum::YLeaf IsisRedistProto::isis_redist_ospf {2, "isis-redist-ospf"};
-const Enum::YLeaf IsisRedistProto::isis_redist_bgp {3, "isis-redist-bgp"};
-const Enum::YLeaf IsisRedistProto::isis_redist_isis {4, "isis-redist-isis"};
-const Enum::YLeaf IsisRedistProto::isis_redist_ospfv3 {5, "isis-redist-ospfv3"};
-const Enum::YLeaf IsisRedistProto::isis_redist_rip {6, "isis-redist-rip"};
-const Enum::YLeaf IsisRedistProto::isis_redist_eigrp {7, "isis-redist-eigrp"};
-const Enum::YLeaf IsisRedistProto::isis_redist_subscriber {8, "isis-redist-subscriber"};
-const Enum::YLeaf IsisRedistProto::isis_redist_application {9, "isis-redist-application"};
-const Enum::YLeaf IsisRedistProto::isis_redist_mobile {10, "isis-redist-mobile"};
-
-const Enum::YLeaf IsisValid::isis_invalid {0, "isis-invalid"};
-const Enum::YLeaf IsisValid::isis_valid {1, "isis-valid"};
-
-const Enum::YLeaf IsisLspDbOp::isis_lsp_db_clear {0, "isis-lsp-db-clear"};
-const Enum::YLeaf IsisLspDbOp::isis_lsp_db_insert_new_lsp {1, "isis-lsp-db-insert-new-lsp"};
-const Enum::YLeaf IsisLspDbOp::isis_lsp_db_replace_lsp_with_lsp {2, "isis-lsp-db-replace-lsp-with-lsp"};
-const Enum::YLeaf IsisLspDbOp::isis_lsp_db_purge_lsp {3, "isis-lsp-db-purge-lsp"};
-const Enum::YLeaf IsisLspDbOp::isis_lsp_db_delete_lsp {4, "isis-lsp-db-delete-lsp"};
+const Enum::YLeaf IsisReachable::isis_unreachable {0, "isis-unreachable"};
+const Enum::YLeaf IsisReachable::isis_reachable {1, "isis-reachable"};
 
 const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_config {0, "isis-lsp-trig-config"};
 const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_newadj {1, "isis-lsp-trig-newadj"};
@@ -16267,70 +16286,55 @@ const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_flex_algo_enable_disable {30, "i
 const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pm_delay_loss {31, "isis-lsp-trig-pm-delay-loss"};
 const Enum::YLeaf IsisLspTrigger::isis_lsp_trig_pm_bw_util {32, "isis-lsp-trig-pm-bw-util"};
 
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ok {0, "isis-adj-topo-status-ok"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_intf_not_configured {1, "isis-adj-topo-status-intf-not-configured"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_intf_not_running {2, "isis-adj-topo-status-intf-not-running"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_init_state {3, "isis-adj-topo-status-init-state"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_neighbor_doesnt_participate {4, "isis-adj-topo-status-neighbor-doesnt-participate"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_tlv_missing {5, "isis-adj-topo-status-ipv4-address-tlv-missing"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_tlv_empty {6, "isis-adj-topo-status-ipv4-address-tlv-empty"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_tlv_missing {7, "isis-adj-topo-status-ipv6-address-tlv-missing"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_tlv_empty {8, "isis-adj-topo-status-ipv6-address-tlv-empty"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_matches_ours {9, "isis-adj-topo-status-ipv4-address-matches-ours"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_matches_ours {10, "isis-adj-topo-status-ipv6-address-matches-ours"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv4_address_subnet_mismatch {11, "isis-adj-topo-status-ipv4-address-subnet-mismatch"};
-const Enum::YLeaf IsisAdjTopoStatus::isis_adj_topo_status_ipv6_address_not_link_local {12, "isis-adj-topo-status-ipv6-address-not-link-local"};
+const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_none {0, "isis-u-loop-avoidance-type-none"};
+const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_all {1, "isis-u-loop-avoidance-type-all"};
+const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_protected {2, "isis-u-loop-avoidance-type-protected"};
+const Enum::YLeaf IsisUloopAvoidance::isis_u_loop_avoidance_type_sr {3, "isis-u-loop-avoidance-type-sr"};
 
-const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_no_state {0, "isis-adj-bfd-no-state"};
-const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_down_state {1, "isis-adj-bfd-down-state"};
-const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_init_state {2, "isis-adj-bfd-init-state"};
-const Enum::YLeaf IsisAdjBfdState::isis_adj_bfd_up_state {3, "isis-adj-bfd-up-state"};
+const Enum::YLeaf Srv6EndFunction::unknown {0, "unknown"};
+const Enum::YLeaf Srv6EndFunction::end {1, "end"};
+const Enum::YLeaf Srv6EndFunction::end_with_psp {2, "end-with-psp"};
+const Enum::YLeaf Srv6EndFunction::end_with_usp {3, "end-with-usp"};
+const Enum::YLeaf Srv6EndFunction::end_with_psp_usp {4, "end-with-psp-usp"};
+const Enum::YLeaf Srv6EndFunction::end_x {5, "end-x"};
+const Enum::YLeaf Srv6EndFunction::end_x_with_psp {6, "end-x-with-psp"};
+const Enum::YLeaf Srv6EndFunction::end_x_with_usp {7, "end-x-with-usp"};
+const Enum::YLeaf Srv6EndFunction::end_x_with_psp_usp {8, "end-x-with-psp-usp"};
+const Enum::YLeaf Srv6EndFunction::end_tn {9, "end-tn"};
+const Enum::YLeaf Srv6EndFunction::end_t_with_psp {10, "end-t-with-psp"};
+const Enum::YLeaf Srv6EndFunction::end_t_with_usp {11, "end-t-with-usp"};
+const Enum::YLeaf Srv6EndFunction::end_t_with_psp_usp {12, "end-t-with-psp-usp"};
+const Enum::YLeaf Srv6EndFunction::end_b6 {13, "end-b6"};
+const Enum::YLeaf Srv6EndFunction::end_b6_encaps {14, "end-b6-encaps"};
+const Enum::YLeaf Srv6EndFunction::end_bm {15, "end-bm"};
+const Enum::YLeaf Srv6EndFunction::end_dx6 {16, "end-dx6"};
+const Enum::YLeaf Srv6EndFunction::end_dx4 {17, "end-dx4"};
+const Enum::YLeaf Srv6EndFunction::end_dt6 {18, "end-dt6"};
+const Enum::YLeaf Srv6EndFunction::end_dt4 {19, "end-dt4"};
+const Enum::YLeaf Srv6EndFunction::end_dt46 {20, "end-dt46"};
+const Enum::YLeaf Srv6EndFunction::end_dx2 {21, "end-dx2"};
+const Enum::YLeaf Srv6EndFunction::end_dx2v {22, "end-dx2v"};
+const Enum::YLeaf Srv6EndFunction::end_dx2u {23, "end-dx2u"};
+const Enum::YLeaf Srv6EndFunction::end_dx2m {24, "end-dx2m"};
+const Enum::YLeaf Srv6EndFunction::end_otp {25, "end-otp"};
+const Enum::YLeaf Srv6EndFunction::end_s {26, "end-s"};
 
-const Enum::YLeaf IsisAdjTopoChange::isis_adj_topo_up_change {0, "isis-adj-topo-up-change"};
-const Enum::YLeaf IsisAdjTopoChange::isis_adj_topo_next_hop_change {1, "isis-adj-topo-next-hop-change"};
-const Enum::YLeaf IsisAdjTopoChange::isis_adj_topo_down_change {2, "isis-adj-topo-down-change"};
+const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l1_summary_null {0, "isis-prefix-origin-l1-summary-null"};
+const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l1 {1, "isis-prefix-origin-l1"};
+const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l2_summary_null {2, "isis-prefix-origin-l2-summary-null"};
+const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_l2 {3, "isis-prefix-origin-l2"};
+const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_inter_area_summary_null {4, "isis-prefix-origin-inter-area-summary-null"};
+const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_inter_area {5, "isis-prefix-origin-inter-area"};
+const Enum::YLeaf IsisPrefixOrigin::isis_prefix_origin_default_nearest_attached {6, "isis-prefix-origin-default-nearest-attached"};
 
-const Enum::YLeaf IsisAdjStateReason::isis_adj_up_nsf_restart {0, "isis-adj-up-nsf-restart"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_up_new_adj {1, "isis-adj-up-new-adj"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_up_restarted {2, "isis-adj-up-restarted"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_up_nsf_restored {3, "isis-adj-up-nsf-restored"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_up_chkpt_restored {4, "isis-adj-up-chkpt-restored"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_init_reason {5, "isis-adj-init-reason"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_init_neighbor_forgot {6, "isis-adj-init-neighbor-forgot"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_hold_time {7, "isis-adj-down-hold-time"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_if_down {8, "isis-adj-down-if-down"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_cfg_mismatch {9, "isis-adj-down-cfg-mismatch"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_circ_id {10, "isis-adj-down-circ-id"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_nsf_ack_fail {11, "isis-adj-down-nsf-ack-fail"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_db_clear {12, "isis-adj-down-db-clear"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_no_common_topology {13, "isis-adj-down-no-common-topology"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_restart_tlv_missing {14, "isis-adj-down-restart-tlv-missing"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_bfd_down {15, "isis-adj-down-bfd-down"};
-const Enum::YLeaf IsisAdjStateReason::isis_adj_down_3way_down {16, "isis-adj-down-3way-down"};
+const Enum::YLeaf OpenconfigIsisLspAttributesEnum::overload {0, "overload"};
+const Enum::YLeaf OpenconfigIsisLspAttributesEnum::attached {1, "attached"};
 
-const Enum::YLeaf IsisLevel::isis_level0 {0, "isis-level0"};
-const Enum::YLeaf IsisLevel::isis_level1 {1, "isis-level1"};
-const Enum::YLeaf IsisLevel::isis_level2 {2, "isis-level2"};
+const Enum::YLeaf OpenconfigIsisLspPduTypeEnum::level1 {0, "level1"};
+const Enum::YLeaf OpenconfigIsisLspPduTypeEnum::level2 {1, "level2"};
 
-const Enum::YLeaf IsisSubAfId::unicast {0, "unicast"};
-const Enum::YLeaf IsisSubAfId::multicast {1, "multicast"};
-
-const Enum::YLeaf IsisAfId::ipv4 {0, "ipv4"};
-const Enum::YLeaf IsisAfId::ipv6 {1, "ipv6"};
-
-const Enum::YLeaf IsisMediaClass::isis_media_class_lan {0, "isis-media-class-lan"};
-const Enum::YLeaf IsisMediaClass::isis_media_class_p2p {1, "isis-media-class-p2p"};
-const Enum::YLeaf IsisMediaClass::isis_media_class_loop_back {2, "isis-media-class-loop-back"};
-
-const Enum::YLeaf IsisLevels::isis_levels_none {0, "isis-levels-none"};
-const Enum::YLeaf IsisLevels::isis_levels_1 {1, "isis-levels-1"};
-const Enum::YLeaf IsisLevels::isis_levels_2 {2, "isis-levels-2"};
-const Enum::YLeaf IsisLevels::isis_levels_12 {3, "isis-levels-12"};
-const Enum::YLeaf IsisLevels::isis_levels_total {4, "isis-levels-total"};
-
-const Enum::YLeaf IsisAdjState::isis_adj_up_state {0, "isis-adj-up-state"};
-const Enum::YLeaf IsisAdjState::isis_adj_init_state {1, "isis-adj-init-state"};
-const Enum::YLeaf IsisAdjState::isis_adj_failed_state {2, "isis-adj-failed-state"};
+const Enum::YLeaf OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::Algorithm::spf {0, "spf"};
+const Enum::YLeaf OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::Algorithm::strict_spf {1, "strict-spf"};
 
 
 }

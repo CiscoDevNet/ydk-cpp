@@ -1201,7 +1201,7 @@ class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Lifetime : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf days; //type: uint8
-        ydk::YLeaf kilobytes; //type: one of enumeration, uint64
+        ydk::YLeaf kilobytes; //type: one of uint64, enumeration
         ydk::YLeaf seconds; //type: uint64
         class Kilobytes;
 
@@ -1324,7 +1324,7 @@ class Native::Crypto::Ipsec::SecurityAssociation::Lifetime : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf days; //type: uint8
-        ydk::YLeaf kilobytes; //type: one of enumeration, uint64
+        ydk::YLeaf kilobytes; //type: one of uint64, enumeration
         ydk::YLeaf seconds; //type: uint64
         class Kilobytes;
 
@@ -3796,6 +3796,11 @@ class Native::Crypto::Gkm::Group::Default::Client::TransportEncryptKey : public 
         static const ydk::Enum::YLeaf group_key;
         static const ydk::Enum::YLeaf pair_wise_key;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "group-key") return 0;
+            if (name == "pair-wise-key") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::DfBit : public ydk::Enum
@@ -3805,6 +3810,12 @@ class Native::Crypto::Ipsec::DfBit : public ydk::Enum
         static const ydk::Enum::YLeaf copy;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "copy") return 1;
+            if (name == "set") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Fragmentation : public ydk::Enum
@@ -3813,6 +3824,11 @@ class Native::Crypto::Ipsec::Fragmentation : public ydk::Enum
         static const ydk::Enum::YLeaf after_encryption;
         static const ydk::Enum::YLeaf before_encryption;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "after-encryption") return 0;
+            if (name == "before-encryption") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Ipv4Deny : public ydk::Enum
@@ -3822,6 +3838,12 @@ class Native::Crypto::Ipsec::Ipv4Deny : public ydk::Enum
         static const ydk::Enum::YLeaf drop;
         static const ydk::Enum::YLeaf jump;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "drop") return 1;
+            if (name == "jump") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::NatTransparency : public ydk::Enum
@@ -3830,6 +3852,11 @@ class Native::Crypto::Ipsec::NatTransparency : public ydk::Enum
         static const ydk::Enum::YLeaf spi_matching;
         static const ydk::Enum::YLeaf udp_encapsulation;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "spi-matching") return 0;
+            if (name == "udp-encapsulation") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Level : public ydk::Enum
@@ -3837,6 +3864,10 @@ class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Level :
     public:
         static const ydk::Enum::YLeaf per_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "per-host") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Profile::Set::Pfs::Group : public ydk::Enum
@@ -3853,6 +3884,19 @@ class Native::Crypto::Ipsec::Profile::Set::Pfs::Group : public ydk::Enum
         static const ydk::Enum::YLeaf group24;
         static const ydk::Enum::YLeaf group5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "group1") return 0;
+            if (name == "group14") return 1;
+            if (name == "group15") return 2;
+            if (name == "group16") return 3;
+            if (name == "group19") return 4;
+            if (name == "group2") return 5;
+            if (name == "group20") return 6;
+            if (name == "group21") return 7;
+            if (name == "group24") return 8;
+            if (name == "group5") return 9;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Dfbit : public ydk::Enum
@@ -3862,6 +3906,12 @@ class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Dfbit : public y
         static const ydk::Enum::YLeaf copy;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "copy") return 1;
+            if (name == "set") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Ecn : public ydk::Enum
@@ -3870,6 +3920,11 @@ class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Ecn : public ydk
         static const ydk::Enum::YLeaf discard;
         static const ydk::Enum::YLeaf propagate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discard") return 0;
+            if (name == "propagate") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Level : public ydk::Enum
@@ -3877,6 +3932,10 @@ class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Level : public y
     public:
         static const ydk::Enum::YLeaf per_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "per-host") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Lifetime::Kilobytes : public ydk::Enum
@@ -3884,6 +3943,10 @@ class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Lifetime::Kiloby
     public:
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Replay::WindowSize : public ydk::Enum
@@ -3895,6 +3958,14 @@ class Native::Crypto::Ipsec::Profile::Set::SecurityAssociation::Replay::WindowSi
         static const ydk::Enum::YLeaf Y_512;
         static const ydk::Enum::YLeaf Y_64;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1024") return 0;
+            if (name == "128") return 1;
+            if (name == "256") return 2;
+            if (name == "512") return 3;
+            if (name == "64") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::SecurityAssociation::Ecn : public ydk::Enum
@@ -3903,6 +3974,11 @@ class Native::Crypto::Ipsec::SecurityAssociation::Ecn : public ydk::Enum
         static const ydk::Enum::YLeaf discard;
         static const ydk::Enum::YLeaf propagate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discard") return 0;
+            if (name == "propagate") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::SecurityAssociation::Lifetime::Kilobytes : public ydk::Enum
@@ -3910,6 +3986,10 @@ class Native::Crypto::Ipsec::SecurityAssociation::Lifetime::Kilobytes : public y
     public:
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::SecurityAssociation::Replay::WindowSize : public ydk::Enum
@@ -3921,6 +4001,14 @@ class Native::Crypto::Ipsec::SecurityAssociation::Replay::WindowSize : public yd
         static const ydk::Enum::YLeaf Y_512;
         static const ydk::Enum::YLeaf Y_64;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1024") return 0;
+            if (name == "128") return 1;
+            if (name == "256") return 2;
+            if (name == "512") return 3;
+            if (name == "64") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::TransformSet::AhHmac : public ydk::Enum
@@ -3932,6 +4020,14 @@ class Native::Crypto::Ipsec::TransformSet::AhHmac : public ydk::Enum
         static const ydk::Enum::YLeaf ah_sha384_hmac;
         static const ydk::Enum::YLeaf ah_sha512_hmac;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ah-md5-hmac") return 0;
+            if (name == "ah-sha-hmac") return 1;
+            if (name == "ah-sha256-hmac") return 2;
+            if (name == "ah-sha384-hmac") return 3;
+            if (name == "ah-sha512-hmac") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::TransformSet::Esp : public ydk::Enum
@@ -3945,6 +4041,16 @@ class Native::Crypto::Ipsec::TransformSet::Esp : public ydk::Enum
         static const ydk::Enum::YLeaf esp_null;
         static const ydk::Enum::YLeaf esp_seal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "esp-3des") return 0;
+            if (name == "esp-aes") return 1;
+            if (name == "esp-des") return 2;
+            if (name == "esp-gcm") return 3;
+            if (name == "esp-gmac") return 4;
+            if (name == "esp-null") return 5;
+            if (name == "esp-seal") return 6;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::TransformSet::KeyBit : public ydk::Enum
@@ -3954,6 +4060,12 @@ class Native::Crypto::Ipsec::TransformSet::KeyBit : public ydk::Enum
         static const ydk::Enum::YLeaf Y_192;
         static const ydk::Enum::YLeaf Y_256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "128") return 0;
+            if (name == "192") return 1;
+            if (name == "256") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ipsec::TransformSet::EspHmac : public ydk::Enum
@@ -3965,6 +4077,14 @@ class Native::Crypto::Ipsec::TransformSet::EspHmac : public ydk::Enum
         static const ydk::Enum::YLeaf esp_sha384_hmac;
         static const ydk::Enum::YLeaf esp_sha512_hmac;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "esp-md5-hmac") return 0;
+            if (name == "esp-sha-hmac") return 1;
+            if (name == "esp-sha256-hmac") return 2;
+            if (name == "esp-sha384-hmac") return 3;
+            if (name == "esp-sha512-hmac") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Key::Generate::Ec::Keysize : public ydk::Enum
@@ -3973,6 +4093,11 @@ class Native::Crypto::Key::Generate::Ec::Keysize : public ydk::Enum
         static const ydk::Enum::YLeaf Y_256;
         static const ydk::Enum::YLeaf Y_384;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "256") return 0;
+            if (name == "384") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Key::PubkeyChain::Rsa::AddressedKey::Use : public ydk::Enum
@@ -3981,6 +4106,11 @@ class Native::Crypto::Key::PubkeyChain::Rsa::AddressedKey::Use : public ydk::Enu
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Key::PubkeyChain::Rsa::NamedKey::Use : public ydk::Enum
@@ -3989,6 +4119,11 @@ class Native::Crypto::Key::PubkeyChain::Rsa::NamedKey::Use : public ydk::Enum
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Key::PubkeyChain::Rsa::Default::AddressedKey::Use : public ydk::Enum
@@ -3997,6 +4132,11 @@ class Native::Crypto::Key::PubkeyChain::Rsa::Default::AddressedKey::Use : public
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Key::PubkeyChain::Rsa::Default::NamedKey::Use : public ydk::Enum
@@ -4005,6 +4145,11 @@ class Native::Crypto::Key::PubkeyChain::Rsa::Default::NamedKey::Use : public ydk
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::Encryption : public ydk::Enum
@@ -4013,6 +4158,11 @@ class Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::Encryption 
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::Encryption : public ydk::Enum
@@ -4021,6 +4171,11 @@ class Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::Encryption 
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::Default::PreSharedKey::Hostname::Encryption : public ydk::Enum
@@ -4029,6 +4184,11 @@ class Native::Crypto::Keyring::Default::PreSharedKey::Hostname::Encryption : pub
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::Default::RsaPubkey::Addr::Way : public ydk::Enum
@@ -4037,6 +4197,11 @@ class Native::Crypto::Keyring::Default::RsaPubkey::Addr::Way : public ydk::Enum
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::Default::RsaPubkey::Hostname::Way : public ydk::Enum
@@ -4045,6 +4210,11 @@ class Native::Crypto::Keyring::Default::RsaPubkey::Hostname::Way : public ydk::E
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::Encryption : public ydk::Enum
@@ -4053,6 +4223,11 @@ class Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::Encryption : public 
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::Encryption : public ydk::Enum
@@ -4061,6 +4236,11 @@ class Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::Encryption : public 
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::PreSharedKey::Hostname::Encryption : public ydk::Enum
@@ -4069,6 +4249,11 @@ class Native::Crypto::Keyring::PreSharedKey::Hostname::Encryption : public ydk::
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::RsaPubkey::Addr::Way : public ydk::Enum
@@ -4077,6 +4262,11 @@ class Native::Crypto::Keyring::RsaPubkey::Addr::Way : public ydk::Enum
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Keyring::RsaPubkey::Hostname::Way : public ydk::Enum
@@ -4085,6 +4275,11 @@ class Native::Crypto::Keyring::RsaPubkey::Hostname::Way : public ydk::Enum
         static const ydk::Enum::YLeaf encryption;
         static const ydk::Enum::YLeaf signature;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "encryption") return 0;
+            if (name == "signature") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::AggressiveMode : public ydk::Enum
@@ -4092,6 +4287,10 @@ class Native::Crypto::Isakmp::AggressiveMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Identity : public ydk::Enum
@@ -4101,6 +4300,12 @@ class Native::Crypto::Isakmp::Identity : public ydk::Enum
         static const ydk::Enum::YLeaf dn;
         static const ydk::Enum::YLeaf hostname;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "address") return 0;
+            if (name == "dn") return 1;
+            if (name == "hostname") return 2;
+            return -1;
+        }
 };
 
 

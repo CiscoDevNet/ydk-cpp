@@ -20992,34 +20992,33 @@ bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExter
     return false;
 }
 
-const Enum::YLeaf RcmdShowInstState::unknown {0, "unknown"};
-const Enum::YLeaf RcmdShowInstState::active {1, "active"};
-const Enum::YLeaf RcmdShowInstState::in_active {2, "in-active"};
-const Enum::YLeaf RcmdShowInstState::na {3, "na"};
+const Enum::YLeaf RcmdBagEnblDsbl::dsbl {0, "dsbl"};
+const Enum::YLeaf RcmdBagEnblDsbl::enbl {1, "enbl"};
 
-const Enum::YLeaf RcmdShowIntfEvent::create {1, "create"};
-const Enum::YLeaf RcmdShowIntfEvent::delete_ {2, "delete"};
-const Enum::YLeaf RcmdShowIntfEvent::link_up {3, "link-up"};
-const Enum::YLeaf RcmdShowIntfEvent::link_down {4, "link-down"};
-const Enum::YLeaf RcmdShowIntfEvent::primary_address {5, "primary-address"};
-const Enum::YLeaf RcmdShowIntfEvent::secondary_address {6, "secondary-address"};
-const Enum::YLeaf RcmdShowIntfEvent::ipv6_link_local_address {7, "ipv6-link-local-address"};
-const Enum::YLeaf RcmdShowIntfEvent::ipv6_global_address {8, "ipv6-global-address"};
-const Enum::YLeaf RcmdShowIntfEvent::mtu {9, "mtu"};
-const Enum::YLeaf RcmdShowIntfEvent::band_width {10, "band-width"};
-const Enum::YLeaf RcmdShowIntfEvent::ldp_sync {11, "ldp-sync"};
-const Enum::YLeaf RcmdShowIntfEvent::forward_reference {12, "forward-reference"};
-const Enum::YLeaf RcmdShowIntfEvent::ldp_no_sync {13, "ldp-no-sync"};
+const Enum::YLeaf RcmdBoolYesNo::no {0, "no"};
+const Enum::YLeaf RcmdBoolYesNo::yes {1, "yes"};
+
+const Enum::YLeaf RcmdPriorityLevel::critical {0, "critical"};
+const Enum::YLeaf RcmdPriorityLevel::high {1, "high"};
+const Enum::YLeaf RcmdPriorityLevel::medium {2, "medium"};
+const Enum::YLeaf RcmdPriorityLevel::low {3, "low"};
+
+const Enum::YLeaf RcmdSpfState::complete {0, "complete"};
+const Enum::YLeaf RcmdSpfState::in_complete {1, "in-complete"};
+const Enum::YLeaf RcmdSpfState::collecting {2, "collecting"};
+const Enum::YLeaf RcmdSpfState::no_route_change {3, "no-route-change"};
+
+const Enum::YLeaf RcmdShowIpfrrLfa::none {0, "none"};
+const Enum::YLeaf RcmdShowIpfrrLfa::local {1, "local"};
+const Enum::YLeaf RcmdShowIpfrrLfa::remote {2, "remote"};
+
+const Enum::YLeaf RcmdShowPrcsState::success {0, "success"};
+const Enum::YLeaf RcmdShowPrcsState::cpu {1, "cpu"};
+const Enum::YLeaf RcmdShowPrcsState::memory {2, "memory"};
 
 const Enum::YLeaf RcmdShowCompId::ospf {0, "ospf"};
 const Enum::YLeaf RcmdShowCompId::isis {1, "isis"};
 const Enum::YLeaf RcmdShowCompId::un_known {2, "un-known"};
-
-const Enum::YLeaf RcmdShowLdpConvState::not_full {0, "not-full"};
-const Enum::YLeaf RcmdShowLdpConvState::fully_covered {1, "fully-covered"};
-const Enum::YLeaf RcmdShowLdpConvState::coverage_above_threshold {2, "coverage-above-threshold"};
-const Enum::YLeaf RcmdShowLdpConvState::coverage_below_threshold {3, "coverage-below-threshold"};
-const Enum::YLeaf RcmdShowLdpConvState::coverage_flapping {4, "coverage-flapping"};
 
 const Enum::YLeaf RcmdShowLdpSessionState::gr_down {0, "gr-down"};
 const Enum::YLeaf RcmdShowLdpSessionState::gr_converging {1, "gr-converging"};
@@ -21033,73 +21032,33 @@ const Enum::YLeaf RcmdProtocolId::ospf {0, "ospf"};
 const Enum::YLeaf RcmdProtocolId::isis {1, "isis"};
 const Enum::YLeaf RcmdProtocolId::na {2, "na"};
 
+const Enum::YLeaf RcmdShowLdpConvState::not_full {0, "not-full"};
+const Enum::YLeaf RcmdShowLdpConvState::fully_covered {1, "fully-covered"};
+const Enum::YLeaf RcmdShowLdpConvState::coverage_above_threshold {2, "coverage-above-threshold"};
+const Enum::YLeaf RcmdShowLdpConvState::coverage_below_threshold {3, "coverage-below-threshold"};
+const Enum::YLeaf RcmdShowLdpConvState::coverage_flapping {4, "coverage-flapping"};
+
+const Enum::YLeaf RcmdLinecardSpeed::other {0, "other"};
+const Enum::YLeaf RcmdLinecardSpeed::fastest {1, "fastest"};
+const Enum::YLeaf RcmdLinecardSpeed::slowest {2, "slowest"};
+
+const Enum::YLeaf RcmdShowNode::unknown {0, "unknown"};
+const Enum::YLeaf RcmdShowNode::lc {1, "lc"};
+const Enum::YLeaf RcmdShowNode::rp {2, "rp"};
+
 const Enum::YLeaf RcmdShowLdpNeighbourStatus::down {0, "down"};
 const Enum::YLeaf RcmdShowLdpNeighbourStatus::up {1, "up"};
-
-const Enum::YLeaf RcmdLdpEvent::neighbor {1, "neighbor"};
-const Enum::YLeaf RcmdLdpEvent::adjacency {2, "adjacency"};
-
-const Enum::YLeaf RcmdShowMem::standard {0, "standard"};
-const Enum::YLeaf RcmdShowMem::chunk {1, "chunk"};
-const Enum::YLeaf RcmdShowMem::edm {2, "edm"};
-const Enum::YLeaf RcmdShowMem::string {3, "string"};
-const Enum::YLeaf RcmdShowMem::static_ {4, "static"};
-const Enum::YLeaf RcmdShowMem::unknown {5, "unknown"};
 
 const Enum::YLeaf RcmdIsisSpf::full {0, "full"};
 const Enum::YLeaf RcmdIsisSpf::incremental {1, "incremental"};
 const Enum::YLeaf RcmdIsisSpf::next_hop {2, "next-hop"};
 const Enum::YLeaf RcmdIsisSpf::partial_route {3, "partial-route"};
 
-const Enum::YLeaf RcmdIsisLvl::l1 {0, "l1"};
-const Enum::YLeaf RcmdIsisLvl::l2 {1, "l2"};
-
-const Enum::YLeaf RcmdBagEnblDsbl::dsbl {0, "dsbl"};
-const Enum::YLeaf RcmdBagEnblDsbl::enbl {1, "enbl"};
-
-const Enum::YLeaf RcmdShowNode::unknown {0, "unknown"};
-const Enum::YLeaf RcmdShowNode::lc {1, "lc"};
-const Enum::YLeaf RcmdShowNode::rp {2, "rp"};
-
-const Enum::YLeaf RcmdBoolYesNo::no {0, "no"};
-const Enum::YLeaf RcmdBoolYesNo::yes {1, "yes"};
-
-const Enum::YLeaf RcmdShowPrcsState::success {0, "success"};
-const Enum::YLeaf RcmdShowPrcsState::cpu {1, "cpu"};
-const Enum::YLeaf RcmdShowPrcsState::memory {2, "memory"};
-
-const Enum::YLeaf RcmdBagEnableDisable::disable {0, "disable"};
-const Enum::YLeaf RcmdBagEnableDisable::enable {1, "enable"};
-
-const Enum::YLeaf RcmdShowIpfrrLfa::none {0, "none"};
-const Enum::YLeaf RcmdShowIpfrrLfa::local {1, "local"};
-const Enum::YLeaf RcmdShowIpfrrLfa::remote {2, "remote"};
-
 const Enum::YLeaf RcmdShowRoutePathChange::primary {0, "primary"};
 const Enum::YLeaf RcmdShowRoutePathChange::backup {1, "backup"};
 
-const Enum::YLeaf RcmdLinecardSpeed::other {0, "other"};
-const Enum::YLeaf RcmdLinecardSpeed::fastest {1, "fastest"};
-const Enum::YLeaf RcmdLinecardSpeed::slowest {2, "slowest"};
-
-const Enum::YLeaf RcmdLsChange::new_ {0, "new"};
-const Enum::YLeaf RcmdLsChange::delete_ {1, "delete"};
-const Enum::YLeaf RcmdLsChange::modify {2, "modify"};
-const Enum::YLeaf RcmdLsChange::noop {3, "noop"};
-
-const Enum::YLeaf RcmdLsa::unknown {0, "unknown"};
-const Enum::YLeaf RcmdLsa::router {1, "router"};
-const Enum::YLeaf RcmdLsa::network {2, "network"};
-const Enum::YLeaf RcmdLsa::summary {3, "summary"};
-const Enum::YLeaf RcmdLsa::asbr {4, "asbr"};
-const Enum::YLeaf RcmdLsa::external {5, "external"};
-const Enum::YLeaf RcmdLsa::multicast {6, "multicast"};
-const Enum::YLeaf RcmdLsa::nssa {7, "nssa"};
-
-const Enum::YLeaf RcmdSpfState::complete {0, "complete"};
-const Enum::YLeaf RcmdSpfState::in_complete {1, "in-complete"};
-const Enum::YLeaf RcmdSpfState::collecting {2, "collecting"};
-const Enum::YLeaf RcmdSpfState::no_route_change {3, "no-route-change"};
+const Enum::YLeaf RcmdIsisLvl::l1 {0, "l1"};
+const Enum::YLeaf RcmdIsisLvl::l2 {1, "l2"};
 
 const Enum::YLeaf RcmdChange::none {0, "none"};
 const Enum::YLeaf RcmdChange::add {1, "add"};
@@ -21123,10 +21082,51 @@ const Enum::YLeaf RcmdShowRoute::inter_area_summary {12, "inter-area-summary"};
 const Enum::YLeaf RcmdShowRoute::inter_area {13, "inter-area"};
 const Enum::YLeaf RcmdShowRoute::default_attached {14, "default-attached"};
 
-const Enum::YLeaf RcmdPriorityLevel::critical {0, "critical"};
-const Enum::YLeaf RcmdPriorityLevel::high {1, "high"};
-const Enum::YLeaf RcmdPriorityLevel::medium {2, "medium"};
-const Enum::YLeaf RcmdPriorityLevel::low {3, "low"};
+const Enum::YLeaf RcmdLdpEvent::neighbor {1, "neighbor"};
+const Enum::YLeaf RcmdLdpEvent::adjacency {2, "adjacency"};
+
+const Enum::YLeaf RcmdLsa::unknown {0, "unknown"};
+const Enum::YLeaf RcmdLsa::router {1, "router"};
+const Enum::YLeaf RcmdLsa::network {2, "network"};
+const Enum::YLeaf RcmdLsa::summary {3, "summary"};
+const Enum::YLeaf RcmdLsa::asbr {4, "asbr"};
+const Enum::YLeaf RcmdLsa::external {5, "external"};
+const Enum::YLeaf RcmdLsa::multicast {6, "multicast"};
+const Enum::YLeaf RcmdLsa::nssa {7, "nssa"};
+
+const Enum::YLeaf RcmdShowMem::standard {0, "standard"};
+const Enum::YLeaf RcmdShowMem::chunk {1, "chunk"};
+const Enum::YLeaf RcmdShowMem::edm {2, "edm"};
+const Enum::YLeaf RcmdShowMem::string {3, "string"};
+const Enum::YLeaf RcmdShowMem::static_ {4, "static"};
+const Enum::YLeaf RcmdShowMem::unknown {5, "unknown"};
+
+const Enum::YLeaf RcmdBagEnableDisable::disable {0, "disable"};
+const Enum::YLeaf RcmdBagEnableDisable::enable {1, "enable"};
+
+const Enum::YLeaf RcmdShowInstState::unknown {0, "unknown"};
+const Enum::YLeaf RcmdShowInstState::active {1, "active"};
+const Enum::YLeaf RcmdShowInstState::in_active {2, "in-active"};
+const Enum::YLeaf RcmdShowInstState::na {3, "na"};
+
+const Enum::YLeaf RcmdLsChange::new_ {0, "new"};
+const Enum::YLeaf RcmdLsChange::delete_ {1, "delete"};
+const Enum::YLeaf RcmdLsChange::modify {2, "modify"};
+const Enum::YLeaf RcmdLsChange::noop {3, "noop"};
+
+const Enum::YLeaf RcmdShowIntfEvent::create {1, "create"};
+const Enum::YLeaf RcmdShowIntfEvent::delete_ {2, "delete"};
+const Enum::YLeaf RcmdShowIntfEvent::link_up {3, "link-up"};
+const Enum::YLeaf RcmdShowIntfEvent::link_down {4, "link-down"};
+const Enum::YLeaf RcmdShowIntfEvent::primary_address {5, "primary-address"};
+const Enum::YLeaf RcmdShowIntfEvent::secondary_address {6, "secondary-address"};
+const Enum::YLeaf RcmdShowIntfEvent::ipv6_link_local_address {7, "ipv6-link-local-address"};
+const Enum::YLeaf RcmdShowIntfEvent::ipv6_global_address {8, "ipv6-global-address"};
+const Enum::YLeaf RcmdShowIntfEvent::mtu {9, "mtu"};
+const Enum::YLeaf RcmdShowIntfEvent::band_width {10, "band-width"};
+const Enum::YLeaf RcmdShowIntfEvent::ldp_sync {11, "ldp-sync"};
+const Enum::YLeaf RcmdShowIntfEvent::forward_reference {12, "forward-reference"};
+const Enum::YLeaf RcmdShowIntfEvent::ldp_no_sync {13, "ldp-no-sync"};
 
 
 }

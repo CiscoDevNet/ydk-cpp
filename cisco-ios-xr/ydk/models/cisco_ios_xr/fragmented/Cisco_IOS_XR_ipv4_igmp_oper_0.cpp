@@ -27571,10 +27571,6 @@ bool Mld::Standby::DefaultContext::SsmMapDetails::has_leaf_or_child_of_name(cons
     return false;
 }
 
-const Enum::YLeaf IgmpssmMap::static_ {0, "static"};
-const Enum::YLeaf IgmpssmMap::dns {1, "dns"};
-const Enum::YLeaf IgmpssmMap::all {2, "all"};
-
 const Enum::YLeaf IgmpEdmProtocol::no_route {0, "no-route"};
 const Enum::YLeaf IgmpEdmProtocol::sm {1, "sm"};
 const Enum::YLeaf IgmpEdmProtocol::dm {2, "dm"};
@@ -27584,6 +27580,10 @@ const Enum::YLeaf IgmpEdmProtocol::any {6, "any"};
 
 const Enum::YLeaf IgmpAfi::ipv4_unicast {0, "ipv4-unicast"};
 const Enum::YLeaf IgmpAfi::ipv6_unicast {1, "ipv6-unicast"};
+
+const Enum::YLeaf IgmpssmMap::static_ {0, "static"};
+const Enum::YLeaf IgmpssmMap::dns {1, "dns"};
+const Enum::YLeaf IgmpssmMap::all {2, "all"};
 
 
 }

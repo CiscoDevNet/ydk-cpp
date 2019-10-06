@@ -1082,6 +1082,12 @@ bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_lea
     return false;
 }
 
+const Enum::YLeaf PlatformPropValueType::property_string {0, "property-string"};
+const Enum::YLeaf PlatformPropValueType::property_boolean {1, "property-boolean"};
+const Enum::YLeaf PlatformPropValueType::property_int64 {2, "property-int64"};
+const Enum::YLeaf PlatformPropValueType::property_uint64 {3, "property-uint64"};
+const Enum::YLeaf PlatformPropValueType::property_decimal64 {4, "property-decimal64"};
+
 const Enum::YLeaf PlatformCompType::comp_chassis {0, "comp-chassis"};
 const Enum::YLeaf PlatformCompType::comp_backplane {1, "comp-backplane"};
 const Enum::YLeaf PlatformCompType::comp_power_supply {2, "comp-power-supply"};
@@ -1094,12 +1100,6 @@ const Enum::YLeaf PlatformCompType::comp_cpu {8, "comp-cpu"};
 const Enum::YLeaf PlatformCompType::comp_operating_system {9, "comp-operating-system"};
 const Enum::YLeaf PlatformCompType::comp_optical_channel {10, "comp-optical-channel"};
 const Enum::YLeaf PlatformCompType::comp_container {11, "comp-container"};
-
-const Enum::YLeaf PlatformPropValueType::property_string {0, "property-string"};
-const Enum::YLeaf PlatformPropValueType::property_boolean {1, "property-boolean"};
-const Enum::YLeaf PlatformPropValueType::property_int64 {2, "property-int64"};
-const Enum::YLeaf PlatformPropValueType::property_uint64 {3, "property-uint64"};
-const Enum::YLeaf PlatformPropValueType::property_decimal64 {4, "property-decimal64"};
 
 
 }

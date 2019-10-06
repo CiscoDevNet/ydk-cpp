@@ -1134,12 +1134,12 @@ bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_leaf_o
     return false;
 }
 
+const Enum::YLeaf SbfdAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf SbfdAddressFamily::ipv6 {2, "ipv6"};
+
 const Enum::YLeaf BfdAfId::bfd_af_id_none {0, "bfd-af-id-none"};
 const Enum::YLeaf BfdAfId::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
 const Enum::YLeaf BfdAfId::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
-
-const Enum::YLeaf SbfdAddressFamily::ipv4 {1, "ipv4"};
-const Enum::YLeaf SbfdAddressFamily::ipv6 {2, "ipv6"};
 
 
 }

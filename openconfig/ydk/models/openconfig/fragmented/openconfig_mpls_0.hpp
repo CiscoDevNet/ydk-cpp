@@ -3836,20 +3836,17 @@ class Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSeco
 
 }; // Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config
 
-class TeBandwidthType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf SPECIFIED;
-        static const ydk::Enum::YLeaf AUTO;
-
-};
-
 class MplsSrlgFloodingType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf FLOODED_SRLG;
         static const ydk::Enum::YLeaf STATIC_SRLG;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FLOODED_SRLG") return 0;
+            if (name == "STATIC_SRLG") return 1;
+            return -1;
+        }
 };
 
 class MplsHopType : public ydk::Enum
@@ -3858,13 +3855,11 @@ class MplsHopType : public ydk::Enum
         static const ydk::Enum::YLeaf LOOSE;
         static const ydk::Enum::YLeaf STRICT;
 
-};
-
-class TeMetricType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf IGP;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "LOOSE") return 0;
+            if (name == "STRICT") return 1;
+            return -1;
+        }
 };
 
 class CspfTieBreaking : public ydk::Enum
@@ -3874,6 +3869,36 @@ class CspfTieBreaking : public ydk::Enum
         static const ydk::Enum::YLeaf LEAST_FILL;
         static const ydk::Enum::YLeaf MOST_FILL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "RANDOM") return 0;
+            if (name == "LEAST_FILL") return 1;
+            if (name == "MOST_FILL") return 2;
+            return -1;
+        }
+};
+
+class TeMetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf IGP;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "IGP") return 0;
+            return -1;
+        }
+};
+
+class TeBandwidthType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf SPECIFIED;
+        static const ydk::Enum::YLeaf AUTO;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "SPECIFIED") return 0;
+            if (name == "AUTO") return 1;
+            return -1;
+        }
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType : public ydk::Enum
@@ -3882,6 +3907,11 @@ class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::Thre
         static const ydk::Enum::YLeaf DELTA;
         static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DELTA") return 0;
+            if (name == "THRESHOLD_CROSSED") return 1;
+            return -1;
+        }
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecification : public ydk::Enum
@@ -3890,6 +3920,11 @@ class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::Thre
         static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
         static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "MIRRORED_UP_DOWN") return 0;
+            if (name == "SEPARATE_UP_DOWN") return 1;
+            return -1;
+        }
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdType : public ydk::Enum
@@ -3898,6 +3933,11 @@ class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::Thres
         static const ydk::Enum::YLeaf DELTA;
         static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DELTA") return 0;
+            if (name == "THRESHOLD_CROSSED") return 1;
+            return -1;
+        }
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecification : public ydk::Enum
@@ -3906,6 +3946,11 @@ class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::Thres
         static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
         static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "MIRRORED_UP_DOWN") return 0;
+            if (name == "SEPARATE_UP_DOWN") return 1;
+            return -1;
+        }
 };
 
 class Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::Status : public ydk::Enum
@@ -3914,6 +3959,11 @@ class Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::Status : publi
         static const ydk::Enum::YLeaf UP;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::PeakDataRate : public ydk::Enum
@@ -3921,6 +3971,10 @@ class Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::P
     public:
         static const ydk::Enum::YLeaf INFINITY_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INFINITY") return 0;
+            return -1;
+        }
 };
 
 class Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::NeighborStatus : public ydk::Enum
@@ -3929,6 +3983,11 @@ class Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::NeighborStat
         static const ydk::Enum::YLeaf UP;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::Priority : public ydk::Enum
@@ -3936,6 +3995,10 @@ class Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Bandwidt
     public:
         static const ydk::Enum::YLeaf ALL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ALL") return 0;
+            return -1;
+        }
 };
 
 class Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::SidSelectionMode : public ydk::Enum
@@ -3944,6 +4007,11 @@ class Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config
         static const ydk::Enum::YLeaf ADJ_SID_ONLY;
         static const ydk::Enum::YLeaf MIXED_MODE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJ_SID_ONLY") return 0;
+            if (name == "MIXED_MODE") return 1;
+            return -1;
+        }
 };
 
 class Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::SidSelectionMode : public ydk::Enum
@@ -3952,6 +4020,11 @@ class Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State:
         static const ydk::Enum::YLeaf ADJ_SID_ONLY;
         static const ydk::Enum::YLeaf MIXED_MODE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJ_SID_ONLY") return 0;
+            if (name == "MIXED_MODE") return 1;
+            return -1;
+        }
 };
 
 

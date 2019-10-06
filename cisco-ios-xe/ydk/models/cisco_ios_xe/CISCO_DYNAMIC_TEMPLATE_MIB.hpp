@@ -655,6 +655,14 @@ class CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::CdtTemplateSr
         static const ydk::Enum::YLeaf aaaUserProfile;
         static const ydk::Enum::YLeaf aaaServiceProfile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "derived") return 2;
+            if (name == "local") return 3;
+            if (name == "aaaUserProfile") return 4;
+            if (name == "aaaServiceProfile") return 5;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::CdtIfIpv6NdRaIntervalUnits : public ydk::Enum
@@ -663,6 +671,11 @@ class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::CdtIfIpv6
         static const ydk::Enum::YLeaf seconds;
         static const ydk::Enum::YLeaf milliseconds;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "seconds") return 1;
+            if (name == "milliseconds") return 2;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::CdtIfIpv6NdRouterPreference : public ydk::Enum
@@ -672,6 +685,12 @@ class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::CdtIfIpv6
         static const ydk::Enum::YLeaf medium;
         static const ydk::Enum::YLeaf low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "high") return 1;
+            if (name == "medium") return 2;
+            if (name == "low") return 3;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpAddrOption : public ydk::Enum
@@ -682,6 +701,13 @@ class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppI
         static const ydk::Enum::YLeaf required;
         static const ydk::Enum::YLeaf unique;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "accept") return 2;
+            if (name == "required") return 3;
+            if (name == "unique") return 4;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpDnsOption : public ydk::Enum
@@ -692,6 +718,13 @@ class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppI
         static const ydk::Enum::YLeaf request;
         static const ydk::Enum::YLeaf reject;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "accept") return 2;
+            if (name == "request") return 3;
+            if (name == "reject") return 4;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpWinsOption : public ydk::Enum
@@ -702,6 +735,13 @@ class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppI
         static const ydk::Enum::YLeaf request;
         static const ydk::Enum::YLeaf reject;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "accept") return 2;
+            if (name == "request") return 3;
+            if (name == "reject") return 4;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpMaskOption : public ydk::Enum
@@ -711,6 +751,12 @@ class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppI
         static const ydk::Enum::YLeaf request;
         static const ydk::Enum::YLeaf reject;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "request") return 2;
+            if (name == "reject") return 3;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppPeerDefIpAddrSrc : public ydk::Enum
@@ -720,6 +766,12 @@ class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppP
         static const ydk::Enum::YLeaf pool;
         static const ydk::Enum::YLeaf dhcp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static") return 1;
+            if (name == "pool") return 2;
+            if (name == "dhcp") return 3;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::CdtSrvNetworkSrv : public ydk::Enum
@@ -730,6 +782,13 @@ class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::CdtSrvN
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf vpdn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "none") return 2;
+            if (name == "local") return 3;
+            if (name == "vpdn") return 4;
+            return -1;
+        }
 };
 
 class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::CdtSrvSgSrvType : public ydk::Enum
@@ -738,6 +797,11 @@ class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::CdtSrvS
         static const ydk::Enum::YLeaf primary;
         static const ydk::Enum::YLeaf secondary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "primary") return 1;
+            if (name == "secondary") return 2;
+            return -1;
+        }
 };
 
 

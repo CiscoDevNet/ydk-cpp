@@ -82,9 +82,7 @@ class SpanMonitorSession::Sessions::Session : public ydk::Entity
 
         ydk::YLeaf session; //type: string
         ydk::YLeaf class_; //type: SpanSessionClass
-        ydk::YLeaf discard_class; //type: uint32
         ydk::YLeaf inject_interface; //type: string
-        ydk::YLeaf traffic_class; //type: uint32
         class Destination; //type: SpanMonitorSession::Sessions::Session::Destination
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session::Destination> destination;
@@ -121,6 +119,11 @@ class SpanTrafficDirection : public ydk::Enum
         static const ydk::Enum::YLeaf rx_only;
         static const ydk::Enum::YLeaf tx_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rx-only") return 1;
+            if (name == "tx-only") return 2;
+            return -1;
+        }
 };
 
 class SpanMirrorInterval : public ydk::Enum
@@ -133,6 +136,15 @@ class SpanMirrorInterval : public ydk::Enum
         static const ydk::Enum::YLeaf Y_8k;
         static const ydk::Enum::YLeaf Y_16k;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "512") return 1;
+            if (name == "1k") return 2;
+            if (name == "2k") return 3;
+            if (name == "4k") return 4;
+            if (name == "8k") return 5;
+            if (name == "16k") return 6;
+            return -1;
+        }
 };
 
 class SpanDestination : public ydk::Enum
@@ -143,6 +155,13 @@ class SpanDestination : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf ipv6_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface") return 0;
+            if (name == "pseudowire") return 1;
+            if (name == "ipv4-address") return 2;
+            if (name == "ipv6-address") return 3;
+            return -1;
+        }
 };
 
 

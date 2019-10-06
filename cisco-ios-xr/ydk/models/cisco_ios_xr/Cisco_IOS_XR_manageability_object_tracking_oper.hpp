@@ -213,7 +213,6 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks 
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -577,7 +576,6 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ip
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -767,7 +765,6 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaT
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -1111,7 +1108,6 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeIn
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -1322,7 +1318,6 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks : pub
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -1658,7 +1653,6 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Ip
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -1849,7 +1843,6 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks 
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -2193,7 +2186,6 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Ip
         ydk::YLeaf ipsla_op_id; //type: uint32
         ydk::YLeaf rtt; //type: uint32
         ydk::YLeaf return_code; //type: uint32
-        ydk::YLeaf return_code_string; //type: string
 
 }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -2235,6 +2227,18 @@ class Track : public ydk::Enum
         static const ydk::Enum::YLeaf threshold_percentage;
         static const ydk::Enum::YLeaf bfd_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-type") return 1;
+            if (name == "route-type") return 2;
+            if (name == "bool-and-type") return 3;
+            if (name == "bool-or-type") return 4;
+            if (name == "ipsla-type") return 5;
+            if (name == "undefined-type") return 6;
+            if (name == "threshold-weight") return 7;
+            if (name == "threshold-percentage") return 8;
+            if (name == "bfd-type") return 9;
+            return -1;
+        }
 };
 
 

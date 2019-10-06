@@ -11,36 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace TOKENRING_MIB {
 
-Dot5TestInsertFunc::Dot5TestInsertFunc()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5TestInsertFunc")
-{
-
-}
-
-Dot5TestInsertFunc::~Dot5TestInsertFunc()
-{
-}
-
-Dot5TestFullDuplexLoopBack::Dot5TestFullDuplexLoopBack()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5TestFullDuplexLoopBack")
-{
-
-}
-
-Dot5TestFullDuplexLoopBack::~Dot5TestFullDuplexLoopBack()
-{
-}
-
-Dot5ChipSetIBM16::Dot5ChipSetIBM16()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5ChipSetIBM16")
-{
-
-}
-
-Dot5ChipSetIBM16::~Dot5ChipSetIBM16()
-{
-}
-
 Dot5ChipSetTItms380::Dot5ChipSetTItms380()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5ChipSetTItms380")
 {
@@ -58,6 +28,36 @@ Dot5ChipSetTItms380c16::Dot5ChipSetTItms380c16()
 }
 
 Dot5ChipSetTItms380c16::~Dot5ChipSetTItms380c16()
+{
+}
+
+Dot5ChipSetIBM16::Dot5ChipSetIBM16()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5ChipSetIBM16")
+{
+
+}
+
+Dot5ChipSetIBM16::~Dot5ChipSetIBM16()
+{
+}
+
+Dot5TestInsertFunc::Dot5TestInsertFunc()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5TestInsertFunc")
+{
+
+}
+
+Dot5TestInsertFunc::~Dot5TestInsertFunc()
+{
+}
+
+Dot5TestFullDuplexLoopBack::Dot5TestFullDuplexLoopBack()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5TestFullDuplexLoopBack")
+{
+
+}
+
+Dot5TestFullDuplexLoopBack::~Dot5TestFullDuplexLoopBack()
 {
 }
 

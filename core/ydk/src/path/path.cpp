@@ -267,6 +267,22 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
             ret = buffer;
             std::free(buffer);
         }
+        if (format == ydk::EncodingFormat::XML)
+        {
+            // Initialize table of conversion
+            std::map<std::string, std::string> seqs_table;
+            seqs_table[std::string("&quot;")] = std::string("\"");
+            seqs_table[std::string("&#13;")]  = std::string("");
+
+            for (auto item : seqs_table)
+            {
+                size_t pos = 0;
+                while ((pos = ret.find(item.first, pos)) != std::string::npos)
+                {
+                    ret = ret.replace(pos, item.first.length(), item.second);
+                }
+            }
+        }
     }
     return ret;
 }

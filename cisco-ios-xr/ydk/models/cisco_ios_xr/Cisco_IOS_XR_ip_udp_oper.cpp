@@ -4238,11 +4238,9 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbDetail()
         ,
     local_address(std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress>())
     , foreign_address(std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress>())
-    , pcb_flags(std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags>())
 {
     local_address->parent = this;
     foreign_address->parent = this;
-    pcb_flags->parent = this;
 
     yang_name = "pcb-detail"; yang_parent_name = "pcb-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -4263,8 +4261,7 @@ bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::has_data() const
 	|| send_queue.is_set
 	|| vrf_id.is_set
 	|| (local_address !=  nullptr && local_address->has_data())
-	|| (foreign_address !=  nullptr && foreign_address->has_data())
-	|| (pcb_flags !=  nullptr && pcb_flags->has_data());
+	|| (foreign_address !=  nullptr && foreign_address->has_data());
 }
 
 bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::has_operation() const
@@ -4279,8 +4276,7 @@ bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::has_operation() const
 	|| ydk::is_set(send_queue.yfilter)
 	|| ydk::is_set(vrf_id.yfilter)
 	|| (local_address !=  nullptr && local_address->has_operation())
-	|| (foreign_address !=  nullptr && foreign_address->has_operation())
-	|| (pcb_flags !=  nullptr && pcb_flags->has_operation());
+	|| (foreign_address !=  nullptr && foreign_address->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_segment_path() const
@@ -4328,15 +4324,6 @@ std::shared_ptr<ydk::Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::
         return foreign_address;
     }
 
-    if(child_yang_name == "pcb-flags")
-    {
-        if(pcb_flags == nullptr)
-        {
-            pcb_flags = std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags>();
-        }
-        return pcb_flags;
-    }
-
     return nullptr;
 }
 
@@ -4352,11 +4339,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> UdpConnection::Nodes::Node::
     if(foreign_address != nullptr)
     {
         _children["foreign-address"] = foreign_address;
-    }
-
-    if(pcb_flags != nullptr)
-    {
-        _children["pcb-flags"] = pcb_flags;
     }
 
     return _children;
@@ -4452,7 +4434,7 @@ void UdpConnection::Nodes::Node::PcbDetails::PcbDetail::set_filter(const std::st
 
 bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-address" || name == "foreign-address" || name == "pcb-flags" || name == "pcb-address" || name == "af-name" || name == "local-process-id" || name == "local-port" || name == "foreign-port" || name == "receive-queue" || name == "send-queue" || name == "vrf-id")
+    if(name == "local-address" || name == "foreign-address" || name == "pcb-address" || name == "af-name" || name == "local-process-id" || name == "local-port" || name == "foreign-port" || name == "receive-queue" || name == "send-queue" || name == "vrf-id")
         return true;
     return false;
 }
@@ -4665,364 +4647,6 @@ void UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::set_filt
 bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::PcbFlags()
-    :
-    recv_opts{YType::boolean, "recv-opts"},
-    recv_ret_opts{YType::boolean, "recv-ret-opts"},
-    recv_dest_addr{YType::boolean, "recv-dest-addr"},
-    header_include{YType::boolean, "header-include"},
-    recv_intf{YType::boolean, "recv-intf"},
-    recv_header{YType::boolean, "recv-header"},
-    mcast_loopback{YType::boolean, "mcast-loopback"},
-    recv_l2_header{YType::boolean, "recv-l2-header"},
-    recv_packet_info{YType::boolean, "recv-packet-info"},
-    router_alert{YType::boolean, "router-alert"},
-    recv_hop_limit{YType::boolean, "recv-hop-limit"},
-    recv_routing_header{YType::boolean, "recv-routing-header"},
-    recv_hop_header{YType::boolean, "recv-hop-header"},
-    recv_dest_header{YType::boolean, "recv-dest-header"},
-    recv_traffic_class{YType::boolean, "recv-traffic-class"},
-    recv_ip_sec{YType::boolean, "recv-ip-sec"},
-    recv_tabel_id{YType::boolean, "recv-tabel-id"},
-    recv_pak_priority{YType::boolean, "recv-pak-priority"},
-    conn_limit{YType::boolean, "conn-limit"},
-    opt_handled{YType::boolean, "opt-handled"},
-    bind_local{YType::boolean, "bind-local"}
-{
-
-    yang_name = "pcb-flags"; yang_parent_name = "pcb-detail"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::~PcbFlags()
-{
-}
-
-bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::has_data() const
-{
-    if (is_presence_container) return true;
-    return recv_opts.is_set
-	|| recv_ret_opts.is_set
-	|| recv_dest_addr.is_set
-	|| header_include.is_set
-	|| recv_intf.is_set
-	|| recv_header.is_set
-	|| mcast_loopback.is_set
-	|| recv_l2_header.is_set
-	|| recv_packet_info.is_set
-	|| router_alert.is_set
-	|| recv_hop_limit.is_set
-	|| recv_routing_header.is_set
-	|| recv_hop_header.is_set
-	|| recv_dest_header.is_set
-	|| recv_traffic_class.is_set
-	|| recv_ip_sec.is_set
-	|| recv_tabel_id.is_set
-	|| recv_pak_priority.is_set
-	|| conn_limit.is_set
-	|| opt_handled.is_set
-	|| bind_local.is_set;
-}
-
-bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(recv_opts.yfilter)
-	|| ydk::is_set(recv_ret_opts.yfilter)
-	|| ydk::is_set(recv_dest_addr.yfilter)
-	|| ydk::is_set(header_include.yfilter)
-	|| ydk::is_set(recv_intf.yfilter)
-	|| ydk::is_set(recv_header.yfilter)
-	|| ydk::is_set(mcast_loopback.yfilter)
-	|| ydk::is_set(recv_l2_header.yfilter)
-	|| ydk::is_set(recv_packet_info.yfilter)
-	|| ydk::is_set(router_alert.yfilter)
-	|| ydk::is_set(recv_hop_limit.yfilter)
-	|| ydk::is_set(recv_routing_header.yfilter)
-	|| ydk::is_set(recv_hop_header.yfilter)
-	|| ydk::is_set(recv_dest_header.yfilter)
-	|| ydk::is_set(recv_traffic_class.yfilter)
-	|| ydk::is_set(recv_ip_sec.yfilter)
-	|| ydk::is_set(recv_tabel_id.yfilter)
-	|| ydk::is_set(recv_pak_priority.yfilter)
-	|| ydk::is_set(conn_limit.yfilter)
-	|| ydk::is_set(opt_handled.yfilter)
-	|| ydk::is_set(bind_local.yfilter);
-}
-
-std::string UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pcb-flags";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (recv_opts.is_set || is_set(recv_opts.yfilter)) leaf_name_data.push_back(recv_opts.get_name_leafdata());
-    if (recv_ret_opts.is_set || is_set(recv_ret_opts.yfilter)) leaf_name_data.push_back(recv_ret_opts.get_name_leafdata());
-    if (recv_dest_addr.is_set || is_set(recv_dest_addr.yfilter)) leaf_name_data.push_back(recv_dest_addr.get_name_leafdata());
-    if (header_include.is_set || is_set(header_include.yfilter)) leaf_name_data.push_back(header_include.get_name_leafdata());
-    if (recv_intf.is_set || is_set(recv_intf.yfilter)) leaf_name_data.push_back(recv_intf.get_name_leafdata());
-    if (recv_header.is_set || is_set(recv_header.yfilter)) leaf_name_data.push_back(recv_header.get_name_leafdata());
-    if (mcast_loopback.is_set || is_set(mcast_loopback.yfilter)) leaf_name_data.push_back(mcast_loopback.get_name_leafdata());
-    if (recv_l2_header.is_set || is_set(recv_l2_header.yfilter)) leaf_name_data.push_back(recv_l2_header.get_name_leafdata());
-    if (recv_packet_info.is_set || is_set(recv_packet_info.yfilter)) leaf_name_data.push_back(recv_packet_info.get_name_leafdata());
-    if (router_alert.is_set || is_set(router_alert.yfilter)) leaf_name_data.push_back(router_alert.get_name_leafdata());
-    if (recv_hop_limit.is_set || is_set(recv_hop_limit.yfilter)) leaf_name_data.push_back(recv_hop_limit.get_name_leafdata());
-    if (recv_routing_header.is_set || is_set(recv_routing_header.yfilter)) leaf_name_data.push_back(recv_routing_header.get_name_leafdata());
-    if (recv_hop_header.is_set || is_set(recv_hop_header.yfilter)) leaf_name_data.push_back(recv_hop_header.get_name_leafdata());
-    if (recv_dest_header.is_set || is_set(recv_dest_header.yfilter)) leaf_name_data.push_back(recv_dest_header.get_name_leafdata());
-    if (recv_traffic_class.is_set || is_set(recv_traffic_class.yfilter)) leaf_name_data.push_back(recv_traffic_class.get_name_leafdata());
-    if (recv_ip_sec.is_set || is_set(recv_ip_sec.yfilter)) leaf_name_data.push_back(recv_ip_sec.get_name_leafdata());
-    if (recv_tabel_id.is_set || is_set(recv_tabel_id.yfilter)) leaf_name_data.push_back(recv_tabel_id.get_name_leafdata());
-    if (recv_pak_priority.is_set || is_set(recv_pak_priority.yfilter)) leaf_name_data.push_back(recv_pak_priority.get_name_leafdata());
-    if (conn_limit.is_set || is_set(conn_limit.yfilter)) leaf_name_data.push_back(conn_limit.get_name_leafdata());
-    if (opt_handled.is_set || is_set(opt_handled.yfilter)) leaf_name_data.push_back(opt_handled.get_name_leafdata());
-    if (bind_local.is_set || is_set(bind_local.yfilter)) leaf_name_data.push_back(bind_local.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "recv-opts")
-    {
-        recv_opts = value;
-        recv_opts.value_namespace = name_space;
-        recv_opts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-ret-opts")
-    {
-        recv_ret_opts = value;
-        recv_ret_opts.value_namespace = name_space;
-        recv_ret_opts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-dest-addr")
-    {
-        recv_dest_addr = value;
-        recv_dest_addr.value_namespace = name_space;
-        recv_dest_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "header-include")
-    {
-        header_include = value;
-        header_include.value_namespace = name_space;
-        header_include.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-intf")
-    {
-        recv_intf = value;
-        recv_intf.value_namespace = name_space;
-        recv_intf.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-header")
-    {
-        recv_header = value;
-        recv_header.value_namespace = name_space;
-        recv_header.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mcast-loopback")
-    {
-        mcast_loopback = value;
-        mcast_loopback.value_namespace = name_space;
-        mcast_loopback.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-l2-header")
-    {
-        recv_l2_header = value;
-        recv_l2_header.value_namespace = name_space;
-        recv_l2_header.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-packet-info")
-    {
-        recv_packet_info = value;
-        recv_packet_info.value_namespace = name_space;
-        recv_packet_info.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "router-alert")
-    {
-        router_alert = value;
-        router_alert.value_namespace = name_space;
-        router_alert.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-hop-limit")
-    {
-        recv_hop_limit = value;
-        recv_hop_limit.value_namespace = name_space;
-        recv_hop_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-routing-header")
-    {
-        recv_routing_header = value;
-        recv_routing_header.value_namespace = name_space;
-        recv_routing_header.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-hop-header")
-    {
-        recv_hop_header = value;
-        recv_hop_header.value_namespace = name_space;
-        recv_hop_header.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-dest-header")
-    {
-        recv_dest_header = value;
-        recv_dest_header.value_namespace = name_space;
-        recv_dest_header.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-traffic-class")
-    {
-        recv_traffic_class = value;
-        recv_traffic_class.value_namespace = name_space;
-        recv_traffic_class.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-ip-sec")
-    {
-        recv_ip_sec = value;
-        recv_ip_sec.value_namespace = name_space;
-        recv_ip_sec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-tabel-id")
-    {
-        recv_tabel_id = value;
-        recv_tabel_id.value_namespace = name_space;
-        recv_tabel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recv-pak-priority")
-    {
-        recv_pak_priority = value;
-        recv_pak_priority.value_namespace = name_space;
-        recv_pak_priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conn-limit")
-    {
-        conn_limit = value;
-        conn_limit.value_namespace = name_space;
-        conn_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "opt-handled")
-    {
-        opt_handled = value;
-        opt_handled.value_namespace = name_space;
-        opt_handled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bind-local")
-    {
-        bind_local = value;
-        bind_local.value_namespace = name_space;
-        bind_local.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "recv-opts")
-    {
-        recv_opts.yfilter = yfilter;
-    }
-    if(value_path == "recv-ret-opts")
-    {
-        recv_ret_opts.yfilter = yfilter;
-    }
-    if(value_path == "recv-dest-addr")
-    {
-        recv_dest_addr.yfilter = yfilter;
-    }
-    if(value_path == "header-include")
-    {
-        header_include.yfilter = yfilter;
-    }
-    if(value_path == "recv-intf")
-    {
-        recv_intf.yfilter = yfilter;
-    }
-    if(value_path == "recv-header")
-    {
-        recv_header.yfilter = yfilter;
-    }
-    if(value_path == "mcast-loopback")
-    {
-        mcast_loopback.yfilter = yfilter;
-    }
-    if(value_path == "recv-l2-header")
-    {
-        recv_l2_header.yfilter = yfilter;
-    }
-    if(value_path == "recv-packet-info")
-    {
-        recv_packet_info.yfilter = yfilter;
-    }
-    if(value_path == "router-alert")
-    {
-        router_alert.yfilter = yfilter;
-    }
-    if(value_path == "recv-hop-limit")
-    {
-        recv_hop_limit.yfilter = yfilter;
-    }
-    if(value_path == "recv-routing-header")
-    {
-        recv_routing_header.yfilter = yfilter;
-    }
-    if(value_path == "recv-hop-header")
-    {
-        recv_hop_header.yfilter = yfilter;
-    }
-    if(value_path == "recv-dest-header")
-    {
-        recv_dest_header.yfilter = yfilter;
-    }
-    if(value_path == "recv-traffic-class")
-    {
-        recv_traffic_class.yfilter = yfilter;
-    }
-    if(value_path == "recv-ip-sec")
-    {
-        recv_ip_sec.yfilter = yfilter;
-    }
-    if(value_path == "recv-tabel-id")
-    {
-        recv_tabel_id.yfilter = yfilter;
-    }
-    if(value_path == "recv-pak-priority")
-    {
-        recv_pak_priority.yfilter = yfilter;
-    }
-    if(value_path == "conn-limit")
-    {
-        conn_limit.yfilter = yfilter;
-    }
-    if(value_path == "opt-handled")
-    {
-        opt_handled.yfilter = yfilter;
-    }
-    if(value_path == "bind-local")
-    {
-        bind_local.yfilter = yfilter;
-    }
-}
-
-bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbFlags::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "recv-opts" || name == "recv-ret-opts" || name == "recv-dest-addr" || name == "header-include" || name == "recv-intf" || name == "recv-header" || name == "mcast-loopback" || name == "recv-l2-header" || name == "recv-packet-info" || name == "router-alert" || name == "recv-hop-limit" || name == "recv-routing-header" || name == "recv-hop-header" || name == "recv-dest-header" || name == "recv-traffic-class" || name == "recv-ip-sec" || name == "recv-tabel-id" || name == "recv-pak-priority" || name == "conn-limit" || name == "opt-handled" || name == "bind-local")
         return true;
     return false;
 }
@@ -5537,34 +5161,6 @@ const Enum::YLeaf LptsPcbQuery::static_policy {1, "static-policy"};
 const Enum::YLeaf LptsPcbQuery::interface {2, "interface"};
 const Enum::YLeaf LptsPcbQuery::packet {3, "packet"};
 
-const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
-
-const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
-
 const Enum::YLeaf MessageTypeIcmpv6::destination_unreachable {1, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmpv6::packet_too_big {2, "packet-too-big"};
 const Enum::YLeaf MessageTypeIcmpv6::time_exceeded {3, "time-exceeded"};
@@ -5597,6 +5193,135 @@ const Enum::YLeaf MessageTypeIcmpv6::multicast_router_solicitation {152, "multic
 const Enum::YLeaf MessageTypeIcmpv6::multicast_router_termination {153, "multicast-router-termination"};
 const Enum::YLeaf MessageTypeIcmpv6::fmipv6_messages {154, "fmipv6-messages"};
 
+const Enum::YLeaf MessageTypeIcmp::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmp::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmp::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmp::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmp::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmp::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmp::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmp::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmp::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmp::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmp::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmp::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmp::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmp::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmp::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmp::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmp::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmp::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmp::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmp::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmp::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmp::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmp::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmp::domain_name_request {37, "domain-name-request"};
+
+const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf Packet::icmp {0, "icmp"};
+const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
+const Enum::YLeaf Packet::igmp {2, "igmp"};
+const Enum::YLeaf Packet::unknown {3, "unknown"};
+
+const Enum::YLeaf MessageTypeIcmp_::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmp_::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmp_::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmp_::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmp_::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmp_::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmp_::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmp_::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmp_::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmp_::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmp_::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmp_::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmp_::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmp_::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmp_::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmp_::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmp_::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmp_::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmp_::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmp_::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmp_::domain_name_request {37, "domain-name-request"};
+
+const Enum::YLeaf AddrFamily::unspecified {0, "unspecified"};
+const Enum::YLeaf AddrFamily::local {1, "local"};
+const Enum::YLeaf AddrFamily::inet {2, "inet"};
+const Enum::YLeaf AddrFamily::implink {3, "implink"};
+const Enum::YLeaf AddrFamily::pup {4, "pup"};
+const Enum::YLeaf AddrFamily::chaos {5, "chaos"};
+const Enum::YLeaf AddrFamily::ns {6, "ns"};
+const Enum::YLeaf AddrFamily::iso {7, "iso"};
+const Enum::YLeaf AddrFamily::ecma {8, "ecma"};
+const Enum::YLeaf AddrFamily::data_kit {9, "data-kit"};
+const Enum::YLeaf AddrFamily::ccitt {10, "ccitt"};
+const Enum::YLeaf AddrFamily::sna {11, "sna"};
+const Enum::YLeaf AddrFamily::de_cnet {12, "de-cnet"};
+const Enum::YLeaf AddrFamily::dli {13, "dli"};
+const Enum::YLeaf AddrFamily::lat {14, "lat"};
+const Enum::YLeaf AddrFamily::hylink {15, "hylink"};
+const Enum::YLeaf AddrFamily::appletalk {16, "appletalk"};
+const Enum::YLeaf AddrFamily::route {17, "route"};
+const Enum::YLeaf AddrFamily::link {18, "link"};
+const Enum::YLeaf AddrFamily::pseudo_xtp {19, "pseudo-xtp"};
+const Enum::YLeaf AddrFamily::coip {20, "coip"};
+const Enum::YLeaf AddrFamily::cnt {21, "cnt"};
+const Enum::YLeaf AddrFamily::pseudo_rtip {22, "pseudo-rtip"};
+const Enum::YLeaf AddrFamily::ipx {23, "ipx"};
+const Enum::YLeaf AddrFamily::sip {24, "sip"};
+const Enum::YLeaf AddrFamily::pseudo_pip {25, "pseudo-pip"};
+const Enum::YLeaf AddrFamily::inet6 {26, "inet6"};
+const Enum::YLeaf AddrFamily::snap {27, "snap"};
+const Enum::YLeaf AddrFamily::clnl {28, "clnl"};
+const Enum::YLeaf AddrFamily::chdlc {29, "chdlc"};
+const Enum::YLeaf AddrFamily::ppp {30, "ppp"};
+const Enum::YLeaf AddrFamily::host_cas {31, "host-cas"};
+const Enum::YLeaf AddrFamily::dsp {32, "dsp"};
+const Enum::YLeaf AddrFamily::sap {33, "sap"};
+const Enum::YLeaf AddrFamily::atm {34, "atm"};
+const Enum::YLeaf AddrFamily::fr {35, "fr"};
+const Enum::YLeaf AddrFamily::mso {36, "mso"};
+const Enum::YLeaf AddrFamily::dchan {37, "dchan"};
+const Enum::YLeaf AddrFamily::cas {38, "cas"};
+const Enum::YLeaf AddrFamily::nat {39, "nat"};
+const Enum::YLeaf AddrFamily::ether {40, "ether"};
+const Enum::YLeaf AddrFamily::srp {41, "srp"};
+
+const Enum::YLeaf UdpAddressFamily::ipv4 {2, "ipv4"};
+const Enum::YLeaf UdpAddressFamily::ipv6 {10, "ipv6"};
+
 const Enum::YLeaf MessageTypeIcmpv6_::destination_unreachable {1, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmpv6_::packet_too_big {2, "packet-too-big"};
 const Enum::YLeaf MessageTypeIcmpv6_::time_exceeded {3, "time-exceeded"};
@@ -5628,107 +5353,6 @@ const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_advertisement {151, "mult
 const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_solicitation {152, "multicast-router-solicitation"};
 const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_termination {153, "multicast-router-termination"};
 const Enum::YLeaf MessageTypeIcmpv6_::fmipv6_messages {154, "fmipv6-messages"};
-
-const Enum::YLeaf MessageTypeIcmp::echo_reply {0, "echo-reply"};
-const Enum::YLeaf MessageTypeIcmp::destination_unreachable {3, "destination-unreachable"};
-const Enum::YLeaf MessageTypeIcmp::source_quench {4, "source-quench"};
-const Enum::YLeaf MessageTypeIcmp::redirect {5, "redirect"};
-const Enum::YLeaf MessageTypeIcmp::alternate_host_address {6, "alternate-host-address"};
-const Enum::YLeaf MessageTypeIcmp::echo {8, "echo"};
-const Enum::YLeaf MessageTypeIcmp::router_advertisement {9, "router-advertisement"};
-const Enum::YLeaf MessageTypeIcmp::router_selection {10, "router-selection"};
-const Enum::YLeaf MessageTypeIcmp::time_exceeded {11, "time-exceeded"};
-const Enum::YLeaf MessageTypeIcmp::parameter_problem {12, "parameter-problem"};
-const Enum::YLeaf MessageTypeIcmp::time_stamp {13, "time-stamp"};
-const Enum::YLeaf MessageTypeIcmp::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::YLeaf MessageTypeIcmp::information_request {15, "information-request"};
-const Enum::YLeaf MessageTypeIcmp::information_reply {16, "information-reply"};
-const Enum::YLeaf MessageTypeIcmp::address_mask_request {17, "address-mask-request"};
-const Enum::YLeaf MessageTypeIcmp::address_mask_reply {18, "address-mask-reply"};
-const Enum::YLeaf MessageTypeIcmp::trace_route {30, "trace-route"};
-const Enum::YLeaf MessageTypeIcmp::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::YLeaf MessageTypeIcmp::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::YLeaf MessageTypeIcmp::where_are_you {33, "where-are-you"};
-const Enum::YLeaf MessageTypeIcmp::iam_here {34, "iam-here"};
-const Enum::YLeaf MessageTypeIcmp::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::YLeaf MessageTypeIcmp::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::YLeaf MessageTypeIcmp::domain_name_request {37, "domain-name-request"};
-
-const Enum::YLeaf MessageTypeIcmp_::echo_reply {0, "echo-reply"};
-const Enum::YLeaf MessageTypeIcmp_::destination_unreachable {3, "destination-unreachable"};
-const Enum::YLeaf MessageTypeIcmp_::source_quench {4, "source-quench"};
-const Enum::YLeaf MessageTypeIcmp_::redirect {5, "redirect"};
-const Enum::YLeaf MessageTypeIcmp_::alternate_host_address {6, "alternate-host-address"};
-const Enum::YLeaf MessageTypeIcmp_::echo {8, "echo"};
-const Enum::YLeaf MessageTypeIcmp_::router_advertisement {9, "router-advertisement"};
-const Enum::YLeaf MessageTypeIcmp_::router_selection {10, "router-selection"};
-const Enum::YLeaf MessageTypeIcmp_::time_exceeded {11, "time-exceeded"};
-const Enum::YLeaf MessageTypeIcmp_::parameter_problem {12, "parameter-problem"};
-const Enum::YLeaf MessageTypeIcmp_::time_stamp {13, "time-stamp"};
-const Enum::YLeaf MessageTypeIcmp_::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::YLeaf MessageTypeIcmp_::information_request {15, "information-request"};
-const Enum::YLeaf MessageTypeIcmp_::information_reply {16, "information-reply"};
-const Enum::YLeaf MessageTypeIcmp_::address_mask_request {17, "address-mask-request"};
-const Enum::YLeaf MessageTypeIcmp_::address_mask_reply {18, "address-mask-reply"};
-const Enum::YLeaf MessageTypeIcmp_::trace_route {30, "trace-route"};
-const Enum::YLeaf MessageTypeIcmp_::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::YLeaf MessageTypeIcmp_::where_are_you {33, "where-are-you"};
-const Enum::YLeaf MessageTypeIcmp_::iam_here {34, "iam-here"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::YLeaf MessageTypeIcmp_::domain_name_request {37, "domain-name-request"};
-
-const Enum::YLeaf Packet::icmp {0, "icmp"};
-const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
-const Enum::YLeaf Packet::igmp {2, "igmp"};
-const Enum::YLeaf Packet::unknown {3, "unknown"};
-
-const Enum::YLeaf AddrFamily::unspecified {0, "unspecified"};
-const Enum::YLeaf AddrFamily::local {1, "local"};
-const Enum::YLeaf AddrFamily::inet {2, "inet"};
-const Enum::YLeaf AddrFamily::implink {3, "implink"};
-const Enum::YLeaf AddrFamily::pup {4, "pup"};
-const Enum::YLeaf AddrFamily::chaos {5, "chaos"};
-const Enum::YLeaf AddrFamily::ns {6, "ns"};
-const Enum::YLeaf AddrFamily::iso {7, "iso"};
-const Enum::YLeaf AddrFamily::ecma {8, "ecma"};
-const Enum::YLeaf AddrFamily::data_kit {9, "data-kit"};
-const Enum::YLeaf AddrFamily::inet6 {10, "inet6"};
-const Enum::YLeaf AddrFamily::sna {11, "sna"};
-const Enum::YLeaf AddrFamily::de_cnet {12, "de-cnet"};
-const Enum::YLeaf AddrFamily::dli {13, "dli"};
-const Enum::YLeaf AddrFamily::lat {14, "lat"};
-const Enum::YLeaf AddrFamily::hylink {15, "hylink"};
-const Enum::YLeaf AddrFamily::appletalk {16, "appletalk"};
-const Enum::YLeaf AddrFamily::route {17, "route"};
-const Enum::YLeaf AddrFamily::link {18, "link"};
-const Enum::YLeaf AddrFamily::pseudo_xtp {19, "pseudo-xtp"};
-const Enum::YLeaf AddrFamily::coip {20, "coip"};
-const Enum::YLeaf AddrFamily::cnt {21, "cnt"};
-const Enum::YLeaf AddrFamily::pseudo_rtip {22, "pseudo-rtip"};
-const Enum::YLeaf AddrFamily::ipx {23, "ipx"};
-const Enum::YLeaf AddrFamily::sip {24, "sip"};
-const Enum::YLeaf AddrFamily::pseudo_pip {25, "pseudo-pip"};
-const Enum::YLeaf AddrFamily::ccitt {26, "ccitt"};
-const Enum::YLeaf AddrFamily::snap {27, "snap"};
-const Enum::YLeaf AddrFamily::clnl {28, "clnl"};
-const Enum::YLeaf AddrFamily::chdlc {29, "chdlc"};
-const Enum::YLeaf AddrFamily::ppp {30, "ppp"};
-const Enum::YLeaf AddrFamily::host_cas {31, "host-cas"};
-const Enum::YLeaf AddrFamily::dsp {32, "dsp"};
-const Enum::YLeaf AddrFamily::sap {33, "sap"};
-const Enum::YLeaf AddrFamily::atm {34, "atm"};
-const Enum::YLeaf AddrFamily::fr {35, "fr"};
-const Enum::YLeaf AddrFamily::mso {36, "mso"};
-const Enum::YLeaf AddrFamily::dchan {37, "dchan"};
-const Enum::YLeaf AddrFamily::cas {38, "cas"};
-const Enum::YLeaf AddrFamily::nat {39, "nat"};
-const Enum::YLeaf AddrFamily::ether {40, "ether"};
-const Enum::YLeaf AddrFamily::srp {41, "srp"};
-
-const Enum::YLeaf UdpAddressFamily::ipv4 {2, "ipv4"};
-const Enum::YLeaf UdpAddressFamily::ipv6 {10, "ipv6"};
 
 
 }

@@ -15,6 +15,10 @@ class HostReachProtocol : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf bgp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp") return 1;
+            return -1;
+        }
 };
 
 class VxlanUdpPortEnum : public ydk::Enum
@@ -23,6 +27,44 @@ class VxlanUdpPortEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ietf_udp_port;
         static const ydk::Enum::YLeaf ivx_lan_udp_port;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ietf-udp-port") return 4789;
+            if (name == "ivx-lan-udp-port") return 48879;
+            return -1;
+        }
+};
+
+class LoadBalanceEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf per_evi;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "per-evi") return 1;
+            return -1;
+        }
+};
+
+class IrProtocolEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "bgp") return 1;
+            return -1;
+        }
+};
+
+class UnknownUnicastFloodingEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf suppress_uuf;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "suppress-uuf") return 1;
+            return -1;
+        }
 };
 
 class OverlayEncapEnum : public ydk::Enum
@@ -31,27 +73,11 @@ class OverlayEncapEnum : public ydk::Enum
         static const ydk::Enum::YLeaf vx_lan_encapsulation;
         static const ydk::Enum::YLeaf soft_gre_encapsulation;
 
-};
-
-class UnknownUnicastFloodingEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf suppress_uuf;
-
-};
-
-class LoadBalanceEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf per_evi;
-
-};
-
-class IrProtocolEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "vx-lan-encapsulation") return 0;
+            if (name == "soft-gre-encapsulation") return 1;
+            return -1;
+        }
 };
 
 

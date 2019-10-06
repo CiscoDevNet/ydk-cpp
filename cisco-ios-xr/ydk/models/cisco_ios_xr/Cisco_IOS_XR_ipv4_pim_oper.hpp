@@ -2313,33 +2313,11 @@ class Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::Pim
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -7410,33 +7388,11 @@ class Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCr
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -12389,33 +12345,11 @@ class Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimB
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -17486,33 +17420,11 @@ class Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrp
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -22494,33 +22406,11 @@ class Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList:
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -27591,33 +27481,11 @@ class Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimB
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Ipv6Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -32570,33 +32438,11 @@ class Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -37667,33 +37513,11 @@ class Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
         ydk::YLeaf candidate_rp_up_time; //type: uint16
         ydk::YLeaf candidate_rp_expires; //type: uint16
         ydk::YLeaf protocol; //type: PimShowProtocol
-        class NextCandidateRp; //type: Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
         class CandidateRpAddress; //type: Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp> next_candidate_rp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress> candidate_rp_address;
         
 }; // Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
-
-
-class Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp : public ydk::Entity
-{
-    public:
-        NextCandidateRp();
-        ~NextCandidateRp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp
 
 
 class Ipv6Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress : public ydk::Entity
@@ -41550,44 +41374,6 @@ class Pim6Ma::Standby::PimMaSummary : public ydk::Entity
 
 }; // Pim6Ma::Standby::PimMaSummary
 
-class PimTopologyInterfaceFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lh;
-        static const ydk::Enum::YLeaf ld;
-        static const ydk::Enum::YLeaf li;
-        static const ydk::Enum::YLeaf ii;
-        static const ydk::Enum::YLeaf id;
-        static const ydk::Enum::YLeaf as;
-        static const ydk::Enum::YLeaf ab;
-        static const ydk::Enum::YLeaf ex;
-
-};
-
-class PimSafi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf default_;
-
-};
-
-class PimClient : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf configured_embedded_rp;
-        static const ydk::Enum::YLeaf embedded;
-        static const ydk::Enum::YLeaf permanent;
-        static const ydk::Enum::YLeaf auto_rp;
-        static const ydk::Enum::YLeaf bsr;
-        static const ydk::Enum::YLeaf configured;
-        static const ydk::Enum::YLeaf static_;
-
-};
-
 class PimTopologyEntryFlag : public ydk::Enum
 {
     public:
@@ -41609,19 +41395,26 @@ class PimTopologyEntryFlag : public ydk::Enum
         static const ydk::Enum::YLeaf mfp;
         static const ydk::Enum::YLeaf mfb;
 
-};
-
-class PimProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf non_routable;
-        static const ydk::Enum::YLeaf sparse_mode;
-        static const ydk::Enum::YLeaf dense_mode;
-        static const ydk::Enum::YLeaf bidir;
-        static const ydk::Enum::YLeaf ssm;
-        static const ydk::Enum::YLeaf maximum;
-        static const ydk::Enum::YLeaf any;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "kat") return 0;
+            if (name == "aa") return 1;
+            if (name == "pa") return 2;
+            if (name == "ra") return 3;
+            if (name == "ia") return 4;
+            if (name == "rr") return 5;
+            if (name == "lh") return 6;
+            if (name == "dss") return 7;
+            if (name == "dcc") return 8;
+            if (name == "sr") return 9;
+            if (name == "e") return 10;
+            if (name == "ex") return 11;
+            if (name == "ma") return 12;
+            if (name == "mt") return 13;
+            if (name == "mfa") return 14;
+            if (name == "mfp") return 15;
+            if (name == "mfb") return 16;
+            return -1;
+        }
 };
 
 class PimAfi : public ydk::Enum
@@ -41630,6 +41423,11 @@ class PimAfi : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_unicast;
         static const ydk::Enum::YLeaf ipv6_unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-unicast") return 0;
+            if (name == "ipv6-unicast") return 1;
+            return -1;
+        }
 };
 
 class PimInterface : public ydk::Enum
@@ -41639,24 +41437,12 @@ class PimInterface : public ydk::Enum
         static const ydk::Enum::YLeaf decap_interface;
         static const ydk::Enum::YLeaf mdt_interface;
 
-};
-
-class PimShowLocalInterest : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf li;
-        static const ydk::Enum::YLeaf ld;
-
-};
-
-class PimInternalInterestInfo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf ii;
-        static const ydk::Enum::YLeaf id;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "encap-interface") return 0;
+            if (name == "decap-interface") return 1;
+            if (name == "mdt-interface") return 2;
+            return -1;
+        }
 };
 
 class PimShowRangeClient : public ydk::Enum
@@ -41671,6 +41457,112 @@ class PimShowRangeClient : public ydk::Enum
         static const ydk::Enum::YLeaf config;
         static const ydk::Enum::YLeaf static_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-client") return 0;
+            if (name == "embedded-config") return 1;
+            if (name == "embedded") return 2;
+            if (name == "permanent") return 3;
+            if (name == "auto-rp") return 4;
+            if (name == "bsr") return 5;
+            if (name == "config") return 6;
+            if (name == "static") return 7;
+            return -1;
+        }
+};
+
+class PimInternalInterestInfo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf ii;
+        static const ydk::Enum::YLeaf id;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "null") return 21;
+            if (name == "ii") return 22;
+            if (name == "id") return 23;
+            return -1;
+        }
+};
+
+class PimProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf non_routable;
+        static const ydk::Enum::YLeaf sparse_mode;
+        static const ydk::Enum::YLeaf dense_mode;
+        static const ydk::Enum::YLeaf bidir;
+        static const ydk::Enum::YLeaf ssm;
+        static const ydk::Enum::YLeaf maximum;
+        static const ydk::Enum::YLeaf any;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "non-routable") return 0;
+            if (name == "sparse-mode") return 1;
+            if (name == "dense-mode") return 2;
+            if (name == "bidir") return 3;
+            if (name == "ssm") return 4;
+            if (name == "maximum") return 5;
+            if (name == "any") return 6;
+            return -1;
+        }
+};
+
+class PimSafi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf default_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            if (name == "all") return 3;
+            if (name == "default") return 4;
+            return -1;
+        }
+};
+
+class PimShowLocalInterest : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf li;
+        static const ydk::Enum::YLeaf ld;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "null") return 1;
+            if (name == "li") return 2;
+            if (name == "ld") return 3;
+            return -1;
+        }
+};
+
+class PimClient : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf configured_embedded_rp;
+        static const ydk::Enum::YLeaf embedded;
+        static const ydk::Enum::YLeaf permanent;
+        static const ydk::Enum::YLeaf auto_rp;
+        static const ydk::Enum::YLeaf bsr;
+        static const ydk::Enum::YLeaf configured;
+        static const ydk::Enum::YLeaf static_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "configured-embedded-rp") return 1;
+            if (name == "embedded") return 2;
+            if (name == "permanent") return 3;
+            if (name == "auto-rp") return 4;
+            if (name == "bsr") return 5;
+            if (name == "configured") return 6;
+            if (name == "static") return 7;
+            return -1;
+        }
 };
 
 class PimShowProtocol : public ydk::Enum
@@ -41684,6 +41576,41 @@ class PimShowProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf maximum;
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-route") return 0;
+            if (name == "sm") return 1;
+            if (name == "dm") return 2;
+            if (name == "bidir") return 3;
+            if (name == "ssm") return 4;
+            if (name == "maximum") return 5;
+            if (name == "any") return 6;
+            return -1;
+        }
+};
+
+class PimTopologyInterfaceFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lh;
+        static const ydk::Enum::YLeaf ld;
+        static const ydk::Enum::YLeaf li;
+        static const ydk::Enum::YLeaf ii;
+        static const ydk::Enum::YLeaf id;
+        static const ydk::Enum::YLeaf as;
+        static const ydk::Enum::YLeaf ab;
+        static const ydk::Enum::YLeaf ex;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "lh") return 0;
+            if (name == "ld") return 1;
+            if (name == "li") return 2;
+            if (name == "ii") return 3;
+            if (name == "id") return 4;
+            if (name == "as") return 5;
+            if (name == "ab") return 6;
+            if (name == "ex") return 7;
+            return -1;
+        }
 };
 
 

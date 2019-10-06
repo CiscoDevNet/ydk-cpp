@@ -101,6 +101,7 @@ class SdrConfig::Sdr::Resources : public ydk::Entity
 
         ydk::YLeaf fgid; //type: uint32
         ydk::YLeaf mgmt_ext_vlan; //type: uint32
+        ydk::YLeaf disk_space_size; //type: uint32
         class CardType; //type: SdrConfig::Sdr::Resources::CardType
 
         ydk::YList card_type;
@@ -148,7 +149,6 @@ class SdrConfig::Sdr::Location : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf node_location; //type: string
-        ydk::YLeafList slice; //type: list of  uint8
 
 }; // SdrConfig::Sdr::Location
 
@@ -256,7 +256,6 @@ class SdrConfig::Sdr::Detail::Location : public ydk::Entity
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf reboot_count; //type: uint32
         ydk::YLeaf rh_count; //type: uint32
-        ydk::YLeafList slice; //type: list of  one of uint8, string
         class RebootHist1; //type: SdrConfig::Sdr::Detail::Location::RebootHist1
 
         ydk::YList reboot_hist1;
@@ -926,15 +925,6 @@ class PrivateSdr::SdrName::Pairing : public ydk::Entity
 
 }; // PrivateSdr::SdrName::Pairing
 
-class CardType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf RP;
-        static const ydk::Enum::YLeaf LC;
-        static const ydk::Enum::YLeaf CC;
-
-};
-
 class VmReloadReason : public ydk::Enum
 {
     public:
@@ -950,6 +940,35 @@ class VmReloadReason : public ydk::Enum
         static const ydk::Enum::YLeaf SMU;
         static const ydk::Enum::YLeaf REASON_UNKNOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "CARD_OFFLINE") return 0;
+            if (name == "CARD_SHUTDOWN") return 1;
+            if (name == "ALL_VM_RELOAD") return 2;
+            if (name == "VM_REQUESTED_GRACEFUL_RELOAD") return 3;
+            if (name == "VM_REQUESTED_UNGRACEFUL_RELOAD") return 4;
+            if (name == "SDR_CLI_REQUESTED") return 5;
+            if (name == "SDR_VCPU_VMEM_CHANGED") return 6;
+            if (name == "SDR_HEARTBEAT_FAILURE") return 7;
+            if (name == "FIRST_BOOT") return 8;
+            if (name == "SMU") return 9;
+            if (name == "REASON_UNKNOWN") return 10;
+            return -1;
+        }
+};
+
+class CardType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf RP;
+        static const ydk::Enum::YLeaf LC;
+        static const ydk::Enum::YLeaf CC;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "RP") return 0;
+            if (name == "LC") return 1;
+            if (name == "CC") return 2;
+            return -1;
+        }
 };
 
 class SdrConfig::Sdr::PairingMode : public ydk::Enum
@@ -958,6 +977,11 @@ class SdrConfig::Sdr::PairingMode : public ydk::Enum
         static const ydk::Enum::YLeaf intra_rack;
         static const ydk::Enum::YLeaf inter_rack;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "intra-rack") return 0;
+            if (name == "inter-rack") return 1;
+            return -1;
+        }
 };
 
 class SdrConfig::Sdr::Issu : public ydk::Enum
@@ -965,6 +989,10 @@ class SdrConfig::Sdr::Issu : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            return -1;
+        }
 };
 
 

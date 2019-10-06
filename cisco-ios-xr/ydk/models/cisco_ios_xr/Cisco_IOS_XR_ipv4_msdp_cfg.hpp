@@ -626,20 +626,30 @@ class Msdp::DefaultContext::SaFilters::SaFilter : public ydk::Entity
 
 }; // Msdp::DefaultContext::SaFilters::SaFilter
 
-class MsdpFilterTypeVrf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf incoming;
-        static const ydk::Enum::YLeaf outgoing;
-
-};
-
 class MsdpListTypeVrf : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf list;
         static const ydk::Enum::YLeaf rp_list;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "list") return 3;
+            if (name == "rp-list") return 4;
+            return -1;
+        }
+};
+
+class MsdpFilterTypeVrf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf incoming;
+        static const ydk::Enum::YLeaf outgoing;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "incoming") return 1;
+            if (name == "outgoing") return 2;
+            return -1;
+        }
 };
 
 

@@ -66,6 +66,18 @@ module ydktest-types {
       description "Identityref type";
   }
 
+  typedef Ydk-bits-type {
+    description "this is bits type value";
+    type bits {
+      bit disable-nagle {
+        position 0;
+      }
+      bit auto-sense-speed {
+        position 1;
+      }
+    }
+  }
+
   feature crypto {
     description
       "crypto feature";

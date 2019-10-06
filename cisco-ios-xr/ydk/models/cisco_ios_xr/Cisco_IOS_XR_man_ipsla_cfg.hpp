@@ -41,9 +41,9 @@ class Ipsla : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Common> common;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor> mpls_lsp_monitor;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation> operation_;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder> responder; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder> responder;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsDiscovery> mpls_discovery;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::ServerTwamp> server_twamp; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::ServerTwamp> server_twamp;
         
 }; // Ipsla
 
@@ -217,10 +217,10 @@ class Ipsla::MplsLspMonitor::Reactions::Reaction::Condition : public ydk::Entity
         class LpdGroup; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdGroup
         class ConnectionLoss; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::ConnectionLoss
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdTreeTrace> lpd_tree_trace; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::Timeout> timeout; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdGroup> lpd_group; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::ConnectionLoss> connection_loss; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdTreeTrace> lpd_tree_trace;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::Timeout> timeout;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdGroup> lpd_group;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::ConnectionLoss> connection_loss;
         
 }; // Ipsla::MplsLspMonitor::Reactions::Reaction::Condition
 
@@ -241,6 +241,7 @@ class Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdTreeTrace : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ActionType; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdTreeTrace::ActionType
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdTreeTrace::ActionType> action_type;
@@ -285,6 +286,7 @@ class Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::Timeout : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ActionType; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::Timeout::ActionType
         class ThresholdType; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::Timeout::ThresholdType
 
@@ -354,6 +356,7 @@ class Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdGroup : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ActionType; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdGroup::ActionType
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::LpdGroup::ActionType> action_type;
@@ -398,6 +401,7 @@ class Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::ConnectionLoss : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ActionType; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::ConnectionLoss::ActionType
         class ThresholdType; //type: Ipsla::MplsLspMonitor::Reactions::Reaction::Condition::ConnectionLoss::ThresholdType
 
@@ -597,8 +601,8 @@ class Ipsla::MplsLspMonitor::Definitions::Definition::OperationType : public ydk
         class MplsLspTrace; //type: Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspTrace
         class MplsLspPing; //type: Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspTrace> mpls_lsp_trace; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing> mpls_lsp_ping; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspTrace> mpls_lsp_trace;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing> mpls_lsp_ping;
         
 }; // Ipsla::MplsLspMonitor::Definitions::Definition::OperationType
 
@@ -625,6 +629,7 @@ class Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspTrac
         ydk::YLeaf lsp_selector; //type: string
         ydk::YLeaf output_interface; //type: string
         ydk::YLeaf accesslist; //type: string
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf output_nexthop; //type: string
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf force_explicit_null; //type: empty
@@ -727,6 +732,7 @@ class Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing
         ydk::YLeaf lsp_selector; //type: string
         ydk::YLeaf output_interface; //type: string
         ydk::YLeaf accesslist; //type: string
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf output_nexthop; //type: string
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf force_explicit_null; //type: empty
@@ -738,7 +744,7 @@ class Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing
         class Scan; //type: Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::Scan
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::DataSize> data_size;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::PathDiscover> path_discover; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::PathDiscover> path_discover;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::Reply> reply;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::Scan> scan;
@@ -784,6 +790,7 @@ class Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf scan_period; //type: uint32
+        ydk::YLeaf create; //type: empty
         class Session; //type: Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::PathDiscover::Session
         class Path; //type: Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::PathDiscover::Path
         class Echo; //type: Ipsla::MplsLspMonitor::Definitions::Definition::OperationType::MplsLspPing::PathDiscover::Echo
@@ -1160,15 +1167,15 @@ class Ipsla::Operation::Reactions::Reaction::Condition : public ydk::Entity
         class ConnectionLoss; //type: Ipsla::Operation::Reactions::Reaction::Condition::ConnectionLoss
         class PacketLossDs; //type: Ipsla::Operation::Reactions::Reaction::Condition::PacketLossDs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageDs> jitter_average_ds; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::Timeout> timeout; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::JitterAverage> jitter_average; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::VerifyError> verify_error; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::Rtt> rtt; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::PacketLossSd> packet_loss_sd; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageSd> jitter_average_sd; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::ConnectionLoss> connection_loss; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::PacketLossDs> packet_loss_ds; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageDs> jitter_average_ds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::Timeout> timeout;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::JitterAverage> jitter_average;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::VerifyError> verify_error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::Rtt> rtt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::PacketLossSd> packet_loss_sd;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageSd> jitter_average_sd;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::ConnectionLoss> connection_loss;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction::Condition::PacketLossDs> packet_loss_ds;
         
 }; // Ipsla::Operation::Reactions::Reaction::Condition
 
@@ -1189,6 +1196,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageDs : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ThresholdLimits; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageDs::ThresholdLimits
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageDs::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageDs::ThresholdType
@@ -1283,6 +1291,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::Timeout : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::Timeout::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::Timeout::ThresholdType
 
@@ -1353,6 +1362,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::JitterAverage : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ThresholdLimits; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverage::ThresholdLimits
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverage::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverage::ThresholdType
@@ -1447,6 +1457,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::VerifyError : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::VerifyError::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::VerifyError::ThresholdType
 
@@ -1517,6 +1528,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::Rtt : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ThresholdLimits; //type: Ipsla::Operation::Reactions::Reaction::Condition::Rtt::ThresholdLimits
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::Rtt::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::Rtt::ThresholdType
@@ -1611,6 +1623,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::PacketLossSd : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ThresholdLimits; //type: Ipsla::Operation::Reactions::Reaction::Condition::PacketLossSd::ThresholdLimits
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::PacketLossSd::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::PacketLossSd::ThresholdType
@@ -1705,6 +1718,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageSd : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ThresholdLimits; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageSd::ThresholdLimits
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageSd::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::JitterAverageSd::ThresholdType
@@ -1799,6 +1813,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::ConnectionLoss : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::ConnectionLoss::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::ConnectionLoss::ThresholdType
 
@@ -1869,6 +1884,7 @@ class Ipsla::Operation::Reactions::Reaction::Condition::PacketLossDs : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf create; //type: empty
         class ThresholdLimits; //type: Ipsla::Operation::Reactions::Reaction::Condition::PacketLossDs::ThresholdLimits
         class ActionType; //type: Ipsla::Operation::Reactions::Reaction::Condition::PacketLossDs::ActionType
         class ThresholdType; //type: Ipsla::Operation::Reactions::Reaction::Condition::PacketLossDs::ThresholdType
@@ -2067,13 +2083,13 @@ class Ipsla::Operation::Definitions::Definition::OperationType : public ydk::Ent
         class IcmpPathEcho; //type: Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathEcho
         class IcmpPathJitter; //type: Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathJitter
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::IcmpEcho> icmp_echo; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::MplsLspPing> mpls_lsp_ping; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::UdpEcho> udp_echo; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::MplsLspTrace> mpls_lsp_trace; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::UdpJitter> udp_jitter; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathEcho> icmp_path_echo; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathJitter> icmp_path_jitter; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::IcmpEcho> icmp_echo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::MplsLspPing> mpls_lsp_ping;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::UdpEcho> udp_echo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::MplsLspTrace> mpls_lsp_trace;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::UdpJitter> udp_jitter;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathEcho> icmp_path_echo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathJitter> icmp_path_jitter;
         
 }; // Ipsla::Operation::Definitions::Definition::OperationType
 
@@ -2098,6 +2114,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::IcmpEcho : publi
         ydk::YLeaf dest_address_v6; //type: string
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf tos; //type: uint32
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf frequency; //type: uint32
@@ -2247,6 +2264,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::MplsLspPing : pu
         ydk::YLeaf ttl; //type: uint32
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf output_nexthop; //type: string
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf lsp_selector; //type: string
         ydk::YLeaf exp_bits; //type: uint32
         ydk::YLeaf force_explicit_null; //type: empty
@@ -2563,6 +2581,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::UdpEcho : public
         ydk::YLeaf tos; //type: uint32
         ydk::YLeaf control_disable; //type: empty
         ydk::YLeaf source_port; //type: uint16
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf frequency; //type: uint32
@@ -2714,6 +2733,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::MplsLspTrace : p
         ydk::YLeaf ttl; //type: uint32
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf output_nexthop; //type: string
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf lsp_selector; //type: string
         ydk::YLeaf exp_bits; //type: uint32
         ydk::YLeaf force_explicit_null; //type: empty
@@ -2913,6 +2933,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::UdpJitter : publ
         ydk::YLeaf tos; //type: uint32
         ydk::YLeaf control_disable; //type: empty
         ydk::YLeaf source_port; //type: uint16
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf frequency; //type: uint32
@@ -3062,6 +3083,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathEcho : p
 
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf tos; //type: uint32
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf frequency; //type: uint32
@@ -3196,6 +3218,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::IcmpPathJitter :
 
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf tos; //type: uint32
+        ydk::YLeaf create; //type: empty
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf timeout; //type: uint32
         ydk::YLeaf frequency; //type: uint32
@@ -3304,7 +3327,7 @@ class Ipsla::Responder : public ydk::Entity
         class Type; //type: Ipsla::Responder::Type
         class TwampLight; //type: Ipsla::Responder::TwampLight
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Twamp> twamp; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Twamp> twamp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Type> type;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::TwampLight> twamp_light;
         
@@ -4431,15 +4454,6 @@ class Ipsla::ServerTwamp : public ydk::Entity
 
 }; // Ipsla::ServerTwamp
 
-class IpslaSecondaryFrequency : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf connection_loss;
-        static const ydk::Enum::YLeaf timeout;
-        static const ydk::Enum::YLeaf both;
-
-};
-
 class IpslaMonth : public ydk::Enum
 {
     public:
@@ -4456,6 +4470,21 @@ class IpslaMonth : public ydk::Enum
         static const ydk::Enum::YLeaf november;
         static const ydk::Enum::YLeaf december;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "january") return 0;
+            if (name == "february") return 1;
+            if (name == "march") return 2;
+            if (name == "april") return 3;
+            if (name == "may") return 4;
+            if (name == "june") return 5;
+            if (name == "july") return 6;
+            if (name == "august") return 7;
+            if (name == "september") return 8;
+            if (name == "october") return 9;
+            if (name == "november") return 10;
+            if (name == "december") return 11;
+            return -1;
+        }
 };
 
 class IpslaLspPingReplyMode : public ydk::Enum
@@ -4464,6 +4493,24 @@ class IpslaLspPingReplyMode : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_udp_router_alert;
         static const ydk::Enum::YLeaf control_channel;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-udp-router-alert") return 3;
+            if (name == "control-channel") return 4;
+            return -1;
+        }
+};
+
+class IpslaHistoryFilter : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf all;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "failed") return 2;
+            if (name == "all") return 255;
+            return -1;
+        }
 };
 
 class IpslaLspTraceReplyMode : public ydk::Enum
@@ -4471,23 +4518,36 @@ class IpslaLspTraceReplyMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4_udp_router_alert;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-udp-router-alert") return 3;
+            return -1;
+        }
 };
 
-class IpslaLspMonitorReplyMode : public ydk::Enum
+class IpslaSecondaryFrequency : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4_udp_router_alert;
+        static const ydk::Enum::YLeaf connection_loss;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "connection-loss") return 1;
+            if (name == "timeout") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
-class IpslaSched : public ydk::Enum
+class IpslaLife : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pending;
-        static const ydk::Enum::YLeaf now;
-        static const ydk::Enum::YLeaf after;
-        static const ydk::Enum::YLeaf at;
+        static const ydk::Enum::YLeaf forever;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forever") return 0;
+            return -1;
+        }
 };
 
 class IpslaLspReplyDscp : public ydk::Enum
@@ -4515,13 +4575,41 @@ class IpslaLspReplyDscp : public ydk::Enum
         static const ydk::Enum::YLeaf cs7;
         static const ydk::Enum::YLeaf ef;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "af11") return 10;
+            if (name == "af12") return 12;
+            if (name == "af13") return 14;
+            if (name == "af21") return 18;
+            if (name == "af22") return 20;
+            if (name == "af23") return 22;
+            if (name == "af31") return 26;
+            if (name == "af32") return 28;
+            if (name == "af33") return 30;
+            if (name == "af41") return 34;
+            if (name == "af42") return 36;
+            if (name == "af43") return 38;
+            if (name == "cs1") return 8;
+            if (name == "cs2") return 16;
+            if (name == "cs3") return 24;
+            if (name == "cs4") return 32;
+            if (name == "cs5") return 40;
+            if (name == "cs6") return 48;
+            if (name == "cs7") return 56;
+            if (name == "ef") return 46;
+            return -1;
+        }
 };
 
-class IpslaLife : public ydk::Enum
+class IpslaLspMonitorReplyMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf forever;
+        static const ydk::Enum::YLeaf ipv4_udp_router_alert;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-udp-router-alert") return 3;
+            return -1;
+        }
 };
 
 class IpslaThresholdTypes : public ydk::Enum
@@ -4532,6 +4620,30 @@ class IpslaThresholdTypes : public ydk::Enum
         static const ydk::Enum::YLeaf xof_y;
         static const ydk::Enum::YLeaf average;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            if (name == "xof-y") return 4;
+            if (name == "average") return 5;
+            return -1;
+        }
+};
+
+class IpslaSched : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pending;
+        static const ydk::Enum::YLeaf now;
+        static const ydk::Enum::YLeaf after;
+        static const ydk::Enum::YLeaf at;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "pending") return 1;
+            if (name == "now") return 2;
+            if (name == "after") return 3;
+            if (name == "at") return 4;
+            return -1;
+        }
 };
 
 class IpslaLspMonitorThresholdTypes : public ydk::Enum
@@ -4540,14 +4652,11 @@ class IpslaLspMonitorThresholdTypes : public ydk::Enum
         static const ydk::Enum::YLeaf immediate;
         static const ydk::Enum::YLeaf consecutive;
 
-};
-
-class IpslaHistoryFilter : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf failed;
-        static const ydk::Enum::YLeaf all;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            return -1;
+        }
 };
 
 

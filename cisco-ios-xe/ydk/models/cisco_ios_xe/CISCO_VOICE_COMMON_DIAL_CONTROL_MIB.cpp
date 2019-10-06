@@ -719,45 +719,11 @@ bool CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallH
     return false;
 }
 
-const Enum::YLeaf CvcSpeechCoderRate::g729r8000 {1, "g729r8000"};
-const Enum::YLeaf CvcSpeechCoderRate::g729Ar8000 {2, "g729Ar8000"};
-const Enum::YLeaf CvcSpeechCoderRate::g726r16000 {3, "g726r16000"};
-const Enum::YLeaf CvcSpeechCoderRate::g726r24000 {4, "g726r24000"};
-const Enum::YLeaf CvcSpeechCoderRate::g726r32000 {5, "g726r32000"};
-const Enum::YLeaf CvcSpeechCoderRate::g711ulawr64000 {6, "g711ulawr64000"};
-const Enum::YLeaf CvcSpeechCoderRate::g711Alawr64000 {7, "g711Alawr64000"};
-const Enum::YLeaf CvcSpeechCoderRate::g728r16000 {8, "g728r16000"};
-const Enum::YLeaf CvcSpeechCoderRate::g723r6300 {9, "g723r6300"};
-const Enum::YLeaf CvcSpeechCoderRate::g723r5300 {10, "g723r5300"};
-const Enum::YLeaf CvcSpeechCoderRate::gsmr13200 {11, "gsmr13200"};
-const Enum::YLeaf CvcSpeechCoderRate::g729Br8000 {12, "g729Br8000"};
-const Enum::YLeaf CvcSpeechCoderRate::g729ABr8000 {13, "g729ABr8000"};
-const Enum::YLeaf CvcSpeechCoderRate::g723Ar6300 {14, "g723Ar6300"};
-const Enum::YLeaf CvcSpeechCoderRate::g723Ar5300 {15, "g723Ar5300"};
-const Enum::YLeaf CvcSpeechCoderRate::g729IETFr8000 {16, "g729IETFr8000"};
-const Enum::YLeaf CvcSpeechCoderRate::gsmeEr12200 {17, "gsmeEr12200"};
-const Enum::YLeaf CvcSpeechCoderRate::clearChannel {18, "clearChannel"};
-const Enum::YLeaf CvcSpeechCoderRate::g726r40000 {19, "g726r40000"};
-const Enum::YLeaf CvcSpeechCoderRate::llcc {20, "llcc"};
-const Enum::YLeaf CvcSpeechCoderRate::gsmAmrNb {21, "gsmAmrNb"};
-const Enum::YLeaf CvcSpeechCoderRate::iLBC {22, "iLBC"};
-const Enum::YLeaf CvcSpeechCoderRate::iLBCr15200 {23, "iLBCr15200"};
-const Enum::YLeaf CvcSpeechCoderRate::iLBCr13330 {24, "iLBCr13330"};
-const Enum::YLeaf CvcSpeechCoderRate::g722r4800 {25, "g722r4800"};
-const Enum::YLeaf CvcSpeechCoderRate::g722r5600 {26, "g722r5600"};
-const Enum::YLeaf CvcSpeechCoderRate::g722r6400 {27, "g722r6400"};
-const Enum::YLeaf CvcSpeechCoderRate::iSAC {28, "iSAC"};
-const Enum::YLeaf CvcSpeechCoderRate::aaclc {29, "aaclc"};
-const Enum::YLeaf CvcSpeechCoderRate::aacld {30, "aacld"};
-
-const Enum::YLeaf CvcFaxTransmitRate::none {1, "none"};
-const Enum::YLeaf CvcFaxTransmitRate::voiceRate {2, "voiceRate"};
-const Enum::YLeaf CvcFaxTransmitRate::fax2400 {3, "fax2400"};
-const Enum::YLeaf CvcFaxTransmitRate::fax4800 {4, "fax4800"};
-const Enum::YLeaf CvcFaxTransmitRate::fax7200 {5, "fax7200"};
-const Enum::YLeaf CvcFaxTransmitRate::fax9600 {6, "fax9600"};
-const Enum::YLeaf CvcFaxTransmitRate::fax14400 {7, "fax14400"};
-const Enum::YLeaf CvcFaxTransmitRate::fax12000 {8, "fax12000"};
+const Enum::YLeaf CvcInBandSignaling::cas {1, "cas"};
+const Enum::YLeaf CvcInBandSignaling::none {2, "none"};
+const Enum::YLeaf CvcInBandSignaling::cept {3, "cept"};
+const Enum::YLeaf CvcInBandSignaling::transparent {4, "transparent"};
+const Enum::YLeaf CvcInBandSignaling::gr303 {5, "gr303"};
 
 const Enum::YLeaf CvcCoderTypeRate::other {1, "other"};
 const Enum::YLeaf CvcCoderTypeRate::fax2400 {2, "fax2400"};
@@ -798,21 +764,55 @@ const Enum::YLeaf CvcCoderTypeRate::iSAC {38, "iSAC"};
 const Enum::YLeaf CvcCoderTypeRate::aaclc {39, "aaclc"};
 const Enum::YLeaf CvcCoderTypeRate::aacld {40, "aacld"};
 
-const Enum::YLeaf CvcInBandSignaling::cas {1, "cas"};
-const Enum::YLeaf CvcInBandSignaling::none {2, "none"};
-const Enum::YLeaf CvcInBandSignaling::cept {3, "cept"};
-const Enum::YLeaf CvcInBandSignaling::transparent {4, "transparent"};
-const Enum::YLeaf CvcInBandSignaling::gr303 {5, "gr303"};
-
-const Enum::YLeaf CvcH320CallType::none {0, "none"};
-const Enum::YLeaf CvcH320CallType::primary {1, "primary"};
-const Enum::YLeaf CvcH320CallType::secondary {2, "secondary"};
-
 const Enum::YLeaf CvcVideoCoderRate::none {0, "none"};
 const Enum::YLeaf CvcVideoCoderRate::h261 {1, "h261"};
 const Enum::YLeaf CvcVideoCoderRate::h263 {2, "h263"};
 const Enum::YLeaf CvcVideoCoderRate::h263plus {3, "h263plus"};
 const Enum::YLeaf CvcVideoCoderRate::h264 {4, "h264"};
+
+const Enum::YLeaf CvcH320CallType::none {0, "none"};
+const Enum::YLeaf CvcH320CallType::primary {1, "primary"};
+const Enum::YLeaf CvcH320CallType::secondary {2, "secondary"};
+
+const Enum::YLeaf CvcSpeechCoderRate::g729r8000 {1, "g729r8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g729Ar8000 {2, "g729Ar8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r16000 {3, "g726r16000"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r24000 {4, "g726r24000"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r32000 {5, "g726r32000"};
+const Enum::YLeaf CvcSpeechCoderRate::g711ulawr64000 {6, "g711ulawr64000"};
+const Enum::YLeaf CvcSpeechCoderRate::g711Alawr64000 {7, "g711Alawr64000"};
+const Enum::YLeaf CvcSpeechCoderRate::g728r16000 {8, "g728r16000"};
+const Enum::YLeaf CvcSpeechCoderRate::g723r6300 {9, "g723r6300"};
+const Enum::YLeaf CvcSpeechCoderRate::g723r5300 {10, "g723r5300"};
+const Enum::YLeaf CvcSpeechCoderRate::gsmr13200 {11, "gsmr13200"};
+const Enum::YLeaf CvcSpeechCoderRate::g729Br8000 {12, "g729Br8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g729ABr8000 {13, "g729ABr8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g723Ar6300 {14, "g723Ar6300"};
+const Enum::YLeaf CvcSpeechCoderRate::g723Ar5300 {15, "g723Ar5300"};
+const Enum::YLeaf CvcSpeechCoderRate::g729IETFr8000 {16, "g729IETFr8000"};
+const Enum::YLeaf CvcSpeechCoderRate::gsmeEr12200 {17, "gsmeEr12200"};
+const Enum::YLeaf CvcSpeechCoderRate::clearChannel {18, "clearChannel"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r40000 {19, "g726r40000"};
+const Enum::YLeaf CvcSpeechCoderRate::llcc {20, "llcc"};
+const Enum::YLeaf CvcSpeechCoderRate::gsmAmrNb {21, "gsmAmrNb"};
+const Enum::YLeaf CvcSpeechCoderRate::iLBC {22, "iLBC"};
+const Enum::YLeaf CvcSpeechCoderRate::iLBCr15200 {23, "iLBCr15200"};
+const Enum::YLeaf CvcSpeechCoderRate::iLBCr13330 {24, "iLBCr13330"};
+const Enum::YLeaf CvcSpeechCoderRate::g722r4800 {25, "g722r4800"};
+const Enum::YLeaf CvcSpeechCoderRate::g722r5600 {26, "g722r5600"};
+const Enum::YLeaf CvcSpeechCoderRate::g722r6400 {27, "g722r6400"};
+const Enum::YLeaf CvcSpeechCoderRate::iSAC {28, "iSAC"};
+const Enum::YLeaf CvcSpeechCoderRate::aaclc {29, "aaclc"};
+const Enum::YLeaf CvcSpeechCoderRate::aacld {30, "aacld"};
+
+const Enum::YLeaf CvcFaxTransmitRate::none {1, "none"};
+const Enum::YLeaf CvcFaxTransmitRate::voiceRate {2, "voiceRate"};
+const Enum::YLeaf CvcFaxTransmitRate::fax2400 {3, "fax2400"};
+const Enum::YLeaf CvcFaxTransmitRate::fax4800 {4, "fax4800"};
+const Enum::YLeaf CvcFaxTransmitRate::fax7200 {5, "fax7200"};
+const Enum::YLeaf CvcFaxTransmitRate::fax9600 {6, "fax9600"};
+const Enum::YLeaf CvcFaxTransmitRate::fax14400 {7, "fax14400"};
+const Enum::YLeaf CvcFaxTransmitRate::fax12000 {8, "fax12000"};
 
 
 }

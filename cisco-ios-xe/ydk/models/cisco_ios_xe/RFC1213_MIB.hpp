@@ -789,6 +789,11 @@ class RFC1213MIB::Ip::IpForwarding : public ydk::Enum
         static const ydk::Enum::YLeaf forwarding;
         static const ydk::Enum::YLeaf not_forwarding;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "forwarding") return 1;
+            if (name == "not-forwarding") return 2;
+            return -1;
+        }
 };
 
 class RFC1213MIB::Tcp::TcpRtoAlgorithm : public ydk::Enum
@@ -800,6 +805,14 @@ class RFC1213MIB::Tcp::TcpRtoAlgorithm : public ydk::Enum
         static const ydk::Enum::YLeaf vanj;
         static const ydk::Enum::YLeaf rfc2988;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "constant") return 2;
+            if (name == "rsre") return 3;
+            if (name == "vanj") return 4;
+            if (name == "rfc2988") return 5;
+            return -1;
+        }
 };
 
 class RFC1213MIB::Snmp::SnmpEnableAuthenTraps : public ydk::Enum
@@ -808,6 +821,11 @@ class RFC1213MIB::Snmp::SnmpEnableAuthenTraps : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class RFC1213MIB::IfTable::IfEntry::IfAdminStatus : public ydk::Enum
@@ -817,6 +835,12 @@ class RFC1213MIB::IfTable::IfEntry::IfAdminStatus : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            return -1;
+        }
 };
 
 class RFC1213MIB::IfTable::IfEntry::IfOperStatus : public ydk::Enum
@@ -828,6 +852,14 @@ class RFC1213MIB::IfTable::IfEntry::IfOperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf dormant;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            if (name == "unknown") return 4;
+            if (name == "dormant") return 5;
+            return -1;
+        }
 };
 
 class RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteType : public ydk::Enum
@@ -838,6 +870,13 @@ class RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteType : public ydk::Enum
         static const ydk::Enum::YLeaf direct;
         static const ydk::Enum::YLeaf indirect;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "direct") return 3;
+            if (name == "indirect") return 4;
+            return -1;
+        }
 };
 
 class RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto : public ydk::Enum
@@ -858,6 +897,23 @@ class RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto : public ydk::Enum
         static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf bgp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "local") return 2;
+            if (name == "netmgmt") return 3;
+            if (name == "icmp") return 4;
+            if (name == "egp") return 5;
+            if (name == "ggp") return 6;
+            if (name == "hello") return 7;
+            if (name == "rip") return 8;
+            if (name == "is-is") return 9;
+            if (name == "es-is") return 10;
+            if (name == "ciscoIgrp") return 11;
+            if (name == "bbnSpfIgp") return 12;
+            if (name == "ospf") return 13;
+            if (name == "bgp") return 14;
+            return -1;
+        }
 };
 
 class RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType : public ydk::Enum
@@ -868,6 +924,13 @@ class RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType : publi
         static const ydk::Enum::YLeaf dynamic;
         static const ydk::Enum::YLeaf static_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "invalid") return 2;
+            if (name == "dynamic") return 3;
+            if (name == "static") return 4;
+            return -1;
+        }
 };
 
 class RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState : public ydk::Enum
@@ -886,6 +949,21 @@ class RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState : public ydk::Enum
         static const ydk::Enum::YLeaf timeWait;
         static const ydk::Enum::YLeaf deleteTCB;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "closed") return 1;
+            if (name == "listen") return 2;
+            if (name == "synSent") return 3;
+            if (name == "synReceived") return 4;
+            if (name == "established") return 5;
+            if (name == "finWait1") return 6;
+            if (name == "finWait2") return 7;
+            if (name == "closeWait") return 8;
+            if (name == "lastAck") return 9;
+            if (name == "closing") return 10;
+            if (name == "timeWait") return 11;
+            if (name == "deleteTCB") return 12;
+            return -1;
+        }
 };
 
 class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState : public ydk::Enum
@@ -897,6 +975,14 @@ class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf cease;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "acquisition") return 2;
+            if (name == "down") return 3;
+            if (name == "up") return 4;
+            if (name == "cease") return 5;
+            return -1;
+        }
 };
 
 class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighMode : public ydk::Enum
@@ -905,6 +991,11 @@ class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighMode : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "passive") return 2;
+            return -1;
+        }
 };
 
 class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighEventTrigger : public ydk::Enum
@@ -913,6 +1004,11 @@ class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighEventTrigger : public yd
         static const ydk::Enum::YLeaf start;
         static const ydk::Enum::YLeaf stop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "start") return 1;
+            if (name == "stop") return 2;
+            return -1;
+        }
 };
 
 

@@ -16,6 +16,11 @@ class TruthValue : public ydk::Enum
         static const ydk::Enum::YLeaf true_;
         static const ydk::Enum::YLeaf false_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "true") return 1;
+            if (name == "false") return 2;
+            return -1;
+        }
 };
 
 class AtmServiceCategory : public ydk::Enum
@@ -28,6 +33,15 @@ class AtmServiceCategory : public ydk::Enum
         static const ydk::Enum::YLeaf abr;
         static const ydk::Enum::YLeaf ubr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "cbr") return 2;
+            if (name == "rtVbr") return 3;
+            if (name == "nrtVbr") return 4;
+            if (name == "abr") return 5;
+            if (name == "ubr") return 6;
+            return -1;
+        }
 };
 
 

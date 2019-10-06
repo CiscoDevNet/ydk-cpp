@@ -419,6 +419,11 @@ class CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::CospfLsdbType : public ydk::
         static const ydk::Enum::YLeaf areaOpaqueLink;
         static const ydk::Enum::YLeaf asOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "areaOpaqueLink") return 10;
+            if (name == "asOpaqueLink") return 11;
+            return -1;
+        }
 };
 
 class CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::CospfShamLinkState : public ydk::Enum
@@ -427,6 +432,11 @@ class CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::CospfShamLinkState :
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf pointToPoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "pointToPoint") return 4;
+            return -1;
+        }
 };
 
 class CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::CospfLocalLsdbType : public ydk::Enum
@@ -434,6 +444,10 @@ class CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::CospfLocalLsdbType
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "localOpaqueLink") return 9;
+            return -1;
+        }
 };
 
 class CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::CospfVirtLocalLsdbType : public ydk::Enum
@@ -441,6 +455,10 @@ class CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::CospfVirtL
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "localOpaqueLink") return 9;
+            return -1;
+        }
 };
 
 class CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState : public ydk::Enum
@@ -455,6 +473,17 @@ class CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkN
         static const ydk::Enum::YLeaf loading;
         static const ydk::Enum::YLeaf full;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "attempt") return 2;
+            if (name == "init") return 3;
+            if (name == "twoWay") return 4;
+            if (name == "exchangeStart") return 5;
+            if (name == "exchange") return 6;
+            if (name == "loading") return 7;
+            if (name == "full") return 8;
+            return -1;
+        }
 };
 
 class CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::CospfShamLinksState : public ydk::Enum
@@ -463,6 +492,11 @@ class CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::CospfShamLinksStat
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf pointToPoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 1;
+            if (name == "pointToPoint") return 4;
+            return -1;
+        }
 };
 
 

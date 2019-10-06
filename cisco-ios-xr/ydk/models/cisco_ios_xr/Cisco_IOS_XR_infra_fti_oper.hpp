@@ -476,6 +476,36 @@ class DciFabricInterconnect::Acp : public ydk::Entity
 
 }; // DciFabricInterconnect::Acp
 
+class FtiBagFabricState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fti_bag_fabric_state_active_down;
+        static const ydk::Enum::YLeaf fti_bag_fabric_state_active_degraded;
+        static const ydk::Enum::YLeaf fti_bag_fabric_state_active_healthy;
+        static const ydk::Enum::YLeaf fti_bag_fabric_state_inactive;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fti-bag-fabric-state-active-down") return 0;
+            if (name == "fti-bag-fabric-state-active-degraded") return 1;
+            if (name == "fti-bag-fabric-state-active-healthy") return 2;
+            if (name == "fti-bag-fabric-state-inactive") return 3;
+            return -1;
+        }
+};
+
+class FtiBagFabricConfigState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fti_bag_config_complete;
+        static const ydk::Enum::YLeaf fti_bag_config_incomplete;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fti-bag-config-complete") return 0;
+            if (name == "fti-bag-config-incomplete") return 1;
+            return -1;
+        }
+};
+
 class FtiBagFabricPeerState : public ydk::Enum
 {
     public:
@@ -485,24 +515,14 @@ class FtiBagFabricPeerState : public ydk::Enum
         static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_ready;
         static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_closing;
 
-};
-
-class FtiBagFabricState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fti_bag_fabric_state_active_down;
-        static const ydk::Enum::YLeaf fti_bag_fabric_state_active_degraded;
-        static const ydk::Enum::YLeaf fti_bag_fabric_state_active_healthy;
-        static const ydk::Enum::YLeaf fti_bag_fabric_state_inactive;
-
-};
-
-class FtiBagFabricConfigState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fti_bag_config_complete;
-        static const ydk::Enum::YLeaf fti_bag_config_incomplete;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "fti-bag-fabric-peer-status-disconnected") return 0;
+            if (name == "fti-bag-fabric-peer-status-connecting") return 1;
+            if (name == "fti-bag-fabric-peer-status-connected") return 2;
+            if (name == "fti-bag-fabric-peer-status-ready") return 3;
+            if (name == "fti-bag-fabric-peer-status-closing") return 4;
+            return -1;
+        }
 };
 
 
