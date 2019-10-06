@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_5.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_6.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_7.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_6.hpp"
 
 using namespace ydk;
 
@@ -9535,8 +9535,7 @@ MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::TunnelStandbyLsp
     is_interface{YType::boolean, "is-interface"},
     last_path_change{YType::uint32, "last-path-change"},
     persistent_bytes{YType::uint64, "persistent-bytes"},
-    persistent_packets{YType::uint64, "persistent-packets"},
-    protection_role{YType::enumeration, "protection-role"}
+    persistent_packets{YType::uint64, "persistent-packets"}
         ,
     lsp_fec(std::make_shared<MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::LspFec>())
     , s2l(this, {})
@@ -9580,7 +9579,6 @@ bool MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::has_data() 
 	|| last_path_change.is_set
 	|| persistent_bytes.is_set
 	|| persistent_packets.is_set
-	|| protection_role.is_set
 	|| (lsp_fec !=  nullptr && lsp_fec->has_data());
 }
 
@@ -9614,7 +9612,6 @@ bool MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::has_operati
 	|| ydk::is_set(last_path_change.yfilter)
 	|| ydk::is_set(persistent_bytes.yfilter)
 	|| ydk::is_set(persistent_packets.yfilter)
-	|| ydk::is_set(protection_role.yfilter)
 	|| (lsp_fec !=  nullptr && lsp_fec->has_operation());
 }
 
@@ -9651,7 +9648,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::NniTunnels
     if (last_path_change.is_set || is_set(last_path_change.yfilter)) leaf_name_data.push_back(last_path_change.get_name_leafdata());
     if (persistent_bytes.is_set || is_set(persistent_bytes.yfilter)) leaf_name_data.push_back(persistent_bytes.get_name_leafdata());
     if (persistent_packets.is_set || is_set(persistent_packets.yfilter)) leaf_name_data.push_back(persistent_packets.get_name_leafdata());
-    if (protection_role.is_set || is_set(protection_role.yfilter)) leaf_name_data.push_back(protection_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9834,12 +9830,6 @@ void MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::set_value(c
         persistent_packets.value_namespace = name_space;
         persistent_packets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "protection-role")
-    {
-        protection_role = value;
-        protection_role.value_namespace = name_space;
-        protection_role.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9932,15 +9922,11 @@ void MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::set_filter(
     {
         persistent_packets.yfilter = yfilter;
     }
-    if(value_path == "protection-role")
-    {
-        protection_role.yfilter = yfilter;
-    }
 }
 
 bool MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelStandbyLsp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lsp-fec" || name == "s2l" || name == "signaled-name" || name == "is-frr-failed" || name == "frr-active-reason" || name == "lsp-bandwidth" || name == "lsp-setup-priority" || name == "lsp-hold-priority" || name == "lsp-bandwidth-type" || name == "dste-class-match" || name == "dste-class-index" || name == "type" || name == "uptime" || name == "s2-ls-up" || name == "s2-ls-proceeding" || name == "s2-ls-down" || name == "reoptimize-reason" || name == "reoptimize-trigger" || name == "timer-left" || name == "is-passive" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets" || name == "protection-role")
+    if(name == "lsp-fec" || name == "s2l" || name == "signaled-name" || name == "is-frr-failed" || name == "frr-active-reason" || name == "lsp-bandwidth" || name == "lsp-setup-priority" || name == "lsp-hold-priority" || name == "lsp-bandwidth-type" || name == "dste-class-match" || name == "dste-class-index" || name == "type" || name == "uptime" || name == "s2-ls-up" || name == "s2-ls-proceeding" || name == "s2-ls-down" || name == "reoptimize-reason" || name == "reoptimize-trigger" || name == "timer-left" || name == "is-passive" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets")
         return true;
     return false;
 }

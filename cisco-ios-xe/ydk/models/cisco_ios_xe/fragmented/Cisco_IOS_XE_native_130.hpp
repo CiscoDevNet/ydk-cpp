@@ -397,7 +397,7 @@ class Native::Cts::RoleBased::Enforcement::VlanList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of enumeration, string
+        ydk::YLeaf id; //type: one of string, enumeration
         class Id;
 
 }; // Native::Cts::RoleBased::Enforcement::VlanList
@@ -491,7 +491,7 @@ class Native::Cts::RoleBased::SgtMapVlanList::SgtMap : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vlan_list; //type: one of enumeration, string
+        ydk::YLeaf vlan_list; //type: one of string, enumeration
         ydk::YLeaf sgt; //type: int16
         class VlanList;
 
@@ -3776,6 +3776,11 @@ class Native::Cts::CriticalAuthentication::Default::Pmk::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Cts::RoleBased::Enforcement::VlanList::Id : public ydk::Enum
@@ -3783,6 +3788,10 @@ class Native::Cts::RoleBased::Enforcement::VlanList::Id : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            return -1;
+        }
 };
 
 class Native::Cts::RoleBased::SgtMapVlanList::SgtMap::VlanList : public ydk::Enum
@@ -3790,6 +3799,10 @@ class Native::Cts::RoleBased::SgtMapVlanList::SgtMap::VlanList : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            return -1;
+        }
 };
 
 class Native::Cts::Sxp::Default::Password::Type : public ydk::Enum
@@ -3799,6 +3812,12 @@ class Native::Cts::Sxp::Default::Password::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 class Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::PasswordType : public ydk::Enum
@@ -3807,6 +3826,11 @@ class Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Passwor
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "none") return 1;
+            return -1;
+        }
 };
 
 class Native::Cts::Sxp::Connection::Peer::Ipv4::Password::PasswordType : public ydk::Enum
@@ -3815,6 +3839,11 @@ class Native::Cts::Sxp::Connection::Peer::Ipv4::Password::PasswordType : public 
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "none") return 1;
+            return -1;
+        }
 };
 
 

@@ -6786,7 +6786,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
+        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
 
@@ -6815,7 +6815,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
+        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
         ydk::YLeaf packets_forwarded; //type: uint64
@@ -10600,7 +10600,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Neighbor::Transport::Config
 
@@ -10624,7 +10624,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf remote_port; //type: uint16
@@ -13069,7 +13069,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::P
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::PeerGroup::Transport::Config
 
@@ -13093,7 +13093,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::P
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::PeerGroup::Transport::State
 
@@ -29122,7 +29122,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf sid_id; //type: one of string, union
+        ydk::YLeaf sid_id; //type: one of union, string
         ydk::YLeaf label_options; //type: LabelOptions
         class LabelOptions;
 
@@ -29146,7 +29146,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf sid_id; //type: one of string, union
+        ydk::YLeaf sid_id; //type: one of union, string
         ydk::YLeaf label_options; //type: LabelOptions
         class LabelOptions;
 
@@ -29250,7 +29250,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         ydk::YLeaf protection_eligible; //type: boolean
         ydk::YLeaf group; //type: boolean
         ydk::YLeaf neighbor; //type: string
-        ydk::YLeaf allocated_dynamic_local; //type: one of string, union
+        ydk::YLeaf allocated_dynamic_local; //type: one of union, string
         class SidId;
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::AfiSafi::Af::SegmentRouting::AdjacencySids::AdjacencySid::State
@@ -29628,6 +29628,11 @@ class NetworkInstances::NetworkInstance::Fdb::MacTable::Entries::Entry::State::E
         static const ydk::Enum::YLeaf STATIC;
         static const ydk::Enum::YLeaf DYNAMIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "STATIC") return 0;
+            if (name == "DYNAMIC") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::Config::UpdateTrigger_ : public ydk::Enum
@@ -29636,6 +29641,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeas
         static const ydk::Enum::YLeaf ADJUSTED_MAX_RESERVABLE_PCT;
         static const ydk::Enum::YLeaf SR_TRAFFIC_PCT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJUSTED_MAX_RESERVABLE_PCT") return 0;
+            if (name == "SR_TRAFFIC_PCT") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::State::UpdateTrigger_ : public ydk::Enum
@@ -29644,6 +29654,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeas
         static const ydk::Enum::YLeaf ADJUSTED_MAX_RESERVABLE_PCT;
         static const ydk::Enum::YLeaf SR_TRAFFIC_PCT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJUSTED_MAX_RESERVABLE_PCT") return 0;
+            if (name == "SR_TRAFFIC_PCT") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType : public ydk::Enum
@@ -29652,6 +29667,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf DELTA;
         static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DELTA") return 0;
+            if (name == "THRESHOLD_CROSSED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecification : public ydk::Enum
@@ -29660,6 +29680,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
         static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "MIRRORED_UP_DOWN") return 0;
+            if (name == "SEPARATE_UP_DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdType : public ydk::Enum
@@ -29668,6 +29693,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf DELTA;
         static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DELTA") return 0;
+            if (name == "THRESHOLD_CROSSED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecification : public ydk::Enum
@@ -29676,6 +29706,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
         static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "MIRRORED_UP_DOWN") return 0;
+            if (name == "SEPARATE_UP_DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::Status : public ydk::Enum
@@ -29684,6 +29719,11 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessi
         static const ydk::Enum::YLeaf UP;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::PeakDataRate : public ydk::Enum
@@ -29691,6 +29731,10 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessi
     public:
         static const ydk::Enum::YLeaf INFINITY_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INFINITY") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::NeighborStatus : public ydk::Enum
@@ -29699,6 +29743,11 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neigh
         static const ydk::Enum::YLeaf UP;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::Priority : public ydk::Enum
@@ -29706,6 +29755,10 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Inter
     public:
         static const ydk::Enum::YLeaf ALL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ALL") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::SidSelectionMode : public ydk::Enum
@@ -29714,6 +29767,11 @@ class NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExpli
         static const ydk::Enum::YLeaf ADJ_SID_ONLY;
         static const ydk::Enum::YLeaf MIXED_MODE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJ_SID_ONLY") return 0;
+            if (name == "MIXED_MODE") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::SidSelectionMode : public ydk::Enum
@@ -29722,6 +29780,11 @@ class NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExpli
         static const ydk::Enum::YLeaf ADJ_SID_ONLY;
         static const ydk::Enum::YLeaf MIXED_MODE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJ_SID_ONLY") return 0;
+            if (name == "MIXED_MODE") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Vlans::Vlan::Config::Status : public ydk::Enum
@@ -29730,6 +29793,11 @@ class NetworkInstances::NetworkInstance::Vlans::Vlan::Config::Status : public yd
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf SUSPENDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACTIVE") return 0;
+            if (name == "SUSPENDED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Vlans::Vlan::State::Status : public ydk::Enum
@@ -29738,6 +29806,11 @@ class NetworkInstances::NetworkInstance::Vlans::Vlan::State::Status : public ydk
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf SUSPENDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACTIVE") return 0;
+            if (name == "SUSPENDED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Neighbor::State::SessionState : public ydk::Enum
@@ -29750,6 +29823,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         static const ydk::Enum::YLeaf OPENCONFIRM;
         static const ydk::Enum::YLeaf ESTABLISHED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IDLE") return 0;
+            if (name == "CONNECT") return 1;
+            if (name == "ACTIVE") return 2;
+            if (name == "OPENSENT") return 3;
+            if (name == "OPENCONFIRM") return 4;
+            if (name == "ESTABLISHED") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode : public ydk::Enum
@@ -29759,6 +29841,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         static const ydk::Enum::YLeaf BILATERAL;
         static const ydk::Enum::YLeaf REMOTE_HELPER;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "HELPER_ONLY") return 0;
+            if (name == "BILATERAL") return 1;
+            if (name == "REMOTE_HELPER") return 2;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::State::PduType : public ydk::Enum
@@ -29767,6 +29855,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LEVEL_1;
         static const ydk::Enum::YLeaf LEVEL_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LEVEL_1") return 0;
+            if (name == "LEVEL_2") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::State::Flags : public ydk::Enum
@@ -29779,6 +29872,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf ATTACHED_DEFAULT;
         static const ydk::Enum::YLeaf OVERLOAD;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PARTITION_REPAIR") return 0;
+            if (name == "ATTACHED_ERROR") return 1;
+            if (name == "ATTACHED_EXPENSE") return 2;
+            if (name == "ATTACHED_DELAY") return 3;
+            if (name == "ATTACHED_DEFAULT") return 4;
+            if (name == "OVERLOAD") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Nlpid::State::Nlpid_ : public ydk::Enum
@@ -29787,6 +29889,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf IPV4;
         static const ydk::Enum::YLeaf IPV6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IPV4") return 0;
+            if (name == "IPV6") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv4Srlgs::Ipv4Srlg::State::Flags : public ydk::Enum
@@ -29794,6 +29901,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf NUMBERED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NUMBERED") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv6Srlgs::Ipv6Srlg::State::Flags : public ydk::Enum
@@ -29801,6 +29912,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf NA;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NA") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::RouterCapabilities::RouterCapability::State::Flags : public ydk::Enum
@@ -29809,6 +29924,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf FLOOD;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FLOOD") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State::Algorithm : public ydk::Enum
@@ -29817,6 +29937,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf SPF;
         static const ydk::Enum::YLeaf STRICT_SPF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "SPF") return 0;
+            if (name == "STRICT_SPF") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State::Flags : public ydk::Enum
@@ -29826,6 +29951,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf IPV6_MPLS;
         static const ydk::Enum::YLeaf IPV6_SR;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IPV4_MPLS") return 0;
+            if (name == "IPV6_MPLS") return 1;
+            if (name == "IPV6_SR") return 2;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::IsReachability::Neighbors::Neighbors_::DefaultMetric::State::Flags : public ydk::Enum
@@ -29833,6 +29964,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf INTERNAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERNAL") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv4InternalReachability::Prefixes::Prefixes_::DefaultMetric::State::Flags : public ydk::Enum
@@ -29840,6 +29975,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf INTERNAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERNAL") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv4ExternalReachability::Prefixes::Prefixes_::DefaultMetric::State::Flags : public ydk::Enum
@@ -29847,6 +29986,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
     public:
         static const ydk::Enum::YLeaf INTERNAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERNAL") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Authentication::State::CryptoType : public ydk::Enum
@@ -29855,6 +29998,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf HMAC_MD5;
         static const ydk::Enum::YLeaf CLEARTEXT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "HMAC_MD5") return 0;
+            if (name == "CLEARTEXT") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::ExtendedIsReachability::Neighbors::Neighbors_::Subtlvs::Subtlv::LinkAttributes::State::LocalProtection : public ydk::Enum
@@ -29863,6 +30011,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL_PROTECTION;
         static const ydk::Enum::YLeaf LINK_EXCLUDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LOCAL_PROTECTION") return 0;
+            if (name == "LINK_EXCLUDED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::ExtendedIsReachability::Neighbors::Neighbors_::Subtlvs::Subtlv::LinkProtectionType::State::LinkProtectionType_ : public ydk::Enum
@@ -29875,6 +30028,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf PLUS_ONE;
         static const ydk::Enum::YLeaf ENHANCED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTRA_TRAFFIC") return 0;
+            if (name == "UNPROTECTED") return 1;
+            if (name == "SHARED") return 2;
+            if (name == "ONE_ONE") return 3;
+            if (name == "PLUS_ONE") return 4;
+            if (name == "ENHANCED") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::ExtendedIsReachability::Neighbors::Neighbors_::Subtlvs::Subtlv::AdjacencySids::AdjacencySid::State::Flags : public ydk::Enum
@@ -29886,6 +30048,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::ExtendedIsReachability::Neighbors::Neighbors_::Subtlvs::Subtlv::LanAdjacencySids::LanAdjacencySid::State::Flags : public ydk::Enum
@@ -29897,6 +30067,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::ExtendedIpv4Reachability::Prefixes::Prefix::Subtlvs::Subtlv::Flags::State::Flags_ : public ydk::Enum
@@ -29906,6 +30084,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf READVERTISEMENT_FLAG;
         static const ydk::Enum::YLeaf NODE_FLAG;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTERNAL_FLAG") return 0;
+            if (name == "READVERTISEMENT_FLAG") return 1;
+            if (name == "NODE_FLAG") return 2;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::ExtendedIpv4Reachability::Prefixes::Prefix::Subtlvs::Subtlv::PrefixSids::PrefixSid::State::Flags : public ydk::Enum
@@ -29918,6 +30102,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf VALUE;
         static const ydk::Enum::YLeaf LOCAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "READVERTISEMENT") return 0;
+            if (name == "NODE") return 1;
+            if (name == "PHP") return 2;
+            if (name == "EXPLICIT_NULL") return 3;
+            if (name == "VALUE") return 4;
+            if (name == "LOCAL") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv6Reachability::Prefixes::Prefixes_::Subtlvs::Subtlv::Flags::State::Flags_ : public ydk::Enum
@@ -29927,6 +30120,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf READVERTISEMENT_FLAG;
         static const ydk::Enum::YLeaf NODE_FLAG;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTERNAL_FLAG") return 0;
+            if (name == "READVERTISEMENT_FLAG") return 1;
+            if (name == "NODE_FLAG") return 2;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::Ipv6Reachability::Prefixes::Prefixes_::Subtlvs::Subtlv::PrefixSids::PrefixSid::State::Flags : public ydk::Enum
@@ -29939,6 +30138,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf VALUE;
         static const ydk::Enum::YLeaf LOCAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "READVERTISEMENT") return 0;
+            if (name == "NODE") return 1;
+            if (name == "PHP") return 2;
+            if (name == "EXPLICIT_NULL") return 3;
+            if (name == "VALUE") return 4;
+            if (name == "LOCAL") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MultiTopology::Topologies::Topology::State::Attributes : public ydk::Enum
@@ -29947,6 +30155,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf OVERLOAD;
         static const ydk::Enum::YLeaf ATTACHED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "OVERLOAD") return 0;
+            if (name == "ATTACHED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::IsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::LinkAttributes::State::LocalProtection : public ydk::Enum
@@ -29955,6 +30168,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL_PROTECTION;
         static const ydk::Enum::YLeaf LINK_EXCLUDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LOCAL_PROTECTION") return 0;
+            if (name == "LINK_EXCLUDED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::IsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::LinkProtectionType::State::LinkProtectionType_ : public ydk::Enum
@@ -29967,6 +30185,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf PLUS_ONE;
         static const ydk::Enum::YLeaf ENHANCED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTRA_TRAFFIC") return 0;
+            if (name == "UNPROTECTED") return 1;
+            if (name == "SHARED") return 2;
+            if (name == "ONE_ONE") return 3;
+            if (name == "PLUS_ONE") return 4;
+            if (name == "ENHANCED") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::IsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::AdjacencySids::AdjacencySid::State::Flags : public ydk::Enum
@@ -29978,6 +30205,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::IsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::LanAdjacencySids::LanAdjacencySid::State::Flags : public ydk::Enum
@@ -29989,6 +30224,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsn::Neighbors::Neighbor::Subtlvs::Subtlv::LinkAttributes::State::LocalProtection : public ydk::Enum
@@ -29997,6 +30240,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL_PROTECTION;
         static const ydk::Enum::YLeaf LINK_EXCLUDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LOCAL_PROTECTION") return 0;
+            if (name == "LINK_EXCLUDED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsn::Neighbors::Neighbor::Subtlvs::Subtlv::LinkProtectionType::State::LinkProtectionType_ : public ydk::Enum
@@ -30009,6 +30257,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf PLUS_ONE;
         static const ydk::Enum::YLeaf ENHANCED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTRA_TRAFFIC") return 0;
+            if (name == "UNPROTECTED") return 1;
+            if (name == "SHARED") return 2;
+            if (name == "ONE_ONE") return 3;
+            if (name == "PLUS_ONE") return 4;
+            if (name == "ENHANCED") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsn::Neighbors::Neighbor::Subtlvs::Subtlv::AdjacencySids::AdjacencySid::State::Flags : public ydk::Enum
@@ -30020,6 +30277,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsn::Neighbors::Neighbor::Subtlvs::Subtlv::LanAdjacencySids::LanAdjacencySid::State::Flags : public ydk::Enum
@@ -30031,6 +30296,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::LinkAttributes::State::LocalProtection : public ydk::Enum
@@ -30039,6 +30312,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL_PROTECTION;
         static const ydk::Enum::YLeaf LINK_EXCLUDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "LOCAL_PROTECTION") return 0;
+            if (name == "LINK_EXCLUDED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::LinkProtectionType::State::LinkProtectionType_ : public ydk::Enum
@@ -30051,6 +30329,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf PLUS_ONE;
         static const ydk::Enum::YLeaf ENHANCED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTRA_TRAFFIC") return 0;
+            if (name == "UNPROTECTED") return 1;
+            if (name == "SHARED") return 2;
+            if (name == "ONE_ONE") return 3;
+            if (name == "PLUS_ONE") return 4;
+            if (name == "ENHANCED") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::AdjacencySids::AdjacencySid::State::Flags : public ydk::Enum
@@ -30062,6 +30349,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIsisNeighborAttribute::Neighbors::Neighbor::Subtlvs::Subtlv::LanAdjacencySids::LanAdjacencySid::State::Flags : public ydk::Enum
@@ -30073,6 +30368,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf LOCAL;
         static const ydk::Enum::YLeaf SET;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADDRESS_FAMILY") return 0;
+            if (name == "BACKUP") return 1;
+            if (name == "VALUE") return 2;
+            if (name == "LOCAL") return 3;
+            if (name == "SET") return 4;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIpv4Reachability::Prefixes::Prefix::Subtlvs::Subtlv::Flags::State::Flags_ : public ydk::Enum
@@ -30082,6 +30385,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf READVERTISEMENT_FLAG;
         static const ydk::Enum::YLeaf NODE_FLAG;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTERNAL_FLAG") return 0;
+            if (name == "READVERTISEMENT_FLAG") return 1;
+            if (name == "NODE_FLAG") return 2;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIpv4Reachability::Prefixes::Prefix::Subtlvs::Subtlv::PrefixSids::PrefixSid::State::Flags : public ydk::Enum
@@ -30094,6 +30403,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf VALUE;
         static const ydk::Enum::YLeaf LOCAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "READVERTISEMENT") return 0;
+            if (name == "NODE") return 1;
+            if (name == "PHP") return 2;
+            if (name == "EXPLICIT_NULL") return 3;
+            if (name == "VALUE") return 4;
+            if (name == "LOCAL") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIpv6Reachability::Prefixes::Prefix::Subtlvs::Subtlv::Flags::State::Flags_ : public ydk::Enum
@@ -30103,6 +30421,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf READVERTISEMENT_FLAG;
         static const ydk::Enum::YLeaf NODE_FLAG;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "EXTERNAL_FLAG") return 0;
+            if (name == "READVERTISEMENT_FLAG") return 1;
+            if (name == "NODE_FLAG") return 2;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabase::Lsp::Tlvs::Tlv::MtIpv6Reachability::Prefixes::Prefix::Subtlvs::Subtlv::PrefixSids::PrefixSid::State::Flags : public ydk::Enum
@@ -30115,6 +30439,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Leve
         static const ydk::Enum::YLeaf VALUE;
         static const ydk::Enum::YLeaf LOCAL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "READVERTISEMENT") return 0;
+            if (name == "NODE") return 1;
+            if (name == "PHP") return 2;
+            if (name == "EXPLICIT_NULL") return 3;
+            if (name == "VALUE") return 4;
+            if (name == "LOCAL") return 5;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::Adjacencies::Adjacency::State::Nlpid : public ydk::Enum
@@ -30123,6 +30456,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         static const ydk::Enum::YLeaf IPV4;
         static const ydk::Enum::YLeaf IPV6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "IPV4") return 0;
+            if (name == "IPV6") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::AfiSafi::Af::SegmentRouting::PrefixSids::PrefixSid::Config::LabelOptions : public ydk::Enum
@@ -30131,6 +30469,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         static const ydk::Enum::YLeaf NO_PHP;
         static const ydk::Enum::YLeaf EXPLICIT_NULL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NO_PHP") return 0;
+            if (name == "EXPLICIT_NULL") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::AfiSafi::Af::SegmentRouting::PrefixSids::PrefixSid::State::LabelOptions : public ydk::Enum
@@ -30139,6 +30482,11 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         static const ydk::Enum::YLeaf NO_PHP;
         static const ydk::Enum::YLeaf EXPLICIT_NULL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NO_PHP") return 0;
+            if (name == "EXPLICIT_NULL") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::AfiSafi::Af::SegmentRouting::AdjacencySids::AdjacencySid::Config::SidId : public ydk::Enum
@@ -30146,6 +30494,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
     public:
         static const ydk::Enum::YLeaf DYNAMIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DYNAMIC") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::AfiSafi::Af::SegmentRouting::AdjacencySids::AdjacencySid::State::SidId : public ydk::Enum
@@ -30153,6 +30505,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
     public:
         static const ydk::Enum::YLeaf DYNAMIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DYNAMIC") return 0;
+            return -1;
+        }
 };
 
 

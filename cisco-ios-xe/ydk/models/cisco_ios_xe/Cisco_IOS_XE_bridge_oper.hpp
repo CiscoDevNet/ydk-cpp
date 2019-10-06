@@ -179,20 +179,30 @@ class BridgeInstances::BridgeEntry::BridgeMatmEntries::BridgeMatmEntry : public 
 
 }; // BridgeInstances::BridgeEntry::BridgeMatmEntries::BridgeMatmEntry
 
-class IntfStatusType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-
-};
-
 class BridgeMacType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bridge_mac_type_static;
         static const ydk::Enum::YLeaf bridge_mac_type_dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bridge-mac-type-static") return 0;
+            if (name == "bridge-mac-type-dynamic") return 1;
+            return -1;
+        }
+};
+
+class IntfStatusType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            return -1;
+        }
 };
 
 

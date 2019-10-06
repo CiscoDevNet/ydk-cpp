@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_bfd_oper_0.hpp"
-#include "Cisco_IOS_XR_ip_bfd_oper_2.hpp"
 #include "Cisco_IOS_XR_ip_bfd_oper_1.hpp"
+#include "Cisco_IOS_XR_ip_bfd_oper_2.hpp"
 
 using namespace ydk;
 
@@ -23388,12 +23388,33 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::Ls
     return false;
 }
 
+const Enum::YLeaf BfdSession::undefined {0, "undefined"};
+const Enum::YLeaf BfdSession::bundle_member {1, "bundle-member"};
+const Enum::YLeaf BfdSession::bundle_interface {2, "bundle-interface"};
+const Enum::YLeaf BfdSession::state_inheriting {3, "state-inheriting"};
+const Enum::YLeaf BfdSession::bundle_vlan {4, "bundle-vlan"};
+const Enum::YLeaf BfdSession::mpls_tp {5, "mpls-tp"};
+const Enum::YLeaf BfdSession::gre {6, "gre"};
+const Enum::YLeaf BfdSession::pseudowire_headend {7, "pseudowire-headend"};
+const Enum::YLeaf BfdSession::ip_single_hop {8, "ip-single-hop"};
+
+const Enum::YLeaf BfdAfId::bfd_af_id_none {0, "bfd-af-id-none"};
+const Enum::YLeaf BfdAfId::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
+const Enum::YLeaf BfdAfId::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
+
 const Enum::YLeaf BfdMpDownloadState::bfd_mp_download_none {0, "bfd-mp-download-none"};
 const Enum::YLeaf BfdMpDownloadState::bfd_mp_download_no_lc {1, "bfd-mp-download-no-lc"};
 const Enum::YLeaf BfdMpDownloadState::bfd_mp_download_downloaded {2, "bfd-mp-download-downloaded"};
 const Enum::YLeaf BfdMpDownloadState::bfd_mp_download_ack {3, "bfd-mp-download-ack"};
 const Enum::YLeaf BfdMpDownloadState::bfd_mp_download_nack {4, "bfd-mp-download-nack"};
 const Enum::YLeaf BfdMpDownloadState::bfd_mp_download_delete {5, "bfd-mp-download-delete"};
+
+const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_admin_down {0, "bfd-mgmt-session-state-admin-down"};
+const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_down {1, "bfd-mgmt-session-state-down"};
+const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_init {2, "bfd-mgmt-session-state-init"};
+const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_up {3, "bfd-mgmt-session-state-up"};
+const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_failing {4, "bfd-mgmt-session-state-failing"};
+const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_unknown {6, "bfd-mgmt-session-state-unknown"};
 
 const Enum::YLeaf BfdMgmtSessionDiag::bfd_mgmt_session_diag_none {0, "bfd-mgmt-session-diag-none"};
 const Enum::YLeaf BfdMgmtSessionDiag::bfd_mgmt_session_diag_control_detect_expired {1, "bfd-mgmt-session-diag-control-detect-expired"};
@@ -23406,30 +23427,9 @@ const Enum::YLeaf BfdMgmtSessionDiag::bfd_mgmt_session_diag_admin_down {7, "bfd-
 const Enum::YLeaf BfdMgmtSessionDiag::bfd_mgmt_session_diag_rev_conc_path_down {8, "bfd-mgmt-session-diag-rev-conc-path-down"};
 const Enum::YLeaf BfdMgmtSessionDiag::bfd_mgmt_session_diag_num {10, "bfd-mgmt-session-diag-num"};
 
-const Enum::YLeaf BfdAfId::bfd_af_id_none {0, "bfd-af-id-none"};
-const Enum::YLeaf BfdAfId::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
-const Enum::YLeaf BfdAfId::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
-
 const Enum::YLeaf BfdMgmtPktDisplay::bfd_mgmt_pkt_display_type_none {0, "bfd-mgmt-pkt-display-type-none"};
 const Enum::YLeaf BfdMgmtPktDisplay::bfd_mgmt_pkt_display_type_bob_mbr {1, "bfd-mgmt-pkt-display-type-bob-mbr"};
 const Enum::YLeaf BfdMgmtPktDisplay::bfd_mgmt_pkt_display_type_max {2, "bfd-mgmt-pkt-display-type-max"};
-
-const Enum::YLeaf BfdSession::undefined {0, "undefined"};
-const Enum::YLeaf BfdSession::bundle_member {1, "bundle-member"};
-const Enum::YLeaf BfdSession::bundle_interface {2, "bundle-interface"};
-const Enum::YLeaf BfdSession::state_inheriting {3, "state-inheriting"};
-const Enum::YLeaf BfdSession::bundle_vlan {4, "bundle-vlan"};
-const Enum::YLeaf BfdSession::mpls_tp {5, "mpls-tp"};
-const Enum::YLeaf BfdSession::gre {6, "gre"};
-const Enum::YLeaf BfdSession::pseudowire_headend {7, "pseudowire-headend"};
-const Enum::YLeaf BfdSession::ip_single_hop {8, "ip-single-hop"};
-
-const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_admin_down {0, "bfd-mgmt-session-state-admin-down"};
-const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_down {1, "bfd-mgmt-session-state-down"};
-const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_init {2, "bfd-mgmt-session-state-init"};
-const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_up {3, "bfd-mgmt-session-state-up"};
-const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_failing {4, "bfd-mgmt-session-state-failing"};
-const Enum::YLeaf BfdMgmtSessionState::bfd_mgmt_session_state_unknown {6, "bfd-mgmt-session-state-unknown"};
 
 
 }

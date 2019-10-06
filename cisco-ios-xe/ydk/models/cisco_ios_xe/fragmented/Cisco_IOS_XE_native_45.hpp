@@ -121,7 +121,7 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Access::Vlan : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16
+        ydk::YLeaf vlan; //type: one of uint16, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -455,7 +455,7 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_ : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16
+        ydk::YLeaf vlan; //type: one of uint16, enumeration
         class Vlan;
 
 }; // Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_
@@ -550,7 +550,7 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16, string
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -939,8 +939,8 @@ class Native::Interface::TwoGigabitEthernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -1109,8 +1109,8 @@ class Native::Interface::TwoGigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -1500,7 +1500,7 @@ class Native::Interface::TwoGigabitEthernet::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
+        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -1875,7 +1875,7 @@ class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class HelloIntervalList; //type: Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::HelloIntervalList
 
         ydk::YList hello_interval_list;
@@ -1901,7 +1901,7 @@ class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::HelloIntervalL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class Levels;
         class Value_;
 
@@ -1997,7 +1997,7 @@ class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::MetricList
 
         ydk::YList metric_list;
@@ -2023,7 +2023,7 @@ class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::MetricList : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -2067,7 +2067,7 @@ class Native::Interface::TwoGigabitEthernet::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::TwoGigabitEthernet::Isis::Metric::MetricList
 
         ydk::YList metric_list;
@@ -2093,7 +2093,7 @@ class Native::Interface::TwoGigabitEthernet::Isis::Metric::MetricList : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -2660,7 +2660,7 @@ class Native::Interface::TwoGigabitEthernet::Mpls::Ldp::Discovery : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::TwoGigabitEthernet::Mpls::Ldp::Discovery
 
@@ -2985,9 +2985,9 @@ class Native::Interface::TwoGigabitEthernet::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::TwoGigabitEthernet::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::TwoGigabitEthernet::Ip::SummaryAddress
         class Verify; //type: Native::Interface::TwoGigabitEthernet::Ip::Verify
-        class Ospf; //type: Native::Interface::TwoGigabitEthernet::Ip::Ospf
         class Flow; //type: Native::Interface::TwoGigabitEthernet::Ip::Flow
         class Igmp; //type: Native::Interface::TwoGigabitEthernet::Ip::Igmp
+        class Ospf; //type: Native::Interface::TwoGigabitEthernet::Ip::Ospf
         class Lisp; //type: Native::Interface::TwoGigabitEthernet::Ip::Lisp
         class Nat; //type: Native::Interface::TwoGigabitEthernet::Ip::Nat
         class Nbar; //type: Native::Interface::TwoGigabitEthernet::Ip::Nbar
@@ -3014,9 +3014,9 @@ class Native::Interface::TwoGigabitEthernet::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Verify> verify;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Flow> flow;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Igmp> igmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Lisp> lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Nat> nat;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ip::Nbar> nbar;
@@ -3670,6 +3670,10 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Access::Vlan::Vlan_ : p
     public:
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Switchport::Mode::Dynamic : public ydk::Enum
@@ -3678,6 +3682,11 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Mode::Dynamic : public 
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf desirable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "desirable") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Violation : public ydk::Enum
@@ -3687,6 +3696,12 @@ class Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Violation
         static const ydk::Enum::YLeaf restrict;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protect") return 0;
+            if (name == "restrict") return 1;
+            if (name == "shutdown") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Aging::Type : public ydk::Enum
@@ -3695,6 +3710,11 @@ class Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Aging::Ty
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf inactivity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absolute") return 0;
+            if (name == "inactivity") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Encapsulation : public ydk::Enum
@@ -3704,6 +3724,12 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Encapsulation : 
         static const ydk::Enum::YLeaf isl;
         static const ydk::Enum::YLeaf negotiate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1q") return 0;
+            if (name == "isl") return 1;
+            if (name == "negotiate") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_::Vlan : public ydk::Enum
@@ -3711,6 +3737,10 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_::Vlan : 
     public:
         static const ydk::Enum::YLeaf tag;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tag") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
@@ -3720,6 +3750,12 @@ class Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan::Vlan_ : pu
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf untagged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1p") return 0;
+            if (name == "none") return 1;
+            if (name == "untagged") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Backup::Delay::Failure : public ydk::Enum
@@ -3727,6 +3763,10 @@ class Native::Interface::TwoGigabitEthernet::Backup::Delay::Failure : public ydk
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3734,6 +3774,10 @@ class Native::Interface::TwoGigabitEthernet::Backup::Delay::SecondaryDisable : p
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Backup::Load::Kickin : public ydk::Enum
@@ -3741,6 +3785,10 @@ class Native::Interface::TwoGigabitEthernet::Backup::Load::Kickin : public ydk::
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Backup::Load::Kickout : public ydk::Enum
@@ -3748,6 +3796,10 @@ class Native::Interface::TwoGigabitEthernet::Backup::Load::Kickout : public ydk:
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Flowcontrol::Receive : public ydk::Enum
@@ -3757,6 +3809,12 @@ class Native::Interface::TwoGigabitEthernet::Flowcontrol::Receive : public ydk::
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Flowcontrol::Send : public ydk::Enum
@@ -3766,6 +3824,12 @@ class Native::Interface::TwoGigabitEthernet::Flowcontrol::Send : public ydk::Enu
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::MeshGroup : public ydk::Enum
@@ -3773,6 +3837,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::MeshGroup : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf blocked;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blocked") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Network : public ydk::Enum
@@ -3780,6 +3848,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::Network : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "point-to-point") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Protocol : public ydk::Enum
@@ -3787,6 +3859,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::Protocol : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shutdown") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::CircuitType::Levels : public ydk::Enum
@@ -3796,6 +3872,12 @@ class Native::Interface::TwoGigabitEthernet::Isis::CircuitType::Levels : public 
         static const ydk::Enum::YLeaf level_1_2;
         static const ydk::Enum::YLeaf level_2_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-1-2") return 1;
+            if (name == "level-2-only") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::CsnpInterval::CsnpIntervalList::Levels : public ydk::Enum
@@ -3804,6 +3886,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::CsnpInterval::CsnpIntervalLis
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::Value_ : public ydk::Enum
@@ -3811,6 +3898,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::Value_ : publi
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::HelloIntervalList::Levels : public ydk::Enum
@@ -3819,6 +3910,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::HelloIntervalL
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::HelloIntervalList::Value_ : public ydk::Enum
@@ -3826,6 +3922,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::HelloInterval::HelloIntervalL
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::HelloMultiplier::HelloMultiplierList::Levels : public ydk::Enum
@@ -3834,6 +3934,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::HelloMultiplier::HelloMultipl
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::Value_ : public ydk::Enum
@@ -3841,6 +3946,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::Value_ : public
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::MetricList::Levels : public ydk::Enum
@@ -3849,6 +3958,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::MetricList::Lev
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::MetricList::Value_ : public ydk::Enum
@@ -3856,6 +3970,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::Ipv6::Metric::MetricList::Val
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Metric::Value_ : public ydk::Enum
@@ -3863,6 +3981,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::Metric::Value_ : public ydk::
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Metric::MetricList::Levels : public ydk::Enum
@@ -3871,6 +3993,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::Metric::MetricList::Levels : 
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Metric::MetricList::Value_ : public ydk::Enum
@@ -3878,6 +4005,10 @@ class Native::Interface::TwoGigabitEthernet::Isis::Metric::MetricList::Value_ : 
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Password::PasswordList::Levels : public ydk::Enum
@@ -3886,6 +4017,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::Password::PasswordList::Level
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::Priority::PriorityList::Levels : public ydk::Enum
@@ -3894,6 +4030,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::Priority::PriorityList::Level
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Isis::ThreeWayHandshake::Implementor : public ydk::Enum
@@ -3902,6 +4043,11 @@ class Native::Interface::TwoGigabitEthernet::Isis::ThreeWayHandshake::Implemento
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco") return 0;
+            if (name == "ietf") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::HoldQueue::Direction : public ydk::Enum
@@ -3910,6 +4056,11 @@ class Native::Interface::TwoGigabitEthernet::HoldQueue::Direction : public ydk::
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Mpls::Label::Protocol : public ydk::Enum
@@ -3919,6 +4070,12 @@ class Native::Interface::TwoGigabitEthernet::Mpls::Label::Protocol : public ydk:
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf tdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "ldp") return 1;
+            if (name == "tdp") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Ip::Pim::PimMode : public ydk::Enum
@@ -3929,6 +4086,13 @@ class Native::Interface::TwoGigabitEthernet::Ip::Pim::PimMode : public ydk::Enum
         static const ydk::Enum::YLeaf sparse_mode;
         static const ydk::Enum::YLeaf sparse_dense_mode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "passive") return 0;
+            if (name == "dense-mode") return 1;
+            if (name == "sparse-mode") return 2;
+            if (name == "sparse-dense-mode") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::TwoGigabitEthernet::Ip::Pim::SptThreshold : public ydk::Enum
@@ -3936,6 +4100,10 @@ class Native::Interface::TwoGigabitEthernet::Ip::Pim::SptThreshold : public ydk:
     public:
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "infinity") return 0;
+            return -1;
+        }
 };
 
 

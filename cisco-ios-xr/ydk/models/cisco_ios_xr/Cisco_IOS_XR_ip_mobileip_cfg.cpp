@@ -7336,20 +7336,25 @@ bool MobileIp::Lmas::Lma::ReplayProtection::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-const Enum::YLeaf GreKeyType::symmetric {1, "symmetric"};
-
 const Enum::YLeaf ServiceType::ipv4 {1, "ipv4"};
 const Enum::YLeaf ServiceType::ipv6 {2, "ipv6"};
 const Enum::YLeaf ServiceType::dual {3, "dual"};
 
 const Enum::YLeaf LmaService::service_mll {1, "service-mll"};
 
-const Enum::YLeaf RedistType::home_address {1, "home-address"};
+const Enum::YLeaf EncapOpt::greipv4 {4, "greipv4"};
+const Enum::YLeaf EncapOpt::greipv6 {5, "greipv6"};
+const Enum::YLeaf EncapOpt::mgreipv4 {7, "mgreipv4"};
+const Enum::YLeaf EncapOpt::mgreipv6 {8, "mgreipv6"};
 
 const Enum::YLeaf RedistSubType::host_prefix {1, "host-prefix"};
 const Enum::YLeaf RedistSubType::disable {2, "disable"};
 
 const Enum::YLeaf LmaRole::Y_3gma {0, "3gma"};
+
+const Enum::YLeaf RedistType::home_address {1, "home-address"};
+
+const Enum::YLeaf GreKeyType::symmetric {1, "symmetric"};
 
 const Enum::YLeaf LmaRat::virtual_ {0, "virtual"};
 const Enum::YLeaf LmaRat::ppp {1, "ppp"};
@@ -7363,11 +7368,6 @@ const Enum::YLeaf LmaRat::Y_3gpp2ehrpd {8, "3gpp2ehrpd"};
 const Enum::YLeaf LmaRat::Y_3gpp2hrpd {9, "3gpp2hrpd"};
 const Enum::YLeaf LmaRat::Y_3gpp21rtt {10, "3gpp21rtt"};
 const Enum::YLeaf LmaRat::Y_3gpp2umb {11, "3gpp2umb"};
-
-const Enum::YLeaf EncapOpt::greipv4 {4, "greipv4"};
-const Enum::YLeaf EncapOpt::greipv6 {5, "greipv6"};
-const Enum::YLeaf EncapOpt::mgreipv4 {7, "mgreipv4"};
-const Enum::YLeaf EncapOpt::mgreipv6 {8, "mgreipv6"};
 
 
 }

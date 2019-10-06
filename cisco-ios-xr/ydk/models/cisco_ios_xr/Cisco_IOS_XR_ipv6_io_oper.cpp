@@ -555,8 +555,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::Ipv6()
     lisp_v6_encap_packets{YType::uint32, "lisp-v6-encap-packets"},
     lisp_v6_decap_packets{YType::uint32, "lisp-v6-decap-packets"},
     lisp_encap_errors{YType::uint32, "lisp-encap-errors"},
-    lisp_decap_errors{YType::uint32, "lisp-decap-errors"},
-    io_puntback{YType::uint32, "io-puntback"}
+    lisp_decap_errors{YType::uint32, "lisp-decap-errors"}
 {
 
     yang_name = "ipv6"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true; 
@@ -599,8 +598,7 @@ bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_data() const
 	|| lisp_v6_encap_packets.is_set
 	|| lisp_v6_decap_packets.is_set
 	|| lisp_encap_errors.is_set
-	|| lisp_decap_errors.is_set
-	|| io_puntback.is_set;
+	|| lisp_decap_errors.is_set;
 }
 
 bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_operation() const
@@ -636,8 +634,7 @@ bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_operation() const
 	|| ydk::is_set(lisp_v6_encap_packets.yfilter)
 	|| ydk::is_set(lisp_v6_decap_packets.yfilter)
 	|| ydk::is_set(lisp_encap_errors.yfilter)
-	|| ydk::is_set(lisp_decap_errors.yfilter)
-	|| ydk::is_set(io_puntback.yfilter);
+	|| ydk::is_set(lisp_decap_errors.yfilter);
 }
 
 std::string Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_segment_path() const
@@ -682,7 +679,6 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::Node::Statistics::
     if (lisp_v6_decap_packets.is_set || is_set(lisp_v6_decap_packets.yfilter)) leaf_name_data.push_back(lisp_v6_decap_packets.get_name_leafdata());
     if (lisp_encap_errors.is_set || is_set(lisp_encap_errors.yfilter)) leaf_name_data.push_back(lisp_encap_errors.get_name_leafdata());
     if (lisp_decap_errors.is_set || is_set(lisp_decap_errors.yfilter)) leaf_name_data.push_back(lisp_decap_errors.get_name_leafdata());
-    if (io_puntback.is_set || is_set(io_puntback.yfilter)) leaf_name_data.push_back(io_puntback.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -888,12 +884,6 @@ void Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::set_value(const std::string
         lisp_decap_errors.value_namespace = name_space;
         lisp_decap_errors.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "io-puntback")
-    {
-        io_puntback = value;
-        io_puntback.value_namespace = name_space;
-        io_puntback.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1022,15 +1012,11 @@ void Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::set_filter(const std::strin
     {
         lisp_decap_errors.yfilter = yfilter;
     }
-    if(value_path == "io-puntback")
-    {
-        io_puntback.yfilter = yfilter;
-    }
 }
 
 bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "total-packets" || name == "local-destination-packets" || name == "format-errors" || name == "truncated-packets" || name == "hop-count-exceeded-packets" || name == "bad-source-address-packets" || name == "bad-header-packets" || name == "unknown-option-type-packets" || name == "unknown-protocol-packets" || name == "fragments" || name == "reassembled-packets" || name == "reassembly-timeouts" || name == "reassembly-failures" || name == "reassembly-maximum-drops" || name == "generated-packets" || name == "forwarded-packets" || name == "source-routed-packets" || name == "fragmented-packets" || name == "fragment-count" || name == "fragment-failures" || name == "no-route-packets" || name == "too-big-packets" || name == "received-multicast-packets" || name == "sent-multicast-packets" || name == "miscellaneous-drops" || name == "lisp-v4-encap-packets" || name == "lisp-v4-decap-packets" || name == "lisp-v6-encap-packets" || name == "lisp-v6-decap-packets" || name == "lisp-encap-errors" || name == "lisp-decap-errors" || name == "io-puntback")
+    if(name == "total-packets" || name == "local-destination-packets" || name == "format-errors" || name == "truncated-packets" || name == "hop-count-exceeded-packets" || name == "bad-source-address-packets" || name == "bad-header-packets" || name == "unknown-option-type-packets" || name == "unknown-protocol-packets" || name == "fragments" || name == "reassembled-packets" || name == "reassembly-timeouts" || name == "reassembly-failures" || name == "reassembly-maximum-drops" || name == "generated-packets" || name == "forwarded-packets" || name == "source-routed-packets" || name == "fragmented-packets" || name == "fragment-count" || name == "fragment-failures" || name == "no-route-packets" || name == "too-big-packets" || name == "received-multicast-packets" || name == "sent-multicast-packets" || name == "miscellaneous-drops" || name == "lisp-v4-encap-packets" || name == "lisp-v4-decap-packets" || name == "lisp-v6-encap-packets" || name == "lisp-v6-decap-packets" || name == "lisp-encap-errors" || name == "lisp-decap-errors")
         return true;
     return false;
 }

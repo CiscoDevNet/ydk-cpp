@@ -787,6 +787,84 @@ class TelemetryModelDriven::Summary : public ydk::Entity
 
 }; // TelemetryModelDriven::Summary
 
+class MdtTransportEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf grpc;
+        static const ydk::Enum::YLeaf tcp;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf dialin;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "grpc") return 1;
+            if (name == "tcp") return 2;
+            if (name == "udp") return 3;
+            if (name == "dialin") return 6;
+            return -1;
+        }
+};
+
+class MdtInternalPathStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf internal_err;
+        static const ydk::Enum::YLeaf plugin_active;
+        static const ydk::Enum::YLeaf plugin_not_initialized;
+        static const ydk::Enum::YLeaf plugin_invalid_cadence;
+        static const ydk::Enum::YLeaf plugin_err;
+        static const ydk::Enum::YLeaf filter_err;
+        static const ydk::Enum::YLeaf paused;
+        static const ydk::Enum::YLeaf event_ing_active;
+        static const ydk::Enum::YLeaf event_ing_not_active;
+        static const ydk::Enum::YLeaf event_ing_err;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "internal-err") return 1;
+            if (name == "plugin-active") return 2;
+            if (name == "plugin-not-initialized") return 3;
+            if (name == "plugin-invalid-cadence") return 4;
+            if (name == "plugin-err") return 5;
+            if (name == "filter-err") return 6;
+            if (name == "paused") return 7;
+            if (name == "event-ing-active") return 8;
+            if (name == "event-ing-not-active") return 9;
+            if (name == "event-ing-err") return 10;
+            return -1;
+        }
+};
+
+class MdtIp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
+};
+
+class MdtSubsStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_active;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf paused;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-active") return 0;
+            if (name == "active") return 1;
+            if (name == "paused") return 2;
+            return -1;
+        }
+};
+
 class MdtSourceQosMarking : public ydk::Enum
 {
     public:
@@ -812,32 +890,30 @@ class MdtSourceQosMarking : public ydk::Enum
         static const ydk::Enum::YLeaf dscp_cs6;
         static const ydk::Enum::YLeaf dscp_cs7;
 
-};
-
-class MdtSubsStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_active;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf paused;
-
-};
-
-class MdtInternalPathStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf internal_err;
-        static const ydk::Enum::YLeaf plugin_active;
-        static const ydk::Enum::YLeaf plugin_not_initialized;
-        static const ydk::Enum::YLeaf plugin_invalid_cadence;
-        static const ydk::Enum::YLeaf plugin_err;
-        static const ydk::Enum::YLeaf filter_err;
-        static const ydk::Enum::YLeaf paused;
-        static const ydk::Enum::YLeaf event_ing_active;
-        static const ydk::Enum::YLeaf event_ing_not_active;
-        static const ydk::Enum::YLeaf event_ing_err;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "dscp-default") return 0;
+            if (name == "dscp-cs1") return 8;
+            if (name == "dscp-af11") return 10;
+            if (name == "dscp-af12") return 12;
+            if (name == "dscp-af13") return 14;
+            if (name == "dscp-cs2") return 16;
+            if (name == "dscp-af21") return 18;
+            if (name == "dscp-af22") return 20;
+            if (name == "dscp-af23") return 22;
+            if (name == "dscp-cs3") return 24;
+            if (name == "dscp-af31") return 26;
+            if (name == "dscp-af32") return 28;
+            if (name == "dscp-af33") return 30;
+            if (name == "dscp-cs4") return 32;
+            if (name == "dscp-af41") return 34;
+            if (name == "dscp-af42") return 36;
+            if (name == "dscp-af43") return 38;
+            if (name == "dscp-cs5") return 40;
+            if (name == "dscp-ef") return 46;
+            if (name == "dscp-cs6") return 48;
+            if (name == "dscp-cs7") return 56;
+            return -1;
+        }
 };
 
 class MdtDestStateEnum : public ydk::Enum
@@ -850,17 +926,15 @@ class MdtDestStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf dest_resuming;
         static const ydk::Enum::YLeaf dest_channel_not_found;
 
-};
-
-class MdtTransportEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf grpc;
-        static const ydk::Enum::YLeaf tcp;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf dialin;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "dest-not-active") return 0;
+            if (name == "dest-active") return 1;
+            if (name == "dest-asking-pause") return 2;
+            if (name == "dest-paused") return 3;
+            if (name == "dest-resuming") return 4;
+            if (name == "dest-channel-not-found") return 5;
+            return -1;
+        }
 };
 
 class MdtEncodingEnum : public ydk::Enum
@@ -871,14 +945,13 @@ class MdtEncodingEnum : public ydk::Enum
         static const ydk::Enum::YLeaf self_describing_gpb;
         static const ydk::Enum::YLeaf json;
 
-};
-
-class MdtIp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "gpb") return 2;
+            if (name == "self-describing-gpb") return 3;
+            if (name == "json") return 4;
+            return -1;
+        }
 };
 
 

@@ -309,6 +309,15 @@ class CiscoEnvMonState : public ydk::Enum
         static const ydk::Enum::YLeaf notPresent;
         static const ydk::Enum::YLeaf notFunctioning;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 1;
+            if (name == "warning") return 2;
+            if (name == "critical") return 3;
+            if (name == "shutdown") return 4;
+            if (name == "notPresent") return 5;
+            if (name == "notFunctioning") return 6;
+            return -1;
+        }
 };
 
 class CISCOENVMONMIB::CiscoEnvMonObjects::CiscoEnvMonPresent : public ydk::Enum
@@ -328,6 +337,22 @@ class CISCOENVMONMIB::CiscoEnvMonObjects::CiscoEnvMonPresent : public ydk::Enum
         static const ydk::Enum::YLeaf c37xx;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "oldAgs") return 1;
+            if (name == "ags") return 2;
+            if (name == "c7000") return 3;
+            if (name == "ci") return 4;
+            if (name == "cAccessMon") return 6;
+            if (name == "cat6000") return 7;
+            if (name == "ubr7200") return 8;
+            if (name == "cat4000") return 9;
+            if (name == "c10000") return 10;
+            if (name == "osr7600") return 11;
+            if (name == "c7600") return 12;
+            if (name == "c37xx") return 13;
+            if (name == "other") return 14;
+            return -1;
+        }
 };
 
 class CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry::CiscoEnvMonSupplySource : public ydk::Enum
@@ -339,6 +364,14 @@ class CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry
         static const ydk::Enum::YLeaf externalPowerSupply;
         static const ydk::Enum::YLeaf internalRedundant;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "ac") return 2;
+            if (name == "dc") return 3;
+            if (name == "externalPowerSupply") return 4;
+            if (name == "internalRedundant") return 5;
+            return -1;
+        }
 };
 
 

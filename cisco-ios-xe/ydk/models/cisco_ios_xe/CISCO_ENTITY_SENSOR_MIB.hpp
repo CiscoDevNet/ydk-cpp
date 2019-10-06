@@ -171,6 +171,38 @@ class CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry : p
 
 }; // CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry
 
+class SensorThresholdSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "minor") return 10;
+            if (name == "major") return 20;
+            if (name == "critical") return 30;
+            return -1;
+        }
+};
+
+class SensorStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf nonoperational;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 1;
+            if (name == "unavailable") return 2;
+            if (name == "nonoperational") return 3;
+            return -1;
+        }
+};
+
 class SensorDataType : public ydk::Enum
 {
     public:
@@ -189,6 +221,44 @@ class SensorDataType : public ydk::Enum
         static const ydk::Enum::YLeaf specialEnum;
         static const ydk::Enum::YLeaf dBm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "unknown") return 2;
+            if (name == "voltsAC") return 3;
+            if (name == "voltsDC") return 4;
+            if (name == "amperes") return 5;
+            if (name == "watts") return 6;
+            if (name == "hertz") return 7;
+            if (name == "celsius") return 8;
+            if (name == "percentRH") return 9;
+            if (name == "rpm") return 10;
+            if (name == "cmm") return 11;
+            if (name == "truthvalue") return 12;
+            if (name == "specialEnum") return 13;
+            if (name == "dBm") return 14;
+            return -1;
+        }
+};
+
+class SensorThresholdRelation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lessThan;
+        static const ydk::Enum::YLeaf lessOrEqual;
+        static const ydk::Enum::YLeaf greaterThan;
+        static const ydk::Enum::YLeaf greaterOrEqual;
+        static const ydk::Enum::YLeaf equalTo;
+        static const ydk::Enum::YLeaf notEqualTo;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "lessThan") return 1;
+            if (name == "lessOrEqual") return 2;
+            if (name == "greaterThan") return 3;
+            if (name == "greaterOrEqual") return 4;
+            if (name == "equalTo") return 5;
+            if (name == "notEqualTo") return 6;
+            return -1;
+        }
 };
 
 class SensorDataScale : public ydk::Enum
@@ -212,37 +282,26 @@ class SensorDataScale : public ydk::Enum
         static const ydk::Enum::YLeaf zetta;
         static const ydk::Enum::YLeaf yotta;
 
-};
-
-class SensorStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf unavailable;
-        static const ydk::Enum::YLeaf nonoperational;
-
-};
-
-class SensorThresholdSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-
-};
-
-class SensorThresholdRelation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lessThan;
-        static const ydk::Enum::YLeaf lessOrEqual;
-        static const ydk::Enum::YLeaf greaterThan;
-        static const ydk::Enum::YLeaf greaterOrEqual;
-        static const ydk::Enum::YLeaf equalTo;
-        static const ydk::Enum::YLeaf notEqualTo;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "yocto") return 1;
+            if (name == "zepto") return 2;
+            if (name == "atto") return 3;
+            if (name == "femto") return 4;
+            if (name == "pico") return 5;
+            if (name == "nano") return 6;
+            if (name == "micro") return 7;
+            if (name == "milli") return 8;
+            if (name == "units") return 9;
+            if (name == "kilo") return 10;
+            if (name == "mega") return 11;
+            if (name == "giga") return 12;
+            if (name == "tera") return 13;
+            if (name == "exa") return 14;
+            if (name == "peta") return 15;
+            if (name == "zetta") return 16;
+            if (name == "yotta") return 17;
+            return -1;
+        }
 };
 
 

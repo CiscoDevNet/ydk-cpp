@@ -993,17 +993,17 @@ class QueueRange : public ydk::Enum
         static const ydk::Enum::YLeaf thirtyTwoQ;
         static const ydk::Enum::YLeaf sixtyFourQ;
 
-};
-
-class ThresholdSetRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf zeroT;
-        static const ydk::Enum::YLeaf oneT;
-        static const ydk::Enum::YLeaf twoT;
-        static const ydk::Enum::YLeaf fourT;
-        static const ydk::Enum::YLeaf eightT;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "oneQ") return 1;
+            if (name == "twoQ") return 2;
+            if (name == "threeQ") return 3;
+            if (name == "fourQ") return 4;
+            if (name == "eightQ") return 8;
+            if (name == "sixteenQ") return 16;
+            if (name == "thirtyTwoQ") return 32;
+            if (name == "sixtyFourQ") return 64;
+            return -1;
+        }
 };
 
 class QosInterfaceQueueType : public ydk::Enum
@@ -1055,6 +1055,73 @@ class QosInterfaceQueueType : public ydk::Enum
         static const ydk::Enum::YLeaf oneP3Q4t;
         static const ydk::Enum::YLeaf oneP7Q2t;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "oneQ1t") return 1;
+            if (name == "oneQ2t") return 2;
+            if (name == "oneQ4t") return 3;
+            if (name == "oneQ8t") return 4;
+            if (name == "twoQ1t") return 5;
+            if (name == "twoQ2t") return 6;
+            if (name == "twoQ4t") return 7;
+            if (name == "twoQ8t") return 8;
+            if (name == "threeQ1t") return 9;
+            if (name == "threeQ2t") return 10;
+            if (name == "threeQ4t") return 11;
+            if (name == "threeQ8t") return 12;
+            if (name == "fourQ1t") return 13;
+            if (name == "fourQ2t") return 14;
+            if (name == "fourQ4t") return 15;
+            if (name == "fourQ8t") return 16;
+            if (name == "eightQ1t") return 17;
+            if (name == "eightQ2t") return 18;
+            if (name == "eightQ4t") return 19;
+            if (name == "eightQ8t") return 20;
+            if (name == "sixteenQ1t") return 21;
+            if (name == "sixteenQ2t") return 22;
+            if (name == "sixteenQ4t") return 23;
+            if (name == "sixtyfourQ1t") return 24;
+            if (name == "sixtyfourQ2t") return 25;
+            if (name == "sixtyfourQ4t") return 26;
+            if (name == "oneP1Q0t") return 27;
+            if (name == "oneP1Q4t") return 28;
+            if (name == "oneP1Q8t") return 29;
+            if (name == "oneP2Q1t") return 30;
+            if (name == "oneP2Q2t") return 31;
+            if (name == "oneP3Q1t") return 32;
+            if (name == "oneP7Q8t") return 33;
+            if (name == "oneP3Q8t") return 34;
+            if (name == "sixteenQ8t") return 35;
+            if (name == "oneP15Q8t") return 36;
+            if (name == "oneP15Q1t") return 37;
+            if (name == "oneP7Q1t") return 38;
+            if (name == "oneP31Q1t") return 39;
+            if (name == "thirtytwoQ1t") return 40;
+            if (name == "thirtytwoQ8t") return 41;
+            if (name == "oneP31Q8t") return 42;
+            if (name == "oneP7Q4t") return 43;
+            if (name == "oneP3Q4t") return 44;
+            if (name == "oneP7Q2t") return 45;
+            return -1;
+        }
+};
+
+class ThresholdSetRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf zeroT;
+        static const ydk::Enum::YLeaf oneT;
+        static const ydk::Enum::YLeaf twoT;
+        static const ydk::Enum::YLeaf fourT;
+        static const ydk::Enum::YLeaf eightT;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "zeroT") return 0;
+            if (name == "oneT") return 1;
+            if (name == "twoT") return 2;
+            if (name == "fourT") return 4;
+            if (name == "eightT") return 8;
+            return -1;
+        }
 };
 
 class CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::QosUnmatchedPolicyDirection : public ydk::Enum
@@ -1063,6 +1130,11 @@ class CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::QosUnmat
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::QosPolicerAction : public ydk::Enum
@@ -1072,6 +1144,12 @@ class CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::QosPolicerAction : publi
         static const ydk::Enum::YLeaf mark;
         static const ydk::Enum::YLeaf shape;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "drop") return 0;
+            if (name == "mark") return 1;
+            if (name == "shape") return 2;
+            return -1;
+        }
 };
 
 class CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::QosIpAclInterfaceDirection : public ydk::Enum
@@ -1080,6 +1158,11 @@ class CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::QosIpAclInterfac
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry::QosIfSchedulingDiscipline : public ydk::Enum
@@ -1094,6 +1177,17 @@ class CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreference
         static const ydk::Enum::YLeaf pqWrr;
         static const ydk::Enum::YLeaf pqCbwfq;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "weightedFairQueueing") return 1;
+            if (name == "weightedRoundRobin") return 2;
+            if (name == "customQueueing") return 3;
+            if (name == "priorityQueueing") return 4;
+            if (name == "classBasedWFQ") return 5;
+            if (name == "fifo") return 6;
+            if (name == "pqWrr") return 7;
+            if (name == "pqCbwfq") return 8;
+            return -1;
+        }
 };
 
 class CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::QosIfDropDiscipline : public ydk::Enum
@@ -1102,6 +1196,11 @@ class CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::QosIfD
         static const ydk::Enum::YLeaf qosIfDropWRED;
         static const ydk::Enum::YLeaf qosIfDropTailDrop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qosIfDropWRED") return 1;
+            if (name == "qosIfDropTailDrop") return 2;
+            return -1;
+        }
 };
 
 

@@ -1469,7 +1469,7 @@ class Native::Interface::Ethernet::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -2675,27 +2675,6 @@ class Native::Interface::Ethernet::Umbrella : public ydk::Entity
 }; // Native::Interface::Ethernet::Umbrella
 
 
-class Native::Interface::Ethernet::Utd : public ydk::Entity
-{
-    public:
-        Utd();
-        ~Utd();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Native::Interface::Ethernet::Utd
-
-
 class Native::Interface::Ethernet::ZoneMember : public ydk::Entity
 {
     public:
@@ -2715,6 +2694,27 @@ class Native::Interface::Ethernet::ZoneMember : public ydk::Entity
         ydk::YLeaf security; //type: string
 
 }; // Native::Interface::Ethernet::ZoneMember
+
+
+class Native::Interface::Ethernet::Utd : public ydk::Entity
+{
+    public:
+        Utd();
+        ~Utd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Native::Interface::Ethernet::Utd
 
 
 class Native::Interface::FastEthernet : public ydk::Entity
@@ -2748,8 +2748,8 @@ class Native::Interface::FastEthernet : public ydk::Entity
         ydk::YLeaf channel_protocol; //type: ChannelProtocol
         ydk::YLeaf duplex; //type: Duplex
         ydk::YLeaf cisco_ios_xe_ethernet_macsec; //type: empty
-        ydk::YLeaf nat66; //type: Nat66
         ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
+        ydk::YLeaf nat66; //type: Nat66
         class SwitchportConf; //type: Native::Interface::FastEthernet::SwitchportConf
         class Switchport; //type: Native::Interface::FastEthernet::Switchport
         class StackwiseVirtual; //type: Native::Interface::FastEthernet::StackwiseVirtual
@@ -2787,6 +2787,7 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class RcvQueue; //type: Native::Interface::FastEthernet::RcvQueue
         class Peer; //type: Native::Interface::FastEthernet::Peer
         class PmPath; //type: Native::Interface::FastEthernet::PmPath
+        class Power; //type: Native::Interface::FastEthernet::Power
         class CarrierDelay; //type: Native::Interface::FastEthernet::CarrierDelay
         class ChannelGroup; //type: Native::Interface::FastEthernet::ChannelGroup
         class Ethernet; //type: Native::Interface::FastEthernet::Ethernet
@@ -2799,28 +2800,11 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class Service; //type: Native::Interface::FastEthernet::Service
         class Lacp; //type: Native::Interface::FastEthernet::Lacp
         class CiscoIOSXEEthernetMacsecOption; //type: Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption
-        class Xconnect; //type: Native::Interface::FastEthernet::Xconnect
-        class Evpn; //type: Native::Interface::FastEthernet::Evpn
         class Snmp; //type: Native::Interface::FastEthernet::Snmp
-        class Ospfv3; //type: Native::Interface::FastEthernet::Ospfv3
-        class Cdp; //type: Native::Interface::FastEthernet::Cdp
-        class Crypto; //type: Native::Interface::FastEthernet::Crypto
-        class Cts; //type: Native::Interface::FastEthernet::Cts
-        class Dot1x; //type: Native::Interface::FastEthernet::Dot1x
-        class EtAnalytics; //type: Native::Interface::FastEthernet::EtAnalytics
-        class Performance; //type: Native::Interface::FastEthernet::Performance
-        class ServicePolicy; //type: Native::Interface::FastEthernet::ServicePolicy
-        class FabricDomain; //type: Native::Interface::FastEthernet::FabricDomain
-        class Lisp; //type: Native::Interface::FastEthernet::Lisp
-        class Lldp; //type: Native::Interface::FastEthernet::Lldp
-        class Mka; //type: Native::Interface::FastEthernet::Mka
-        class Mvrp; //type: Native::Interface::FastEthernet::Mvrp
-        class AnalysisModule; //type: Native::Interface::FastEthernet::AnalysisModule
-        class Ntp; //type: Native::Interface::FastEthernet::Ntp
-        class Power; //type: Native::Interface::FastEthernet::Power
         class Authentication; //type: Native::Interface::FastEthernet::Authentication
         class Mab; //type: Native::Interface::FastEthernet::Mab
-        class SpanningTree; //type: Native::Interface::FastEthernet::SpanningTree
+        class EtAnalytics; //type: Native::Interface::FastEthernet::EtAnalytics
+        class ServicePolicy; //type: Native::Interface::FastEthernet::ServicePolicy
         class Auto; //type: Native::Interface::FastEthernet::Auto
         class Datalink; //type: Native::Interface::FastEthernet::Datalink
         class Energywise; //type: Native::Interface::FastEthernet::Energywise
@@ -2834,11 +2818,27 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class SrrQueue; //type: Native::Interface::FastEthernet::SrrQueue
         class CiscoIOSXESwitchMacsecOption; //type: Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption
         class DeviceTracking; //type: Native::Interface::FastEthernet::DeviceTracking
-        class Udld; //type: Native::Interface::FastEthernet::Udld
+        class Ospfv3; //type: Native::Interface::FastEthernet::Ospfv3
+        class Performance; //type: Native::Interface::FastEthernet::Performance
+        class Lisp; //type: Native::Interface::FastEthernet::Lisp
+        class SpanningTree; //type: Native::Interface::FastEthernet::SpanningTree
+        class Mka; //type: Native::Interface::FastEthernet::Mka
         class Umbrella; //type: Native::Interface::FastEthernet::Umbrella
-        class Utd; //type: Native::Interface::FastEthernet::Utd
-        class Vrrp; //type: Native::Interface::FastEthernet::Vrrp
+        class Xconnect; //type: Native::Interface::FastEthernet::Xconnect
+        class Evpn; //type: Native::Interface::FastEthernet::Evpn
+        class Dot1x; //type: Native::Interface::FastEthernet::Dot1x
+        class Crypto; //type: Native::Interface::FastEthernet::Crypto
+        class Lldp; //type: Native::Interface::FastEthernet::Lldp
         class ZoneMember; //type: Native::Interface::FastEthernet::ZoneMember
+        class Vrrp; //type: Native::Interface::FastEthernet::Vrrp
+        class FabricDomain; //type: Native::Interface::FastEthernet::FabricDomain
+        class AnalysisModule; //type: Native::Interface::FastEthernet::AnalysisModule
+        class Cts; //type: Native::Interface::FastEthernet::Cts
+        class Udld; //type: Native::Interface::FastEthernet::Udld
+        class Cdp; //type: Native::Interface::FastEthernet::Cdp
+        class Mvrp; //type: Native::Interface::FastEthernet::Mvrp
+        class Ntp; //type: Native::Interface::FastEthernet::Ntp
+        class Utd; //type: Native::Interface::FastEthernet::Utd
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switchport> switchport;
@@ -2877,6 +2877,7 @@ class Native::Interface::FastEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Power> power;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ethernet> ethernet;
@@ -2889,28 +2890,11 @@ class Native::Interface::FastEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lacp> lacp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption> cisco_ios_xe_ethernet_macsec_option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Evpn> evpn;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cdp> cdp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Dot1x> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Performance> performance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::FabricDomain> fabric_domain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mka> mka;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp> mvrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::AnalysisModule> analysis_module;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Power> power;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mab> mab; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SpanningTree> spanning_tree;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Auto> auto_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Datalink> datalink;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Energywise> energywise; // presence node
@@ -2924,11 +2908,27 @@ class Native::Interface::FastEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SrrQueue> srr_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::DeviceTracking> device_tracking;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Udld> udld;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Performance> performance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SpanningTree> spanning_tree;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mka> mka;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Xconnect> xconnect;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Evpn> evpn;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lldp> lldp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::FabricDomain> fabric_domain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Udld> udld;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cdp> cdp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp> mvrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Utd> utd;
                 class IfState;
         class ServiceInsertion;
         class ChannelProtocol;
@@ -3044,7 +3044,7 @@ class Native::Interface::FastEthernet::Switchport::Access::Vlan : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16
+        ydk::YLeaf vlan; //type: one of uint16, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -3378,7 +3378,7 @@ class Native::Interface::FastEthernet::Switchport::Trunk::Native_ : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16
+        ydk::YLeaf vlan; //type: one of uint16, enumeration
         class Vlan;
 
 }; // Native::Interface::FastEthernet::Switchport::Trunk::Native_
@@ -3473,7 +3473,7 @@ class Native::Interface::FastEthernet::Switchport::Voice::Vlan : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16, string
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -3739,6 +3739,11 @@ class Native::Interface::Ethernet::Ip::Verify::Unicast::Source::ReachableVia : p
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3747,6 +3752,11 @@ class Native::Interface::Ethernet::Ipv6::TrafficFilter::Direction : public ydk::
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3754,6 +3764,10 @@ class Native::Interface::Ethernet::InterfaceQos::Trust::Device : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::Standby::Version : public ydk::Enum
@@ -3762,6 +3776,11 @@ class Native::Interface::Ethernet::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3769,6 +3788,10 @@ class Native::Interface::Ethernet::Standby::StandbyList::Ipv6 : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3777,6 +3800,11 @@ class Native::Interface::Ethernet::Standby::StandbyList::Authentication::Md5::Ke
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3785,6 +3813,11 @@ class Native::Interface::Ethernet::Standby::StandbyList::Redirect::Advertisement
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::AccessSession::HostMode : public ydk::Enum
@@ -3795,6 +3828,13 @@ class Native::Interface::Ethernet::AccessSession::HostMode : public ydk::Enum
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Ethernet::Trust::Device : public ydk::Enum
@@ -3805,6 +3845,13 @@ class Native::Interface::Ethernet::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::IfState : public ydk::Enum
@@ -3812,6 +3859,10 @@ class Native::Interface::FastEthernet::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::ServiceInsertion : public ydk::Enum
@@ -3819,6 +3870,10 @@ class Native::Interface::FastEthernet::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::ChannelProtocol : public ydk::Enum
@@ -3827,6 +3882,11 @@ class Native::Interface::FastEthernet::ChannelProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf lacp;
         static const ydk::Enum::YLeaf pagp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lacp") return 0;
+            if (name == "pagp") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Duplex : public ydk::Enum
@@ -3836,6 +3896,12 @@ class Native::Interface::FastEthernet::Duplex : public ydk::Enum
         static const ydk::Enum::YLeaf full;
         static const ydk::Enum::YLeaf half;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "full") return 1;
+            if (name == "half") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Nat66 : public ydk::Enum
@@ -3844,6 +3910,11 @@ class Native::Interface::FastEthernet::Nat66 : public ydk::Enum
         static const ydk::Enum::YLeaf inside;
         static const ydk::Enum::YLeaf outside;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inside") return 0;
+            if (name == "outside") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Switchport::Access::Vlan::Vlan_ : public ydk::Enum
@@ -3851,6 +3922,10 @@ class Native::Interface::FastEthernet::Switchport::Access::Vlan::Vlan_ : public 
     public:
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Switchport::Mode::Dynamic : public ydk::Enum
@@ -3859,6 +3934,11 @@ class Native::Interface::FastEthernet::Switchport::Mode::Dynamic : public ydk::E
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf desirable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "desirable") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Switchport::PortSecurity::Violation : public ydk::Enum
@@ -3868,6 +3948,12 @@ class Native::Interface::FastEthernet::Switchport::PortSecurity::Violation : pub
         static const ydk::Enum::YLeaf restrict;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protect") return 0;
+            if (name == "restrict") return 1;
+            if (name == "shutdown") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Switchport::PortSecurity::Aging::Type : public ydk::Enum
@@ -3876,6 +3962,11 @@ class Native::Interface::FastEthernet::Switchport::PortSecurity::Aging::Type : p
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf inactivity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absolute") return 0;
+            if (name == "inactivity") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Switchport::Trunk::Encapsulation : public ydk::Enum
@@ -3885,6 +3976,12 @@ class Native::Interface::FastEthernet::Switchport::Trunk::Encapsulation : public
         static const ydk::Enum::YLeaf isl;
         static const ydk::Enum::YLeaf negotiate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1q") return 0;
+            if (name == "isl") return 1;
+            if (name == "negotiate") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Switchport::Trunk::Native_::Vlan : public ydk::Enum
@@ -3892,6 +3989,10 @@ class Native::Interface::FastEthernet::Switchport::Trunk::Native_::Vlan : public
     public:
         static const ydk::Enum::YLeaf tag;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tag") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::FastEthernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
@@ -3901,6 +4002,12 @@ class Native::Interface::FastEthernet::Switchport::Voice::Vlan::Vlan_ : public y
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf untagged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1p") return 0;
+            if (name == "none") return 1;
+            if (name == "untagged") return 2;
+            return -1;
+        }
 };
 
 

@@ -11,6 +11,26 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace cisco_pw {
 
+PwSignalingProtocolType::PwSignalingProtocolType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-type")
+{
+
+}
+
+PwSignalingProtocolType::~PwSignalingProtocolType()
+{
+}
+
+PwLoadBalanceType::PwLoadBalanceType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-load-balance-type")
+{
+
+}
+
+PwLoadBalanceType::~PwLoadBalanceType()
+{
+}
+
 PwEncapsulationType::PwEncapsulationType()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encapsulation-type")
 {
@@ -28,26 +48,6 @@ PwVcType::PwVcType()
 }
 
 PwVcType::~PwVcType()
-{
-}
-
-PwLoadBalanceType::PwLoadBalanceType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-load-balance-type")
-{
-
-}
-
-PwLoadBalanceType::~PwLoadBalanceType()
-{
-}
-
-PwSignalingProtocolType::PwSignalingProtocolType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-type")
-{
-
-}
-
-PwSignalingProtocolType::~PwSignalingProtocolType()
 {
 }
 
@@ -2604,16 +2604,6 @@ bool PseudowireState::Pseudowires::Statistics::has_leaf_or_child_of_name(const s
     return false;
 }
 
-PwEncapMpls::PwEncapMpls()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encap-mpls")
-{
-
-}
-
-PwEncapMpls::~PwEncapMpls()
-{
-}
-
 PwVcTypeEther::PwVcTypeEther()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-ether")
 {
@@ -2621,146 +2611,6 @@ PwVcTypeEther::PwVcTypeEther()
 }
 
 PwVcTypeEther::~PwVcTypeEther()
-{
-}
-
-PwVcTypeVlan::PwVcTypeVlan()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan")
-{
-
-}
-
-PwVcTypeVlan::~PwVcTypeVlan()
-{
-}
-
-PwVcTypeVlanPassthrough::PwVcTypeVlanPassthrough()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan-passthrough")
-{
-
-}
-
-PwVcTypeVlanPassthrough::~PwVcTypeVlanPassthrough()
-{
-}
-
-PwLbEthernetType::PwLbEthernetType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ethernet-type")
-{
-
-}
-
-PwLbEthernetType::~PwLbEthernetType()
-{
-}
-
-PwLbEthSrcMac::PwLbEthSrcMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-mac")
-{
-
-}
-
-PwLbEthSrcMac::~PwLbEthSrcMac()
-{
-}
-
-PwLbEthDstMac::PwLbEthDstMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-dst-mac")
-{
-
-}
-
-PwLbEthDstMac::~PwLbEthDstMac()
-{
-}
-
-PwLbEthSrcDstMac::PwLbEthSrcDstMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-dst-mac")
-{
-
-}
-
-PwLbEthSrcDstMac::~PwLbEthSrcDstMac()
-{
-}
-
-PwLbIpType::PwLbIpType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-type")
-{
-
-}
-
-PwLbIpType::~PwLbIpType()
-{
-}
-
-PwLbIpSrcIp::PwLbIpSrcIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-ip")
-{
-
-}
-
-PwLbIpSrcIp::~PwLbIpSrcIp()
-{
-}
-
-PwLbIpDstIp::PwLbIpDstIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-dst-ip")
-{
-
-}
-
-PwLbIpDstIp::~PwLbIpDstIp()
-{
-}
-
-PwLbIpSrcDstIp::PwLbIpSrcDstIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-dst-ip")
-{
-
-}
-
-PwLbIpSrcDstIp::~PwLbIpSrcDstIp()
-{
-}
-
-PwSignalingProtocolNone::PwSignalingProtocolNone()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-none")
-{
-
-}
-
-PwSignalingProtocolNone::~PwSignalingProtocolNone()
-{
-}
-
-PwSignalingProtocolLdp::PwSignalingProtocolLdp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-ldp")
-{
-
-}
-
-PwSignalingProtocolLdp::~PwSignalingProtocolLdp()
-{
-}
-
-PwSignalingProtocolBgp::PwSignalingProtocolBgp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-bgp")
-{
-
-}
-
-PwSignalingProtocolBgp::~PwSignalingProtocolBgp()
-{
-}
-
-PwSequencingReceive::PwSequencingReceive()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-receive")
-{
-
-}
-
-PwSequencingReceive::~PwSequencingReceive()
 {
 }
 
@@ -2774,6 +2624,66 @@ PwSequencingTransmit::~PwSequencingTransmit()
 {
 }
 
+PwVcTypeVlanPassthrough::PwVcTypeVlanPassthrough()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan-passthrough")
+{
+
+}
+
+PwVcTypeVlanPassthrough::~PwVcTypeVlanPassthrough()
+{
+}
+
+PwEncapMpls::PwEncapMpls()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encap-mpls")
+{
+
+}
+
+PwEncapMpls::~PwEncapMpls()
+{
+}
+
+PwLbIpDstIp::PwLbIpDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-dst-ip")
+{
+
+}
+
+PwLbIpDstIp::~PwLbIpDstIp()
+{
+}
+
+PwSequencingReceive::PwSequencingReceive()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-receive")
+{
+
+}
+
+PwSequencingReceive::~PwSequencingReceive()
+{
+}
+
+PwLbEthernetType::PwLbEthernetType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ethernet-type")
+{
+
+}
+
+PwLbEthernetType::~PwLbEthernetType()
+{
+}
+
+PwSignalingProtocolLdp::PwSignalingProtocolLdp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-ldp")
+{
+
+}
+
+PwSignalingProtocolLdp::~PwSignalingProtocolLdp()
+{
+}
+
 PwSequencingBoth::PwSequencingBoth()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-both")
 {
@@ -2781,6 +2691,96 @@ PwSequencingBoth::PwSequencingBoth()
 }
 
 PwSequencingBoth::~PwSequencingBoth()
+{
+}
+
+PwVcTypeVlan::PwVcTypeVlan()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan")
+{
+
+}
+
+PwVcTypeVlan::~PwVcTypeVlan()
+{
+}
+
+PwLbIpType::PwLbIpType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-type")
+{
+
+}
+
+PwLbIpType::~PwLbIpType()
+{
+}
+
+PwSignalingProtocolNone::PwSignalingProtocolNone()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-none")
+{
+
+}
+
+PwSignalingProtocolNone::~PwSignalingProtocolNone()
+{
+}
+
+PwSignalingProtocolBgp::PwSignalingProtocolBgp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-bgp")
+{
+
+}
+
+PwSignalingProtocolBgp::~PwSignalingProtocolBgp()
+{
+}
+
+PwLbIpSrcIp::PwLbIpSrcIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-ip")
+{
+
+}
+
+PwLbIpSrcIp::~PwLbIpSrcIp()
+{
+}
+
+PwLbEthSrcDstMac::PwLbEthSrcDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-dst-mac")
+{
+
+}
+
+PwLbEthSrcDstMac::~PwLbEthSrcDstMac()
+{
+}
+
+PwLbEthDstMac::PwLbEthDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-dst-mac")
+{
+
+}
+
+PwLbEthDstMac::~PwLbEthDstMac()
+{
+}
+
+PwLbIpSrcDstIp::PwLbIpSrcDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-dst-ip")
+{
+
+}
+
+PwLbIpSrcDstIp::~PwLbIpSrcDstIp()
+{
+}
+
+PwLbEthSrcMac::PwLbEthSrcMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-mac")
+{
+
+}
+
+PwLbEthSrcMac::~PwLbEthSrcMac()
 {
 }
 

@@ -649,11 +649,10 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf shutdown_recovery_timer; //type: uint32
+        ydk::YLeaf enable; //type: empty
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure
 
@@ -1165,7 +1164,7 @@ class L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pr
         ydk::YLeaf type; //type: PreferredPath
         ydk::YLeaf interface_tunnel_number; //type: uint32
         ydk::YLeaf fallback_disable; //type: empty
-        ydk::YLeaf path_name; //type: string
+        ydk::YLeaf srte_policy; //type: string
 
 }; // L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath
 
@@ -1475,8 +1474,6 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain : p
         ydk::YLeaf coupled_mode; //type: empty
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf flooding_unknown_unicast; //type: empty
-        ydk::YLeaf efp_visibility; //type: empty
-        ydk::YLeaf l2_multicast_source; //type: L2mcSrcTrafficEnabled
         ydk::YLeaf igmp_snooping_disable; //type: empty
         ydk::YLeaf transport_mode; //type: BridgeDomainTransportMode
         ydk::YLeaf mld_snooping; //type: string
@@ -1801,10 +1798,9 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Br
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: empty
+        ydk::YLeaf action; //type: MacSecureAction
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf threshold; //type: empty
-        ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure
 
@@ -2111,11 +2107,11 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Br
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf accept_shutdown; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf accept_shutdown; //type: empty
 
 }; // L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure
 
@@ -2795,11 +2791,10 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf shutdown_recovery_timer; //type: uint32
+        ydk::YLeaf enable; //type: empty
 
 }; // L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure
 

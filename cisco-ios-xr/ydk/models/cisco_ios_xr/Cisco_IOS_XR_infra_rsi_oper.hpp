@@ -1299,6 +1299,27 @@ class SelectiveVrfDownload::State : public ydk::Entity
 
 }; // SelectiveVrfDownload::State
 
+class Priority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf very_low;
+        static const ydk::Enum::YLeaf invald;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "high") return 1;
+            if (name == "medium") return 2;
+            if (name == "low") return 3;
+            if (name == "very-low") return 4;
+            if (name == "invald") return 5;
+            return -1;
+        }
+};
+
 class Source : public ydk::Enum
 {
     public:
@@ -1311,18 +1332,17 @@ class Source : public ydk::Enum
         static const ydk::Enum::YLeaf inherited_and_notified;
         static const ydk::Enum::YLeaf from_optical_and_notified;
 
-};
-
-class Priority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
-        static const ydk::Enum::YLeaf very_low;
-        static const ydk::Enum::YLeaf invald;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "configured") return 1;
+            if (name == "from-group") return 2;
+            if (name == "inherited") return 4;
+            if (name == "from-optical") return 8;
+            if (name == "configured-and-notified") return 17;
+            if (name == "from-group-and-notified") return 18;
+            if (name == "inherited-and-notified") return 20;
+            if (name == "from-optical-and-notified") return 24;
+            return -1;
+        }
 };
 
 

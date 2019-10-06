@@ -7434,6 +7434,8 @@ bool PerformanceMeasurementResponder::Nodes::Node::Interfaces::Interface::Interf
     return false;
 }
 
+const Enum::YLeaf PmMeasurement::delay_measurement_type {0, "delay-measurement-type"};
+
 const Enum::YLeaf PmAdvertReason::periodic_timer_expired_no_advertisements {0, "periodic-timer-expired-no-advertisements"};
 const Enum::YLeaf PmAdvertReason::periodic_advertisement_threshold_average {1, "periodic-advertisement-threshold-average"};
 const Enum::YLeaf PmAdvertReason::periodic_advertisement_threshold_minimum {2, "periodic-advertisement-threshold-minimum"};
@@ -7460,14 +7462,12 @@ const Enum::YLeaf PmProbeNotRunningReason::mpls_capability_not_present {6, "mpls
 const Enum::YLeaf PmProbeNotRunningReason::interface_not_present {7, "interface-not-present"};
 const Enum::YLeaf PmProbeNotRunningReason::ip_address_not_configured {8, "ip-address-not-configured"};
 
-const Enum::YLeaf PmMeasurement::delay_measurement_type {0, "delay-measurement-type"};
+const Enum::YLeaf PmDelayMode::delay_mode_one_way {0, "delay-mode-one-way"};
+const Enum::YLeaf PmDelayMode::delay_mode_two_way {1, "delay-mode-two-way"};
 
 const Enum::YLeaf PmTransport::interface_transport_type {0, "interface-transport-type"};
 const Enum::YLeaf PmTransport::rsvpte_transport_type {1, "rsvpte-transport-type"};
 const Enum::YLeaf PmTransport::sr_policy_transport_type {2, "sr-policy-transport-type"};
-
-const Enum::YLeaf PmDelayMode::delay_mode_one_way {0, "delay-mode-one-way"};
-const Enum::YLeaf PmDelayMode::delay_mode_two_way {1, "delay-mode-two-way"};
 
 
 }

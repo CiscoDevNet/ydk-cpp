@@ -1796,12 +1796,12 @@ class Snmp::Correlator::RuleDetails::RuleDetail : public ydk::Entity
         ydk::YLeaf timeout; //type: uint32
         class RuleSummary; //type: Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary
         class RootCause; //type: Snmp::Correlator::RuleDetails::RuleDetail::RootCause
-        class NonRootCause; //type: Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause
+        class NonRootcaus; //type: Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus
         class ApplyHost; //type: Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary> rule_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RootCause> root_cause;
-        ydk::YList non_root_cause;
+        ydk::YList non_rootcaus;
         ydk::YList apply_host;
         
 }; // Snmp::Correlator::RuleDetails::RuleDetail
@@ -1877,11 +1877,11 @@ class Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind : public ydk
 }; // Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind
 
 
-class Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause : public ydk::Entity
+class Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus : public ydk::Entity
 {
     public:
-        NonRootCause();
-        ~NonRootCause();
+        NonRootcaus();
+        ~NonRootcaus();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1894,14 +1894,14 @@ class Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf oid; //type: string
-        class VarBind; //type: Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause::VarBind
+        class VarBind; //type: Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind
 
         ydk::YList var_bind;
         
-}; // Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause
+}; // Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus
 
 
-class Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause::VarBind : public ydk::Entity
+class Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind : public ydk::Entity
 {
     public:
         VarBind();
@@ -1921,7 +1921,7 @@ class Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause::VarBind : public 
         ydk::YLeaf match_type; //type: SnmpCorrVbindMatch
         ydk::YLeaf reg_exp; //type: string
 
-}; // Snmp::Correlator::RuleDetails::RuleDetail::NonRootCause::VarBind
+}; // Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind
 
 
 class Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost : public ydk::Entity
@@ -2768,20 +2768,17 @@ class Snmp::SensorMib::EntPhyIndexes::EntPhyIndex : public ydk::Entity
 
 }; // Snmp::SensorMib::EntPhyIndexes::EntPhyIndex
 
-class DupReqDropStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
-
-};
-
 class SnmpCorrVbindMatch : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf index_;
         static const ydk::Enum::YLeaf value_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "index") return 0;
+            if (name == "value") return 1;
+            return -1;
+        }
 };
 
 class SnmpCorrRuleState : public ydk::Enum
@@ -2791,6 +2788,25 @@ class SnmpCorrRuleState : public ydk::Enum
         static const ydk::Enum::YLeaf rule_applied;
         static const ydk::Enum::YLeaf rule_applied_all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rule-unapplied") return 0;
+            if (name == "rule-applied") return 1;
+            if (name == "rule-applied-all") return 2;
+            return -1;
+        }
+};
+
+class DupReqDropStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            if (name == "enabled") return 1;
+            return -1;
+        }
 };
 
 

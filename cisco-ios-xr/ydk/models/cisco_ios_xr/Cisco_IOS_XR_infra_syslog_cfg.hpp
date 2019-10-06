@@ -2353,53 +2353,29 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause : public ydk::En
 
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
 
-class LoggingTos : public ydk::Enum
+class LogSeverity : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf precedence;
-        static const ydk::Enum::YLeaf dscp;
-
-};
-
-class LoggingDscpValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf af11;
-        static const ydk::Enum::YLeaf af12;
-        static const ydk::Enum::YLeaf af13;
-        static const ydk::Enum::YLeaf af21;
-        static const ydk::Enum::YLeaf af22;
-        static const ydk::Enum::YLeaf af23;
-        static const ydk::Enum::YLeaf af31;
-        static const ydk::Enum::YLeaf af32;
-        static const ydk::Enum::YLeaf af33;
-        static const ydk::Enum::YLeaf af41;
-        static const ydk::Enum::YLeaf af42;
-        static const ydk::Enum::YLeaf af43;
-        static const ydk::Enum::YLeaf ef;
-        static const ydk::Enum::YLeaf cs1;
-        static const ydk::Enum::YLeaf cs2;
-        static const ydk::Enum::YLeaf cs3;
-        static const ydk::Enum::YLeaf cs4;
-        static const ydk::Enum::YLeaf cs5;
-        static const ydk::Enum::YLeaf cs6;
-        static const ydk::Enum::YLeaf cs7;
-
-};
-
-class LoggingPrecedenceValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf routine;
-        static const ydk::Enum::YLeaf priority;
-        static const ydk::Enum::YLeaf immediate;
-        static const ydk::Enum::YLeaf flash;
-        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf emergency;
+        static const ydk::Enum::YLeaf alert;
         static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf informational;
+        static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "informational") return 6;
+            if (name == "debug") return 7;
+            return -1;
+        }
 };
 
 class Facility : public ydk::Enum
@@ -2432,13 +2408,86 @@ class Facility : public ydk::Enum
         static const ydk::Enum::YLeaf sys13;
         static const ydk::Enum::YLeaf sys14;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "kern") return 0;
+            if (name == "user") return 8;
+            if (name == "mail") return 16;
+            if (name == "daemon") return 24;
+            if (name == "auth") return 32;
+            if (name == "syslog") return 40;
+            if (name == "lpr") return 48;
+            if (name == "news") return 56;
+            if (name == "uucp") return 64;
+            if (name == "cron") return 72;
+            if (name == "authpriv") return 80;
+            if (name == "ftp") return 88;
+            if (name == "local0") return 128;
+            if (name == "local1") return 136;
+            if (name == "local2") return 144;
+            if (name == "local3") return 152;
+            if (name == "local4") return 160;
+            if (name == "local5") return 168;
+            if (name == "local6") return 176;
+            if (name == "local7") return 184;
+            if (name == "sys9") return 192;
+            if (name == "sys10") return 200;
+            if (name == "sys11") return 208;
+            if (name == "sys12") return 216;
+            if (name == "sys13") return 224;
+            if (name == "sys14") return 232;
+            return -1;
+        }
 };
 
-class LoggingDscp : public ydk::Enum
+class LogCollectFrequency : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf weekly;
+        static const ydk::Enum::YLeaf daily;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "weekly") return 1;
+            if (name == "daily") return 2;
+            return -1;
+        }
+};
+
+class LoggingPrecedenceValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf routine;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf flash;
+        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf network;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "routine") return 0;
+            if (name == "priority") return 1;
+            if (name == "immediate") return 2;
+            if (name == "flash") return 3;
+            if (name == "flash-override") return 4;
+            if (name == "critical") return 5;
+            if (name == "internet") return 6;
+            if (name == "network") return 7;
+            return -1;
+        }
+};
+
+class LoggingTos : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf precedence;
         static const ydk::Enum::YLeaf dscp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "precedence") return 0;
+            if (name == "dscp") return 1;
+            return -1;
+        }
 };
 
 class LoggingLevels : public ydk::Enum
@@ -2454,6 +2503,18 @@ class LoggingLevels : public ydk::Enum
         static const ydk::Enum::YLeaf debug;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "info") return 6;
+            if (name == "debug") return 7;
+            if (name == "disable") return 15;
+            return -1;
+        }
 };
 
 class LoggingPrecedence : public ydk::Enum
@@ -2461,14 +2522,61 @@ class LoggingPrecedence : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf precedence;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "precedence") return 0;
+            return -1;
+        }
 };
 
-class TimeInfo : public ydk::Enum
+class LoggingDscpValue : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf af11;
+        static const ydk::Enum::YLeaf af12;
+        static const ydk::Enum::YLeaf af13;
+        static const ydk::Enum::YLeaf af21;
+        static const ydk::Enum::YLeaf af22;
+        static const ydk::Enum::YLeaf af23;
+        static const ydk::Enum::YLeaf af31;
+        static const ydk::Enum::YLeaf af32;
+        static const ydk::Enum::YLeaf af33;
+        static const ydk::Enum::YLeaf af41;
+        static const ydk::Enum::YLeaf af42;
+        static const ydk::Enum::YLeaf af43;
+        static const ydk::Enum::YLeaf ef;
+        static const ydk::Enum::YLeaf cs1;
+        static const ydk::Enum::YLeaf cs2;
+        static const ydk::Enum::YLeaf cs3;
+        static const ydk::Enum::YLeaf cs4;
+        static const ydk::Enum::YLeaf cs5;
+        static const ydk::Enum::YLeaf cs6;
+        static const ydk::Enum::YLeaf cs7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "af11") return 10;
+            if (name == "af12") return 12;
+            if (name == "af13") return 14;
+            if (name == "af21") return 18;
+            if (name == "af22") return 20;
+            if (name == "af23") return 22;
+            if (name == "af31") return 26;
+            if (name == "af32") return 28;
+            if (name == "af33") return 30;
+            if (name == "af41") return 34;
+            if (name == "af42") return 36;
+            if (name == "af43") return 38;
+            if (name == "ef") return 46;
+            if (name == "cs1") return 8;
+            if (name == "cs2") return 16;
+            if (name == "cs3") return 24;
+            if (name == "cs4") return 32;
+            if (name == "cs5") return 40;
+            if (name == "cs6") return 48;
+            if (name == "cs7") return 56;
+            return -1;
+        }
 };
 
 class LogMessageSeverity : public ydk::Enum
@@ -2483,28 +2591,41 @@ class LogMessageSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf informational;
         static const ydk::Enum::YLeaf debug;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergency") return 0;
+            if (name == "alert") return 1;
+            if (name == "critical") return 2;
+            if (name == "error") return 3;
+            if (name == "warning") return 4;
+            if (name == "notice") return 5;
+            if (name == "informational") return 6;
+            if (name == "debug") return 7;
+            return -1;
+        }
 };
 
-class LogCollectFrequency : public ydk::Enum
+class TimeInfo : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf weekly;
-        static const ydk::Enum::YLeaf daily;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
-class LogSeverity : public ydk::Enum
+class LoggingDscp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf emergency;
-        static const ydk::Enum::YLeaf alert;
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf notice;
-        static const ydk::Enum::YLeaf informational;
-        static const ydk::Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf dscp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dscp") return 1;
+            return -1;
+        }
 };
 
 

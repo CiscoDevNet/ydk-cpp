@@ -1637,13 +1637,6 @@ class MobileIp::Lmas::Lma::ReplayProtection : public ydk::Entity
 
 }; // MobileIp::Lmas::Lma::ReplayProtection
 
-class GreKeyType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf symmetric;
-
-};
-
 class ServiceType : public ydk::Enum
 {
     public:
@@ -1651,6 +1644,12 @@ class ServiceType : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf dual;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "dual") return 3;
+            return -1;
+        }
 };
 
 class LmaService : public ydk::Enum
@@ -1658,13 +1657,27 @@ class LmaService : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf service_mll;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "service-mll") return 1;
+            return -1;
+        }
 };
 
-class RedistType : public ydk::Enum
+class EncapOpt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf home_address;
+        static const ydk::Enum::YLeaf greipv4;
+        static const ydk::Enum::YLeaf greipv6;
+        static const ydk::Enum::YLeaf mgreipv4;
+        static const ydk::Enum::YLeaf mgreipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "greipv4") return 4;
+            if (name == "greipv6") return 5;
+            if (name == "mgreipv4") return 7;
+            if (name == "mgreipv6") return 8;
+            return -1;
+        }
 };
 
 class RedistSubType : public ydk::Enum
@@ -1673,6 +1686,11 @@ class RedistSubType : public ydk::Enum
         static const ydk::Enum::YLeaf host_prefix;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "host-prefix") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class LmaRole : public ydk::Enum
@@ -1680,6 +1698,32 @@ class LmaRole : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf Y_3gma;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "3gma") return 0;
+            return -1;
+        }
+};
+
+class RedistType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf home_address;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "home-address") return 1;
+            return -1;
+        }
+};
+
+class GreKeyType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf symmetric;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 1;
+            return -1;
+        }
 };
 
 class LmaRat : public ydk::Enum
@@ -1698,16 +1742,21 @@ class LmaRat : public ydk::Enum
         static const ydk::Enum::YLeaf Y_3gpp21rtt;
         static const ydk::Enum::YLeaf Y_3gpp2umb;
 
-};
-
-class EncapOpt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf greipv4;
-        static const ydk::Enum::YLeaf greipv6;
-        static const ydk::Enum::YLeaf mgreipv4;
-        static const ydk::Enum::YLeaf mgreipv6;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "virtual") return 0;
+            if (name == "ppp") return 1;
+            if (name == "ethernet") return 2;
+            if (name == "wlan") return 3;
+            if (name == "wi-max") return 4;
+            if (name == "3gppgeran") return 5;
+            if (name == "3gpputran") return 6;
+            if (name == "3gppeutran") return 7;
+            if (name == "3gpp2ehrpd") return 8;
+            if (name == "3gpp2hrpd") return 9;
+            if (name == "3gpp21rtt") return 10;
+            if (name == "3gpp2umb") return 11;
+            return -1;
+        }
 };
 
 

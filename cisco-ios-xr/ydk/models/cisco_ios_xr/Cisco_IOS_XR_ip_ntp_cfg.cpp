@@ -4406,14 +4406,14 @@ bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::
     return false;
 }
 
-const Enum::YLeaf Ntpdscp::ntp_precedence {0, "ntp-precedence"};
-const Enum::YLeaf Ntpdscp::ntpdscp {1, "ntpdscp"};
+const Enum::YLeaf NtpAccessAf::ipv4 {0, "ipv4"};
+const Enum::YLeaf NtpAccessAf::ipv6 {1, "ipv6"};
 
 const Enum::YLeaf NtpPeer::peer {0, "peer"};
 const Enum::YLeaf NtpPeer::server {1, "server"};
 
-const Enum::YLeaf NtpAccessAf::ipv4 {0, "ipv4"};
-const Enum::YLeaf NtpAccessAf::ipv6 {1, "ipv6"};
+const Enum::YLeaf Ntpdscp::ntp_precedence {0, "ntp-precedence"};
+const Enum::YLeaf Ntpdscp::ntpdscp {1, "ntpdscp"};
 
 const Enum::YLeaf NtpAccess::peer {0, "peer"};
 const Enum::YLeaf NtpAccess::serve {1, "serve"};

@@ -601,6 +601,12 @@ class CCSRequestOperation : public ydk::Enum
         static const ydk::Enum::YLeaf start;
         static const ydk::Enum::YLeaf abort;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "start") return 1;
+            if (name == "abort") return 2;
+            return -1;
+        }
 };
 
 class CCSRequestOperState : public ydk::Enum
@@ -618,6 +624,20 @@ class CCSRequestOperState : public ydk::Enum
         static const ydk::Enum::YLeaf fftFailed;
         static const ydk::Enum::YLeaf others;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 0;
+            if (name == "pending") return 1;
+            if (name == "running") return 2;
+            if (name == "noError") return 3;
+            if (name == "aborted") return 4;
+            if (name == "notOnLine") return 5;
+            if (name == "invalidMac") return 6;
+            if (name == "timeOut") return 7;
+            if (name == "fftBusy") return 8;
+            if (name == "fftFailed") return 9;
+            if (name == "others") return 10;
+            return -1;
+        }
 };
 
 class CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::CcsUpSpecMgmtHopPriority : public ydk::Enum
@@ -630,6 +650,15 @@ class CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::CcsUpSpecMg
         static const ydk::Enum::YLeaf channelFrqMod;
         static const ydk::Enum::YLeaf channelModFrq;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "frqModChannel") return 0;
+            if (name == "frqChannelMod") return 1;
+            if (name == "modFrqChannel") return 2;
+            if (name == "modChannelFrq") return 3;
+            if (name == "channelFrqMod") return 4;
+            if (name == "channelModFrq") return 5;
+            return -1;
+        }
 };
 
 class CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::CcsUpSpecMgmtHopCondition : public ydk::Enum
@@ -639,6 +668,12 @@ class CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::CcsUpSpecMg
         static const ydk::Enum::YLeaf stationMaintainenceMiss;
         static const ydk::Enum::YLeaf others;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "snr") return 0;
+            if (name == "stationMaintainenceMiss") return 1;
+            if (name == "others") return 2;
+            return -1;
+        }
 };
 
 class CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry::CcsSpecGroupFreqType : public ydk::Enum
@@ -647,6 +682,11 @@ class CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry::CcsSp
         static const ydk::Enum::YLeaf centerFreq;
         static const ydk::Enum::YLeaf bandFreq;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "centerFreq") return 1;
+            if (name == "bandFreq") return 2;
+            return -1;
+        }
 };
 
 

@@ -169,6 +169,11 @@ class PppEaAdjState : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_ea_adj_state_not_installed;
         static const ydk::Enum::YLeaf ppp_ea_adj_state_installed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ppp-ea-adj-state-not-installed") return 0;
+            if (name == "ppp-ea-adj-state-installed") return 1;
+            return -1;
+        }
 };
 
 

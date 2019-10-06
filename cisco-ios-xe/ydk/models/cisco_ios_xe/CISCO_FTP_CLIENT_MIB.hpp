@@ -132,6 +132,11 @@ class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperation :
         static const ydk::Enum::YLeaf putBinary;
         static const ydk::Enum::YLeaf putASCII;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "putBinary") return 1;
+            if (name == "putASCII") return 2;
+            return -1;
+        }
 };
 
 class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult : public ydk::Enum
@@ -148,6 +153,19 @@ class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult : pu
         static const ydk::Enum::YLeaf fileReadFailed;
         static const ydk::Enum::YLeaf fileWriteFailed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pending") return 1;
+            if (name == "success") return 2;
+            if (name == "aborted") return 3;
+            if (name == "fileOpenFailLocal") return 4;
+            if (name == "fileOpenFailRemote") return 5;
+            if (name == "badDomainName") return 6;
+            if (name == "unreachableIpAddress") return 7;
+            if (name == "linkFailed") return 8;
+            if (name == "fileReadFailed") return 9;
+            if (name == "fileWriteFailed") return 10;
+            return -1;
+        }
 };
 
 class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestStop : public ydk::Enum
@@ -156,6 +174,11 @@ class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestStop : publ
         static const ydk::Enum::YLeaf ready;
         static const ydk::Enum::YLeaf stop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ready") return 1;
+            if (name == "stop") return 2;
+            return -1;
+        }
 };
 
 class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperationState : public ydk::Enum
@@ -165,6 +188,12 @@ class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperationSt
         static const ydk::Enum::YLeaf stopping;
         static const ydk::Enum::YLeaf stopped;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 1;
+            if (name == "stopping") return 2;
+            if (name == "stopped") return 3;
+            return -1;
+        }
 };
 
 

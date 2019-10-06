@@ -319,32 +319,6 @@ class MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields : public ydk::Entity
 
 }; // MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
 
-class MdtXfrmAttrType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mdt_xfrm_attr_none;
-        static const ydk::Enum::YLeaf mandatory;
-        static const ydk::Enum::YLeaf primary;
-
-};
-
-class MdtXfrmOpType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sub_record;
-        static const ydk::Enum::YLeaf delta;
-
-};
-
-class MdtXfrmLogicOp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mdt_xfrm_lop_none;
-        static const ydk::Enum::YLeaf and_;
-        static const ydk::Enum::YLeaf or_;
-
-};
-
 class MdtXfrmOperator : public ydk::Enum
 {
     public:
@@ -356,6 +330,59 @@ class MdtXfrmOperator : public ydk::Enum
         static const ydk::Enum::YLeaf lt;
         static const ydk::Enum::YLeaf le;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "operator-none") return 0;
+            if (name == "eq") return 1;
+            if (name == "ne") return 2;
+            if (name == "gt") return 3;
+            if (name == "ge") return 4;
+            if (name == "lt") return 5;
+            if (name == "le") return 6;
+            return -1;
+        }
+};
+
+class MdtXfrmOpType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sub_record;
+        static const ydk::Enum::YLeaf delta;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "sub-record") return 0;
+            if (name == "delta") return 1;
+            return -1;
+        }
+};
+
+class MdtXfrmLogicOp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mdt_xfrm_lop_none;
+        static const ydk::Enum::YLeaf and_;
+        static const ydk::Enum::YLeaf or_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "mdt-xfrm-lop-none") return 0;
+            if (name == "and") return 1;
+            if (name == "or") return 2;
+            return -1;
+        }
+};
+
+class MdtXfrmAttrType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mdt_xfrm_attr_none;
+        static const ydk::Enum::YLeaf mandatory;
+        static const ydk::Enum::YLeaf primary;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "mdt-xfrm-attr-none") return 0;
+            if (name == "mandatory") return 1;
+            if (name == "primary") return 2;
+            return -1;
+        }
 };
 
 

@@ -906,6 +906,10 @@ class Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::SmallServer : p
     public:
         static const ydk::Enum::YLeaf no_limit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-limit") return 0;
+            return -1;
+        }
 };
 
 class Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::SmallServer : public ydk::Enum
@@ -913,6 +917,10 @@ class Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::SmallServer : p
     public:
         static const ydk::Enum::YLeaf no_limit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-limit") return 0;
+            return -1;
+        }
 };
 
 class Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::SmallServer : public ydk::Enum
@@ -920,6 +928,10 @@ class Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::SmallServer : p
     public:
         static const ydk::Enum::YLeaf no_limit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-limit") return 0;
+            return -1;
+        }
 };
 
 class Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::SmallServer : public ydk::Enum
@@ -927,6 +939,10 @@ class Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::SmallServer : p
     public:
         static const ydk::Enum::YLeaf no_limit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-limit") return 0;
+            return -1;
+        }
 };
 
 

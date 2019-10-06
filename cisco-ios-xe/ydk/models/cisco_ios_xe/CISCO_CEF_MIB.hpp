@@ -1090,6 +1090,13 @@ class CISCOCEFMIB::CefCfgTable::CefCfgEntry::CefCfgLoadSharingAlgorithm : public
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf universal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "original") return 2;
+            if (name == "tunnel") return 3;
+            if (name == "universal") return 4;
+            return -1;
+        }
 };
 
 class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntSwitchingState : public ydk::Enum
@@ -1099,6 +1106,12 @@ class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntSwitchingState : public ydk::
         static const ydk::Enum::YLeaf distCefEnabled;
         static const ydk::Enum::YLeaf cefDisabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cefEnabled") return 1;
+            if (name == "distCefEnabled") return 2;
+            if (name == "cefDisabled") return 3;
+            return -1;
+        }
 };
 
 class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntLoadSharing : public ydk::Enum
@@ -1107,6 +1120,11 @@ class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntLoadSharing : public ydk::Enu
         static const ydk::Enum::YLeaf perPacket;
         static const ydk::Enum::YLeaf perDestination;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "perPacket") return 1;
+            if (name == "perDestination") return 2;
+            return -1;
+        }
 };
 
 class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntNonrecursiveAccouting : public ydk::Enum
@@ -1115,6 +1133,11 @@ class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntNonrecursiveAccouting : publi
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf external;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 1;
+            if (name == "external") return 2;
+            return -1;
+        }
 };
 
 class CISCOCEFMIB::CefPeerTable::CefPeerEntry::CefPeerOperState : public ydk::Enum
@@ -1124,6 +1147,12 @@ class CISCOCEFMIB::CefPeerTable::CefPeerEntry::CefPeerOperState : public ydk::En
         static const ydk::Enum::YLeaf peerUp;
         static const ydk::Enum::YLeaf peerHold;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "peerDisabled") return 1;
+            if (name == "peerUp") return 2;
+            if (name == "peerHold") return 3;
+            return -1;
+        }
 };
 
 class CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState : public ydk::Enum
@@ -1135,6 +1164,14 @@ class CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState : publi
         static const ydk::Enum::YLeaf peerFIBReloading;
         static const ydk::Enum::YLeaf peerFIBSynced;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "peerFIBDown") return 1;
+            if (name == "peerFIBUp") return 2;
+            if (name == "peerFIBReloadRequest") return 3;
+            if (name == "peerFIBReloading") return 4;
+            if (name == "peerFIBSynced") return 5;
+            return -1;
+        }
 };
 
 class CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::CefInconsistencyReason : public ydk::Enum
@@ -1144,6 +1181,12 @@ class CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::Cef
         static const ydk::Enum::YLeaf checksumErr;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "missing") return 1;
+            if (name == "checksumErr") return 2;
+            if (name == "unknown") return 3;
+            return -1;
+        }
 };
 
 

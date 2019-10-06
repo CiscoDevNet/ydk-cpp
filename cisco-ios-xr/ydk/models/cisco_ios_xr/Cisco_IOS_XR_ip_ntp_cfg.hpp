@@ -958,12 +958,17 @@ class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup 
 
 }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup
 
-class Ntpdscp : public ydk::Enum
+class NtpAccessAf : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ntp_precedence;
-        static const ydk::Enum::YLeaf ntpdscp;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class NtpPeer : public ydk::Enum
@@ -972,14 +977,24 @@ class NtpPeer : public ydk::Enum
         static const ydk::Enum::YLeaf peer;
         static const ydk::Enum::YLeaf server;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "peer") return 0;
+            if (name == "server") return 1;
+            return -1;
+        }
 };
 
-class NtpAccessAf : public ydk::Enum
+class Ntpdscp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ntp_precedence;
+        static const ydk::Enum::YLeaf ntpdscp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-precedence") return 0;
+            if (name == "ntpdscp") return 1;
+            return -1;
+        }
 };
 
 class NtpAccess : public ydk::Enum
@@ -990,6 +1005,13 @@ class NtpAccess : public ydk::Enum
         static const ydk::Enum::YLeaf serve_only;
         static const ydk::Enum::YLeaf query_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "peer") return 0;
+            if (name == "serve") return 1;
+            if (name == "serve-only") return 2;
+            if (name == "query-only") return 3;
+            return -1;
+        }
 };
 
 

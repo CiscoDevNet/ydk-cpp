@@ -184,7 +184,6 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6 : public ydk::Entity
         ydk::YLeaf lisp_v6_decap_packets; //type: uint32
         ydk::YLeaf lisp_encap_errors; //type: uint32
         ydk::YLeaf lisp_decap_errors; //type: uint32
-        ydk::YLeaf io_puntback; //type: uint32
 
 }; // Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6
 

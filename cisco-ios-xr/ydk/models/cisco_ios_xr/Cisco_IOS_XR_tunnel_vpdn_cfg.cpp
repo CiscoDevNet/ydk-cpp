@@ -792,7 +792,6 @@ Vpdn::Templates::Template::Template()
     :
     template_name{YType::str, "template-name"},
     cisco_avp100_format_e_enable{YType::empty, "cisco-avp100-format-e-enable"},
-    rate_convert_speed_avps{YType::empty, "rate-convert-speed-avps"},
     description{YType::str, "description"},
     l2tp_class{YType::str, "l2tp-class"},
     dsl_line_forwarding{YType::empty, "dsl-line-forwarding"}
@@ -821,7 +820,6 @@ bool Vpdn::Templates::Template::has_data() const
     if (is_presence_container) return true;
     return template_name.is_set
 	|| cisco_avp100_format_e_enable.is_set
-	|| rate_convert_speed_avps.is_set
 	|| description.is_set
 	|| l2tp_class.is_set
 	|| dsl_line_forwarding.is_set
@@ -837,7 +835,6 @@ bool Vpdn::Templates::Template::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(template_name.yfilter)
 	|| ydk::is_set(cisco_avp100_format_e_enable.yfilter)
-	|| ydk::is_set(rate_convert_speed_avps.yfilter)
 	|| ydk::is_set(description.yfilter)
 	|| ydk::is_set(l2tp_class.yfilter)
 	|| ydk::is_set(dsl_line_forwarding.yfilter)
@@ -869,7 +866,6 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::get_na
 
     if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
     if (cisco_avp100_format_e_enable.is_set || is_set(cisco_avp100_format_e_enable.yfilter)) leaf_name_data.push_back(cisco_avp100_format_e_enable.get_name_leafdata());
-    if (rate_convert_speed_avps.is_set || is_set(rate_convert_speed_avps.yfilter)) leaf_name_data.push_back(rate_convert_speed_avps.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
     if (l2tp_class.is_set || is_set(l2tp_class.yfilter)) leaf_name_data.push_back(l2tp_class.get_name_leafdata());
     if (dsl_line_forwarding.is_set || is_set(dsl_line_forwarding.yfilter)) leaf_name_data.push_back(dsl_line_forwarding.get_name_leafdata());
@@ -974,12 +970,6 @@ void Vpdn::Templates::Template::set_value(const std::string & value_path, const 
         cisco_avp100_format_e_enable.value_namespace = name_space;
         cisco_avp100_format_e_enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rate-convert-speed-avps")
-    {
-        rate_convert_speed_avps = value;
-        rate_convert_speed_avps.value_namespace = name_space;
-        rate_convert_speed_avps.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "description")
     {
         description = value;
@@ -1010,10 +1000,6 @@ void Vpdn::Templates::Template::set_filter(const std::string & value_path, YFilt
     {
         cisco_avp100_format_e_enable.yfilter = yfilter;
     }
-    if(value_path == "rate-convert-speed-avps")
-    {
-        rate_convert_speed_avps.yfilter = yfilter;
-    }
     if(value_path == "description")
     {
         description.yfilter = yfilter;
@@ -1030,7 +1016,7 @@ void Vpdn::Templates::Template::set_filter(const std::string & value_path, YFilt
 
 bool Vpdn::Templates::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "caller-id" || name == "vpn" || name == "tunnel" || name == "ip" || name == "ipv4" || name == "template-name" || name == "cisco-avp100-format-e-enable" || name == "rate-convert-speed-avps" || name == "description" || name == "l2tp-class" || name == "dsl-line-forwarding")
+    if(name == "caller-id" || name == "vpn" || name == "tunnel" || name == "ip" || name == "ipv4" || name == "template-name" || name == "cisco-avp100-format-e-enable" || name == "description" || name == "l2tp-class" || name == "dsl-line-forwarding")
         return true;
     return false;
 }

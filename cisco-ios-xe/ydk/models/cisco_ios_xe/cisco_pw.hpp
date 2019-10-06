@@ -10,6 +10,24 @@
 namespace cisco_ios_xe {
 namespace cisco_pw {
 
+class PwSignalingProtocolType : public virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolType();
+        ~PwSignalingProtocolType();
+
+
+}; // PwSignalingProtocolType
+
+class PwLoadBalanceType : public virtual ydk::Identity
+{
+    public:
+        PwLoadBalanceType();
+        ~PwLoadBalanceType();
+
+
+}; // PwLoadBalanceType
+
 class PwEncapsulationType : public virtual ydk::Identity
 {
     public:
@@ -27,24 +45,6 @@ class PwVcType : public virtual ydk::Identity
 
 
 }; // PwVcType
-
-class PwLoadBalanceType : public virtual ydk::Identity
-{
-    public:
-        PwLoadBalanceType();
-        ~PwLoadBalanceType();
-
-
-}; // PwLoadBalanceType
-
-class PwSignalingProtocolType : public virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolType();
-        ~PwSignalingProtocolType();
-
-
-}; // PwSignalingProtocolType
 
 class PwSequencingType : public virtual ydk::Identity
 {
@@ -526,15 +526,6 @@ class PseudowireState::Pseudowires::Statistics : public ydk::Entity
 
 }; // PseudowireState::Pseudowires::Statistics
 
-class PwEncapMpls : public cisco_ios_xe::cisco_pw::PwEncapsulationType, virtual ydk::Identity
-{
-    public:
-        PwEncapMpls();
-        ~PwEncapMpls();
-
-
-}; // PwEncapMpls
-
 class PwVcTypeEther : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
 {
     public:
@@ -543,132 +534,6 @@ class PwVcTypeEther : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Iden
 
 
 }; // PwVcTypeEther
-
-class PwVcTypeVlan : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
-{
-    public:
-        PwVcTypeVlan();
-        ~PwVcTypeVlan();
-
-
-}; // PwVcTypeVlan
-
-class PwVcTypeVlanPassthrough : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
-{
-    public:
-        PwVcTypeVlanPassthrough();
-        ~PwVcTypeVlanPassthrough();
-
-
-}; // PwVcTypeVlanPassthrough
-
-class PwLbEthernetType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
-{
-    public:
-        PwLbEthernetType();
-        ~PwLbEthernetType();
-
-
-}; // PwLbEthernetType
-
-class PwLbEthSrcMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
-{
-    public:
-        PwLbEthSrcMac();
-        ~PwLbEthSrcMac();
-
-
-}; // PwLbEthSrcMac
-
-class PwLbEthDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
-{
-    public:
-        PwLbEthDstMac();
-        ~PwLbEthDstMac();
-
-
-}; // PwLbEthDstMac
-
-class PwLbEthSrcDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
-{
-    public:
-        PwLbEthSrcDstMac();
-        ~PwLbEthSrcDstMac();
-
-
-}; // PwLbEthSrcDstMac
-
-class PwLbIpType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
-{
-    public:
-        PwLbIpType();
-        ~PwLbIpType();
-
-
-}; // PwLbIpType
-
-class PwLbIpSrcIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
-{
-    public:
-        PwLbIpSrcIp();
-        ~PwLbIpSrcIp();
-
-
-}; // PwLbIpSrcIp
-
-class PwLbIpDstIp : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
-{
-    public:
-        PwLbIpDstIp();
-        ~PwLbIpDstIp();
-
-
-}; // PwLbIpDstIp
-
-class PwLbIpSrcDstIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
-{
-    public:
-        PwLbIpSrcDstIp();
-        ~PwLbIpSrcDstIp();
-
-
-}; // PwLbIpSrcDstIp
-
-class PwSignalingProtocolNone : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolNone();
-        ~PwSignalingProtocolNone();
-
-
-}; // PwSignalingProtocolNone
-
-class PwSignalingProtocolLdp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolLdp();
-        ~PwSignalingProtocolLdp();
-
-
-}; // PwSignalingProtocolLdp
-
-class PwSignalingProtocolBgp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolBgp();
-        ~PwSignalingProtocolBgp();
-
-
-}; // PwSignalingProtocolBgp
-
-class PwSequencingReceive : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
-{
-    public:
-        PwSequencingReceive();
-        ~PwSequencingReceive();
-
-
-}; // PwSequencingReceive
 
 class PwSequencingTransmit : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
 {
@@ -679,6 +544,60 @@ class PwSequencingTransmit : public cisco_ios_xe::cisco_pw::PwSequencingType, vi
 
 }; // PwSequencingTransmit
 
+class PwVcTypeVlanPassthrough : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
+{
+    public:
+        PwVcTypeVlanPassthrough();
+        ~PwVcTypeVlanPassthrough();
+
+
+}; // PwVcTypeVlanPassthrough
+
+class PwEncapMpls : public cisco_ios_xe::cisco_pw::PwEncapsulationType, virtual ydk::Identity
+{
+    public:
+        PwEncapMpls();
+        ~PwEncapMpls();
+
+
+}; // PwEncapMpls
+
+class PwLbIpDstIp : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+{
+    public:
+        PwLbIpDstIp();
+        ~PwLbIpDstIp();
+
+
+}; // PwLbIpDstIp
+
+class PwSequencingReceive : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
+{
+    public:
+        PwSequencingReceive();
+        ~PwSequencingReceive();
+
+
+}; // PwSequencingReceive
+
+class PwLbEthernetType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+{
+    public:
+        PwLbEthernetType();
+        ~PwLbEthernetType();
+
+
+}; // PwLbEthernetType
+
+class PwSignalingProtocolLdp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolLdp();
+        ~PwSignalingProtocolLdp();
+
+
+}; // PwSignalingProtocolLdp
+
 class PwSequencingBoth : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
 {
     public:
@@ -687,6 +606,87 @@ class PwSequencingBoth : public cisco_ios_xe::cisco_pw::PwSequencingType, virtua
 
 
 }; // PwSequencingBoth
+
+class PwVcTypeVlan : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
+{
+    public:
+        PwVcTypeVlan();
+        ~PwVcTypeVlan();
+
+
+}; // PwVcTypeVlan
+
+class PwLbIpType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+{
+    public:
+        PwLbIpType();
+        ~PwLbIpType();
+
+
+}; // PwLbIpType
+
+class PwSignalingProtocolNone : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolNone();
+        ~PwSignalingProtocolNone();
+
+
+}; // PwSignalingProtocolNone
+
+class PwSignalingProtocolBgp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolBgp();
+        ~PwSignalingProtocolBgp();
+
+
+}; // PwSignalingProtocolBgp
+
+class PwLbIpSrcIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
+{
+    public:
+        PwLbIpSrcIp();
+        ~PwLbIpSrcIp();
+
+
+}; // PwLbIpSrcIp
+
+class PwLbEthSrcDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
+{
+    public:
+        PwLbEthSrcDstMac();
+        ~PwLbEthSrcDstMac();
+
+
+}; // PwLbEthSrcDstMac
+
+class PwLbEthDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
+{
+    public:
+        PwLbEthDstMac();
+        ~PwLbEthDstMac();
+
+
+}; // PwLbEthDstMac
+
+class PwLbIpSrcDstIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
+{
+    public:
+        PwLbIpSrcDstIp();
+        ~PwLbIpSrcDstIp();
+
+
+}; // PwLbIpSrcDstIp
+
+class PwLbEthSrcMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
+{
+    public:
+        PwLbEthSrcMac();
+        ~PwLbEthSrcMac();
+
+
+}; // PwLbEthSrcMac
 
 class PwOperStateType : public ydk::Enum
 {
@@ -703,6 +703,20 @@ class PwOperStateType : public ydk::Enum
         static const ydk::Enum::YLeaf local_ready;
         static const ydk::Enum::YLeaf all_ready;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "cold-standby") return 3;
+            if (name == "hot-standby") return 4;
+            if (name == "recovering") return 5;
+            if (name == "no-hardware") return 6;
+            if (name == "unresolved") return 7;
+            if (name == "provisioned") return 8;
+            if (name == "remote-standby") return 9;
+            if (name == "local-ready") return 10;
+            if (name == "all-ready") return 11;
+            return -1;
+        }
 };
 
 class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Direction : public ydk::Enum
@@ -712,6 +726,12 @@ class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Directi
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "transmit") return 1;
+            if (name == "receive") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class PseudowireState::Pseudowires::VcOwnerType : public ydk::Enum
@@ -722,6 +742,13 @@ class PseudowireState::Pseudowires::VcOwnerType : public ydk::Enum
         static const ydk::Enum::YLeaf vpls_bridge_domain;
         static const ydk::Enum::YLeaf interface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vpws") return 1;
+            if (name == "vpls-vfi") return 2;
+            if (name == "vpls-bridge-domain") return 3;
+            if (name == "interface") return 4;
+            return -1;
+        }
 };
 
 class PseudowireState::Pseudowires::VcPsnType : public ydk::Enum
@@ -734,6 +761,15 @@ class PseudowireState::Pseudowires::VcPsnType : public ydk::Enum
         static const ydk::Enum::YLeaf gre;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 1;
+            if (name == "l2tp") return 2;
+            if (name == "ip") return 3;
+            if (name == "mpls-over-ip") return 4;
+            if (name == "gre") return 5;
+            if (name == "other") return 6;
+            return -1;
+        }
 };
 
 class PseudowireState::Pseudowires::VcRemoteControlWord : public ydk::Enum
@@ -743,6 +779,12 @@ class PseudowireState::Pseudowires::VcRemoteControlWord : public ydk::Enum
         static const ydk::Enum::YLeaf withControlWord;
         static const ydk::Enum::YLeaf notYetKnown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noControlWord") return 1;
+            if (name == "withControlWord") return 2;
+            if (name == "notYetKnown") return 3;
+            return -1;
+        }
 };
 
 

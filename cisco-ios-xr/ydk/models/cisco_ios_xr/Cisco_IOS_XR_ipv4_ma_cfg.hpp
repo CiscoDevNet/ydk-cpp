@@ -168,6 +168,13 @@ class Ipv4Qppb : public ydk::Enum
         static const ydk::Enum::YLeaf qos_grp;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "ip-prec") return 1;
+            if (name == "qos-grp") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 

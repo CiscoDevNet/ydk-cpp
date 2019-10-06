@@ -236,12 +236,17 @@ class IpExplicitPaths::Paths::Path::Identifier::Hops::Hop : public ydk::Entity
 
 }; // IpExplicitPaths::Paths::Path::Identifier::Hops::Hop
 
-class IpIepNum : public ydk::Enum
+class IpIepPath : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unnumbered;
-        static const ydk::Enum::YLeaf numbered;
+        static const ydk::Enum::YLeaf identifier;
+        static const ydk::Enum::YLeaf name;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "identifier") return 1;
+            if (name == "name") return 2;
+            return -1;
+        }
 };
 
 class IpIepHop : public ydk::Enum
@@ -253,14 +258,27 @@ class IpIepHop : public ydk::Enum
         static const ydk::Enum::YLeaf exclude_srlg;
         static const ydk::Enum::YLeaf next_label;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "next-strict") return 2;
+            if (name == "next-loose") return 3;
+            if (name == "exclude") return 4;
+            if (name == "exclude-srlg") return 5;
+            if (name == "next-label") return 6;
+            return -1;
+        }
 };
 
-class IpIepPath : public ydk::Enum
+class IpIepNum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf identifier;
-        static const ydk::Enum::YLeaf name;
+        static const ydk::Enum::YLeaf unnumbered;
+        static const ydk::Enum::YLeaf numbered;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unnumbered") return 1;
+            if (name == "numbered") return 2;
+            return -1;
+        }
 };
 
 

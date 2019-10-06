@@ -2349,13 +2349,37 @@ class Native::Ppp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AnalysisModule; //type: Native::Ppp::AnalysisModule
         class Packet; //type: Native::Ppp::Packet
+        class AnalysisModule; //type: Native::Ppp::AnalysisModule
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ppp::AnalysisModule> analysis_module;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ppp::Packet> packet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ppp::AnalysisModule> analysis_module;
         
 }; // Native::Ppp
+
+
+class Native::Ppp::Packet : public ydk::Entity
+{
+    public:
+        Packet();
+        ~Packet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf throttle; //type: uint32
+        ydk::YLeaf allow_time; //type: uint32
+        ydk::YLeaf block_time; //type: uint32
+
+}; // Native::Ppp::Packet
 
 
 class Native::Ppp::AnalysisModule : public ydk::Entity
@@ -2402,30 +2426,6 @@ class Native::Ppp::AnalysisModule::Monitoring : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
 
 }; // Native::Ppp::AnalysisModule::Monitoring
-
-
-class Native::Ppp::Packet : public ydk::Entity
-{
-    public:
-        Packet();
-        ~Packet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf throttle; //type: uint32
-        ydk::YLeaf allow_time; //type: uint32
-        ydk::YLeaf block_time; //type: uint32
-
-}; // Native::Ppp::Packet
 
 
 class Native::Mac : public ydk::Entity
@@ -2871,7 +2871,7 @@ class Native::TacacsServer::Host : public ydk::Entity
 
         ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf port; //type: uint16
-        ydk::YLeaf key; //type: one of enumeration, string
+        ydk::YLeaf key; //type: one of string, enumeration
         ydk::YLeaf encryption_key; //type: string
         ydk::YLeaf timeout; //type: uint16
         class Key;
@@ -3679,6 +3679,13 @@ class Native::ParameterMap::Type::Webauth::Type_ : public ydk::Enum
         static const ydk::Enum::YLeaf webauth;
         static const ydk::Enum::YLeaf webconsent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "authbypass") return 0;
+            if (name == "consent") return 1;
+            if (name == "webauth") return 2;
+            if (name == "webconsent") return 3;
+            return -1;
+        }
 };
 
 class Native::ParameterMap::Type::WebauthGlobal::Webauth::Global::Type_ : public ydk::Enum
@@ -3689,6 +3696,13 @@ class Native::ParameterMap::Type::WebauthGlobal::Webauth::Global::Type_ : public
         static const ydk::Enum::YLeaf webauth;
         static const ydk::Enum::YLeaf webconsent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "authbypass") return 0;
+            if (name == "consent") return 1;
+            if (name == "webauth") return 2;
+            if (name == "webconsent") return 3;
+            return -1;
+        }
 };
 
 class Native::Mac::AccessList::Extended::Entry::Action : public ydk::Enum
@@ -3697,6 +3711,11 @@ class Native::Mac::AccessList::Extended::Entry::Action : public ydk::Enum
         static const ydk::Enum::YLeaf deny;
         static const ydk::Enum::YLeaf permit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deny") return 0;
+            if (name == "permit") return 1;
+            return -1;
+        }
 };
 
 class Native::Tacacs::Server::Key::Encryption : public ydk::Enum
@@ -3705,6 +3724,11 @@ class Native::Tacacs::Server::Key::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::TacacsServer::Host::Key : public ydk::Enum
@@ -3713,6 +3737,11 @@ class Native::TacacsServer::Host::Key : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::TacacsServer::Key::Encryption : public ydk::Enum
@@ -3721,6 +3750,11 @@ class Native::TacacsServer::Key::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::PortChannel::LoadBalance::LoadBalance_ : public ydk::Enum
@@ -3740,6 +3774,22 @@ class Native::PortChannel::LoadBalance::LoadBalance_ : public ydk::Enum
         static const ydk::Enum::YLeaf src_mixed_ip_port;
         static const ydk::Enum::YLeaf src_port;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dst-ip") return 0;
+            if (name == "dst-mac") return 1;
+            if (name == "dst-mixed-ip-port") return 2;
+            if (name == "dst-port") return 3;
+            if (name == "mpls") return 4;
+            if (name == "src-dst-ip") return 5;
+            if (name == "src-dst-mac") return 6;
+            if (name == "src-dst-mixed-ip-port") return 7;
+            if (name == "src-dst-port") return 8;
+            if (name == "src-ip") return 9;
+            if (name == "src-mac") return 10;
+            if (name == "src-mixed-ip-port") return 11;
+            if (name == "src-port") return 12;
+            return -1;
+        }
 };
 
 class Native::PortChannel::LoadBalance::Extended::Extended_ : public ydk::Enum
@@ -3754,6 +3804,17 @@ class Native::PortChannel::LoadBalance::Extended::Extended_ : public ydk::Enum
         static const ydk::Enum::YLeaf src_mac;
         static const ydk::Enum::YLeaf src_port;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dst-ip") return 0;
+            if (name == "dst-mac") return 1;
+            if (name == "dst-port") return 2;
+            if (name == "ipv6-label") return 3;
+            if (name == "l3-proto") return 4;
+            if (name == "src-ip") return 5;
+            if (name == "src-mac") return 6;
+            if (name == "src-port") return 7;
+            return -1;
+        }
 };
 
 class Native::Key::Chain::Key_::CryptographicAlgorithm : public ydk::Enum
@@ -3767,6 +3828,16 @@ class Native::Key::Chain::Key_::CryptographicAlgorithm : public ydk::Enum
         static const ydk::Enum::YLeaf hmac_sha_512;
         static const ydk::Enum::YLeaf md5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "aes-128-cmac") return 0;
+            if (name == "aes-256-cmac") return 1;
+            if (name == "hmac-sha-1") return 2;
+            if (name == "hmac-sha-256") return 3;
+            if (name == "hmac-sha-384") return 4;
+            if (name == "hmac-sha-512") return 5;
+            if (name == "md5") return 6;
+            return -1;
+        }
 };
 
 class Native::Key::Chain::Key_::KeyString::Encryption : public ydk::Enum
@@ -3776,6 +3847,12 @@ class Native::Key::Chain::Key_::KeyString::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 

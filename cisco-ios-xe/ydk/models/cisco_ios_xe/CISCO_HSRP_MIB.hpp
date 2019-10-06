@@ -137,6 +137,15 @@ class HsrpState : public ydk::Enum
         static const ydk::Enum::YLeaf standby;
         static const ydk::Enum::YLeaf active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initial") return 1;
+            if (name == "learn") return 2;
+            if (name == "listen") return 3;
+            if (name == "speak") return 4;
+            if (name == "standby") return 5;
+            if (name == "active") return 6;
+            return -1;
+        }
 };
 
 

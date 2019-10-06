@@ -22338,19 +22338,13 @@ bool Subscriber::Session::Nodes::Node::SrgRoles::SrgRole::AuthenticationSummarie
 const Enum::YLeaf SubscriberAuthorStateFilterFlag::un_authorized {0, "un-authorized"};
 const Enum::YLeaf SubscriberAuthorStateFilterFlag::authorized {1, "authorized"};
 
-const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_none {0, "srg-none"};
-const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_master {16384, "srg-master"};
-const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_slave {65536, "srg-slave"};
-const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_both {81920, "srg-both"};
-
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_only {0, "ipv4-only"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_only {1, "ipv6-only"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_all {2, "ipv4-all"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_all {3, "ipv6-all"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_all {4, "dual-all"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_part_up {5, "dual-part-up"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_up {6, "dual-up"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::lac {7, "lac"};
+const Enum::YLeaf IedgeOperSessionState::initialize {0, "initialize"};
+const Enum::YLeaf IedgeOperSessionState::connecting {1, "connecting"};
+const Enum::YLeaf IedgeOperSessionState::connected {2, "connected"};
+const Enum::YLeaf IedgeOperSessionState::activated {3, "activated"};
+const Enum::YLeaf IedgeOperSessionState::idle {4, "idle"};
+const Enum::YLeaf IedgeOperSessionState::disconnecting {5, "disconnecting"};
+const Enum::YLeaf IedgeOperSessionState::end {6, "end"};
 
 const Enum::YLeaf SubscriberStateFilterFlag::initializing {0, "initializing"};
 const Enum::YLeaf SubscriberStateFilterFlag::connecting {1, "connecting"};
@@ -22360,8 +22354,8 @@ const Enum::YLeaf SubscriberStateFilterFlag::idle {4, "idle"};
 const Enum::YLeaf SubscriberStateFilterFlag::disconnecting {5, "disconnecting"};
 const Enum::YLeaf SubscriberStateFilterFlag::end {6, "end"};
 
-const Enum::YLeaf SubscriberAuthenStateFilterFlag::un_authenticated {0, "un-authenticated"};
-const Enum::YLeaf SubscriberAuthenStateFilterFlag::authenticated {1, "authenticated"};
+const Enum::YLeaf IedgePppSub::pta {0, "pta"};
+const Enum::YLeaf IedgePppSub::lac {1, "lac"};
 
 const Enum::YLeaf IedgeOperServiceStatus::unknown {0, "unknown"};
 const Enum::YLeaf IedgeOperServiceStatus::error {1, "error"};
@@ -22376,6 +22370,9 @@ const Enum::YLeaf IedgeOperServiceStatus::req_pd_unassociation {9, "req-pd-unass
 const Enum::YLeaf IedgeOperServiceStatus::unapplied {10, "unapplied"};
 const Enum::YLeaf IedgeOperServiceStatus::max {11, "max"};
 
+const Enum::YLeaf SubscriberAuthenStateFilterFlag::un_authenticated {0, "un-authenticated"};
+const Enum::YLeaf SubscriberAuthenStateFilterFlag::authenticated {1, "authenticated"};
+
 const Enum::YLeaf IedgeOperService::unknown {0, "unknown"};
 const Enum::YLeaf IedgeOperService::profile {1, "profile"};
 const Enum::YLeaf IedgeOperService::template_ {2, "template"};
@@ -22386,22 +22383,25 @@ const Enum::YLeaf IedgeOperService::ip_sub_template {6, "ip-sub-template"};
 const Enum::YLeaf IedgeOperService::multi_template {7, "multi-template"};
 const Enum::YLeaf IedgeOperService::max_templae {8, "max-templae"};
 
-const Enum::YLeaf IedgeOperSessionState::initialize {0, "initialize"};
-const Enum::YLeaf IedgeOperSessionState::connecting {1, "connecting"};
-const Enum::YLeaf IedgeOperSessionState::connected {2, "connected"};
-const Enum::YLeaf IedgeOperSessionState::activated {3, "activated"};
-const Enum::YLeaf IedgeOperSessionState::idle {4, "idle"};
-const Enum::YLeaf IedgeOperSessionState::disconnecting {5, "disconnecting"};
-const Enum::YLeaf IedgeOperSessionState::end {6, "end"};
-
-const Enum::YLeaf IedgePppSub::pta {0, "pta"};
-const Enum::YLeaf IedgePppSub::lac {1, "lac"};
-
 const Enum::YLeaf IedgeOperSession::unknown {0, "unknown"};
 const Enum::YLeaf IedgeOperSession::pppoe {1, "pppoe"};
 const Enum::YLeaf IedgeOperSession::ppp {2, "ppp"};
 const Enum::YLeaf IedgeOperSession::ip_packet_trigger {3, "ip-packet-trigger"};
 const Enum::YLeaf IedgeOperSession::ip_packet_dhcp_trigger {4, "ip-packet-dhcp-trigger"};
+
+const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_none {0, "srg-none"};
+const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_master {16384, "srg-master"};
+const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_slave {65536, "srg-slave"};
+const Enum::YLeaf SubscriberSrgOperFilterFlag::srg_both {81920, "srg-both"};
+
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_only {0, "ipv4-only"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_only {1, "ipv6-only"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_all {2, "ipv4-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_all {3, "ipv6-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_all {4, "dual-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_part_up {5, "dual-part-up"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_up {6, "dual-up"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::lac {7, "lac"};
 
 
 }

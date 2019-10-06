@@ -768,15 +768,14 @@ class Native::Interface::Vlan : public ydk::Entity
         class Plim; //type: Native::Interface::Vlan::Plim
         class Pppoe; //type: Native::Interface::Vlan::Pppoe
         class Service; //type: Native::Interface::Vlan::Service
-        class Crypto; //type: Native::Interface::Vlan::Crypto
-        class Cts; //type: Native::Interface::Vlan::Cts
         class EtAnalytics; //type: Native::Interface::Vlan::EtAnalytics
         class ServicePolicy; //type: Native::Interface::Vlan::ServicePolicy
         class Lisp; //type: Native::Interface::Vlan::Lisp
-        class Ntp; //type: Native::Interface::Vlan::Ntp
         class SpanningTree; //type: Native::Interface::Vlan::SpanningTree
         class Umbrella; //type: Native::Interface::Vlan::Umbrella
-        class Utd; //type: Native::Interface::Vlan::Utd
+        class Crypto; //type: Native::Interface::Vlan::Crypto
+        class ZoneMember; //type: Native::Interface::Vlan::ZoneMember
+        class Vrrp; //type: Native::Interface::Vlan::Vrrp
         class PrivateVlan; //type: Native::Interface::Vlan::PrivateVlan
         class ServiceRouting; //type: Native::Interface::Vlan::ServiceRouting
         class Glbp; //type: Native::Interface::Vlan::Glbp
@@ -817,8 +816,9 @@ class Native::Interface::Vlan : public ydk::Entity
         class CiscoIOSXEInterfacesRcvQueue; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue
         class CiscoIOSXEInterfacesPeer; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesPeer
         class CiscoIOSXEInterfacesPmPath; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath
-        class Vrrp; //type: Native::Interface::Vlan::Vrrp
-        class ZoneMember; //type: Native::Interface::Vlan::ZoneMember
+        class Cts; //type: Native::Interface::Vlan::Cts
+        class Ntp; //type: Native::Interface::Vlan::Ntp
+        class Utd; //type: Native::Interface::Vlan::Utd
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Switchport> switchport;
@@ -867,15 +867,14 @@ class Native::Interface::Vlan : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Plim> plim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Service> service;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Cts> cts;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::EtAnalytics> et_analytics;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp> ntp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree> spanning_tree;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Vrrp> vrrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::PrivateVlan> private_vlan;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ServiceRouting> service_routing;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp> glbp;
@@ -916,8 +915,9 @@ class Native::Interface::Vlan : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue> cisco_ios_xe_interfaces_rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesPeer> cisco_ios_xe_interfaces_peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath> cisco_ios_xe_interfaces_pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Vrrp> vrrp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Utd> utd;
                 class IfState;
         class ServiceInsertion;
         class ChannelProtocol;
@@ -1056,8 +1056,8 @@ class Native::Interface::Vlan::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -1226,8 +1226,8 @@ class Native::Interface::Vlan::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -1617,7 +1617,7 @@ class Native::Interface::Vlan::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
+        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -1992,7 +1992,7 @@ class Native::Interface::Vlan::Isis::HelloInterval : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class HelloIntervalList; //type: Native::Interface::Vlan::Isis::HelloInterval::HelloIntervalList
 
         ydk::YList hello_interval_list;
@@ -2018,7 +2018,7 @@ class Native::Interface::Vlan::Isis::HelloInterval::HelloIntervalList : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint16
+        ydk::YLeaf value_; //type: one of uint16, enumeration
         class Levels;
         class Value_;
 
@@ -2114,7 +2114,7 @@ class Native::Interface::Vlan::Isis::Ipv6::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::Vlan::Isis::Ipv6::Metric::MetricList
 
         ydk::YList metric_list;
@@ -2140,7 +2140,7 @@ class Native::Interface::Vlan::Isis::Ipv6::Metric::MetricList : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -2184,7 +2184,7 @@ class Native::Interface::Vlan::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::Vlan::Isis::Metric::MetricList
 
         ydk::YList metric_list;
@@ -2210,7 +2210,7 @@ class Native::Interface::Vlan::Isis::Metric::MetricList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -2777,7 +2777,7 @@ class Native::Interface::Vlan::Mpls::Ldp::Discovery : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::Vlan::Mpls::Ldp::Discovery
 
@@ -3848,6 +3848,13 @@ class Native::Interface::Cellular::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Cellular::Async::Mode : public ydk::Enum
@@ -3855,6 +3862,10 @@ class Native::Interface::Cellular::Async::Mode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf interactive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interactive") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Cellular::ServicePolicy::Type::PerformanceMonitor::Direction : public ydk::Enum
@@ -3863,6 +3874,11 @@ class Native::Interface::Cellular::ServicePolicy::Type::PerformanceMonitor::Dire
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::IfState : public ydk::Enum
@@ -3870,6 +3886,10 @@ class Native::Interface::Vlan::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::ServiceInsertion : public ydk::Enum
@@ -3877,6 +3897,10 @@ class Native::Interface::Vlan::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::ChannelProtocol : public ydk::Enum
@@ -3885,6 +3909,11 @@ class Native::Interface::Vlan::ChannelProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf lacp;
         static const ydk::Enum::YLeaf pagp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lacp") return 0;
+            if (name == "pagp") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Duplex : public ydk::Enum
@@ -3894,6 +3923,12 @@ class Native::Interface::Vlan::Duplex : public ydk::Enum
         static const ydk::Enum::YLeaf full;
         static const ydk::Enum::YLeaf half;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "full") return 1;
+            if (name == "half") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Nat66 : public ydk::Enum
@@ -3902,6 +3937,11 @@ class Native::Interface::Vlan::Nat66 : public ydk::Enum
         static const ydk::Enum::YLeaf inside;
         static const ydk::Enum::YLeaf outside;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inside") return 0;
+            if (name == "outside") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::IfState_ : public ydk::Enum
@@ -3909,6 +3949,10 @@ class Native::Interface::Vlan::IfState_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::ServiceInsertion_ : public ydk::Enum
@@ -3916,6 +3960,10 @@ class Native::Interface::Vlan::ServiceInsertion_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Backup::Delay::Failure : public ydk::Enum
@@ -3923,6 +3971,10 @@ class Native::Interface::Vlan::Backup::Delay::Failure : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3930,6 +3982,10 @@ class Native::Interface::Vlan::Backup::Delay::SecondaryDisable : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Backup::Load::Kickin : public ydk::Enum
@@ -3937,6 +3993,10 @@ class Native::Interface::Vlan::Backup::Load::Kickin : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Backup::Load::Kickout : public ydk::Enum
@@ -3944,6 +4004,10 @@ class Native::Interface::Vlan::Backup::Load::Kickout : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Flowcontrol::Receive : public ydk::Enum
@@ -3953,6 +4017,12 @@ class Native::Interface::Vlan::Flowcontrol::Receive : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Flowcontrol::Send : public ydk::Enum
@@ -3962,6 +4032,12 @@ class Native::Interface::Vlan::Flowcontrol::Send : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::MeshGroup : public ydk::Enum
@@ -3969,6 +4045,10 @@ class Native::Interface::Vlan::Isis::MeshGroup : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf blocked;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blocked") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Network : public ydk::Enum
@@ -3976,6 +4056,10 @@ class Native::Interface::Vlan::Isis::Network : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "point-to-point") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Protocol : public ydk::Enum
@@ -3983,6 +4067,10 @@ class Native::Interface::Vlan::Isis::Protocol : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shutdown") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::CircuitType::Levels : public ydk::Enum
@@ -3992,6 +4080,12 @@ class Native::Interface::Vlan::Isis::CircuitType::Levels : public ydk::Enum
         static const ydk::Enum::YLeaf level_1_2;
         static const ydk::Enum::YLeaf level_2_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-1-2") return 1;
+            if (name == "level-2-only") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::CsnpInterval::CsnpIntervalList::Levels : public ydk::Enum
@@ -4000,6 +4094,11 @@ class Native::Interface::Vlan::Isis::CsnpInterval::CsnpIntervalList::Levels : pu
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::HelloInterval::Value_ : public ydk::Enum
@@ -4007,6 +4106,10 @@ class Native::Interface::Vlan::Isis::HelloInterval::Value_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::HelloInterval::HelloIntervalList::Levels : public ydk::Enum
@@ -4015,6 +4118,11 @@ class Native::Interface::Vlan::Isis::HelloInterval::HelloIntervalList::Levels : 
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::HelloInterval::HelloIntervalList::Value_ : public ydk::Enum
@@ -4022,6 +4130,10 @@ class Native::Interface::Vlan::Isis::HelloInterval::HelloIntervalList::Value_ : 
     public:
         static const ydk::Enum::YLeaf minimal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "minimal") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::HelloMultiplier::HelloMultiplierList::Levels : public ydk::Enum
@@ -4030,6 +4142,11 @@ class Native::Interface::Vlan::Isis::HelloMultiplier::HelloMultiplierList::Level
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Ipv6::Metric::Value_ : public ydk::Enum
@@ -4037,6 +4154,10 @@ class Native::Interface::Vlan::Isis::Ipv6::Metric::Value_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Ipv6::Metric::MetricList::Levels : public ydk::Enum
@@ -4045,6 +4166,11 @@ class Native::Interface::Vlan::Isis::Ipv6::Metric::MetricList::Levels : public y
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Ipv6::Metric::MetricList::Value_ : public ydk::Enum
@@ -4052,6 +4178,10 @@ class Native::Interface::Vlan::Isis::Ipv6::Metric::MetricList::Value_ : public y
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Metric::Value_ : public ydk::Enum
@@ -4059,6 +4189,10 @@ class Native::Interface::Vlan::Isis::Metric::Value_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Metric::MetricList::Levels : public ydk::Enum
@@ -4067,6 +4201,11 @@ class Native::Interface::Vlan::Isis::Metric::MetricList::Levels : public ydk::En
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Metric::MetricList::Value_ : public ydk::Enum
@@ -4074,6 +4213,10 @@ class Native::Interface::Vlan::Isis::Metric::MetricList::Value_ : public ydk::En
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Password::PasswordList::Levels : public ydk::Enum
@@ -4082,6 +4225,11 @@ class Native::Interface::Vlan::Isis::Password::PasswordList::Levels : public ydk
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::Priority::PriorityList::Levels : public ydk::Enum
@@ -4090,6 +4238,11 @@ class Native::Interface::Vlan::Isis::Priority::PriorityList::Levels : public ydk
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Isis::ThreeWayHandshake::Implementor : public ydk::Enum
@@ -4098,6 +4251,11 @@ class Native::Interface::Vlan::Isis::ThreeWayHandshake::Implementor : public ydk
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco") return 0;
+            if (name == "ietf") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::HoldQueue::Direction : public ydk::Enum
@@ -4106,6 +4264,11 @@ class Native::Interface::Vlan::HoldQueue::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Mpls::Label::Protocol : public ydk::Enum
@@ -4115,6 +4278,12 @@ class Native::Interface::Vlan::Mpls::Label::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf tdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "ldp") return 1;
+            if (name == "tdp") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Ip::Pim::PimMode : public ydk::Enum
@@ -4125,6 +4294,13 @@ class Native::Interface::Vlan::Ip::Pim::PimMode : public ydk::Enum
         static const ydk::Enum::YLeaf sparse_mode;
         static const ydk::Enum::YLeaf sparse_dense_mode;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "passive") return 0;
+            if (name == "dense-mode") return 1;
+            if (name == "sparse-mode") return 2;
+            if (name == "sparse-dense-mode") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Vlan::Ip::Pim::SptThreshold : public ydk::Enum
@@ -4132,6 +4308,10 @@ class Native::Interface::Vlan::Ip::Pim::SptThreshold : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf infinity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "infinity") return 0;
+            return -1;
+        }
 };
 
 

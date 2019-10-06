@@ -2824,7 +2824,7 @@ bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::has_
 
 CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::ObuStats()
     :
-    data_queque(this, {})
+    data_queque{YType::uint32, "data-queque"}
 {
 
     yang_name = "obu-stats"; yang_parent_name = "eg-stats"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2837,9 +2837,9 @@ CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats:
 bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<data_queque.len(); index++)
+    for (auto const & leaf : data_queque.getYLeafs())
     {
-        if(data_queque[index]->has_data())
+        if(leaf.is_set)
             return true;
     }
     return false;
@@ -2847,12 +2847,13 @@ bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuS
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::has_operation() const
 {
-    for (std::size_t index=0; index<data_queque.len(); index++)
+    for (auto const & leaf : data_queque.getYLeafs())
     {
-        if(data_queque[index]->has_operation())
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(data_queque.yfilter);
 }
 
 std::string CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::get_segment_path() const
@@ -2867,20 +2868,14 @@ std::vector<std::pair<std::string, LeafData> > CrossBarStats::Nodes::Node::Cross
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
+    auto data_queque_name_datas = data_queque.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), data_queque_name_datas.begin(), data_queque_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<ydk::Entity> CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "data-queque")
-    {
-        auto ent_ = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque>();
-        ent_->parent = this;
-        data_queque.append(ent_);
-        return ent_;
-    }
-
     return nullptr;
 }
 
@@ -2888,108 +2883,28 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> CrossBarStats::Nodes::Node::
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    count_ = 0;
-    for (auto ent_ : data_queque.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
     return _children;
 }
 
 void CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "data-queque")
+    {
+        data_queque.append(value);
+    }
 }
 
 void CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "data-queque")
+    {
+        data_queque.yfilter = yfilter;
+    }
 }
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data-queque")
-        return true;
-    return false;
-}
-
-CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::DataQueque()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "data-queque"; yang_parent_name = "obu-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::~DataQueque()
-{
-}
-
-bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "data-queque";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool CrossBarStats::Nodes::Node::CrossBarTable::SkbStats::SkbStat::EgStats::ObuStats::DataQueque::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
         return true;
     return false;
 }

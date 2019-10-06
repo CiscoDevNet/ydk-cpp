@@ -114,7 +114,6 @@ class SoftwareInstall::Superseded::SupersededPackageInfo : public ydk::Entity
         ydk::YLeaf node_type; //type: string
         ydk::YLeaf boot_partition_name; //type: string
         ydk::YLeaf superseded_packages; //type: string
-        ydk::YLeaf number_of_packages; //type: uint32
 
 }; // SoftwareInstall::Superseded::SupersededPackageInfo
 
@@ -1043,48 +1042,6 @@ class SoftwareInstall::Repository::All : public ydk::Entity
 
 }; // SoftwareInstall::Repository::All
 
-class NodeRoleEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf node_unknown;
-        static const ydk::Enum::YLeaf node_active;
-        static const ydk::Enum::YLeaf node_standby;
-        static const ydk::Enum::YLeaf node_unusable;
-
-};
-
-class IssudirNodeStatusEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_issu_ready;
-        static const ydk::Enum::YLeaf issu_ready;
-        static const ydk::Enum::YLeaf isus_go;
-        static const ydk::Enum::YLeaf node_fail;
-
-};
-
-class IssuNodeRoleEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown_role;
-        static const ydk::Enum::YLeaf primary_role;
-        static const ydk::Enum::YLeaf secondary_role;
-        static const ydk::Enum::YLeaf tertiary_role;
-
-};
-
-class CardTypeEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf card_rp;
-        static const ydk::Enum::YLeaf card_drp;
-        static const ydk::Enum::YLeaf card_lc;
-        static const ydk::Enum::YLeaf card_sc;
-        static const ydk::Enum::YLeaf card_sp;
-        static const ydk::Enum::YLeaf card_other;
-
-};
-
 class IsdErrorEt : public ydk::Enum
 {
     public:
@@ -1111,21 +1068,48 @@ class IsdErrorEt : public ydk::Enum
         static const ydk::Enum::YLeaf err_post_issu;
         static const ydk::Enum::YLeaf err_issu_dir_restart;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "not-compatible") return 1;
+            if (name == "not-enough-resource") return 2;
+            if (name == "not-nsr-ready") return 3;
+            if (name == "not-conn-sdrsm") return 4;
+            if (name == "cmd-invalid") return 5;
+            if (name == "load-prep-fail") return 6;
+            if (name == "error-timeout") return 7;
+            if (name == "err-node-down") return 8;
+            if (name == "node-not-ready") return 9;
+            if (name == "err-node-new") return 10;
+            if (name == "err-card-oir") return 11;
+            if (name == "invalid-evt") return 12;
+            if (name == "disconn-from-calv") return 13;
+            if (name == "gsp-down") return 14;
+            if (name == "abort-by-ism") return 15;
+            if (name == "rpfo") return 16;
+            if (name == "pkg-null") return 17;
+            if (name == "error-general") return 18;
+            if (name == "fsa-error") return 19;
+            if (name == "err-post-issu") return 20;
+            if (name == "err-issu-dir-restart") return 21;
+            return -1;
+        }
 };
 
-class IsdIssuStatusEt : public ydk::Enum
+class NodeRoleEt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf prep_done;
-        static const ydk::Enum::YLeaf big_bang;
-        static const ydk::Enum::YLeaf done;
-        static const ydk::Enum::YLeaf abort;
-        static const ydk::Enum::YLeaf cmd_reject;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf abort_cleanup;
-        static const ydk::Enum::YLeaf abort_cmd_reject;
+        static const ydk::Enum::YLeaf node_unknown;
+        static const ydk::Enum::YLeaf node_active;
+        static const ydk::Enum::YLeaf node_standby;
+        static const ydk::Enum::YLeaf node_unusable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "node-unknown") return 0;
+            if (name == "node-active") return 1;
+            if (name == "node-standby") return 2;
+            if (name == "node-unusable") return 3;
+            return -1;
+        }
 };
 
 class IsdStateEt : public ydk::Enum
@@ -1150,6 +1134,109 @@ class IsdStateEt : public ydk::Enum
         static const ydk::Enum::YLeaf abort_cleanup;
         static const ydk::Enum::YLeaf unknown_state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "idle") return 1;
+            if (name == "init") return 2;
+            if (name == "init-done") return 3;
+            if (name == "load-prep") return 4;
+            if (name == "load-exec") return 5;
+            if (name == "load-issu-go") return 6;
+            if (name == "load-done") return 7;
+            if (name == "run-prep-isd") return 8;
+            if (name == "run-prep-ism") return 9;
+            if (name == "big-bang") return 10;
+            if (name == "run-done") return 11;
+            if (name == "cleanup") return 12;
+            if (name == "cleanup-done") return 13;
+            if (name == "abort") return 14;
+            if (name == "abort-done") return 15;
+            if (name == "abort-cleanup") return 16;
+            if (name == "unknown-state") return 17;
+            return -1;
+        }
+};
+
+class IsdIssuStatusEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf prep_done;
+        static const ydk::Enum::YLeaf big_bang;
+        static const ydk::Enum::YLeaf done;
+        static const ydk::Enum::YLeaf abort;
+        static const ydk::Enum::YLeaf cmd_reject;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf abort_cleanup;
+        static const ydk::Enum::YLeaf abort_cmd_reject;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ok") return 0;
+            if (name == "prep-done") return 1;
+            if (name == "big-bang") return 2;
+            if (name == "done") return 3;
+            if (name == "abort") return 4;
+            if (name == "cmd-reject") return 5;
+            if (name == "unknown") return 6;
+            if (name == "abort-cleanup") return 7;
+            if (name == "abort-cmd-reject") return 8;
+            return -1;
+        }
+};
+
+class IssudirNodeStatusEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_issu_ready;
+        static const ydk::Enum::YLeaf issu_ready;
+        static const ydk::Enum::YLeaf isus_go;
+        static const ydk::Enum::YLeaf node_fail;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-issu-ready") return 0;
+            if (name == "issu-ready") return 1;
+            if (name == "isus-go") return 2;
+            if (name == "node-fail") return 3;
+            return -1;
+        }
+};
+
+class IssuNodeRoleEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown_role;
+        static const ydk::Enum::YLeaf primary_role;
+        static const ydk::Enum::YLeaf secondary_role;
+        static const ydk::Enum::YLeaf tertiary_role;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown-role") return 0;
+            if (name == "primary-role") return 1;
+            if (name == "secondary-role") return 2;
+            if (name == "tertiary-role") return 3;
+            return -1;
+        }
+};
+
+class CardTypeEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf card_rp;
+        static const ydk::Enum::YLeaf card_drp;
+        static const ydk::Enum::YLeaf card_lc;
+        static const ydk::Enum::YLeaf card_sc;
+        static const ydk::Enum::YLeaf card_sp;
+        static const ydk::Enum::YLeaf card_other;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "card-rp") return 0;
+            if (name == "card-drp") return 1;
+            if (name == "card-lc") return 2;
+            if (name == "card-sc") return 3;
+            if (name == "card-sp") return 4;
+            if (name == "card-other") return 5;
+            return -1;
+        }
 };
 
 

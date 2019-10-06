@@ -3661,6 +3661,10 @@ class Native::FacilityAlarm::Severity : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf critical;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            return -1;
+        }
 };
 
 class Native::FacilityAlarm::ExceedAction : public ydk::Enum
@@ -3668,6 +3672,10 @@ class Native::FacilityAlarm::ExceedAction : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shutdown") return 0;
+            return -1;
+        }
 };
 
 class Native::NetworkClock::Synchronization::Mode : public ydk::Enum
@@ -3675,6 +3683,10 @@ class Native::NetworkClock::Synchronization::Mode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf QL_enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "QL-enabled") return 0;
+            return -1;
+        }
 };
 
 class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::PointToPoint::Encapsulation : public ydk::Enum
@@ -3683,6 +3695,11 @@ class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::PointToP
         static const ydk::Enum::YLeaf vxlan;
         static const ydk::Enum::YLeaf mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vxlan") return 0;
+            if (name == "mpls") return 1;
+            return -1;
+        }
 };
 
 class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::VlanAware::Encapsulation : public ydk::Enum
@@ -3691,6 +3708,11 @@ class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::VlanAwar
         static const ydk::Enum::YLeaf vxlan;
         static const ydk::Enum::YLeaf mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vxlan") return 0;
+            if (name == "mpls") return 1;
+            return -1;
+        }
 };
 
 class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::VlanBased::Encapsulation : public ydk::Enum
@@ -3699,6 +3721,11 @@ class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::VlanBase
         static const ydk::Enum::YLeaf vxlan;
         static const ydk::Enum::YLeaf mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vxlan") return 0;
+            if (name == "mpls") return 1;
+            return -1;
+        }
 };
 
 class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::VlanBundle::Encapsulation : public ydk::Enum
@@ -3707,6 +3734,11 @@ class Native::L2vpn::EvpnCont::EvpnInstance::Evpn::Instance::Instance_::VlanBund
         static const ydk::Enum::YLeaf vxlan;
         static const ydk::Enum::YLeaf mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vxlan") return 0;
+            if (name == "mpls") return 1;
+            return -1;
+        }
 };
 
 

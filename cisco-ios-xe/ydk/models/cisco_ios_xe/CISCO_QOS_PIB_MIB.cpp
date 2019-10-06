@@ -4855,12 +4855,6 @@ const Enum::YLeaf QueueRange::sixteenQ {16, "sixteenQ"};
 const Enum::YLeaf QueueRange::thirtyTwoQ {32, "thirtyTwoQ"};
 const Enum::YLeaf QueueRange::sixtyFourQ {64, "sixtyFourQ"};
 
-const Enum::YLeaf ThresholdSetRange::zeroT {0, "zeroT"};
-const Enum::YLeaf ThresholdSetRange::oneT {1, "oneT"};
-const Enum::YLeaf ThresholdSetRange::twoT {2, "twoT"};
-const Enum::YLeaf ThresholdSetRange::fourT {4, "fourT"};
-const Enum::YLeaf ThresholdSetRange::eightT {8, "eightT"};
-
 const Enum::YLeaf QosInterfaceQueueType::oneQ1t {1, "oneQ1t"};
 const Enum::YLeaf QosInterfaceQueueType::oneQ2t {2, "oneQ2t"};
 const Enum::YLeaf QosInterfaceQueueType::oneQ4t {3, "oneQ4t"};
@@ -4906,6 +4900,12 @@ const Enum::YLeaf QosInterfaceQueueType::oneP31Q8t {42, "oneP31Q8t"};
 const Enum::YLeaf QosInterfaceQueueType::oneP7Q4t {43, "oneP7Q4t"};
 const Enum::YLeaf QosInterfaceQueueType::oneP3Q4t {44, "oneP3Q4t"};
 const Enum::YLeaf QosInterfaceQueueType::oneP7Q2t {45, "oneP7Q2t"};
+
+const Enum::YLeaf ThresholdSetRange::zeroT {0, "zeroT"};
+const Enum::YLeaf ThresholdSetRange::oneT {1, "oneT"};
+const Enum::YLeaf ThresholdSetRange::twoT {2, "twoT"};
+const Enum::YLeaf ThresholdSetRange::fourT {4, "fourT"};
+const Enum::YLeaf ThresholdSetRange::eightT {8, "eightT"};
 
 const Enum::YLeaf CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::QosUnmatchedPolicyDirection::in {0, "in"};
 const Enum::YLeaf CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::QosUnmatchedPolicyDirection::out {1, "out"};

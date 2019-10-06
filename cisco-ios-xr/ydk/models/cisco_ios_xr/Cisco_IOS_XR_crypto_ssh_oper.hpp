@@ -161,31 +161,8 @@ class Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo : public ydk::
         ydk::YLeaf out_mac; //type: Mac
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf end_time; //type: string
-        class NextSession; //type: Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession> next_session;
-        
 }; // Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo
-
-
-class Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession
 
 
 class Ssh1::Kex::Nodes::Node::OutgoingConnections : public ydk::Entity
@@ -236,31 +213,8 @@ class Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo : public yd
         ydk::YLeaf out_mac; //type: Mac
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf end_time; //type: string
-        class NextSession; //type: Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession> next_session;
-        
 }; // Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo
-
-
-class Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession
 
 class Ssh : public ydk::Entity
 {
@@ -393,32 +347,8 @@ class Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo : public ydk::Enti
         ydk::YLeaf session_rekey_count; //type: uint32
         ydk::YLeaf time_to_rekey; //type: string
         ydk::YLeaf volume_to_rekey; //type: string
-        class NextSession; //type: Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession> next_session;
-        
 }; // Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo
-
-
-class Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession
 
 
 class Ssh::Session::Rekey::OutgoingConnections : public ydk::Entity
@@ -466,32 +396,8 @@ class Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo : public ydk::E
         ydk::YLeaf session_rekey_count; //type: uint32
         ydk::YLeaf time_to_rekey; //type: string
         ydk::YLeaf volume_to_rekey; //type: string
-        class NextSession; //type: Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession> next_session;
-        
 }; // Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo
-
-
-class Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession
 
 
 class Ssh::Session::HistoryDetail : public ydk::Entity
@@ -570,32 +476,8 @@ class Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo : public 
         ydk::YLeaf out_mac; //type: Mac
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf end_time; //type: string
-        class NextSession; //type: Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession> next_session;
-        
 }; // Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo
-
-
-class Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession
 
 
 class Ssh::Session::HistoryDetail::OutgoingConnections : public ydk::Entity
@@ -648,32 +530,8 @@ class Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo : publ
         ydk::YLeaf out_mac; //type: Mac
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf end_time; //type: string
-        class NextSession; //type: Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession> next_session;
-        
 }; // Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo
-
-
-class Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession
 
 
 class Ssh::Session::Brief : public ydk::Entity
@@ -750,34 +608,11 @@ class Ssh::Session::Brief::IncomingSessions::SessionBriefInfo : public ydk::Enti
         ydk::YLeaf host_address; //type: string
         ydk::YLeaf version; //type: Version
         ydk::YLeaf authentication_type; //type: Authen
-        class NextSession; //type: Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession
         class McInfo; //type: Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession> next_session;
         ydk::YList mc_info;
         
 }; // Ssh::Session::Brief::IncomingSessions::SessionBriefInfo
-
-
-class Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession
 
 
 class Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo : public ydk::Entity
@@ -853,34 +688,11 @@ class Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo : public ydk::Enti
         ydk::YLeaf host_address; //type: string
         ydk::YLeaf version; //type: Version
         ydk::YLeaf authentication_type; //type: Authen
-        class NextSession; //type: Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession
         class McInfo; //type: Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession> next_session;
         ydk::YList mc_info;
         
 }; // Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo
-
-
-class Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession
 
 
 class Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo : public ydk::Entity
@@ -979,34 +791,11 @@ class Ssh::Session::History::IncomingSessions::SessionHistoryInfo : public ydk::
         ydk::YLeaf host_address; //type: string
         ydk::YLeaf version; //type: Version
         ydk::YLeaf authentication_type; //type: Authen
-        class NextSession; //type: Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession
         class McInfo; //type: Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession> next_session;
         ydk::YList mc_info;
         
 }; // Ssh::Session::History::IncomingSessions::SessionHistoryInfo
-
-
-class Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession
 
 
 class Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo : public ydk::Entity
@@ -1110,32 +899,8 @@ class Ssh::Session::Detail::IncomingSessions::SessionDetailInfo : public ydk::En
         ydk::YLeaf out_mac; //type: Mac
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf end_time; //type: string
-        class NextSession; //type: Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession> next_session;
-        
 }; // Ssh::Session::Detail::IncomingSessions::SessionDetailInfo
-
-
-class Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession : public ydk::Entity
-{
-    public:
-        NextSession();
-        ~NextSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession
 
 
 class Ssh::Session::Detail::OutgoingConnections : public ydk::Entity
@@ -1188,32 +953,73 @@ class Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo : public ydk:
         ydk::YLeaf out_mac; //type: Mac
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf end_time; //type: string
-        class NextSession; //type: Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession> next_session;
-        
 }; // Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo
 
-
-class Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession : public ydk::Entity
+class KexName : public ydk::Enum
 {
     public:
-        NextSession();
-        ~NextSession();
+        static const ydk::Enum::YLeaf kex_not_applicable;
+        static const ydk::Enum::YLeaf diffie_hellman_group1;
+        static const ydk::Enum::YLeaf diffie_hellman_group14;
+        static const ydk::Enum::YLeaf diffie_hellman_group15;
+        static const ydk::Enum::YLeaf diffie_hellman_group16;
+        static const ydk::Enum::YLeaf diffie_hellman_group17;
+        static const ydk::Enum::YLeaf diffie_hellman_group18;
+        static const ydk::Enum::YLeaf ecdh_nistp256;
+        static const ydk::Enum::YLeaf ecdh_nistp384;
+        static const ydk::Enum::YLeaf ecdh_nistp521;
+        static const ydk::Enum::YLeaf password_authenticated;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
+        static int get_enum_value(const std::string & name) {
+            if (name == "kex-not-applicable") return -1;
+            if (name == "diffie-hellman-group1") return 0;
+            if (name == "diffie-hellman-group14") return 1;
+            if (name == "diffie-hellman-group15") return 2;
+            if (name == "diffie-hellman-group16") return 3;
+            if (name == "diffie-hellman-group17") return 4;
+            if (name == "diffie-hellman-group18") return 5;
+            if (name == "ecdh-nistp256") return 6;
+            if (name == "ecdh-nistp384") return 7;
+            if (name == "ecdh-nistp521") return 8;
+            if (name == "password-authenticated") return 9;
+            return -1;
+        }
+};
 
+class Hostkey : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf host_key_not_applicable;
+        static const ydk::Enum::YLeaf ssh_dss;
+        static const ydk::Enum::YLeaf ssh_rsa;
+        static const ydk::Enum::YLeaf ecdsa_sha2_nistp521;
+        static const ydk::Enum::YLeaf ecdsa_sha2_nistp384;
+        static const ydk::Enum::YLeaf ecdsa_sha2_nistp256;
 
-}; // Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession
+        static int get_enum_value(const std::string & name) {
+            if (name == "host-key-not-applicable") return -1;
+            if (name == "ssh-dss") return 0;
+            if (name == "ssh-rsa") return 1;
+            if (name == "ecdsa-sha2-nistp521") return 2;
+            if (name == "ecdsa-sha2-nistp384") return 3;
+            if (name == "ecdsa-sha2-nistp256") return 4;
+            return -1;
+        }
+};
+
+class Version : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf v2;
+        static const ydk::Enum::YLeaf v1;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "v2") return 0;
+            if (name == "v1") return 1;
+            return -1;
+        }
+};
 
 class Connection : public ydk::Enum
 {
@@ -1227,23 +1033,17 @@ class Connection : public ydk::Enum
         static const ydk::Enum::YLeaf tl1_subsystem;
         static const ydk::Enum::YLeaf netconf_xml_subsystem;
 
-};
-
-class Authen : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf password;
-        static const ydk::Enum::YLeaf rsa_public_key;
-        static const ydk::Enum::YLeaf keyboard_interactive;
-
-};
-
-class Version : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf v2;
-        static const ydk::Enum::YLeaf v1;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "undefined") return 0;
+            if (name == "shell") return 1;
+            if (name == "exec") return 2;
+            if (name == "scp") return 3;
+            if (name == "sftp-subsystem") return 4;
+            if (name == "netconf-subsystem") return 5;
+            if (name == "tl1-subsystem") return 6;
+            if (name == "netconf-xml-subsystem") return 7;
+            return -1;
+        }
 };
 
 class States : public ydk::Enum
@@ -1263,6 +1063,22 @@ class States : public ydk::Enum
         static const ydk::Enum::YLeaf suspended;
         static const ydk::Enum::YLeaf session_closed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "open") return 1;
+            if (name == "version-ok") return 2;
+            if (name == "key-exchange-initialize") return 3;
+            if (name == "key-exchange-dh") return 4;
+            if (name == "new-keys") return 5;
+            if (name == "authenticate-information") return 6;
+            if (name == "authenticated") return 7;
+            if (name == "channel-open") return 8;
+            if (name == "pty-open") return 9;
+            if (name == "session-open") return 10;
+            if (name == "rekey") return 11;
+            if (name == "suspended") return 12;
+            if (name == "session-closed") return 13;
+            return -1;
+        }
 };
 
 class Mac : public ydk::Enum
@@ -1275,6 +1091,15 @@ class Mac : public ydk::Enum
         static const ydk::Enum::YLeaf hmac_sha2_512;
         static const ydk::Enum::YLeaf aes_gcm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mac-not-applicable") return -1;
+            if (name == "hmac-md5") return 0;
+            if (name == "hmac-sha1") return 1;
+            if (name == "hmac-sha2-256") return 2;
+            if (name == "hmac-sha2-512") return 3;
+            if (name == "aes-gcm") return 4;
+            return -1;
+        }
 };
 
 class Cipher : public ydk::Enum
@@ -1291,35 +1116,34 @@ class Cipher : public ydk::Enum
         static const ydk::Enum::YLeaf aes128_gcm;
         static const ydk::Enum::YLeaf aes256_gcm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cipher-not-applicable") return -1;
+            if (name == "aes128-cbc") return 0;
+            if (name == "aes192-cbc") return 1;
+            if (name == "aes256-cbc") return 2;
+            if (name == "triple-des-cbc") return 3;
+            if (name == "aes128-ctr") return 4;
+            if (name == "aes192-ctr") return 5;
+            if (name == "aes256-ctr") return 6;
+            if (name == "aes128-gcm") return 7;
+            if (name == "aes256-gcm") return 8;
+            return -1;
+        }
 };
 
-class Hostkey : public ydk::Enum
+class Authen : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf host_key_not_applicable;
-        static const ydk::Enum::YLeaf ssh_dss;
-        static const ydk::Enum::YLeaf ssh_rsa;
-        static const ydk::Enum::YLeaf ecdsa_sha2_nistp521;
-        static const ydk::Enum::YLeaf ecdsa_sha2_nistp384;
-        static const ydk::Enum::YLeaf ecdsa_sha2_nistp256;
+        static const ydk::Enum::YLeaf password;
+        static const ydk::Enum::YLeaf rsa_public_key;
+        static const ydk::Enum::YLeaf keyboard_interactive;
 
-};
-
-class KexName : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf kex_not_applicable;
-        static const ydk::Enum::YLeaf diffie_hellman_group1;
-        static const ydk::Enum::YLeaf diffie_hellman_group14;
-        static const ydk::Enum::YLeaf diffie_hellman_group15;
-        static const ydk::Enum::YLeaf diffie_hellman_group16;
-        static const ydk::Enum::YLeaf diffie_hellman_group17;
-        static const ydk::Enum::YLeaf diffie_hellman_group18;
-        static const ydk::Enum::YLeaf ecdh_nistp256;
-        static const ydk::Enum::YLeaf ecdh_nistp384;
-        static const ydk::Enum::YLeaf ecdh_nistp521;
-        static const ydk::Enum::YLeaf password_authenticated;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "password") return 0;
+            if (name == "rsa-public-key") return 1;
+            if (name == "keyboard-interactive") return 2;
+            return -1;
+        }
 };
 
 

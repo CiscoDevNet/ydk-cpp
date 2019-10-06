@@ -512,7 +512,7 @@ class Native::Interface::EthernetInternal::Standby::StandbyList : public ydk::En
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -1911,8 +1911,8 @@ class Native::Interface::ServiceEngine::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -2081,8 +2081,8 @@ class Native::Interface::ServiceEngine::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3654,6 +3654,11 @@ class Native::Interface::EthernetInternal::Ipv6::TrafficFilter::Direction : publ
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::EthernetInternal::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3661,6 +3666,10 @@ class Native::Interface::EthernetInternal::InterfaceQos::Trust::Device : public 
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EthernetInternal::Standby::Version : public ydk::Enum
@@ -3669,6 +3678,11 @@ class Native::Interface::EthernetInternal::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::EthernetInternal::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3676,6 +3690,10 @@ class Native::Interface::EthernetInternal::Standby::StandbyList::Ipv6 : public y
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3684,6 +3702,11 @@ class Native::Interface::EthernetInternal::Standby::StandbyList::Authentication:
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3692,6 +3715,11 @@ class Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Adver
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::EthernetInternal::AccessSession::HostMode : public ydk::Enum
@@ -3702,6 +3730,13 @@ class Native::Interface::EthernetInternal::AccessSession::HostMode : public ydk:
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::EthernetInternal::Trust::Device : public ydk::Enum
@@ -3712,6 +3747,13 @@ class Native::Interface::EthernetInternal::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::IfState : public ydk::Enum
@@ -3719,6 +3761,10 @@ class Native::Interface::ServiceEngine::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::ServiceInsertion : public ydk::Enum
@@ -3726,6 +3772,10 @@ class Native::Interface::ServiceEngine::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Backup::Delay::Failure : public ydk::Enum
@@ -3733,6 +3783,10 @@ class Native::Interface::ServiceEngine::Backup::Delay::Failure : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3740,6 +3794,10 @@ class Native::Interface::ServiceEngine::Backup::Delay::SecondaryDisable : public
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Backup::Load::Kickin : public ydk::Enum
@@ -3747,6 +3805,10 @@ class Native::Interface::ServiceEngine::Backup::Load::Kickin : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Backup::Load::Kickout : public ydk::Enum
@@ -3754,6 +3816,10 @@ class Native::Interface::ServiceEngine::Backup::Load::Kickout : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Flowcontrol::Receive : public ydk::Enum
@@ -3763,6 +3829,12 @@ class Native::Interface::ServiceEngine::Flowcontrol::Receive : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Flowcontrol::Send : public ydk::Enum
@@ -3772,6 +3844,12 @@ class Native::Interface::ServiceEngine::Flowcontrol::Send : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::HoldQueue::Direction : public ydk::Enum
@@ -3780,6 +3858,11 @@ class Native::Interface::ServiceEngine::HoldQueue::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 

@@ -344,6 +344,17 @@ class MppAllow : public ydk::Enum
         static const ydk::Enum::YLeaf netconf;
         static const ydk::Enum::YLeaf all;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ssh") return 0;
+            if (name == "telnet") return 1;
+            if (name == "snmp") return 2;
+            if (name == "tftp") return 3;
+            if (name == "http") return 4;
+            if (name == "xr-xml") return 5;
+            if (name == "netconf") return 6;
+            if (name == "all") return 7;
+            return -1;
+        }
 };
 
 

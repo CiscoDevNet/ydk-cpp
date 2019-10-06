@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_95.hpp"
-#include "Cisco_IOS_XE_native_96.hpp"
 #include "Cisco_IOS_XE_native_99.hpp"
+#include "Cisco_IOS_XE_native_96.hpp"
 #include "Cisco_IOS_XE_native_97.hpp"
 #include "Cisco_IOS_XE_native_98.hpp"
 
@@ -2799,15 +2799,14 @@ Native::Interface::Vlan::Vlan()
     , plim(std::make_shared<Native::Interface::Vlan::Plim>())
     , pppoe(std::make_shared<Native::Interface::Vlan::Pppoe>())
     , service(std::make_shared<Native::Interface::Vlan::Service>())
-    , crypto(std::make_shared<Native::Interface::Vlan::Crypto>())
-    , cts(std::make_shared<Native::Interface::Vlan::Cts>())
     , et_analytics(std::make_shared<Native::Interface::Vlan::EtAnalytics>())
     , service_policy(std::make_shared<Native::Interface::Vlan::ServicePolicy>())
     , lisp(std::make_shared<Native::Interface::Vlan::Lisp>())
-    , ntp(std::make_shared<Native::Interface::Vlan::Ntp>())
     , spanning_tree(std::make_shared<Native::Interface::Vlan::SpanningTree>())
     , umbrella(std::make_shared<Native::Interface::Vlan::Umbrella>())
-    , utd(std::make_shared<Native::Interface::Vlan::Utd>())
+    , crypto(std::make_shared<Native::Interface::Vlan::Crypto>())
+    , zone_member(std::make_shared<Native::Interface::Vlan::ZoneMember>())
+    , vrrp(std::make_shared<Native::Interface::Vlan::Vrrp>())
     , private_vlan(std::make_shared<Native::Interface::Vlan::PrivateVlan>())
     , service_routing(std::make_shared<Native::Interface::Vlan::ServiceRouting>())
     , glbp(std::make_shared<Native::Interface::Vlan::Glbp>())
@@ -2848,8 +2847,9 @@ Native::Interface::Vlan::Vlan()
     , cisco_ios_xe_interfaces_rcv_queue(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue>())
     , cisco_ios_xe_interfaces_peer(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesPeer>())
     , cisco_ios_xe_interfaces_pm_path(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath>())
-    , vrrp(std::make_shared<Native::Interface::Vlan::Vrrp>())
-    , zone_member(std::make_shared<Native::Interface::Vlan::ZoneMember>())
+    , cts(std::make_shared<Native::Interface::Vlan::Cts>())
+    , ntp(std::make_shared<Native::Interface::Vlan::Ntp>())
+    , utd(std::make_shared<Native::Interface::Vlan::Utd>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -2896,15 +2896,14 @@ Native::Interface::Vlan::Vlan()
     plim->parent = this;
     pppoe->parent = this;
     service->parent = this;
-    crypto->parent = this;
-    cts->parent = this;
     et_analytics->parent = this;
     service_policy->parent = this;
     lisp->parent = this;
-    ntp->parent = this;
     spanning_tree->parent = this;
     umbrella->parent = this;
-    utd->parent = this;
+    crypto->parent = this;
+    zone_member->parent = this;
+    vrrp->parent = this;
     private_vlan->parent = this;
     service_routing->parent = this;
     glbp->parent = this;
@@ -2943,8 +2942,9 @@ Native::Interface::Vlan::Vlan()
     cisco_ios_xe_interfaces_rcv_queue->parent = this;
     cisco_ios_xe_interfaces_peer->parent = this;
     cisco_ios_xe_interfaces_pm_path->parent = this;
-    vrrp->parent = this;
-    zone_member->parent = this;
+    cts->parent = this;
+    ntp->parent = this;
+    utd->parent = this;
 
     yang_name = "Vlan"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -3036,15 +3036,14 @@ bool Native::Interface::Vlan::has_data() const
 	|| (plim !=  nullptr && plim->has_data())
 	|| (pppoe !=  nullptr && pppoe->has_data())
 	|| (service !=  nullptr && service->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
-	|| (cts !=  nullptr && cts->has_data())
 	|| (et_analytics !=  nullptr && et_analytics->has_data())
 	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
-	|| (ntp !=  nullptr && ntp->has_data())
 	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
 	|| (umbrella !=  nullptr && umbrella->has_data())
-	|| (utd !=  nullptr && utd->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data())
+	|| (vrrp !=  nullptr && vrrp->has_data())
 	|| (private_vlan !=  nullptr && private_vlan->has_data())
 	|| (service_routing !=  nullptr && service_routing->has_data())
 	|| (glbp !=  nullptr && glbp->has_data())
@@ -3084,8 +3083,9 @@ bool Native::Interface::Vlan::has_data() const
 	|| (cisco_ios_xe_interfaces_rcv_queue !=  nullptr && cisco_ios_xe_interfaces_rcv_queue->has_data())
 	|| (cisco_ios_xe_interfaces_peer !=  nullptr && cisco_ios_xe_interfaces_peer->has_data())
 	|| (cisco_ios_xe_interfaces_pm_path !=  nullptr && cisco_ios_xe_interfaces_pm_path->has_data())
-	|| (vrrp !=  nullptr && vrrp->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data());
+	|| (cts !=  nullptr && cts->has_data())
+	|| (ntp !=  nullptr && ntp->has_data())
+	|| (utd !=  nullptr && utd->has_data());
 }
 
 bool Native::Interface::Vlan::has_operation() const
@@ -3171,15 +3171,14 @@ bool Native::Interface::Vlan::has_operation() const
 	|| (plim !=  nullptr && plim->has_operation())
 	|| (pppoe !=  nullptr && pppoe->has_operation())
 	|| (service !=  nullptr && service->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
 	|| (et_analytics !=  nullptr && et_analytics->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (ntp !=  nullptr && ntp->has_operation())
 	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
 	|| (umbrella !=  nullptr && umbrella->has_operation())
-	|| (utd !=  nullptr && utd->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation())
+	|| (vrrp !=  nullptr && vrrp->has_operation())
 	|| (private_vlan !=  nullptr && private_vlan->has_operation())
 	|| (service_routing !=  nullptr && service_routing->has_operation())
 	|| (glbp !=  nullptr && glbp->has_operation())
@@ -3219,8 +3218,9 @@ bool Native::Interface::Vlan::has_operation() const
 	|| (cisco_ios_xe_interfaces_rcv_queue !=  nullptr && cisco_ios_xe_interfaces_rcv_queue->has_operation())
 	|| (cisco_ios_xe_interfaces_peer !=  nullptr && cisco_ios_xe_interfaces_peer->has_operation())
 	|| (cisco_ios_xe_interfaces_pm_path !=  nullptr && cisco_ios_xe_interfaces_pm_path->has_operation())
-	|| (vrrp !=  nullptr && vrrp->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation());
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (utd !=  nullptr && utd->has_operation());
 }
 
 std::string Native::Interface::Vlan::get_absolute_path() const
@@ -3695,24 +3695,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vlan::get_child_by_name(const st
         return service;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::Vlan::Crypto>();
-        }
-        return crypto;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::Vlan::Cts>();
-        }
-        return cts;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
     {
         if(et_analytics == nullptr)
@@ -3740,15 +3722,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vlan::get_child_by_name(const st
         return lisp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
-    {
-        if(ntp == nullptr)
-        {
-            ntp = std::make_shared<Native::Interface::Vlan::Ntp>();
-        }
-        return ntp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
     {
         if(spanning_tree == nullptr)
@@ -3767,13 +3740,31 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vlan::get_child_by_name(const st
         return umbrella;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
     {
-        if(utd == nullptr)
+        if(crypto == nullptr)
         {
-            utd = std::make_shared<Native::Interface::Vlan::Utd>();
+            crypto = std::make_shared<Native::Interface::Vlan::Crypto>();
         }
-        return utd;
+        return crypto;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
+    {
+        if(zone_member == nullptr)
+        {
+            zone_member = std::make_shared<Native::Interface::Vlan::ZoneMember>();
+        }
+        return zone_member;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-vrrp:vrrp")
+    {
+        if(vrrp == nullptr)
+        {
+            vrrp = std::make_shared<Native::Interface::Vlan::Vrrp>();
+        }
+        return vrrp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-vlan:private-vlan")
@@ -4135,22 +4126,31 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vlan::get_child_by_name(const st
         return cisco_ios_xe_interfaces_pm_path;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-vrrp:vrrp")
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
     {
-        if(vrrp == nullptr)
+        if(cts == nullptr)
         {
-            vrrp = std::make_shared<Native::Interface::Vlan::Vrrp>();
+            cts = std::make_shared<Native::Interface::Vlan::Cts>();
         }
-        return vrrp;
+        return cts;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
+    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
     {
-        if(zone_member == nullptr)
+        if(ntp == nullptr)
         {
-            zone_member = std::make_shared<Native::Interface::Vlan::ZoneMember>();
+            ntp = std::make_shared<Native::Interface::Vlan::Ntp>();
         }
-        return zone_member;
+        return ntp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    {
+        if(utd == nullptr)
+        {
+            utd = std::make_shared<Native::Interface::Vlan::Utd>();
+        }
+        return utd;
     }
 
     return nullptr;
@@ -4399,16 +4399,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::get
         _children["Cisco-IOS-XE-ethernet:service"] = service;
     }
 
-    if(crypto != nullptr)
-    {
-        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
-    if(cts != nullptr)
-    {
-        _children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
     if(et_analytics != nullptr)
     {
         _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
@@ -4424,11 +4414,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::get
         _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
-    if(ntp != nullptr)
-    {
-        _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
-    }
-
     if(spanning_tree != nullptr)
     {
         _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
@@ -4439,9 +4424,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::get
         _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
-    if(utd != nullptr)
+    if(crypto != nullptr)
     {
-        _children["Cisco-IOS-XE-utd:utd"] = utd;
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
+    }
+
+    if(zone_member != nullptr)
+    {
+        _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+    }
+
+    if(vrrp != nullptr)
+    {
+        _children["Cisco-IOS-XE-vrrp:vrrp"] = vrrp;
     }
 
     if(private_vlan != nullptr)
@@ -4648,14 +4643,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::get
         _children["Cisco-IOS-XE-vlan:pm-path"] = cisco_ios_xe_interfaces_pm_path;
     }
 
-    if(vrrp != nullptr)
+    if(cts != nullptr)
     {
-        _children["Cisco-IOS-XE-vrrp:vrrp"] = vrrp;
+        _children["Cisco-IOS-XE-cts:cts"] = cts;
     }
 
-    if(zone_member != nullptr)
+    if(ntp != nullptr)
     {
-        _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+        _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
+    }
+
+    if(utd != nullptr)
+    {
+        _children["Cisco-IOS-XE-utd:utd"] = utd;
     }
 
     return _children;
@@ -4911,7 +4911,7 @@ void Native::Interface::Vlan::set_filter(const std::string & value_path, YFilter
 
 bool Native::Interface::Vlan::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "crypto" || name == "cts" || name == "et-analytics" || name == "service-policy" || name == "lisp" || name == "ntp" || name == "spanning-tree" || name == "umbrella" || name == "utd" || name == "private-vlan" || name == "service-routing" || name == "glbp" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "vrrp" || name == "zone-member" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "nat66" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "et-analytics" || name == "service-policy" || name == "lisp" || name == "spanning-tree" || name == "umbrella" || name == "crypto" || name == "zone-member" || name == "vrrp" || name == "private-vlan" || name == "service-routing" || name == "glbp" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "cts" || name == "ntp" || name == "utd" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "nat66" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
         return true;
     return false;
 }

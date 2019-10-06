@@ -190,55 +190,6 @@ class Fpd_::Packages::AllPackage : public ydk::Entity
 
 }; // Fpd_::Packages::AllPackage
 
-class FpdSub : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fpga1;
-        static const ydk::Enum::YLeaf rommon;
-        static const ydk::Enum::YLeaf rommona;
-        static const ydk::Enum::YLeaf fabldr;
-        static const ydk::Enum::YLeaf fpga2;
-        static const ydk::Enum::YLeaf fpga3;
-        static const ydk::Enum::YLeaf fpga4;
-        static const ydk::Enum::YLeaf fpga5;
-        static const ydk::Enum::YLeaf fpga6;
-        static const ydk::Enum::YLeaf fpga7;
-        static const ydk::Enum::YLeaf fpga8;
-        static const ydk::Enum::YLeaf fpga9;
-        static const ydk::Enum::YLeaf fpga10;
-        static const ydk::Enum::YLeaf fpga11;
-        static const ydk::Enum::YLeaf fpga12;
-        static const ydk::Enum::YLeaf fpga13;
-        static const ydk::Enum::YLeaf fpga14;
-        static const ydk::Enum::YLeaf cpld1;
-        static const ydk::Enum::YLeaf cpld2;
-        static const ydk::Enum::YLeaf cpld3;
-        static const ydk::Enum::YLeaf cpld4;
-        static const ydk::Enum::YLeaf cpld5;
-        static const ydk::Enum::YLeaf cpld6;
-        static const ydk::Enum::YLeaf cbc;
-        static const ydk::Enum::YLeaf hsbi;
-        static const ydk::Enum::YLeaf txpod;
-        static const ydk::Enum::YLeaf rxpod;
-        static const ydk::Enum::YLeaf ibmc;
-        static const ydk::Enum::YLeaf fsbl;
-        static const ydk::Enum::YLeaf lnx;
-        static const ydk::Enum::YLeaf fpga15;
-        static const ydk::Enum::YLeaf fpga16;
-        static const ydk::Enum::YLeaf fc_fsbl;
-        static const ydk::Enum::YLeaf fc_lnx;
-
-};
-
-class Fpd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf spa;
-        static const ydk::Enum::YLeaf lc;
-        static const ydk::Enum::YLeaf sam;
-
-};
-
 class FpdSub1 : public ydk::Enum
 {
     public:
@@ -277,6 +228,58 @@ class FpdSub1 : public ydk::Enum
         static const ydk::Enum::YLeaf fc_fsbl;
         static const ydk::Enum::YLeaf fc_lnx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fpga1") return 0;
+            if (name == "rommon") return 1;
+            if (name == "rommona") return 2;
+            if (name == "fabric-loader") return 3;
+            if (name == "fpga2") return 4;
+            if (name == "fpga3") return 5;
+            if (name == "fpga4") return 6;
+            if (name == "fpga5") return 7;
+            if (name == "fpga6") return 8;
+            if (name == "fpga7") return 9;
+            if (name == "fpga8") return 10;
+            if (name == "fpga9") return 11;
+            if (name == "fpga10") return 12;
+            if (name == "fpga11") return 13;
+            if (name == "fpga12") return 14;
+            if (name == "fpga13") return 15;
+            if (name == "fpga14") return 16;
+            if (name == "cpld1") return 17;
+            if (name == "cpld2") return 18;
+            if (name == "cpld3") return 19;
+            if (name == "cpld4") return 20;
+            if (name == "cpld5") return 21;
+            if (name == "cpld6") return 22;
+            if (name == "cbc") return 23;
+            if (name == "hsbi") return 24;
+            if (name == "txpod") return 25;
+            if (name == "rxpod") return 26;
+            if (name == "ibmc") return 27;
+            if (name == "fsbl") return 28;
+            if (name == "lnx") return 29;
+            if (name == "fpga15") return 30;
+            if (name == "fpga16") return 31;
+            if (name == "fc-fsbl") return 32;
+            if (name == "fc-lnx") return 33;
+            return -1;
+        }
+};
+
+class Fpd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf spa;
+        static const ydk::Enum::YLeaf lc;
+        static const ydk::Enum::YLeaf sam;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "spa") return 0;
+            if (name == "lc") return 1;
+            if (name == "sam") return 2;
+            return -1;
+        }
 };
 
 class Fpd1 : public ydk::Enum
@@ -286,6 +289,89 @@ class Fpd1 : public ydk::Enum
         static const ydk::Enum::YLeaf lc;
         static const ydk::Enum::YLeaf sam;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "spa") return 0;
+            if (name == "lc") return 1;
+            if (name == "sam") return 2;
+            return -1;
+        }
+};
+
+class FpdSub : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fpga1;
+        static const ydk::Enum::YLeaf rommon;
+        static const ydk::Enum::YLeaf rommona;
+        static const ydk::Enum::YLeaf fabldr;
+        static const ydk::Enum::YLeaf fpga2;
+        static const ydk::Enum::YLeaf fpga3;
+        static const ydk::Enum::YLeaf fpga4;
+        static const ydk::Enum::YLeaf fpga5;
+        static const ydk::Enum::YLeaf fpga6;
+        static const ydk::Enum::YLeaf fpga7;
+        static const ydk::Enum::YLeaf fpga8;
+        static const ydk::Enum::YLeaf fpga9;
+        static const ydk::Enum::YLeaf fpga10;
+        static const ydk::Enum::YLeaf fpga11;
+        static const ydk::Enum::YLeaf fpga12;
+        static const ydk::Enum::YLeaf fpga13;
+        static const ydk::Enum::YLeaf fpga14;
+        static const ydk::Enum::YLeaf cpld1;
+        static const ydk::Enum::YLeaf cpld2;
+        static const ydk::Enum::YLeaf cpld3;
+        static const ydk::Enum::YLeaf cpld4;
+        static const ydk::Enum::YLeaf cpld5;
+        static const ydk::Enum::YLeaf cpld6;
+        static const ydk::Enum::YLeaf cbc;
+        static const ydk::Enum::YLeaf hsbi;
+        static const ydk::Enum::YLeaf txpod;
+        static const ydk::Enum::YLeaf rxpod;
+        static const ydk::Enum::YLeaf ibmc;
+        static const ydk::Enum::YLeaf fsbl;
+        static const ydk::Enum::YLeaf lnx;
+        static const ydk::Enum::YLeaf fpga15;
+        static const ydk::Enum::YLeaf fpga16;
+        static const ydk::Enum::YLeaf fc_fsbl;
+        static const ydk::Enum::YLeaf fc_lnx;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "fpga1") return 0;
+            if (name == "rommon") return 1;
+            if (name == "rommona") return 2;
+            if (name == "fabldr") return 3;
+            if (name == "fpga2") return 4;
+            if (name == "fpga3") return 5;
+            if (name == "fpga4") return 6;
+            if (name == "fpga5") return 7;
+            if (name == "fpga6") return 8;
+            if (name == "fpga7") return 9;
+            if (name == "fpga8") return 10;
+            if (name == "fpga9") return 11;
+            if (name == "fpga10") return 12;
+            if (name == "fpga11") return 13;
+            if (name == "fpga12") return 14;
+            if (name == "fpga13") return 15;
+            if (name == "fpga14") return 16;
+            if (name == "cpld1") return 17;
+            if (name == "cpld2") return 18;
+            if (name == "cpld3") return 19;
+            if (name == "cpld4") return 20;
+            if (name == "cpld5") return 21;
+            if (name == "cpld6") return 22;
+            if (name == "cbc") return 23;
+            if (name == "hsbi") return 24;
+            if (name == "txpod") return 25;
+            if (name == "rxpod") return 26;
+            if (name == "ibmc") return 27;
+            if (name == "fsbl") return 28;
+            if (name == "lnx") return 29;
+            if (name == "fpga15") return 30;
+            if (name == "fpga16") return 31;
+            if (name == "fc-fsbl") return 32;
+            if (name == "fc-lnx") return 33;
+            return -1;
+        }
 };
 
 

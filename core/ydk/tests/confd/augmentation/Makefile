@@ -65,7 +65,7 @@ ydktest-sanity.yang: ydktest-types.yang ydktest-sanity-submodule.yang
 	cp ../../models/ydktest-sanity\@2015-11-17.yang ydktest-sanity.yang
 
 ydktest-types.yang:
-	cp ../../models/ydktest-types.yang ydktest-types.yang
+	cp ../../models/ydktest-types\@2016-05-23.yang ydktest-types.yang
 
 
 

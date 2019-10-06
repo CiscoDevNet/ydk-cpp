@@ -1363,6 +1363,52 @@ class Ppp::Nodes::Node::Summary::LcpAuthPhases : public ydk::Entity
 
 }; // Ppp::Nodes::Node::Summary::LcpAuthPhases
 
+class NcpIdent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdpcp;
+        static const ydk::Enum::YLeaf ipcp;
+        static const ydk::Enum::YLeaf ipcpiw;
+        static const ydk::Enum::YLeaf ipv6cp;
+        static const ydk::Enum::YLeaf mplscp;
+        static const ydk::Enum::YLeaf osicp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdpcp") return 1;
+            if (name == "ipcp") return 2;
+            if (name == "ipcpiw") return 3;
+            if (name == "ipv6cp") return 4;
+            if (name == "mplscp") return 5;
+            if (name == "osicp") return 6;
+            return -1;
+        }
+};
+
+class PppSsoFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_sso_state_not_ready_0;
+        static const ydk::Enum::YLeaf ppp_sso_state_standby_unnegd_1;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_down_2;
+        static const ydk::Enum::YLeaf ppp_sso_state_deactivating_3;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_unnegd_4;
+        static const ydk::Enum::YLeaf ppp_sso_state_standby_negd_5;
+        static const ydk::Enum::YLeaf ppp_sso_state_activating_6;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_negd_7;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ppp-sso-state-not-ready-0") return 0;
+            if (name == "ppp-sso-state-standby-unnegd-1") return 1;
+            if (name == "ppp-sso-state-active-down-2") return 2;
+            if (name == "ppp-sso-state-deactivating-3") return 3;
+            if (name == "ppp-sso-state-active-unnegd-4") return 4;
+            if (name == "ppp-sso-state-standby-negd-5") return 5;
+            if (name == "ppp-sso-state-activating-6") return 6;
+            if (name == "ppp-sso-state-active-negd-7") return 7;
+            return -1;
+        }
+};
+
 class PppIphcCompression : public ydk::Enum
 {
     public:
@@ -1372,6 +1418,43 @@ class PppIphcCompression : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_iphc;
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_cisco;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ppp-iphc-compression-fmt-none") return 0;
+            if (name == "ppp-iphc-compression-fmt-vj") return 1;
+            if (name == "ppp-iphc-compression-fmt-ietf") return 2;
+            if (name == "ppp-iphc-compression-fmt-iphc") return 3;
+            if (name == "ppp-iphc-compression-fmt-cisco") return 4;
+            return -1;
+        }
+};
+
+class PppFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
+        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
+        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
+        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ppp-fsm-state-initial-0") return 0;
+            if (name == "ppp-fsm-state-starting-1") return 1;
+            if (name == "ppp-fsm-state-closed-2") return 2;
+            if (name == "ppp-fsm-state-stopped-3") return 3;
+            if (name == "ppp-fsm-state-closing-4") return 4;
+            if (name == "ppp-fsm-state-stopping-5") return 5;
+            if (name == "ppp-fsm-state-req-sent-6") return 6;
+            if (name == "ppp-fsm-state-ack-rcvd-7") return 7;
+            if (name == "ppp-fsm-state-ack-sent-8") return 8;
+            if (name == "ppp-fsm-state-opened-9") return 9;
+            return -1;
+        }
 };
 
 class PppLcpMpMbrState : public ydk::Enum
@@ -1392,48 +1475,23 @@ class PppLcpMpMbrState : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_standby_up;
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_active;
 
-};
-
-class PppSsoFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_sso_state_not_ready_0;
-        static const ydk::Enum::YLeaf ppp_sso_state_standby_unnegd_1;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_down_2;
-        static const ydk::Enum::YLeaf ppp_sso_state_deactivating_3;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_unnegd_4;
-        static const ydk::Enum::YLeaf ppp_sso_state_standby_negd_5;
-        static const ydk::Enum::YLeaf ppp_sso_state_activating_6;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_negd_7;
-
-};
-
-class PppFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
-        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
-        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
-        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
-
-};
-
-class NcpIdent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdpcp;
-        static const ydk::Enum::YLeaf ipcp;
-        static const ydk::Enum::YLeaf ipcpiw;
-        static const ydk::Enum::YLeaf ipv6cp;
-        static const ydk::Enum::YLeaf mplscp;
-        static const ydk::Enum::YLeaf osicp;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "ppp-lcp-mp-mbr-state-detached") return 0;
+            if (name == "ppp-lcp-mp-mbr-state-lcp-not-negotiated") return 1;
+            if (name == "ppp-lcp-mp-mbr-state-link-noise") return 2;
+            if (name == "ppp-lcp-mp-mbr-state-bundle-shutdown") return 3;
+            if (name == "ppp-lcp-mp-mbr-state-mrru-rejected") return 4;
+            if (name == "ppp-lcp-mp-mbr-state-mrru-mismatch") return 5;
+            if (name == "ppp-lcp-mp-mbr-state-ed-mismatch") return 6;
+            if (name == "ppp-lcp-mp-mbr-state-auth-name-mismatch") return 7;
+            if (name == "ppp-lcp-mp-mbr-state-mcmp-rejected") return 8;
+            if (name == "ppp-lcp-mp-mbr-state-mcmp-not-negotiated") return 9;
+            if (name == "ppp-lcp-mp-mbr-state-mcmp-local-mismatch") return 10;
+            if (name == "ppp-lcp-mp-mbr-state-mcmp-peer-mismatch") return 11;
+            if (name == "ppp-lcp-mp-mbr-state-standby-up") return 12;
+            if (name == "ppp-lcp-mp-mbr-state-active") return 13;
+            return -1;
+        }
 };
 
 

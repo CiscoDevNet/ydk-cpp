@@ -1177,12 +1177,12 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         ydk::YLeaf activate; //type: empty
         ydk::YLeaf advertisement_interval; //type: uint16
         ydk::YLeaf allow_policy; //type: empty
-        ydk::YLeaf cluster_id; //type: one of string, uint32
+        ydk::YLeaf cluster_id; //type: one of uint32, string
         ydk::YLeaf description; //type: string
         ydk::YLeaf disable_connected_check; //type: empty
         ydk::YLeaf dmzlink_bw; //type: empty
         ydk::YLeaf next_hop_unchanged; //type: empty
-        ydk::YLeaf remote_as; //type: one of string, uint32
+        ydk::YLeaf remote_as; //type: one of uint32, string
         ydk::YLeaf route_reflector_client; //type: empty
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf soft_reconfiguration; //type: SoftReconfiguration
@@ -1858,7 +1858,7 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of string, uint32
+        ydk::YLeaf as_no; //type: one of uint32, string
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty
@@ -2664,11 +2664,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neigh
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of string, uint32
+        ydk::YLeaf remote_as; //type: one of uint32, string
         ydk::YLeaf activate; //type: empty
         ydk::YLeaf advertisement_interval; //type: uint16
         ydk::YLeaf allow_policy; //type: empty
-        ydk::YLeaf cluster_id; //type: one of string, uint32
+        ydk::YLeaf cluster_id; //type: one of uint32, string
         ydk::YLeaf description; //type: string
         ydk::YLeaf disable_connected_check; //type: empty
         ydk::YLeaf dmzlink_bw; //type: empty
@@ -3371,7 +3371,7 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neigh
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of string, uint32
+        ydk::YLeaf as_no; //type: one of uint32, string
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty
@@ -3659,6 +3659,10 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Bgp_:
     public:
         static const ydk::Enum::YLeaf Y_0;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Bgp_::RouterId::Vrf_ : public ydk::Enum
@@ -3666,6 +3670,10 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Bgp_:
     public:
         static const ydk::Enum::YLeaf auto_assign;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto-assign") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3673,6 +3681,10 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3682,6 +3694,12 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::DistributeList::Inout : public ydk::Enum
@@ -3690,6 +3708,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::FilterList::Inout : public ydk::Enum
@@ -3698,6 +3721,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::PrefixList::Inout : public ydk::Enum
@@ -3706,6 +3734,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3714,6 +3747,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3723,6 +3761,12 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::SendLabel::SendLabelExplicit : public ydk::Enum
@@ -3730,6 +3774,10 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
     public:
         static const ydk::Enum::YLeaf explicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "explicit-null") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerGroup::Neighbor::Transport::ConnectionMode : public ydk::Enum
@@ -3738,6 +3786,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::PeerG
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "passive") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3745,6 +3798,10 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neigh
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3754,6 +3811,12 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neigh
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neighbor::DistributeList::Inout : public ydk::Enum
@@ -3762,6 +3825,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neigh
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neighbor::FilterList::Inout : public ydk::Enum
@@ -3770,6 +3838,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neigh
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neighbor::PrefixList::Inout : public ydk::Enum
@@ -3778,6 +3851,11 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv4::Vrf::Ipv4Unicast::Neigh
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 

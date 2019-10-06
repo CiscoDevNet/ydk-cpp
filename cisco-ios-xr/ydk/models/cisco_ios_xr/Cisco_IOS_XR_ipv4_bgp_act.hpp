@@ -26402,6 +26402,95 @@ class ClearBgpVrfUpdateOutqUpdateGroup::Input : public ydk::Entity
 
 }; // ClearBgpVrfUpdateOutqUpdateGroup::Input
 
+class InstanceName : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            return -1;
+        }
+};
+
+class Vpnv6Safi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "flowspec") return 0;
+            if (name == "multicast") return 1;
+            if (name == "unicast") return 2;
+            return -1;
+        }
+};
+
+class Afi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf l2vpn;
+        static const ydk::Enum::YLeaf link_state;
+        static const ydk::Enum::YLeaf vpnv4;
+        static const ydk::Enum::YLeaf vpnv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "l2vpn") return 3;
+            if (name == "link-state") return 4;
+            if (name == "vpnv4") return 5;
+            if (name == "vpnv6") return 6;
+            return -1;
+        }
+};
+
+class VrfName : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            return -1;
+        }
+};
+
+class Ipv4Safi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf labeled_unicast;
+        static const ydk::Enum::YLeaf mdt;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf mvpn;
+        static const ydk::Enum::YLeaf rt_filter;
+        static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf unicast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "flowspec") return 1;
+            if (name == "labeled-unicast") return 2;
+            if (name == "mdt") return 3;
+            if (name == "multicast") return 4;
+            if (name == "mvpn") return 5;
+            if (name == "rt-filter") return 6;
+            if (name == "sr-policy") return 7;
+            if (name == "tunnel") return 8;
+            if (name == "unicast") return 9;
+            return -1;
+        }
+};
+
 class AfiSafiType : public ydk::Enum
 {
     public:
@@ -26448,35 +26537,66 @@ class AfiSafiType : public ydk::Enum
         static const ydk::Enum::YLeaf vpnv6_multicast;
         static const ydk::Enum::YLeaf vpnv6_unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all-all") return 0;
+            if (name == "all-evpn") return 1;
+            if (name == "all-flowspec") return 2;
+            if (name == "all-labeled-unicast") return 3;
+            if (name == "all-mdt") return 4;
+            if (name == "all-mspw") return 5;
+            if (name == "all-multicast") return 6;
+            if (name == "all-mvpn") return 7;
+            if (name == "all-rt-filter") return 8;
+            if (name == "all-sr-policy") return 9;
+            if (name == "all-tunnel") return 10;
+            if (name == "all-unicast") return 11;
+            if (name == "all-vpls") return 12;
+            if (name == "all-vpws") return 13;
+            if (name == "ipv4-all") return 14;
+            if (name == "ipv4-flowspec") return 15;
+            if (name == "ipv4-labeled-unicast") return 16;
+            if (name == "ipv4-mdt") return 17;
+            if (name == "ipv4-multicast") return 18;
+            if (name == "ipv4-mvpn") return 19;
+            if (name == "ipv4-rt-filter") return 20;
+            if (name == "ipv4-sr-policy") return 21;
+            if (name == "ipv4-tunnel") return 22;
+            if (name == "ipv4-unicast") return 23;
+            if (name == "ipv6-all") return 24;
+            if (name == "ipv6-flowspec") return 25;
+            if (name == "ipv6-labeled-unicast") return 26;
+            if (name == "ipv6-multicast") return 27;
+            if (name == "ipv6-mvpn") return 28;
+            if (name == "ipv6-sr-policy") return 29;
+            if (name == "ipv6-unicast") return 30;
+            if (name == "l2vpn-evpn") return 31;
+            if (name == "l2vpn-mspw") return 32;
+            if (name == "l2vpn-vpls") return 33;
+            if (name == "l2vpn-vpws") return 34;
+            if (name == "link-state") return 35;
+            if (name == "vpnv4-flowspec") return 36;
+            if (name == "vpnv4-multicast") return 37;
+            if (name == "vpnv4-unicast") return 38;
+            if (name == "vpnv6-flowspec") return 39;
+            if (name == "vpnv6-multicast") return 40;
+            if (name == "vpnv6-unicast") return 41;
+            return -1;
+        }
 };
 
-class Afi : public ydk::Enum
+class Vpnv4Safi : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf l2vpn;
-        static const ydk::Enum::YLeaf link_state;
-        static const ydk::Enum::YLeaf vpnv4;
-        static const ydk::Enum::YLeaf vpnv6;
-
-};
-
-class Ipv4Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf labeled_unicast;
-        static const ydk::Enum::YLeaf mdt;
         static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf mvpn;
-        static const ydk::Enum::YLeaf rt_filter;
-        static const ydk::Enum::YLeaf sr_policy;
-        static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "flowspec") return 0;
+            if (name == "multicast") return 1;
+            if (name == "unicast") return 2;
+            return -1;
+        }
 };
 
 class Ipv6Safi : public ydk::Enum
@@ -26490,41 +26610,16 @@ class Ipv6Safi : public ydk::Enum
         static const ydk::Enum::YLeaf sr_policy;
         static const ydk::Enum::YLeaf unicast;
 
-};
-
-class L2vpnSafi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn;
-        static const ydk::Enum::YLeaf mspw;
-        static const ydk::Enum::YLeaf vpls;
-        static const ydk::Enum::YLeaf vpws;
-
-};
-
-class LinkStateSafi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link_state;
-
-};
-
-class Vpnv4Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class Vpnv6Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unicast;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "flowspec") return 1;
+            if (name == "labeled-unicast") return 2;
+            if (name == "multicast") return 3;
+            if (name == "mvpn") return 4;
+            if (name == "sr-policy") return 5;
+            if (name == "unicast") return 6;
+            return -1;
+        }
 };
 
 class Ipv4Safi_ : public ydk::Enum
@@ -26541,6 +26636,19 @@ class Ipv4Safi_ : public ydk::Enum
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "flowspec") return 1;
+            if (name == "labeled-unicast") return 2;
+            if (name == "mdt") return 3;
+            if (name == "multicast") return 4;
+            if (name == "mvpn") return 5;
+            if (name == "rt-filter") return 6;
+            if (name == "sr-policy") return 7;
+            if (name == "tunnel") return 8;
+            if (name == "unicast") return 9;
+            return -1;
+        }
 };
 
 class Ipv6Safi_ : public ydk::Enum
@@ -26554,6 +26662,74 @@ class Ipv6Safi_ : public ydk::Enum
         static const ydk::Enum::YLeaf sr_policy;
         static const ydk::Enum::YLeaf unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "flowspec") return 1;
+            if (name == "labeled-unicast") return 2;
+            if (name == "multicast") return 3;
+            if (name == "mvpn") return 4;
+            if (name == "sr-policy") return 5;
+            if (name == "unicast") return 6;
+            return -1;
+        }
+};
+
+class L2vpnSafi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf evpn;
+        static const ydk::Enum::YLeaf mspw;
+        static const ydk::Enum::YLeaf vpls;
+        static const ydk::Enum::YLeaf vpws;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "evpn") return 0;
+            if (name == "mspw") return 1;
+            if (name == "vpls") return 2;
+            if (name == "vpws") return 3;
+            return -1;
+        }
+};
+
+class LinkStateSafi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link_state;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "link-state") return 0;
+            return -1;
+        }
+};
+
+class Vpnv4Safi_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "flowspec") return 0;
+            if (name == "multicast") return 1;
+            if (name == "unicast") return 2;
+            return -1;
+        }
+};
+
+class Vpnv6Safi_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "flowspec") return 0;
+            if (name == "multicast") return 1;
+            if (name == "unicast") return 2;
+            return -1;
+        }
 };
 
 class L2vpnSafi_ : public ydk::Enum
@@ -26564,6 +26740,13 @@ class L2vpnSafi_ : public ydk::Enum
         static const ydk::Enum::YLeaf vpls;
         static const ydk::Enum::YLeaf vpws;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "evpn") return 0;
+            if (name == "mspw") return 1;
+            if (name == "vpls") return 2;
+            if (name == "vpws") return 3;
+            return -1;
+        }
 };
 
 class LinkStateSafi_ : public ydk::Enum
@@ -26571,38 +26754,10 @@ class LinkStateSafi_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf link_state;
 
-};
-
-class Vpnv4Safi_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class Vpnv6Safi_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class InstanceName : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class VrfName : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "link-state") return 0;
+            return -1;
+        }
 };
 
 

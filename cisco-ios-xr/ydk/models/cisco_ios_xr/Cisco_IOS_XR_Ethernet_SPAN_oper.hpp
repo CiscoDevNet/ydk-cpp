@@ -1016,52 +1016,6 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Traffi
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters
 
-class MirrorInterval : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mirror_interval_all;
-        static const ydk::Enum::YLeaf mirror_interval512;
-        static const ydk::Enum::YLeaf mirror_interval1k;
-        static const ydk::Enum::YLeaf mirror_interval2k;
-        static const ydk::Enum::YLeaf mirror_interval4k;
-        static const ydk::Enum::YLeaf mirror_interval8k;
-        static const ydk::Enum::YLeaf mirror_interval16k;
-
-};
-
-class TrafficDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf rx_only;
-        static const ydk::Enum::YLeaf tx_only;
-        static const ydk::Enum::YLeaf both;
-
-};
-
-class DestinationClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface_class;
-        static const ydk::Enum::YLeaf pseudowire_class;
-        static const ydk::Enum::YLeaf next_hop_ipv4_class;
-        static const ydk::Enum::YLeaf next_hop_ipv6_class;
-        static const ydk::Enum::YLeaf invalid_class;
-
-};
-
-class SessionClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet_class;
-        static const ydk::Enum::YLeaf ipv4_class;
-        static const ydk::Enum::YLeaf ipv6_class;
-        static const ydk::Enum::YLeaf mplsipv4_class;
-        static const ydk::Enum::YLeaf mplsipv6_class;
-        static const ydk::Enum::YLeaf invalid_class;
-
-};
-
 class ImStateEnum : public ydk::Enum
 {
     public:
@@ -1085,6 +1039,108 @@ class ImStateEnum : public ydk::Enum
         static const ydk::Enum::YLeaf im_state_unknown;
         static const ydk::Enum::YLeaf im_state_last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "im-state-not-ready") return 0;
+            if (name == "im-state-admin-down") return 1;
+            if (name == "im-state-down") return 2;
+            if (name == "im-state-up") return 3;
+            if (name == "im-state-shutdown") return 4;
+            if (name == "im-state-err-disable") return 5;
+            if (name == "im-state-down-immediate") return 6;
+            if (name == "im-state-down-immediate-admin") return 7;
+            if (name == "im-state-down-graceful") return 8;
+            if (name == "im-state-begin-shutdown") return 9;
+            if (name == "im-state-end-shutdown") return 10;
+            if (name == "im-state-begin-error-disable") return 11;
+            if (name == "im-state-end-error-disable") return 12;
+            if (name == "im-state-begin-down-graceful") return 13;
+            if (name == "im-state-reset") return 14;
+            if (name == "im-state-operational") return 15;
+            if (name == "im-state-not-operational") return 16;
+            if (name == "im-state-unknown") return 17;
+            if (name == "im-state-last") return 18;
+            return -1;
+        }
+};
+
+class DestinationClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface_class;
+        static const ydk::Enum::YLeaf pseudowire_class;
+        static const ydk::Enum::YLeaf next_hop_ipv4_class;
+        static const ydk::Enum::YLeaf next_hop_ipv6_class;
+        static const ydk::Enum::YLeaf invalid_class;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-class") return 0;
+            if (name == "pseudowire-class") return 1;
+            if (name == "next-hop-ipv4-class") return 2;
+            if (name == "next-hop-ipv6-class") return 3;
+            if (name == "invalid-class") return 255;
+            return -1;
+        }
+};
+
+class SessionClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet_class;
+        static const ydk::Enum::YLeaf ipv4_class;
+        static const ydk::Enum::YLeaf ipv6_class;
+        static const ydk::Enum::YLeaf mplsipv4_class;
+        static const ydk::Enum::YLeaf mplsipv6_class;
+        static const ydk::Enum::YLeaf invalid_class;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet-class") return 0;
+            if (name == "ipv4-class") return 1;
+            if (name == "ipv6-class") return 2;
+            if (name == "mplsipv4-class") return 3;
+            if (name == "mplsipv6-class") return 4;
+            if (name == "invalid-class") return 65535;
+            return -1;
+        }
+};
+
+class MirrorInterval : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mirror_interval_all;
+        static const ydk::Enum::YLeaf mirror_interval512;
+        static const ydk::Enum::YLeaf mirror_interval1k;
+        static const ydk::Enum::YLeaf mirror_interval2k;
+        static const ydk::Enum::YLeaf mirror_interval4k;
+        static const ydk::Enum::YLeaf mirror_interval8k;
+        static const ydk::Enum::YLeaf mirror_interval16k;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "mirror-interval-all") return 0;
+            if (name == "mirror-interval512") return 1;
+            if (name == "mirror-interval1k") return 2;
+            if (name == "mirror-interval2k") return 3;
+            if (name == "mirror-interval4k") return 4;
+            if (name == "mirror-interval8k") return 5;
+            if (name == "mirror-interval16k") return 6;
+            return -1;
+        }
+};
+
+class TrafficDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf rx_only;
+        static const ydk::Enum::YLeaf tx_only;
+        static const ydk::Enum::YLeaf both;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 0;
+            if (name == "rx-only") return 1;
+            if (name == "tx-only") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 

@@ -1068,7 +1068,7 @@ class Native::Crypto::Isakmp::Profile : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf accounting; //type: string
         ydk::YLeaf description; //type: string
-        ydk::YLeaf keyring; //type: one of enumeration, string
+        ydk::YLeaf keyring; //type: one of string, enumeration
         ydk::YLeaf qos_group; //type: uint16
         ydk::YLeaf virtual_template; //type: uint16
         ydk::YLeaf vrf; //type: string
@@ -1114,7 +1114,7 @@ class Native::Crypto::Isakmp::Profile::Default : public ydk::Entity
 
         ydk::YLeaf accounting; //type: empty
         ydk::YLeaf description; //type: string
-        ydk::YLeaf keyring; //type: one of enumeration, string
+        ydk::YLeaf keyring; //type: one of string, enumeration
         ydk::YLeaf local_address; //type: empty
         ydk::YLeaf qos_group; //type: empty
         ydk::YLeaf virtual_template; //type: empty
@@ -3110,7 +3110,7 @@ class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf days; //type: uint8
-        ydk::YLeaf kilobytes; //type: one of enumeration, uint64
+        ydk::YLeaf kilobytes; //type: one of uint64, enumeration
         ydk::YLeaf seconds; //type: uint64
         class Kilobytes;
 
@@ -3691,6 +3691,11 @@ class Native::Crypto::Isakmp::Client::Configuration::Group::Key::Encryption : pu
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Client::Firewall::Optional : public ydk::Enum
@@ -3701,6 +3706,13 @@ class Native::Crypto::Isakmp::Client::Firewall::Optional : public ydk::Enum
         static const ydk::Enum::YLeaf zonelabs_zonealarm;
         static const ydk::Enum::YLeaf zonelabs_zonealarmpro;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-integrated-client-firewall") return 0;
+            if (name == "cisco-security-agent") return 1;
+            if (name == "zonelabs-zonealarm") return 2;
+            if (name == "zonelabs-zonealarmpro") return 3;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Client::Firewall::Required : public ydk::Enum
@@ -3711,6 +3723,13 @@ class Native::Crypto::Isakmp::Client::Firewall::Required : public ydk::Enum
         static const ydk::Enum::YLeaf zonelabs_zonealarm;
         static const ydk::Enum::YLeaf zonelabs_zonealarmpro;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-integrated-client-firewall") return 0;
+            if (name == "cisco-security-agent") return 1;
+            if (name == "zonelabs-zonealarm") return 2;
+            if (name == "zonelabs-zonealarmpro") return 3;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Client::Firewall::Policy::CentralPolicyPush::AccessList::Direction : public ydk::Enum
@@ -3719,6 +3738,11 @@ class Native::Crypto::Isakmp::Client::Firewall::Policy::CentralPolicyPush::Acces
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Keepalive::Send : public ydk::Enum
@@ -3727,6 +3751,11 @@ class Native::Crypto::Isakmp::Keepalive::Send : public ydk::Enum
         static const ydk::Enum::YLeaf on_demand;
         static const ydk::Enum::YLeaf periodic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on-demand") return 0;
+            if (name == "periodic") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Key::KeyAddress::Encryption : public ydk::Enum
@@ -3735,6 +3764,11 @@ class Native::Crypto::Isakmp::Key::KeyAddress::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Key::KeyHost::Encryption : public ydk::Enum
@@ -3743,6 +3777,11 @@ class Native::Crypto::Isakmp::Key::KeyHost::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Peer::Ipv4Addr::Address::Set::AggressiveMode::Password::Encryption : public ydk::Enum
@@ -3751,6 +3790,11 @@ class Native::Crypto::Isakmp::Peer::Ipv4Addr::Address::Set::AggressiveMode::Pass
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Peer::Ipv6Addr::Address::Set::AggressiveMode::Password::Encryption : public ydk::Enum
@@ -3759,6 +3803,11 @@ class Native::Crypto::Isakmp::Peer::Ipv6Addr::Address::Set::AggressiveMode::Pass
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Peer::Hostname::Set::AggressiveMode::Password::Encryption : public ydk::Enum
@@ -3767,6 +3816,11 @@ class Native::Crypto::Isakmp::Peer::Hostname::Set::AggressiveMode::Password::Enc
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Authentication : public ydk::Enum
@@ -3776,6 +3830,12 @@ class Native::Crypto::Isakmp::Policy::Authentication : public ydk::Enum
         static const ydk::Enum::YLeaf rsa_encr;
         static const ydk::Enum::YLeaf rsa_sig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pre-share") return 0;
+            if (name == "rsa-encr") return 1;
+            if (name == "rsa-sig") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Group : public ydk::Enum
@@ -3792,6 +3852,19 @@ class Native::Crypto::Isakmp::Policy::Group : public ydk::Enum
         static const ydk::Enum::YLeaf Y_24;
         static const ydk::Enum::YLeaf Y_5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "14") return 1;
+            if (name == "15") return 2;
+            if (name == "16") return 3;
+            if (name == "19") return 4;
+            if (name == "2") return 5;
+            if (name == "20") return 6;
+            if (name == "21") return 7;
+            if (name == "24") return 8;
+            if (name == "5") return 9;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Hash : public ydk::Enum
@@ -3803,6 +3876,14 @@ class Native::Crypto::Isakmp::Policy::Hash : public ydk::Enum
         static const ydk::Enum::YLeaf sha384;
         static const ydk::Enum::YLeaf sha512;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 0;
+            if (name == "sha") return 1;
+            if (name == "sha256") return 2;
+            if (name == "sha384") return 3;
+            if (name == "sha512") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Default::Authentication : public ydk::Enum
@@ -3812,6 +3893,12 @@ class Native::Crypto::Isakmp::Policy::Default::Authentication : public ydk::Enum
         static const ydk::Enum::YLeaf rsa_encr;
         static const ydk::Enum::YLeaf rsa_sig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pre-share") return 0;
+            if (name == "rsa-encr") return 1;
+            if (name == "rsa-sig") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Default::Group : public ydk::Enum
@@ -3828,6 +3915,19 @@ class Native::Crypto::Isakmp::Policy::Default::Group : public ydk::Enum
         static const ydk::Enum::YLeaf Y_24;
         static const ydk::Enum::YLeaf Y_5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "14") return 1;
+            if (name == "15") return 2;
+            if (name == "16") return 3;
+            if (name == "19") return 4;
+            if (name == "2") return 5;
+            if (name == "20") return 6;
+            if (name == "21") return 7;
+            if (name == "24") return 8;
+            if (name == "5") return 9;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Default::Hash : public ydk::Enum
@@ -3839,6 +3939,14 @@ class Native::Crypto::Isakmp::Policy::Default::Hash : public ydk::Enum
         static const ydk::Enum::YLeaf sha384;
         static const ydk::Enum::YLeaf sha512;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "md5") return 0;
+            if (name == "sha") return 1;
+            if (name == "sha256") return 2;
+            if (name == "sha384") return 3;
+            if (name == "sha512") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Default::Encryption::Aes::Key : public ydk::Enum
@@ -3848,6 +3956,12 @@ class Native::Crypto::Isakmp::Policy::Default::Encryption::Aes::Key : public ydk
         static const ydk::Enum::YLeaf Y_192;
         static const ydk::Enum::YLeaf Y_256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "128") return 0;
+            if (name == "192") return 1;
+            if (name == "256") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Policy::Encryption::Aes::Key : public ydk::Enum
@@ -3857,6 +3971,12 @@ class Native::Crypto::Isakmp::Policy::Encryption::Aes::Key : public ydk::Enum
         static const ydk::Enum::YLeaf Y_192;
         static const ydk::Enum::YLeaf Y_256;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "128") return 0;
+            if (name == "192") return 1;
+            if (name == "256") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Profile::Keyring : public ydk::Enum
@@ -3864,6 +3984,10 @@ class Native::Crypto::Isakmp::Profile::Keyring : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf default_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Profile::Default::Keyring : public ydk::Enum
@@ -3871,6 +3995,10 @@ class Native::Crypto::Isakmp::Profile::Default::Keyring : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf default_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Profile::Default::Client::Configuration::Address : public ydk::Enum
@@ -3879,6 +4007,11 @@ class Native::Crypto::Isakmp::Profile::Default::Client::Configuration::Address :
         static const ydk::Enum::YLeaf initiate;
         static const ydk::Enum::YLeaf respond;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initiate") return 0;
+            if (name == "respond") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Isakmp::Profile::Client::Configuration::Address : public ydk::Enum
@@ -3887,6 +4020,11 @@ class Native::Crypto::Isakmp::Profile::Client::Configuration::Address : public y
         static const ydk::Enum::YLeaf initiate;
         static const ydk::Enum::YLeaf respond;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initiate") return 0;
+            if (name == "respond") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Keying : public ydk::Enum
@@ -3897,6 +4035,13 @@ class Native::Crypto::CryptoMap::Map::Keying : public ydk::Enum
         static const ydk::Enum::YLeaf gdoi;
         static const ydk::Enum::YLeaf ckm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsec-isakmp") return 0;
+            if (name == "ipsec-manual") return 1;
+            if (name == "gdoi") return 2;
+            if (name == "ckm") return 3;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Level : public ydk::Enum
@@ -3904,6 +4049,10 @@ class Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Level :
     public:
         static const ydk::Enum::YLeaf per_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "per-host") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Set::Pfs::Group : public ydk::Enum
@@ -3920,6 +4069,19 @@ class Native::Crypto::CryptoMap::Map::Set::Pfs::Group : public ydk::Enum
         static const ydk::Enum::YLeaf group24;
         static const ydk::Enum::YLeaf group5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "group1") return 0;
+            if (name == "group14") return 1;
+            if (name == "group15") return 2;
+            if (name == "group16") return 3;
+            if (name == "group19") return 4;
+            if (name == "group2") return 5;
+            if (name == "group20") return 6;
+            if (name == "group21") return 7;
+            if (name == "group24") return 8;
+            if (name == "group5") return 9;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Dfbit : public ydk::Enum
@@ -3929,6 +4091,12 @@ class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Dfbit : public y
         static const ydk::Enum::YLeaf copy;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "copy") return 1;
+            if (name == "set") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Ecn : public ydk::Enum
@@ -3937,6 +4105,11 @@ class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Ecn : public ydk
         static const ydk::Enum::YLeaf discard;
         static const ydk::Enum::YLeaf propagate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discard") return 0;
+            if (name == "propagate") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Level : public ydk::Enum
@@ -3944,6 +4117,10 @@ class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Level : public y
     public:
         static const ydk::Enum::YLeaf per_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "per-host") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime::Kilobytes : public ydk::Enum
@@ -3951,6 +4128,10 @@ class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime::Kiloby
     public:
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay::WindowSize : public ydk::Enum
@@ -3962,6 +4143,14 @@ class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay::WindowSi
         static const ydk::Enum::YLeaf Y_512;
         static const ydk::Enum::YLeaf Y_64;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1024") return 0;
+            if (name == "128") return 1;
+            if (name == "256") return 2;
+            if (name == "512") return 3;
+            if (name == "64") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::MapIpv6Gdoi::Map::Gdoi : public ydk::Enum
@@ -3969,6 +4158,10 @@ class Native::Crypto::MapIpv6Gdoi::Map::Gdoi : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf fail_close;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fail-close") return 0;
+            return -1;
+        }
 };
 
 

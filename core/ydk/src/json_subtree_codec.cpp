@@ -37,33 +37,17 @@ struct json_node_t
 {
     string key;
     json value;
-    json_node_t(json & node);
-    json_node_t(string node_key);
-    json_node_t(string node_key, const json & jvalue);
-    void add(const json_node_t& node);
-    void put(const json_node_t& node);
+    json_node_t(const string & node_key, const json & jvalue);
+    void add(const json_node_t & node);
+    void put(const json_node_t & node);
 };
 
-json_node_t::json_node_t(json & node)
+json_node_t::json_node_t(const string & node_key, const json & jvalue):
+		key(node_key), value(jvalue)
 {
-    auto it = node.begin();
-	key = it.key();
-    value = node[key];
 }
 
-json_node_t::json_node_t(string node_key)
-{
-    key = node_key;
-    value = {};
-}
-
-json_node_t::json_node_t(string node_key, const json & jvalue)
-{
-    key = node_key;
-    value = jvalue;
-}
-
-void json_node_t::add(const json_node_t& node)
+void json_node_t::add(const json_node_t & node)
 {
     auto it = value.find(node.key);
     if (it == value.end())
@@ -80,12 +64,12 @@ void json_node_t::add(const json_node_t& node)
     }
 }
 
-void json_node_t::put(const json_node_t& node)
+void json_node_t::put(const json_node_t & node)
 {
     value[node.key] += node.value;
 }
 
-void to_json(json& j, const json_node_t& node)
+void to_json(json & j, const json_node_t & node)
 {
     j.emplace(node.key, node.value);
 }
@@ -123,7 +107,7 @@ std::string JsonSubtreeCodec::encode(Entity & entity, path::RootSchemaNode & roo
     std::string root_node_name = root_module_name;
     root_node_name += ":" + st.arg;
 
-    json_node_t root_json_node(root_node_name);
+    json_node_t root_json_node(root_node_name, json{});
 
     populate_json_node_contents(entity, schema, root_path, root_json_node, root_module_name);
     walk_children(entity, schema, root_json_node, root_module_name);
@@ -146,7 +130,7 @@ static void walk_children(Entity & entity, const path::SchemaNode & schema, json
             continue;
         if (child.second->has_operation() || child.second->has_data() || child.second->is_presence_container)
         {
-            YLOG_DEBUG("JsonCodec: Populating child entity node '{}': {}", child.first, get_entity_path(*(child.second), child.second->parent).path);
+            YLOG_DEBUG("JsonCodec: Populating child entity node '{}'", child.first);
             json_node_t child_json_node = populate_json_node(*(child.second), schema, parent_module_name);
             auto bracket_pos = child.first.find("[");
             if (bracket_pos != string::npos) {
@@ -175,12 +159,11 @@ static const path::SchemaNode* find_child_by_name(const path::SchemaNode & paren
 static json_node_t create_json_node(std::string & parent_module_name, const path::SchemaNode & schema)
 {
     auto st = schema.get_statement();
-    auto child_module_name = parent_module_name;
     std::string child_key = st.arg;
-    if (st.module_name != child_module_name) {
-        child_key.insert(0, child_module_name + ":");
+    if (st.module_name != parent_module_name) {
+        child_key.insert(0, st.module_name + ":");
     }
-    json_node_t child(child_key);
+    json_node_t child(child_key, json{});
     return child;
 }
 
@@ -191,12 +174,14 @@ static json_node_t populate_json_node(Entity & entity, const path::SchemaNode & 
 
     auto child = create_json_node(parent_module_name, *schema);
 
-    populate_json_node_contents(entity, *schema, path, child, parent_module_name);
-    walk_children(entity, *schema, child, parent_module_name);
+    auto st = schema->get_statement();
+    auto child_module_name = st.module_name;
+    populate_json_node_contents(entity, *schema, path, child, child_module_name);
+    walk_children(entity, *schema, child, child_module_name);
     return child;
 }
 
-static std::string get_leafdata_prefix(Entity & entity, string & leaf_name, LeafData & leaf_data)
+static std::string get_leafdata_prefix(Entity & entity, const string & leaf_name, LeafData & leaf_data)
 {
     std::string module_name;
 	if (leaf_data.name_space.size() > 0 && leaf_data.name_space_prefix.size() > 0)
@@ -213,7 +198,7 @@ static std::string get_leafdata_prefix(Entity & entity, string & leaf_name, Leaf
     return module_name;
 }
 
-static string get_content_from_leafdata(Entity & entity, string leaf_name, LeafData & leaf_data)
+static string get_content_from_leafdata(Entity & entity, const string & leaf_name, LeafData & leaf_data)
 {
     string content;
     if (leaf_data.is_set)
@@ -304,10 +289,11 @@ std::shared_ptr<Entity> JsonSubtreeCodec::decode(const std::string & payload, st
             throw exception();
         }
     }
-    catch (exception e) {
+    catch (exception & e) {
         throw YInvalidArgumentError{"Invalid JSON string"};
     }
-    json_node_t root(root_json_node);
+    auto it = root_json_node.begin();
+    json_node_t root(it.key(), root_json_node[it.key()]);
     auto prefix_key = split_key(root.key);
     if (entity->yang_name != prefix_key.second) {
         throw YInvalidArgumentError{"Wrong entity provided"};
@@ -363,10 +349,16 @@ static void check_and_set_leaf(Entity & entity, Entity * parent, const string & 
 
 static void check_and_set_node(Entity & entity, Entity * parent, const string & node_name, json & node_jvalue)
 {
-    if (!entity.has_leaf_or_child_of_name(node_name))
+    YLOG_DEBUG("JsonCodec: Looking for child '{}' in '{}'", node_name, entity.yang_name);
+    auto child_name = node_name;
+    auto pos = child_name.find(":");
+    if (pos != string::npos) {
+        child_name = child_name.substr(pos+1);
+    }
+    if (!entity.has_leaf_or_child_of_name(child_name))
     {
         ostringstream os;
-        os << "JsonCodec: Wrong payload! No element '" << node_name << "' found in '" << entity.yang_name << "'";
+        os << "JsonCodec: Wrong payload! No element '" << child_name << "' found in '" << entity.yang_name << "'";
         YLOG_ERROR(os.str().c_str());
         throw YInvalidArgumentError{os.str()};
     }
@@ -374,6 +366,9 @@ static void check_and_set_node(Entity & entity, Entity * parent, const string & 
     auto child = entity.get_child_by_name(node_name);
     if (child != nullptr) {
         YLOG_DEBUG("JsonCodec: Creating child entity '{}' in '{}'", node_name, entity.yang_name);
+        if (!child->parent) {
+            child->parent = parent;
+        }
         decode_json(node_jvalue, *child, &entity);
     }
     else {

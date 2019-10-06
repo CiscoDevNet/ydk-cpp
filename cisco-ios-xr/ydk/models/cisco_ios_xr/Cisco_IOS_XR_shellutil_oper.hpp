@@ -102,6 +102,14 @@ class TimeSource : public ydk::Enum
         static const ydk::Enum::YLeaf manual;
         static const ydk::Enum::YLeaf calendar;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "error") return 0;
+            if (name == "none") return 1;
+            if (name == "ntp") return 2;
+            if (name == "manual") return 3;
+            if (name == "calendar") return 4;
+            return -1;
+        }
 };
 
 

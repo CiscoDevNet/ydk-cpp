@@ -1378,7 +1378,6 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     osri_config_val{YType::boolean, "osri-config-val"},
     tx_config_val{YType::boolean, "tx-config-val"},
     rx_config_val{YType::boolean, "rx-config-val"},
-    rx_thr_fail_low_delta_val{YType::int32, "rx-thr-fail-low-delta-val"},
     safety_control_mode_config_val{YType::enumeration, "safety-control-mode-config-val"},
     total_rx_power{YType::int32, "total-rx-power"},
     total_tx_power{YType::int32, "total-tx-power"},
@@ -1407,9 +1406,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     rx_span_loss{YType::int32, "rx-span-loss"},
     tx_span_loss{YType::int32, "tx-span-loss"},
     baud_rate{YType::str, "baud-rate"},
-    bits_per_symbol{YType::str, "bits-per-symbol"},
-    rx_low_threshold_delta{YType::int32, "rx-low-threshold-delta"},
-    wait_to_restore{YType::uint32, "wait-to-restore"}
+    bits_per_symbol{YType::str, "bits-per-symbol"}
         ,
     network_srlg_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo>())
     , optics_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo>())
@@ -1516,7 +1513,6 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| osri_config_val.is_set
 	|| tx_config_val.is_set
 	|| rx_config_val.is_set
-	|| rx_thr_fail_low_delta_val.is_set
 	|| safety_control_mode_config_val.is_set
 	|| total_rx_power.is_set
 	|| total_tx_power.is_set
@@ -1546,8 +1542,6 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| tx_span_loss.is_set
 	|| baud_rate.is_set
 	|| bits_per_symbol.is_set
-	|| rx_low_threshold_delta.is_set
-	|| wait_to_restore.is_set
 	|| (network_srlg_info !=  nullptr && network_srlg_info->has_data())
 	|| (optics_alarm_info !=  nullptr && optics_alarm_info->has_data())
 	|| (ots_alarm_info !=  nullptr && ots_alarm_info->has_data())
@@ -1637,7 +1631,6 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(osri_config_val.yfilter)
 	|| ydk::is_set(tx_config_val.yfilter)
 	|| ydk::is_set(rx_config_val.yfilter)
-	|| ydk::is_set(rx_thr_fail_low_delta_val.yfilter)
 	|| ydk::is_set(safety_control_mode_config_val.yfilter)
 	|| ydk::is_set(total_rx_power.yfilter)
 	|| ydk::is_set(total_tx_power.yfilter)
@@ -1667,8 +1660,6 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(tx_span_loss.yfilter)
 	|| ydk::is_set(baud_rate.yfilter)
 	|| ydk::is_set(bits_per_symbol.yfilter)
-	|| ydk::is_set(rx_low_threshold_delta.yfilter)
-	|| ydk::is_set(wait_to_restore.yfilter)
 	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation())
 	|| (optics_alarm_info !=  nullptr && optics_alarm_info->has_operation())
 	|| (ots_alarm_info !=  nullptr && ots_alarm_info->has_operation())
@@ -1761,7 +1752,6 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
     if (osri_config_val.is_set || is_set(osri_config_val.yfilter)) leaf_name_data.push_back(osri_config_val.get_name_leafdata());
     if (tx_config_val.is_set || is_set(tx_config_val.yfilter)) leaf_name_data.push_back(tx_config_val.get_name_leafdata());
     if (rx_config_val.is_set || is_set(rx_config_val.yfilter)) leaf_name_data.push_back(rx_config_val.get_name_leafdata());
-    if (rx_thr_fail_low_delta_val.is_set || is_set(rx_thr_fail_low_delta_val.yfilter)) leaf_name_data.push_back(rx_thr_fail_low_delta_val.get_name_leafdata());
     if (safety_control_mode_config_val.is_set || is_set(safety_control_mode_config_val.yfilter)) leaf_name_data.push_back(safety_control_mode_config_val.get_name_leafdata());
     if (total_rx_power.is_set || is_set(total_rx_power.yfilter)) leaf_name_data.push_back(total_rx_power.get_name_leafdata());
     if (total_tx_power.is_set || is_set(total_tx_power.yfilter)) leaf_name_data.push_back(total_tx_power.get_name_leafdata());
@@ -1791,8 +1781,6 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
     if (tx_span_loss.is_set || is_set(tx_span_loss.yfilter)) leaf_name_data.push_back(tx_span_loss.get_name_leafdata());
     if (baud_rate.is_set || is_set(baud_rate.yfilter)) leaf_name_data.push_back(baud_rate.get_name_leafdata());
     if (bits_per_symbol.is_set || is_set(bits_per_symbol.yfilter)) leaf_name_data.push_back(bits_per_symbol.get_name_leafdata());
-    if (rx_low_threshold_delta.is_set || is_set(rx_low_threshold_delta.yfilter)) leaf_name_data.push_back(rx_low_threshold_delta.get_name_leafdata());
-    if (wait_to_restore.is_set || is_set(wait_to_restore.yfilter)) leaf_name_data.push_back(wait_to_restore.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2367,12 +2355,6 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         rx_config_val.value_namespace = name_space;
         rx_config_val.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rx-thr-fail-low-delta-val")
-    {
-        rx_thr_fail_low_delta_val = value;
-        rx_thr_fail_low_delta_val.value_namespace = name_space;
-        rx_thr_fail_low_delta_val.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "safety-control-mode-config-val")
     {
         safety_control_mode_config_val = value;
@@ -2546,18 +2528,6 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         bits_per_symbol = value;
         bits_per_symbol.value_namespace = name_space;
         bits_per_symbol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-low-threshold-delta")
-    {
-        rx_low_threshold_delta = value;
-        rx_low_threshold_delta.value_namespace = name_space;
-        rx_low_threshold_delta.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wait-to-restore")
-    {
-        wait_to_restore = value;
-        wait_to_restore.value_namespace = name_space;
-        wait_to_restore.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2847,10 +2817,6 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         rx_config_val.yfilter = yfilter;
     }
-    if(value_path == "rx-thr-fail-low-delta-val")
-    {
-        rx_thr_fail_low_delta_val.yfilter = yfilter;
-    }
     if(value_path == "safety-control-mode-config-val")
     {
         safety_control_mode_config_val.yfilter = yfilter;
@@ -2967,19 +2933,11 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         bits_per_symbol.yfilter = yfilter;
     }
-    if(value_path == "rx-low-threshold-delta")
-    {
-        rx_low_threshold_delta.yfilter = yfilter;
-    }
-    if(value_path == "wait-to-restore")
-    {
-        wait_to_restore.yfilter = yfilter;
-    }
 }
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "network-srlg-info" || name == "optics-alarm-info" || name == "ots-alarm-info" || name == "transceiver-info" || name == "ext-param-val" || name == "ext-param-threshold-val" || name == "extended-alarm-alarm-info" || name == "ains-info" || name == "lane-data" || name == "transport-admin-state" || name == "optics-present" || name == "optics-type" || name == "derived-optics-type" || name == "optics-module" || name == "dwdm-carrier-band" || name == "dwdm-carrier-channel" || name == "dwdm-carrier-frequency" || name == "dwdm-carrier-wavelength" || name == "grey-wavelength" || name == "rx-low-threshold" || name == "rx-high-threshold" || name == "lbc-high-threshold" || name == "tx-low-threshold" || name == "tx-high-threshold" || name == "lbc-th-high-default" || name == "lbc-th-low-default" || name == "temp-low-threshold" || name == "temp-high-threshold" || name == "volt-low-threshold" || name == "volt-high-threshold" || name == "cd" || name == "cd-min" || name == "cd-max" || name == "cd-low-threshold" || name == "cd-high-threshold" || name == "osnr-low-threshold" || name == "dgd-high-threshold" || name == "polarization-mode-dispersion" || name == "second-order-polarization-mode-dispersion" || name == "optical-signal-to-noise-ratio" || name == "polarization-dependent-loss" || name == "polarization-change-rate" || name == "differential-group-delay" || name == "phase-noise" || name == "pm-enable" || name == "laser-state" || name == "modulation-type" || name == "led-state" || name == "controller-state" || name == "form-factor" || name == "phy-type" || name == "cfg-tx-power" || name == "cfg-tx-power-configurable" || name == "temperature" || name == "voltage" || name == "display-volt-temp" || name == "cd-configurable" || name == "optics-fec" || name == "skip-snmp-pm-table" || name == "port-type" || name == "port-status" || name == "rx-voa-attenuation" || name == "tx-voa-attenuation" || name == "ampli-gain" || name == "ampli-tilt" || name == "rx-power-th-configurable" || name == "tx-power-th-configurable" || name == "rx-voa-attenuation-config-val" || name == "tx-voa-attenuation-config-val" || name == "ampli-control-mode-config-val" || name == "ampli-gain-range-config-val" || name == "ampli-gain-config-val" || name == "ampli-tilt-config-val" || name == "ampli-channel-power-config-val" || name == "channel-power-max-delta-config-val" || name == "ampli-gain-thr-deg-low-config-val" || name == "ampli-gain-thr-deg-high-config-val" || name == "osri-config-val" || name == "tx-config-val" || name == "rx-config-val" || name == "rx-thr-fail-low-delta-val" || name == "safety-control-mode-config-val" || name == "total-rx-power" || name == "total-tx-power" || name == "is-bo-configured" || name == "is-ext-param-valid" || name == "alarm-detected" || name == "rx-low-warning-threshold" || name == "rx-high-warning-threshold" || name == "tx-low-warning-threshold" || name == "tx-high-warning-threshold" || name == "lbc-th-high-warning-default" || name == "lbc-th-low-warning-default" || name == "temp-low-warning-threshold" || name == "temp-high-warning-threshold" || name == "volt-low-warning-threshold" || name == "volt-high-warning-threshold" || name == "description" || name == "ampli-gain-range" || name == "safety-control-mode" || name == "osri" || name == "tx-enable" || name == "rx-enable" || name == "is-optics-type-string-valid" || name == "optics-type-str" || name == "rx-low-threshold-current" || name == "rx-span-loss" || name == "tx-span-loss" || name == "baud-rate" || name == "bits-per-symbol" || name == "rx-low-threshold-delta" || name == "wait-to-restore")
+    if(name == "network-srlg-info" || name == "optics-alarm-info" || name == "ots-alarm-info" || name == "transceiver-info" || name == "ext-param-val" || name == "ext-param-threshold-val" || name == "extended-alarm-alarm-info" || name == "ains-info" || name == "lane-data" || name == "transport-admin-state" || name == "optics-present" || name == "optics-type" || name == "derived-optics-type" || name == "optics-module" || name == "dwdm-carrier-band" || name == "dwdm-carrier-channel" || name == "dwdm-carrier-frequency" || name == "dwdm-carrier-wavelength" || name == "grey-wavelength" || name == "rx-low-threshold" || name == "rx-high-threshold" || name == "lbc-high-threshold" || name == "tx-low-threshold" || name == "tx-high-threshold" || name == "lbc-th-high-default" || name == "lbc-th-low-default" || name == "temp-low-threshold" || name == "temp-high-threshold" || name == "volt-low-threshold" || name == "volt-high-threshold" || name == "cd" || name == "cd-min" || name == "cd-max" || name == "cd-low-threshold" || name == "cd-high-threshold" || name == "osnr-low-threshold" || name == "dgd-high-threshold" || name == "polarization-mode-dispersion" || name == "second-order-polarization-mode-dispersion" || name == "optical-signal-to-noise-ratio" || name == "polarization-dependent-loss" || name == "polarization-change-rate" || name == "differential-group-delay" || name == "phase-noise" || name == "pm-enable" || name == "laser-state" || name == "modulation-type" || name == "led-state" || name == "controller-state" || name == "form-factor" || name == "phy-type" || name == "cfg-tx-power" || name == "cfg-tx-power-configurable" || name == "temperature" || name == "voltage" || name == "display-volt-temp" || name == "cd-configurable" || name == "optics-fec" || name == "skip-snmp-pm-table" || name == "port-type" || name == "port-status" || name == "rx-voa-attenuation" || name == "tx-voa-attenuation" || name == "ampli-gain" || name == "ampli-tilt" || name == "rx-power-th-configurable" || name == "tx-power-th-configurable" || name == "rx-voa-attenuation-config-val" || name == "tx-voa-attenuation-config-val" || name == "ampli-control-mode-config-val" || name == "ampli-gain-range-config-val" || name == "ampli-gain-config-val" || name == "ampli-tilt-config-val" || name == "ampli-channel-power-config-val" || name == "channel-power-max-delta-config-val" || name == "ampli-gain-thr-deg-low-config-val" || name == "ampli-gain-thr-deg-high-config-val" || name == "osri-config-val" || name == "tx-config-val" || name == "rx-config-val" || name == "safety-control-mode-config-val" || name == "total-rx-power" || name == "total-tx-power" || name == "is-bo-configured" || name == "is-ext-param-valid" || name == "alarm-detected" || name == "rx-low-warning-threshold" || name == "rx-high-warning-threshold" || name == "tx-low-warning-threshold" || name == "tx-high-warning-threshold" || name == "lbc-th-high-warning-default" || name == "lbc-th-low-warning-default" || name == "temp-low-warning-threshold" || name == "temp-high-warning-threshold" || name == "volt-low-warning-threshold" || name == "volt-high-warning-threshold" || name == "description" || name == "ampli-gain-range" || name == "safety-control-mode" || name == "osri" || name == "tx-enable" || name == "rx-enable" || name == "is-optics-type-string-valid" || name == "optics-type-str" || name == "rx-low-threshold-current" || name == "rx-span-loss" || name == "tx-span-loss" || name == "baud-rate" || name == "bits-per-symbol")
         return true;
     return false;
 }
@@ -17056,9 +17014,24 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::Network
     return false;
 }
 
-const Enum::YLeaf OpticsAinsStateEt::none {0, "none"};
-const Enum::YLeaf OpticsAinsStateEt::active_running {1, "active-running"};
-const Enum::YLeaf OpticsAinsStateEt::active_pending {2, "active-pending"};
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_invalid {0, "optics-amplifier-gain-range-invalid"};
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
+
+const Enum::YLeaf OpticsModulation::mod_bpsk {1, "mod-bpsk"};
+const Enum::YLeaf OpticsModulation::mod_qpsk {2, "mod-qpsk"};
+const Enum::YLeaf OpticsModulation::mod_8qam {3, "mod-8qam"};
+const Enum::YLeaf OpticsModulation::mod_16qam {4, "mod-16qam"};
+const Enum::YLeaf OpticsModulation::mod_32qam {5, "mod-32qam"};
+const Enum::YLeaf OpticsModulation::mod_64qam {6, "mod-64qam"};
+const Enum::YLeaf OpticsModulation::mod_bpsk_qpsk {7, "mod-bpsk-qpsk"};
+const Enum::YLeaf OpticsModulation::mod_qpsk_8qam {8, "mod-qpsk-8qam"};
+const Enum::YLeaf OpticsModulation::mod_8qam_16qam {9, "mod-8qam-16qam"};
+const Enum::YLeaf OpticsModulation::mode_16qam_32qam {10, "mode-16qam-32qam"};
+const Enum::YLeaf OpticsModulation::mod_32qam_64qam {11, "mod-32qam-64qam"};
+
+const Enum::YLeaf OpticsAmplifierControlMode::automatic {1, "automatic"};
+const Enum::YLeaf OpticsAmplifierControlMode::manual {2, "manual"};
 
 const Enum::YLeaf EthernetPmd::optics_eth_not_set {0, "optics-eth-not-set"};
 const Enum::YLeaf EthernetPmd::optics_eth_10gbase_lrm {1, "optics-eth-10gbase-lrm"};
@@ -17089,23 +17062,18 @@ const Enum::YLeaf EthernetPmd::optics_eth_100gbase_psm4 {25, "optics-eth-100gbas
 const Enum::YLeaf EthernetPmd::optics_eth_100gbase_cr4 {26, "optics-eth-100gbase-cr4"};
 const Enum::YLeaf EthernetPmd::optics_eth_100gbase_al {27, "optics-eth-100gbase-al"};
 const Enum::YLeaf EthernetPmd::optics_eth_100gbase_pl {28, "optics-eth-100gbase-pl"};
-const Enum::YLeaf EthernetPmd::optics_eth_400gbase_fr4 {29, "optics-eth-400gbase-fr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_400gbase_dr4 {30, "optics-eth-400gbase-dr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_400gbase_cr8 {31, "optics-eth-400gbase-cr8"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_srbd {32, "optics-eth-100gbase-srbd"};
-const Enum::YLeaf EthernetPmd::optics_eth_undefined {33, "optics-eth-undefined"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_srbd {29, "optics-eth-100gbase-srbd"};
+const Enum::YLeaf EthernetPmd::optics_eth_undefined {30, "optics-eth-undefined"};
 
-const Enum::YLeaf SonetApplicationCode::optics_sonet_not_set {0, "optics-sonet-not-set"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
-const Enum::YLeaf SonetApplicationCode::optics_sonet_undefined {4, "optics-sonet-undefined"};
+const Enum::YLeaf OpticsWaveBand::c_band {0, "c-band"};
+const Enum::YLeaf OpticsWaveBand::l_band {1, "l-band"};
+const Enum::YLeaf OpticsWaveBand::c_band_odd {2, "c-band-odd"};
+const Enum::YLeaf OpticsWaveBand::c_band_even {3, "c-band-even"};
+const Enum::YLeaf OpticsWaveBand::invalid_band {4, "invalid-band"};
 
-const Enum::YLeaf OtnApplicationCode::optics_not_set {0, "optics-not-set"};
-const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
-const Enum::YLeaf OtnApplicationCode::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
-const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
-const Enum::YLeaf OtnApplicationCode::optics_undefined {4, "optics-undefined"};
+const Enum::YLeaf OpticsAinsStateEt::none {0, "none"};
+const Enum::YLeaf OpticsAinsStateEt::active_running {1, "active-running"};
+const Enum::YLeaf OpticsAinsStateEt::active_pending {2, "active-pending"};
 
 const Enum::YLeaf FiberConnector::optics_connect_or_not_set {0, "optics-connect-or-not-set"};
 const Enum::YLeaf FiberConnector::optics_sc_connect_or {1, "optics-sc-connect-or"};
@@ -17113,26 +17081,44 @@ const Enum::YLeaf FiberConnector::optics_lc_connect_or {2, "optics-lc-connect-or
 const Enum::YLeaf FiberConnector::optics_mpo_connect_or {3, "optics-mpo-connect-or"};
 const Enum::YLeaf FiberConnector::optics_undefined_connect_or {4, "optics-undefined-connect-or"};
 
+const Enum::YLeaf OpticsFormFactor::not_set {0, "not-set"};
+const Enum::YLeaf OpticsFormFactor::invalid {1, "invalid"};
+const Enum::YLeaf OpticsFormFactor::cpak {2, "cpak"};
+const Enum::YLeaf OpticsFormFactor::cxp {3, "cxp"};
+const Enum::YLeaf OpticsFormFactor::sfp_plus {4, "sfp-plus"};
+const Enum::YLeaf OpticsFormFactor::qsfp {5, "qsfp"};
+const Enum::YLeaf OpticsFormFactor::qsfp_plus {6, "qsfp-plus"};
+const Enum::YLeaf OpticsFormFactor::qsfp28 {7, "qsfp28"};
+const Enum::YLeaf OpticsFormFactor::sfp {8, "sfp"};
+const Enum::YLeaf OpticsFormFactor::cfp {9, "cfp"};
+const Enum::YLeaf OpticsFormFactor::cfp2 {10, "cfp2"};
+const Enum::YLeaf OpticsFormFactor::cfp2_aco {11, "cfp2-aco"};
+const Enum::YLeaf OpticsFormFactor::cfp2_dco {12, "cfp2-dco"};
+const Enum::YLeaf OpticsFormFactor::cfp4 {13, "cfp4"};
+const Enum::YLeaf OpticsFormFactor::xfp {14, "xfp"};
+const Enum::YLeaf OpticsFormFactor::x2 {15, "x2"};
+const Enum::YLeaf OpticsFormFactor::non_pluggable {16, "non-pluggable"};
+const Enum::YLeaf OpticsFormFactor::other {17, "other"};
+
+const Enum::YLeaf SonetApplicationCode::optics_sonet_not_set {0, "optics-sonet-not-set"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
+const Enum::YLeaf SonetApplicationCode::optics_sonet_undefined {4, "optics-sonet-undefined"};
+
+const Enum::YLeaf OpticsControllerState::optics_state_up {0, "optics-state-up"};
+const Enum::YLeaf OpticsControllerState::optics_state_down {1, "optics-state-down"};
+const Enum::YLeaf OpticsControllerState::optics_state_admin_down {2, "optics-state-admin-down"};
+
 const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_invalid {0, "optics-amplifier-safety-mode-invalid"};
 const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_auto {1, "optics-amplifier-safety-mode-auto"};
 const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_disabled {2, "optics-amplifier-safety-mode-disabled"};
 
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_invalid {0, "optics-amplifier-gain-range-invalid"};
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
-
-const Enum::YLeaf OpticsAmplifierControlMode::automatic {1, "automatic"};
-const Enum::YLeaf OpticsAmplifierControlMode::manual {2, "manual"};
-
-const Enum::YLeaf OpticsPortStatus::active {0, "active"};
-const Enum::YLeaf OpticsPortStatus::standby {1, "standby"};
-
-const Enum::YLeaf OpticsPort::com {0, "com"};
-const Enum::YLeaf OpticsPort::line {1, "line"};
-const Enum::YLeaf OpticsPort::osc {2, "osc"};
-const Enum::YLeaf OpticsPort::com_check {3, "com-check"};
-const Enum::YLeaf OpticsPort::work {4, "work"};
-const Enum::YLeaf OpticsPort::prot {5, "prot"};
+const Enum::YLeaf OpticsLaserState::on {0, "on"};
+const Enum::YLeaf OpticsLaserState::off {1, "off"};
+const Enum::YLeaf OpticsLaserState::unknown {2, "unknown"};
+const Enum::YLeaf OpticsLaserState::apr {3, "apr"};
+const Enum::YLeaf OpticsLaserState::na {4, "na"};
 
 const Enum::YLeaf OpticsFec::fec_none {0, "fec-none"};
 const Enum::YLeaf OpticsFec::fec_hg15 {1, "fec-hg15"};
@@ -17142,6 +17128,9 @@ const Enum::YLeaf OpticsFec::fec_hg25_de {8, "fec-hg25-de"};
 const Enum::YLeaf OpticsFec::fec_enabled {16, "fec-enabled"};
 const Enum::YLeaf OpticsFec::fec_not_set {32, "fec-not-set"};
 const Enum::YLeaf OpticsFec::fec_cl91 {64, "fec-cl91"};
+
+const Enum::YLeaf OpticsPortStatus::active {0, "active"};
+const Enum::YLeaf OpticsPortStatus::standby {1, "standby"};
 
 const Enum::YLeaf OpticsPhy::not_set {0, "not-set"};
 const Enum::YLeaf OpticsPhy::invalid {1, "invalid"};
@@ -17210,37 +17199,24 @@ const Enum::YLeaf OpticsPhy::fx_one_lane {63, "fx-one-lane"};
 const Enum::YLeaf OpticsPhy::ten_gig_emrdwdm {64, "ten-gig-emrdwdm"};
 const Enum::YLeaf OpticsPhy::ten_gig_e_edge_performance {65, "ten-gig-e-edge-performance"};
 const Enum::YLeaf OpticsPhy::one_gig_csfp {66, "one-gig-csfp"};
-const Enum::YLeaf OpticsPhy::four_hundred_gig_fr4_four_lanes {67, "four-hundred-gig-fr4-four-lanes"};
-const Enum::YLeaf OpticsPhy::four_hundred_gig_dr4_four_lanes {68, "four-hundred-gig-dr4-four-lanes"};
-const Enum::YLeaf OpticsPhy::four_x_hundred_gig_fr_four_lanes {69, "four-x-hundred-gig-fr-four-lanes"};
-const Enum::YLeaf OpticsPhy::four_hundred_gig_aoc_four_lanes {70, "four-hundred-gig-aoc-four-lanes"};
-const Enum::YLeaf OpticsPhy::four_hundred_gig_cu_four_lanes {71, "four-hundred-gig-cu-four-lanes"};
-const Enum::YLeaf OpticsPhy::eight_x_fifty_gig_cu_four_lanes {72, "eight-x-fifty-gig-cu-four-lanes"};
-const Enum::YLeaf OpticsPhy::short_reach_bd {73, "short-reach-bd"};
+const Enum::YLeaf OpticsPhy::short_reach_bd {67, "short-reach-bd"};
+const Enum::YLeaf OpticsPhy::far_reach {68, "far-reach"};
 
-const Enum::YLeaf OpticsFormFactor::not_set {0, "not-set"};
-const Enum::YLeaf OpticsFormFactor::invalid {1, "invalid"};
-const Enum::YLeaf OpticsFormFactor::cpak {2, "cpak"};
-const Enum::YLeaf OpticsFormFactor::cxp {3, "cxp"};
-const Enum::YLeaf OpticsFormFactor::sfp_plus {4, "sfp-plus"};
-const Enum::YLeaf OpticsFormFactor::qsfp {5, "qsfp"};
-const Enum::YLeaf OpticsFormFactor::qsfp_plus {6, "qsfp-plus"};
-const Enum::YLeaf OpticsFormFactor::qsfp28 {7, "qsfp28"};
-const Enum::YLeaf OpticsFormFactor::sfp {8, "sfp"};
-const Enum::YLeaf OpticsFormFactor::cfp {9, "cfp"};
-const Enum::YLeaf OpticsFormFactor::cfp2 {10, "cfp2"};
-const Enum::YLeaf OpticsFormFactor::cfp2_aco {11, "cfp2-aco"};
-const Enum::YLeaf OpticsFormFactor::cfp2_dco {12, "cfp2-dco"};
-const Enum::YLeaf OpticsFormFactor::cfp4 {13, "cfp4"};
-const Enum::YLeaf OpticsFormFactor::xfp {14, "xfp"};
-const Enum::YLeaf OpticsFormFactor::x2 {15, "x2"};
-const Enum::YLeaf OpticsFormFactor::qsfpdd {16, "qsfpdd"};
-const Enum::YLeaf OpticsFormFactor::non_pluggable {17, "non-pluggable"};
-const Enum::YLeaf OpticsFormFactor::other {18, "other"};
+const Enum::YLeaf OpticsTas::tas_ui_oos {0, "tas-ui-oos"};
+const Enum::YLeaf OpticsTas::tas_ui_main {1, "tas-ui-main"};
+const Enum::YLeaf OpticsTas::tas_ui_is {2, "tas-ui-is"};
+const Enum::YLeaf OpticsTas::tas_ui_ains {3, "tas-ui-ains"};
 
-const Enum::YLeaf OpticsControllerState::optics_state_up {0, "optics-state-up"};
-const Enum::YLeaf OpticsControllerState::optics_state_down {1, "optics-state-down"};
-const Enum::YLeaf OpticsControllerState::optics_state_admin_down {2, "optics-state-admin-down"};
+const Enum::YLeaf Optics::optics_unknown {0, "optics-unknown"};
+const Enum::YLeaf Optics::optics_grey {1, "optics-grey"};
+const Enum::YLeaf Optics::optics_dwdm {2, "optics-dwdm"};
+const Enum::YLeaf Optics::optics_cwdm {3, "optics-cwdm"};
+
+const Enum::YLeaf OtnApplicationCode::optics_not_set {0, "optics-not-set"};
+const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
+const Enum::YLeaf OtnApplicationCode::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
+const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
+const Enum::YLeaf OtnApplicationCode::optics_undefined {4, "optics-undefined"};
 
 const Enum::YLeaf OpticsLedState::off {0, "off"};
 const Enum::YLeaf OpticsLedState::green_on {1, "green-on"};
@@ -17250,40 +17226,12 @@ const Enum::YLeaf OpticsLedState::yellow_flashing {4, "yellow-flashing"};
 const Enum::YLeaf OpticsLedState::red_on {5, "red-on"};
 const Enum::YLeaf OpticsLedState::red_flashing {6, "red-flashing"};
 
-const Enum::YLeaf OpticsModulation::mod_none {0, "mod-none"};
-const Enum::YLeaf OpticsModulation::mod_bpsk {1, "mod-bpsk"};
-const Enum::YLeaf OpticsModulation::mod_qpsk {2, "mod-qpsk"};
-const Enum::YLeaf OpticsModulation::mod_8qam {3, "mod-8qam"};
-const Enum::YLeaf OpticsModulation::mod_16qam {4, "mod-16qam"};
-const Enum::YLeaf OpticsModulation::mod_32qam {5, "mod-32qam"};
-const Enum::YLeaf OpticsModulation::mod_64qam {6, "mod-64qam"};
-const Enum::YLeaf OpticsModulation::mod_bpsk_qpsk {7, "mod-bpsk-qpsk"};
-const Enum::YLeaf OpticsModulation::mod_qpsk_8qam {8, "mod-qpsk-8qam"};
-const Enum::YLeaf OpticsModulation::mod_8qam_16qam {9, "mod-8qam-16qam"};
-const Enum::YLeaf OpticsModulation::mode_16qam_32qam {10, "mode-16qam-32qam"};
-const Enum::YLeaf OpticsModulation::mod_32qam_64qam {11, "mod-32qam-64qam"};
-
-const Enum::YLeaf OpticsLaserState::on {0, "on"};
-const Enum::YLeaf OpticsLaserState::off {1, "off"};
-const Enum::YLeaf OpticsLaserState::unknown {2, "unknown"};
-const Enum::YLeaf OpticsLaserState::apr {3, "apr"};
-const Enum::YLeaf OpticsLaserState::na {4, "na"};
-
-const Enum::YLeaf Optics::optics_unknown {0, "optics-unknown"};
-const Enum::YLeaf Optics::optics_grey {1, "optics-grey"};
-const Enum::YLeaf Optics::optics_dwdm {2, "optics-dwdm"};
-const Enum::YLeaf Optics::optics_cwdm {3, "optics-cwdm"};
-
-const Enum::YLeaf OpticsTas::tas_ui_oos {0, "tas-ui-oos"};
-const Enum::YLeaf OpticsTas::tas_ui_main {1, "tas-ui-main"};
-const Enum::YLeaf OpticsTas::tas_ui_is {2, "tas-ui-is"};
-const Enum::YLeaf OpticsTas::tas_ui_ains {3, "tas-ui-ains"};
-
-const Enum::YLeaf OpticsWaveBand::c_band {0, "c-band"};
-const Enum::YLeaf OpticsWaveBand::l_band {1, "l-band"};
-const Enum::YLeaf OpticsWaveBand::c_band_odd {2, "c-band-odd"};
-const Enum::YLeaf OpticsWaveBand::c_band_even {3, "c-band-even"};
-const Enum::YLeaf OpticsWaveBand::invalid_band {4, "invalid-band"};
+const Enum::YLeaf OpticsPort::com {0, "com"};
+const Enum::YLeaf OpticsPort::line {1, "line"};
+const Enum::YLeaf OpticsPort::osc {2, "osc"};
+const Enum::YLeaf OpticsPort::com_check {3, "com-check"};
+const Enum::YLeaf OpticsPort::work {4, "work"};
+const Enum::YLeaf OpticsPort::prot {5, "prot"};
 
 
 }

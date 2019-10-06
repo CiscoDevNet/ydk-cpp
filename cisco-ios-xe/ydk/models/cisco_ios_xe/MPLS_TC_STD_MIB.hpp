@@ -16,6 +16,24 @@ class MplsLabelDistributionMethod : public ydk::Enum
         static const ydk::Enum::YLeaf downstreamOnDemand;
         static const ydk::Enum::YLeaf downstreamUnsolicited;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "downstreamOnDemand") return 1;
+            if (name == "downstreamUnsolicited") return 2;
+            return -1;
+        }
+};
+
+class MplsRetentionMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf conservative;
+        static const ydk::Enum::YLeaf liberal;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "conservative") return 1;
+            if (name == "liberal") return 2;
+            return -1;
+        }
 };
 
 class MplsLdpLabelType : public ydk::Enum
@@ -25,6 +43,33 @@ class MplsLdpLabelType : public ydk::Enum
         static const ydk::Enum::YLeaf atm;
         static const ydk::Enum::YLeaf frameRelay;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "generic") return 1;
+            if (name == "atm") return 2;
+            if (name == "frameRelay") return 3;
+            return -1;
+        }
+};
+
+class TeHopAddressType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf asnumber;
+        static const ydk::Enum::YLeaf unnum;
+        static const ydk::Enum::YLeaf lspid;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "asnumber") return 3;
+            if (name == "unnum") return 4;
+            if (name == "lspid") return 5;
+            return -1;
+        }
 };
 
 class MplsLspType : public ydk::Enum
@@ -35,6 +80,13 @@ class MplsLspType : public ydk::Enum
         static const ydk::Enum::YLeaf originatingLsp;
         static const ydk::Enum::YLeaf crossConnectingLsp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "terminatingLsp") return 2;
+            if (name == "originatingLsp") return 3;
+            if (name == "crossConnectingLsp") return 4;
+            return -1;
+        }
 };
 
 class MplsOwner : public ydk::Enum
@@ -48,26 +100,16 @@ class MplsOwner : public ydk::Enum
         static const ydk::Enum::YLeaf rsvpTe;
         static const ydk::Enum::YLeaf policyAgent;
 
-};
-
-class MplsRetentionMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf conservative;
-        static const ydk::Enum::YLeaf liberal;
-
-};
-
-class TeHopAddressType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf asnumber;
-        static const ydk::Enum::YLeaf unnum;
-        static const ydk::Enum::YLeaf lspid;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "other") return 2;
+            if (name == "snmp") return 3;
+            if (name == "ldp") return 4;
+            if (name == "crldp") return 5;
+            if (name == "rsvpTe") return 6;
+            if (name == "policyAgent") return 7;
+            return -1;
+        }
 };
 
 

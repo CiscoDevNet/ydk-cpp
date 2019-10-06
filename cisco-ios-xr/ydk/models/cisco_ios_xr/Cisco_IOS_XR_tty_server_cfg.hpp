@@ -347,12 +347,12 @@ class Tty::TtyLines::TtyLine::Connection : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf disconnect_character; //type: one of uint8, string
+        ydk::YLeaf disconnect_character; //type: one of string, uint8
         ydk::YLeaf acl_in; //type: string
         ydk::YLeaf acl_out; //type: string
         ydk::YLeaf cli_white_space_completion; //type: empty
         ydk::YLeaf session_limit; //type: uint32
-        ydk::YLeaf escape_character; //type: one of uint8, string
+        ydk::YLeaf escape_character; //type: one of string, uint8
         ydk::YLeaf transport_preferred; //type: TtyTransportProtocol
         class TransportInput; //type: Tty::TtyLines::TtyLine::Connection::TransportInput
         class TransportOutput; //type: Tty::TtyLines::TtyLine::Connection::TransportOutput

@@ -214,7 +214,6 @@ class Native::System : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mode; //type: Native::System::Mode
         class Debug; //type: Native::System::Debug
         class Disable; //type: Native::System::Disable
         class Environment; //type: Native::System::Environment
@@ -222,8 +221,8 @@ class Native::System : public ydk::Entity
         class Ignore; //type: Native::System::Ignore
         class ModeButton; //type: Native::System::ModeButton
         class Mtu; //type: Native::System::Mtu
+        class Mode; //type: Native::System::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode> mode;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Debug> debug;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Disable> disable;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Environment> environment;
@@ -231,129 +230,9 @@ class Native::System : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Ignore> ignore;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::ModeButton> mode_button;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mtu> mtu;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode> mode;
         
 }; // Native::System
-
-
-class Native::System::Mode : public ydk::Entity
-{
-    public:
-        Mode();
-        ~Mode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Maintenance; //type: Native::System::Mode::Maintenance
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance> maintenance; // presence node
-        
-}; // Native::System::Mode
-
-
-class Native::System::Mode::Maintenance : public ydk::Entity
-{
-    public:
-        Maintenance();
-        ~Maintenance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ConfigMaintenance; //type: Native::System::Mode::Maintenance::ConfigMaintenance
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance> config_maintenance;
-        
-}; // Native::System::Mode::Maintenance
-
-
-class Native::System::Mode::Maintenance::ConfigMaintenance : public ydk::Entity
-{
-    public:
-        ConfigMaintenance();
-        ~ConfigMaintenance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf failsafe; //type: uint8
-        ydk::YLeaf template_; //type: string
-        ydk::YLeaf timeout; //type: uint8
-        class OnReload; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload> on_reload;
-        
-}; // Native::System::Mode::Maintenance::ConfigMaintenance
-
-
-class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload : public ydk::Entity
-{
-    public:
-        OnReload();
-        ~OnReload();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ResetReason; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason> reset_reason;
-        
-}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
-
-
-class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason : public ydk::Entity
-{
-    public:
-        ResetReason();
-        ~ResetReason();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf maintenance; //type: empty
-
-}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
 
 
 class Native::System::Debug : public ydk::Entity
@@ -802,6 +681,127 @@ class Native::System::Mtu : public ydk::Entity
         ydk::YLeaf routing; //type: uint16
 
 }; // Native::System::Mtu
+
+
+class Native::System::Mode : public ydk::Entity
+{
+    public:
+        Mode();
+        ~Mode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Maintenance; //type: Native::System::Mode::Maintenance
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance> maintenance; // presence node
+        
+}; // Native::System::Mode
+
+
+class Native::System::Mode::Maintenance : public ydk::Entity
+{
+    public:
+        Maintenance();
+        ~Maintenance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ConfigMaintenance; //type: Native::System::Mode::Maintenance::ConfigMaintenance
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance> config_maintenance;
+        
+}; // Native::System::Mode::Maintenance
+
+
+class Native::System::Mode::Maintenance::ConfigMaintenance : public ydk::Entity
+{
+    public:
+        ConfigMaintenance();
+        ~ConfigMaintenance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf failsafe; //type: uint8
+        ydk::YLeaf template_; //type: string
+        ydk::YLeaf timeout; //type: uint8
+        class OnReload; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload> on_reload;
+        
+}; // Native::System::Mode::Maintenance::ConfigMaintenance
+
+
+class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload : public ydk::Entity
+{
+    public:
+        OnReload();
+        ~OnReload();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ResetReason; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason> reset_reason;
+        
+}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
+
+
+class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason : public ydk::Entity
+{
+    public:
+        ResetReason();
+        ~ResetReason();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf maintenance; //type: empty
+
+}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
 
 
 class Native::Errdisable : public ydk::Entity
@@ -2980,7 +2980,7 @@ class Native::RadiusServer::Host : public ydk::Entity
         ydk::YLeaf acct_port; //type: uint16
         ydk::YLeaf retransmit; //type: uint8
         ydk::YLeaf timeout; //type: uint16
-        ydk::YLeaf key; //type: one of enumeration, string
+        ydk::YLeaf key; //type: one of string, enumeration
         ydk::YLeaf clear_key; //type: string
         class Test; //type: Native::RadiusServer::Host::Test
 
@@ -3721,6 +3721,12 @@ class Native::L2::Vfi::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf manual;
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autodiscovery") return 0;
+            if (name == "manual") return 1;
+            if (name == "point-to-point") return 2;
+            return -1;
+        }
 };
 
 class Native::L2::Vfi::Neighbor::Encapsulation : public ydk::Enum
@@ -3729,6 +3735,11 @@ class Native::L2::Vfi::Neighbor::Encapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf l2tpv3;
         static const ydk::Enum::YLeaf mpls;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tpv3") return 0;
+            if (name == "mpls") return 1;
+            return -1;
+        }
 };
 
 class Native::Identity::Policy::No::Linksec::Policy_ : public ydk::Enum
@@ -3738,6 +3749,12 @@ class Native::Identity::Policy::No::Linksec::Policy_ : public ydk::Enum
         static const ydk::Enum::YLeaf must_secure;
         static const ydk::Enum::YLeaf should_secure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "must-not-secure") return 0;
+            if (name == "must-secure") return 1;
+            if (name == "should-secure") return 2;
+            return -1;
+        }
 };
 
 class Native::Identity::Policy::No::ServicePolicy::Qos::Direction : public ydk::Enum
@@ -3746,6 +3763,11 @@ class Native::Identity::Policy::No::ServicePolicy::Qos::Direction : public ydk::
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 class Native::Identity::Policy::Linksec::Policy_ : public ydk::Enum
@@ -3755,6 +3777,12 @@ class Native::Identity::Policy::Linksec::Policy_ : public ydk::Enum
         static const ydk::Enum::YLeaf must_secure;
         static const ydk::Enum::YLeaf should_secure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "must-not-secure") return 0;
+            if (name == "must-secure") return 1;
+            if (name == "should-secure") return 2;
+            return -1;
+        }
 };
 
 class Native::Identity::Policy::ServicePolicy::Qos::Direction : public ydk::Enum
@@ -3763,6 +3791,11 @@ class Native::Identity::Policy::ServicePolicy::Qos::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Destination::Interface::Encapsulation : public ydk::Enum
@@ -3772,6 +3805,12 @@ class Native::Monitor::Session::Destination::Interface::Encapsulation : public y
         static const ydk::Enum::YLeaf isl;
         static const ydk::Enum::YLeaf replicate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1q") return 0;
+            if (name == "isl") return 1;
+            if (name == "replicate") return 2;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Destination::Interface::IngressEncap : public ydk::Enum
@@ -3781,6 +3820,12 @@ class Native::Monitor::Session::Destination::Interface::IngressEncap : public yd
         static const ydk::Enum::YLeaf isl;
         static const ydk::Enum::YLeaf untagged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1q") return 0;
+            if (name == "isl") return 1;
+            if (name == "untagged") return 2;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Filter::PacketType::Status : public ydk::Enum
@@ -3789,6 +3834,11 @@ class Native::Monitor::Session::Filter::PacketType::Status : public ydk::Enum
         static const ydk::Enum::YLeaf good;
         static const ydk::Enum::YLeaf bad;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "good") return 0;
+            if (name == "bad") return 1;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Filter::PacketType::Direction : public ydk::Enum
@@ -3797,6 +3847,11 @@ class Native::Monitor::Session::Filter::PacketType::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf tx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "rx") return 0;
+            if (name == "tx") return 1;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Source::Interface::Direction : public ydk::Enum
@@ -3806,6 +3861,12 @@ class Native::Monitor::Session::Source::Interface::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf tx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "rx") return 1;
+            if (name == "tx") return 2;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Source::Vlan::Direction : public ydk::Enum
@@ -3815,6 +3876,12 @@ class Native::Monitor::Session::Source::Vlan::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf tx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "rx") return 1;
+            if (name == "tx") return 2;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Type::ErspanSource::Source::Interface::Direction : public ydk::Enum
@@ -3824,6 +3891,12 @@ class Native::Monitor::Session::Type::ErspanSource::Source::Interface::Direction
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf tx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "rx") return 1;
+            if (name == "tx") return 2;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Type::ErspanSource::Source::Vlan::Direction : public ydk::Enum
@@ -3833,6 +3906,12 @@ class Native::Monitor::Session::Type::ErspanSource::Source::Vlan::Direction : pu
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf tx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "rx") return 1;
+            if (name == "tx") return 2;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Type::Local::Source::Interface::Direction : public ydk::Enum
@@ -3842,6 +3921,12 @@ class Native::Monitor::Session::Type::Local::Source::Interface::Direction : publ
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf tx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "rx") return 1;
+            if (name == "tx") return 2;
+            return -1;
+        }
 };
 
 class Native::Monitor::Session::Type::Local::Source::Vlan::Direction : public ydk::Enum
@@ -3851,6 +3936,12 @@ class Native::Monitor::Session::Type::Local::Source::Vlan::Direction : public yd
         static const ydk::Enum::YLeaf rx;
         static const ydk::Enum::YLeaf tx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "rx") return 1;
+            if (name == "tx") return 2;
+            return -1;
+        }
 };
 
 class Native::RadiusServer::Attribute::SendAttribute : public ydk::Enum
@@ -3860,6 +3951,12 @@ class Native::RadiusServer::Attribute::SendAttribute : public ydk::Enum
         static const ydk::Enum::YLeaf include_in_access_req;
         static const ydk::Enum::YLeaf support_multiple;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on-for-login-auth") return 0;
+            if (name == "include-in-access-req") return 1;
+            if (name == "support-multiple") return 2;
+            return -1;
+        }
 };
 
 class Native::RadiusServer::Attribute::Attri31::Attri31List::CallingStationId : public ydk::Enum
@@ -3868,6 +3965,11 @@ class Native::RadiusServer::Attribute::Attri31::Attri31List::CallingStationId : 
         static const ydk::Enum::YLeaf mac;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mac") return 0;
+            if (name == "send") return 1;
+            return -1;
+        }
 };
 
 class Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::Format : public ydk::Enum
@@ -3875,6 +3977,10 @@ class Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::Format : pub
     public:
         static const ydk::Enum::YLeaf ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ietf") return 0;
+            return -1;
+        }
 };
 
 class Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::LuCase : public ydk::Enum
@@ -3883,6 +3989,11 @@ class Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::LuCase : pub
         static const ydk::Enum::YLeaf lower_case;
         static const ydk::Enum::YLeaf upper_case;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lower-case") return 0;
+            if (name == "upper-case") return 1;
+            return -1;
+        }
 };
 
 class Native::RadiusServer::Host::Key : public ydk::Enum
@@ -3891,6 +4002,11 @@ class Native::RadiusServer::Host::Key : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::RadiusServer::Host::Test::Username::Key::Encryption : public ydk::Enum
@@ -3899,6 +4015,11 @@ class Native::RadiusServer::Host::Test::Username::Key::Encryption : public ydk::
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::RadiusServer::Key::Encryption : public ydk::Enum
@@ -3907,6 +4028,11 @@ class Native::RadiusServer::Key::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Radius::Filter::Match : public ydk::Enum
@@ -3915,6 +4041,11 @@ class Native::Radius::Filter::Match : public ydk::Enum
         static const ydk::Enum::YLeaf match_all;
         static const ydk::Enum::YLeaf match_any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-all") return 0;
+            if (name == "match-any") return 1;
+            return -1;
+        }
 };
 
 class Native::Radius::Server::AutomateTester::AtOption : public ydk::Enum
@@ -3922,6 +4053,10 @@ class Native::Radius::Server::AutomateTester::AtOption : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf probe_on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "probe-on") return 0;
+            return -1;
+        }
 };
 
 class Native::Radius::Server::Key::Encryption : public ydk::Enum
@@ -3930,6 +4065,11 @@ class Native::Radius::Server::Key::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "5") return 1;
+            return -1;
+        }
 };
 
 class Native::Radius::Server::Pac::Key::Encryption : public ydk::Enum
@@ -3939,6 +4079,12 @@ class Native::Radius::Server::Pac::Key::Encryption : public ydk::Enum
         static const ydk::Enum::YLeaf Y_6;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            if (name == "7") return 2;
+            return -1;
+        }
 };
 
 class Native::AlarmContact::Severity : public ydk::Enum
@@ -3948,6 +4094,12 @@ class Native::AlarmContact::Severity : public ydk::Enum
         static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "major") return 1;
+            if (name == "minor") return 2;
+            return -1;
+        }
 };
 
 class Native::AlarmContact::Trigger : public ydk::Enum
@@ -3956,6 +4108,11 @@ class Native::AlarmContact::Trigger : public ydk::Enum
         static const ydk::Enum::YLeaf open;
         static const ydk::Enum::YLeaf closed;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "open") return 0;
+            if (name == "closed") return 1;
+            return -1;
+        }
 };
 
 

@@ -842,27 +842,6 @@ class Native::Interface::LISP::Umbrella : public ydk::Entity
 }; // Native::Interface::LISP::Umbrella
 
 
-class Native::Interface::LISP::Utd : public ydk::Entity
-{
-    public:
-        Utd();
-        ~Utd();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Native::Interface::LISP::Utd
-
-
 class Native::Interface::LISP::ZoneMember : public ydk::Entity
 {
     public:
@@ -882,6 +861,27 @@ class Native::Interface::LISP::ZoneMember : public ydk::Entity
         ydk::YLeaf security; //type: string
 
 }; // Native::Interface::LISP::ZoneMember
+
+
+class Native::Interface::LISP::Utd : public ydk::Entity
+{
+    public:
+        Utd();
+        ~Utd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Native::Interface::LISP::Utd
 
 
 class Native::Interface::LISPSubinterface : public ydk::Entity
@@ -1144,8 +1144,8 @@ class Native::Interface::LISPSubinterface::LISP::Backup::Delay : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -1314,8 +1314,8 @@ class Native::Interface::LISPSubinterface::LISP::Backup::Load : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3628,6 +3628,13 @@ class Native::Interface::LISP::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::LISP::ServicePolicy::Type::PerformanceMonitor::Direction : public ydk::Enum
@@ -3636,6 +3643,11 @@ class Native::Interface::LISP::ServicePolicy::Type::PerformanceMonitor::Directio
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "input") return 0;
+            if (name == "output") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::IfState : public ydk::Enum
@@ -3643,6 +3655,10 @@ class Native::Interface::LISPSubinterface::LISP::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::ServiceInsertion : public ydk::Enum
@@ -3650,6 +3666,10 @@ class Native::Interface::LISPSubinterface::LISP::ServiceInsertion : public ydk::
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Backup::Delay::Failure : public ydk::Enum
@@ -3657,6 +3677,10 @@ class Native::Interface::LISPSubinterface::LISP::Backup::Delay::Failure : public
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3664,6 +3688,10 @@ class Native::Interface::LISPSubinterface::LISP::Backup::Delay::SecondaryDisable
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Backup::Load::Kickin : public ydk::Enum
@@ -3671,6 +3699,10 @@ class Native::Interface::LISPSubinterface::LISP::Backup::Load::Kickin : public y
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Backup::Load::Kickout : public ydk::Enum
@@ -3678,6 +3710,10 @@ class Native::Interface::LISPSubinterface::LISP::Backup::Load::Kickout : public 
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Flowcontrol::Receive : public ydk::Enum
@@ -3687,6 +3723,12 @@ class Native::Interface::LISPSubinterface::LISP::Flowcontrol::Receive : public y
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Flowcontrol::Send : public ydk::Enum
@@ -3696,6 +3738,12 @@ class Native::Interface::LISPSubinterface::LISP::Flowcontrol::Send : public ydk:
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::HoldQueue::Direction : public ydk::Enum
@@ -3704,6 +3752,11 @@ class Native::Interface::LISPSubinterface::LISP::HoldQueue::Direction : public y
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
@@ -3712,6 +3765,11 @@ class Native::Interface::LISPSubinterface::LISP::Ip::Verify::Unicast::Source::Re
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3720,6 +3778,11 @@ class Native::Interface::LISPSubinterface::LISP::Ipv6::TrafficFilter::Direction 
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::LISPSubinterface::LISP::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3727,6 +3790,10 @@ class Native::Interface::LISPSubinterface::LISP::InterfaceQos::Trust::Device : p
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 

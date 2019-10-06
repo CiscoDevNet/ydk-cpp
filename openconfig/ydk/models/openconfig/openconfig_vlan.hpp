@@ -217,6 +217,11 @@ class Vlans::Vlan::Config::Status : public ydk::Enum
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf SUSPENDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACTIVE") return 0;
+            if (name == "SUSPENDED") return 1;
+            return -1;
+        }
 };
 
 class Vlans::Vlan::State::Status : public ydk::Enum
@@ -225,6 +230,11 @@ class Vlans::Vlan::State::Status : public ydk::Enum
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf SUSPENDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACTIVE") return 0;
+            if (name == "SUSPENDED") return 1;
+            return -1;
+        }
 };
 
 

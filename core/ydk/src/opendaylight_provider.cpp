@@ -32,7 +32,7 @@ static string get_encoding_string(EncodingFormat encoding);
 
 OpenDaylightServiceProvider::OpenDaylightServiceProvider(path::Repository & repo, const string & address,
            const string & username, const string & password, int port, EncodingFormat encoding, Protocol protocol)
-    : m_repo{repo}, address(address), username(username), password(password),
+    : m_repo(repo), address(address), username(username), password(password),
       port(port), encoding(encoding)
 {
     if(protocol != Protocol::restconf)

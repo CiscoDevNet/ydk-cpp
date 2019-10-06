@@ -937,7 +937,7 @@ class Native::Interface::ServiceEngine::Standby::StandbyList : public ydk::Entit
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -2133,8 +2133,8 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         ydk::YLeaf channel_protocol; //type: ChannelProtocol
         ydk::YLeaf duplex; //type: Duplex
         ydk::YLeaf cisco_ios_xe_ethernet_macsec; //type: empty
-        ydk::YLeaf nat66; //type: Nat66
         ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
+        ydk::YLeaf nat66; //type: Nat66
         class SwitchportConf; //type: Native::Interface::GigabitEthernet::SwitchportConf
         class Switchport; //type: Native::Interface::GigabitEthernet::Switchport
         class StackwiseVirtual; //type: Native::Interface::GigabitEthernet::StackwiseVirtual
@@ -2173,6 +2173,7 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class Peer; //type: Native::Interface::GigabitEthernet::Peer
         class PmPath; //type: Native::Interface::GigabitEthernet::PmPath
         class SwitchportWrapper; //type: Native::Interface::GigabitEthernet::SwitchportWrapper
+        class Power; //type: Native::Interface::GigabitEthernet::Power
         class CarrierDelay; //type: Native::Interface::GigabitEthernet::CarrierDelay
         class ChannelGroup; //type: Native::Interface::GigabitEthernet::ChannelGroup
         class Ethernet; //type: Native::Interface::GigabitEthernet::Ethernet
@@ -2185,28 +2186,11 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class Service; //type: Native::Interface::GigabitEthernet::Service
         class Lacp; //type: Native::Interface::GigabitEthernet::Lacp
         class CiscoIOSXEEthernetMacsecOption; //type: Native::Interface::GigabitEthernet::CiscoIOSXEEthernetMacsecOption
-        class Xconnect; //type: Native::Interface::GigabitEthernet::Xconnect
-        class Evpn; //type: Native::Interface::GigabitEthernet::Evpn
         class Snmp; //type: Native::Interface::GigabitEthernet::Snmp
-        class Ospfv3; //type: Native::Interface::GigabitEthernet::Ospfv3
-        class Cdp; //type: Native::Interface::GigabitEthernet::Cdp
-        class Crypto; //type: Native::Interface::GigabitEthernet::Crypto
-        class Cts; //type: Native::Interface::GigabitEthernet::Cts
-        class Dot1x; //type: Native::Interface::GigabitEthernet::Dot1x
-        class EtAnalytics; //type: Native::Interface::GigabitEthernet::EtAnalytics
-        class Performance; //type: Native::Interface::GigabitEthernet::Performance
-        class ServicePolicy; //type: Native::Interface::GigabitEthernet::ServicePolicy
-        class FabricDomain; //type: Native::Interface::GigabitEthernet::FabricDomain
-        class Lisp; //type: Native::Interface::GigabitEthernet::Lisp
-        class Lldp; //type: Native::Interface::GigabitEthernet::Lldp
-        class Mka; //type: Native::Interface::GigabitEthernet::Mka
-        class Mvrp; //type: Native::Interface::GigabitEthernet::Mvrp
-        class AnalysisModule; //type: Native::Interface::GigabitEthernet::AnalysisModule
-        class Ntp; //type: Native::Interface::GigabitEthernet::Ntp
-        class Power; //type: Native::Interface::GigabitEthernet::Power
         class Authentication; //type: Native::Interface::GigabitEthernet::Authentication
         class Mab; //type: Native::Interface::GigabitEthernet::Mab
-        class SpanningTree; //type: Native::Interface::GigabitEthernet::SpanningTree
+        class EtAnalytics; //type: Native::Interface::GigabitEthernet::EtAnalytics
+        class ServicePolicy; //type: Native::Interface::GigabitEthernet::ServicePolicy
         class Auto; //type: Native::Interface::GigabitEthernet::Auto
         class Datalink; //type: Native::Interface::GigabitEthernet::Datalink
         class Energywise; //type: Native::Interface::GigabitEthernet::Energywise
@@ -2220,11 +2204,27 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class SrrQueue; //type: Native::Interface::GigabitEthernet::SrrQueue
         class CiscoIOSXESwitchMacsecOption; //type: Native::Interface::GigabitEthernet::CiscoIOSXESwitchMacsecOption
         class DeviceTracking; //type: Native::Interface::GigabitEthernet::DeviceTracking
-        class Udld; //type: Native::Interface::GigabitEthernet::Udld
+        class Ospfv3; //type: Native::Interface::GigabitEthernet::Ospfv3
+        class Performance; //type: Native::Interface::GigabitEthernet::Performance
+        class Lisp; //type: Native::Interface::GigabitEthernet::Lisp
+        class SpanningTree; //type: Native::Interface::GigabitEthernet::SpanningTree
+        class Mka; //type: Native::Interface::GigabitEthernet::Mka
         class Umbrella; //type: Native::Interface::GigabitEthernet::Umbrella
-        class Utd; //type: Native::Interface::GigabitEthernet::Utd
-        class Vrrp; //type: Native::Interface::GigabitEthernet::Vrrp
+        class Xconnect; //type: Native::Interface::GigabitEthernet::Xconnect
+        class Evpn; //type: Native::Interface::GigabitEthernet::Evpn
+        class Dot1x; //type: Native::Interface::GigabitEthernet::Dot1x
+        class Crypto; //type: Native::Interface::GigabitEthernet::Crypto
+        class Lldp; //type: Native::Interface::GigabitEthernet::Lldp
         class ZoneMember; //type: Native::Interface::GigabitEthernet::ZoneMember
+        class Vrrp; //type: Native::Interface::GigabitEthernet::Vrrp
+        class FabricDomain; //type: Native::Interface::GigabitEthernet::FabricDomain
+        class AnalysisModule; //type: Native::Interface::GigabitEthernet::AnalysisModule
+        class Cts; //type: Native::Interface::GigabitEthernet::Cts
+        class Udld; //type: Native::Interface::GigabitEthernet::Udld
+        class Cdp; //type: Native::Interface::GigabitEthernet::Cdp
+        class Mvrp; //type: Native::Interface::GigabitEthernet::Mvrp
+        class Ntp; //type: Native::Interface::GigabitEthernet::Ntp
+        class Utd; //type: Native::Interface::GigabitEthernet::Utd
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Switchport> switchport;
@@ -2264,6 +2264,7 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::PmPath> pm_path;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SwitchportWrapper> switchport_wrapper;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Power> power;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ethernet> ethernet;
@@ -2276,28 +2277,11 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lacp> lacp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::CiscoIOSXEEthernetMacsecOption> cisco_ios_xe_ethernet_macsec_option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Evpn> evpn;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cdp> cdp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Dot1x> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Performance> performance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::FabricDomain> fabric_domain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mka> mka;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mvrp> mvrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::AnalysisModule> analysis_module;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Power> power;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mab> mab; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SpanningTree> spanning_tree;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Auto> auto_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Datalink> datalink;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Energywise> energywise; // presence node
@@ -2311,11 +2295,27 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SrrQueue> srr_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::DeviceTracking> device_tracking;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Udld> udld;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Performance> performance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SpanningTree> spanning_tree;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mka> mka;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Xconnect> xconnect;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Evpn> evpn;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lldp> lldp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::FabricDomain> fabric_domain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Udld> udld;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cdp> cdp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mvrp> mvrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Utd> utd;
                 class MediaType;
         class PortType;
         class IfState;
@@ -2433,7 +2433,7 @@ class Native::Interface::GigabitEthernet::Switchport::Access::Vlan : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16
+        ydk::YLeaf vlan; //type: one of uint16, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -2767,7 +2767,7 @@ class Native::Interface::GigabitEthernet::Switchport::Trunk::Native_ : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16
+        ydk::YLeaf vlan; //type: one of uint16, enumeration
         class Vlan;
 
 }; // Native::Interface::GigabitEthernet::Switchport::Trunk::Native_
@@ -2862,7 +2862,7 @@ class Native::Interface::GigabitEthernet::Switchport::Voice::Vlan : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of enumeration, uint16, string
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -3251,8 +3251,8 @@ class Native::Interface::GigabitEthernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -3421,8 +3421,8 @@ class Native::Interface::GigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3776,6 +3776,11 @@ class Native::Interface::ServiceEngine::Ip::Verify::Unicast::Source::ReachableVi
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3784,6 +3789,11 @@ class Native::Interface::ServiceEngine::Ipv6::TrafficFilter::Direction : public 
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3791,6 +3801,10 @@ class Native::Interface::ServiceEngine::InterfaceQos::Trust::Device : public ydk
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Standby::Version : public ydk::Enum
@@ -3799,6 +3813,11 @@ class Native::Interface::ServiceEngine::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3806,6 +3825,10 @@ class Native::Interface::ServiceEngine::Standby::StandbyList::Ipv6 : public ydk:
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3814,6 +3837,11 @@ class Native::Interface::ServiceEngine::Standby::StandbyList::Authentication::Md
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3822,6 +3850,11 @@ class Native::Interface::ServiceEngine::Standby::StandbyList::Redirect::Advertis
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::AccessSession::HostMode : public ydk::Enum
@@ -3832,6 +3865,13 @@ class Native::Interface::ServiceEngine::AccessSession::HostMode : public ydk::En
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::ServiceEngine::Trust::Device : public ydk::Enum
@@ -3842,6 +3882,13 @@ class Native::Interface::ServiceEngine::Trust::Device : public ydk::Enum
         static const ydk::Enum::YLeaf ip_camera;
         static const ydk::Enum::YLeaf media_player;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            if (name == "cts") return 1;
+            if (name == "ip-camera") return 2;
+            if (name == "media-player") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::MediaType : public ydk::Enum
@@ -3851,6 +3898,12 @@ class Native::Interface::GigabitEthernet::MediaType : public ydk::Enum
         static const ydk::Enum::YLeaf rj45;
         static const ydk::Enum::YLeaf sfp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto-select") return 0;
+            if (name == "rj45") return 1;
+            if (name == "sfp") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::PortType : public ydk::Enum
@@ -3858,6 +3911,10 @@ class Native::Interface::GigabitEthernet::PortType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nni;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nni") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::IfState : public ydk::Enum
@@ -3865,6 +3922,10 @@ class Native::Interface::GigabitEthernet::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::ServiceInsertion : public ydk::Enum
@@ -3872,6 +3933,10 @@ class Native::Interface::GigabitEthernet::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::ChannelProtocol : public ydk::Enum
@@ -3880,6 +3945,11 @@ class Native::Interface::GigabitEthernet::ChannelProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf lacp;
         static const ydk::Enum::YLeaf pagp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lacp") return 0;
+            if (name == "pagp") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Duplex : public ydk::Enum
@@ -3889,6 +3959,12 @@ class Native::Interface::GigabitEthernet::Duplex : public ydk::Enum
         static const ydk::Enum::YLeaf full;
         static const ydk::Enum::YLeaf half;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "full") return 1;
+            if (name == "half") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Nat66 : public ydk::Enum
@@ -3897,6 +3973,11 @@ class Native::Interface::GigabitEthernet::Nat66 : public ydk::Enum
         static const ydk::Enum::YLeaf inside;
         static const ydk::Enum::YLeaf outside;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inside") return 0;
+            if (name == "outside") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Switchport::Access::Vlan::Vlan_ : public ydk::Enum
@@ -3904,6 +3985,10 @@ class Native::Interface::GigabitEthernet::Switchport::Access::Vlan::Vlan_ : publ
     public:
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Switchport::Mode::Dynamic : public ydk::Enum
@@ -3912,6 +3997,11 @@ class Native::Interface::GigabitEthernet::Switchport::Mode::Dynamic : public ydk
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf desirable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 0;
+            if (name == "desirable") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Switchport::PortSecurity::Violation : public ydk::Enum
@@ -3921,6 +4011,12 @@ class Native::Interface::GigabitEthernet::Switchport::PortSecurity::Violation : 
         static const ydk::Enum::YLeaf restrict;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protect") return 0;
+            if (name == "restrict") return 1;
+            if (name == "shutdown") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Switchport::PortSecurity::Aging::Type : public ydk::Enum
@@ -3929,6 +4025,11 @@ class Native::Interface::GigabitEthernet::Switchport::PortSecurity::Aging::Type 
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf inactivity;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absolute") return 0;
+            if (name == "inactivity") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Switchport::Trunk::Encapsulation : public ydk::Enum
@@ -3938,6 +4039,12 @@ class Native::Interface::GigabitEthernet::Switchport::Trunk::Encapsulation : pub
         static const ydk::Enum::YLeaf isl;
         static const ydk::Enum::YLeaf negotiate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1q") return 0;
+            if (name == "isl") return 1;
+            if (name == "negotiate") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Switchport::Trunk::Native_::Vlan : public ydk::Enum
@@ -3945,6 +4052,10 @@ class Native::Interface::GigabitEthernet::Switchport::Trunk::Native_::Vlan : pub
     public:
         static const ydk::Enum::YLeaf tag;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tag") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
@@ -3954,6 +4065,12 @@ class Native::Interface::GigabitEthernet::Switchport::Voice::Vlan::Vlan_ : publi
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf untagged;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1p") return 0;
+            if (name == "none") return 1;
+            if (name == "untagged") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Backup::Delay::Failure : public ydk::Enum
@@ -3961,6 +4078,10 @@ class Native::Interface::GigabitEthernet::Backup::Delay::Failure : public ydk::E
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3968,6 +4089,10 @@ class Native::Interface::GigabitEthernet::Backup::Delay::SecondaryDisable : publ
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Backup::Load::Kickin : public ydk::Enum
@@ -3975,6 +4100,10 @@ class Native::Interface::GigabitEthernet::Backup::Load::Kickin : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::GigabitEthernet::Backup::Load::Kickout : public ydk::Enum
@@ -3982,6 +4111,10 @@ class Native::Interface::GigabitEthernet::Backup::Load::Kickout : public ydk::En
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 

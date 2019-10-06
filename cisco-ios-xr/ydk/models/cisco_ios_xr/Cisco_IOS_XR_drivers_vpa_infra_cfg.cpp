@@ -435,15 +435,15 @@ bool HardwareModule::Nodes::Node::has_leaf_or_child_of_name(const std::string & 
 
 const Enum::YLeaf HwModuleSpaPhysicalMode::cem {1, "cem"};
 
+const Enum::YLeaf HwModuleShutdownPowerMode::unpowered {1, "unpowered"};
+const Enum::YLeaf HwModuleShutdownPowerMode::powered {2, "powered"};
+
 const Enum::YLeaf HwModuleSpaPhysicalInterface::t3 {1, "t3"};
 const Enum::YLeaf HwModuleSpaPhysicalInterface::e3 {2, "e3"};
 const Enum::YLeaf HwModuleSpaPhysicalInterface::t1 {3, "t1"};
 const Enum::YLeaf HwModuleSpaPhysicalInterface::e1 {4, "e1"};
 const Enum::YLeaf HwModuleSpaPhysicalInterface::sonet {5, "sonet"};
 const Enum::YLeaf HwModuleSpaPhysicalInterface::sdh {6, "sdh"};
-
-const Enum::YLeaf HwModuleShutdownPowerMode::unpowered {1, "unpowered"};
-const Enum::YLeaf HwModuleShutdownPowerMode::powered {2, "powered"};
 
 
 }

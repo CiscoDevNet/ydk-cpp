@@ -332,6 +332,17 @@ class EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueT
         static const ydk::Enum::YLeaf objectId;
         static const ydk::Enum::YLeaf counter64;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "counter32") return 1;
+            if (name == "unsignedOrGauge32") return 2;
+            if (name == "timeTicks") return 3;
+            if (name == "integer32") return 4;
+            if (name == "ipAddress") return 5;
+            if (name == "octetString") return 6;
+            if (name == "objectId") return 7;
+            if (name == "counter64") return 8;
+            return -1;
+        }
 };
 
 class EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionError : public ydk::Enum
@@ -349,6 +360,20 @@ class EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionError 
         static const ydk::Enum::YLeaf resourceUnavailable;
         static const ydk::Enum::YLeaf divideByZero;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalidSyntax") return 1;
+            if (name == "undefinedObjectIndex") return 2;
+            if (name == "unrecognizedOperator") return 3;
+            if (name == "unrecognizedFunction") return 4;
+            if (name == "invalidOperandType") return 5;
+            if (name == "unmatchedParenthesis") return 6;
+            if (name == "tooManyWildcardValues") return 7;
+            if (name == "recursion") return 8;
+            if (name == "deltaTooShort") return 9;
+            if (name == "resourceUnavailable") return 10;
+            if (name == "divideByZero") return 11;
+            return -1;
+        }
 };
 
 class EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectSampleType : public ydk::Enum
@@ -357,6 +382,11 @@ class EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectSampleType : publi
         static const ydk::Enum::YLeaf absoluteValue;
         static const ydk::Enum::YLeaf deltaValue;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absoluteValue") return 1;
+            if (name == "deltaValue") return 2;
+            return -1;
+        }
 };
 
 class EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectDiscontinuityIDType : public ydk::Enum
@@ -365,6 +395,11 @@ class EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectDiscontinuityIDTyp
         static const ydk::Enum::YLeaf timeTicks;
         static const ydk::Enum::YLeaf timeStamp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "timeTicks") return 1;
+            if (name == "timeStamp") return 2;
+            return -1;
+        }
 };
 
 

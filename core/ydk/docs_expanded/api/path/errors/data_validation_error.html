@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YDataValidationError &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="YDK Path API" href="../path.html"/>
+        <link rel="next" title="YPathError" href="path_error.html"/>
+        <link rel="prev" title="YCoreError" href="core_error.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-nodes">Path API Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../path.html#path-api-errors">Path API Errors</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="codec_error.html">YCodecError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_error.html">YCoreError</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">YDataValidationError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="path_error.html">YPathError</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api">Path API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>YDataValidationError</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ydatavalidationerror">
+<h1>YDataValidationError<a class="headerlink" href="#ydatavalidationerror" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path20YDataValidationErrorE">
+<span id="ydk::path::YDataValidationError"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">YDataValidationError</code> : <em class="property">public</em> <a class="reference internal" href="core_error.html#_CPPv2N3ydk4path10YCoreErrorE" title="ydk::path::YCoreError">YCoreError</a><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationErrorE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception that encapsulates the validation errors on a data tree.</p>
+<dl class="member">
+<dt id="_CPPv26errors">
+<span id="ydk::path::YDataValidationError::errors__std::vector:std::pair:DataNodeP.Error::"></span>std::vector&lt;std::pair&lt;<a class="reference internal" href="../nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode">DataNode</a> *, <a class="reference internal" href="#_CPPv2N3ydk4path20YDataValidationError5ErrorE" title="ydk::path::YDataValidationError::Error">Error</a>&gt;&gt; <code class="descclassname"></code><code class="descname">errors</code><a class="headerlink" href="#_CPPv26errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of validation errors specific to this node.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path20YDataValidationError20YDataValidationErrorEv">
+<span id="ydk::path::YDataValidationError::YDataValidationError"></span><code class="descclassname"></code><code class="descname">YDataValidationError</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError20YDataValidationErrorEv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="enum-class">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5ErrorE">
+<em class="property">enum class </em><code class="descclassname"></code><code class="descname">Error</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5ErrorE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data Validation Error Enum.</p>
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error7SUCCESSE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">SUCCESS</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error7SUCCESSE" title="Permalink to this definition">¶</a></dt>
+<dd><p>No error.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error7TOOMANYE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">TOOMANY</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error7TOOMANYE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Too many instances of some object.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error11DUPLEAFLISTE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">DUPLEAFLIST</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error11DUPLEAFLISTE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiple instances of leaf-list.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error7DUPLISTE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">DUPLIST</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error7DUPLISTE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiple instances of list.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6NOUNIQE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOUNIQ</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6NOUNIQE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unique leaves match on 2 list instances (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error7OBSDATAE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">OBSDATA</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error7OBSDATAE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obsolete data instantiation (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error8NORESOLVE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NORESOLV</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error8NORESOLVE" title="Permalink to this definition">¶</a></dt>
+<dd><p>No resolvents found for an expression (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6INELEME">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INELEM</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6INELEME" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nvalid element (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error8MISSELEME">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">MISSELEM</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error8MISSELEME" title="Permalink to this definition">¶</a></dt>
+<dd><p>Missing required element (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error5INVALE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INVAL</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error5INVALE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid value of an element (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error9INVALATTRE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INVALATTR</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error9INVALATTRE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid attribute value (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6INATTRE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INATTR</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6INATTRE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid attribute in an element (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error8MISSATTRE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">MISSATTR</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error8MISSATTRE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Missing attribute in an element (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error8NOCONSTRE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOCONSTR</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error8NOCONSTRE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value out of range/length/pattern (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6INCHARE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INCHAR</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6INCHARE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unexpected characters (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6INPREDE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INPRED</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6INPREDE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicate resolution fail (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error9MCASEDATAE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">MCASEDATA</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error9MCASEDATAE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data for more cases of a choice (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6NOMUSTE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOMUST</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6NOMUSTE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unsatisfied must condition (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6NOWHENE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOWHEN</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6NOWHENE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unsatisfied when condition (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error7INORDERE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INORDER</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error7INORDERE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid order of elements (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error6INWHENE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">INWHEN</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error6INWHENE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Irresolvable when condition (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error5NOMINE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOMIN</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error5NOMINE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Min-elements constraint not honored (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error5NOMAXE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOMAX</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error5NOMAXE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Max-elements constraint not honored (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error8NOREQINSE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOREQINS</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error8NOREQINSE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required instance does not exits (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error9NOLEAFREFE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOLEAFREF</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error9NOLEAFREFE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leaf pointed to by leafref does not exist (data).</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path20YDataValidationError5Error12NOMANDCHOICEE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">NOMANDCHOICE</code><a class="headerlink" href="#_CPPv2N3ydk4path20YDataValidationError5Error12NOMANDCHOICEE" title="Permalink to this definition">¶</a></dt>
+<dd><p>No mandatory choice case branch exists (data).</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="path_error.html" class="btn btn-neutral float-right" title="YPathError" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="core_error.html" class="btn btn-neutral" title="YCoreError" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

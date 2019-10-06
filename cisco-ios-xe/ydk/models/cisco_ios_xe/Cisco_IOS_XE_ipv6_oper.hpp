@@ -76,6 +76,16 @@ class Ipv6NdTdlState : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6_nd_probe;
         static const ydk::Enum::YLeaf ipv6_nd_delete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv6-nd-incomplete") return 0;
+            if (name == "ipv6-nd-reachable") return 1;
+            if (name == "ipv6-nd-stale") return 2;
+            if (name == "ipv6-nd-glean") return 3;
+            if (name == "ipv6-nd-delay") return 4;
+            if (name == "ipv6-nd-probe") return 5;
+            if (name == "ipv6-nd-delete") return 6;
+            return -1;
+        }
 };
 
 

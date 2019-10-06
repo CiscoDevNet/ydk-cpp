@@ -478,6 +478,10 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Damphs
         ydk::YLeaf originatorid; //type: string
         ydk::YLeaf clusterlst; //type: string
         ydk::YLeaf peerrtrid; //type: string
+        ydk::YLeaf numimported; //type: uint16
+        ydk::YLeaf importedlst; //type: string
+        ydk::YLeaf importedsrc; //type: string
+        ydk::YLeaf origimportedsrc; //type: string
         class SegItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::DamphstpathsrtItems::MvpnrtItems::MvpnRouteList::PathItems::PathList::SegItems
         class RcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::DamphstpathsrtItems::MvpnrtItems::MvpnRouteList::PathItems::PathList::RcommItems
         class EcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::DamphstpathsrtItems::MvpnrtItems::MvpnRouteList::PathItems::PathList::EcommItems
@@ -1031,6 +1035,10 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Rttype
         ydk::YLeaf originatorid; //type: string
         ydk::YLeaf clusterlst; //type: string
         ydk::YLeaf peerrtrid; //type: string
+        ydk::YLeaf numimported; //type: uint16
+        ydk::YLeaf importedlst; //type: string
+        ydk::YLeaf importedsrc; //type: string
+        ydk::YLeaf origimportedsrc; //type: string
         class SegItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RttypeItems::RtTypeRoutesList::LsrtItems::LnkStRouteList::PathItems::PathList::SegItems
         class RcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RttypeItems::RtTypeRoutesList::LsrtItems::LnkStRouteList::PathItems::PathList::RcommItems
         class EcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RttypeItems::RtTypeRoutesList::LsrtItems::LnkStRouteList::PathItems::PathList::EcommItems
@@ -1535,6 +1543,10 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Rttype
         ydk::YLeaf originatorid; //type: string
         ydk::YLeaf clusterlst; //type: string
         ydk::YLeaf peerrtrid; //type: string
+        ydk::YLeaf numimported; //type: uint16
+        ydk::YLeaf importedlst; //type: string
+        ydk::YLeaf importedsrc; //type: string
+        ydk::YLeaf origimportedsrc; //type: string
         class SegItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RttypeItems::RtTypeRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::SegItems
         class RcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RttypeItems::RtTypeRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::RcommItems
         class EcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RttypeItems::RtTypeRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::EcommItems
@@ -2086,6 +2098,10 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VnidIt
         ydk::YLeaf originatorid; //type: string
         ydk::YLeaf clusterlst; //type: string
         ydk::YLeaf peerrtrid; //type: string
+        ydk::YLeaf numimported; //type: uint16
+        ydk::YLeaf importedlst; //type: string
+        ydk::YLeaf importedsrc; //type: string
+        ydk::YLeaf origimportedsrc; //type: string
         class SegItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VnidItems::EvpnVnIdRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::SegItems
         class RcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VnidItems::EvpnVnIdRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::RcommItems
         class EcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::VnidItems::EvpnVnIdRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::EcommItems
@@ -2637,6 +2653,10 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MacIte
         ydk::YLeaf originatorid; //type: string
         ydk::YLeaf clusterlst; //type: string
         ydk::YLeaf peerrtrid; //type: string
+        ydk::YLeaf numimported; //type: uint16
+        ydk::YLeaf importedlst; //type: string
+        ydk::YLeaf importedsrc; //type: string
+        ydk::YLeaf origimportedsrc; //type: string
         class SegItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MacItems::EvpnMacAddrRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::SegItems
         class RcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MacItems::EvpnMacAddrRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::RcommItems
         class EcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::MacItems::EvpnMacAddrRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::EcommItems
@@ -3191,6 +3211,10 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItem
         ydk::YLeaf originatorid; //type: string
         ydk::YLeaf clusterlst; //type: string
         ydk::YLeaf peerrtrid; //type: string
+        ydk::YLeaf numimported; //type: uint16
+        ydk::YLeaf importedlst; //type: string
+        ydk::YLeaf importedsrc; //type: string
+        ydk::YLeaf origimportedsrc; //type: string
         class SegItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItems::RdRoutesList::VpnrtItems::VpnRouteList::PathItems::PathList::SegItems
         class RcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItems::RdRoutesList::VpnrtItems::VpnRouteList::PathItems::PathList::RcommItems
         class EcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItems::RdRoutesList::VpnrtItems::VpnRouteList::PathItems::PathList::EcommItems
@@ -3695,6 +3719,10 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItem
         ydk::YLeaf originatorid; //type: string
         ydk::YLeaf clusterlst; //type: string
         ydk::YLeaf peerrtrid; //type: string
+        ydk::YLeaf numimported; //type: uint16
+        ydk::YLeaf importedlst; //type: string
+        ydk::YLeaf importedsrc; //type: string
+        ydk::YLeaf origimportedsrc; //type: string
         class SegItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItems::RdRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::SegItems
         class RcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItems::RdRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::RcommItems
         class EcommItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::RdItems::RdRoutesList::EvpnrtItems::EvpnRouteList::PathItems::PathList::EcommItems

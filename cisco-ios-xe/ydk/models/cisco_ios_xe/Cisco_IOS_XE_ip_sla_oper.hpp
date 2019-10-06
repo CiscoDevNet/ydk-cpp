@@ -556,6 +556,34 @@ class IpSlaStats::SlaOperEntry::Stats::VoiceScore : public ydk::Entity
 
 }; // IpSlaStats::SlaOperEntry::Stats::VoiceScore
 
+class TtlType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ttl_finite;
+        static const ydk::Enum::YLeaf ttl_forever;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ttl-finite") return 0;
+            if (name == "ttl-forever") return 1;
+            return -1;
+        }
+};
+
+class RttType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rtt_known;
+        static const ydk::Enum::YLeaf rtt_unknown;
+        static const ydk::Enum::YLeaf rtt_could_not_find;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "rtt-known") return 0;
+            if (name == "rtt-unknown") return 1;
+            if (name == "rtt-could-not-find") return 2;
+            return -1;
+        }
+};
+
 class SlaOperType : public ydk::Enum
 {
     public:
@@ -573,6 +601,22 @@ class SlaOperType : public ydk::Enum
         static const ydk::Enum::YLeaf oper_type_path_jitter;
         static const ydk::Enum::YLeaf oper_type_icmp_echo;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "oper-type-unknown") return 0;
+            if (name == "oper-type-udp-echo") return 1;
+            if (name == "oper-type-udp-jitter") return 2;
+            if (name == "oper-type-icmp-jitter") return 3;
+            if (name == "oper-type-ethernet-jitter") return 4;
+            if (name == "oper-type-ethernet-echo") return 5;
+            if (name == "oper-type-y1731-delay") return 6;
+            if (name == "oper-type-y1731-loss") return 7;
+            if (name == "oper-type-video") return 8;
+            if (name == "oper-type-mcast") return 9;
+            if (name == "oper-type-pong") return 10;
+            if (name == "oper-type-path-jitter") return 11;
+            if (name == "oper-type-icmp-echo") return 12;
+            return -1;
+        }
 };
 
 class SlaReturnCode : public ydk::Enum
@@ -588,6 +632,18 @@ class SlaReturnCode : public ydk::Enum
         static const ydk::Enum::YLeaf ret_code_operation_failure;
         static const ydk::Enum::YLeaf ret_code_could_not_find;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ret-code-unknown") return 0;
+            if (name == "ret-code-ok") return 1;
+            if (name == "ret-code-disconnected") return 2;
+            if (name == "ret-code-busy") return 3;
+            if (name == "ret-code-timeout") return 4;
+            if (name == "ret-code-no-connection") return 5;
+            if (name == "ret-code-internal-error") return 6;
+            if (name == "ret-code-operation-failure") return 7;
+            if (name == "ret-code-could-not-find") return 8;
+            return -1;
+        }
 };
 
 class AccuracyType : public ydk::Enum
@@ -596,23 +652,11 @@ class AccuracyType : public ydk::Enum
         static const ydk::Enum::YLeaf accuracy_milliseconds;
         static const ydk::Enum::YLeaf accuracy_microseconds;
 
-};
-
-class RttType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rtt_known;
-        static const ydk::Enum::YLeaf rtt_unknown;
-        static const ydk::Enum::YLeaf rtt_could_not_find;
-
-};
-
-class TtlType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ttl_finite;
-        static const ydk::Enum::YLeaf ttl_forever;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "accuracy-milliseconds") return 0;
+            if (name == "accuracy-microseconds") return 1;
+            return -1;
+        }
 };
 
 

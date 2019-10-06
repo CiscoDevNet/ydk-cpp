@@ -3845,6 +3845,57 @@ class Install::Logs::Log::Communication::LogContents::V3::Scope : public ydk::En
 
 }; // Install::Logs::Log::Communication::LogContents::V3::Scope
 
+class InstmgrIssuAbortMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf method_undefined;
+        static const ydk::Enum::YLeaf method_no_operation;
+        static const ydk::Enum::YLeaf method_standby_reload;
+        static const ydk::Enum::YLeaf method_system_reload;
+        static const ydk::Enum::YLeaf method_rollback;
+        static const ydk::Enum::YLeaf method_not_possible;
+        static const ydk::Enum::YLeaf method_admin_only;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "method-undefined") return 0;
+            if (name == "method-no-operation") return 1;
+            if (name == "method-standby-reload") return 2;
+            if (name == "method-system-reload") return 3;
+            if (name == "method-rollback") return 4;
+            if (name == "method-not-possible") return 5;
+            if (name == "method-admin-only") return 6;
+            return -1;
+        }
+};
+
+class InstmgrBagRequestTrigger : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cli;
+        static const ydk::Enum::YLeaf xr_xml;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "cli") return 1;
+            if (name == "xr-xml") return 2;
+            return -1;
+        }
+};
+
+class InstmgrGroup : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inst_pkg_group_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_group_grouped;
+        static const ydk::Enum::YLeaf inst_pkg_group_individual;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "inst-pkg-group-undefined") return 0;
+            if (name == "inst-pkg-group-grouped") return 1;
+            if (name == "inst-pkg-group-individual") return 2;
+            return -1;
+        }
+};
+
 class IsmCardTypeFamily : public ydk::Enum
 {
     public:
@@ -3863,44 +3914,48 @@ class IsmCardTypeFamily : public ydk::Enum
         static const ydk::Enum::YLeaf fabric_sp;
         static const ydk::Enum::YLeaf spa;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ndsc-active-rp") return 1;
+            if (name == "ndsc-standby-rp") return 2;
+            if (name == "active-drp") return 3;
+            if (name == "standby-drp") return 4;
+            if (name == "dsc-active-rp") return 5;
+            if (name == "dsc-standby-rp") return 6;
+            if (name == "active-sc") return 7;
+            if (name == "standby-sc") return 8;
+            if (name == "root-active-sc") return 9;
+            if (name == "root-standby-sc") return 10;
+            if (name == "lc") return 11;
+            if (name == "sp") return 12;
+            if (name == "fabric-sp") return 13;
+            if (name == "spa") return 14;
+            return -1;
+        }
 };
 
-class InstmgrIsmFsmState : public ydk::Enum
+class InstmgrBagUserMsgCategory : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf init_done;
-        static const ydk::Enum::YLeaf load_shut;
-        static const ydk::Enum::YLeaf load_wait;
-        static const ydk::Enum::YLeaf load_stp_root_before;
-        static const ydk::Enum::YLeaf load_standby_root_sc_upgrade;
-        static const ydk::Enum::YLeaf load_standby_management_upgrade;
-        static const ydk::Enum::YLeaf load_stp_root_after;
-        static const ydk::Enum::YLeaf load_fabric_upgrade;
-        static const ydk::Enum::YLeaf load_management_issu_ready;
-        static const ydk::Enum::YLeaf load_done;
-        static const ydk::Enum::YLeaf run_prep;
-        static const ydk::Enum::YLeaf run_wait;
-        static const ydk::Enum::YLeaf runi_mdr_prep;
-        static const ydk::Enum::YLeaf runi_mdr_start;
-        static const ydk::Enum::YLeaf runi_mdr_complete;
-        static const ydk::Enum::YLeaf run_make_standby_ready;
-        static const ydk::Enum::YLeaf run_root_scfo;
-        static const ydk::Enum::YLeaf run_ndscfo;
-        static const ydk::Enum::YLeaf run_transient1;
-        static const ydk::Enum::YLeaf run_dscfo;
-        static const ydk::Enum::YLeaf run_fo_complete;
-        static const ydk::Enum::YLeaf run_stp_root_return;
-        static const ydk::Enum::YLeaf runi_mdr_continue;
-        static const ydk::Enum::YLeaf run_am_i_ready_afteri_mdr;
-        static const ydk::Enum::YLeaf run_nsf_ready;
-        static const ydk::Enum::YLeaf run_nsf_begin;
-        static const ydk::Enum::YLeaf runi_mdr_done;
-        static const ydk::Enum::YLeaf run_management_issu_ready;
-        static const ydk::Enum::YLeaf run_un_shut;
-        static const ydk::Enum::YLeaf run_is_done;
-        static const ydk::Enum::YLeaf state_max;
+        static const ydk::Enum::YLeaf user_error;
+        static const ydk::Enum::YLeaf non_specific;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf user_prompt;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf system_error;
+        static const ydk::Enum::YLeaf user_response;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "user-error") return 1;
+            if (name == "non-specific") return 2;
+            if (name == "warning") return 3;
+            if (name == "information") return 4;
+            if (name == "user-prompt") return 5;
+            if (name == "log") return 6;
+            if (name == "system-error") return 7;
+            if (name == "user-response") return 8;
+            return -1;
+        }
 };
 
 class InstallmgrIsmNodeConforming : public ydk::Enum
@@ -3912,6 +3967,48 @@ class InstallmgrIsmNodeConforming : public ydk::Enum
         static const ydk::Enum::YLeaf none_conforming_spa;
         static const ydk::Enum::YLeaf spa_upgrade_fail;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "conforming") return 0;
+            if (name == "none-conforming") return 1;
+            if (name == "upgrade-fail") return 2;
+            if (name == "none-conforming-spa") return 3;
+            if (name == "spa-upgrade-fail") return 4;
+            return -1;
+        }
+};
+
+class InstmgrInstallPhase : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inst_phase_unknown;
+        static const ydk::Enum::YLeaf inst_phase_download;
+        static const ydk::Enum::YLeaf inst_phase_sw_change;
+        static const ydk::Enum::YLeaf inst_phase_cleaning_up;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "inst-phase-unknown") return 0;
+            if (name == "inst-phase-download") return 10;
+            if (name == "inst-phase-sw-change") return 50;
+            if (name == "inst-phase-cleaning-up") return 1000;
+            return -1;
+        }
+};
+
+class InstmgrIssuAbortImpact : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf hitless;
+        static const ydk::Enum::YLeaf traffic_outage;
+        static const ydk::Enum::YLeaf not_applicable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "undefined") return 0;
+            if (name == "hitless") return 1;
+            if (name == "traffic-outage") return 2;
+            if (name == "not-applicable") return 3;
+            return -1;
+        }
 };
 
 class InstmgrIsmNodeState : public ydk::Enum
@@ -3950,28 +4047,58 @@ class InstmgrIsmNodeState : public ydk::Enum
         static const ydk::Enum::YLeaf not_reachable;
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "issu-node-gsp-ready") return 1;
+            if (name == "load-shut-done") return 2;
+            if (name == "standby-management-upgrade-done") return 3;
+            if (name == "fabric-upgrade-done") return 4;
+            if (name == "imdr-preparation-ack-received") return 5;
+            if (name == "imdr-preparation-failed") return 6;
+            if (name == "imdr-start-ack-received") return 7;
+            if (name == "imdr-start-failed") return 8;
+            if (name == "imdr-complete-ack-received") return 9;
+            if (name == "imdr-complete-failed") return 10;
+            if (name == "standby-management-ready") return 11;
+            if (name == "fo-acknowledged") return 12;
+            if (name == "fo-complete") return 13;
+            if (name == "standby-ready-after-fo") return 14;
+            if (name == "iam-ready-afteri-mdr") return 15;
+            if (name == "nsf-ready") return 16;
+            if (name == "nsf-begin-ack-received") return 17;
+            if (name == "imdr-done") return 18;
+            if (name == "unshut-done") return 19;
+            if (name == "run-done") return 20;
+            if (name == "imdr-abort-sent") return 21;
+            if (name == "imdr-abort-ack-received") return 22;
+            if (name == "imdr-abort-failed") return 23;
+            if (name == "standby-management-downgrade-done") return 24;
+            if (name == "fabric-downgrade-done") return 25;
+            if (name == "reload-during-issu") return 26;
+            if (name == "timneout") return 27;
+            if (name == "fabric-upgrade-failed") return 28;
+            if (name == "unsupported-hw") return 29;
+            if (name == "not-reachable") return 30;
+            if (name == "max") return 32;
+            return -1;
+        }
 };
 
-class InstmgrPiCard : public ydk::Enum
+class InstmgrPkg : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf type_rp;
-        static const ydk::Enum::YLeaf type_drp;
-        static const ydk::Enum::YLeaf type_lc;
-        static const ydk::Enum::YLeaf type_sc;
-        static const ydk::Enum::YLeaf type_sp;
-        static const ydk::Enum::YLeaf type_other;
+        static const ydk::Enum::YLeaf inst_pkg_type_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_type_root;
+        static const ydk::Enum::YLeaf inst_pkg_type_standard;
+        static const ydk::Enum::YLeaf inst_pkg_type_internal;
 
-};
-
-class InstmgrNodeRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf redundency_unknown;
-        static const ydk::Enum::YLeaf redundency_active;
-        static const ydk::Enum::YLeaf redundency_standby;
-        static const ydk::Enum::YLeaf redundency_unusable;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "inst-pkg-type-undefined") return 0;
+            if (name == "inst-pkg-type-root") return 1;
+            if (name == "inst-pkg-type-standard") return 2;
+            if (name == "inst-pkg-type-internal") return 3;
+            return -1;
+        }
 };
 
 class InstmgrCardState : public ydk::Enum
@@ -4016,102 +4143,64 @@ class InstmgrCardState : public ydk::Enum
         static const ydk::Enum::YLeaf instmgr_card_updating_fpd;
         static const ydk::Enum::YLeaf instmgr_card_num_states;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "instmgr-card-not-present") return 0;
+            if (name == "instmgr-card-present") return 1;
+            if (name == "instmgr-card-reset") return 2;
+            if (name == "instmgr-card-booting") return 3;
+            if (name == "instmgr-card-mbi-booting") return 4;
+            if (name == "instmgr-card-running-mbi") return 5;
+            if (name == "instmgr-card-running-ena") return 6;
+            if (name == "instmgr-card-bring-down") return 7;
+            if (name == "instmgr-card-ena-failure") return 8;
+            if (name == "instmgr-card-f-diag-run") return 9;
+            if (name == "instmgr-card-f-diag-failure") return 10;
+            if (name == "instmgr-card-powered") return 11;
+            if (name == "instmgr-card-unpowered") return 12;
+            if (name == "instmgr-card-mdr") return 13;
+            if (name == "instmgr-card-mdr-running-mbi") return 14;
+            if (name == "instmgr-card-main-t-mode") return 15;
+            if (name == "instmgr-card-admin-down") return 16;
+            if (name == "instmgr-card-no-mon") return 17;
+            if (name == "instmgr-card-unknown") return 18;
+            if (name == "instmgr-card-failed") return 19;
+            if (name == "instmgr-card-ok") return 20;
+            if (name == "instmgr-card-missing") return 21;
+            if (name == "instmgr-card-field-diag-downloading") return 22;
+            if (name == "instmgr-card-field-diag-unmonitor") return 23;
+            if (name == "instmgr-card-fabric-field-diag-unmonitor") return 24;
+            if (name == "instmgr-card-field-diag-rp-launching") return 25;
+            if (name == "instmgr-card-field-diag-running") return 26;
+            if (name == "instmgr-card-field-diag-pass") return 27;
+            if (name == "instmgr-card-field-diag-fail") return 28;
+            if (name == "instmgr-card-field-diag-timeout") return 29;
+            if (name == "instmgr-card-disabled") return 30;
+            if (name == "instmgr-card-spa-booting") return 31;
+            if (name == "instmgr-card-not-allowed-online") return 32;
+            if (name == "instmgr-card-stopped") return 33;
+            if (name == "instmgr-card-incompatible-fw-ver") return 34;
+            if (name == "instmgr-card-fpd-hold") return 35;
+            if (name == "instmgr-card-updating-fpd") return 37;
+            if (name == "instmgr-card-num-states") return 38;
+            return -1;
+        }
 };
 
-class InstmgrGroup : public ydk::Enum
+class InstmgrNodeRole : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inst_pkg_group_undefined;
-        static const ydk::Enum::YLeaf inst_pkg_group_grouped;
-        static const ydk::Enum::YLeaf inst_pkg_group_individual;
+        static const ydk::Enum::YLeaf redundency_unknown;
+        static const ydk::Enum::YLeaf redundency_active;
+        static const ydk::Enum::YLeaf redundency_standby;
+        static const ydk::Enum::YLeaf redundency_unusable;
 
-};
-
-class InstmgrPkg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inst_pkg_type_undefined;
-        static const ydk::Enum::YLeaf inst_pkg_type_root;
-        static const ydk::Enum::YLeaf inst_pkg_type_standard;
-        static const ydk::Enum::YLeaf inst_pkg_type_internal;
-
-};
-
-class InstmgrInstallPhase : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inst_phase_unknown;
-        static const ydk::Enum::YLeaf inst_phase_download;
-        static const ydk::Enum::YLeaf inst_phase_sw_change;
-        static const ydk::Enum::YLeaf inst_phase_cleaning_up;
-
-};
-
-class InstmgrBagIiState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf in_progress;
-        static const ydk::Enum::YLeaf completed;
-        static const ydk::Enum::YLeaf aborted;
-        static const ydk::Enum::YLeaf rebooted;
-
-};
-
-class InstmgrBagIiDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_incremental;
-        static const ydk::Enum::YLeaf installing;
-        static const ydk::Enum::YLeaf unwinding;
-
-};
-
-class InstmgrBagUserMsgCategory : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf user_error;
-        static const ydk::Enum::YLeaf non_specific;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf user_prompt;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf system_error;
-        static const ydk::Enum::YLeaf user_response;
-
-};
-
-class InstmgrIssuAbortImpact : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf undefined;
-        static const ydk::Enum::YLeaf hitless;
-        static const ydk::Enum::YLeaf traffic_outage;
-        static const ydk::Enum::YLeaf not_applicable;
-
-};
-
-class InstmgrIssuAbortMethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf method_undefined;
-        static const ydk::Enum::YLeaf method_no_operation;
-        static const ydk::Enum::YLeaf method_standby_reload;
-        static const ydk::Enum::YLeaf method_system_reload;
-        static const ydk::Enum::YLeaf method_rollback;
-        static const ydk::Enum::YLeaf method_not_possible;
-        static const ydk::Enum::YLeaf method_admin_only;
-
-};
-
-class InstmgrBagAbortState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf abortable;
-        static const ydk::Enum::YLeaf no_longer_abortable;
-        static const ydk::Enum::YLeaf never_abortable;
-        static const ydk::Enum::YLeaf already_aborted;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "redundency-unknown") return 0;
+            if (name == "redundency-active") return 1;
+            if (name == "redundency-standby") return 2;
+            if (name == "redundency-unusable") return 3;
+            return -1;
+        }
 };
 
 class InstmgrRequest : public ydk::Enum
@@ -4134,14 +4223,153 @@ class InstmgrRequest : public ydk::Enum
         static const ydk::Enum::YLeaf clear_label;
         static const ydk::Enum::YLeaf extend;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "add") return 1;
+            if (name == "accept") return 2;
+            if (name == "clean") return 3;
+            if (name == "activate") return 4;
+            if (name == "deactivate") return 5;
+            if (name == "commit") return 6;
+            if (name == "verify") return 7;
+            if (name == "rollback") return 8;
+            if (name == "clear-rollback") return 9;
+            if (name == "clear-log") return 10;
+            if (name == "health-check") return 11;
+            if (name == "operation") return 12;
+            if (name == "stop-timer") return 13;
+            if (name == "label") return 14;
+            if (name == "clear-label") return 15;
+            if (name == "extend") return 16;
+            return -1;
+        }
 };
 
-class InstmgrBagRequestTrigger : public ydk::Enum
+class InstmgrIsmFsmState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cli;
-        static const ydk::Enum::YLeaf xr_xml;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf init_done;
+        static const ydk::Enum::YLeaf load_shut;
+        static const ydk::Enum::YLeaf load_wait;
+        static const ydk::Enum::YLeaf load_stp_root_before;
+        static const ydk::Enum::YLeaf load_standby_root_sc_upgrade;
+        static const ydk::Enum::YLeaf load_standby_management_upgrade;
+        static const ydk::Enum::YLeaf load_stp_root_after;
+        static const ydk::Enum::YLeaf load_fabric_upgrade;
+        static const ydk::Enum::YLeaf load_management_issu_ready;
+        static const ydk::Enum::YLeaf load_done;
+        static const ydk::Enum::YLeaf run_prep;
+        static const ydk::Enum::YLeaf run_wait;
+        static const ydk::Enum::YLeaf runi_mdr_prep;
+        static const ydk::Enum::YLeaf runi_mdr_start;
+        static const ydk::Enum::YLeaf runi_mdr_complete;
+        static const ydk::Enum::YLeaf run_make_standby_ready;
+        static const ydk::Enum::YLeaf run_root_scfo;
+        static const ydk::Enum::YLeaf run_ndscfo;
+        static const ydk::Enum::YLeaf run_transient1;
+        static const ydk::Enum::YLeaf run_dscfo;
+        static const ydk::Enum::YLeaf run_fo_complete;
+        static const ydk::Enum::YLeaf run_stp_root_return;
+        static const ydk::Enum::YLeaf runi_mdr_continue;
+        static const ydk::Enum::YLeaf run_am_i_ready_afteri_mdr;
+        static const ydk::Enum::YLeaf run_nsf_ready;
+        static const ydk::Enum::YLeaf run_nsf_begin;
+        static const ydk::Enum::YLeaf runi_mdr_done;
+        static const ydk::Enum::YLeaf run_management_issu_ready;
+        static const ydk::Enum::YLeaf run_un_shut;
+        static const ydk::Enum::YLeaf run_is_done;
+        static const ydk::Enum::YLeaf state_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 0;
+            if (name == "init-done") return 1;
+            if (name == "load-shut") return 2;
+            if (name == "load-wait") return 3;
+            if (name == "load-stp-root-before") return 4;
+            if (name == "load-standby-root-sc-upgrade") return 5;
+            if (name == "load-standby-management-upgrade") return 6;
+            if (name == "load-stp-root-after") return 7;
+            if (name == "load-fabric-upgrade") return 8;
+            if (name == "load-management-issu-ready") return 9;
+            if (name == "load-done") return 10;
+            if (name == "run-prep") return 11;
+            if (name == "run-wait") return 12;
+            if (name == "runi-mdr-prep") return 13;
+            if (name == "runi-mdr-start") return 14;
+            if (name == "runi-mdr-complete") return 15;
+            if (name == "run-make-standby-ready") return 16;
+            if (name == "run-root-scfo") return 17;
+            if (name == "run-ndscfo") return 18;
+            if (name == "run-transient1") return 19;
+            if (name == "run-dscfo") return 20;
+            if (name == "run-fo-complete") return 21;
+            if (name == "run-stp-root-return") return 22;
+            if (name == "runi-mdr-continue") return 23;
+            if (name == "run-am-i-ready-afteri-mdr") return 24;
+            if (name == "run-nsf-ready") return 25;
+            if (name == "run-nsf-begin") return 26;
+            if (name == "runi-mdr-done") return 27;
+            if (name == "run-management-issu-ready") return 28;
+            if (name == "run-un-shut") return 29;
+            if (name == "run-is-done") return 30;
+            if (name == "state-max") return 31;
+            return -1;
+        }
+};
+
+class InstmgrBagIiDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_incremental;
+        static const ydk::Enum::YLeaf installing;
+        static const ydk::Enum::YLeaf unwinding;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-incremental") return 0;
+            if (name == "installing") return 1;
+            if (name == "unwinding") return 2;
+            return -1;
+        }
+};
+
+class InstmgrPiCard : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type_rp;
+        static const ydk::Enum::YLeaf type_drp;
+        static const ydk::Enum::YLeaf type_lc;
+        static const ydk::Enum::YLeaf type_sc;
+        static const ydk::Enum::YLeaf type_sp;
+        static const ydk::Enum::YLeaf type_other;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "type-rp") return 0;
+            if (name == "type-drp") return 1;
+            if (name == "type-lc") return 2;
+            if (name == "type-sc") return 3;
+            if (name == "type-sp") return 4;
+            if (name == "type-other") return 5;
+            return -1;
+        }
+};
+
+class InstmgrBagIiState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf in_progress;
+        static const ydk::Enum::YLeaf completed;
+        static const ydk::Enum::YLeaf aborted;
+        static const ydk::Enum::YLeaf rebooted;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "in-progress") return 2;
+            if (name == "completed") return 3;
+            if (name == "aborted") return 4;
+            if (name == "rebooted") return 5;
+            return -1;
+        }
 };
 
 class InstmgrBagLogEntryUserMsgCategory : public ydk::Enum
@@ -4156,6 +4384,34 @@ class InstmgrBagLogEntryUserMsgCategory : public ydk::Enum
         static const ydk::Enum::YLeaf system_error;
         static const ydk::Enum::YLeaf user_response;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "user-error") return 1;
+            if (name == "non-specific") return 2;
+            if (name == "warning") return 3;
+            if (name == "information") return 4;
+            if (name == "user-prompt") return 5;
+            if (name == "log") return 6;
+            if (name == "system-error") return 7;
+            if (name == "user-response") return 8;
+            return -1;
+        }
+};
+
+class InstmgrBagAbortState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf abortable;
+        static const ydk::Enum::YLeaf no_longer_abortable;
+        static const ydk::Enum::YLeaf never_abortable;
+        static const ydk::Enum::YLeaf already_aborted;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "abortable") return 1;
+            if (name == "no-longer-abortable") return 2;
+            if (name == "never-abortable") return 3;
+            if (name == "already-aborted") return 4;
+            return -1;
+        }
 };
 
 

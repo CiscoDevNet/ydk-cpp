@@ -431,7 +431,7 @@ class Native::L3vpn::Encapsulation::Ip::Mpls : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mtu; //type: one of enumeration, uint32
+        ydk::YLeaf mtu; //type: one of uint32, enumeration
         class Mtu;
 
 }; // Native::L3vpn::Encapsulation::Ip::Mpls
@@ -3508,7 +3508,7 @@ class Native::Mpls::Static::Binding::Ipv4::Global::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of enumeration, uint32
+        ydk::YLeaf label; //type: one of uint32, enumeration
         class Label;
 
 }; // Native::Mpls::Static::Binding::Ipv4::Global::Output
@@ -3582,7 +3582,7 @@ class Native::Mpls::Static::Binding::Ipv4::Vrf::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of enumeration, uint32
+        ydk::YLeaf label; //type: one of uint32, enumeration
         class Label;
 
 }; // Native::Mpls::Static::Binding::Ipv4::Vrf::Output
@@ -3801,6 +3801,10 @@ class Native::L3vpn::Encapsulation::Ip::Mpls::Mtu : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "max") return 0;
+            return -1;
+        }
 };
 
 class Native::Mpls::Label::Protocol : public ydk::Enum
@@ -3809,6 +3813,11 @@ class Native::Mpls::Label::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf tdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp") return 0;
+            if (name == "tdp") return 1;
+            return -1;
+        }
 };
 
 class Native::Mpls::Ldp::Enable2::Atm::ControlMode : public ydk::Enum
@@ -3817,6 +3826,11 @@ class Native::Mpls::Ldp::Enable2::Atm::ControlMode : public ydk::Enum
         static const ydk::Enum::YLeaf independent;
         static const ydk::Enum::YLeaf ordered;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "independent") return 0;
+            if (name == "ordered") return 1;
+            return -1;
+        }
 };
 
 class Native::Mpls::Ldp::Enable2::Neighbor::NeighborContent::Targeted::Protocol : public ydk::Enum
@@ -3825,6 +3839,11 @@ class Native::Mpls::Ldp::Enable2::Neighbor::NeighborContent::Targeted::Protocol 
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf tdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp") return 0;
+            if (name == "tdp") return 1;
+            return -1;
+        }
 };
 
 class Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_::NeighborContent::Targeted::Protocol : public ydk::Enum
@@ -3833,6 +3852,11 @@ class Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_::NeighborContent::Targeted
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf tdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp") return 0;
+            if (name == "tdp") return 1;
+            return -1;
+        }
 };
 
 class Native::Mpls::Static::Binding::Ipv4::Global::Output::Label : public ydk::Enum
@@ -3841,6 +3865,11 @@ class Native::Mpls::Static::Binding::Ipv4::Global::Output::Label : public ydk::E
         static const ydk::Enum::YLeaf explicit_null;
         static const ydk::Enum::YLeaf implicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "explicit-null") return 0;
+            if (name == "implicit-null") return 1;
+            return -1;
+        }
 };
 
 class Native::Mpls::Static::Binding::Ipv4::Vrf::Output::Label : public ydk::Enum
@@ -3849,6 +3878,11 @@ class Native::Mpls::Static::Binding::Ipv4::Vrf::Output::Label : public ydk::Enum
         static const ydk::Enum::YLeaf explicit_null;
         static const ydk::Enum::YLeaf implicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "explicit-null") return 0;
+            if (name == "implicit-null") return 1;
+            return -1;
+        }
 };
 
 

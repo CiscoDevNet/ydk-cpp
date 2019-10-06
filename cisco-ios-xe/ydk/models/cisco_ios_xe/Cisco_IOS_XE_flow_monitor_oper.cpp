@@ -1936,14 +1936,14 @@ const Enum::YLeaf FlowExporterIpwriteStatsType::flow_exporter_ipwrite_stats_othe
 const Enum::YLeaf FlowExporterIpwriteStatsType::flow_exporter_ipwrite_stats_rate_limit {11, "flow-exporter-ipwrite-stats-rate-limit"};
 const Enum::YLeaf FlowExporterIpwriteStatsType::flow_exporter_ipwrite_stats_no_destination {12, "flow-exporter-ipwrite-stats-no-destination"};
 
+const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_deleted {0, "flow-monitor-cache-state-being-deleted"};
+const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_allocated {1, "flow-monitor-cache-state-being-allocated"};
+const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_not_allocated {2, "flow-monitor-cache-state-not-allocated"};
+
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_normal {0, "flow-monitor-cache-type-normal"};
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_permanent {1, "flow-monitor-cache-type-permanent"};
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_synchronized {2, "flow-monitor-cache-type-synchronized"};
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_immediate {3, "flow-monitor-cache-type-immediate"};
-
-const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_deleted {0, "flow-monitor-cache-state-being-deleted"};
-const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_allocated {1, "flow-monitor-cache-state-being-allocated"};
-const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_not_allocated {2, "flow-monitor-cache-state-not-allocated"};
 
 
 }

@@ -63,9 +63,9 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1ad::Cos2
 
@@ -116,9 +116,9 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of enumeration, uint16, string
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1q::Cos2
 
@@ -1569,77 +1569,6 @@ class Native::Interface::VirtualTemplate::Snmp::Trap::LinkStatusCapas::LinkStatu
         ydk::YLeaf duplicates; //type: empty
 
 }; // Native::Interface::VirtualTemplate::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit
-
-
-class Native::Interface::VirtualTemplate::Cdp : public ydk::Entity
-{
-    public:
-        Cdp();
-        ~Cdp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: boolean
-        class Tlv; //type: Native::Interface::VirtualTemplate::Cdp::Tlv
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cdp::Tlv> tlv;
-        
-}; // Native::Interface::VirtualTemplate::Cdp
-
-
-class Native::Interface::VirtualTemplate::Cdp::Tlv : public ydk::Entity
-{
-    public:
-        Tlv();
-        ~Tlv();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf server_location; //type: empty
-        ydk::YLeaf location; //type: empty
-        class App; //type: Native::Interface::VirtualTemplate::Cdp::Tlv::App
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cdp::Tlv::App> app; // presence node
-        
-}; // Native::Interface::VirtualTemplate::Cdp::Tlv
-
-
-class Native::Interface::VirtualTemplate::Cdp::Tlv::App : public ydk::Entity
-{
-    public:
-        App();
-        ~App();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tlvtype; //type: uint16
-        ydk::YLeaf value_; //type: string
-
-}; // Native::Interface::VirtualTemplate::Cdp::Tlv::App
 
 
 class Native::Interface::VirtualTemplate::Nhrp : public ydk::Entity
@@ -3622,11 +3551,91 @@ class Native::Interface::VirtualTemplate::Tunnel::Vlan : public ydk::Entity
 
 }; // Native::Interface::VirtualTemplate::Tunnel::Vlan
 
+
+class Native::Interface::VirtualTemplate::Mab : public ydk::Entity
+{
+    public:
+        Mab();
+        ~Mab();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf eap; //type: empty
+
+}; // Native::Interface::VirtualTemplate::Mab
+
+
+class Native::Interface::VirtualTemplate::Ppp : public ydk::Entity
+{
+    public:
+        Ppp();
+        ~Ppp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf accounting; //type: one of string, enumeration
+        ydk::YLeaf authorization; //type: one of string, enumeration
+        class Chap; //type: Native::Interface::VirtualTemplate::Ppp::Chap
+        class Authentication; //type: Native::Interface::VirtualTemplate::Ppp::Authentication
+        class Ipcp; //type: Native::Interface::VirtualTemplate::Ppp::Ipcp
+        class Multilink; //type: Native::Interface::VirtualTemplate::Ppp::Multilink
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp::Chap> chap;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp::Ipcp> ipcp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp::Multilink> multilink; // presence node
+                class Accounting;
+        class Authorization;
+
+}; // Native::Interface::VirtualTemplate::Ppp
+
+
+class Native::Interface::VirtualTemplate::Ppp::Chap : public ydk::Entity
+{
+    public:
+        Chap();
+        ~Chap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hostname; //type: string
+        ydk::YLeaf challenge_length; //type: uint8
+
+}; // Native::Interface::VirtualTemplate::Ppp::Chap
+
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1ad::Id : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1ad::Dot1q : public ydk::Enum
@@ -3634,6 +3643,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1ad::Etype : public ydk::Enum
@@ -3645,6 +3658,14 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1q::Id : public ydk::Enum
@@ -3652,6 +3673,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1q::SecondDot1q : public ydk::Enum
@@ -3659,6 +3684,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
     public:
         static const ydk::Enum::YLeaf any;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1q::Etype : public ydk::Enum
@@ -3670,6 +3699,14 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1q::VlanType : public ydk::Enum
@@ -3679,6 +3716,12 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Dot1
         static const ydk::Enum::YLeaf Y_0x9100;
         static const ydk::Enum::YLeaf Y_0x9200;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0x88A8") return 0;
+            if (name == "0x9100") return 1;
+            if (name == "0x9200") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::PriorityTagged::Etype : public ydk::Enum
@@ -3690,6 +3733,14 @@ class Native::Interface::VirtualTemplate::Service::Instance::Encapsulation::Prio
         static const ydk::Enum::YLeaf pppoe_discovery;
         static const ydk::Enum::YLeaf pppoe_session;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "pppoe-all") return 2;
+            if (name == "pppoe-discovery") return 3;
+            if (name == "pppoe-session") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::Tag::Pop::Way : public ydk::Enum
@@ -3698,6 +3749,11 @@ class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::T
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::Tag::Pop::Mode : public ydk::Enum
@@ -3705,6 +3761,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::T
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::Tag::Push::Mode : public ydk::Enum
@@ -3712,6 +3772,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::T
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::Mode : public ydk::Enum
@@ -3719,6 +3783,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::T
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::Mode : public ydk::Enum
@@ -3726,6 +3794,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::T
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::Mode : public ydk::Enum
@@ -3733,6 +3805,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::T
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::Mode : public ydk::Enum
@@ -3740,6 +3816,10 @@ class Native::Interface::VirtualTemplate::Service::Instance::Rewrite::Ingress::T
     public:
         static const ydk::Enum::YLeaf symmetric;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "symmetric") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::Mac::Security::Violation : public ydk::Enum
@@ -3748,6 +3828,11 @@ class Native::Interface::VirtualTemplate::Service::Instance::Mac::Security::Viol
         static const ydk::Enum::YLeaf protect;
         static const ydk::Enum::YLeaf restrict;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protect") return 0;
+            if (name == "restrict") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Discard::Protocol : public ydk::Enum
@@ -3776,6 +3861,31 @@ class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Discard
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Peer::Protocol : public ydk::Enum
@@ -3804,6 +3914,31 @@ class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Peer::P
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Forward::Protocol : public ydk::Enum
@@ -3832,6 +3967,31 @@ class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Forward
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Tunnel::Protocol : public ydk::Enum
@@ -3860,6 +4020,31 @@ class Native::Interface::VirtualTemplate::Service::Instance::L2protocol::Tunnel:
         static const ydk::Enum::YLeaf udld;
         static const ydk::Enum::YLeaf vtp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "R4") return 0;
+            if (name == "R5") return 1;
+            if (name == "R6") return 2;
+            if (name == "R8") return 3;
+            if (name == "R9") return 4;
+            if (name == "RA") return 5;
+            if (name == "RB") return 6;
+            if (name == "RC") return 7;
+            if (name == "RD") return 8;
+            if (name == "RF") return 9;
+            if (name == "cdp") return 10;
+            if (name == "dtp") return 11;
+            if (name == "elmi") return 12;
+            if (name == "esmc") return 13;
+            if (name == "lacp") return 14;
+            if (name == "lldp") return 15;
+            if (name == "loam") return 16;
+            if (name == "pagp") return 17;
+            if (name == "ptppd") return 18;
+            if (name == "stp") return 19;
+            if (name == "udld") return 20;
+            if (name == "vtp") return 21;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Lacp::Rate : public ydk::Enum
@@ -3868,6 +4053,11 @@ class Native::Interface::VirtualTemplate::Lacp::Rate : public ydk::Enum
         static const ydk::Enum::YLeaf fast;
         static const ydk::Enum::YLeaf normal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fast") return 0;
+            if (name == "normal") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Tunnel::Snooping : public ydk::Enum
@@ -3875,6 +4065,10 @@ class Native::Interface::VirtualTemplate::Tunnel::Snooping : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Tunnel::Mode::Udp : public ydk::Enum
@@ -3883,6 +4077,11 @@ class Native::Interface::VirtualTemplate::Tunnel::Mode::Udp : public ydk::Enum
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf multipoint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 0;
+            if (name == "multipoint") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Tunnel::Mode::Ethernet::Gre : public ydk::Enum
@@ -3891,6 +4090,11 @@ class Native::Interface::VirtualTemplate::Tunnel::Mode::Ethernet::Gre : public y
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathSelection::Metric : public ydk::Enum
@@ -3899,6 +4103,11 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathSelectio
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf te;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 0;
+            if (name == "te") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathSelection::SegmentRouting::Adjacency : public ydk::Enum
@@ -3907,6 +4116,33 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathSelectio
         static const ydk::Enum::YLeaf protected_;
         static const ydk::Enum::YLeaf unprotected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protected") return 0;
+            if (name == "unprotected") return 1;
+            return -1;
+        }
+};
+
+class Native::Interface::VirtualTemplate::Ppp::Accounting : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            return -1;
+        }
+};
+
+class Native::Interface::VirtualTemplate::Ppp::Authorization : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            return -1;
+        }
 };
 
 

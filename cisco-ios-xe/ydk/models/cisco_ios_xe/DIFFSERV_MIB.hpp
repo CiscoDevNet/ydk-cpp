@@ -12,42 +12,6 @@
 namespace cisco_ios_xe {
 namespace DIFFSERV_MIB {
 
-class DiffServTBParamSimpleTokenBucket : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        DiffServTBParamSimpleTokenBucket();
-        ~DiffServTBParamSimpleTokenBucket();
-
-
-}; // DiffServTBParamSimpleTokenBucket
-
-class DiffServTBParamAvgRate : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        DiffServTBParamAvgRate();
-        ~DiffServTBParamAvgRate();
-
-
-}; // DiffServTBParamAvgRate
-
-class DiffServTBParamSrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        DiffServTBParamSrTCMBlind();
-        ~DiffServTBParamSrTCMBlind();
-
-
-}; // DiffServTBParamSrTCMBlind
-
-class DiffServTBParamSrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        DiffServTBParamSrTCMAware();
-        ~DiffServTBParamSrTCMAware();
-
-
-}; // DiffServTBParamSrTCMAware
-
 class DiffServTBParamTrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -57,14 +21,14 @@ class DiffServTBParamTrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, 
 
 }; // DiffServTBParamTrTCMBlind
 
-class DiffServTBParamTrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServSchedulerWFQ : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServTBParamTrTCMAware();
-        ~DiffServTBParamTrTCMAware();
+        DiffServSchedulerWFQ();
+        ~DiffServSchedulerWFQ();
 
 
-}; // DiffServTBParamTrTCMAware
+}; // DiffServSchedulerWFQ
 
 class DiffServTBParamTswTCM : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -75,14 +39,14 @@ class DiffServTBParamTswTCM : public ietf::ietf_yang_smiv2::ObjectIdentity, virt
 
 }; // DiffServTBParamTswTCM
 
-class DiffServSchedulerPriority : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamAvgRate : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServSchedulerPriority();
-        ~DiffServSchedulerPriority();
+        DiffServTBParamAvgRate();
+        ~DiffServTBParamAvgRate();
 
 
-}; // DiffServSchedulerPriority
+}; // DiffServTBParamAvgRate
 
 class DiffServSchedulerWRR : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -93,14 +57,50 @@ class DiffServSchedulerWRR : public ietf::ietf_yang_smiv2::ObjectIdentity, virtu
 
 }; // DiffServSchedulerWRR
 
-class DiffServSchedulerWFQ : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamSrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServSchedulerWFQ();
-        ~DiffServSchedulerWFQ();
+        DiffServTBParamSrTCMAware();
+        ~DiffServTBParamSrTCMAware();
 
 
-}; // DiffServSchedulerWFQ
+}; // DiffServTBParamSrTCMAware
+
+class DiffServTBParamSrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        DiffServTBParamSrTCMBlind();
+        ~DiffServTBParamSrTCMBlind();
+
+
+}; // DiffServTBParamSrTCMBlind
+
+class DiffServTBParamSimpleTokenBucket : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        DiffServTBParamSimpleTokenBucket();
+        ~DiffServTBParamSimpleTokenBucket();
+
+
+}; // DiffServTBParamSimpleTokenBucket
+
+class DiffServSchedulerPriority : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        DiffServSchedulerPriority();
+        ~DiffServSchedulerPriority();
+
+
+}; // DiffServSchedulerPriority
+
+class DiffServTBParamTrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        DiffServTBParamTrTCMAware();
+        ~DiffServTBParamTrTCMAware();
+
+
+}; // DiffServTBParamTrTCMAware
 
 class DIFFSERVMIB : public ydk::Entity
 {
@@ -1118,6 +1118,11 @@ class IfDirection : public ydk::Enum
         static const ydk::Enum::YLeaf inbound;
         static const ydk::Enum::YLeaf outbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 1;
+            if (name == "outbound") return 2;
+            return -1;
+        }
 };
 
 class DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType : public ydk::Enum
@@ -1129,6 +1134,14 @@ class DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropTy
         static const ydk::Enum::YLeaf randomDrop;
         static const ydk::Enum::YLeaf alwaysDrop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "tailDrop") return 2;
+            if (name == "headDrop") return 3;
+            if (name == "randomDrop") return 4;
+            if (name == "alwaysDrop") return 5;
+            return -1;
+        }
 };
 
 

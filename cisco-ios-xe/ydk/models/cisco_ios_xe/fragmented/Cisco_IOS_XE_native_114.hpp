@@ -3034,7 +3034,7 @@ class Native::Interface::Vasiright::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3584,6 +3584,12 @@ class Native::Interface::Vasiright::Flowcontrol::Receive : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Flowcontrol::Send : public ydk::Enum
@@ -3593,6 +3599,12 @@ class Native::Interface::Vasiright::Flowcontrol::Send : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::HoldQueue::Direction : public ydk::Enum
@@ -3601,6 +3613,11 @@ class Native::Interface::Vasiright::HoldQueue::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Ip::Dhcp::Relay::Information::PolicyAction : public ydk::Enum
@@ -3611,6 +3628,13 @@ class Native::Interface::Vasiright::Ip::Dhcp::Relay::Information::PolicyAction :
         static const ydk::Enum::YLeaf keep;
         static const ydk::Enum::YLeaf replace;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "drop") return 0;
+            if (name == "encapsulate") return 1;
+            if (name == "keep") return 2;
+            if (name == "replace") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
@@ -3619,6 +3643,11 @@ class Native::Interface::Vasiright::Ip::Verify::Unicast::Source::ReachableVia : 
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3627,6 +3656,11 @@ class Native::Interface::Vasiright::Ipv6::TrafficFilter::Direction : public ydk:
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3634,6 +3668,10 @@ class Native::Interface::Vasiright::InterfaceQos::Trust::Device : public ydk::En
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Standby::Version : public ydk::Enum
@@ -3642,6 +3680,11 @@ class Native::Interface::Vasiright::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3649,6 +3692,10 @@ class Native::Interface::Vasiright::Standby::StandbyList::Ipv6 : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3657,6 +3704,11 @@ class Native::Interface::Vasiright::Standby::StandbyList::Authentication::Md5::K
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3665,6 +3717,11 @@ class Native::Interface::Vasiright::Standby::StandbyList::Redirect::Advertisemen
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::Vasiright::AccessSession::HostMode : public ydk::Enum
@@ -3675,6 +3732,13 @@ class Native::Interface::Vasiright::AccessSession::HostMode : public ydk::Enum
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 

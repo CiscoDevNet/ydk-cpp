@@ -275,7 +275,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetCosTransmit::ConformAction
 
@@ -319,7 +319,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -409,7 +409,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetDscpTransmit::ConformAction
 
@@ -453,7 +453,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -543,7 +543,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
 
@@ -587,7 +587,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -633,7 +633,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
 
@@ -677,7 +677,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -723,7 +723,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmit::ConformAction
 
@@ -767,7 +767,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -813,7 +813,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmit::ConformAction
 
@@ -857,7 +857,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -991,7 +991,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp; //type: one of enumeration, uint8
+        ydk::YLeaf dscp; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDscp::ExceedAction
 
@@ -1079,7 +1079,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -1260,7 +1260,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -1350,7 +1350,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
 
@@ -1394,7 +1394,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
 
@@ -1438,7 +1438,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -1484,7 +1484,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::ExceedAction
 
@@ -1660,7 +1660,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -1750,7 +1750,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -1840,7 +1840,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
 
@@ -1884,7 +1884,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
 
@@ -1928,7 +1928,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -1974,7 +1974,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::ViolateAction
 
@@ -2349,7 +2349,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmit::ConformAction
 
@@ -2393,7 +2393,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -2483,7 +2483,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmit::ConformAction
 
@@ -2527,7 +2527,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -2617,7 +2617,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
 
@@ -2661,7 +2661,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -2707,7 +2707,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
 
@@ -2751,7 +2751,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -2797,7 +2797,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmit::ConformAction
 
@@ -2841,7 +2841,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -2887,7 +2887,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmit::ConformAction
 
@@ -2931,7 +2931,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -3065,7 +3065,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp; //type: one of enumeration, uint8
+        ydk::YLeaf dscp; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDscp::ExceedAction
 
@@ -3153,7 +3153,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -3334,7 +3334,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -3424,7 +3424,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
 
@@ -3468,7 +3468,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
 
@@ -3512,7 +3512,7 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
@@ -3546,6 +3546,10 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::R
     public:
         static const ydk::Enum::YLeaf policed_dscp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policed-dscp") return 0;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::PeakRate : public ydk::Enum
@@ -3553,6 +3557,10 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
     public:
         static const ydk::Enum::YLeaf pdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pdp") return 0;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::Table : public ydk::Enum
@@ -3560,6 +3568,10 @@ class Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate:
     public:
         static const ydk::Enum::YLeaf policed_dscp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "policed-dscp") return 0;
+            return -1;
+        }
 };
 
 

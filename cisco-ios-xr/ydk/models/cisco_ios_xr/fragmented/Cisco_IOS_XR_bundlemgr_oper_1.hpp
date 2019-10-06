@@ -272,7 +272,6 @@ class BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bund
         ydk::YLeaf partner_system_priority; //type: uint16
         ydk::YLeaf partner_system_mac_address; //type: string
         ydk::YLeaf partner_operational_key; //type: uint16
-        ydk::YLeaf applied_lacp_mode; //type: BmdLacpMode
         class ActorBundleData; //type: BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData
         class BundleSystemId; //type: BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId
 

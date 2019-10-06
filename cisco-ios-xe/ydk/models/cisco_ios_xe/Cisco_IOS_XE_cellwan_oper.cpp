@@ -2103,20 +2103,16 @@ bool CellwanOperData::CellwanGps::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
-const Enum::YLeaf ModemStatus::modem_status_offline {0, "modem-status-offline"};
-const Enum::YLeaf ModemStatus::modem_status_online {1, "modem-status-online"};
-const Enum::YLeaf ModemStatus::modem_status_low_power {2, "modem-status-low-power"};
-const Enum::YLeaf ModemStatus::modem_status_power_off {3, "modem-status-power-off"};
-const Enum::YLeaf ModemStatus::modem_status_boot_ready {4, "modem-status-boot-ready"};
-const Enum::YLeaf ModemStatus::modem_status_unknown {5, "modem-status-unknown"};
+const Enum::YLeaf ModemService::service_type_circuit_switched {0, "service-type-circuit-switched"};
+const Enum::YLeaf ModemService::service_type_packet_switched {1, "service-type-packet-switched"};
+const Enum::YLeaf ModemService::service_type_combined {2, "service-type-combined"};
+const Enum::YLeaf ModemService::service_type_invalid {3, "service-type-invalid"};
+const Enum::YLeaf ModemService::service_type_unknown {4, "service-type-unknown"};
 
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_online {0, "radio-power-mode-online"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_low_power {1, "radio-power-mode-low-power"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_factory_test {2, "radio-power-mode-factory-test"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_offline {3, "radio-power-mode-offline"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_reset {4, "radio-power-mode-reset"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_off {5, "radio-power-mode-off"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_persistent_low_power {6, "radio-power-mode-persistent-low-power"};
+const Enum::YLeaf ServiceStatus::service_status_normal {0, "service-status-normal"};
+const Enum::YLeaf ServiceStatus::service_status_emergency {1, "service-status-emergency"};
+const Enum::YLeaf ServiceStatus::service_status_no_service {2, "service-status-no-service"};
+const Enum::YLeaf ServiceStatus::service_status_unknown {3, "service-status-unknown"};
 
 const Enum::YLeaf RadioBandwidth::bandwidth_1_dot_4_mhz {0, "bandwidth-1-dot-4-mhz"};
 const Enum::YLeaf RadioBandwidth::bandwidth_3_mhz {1, "bandwidth-3-mhz"};
@@ -2127,9 +2123,29 @@ const Enum::YLeaf RadioBandwidth::bandwidth_20_mhz {5, "bandwidth-20-mhz"};
 const Enum::YLeaf RadioBandwidth::bandwidth_invalid {6, "bandwidth-invalid"};
 const Enum::YLeaf RadioBandwidth::bandwidth_unknown {7, "bandwidth-unknown"};
 
-const Enum::YLeaf ModemTechnology::cdma_evdo_1x_rtt {0, "cdma-evdo-1x-rtt"};
-const Enum::YLeaf ModemTechnology::gsm_umts_gprs {1, "gsm-umts-gprs"};
-const Enum::YLeaf ModemTechnology::tech_unknown {2, "tech-unknown"};
+const Enum::YLeaf RatTechnology::system_mode_none {0, "system-mode-none"};
+const Enum::YLeaf RatTechnology::system_mode_gprs {1, "system-mode-gprs"};
+const Enum::YLeaf RatTechnology::system_mode_edge {2, "system-mode-edge"};
+const Enum::YLeaf RatTechnology::system_mode_umts {3, "system-mode-umts"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa {4, "system-mode-hsdpa"};
+const Enum::YLeaf RatTechnology::system_mode_hsupa {5, "system-mode-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_hspa {6, "system-mode-hspa"};
+const Enum::YLeaf RatTechnology::system_mode_hspa_plus {7, "system-mode-hspa-plus"};
+const Enum::YLeaf RatTechnology::system_mode_lte_fdd {8, "system-mode-lte-fdd"};
+const Enum::YLeaf RatTechnology::system_mode_lte_tdd {9, "system-mode-lte-tdd"};
+const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_1x_rtt {10, "system-mode-lte-e-hrpd-1x-rtt"};
+const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_evdo {11, "system-mode-lte-e-hrpd-evdo"};
+const Enum::YLeaf RatTechnology::system_mode_evdo {12, "system-mode-evdo"};
+const Enum::YLeaf RatTechnology::system_mode_evdo_reva {13, "system-mode-evdo-reva"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_wcdma {14, "system-mode-hsdpa-n-wcdma"};
+const Enum::YLeaf RatTechnology::system_mode_wcdma_n_hsupa {15, "system-mode-wcdma-n-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_hsupa {16, "system-mode-hsdpa-n-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_wcdma {17, "system-mode-hsdpa-plus-n-wcdma"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_hsupa {18, "system-mode-hsdpa-plus-n-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_wcdma {19, "system-mode-dc-hsdpa-plus-n-wcdma"};
+const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_hsupa {20, "system-mode-dc-hsdpa-plus-n-hsupa"};
+const Enum::YLeaf RatTechnology::sysyem_mode_null_bearer {21, "sysyem-mode-null-bearer"};
+const Enum::YLeaf RatTechnology::system_mode_unknown {22, "system-mode-unknown"};
 
 const Enum::YLeaf RatPreference::lte_radio_tech_no_svc {0, "lte-radio-tech-no-svc"};
 const Enum::YLeaf RatPreference::lte_radio_tech_cdma_1_xrtt {1, "lte-radio-tech-cdma-1-xrtt"};
@@ -2156,61 +2172,67 @@ const Enum::YLeaf RatPreference::lte_radio_tech_null_bearer {21, "lte-radio-tech
 const Enum::YLeaf RatPreference::lte_radio_tech_unknown {22, "lte-radio-tech-unknown"};
 const Enum::YLeaf RatPreference::lte_radio_tech_no_change {23, "lte-radio-tech-no-change"};
 
-const Enum::YLeaf RatTechnology::system_mode_none {0, "system-mode-none"};
-const Enum::YLeaf RatTechnology::system_mode_gprs {1, "system-mode-gprs"};
-const Enum::YLeaf RatTechnology::system_mode_edge {2, "system-mode-edge"};
-const Enum::YLeaf RatTechnology::system_mode_umts {3, "system-mode-umts"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa {4, "system-mode-hsdpa"};
-const Enum::YLeaf RatTechnology::system_mode_hsupa {5, "system-mode-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_hspa {6, "system-mode-hspa"};
-const Enum::YLeaf RatTechnology::system_mode_hspa_plus {7, "system-mode-hspa-plus"};
-const Enum::YLeaf RatTechnology::system_mode_lte_fdd {8, "system-mode-lte-fdd"};
-const Enum::YLeaf RatTechnology::system_mode_lte_tdd {9, "system-mode-lte-tdd"};
-const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_1x_rtt {10, "system-mode-lte-e-hrpd-1x-rtt"};
-const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_evdo {11, "system-mode-lte-e-hrpd-evdo"};
-const Enum::YLeaf RatTechnology::system_mode_evdo {12, "system-mode-evdo"};
-const Enum::YLeaf RatTechnology::system_mode_evdo_reva {13, "system-mode-evdo-reva"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_wcdma {14, "system-mode-hsdpa-n-wcdma"};
-const Enum::YLeaf RatTechnology::system_mode_wcdma_n_hsupa {15, "system-mode-wcdma-n-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_hsupa {16, "system-mode-hsdpa-n-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_wcdma {17, "system-mode-hsdpa-plus-n-wcdma"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_hsupa {18, "system-mode-hsdpa-plus-n-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_wcdma {19, "system-mode-dc-hsdpa-plus-n-wcdma"};
-const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_hsupa {20, "system-mode-dc-hsdpa-plus-n-hsupa"};
-const Enum::YLeaf RatTechnology::sysyem_mode_null_bearer {21, "sysyem-mode-null-bearer"};
-const Enum::YLeaf RatTechnology::system_mode_unknown {22, "system-mode-unknown"};
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_disable {0, "gps-mode-disable"};
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_standalone {1, "gps-mode-standalone"};
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_mbased {2, "gps-mode-mbased"};
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_msassist {3, "gps-mode-msassist"};
 
-const Enum::YLeaf ServiceStatus::service_status_normal {0, "service-status-normal"};
-const Enum::YLeaf ServiceStatus::service_status_emergency {1, "service-status-emergency"};
-const Enum::YLeaf ServiceStatus::service_status_no_service {2, "service-status-no-service"};
-const Enum::YLeaf ServiceStatus::service_status_unknown {3, "service-status-unknown"};
+const Enum::YLeaf CwanGpsFeatureState::gps_disabled {0, "gps-disabled"};
+const Enum::YLeaf CwanGpsFeatureState::gps_enabled {1, "gps-enabled"};
 
-const Enum::YLeaf ModemService::service_type_circuit_switched {0, "service-type-circuit-switched"};
-const Enum::YLeaf ModemService::service_type_packet_switched {1, "service-type-packet-switched"};
-const Enum::YLeaf ModemService::service_type_combined {2, "service-type-combined"};
-const Enum::YLeaf ModemService::service_type_invalid {3, "service-type-invalid"};
-const Enum::YLeaf ModemService::service_type_unknown {4, "service-type-unknown"};
+const Enum::YLeaf PacketSessStatus::packet_session_status_inactive {0, "packet-session-status-inactive"};
+const Enum::YLeaf PacketSessStatus::packet_session_status_active {1, "packet-session-status-active"};
+
+const Enum::YLeaf CwanGpsPortSelected::dedicated_gps_port {0, "dedicated-gps-port"};
+const Enum::YLeaf CwanGpsPortSelected::div_gps_port {1, "div-gps-port"};
+const Enum::YLeaf CwanGpsPortSelected::voltage_no_bias_gps_port {2, "voltage-no-bias-gps-port"};
+const Enum::YLeaf CwanGpsPortSelected::gps_port_none {3, "gps-port-none"};
+
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_online {0, "radio-power-mode-online"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_low_power {1, "radio-power-mode-low-power"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_factory_test {2, "radio-power-mode-factory-test"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_offline {3, "radio-power-mode-offline"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_reset {4, "radio-power-mode-reset"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_off {5, "radio-power-mode-off"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_persistent_low_power {6, "radio-power-mode-persistent-low-power"};
+
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_none {0, "sim-user-op-none"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_chv1 {1, "sim-user-op-chv1"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_chv2 {2, "sim-user-op-chv2"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_unblock_chv1 {3, "sim-user-op-unblock-chv1"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_unblock_chv2 {4, "sim-user-op-unblock-chv2"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_mep {5, "sim-user-op-mep"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_unknown {6, "sim-user-op-unknown"};
+
+const Enum::YLeaf ModemTechnology::cdma_evdo_1x_rtt {0, "cdma-evdo-1x-rtt"};
+const Enum::YLeaf ModemTechnology::gsm_umts_gprs {1, "gsm-umts-gprs"};
+const Enum::YLeaf ModemTechnology::tech_unknown {2, "tech-unknown"};
+
+const Enum::YLeaf ProfileScope::scope_global {0, "scope-global"};
+const Enum::YLeaf ProfileScope::scope_link {1, "scope-link"};
 
 const Enum::YLeaf LteCa::lte_ca_deconfigured {0, "lte-ca-deconfigured"};
 const Enum::YLeaf LteCa::lte_ca_deactivated {1, "lte-ca-deactivated"};
 const Enum::YLeaf LteCa::lte_ca_activated {2, "lte-ca-activated"};
 const Enum::YLeaf LteCa::lte_ca_unsupported {3, "lte-ca-unsupported"};
 
+const Enum::YLeaf ModemStatus::modem_status_offline {0, "modem-status-offline"};
+const Enum::YLeaf ModemStatus::modem_status_online {1, "modem-status-online"};
+const Enum::YLeaf ModemStatus::modem_status_low_power {2, "modem-status-low-power"};
+const Enum::YLeaf ModemStatus::modem_status_power_off {3, "modem-status-power-off"};
+const Enum::YLeaf ModemStatus::modem_status_boot_ready {4, "modem-status-boot-ready"};
+const Enum::YLeaf ModemStatus::modem_status_unknown {5, "modem-status-unknown"};
+
+const Enum::YLeaf CwanGpsState::gps_state_disabled {1, "gps-state-disabled"};
+const Enum::YLeaf CwanGpsState::gps_state_acquiring {2, "gps-state-acquiring"};
+const Enum::YLeaf CwanGpsState::gps_state_enabled {3, "gps-state-enabled"};
+const Enum::YLeaf CwanGpsState::gps_loc_error {4, "gps-loc-error"};
+
 const Enum::YLeaf RegState::reg_status_not_registered {0, "reg-status-not-registered"};
 const Enum::YLeaf RegState::reg_status_registered {1, "reg-status-registered"};
 const Enum::YLeaf RegState::reg_status_searching {2, "reg-status-searching"};
 const Enum::YLeaf RegState::reg_status_registration_denied {3, "reg-status-registration-denied"};
 const Enum::YLeaf RegState::reg_status_unsupported {4, "reg-status-unsupported"};
-
-const Enum::YLeaf PacketSessStatus::packet_session_status_inactive {0, "packet-session-status-inactive"};
-const Enum::YLeaf PacketSessStatus::packet_session_status_active {1, "packet-session-status-active"};
-
-const Enum::YLeaf ProfileScope::scope_global {0, "scope-global"};
-const Enum::YLeaf ProfileScope::scope_link {1, "scope-link"};
-
-const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_disabled {0, "chv1-verify-disabled"};
-const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_enabled {1, "chv1-verify-enabled"};
-const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_pending {2, "chv1-verify-pending"};
 
 const Enum::YLeaf CellwanSimStatus::sim_status_ok {0, "sim-status-ok"};
 const Enum::YLeaf CellwanSimStatus::sim_status_not_inserted {1, "sim-status-not-inserted"};
@@ -2226,31 +2248,9 @@ const Enum::YLeaf CellwanSimStatus::sim_status_mep_locked {10, "sim-status-mep-l
 const Enum::YLeaf CellwanSimStatus::sim_status_network_reject {11, "sim-status-network-reject"};
 const Enum::YLeaf CellwanSimStatus::sim_status_unknown {12, "sim-status-unknown"};
 
-const Enum::YLeaf CellwanSimUserOp::sim_user_op_none {0, "sim-user-op-none"};
-const Enum::YLeaf CellwanSimUserOp::sim_user_op_chv1 {1, "sim-user-op-chv1"};
-const Enum::YLeaf CellwanSimUserOp::sim_user_op_chv2 {2, "sim-user-op-chv2"};
-const Enum::YLeaf CellwanSimUserOp::sim_user_op_unblock_chv1 {3, "sim-user-op-unblock-chv1"};
-const Enum::YLeaf CellwanSimUserOp::sim_user_op_unblock_chv2 {4, "sim-user-op-unblock-chv2"};
-const Enum::YLeaf CellwanSimUserOp::sim_user_op_mep {5, "sim-user-op-mep"};
-const Enum::YLeaf CellwanSimUserOp::sim_user_op_unknown {6, "sim-user-op-unknown"};
-
-const Enum::YLeaf CwanGpsFeatureState::gps_disabled {0, "gps-disabled"};
-const Enum::YLeaf CwanGpsFeatureState::gps_enabled {1, "gps-enabled"};
-
-const Enum::YLeaf CwanGpsPortSelected::dedicated_gps_port {0, "dedicated-gps-port"};
-const Enum::YLeaf CwanGpsPortSelected::div_gps_port {1, "div-gps-port"};
-const Enum::YLeaf CwanGpsPortSelected::voltage_no_bias_gps_port {2, "voltage-no-bias-gps-port"};
-const Enum::YLeaf CwanGpsPortSelected::gps_port_none {3, "gps-port-none"};
-
-const Enum::YLeaf CwanGpsState::gps_state_disabled {1, "gps-state-disabled"};
-const Enum::YLeaf CwanGpsState::gps_state_acquiring {2, "gps-state-acquiring"};
-const Enum::YLeaf CwanGpsState::gps_state_enabled {3, "gps-state-enabled"};
-const Enum::YLeaf CwanGpsState::gps_loc_error {4, "gps-loc-error"};
-
-const Enum::YLeaf CwanGpsModeSelected::gps_mode_disable {0, "gps-mode-disable"};
-const Enum::YLeaf CwanGpsModeSelected::gps_mode_standalone {1, "gps-mode-standalone"};
-const Enum::YLeaf CwanGpsModeSelected::gps_mode_mbased {2, "gps-mode-mbased"};
-const Enum::YLeaf CwanGpsModeSelected::gps_mode_msassist {3, "gps-mode-msassist"};
+const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_disabled {0, "chv1-verify-disabled"};
+const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_enabled {1, "chv1-verify-enabled"};
+const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_pending {2, "chv1-verify-pending"};
 
 
 }

@@ -1025,7 +1025,7 @@ class Native::Event::Manager::Applet::Action::Syslog : public ydk::Entity
 
         ydk::YLeaf facility; //type: string
         ydk::YLeaf msg; //type: string
-        ydk::YLeaf priority; //type: one of enumeration, uint16
+        ydk::YLeaf priority; //type: one of uint16, enumeration
 
 }; // Native::Event::Manager::Applet::Action::Syslog
 
@@ -3671,6 +3671,10 @@ class Native::Event::Manager::Applet::Authorization : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf bypass;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "bypass") return 0;
+            return -1;
+        }
 };
 
 class Native::Event::Manager::Applet::Event_::Track::State : public ydk::Enum
@@ -3680,6 +3684,12 @@ class Native::Event::Manager::Applet::Event_::Track::State : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "down") return 1;
+            if (name == "up") return 2;
+            return -1;
+        }
 };
 
 class Native::Event::Manager::Applet::Event_::None::Sync : public ydk::Enum
@@ -3688,6 +3698,11 @@ class Native::Event::Manager::Applet::Event_::None::Sync : public ydk::Enum
         static const ydk::Enum::YLeaf yes;
         static const ydk::Enum::YLeaf no;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "yes") return 0;
+            if (name == "no") return 1;
+            return -1;
+        }
 };
 
 class Native::Event::Manager::Applet::Event_::Oir::Event_ : public ydk::Enum
@@ -3697,6 +3712,12 @@ class Native::Event::Manager::Applet::Event_::Oir::Event_ : public ydk::Enum
         static const ydk::Enum::YLeaf insert;
         static const ydk::Enum::YLeaf removal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "insert") return 1;
+            if (name == "removal") return 2;
+            return -1;
+        }
 };
 
 class Native::Event::Manager::Applet::Action::Info::Type::Snmp::Var::OidType : public ydk::Enum
@@ -3710,6 +3731,16 @@ class Native::Event::Manager::Applet::Action::Info::Type::Snmp::Var::OidType : p
         static const ydk::Enum::YLeaf string;
         static const ydk::Enum::YLeaf uint;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "counter") return 0;
+            if (name == "gauge") return 1;
+            if (name == "int") return 2;
+            if (name == "ipv4") return 3;
+            if (name == "octet") return 4;
+            if (name == "string") return 5;
+            if (name == "uint") return 6;
+            return -1;
+        }
 };
 
 

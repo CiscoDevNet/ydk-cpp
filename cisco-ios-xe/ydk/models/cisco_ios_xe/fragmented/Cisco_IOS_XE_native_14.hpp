@@ -1147,10 +1147,10 @@ class Native::Policy::ClassMap::Match : public ydk::Entity
         ydk::YLeafList class_map; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
-        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
+        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
         ydk::YLeafList fr_dlci; //type: list of  uint16
         ydk::YLeafList input_interface; //type: list of  string
-        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
+        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
         ydk::YLeafList qos_group; //type: list of  uint16
         class CurrentMethodPriority; //type: Native::Policy::ClassMap::Match::CurrentMethodPriority
         class Application; //type: Native::Policy::ClassMap::Match::Application
@@ -1395,8 +1395,8 @@ class Native::Policy::ClassMap::Match::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
-        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
+        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
+        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
         class Rtp; //type: Native::Policy::ClassMap::Match::Ip::Rtp
 
         ydk::YList rtp;
@@ -2145,10 +2145,10 @@ class Native::Policy::ClassMap::Match::Not : public ydk::Entity
         ydk::YLeafList class_map; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
-        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
+        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
         ydk::YLeafList fr_dlci; //type: list of  uint16
         ydk::YLeafList input_interface; //type: list of  string
-        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
+        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
         ydk::YLeafList qos_group; //type: list of  uint16
         class CurrentMethodPriority; //type: Native::Policy::ClassMap::Match::Not::CurrentMethodPriority
         class Application; //type: Native::Policy::ClassMap::Match::Not::Application
@@ -2378,8 +2378,8 @@ class Native::Policy::ClassMap::Match::Not::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
-        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
+        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
+        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
         class Rtp; //type: Native::Policy::ClassMap::Match::Not::Ip::Rtp
 
         ydk::YList rtp;
@@ -3233,7 +3233,7 @@ class Native::Policy::PolicyMap::Event::ClassNumber : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        ydk::YLeaf class_; //type: one of enumeration, string
+        ydk::YLeaf class_; //type: one of string, enumeration
         ydk::YLeaf execution_type; //type: ExecutionType
         class ActionNumber; //type: Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber
 
@@ -3478,7 +3478,7 @@ class Native::Policy::PolicyMap::Class : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of enumeration, string
+        ydk::YLeaf name; //type: one of string, enumeration
         ydk::YLeaf type; //type: Type
         ydk::YLeaf insert_before; //type: string
         ydk::YLeaf random_detect; //type: empty
@@ -3741,6 +3741,11 @@ class Native::Vlan::Internal::Allocation::Policy : public ydk::Enum
         static const ydk::Enum::YLeaf ascending;
         static const ydk::Enum::YLeaf descending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ascending") return 0;
+            if (name == "descending") return 1;
+            return -1;
+        }
 };
 
 class Native::Vlan::VlanList::State : public ydk::Enum
@@ -3749,6 +3754,11 @@ class Native::Vlan::VlanList::State : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf suspend;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 0;
+            if (name == "suspend") return 1;
+            return -1;
+        }
 };
 
 class Native::Vlan::VlanList::UniVlan : public ydk::Enum
@@ -3757,6 +3767,11 @@ class Native::Vlan::VlanList::UniVlan : public ydk::Enum
         static const ydk::Enum::YLeaf community;
         static const ydk::Enum::YLeaf isolated;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "community") return 0;
+            if (name == "isolated") return 1;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Type : public ydk::Enum
@@ -3770,6 +3785,16 @@ class Native::Policy::ClassMap::Type : public ydk::Enum
         static const ydk::Enum::YLeaf stack;
         static const ydk::Enum::YLeaf traffic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "access-control") return 0;
+            if (name == "appnav") return 1;
+            if (name == "control") return 2;
+            if (name == "inspect") return 3;
+            if (name == "multicast-flows") return 4;
+            if (name == "stack") return 5;
+            if (name == "traffic") return 6;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Protocol : public ydk::Enum
@@ -3788,6 +3813,21 @@ class Native::Policy::ClassMap::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf sunrpc;
         static const ydk::Enum::YLeaf ymsgr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "aol") return 0;
+            if (name == "edonkey") return 1;
+            if (name == "fasttrack") return 2;
+            if (name == "gnutella") return 3;
+            if (name == "http") return 4;
+            if (name == "imap") return 5;
+            if (name == "kazaa2") return 6;
+            if (name == "msnmsgr") return 7;
+            if (name == "pop3") return 8;
+            if (name == "smtp") return 9;
+            if (name == "sunrpc") return 10;
+            if (name == "ymsgr") return 11;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Prematch : public ydk::Enum
@@ -3797,6 +3837,12 @@ class Native::Policy::ClassMap::Prematch : public ydk::Enum
         static const ydk::Enum::YLeaf match_any;
         static const ydk::Enum::YLeaf match_none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-all") return 0;
+            if (name == "match-any") return 1;
+            if (name == "match-none") return 2;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Match::ClientType : public ydk::Enum
@@ -3807,6 +3853,13 @@ class Native::Policy::ClassMap::Match::ClientType : public ydk::Enum
         static const ydk::Enum::YLeaf video;
         static const ydk::Enum::YLeaf voice;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "data") return 0;
+            if (name == "switch") return 1;
+            if (name == "video") return 2;
+            if (name == "voice") return 3;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Match::PortType : public ydk::Enum
@@ -3816,6 +3869,12 @@ class Native::Policy::ClassMap::Match::PortType : public ydk::Enum
         static const ydk::Enum::YLeaf l2_port;
         static const ydk::Enum::YLeaf l3_port;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot11-port") return 0;
+            if (name == "l2-port") return 1;
+            if (name == "l3-port") return 2;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Match::SessionType : public ydk::Enum
@@ -3824,6 +3883,11 @@ class Native::Policy::ClassMap::Match::SessionType : public ydk::Enum
         static const ydk::Enum::YLeaf wired;
         static const ydk::Enum::YLeaf wireless;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "wired") return 0;
+            if (name == "wireless") return 1;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Match::Application::Attribute::MediaType : public ydk::Enum
@@ -3835,6 +3899,14 @@ class Native::Policy::ClassMap::Match::Application::Attribute::MediaType : publi
         static const ydk::Enum::YLeaf data;
         static const ydk::Enum::YLeaf video;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "audio") return 0;
+            if (name == "audio-video") return 1;
+            if (name == "control") return 2;
+            if (name == "data") return 3;
+            if (name == "video") return 4;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::Match::Not::Application::Attribute::MediaType : public ydk::Enum
@@ -3846,6 +3918,14 @@ class Native::Policy::ClassMap::Match::Not::Application::Attribute::MediaType : 
         static const ydk::Enum::YLeaf data;
         static const ydk::Enum::YLeaf video;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "audio") return 0;
+            if (name == "audio-video") return 1;
+            if (name == "control") return 2;
+            if (name == "data") return 3;
+            if (name == "video") return 4;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::NoMatch::ClientType : public ydk::Enum
@@ -3856,6 +3936,13 @@ class Native::Policy::ClassMap::NoMatch::ClientType : public ydk::Enum
         static const ydk::Enum::YLeaf video;
         static const ydk::Enum::YLeaf voice;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "data") return 0;
+            if (name == "switch") return 1;
+            if (name == "video") return 2;
+            if (name == "voice") return 3;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::NoMatch::PortType : public ydk::Enum
@@ -3865,6 +3952,12 @@ class Native::Policy::ClassMap::NoMatch::PortType : public ydk::Enum
         static const ydk::Enum::YLeaf l2_port;
         static const ydk::Enum::YLeaf l3_port;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot11-port") return 0;
+            if (name == "l2-port") return 1;
+            if (name == "l3-port") return 2;
+            return -1;
+        }
 };
 
 class Native::Policy::ClassMap::NoMatch::SessionType : public ydk::Enum
@@ -3873,6 +3966,11 @@ class Native::Policy::ClassMap::NoMatch::SessionType : public ydk::Enum
         static const ydk::Enum::YLeaf wired;
         static const ydk::Enum::YLeaf wireless;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "wired") return 0;
+            if (name == "wireless") return 1;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Type : public ydk::Enum
@@ -3887,6 +3985,17 @@ class Native::Policy::PolicyMap::Type : public ydk::Enum
         static const ydk::Enum::YLeaf service;
         static const ydk::Enum::YLeaf service_chain;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "access-control") return 0;
+            if (name == "appnav") return 1;
+            if (name == "inspect") return 2;
+            if (name == "control") return 3;
+            if (name == "packet-service") return 4;
+            if (name == "performance-monitor") return 5;
+            if (name == "service") return 6;
+            if (name == "service-chain") return 7;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Protocol : public ydk::Enum
@@ -3901,6 +4010,17 @@ class Native::Policy::PolicyMap::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf smtp;
         static const ydk::Enum::YLeaf sunrpc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "avc") return 0;
+            if (name == "http") return 1;
+            if (name == "im") return 2;
+            if (name == "imap") return 3;
+            if (name == "p2p") return 4;
+            if (name == "pop3") return 5;
+            if (name == "smtp") return 6;
+            if (name == "sunrpc") return 7;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Event::EventType : public ydk::Enum
@@ -3928,6 +4048,30 @@ class Native::Policy::PolicyMap::Event::EventType : public ydk::Enum
         static const ydk::Enum::YLeaf timer_expiry;
         static const ydk::Enum::YLeaf violation;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "aaa-available") return 0;
+            if (name == "absolute-timeout") return 1;
+            if (name == "agent-found") return 2;
+            if (name == "authentication-failure") return 3;
+            if (name == "authentication-success") return 4;
+            if (name == "authorization-failure") return 5;
+            if (name == "authorization-success") return 6;
+            if (name == "identity-update") return 7;
+            if (name == "inactivity-timeout") return 8;
+            if (name == "remote-authentication-failure") return 9;
+            if (name == "remote-authentication-success") return 10;
+            if (name == "session-disconnected") return 11;
+            if (name == "session-started") return 12;
+            if (name == "tag-added") return 13;
+            if (name == "tag-removed") return 14;
+            if (name == "template-activated") return 15;
+            if (name == "template-activation-failed") return 16;
+            if (name == "template-deactivated") return 17;
+            if (name == "template-deactivation-failed") return 18;
+            if (name == "timer-expiry") return 19;
+            if (name == "violation") return 20;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Event::MatchType : public ydk::Enum
@@ -3936,6 +4080,11 @@ class Native::Policy::PolicyMap::Event::MatchType : public ydk::Enum
         static const ydk::Enum::YLeaf match_all;
         static const ydk::Enum::YLeaf match_first;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "match-all") return 0;
+            if (name == "match-first") return 1;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Event::ClassNumber::Class_ : public ydk::Enum
@@ -3943,6 +4092,10 @@ class Native::Policy::PolicyMap::Event::ClassNumber::Class_ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf always;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "always") return 0;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Event::ClassNumber::ExecutionType : public ydk::Enum
@@ -3952,6 +4105,12 @@ class Native::Policy::PolicyMap::Event::ClassNumber::ExecutionType : public ydk:
         static const ydk::Enum::YLeaf do_until_failure;
         static const ydk::Enum::YLeaf do_until_success;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "do-all") return 0;
+            if (name == "do-until-failure") return 1;
+            if (name == "do-until-success") return 2;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::Using::Method : public ydk::Enum
@@ -3961,6 +4120,12 @@ class Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate:
         static const ydk::Enum::YLeaf mab;
         static const ydk::Enum::YLeaf webauth;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dot1x") return 0;
+            if (name == "mab") return 1;
+            if (name == "webauth") return 2;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Class::Type : public ydk::Enum
@@ -3968,6 +4133,10 @@ class Native::Policy::PolicyMap::Class::Type : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf inspect;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inspect") return 0;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Class::AppnavPolicy::MonitorLoad : public ydk::Enum
@@ -3982,6 +4151,17 @@ class Native::Policy::PolicyMap::Class::AppnavPolicy::MonitorLoad : public ydk::
         static const ydk::Enum::YLeaf ssl;
         static const ydk::Enum::YLeaf video;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "MS-port-mapper") return 0;
+            if (name == "cifs") return 1;
+            if (name == "http") return 2;
+            if (name == "ica") return 3;
+            if (name == "mapi") return 4;
+            if (name == "nfs") return 5;
+            if (name == "ssl") return 6;
+            if (name == "video") return 7;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Class::Policy_::Action : public ydk::Enum
@@ -3992,6 +4172,13 @@ class Native::Policy::PolicyMap::Class::Policy_::Action : public ydk::Enum
         static const ydk::Enum::YLeaf inspect;
         static const ydk::Enum::YLeaf pass;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cxsc") return 0;
+            if (name == "drop") return 1;
+            if (name == "inspect") return 2;
+            if (name == "pass") return 3;
+            return -1;
+        }
 };
 
 class Native::Policy::PolicyMap::Class::ServicePolicy::Type : public ydk::Enum
@@ -4005,6 +4192,16 @@ class Native::Policy::PolicyMap::Class::ServicePolicy::Type : public ydk::Enum
         static const ydk::Enum::YLeaf smtp;
         static const ydk::Enum::YLeaf sunrpc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "avc") return 0;
+            if (name == "gtpv0") return 1;
+            if (name == "gtpv1") return 2;
+            if (name == "imap") return 3;
+            if (name == "pop3") return 4;
+            if (name == "smtp") return 5;
+            if (name == "sunrpc") return 6;
+            return -1;
+        }
 };
 
 

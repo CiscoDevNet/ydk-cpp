@@ -2007,18 +2007,6 @@ class Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info : public ydk::Entity
 
 }; // Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info
 
-class G709apsByte : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pp_no_protect;
-        static const ydk::Enum::YLeaf pp_no_request;
-        static const ydk::Enum::YLeaf pp_regen_degrade;
-        static const ydk::Enum::YLeaf pp_sig_degrade;
-        static const ydk::Enum::YLeaf pp_remote_main;
-        static const ydk::Enum::YLeaf pp_aps_unknown;
-
-};
-
 class G709ppintfState : public ydk::Enum
 {
     public:
@@ -2026,6 +2014,76 @@ class G709ppintfState : public ydk::Enum
         static const ydk::Enum::YLeaf pp_intf_failing;
         static const ydk::Enum::YLeaf pp_intf_down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pp-intf-up") return 0;
+            if (name == "pp-intf-failing") return 1;
+            if (name == "pp-intf-down") return 2;
+            return -1;
+        }
+};
+
+class G709ppfsmMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pp_disable;
+        static const ydk::Enum::YLeaf pp_default_mode;
+        static const ydk::Enum::YLeaf pp_graceful_mode;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "pp-disable") return 0;
+            if (name == "pp-default-mode") return 1;
+            if (name == "pp-graceful-mode") return 2;
+            return -1;
+        }
+};
+
+class DwdmControllerState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dwdm_ui_state_up;
+        static const ydk::Enum::YLeaf dwdm_ui_state_down;
+        static const ydk::Enum::YLeaf dwdm_ui_state_admin_down;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "dwdm-ui-state-up") return 0;
+            if (name == "dwdm-ui-state-down") return 1;
+            if (name == "dwdm-ui-state-admin-down") return 2;
+            return -1;
+        }
+};
+
+class DwdmtasState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tas_oos;
+        static const ydk::Enum::YLeaf tas_is;
+        static const ydk::Enum::YLeaf tas_oos_mt;
+        static const ydk::Enum::YLeaf tas_is_cfg;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "tas-oos") return 0;
+            if (name == "tas-is") return 1;
+            if (name == "tas-oos-mt") return 2;
+            if (name == "tas-is-cfg") return 3;
+            return -1;
+        }
+};
+
+class G709prbsMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mode_source;
+        static const ydk::Enum::YLeaf mode_sink;
+        static const ydk::Enum::YLeaf mode_source_sink;
+        static const ydk::Enum::YLeaf mode_invalid;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "mode-source") return 0;
+            if (name == "mode-sink") return 1;
+            if (name == "mode-source-sink") return 2;
+            if (name == "mode-invalid") return 3;
+            return -1;
+        }
 };
 
 class G709ppfsmState : public ydk::Enum
@@ -2043,73 +2101,20 @@ class G709ppfsmState : public ydk::Enum
         static const ydk::Enum::YLeaf main_t_failed;
         static const ydk::Enum::YLeaf regen_failed;
 
-};
-
-class G709ppfsmMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pp_disable;
-        static const ydk::Enum::YLeaf pp_default_mode;
-        static const ydk::Enum::YLeaf pp_graceful_mode;
-
-};
-
-class DwdmWaveChannelOwner : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf configuration;
-        static const ydk::Enum::YLeaf gmpls;
-
-};
-
-class G709efecMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf g975_none;
-        static const ydk::Enum::YLeaf g975_1_i4;
-        static const ydk::Enum::YLeaf g975_1_i7;
-
-};
-
-class DwdmtasState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tas_oos;
-        static const ydk::Enum::YLeaf tas_is;
-        static const ydk::Enum::YLeaf tas_oos_mt;
-        static const ydk::Enum::YLeaf tas_is_cfg;
-
-};
-
-class DwdmControllerState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dwdm_ui_state_up;
-        static const ydk::Enum::YLeaf dwdm_ui_state_down;
-        static const ydk::Enum::YLeaf dwdm_ui_state_admin_down;
-
-};
-
-class G709prbsMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mode_source;
-        static const ydk::Enum::YLeaf mode_sink;
-        static const ydk::Enum::YLeaf mode_source_sink;
-        static const ydk::Enum::YLeaf mode_invalid;
-
-};
-
-class G709prbsPattern : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pattern_none;
-        static const ydk::Enum::YLeaf pattern_null;
-        static const ydk::Enum::YLeaf pattern_pn11;
-        static const ydk::Enum::YLeaf pattern_pn23;
-        static const ydk::Enum::YLeaf pattern_pn31;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "in-active") return 0;
+            if (name == "disabled") return 1;
+            if (name == "normal-state") return 2;
+            if (name == "local-failing") return 3;
+            if (name == "remote-failing") return 4;
+            if (name == "main-t-failing") return 5;
+            if (name == "regen-failing") return 6;
+            if (name == "local-failed") return 7;
+            if (name == "remote-failed") return 8;
+            if (name == "main-t-failed") return 9;
+            if (name == "regen-failed") return 10;
+            return -1;
+        }
 };
 
 class G709prbsInterval : public ydk::Enum
@@ -2149,6 +2154,112 @@ class G709prbsInterval : public ydk::Enum
         static const ydk::Enum::YLeaf previous_interval31;
         static const ydk::Enum::YLeaf previous_interval32;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "current-interval") return 0;
+            if (name == "previous-interval") return 1;
+            if (name == "previous-interval2") return 2;
+            if (name == "previous-interval3") return 3;
+            if (name == "previous-interval4") return 4;
+            if (name == "previous-interval5") return 5;
+            if (name == "previous-interval6") return 6;
+            if (name == "previous-interval7") return 7;
+            if (name == "previous-interval8") return 8;
+            if (name == "previous-interval9") return 9;
+            if (name == "previous-interval10") return 10;
+            if (name == "previous-interval11") return 11;
+            if (name == "previous-interval12") return 12;
+            if (name == "previous-interval13") return 13;
+            if (name == "previous-interval14") return 14;
+            if (name == "previous-interval15") return 15;
+            if (name == "previous-interval16") return 16;
+            if (name == "previous-interval17") return 17;
+            if (name == "previous-interval18") return 18;
+            if (name == "previous-interval19") return 19;
+            if (name == "previous-interval20") return 20;
+            if (name == "previous-interval21") return 21;
+            if (name == "previous-interval22") return 22;
+            if (name == "previous-interval23") return 23;
+            if (name == "previous-interval24") return 24;
+            if (name == "previous-interval25") return 25;
+            if (name == "previous-interval26") return 26;
+            if (name == "previous-interval27") return 27;
+            if (name == "previous-interval28") return 28;
+            if (name == "previous-interval29") return 29;
+            if (name == "previous-interval30") return 30;
+            if (name == "previous-interval31") return 31;
+            if (name == "previous-interval32") return 32;
+            return -1;
+        }
+};
+
+class DwdmWaveChannelOwner : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf configuration;
+        static const ydk::Enum::YLeaf gmpls;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "configuration") return 1;
+            if (name == "gmpls") return 2;
+            return -1;
+        }
+};
+
+class G709efecMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf g975_none;
+        static const ydk::Enum::YLeaf g975_1_i4;
+        static const ydk::Enum::YLeaf g975_1_i7;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "g975-none") return 0;
+            if (name == "g975-1-i4") return 1;
+            if (name == "g975-1-i7") return 2;
+            return -1;
+        }
+};
+
+class G709prbsPattern : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pattern_none;
+        static const ydk::Enum::YLeaf pattern_null;
+        static const ydk::Enum::YLeaf pattern_pn11;
+        static const ydk::Enum::YLeaf pattern_pn23;
+        static const ydk::Enum::YLeaf pattern_pn31;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "pattern-none") return 0;
+            if (name == "pattern-null") return 1;
+            if (name == "pattern-pn11") return 2;
+            if (name == "pattern-pn23") return 3;
+            if (name == "pattern-pn31") return 4;
+            return -1;
+        }
+};
+
+class G709apsByte : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pp_no_protect;
+        static const ydk::Enum::YLeaf pp_no_request;
+        static const ydk::Enum::YLeaf pp_regen_degrade;
+        static const ydk::Enum::YLeaf pp_sig_degrade;
+        static const ydk::Enum::YLeaf pp_remote_main;
+        static const ydk::Enum::YLeaf pp_aps_unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "pp-no-protect") return 0;
+            if (name == "pp-no-request") return 15;
+            if (name == "pp-regen-degrade") return 63;
+            if (name == "pp-sig-degrade") return 175;
+            if (name == "pp-remote-main") return 239;
+            if (name == "pp-aps-unknown") return 255;
+            return -1;
+        }
 };
 
 

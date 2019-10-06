@@ -380,6 +380,11 @@ class IPMROUTESTDMIB::IpMRoute::IpMRouteEnable : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::IpMRouteRtType : public ydk::Enum
@@ -388,6 +393,11 @@ class IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::IpMRouteRtType : public ydk:
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            return -1;
+        }
 };
 
 class IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::IpMRouteNextHopState : public ydk::Enum
@@ -396,6 +406,11 @@ class IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::IpMRouteNextHo
         static const ydk::Enum::YLeaf pruned;
         static const ydk::Enum::YLeaf forwarding;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pruned") return 1;
+            if (name == "forwarding") return 2;
+            return -1;
+        }
 };
 
 

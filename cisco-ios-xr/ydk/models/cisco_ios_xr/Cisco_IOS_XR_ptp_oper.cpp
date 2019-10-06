@@ -27,6 +27,7 @@ Ptp::Ptp()
     , grandmaster(std::make_shared<Ptp::Grandmaster>())
     , interface_unicast_peers(std::make_shared<Ptp::InterfaceUnicastPeers>())
     , utc_offset_info(std::make_shared<Ptp::UtcOffsetInfo>())
+    , platform(std::make_shared<Ptp::Platform>())
 {
     nodes->parent = this;
     summary->parent = this;
@@ -42,6 +43,7 @@ Ptp::Ptp()
     grandmaster->parent = this;
     interface_unicast_peers->parent = this;
     utc_offset_info->parent = this;
+    platform->parent = this;
 
     yang_name = "ptp"; yang_parent_name = "Cisco-IOS-XR-ptp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -66,7 +68,8 @@ bool Ptp::has_data() const
 	|| (global_configuration_error !=  nullptr && global_configuration_error->has_data())
 	|| (grandmaster !=  nullptr && grandmaster->has_data())
 	|| (interface_unicast_peers !=  nullptr && interface_unicast_peers->has_data())
-	|| (utc_offset_info !=  nullptr && utc_offset_info->has_data());
+	|| (utc_offset_info !=  nullptr && utc_offset_info->has_data())
+	|| (platform !=  nullptr && platform->has_data());
 }
 
 bool Ptp::has_operation() const
@@ -85,7 +88,8 @@ bool Ptp::has_operation() const
 	|| (global_configuration_error !=  nullptr && global_configuration_error->has_operation())
 	|| (grandmaster !=  nullptr && grandmaster->has_operation())
 	|| (interface_unicast_peers !=  nullptr && interface_unicast_peers->has_operation())
-	|| (utc_offset_info !=  nullptr && utc_offset_info->has_operation());
+	|| (utc_offset_info !=  nullptr && utc_offset_info->has_operation())
+	|| (platform !=  nullptr && platform->has_operation());
 }
 
 std::string Ptp::get_segment_path() const
@@ -232,6 +236,15 @@ std::shared_ptr<ydk::Entity> Ptp::get_child_by_name(const std::string & child_ya
         return utc_offset_info;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ptp-pd-oper:platform")
+    {
+        if(platform == nullptr)
+        {
+            platform = std::make_shared<Ptp::Platform>();
+        }
+        return platform;
+    }
+
     return nullptr;
 }
 
@@ -309,6 +322,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::get_children() const
         _children["utc-offset-info"] = utc_offset_info;
     }
 
+    if(platform != nullptr)
+    {
+        _children["Cisco-IOS-XR-ptp-pd-oper:platform"] = platform;
+    }
+
     return _children;
 }
 
@@ -347,7 +365,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ptp::get_namespace_id
 
 bool Ptp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nodes" || name == "summary" || name == "interface-configuration-errors" || name == "interface-foreign-masters" || name == "interface-interops" || name == "local-clock" || name == "interface-packet-counters" || name == "advertised-clock" || name == "interfaces" || name == "dataset" || name == "global-configuration-error" || name == "grandmaster" || name == "interface-unicast-peers" || name == "utc-offset-info")
+    if(name == "nodes" || name == "summary" || name == "interface-configuration-errors" || name == "interface-foreign-masters" || name == "interface-interops" || name == "local-clock" || name == "interface-packet-counters" || name == "advertised-clock" || name == "interfaces" || name == "dataset" || name == "global-configuration-error" || name == "grandmaster" || name == "interface-unicast-peers" || name == "utc-offset-info" || name == "platform")
         return true;
     return false;
 }
@@ -856,8 +874,7 @@ Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::Forei
     configured_clock_class{YType::uint8, "configured-clock-class"},
     delay_asymmetry{YType::int32, "delay-asymmetry"},
     ptsf_loss_announce{YType::boolean, "ptsf-loss-announce"},
-    ptsf_loss_sync{YType::boolean, "ptsf-loss-sync"},
-    is_dnu{YType::boolean, "is-dnu"}
+    ptsf_loss_sync{YType::boolean, "ptsf-loss-sync"}
         ,
     foreign_clock(std::make_shared<Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::ForeignClock_>())
     , address(std::make_shared<Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::Address>())
@@ -892,7 +909,6 @@ bool Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::
 	|| delay_asymmetry.is_set
 	|| ptsf_loss_announce.is_set
 	|| ptsf_loss_sync.is_set
-	|| is_dnu.is_set
 	|| (foreign_clock !=  nullptr && foreign_clock->has_data())
 	|| (address !=  nullptr && address->has_data())
 	|| (announce_grant !=  nullptr && announce_grant->has_data())
@@ -914,7 +930,6 @@ bool Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::
 	|| ydk::is_set(delay_asymmetry.yfilter)
 	|| ydk::is_set(ptsf_loss_announce.yfilter)
 	|| ydk::is_set(ptsf_loss_sync.yfilter)
-	|| ydk::is_set(is_dnu.yfilter)
 	|| (foreign_clock !=  nullptr && foreign_clock->has_operation())
 	|| (address !=  nullptr && address->has_operation())
 	|| (announce_grant !=  nullptr && announce_grant->has_operation())
@@ -945,7 +960,6 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaceFo
     if (delay_asymmetry.is_set || is_set(delay_asymmetry.yfilter)) leaf_name_data.push_back(delay_asymmetry.get_name_leafdata());
     if (ptsf_loss_announce.is_set || is_set(ptsf_loss_announce.yfilter)) leaf_name_data.push_back(ptsf_loss_announce.get_name_leafdata());
     if (ptsf_loss_sync.is_set || is_set(ptsf_loss_sync.yfilter)) leaf_name_data.push_back(ptsf_loss_sync.get_name_leafdata());
-    if (is_dnu.is_set || is_set(is_dnu.yfilter)) leaf_name_data.push_back(is_dnu.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1101,12 +1115,6 @@ void Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::
         ptsf_loss_sync.value_namespace = name_space;
         ptsf_loss_sync.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-dnu")
-    {
-        is_dnu = value;
-        is_dnu.value_namespace = name_space;
-        is_dnu.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1155,15 +1163,11 @@ void Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::
     {
         ptsf_loss_sync.yfilter = yfilter;
     }
-    if(value_path == "is-dnu")
-    {
-        is_dnu.yfilter = yfilter;
-    }
 }
 
 bool Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "foreign-clock" || name == "address" || name == "announce-grant" || name == "sync-grant" || name == "delay-response-grant" || name == "is-qualified" || name == "is-grandmaster" || name == "communication-model" || name == "is-known" || name == "time-known-for" || name == "foreign-domain" || name == "configured-priority" || name == "configured-clock-class" || name == "delay-asymmetry" || name == "ptsf-loss-announce" || name == "ptsf-loss-sync" || name == "is-dnu")
+    if(name == "foreign-clock" || name == "address" || name == "announce-grant" || name == "sync-grant" || name == "delay-response-grant" || name == "is-qualified" || name == "is-grandmaster" || name == "communication-model" || name == "is-known" || name == "time-known-for" || name == "foreign-domain" || name == "configured-priority" || name == "configured-clock-class" || name == "delay-asymmetry" || name == "ptsf-loss-announce" || name == "ptsf-loss-sync")
         return true;
     return false;
 }
@@ -6212,8 +6216,8 @@ Ptp::Nodes::Node::PacketCounters::DropReasons::DropReasons()
     not_supported{YType::uint32, "not-supported"},
     min_clock_class{YType::uint32, "min-clock-class"},
     bad_clock_class{YType::uint32, "bad-clock-class"},
-    reserved_clock_id{YType::uint32, "reserved-clock-id"},
     steps_removed{YType::uint32, "steps-removed"},
+    reserved_clock_id{YType::uint32, "reserved-clock-id"},
     g8265_1_incompatible{YType::uint32, "g8265-1-incompatible"},
     g8275_1_incompatible{YType::uint32, "g8275-1-incompatible"},
     g8275_2_incompatible{YType::uint32, "g8275-2-incompatible"},
@@ -6253,8 +6257,8 @@ bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_data() const
 	|| not_supported.is_set
 	|| min_clock_class.is_set
 	|| bad_clock_class.is_set
-	|| reserved_clock_id.is_set
 	|| steps_removed.is_set
+	|| reserved_clock_id.is_set
 	|| g8265_1_incompatible.is_set
 	|| g8275_1_incompatible.is_set
 	|| g8275_2_incompatible.is_set
@@ -6287,8 +6291,8 @@ bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_operation() const
 	|| ydk::is_set(not_supported.yfilter)
 	|| ydk::is_set(min_clock_class.yfilter)
 	|| ydk::is_set(bad_clock_class.yfilter)
-	|| ydk::is_set(reserved_clock_id.yfilter)
 	|| ydk::is_set(steps_removed.yfilter)
+	|| ydk::is_set(reserved_clock_id.yfilter)
 	|| ydk::is_set(g8265_1_incompatible.yfilter)
 	|| ydk::is_set(g8275_1_incompatible.yfilter)
 	|| ydk::is_set(g8275_2_incompatible.yfilter)
@@ -6329,8 +6333,8 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::PacketCounters:
     if (not_supported.is_set || is_set(not_supported.yfilter)) leaf_name_data.push_back(not_supported.get_name_leafdata());
     if (min_clock_class.is_set || is_set(min_clock_class.yfilter)) leaf_name_data.push_back(min_clock_class.get_name_leafdata());
     if (bad_clock_class.is_set || is_set(bad_clock_class.yfilter)) leaf_name_data.push_back(bad_clock_class.get_name_leafdata());
-    if (reserved_clock_id.is_set || is_set(reserved_clock_id.yfilter)) leaf_name_data.push_back(reserved_clock_id.get_name_leafdata());
     if (steps_removed.is_set || is_set(steps_removed.yfilter)) leaf_name_data.push_back(steps_removed.get_name_leafdata());
+    if (reserved_clock_id.is_set || is_set(reserved_clock_id.yfilter)) leaf_name_data.push_back(reserved_clock_id.get_name_leafdata());
     if (g8265_1_incompatible.is_set || is_set(g8265_1_incompatible.yfilter)) leaf_name_data.push_back(g8265_1_incompatible.get_name_leafdata());
     if (g8275_1_incompatible.is_set || is_set(g8275_1_incompatible.yfilter)) leaf_name_data.push_back(g8275_1_incompatible.get_name_leafdata());
     if (g8275_2_incompatible.is_set || is_set(g8275_2_incompatible.yfilter)) leaf_name_data.push_back(g8275_2_incompatible.get_name_leafdata());
@@ -6492,17 +6496,17 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_value(const std::string 
         bad_clock_class.value_namespace = name_space;
         bad_clock_class.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "reserved-clock-id")
-    {
-        reserved_clock_id = value;
-        reserved_clock_id.value_namespace = name_space;
-        reserved_clock_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "steps-removed")
     {
         steps_removed = value;
         steps_removed.value_namespace = name_space;
         steps_removed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reserved-clock-id")
+    {
+        reserved_clock_id = value;
+        reserved_clock_id.value_namespace = name_space;
+        reserved_clock_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "g8265-1-incompatible")
     {
@@ -6624,13 +6628,13 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_filter(const std::string
     {
         bad_clock_class.yfilter = yfilter;
     }
-    if(value_path == "reserved-clock-id")
-    {
-        reserved_clock_id.yfilter = yfilter;
-    }
     if(value_path == "steps-removed")
     {
         steps_removed.yfilter = yfilter;
+    }
+    if(value_path == "reserved-clock-id")
+    {
+        reserved_clock_id.yfilter = yfilter;
     }
     if(value_path == "g8265-1-incompatible")
     {
@@ -6652,7 +6656,7 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_filter(const std::string
 
 bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "not-ready" || name == "wrong-domain" || name == "too-short" || name == "looped-same-port" || name == "looped-higher-port" || name == "looped-lower-port" || name == "no-timestamp" || name == "zero-timestamp" || name == "invalid-tl-vs" || name == "not-for-us" || name == "not-listening" || name == "wrong-master" || name == "unknown-master" || name == "not-master" || name == "not-slave" || name == "not-granted" || name == "too-slow" || name == "invalid-packet" || name == "wrong-sequence-id" || name == "no-offload-session" || name == "not-supported" || name == "min-clock-class" || name == "bad-clock-class" || name == "reserved-clock-id" || name == "steps-removed" || name == "g8265-1-incompatible" || name == "g8275-1-incompatible" || name == "g8275-2-incompatible" || name == "incorrect-address")
+    if(name == "not-ready" || name == "wrong-domain" || name == "too-short" || name == "looped-same-port" || name == "looped-higher-port" || name == "looped-lower-port" || name == "no-timestamp" || name == "zero-timestamp" || name == "invalid-tl-vs" || name == "not-for-us" || name == "not-listening" || name == "wrong-master" || name == "unknown-master" || name == "not-master" || name == "not-slave" || name == "not-granted" || name == "too-slow" || name == "invalid-packet" || name == "wrong-sequence-id" || name == "no-offload-session" || name == "not-supported" || name == "min-clock-class" || name == "bad-clock-class" || name == "steps-removed" || name == "reserved-clock-id" || name == "g8265-1-incompatible" || name == "g8275-1-incompatible" || name == "g8275-2-incompatible" || name == "incorrect-address")
         return true;
     return false;
 }
@@ -8096,8 +8100,7 @@ Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::ForeignClock
     configured_clock_class{YType::uint8, "configured-clock-class"},
     delay_asymmetry{YType::int32, "delay-asymmetry"},
     ptsf_loss_announce{YType::boolean, "ptsf-loss-announce"},
-    ptsf_loss_sync{YType::boolean, "ptsf-loss-sync"},
-    is_dnu{YType::boolean, "is-dnu"}
+    ptsf_loss_sync{YType::boolean, "ptsf-loss-sync"}
         ,
     foreign_clock(std::make_shared<Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::ForeignClock_>())
     , address(std::make_shared<Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::Address>())
@@ -8132,7 +8135,6 @@ bool Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::has_dat
 	|| delay_asymmetry.is_set
 	|| ptsf_loss_announce.is_set
 	|| ptsf_loss_sync.is_set
-	|| is_dnu.is_set
 	|| (foreign_clock !=  nullptr && foreign_clock->has_data())
 	|| (address !=  nullptr && address->has_data())
 	|| (announce_grant !=  nullptr && announce_grant->has_data())
@@ -8154,7 +8156,6 @@ bool Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::has_ope
 	|| ydk::is_set(delay_asymmetry.yfilter)
 	|| ydk::is_set(ptsf_loss_announce.yfilter)
 	|| ydk::is_set(ptsf_loss_sync.yfilter)
-	|| ydk::is_set(is_dnu.yfilter)
 	|| (foreign_clock !=  nullptr && foreign_clock->has_operation())
 	|| (address !=  nullptr && address->has_operation())
 	|| (announce_grant !=  nullptr && announce_grant->has_operation())
@@ -8185,7 +8186,6 @@ std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceForeignMasters::Int
     if (delay_asymmetry.is_set || is_set(delay_asymmetry.yfilter)) leaf_name_data.push_back(delay_asymmetry.get_name_leafdata());
     if (ptsf_loss_announce.is_set || is_set(ptsf_loss_announce.yfilter)) leaf_name_data.push_back(ptsf_loss_announce.get_name_leafdata());
     if (ptsf_loss_sync.is_set || is_set(ptsf_loss_sync.yfilter)) leaf_name_data.push_back(ptsf_loss_sync.get_name_leafdata());
-    if (is_dnu.is_set || is_set(is_dnu.yfilter)) leaf_name_data.push_back(is_dnu.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8341,12 +8341,6 @@ void Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::set_val
         ptsf_loss_sync.value_namespace = name_space;
         ptsf_loss_sync.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-dnu")
-    {
-        is_dnu = value;
-        is_dnu.value_namespace = name_space;
-        is_dnu.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8395,15 +8389,11 @@ void Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::set_fil
     {
         ptsf_loss_sync.yfilter = yfilter;
     }
-    if(value_path == "is-dnu")
-    {
-        is_dnu.yfilter = yfilter;
-    }
 }
 
 bool Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "foreign-clock" || name == "address" || name == "announce-grant" || name == "sync-grant" || name == "delay-response-grant" || name == "is-qualified" || name == "is-grandmaster" || name == "communication-model" || name == "is-known" || name == "time-known-for" || name == "foreign-domain" || name == "configured-priority" || name == "configured-clock-class" || name == "delay-asymmetry" || name == "ptsf-loss-announce" || name == "ptsf-loss-sync" || name == "is-dnu")
+    if(name == "foreign-clock" || name == "address" || name == "announce-grant" || name == "sync-grant" || name == "delay-response-grant" || name == "is-qualified" || name == "is-grandmaster" || name == "communication-model" || name == "is-known" || name == "time-known-for" || name == "foreign-domain" || name == "configured-priority" || name == "configured-clock-class" || name == "delay-asymmetry" || name == "ptsf-loss-announce" || name == "ptsf-loss-sync")
         return true;
     return false;
 }
@@ -10688,7 +10678,8 @@ bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::has_leaf
 Ptp::LocalClock::LocalClock()
     :
     domain{YType::uint8, "domain"},
-    grandmaster{YType::boolean, "grandmaster"}
+    holdover{YType::boolean, "holdover"},
+    holdover_clock_class{YType::uint8, "holdover-clock-class"}
         ,
     clock_properties(std::make_shared<Ptp::LocalClock::ClockProperties>())
     , virtual_port(std::make_shared<Ptp::LocalClock::VirtualPort>())
@@ -10707,7 +10698,8 @@ bool Ptp::LocalClock::has_data() const
 {
     if (is_presence_container) return true;
     return domain.is_set
-	|| grandmaster.is_set
+	|| holdover.is_set
+	|| holdover_clock_class.is_set
 	|| (clock_properties !=  nullptr && clock_properties->has_data())
 	|| (virtual_port !=  nullptr && virtual_port->has_data());
 }
@@ -10716,7 +10708,8 @@ bool Ptp::LocalClock::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(domain.yfilter)
-	|| ydk::is_set(grandmaster.yfilter)
+	|| ydk::is_set(holdover.yfilter)
+	|| ydk::is_set(holdover_clock_class.yfilter)
 	|| (clock_properties !=  nullptr && clock_properties->has_operation())
 	|| (virtual_port !=  nullptr && virtual_port->has_operation());
 }
@@ -10740,7 +10733,8 @@ std::vector<std::pair<std::string, LeafData> > Ptp::LocalClock::get_name_leaf_da
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.yfilter)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (grandmaster.is_set || is_set(grandmaster.yfilter)) leaf_name_data.push_back(grandmaster.get_name_leafdata());
+    if (holdover.is_set || is_set(holdover.yfilter)) leaf_name_data.push_back(holdover.get_name_leafdata());
+    if (holdover_clock_class.is_set || is_set(holdover_clock_class.yfilter)) leaf_name_data.push_back(holdover_clock_class.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10794,11 +10788,17 @@ void Ptp::LocalClock::set_value(const std::string & value_path, const std::strin
         domain.value_namespace = name_space;
         domain.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "grandmaster")
+    if(value_path == "holdover")
     {
-        grandmaster = value;
-        grandmaster.value_namespace = name_space;
-        grandmaster.value_namespace_prefix = name_space_prefix;
+        holdover = value;
+        holdover.value_namespace = name_space;
+        holdover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "holdover-clock-class")
+    {
+        holdover_clock_class = value;
+        holdover_clock_class.value_namespace = name_space;
+        holdover_clock_class.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -10808,15 +10808,19 @@ void Ptp::LocalClock::set_filter(const std::string & value_path, YFilter yfilter
     {
         domain.yfilter = yfilter;
     }
-    if(value_path == "grandmaster")
+    if(value_path == "holdover")
     {
-        grandmaster.yfilter = yfilter;
+        holdover.yfilter = yfilter;
+    }
+    if(value_path == "holdover-clock-class")
+    {
+        holdover_clock_class.yfilter = yfilter;
     }
 }
 
 bool Ptp::LocalClock::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-properties" || name == "virtual-port" || name == "domain" || name == "grandmaster")
+    if(name == "clock-properties" || name == "virtual-port" || name == "domain" || name == "holdover" || name == "holdover-clock-class")
         return true;
     return false;
 }
@@ -21153,21 +21157,1510 @@ bool Ptp::UtcOffsetInfo::ConfiguredLeapSecond::has_leaf_or_child_of_name(const s
     return false;
 }
 
+Ptp::Platform::Platform()
+    :
+    servo(std::make_shared<Ptp::Platform::Servo>())
+{
+    servo->parent = this;
+
+    yang_name = "platform"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::~Platform()
+{
+}
+
+bool Ptp::Platform::has_data() const
+{
+    if (is_presence_container) return true;
+    return (servo !=  nullptr && servo->has_data());
+}
+
+bool Ptp::Platform::has_operation() const
+{
+    return is_set(yfilter)
+	|| (servo !=  nullptr && servo->has_operation());
+}
+
+std::string Ptp::Platform::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-pd-oper:platform";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "servo")
+    {
+        if(servo == nullptr)
+        {
+            servo = std::make_shared<Ptp::Platform::Servo>();
+        }
+        return servo;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(servo != nullptr)
+    {
+        _children["servo"] = servo;
+    }
+
+    return _children;
+}
+
+void Ptp::Platform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ptp::Platform::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ptp::Platform::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "servo")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::Servo()
+    :
+    lock_status{YType::uint16, "lock-status"},
+    running{YType::boolean, "running"},
+    device_status{YType::str, "device-status"},
+    log_level{YType::uint16, "log-level"},
+    phase_accuracy_last{YType::int64, "phase-accuracy-last"},
+    num_sync_timestamp{YType::uint32, "num-sync-timestamp"},
+    num_delay_timestamp{YType::uint32, "num-delay-timestamp"},
+    num_set_time{YType::uint32, "num-set-time"},
+    num_step_time{YType::uint32, "num-step-time"},
+    num_adjust_freq{YType::uint32, "num-adjust-freq"},
+    num_adjust_freq_time{YType::uint32, "num-adjust-freq-time"},
+    last_adjust_freq{YType::int32, "last-adjust-freq"},
+    last_step_time{YType::int32, "last-step-time"},
+    num_discard_sync_timestamp{YType::uint32, "num-discard-sync-timestamp"},
+    num_discard_delay_timestamp{YType::uint32, "num-discard-delay-timestamp"},
+    flagof_last_set_time{YType::boolean, "flagof-last-set-time"},
+    offset_from_master{YType::int64, "offset-from-master"},
+    mean_path_delay{YType::int64, "mean-path-delay"},
+    servo_mode{YType::int32, "servo-mode"}
+        ,
+    last_set_time(std::make_shared<Ptp::Platform::Servo::LastSetTime>())
+    , last_received_t1(std::make_shared<Ptp::Platform::Servo::LastReceivedT1>())
+    , last_received_t2(std::make_shared<Ptp::Platform::Servo::LastReceivedT2>())
+    , last_received_t3(std::make_shared<Ptp::Platform::Servo::LastReceivedT3>())
+    , last_received_t4(std::make_shared<Ptp::Platform::Servo::LastReceivedT4>())
+    , pre_received_t1(std::make_shared<Ptp::Platform::Servo::PreReceivedT1>())
+    , pre_received_t2(std::make_shared<Ptp::Platform::Servo::PreReceivedT2>())
+    , pre_received_t3(std::make_shared<Ptp::Platform::Servo::PreReceivedT3>())
+    , pre_received_t4(std::make_shared<Ptp::Platform::Servo::PreReceivedT4>())
+{
+    last_set_time->parent = this;
+    last_received_t1->parent = this;
+    last_received_t2->parent = this;
+    last_received_t3->parent = this;
+    last_received_t4->parent = this;
+    pre_received_t1->parent = this;
+    pre_received_t2->parent = this;
+    pre_received_t3->parent = this;
+    pre_received_t4->parent = this;
+
+    yang_name = "servo"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::~Servo()
+{
+}
+
+bool Ptp::Platform::Servo::has_data() const
+{
+    if (is_presence_container) return true;
+    return lock_status.is_set
+	|| running.is_set
+	|| device_status.is_set
+	|| log_level.is_set
+	|| phase_accuracy_last.is_set
+	|| num_sync_timestamp.is_set
+	|| num_delay_timestamp.is_set
+	|| num_set_time.is_set
+	|| num_step_time.is_set
+	|| num_adjust_freq.is_set
+	|| num_adjust_freq_time.is_set
+	|| last_adjust_freq.is_set
+	|| last_step_time.is_set
+	|| num_discard_sync_timestamp.is_set
+	|| num_discard_delay_timestamp.is_set
+	|| flagof_last_set_time.is_set
+	|| offset_from_master.is_set
+	|| mean_path_delay.is_set
+	|| servo_mode.is_set
+	|| (last_set_time !=  nullptr && last_set_time->has_data())
+	|| (last_received_t1 !=  nullptr && last_received_t1->has_data())
+	|| (last_received_t2 !=  nullptr && last_received_t2->has_data())
+	|| (last_received_t3 !=  nullptr && last_received_t3->has_data())
+	|| (last_received_t4 !=  nullptr && last_received_t4->has_data())
+	|| (pre_received_t1 !=  nullptr && pre_received_t1->has_data())
+	|| (pre_received_t2 !=  nullptr && pre_received_t2->has_data())
+	|| (pre_received_t3 !=  nullptr && pre_received_t3->has_data())
+	|| (pre_received_t4 !=  nullptr && pre_received_t4->has_data());
+}
+
+bool Ptp::Platform::Servo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lock_status.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(device_status.yfilter)
+	|| ydk::is_set(log_level.yfilter)
+	|| ydk::is_set(phase_accuracy_last.yfilter)
+	|| ydk::is_set(num_sync_timestamp.yfilter)
+	|| ydk::is_set(num_delay_timestamp.yfilter)
+	|| ydk::is_set(num_set_time.yfilter)
+	|| ydk::is_set(num_step_time.yfilter)
+	|| ydk::is_set(num_adjust_freq.yfilter)
+	|| ydk::is_set(num_adjust_freq_time.yfilter)
+	|| ydk::is_set(last_adjust_freq.yfilter)
+	|| ydk::is_set(last_step_time.yfilter)
+	|| ydk::is_set(num_discard_sync_timestamp.yfilter)
+	|| ydk::is_set(num_discard_delay_timestamp.yfilter)
+	|| ydk::is_set(flagof_last_set_time.yfilter)
+	|| ydk::is_set(offset_from_master.yfilter)
+	|| ydk::is_set(mean_path_delay.yfilter)
+	|| ydk::is_set(servo_mode.yfilter)
+	|| (last_set_time !=  nullptr && last_set_time->has_operation())
+	|| (last_received_t1 !=  nullptr && last_received_t1->has_operation())
+	|| (last_received_t2 !=  nullptr && last_received_t2->has_operation())
+	|| (last_received_t3 !=  nullptr && last_received_t3->has_operation())
+	|| (last_received_t4 !=  nullptr && last_received_t4->has_operation())
+	|| (pre_received_t1 !=  nullptr && pre_received_t1->has_operation())
+	|| (pre_received_t2 !=  nullptr && pre_received_t2->has_operation())
+	|| (pre_received_t3 !=  nullptr && pre_received_t3->has_operation())
+	|| (pre_received_t4 !=  nullptr && pre_received_t4->has_operation());
+}
+
+std::string Ptp::Platform::Servo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "servo";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lock_status.is_set || is_set(lock_status.yfilter)) leaf_name_data.push_back(lock_status.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (device_status.is_set || is_set(device_status.yfilter)) leaf_name_data.push_back(device_status.get_name_leafdata());
+    if (log_level.is_set || is_set(log_level.yfilter)) leaf_name_data.push_back(log_level.get_name_leafdata());
+    if (phase_accuracy_last.is_set || is_set(phase_accuracy_last.yfilter)) leaf_name_data.push_back(phase_accuracy_last.get_name_leafdata());
+    if (num_sync_timestamp.is_set || is_set(num_sync_timestamp.yfilter)) leaf_name_data.push_back(num_sync_timestamp.get_name_leafdata());
+    if (num_delay_timestamp.is_set || is_set(num_delay_timestamp.yfilter)) leaf_name_data.push_back(num_delay_timestamp.get_name_leafdata());
+    if (num_set_time.is_set || is_set(num_set_time.yfilter)) leaf_name_data.push_back(num_set_time.get_name_leafdata());
+    if (num_step_time.is_set || is_set(num_step_time.yfilter)) leaf_name_data.push_back(num_step_time.get_name_leafdata());
+    if (num_adjust_freq.is_set || is_set(num_adjust_freq.yfilter)) leaf_name_data.push_back(num_adjust_freq.get_name_leafdata());
+    if (num_adjust_freq_time.is_set || is_set(num_adjust_freq_time.yfilter)) leaf_name_data.push_back(num_adjust_freq_time.get_name_leafdata());
+    if (last_adjust_freq.is_set || is_set(last_adjust_freq.yfilter)) leaf_name_data.push_back(last_adjust_freq.get_name_leafdata());
+    if (last_step_time.is_set || is_set(last_step_time.yfilter)) leaf_name_data.push_back(last_step_time.get_name_leafdata());
+    if (num_discard_sync_timestamp.is_set || is_set(num_discard_sync_timestamp.yfilter)) leaf_name_data.push_back(num_discard_sync_timestamp.get_name_leafdata());
+    if (num_discard_delay_timestamp.is_set || is_set(num_discard_delay_timestamp.yfilter)) leaf_name_data.push_back(num_discard_delay_timestamp.get_name_leafdata());
+    if (flagof_last_set_time.is_set || is_set(flagof_last_set_time.yfilter)) leaf_name_data.push_back(flagof_last_set_time.get_name_leafdata());
+    if (offset_from_master.is_set || is_set(offset_from_master.yfilter)) leaf_name_data.push_back(offset_from_master.get_name_leafdata());
+    if (mean_path_delay.is_set || is_set(mean_path_delay.yfilter)) leaf_name_data.push_back(mean_path_delay.get_name_leafdata());
+    if (servo_mode.is_set || is_set(servo_mode.yfilter)) leaf_name_data.push_back(servo_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "last-set-time")
+    {
+        if(last_set_time == nullptr)
+        {
+            last_set_time = std::make_shared<Ptp::Platform::Servo::LastSetTime>();
+        }
+        return last_set_time;
+    }
+
+    if(child_yang_name == "last-received-t1")
+    {
+        if(last_received_t1 == nullptr)
+        {
+            last_received_t1 = std::make_shared<Ptp::Platform::Servo::LastReceivedT1>();
+        }
+        return last_received_t1;
+    }
+
+    if(child_yang_name == "last-received-t2")
+    {
+        if(last_received_t2 == nullptr)
+        {
+            last_received_t2 = std::make_shared<Ptp::Platform::Servo::LastReceivedT2>();
+        }
+        return last_received_t2;
+    }
+
+    if(child_yang_name == "last-received-t3")
+    {
+        if(last_received_t3 == nullptr)
+        {
+            last_received_t3 = std::make_shared<Ptp::Platform::Servo::LastReceivedT3>();
+        }
+        return last_received_t3;
+    }
+
+    if(child_yang_name == "last-received-t4")
+    {
+        if(last_received_t4 == nullptr)
+        {
+            last_received_t4 = std::make_shared<Ptp::Platform::Servo::LastReceivedT4>();
+        }
+        return last_received_t4;
+    }
+
+    if(child_yang_name == "pre-received-t1")
+    {
+        if(pre_received_t1 == nullptr)
+        {
+            pre_received_t1 = std::make_shared<Ptp::Platform::Servo::PreReceivedT1>();
+        }
+        return pre_received_t1;
+    }
+
+    if(child_yang_name == "pre-received-t2")
+    {
+        if(pre_received_t2 == nullptr)
+        {
+            pre_received_t2 = std::make_shared<Ptp::Platform::Servo::PreReceivedT2>();
+        }
+        return pre_received_t2;
+    }
+
+    if(child_yang_name == "pre-received-t3")
+    {
+        if(pre_received_t3 == nullptr)
+        {
+            pre_received_t3 = std::make_shared<Ptp::Platform::Servo::PreReceivedT3>();
+        }
+        return pre_received_t3;
+    }
+
+    if(child_yang_name == "pre-received-t4")
+    {
+        if(pre_received_t4 == nullptr)
+        {
+            pre_received_t4 = std::make_shared<Ptp::Platform::Servo::PreReceivedT4>();
+        }
+        return pre_received_t4;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(last_set_time != nullptr)
+    {
+        _children["last-set-time"] = last_set_time;
+    }
+
+    if(last_received_t1 != nullptr)
+    {
+        _children["last-received-t1"] = last_received_t1;
+    }
+
+    if(last_received_t2 != nullptr)
+    {
+        _children["last-received-t2"] = last_received_t2;
+    }
+
+    if(last_received_t3 != nullptr)
+    {
+        _children["last-received-t3"] = last_received_t3;
+    }
+
+    if(last_received_t4 != nullptr)
+    {
+        _children["last-received-t4"] = last_received_t4;
+    }
+
+    if(pre_received_t1 != nullptr)
+    {
+        _children["pre-received-t1"] = pre_received_t1;
+    }
+
+    if(pre_received_t2 != nullptr)
+    {
+        _children["pre-received-t2"] = pre_received_t2;
+    }
+
+    if(pre_received_t3 != nullptr)
+    {
+        _children["pre-received-t3"] = pre_received_t3;
+    }
+
+    if(pre_received_t4 != nullptr)
+    {
+        _children["pre-received-t4"] = pre_received_t4;
+    }
+
+    return _children;
+}
+
+void Ptp::Platform::Servo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lock-status")
+    {
+        lock_status = value;
+        lock_status.value_namespace = name_space;
+        lock_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "device-status")
+    {
+        device_status = value;
+        device_status.value_namespace = name_space;
+        device_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "log-level")
+    {
+        log_level = value;
+        log_level.value_namespace = name_space;
+        log_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phase-accuracy-last")
+    {
+        phase_accuracy_last = value;
+        phase_accuracy_last.value_namespace = name_space;
+        phase_accuracy_last.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-sync-timestamp")
+    {
+        num_sync_timestamp = value;
+        num_sync_timestamp.value_namespace = name_space;
+        num_sync_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-delay-timestamp")
+    {
+        num_delay_timestamp = value;
+        num_delay_timestamp.value_namespace = name_space;
+        num_delay_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-set-time")
+    {
+        num_set_time = value;
+        num_set_time.value_namespace = name_space;
+        num_set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-step-time")
+    {
+        num_step_time = value;
+        num_step_time.value_namespace = name_space;
+        num_step_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-adjust-freq")
+    {
+        num_adjust_freq = value;
+        num_adjust_freq.value_namespace = name_space;
+        num_adjust_freq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-adjust-freq-time")
+    {
+        num_adjust_freq_time = value;
+        num_adjust_freq_time.value_namespace = name_space;
+        num_adjust_freq_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-adjust-freq")
+    {
+        last_adjust_freq = value;
+        last_adjust_freq.value_namespace = name_space;
+        last_adjust_freq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-step-time")
+    {
+        last_step_time = value;
+        last_step_time.value_namespace = name_space;
+        last_step_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-discard-sync-timestamp")
+    {
+        num_discard_sync_timestamp = value;
+        num_discard_sync_timestamp.value_namespace = name_space;
+        num_discard_sync_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-discard-delay-timestamp")
+    {
+        num_discard_delay_timestamp = value;
+        num_discard_delay_timestamp.value_namespace = name_space;
+        num_discard_delay_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flagof-last-set-time")
+    {
+        flagof_last_set_time = value;
+        flagof_last_set_time.value_namespace = name_space;
+        flagof_last_set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-from-master")
+    {
+        offset_from_master = value;
+        offset_from_master.value_namespace = name_space;
+        offset_from_master.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mean-path-delay")
+    {
+        mean_path_delay = value;
+        mean_path_delay.value_namespace = name_space;
+        mean_path_delay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "servo-mode")
+    {
+        servo_mode = value;
+        servo_mode.value_namespace = name_space;
+        servo_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lock-status")
+    {
+        lock_status.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "device-status")
+    {
+        device_status.yfilter = yfilter;
+    }
+    if(value_path == "log-level")
+    {
+        log_level.yfilter = yfilter;
+    }
+    if(value_path == "phase-accuracy-last")
+    {
+        phase_accuracy_last.yfilter = yfilter;
+    }
+    if(value_path == "num-sync-timestamp")
+    {
+        num_sync_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "num-delay-timestamp")
+    {
+        num_delay_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "num-set-time")
+    {
+        num_set_time.yfilter = yfilter;
+    }
+    if(value_path == "num-step-time")
+    {
+        num_step_time.yfilter = yfilter;
+    }
+    if(value_path == "num-adjust-freq")
+    {
+        num_adjust_freq.yfilter = yfilter;
+    }
+    if(value_path == "num-adjust-freq-time")
+    {
+        num_adjust_freq_time.yfilter = yfilter;
+    }
+    if(value_path == "last-adjust-freq")
+    {
+        last_adjust_freq.yfilter = yfilter;
+    }
+    if(value_path == "last-step-time")
+    {
+        last_step_time.yfilter = yfilter;
+    }
+    if(value_path == "num-discard-sync-timestamp")
+    {
+        num_discard_sync_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "num-discard-delay-timestamp")
+    {
+        num_discard_delay_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "flagof-last-set-time")
+    {
+        flagof_last_set_time.yfilter = yfilter;
+    }
+    if(value_path == "offset-from-master")
+    {
+        offset_from_master.yfilter = yfilter;
+    }
+    if(value_path == "mean-path-delay")
+    {
+        mean_path_delay.yfilter = yfilter;
+    }
+    if(value_path == "servo-mode")
+    {
+        servo_mode.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-set-time" || name == "last-received-t1" || name == "last-received-t2" || name == "last-received-t3" || name == "last-received-t4" || name == "pre-received-t1" || name == "pre-received-t2" || name == "pre-received-t3" || name == "pre-received-t4" || name == "lock-status" || name == "running" || name == "device-status" || name == "log-level" || name == "phase-accuracy-last" || name == "num-sync-timestamp" || name == "num-delay-timestamp" || name == "num-set-time" || name == "num-step-time" || name == "num-adjust-freq" || name == "num-adjust-freq-time" || name == "last-adjust-freq" || name == "last-step-time" || name == "num-discard-sync-timestamp" || name == "num-discard-delay-timestamp" || name == "flagof-last-set-time" || name == "offset-from-master" || name == "mean-path-delay" || name == "servo-mode")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastSetTime::LastSetTime()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-set-time"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastSetTime::~LastSetTime()
+{
+}
+
+bool Ptp::Platform::Servo::LastSetTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastSetTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastSetTime::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastSetTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-set-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastSetTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::LastSetTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::LastSetTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::LastSetTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastSetTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastSetTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT1::LastReceivedT1()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t1"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT1::~LastReceivedT1()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT1::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT1::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT1::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT1::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t1";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT1::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::LastReceivedT1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::LastReceivedT1::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT1::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT1::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT2::LastReceivedT2()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t2"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT2::~LastReceivedT2()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT2::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT2::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT2::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t2";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT2::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::LastReceivedT2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::LastReceivedT2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT3::LastReceivedT3()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t3"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT3::~LastReceivedT3()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT3::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT3::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT3::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT3::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t3";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT3::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::LastReceivedT3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::LastReceivedT3::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT4::LastReceivedT4()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t4"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT4::~LastReceivedT4()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT4::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::LastReceivedT4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::LastReceivedT4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT1::PreReceivedT1()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t1"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT1::~PreReceivedT1()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT1::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT1::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT1::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT1::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t1";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT1::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::PreReceivedT1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::PreReceivedT1::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT1::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT1::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT2::PreReceivedT2()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t2"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT2::~PreReceivedT2()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT2::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT2::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT2::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t2";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT2::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::PreReceivedT2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::PreReceivedT2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT3::PreReceivedT3()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t3"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT3::~PreReceivedT3()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT3::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT3::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT3::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT3::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t3";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT3::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::PreReceivedT3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::PreReceivedT3::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT4::PreReceivedT4()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t4"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT4::~PreReceivedT4()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT4::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Platform::Servo::PreReceivedT4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Platform::Servo::PreReceivedT4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf PtpBagRestrictPortState::any {0, "any"};
+const Enum::YLeaf PtpBagRestrictPortState::slave_only {1, "slave-only"};
+const Enum::YLeaf PtpBagRestrictPortState::master_only {2, "master-only"};
+
+const Enum::YLeaf PtpBagPortState::initializing {0, "initializing"};
+const Enum::YLeaf PtpBagPortState::listen {1, "listen"};
+const Enum::YLeaf PtpBagPortState::passive {2, "passive"};
+const Enum::YLeaf PtpBagPortState::pre_master {3, "pre-master"};
+const Enum::YLeaf PtpBagPortState::master {4, "master"};
+const Enum::YLeaf PtpBagPortState::uncalibrated {5, "uncalibrated"};
+const Enum::YLeaf PtpBagPortState::slave {6, "slave"};
+const Enum::YLeaf PtpBagPortState::faulty {7, "faulty"};
+
+const Enum::YLeaf PtpBagEncap::unknown {0, "unknown"};
+const Enum::YLeaf PtpBagEncap::ethernet {1, "ethernet"};
+const Enum::YLeaf PtpBagEncap::ipv4 {2, "ipv4"};
+const Enum::YLeaf PtpBagEncap::ipv6 {3, "ipv6"};
+
 const Enum::YLeaf PtpBagDelayMechanism::e2e {0, "e2e"};
 const Enum::YLeaf PtpBagDelayMechanism::p2p {1, "p2p"};
 
 const Enum::YLeaf PtpBagTelecomClock::grandmaster {0, "grandmaster"};
 const Enum::YLeaf PtpBagTelecomClock::boundary {1, "boundary"};
 const Enum::YLeaf PtpBagTelecomClock::slave {2, "slave"};
-
-const Enum::YLeaf PtpBagProfile::default_ {0, "default"};
-const Enum::YLeaf PtpBagProfile::g82651 {1, "g82651"};
-const Enum::YLeaf PtpBagProfile::g82751 {2, "g82751"};
-const Enum::YLeaf PtpBagProfile::g82752 {3, "g82752"};
-
-const Enum::YLeaf PtpBagRestrictPortState::any {0, "any"};
-const Enum::YLeaf PtpBagRestrictPortState::slave_only {1, "slave-only"};
-const Enum::YLeaf PtpBagRestrictPortState::master_only {2, "master-only"};
 
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
@@ -21189,30 +22682,9 @@ const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-opera
 const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
 const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
 
-const Enum::YLeaf PtpBagPortState::initializing {0, "initializing"};
-const Enum::YLeaf PtpBagPortState::listen {1, "listen"};
-const Enum::YLeaf PtpBagPortState::passive {2, "passive"};
-const Enum::YLeaf PtpBagPortState::pre_master {3, "pre-master"};
-const Enum::YLeaf PtpBagPortState::master {4, "master"};
-const Enum::YLeaf PtpBagPortState::uncalibrated {5, "uncalibrated"};
-const Enum::YLeaf PtpBagPortState::slave {6, "slave"};
-const Enum::YLeaf PtpBagPortState::faulty {7, "faulty"};
-
-const Enum::YLeaf PtpBagEncap::unknown {0, "unknown"};
-const Enum::YLeaf PtpBagEncap::ethernet {1, "ethernet"};
-const Enum::YLeaf PtpBagEncap::ipv4 {2, "ipv4"};
-const Enum::YLeaf PtpBagEncap::ipv6 {3, "ipv6"};
-
 const Enum::YLeaf PtpBagCommunicationModel::unicast {0, "unicast"};
 const Enum::YLeaf PtpBagCommunicationModel::mixed_mode {1, "mixed-mode"};
 const Enum::YLeaf PtpBagCommunicationModel::multicast {2, "multicast"};
-
-const Enum::YLeaf PtpBagClockLeapSeconds::none {0, "none"};
-const Enum::YLeaf PtpBagClockLeapSeconds::leap59 {1, "leap59"};
-const Enum::YLeaf PtpBagClockLeapSeconds::leap61 {2, "leap61"};
-
-const Enum::YLeaf PtpBagClockTimescale::ptp {0, "ptp"};
-const Enum::YLeaf PtpBagClockTimescale::arb {1, "arb"};
 
 const Enum::YLeaf PtpBagClockTimeSource::unknown {0, "unknown"};
 const Enum::YLeaf PtpBagClockTimeSource::atomic {16, "atomic"};
@@ -21223,6 +22695,18 @@ const Enum::YLeaf PtpBagClockTimeSource::ntp {80, "ntp"};
 const Enum::YLeaf PtpBagClockTimeSource::hand_set {96, "hand-set"};
 const Enum::YLeaf PtpBagClockTimeSource::other {144, "other"};
 const Enum::YLeaf PtpBagClockTimeSource::internal_oscillator {160, "internal-oscillator"};
+
+const Enum::YLeaf PtpBagClockLeapSeconds::none {0, "none"};
+const Enum::YLeaf PtpBagClockLeapSeconds::leap59 {1, "leap59"};
+const Enum::YLeaf PtpBagClockLeapSeconds::leap61 {2, "leap61"};
+
+const Enum::YLeaf PtpBagProfile::default_ {0, "default"};
+const Enum::YLeaf PtpBagProfile::g82651 {1, "g82651"};
+const Enum::YLeaf PtpBagProfile::g82751 {2, "g82751"};
+const Enum::YLeaf PtpBagProfile::g82752 {3, "g82752"};
+
+const Enum::YLeaf PtpBagClockTimescale::ptp {0, "ptp"};
+const Enum::YLeaf PtpBagClockTimescale::arb {1, "arb"};
 
 
 }

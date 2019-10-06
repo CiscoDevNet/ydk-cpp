@@ -942,6 +942,13 @@ class CISCOSIPUAMIB::CSipCfgBase::CSipCfgTransport : public ydk::Enum
         static const ydk::Enum::YLeaf udpAndTcp;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "udp") return 1;
+            if (name == "tcp") return 2;
+            if (name == "udpAndTcp") return 3;
+            if (name == "disabled") return 4;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgBase::CSipCfgBindSrcAddrScope : public ydk::Enum
@@ -951,6 +958,12 @@ class CISCOSIPUAMIB::CSipCfgBase::CSipCfgBindSrcAddrScope : public ydk::Enum
         static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf control;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "all") return 1;
+            if (name == "control") return 2;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgBase::CSipCfgDnsSrvQueryStringFormat : public ydk::Enum
@@ -959,6 +972,11 @@ class CISCOSIPUAMIB::CSipCfgBase::CSipCfgDnsSrvQueryStringFormat : public ydk::E
         static const ydk::Enum::YLeaf v1;
         static const ydk::Enum::YLeaf v2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "v1") return 1;
+            if (name == "v2") return 2;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgBase::CSipCfgSymNatDirectionRole : public ydk::Enum
@@ -968,6 +986,12 @@ class CISCOSIPUAMIB::CSipCfgBase::CSipCfgSymNatDirectionRole : public ydk::Enum
         static const ydk::Enum::YLeaf passive;
         static const ydk::Enum::YLeaf active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "passive") return 2;
+            if (name == "active") return 3;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgBase::CSipCfgOfferCallHold : public ydk::Enum
@@ -976,6 +1000,11 @@ class CISCOSIPUAMIB::CSipCfgBase::CSipCfgOfferCallHold : public ydk::Enum
         static const ydk::Enum::YLeaf directionAttr;
         static const ydk::Enum::YLeaf connAddr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "directionAttr") return 1;
+            if (name == "connAddr") return 2;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgOutSessionTransport : public ydk::Enum
@@ -984,6 +1013,11 @@ class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgOutSessionTransport : public ydk::Enum
         static const ydk::Enum::YLeaf udp;
         static const ydk::Enum::YLeaf tcp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "udp") return 1;
+            if (name == "tcp") return 2;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgReliable1xxRspHdr : public ydk::Enum
@@ -993,6 +1027,12 @@ class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgReliable1xxRspHdr : public ydk::Enum
         static const ydk::Enum::YLeaf require;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "supported") return 1;
+            if (name == "require") return 2;
+            if (name == "disabled") return 3;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgUrlType : public ydk::Enum
@@ -1001,6 +1041,11 @@ class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgUrlType : public ydk::Enum
         static const ydk::Enum::YLeaf sip;
         static const ydk::Enum::YLeaf tel;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sip") return 1;
+            if (name == "tel") return 2;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgAaa::CSipCfgAaaUsername : public ydk::Enum
@@ -1009,6 +1054,11 @@ class CISCOSIPUAMIB::CSipCfgAaa::CSipCfgAaaUsername : public ydk::Enum
         static const ydk::Enum::YLeaf callingNumber;
         static const ydk::Enum::YLeaf proxyAuth;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "callingNumber") return 1;
+            if (name == "proxyAuth") return 2;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::CSipCfgBindSourceAddrScope : public ydk::Enum
@@ -1017,6 +1067,11 @@ class CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::CSi
         static const ydk::Enum::YLeaf media;
         static const ydk::Enum::YLeaf control;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "media") return 1;
+            if (name == "control") return 2;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerOutSessionTransport : public ydk::Enum
@@ -1026,6 +1081,12 @@ class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerOutSessionTr
         static const ydk::Enum::YLeaf udp;
         static const ydk::Enum::YLeaf tcp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "system") return 1;
+            if (name == "udp") return 2;
+            if (name == "tcp") return 3;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerReliable1xxRspHdr : public ydk::Enum
@@ -1036,6 +1097,13 @@ class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerReliable1xxR
         static const ydk::Enum::YLeaf require;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "system") return 1;
+            if (name == "supported") return 2;
+            if (name == "require") return 3;
+            if (name == "disabled") return 4;
+            return -1;
+        }
 };
 
 class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerUrlType : public ydk::Enum
@@ -1045,6 +1113,12 @@ class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerUrlType : pu
         static const ydk::Enum::YLeaf sip;
         static const ydk::Enum::YLeaf tel;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "system") return 1;
+            if (name == "sip") return 2;
+            if (name == "tel") return 3;
+            return -1;
+        }
 };
 
 

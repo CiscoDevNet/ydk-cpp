@@ -575,7 +575,7 @@ class Native::Interface::BDI::Mpls::Ldp::Discovery : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::BDI::Mpls::Ldp::Discovery
 
@@ -2042,7 +2042,7 @@ class Native::Interface::BDI::Ip::Ospf::ProcessId : public ydk::Entity
 
         //type: uint16 (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::id)
         ydk::YLeaf id;
-        ydk::YLeaf area; //type: one of string, uint32
+        ydk::YLeaf area; //type: one of uint32, string
         ydk::YLeaf secondaries; //type: empty
         ydk::YLeaf none; //type: empty
 
@@ -2399,7 +2399,7 @@ class Native::Interface::BDI::Ip::Ospf::MultiArea : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint32
 
 }; // Native::Interface::BDI::Ip::Ospf::MultiArea
@@ -3120,7 +3120,7 @@ class Native::Interface::BDI::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3592,6 +3592,11 @@ class Native::Interface::BDI::Isis::Password::PasswordList::Levels : public ydk:
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Isis::Priority::PriorityList::Levels : public ydk::Enum
@@ -3600,6 +3605,11 @@ class Native::Interface::BDI::Isis::Priority::PriorityList::Levels : public ydk:
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Isis::ThreeWayHandshake::Implementor : public ydk::Enum
@@ -3608,6 +3618,11 @@ class Native::Interface::BDI::Isis::ThreeWayHandshake::Implementor : public ydk:
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf ietf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco") return 0;
+            if (name == "ietf") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::HoldQueue::Direction : public ydk::Enum
@@ -3616,6 +3631,11 @@ class Native::Interface::BDI::HoldQueue::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Mpls::Label::Protocol : public ydk::Enum
@@ -3625,6 +3645,12 @@ class Native::Interface::BDI::Mpls::Label::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf tdp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "ldp") return 1;
+            if (name == "tdp") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
@@ -3633,6 +3659,11 @@ class Native::Interface::BDI::Ip::Verify::Unicast::Source::ReachableVia : public
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Ip::Ospf::Network : public ydk::Enum
@@ -3643,6 +3674,13 @@ class Native::Interface::BDI::Ip::Ospf::Network : public ydk::Enum
         static const ydk::Enum::YLeaf point_to_multipoint;
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 0;
+            if (name == "non-broadcast") return 1;
+            if (name == "point-to-multipoint") return 2;
+            if (name == "point-to-point") return 3;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3651,6 +3689,11 @@ class Native::Interface::BDI::Ipv6::TrafficFilter::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3658,6 +3701,10 @@ class Native::Interface::BDI::InterfaceQos::Trust::Device : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Standby::Version : public ydk::Enum
@@ -3666,6 +3713,11 @@ class Native::Interface::BDI::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3673,6 +3725,10 @@ class Native::Interface::BDI::Standby::StandbyList::Ipv6 : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3681,6 +3737,11 @@ class Native::Interface::BDI::Standby::StandbyList::Authentication::Md5::KeyStri
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3689,6 +3750,11 @@ class Native::Interface::BDI::Standby::StandbyList::Redirect::Advertisement::Aut
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::BDI::AccessSession::HostMode : public ydk::Enum
@@ -3699,6 +3765,13 @@ class Native::Interface::BDI::AccessSession::HostMode : public ydk::Enum
         static const ydk::Enum::YLeaf multi_host;
         static const ydk::Enum::YLeaf single_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "multi-auth") return 0;
+            if (name == "multi-domain") return 1;
+            if (name == "multi-host") return 2;
+            if (name == "single-host") return 3;
+            return -1;
+        }
 };
 
 

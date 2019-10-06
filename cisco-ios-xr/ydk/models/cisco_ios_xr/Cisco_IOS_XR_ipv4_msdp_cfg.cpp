@@ -3046,11 +3046,11 @@ bool Msdp::DefaultContext::SaFilters::SaFilter::has_leaf_or_child_of_name(const 
     return false;
 }
 
-const Enum::YLeaf MsdpFilterTypeVrf::incoming {1, "incoming"};
-const Enum::YLeaf MsdpFilterTypeVrf::outgoing {2, "outgoing"};
-
 const Enum::YLeaf MsdpListTypeVrf::list {3, "list"};
 const Enum::YLeaf MsdpListTypeVrf::rp_list {4, "rp-list"};
+
+const Enum::YLeaf MsdpFilterTypeVrf::incoming {1, "incoming"};
+const Enum::YLeaf MsdpFilterTypeVrf::outgoing {2, "outgoing"};
 
 
 }

@@ -310,6 +310,12 @@ class DIALCONTROLMIB::DialCtlConfiguration::DialCtlAcceptMode : public ydk::Enum
         static const ydk::Enum::YLeaf acceptAll;
         static const ydk::Enum::YLeaf acceptKnown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "acceptNone") return 1;
+            if (name == "acceptAll") return 2;
+            if (name == "acceptKnown") return 3;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::DialCtlConfiguration::DialCtlTrapEnable : public ydk::Enum
@@ -318,6 +324,11 @@ class DIALCONTROLMIB::DialCtlConfiguration::DialCtlTrapEnable : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType : public ydk::Enum
@@ -334,6 +345,19 @@ class DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgIn
         static const ydk::Enum::YLeaf packetSwitched;
         static const ydk::Enum::YLeaf fax;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "speech") return 2;
+            if (name == "unrestrictedDigital") return 3;
+            if (name == "unrestrictedDigital56") return 4;
+            if (name == "restrictedDigital") return 5;
+            if (name == "audio31") return 6;
+            if (name == "audio7") return 7;
+            if (name == "video") return 8;
+            if (name == "packetSwitched") return 9;
+            if (name == "fax") return 10;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgPermission : public ydk::Enum
@@ -345,6 +369,14 @@ class DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgPe
         static const ydk::Enum::YLeaf callback;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "originate") return 1;
+            if (name == "answer") return 2;
+            if (name == "both") return 3;
+            if (name == "callback") return 4;
+            if (name == "none") return 5;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgTrapEnable : public ydk::Enum
@@ -353,6 +385,11 @@ class DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgTr
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallState : public ydk::Enum
@@ -363,6 +400,13 @@ class DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallState : pu
         static const ydk::Enum::YLeaf connected;
         static const ydk::Enum::YLeaf active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "connecting") return 2;
+            if (name == "connected") return 3;
+            if (name == "active") return 4;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallOrigin : public ydk::Enum
@@ -372,6 +416,12 @@ class DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallOrigin : p
         static const ydk::Enum::YLeaf answer;
         static const ydk::Enum::YLeaf callback;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "originate") return 1;
+            if (name == "answer") return 2;
+            if (name == "callback") return 3;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType : public ydk::Enum
@@ -388,6 +438,19 @@ class DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType : pub
         static const ydk::Enum::YLeaf packetSwitched;
         static const ydk::Enum::YLeaf fax;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "speech") return 2;
+            if (name == "unrestrictedDigital") return 3;
+            if (name == "unrestrictedDigital56") return 4;
+            if (name == "restrictedDigital") return 5;
+            if (name == "audio31") return 6;
+            if (name == "audio7") return 7;
+            if (name == "video") return 8;
+            if (name == "packetSwitched") return 9;
+            if (name == "fax") return 10;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryCallOrigin : public ydk::Enum
@@ -397,6 +460,12 @@ class DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryCallOrigin 
         static const ydk::Enum::YLeaf answer;
         static const ydk::Enum::YLeaf callback;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "originate") return 1;
+            if (name == "answer") return 2;
+            if (name == "callback") return 3;
+            return -1;
+        }
 };
 
 class DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType : public ydk::Enum
@@ -413,6 +482,19 @@ class DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType : 
         static const ydk::Enum::YLeaf packetSwitched;
         static const ydk::Enum::YLeaf fax;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "speech") return 2;
+            if (name == "unrestrictedDigital") return 3;
+            if (name == "unrestrictedDigital56") return 4;
+            if (name == "restrictedDigital") return 5;
+            if (name == "audio31") return 6;
+            if (name == "audio7") return 7;
+            if (name == "video") return 8;
+            if (name == "packetSwitched") return 9;
+            if (name == "fax") return 10;
+            return -1;
+        }
 };
 
 

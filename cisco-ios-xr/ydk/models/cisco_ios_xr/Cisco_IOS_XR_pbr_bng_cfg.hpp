@@ -95,6 +95,13 @@ class BngPbrHttpEnrichmentParams : public ydk::Enum
         static const ydk::Enum::YLeaf host_name;
         static const ydk::Enum::YLeaf bng_identifier_interface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "subscriber-mac") return 1;
+            if (name == "subscriber-ip") return 2;
+            if (name == "host-name") return 4;
+            if (name == "bng-identifier-interface") return 8;
+            return -1;
+        }
 };
 
 

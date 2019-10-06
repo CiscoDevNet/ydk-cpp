@@ -3722,6 +3722,12 @@ class Native::SpanningTree::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf pvst;
         static const ydk::Enum::YLeaf rapid_pvst;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mst") return 0;
+            if (name == "pvst") return 1;
+            if (name == "rapid-pvst") return 2;
+            return -1;
+        }
 };
 
 class Native::SpanningTree::Mst::InstanceRange::Root : public ydk::Enum
@@ -3730,6 +3736,11 @@ class Native::SpanningTree::Mst::InstanceRange::Root : public ydk::Enum
         static const ydk::Enum::YLeaf primary;
         static const ydk::Enum::YLeaf secondary;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "primary") return 0;
+            if (name == "secondary") return 1;
+            return -1;
+        }
 };
 
 class Native::Track::TrackedObject::DefaultState : public ydk::Enum
@@ -3738,6 +3749,11 @@ class Native::Track::TrackedObject::DefaultState : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "down") return 0;
+            if (name == "up") return 1;
+            return -1;
+        }
 };
 
 class Native::Track::TrackedObject::Interface::Protocol : public ydk::Enum
@@ -3747,6 +3763,12 @@ class Native::Track::TrackedObject::Interface::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf line_protocol;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "line-protocol") return 2;
+            return -1;
+        }
 };
 
 class Native::Track::TrackedObject::Ip::Route::Metric : public ydk::Enum
@@ -3754,6 +3776,10 @@ class Native::Track::TrackedObject::Ip::Route::Metric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf threshold;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "threshold") return 0;
+            return -1;
+        }
 };
 
 class Native::Track::TrackedObject::Ipv6::Route::Metric : public ydk::Enum
@@ -3761,6 +3787,10 @@ class Native::Track::TrackedObject::Ipv6::Route::Metric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf threshold;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "threshold") return 0;
+            return -1;
+        }
 };
 
 class Native::Track::TrackedObject::List::Boolean : public ydk::Enum
@@ -3769,6 +3799,11 @@ class Native::Track::TrackedObject::List::Boolean : public ydk::Enum
         static const ydk::Enum::YLeaf and_;
         static const ydk::Enum::YLeaf or_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "and") return 0;
+            if (name == "or") return 1;
+            return -1;
+        }
 };
 
 class Native::Track::TrackedObject::List::Threshold : public ydk::Enum
@@ -3777,6 +3812,11 @@ class Native::Track::TrackedObject::List::Threshold : public ydk::Enum
         static const ydk::Enum::YLeaf percentage;
         static const ydk::Enum::YLeaf weight;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "percentage") return 0;
+            if (name == "weight") return 1;
+            return -1;
+        }
 };
 
 class Native::Dot1x::Credentials::Password::Type : public ydk::Enum
@@ -3785,6 +3825,11 @@ class Native::Dot1x::Credentials::Password::Type : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 

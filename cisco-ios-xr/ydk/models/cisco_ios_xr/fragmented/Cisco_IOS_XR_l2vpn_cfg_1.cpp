@@ -2791,11 +2791,10 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 
 L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::InterfaceMacSecure()
     :
-    enable{YType::empty, "enable"},
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
     action{YType::enumeration, "action"},
-    shutdown_recovery_timer{YType::uint32, "shutdown-recovery-timer"}
+    enable{YType::empty, "enable"}
 {
 
     yang_name = "interface-mac-secure"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2808,21 +2807,19 @@ L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set
-	|| logging.is_set
+    return logging.is_set
 	|| disable.is_set
 	|| action.is_set
-	|| shutdown_recovery_timer.is_set;
+	|| enable.is_set;
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(shutdown_recovery_timer.yfilter);
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_segment_path() const
@@ -2836,11 +2833,10 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (shutdown_recovery_timer.is_set || is_set(shutdown_recovery_timer.yfilter)) leaf_name_data.push_back(shutdown_recovery_timer.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2860,12 +2856,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomai
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "logging")
     {
         logging = value;
@@ -2884,20 +2874,16 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
         action.value_namespace = name_space;
         action.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "shutdown-recovery-timer")
+    if(value_path == "enable")
     {
-        shutdown_recovery_timer = value;
-        shutdown_recovery_timer.value_namespace = name_space;
-        shutdown_recovery_timer.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
@@ -2910,15 +2896,15 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     {
         action.yfilter = yfilter;
     }
-    if(value_path == "shutdown-recovery-timer")
+    if(value_path == "enable")
     {
-        shutdown_recovery_timer.yfilter = yfilter;
+        enable.yfilter = yfilter;
     }
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "logging" || name == "disable" || name == "action" || name == "shutdown-recovery-timer")
+    if(name == "logging" || name == "disable" || name == "action" || name == "enable")
         return true;
     return false;
 }
@@ -5196,7 +5182,7 @@ L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Preferre
     type{YType::enumeration, "type"},
     interface_tunnel_number{YType::uint32, "interface-tunnel-number"},
     fallback_disable{YType::empty, "fallback-disable"},
-    path_name{YType::str, "path-name"}
+    srte_policy{YType::str, "srte-policy"}
 {
 
     yang_name = "preferred-path"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5212,7 +5198,7 @@ bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pre
     return type.is_set
 	|| interface_tunnel_number.is_set
 	|| fallback_disable.is_set
-	|| path_name.is_set;
+	|| srte_policy.is_set;
 }
 
 bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_operation() const
@@ -5221,7 +5207,7 @@ bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pre
 	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(interface_tunnel_number.yfilter)
 	|| ydk::is_set(fallback_disable.yfilter)
-	|| ydk::is_set(path_name.yfilter);
+	|| ydk::is_set(srte_policy.yfilter);
 }
 
 std::string L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_segment_path() const
@@ -5238,7 +5224,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (interface_tunnel_number.is_set || is_set(interface_tunnel_number.yfilter)) leaf_name_data.push_back(interface_tunnel_number.get_name_leafdata());
     if (fallback_disable.is_set || is_set(fallback_disable.yfilter)) leaf_name_data.push_back(fallback_disable.get_name_leafdata());
-    if (path_name.is_set || is_set(path_name.yfilter)) leaf_name_data.push_back(path_name.get_name_leafdata());
+    if (srte_policy.is_set || is_set(srte_policy.yfilter)) leaf_name_data.push_back(srte_policy.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5276,11 +5262,11 @@ void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pre
         fallback_disable.value_namespace = name_space;
         fallback_disable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "path-name")
+    if(value_path == "srte-policy")
     {
-        path_name = value;
-        path_name.value_namespace = name_space;
-        path_name.value_namespace_prefix = name_space_prefix;
+        srte_policy = value;
+        srte_policy.value_namespace = name_space;
+        srte_policy.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -5298,15 +5284,15 @@ void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pre
     {
         fallback_disable.yfilter = yfilter;
     }
-    if(value_path == "path-name")
+    if(value_path == "srte-policy")
     {
-        path_name.yfilter = yfilter;
+        srte_policy.yfilter = yfilter;
     }
 }
 
 bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "interface-tunnel-number" || name == "fallback-disable" || name == "path-name")
+    if(name == "type" || name == "interface-tunnel-number" || name == "fallback-disable" || name == "srte-policy")
         return true;
     return false;
 }
@@ -7010,8 +6996,6 @@ L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDo
     coupled_mode{YType::empty, "coupled-mode"},
     shutdown{YType::empty, "shutdown"},
     flooding_unknown_unicast{YType::empty, "flooding-unknown-unicast"},
-    efp_visibility{YType::empty, "efp-visibility"},
-    l2_multicast_source{YType::enumeration, "l2-multicast-source"},
     igmp_snooping_disable{YType::empty, "igmp-snooping-disable"},
     transport_mode{YType::enumeration, "transport-mode"},
     mld_snooping{YType::str, "mld-snooping"},
@@ -7067,8 +7051,6 @@ bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::has
 	|| coupled_mode.is_set
 	|| shutdown.is_set
 	|| flooding_unknown_unicast.is_set
-	|| efp_visibility.is_set
-	|| l2_multicast_source.is_set
 	|| igmp_snooping_disable.is_set
 	|| transport_mode.is_set
 	|| mld_snooping.is_set
@@ -7101,8 +7083,6 @@ bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::has
 	|| ydk::is_set(coupled_mode.yfilter)
 	|| ydk::is_set(shutdown.yfilter)
 	|| ydk::is_set(flooding_unknown_unicast.yfilter)
-	|| ydk::is_set(efp_visibility.yfilter)
-	|| ydk::is_set(l2_multicast_source.yfilter)
 	|| ydk::is_set(igmp_snooping_disable.yfilter)
 	|| ydk::is_set(transport_mode.yfilter)
 	|| ydk::is_set(mld_snooping.yfilter)
@@ -7144,8 +7124,6 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
     if (coupled_mode.is_set || is_set(coupled_mode.yfilter)) leaf_name_data.push_back(coupled_mode.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
     if (flooding_unknown_unicast.is_set || is_set(flooding_unknown_unicast.yfilter)) leaf_name_data.push_back(flooding_unknown_unicast.get_name_leafdata());
-    if (efp_visibility.is_set || is_set(efp_visibility.yfilter)) leaf_name_data.push_back(efp_visibility.get_name_leafdata());
-    if (l2_multicast_source.is_set || is_set(l2_multicast_source.yfilter)) leaf_name_data.push_back(l2_multicast_source.get_name_leafdata());
     if (igmp_snooping_disable.is_set || is_set(igmp_snooping_disable.yfilter)) leaf_name_data.push_back(igmp_snooping_disable.get_name_leafdata());
     if (transport_mode.is_set || is_set(transport_mode.yfilter)) leaf_name_data.push_back(transport_mode.get_name_leafdata());
     if (mld_snooping.is_set || is_set(mld_snooping.yfilter)) leaf_name_data.push_back(mld_snooping.get_name_leafdata());
@@ -7407,18 +7385,6 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::set
         flooding_unknown_unicast.value_namespace = name_space;
         flooding_unknown_unicast.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "efp-visibility")
-    {
-        efp_visibility = value;
-        efp_visibility.value_namespace = name_space;
-        efp_visibility.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2-multicast-source")
-    {
-        l2_multicast_source = value;
-        l2_multicast_source.value_namespace = name_space;
-        l2_multicast_source.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "igmp-snooping-disable")
     {
         igmp_snooping_disable = value;
@@ -7487,14 +7453,6 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::set
     {
         flooding_unknown_unicast.yfilter = yfilter;
     }
-    if(value_path == "efp-visibility")
-    {
-        efp_visibility.yfilter = yfilter;
-    }
-    if(value_path == "l2-multicast-source")
-    {
-        l2_multicast_source.yfilter = yfilter;
-    }
     if(value_path == "igmp-snooping-disable")
     {
         igmp_snooping_disable.yfilter = yfilter;
@@ -7531,7 +7489,7 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::set
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bd-storm-controls" || name == "member-vnis" || name == "bridge-domain-mac" || name == "nv-satellite" || name == "bridge-domain-pbb" || name == "bridge-domain-evis" || name == "access-vfis" || name == "bd-pseudowires" || name == "vfis" || name == "bridge-domainvnis" || name == "bd-attachment-circuits" || name == "bd-pseudowire-evpns" || name == "ip-source-guard" || name == "dai" || name == "routed-interfaces" || name == "name" || name == "coupled-mode" || name == "shutdown" || name == "flooding-unknown-unicast" || name == "efp-visibility" || name == "l2-multicast-source" || name == "igmp-snooping-disable" || name == "transport-mode" || name == "mld-snooping" || name == "bridge-domain-mtu" || name == "dhcp" || name == "bridge-description" || name == "igmp-snooping" || name == "flooding")
+    if(name == "bd-storm-controls" || name == "member-vnis" || name == "bridge-domain-mac" || name == "nv-satellite" || name == "bridge-domain-pbb" || name == "bridge-domain-evis" || name == "access-vfis" || name == "bd-pseudowires" || name == "vfis" || name == "bridge-domainvnis" || name == "bd-attachment-circuits" || name == "bd-pseudowire-evpns" || name == "ip-source-guard" || name == "dai" || name == "routed-interfaces" || name == "name" || name == "coupled-mode" || name == "shutdown" || name == "flooding-unknown-unicast" || name == "igmp-snooping-disable" || name == "transport-mode" || name == "mld-snooping" || name == "bridge-domain-mtu" || name == "dhcp" || name == "bridge-description" || name == "igmp-snooping" || name == "flooding")
         return true;
     return false;
 }
@@ -8712,10 +8670,9 @@ bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
 L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::MacSecure()
     :
     logging{YType::empty, "logging"},
-    enable{YType::empty, "enable"},
-    threshold{YType::empty, "threshold"},
     action{YType::enumeration, "action"},
-    shutdown_recovery_timer{YType::uint32, "shutdown-recovery-timer"}
+    enable{YType::empty, "enable"},
+    threshold{YType::empty, "threshold"}
 {
 
     yang_name = "mac-secure"; yang_parent_name = "bridge-domain-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8729,20 +8686,18 @@ bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
 {
     if (is_presence_container) return true;
     return logging.is_set
-	|| enable.is_set
-	|| threshold.is_set
 	|| action.is_set
-	|| shutdown_recovery_timer.is_set;
+	|| enable.is_set
+	|| threshold.is_set;
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(threshold.yfilter)
 	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(shutdown_recovery_timer.yfilter);
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::get_segment_path() const
@@ -8757,10 +8712,9 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
+    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (shutdown_recovery_timer.is_set || is_set(shutdown_recovery_timer.yfilter)) leaf_name_data.push_back(shutdown_recovery_timer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8786,6 +8740,12 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
         logging.value_namespace = name_space;
         logging.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "action")
+    {
+        action = value;
+        action.value_namespace = name_space;
+        action.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "enable")
     {
         enable = value;
@@ -8798,18 +8758,6 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
         threshold.value_namespace = name_space;
         threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "action")
-    {
-        action = value;
-        action.value_namespace = name_space;
-        action.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "shutdown-recovery-timer")
-    {
-        shutdown_recovery_timer = value;
-        shutdown_recovery_timer.value_namespace = name_space;
-        shutdown_recovery_timer.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8817,6 +8765,10 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
+    }
+    if(value_path == "action")
+    {
+        action.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
@@ -8826,19 +8778,11 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
     {
         threshold.yfilter = yfilter;
     }
-    if(value_path == "action")
-    {
-        action.yfilter = yfilter;
-    }
-    if(value_path == "shutdown-recovery-timer")
-    {
-        shutdown_recovery_timer.yfilter = yfilter;
-    }
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "logging" || name == "enable" || name == "threshold" || name == "action" || name == "shutdown-recovery-timer")
+    if(name == "logging" || name == "action" || name == "enable" || name == "threshold")
         return true;
     return false;
 }
@@ -10104,11 +10048,11 @@ bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
 
 L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::PbbEdgeMacSecure()
     :
-    enable{YType::empty, "enable"},
-    accept_shutdown{YType::empty, "accept-shutdown"},
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
-    action{YType::enumeration, "action"}
+    action{YType::enumeration, "action"},
+    enable{YType::empty, "enable"},
+    accept_shutdown{YType::empty, "accept-shutdown"}
 {
 
     yang_name = "pbb-edge-mac-secure"; yang_parent_name = "pbb-edge-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -10121,21 +10065,21 @@ L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDo
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set
-	|| accept_shutdown.is_set
-	|| logging.is_set
+    return logging.is_set
 	|| disable.is_set
-	|| action.is_set;
+	|| action.is_set
+	|| enable.is_set
+	|| accept_shutdown.is_set;
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(accept_shutdown.yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(disable.yfilter)
-	|| ydk::is_set(action.yfilter);
+	|| ydk::is_set(action.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(accept_shutdown.yfilter);
 }
 
 std::string L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::get_segment_path() const
@@ -10149,11 +10093,11 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (accept_shutdown.is_set || is_set(accept_shutdown.yfilter)) leaf_name_data.push_back(accept_shutdown.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (accept_shutdown.is_set || is_set(accept_shutdown.yfilter)) leaf_name_data.push_back(accept_shutdown.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10173,18 +10117,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitche
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accept-shutdown")
-    {
-        accept_shutdown = value;
-        accept_shutdown.value_namespace = name_space;
-        accept_shutdown.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "logging")
     {
         logging = value;
@@ -10203,18 +10135,22 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
         action.value_namespace = name_space;
         action.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accept-shutdown")
+    {
+        accept_shutdown = value;
+        accept_shutdown.value_namespace = name_space;
+        accept_shutdown.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "accept-shutdown")
-    {
-        accept_shutdown.yfilter = yfilter;
-    }
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
@@ -10227,11 +10163,19 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bri
     {
         action.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "accept-shutdown")
+    {
+        accept_shutdown.yfilter = yfilter;
+    }
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "accept-shutdown" || name == "logging" || name == "disable" || name == "action")
+    if(name == "logging" || name == "disable" || name == "action" || name == "enable" || name == "accept-shutdown")
         return true;
     return false;
 }
@@ -13224,11 +13168,10 @@ bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdP
 
 L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::PseudowireMacSecure()
     :
-    enable{YType::empty, "enable"},
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
     action{YType::enumeration, "action"},
-    shutdown_recovery_timer{YType::uint32, "shutdown-recovery-timer"}
+    enable{YType::empty, "enable"}
 {
 
     yang_name = "pseudowire-mac-secure"; yang_parent_name = "pseudowire-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -13241,21 +13184,19 @@ L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudo
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set
-	|| logging.is_set
+    return logging.is_set
 	|| disable.is_set
 	|| action.is_set
-	|| shutdown_recovery_timer.is_set;
+	|| enable.is_set;
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(shutdown_recovery_timer.yfilter);
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::get_segment_path() const
@@ -13269,11 +13210,10 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (shutdown_recovery_timer.is_set || is_set(shutdown_recovery_timer.yfilter)) leaf_name_data.push_back(shutdown_recovery_timer.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13293,12 +13233,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitche
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "logging")
     {
         logging = value;
@@ -13317,20 +13251,16 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdP
         action.value_namespace = name_space;
         action.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "shutdown-recovery-timer")
+    if(value_path == "enable")
     {
-        shutdown_recovery_timer = value;
-        shutdown_recovery_timer.value_namespace = name_space;
-        shutdown_recovery_timer.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
@@ -13343,15 +13273,15 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdP
     {
         action.yfilter = yfilter;
     }
-    if(value_path == "shutdown-recovery-timer")
+    if(value_path == "enable")
     {
-        shutdown_recovery_timer.yfilter = yfilter;
+        enable.yfilter = yfilter;
     }
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "logging" || name == "disable" || name == "action" || name == "shutdown-recovery-timer")
+    if(name == "logging" || name == "disable" || name == "action" || name == "enable")
         return true;
     return false;
 }

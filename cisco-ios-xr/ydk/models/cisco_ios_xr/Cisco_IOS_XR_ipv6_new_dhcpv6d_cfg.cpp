@@ -1075,12 +1075,10 @@ Dhcpv6::Profiles::Profile::Base::Base()
     :
     enable{YType::empty, "enable"}
         ,
-    dhcpv6_to_aaa(std::make_shared<Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa>())
-    , match_default(std::make_shared<Dhcpv6::Profiles::Profile::Base::MatchDefault>())
+    default_(std::make_shared<Dhcpv6::Profiles::Profile::Base::Default>())
     , match(std::make_shared<Dhcpv6::Profiles::Profile::Base::Match>())
 {
-    dhcpv6_to_aaa->parent = this;
-    match_default->parent = this;
+    default_->parent = this;
     match->parent = this;
 
     yang_name = "base"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
@@ -1094,8 +1092,7 @@ bool Dhcpv6::Profiles::Profile::Base::has_data() const
 {
     if (is_presence_container) return true;
     return enable.is_set
-	|| (dhcpv6_to_aaa !=  nullptr && dhcpv6_to_aaa->has_data())
-	|| (match_default !=  nullptr && match_default->has_data())
+	|| (default_ !=  nullptr && default_->has_data())
 	|| (match !=  nullptr && match->has_data());
 }
 
@@ -1103,8 +1100,7 @@ bool Dhcpv6::Profiles::Profile::Base::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| (dhcpv6_to_aaa !=  nullptr && dhcpv6_to_aaa->has_operation())
-	|| (match_default !=  nullptr && match_default->has_operation())
+	|| (default_ !=  nullptr && default_->has_operation())
 	|| (match !=  nullptr && match->has_operation());
 }
 
@@ -1127,22 +1123,13 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::
 
 std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dhcpv6-to-aaa")
+    if(child_yang_name == "default")
     {
-        if(dhcpv6_to_aaa == nullptr)
+        if(default_ == nullptr)
         {
-            dhcpv6_to_aaa = std::make_shared<Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa>();
+            default_ = std::make_shared<Dhcpv6::Profiles::Profile::Base::Default>();
         }
-        return dhcpv6_to_aaa;
-    }
-
-    if(child_yang_name == "match-default")
-    {
-        if(match_default == nullptr)
-        {
-            match_default = std::make_shared<Dhcpv6::Profiles::Profile::Base::MatchDefault>();
-        }
-        return match_default;
+        return default_;
     }
 
     if(child_yang_name == "match")
@@ -1161,14 +1148,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::B
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(dhcpv6_to_aaa != nullptr)
+    if(default_ != nullptr)
     {
-        _children["dhcpv6-to-aaa"] = dhcpv6_to_aaa;
-    }
-
-    if(match_default != nullptr)
-    {
-        _children["match-default"] = match_default;
+        _children["default"] = default_;
     }
 
     if(match != nullptr)
@@ -1199,308 +1181,52 @@ void Dhcpv6::Profiles::Profile::Base::set_filter(const std::string & value_path,
 
 bool Dhcpv6::Profiles::Profile::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dhcpv6-to-aaa" || name == "match-default" || name == "match" || name == "enable")
+    if(name == "default" || name == "match" || name == "enable")
         return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::Dhcpv6ToAaa()
+Dhcpv6::Profiles::Profile::Base::Default::Default()
     :
-    base_option(std::make_shared<Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption>())
+    profile(this, {"profile_name"})
 {
-    base_option->parent = this;
 
-    yang_name = "dhcpv6-to-aaa"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "default"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::~Dhcpv6ToAaa()
+Dhcpv6::Profiles::Profile::Base::Default::~Default()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::has_data() const
+bool Dhcpv6::Profiles::Profile::Base::Default::has_data() const
 {
     if (is_presence_container) return true;
-    return (base_option !=  nullptr && base_option->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::has_operation() const
-{
-    return is_set(yfilter)
-	|| (base_option !=  nullptr && base_option->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dhcpv6-to-aaa";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "base-option")
+    for (std::size_t index=0; index<profile.len(); index++)
     {
-        if(base_option == nullptr)
-        {
-            base_option = std::make_shared<Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption>();
-        }
-        return base_option;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(base_option != nullptr)
-    {
-        _children["base-option"] = base_option;
-    }
-
-    return _children;
-}
-
-void Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "base-option")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::BaseOption()
-    :
-    list(std::make_shared<Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List>())
-{
-    list->parent = this;
-
-    yang_name = "base-option"; yang_parent_name = "dhcpv6-to-aaa"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::~BaseOption()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::has_data() const
-{
-    if (is_presence_container) return true;
-    return (list !=  nullptr && list->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::has_operation() const
-{
-    return is_set(yfilter)
-	|| (list !=  nullptr && list->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "base-option";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "list")
-    {
-        if(list == nullptr)
-        {
-            list = std::make_shared<Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List>();
-        }
-        return list;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(list != nullptr)
-    {
-        _children["list"] = list;
-    }
-
-    return _children;
-}
-
-void Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "list")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::List()
-    :
-    option_all{YType::uint32, "option-all"},
-    option_number{YType::uint32, "option-number"}
-{
-
-    yang_name = "list"; yang_parent_name = "base-option"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::~List()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : option_number.getYLeafs())
-    {
-        if(leaf.is_set)
+        if(profile[index]->has_data())
             return true;
     }
-    return option_all.is_set;
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::has_operation() const
-{
-    for (auto const & leaf : option_number.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(option_all.yfilter)
-	|| ydk::is_set(option_number.yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "list";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (option_all.is_set || is_set(option_all.yfilter)) leaf_name_data.push_back(option_all.get_name_leafdata());
-
-    auto option_number_name_datas = option_number.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), option_number_name_datas.begin(), option_number_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "option-all")
-    {
-        option_all = value;
-        option_all.value_namespace = name_space;
-        option_all.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option-number")
-    {
-        option_number.append(value);
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "option-all")
-    {
-        option_all.yfilter = yfilter;
-    }
-    if(value_path == "option-number")
-    {
-        option_number.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Base::Dhcpv6ToAaa::BaseOption::List::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "option-all" || name == "option-number")
-        return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Base::MatchDefault::MatchDefault()
-    :
-    profile(std::make_shared<Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_>())
+bool Dhcpv6::Profiles::Profile::Base::Default::has_operation() const
 {
-    profile->parent = this;
-
-    yang_name = "match-default"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
+    for (std::size_t index=0; index<profile.len(); index++)
+    {
+        if(profile[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-Dhcpv6::Profiles::Profile::Base::MatchDefault::~MatchDefault()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Base::MatchDefault::has_data() const
-{
-    if (is_presence_container) return true;
-    return (profile !=  nullptr && profile->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Base::MatchDefault::has_operation() const
-{
-    return is_set(yfilter)
-	|| (profile !=  nullptr && profile->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Base::MatchDefault::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Base::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "match-default";
+    path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::MatchDefault::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1509,105 +1235,113 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::
 
 }
 
-std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::MatchDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile")
     {
-        if(profile == nullptr)
-        {
-            profile = std::make_shared<Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_>();
-        }
-        return profile;
+        auto ent_ = std::make_shared<Dhcpv6::Profiles::Profile::Base::Default::Profile_>();
+        ent_->parent = this;
+        profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::Base::MatchDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::Base::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(profile != nullptr)
+    count_ = 0;
+    for (auto ent_ : profile.entities())
     {
-        _children["profile"] = profile;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     return _children;
 }
 
-void Dhcpv6::Profiles::Profile::Base::MatchDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Base::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dhcpv6::Profiles::Profile::Base::MatchDefault::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Base::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Base::MatchDefault::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Base::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile")
         return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::Profile_()
+Dhcpv6::Profiles::Profile::Base::Default::Profile_::Profile_()
     :
     profile_name{YType::str, "profile-name"},
-    default_mode{YType::enumeration, "default-mode"}
+    server_mode{YType::empty, "server-mode"},
+    proxy_mode{YType::empty, "proxy-mode"}
 {
 
-    yang_name = "profile"; yang_parent_name = "match-default"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "profile"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::~Profile_()
+Dhcpv6::Profiles::Profile::Base::Default::Profile_::~Profile_()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::has_data() const
+bool Dhcpv6::Profiles::Profile::Base::Default::Profile_::has_data() const
 {
     if (is_presence_container) return true;
     return profile_name.is_set
-	|| default_mode.is_set;
+	|| server_mode.is_set
+	|| proxy_mode.is_set;
 }
 
-bool Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::has_operation() const
+bool Dhcpv6::Profiles::Profile::Base::Default::Profile_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
-	|| ydk::is_set(default_mode.yfilter);
+	|| ydk::is_set(server_mode.yfilter)
+	|| ydk::is_set(proxy_mode.yfilter);
 }
 
-std::string Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
-    if (default_mode.is_set || is_set(default_mode.yfilter)) leaf_name_data.push_back(default_mode.get_name_leafdata());
+    if (server_mode.is_set || is_set(server_mode.yfilter)) leaf_name_data.push_back(server_mode.get_name_leafdata());
+    if (proxy_mode.is_set || is_set(proxy_mode.yfilter)) leaf_name_data.push_back(proxy_mode.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Base::Default::Profile_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -1615,29 +1349,39 @@ void Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::set_value(const st
         profile_name.value_namespace = name_space;
         profile_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "default-mode")
+    if(value_path == "server-mode")
     {
-        default_mode = value;
-        default_mode.value_namespace = name_space;
-        default_mode.value_namespace_prefix = name_space_prefix;
+        server_mode = value;
+        server_mode.value_namespace = name_space;
+        server_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proxy-mode")
+    {
+        proxy_mode = value;
+        proxy_mode.value_namespace = name_space;
+        proxy_mode.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Base::Default::Profile_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
         profile_name.yfilter = yfilter;
     }
-    if(value_path == "default-mode")
+    if(value_path == "server-mode")
     {
-        default_mode.yfilter = yfilter;
+        server_mode.yfilter = yfilter;
+    }
+    if(value_path == "proxy-mode")
+    {
+        proxy_mode.yfilter = yfilter;
     }
 }
 
-bool Dhcpv6::Profiles::Profile::Base::MatchDefault::Profile_::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Base::Default::Profile_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile-name" || name == "default-mode")
+    if(name == "profile-name" || name == "server-mode" || name == "proxy-mode")
         return true;
     return false;
 }
@@ -1821,9 +1565,8 @@ Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::ModeClass()
     :
     class_name{YType::str, "class-name"}
         ,
-    profile(std::make_shared<Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_>())
+    profile(this, {"profile_name"})
 {
-    profile->parent = this;
 
     yang_name = "mode-class"; yang_parent_name = "mode-classes"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1835,15 +1578,23 @@ Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::~ModeClass()
 bool Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::has_data() const
 {
     if (is_presence_container) return true;
-    return class_name.is_set
-	|| (profile !=  nullptr && profile->has_data());
+    for (std::size_t index=0; index<profile.len(); index++)
+    {
+        if(profile[index]->has_data())
+            return true;
+    }
+    return class_name.is_set;
 }
 
 bool Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::has_operation() const
 {
+    for (std::size_t index=0; index<profile.len(); index++)
+    {
+        if(profile[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(class_name.yfilter)
-	|| (profile !=  nullptr && profile->has_operation());
+	|| ydk::is_set(class_name.yfilter);
 }
 
 std::string Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::get_segment_path() const
@@ -1868,11 +1619,10 @@ std::shared_ptr<ydk::Entity> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses
 {
     if(child_yang_name == "profile")
     {
-        if(profile == nullptr)
-        {
-            profile = std::make_shared<Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_>();
-        }
-        return profile;
+        auto ent_ = std::make_shared<Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_>();
+        ent_->parent = this;
+        profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
@@ -1882,9 +1632,13 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Dhcpv6::Profiles::Profile::B
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(profile != nullptr)
+    count_ = 0;
+    for (auto ent_ : profile.entities())
     {
-        _children["profile"] = profile;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     return _children;
@@ -1918,7 +1672,8 @@ bool Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::has_leaf_or
 Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::Profile_()
     :
     profile_name{YType::str, "profile-name"},
-    mode{YType::enumeration, "mode"}
+    server_mode{YType::empty, "server-mode"},
+    proxy_mode{YType::empty, "proxy-mode"}
 {
 
     yang_name = "profile"; yang_parent_name = "mode-class"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1932,20 +1687,23 @@ bool Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::h
 {
     if (is_presence_container) return true;
     return profile_name.is_set
-	|| mode.is_set;
+	|| server_mode.is_set
+	|| proxy_mode.is_set;
 }
 
 bool Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
-	|| ydk::is_set(mode.yfilter);
+	|| ydk::is_set(server_mode.yfilter)
+	|| ydk::is_set(proxy_mode.yfilter);
 }
 
 std::string Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -1954,7 +1712,8 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (server_mode.is_set || is_set(server_mode.yfilter)) leaf_name_data.push_back(server_mode.get_name_leafdata());
+    if (proxy_mode.is_set || is_set(proxy_mode.yfilter)) leaf_name_data.push_back(proxy_mode.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1980,11 +1739,17 @@ void Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::s
         profile_name.value_namespace = name_space;
         profile_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mode")
+    if(value_path == "server-mode")
     {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
+        server_mode = value;
+        server_mode.value_namespace = name_space;
+        server_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proxy-mode")
+    {
+        proxy_mode = value;
+        proxy_mode.value_namespace = name_space;
+        proxy_mode.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1994,15 +1759,19 @@ void Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::s
     {
         profile_name.yfilter = yfilter;
     }
-    if(value_path == "mode")
+    if(value_path == "server-mode")
     {
-        mode.yfilter = yfilter;
+        server_mode.yfilter = yfilter;
+    }
+    if(value_path == "proxy-mode")
+    {
+        proxy_mode.yfilter = yfilter;
     }
 }
 
 bool Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile-name" || name == "mode")
+    if(name == "profile-name" || name == "server-mode" || name == "proxy-mode")
         return true;
     return false;
 }
@@ -6952,22 +6721,17 @@ bool Dhcpv6::Interfaces::Interface::Relay::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-const Enum::YLeaf Ipv6dhcpMode::server {1, "server"};
-const Enum::YLeaf Ipv6dhcpMode::proxy {2, "proxy"};
+const Enum::YLeaf Action::allow {0, "allow"};
+const Enum::YLeaf Action::drop {1, "drop"};
 
 const Enum::YLeaf Insert::local {0, "local"};
 const Enum::YLeaf Insert::received {1, "received"};
 const Enum::YLeaf Insert::pppoe {2, "pppoe"};
 const Enum::YLeaf Insert::received_nodefault {3, "received-nodefault"};
 
-const Enum::YLeaf Ipv6dhcpDefaultMode::server {1, "server"};
+const Enum::YLeaf LinkLayerAddr::set {4, "set"};
 
 const Enum::YLeaf SubscriberId::pppoe {3, "pppoe"};
-
-const Enum::YLeaf Action::allow {0, "allow"};
-const Enum::YLeaf Action::drop {1, "drop"};
-
-const Enum::YLeaf LinkLayerAddr::set {4, "set"};
 
 
 }

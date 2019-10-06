@@ -1196,15 +1196,15 @@ bool FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::has_leaf_or_c
     return false;
 }
 
-const Enum::YLeaf FsVrfAf::ipv4 {1, "ipv4"};
-const Enum::YLeaf FsVrfAf::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf FsAfP::pbr {2, "pbr"};
-
 const Enum::YLeaf FsAddf::ipv4 {1, "ipv4"};
 const Enum::YLeaf FsAddf::ipv6 {2, "ipv6"};
 
+const Enum::YLeaf FsVrfAf::ipv4 {1, "ipv4"};
+const Enum::YLeaf FsVrfAf::ipv6 {2, "ipv6"};
+
 const Enum::YLeaf FsVrfAfP::pbr {2, "pbr"};
+
+const Enum::YLeaf FsAfP::pbr {2, "pbr"};
 
 
 }

@@ -481,6 +481,13 @@ class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelRole : public yd
         static const ydk::Enum::YLeaf tail;
         static const ydk::Enum::YLeaf headTail;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "head") return 1;
+            if (name == "transit") return 2;
+            if (name == "tail") return 3;
+            if (name == "headTail") return 4;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelSignallingProto : public ydk::Enum
@@ -491,6 +498,13 @@ class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelSignallingProto 
         static const ydk::Enum::YLeaf crldp;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "rsvp") return 2;
+            if (name == "crldp") return 3;
+            if (name == "other") return 4;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelAdminStatus : public ydk::Enum
@@ -500,6 +514,12 @@ class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelAdminStatus : pu
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus : public ydk::Enum
@@ -513,6 +533,16 @@ class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus : pub
         static const ydk::Enum::YLeaf notPresent;
         static const ydk::Enum::YLeaf lowerLayerDown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            if (name == "unknown") return 4;
+            if (name == "dormant") return 5;
+            if (name == "notPresent") return 6;
+            if (name == "lowerLayerDown") return 7;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopType : public ydk::Enum
@@ -521,6 +551,11 @@ class MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopType : 
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf loose;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 1;
+            if (name == "loose") return 2;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopEntryPathComp : public ydk::Enum
@@ -529,6 +564,11 @@ class MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopEntryPa
         static const ydk::Enum::YLeaf dynamic;
         static const ydk::Enum::YLeaf explicit_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 1;
+            if (name == "explicit") return 2;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::MplsTunnelResourceFrequency : public ydk::Enum
@@ -538,6 +578,12 @@ class MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::MplsTunnel
         static const ydk::Enum::YLeaf frequent;
         static const ydk::Enum::YLeaf veryFrequent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unspecified") return 1;
+            if (name == "frequent") return 2;
+            if (name == "veryFrequent") return 3;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::MplsTunnelCHopType : public ydk::Enum
@@ -546,6 +592,11 @@ class MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::MplsTunnelCHopType
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf loose;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "strict") return 1;
+            if (name == "loose") return 2;
+            return -1;
+        }
 };
 
 class MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::MplsTunnelCRLDPResFrequency : public ydk::Enum
@@ -555,6 +606,12 @@ class MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::MplsTunnel
         static const ydk::Enum::YLeaf frequent;
         static const ydk::Enum::YLeaf veryFrequent;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unspecified") return 1;
+            if (name == "frequent") return 2;
+            if (name == "veryFrequent") return 3;
+            return -1;
+        }
 };
 
 

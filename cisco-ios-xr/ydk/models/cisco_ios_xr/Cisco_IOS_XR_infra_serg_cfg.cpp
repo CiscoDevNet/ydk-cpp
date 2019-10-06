@@ -317,8 +317,7 @@ SessionRedundancy::Groups::Group::Group()
     description{YType::str, "description"},
     access_tracking_object{YType::str, "access-tracking-object"},
     preferred_role{YType::enumeration, "preferred-role"},
-    hold_timer{YType::uint32, "hold-timer"},
-    mode_active{YType::empty, "mode-active"}
+    hold_timer{YType::uint32, "hold-timer"}
         ,
     peer(std::make_shared<SessionRedundancy::Groups::Group::Peer>())
     , revertive_timer(std::make_shared<SessionRedundancy::Groups::Group::RevertiveTimer>())
@@ -349,7 +348,6 @@ bool SessionRedundancy::Groups::Group::has_data() const
 	|| access_tracking_object.is_set
 	|| preferred_role.is_set
 	|| hold_timer.is_set
-	|| mode_active.is_set
 	|| (peer !=  nullptr && peer->has_data())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_data())
 	|| (interface_list !=  nullptr && interface_list->has_data())
@@ -368,7 +366,6 @@ bool SessionRedundancy::Groups::Group::has_operation() const
 	|| ydk::is_set(access_tracking_object.yfilter)
 	|| ydk::is_set(preferred_role.yfilter)
 	|| ydk::is_set(hold_timer.yfilter)
-	|| ydk::is_set(mode_active.yfilter)
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation())
 	|| (interface_list !=  nullptr && interface_list->has_operation())
@@ -403,7 +400,6 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
     if (access_tracking_object.is_set || is_set(access_tracking_object.yfilter)) leaf_name_data.push_back(access_tracking_object.get_name_leafdata());
     if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
     if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
-    if (mode_active.is_set || is_set(mode_active.yfilter)) leaf_name_data.push_back(mode_active.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -533,12 +529,6 @@ void SessionRedundancy::Groups::Group::set_value(const std::string & value_path,
         hold_timer.value_namespace = name_space;
         hold_timer.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mode-active")
-    {
-        mode_active = value;
-        mode_active.value_namespace = name_space;
-        mode_active.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void SessionRedundancy::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
@@ -579,15 +569,11 @@ void SessionRedundancy::Groups::Group::set_filter(const std::string & value_path
     {
         hold_timer.yfilter = yfilter;
     }
-    if(value_path == "mode-active")
-    {
-        mode_active.yfilter = yfilter;
-    }
 }
 
 bool SessionRedundancy::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer" || name == "revertive-timer" || name == "interface-list" || name == "pool-list" || name == "group-id" || name == "core-tracking-object" || name == "disable-tracking-object" || name == "redundancy-disable" || name == "enable" || name == "description" || name == "access-tracking-object" || name == "preferred-role" || name == "hold-timer" || name == "mode-active")
+    if(name == "peer" || name == "revertive-timer" || name == "interface-list" || name == "pool-list" || name == "group-id" || name == "core-tracking-object" || name == "disable-tracking-object" || name == "redundancy-disable" || name == "enable" || name == "description" || name == "access-tracking-object" || name == "preferred-role" || name == "hold-timer")
         return true;
     return false;
 }
@@ -1757,11 +1743,11 @@ bool SessionRedundancy::RevertiveTimer::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-const Enum::YLeaf SessionRedundancyGroupRole::master {1, "master"};
-const Enum::YLeaf SessionRedundancyGroupRole::slave {2, "slave"};
-
 const Enum::YLeaf SergAddrFamily::ipv4 {2, "ipv4"};
 const Enum::YLeaf SergAddrFamily::ipv6 {10, "ipv6"};
+
+const Enum::YLeaf SessionRedundancyGroupRole::master {1, "master"};
+const Enum::YLeaf SessionRedundancyGroupRole::slave {2, "slave"};
 
 
 }

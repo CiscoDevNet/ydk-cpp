@@ -15,6 +15,10 @@ class WanphyLanMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            return -1;
+        }
 };
 
 class WanphyWanMode : public ydk::Enum
@@ -22,6 +26,10 @@ class WanphyWanMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            return -1;
+        }
 };
 
 

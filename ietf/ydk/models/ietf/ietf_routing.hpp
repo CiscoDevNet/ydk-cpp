@@ -11,14 +11,14 @@
 namespace ietf {
 namespace ietf_routing {
 
-class AddressFamily : public virtual ydk::Identity
+class RoutingProtocol : public virtual ydk::Identity
 {
     public:
-        AddressFamily();
-        ~AddressFamily();
+        RoutingProtocol();
+        ~RoutingProtocol();
 
 
-}; // AddressFamily
+}; // RoutingProtocol
 
 class RoutingInstance : public virtual ydk::Identity
 {
@@ -29,14 +29,14 @@ class RoutingInstance : public virtual ydk::Identity
 
 }; // RoutingInstance
 
-class RoutingProtocol : public virtual ydk::Identity
+class AddressFamily : public virtual ydk::Identity
 {
     public:
-        RoutingProtocol();
-        ~RoutingProtocol();
+        AddressFamily();
+        ~AddressFamily();
 
 
-}; // RoutingProtocol
+}; // AddressFamily
 
 class RoutingState : public ydk::Entity
 {
@@ -236,7 +236,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
         class Interfaces; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces
         class AreaScopeLsas; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas
 
@@ -320,7 +320,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf multi_area_id; //type: one of string, uint32
+        ydk::YLeaf multi_area_id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea
@@ -3061,7 +3061,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
@@ -3344,85 +3344,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
         class Ipv6; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6
+        class Ipv4; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
 
-        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4> ipv4;
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6> ipv6;
+        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4> ipv4;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes
-
-
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4 : public ydk::Entity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Route; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
-
-        ydk::YList route;
-        
-}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
-
-
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route : public ydk::Entity
-{
-    public:
-        Route();
-        ~Route();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf destination_prefix; //type: string
-        ydk::YLeaf description; //type: string
-        class NextHop; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
-
-        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop> next_hop;
-        
-}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
-
-
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop : public ydk::Entity
-{
-    public:
-        NextHop();
-        ~NextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf outgoing_interface; //type: string
-        ydk::YLeaf special_next_hop; //type: SpecialNextHop
-        ydk::YLeaf next_hop_address; //type: string
-        class SpecialNextHop;
-
-}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
 
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6 : public ydk::Entity
@@ -3495,6 +3423,78 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
         class SpecialNextHop;
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop
+
+
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4 : public ydk::Entity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Route; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
+
+        ydk::YList route;
+        
+}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
+
+
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route : public ydk::Entity
+{
+    public:
+        Route();
+        ~Route();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf description; //type: string
+        class NextHop; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
+
+        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop> next_hop;
+        
+}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
+
+
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf special_next_hop; //type: SpecialNextHop
+        ydk::YLeaf next_hop_address; //type: string
+        class SpecialNextHop;
+
+}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
 
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public ydk::Entity
@@ -3983,7 +3983,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
         ydk::YLeaf area_type; //type: AreaType
         ydk::YLeaf summary; //type: boolean
         ydk::YLeaf default_cost; //type: uint32
@@ -4361,7 +4361,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf multi_area_id; //type: one of string, uint32
+        ydk::YLeaf multi_area_id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint16
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea
@@ -4624,7 +4624,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
         ydk::YLeaf area_type; //type: AreaType
         ydk::YLeaf summary; //type: boolean
         ydk::YLeaf default_cost; //type: uint32
@@ -4776,8 +4776,8 @@ class FibRoute::Input::DestinationAddress : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf address_family; //type: AddressFamily
-        ydk::YLeaf ietf_ipv4_unicast_routing_address; //type: string
         ydk::YLeaf ietf_ipv6_unicast_routing_address; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_address; //type: string
 
 }; // FibRoute::Input::DestinationAddress
 
@@ -4827,8 +4827,8 @@ class FibRoute::Output::Route : public ydk::Entity
         ydk::YLeaf source_protocol; //type: RoutingProtocol
         ydk::YLeaf active; //type: empty
         ydk::YLeaf last_updated; //type: string
-        ydk::YLeaf ietf_ipv4_unicast_routing_destination_prefix; //type: string
         ydk::YLeaf ietf_ipv6_unicast_routing_destination_prefix; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_destination_prefix; //type: string
         class NextHop; //type: FibRoute::Output::Route::NextHop
 
         std::shared_ptr<ietf::ietf_routing::FibRoute::Output::Route::NextHop> next_hop;
@@ -4855,39 +4855,12 @@ class FibRoute::Output::Route::NextHop : public ydk::Entity
 
         ydk::YLeaf outgoing_interface; //type: string
         ydk::YLeaf next_hop_address; //type: string
-        ydk::YLeaf ietf_ipv4_unicast_routing_next_hop_address; //type: string
         ydk::YLeaf ietf_ipv6_unicast_routing_next_hop_address; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_next_hop_address; //type: string
         ydk::YLeaf special_next_hop; //type: SpecialNextHop
         class SpecialNextHop;
 
 }; // FibRoute::Output::Route::NextHop
-
-class Ipv4 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-
-}; // Ipv4
-
-class Ipv6 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-
-}; // Ipv6
-
-class DefaultRoutingInstance : public ietf::ietf_routing::RoutingInstance, virtual ydk::Identity
-{
-    public:
-        DefaultRoutingInstance();
-        ~DefaultRoutingInstance();
-
-
-}; // DefaultRoutingInstance
 
 class VrfRoutingInstance : public ietf::ietf_routing::RoutingInstance, virtual ydk::Identity
 {
@@ -4907,6 +4880,15 @@ class Direct : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Direct
 
+class DefaultRoutingInstance : public ietf::ietf_routing::RoutingInstance, virtual ydk::Identity
+{
+    public:
+        DefaultRoutingInstance();
+        ~DefaultRoutingInstance();
+
+
+}; // DefaultRoutingInstance
+
 class Static : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
@@ -4916,6 +4898,24 @@ class Static : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Static
 
+class Ipv4 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+
+}; // Ipv4
+
+class Ipv6 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+
+}; // Ipv6
+
 class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkType : public ydk::Enum
 {
     public:
@@ -4924,6 +4924,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         static const ydk::Enum::YLeaf point_to_multipoint;
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 0;
+            if (name == "non-broadcast") return 1;
+            if (name == "point-to-multipoint") return 2;
+            if (name == "point-to-point") return 3;
+            return -1;
+        }
 };
 
 class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::RouteType : public ydk::Enum
@@ -4936,6 +4943,15 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::RouteType : publi
         static const ydk::Enum::YLeaf nssa_1;
         static const ydk::Enum::YLeaf nssa_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "intra-area") return 0;
+            if (name == "inter-area") return 1;
+            if (name == "external-1") return 2;
+            if (name == "external-2") return 3;
+            if (name == "nssa-1") return 4;
+            if (name == "nssa-2") return 5;
+            return -1;
+        }
 };
 
 class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHop : public ydk::Enum
@@ -4946,16 +4962,13 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialN
         static const ydk::Enum::YLeaf prohibit;
         static const ydk::Enum::YLeaf receive;
 
-};
-
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf blackhole;
-        static const ydk::Enum::YLeaf unreachable;
-        static const ydk::Enum::YLeaf prohibit;
-        static const ydk::Enum::YLeaf receive;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
 };
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop : public ydk::Enum
@@ -4966,6 +4979,30 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
         static const ydk::Enum::YLeaf prohibit;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
+};
+
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf blackhole;
+        static const ydk::Enum::YLeaf unreachable;
+        static const ydk::Enum::YLeaf prohibit;
+        static const ydk::Enum::YLeaf receive;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
 };
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkType : public ydk::Enum
@@ -4976,6 +5013,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         static const ydk::Enum::YLeaf point_to_multipoint;
         static const ydk::Enum::YLeaf point_to_point;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "broadcast") return 0;
+            if (name == "non-broadcast") return 1;
+            if (name == "point-to-multipoint") return 2;
+            if (name == "point-to-point") return 3;
+            return -1;
+        }
 };
 
 class FibRoute::Output::Route::NextHop::SpecialNextHop : public ydk::Enum
@@ -4986,6 +5030,13 @@ class FibRoute::Output::Route::NextHop::SpecialNextHop : public ydk::Enum
         static const ydk::Enum::YLeaf prohibit;
         static const ydk::Enum::YLeaf receive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blackhole") return 0;
+            if (name == "unreachable") return 1;
+            if (name == "prohibit") return 2;
+            if (name == "receive") return 3;
+            return -1;
+        }
 };
 
 

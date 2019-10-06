@@ -11,6 +11,21 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace IANAifType_MIB {
 
+const Enum::YLeaf IANAtunnelType::other {1, "other"};
+const Enum::YLeaf IANAtunnelType::direct {2, "direct"};
+const Enum::YLeaf IANAtunnelType::gre {3, "gre"};
+const Enum::YLeaf IANAtunnelType::minimal {4, "minimal"};
+const Enum::YLeaf IANAtunnelType::l2tp {5, "l2tp"};
+const Enum::YLeaf IANAtunnelType::pptp {6, "pptp"};
+const Enum::YLeaf IANAtunnelType::l2f {7, "l2f"};
+const Enum::YLeaf IANAtunnelType::udp {8, "udp"};
+const Enum::YLeaf IANAtunnelType::atmp {9, "atmp"};
+const Enum::YLeaf IANAtunnelType::msdp {10, "msdp"};
+const Enum::YLeaf IANAtunnelType::sixToFour {11, "sixToFour"};
+const Enum::YLeaf IANAtunnelType::sixOverFour {12, "sixOverFour"};
+const Enum::YLeaf IANAtunnelType::isatap {13, "isatap"};
+const Enum::YLeaf IANAtunnelType::teredo {14, "teredo"};
+
 const Enum::YLeaf IANAifType::other {1, "other"};
 const Enum::YLeaf IANAifType::regular1822 {2, "regular1822"};
 const Enum::YLeaf IANAifType::hdh1822 {3, "hdh1822"};
@@ -295,21 +310,6 @@ const Enum::YLeaf IANAifType::docsCableScte55d2DsOob {285, "docsCableScte55d2DsO
 const Enum::YLeaf IANAifType::docsCableScte55d2UsOob {286, "docsCableScte55d2UsOob"};
 const Enum::YLeaf IANAifType::docsCableNdf {287, "docsCableNdf"};
 const Enum::YLeaf IANAifType::docsCableNdr {288, "docsCableNdr"};
-
-const Enum::YLeaf IANAtunnelType::other {1, "other"};
-const Enum::YLeaf IANAtunnelType::direct {2, "direct"};
-const Enum::YLeaf IANAtunnelType::gre {3, "gre"};
-const Enum::YLeaf IANAtunnelType::minimal {4, "minimal"};
-const Enum::YLeaf IANAtunnelType::l2tp {5, "l2tp"};
-const Enum::YLeaf IANAtunnelType::pptp {6, "pptp"};
-const Enum::YLeaf IANAtunnelType::l2f {7, "l2f"};
-const Enum::YLeaf IANAtunnelType::udp {8, "udp"};
-const Enum::YLeaf IANAtunnelType::atmp {9, "atmp"};
-const Enum::YLeaf IANAtunnelType::msdp {10, "msdp"};
-const Enum::YLeaf IANAtunnelType::sixToFour {11, "sixToFour"};
-const Enum::YLeaf IANAtunnelType::sixOverFour {12, "sixOverFour"};
-const Enum::YLeaf IANAtunnelType::isatap {13, "isatap"};
-const Enum::YLeaf IANAtunnelType::teredo {14, "teredo"};
 
 
 }

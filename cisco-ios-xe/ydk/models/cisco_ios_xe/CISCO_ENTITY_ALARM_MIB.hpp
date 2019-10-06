@@ -382,6 +382,13 @@ class AlarmSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf info;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 1;
+            if (name == "major") return 2;
+            if (name == "minor") return 3;
+            if (name == "info") return 4;
+            return -1;
+        }
 };
 
 class CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry::CeAlarmHistType : public ydk::Enum
@@ -390,6 +397,11 @@ class CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry::CeAlarmHistType :
         static const ydk::Enum::YLeaf asserted;
         static const ydk::Enum::YLeaf cleared;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "asserted") return 1;
+            if (name == "cleared") return 2;
+            return -1;
+        }
 };
 
 

@@ -228,6 +228,11 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPair
         static const ydk::Enum::YLeaf signal;
         static const ydk::Enum::YLeaf spare;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "signal") return 1;
+            if (name == "spare") return 2;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus : public ydk::Enum
@@ -240,6 +245,15 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetection
         static const ydk::Enum::YLeaf test;
         static const ydk::Enum::YLeaf otherFault;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "searching") return 2;
+            if (name == "deliveringPower") return 3;
+            if (name == "fault") return 4;
+            if (name == "test") return 5;
+            if (name == "otherFault") return 6;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPriority : public ydk::Enum
@@ -249,6 +263,12 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPrio
         static const ydk::Enum::YLeaf high;
         static const ydk::Enum::YLeaf low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 1;
+            if (name == "high") return 2;
+            if (name == "low") return 3;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClassifications : public ydk::Enum
@@ -260,6 +280,14 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClas
         static const ydk::Enum::YLeaf class3;
         static const ydk::Enum::YLeaf class4;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "class0") return 1;
+            if (name == "class1") return 2;
+            if (name == "class2") return 3;
+            if (name == "class3") return 4;
+            if (name == "class4") return 5;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortEnable : public ydk::Enum
@@ -270,6 +298,13 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortEnable 
         static const ydk::Enum::YLeaf limit;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 1;
+            if (name == "static") return 2;
+            if (name == "limit") return 3;
+            if (name == "disable") return 4;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscoverMode : public ydk::Enum
@@ -281,6 +316,14 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscove
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf ieeeAndCisco;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "off") return 2;
+            if (name == "ieee") return 3;
+            if (name == "cisco") return 4;
+            if (name == "ieeeAndCisco") return 5;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingEnable : public ydk::Enum
@@ -289,6 +332,11 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicin
         static const ydk::Enum::YLeaf on;
         static const ydk::Enum::YLeaf off;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            if (name == "off") return 2;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingAction : public ydk::Enum
@@ -297,6 +345,11 @@ class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicin
         static const ydk::Enum::YLeaf deny;
         static const ydk::Enum::YLeaf logOnly;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deny") return 1;
+            if (name == "logOnly") return 2;
+            return -1;
+        }
 };
 
 class POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::PethMainPseOperStatus : public ydk::Enum
@@ -306,6 +359,12 @@ class POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::PethMainPseOperStatu
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf faulty;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on") return 1;
+            if (name == "off") return 2;
+            if (name == "faulty") return 3;
+            return -1;
+        }
 };
 
 

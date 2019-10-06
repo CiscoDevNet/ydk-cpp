@@ -1802,7 +1802,7 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::Config : public ydk::Entity
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::Config
 
@@ -1826,7 +1826,7 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::State : public ydk::Entity
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::State
 
@@ -1949,7 +1949,7 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::Config : public ydk::Ent
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::Config
 
@@ -1973,7 +1973,7 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::State : public ydk::Enti
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::State
 
@@ -3258,6 +3258,12 @@ class Interfaces::Interface::State::AdminStatus : public ydk::Enum
         static const ydk::Enum::YLeaf DOWN;
         static const ydk::Enum::YLeaf TESTING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            if (name == "TESTING") return 2;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::State::OperStatus : public ydk::Enum
@@ -3271,6 +3277,16 @@ class Interfaces::Interface::State::OperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf NOT_PRESENT;
         static const ydk::Enum::YLeaf LOWER_LAYER_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 1;
+            if (name == "DOWN") return 2;
+            if (name == "TESTING") return 3;
+            if (name == "UNKNOWN") return 4;
+            if (name == "DORMANT") return 5;
+            if (name == "NOT_PRESENT") return 6;
+            if (name == "LOWER_LAYER_DOWN") return 7;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatus : public ydk::Enum
@@ -3280,6 +3296,12 @@ class Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatus : p
         static const ydk::Enum::YLeaf DOWN;
         static const ydk::Enum::YLeaf TESTING;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            if (name == "TESTING") return 2;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatus : public ydk::Enum
@@ -3293,6 +3315,16 @@ class Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatus : pu
         static const ydk::Enum::YLeaf NOT_PRESENT;
         static const ydk::Enum::YLeaf LOWER_LAYER_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 1;
+            if (name == "DOWN") return 2;
+            if (name == "TESTING") return 3;
+            if (name == "UNKNOWN") return 4;
+            if (name == "DORMANT") return 5;
+            if (name == "NOT_PRESENT") return 6;
+            if (name == "LOWER_LAYER_DOWN") return 7;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::Status : public ydk::Enum
@@ -3307,6 +3339,17 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addre
         static const ydk::Enum::YLeaf DUPLICATE;
         static const ydk::Enum::YLeaf OPTIMISTIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PREFERRED") return 0;
+            if (name == "DEPRECATED") return 1;
+            if (name == "INVALID") return 2;
+            if (name == "INACCESSIBLE") return 3;
+            if (name == "UNKNOWN") return 4;
+            if (name == "TENTATIVE") return 5;
+            if (name == "DUPLICATE") return 6;
+            if (name == "OPTIMISTIC") return 7;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::NeighborState : public ydk::Enum
@@ -3318,6 +3361,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neigh
         static const ydk::Enum::YLeaf DELAY;
         static const ydk::Enum::YLeaf PROBE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INCOMPLETE") return 0;
+            if (name == "REACHABLE") return 1;
+            if (name == "STALE") return 2;
+            if (name == "DELAY") return 3;
+            if (name == "PROBE") return 4;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::Ethernet::Config::DuplexMode : public ydk::Enum
@@ -3326,6 +3377,11 @@ class Interfaces::Interface::Ethernet::Config::DuplexMode : public ydk::Enum
         static const ydk::Enum::YLeaf FULL;
         static const ydk::Enum::YLeaf HALF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FULL") return 0;
+            if (name == "HALF") return 1;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::Ethernet::State::DuplexMode : public ydk::Enum
@@ -3334,6 +3390,11 @@ class Interfaces::Interface::Ethernet::State::DuplexMode : public ydk::Enum
         static const ydk::Enum::YLeaf FULL;
         static const ydk::Enum::YLeaf HALF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "FULL") return 0;
+            if (name == "HALF") return 1;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::Status : public ydk::Enum
@@ -3348,6 +3409,17 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::Status
         static const ydk::Enum::YLeaf DUPLICATE;
         static const ydk::Enum::YLeaf OPTIMISTIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "PREFERRED") return 0;
+            if (name == "DEPRECATED") return 1;
+            if (name == "INVALID") return 2;
+            if (name == "INACCESSIBLE") return 3;
+            if (name == "UNKNOWN") return 4;
+            if (name == "TENTATIVE") return 5;
+            if (name == "DUPLICATE") return 6;
+            if (name == "OPTIMISTIC") return 7;
+            return -1;
+        }
 };
 
 class Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::NeighborState : public ydk::Enum
@@ -3359,6 +3431,14 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::Neigh
         static const ydk::Enum::YLeaf DELAY;
         static const ydk::Enum::YLeaf PROBE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INCOMPLETE") return 0;
+            if (name == "REACHABLE") return 1;
+            if (name == "STALE") return 2;
+            if (name == "DELAY") return 3;
+            if (name == "PROBE") return 4;
+            return -1;
+        }
 };
 
 

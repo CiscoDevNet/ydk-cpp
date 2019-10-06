@@ -222,9 +222,7 @@ SpanMonitorSession::Sessions::Session::Session()
     :
     session{YType::str, "session"},
     class_{YType::enumeration, "class"},
-    discard_class{YType::uint32, "discard-class"},
-    inject_interface{YType::str, "inject-interface"},
-    traffic_class{YType::uint32, "traffic-class"}
+    inject_interface{YType::str, "inject-interface"}
         ,
     destination(std::make_shared<SpanMonitorSession::Sessions::Session::Destination>())
 {
@@ -242,9 +240,7 @@ bool SpanMonitorSession::Sessions::Session::has_data() const
     if (is_presence_container) return true;
     return session.is_set
 	|| class_.is_set
-	|| discard_class.is_set
 	|| inject_interface.is_set
-	|| traffic_class.is_set
 	|| (destination !=  nullptr && destination->has_data());
 }
 
@@ -253,9 +249,7 @@ bool SpanMonitorSession::Sessions::Session::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(session.yfilter)
 	|| ydk::is_set(class_.yfilter)
-	|| ydk::is_set(discard_class.yfilter)
 	|| ydk::is_set(inject_interface.yfilter)
-	|| ydk::is_set(traffic_class.yfilter)
 	|| (destination !=  nullptr && destination->has_operation());
 }
 
@@ -280,9 +274,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Sessions::Ses
 
     if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
     if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
-    if (discard_class.is_set || is_set(discard_class.yfilter)) leaf_name_data.push_back(discard_class.get_name_leafdata());
     if (inject_interface.is_set || is_set(inject_interface.yfilter)) leaf_name_data.push_back(inject_interface.get_name_leafdata());
-    if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -328,23 +320,11 @@ void SpanMonitorSession::Sessions::Session::set_value(const std::string & value_
         class_.value_namespace = name_space;
         class_.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "discard-class")
-    {
-        discard_class = value;
-        discard_class.value_namespace = name_space;
-        discard_class.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "inject-interface")
     {
         inject_interface = value;
         inject_interface.value_namespace = name_space;
         inject_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "traffic-class")
-    {
-        traffic_class = value;
-        traffic_class.value_namespace = name_space;
-        traffic_class.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -358,23 +338,15 @@ void SpanMonitorSession::Sessions::Session::set_filter(const std::string & value
     {
         class_.yfilter = yfilter;
     }
-    if(value_path == "discard-class")
-    {
-        discard_class.yfilter = yfilter;
-    }
     if(value_path == "inject-interface")
     {
         inject_interface.yfilter = yfilter;
-    }
-    if(value_path == "traffic-class")
-    {
-        traffic_class.yfilter = yfilter;
     }
 }
 
 bool SpanMonitorSession::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "session" || name == "class" || name == "discard-class" || name == "inject-interface" || name == "traffic-class")
+    if(name == "destination" || name == "session" || name == "class" || name == "inject-interface")
         return true;
     return false;
 }

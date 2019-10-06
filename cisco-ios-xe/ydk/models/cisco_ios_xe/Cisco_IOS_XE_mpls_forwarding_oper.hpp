@@ -210,6 +210,45 @@ class MplsForwardingOperData::MplsLocalLabelStatistics : public ydk::Entity
 
 }; // MplsForwardingOperData::MplsLocalLabelStatistics
 
+class ForwardingNextHopType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf point2point;
+        static const ydk::Enum::YLeaf next_hop_ip_address;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "point2point") return 0;
+            if (name == "next-hop-ip-address") return 1;
+            return -1;
+        }
+};
+
+class OutgoingInterfaceDescriptionType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface_type;
+        static const ydk::Enum::YLeaf interface_value;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface-type") return 0;
+            if (name == "interface-value") return 1;
+            return -1;
+        }
+};
+
+class ConnectionInfoType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf information_string;
+        static const ydk::Enum::YLeaf ip_prefix;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "information-string") return 0;
+            if (name == "ip-prefix") return 1;
+            return -1;
+        }
+};
+
 class OutgoingInterfaceType : public ydk::Enum
 {
     public:
@@ -219,14 +258,14 @@ class OutgoingInterfaceType : public ydk::Enum
         static const ydk::Enum::YLeaf exception;
         static const ydk::Enum::YLeaf none;
 
-};
-
-class OutgoingInterfaceDescriptionType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface_type;
-        static const ydk::Enum::YLeaf interface_value;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "drop") return 0;
+            if (name == "punt") return 1;
+            if (name == "aggregate") return 2;
+            if (name == "exception") return 3;
+            if (name == "none") return 4;
+            return -1;
+        }
 };
 
 class OutgoingLabelType : public ydk::Enum
@@ -239,22 +278,15 @@ class OutgoingLabelType : public ydk::Enum
         static const ydk::Enum::YLeaf regular_label;
         static const ydk::Enum::YLeaf invalid_label;
 
-};
-
-class ConnectionInfoType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf information_string;
-        static const ydk::Enum::YLeaf ip_prefix;
-
-};
-
-class ForwardingNextHopType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf point2point;
-        static const ydk::Enum::YLeaf next_hop_ip_address;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-label") return 0;
+            if (name == "pop-label") return 1;
+            if (name == "ipv4-explicit-null") return 2;
+            if (name == "ipv6-explicit-null") return 3;
+            if (name == "regular-label") return 4;
+            if (name == "invalid-label") return 5;
+            return -1;
+        }
 };
 
 

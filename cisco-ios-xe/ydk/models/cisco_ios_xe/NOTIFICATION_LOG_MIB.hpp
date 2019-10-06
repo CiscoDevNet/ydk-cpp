@@ -272,6 +272,11 @@ class NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogAdmi
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            if (name == "disabled") return 2;
+            return -1;
+        }
 };
 
 class NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogOperStatus : public ydk::Enum
@@ -281,6 +286,12 @@ class NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogOper
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf noFilter;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "operational") return 2;
+            if (name == "noFilter") return 3;
+            return -1;
+        }
 };
 
 class NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType : public ydk::Enum
@@ -296,6 +307,18 @@ class NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariab
         static const ydk::Enum::YLeaf counter64;
         static const ydk::Enum::YLeaf opaque;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "counter32") return 1;
+            if (name == "unsigned32") return 2;
+            if (name == "timeTicks") return 3;
+            if (name == "integer32") return 4;
+            if (name == "ipAddress") return 5;
+            if (name == "octetString") return 6;
+            if (name == "objectId") return 7;
+            if (name == "counter64") return 8;
+            if (name == "opaque") return 9;
+            return -1;
+        }
 };
 
 

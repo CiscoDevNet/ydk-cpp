@@ -340,6 +340,40 @@ class BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr : public ydk::E
 
 }; // BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr
 
+class BfdRemoteStateType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf remote_up;
+        static const ydk::Enum::YLeaf remote_down;
+        static const ydk::Enum::YLeaf remote_init;
+        static const ydk::Enum::YLeaf remote_admindown;
+        static const ydk::Enum::YLeaf remote_invalid;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "remote-up") return 0;
+            if (name == "remote-down") return 1;
+            if (name == "remote-init") return 2;
+            if (name == "remote-admindown") return 3;
+            if (name == "remote-invalid") return 4;
+            return -1;
+        }
+};
+
+class BfdLspType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf working;
+        static const ydk::Enum::YLeaf protect;
+        static const ydk::Enum::YLeaf unknown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "working") return 0;
+            if (name == "protect") return 1;
+            if (name == "unknown") return 2;
+            return -1;
+        }
+};
+
 class BfdOperSessionType : public ydk::Enum
 {
     public:
@@ -350,17 +384,15 @@ class BfdOperSessionType : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_multihop;
         static const ydk::Enum::YLeaf ipv6_multihop;
 
-};
-
-class BfdRemoteStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf remote_up;
-        static const ydk::Enum::YLeaf remote_down;
-        static const ydk::Enum::YLeaf remote_init;
-        static const ydk::Enum::YLeaf remote_admindown;
-        static const ydk::Enum::YLeaf remote_invalid;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "vccv") return 2;
+            if (name == "mpls-tp") return 3;
+            if (name == "ipv4-multihop") return 4;
+            if (name == "ipv6-multihop") return 5;
+            return -1;
+        }
 };
 
 class BfdStateType : public ydk::Enum
@@ -373,15 +405,15 @@ class BfdStateType : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf invalid;
 
-};
-
-class BfdLspType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf working;
-        static const ydk::Enum::YLeaf protect;
-        static const ydk::Enum::YLeaf unknown;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "admindown") return 0;
+            if (name == "down") return 1;
+            if (name == "fail") return 2;
+            if (name == "init") return 3;
+            if (name == "up") return 4;
+            if (name == "invalid") return 5;
+            return -1;
+        }
 };
 
 

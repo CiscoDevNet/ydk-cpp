@@ -1378,7 +1378,7 @@ class Bgp::PeerGroups::PeerGroup::Transport::Config : public ydk::Entity
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // Bgp::PeerGroups::PeerGroup::Transport::Config
 
@@ -1402,7 +1402,7 @@ class Bgp::PeerGroups::PeerGroup::Transport::State : public ydk::Entity
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // Bgp::PeerGroups::PeerGroup::Transport::State
 

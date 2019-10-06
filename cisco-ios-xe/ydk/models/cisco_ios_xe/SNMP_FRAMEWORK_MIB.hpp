@@ -12,15 +12,6 @@
 namespace cisco_ios_xe {
 namespace SNMP_FRAMEWORK_MIB {
 
-class SnmpAuthProtocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        SnmpAuthProtocols();
-        ~SnmpAuthProtocols();
-
-
-}; // SnmpAuthProtocols
-
 class SnmpPrivProtocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -29,6 +20,15 @@ class SnmpPrivProtocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual 
 
 
 }; // SnmpPrivProtocols
+
+class SnmpAuthProtocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        SnmpAuthProtocols();
+        ~SnmpAuthProtocols();
+
+
+}; // SnmpAuthProtocols
 
 class SNMPFRAMEWORKMIB : public ydk::Entity
 {
@@ -89,6 +89,12 @@ class SnmpSecurityLevel : public ydk::Enum
         static const ydk::Enum::YLeaf authNoPriv;
         static const ydk::Enum::YLeaf authPriv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noAuthNoPriv") return 1;
+            if (name == "authNoPriv") return 2;
+            if (name == "authPriv") return 3;
+            return -1;
+        }
 };
 
 

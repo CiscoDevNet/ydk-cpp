@@ -3041,7 +3041,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
+        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
 
@@ -3070,7 +3070,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
+        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
         ydk::YLeaf packets_forwarded; //type: uint64
@@ -3801,6 +3801,11 @@ class NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExpli
         static const ydk::Enum::YLeaf ADJ_SID_ONLY;
         static const ydk::Enum::YLeaf MIXED_MODE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJ_SID_ONLY") return 0;
+            if (name == "MIXED_MODE") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::SidSelectionMode : public ydk::Enum
@@ -3809,6 +3814,11 @@ class NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExpli
         static const ydk::Enum::YLeaf ADJ_SID_ONLY;
         static const ydk::Enum::YLeaf MIXED_MODE;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJ_SID_ONLY") return 0;
+            if (name == "MIXED_MODE") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Vlans::Vlan::Config::Status : public ydk::Enum
@@ -3817,6 +3827,11 @@ class NetworkInstances::NetworkInstance::Vlans::Vlan::Config::Status : public yd
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf SUSPENDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACTIVE") return 0;
+            if (name == "SUSPENDED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Vlans::Vlan::State::Status : public ydk::Enum
@@ -3825,6 +3840,11 @@ class NetworkInstances::NetworkInstance::Vlans::Vlan::State::Status : public ydk
         static const ydk::Enum::YLeaf ACTIVE;
         static const ydk::Enum::YLeaf SUSPENDED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ACTIVE") return 0;
+            if (name == "SUSPENDED") return 1;
+            return -1;
+        }
 };
 
 

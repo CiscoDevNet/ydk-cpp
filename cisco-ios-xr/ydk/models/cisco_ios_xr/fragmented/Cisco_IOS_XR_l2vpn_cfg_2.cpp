@@ -1079,11 +1079,10 @@ bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdA
 
 L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::InterfaceMacSecure()
     :
-    enable{YType::empty, "enable"},
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
     action{YType::enumeration, "action"},
-    shutdown_recovery_timer{YType::uint32, "shutdown-recovery-timer"}
+    enable{YType::empty, "enable"}
 {
 
     yang_name = "interface-mac-secure"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1096,21 +1095,19 @@ L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttach
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set
-	|| logging.is_set
+    return logging.is_set
 	|| disable.is_set
 	|| action.is_set
-	|| shutdown_recovery_timer.is_set;
+	|| enable.is_set;
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(shutdown_recovery_timer.yfilter);
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_segment_path() const
@@ -1124,11 +1121,10 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (shutdown_recovery_timer.is_set || is_set(shutdown_recovery_timer.yfilter)) leaf_name_data.push_back(shutdown_recovery_timer.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1148,12 +1144,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitche
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "logging")
     {
         logging = value;
@@ -1172,20 +1162,16 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdA
         action.value_namespace = name_space;
         action.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "shutdown-recovery-timer")
+    if(value_path == "enable")
     {
-        shutdown_recovery_timer = value;
-        shutdown_recovery_timer.value_namespace = name_space;
-        shutdown_recovery_timer.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
@@ -1198,15 +1184,15 @@ void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdA
     {
         action.yfilter = yfilter;
     }
-    if(value_path == "shutdown-recovery-timer")
+    if(value_path == "enable")
     {
-        shutdown_recovery_timer.yfilter = yfilter;
+        enable.yfilter = yfilter;
     }
 }
 
 bool L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "logging" || name == "disable" || name == "action" || name == "shutdown-recovery-timer")
+    if(name == "logging" || name == "disable" || name == "action" || name == "enable")
         return true;
     return false;
 }
@@ -5209,6 +5195,7 @@ Evpn::EvpnTables::EvpnTables()
     evpn_cost_in_startup{YType::uint32, "evpn-cost-in-startup"}
         ,
     evpn_timers(std::make_shared<Evpn::EvpnTables::EvpnTimers>())
+    , evpnmac(std::make_shared<Evpn::EvpnTables::Evpnmac>())
     , evpn_evis(std::make_shared<Evpn::EvpnTables::EvpnEvis>())
     , evpn_virtual_access_vfis(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis>())
     , evpn_load_balancing(std::make_shared<Evpn::EvpnTables::EvpnLoadBalancing>())
@@ -5219,9 +5206,9 @@ Evpn::EvpnTables::EvpnTables()
     , evpn_interfaces(std::make_shared<Evpn::EvpnTables::EvpnInterfaces>())
     , evpn_virtual_access_pws(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws>())
     , evpn_ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnEthernetSegment>())
-    , host(std::make_shared<Evpn::EvpnTables::Host>())
 {
     evpn_timers->parent = this;
+    evpnmac->parent = this;
     evpn_evis->parent = this;
     evpn_virtual_access_vfis->parent = this;
     evpn_load_balancing->parent = this;
@@ -5232,7 +5219,6 @@ Evpn::EvpnTables::EvpnTables()
     evpn_interfaces->parent = this;
     evpn_virtual_access_pws->parent = this;
     evpn_ethernet_segment->parent = this;
-    host->parent = this;
 
     yang_name = "evpn-tables"; yang_parent_name = "evpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -5248,6 +5234,7 @@ bool Evpn::EvpnTables::has_data() const
 	|| evpn_source_interface.is_set
 	|| evpn_cost_in_startup.is_set
 	|| (evpn_timers !=  nullptr && evpn_timers->has_data())
+	|| (evpnmac !=  nullptr && evpnmac->has_data())
 	|| (evpn_evis !=  nullptr && evpn_evis->has_data())
 	|| (evpn_virtual_access_vfis !=  nullptr && evpn_virtual_access_vfis->has_data())
 	|| (evpn_load_balancing !=  nullptr && evpn_load_balancing->has_data())
@@ -5257,8 +5244,7 @@ bool Evpn::EvpnTables::has_data() const
 	|| (evpn_logging !=  nullptr && evpn_logging->has_data())
 	|| (evpn_interfaces !=  nullptr && evpn_interfaces->has_data())
 	|| (evpn_virtual_access_pws !=  nullptr && evpn_virtual_access_pws->has_data())
-	|| (evpn_ethernet_segment !=  nullptr && evpn_ethernet_segment->has_data())
-	|| (host !=  nullptr && host->has_data());
+	|| (evpn_ethernet_segment !=  nullptr && evpn_ethernet_segment->has_data());
 }
 
 bool Evpn::EvpnTables::has_operation() const
@@ -5268,6 +5254,7 @@ bool Evpn::EvpnTables::has_operation() const
 	|| ydk::is_set(evpn_source_interface.yfilter)
 	|| ydk::is_set(evpn_cost_in_startup.yfilter)
 	|| (evpn_timers !=  nullptr && evpn_timers->has_operation())
+	|| (evpnmac !=  nullptr && evpnmac->has_operation())
 	|| (evpn_evis !=  nullptr && evpn_evis->has_operation())
 	|| (evpn_virtual_access_vfis !=  nullptr && evpn_virtual_access_vfis->has_operation())
 	|| (evpn_load_balancing !=  nullptr && evpn_load_balancing->has_operation())
@@ -5277,8 +5264,7 @@ bool Evpn::EvpnTables::has_operation() const
 	|| (evpn_logging !=  nullptr && evpn_logging->has_operation())
 	|| (evpn_interfaces !=  nullptr && evpn_interfaces->has_operation())
 	|| (evpn_virtual_access_pws !=  nullptr && evpn_virtual_access_pws->has_operation())
-	|| (evpn_ethernet_segment !=  nullptr && evpn_ethernet_segment->has_operation())
-	|| (host !=  nullptr && host->has_operation());
+	|| (evpn_ethernet_segment !=  nullptr && evpn_ethernet_segment->has_operation());
 }
 
 std::string Evpn::EvpnTables::get_absolute_path() const
@@ -5316,6 +5302,15 @@ std::shared_ptr<ydk::Entity> Evpn::EvpnTables::get_child_by_name(const std::stri
             evpn_timers = std::make_shared<Evpn::EvpnTables::EvpnTimers>();
         }
         return evpn_timers;
+    }
+
+    if(child_yang_name == "evpnmac")
+    {
+        if(evpnmac == nullptr)
+        {
+            evpnmac = std::make_shared<Evpn::EvpnTables::Evpnmac>();
+        }
+        return evpnmac;
     }
 
     if(child_yang_name == "evpn-evis")
@@ -5408,15 +5403,6 @@ std::shared_ptr<ydk::Entity> Evpn::EvpnTables::get_child_by_name(const std::stri
         return evpn_ethernet_segment;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-l2rib-cfg:host")
-    {
-        if(host == nullptr)
-        {
-            host = std::make_shared<Evpn::EvpnTables::Host>();
-        }
-        return host;
-    }
-
     return nullptr;
 }
 
@@ -5427,6 +5413,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::get_childr
     if(evpn_timers != nullptr)
     {
         _children["evpn-timers"] = evpn_timers;
+    }
+
+    if(evpnmac != nullptr)
+    {
+        _children["evpnmac"] = evpnmac;
     }
 
     if(evpn_evis != nullptr)
@@ -5479,11 +5470,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::get_childr
         _children["evpn-ethernet-segment"] = evpn_ethernet_segment;
     }
 
-    if(host != nullptr)
-    {
-        _children["Cisco-IOS-XR-l2rib-cfg:host"] = host;
-    }
-
     return _children;
 }
 
@@ -5527,7 +5513,7 @@ void Evpn::EvpnTables::set_filter(const std::string & value_path, YFilter yfilte
 
 bool Evpn::EvpnTables::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-timers" || name == "evpn-evis" || name == "evpn-virtual-access-vfis" || name == "evpn-load-balancing" || name == "evpn-bgp-auto-discovery" || name == "evpn-groups" || name == "evpn-instances" || name == "evpn-logging" || name == "evpn-interfaces" || name == "evpn-virtual-access-pws" || name == "evpn-ethernet-segment" || name == "host" || name == "evi-cost-out" || name == "evpn-source-interface" || name == "evpn-cost-in-startup")
+    if(name == "evpn-timers" || name == "evpnmac" || name == "evpn-evis" || name == "evpn-virtual-access-vfis" || name == "evpn-load-balancing" || name == "evpn-bgp-auto-discovery" || name == "evpn-groups" || name == "evpn-instances" || name == "evpn-logging" || name == "evpn-interfaces" || name == "evpn-virtual-access-pws" || name == "evpn-ethernet-segment" || name == "evi-cost-out" || name == "evpn-source-interface" || name == "evpn-cost-in-startup")
         return true;
     return false;
 }
@@ -5655,6 +5641,251 @@ void Evpn::EvpnTables::EvpnTimers::set_filter(const std::string & value_path, YF
 bool Evpn::EvpnTables::EvpnTimers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "evpn-carving" || name == "evpn-recovery" || name == "enable" || name == "evpn-peering")
+        return true;
+    return false;
+}
+
+Evpn::EvpnTables::Evpnmac::Evpnmac()
+    :
+    enable{YType::empty, "enable"}
+        ,
+    evpnmac_secure(std::make_shared<Evpn::EvpnTables::Evpnmac::EvpnmacSecure>())
+{
+    evpnmac_secure->parent = this;
+
+    yang_name = "evpnmac"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Evpn::EvpnTables::Evpnmac::~Evpnmac()
+{
+}
+
+bool Evpn::EvpnTables::Evpnmac::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| (evpnmac_secure !=  nullptr && evpnmac_secure->has_data());
+}
+
+bool Evpn::EvpnTables::Evpnmac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (evpnmac_secure !=  nullptr && evpnmac_secure->has_operation());
+}
+
+std::string Evpn::EvpnTables::Evpnmac::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::EvpnTables::Evpnmac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpnmac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnmac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Evpnmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "evpnmac-secure")
+    {
+        if(evpnmac_secure == nullptr)
+        {
+            evpnmac_secure = std::make_shared<Evpn::EvpnTables::Evpnmac::EvpnmacSecure>();
+        }
+        return evpnmac_secure;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Evpnmac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(evpnmac_secure != nullptr)
+    {
+        _children["evpnmac-secure"] = evpnmac_secure;
+    }
+
+    return _children;
+}
+
+void Evpn::EvpnTables::Evpnmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::EvpnTables::Evpnmac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Evpn::EvpnTables::Evpnmac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evpnmac-secure" || name == "enable")
+        return true;
+    return false;
+}
+
+Evpn::EvpnTables::Evpnmac::EvpnmacSecure::EvpnmacSecure()
+    :
+    evpnmac_secure_freeze_time{YType::uint32, "evpnmac-secure-freeze-time"},
+    enable{YType::empty, "enable"},
+    evpnmac_secure_retry_count{YType::uint32, "evpnmac-secure-retry-count"},
+    evpnmac_secure_move_count{YType::uint32, "evpnmac-secure-move-count"},
+    evpnmac_secure_move_interval{YType::uint32, "evpnmac-secure-move-interval"}
+{
+
+    yang_name = "evpnmac-secure"; yang_parent_name = "evpnmac"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Evpn::EvpnTables::Evpnmac::EvpnmacSecure::~EvpnmacSecure()
+{
+}
+
+bool Evpn::EvpnTables::Evpnmac::EvpnmacSecure::has_data() const
+{
+    if (is_presence_container) return true;
+    return evpnmac_secure_freeze_time.is_set
+	|| enable.is_set
+	|| evpnmac_secure_retry_count.is_set
+	|| evpnmac_secure_move_count.is_set
+	|| evpnmac_secure_move_interval.is_set;
+}
+
+bool Evpn::EvpnTables::Evpnmac::EvpnmacSecure::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(evpnmac_secure_freeze_time.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(evpnmac_secure_retry_count.yfilter)
+	|| ydk::is_set(evpnmac_secure_move_count.yfilter)
+	|| ydk::is_set(evpnmac_secure_move_interval.yfilter);
+}
+
+std::string Evpn::EvpnTables::Evpnmac::EvpnmacSecure::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/evpnmac/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::EvpnTables::Evpnmac::EvpnmacSecure::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpnmac-secure";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnmac::EvpnmacSecure::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (evpnmac_secure_freeze_time.is_set || is_set(evpnmac_secure_freeze_time.yfilter)) leaf_name_data.push_back(evpnmac_secure_freeze_time.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (evpnmac_secure_retry_count.is_set || is_set(evpnmac_secure_retry_count.yfilter)) leaf_name_data.push_back(evpnmac_secure_retry_count.get_name_leafdata());
+    if (evpnmac_secure_move_count.is_set || is_set(evpnmac_secure_move_count.yfilter)) leaf_name_data.push_back(evpnmac_secure_move_count.get_name_leafdata());
+    if (evpnmac_secure_move_interval.is_set || is_set(evpnmac_secure_move_interval.yfilter)) leaf_name_data.push_back(evpnmac_secure_move_interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Evpnmac::EvpnmacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Evpnmac::EvpnmacSecure::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Evpn::EvpnTables::Evpnmac::EvpnmacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "evpnmac-secure-freeze-time")
+    {
+        evpnmac_secure_freeze_time = value;
+        evpnmac_secure_freeze_time.value_namespace = name_space;
+        evpnmac_secure_freeze_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evpnmac-secure-retry-count")
+    {
+        evpnmac_secure_retry_count = value;
+        evpnmac_secure_retry_count.value_namespace = name_space;
+        evpnmac_secure_retry_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evpnmac-secure-move-count")
+    {
+        evpnmac_secure_move_count = value;
+        evpnmac_secure_move_count.value_namespace = name_space;
+        evpnmac_secure_move_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evpnmac-secure-move-interval")
+    {
+        evpnmac_secure_move_interval = value;
+        evpnmac_secure_move_interval.value_namespace = name_space;
+        evpnmac_secure_move_interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::EvpnTables::Evpnmac::EvpnmacSecure::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "evpnmac-secure-freeze-time")
+    {
+        evpnmac_secure_freeze_time.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "evpnmac-secure-retry-count")
+    {
+        evpnmac_secure_retry_count.yfilter = yfilter;
+    }
+    if(value_path == "evpnmac-secure-move-count")
+    {
+        evpnmac_secure_move_count.yfilter = yfilter;
+    }
+    if(value_path == "evpnmac-secure-move-interval")
+    {
+        evpnmac_secure_move_interval.yfilter = yfilter;
+    }
+}
+
+bool Evpn::EvpnTables::Evpnmac::EvpnmacSecure::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evpnmac-secure-freeze-time" || name == "enable" || name == "evpnmac-secure-retry-count" || name == "evpnmac-secure-move-count" || name == "evpnmac-secure-move-interval")
         return true;
     return false;
 }
@@ -7437,7 +7668,6 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualA
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::EvpnVirtualEthernetSegment()
     :
     enable{YType::empty, "enable"},
-    service_carving_mcast_type{YType::enumeration, "service-carving-mcast-type"},
     es_import_route_target{YType::str, "es-import-route-target"},
     service_carving_type{YType::enumeration, "service-carving-type"}
         ,
@@ -7457,7 +7687,6 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualE
 {
     if (is_presence_container) return true;
     return enable.is_set
-	|| service_carving_mcast_type.is_set
 	|| es_import_route_target.is_set
 	|| service_carving_type.is_set
 	|| (identifier !=  nullptr && identifier->has_data())
@@ -7468,7 +7697,6 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualE
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(service_carving_mcast_type.yfilter)
 	|| ydk::is_set(es_import_route_target.yfilter)
 	|| ydk::is_set(service_carving_type.yfilter)
 	|| (identifier !=  nullptr && identifier->has_operation())
@@ -7487,7 +7715,6 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnVirtualAcce
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (service_carving_mcast_type.is_set || is_set(service_carving_mcast_type.yfilter)) leaf_name_data.push_back(service_carving_mcast_type.get_name_leafdata());
     if (es_import_route_target.is_set || is_set(es_import_route_target.yfilter)) leaf_name_data.push_back(es_import_route_target.get_name_leafdata());
     if (service_carving_type.is_set || is_set(service_carving_type.yfilter)) leaf_name_data.push_back(service_carving_type.get_name_leafdata());
 
@@ -7543,12 +7770,6 @@ void Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualE
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "service-carving-mcast-type")
-    {
-        service_carving_mcast_type = value;
-        service_carving_mcast_type.value_namespace = name_space;
-        service_carving_mcast_type.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "es-import-route-target")
     {
         es_import_route_target = value;
@@ -7569,10 +7790,6 @@ void Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualE
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "service-carving-mcast-type")
-    {
-        service_carving_mcast_type.yfilter = yfilter;
-    }
     if(value_path == "es-import-route-target")
     {
         es_import_route_target.yfilter = yfilter;
@@ -7585,7 +7802,7 @@ void Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualE
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "identifier" || name == "manual-service-carving" || name == "enable" || name == "service-carving-mcast-type" || name == "es-import-route-target" || name == "service-carving-type")
+    if(name == "identifier" || name == "manual-service-carving" || name == "enable" || name == "es-import-route-target" || name == "service-carving-type")
         return true;
     return false;
 }
@@ -8761,13 +8978,11 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstance()
     evpn_evi_cw_disable{YType::empty, "evpn-evi-cw-disable"}
         ,
     evpn_instance_bgp_auto_discovery(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery>())
-    , evpn_instance_etree(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree>())
     , evpn_instance_advertise_mac(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac>())
     , evpn_instance_multicast(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceMulticast>())
     , evpn_instance_load_balancing(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing>())
 {
     evpn_instance_bgp_auto_discovery->parent = this;
-    evpn_instance_etree->parent = this;
     evpn_instance_advertise_mac->parent = this;
     evpn_instance_multicast->parent = this;
     evpn_instance_load_balancing->parent = this;
@@ -8792,7 +9007,6 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_data() const
 	|| evi_unknown_unicast_flooding_disable.is_set
 	|| evpn_evi_cw_disable.is_set
 	|| (evpn_instance_bgp_auto_discovery !=  nullptr && evpn_instance_bgp_auto_discovery->has_data())
-	|| (evpn_instance_etree !=  nullptr && evpn_instance_etree->has_data())
 	|| (evpn_instance_advertise_mac !=  nullptr && evpn_instance_advertise_mac->has_data())
 	|| (evpn_instance_multicast !=  nullptr && evpn_instance_multicast->has_data())
 	|| (evpn_instance_load_balancing !=  nullptr && evpn_instance_load_balancing->has_data());
@@ -8811,7 +9025,6 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_operation() const
 	|| ydk::is_set(evi_unknown_unicast_flooding_disable.yfilter)
 	|| ydk::is_set(evpn_evi_cw_disable.yfilter)
 	|| (evpn_instance_bgp_auto_discovery !=  nullptr && evpn_instance_bgp_auto_discovery->has_operation())
-	|| (evpn_instance_etree !=  nullptr && evpn_instance_etree->has_operation())
 	|| (evpn_instance_advertise_mac !=  nullptr && evpn_instance_advertise_mac->has_operation())
 	|| (evpn_instance_multicast !=  nullptr && evpn_instance_multicast->has_operation())
 	|| (evpn_instance_load_balancing !=  nullptr && evpn_instance_load_balancing->has_operation());
@@ -8863,15 +9076,6 @@ std::shared_ptr<ydk::Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::get_
         return evpn_instance_bgp_auto_discovery;
     }
 
-    if(child_yang_name == "evpn-instance-etree")
-    {
-        if(evpn_instance_etree == nullptr)
-        {
-            evpn_instance_etree = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree>();
-        }
-        return evpn_instance_etree;
-    }
-
     if(child_yang_name == "evpn-instance-advertise-mac")
     {
         if(evpn_instance_advertise_mac == nullptr)
@@ -8909,11 +9113,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::EvpnInstan
     if(evpn_instance_bgp_auto_discovery != nullptr)
     {
         _children["evpn-instance-bgp-auto-discovery"] = evpn_instance_bgp_auto_discovery;
-    }
-
-    if(evpn_instance_etree != nullptr)
-    {
-        _children["evpn-instance-etree"] = evpn_instance_etree;
     }
 
     if(evpn_instance_advertise_mac != nullptr)
@@ -9034,7 +9233,7 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::set_filter(const std::string
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-instance-bgp-auto-discovery" || name == "evpn-instance-etree" || name == "evpn-instance-advertise-mac" || name == "evpn-instance-multicast" || name == "evpn-instance-load-balancing" || name == "vpn-id" || name == "encapsulation" || name == "side" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpn-evi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
+    if(name == "evpn-instance-bgp-auto-discovery" || name == "evpn-instance-advertise-mac" || name == "evpn-instance-multicast" || name == "evpn-instance-load-balancing" || name == "vpn-id" || name == "encapsulation" || name == "side" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpn-evi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
         return true;
     return false;
 }
@@ -9852,98 +10051,6 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
     return false;
 }
 
-Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::EvpnInstanceEtree()
-    :
-    evpn_instance_etree_leaf{YType::empty, "evpn-instance-etree-leaf"},
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "evpn-instance-etree"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::~EvpnInstanceEtree()
-{
-}
-
-bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::has_data() const
-{
-    if (is_presence_container) return true;
-    return evpn_instance_etree_leaf.is_set
-	|| enable.is_set;
-}
-
-bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(evpn_instance_etree_leaf.yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "evpn-instance-etree";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (evpn_instance_etree_leaf.is_set || is_set(evpn_instance_etree_leaf.yfilter)) leaf_name_data.push_back(evpn_instance_etree_leaf.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "evpn-instance-etree-leaf")
-    {
-        evpn_instance_etree_leaf = value;
-        evpn_instance_etree_leaf.value_namespace = name_space;
-        evpn_instance_etree_leaf.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "evpn-instance-etree-leaf")
-    {
-        evpn_instance_etree_leaf.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "evpn-instance-etree-leaf" || name == "enable")
-        return true;
-    return false;
-}
-
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac::EvpnInstanceAdvertiseMac()
     :
     enable{YType::empty, "enable"},
@@ -10696,7 +10803,6 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::EthernetSegmen
     load_balancing_mode{YType::enumeration, "load-balancing-mode"},
     enable{YType::empty, "enable"},
     backbone_source_mac{YType::str, "backbone-source-mac"},
-    service_carving_mcast_type{YType::enumeration, "service-carving-mcast-type"},
     es_import_route_target{YType::str, "es-import-route-target"},
     service_carving_type{YType::enumeration, "service-carving-type"}
         ,
@@ -10719,7 +10825,6 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::has_data(
 	|| load_balancing_mode.is_set
 	|| enable.is_set
 	|| backbone_source_mac.is_set
-	|| service_carving_mcast_type.is_set
 	|| es_import_route_target.is_set
 	|| service_carving_type.is_set
 	|| (identifier !=  nullptr && identifier->has_data())
@@ -10733,7 +10838,6 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::has_opera
 	|| ydk::is_set(load_balancing_mode.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(backbone_source_mac.yfilter)
-	|| ydk::is_set(service_carving_mcast_type.yfilter)
 	|| ydk::is_set(es_import_route_target.yfilter)
 	|| ydk::is_set(service_carving_type.yfilter)
 	|| (identifier !=  nullptr && identifier->has_operation())
@@ -10755,7 +10859,6 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInterfaces:
     if (load_balancing_mode.is_set || is_set(load_balancing_mode.yfilter)) leaf_name_data.push_back(load_balancing_mode.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (backbone_source_mac.is_set || is_set(backbone_source_mac.yfilter)) leaf_name_data.push_back(backbone_source_mac.get_name_leafdata());
-    if (service_carving_mcast_type.is_set || is_set(service_carving_mcast_type.yfilter)) leaf_name_data.push_back(service_carving_mcast_type.get_name_leafdata());
     if (es_import_route_target.is_set || is_set(es_import_route_target.yfilter)) leaf_name_data.push_back(es_import_route_target.get_name_leafdata());
     if (service_carving_type.is_set || is_set(service_carving_type.yfilter)) leaf_name_data.push_back(service_carving_type.get_name_leafdata());
 
@@ -10829,12 +10932,6 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::set_value
         backbone_source_mac.value_namespace = name_space;
         backbone_source_mac.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "service-carving-mcast-type")
-    {
-        service_carving_mcast_type = value;
-        service_carving_mcast_type.value_namespace = name_space;
-        service_carving_mcast_type.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "es-import-route-target")
     {
         es_import_route_target = value;
@@ -10867,10 +10964,6 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::set_filte
     {
         backbone_source_mac.yfilter = yfilter;
     }
-    if(value_path == "service-carving-mcast-type")
-    {
-        service_carving_mcast_type.yfilter = yfilter;
-    }
     if(value_path == "es-import-route-target")
     {
         es_import_route_target.yfilter = yfilter;
@@ -10883,7 +10976,7 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::set_filte
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "identifier" || name == "manual-service-carving" || name == "force-single-homed" || name == "load-balancing-mode" || name == "enable" || name == "backbone-source-mac" || name == "service-carving-mcast-type" || name == "es-import-route-target" || name == "service-carving-type")
+    if(name == "identifier" || name == "manual-service-carving" || name == "force-single-homed" || name == "load-balancing-mode" || name == "enable" || name == "backbone-source-mac" || name == "es-import-route-target" || name == "service-carving-type")
         return true;
     return false;
 }
@@ -11586,7 +11679,6 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAcc
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::EvpnVirtualEthernetSegment()
     :
     enable{YType::empty, "enable"},
-    service_carving_mcast_type{YType::enumeration, "service-carving-mcast-type"},
     es_import_route_target{YType::str, "es-import-route-target"},
     service_carving_type{YType::enumeration, "service-carving-type"}
         ,
@@ -11606,7 +11698,6 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEth
 {
     if (is_presence_container) return true;
     return enable.is_set
-	|| service_carving_mcast_type.is_set
 	|| es_import_route_target.is_set
 	|| service_carving_type.is_set
 	|| (identifier !=  nullptr && identifier->has_data())
@@ -11617,7 +11708,6 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEth
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(service_carving_mcast_type.yfilter)
 	|| ydk::is_set(es_import_route_target.yfilter)
 	|| ydk::is_set(service_carving_type.yfilter)
 	|| (identifier !=  nullptr && identifier->has_operation())
@@ -11636,7 +11726,6 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnVirtualAcce
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (service_carving_mcast_type.is_set || is_set(service_carving_mcast_type.yfilter)) leaf_name_data.push_back(service_carving_mcast_type.get_name_leafdata());
     if (es_import_route_target.is_set || is_set(es_import_route_target.yfilter)) leaf_name_data.push_back(es_import_route_target.get_name_leafdata());
     if (service_carving_type.is_set || is_set(service_carving_type.yfilter)) leaf_name_data.push_back(service_carving_type.get_name_leafdata());
 
@@ -11692,12 +11781,6 @@ void Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEth
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "service-carving-mcast-type")
-    {
-        service_carving_mcast_type = value;
-        service_carving_mcast_type.value_namespace = name_space;
-        service_carving_mcast_type.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "es-import-route-target")
     {
         es_import_route_target = value;
@@ -11718,10 +11801,6 @@ void Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEth
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "service-carving-mcast-type")
-    {
-        service_carving_mcast_type.yfilter = yfilter;
-    }
     if(value_path == "es-import-route-target")
     {
         es_import_route_target.yfilter = yfilter;
@@ -11734,7 +11813,7 @@ void Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEth
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "identifier" || name == "manual-service-carving" || name == "enable" || name == "service-carving-mcast-type" || name == "es-import-route-target" || name == "service-carving-type")
+    if(name == "identifier" || name == "manual-service-carving" || name == "enable" || name == "es-import-route-target" || name == "service-carving-type")
         return true;
     return false;
 }
@@ -12376,821 +12455,6 @@ void Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::set_filte
 bool Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "esi-type" || name == "disable-auto-generation")
-        return true;
-    return false;
-}
-
-Evpn::EvpnTables::Host::Host()
-    :
-    ipv6(std::make_shared<Evpn::EvpnTables::Host::Ipv6>())
-    , ipv4(std::make_shared<Evpn::EvpnTables::Host::Ipv4>())
-    , mac(std::make_shared<Evpn::EvpnTables::Host::Mac>())
-{
-    ipv6->parent = this;
-    ipv4->parent = this;
-    mac->parent = this;
-
-    yang_name = "host"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Evpn::EvpnTables::Host::~Host()
-{
-}
-
-bool Evpn::EvpnTables::Host::has_data() const
-{
-    if (is_presence_container) return true;
-    return (ipv6 !=  nullptr && ipv6->has_data())
-	|| (ipv4 !=  nullptr && ipv4->has_data())
-	|| (mac !=  nullptr && mac->has_data());
-}
-
-bool Evpn::EvpnTables::Host::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ipv6 !=  nullptr && ipv6->has_operation())
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (mac !=  nullptr && mac->has_operation());
-}
-
-std::string Evpn::EvpnTables::Host::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Evpn::EvpnTables::Host::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2rib-cfg:host";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Host::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<Evpn::EvpnTables::Host::Ipv6>();
-        }
-        return ipv6;
-    }
-
-    if(child_yang_name == "ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<Evpn::EvpnTables::Host::Ipv4>();
-        }
-        return ipv4;
-    }
-
-    if(child_yang_name == "mac")
-    {
-        if(mac == nullptr)
-        {
-            mac = std::make_shared<Evpn::EvpnTables::Host::Mac>();
-        }
-        return mac;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Host::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(ipv6 != nullptr)
-    {
-        _children["ipv6"] = ipv6;
-    }
-
-    if(ipv4 != nullptr)
-    {
-        _children["ipv4"] = ipv4;
-    }
-
-    if(mac != nullptr)
-    {
-        _children["mac"] = mac;
-    }
-
-    return _children;
-}
-
-void Evpn::EvpnTables::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Evpn::EvpnTables::Host::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Evpn::EvpnTables::Host::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv6" || name == "ipv4" || name == "mac")
-        return true;
-    return false;
-}
-
-Evpn::EvpnTables::Host::Ipv6::Ipv6()
-    :
-    duplicate_detection(std::make_shared<Evpn::EvpnTables::Host::Ipv6::DuplicateDetection>())
-{
-    duplicate_detection->parent = this;
-
-    yang_name = "ipv6"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Evpn::EvpnTables::Host::Ipv6::~Ipv6()
-{
-}
-
-bool Evpn::EvpnTables::Host::Ipv6::has_data() const
-{
-    if (is_presence_container) return true;
-    return (duplicate_detection !=  nullptr && duplicate_detection->has_data());
-}
-
-bool Evpn::EvpnTables::Host::Ipv6::has_operation() const
-{
-    return is_set(yfilter)
-	|| (duplicate_detection !=  nullptr && duplicate_detection->has_operation());
-}
-
-std::string Evpn::EvpnTables::Host::Ipv6::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/Cisco-IOS-XR-l2rib-cfg:host/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Evpn::EvpnTables::Host::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Host::Ipv6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Host::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "duplicate-detection")
-    {
-        if(duplicate_detection == nullptr)
-        {
-            duplicate_detection = std::make_shared<Evpn::EvpnTables::Host::Ipv6::DuplicateDetection>();
-        }
-        return duplicate_detection;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Host::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(duplicate_detection != nullptr)
-    {
-        _children["duplicate-detection"] = duplicate_detection;
-    }
-
-    return _children;
-}
-
-void Evpn::EvpnTables::Host::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Evpn::EvpnTables::Host::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Evpn::EvpnTables::Host::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "duplicate-detection")
-        return true;
-    return false;
-}
-
-Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::DuplicateDetection()
-    :
-    move_count{YType::uint32, "move-count"},
-    retry_count{YType::uint32, "retry-count"},
-    freeze_time{YType::uint32, "freeze-time"},
-    move_interval{YType::uint32, "move-interval"},
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "duplicate-detection"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::~DuplicateDetection()
-{
-}
-
-bool Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::has_data() const
-{
-    if (is_presence_container) return true;
-    return move_count.is_set
-	|| retry_count.is_set
-	|| freeze_time.is_set
-	|| move_interval.is_set
-	|| disable.is_set;
-}
-
-bool Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(move_count.yfilter)
-	|| ydk::is_set(retry_count.yfilter)
-	|| ydk::is_set(freeze_time.yfilter)
-	|| ydk::is_set(move_interval.yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/Cisco-IOS-XR-l2rib-cfg:host/ipv6/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "duplicate-detection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (move_count.is_set || is_set(move_count.yfilter)) leaf_name_data.push_back(move_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (freeze_time.is_set || is_set(freeze_time.yfilter)) leaf_name_data.push_back(freeze_time.get_name_leafdata());
-    if (move_interval.is_set || is_set(move_interval.yfilter)) leaf_name_data.push_back(move_interval.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "move-count")
-    {
-        move_count = value;
-        move_count.value_namespace = name_space;
-        move_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count = value;
-        retry_count.value_namespace = name_space;
-        retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "freeze-time")
-    {
-        freeze_time = value;
-        freeze_time.value_namespace = name_space;
-        freeze_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "move-interval")
-    {
-        move_interval = value;
-        move_interval.value_namespace = name_space;
-        move_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "move-count")
-    {
-        move_count.yfilter = yfilter;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count.yfilter = yfilter;
-    }
-    if(value_path == "freeze-time")
-    {
-        freeze_time.yfilter = yfilter;
-    }
-    if(value_path == "move-interval")
-    {
-        move_interval.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Evpn::EvpnTables::Host::Ipv6::DuplicateDetection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "move-count" || name == "retry-count" || name == "freeze-time" || name == "move-interval" || name == "disable")
-        return true;
-    return false;
-}
-
-Evpn::EvpnTables::Host::Ipv4::Ipv4()
-    :
-    duplicate_detection(std::make_shared<Evpn::EvpnTables::Host::Ipv4::DuplicateDetection>())
-{
-    duplicate_detection->parent = this;
-
-    yang_name = "ipv4"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Evpn::EvpnTables::Host::Ipv4::~Ipv4()
-{
-}
-
-bool Evpn::EvpnTables::Host::Ipv4::has_data() const
-{
-    if (is_presence_container) return true;
-    return (duplicate_detection !=  nullptr && duplicate_detection->has_data());
-}
-
-bool Evpn::EvpnTables::Host::Ipv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| (duplicate_detection !=  nullptr && duplicate_detection->has_operation());
-}
-
-std::string Evpn::EvpnTables::Host::Ipv4::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/Cisco-IOS-XR-l2rib-cfg:host/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Evpn::EvpnTables::Host::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Host::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Host::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "duplicate-detection")
-    {
-        if(duplicate_detection == nullptr)
-        {
-            duplicate_detection = std::make_shared<Evpn::EvpnTables::Host::Ipv4::DuplicateDetection>();
-        }
-        return duplicate_detection;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Host::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(duplicate_detection != nullptr)
-    {
-        _children["duplicate-detection"] = duplicate_detection;
-    }
-
-    return _children;
-}
-
-void Evpn::EvpnTables::Host::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Evpn::EvpnTables::Host::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Evpn::EvpnTables::Host::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "duplicate-detection")
-        return true;
-    return false;
-}
-
-Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::DuplicateDetection()
-    :
-    move_count{YType::uint32, "move-count"},
-    retry_count{YType::uint32, "retry-count"},
-    freeze_time{YType::uint32, "freeze-time"},
-    move_interval{YType::uint32, "move-interval"},
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "duplicate-detection"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::~DuplicateDetection()
-{
-}
-
-bool Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::has_data() const
-{
-    if (is_presence_container) return true;
-    return move_count.is_set
-	|| retry_count.is_set
-	|| freeze_time.is_set
-	|| move_interval.is_set
-	|| disable.is_set;
-}
-
-bool Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(move_count.yfilter)
-	|| ydk::is_set(retry_count.yfilter)
-	|| ydk::is_set(freeze_time.yfilter)
-	|| ydk::is_set(move_interval.yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/Cisco-IOS-XR-l2rib-cfg:host/ipv4/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "duplicate-detection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (move_count.is_set || is_set(move_count.yfilter)) leaf_name_data.push_back(move_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (freeze_time.is_set || is_set(freeze_time.yfilter)) leaf_name_data.push_back(freeze_time.get_name_leafdata());
-    if (move_interval.is_set || is_set(move_interval.yfilter)) leaf_name_data.push_back(move_interval.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "move-count")
-    {
-        move_count = value;
-        move_count.value_namespace = name_space;
-        move_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count = value;
-        retry_count.value_namespace = name_space;
-        retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "freeze-time")
-    {
-        freeze_time = value;
-        freeze_time.value_namespace = name_space;
-        freeze_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "move-interval")
-    {
-        move_interval = value;
-        move_interval.value_namespace = name_space;
-        move_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "move-count")
-    {
-        move_count.yfilter = yfilter;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count.yfilter = yfilter;
-    }
-    if(value_path == "freeze-time")
-    {
-        freeze_time.yfilter = yfilter;
-    }
-    if(value_path == "move-interval")
-    {
-        move_interval.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Evpn::EvpnTables::Host::Ipv4::DuplicateDetection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "move-count" || name == "retry-count" || name == "freeze-time" || name == "move-interval" || name == "disable")
-        return true;
-    return false;
-}
-
-Evpn::EvpnTables::Host::Mac::Mac()
-    :
-    duplicate_detection(std::make_shared<Evpn::EvpnTables::Host::Mac::DuplicateDetection>())
-{
-    duplicate_detection->parent = this;
-
-    yang_name = "mac"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Evpn::EvpnTables::Host::Mac::~Mac()
-{
-}
-
-bool Evpn::EvpnTables::Host::Mac::has_data() const
-{
-    if (is_presence_container) return true;
-    return (duplicate_detection !=  nullptr && duplicate_detection->has_data());
-}
-
-bool Evpn::EvpnTables::Host::Mac::has_operation() const
-{
-    return is_set(yfilter)
-	|| (duplicate_detection !=  nullptr && duplicate_detection->has_operation());
-}
-
-std::string Evpn::EvpnTables::Host::Mac::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/Cisco-IOS-XR-l2rib-cfg:host/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Evpn::EvpnTables::Host::Mac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Host::Mac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Host::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "duplicate-detection")
-    {
-        if(duplicate_detection == nullptr)
-        {
-            duplicate_detection = std::make_shared<Evpn::EvpnTables::Host::Mac::DuplicateDetection>();
-        }
-        return duplicate_detection;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Host::Mac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(duplicate_detection != nullptr)
-    {
-        _children["duplicate-detection"] = duplicate_detection;
-    }
-
-    return _children;
-}
-
-void Evpn::EvpnTables::Host::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Evpn::EvpnTables::Host::Mac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Evpn::EvpnTables::Host::Mac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "duplicate-detection")
-        return true;
-    return false;
-}
-
-Evpn::EvpnTables::Host::Mac::DuplicateDetection::DuplicateDetection()
-    :
-    move_count{YType::uint32, "move-count"},
-    retry_count{YType::uint32, "retry-count"},
-    freeze_time{YType::uint32, "freeze-time"},
-    move_interval{YType::uint32, "move-interval"},
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "duplicate-detection"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Evpn::EvpnTables::Host::Mac::DuplicateDetection::~DuplicateDetection()
-{
-}
-
-bool Evpn::EvpnTables::Host::Mac::DuplicateDetection::has_data() const
-{
-    if (is_presence_container) return true;
-    return move_count.is_set
-	|| retry_count.is_set
-	|| freeze_time.is_set
-	|| move_interval.is_set
-	|| disable.is_set;
-}
-
-bool Evpn::EvpnTables::Host::Mac::DuplicateDetection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(move_count.yfilter)
-	|| ydk::is_set(retry_count.yfilter)
-	|| ydk::is_set(freeze_time.yfilter)
-	|| ydk::is_set(move_interval.yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Evpn::EvpnTables::Host::Mac::DuplicateDetection::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/Cisco-IOS-XR-l2rib-cfg:host/mac/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Evpn::EvpnTables::Host::Mac::DuplicateDetection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "duplicate-detection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Host::Mac::DuplicateDetection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (move_count.is_set || is_set(move_count.yfilter)) leaf_name_data.push_back(move_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (freeze_time.is_set || is_set(freeze_time.yfilter)) leaf_name_data.push_back(freeze_time.get_name_leafdata());
-    if (move_interval.is_set || is_set(move_interval.yfilter)) leaf_name_data.push_back(move_interval.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Evpn::EvpnTables::Host::Mac::DuplicateDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::EvpnTables::Host::Mac::DuplicateDetection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Evpn::EvpnTables::Host::Mac::DuplicateDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "move-count")
-    {
-        move_count = value;
-        move_count.value_namespace = name_space;
-        move_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count = value;
-        retry_count.value_namespace = name_space;
-        retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "freeze-time")
-    {
-        freeze_time = value;
-        freeze_time.value_namespace = name_space;
-        freeze_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "move-interval")
-    {
-        move_interval = value;
-        move_interval.value_namespace = name_space;
-        move_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::EvpnTables::Host::Mac::DuplicateDetection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "move-count")
-    {
-        move_count.yfilter = yfilter;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count.yfilter = yfilter;
-    }
-    if(value_path == "freeze-time")
-    {
-        freeze_time.yfilter = yfilter;
-    }
-    if(value_path == "move-interval")
-    {
-        move_interval.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Evpn::EvpnTables::Host::Mac::DuplicateDetection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "move-count" || name == "retry-count" || name == "freeze-time" || name == "move-interval" || name == "disable")
         return true;
     return false;
 }

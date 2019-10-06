@@ -10,6 +10,17 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_lc_ethctrl_cfg {
 
+class PermitPluggable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 1;
+            return -1;
+        }
+};
+
 class EtherCtrlTransportMode : public ydk::Enum
 {
     public:
@@ -17,6 +28,12 @@ class EtherCtrlTransportMode : public ydk::Enum
         static const ydk::Enum::YLeaf otnopu1e;
         static const ydk::Enum::YLeaf otnopu2e;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "wan") return 1;
+            if (name == "otnopu1e") return 2;
+            if (name == "otnopu2e") return 3;
+            return -1;
+        }
 };
 
 class PermitPluggablePid : public ydk::Enum
@@ -24,13 +41,10 @@ class PermitPluggablePid : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf all;
 
-};
-
-class PermitPluggable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 1;
+            return -1;
+        }
 };
 
 

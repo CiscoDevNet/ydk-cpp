@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RootSchemaNode &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="YDK Path API" href="../path.html"/>
+        <link rel="next" title="Session" href="../sessions/session.html"/>
+        <link rel="prev" title="SchemaNode" href="schema_node.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../path.html#path-api-nodes">Path API Nodes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="annotation.html">Annotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statement.html">Statement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_node.html">DataNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="schema_node.html">SchemaNode</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">RootSchemaNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api-errors">Path API Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../path.html#path-api">Path API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>RootSchemaNode</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rootschemanode">
+<h1>RootSchemaNode<a class="headerlink" href="#rootschemanode" title="Permalink to this headline">¶</a></h1>
+<p>Instances of this class represent the Root of the SchemaTree.</p>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path14RootSchemaNodeE">
+<span id="ydk::path::RootSchemaNode"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">RootSchemaNode</code> : <em class="property">public</em> <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode">SchemaNode</a><a class="headerlink" href="#_CPPv2N3ydk4path14RootSchemaNodeE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instances of this class represent the Root of the <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a> Tree. A <a class="reference internal" href="#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a> can be used to instantiate a <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> tree or an <a class="reference internal" href="../rpc.html#_CPPv2N3ydk4path3RpcE" title="ydk::path::Rpc"><code class="xref cpp cpp-class docutils literal"><span class="pre">Rpc</span></code></a> object. The children of the <a class="reference internal" href="#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a> represent the top level <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a> in the YANG module submodules.</p>
+<dl class="function">
+<dt id="_CPPv2N3ydk4path14RootSchemaNodeD0Ev">
+<span id="ydk::path::RootSchemaNode::~RootSchemaNode"></span><em class="property">virtual</em> <code class="descclassname"></code><code class="descname">~RootSchemaNode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk4path14RootSchemaNodeD0Ev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destructor for the <a class="reference internal" href="#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode8get_pathEv">
+<span id="ydk::path::RootSchemaNode::get_pathC"></span>std::string <code class="descclassname"></code><code class="descname">get_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode8get_pathEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the path expression representing this Node in in the NodeTree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">std::string</span></code> representing the path to this Node.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode4findERKNSt6stringE">
+<span id="ydk::path::RootSchemaNode::find__ssCRC"></span><em class="property">virtual</em> std::vector&lt;<a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode">SchemaNode</a> *&gt; <code class="descclassname"></code><code class="descname">find</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>path</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode4findERKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds descendant nodes that match the given xpath expression.</p>
+<p>This API finds descendant nodes in the <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a> tree that satisfy the given path expression. See <a class="reference internal" href="../../../guides/howto_path.html#ref-howtopath"><span class="std std-ref">how to path</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; The path expression.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Vector of <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a>  that satisfies the criterion.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../errors/path_error.html#_CPPv2N3ydk4path10YPathErrorE" title="ydk::path::YPathError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YPathError</span></code></a> if the path expression in invalid, See error code for details.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a> if the argument is invalid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode10get_parentEv">
+<span id="ydk::path::RootSchemaNode::get_parentC"></span><em class="property">virtual</em> <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode">SchemaNode</a> *<code class="descclassname"></code><code class="descname">get_parent</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode10get_parentEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the parent node of this <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a> in the tree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Pointer to the parent node or <code class="docutils literal"><span class="pre">nullptr</span></code> in case this is the root.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode12get_childrenEv">
+<span id="ydk::path::RootSchemaNode::get_childrenC"></span><em class="property">virtual</em> std::vector&lt;<a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode">SchemaNode</a> *&gt; <code class="descclassname"></code><code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode12get_childrenEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the children of this <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a> in the NodeTree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The children of this node.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode8get_rootEv">
+<span id="ydk::path::RootSchemaNode::get_rootC"></span><em class="property">virtual</em> <em class="property">const</em> <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode">SchemaNode</a> &amp;<code class="descclassname"></code><code class="descname">get_root</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode8get_rootEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the root of NodeTree this node is part of.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Reference to the root.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode15create_datanodeERKNSt6stringERKNSt6stringE">
+<span id="ydk::path::RootSchemaNode::create_datanode__ssCR.ssCRC"></span><em class="property">virtual</em> <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode">DataNode</a> &amp;<code class="descclassname"></code><code class="descname">create_datanode</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>path</em>, <em class="property">const</em> std::string &amp;<em>value</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode15create_datanodeERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> corresponding to the path and set its value.</p>
+<p>This methods creates a <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> tree based on the path passed in. The path expression must identify a single node. If the last node created is of schema type <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">leaf-list</span></code> or <code class="docutils literal"><span class="pre">anyxml</span></code> that value is also set in the node.</p>
+<p>The returned <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> is the last node created (the terminal part of the path).</p>
+<p>The user is responsible for managing the memory of this returned tree. Use <code class="xref cpp cpp-func docutils literal"><span class="pre">root()</span></code> to get the root element of the this tree and use that pointer to dispose of the entire tree.</p>
+<p>Note in the case of List nodes the keys must be present in the path expression in the form of predicates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> &#8211; The XPath expression identifying the node relative to the root of the schema tree.</li>
+<li><strong>value</strong> &#8211; The string representation of the value to set.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Reference to <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> created.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a> In case the argument is invalid.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../errors/path_error.html#_CPPv2N3ydk4path10YPathErrorE" title="ydk::path::YPathError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YPathError</span></code></a> In case the path is invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode15create_datanodeERKNSt6stringE">
+<span id="ydk::path::RootSchemaNode::create_datanode__ssCRC"></span><em class="property">virtual</em> <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode">DataNode</a> &amp;<code class="descclassname"></code><code class="descname">create_datanode</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>path</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode15create_datanodeERKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> corresponding to the path.</p>
+<p>This methods creates a DataNode tree based on the path passed in. The path expression must identify a single node. If the last node created is of schema type <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">leaf-list</span></code> or <code class="docutils literal"><span class="pre">anyxml</span></code> that value is also set in the node.</p>
+<p>The returned <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> is the last node created (the terminal part of the path).</p>
+<p>The user is responsible for managing the memory of this returned tree. Use <code class="xref cpp cpp-func docutils literal"><span class="pre">root()</span></code> to get the root element of the this tree and use that pointer to dispose of the entire tree.</p>
+<p>Note in the case of List nodes the keys must be present in the path expression in the form of predicates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; The XPath expression identifying the node.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Reference to <a class="reference internal" href="data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a> created.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a> In case the argument is invalid.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../errors/path_error.html#_CPPv2N3ydk4path10YPathErrorE" title="ydk::path::YPathError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YPathError</span></code></a> In case the path is invalid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode13get_statementEv">
+<span id="ydk::path::RootSchemaNode::get_statementC"></span><em class="property">virtual</em> <a class="reference internal" href="statement.html#_CPPv2N3ydk4path9StatementE" title="ydk::path::Statement">Statement</a> <code class="descclassname"></code><code class="descname">get_statement</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode13get_statementEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the <a class="reference internal" href="statement.html#_CPPv2N3ydk4path9StatementE" title="ydk::path::Statement"><code class="xref cpp cpp-class docutils literal"><span class="pre">Statement</span></code></a> representing this <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a>.</p>
+<p>Note the <a class="reference internal" href="#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a> has no YANG statement representing it.</p>
+<p>So this method returns an empty statement.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An empty statement.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode8get_keysEv">
+<span id="ydk::path::RootSchemaNode::get_keysC"></span><em class="property">virtual</em> std::vector&lt;<a class="reference internal" href="statement.html#_CPPv2N3ydk4path9StatementE" title="ydk::path::Statement">Statement</a>&gt; <code class="descclassname"></code><code class="descname">get_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode8get_keysEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns vector of YANG statement corresponding the the keys.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Vector of <a class="reference internal" href="statement.html#_CPPv2N3ydk4path9StatementE" title="ydk::path::Statement"><code class="xref cpp cpp-class docutils literal"><span class="pre">Statement</span></code></a> that represent keys.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2NK3ydk4path14RootSchemaNode10create_rpcERKNSt6stringE">
+<span id="ydk::path::RootSchemaNode::create_rpc__ssCRC"></span><em class="property">virtual</em> std::shared_ptr&lt;<a class="reference internal" href="../rpc.html#_CPPv2N3ydk4path3RpcE" title="ydk::path::Rpc">Rpc</a>&gt; <code class="descclassname"></code><code class="descname">create_rpc</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>path</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv2NK3ydk4path14RootSchemaNode10create_rpcERKNSt6stringE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create rpc and return pointer to this rpc.</p>
+<p>The path expression should point to a <a class="reference internal" href="schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a> that represents the <a class="reference internal" href="../rpc.html#_CPPv2N3ydk4path3RpcE" title="ydk::path::Rpc"><code class="xref cpp cpp-class docutils literal"><span class="pre">Rpc</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; The path to the rpc schema node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Pointer to <a class="reference internal" href="../rpc.html#_CPPv2N3ydk4path3RpcE" title="ydk::path::Rpc"><code class="xref cpp cpp-class docutils literal"><span class="pre">Rpc</span></code></a> or <code class="docutils literal"><span class="pre">nullptr</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../../ydk/errors/error_invalid_argument.html#_CPPv2N3ydk21YInvalidArgumentErrorE" title="ydk::YInvalidArgumentError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YInvalidArgumentError</span></code></a> if the argument is invalid.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../errors/path_error.html#_CPPv2N3ydk4path10YPathErrorE" title="ydk::path::YPathError"><code class="xref cpp cpp-class docutils literal"><span class="pre">YPathError</span></code></a> if the path is invalid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../sessions/session.html" class="btn btn-neutral float-right" title="Session" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="schema_node.html" class="btn btn-neutral" title="SchemaNode" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

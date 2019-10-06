@@ -1495,6 +1495,12 @@ class RMON2MIB::ProbeConfig::ProbeResetControl : public ydk::Enum
         static const ydk::Enum::YLeaf warmBoot;
         static const ydk::Enum::YLeaf coldBoot;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 1;
+            if (name == "warmBoot") return 2;
+            if (name == "coldBoot") return 3;
+            return -1;
+        }
 };
 
 class RMON2MIB::ProbeConfig::ProbeDownloadAction : public ydk::Enum
@@ -1504,6 +1510,12 @@ class RMON2MIB::ProbeConfig::ProbeDownloadAction : public ydk::Enum
         static const ydk::Enum::YLeaf downloadToPROM;
         static const ydk::Enum::YLeaf downloadToRAM;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notDownloading") return 1;
+            if (name == "downloadToPROM") return 2;
+            if (name == "downloadToRAM") return 3;
+            return -1;
+        }
 };
 
 class RMON2MIB::ProbeConfig::ProbeDownloadStatus : public ydk::Enum
@@ -1518,6 +1530,17 @@ class RMON2MIB::ProbeConfig::ProbeDownloadStatus : public ydk::Enum
         static const ydk::Enum::YLeaf downloadTftpFileNotFound;
         static const ydk::Enum::YLeaf downloadTftpAccessViolation;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "downloadSuccess") return 1;
+            if (name == "downloadStatusUnknown") return 2;
+            if (name == "downloadGeneralError") return 3;
+            if (name == "downloadNoResponseFromServer") return 4;
+            if (name == "downloadChecksumError") return 5;
+            if (name == "downloadIncompatibleImage") return 6;
+            if (name == "downloadTftpFileNotFound") return 7;
+            if (name == "downloadTftpAccessViolation") return 8;
+            return -1;
+        }
 };
 
 class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirAddressMapConfig : public ydk::Enum
@@ -1527,6 +1550,12 @@ class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirAddressMapConfig 
         static const ydk::Enum::YLeaf supportedOff;
         static const ydk::Enum::YLeaf supportedOn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notSupported") return 1;
+            if (name == "supportedOff") return 2;
+            if (name == "supportedOn") return 3;
+            return -1;
+        }
 };
 
 class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirHostConfig : public ydk::Enum
@@ -1536,6 +1565,12 @@ class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirHostConfig : publ
         static const ydk::Enum::YLeaf supportedOff;
         static const ydk::Enum::YLeaf supportedOn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notSupported") return 1;
+            if (name == "supportedOff") return 2;
+            if (name == "supportedOn") return 3;
+            return -1;
+        }
 };
 
 class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirMatrixConfig : public ydk::Enum
@@ -1545,6 +1580,12 @@ class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirMatrixConfig : pu
         static const ydk::Enum::YLeaf supportedOff;
         static const ydk::Enum::YLeaf supportedOn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notSupported") return 1;
+            if (name == "supportedOff") return 2;
+            if (name == "supportedOn") return 3;
+            return -1;
+        }
 };
 
 class RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::NlMatrixTopNControlRateBase : public ydk::Enum
@@ -1553,6 +1594,11 @@ class RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::NlMatrixTopN
         static const ydk::Enum::YLeaf nlMatrixTopNPkts;
         static const ydk::Enum::YLeaf nlMatrixTopNOctets;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nlMatrixTopNPkts") return 1;
+            if (name == "nlMatrixTopNOctets") return 2;
+            return -1;
+        }
 };
 
 class RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopNControlRateBase : public ydk::Enum
@@ -1563,6 +1609,13 @@ class RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopN
         static const ydk::Enum::YLeaf alMatrixTopNAllPkts;
         static const ydk::Enum::YLeaf alMatrixTopNAllOctets;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "alMatrixTopNTerminalsPkts") return 1;
+            if (name == "alMatrixTopNTerminalsOctets") return 2;
+            if (name == "alMatrixTopNAllPkts") return 3;
+            if (name == "alMatrixTopNAllOctets") return 4;
+            return -1;
+        }
 };
 
 class RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::UsrHistoryObjectSampleType : public ydk::Enum
@@ -1571,6 +1624,11 @@ class RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::UsrHistoryObjectSa
         static const ydk::Enum::YLeaf absoluteValue;
         static const ydk::Enum::YLeaf deltaValue;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "absoluteValue") return 1;
+            if (name == "deltaValue") return 2;
+            return -1;
+        }
 };
 
 class RMON2MIB::UsrHistoryTable::UsrHistoryEntry::UsrHistoryValStatus : public ydk::Enum
@@ -1580,6 +1638,12 @@ class RMON2MIB::UsrHistoryTable::UsrHistoryEntry::UsrHistoryValStatus : public y
         static const ydk::Enum::YLeaf valuePositive;
         static const ydk::Enum::YLeaf valueNegative;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "valueNotAvailable") return 1;
+            if (name == "valuePositive") return 2;
+            if (name == "valueNegative") return 3;
+            return -1;
+        }
 };
 
 class RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialMode : public ydk::Enum
@@ -1588,6 +1652,11 @@ class RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialMode : public ydk::E
         static const ydk::Enum::YLeaf direct;
         static const ydk::Enum::YLeaf modem;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "direct") return 1;
+            if (name == "modem") return 2;
+            return -1;
+        }
 };
 
 class RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialProtocol : public ydk::Enum
@@ -1597,6 +1666,12 @@ class RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialProtocol : public yd
         static const ydk::Enum::YLeaf slip;
         static const ydk::Enum::YLeaf ppp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "slip") return 2;
+            if (name == "ppp") return 3;
+            return -1;
+        }
 };
 
 class RMON2MIB::TrapDestTable::TrapDestEntry::TrapDestProtocol : public ydk::Enum
@@ -1605,6 +1680,11 @@ class RMON2MIB::TrapDestTable::TrapDestEntry::TrapDestProtocol : public ydk::Enu
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf ipx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 1;
+            if (name == "ipx") return 2;
+            return -1;
+        }
 };
 
 class RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectType : public ydk::Enum
@@ -1615,6 +1695,13 @@ class RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectType 
         static const ydk::Enum::YLeaf switch_;
         static const ydk::Enum::YLeaf modemSwitch;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "direct") return 1;
+            if (name == "modem") return 2;
+            if (name == "switch") return 3;
+            if (name == "modemSwitch") return 4;
+            return -1;
+        }
 };
 
 

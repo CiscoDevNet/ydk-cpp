@@ -10,15 +10,6 @@
 namespace ietf {
 namespace ietf_netconf_monitoring {
 
-class Transport : public virtual ydk::Identity
-{
-    public:
-        Transport();
-        ~Transport();
-
-
-}; // Transport
-
 class SchemaFormat : public virtual ydk::Identity
 {
     public:
@@ -27,6 +18,15 @@ class SchemaFormat : public virtual ydk::Identity
 
 
 }; // SchemaFormat
+
+class Transport : public virtual ydk::Identity
+{
+    public:
+        Transport();
+        ~Transport();
+
+
+}; // Transport
 
 class GetSchema : public ydk::Entity
 {
@@ -415,33 +415,6 @@ class NetconfState::Statistics : public ydk::Entity
 
 }; // NetconfState::Statistics
 
-class NetconfSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSsh();
-        ~NetconfSsh();
-
-
-}; // NetconfSsh
-
-class NetconfSoapOverBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSoapOverBeep();
-        ~NetconfSoapOverBeep();
-
-
-}; // NetconfSoapOverBeep
-
-class NetconfSoapOverHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSoapOverHttps();
-        ~NetconfSoapOverHttps();
-
-
-}; // NetconfSoapOverHttps
-
 class NetconfBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
@@ -451,32 +424,23 @@ class NetconfBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk
 
 }; // NetconfBeep
 
-class NetconfTls : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class NetconfSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        NetconfTls();
-        ~NetconfTls();
+        NetconfSsh();
+        ~NetconfSsh();
 
 
-}; // NetconfTls
+}; // NetconfSsh
 
-class Xsd : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+class Rnc : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        Xsd();
-        ~Xsd();
+        Rnc();
+        ~Rnc();
 
 
-}; // Xsd
-
-class Yang : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
-{
-    public:
-        Yang();
-        ~Yang();
-
-
-}; // Yang
+}; // Rnc
 
 class Yin : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
@@ -496,14 +460,50 @@ class Rng : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Ide
 
 }; // Rng
 
-class Rnc : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+class Xsd : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        Rnc();
-        ~Rnc();
+        Xsd();
+        ~Xsd();
 
 
-}; // Rnc
+}; // Xsd
+
+class NetconfSoapOverBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfSoapOverBeep();
+        ~NetconfSoapOverBeep();
+
+
+}; // NetconfSoapOverBeep
+
+class NetconfTls : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfTls();
+        ~NetconfTls();
+
+
+}; // NetconfTls
+
+class Yang : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+{
+    public:
+        Yang();
+        ~Yang();
+
+
+}; // Yang
+
+class NetconfSoapOverHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfSoapOverHttps();
+        ~NetconfSoapOverHttps();
+
+
+}; // NetconfSoapOverHttps
 
 class NetconfDatastoreType : public ydk::Enum
 {
@@ -512,6 +512,12 @@ class NetconfDatastoreType : public ydk::Enum
         static const ydk::Enum::YLeaf candidate;
         static const ydk::Enum::YLeaf startup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "running") return 0;
+            if (name == "candidate") return 1;
+            if (name == "startup") return 2;
+            return -1;
+        }
 };
 
 class NetconfState::Schemas::Schema::Location : public ydk::Enum
@@ -519,6 +525,10 @@ class NetconfState::Schemas::Schema::Location : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf NETCONF;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "NETCONF") return 0;
+            return -1;
+        }
 };
 
 

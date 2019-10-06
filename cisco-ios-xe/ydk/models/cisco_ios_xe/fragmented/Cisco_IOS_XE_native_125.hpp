@@ -3617,6 +3617,11 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol:
         static const ydk::Enum::YLeaf base;
         static const ydk::Enum::YLeaf optimize;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "base") return 0;
+            if (name == "optimize") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol::Version : public ydk::Enum
@@ -3625,6 +3630,11 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol::Version 
         static const ydk::Enum::YLeaf base;
         static const ydk::Enum::YLeaf optimize;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "base") return 0;
+            if (name == "optimize") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Gdoi::Group::Server::Local::Rekey::Acknowledgement : public ydk::Enum
@@ -3634,6 +3644,12 @@ class Native::Crypto::Gdoi::Group::Server::Local::Rekey::Acknowledgement : publi
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf interoperable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "cisco") return 1;
+            if (name == "interoperable") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash::Algorithm : public ydk::Enum
@@ -3644,6 +3660,13 @@ class Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash::Algorithm : pu
         static const ydk::Enum::YLeaf sha384;
         static const ydk::Enum::YLeaf sha512;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sha") return 0;
+            if (name == "sha256") return 1;
+            if (name == "sha384") return 2;
+            if (name == "sha512") return 3;
+            return -1;
+        }
 };
 
 class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Replay::Counter::WindowSize : public ydk::Enum
@@ -3655,6 +3678,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Replay::Counter::Wi
         static const ydk::Enum::YLeaf Y_512;
         static const ydk::Enum::YLeaf Y_64;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1024") return 0;
+            if (name == "128") return 1;
+            if (name == "256") return 2;
+            if (name == "512") return 3;
+            if (name == "64") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Gdoi::Group::Default::Client::TransportEncryptKey : public ydk::Enum
@@ -3663,6 +3694,11 @@ class Native::Crypto::Gdoi::Group::Default::Client::TransportEncryptKey : public
         static const ydk::Enum::YLeaf group_key;
         static const ydk::Enum::YLeaf pair_wise_key;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "group-key") return 0;
+            if (name == "pair-wise-key") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::Client::Flexvpn::Peer::PeerIdList::PeerIdContainer::UpDown : public ydk::Enum
@@ -3671,6 +3707,11 @@ class Native::Crypto::Ikev2::Client::Flexvpn::Peer::PeerIdList::PeerIdContainer:
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::Client::Flexvpn::Connect::UpDown : public ydk::Enum
@@ -3679,6 +3720,11 @@ class Native::Crypto::Ikev2::Client::Flexvpn::Connect::UpDown : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 0;
+            if (name == "down") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::DpdContainer::DpdQuery : public ydk::Enum
@@ -3687,6 +3733,11 @@ class Native::Crypto::Ikev2::DpdContainer::DpdQuery : public ydk::Enum
         static const ydk::Enum::YLeaf on_demand;
         static const ydk::Enum::YLeaf periodic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "on-demand") return 0;
+            if (name == "periodic") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::Keyring::Peer::PreSharedKey::Encryption : public ydk::Enum
@@ -3695,6 +3746,11 @@ class Native::Crypto::Ikev2::Keyring::Peer::PreSharedKey::Encryption : public yd
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "6") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::Limit::MaxNegSa::Direction : public ydk::Enum
@@ -3703,6 +3759,11 @@ class Native::Crypto::Ikev2::Limit::MaxNegSa::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf incoming;
         static const ydk::Enum::YLeaf outgoing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "incoming") return 0;
+            if (name == "outgoing") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::NameMangler::Dn : public ydk::Enum
@@ -3716,6 +3777,16 @@ class Native::Crypto::Ikev2::NameMangler::Dn : public ydk::Enum
         static const ydk::Enum::YLeaf organization_unit;
         static const ydk::Enum::YLeaf state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "common-name") return 0;
+            if (name == "country") return 1;
+            if (name == "domain") return 2;
+            if (name == "locality") return 3;
+            if (name == "organization") return 4;
+            if (name == "organization-unit") return 5;
+            if (name == "state") return 6;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::NameMangler::Email : public ydk::Enum
@@ -3725,6 +3796,12 @@ class Native::Crypto::Ikev2::NameMangler::Email : public ydk::Enum
         static const ydk::Enum::YLeaf domain;
         static const ydk::Enum::YLeaf username;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "domain") return 1;
+            if (name == "username") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::NameMangler::Fqdn : public ydk::Enum
@@ -3734,6 +3811,12 @@ class Native::Crypto::Ikev2::NameMangler::Fqdn : public ydk::Enum
         static const ydk::Enum::YLeaf domain;
         static const ydk::Enum::YLeaf hostname;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "all") return 0;
+            if (name == "domain") return 1;
+            if (name == "hostname") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::Ikev2::NameMangler::Eap::Dn : public ydk::Enum
@@ -3747,6 +3830,16 @@ class Native::Crypto::Ikev2::NameMangler::Eap::Dn : public ydk::Enum
         static const ydk::Enum::YLeaf organization_unit;
         static const ydk::Enum::YLeaf state;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "common-name") return 0;
+            if (name == "country") return 1;
+            if (name == "domain") return 2;
+            if (name == "locality") return 3;
+            if (name == "organization") return 4;
+            if (name == "organization-unit") return 5;
+            if (name == "state") return 6;
+            return -1;
+        }
 };
 
 

@@ -342,6 +342,11 @@ class MacsecEncryption : public ydk::Enum
         static const ydk::Enum::YLeaf type7;
         static const ydk::Enum::YLeaf type6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "type7") return 0;
+            if (name == "type6") return 2;
+            return -1;
+        }
 };
 
 class CryptoAlg : public ydk::Enum
@@ -356,14 +361,17 @@ class CryptoAlg : public ydk::Enum
         static const ydk::Enum::YLeaf alg_hmac_sha1_96;
         static const ydk::Enum::YLeaf alg_hmac_sha_256;
 
-};
-
-class MacsecCryptoAlg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf aes_128_cmac;
-        static const ydk::Enum::YLeaf aes_256_cmac;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "alg-aes-128-cmac-96") return 1;
+            if (name == "alg-hmac-sha1-12") return 2;
+            if (name == "alg-md5-16") return 3;
+            if (name == "alg-sha1-20") return 4;
+            if (name == "alg-hmac-md5-16") return 5;
+            if (name == "alg-hmac-sha1-20") return 6;
+            if (name == "alg-hmac-sha1-96") return 9;
+            if (name == "alg-hmac-sha-256") return 10;
+            return -1;
+        }
 };
 
 class KeyChainMonth : public ydk::Enum
@@ -382,6 +390,34 @@ class KeyChainMonth : public ydk::Enum
         static const ydk::Enum::YLeaf nov;
         static const ydk::Enum::YLeaf dec;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "jan") return 0;
+            if (name == "feb") return 1;
+            if (name == "mar") return 2;
+            if (name == "apr") return 3;
+            if (name == "may") return 4;
+            if (name == "jun") return 5;
+            if (name == "jul") return 6;
+            if (name == "aug") return 7;
+            if (name == "sep") return 8;
+            if (name == "oct") return 9;
+            if (name == "nov") return 10;
+            if (name == "dec") return 11;
+            return -1;
+        }
+};
+
+class MacsecCryptoAlg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf aes_128_cmac;
+        static const ydk::Enum::YLeaf aes_256_cmac;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "aes-128-cmac") return 7;
+            if (name == "aes-256-cmac") return 8;
+            return -1;
+        }
 };
 
 

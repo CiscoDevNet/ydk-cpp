@@ -11,46 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace DIFFSERV_MIB {
 
-DiffServTBParamSimpleTokenBucket::DiffServTBParamSimpleTokenBucket()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSimpleTokenBucket")
-{
-
-}
-
-DiffServTBParamSimpleTokenBucket::~DiffServTBParamSimpleTokenBucket()
-{
-}
-
-DiffServTBParamAvgRate::DiffServTBParamAvgRate()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamAvgRate")
-{
-
-}
-
-DiffServTBParamAvgRate::~DiffServTBParamAvgRate()
-{
-}
-
-DiffServTBParamSrTCMBlind::DiffServTBParamSrTCMBlind()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMBlind")
-{
-
-}
-
-DiffServTBParamSrTCMBlind::~DiffServTBParamSrTCMBlind()
-{
-}
-
-DiffServTBParamSrTCMAware::DiffServTBParamSrTCMAware()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMAware")
-{
-
-}
-
-DiffServTBParamSrTCMAware::~DiffServTBParamSrTCMAware()
-{
-}
-
 DiffServTBParamTrTCMBlind::DiffServTBParamTrTCMBlind()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTrTCMBlind")
 {
@@ -61,13 +21,13 @@ DiffServTBParamTrTCMBlind::~DiffServTBParamTrTCMBlind()
 {
 }
 
-DiffServTBParamTrTCMAware::DiffServTBParamTrTCMAware()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTrTCMAware")
+DiffServSchedulerWFQ::DiffServSchedulerWFQ()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerWFQ")
 {
 
 }
 
-DiffServTBParamTrTCMAware::~DiffServTBParamTrTCMAware()
+DiffServSchedulerWFQ::~DiffServSchedulerWFQ()
 {
 }
 
@@ -81,13 +41,13 @@ DiffServTBParamTswTCM::~DiffServTBParamTswTCM()
 {
 }
 
-DiffServSchedulerPriority::DiffServSchedulerPriority()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerPriority")
+DiffServTBParamAvgRate::DiffServTBParamAvgRate()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamAvgRate")
 {
 
 }
 
-DiffServSchedulerPriority::~DiffServSchedulerPriority()
+DiffServTBParamAvgRate::~DiffServTBParamAvgRate()
 {
 }
 
@@ -101,13 +61,53 @@ DiffServSchedulerWRR::~DiffServSchedulerWRR()
 {
 }
 
-DiffServSchedulerWFQ::DiffServSchedulerWFQ()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerWFQ")
+DiffServTBParamSrTCMAware::DiffServTBParamSrTCMAware()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMAware")
 {
 
 }
 
-DiffServSchedulerWFQ::~DiffServSchedulerWFQ()
+DiffServTBParamSrTCMAware::~DiffServTBParamSrTCMAware()
+{
+}
+
+DiffServTBParamSrTCMBlind::DiffServTBParamSrTCMBlind()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMBlind")
+{
+
+}
+
+DiffServTBParamSrTCMBlind::~DiffServTBParamSrTCMBlind()
+{
+}
+
+DiffServTBParamSimpleTokenBucket::DiffServTBParamSimpleTokenBucket()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSimpleTokenBucket")
+{
+
+}
+
+DiffServTBParamSimpleTokenBucket::~DiffServTBParamSimpleTokenBucket()
+{
+}
+
+DiffServSchedulerPriority::DiffServSchedulerPriority()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerPriority")
+{
+
+}
+
+DiffServSchedulerPriority::~DiffServSchedulerPriority()
+{
+}
+
+DiffServTBParamTrTCMAware::DiffServTBParamTrTCMAware()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTrTCMAware")
+{
+
+}
+
+DiffServTBParamTrTCMAware::~DiffServTBParamTrTCMAware()
 {
 }
 

@@ -10,14 +10,21 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_entity_state_tc_mib {
 
-class EntityAdminState : public ydk::Enum
+class EntityStandbyStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf locked;
-        static const ydk::Enum::YLeaf shuttingDown;
-        static const ydk::Enum::YLeaf unlocked;
+        static const ydk::Enum::YLeaf hotStandby;
+        static const ydk::Enum::YLeaf coldStandby;
+        static const ydk::Enum::YLeaf providingService;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "hotStandby") return 2;
+            if (name == "coldStandby") return 3;
+            if (name == "providingService") return 4;
+            return -1;
+        }
 };
 
 class EntityOperState : public ydk::Enum
@@ -28,6 +35,30 @@ class EntityOperState : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "disabled") return 2;
+            if (name == "enabled") return 3;
+            if (name == "testing") return 4;
+            return -1;
+        }
+};
+
+class EntityAdminState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf locked;
+        static const ydk::Enum::YLeaf shuttingDown;
+        static const ydk::Enum::YLeaf unlocked;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "locked") return 2;
+            if (name == "shuttingDown") return 3;
+            if (name == "unlocked") return 4;
+            return -1;
+        }
 };
 
 class EntityUsageState : public ydk::Enum
@@ -38,16 +69,13 @@ class EntityUsageState : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf busy;
 
-};
-
-class EntityStandbyStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf hotStandby;
-        static const ydk::Enum::YLeaf coldStandby;
-        static const ydk::Enum::YLeaf providingService;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "idle") return 2;
+            if (name == "active") return 3;
+            if (name == "busy") return 4;
+            return -1;
+        }
 };
 
 

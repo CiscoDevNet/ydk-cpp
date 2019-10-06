@@ -402,6 +402,11 @@ class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamAdminState : public
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "enabled") return 2;
+            return -1;
+        }
 };
 
 class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus : public ydk::Enum
@@ -418,6 +423,19 @@ class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus : public
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf nonOperHalfDuplex;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 1;
+            if (name == "linkFault") return 2;
+            if (name == "passiveWait") return 3;
+            if (name == "activeSendLocal") return 4;
+            if (name == "sendLocalAndRemote") return 5;
+            if (name == "sendLocalAndRemoteOk") return 6;
+            if (name == "oamPeeringLocallyRejected") return 7;
+            if (name == "oamPeeringRemotelyRejected") return 8;
+            if (name == "operational") return 9;
+            if (name == "nonOperHalfDuplex") return 10;
+            return -1;
+        }
 };
 
 class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamMode : public ydk::Enum
@@ -426,6 +444,11 @@ class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamMode : public ydk::
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "passive") return 2;
+            return -1;
+        }
 };
 
 class CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::Cdot3OamPeerMode : public ydk::Enum
@@ -435,6 +458,12 @@ class CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::Cdot3OamPeerMode : 
         static const ydk::Enum::YLeaf passive;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "passive") return 2;
+            if (name == "unknown") return 3;
+            return -1;
+        }
 };
 
 class CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus : public ydk::Enum
@@ -447,6 +476,15 @@ class CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoo
         static const ydk::Enum::YLeaf localLoopback;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noLoopback") return 1;
+            if (name == "initiatingLoopback") return 2;
+            if (name == "remoteLoopback") return 3;
+            if (name == "terminatingLoopback") return 4;
+            if (name == "localLoopback") return 5;
+            if (name == "unknown") return 6;
+            return -1;
+        }
 };
 
 class CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackIgnoreRx : public ydk::Enum
@@ -455,6 +493,11 @@ class CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoo
         static const ydk::Enum::YLeaf ignore;
         static const ydk::Enum::YLeaf process;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ignore") return 1;
+            if (name == "process") return 2;
+            return -1;
+        }
 };
 
 class CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::Cdot3OamEventLogLocation : public ydk::Enum
@@ -463,6 +506,11 @@ class CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::Cdot3OamEve
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 1;
+            if (name == "remote") return 2;
+            return -1;
+        }
 };
 
 

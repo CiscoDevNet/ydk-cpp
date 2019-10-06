@@ -32,7 +32,7 @@ class Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp_val; //type: one of enumeration, uint8
+        ydk::YLeaf dscp_val; //type: one of uint8, enumeration
         ydk::YLeaf min_threshold; //type: uint32
         ydk::YLeaf min_threshold_unit; //type: BytesMsUsType
         ydk::YLeaf max_threshold; //type: uint32
@@ -58,7 +58,7 @@ class Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf prec; //type: one of enumeration, uint8
+        ydk::YLeaf prec; //type: one of uint8, enumeration
         ydk::YLeaf min_threshold; //type: uint32
         ydk::YLeaf min_threshold_unit; //type: BytesMsUsType
         ydk::YLeaf max_threshold; //type: uint32
@@ -144,7 +144,7 @@ class Native::Policy::PolicyMap::Class::ActionList::Set::Dscp : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tunnel; //type: empty
-        ydk::YLeaf dscp_val; //type: one of enumeration, uint8
+        ydk::YLeaf dscp_val; //type: one of uint8, enumeration
         class Dscp_; //type: Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_> dscp; // presence node
@@ -215,7 +215,7 @@ class Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tunnel; //type: empty
-        ydk::YLeaf dscp_val; //type: one of enumeration, uint8
+        ydk::YLeaf dscp_val; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp
 
@@ -236,7 +236,7 @@ class Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf precedence_val; //type: one of enumeration, uint8
+        ydk::YLeaf precedence_val; //type: one of uint8, enumeration
 
 }; // Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence
 
@@ -815,8 +815,8 @@ class Native::Interface::AppNavCompress::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -985,8 +985,8 @@ class Native::Interface::AppNavCompress::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3475,7 +3475,7 @@ class Native::Interface::AppNavCompress::Standby::StandbyList : public ydk::Enti
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3766,6 +3766,14 @@ class Native::Policy::PolicyMap::Class::ActionList::Set::Cos::Pack : public ydk:
         static const ydk::Enum::YLeaf qos_group;
         static const ydk::Enum::YLeaf wlan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dscp") return 0;
+            if (name == "precedence") return 1;
+            if (name == "cos") return 2;
+            if (name == "qos-group") return 3;
+            if (name == "wlan") return 4;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::IfState : public ydk::Enum
@@ -3773,6 +3781,10 @@ class Native::Interface::AppNavCompress::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::ServiceInsertion : public ydk::Enum
@@ -3780,6 +3792,10 @@ class Native::Interface::AppNavCompress::ServiceInsertion : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Backup::Delay::Failure : public ydk::Enum
@@ -3787,6 +3803,10 @@ class Native::Interface::AppNavCompress::Backup::Delay::Failure : public ydk::En
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3794,6 +3814,10 @@ class Native::Interface::AppNavCompress::Backup::Delay::SecondaryDisable : publi
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Backup::Load::Kickin : public ydk::Enum
@@ -3801,6 +3825,10 @@ class Native::Interface::AppNavCompress::Backup::Load::Kickin : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Backup::Load::Kickout : public ydk::Enum
@@ -3808,6 +3836,10 @@ class Native::Interface::AppNavCompress::Backup::Load::Kickout : public ydk::Enu
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Flowcontrol::Receive : public ydk::Enum
@@ -3817,6 +3849,12 @@ class Native::Interface::AppNavCompress::Flowcontrol::Receive : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Flowcontrol::Send : public ydk::Enum
@@ -3826,6 +3864,12 @@ class Native::Interface::AppNavCompress::Flowcontrol::Send : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::HoldQueue::Direction : public ydk::Enum
@@ -3834,6 +3878,11 @@ class Native::Interface::AppNavCompress::HoldQueue::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
@@ -3842,6 +3891,11 @@ class Native::Interface::AppNavCompress::Ip::Verify::Unicast::Source::ReachableV
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf rx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "any") return 0;
+            if (name == "rx") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Ipv6::TrafficFilter::Direction : public ydk::Enum
@@ -3850,6 +3904,11 @@ class Native::Interface::AppNavCompress::Ipv6::TrafficFilter::Direction : public
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::InterfaceQos::Trust::Device : public ydk::Enum
@@ -3857,6 +3916,10 @@ class Native::Interface::AppNavCompress::InterfaceQos::Trust::Device : public yd
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-phone") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Standby::Version : public ydk::Enum
@@ -3865,6 +3928,11 @@ class Native::Interface::AppNavCompress::Standby::Version : public ydk::Enum
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Standby::StandbyList::Ipv6 : public ydk::Enum
@@ -3872,6 +3940,10 @@ class Native::Interface::AppNavCompress::Standby::StandbyList::Ipv6 : public ydk
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "autoconfig") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3880,6 +3952,11 @@ class Native::Interface::AppNavCompress::Standby::StandbyList::Authentication::M
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::AppNavCompress::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
@@ -3888,6 +3965,11 @@ class Native::Interface::AppNavCompress::Standby::StandbyList::Redirect::Adverti
         static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_7;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            if (name == "7") return 1;
+            return -1;
+        }
 };
 
 

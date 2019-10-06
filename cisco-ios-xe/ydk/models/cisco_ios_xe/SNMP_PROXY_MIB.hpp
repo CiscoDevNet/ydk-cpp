@@ -101,6 +101,13 @@ class SNMPPROXYMIB::SnmpProxyTable::SnmpProxyEntry::SnmpProxyType : public ydk::
         static const ydk::Enum::YLeaf trap;
         static const ydk::Enum::YLeaf inform;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "read") return 1;
+            if (name == "write") return 2;
+            if (name == "trap") return 3;
+            if (name == "inform") return 4;
+            return -1;
+        }
 };
 
 

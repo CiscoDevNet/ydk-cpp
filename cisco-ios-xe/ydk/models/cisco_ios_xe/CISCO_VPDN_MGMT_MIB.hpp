@@ -674,15 +674,6 @@ class CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry : public yd
 
 }; // CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry
 
-class TunnelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf l2f;
-        static const ydk::Enum::YLeaf l2tp;
-        static const ydk::Enum::YLeaf pptp;
-
-};
-
 class EndpointClass : public ydk::Enum
 {
     public:
@@ -693,6 +684,30 @@ class EndpointClass : public ydk::Enum
         static const ydk::Enum::YLeaf magicNumber;
         static const ydk::Enum::YLeaf phone;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "local") return 2;
+            if (name == "ipV4Address") return 3;
+            if (name == "macAddress") return 4;
+            if (name == "magicNumber") return 5;
+            if (name == "phone") return 6;
+            return -1;
+        }
+};
+
+class TunnelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf l2f;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf pptp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2f") return 1;
+            if (name == "l2tp") return 2;
+            if (name == "pptp") return 3;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent : public ydk::Enum
@@ -703,6 +718,13 @@ class CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent : public 
         static const ydk::Enum::YLeaf pwUp;
         static const ydk::Enum::YLeaf pwDown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "pwUp") return 3;
+            if (name == "pwDown") return 4;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions : public ydk::Enum
@@ -714,6 +736,14 @@ class CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions : public ydk::
         static const ydk::Enum::YLeaf l2tp;
         static const ydk::Enum::YLeaf pptp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "all") return 2;
+            if (name == "l2f") return 3;
+            if (name == "l2tp") return 4;
+            if (name == "pptp") return 5;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelOrigCause : public ydk::Enum
@@ -723,6 +753,12 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelOrigCause
         static const ydk::Enum::YLeaf dnis;
         static const ydk::Enum::YLeaf stack;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "domain") return 1;
+            if (name == "dnis") return 2;
+            if (name == "stack") return 3;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelState : public ydk::Enum
@@ -733,6 +769,13 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelState : p
         static const ydk::Enum::YLeaf open;
         static const ydk::Enum::YLeaf closing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "opening") return 2;
+            if (name == "open") return 3;
+            if (name == "closing") return 4;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelNetworkServiceType : public ydk::Enum
@@ -740,6 +783,10 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelNetworkSe
     public:
         static const ydk::Enum::YLeaf ip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 1;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrOrigCause : public ydk::Enum
@@ -750,6 +797,13 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelA
         static const ydk::Enum::YLeaf stack;
         static const ydk::Enum::YLeaf xconnect;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "domain") return 1;
+            if (name == "dnis") return 2;
+            if (name == "stack") return 3;
+            if (name == "xconnect") return 4;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState : public ydk::Enum
@@ -774,6 +828,27 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelA
         static const ydk::Enum::YLeaf pptpWaitStopReply;
         static const ydk::Enum::YLeaf pptpTerminal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "l2fOpening") return 2;
+            if (name == "l2fOpenWait") return 3;
+            if (name == "l2fOpen") return 4;
+            if (name == "l2fClosing") return 5;
+            if (name == "l2fCloseWait") return 6;
+            if (name == "l2tpIdle") return 7;
+            if (name == "l2tpWaitCtlReply") return 8;
+            if (name == "l2tpEstablished") return 9;
+            if (name == "l2tpShuttingDown") return 10;
+            if (name == "l2tpNoSessionLeft") return 11;
+            if (name == "pptpIdle") return 12;
+            if (name == "pptpWaitConnect") return 13;
+            if (name == "pptpWaitCtlRequest") return 14;
+            if (name == "pptpWaitCtlReply") return 15;
+            if (name == "pptpEstablished") return 16;
+            if (name == "pptpWaitStopReply") return 17;
+            if (name == "pptpTerminal") return 18;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrNetworkServiceType : public ydk::Enum
@@ -781,6 +856,10 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelA
     public:
         static const ydk::Enum::YLeaf ip;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 1;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionState : public ydk::Enum
@@ -792,6 +871,14 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnT
         static const ydk::Enum::YLeaf closing;
         static const ydk::Enum::YLeaf waitingForTunnel;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "opening") return 2;
+            if (name == "open") return 3;
+            if (name == "closing") return 4;
+            if (name == "waitingForTunnel") return 5;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType : public ydk::Enum
@@ -806,6 +893,17 @@ class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnT
         static const ydk::Enum::YLeaf xdsl;
         static const ydk::Enum::YLeaf cable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "asyncInternalModem") return 2;
+            if (name == "async") return 3;
+            if (name == "bchan") return 4;
+            if (name == "sync") return 5;
+            if (name == "virtualAccess") return 6;
+            if (name == "xdsl") return 7;
+            if (name == "cable") return 8;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState : public ydk::Enum
@@ -830,6 +928,27 @@ class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessi
         static const ydk::Enum::YLeaf pptpWaitCallDisc;
         static const ydk::Enum::YLeaf pptpTerminal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "l2fOpening") return 2;
+            if (name == "l2fOpen") return 3;
+            if (name == "l2fCloseWait") return 4;
+            if (name == "l2fWaitingForTunnel") return 5;
+            if (name == "l2tpIdle") return 6;
+            if (name == "l2tpWaitingTunnel") return 7;
+            if (name == "l2tpWaitReply") return 8;
+            if (name == "l2tpWaitConnect") return 9;
+            if (name == "l2tpEstablished") return 10;
+            if (name == "l2tpShuttingDown") return 11;
+            if (name == "pptpWaitVAccess") return 12;
+            if (name == "pptpPacEstablished") return 13;
+            if (name == "pptpWaitTunnel") return 14;
+            if (name == "pptpWaitOCRP") return 15;
+            if (name == "pptpPnsEstablished") return 16;
+            if (name == "pptpWaitCallDisc") return 17;
+            if (name == "pptpTerminal") return 18;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType : public ydk::Enum
@@ -844,6 +963,17 @@ class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessi
         static const ydk::Enum::YLeaf xdsl;
         static const ydk::Enum::YLeaf cable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "asyncInternalModem") return 2;
+            if (name == "async") return 3;
+            if (name == "bchan") return 4;
+            if (name == "sync") return 5;
+            if (name == "virtualAccess") return 6;
+            if (name == "xdsl") return 7;
+            if (name == "cable") return 8;
+            return -1;
+        }
 };
 
 class CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType : public ydk::Enum
@@ -858,6 +988,17 @@ class CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointT
         static const ydk::Enum::YLeaf phone;
         static const ydk::Enum::YLeaf magicNumber;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "hostname") return 2;
+            if (name == "string") return 3;
+            if (name == "macAddress") return 4;
+            if (name == "ipV4Address") return 5;
+            if (name == "ipV6Address") return 6;
+            if (name == "phone") return 7;
+            if (name == "magicNumber") return 8;
+            return -1;
+        }
 };
 
 

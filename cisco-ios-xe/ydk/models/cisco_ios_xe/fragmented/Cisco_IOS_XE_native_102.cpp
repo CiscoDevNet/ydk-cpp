@@ -5,11 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_102.hpp"
-#include "Cisco_IOS_XE_native_105.hpp"
-#include "Cisco_IOS_XE_native_103.hpp"
 #include "Cisco_IOS_XE_native_107.hpp"
 #include "Cisco_IOS_XE_native_106.hpp"
+#include "Cisco_IOS_XE_native_105.hpp"
 #include "Cisco_IOS_XE_native_104.hpp"
+#include "Cisco_IOS_XE_native_103.hpp"
 
 using namespace ydk;
 
@@ -12088,166 +12088,6 @@ bool Native::Interface::Serial::PmPath::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-Native::Interface::Serial::AnalysisModule::AnalysisModule()
-    :
-    monitoring(std::make_shared<Native::Interface::Serial::AnalysisModule::Monitoring>())
-{
-    monitoring->parent = this;
-
-    yang_name = "analysis-module"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Serial::AnalysisModule::~AnalysisModule()
-{
-}
-
-bool Native::Interface::Serial::AnalysisModule::has_data() const
-{
-    if (is_presence_container) return true;
-    return (monitoring !=  nullptr && monitoring->has_data());
-}
-
-bool Native::Interface::Serial::AnalysisModule::has_operation() const
-{
-    return is_set(yfilter)
-	|| (monitoring !=  nullptr && monitoring->has_operation());
-}
-
-std::string Native::Interface::Serial::AnalysisModule::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-nam:analysis-module";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Serial::AnalysisModule::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Serial::AnalysisModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "monitoring")
-    {
-        if(monitoring == nullptr)
-        {
-            monitoring = std::make_shared<Native::Interface::Serial::AnalysisModule::Monitoring>();
-        }
-        return monitoring;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Serial::AnalysisModule::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(monitoring != nullptr)
-    {
-        _children["monitoring"] = monitoring;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Serial::AnalysisModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Serial::AnalysisModule::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Serial::AnalysisModule::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitoring")
-        return true;
-    return false;
-}
-
-Native::Interface::Serial::AnalysisModule::Monitoring::Monitoring()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "monitoring"; yang_parent_name = "analysis-module"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Serial::AnalysisModule::Monitoring::~Monitoring()
-{
-}
-
-bool Native::Interface::Serial::AnalysisModule::Monitoring::has_data() const
-{
-    if (is_presence_container) return true;
-    return interface_name.is_set;
-}
-
-bool Native::Interface::Serial::AnalysisModule::Monitoring::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string Native::Interface::Serial::AnalysisModule::Monitoring::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitoring";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Serial::AnalysisModule::Monitoring::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Serial::AnalysisModule::Monitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Serial::AnalysisModule::Monitoring::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Serial::AnalysisModule::Monitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Serial::AnalysisModule::Monitoring::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Serial::AnalysisModule::Monitoring::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
 Native::Interface::Serial::Ppp::Ppp()
     :
     accounting{YType::str, "accounting"},
@@ -13484,6 +13324,166 @@ bool Native::Interface::Serial::Ppp::Multilink::Fragment::Delay::has_leaf_or_chi
     return false;
 }
 
+Native::Interface::Serial::AnalysisModule::AnalysisModule()
+    :
+    monitoring(std::make_shared<Native::Interface::Serial::AnalysisModule::Monitoring>())
+{
+    monitoring->parent = this;
+
+    yang_name = "analysis-module"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Serial::AnalysisModule::~AnalysisModule()
+{
+}
+
+bool Native::Interface::Serial::AnalysisModule::has_data() const
+{
+    if (is_presence_container) return true;
+    return (monitoring !=  nullptr && monitoring->has_data());
+}
+
+bool Native::Interface::Serial::AnalysisModule::has_operation() const
+{
+    return is_set(yfilter)
+	|| (monitoring !=  nullptr && monitoring->has_operation());
+}
+
+std::string Native::Interface::Serial::AnalysisModule::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-nam:analysis-module";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Serial::AnalysisModule::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Serial::AnalysisModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "monitoring")
+    {
+        if(monitoring == nullptr)
+        {
+            monitoring = std::make_shared<Native::Interface::Serial::AnalysisModule::Monitoring>();
+        }
+        return monitoring;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Serial::AnalysisModule::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(monitoring != nullptr)
+    {
+        _children["monitoring"] = monitoring;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Serial::AnalysisModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Serial::AnalysisModule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Serial::AnalysisModule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitoring")
+        return true;
+    return false;
+}
+
+Native::Interface::Serial::AnalysisModule::Monitoring::Monitoring()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "monitoring"; yang_parent_name = "analysis-module"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Serial::AnalysisModule::Monitoring::~Monitoring()
+{
+}
+
+bool Native::Interface::Serial::AnalysisModule::Monitoring::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set;
+}
+
+bool Native::Interface::Serial::AnalysisModule::Monitoring::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string Native::Interface::Serial::AnalysisModule::Monitoring::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "monitoring";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Serial::AnalysisModule::Monitoring::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Serial::AnalysisModule::Monitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Serial::AnalysisModule::Monitoring::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Serial::AnalysisModule::Monitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Serial::AnalysisModule::Monitoring::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Serial::AnalysisModule::Monitoring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
 Native::Interface::Tunnel::Tunnel()
     :
     name{YType::uint32, "name"},
@@ -13538,22 +13538,22 @@ Native::Interface::Tunnel::Tunnel()
     , pm_path(std::make_shared<Native::Interface::Tunnel::PmPath>())
     , qos(std::make_shared<Native::Interface::Tunnel::Qos>())
     , snmp(std::make_shared<Native::Interface::Tunnel::Snmp>())
-    , ospfv3(std::make_shared<Native::Interface::Tunnel::Ospfv3>())
-    , cdp(std::make_shared<Native::Interface::Tunnel::Cdp>())
     , nhrp(std::make_shared<Native::Interface::Tunnel::Nhrp>())
     , tunnel(std::make_shared<Native::Interface::Tunnel::Tunnel_>())
-    , crypto(std::make_shared<Native::Interface::Tunnel::Crypto>())
-    , cts(std::make_shared<Native::Interface::Tunnel::Cts>())
     , et_analytics(std::make_shared<Native::Interface::Tunnel::EtAnalytics>())
-    , performance(std::make_shared<Native::Interface::Tunnel::Performance>())
     , service_policy(std::make_shared<Native::Interface::Tunnel::ServicePolicy>())
+    , ospfv3(std::make_shared<Native::Interface::Tunnel::Ospfv3>())
+    , performance(std::make_shared<Native::Interface::Tunnel::Performance>())
     , lisp(std::make_shared<Native::Interface::Tunnel::Lisp>())
-    , analysis_module(std::make_shared<Native::Interface::Tunnel::AnalysisModule>())
-    , ntp(std::make_shared<Native::Interface::Tunnel::Ntp>())
-    , udld(std::make_shared<Native::Interface::Tunnel::Udld>())
     , umbrella(std::make_shared<Native::Interface::Tunnel::Umbrella>())
-    , utd(std::make_shared<Native::Interface::Tunnel::Utd>())
+    , crypto(std::make_shared<Native::Interface::Tunnel::Crypto>())
     , zone_member(std::make_shared<Native::Interface::Tunnel::ZoneMember>())
+    , analysis_module(std::make_shared<Native::Interface::Tunnel::AnalysisModule>())
+    , cts(std::make_shared<Native::Interface::Tunnel::Cts>())
+    , udld(std::make_shared<Native::Interface::Tunnel::Udld>())
+    , cdp(std::make_shared<Native::Interface::Tunnel::Cdp>())
+    , ntp(std::make_shared<Native::Interface::Tunnel::Ntp>())
+    , utd(std::make_shared<Native::Interface::Tunnel::Utd>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -13592,22 +13592,22 @@ Native::Interface::Tunnel::Tunnel()
     pm_path->parent = this;
     qos->parent = this;
     snmp->parent = this;
-    ospfv3->parent = this;
-    cdp->parent = this;
     nhrp->parent = this;
     tunnel->parent = this;
-    crypto->parent = this;
-    cts->parent = this;
     et_analytics->parent = this;
-    performance->parent = this;
     service_policy->parent = this;
+    ospfv3->parent = this;
+    performance->parent = this;
     lisp->parent = this;
-    analysis_module->parent = this;
-    ntp->parent = this;
-    udld->parent = this;
     umbrella->parent = this;
-    utd->parent = this;
+    crypto->parent = this;
     zone_member->parent = this;
+    analysis_module->parent = this;
+    cts->parent = this;
+    udld->parent = this;
+    cdp->parent = this;
+    ntp->parent = this;
+    utd->parent = this;
 
     yang_name = "Tunnel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -13674,22 +13674,22 @@ bool Native::Interface::Tunnel::has_data() const
 	|| (pm_path !=  nullptr && pm_path->has_data())
 	|| (qos !=  nullptr && qos->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
-	|| (cdp !=  nullptr && cdp->has_data())
 	|| (nhrp !=  nullptr && nhrp->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
-	|| (cts !=  nullptr && cts->has_data())
 	|| (et_analytics !=  nullptr && et_analytics->has_data())
-	|| (performance !=  nullptr && performance->has_data())
 	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (performance !=  nullptr && performance->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
-	|| (analysis_module !=  nullptr && analysis_module->has_data())
-	|| (ntp !=  nullptr && ntp->has_data())
-	|| (udld !=  nullptr && udld->has_data())
 	|| (umbrella !=  nullptr && umbrella->has_data())
-	|| (utd !=  nullptr && utd->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data());
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data())
+	|| (analysis_module !=  nullptr && analysis_module->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (udld !=  nullptr && udld->has_data())
+	|| (cdp !=  nullptr && cdp->has_data())
+	|| (ntp !=  nullptr && ntp->has_data())
+	|| (utd !=  nullptr && utd->has_data());
 }
 
 bool Native::Interface::Tunnel::has_operation() const
@@ -13750,22 +13750,22 @@ bool Native::Interface::Tunnel::has_operation() const
 	|| (pm_path !=  nullptr && pm_path->has_operation())
 	|| (qos !=  nullptr && qos->has_operation())
 	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
-	|| (cdp !=  nullptr && cdp->has_operation())
 	|| (nhrp !=  nullptr && nhrp->has_operation())
 	|| (tunnel !=  nullptr && tunnel->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
 	|| (et_analytics !=  nullptr && et_analytics->has_operation())
-	|| (performance !=  nullptr && performance->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (performance !=  nullptr && performance->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (analysis_module !=  nullptr && analysis_module->has_operation())
-	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (udld !=  nullptr && udld->has_operation())
 	|| (umbrella !=  nullptr && umbrella->has_operation())
-	|| (utd !=  nullptr && utd->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation());
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation())
+	|| (analysis_module !=  nullptr && analysis_module->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (udld !=  nullptr && udld->has_operation())
+	|| (cdp !=  nullptr && cdp->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (utd !=  nullptr && utd->has_operation());
 }
 
 std::string Native::Interface::Tunnel::get_absolute_path() const
@@ -14156,24 +14156,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return snmp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Native::Interface::Tunnel::Ospfv3>();
-        }
-        return ospfv3;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
-    {
-        if(cdp == nullptr)
-        {
-            cdp = std::make_shared<Native::Interface::Tunnel::Cdp>();
-        }
-        return cdp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-tunnel:nhrp")
     {
         if(nhrp == nullptr)
@@ -14192,24 +14174,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return tunnel;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::Tunnel::Crypto>();
-        }
-        return crypto;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::Tunnel::Cts>();
-        }
-        return cts;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
     {
         if(et_analytics == nullptr)
@@ -14217,15 +14181,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
             et_analytics = std::make_shared<Native::Interface::Tunnel::EtAnalytics>();
         }
         return et_analytics;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
-    {
-        if(performance == nullptr)
-        {
-            performance = std::make_shared<Native::Interface::Tunnel::Performance>();
-        }
-        return performance;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
@@ -14237,6 +14192,24 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return service_policy;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
+    {
+        if(ospfv3 == nullptr)
+        {
+            ospfv3 = std::make_shared<Native::Interface::Tunnel::Ospfv3>();
+        }
+        return ospfv3;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
+    {
+        if(performance == nullptr)
+        {
+            performance = std::make_shared<Native::Interface::Tunnel::Performance>();
+        }
+        return performance;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
     {
         if(lisp == nullptr)
@@ -14244,33 +14217,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
             lisp = std::make_shared<Native::Interface::Tunnel::Lisp>();
         }
         return lisp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
-    {
-        if(analysis_module == nullptr)
-        {
-            analysis_module = std::make_shared<Native::Interface::Tunnel::AnalysisModule>();
-        }
-        return analysis_module;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
-    {
-        if(ntp == nullptr)
-        {
-            ntp = std::make_shared<Native::Interface::Tunnel::Ntp>();
-        }
-        return ntp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
-    {
-        if(udld == nullptr)
-        {
-            udld = std::make_shared<Native::Interface::Tunnel::Udld>();
-        }
-        return udld;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
@@ -14282,13 +14228,13 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return umbrella;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
     {
-        if(utd == nullptr)
+        if(crypto == nullptr)
         {
-            utd = std::make_shared<Native::Interface::Tunnel::Utd>();
+            crypto = std::make_shared<Native::Interface::Tunnel::Crypto>();
         }
-        return utd;
+        return crypto;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
@@ -14298,6 +14244,60 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
             zone_member = std::make_shared<Native::Interface::Tunnel::ZoneMember>();
         }
         return zone_member;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
+    {
+        if(analysis_module == nullptr)
+        {
+            analysis_module = std::make_shared<Native::Interface::Tunnel::AnalysisModule>();
+        }
+        return analysis_module;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::Tunnel::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
+    {
+        if(udld == nullptr)
+        {
+            udld = std::make_shared<Native::Interface::Tunnel::Udld>();
+        }
+        return udld;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
+    {
+        if(cdp == nullptr)
+        {
+            cdp = std::make_shared<Native::Interface::Tunnel::Cdp>();
+        }
+        return cdp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
+    {
+        if(ntp == nullptr)
+        {
+            ntp = std::make_shared<Native::Interface::Tunnel::Ntp>();
+        }
+        return ntp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    {
+        if(utd == nullptr)
+        {
+            utd = std::make_shared<Native::Interface::Tunnel::Utd>();
+        }
+        return utd;
     }
 
     return nullptr;
@@ -14506,16 +14506,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
     }
 
-    if(ospfv3 != nullptr)
-    {
-        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
-    }
-
-    if(cdp != nullptr)
-    {
-        _children["Cisco-IOS-XE-cdp:cdp"] = cdp;
-    }
-
     if(nhrp != nullptr)
     {
         _children["Cisco-IOS-XE-tunnel:nhrp"] = nhrp;
@@ -14526,24 +14516,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["Cisco-IOS-XE-tunnel:tunnel"] = tunnel;
     }
 
-    if(crypto != nullptr)
-    {
-        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
-    if(cts != nullptr)
-    {
-        _children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
     if(et_analytics != nullptr)
     {
         _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
-    }
-
-    if(performance != nullptr)
-    {
-        _children["Cisco-IOS-XE-ezpm:performance"] = performance;
     }
 
     if(service_policy != nullptr)
@@ -14551,24 +14526,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
+    if(ospfv3 != nullptr)
+    {
+        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+    }
+
+    if(performance != nullptr)
+    {
+        _children["Cisco-IOS-XE-ezpm:performance"] = performance;
+    }
+
     if(lisp != nullptr)
     {
         _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
-    }
-
-    if(analysis_module != nullptr)
-    {
-        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
-    }
-
-    if(ntp != nullptr)
-    {
-        _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
-    }
-
-    if(udld != nullptr)
-    {
-        _children["Cisco-IOS-XE-udld:udld"] = udld;
     }
 
     if(umbrella != nullptr)
@@ -14576,14 +14546,44 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
-    if(utd != nullptr)
+    if(crypto != nullptr)
     {
-        _children["Cisco-IOS-XE-utd:utd"] = utd;
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
     if(zone_member != nullptr)
     {
         _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+    }
+
+    if(analysis_module != nullptr)
+    {
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
+    }
+
+    if(cts != nullptr)
+    {
+        _children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(udld != nullptr)
+    {
+        _children["Cisco-IOS-XE-udld:udld"] = udld;
+    }
+
+    if(cdp != nullptr)
+    {
+        _children["Cisco-IOS-XE-cdp:cdp"] = cdp;
+    }
+
+    if(ntp != nullptr)
+    {
+        _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
+    }
+
+    if(utd != nullptr)
+    {
+        _children["Cisco-IOS-XE-utd:utd"] = utd;
     }
 
     return _children;
@@ -14719,7 +14719,7 @@ void Native::Interface::Tunnel::set_filter(const std::string & value_path, YFilt
 
 bool Native::Interface::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "qos" || name == "snmp" || name == "ospfv3" || name == "cdp" || name == "nhrp" || name == "tunnel" || name == "crypto" || name == "cts" || name == "et-analytics" || name == "performance" || name == "service-policy" || name == "lisp" || name == "analysis-module" || name == "ntp" || name == "udld" || name == "umbrella" || name == "utd" || name == "zone-member" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "qos" || name == "snmp" || name == "nhrp" || name == "tunnel" || name == "et-analytics" || name == "service-policy" || name == "ospfv3" || name == "performance" || name == "lisp" || name == "umbrella" || name == "crypto" || name == "zone-member" || name == "analysis-module" || name == "cts" || name == "udld" || name == "cdp" || name == "ntp" || name == "utd" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
         return true;
     return false;
 }

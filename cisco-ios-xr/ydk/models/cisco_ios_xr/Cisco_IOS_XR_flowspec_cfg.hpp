@@ -280,27 +280,30 @@ class FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy : public ydk:
 
 }; // FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy
 
-class FsVrfAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class FsAfP : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pbr;
-
-};
-
 class FsAddf : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
+};
+
+class FsVrfAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class FsVrfAfP : public ydk::Enum
@@ -308,6 +311,21 @@ class FsVrfAfP : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf pbr;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pbr") return 2;
+            return -1;
+        }
+};
+
+class FsAfP : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pbr;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "pbr") return 2;
+            return -1;
+        }
 };
 
 

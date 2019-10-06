@@ -18,6 +18,13 @@ class UtdUpdateStatusVal : public ydk::Enum
         static const ydk::Enum::YLeaf utd_update_status_failure;
         static const ydk::Enum::YLeaf utd_update_status_no_update;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "utd-update-status-unknown") return 0;
+            if (name == "utd-update-status-success") return 1;
+            if (name == "utd-update-status-failure") return 2;
+            if (name == "utd-update-status-no-update") return 3;
+            return -1;
+        }
 };
 
 

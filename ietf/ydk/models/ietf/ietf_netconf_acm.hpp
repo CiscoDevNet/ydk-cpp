@@ -142,7 +142,7 @@ class Nacm::RuleList::Rule : public ydk::Entity
         ydk::YLeaf rpc_name; //type: string
         ydk::YLeaf notification_name; //type: string
         ydk::YLeaf path; //type: string
-        ydk::YLeaf access_operations; //type: one of string, bits
+        ydk::YLeaf access_operations; //type: one of bits, string
         ydk::YLeaf action; //type: ActionType
         ydk::YLeaf comment; //type: string
 
@@ -154,6 +154,11 @@ class ActionType : public ydk::Enum
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "permit") return 0;
+            if (name == "deny") return 1;
+            return -1;
+        }
 };
 
 

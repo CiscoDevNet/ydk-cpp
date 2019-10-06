@@ -5,96 +5,14 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_clns_isis_oper_2.hpp"
-#include "Cisco_IOS_XR_clns_isis_oper_9.hpp"
-#include "Cisco_IOS_XR_clns_isis_oper_3.hpp"
+#include "Cisco_IOS_XR_clns_isis_oper_7.hpp"
 #include "Cisco_IOS_XR_clns_isis_oper_8.hpp"
+#include "Cisco_IOS_XR_clns_isis_oper_3.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_oper {
-
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::Ipv4TeRouterId()
-    :
-    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State>())
-{
-    state->parent = this;
-
-    yang_name = "ipv4-te-router-id"; yang_parent_name = "tlvs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::~Ipv4TeRouterId()
-{
-}
-
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::has_data() const
-{
-    if (is_presence_container) return true;
-    return (state !=  nullptr && state->has_data());
-}
-
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::has_operation() const
-{
-    return is_set(yfilter)
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-te-router-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(state != nullptr)
-    {
-        _children["state"] = state;
-    }
-
-    return _children;
-}
-
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "state")
-        return true;
-    return false;
-}
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::State()
     :
@@ -1334,7 +1252,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::State()
     :
     type{YType::str, "type"},
-    router_id{YType::str, "router-id"}
+    ipv4_source_router_id{YType::str, "ipv4-source-router-id"}
 {
 
     yang_name = "state"; yang_parent_name = "ipv4-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1348,14 +1266,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 {
     if (is_presence_container) return true;
     return type.is_set
-	|| router_id.is_set;
+	|| ipv4_source_router_id.is_set;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(router_id.yfilter);
+	|| ydk::is_set(ipv4_source_router_id.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_segment_path() const
@@ -1370,7 +1288,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (ipv4_source_router_id.is_set || is_set(ipv4_source_router_id.yfilter)) leaf_name_data.push_back(ipv4_source_router_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1396,11 +1314,11 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv4-source-router-id")
     {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
+        ipv4_source_router_id = value;
+        ipv4_source_router_id.value_namespace = name_space;
+        ipv4_source_router_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1410,15 +1328,15 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     {
         type.yfilter = yfilter;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv4-source-router-id")
     {
-        router_id.yfilter = yfilter;
+        ipv4_source_router_id.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "router-id")
+    if(name == "type" || name == "ipv4-source-router-id")
         return true;
     return false;
 }
@@ -1508,7 +1426,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::State()
     :
     type{YType::str, "type"},
-    router_id{YType::str, "router-id"}
+    ipv6_source_router_id{YType::str, "ipv6-source-router-id"}
 {
 
     yang_name = "state"; yang_parent_name = "ipv6-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1522,14 +1440,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 {
     if (is_presence_container) return true;
     return type.is_set
-	|| router_id.is_set;
+	|| ipv6_source_router_id.is_set;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(router_id.yfilter);
+	|| ydk::is_set(ipv6_source_router_id.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_segment_path() const
@@ -1544,7 +1462,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (ipv6_source_router_id.is_set || is_set(ipv6_source_router_id.yfilter)) leaf_name_data.push_back(ipv6_source_router_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1570,11 +1488,11 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv6-source-router-id")
     {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
+        ipv6_source_router_id = value;
+        ipv6_source_router_id.value_namespace = name_space;
+        ipv6_source_router_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1584,15 +1502,15 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     {
         type.yfilter = yfilter;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv6-source-router-id")
     {
-        router_id.yfilter = yfilter;
+        ipv6_source_router_id.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "router-id")
+    if(name == "type" || name == "ipv6-source-router-id")
         return true;
     return false;
 }
@@ -3515,7 +3433,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::State()
     :
     flags{YType::enumeration, "flags"},
-    metric{YType::uint8, "metric"}
+    default_metric{YType::uint8, "default-metric"}
 {
 
     yang_name = "state"; yang_parent_name = "default-metric"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3529,14 +3447,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 {
     if (is_presence_container) return true;
     return flags.is_set
-	|| metric.is_set;
+	|| default_metric.is_set;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flags.yfilter)
-	|| ydk::is_set(metric.yfilter);
+	|| ydk::is_set(default_metric.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::get_segment_path() const
@@ -3551,7 +3469,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (default_metric.is_set || is_set(default_metric.yfilter)) leaf_name_data.push_back(default_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3577,11 +3495,11 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
         flags.value_namespace = name_space;
         flags.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "metric")
+    if(value_path == "default-metric")
     {
-        metric = value;
-        metric.value_namespace = name_space;
-        metric.value_namespace_prefix = name_space_prefix;
+        default_metric = value;
+        default_metric.value_namespace = name_space;
+        default_metric.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3591,15 +3509,15 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     {
         flags.yfilter = yfilter;
     }
-    if(value_path == "metric")
+    if(value_path == "default-metric")
     {
-        metric.yfilter = yfilter;
+        default_metric.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flags" || name == "metric")
+    if(name == "flags" || name == "default-metric")
         return true;
     return false;
 }
@@ -5492,7 +5410,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::State()
     :
     type{YType::str, "type"},
-    router_id{YType::str, "router-id"}
+    ipv4_source_router_id{YType::str, "ipv4-source-router-id"}
 {
 
     yang_name = "state"; yang_parent_name = "mt-ipv6-reachability-prefixes-subtlvs-ipv4-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5506,14 +5424,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 {
     if (is_presence_container) return true;
     return type.is_set
-	|| router_id.is_set;
+	|| ipv4_source_router_id.is_set;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(router_id.yfilter);
+	|| ydk::is_set(ipv4_source_router_id.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::get_segment_path() const
@@ -5528,7 +5446,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (ipv4_source_router_id.is_set || is_set(ipv4_source_router_id.yfilter)) leaf_name_data.push_back(ipv4_source_router_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5554,11 +5472,11 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv4-source-router-id")
     {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
+        ipv4_source_router_id = value;
+        ipv4_source_router_id.value_namespace = name_space;
+        ipv4_source_router_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -5568,15 +5486,15 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     {
         type.yfilter = yfilter;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv4-source-router-id")
     {
-        router_id.yfilter = yfilter;
+        ipv4_source_router_id.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "router-id")
+    if(name == "type" || name == "ipv4-source-router-id")
         return true;
     return false;
 }
@@ -5835,7 +5753,7 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::State()
     :
     type{YType::str, "type"},
-    router_id{YType::str, "router-id"}
+    ipv6_source_router_id{YType::str, "ipv6-source-router-id"}
 {
 
     yang_name = "state"; yang_parent_name = "mt-ipv6-reachability-prefixes-subtlvs-ipv6-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5849,14 +5767,14 @@ bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
 {
     if (is_presence_container) return true;
     return type.is_set
-	|| router_id.is_set;
+	|| ipv6_source_router_id.is_set;
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(router_id.yfilter);
+	|| ydk::is_set(ipv6_source_router_id.yfilter);
 }
 
 std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::get_segment_path() const
@@ -5871,7 +5789,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (ipv6_source_router_id.is_set || is_set(ipv6_source_router_id.yfilter)) leaf_name_data.push_back(ipv6_source_router_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5897,11 +5815,11 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv6-source-router-id")
     {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
+        ipv6_source_router_id = value;
+        ipv6_source_router_id.value_namespace = name_space;
+        ipv6_source_router_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -5911,15 +5829,15 @@ void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Lev
     {
         type.yfilter = yfilter;
     }
-    if(value_path == "router-id")
+    if(value_path == "ipv6-source-router-id")
     {
-        router_id.yfilter = yfilter;
+        ipv6_source_router_id.yfilter = yfilter;
     }
 }
 
 bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "router-id")
+    if(name == "type" || name == "ipv6-source-router-id")
         return true;
     return false;
 }
@@ -16575,6 +16493,520 @@ void Isis::Instances::Instance::Levels::Level::Adjacencies::set_filter(const std
 bool Isis::Instances::Instance::Levels::Level::Adjacencies::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "adjacency")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adjacency()
+    :
+    system_id{YType::str, "system-id"},
+    interface_name{YType::str, "interface-name"},
+    adjacency_system_id{YType::str, "adjacency-system-id"},
+    adjacency_snpa{YType::str, "adjacency-snpa"},
+    adjacency_interface{YType::str, "adjacency-interface"},
+    adjacency_media_type{YType::enumeration, "adjacency-media-type"},
+    adjacency_state{YType::enumeration, "adjacency-state"},
+    adjacency_bfd_state{YType::enumeration, "adjacency-bfd-state"},
+    adjacency_ipv6bfd_state{YType::enumeration, "adjacency-ipv6bfd-state"},
+    adj_ipv4bfd_retry_running{YType::boolean, "adj-ipv4bfd-retry-running"},
+    adj_ipv6bfd_retry_running{YType::boolean, "adj-ipv6bfd-retry-running"},
+    adj_ipv4bfd_retry_exp{YType::uint32, "adj-ipv4bfd-retry-exp"},
+    adj_ipv6bfd_retry_exp{YType::uint32, "adj-ipv6bfd-retry-exp"},
+    adj_ipv4bfd_retry_count{YType::uint32, "adj-ipv4bfd-retry-count"},
+    adj_ipv6bfd_retry_count{YType::uint32, "adj-ipv6bfd-retry-count"},
+    adjacency_uptime_valid_flag{YType::boolean, "adjacency-uptime-valid-flag"},
+    adjacency_uptime{YType::uint32, "adjacency-uptime"},
+    adjacency_holdtime{YType::uint32, "adjacency-holdtime"},
+    adjacency_checkpoint_object_id{YType::uint32, "adjacency-checkpoint-object-id"},
+    adjacency_ietf_nsf_capable_flag{YType::boolean, "adjacency-ietf-nsf-capable-flag"},
+    adjacency_dispriority{YType::uint8, "adjacency-dispriority"},
+    adjacency_neighbor_priority{YType::uint8, "adjacency-neighbor-priority"},
+    adjacency_local_priority{YType::uint8, "adjacency-local-priority"},
+    local_dis_flag{YType::boolean, "local-dis-flag"},
+    neighbor_dis_flag{YType::boolean, "neighbor-dis-flag"},
+    nsr_standby{YType::uint8, "nsr-standby"}
+        ,
+    adjacency_area_address(this, {})
+    , adjacency_topology(this, {})
+    , adjacency_per_address_family_data(this, {})
+{
+
+    yang_name = "adjacency"; yang_parent_name = "adjacencies"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::~Adjacency()
+{
+}
+
+bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<adjacency_area_address.len(); index++)
+    {
+        if(adjacency_area_address[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<adjacency_topology.len(); index++)
+    {
+        if(adjacency_topology[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<adjacency_per_address_family_data.len(); index++)
+    {
+        if(adjacency_per_address_family_data[index]->has_data())
+            return true;
+    }
+    return system_id.is_set
+	|| interface_name.is_set
+	|| adjacency_system_id.is_set
+	|| adjacency_snpa.is_set
+	|| adjacency_interface.is_set
+	|| adjacency_media_type.is_set
+	|| adjacency_state.is_set
+	|| adjacency_bfd_state.is_set
+	|| adjacency_ipv6bfd_state.is_set
+	|| adj_ipv4bfd_retry_running.is_set
+	|| adj_ipv6bfd_retry_running.is_set
+	|| adj_ipv4bfd_retry_exp.is_set
+	|| adj_ipv6bfd_retry_exp.is_set
+	|| adj_ipv4bfd_retry_count.is_set
+	|| adj_ipv6bfd_retry_count.is_set
+	|| adjacency_uptime_valid_flag.is_set
+	|| adjacency_uptime.is_set
+	|| adjacency_holdtime.is_set
+	|| adjacency_checkpoint_object_id.is_set
+	|| adjacency_ietf_nsf_capable_flag.is_set
+	|| adjacency_dispriority.is_set
+	|| adjacency_neighbor_priority.is_set
+	|| adjacency_local_priority.is_set
+	|| local_dis_flag.is_set
+	|| neighbor_dis_flag.is_set
+	|| nsr_standby.is_set;
+}
+
+bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::has_operation() const
+{
+    for (std::size_t index=0; index<adjacency_area_address.len(); index++)
+    {
+        if(adjacency_area_address[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<adjacency_topology.len(); index++)
+    {
+        if(adjacency_topology[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<adjacency_per_address_family_data.len(); index++)
+    {
+        if(adjacency_per_address_family_data[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(system_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(adjacency_system_id.yfilter)
+	|| ydk::is_set(adjacency_snpa.yfilter)
+	|| ydk::is_set(adjacency_interface.yfilter)
+	|| ydk::is_set(adjacency_media_type.yfilter)
+	|| ydk::is_set(adjacency_state.yfilter)
+	|| ydk::is_set(adjacency_bfd_state.yfilter)
+	|| ydk::is_set(adjacency_ipv6bfd_state.yfilter)
+	|| ydk::is_set(adj_ipv4bfd_retry_running.yfilter)
+	|| ydk::is_set(adj_ipv6bfd_retry_running.yfilter)
+	|| ydk::is_set(adj_ipv4bfd_retry_exp.yfilter)
+	|| ydk::is_set(adj_ipv6bfd_retry_exp.yfilter)
+	|| ydk::is_set(adj_ipv4bfd_retry_count.yfilter)
+	|| ydk::is_set(adj_ipv6bfd_retry_count.yfilter)
+	|| ydk::is_set(adjacency_uptime_valid_flag.yfilter)
+	|| ydk::is_set(adjacency_uptime.yfilter)
+	|| ydk::is_set(adjacency_holdtime.yfilter)
+	|| ydk::is_set(adjacency_checkpoint_object_id.yfilter)
+	|| ydk::is_set(adjacency_ietf_nsf_capable_flag.yfilter)
+	|| ydk::is_set(adjacency_dispriority.yfilter)
+	|| ydk::is_set(adjacency_neighbor_priority.yfilter)
+	|| ydk::is_set(adjacency_local_priority.yfilter)
+	|| ydk::is_set(local_dis_flag.yfilter)
+	|| ydk::is_set(neighbor_dis_flag.yfilter)
+	|| ydk::is_set(nsr_standby.yfilter);
+}
+
+std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (system_id.is_set || is_set(system_id.yfilter)) leaf_name_data.push_back(system_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (adjacency_system_id.is_set || is_set(adjacency_system_id.yfilter)) leaf_name_data.push_back(adjacency_system_id.get_name_leafdata());
+    if (adjacency_snpa.is_set || is_set(adjacency_snpa.yfilter)) leaf_name_data.push_back(adjacency_snpa.get_name_leafdata());
+    if (adjacency_interface.is_set || is_set(adjacency_interface.yfilter)) leaf_name_data.push_back(adjacency_interface.get_name_leafdata());
+    if (adjacency_media_type.is_set || is_set(adjacency_media_type.yfilter)) leaf_name_data.push_back(adjacency_media_type.get_name_leafdata());
+    if (adjacency_state.is_set || is_set(adjacency_state.yfilter)) leaf_name_data.push_back(adjacency_state.get_name_leafdata());
+    if (adjacency_bfd_state.is_set || is_set(adjacency_bfd_state.yfilter)) leaf_name_data.push_back(adjacency_bfd_state.get_name_leafdata());
+    if (adjacency_ipv6bfd_state.is_set || is_set(adjacency_ipv6bfd_state.yfilter)) leaf_name_data.push_back(adjacency_ipv6bfd_state.get_name_leafdata());
+    if (adj_ipv4bfd_retry_running.is_set || is_set(adj_ipv4bfd_retry_running.yfilter)) leaf_name_data.push_back(adj_ipv4bfd_retry_running.get_name_leafdata());
+    if (adj_ipv6bfd_retry_running.is_set || is_set(adj_ipv6bfd_retry_running.yfilter)) leaf_name_data.push_back(adj_ipv6bfd_retry_running.get_name_leafdata());
+    if (adj_ipv4bfd_retry_exp.is_set || is_set(adj_ipv4bfd_retry_exp.yfilter)) leaf_name_data.push_back(adj_ipv4bfd_retry_exp.get_name_leafdata());
+    if (adj_ipv6bfd_retry_exp.is_set || is_set(adj_ipv6bfd_retry_exp.yfilter)) leaf_name_data.push_back(adj_ipv6bfd_retry_exp.get_name_leafdata());
+    if (adj_ipv4bfd_retry_count.is_set || is_set(adj_ipv4bfd_retry_count.yfilter)) leaf_name_data.push_back(adj_ipv4bfd_retry_count.get_name_leafdata());
+    if (adj_ipv6bfd_retry_count.is_set || is_set(adj_ipv6bfd_retry_count.yfilter)) leaf_name_data.push_back(adj_ipv6bfd_retry_count.get_name_leafdata());
+    if (adjacency_uptime_valid_flag.is_set || is_set(adjacency_uptime_valid_flag.yfilter)) leaf_name_data.push_back(adjacency_uptime_valid_flag.get_name_leafdata());
+    if (adjacency_uptime.is_set || is_set(adjacency_uptime.yfilter)) leaf_name_data.push_back(adjacency_uptime.get_name_leafdata());
+    if (adjacency_holdtime.is_set || is_set(adjacency_holdtime.yfilter)) leaf_name_data.push_back(adjacency_holdtime.get_name_leafdata());
+    if (adjacency_checkpoint_object_id.is_set || is_set(adjacency_checkpoint_object_id.yfilter)) leaf_name_data.push_back(adjacency_checkpoint_object_id.get_name_leafdata());
+    if (adjacency_ietf_nsf_capable_flag.is_set || is_set(adjacency_ietf_nsf_capable_flag.yfilter)) leaf_name_data.push_back(adjacency_ietf_nsf_capable_flag.get_name_leafdata());
+    if (adjacency_dispriority.is_set || is_set(adjacency_dispriority.yfilter)) leaf_name_data.push_back(adjacency_dispriority.get_name_leafdata());
+    if (adjacency_neighbor_priority.is_set || is_set(adjacency_neighbor_priority.yfilter)) leaf_name_data.push_back(adjacency_neighbor_priority.get_name_leafdata());
+    if (adjacency_local_priority.is_set || is_set(adjacency_local_priority.yfilter)) leaf_name_data.push_back(adjacency_local_priority.get_name_leafdata());
+    if (local_dis_flag.is_set || is_set(local_dis_flag.yfilter)) leaf_name_data.push_back(local_dis_flag.get_name_leafdata());
+    if (neighbor_dis_flag.is_set || is_set(neighbor_dis_flag.yfilter)) leaf_name_data.push_back(neighbor_dis_flag.get_name_leafdata());
+    if (nsr_standby.is_set || is_set(nsr_standby.yfilter)) leaf_name_data.push_back(nsr_standby.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "adjacency-area-address")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress>();
+        ent_->parent = this;
+        adjacency_area_address.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "adjacency-topology")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology>();
+        ent_->parent = this;
+        adjacency_topology.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "adjacency-per-address-family-data")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData>();
+        ent_->parent = this;
+        adjacency_per_address_family_data.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adjacency_area_address.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : adjacency_topology.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : adjacency_per_address_family_data.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "system-id")
+    {
+        system_id = value;
+        system_id.value_namespace = name_space;
+        system_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-system-id")
+    {
+        adjacency_system_id = value;
+        adjacency_system_id.value_namespace = name_space;
+        adjacency_system_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-snpa")
+    {
+        adjacency_snpa = value;
+        adjacency_snpa.value_namespace = name_space;
+        adjacency_snpa.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-interface")
+    {
+        adjacency_interface = value;
+        adjacency_interface.value_namespace = name_space;
+        adjacency_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-media-type")
+    {
+        adjacency_media_type = value;
+        adjacency_media_type.value_namespace = name_space;
+        adjacency_media_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-state")
+    {
+        adjacency_state = value;
+        adjacency_state.value_namespace = name_space;
+        adjacency_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-bfd-state")
+    {
+        adjacency_bfd_state = value;
+        adjacency_bfd_state.value_namespace = name_space;
+        adjacency_bfd_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-ipv6bfd-state")
+    {
+        adjacency_ipv6bfd_state = value;
+        adjacency_ipv6bfd_state.value_namespace = name_space;
+        adjacency_ipv6bfd_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adj-ipv4bfd-retry-running")
+    {
+        adj_ipv4bfd_retry_running = value;
+        adj_ipv4bfd_retry_running.value_namespace = name_space;
+        adj_ipv4bfd_retry_running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adj-ipv6bfd-retry-running")
+    {
+        adj_ipv6bfd_retry_running = value;
+        adj_ipv6bfd_retry_running.value_namespace = name_space;
+        adj_ipv6bfd_retry_running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adj-ipv4bfd-retry-exp")
+    {
+        adj_ipv4bfd_retry_exp = value;
+        adj_ipv4bfd_retry_exp.value_namespace = name_space;
+        adj_ipv4bfd_retry_exp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adj-ipv6bfd-retry-exp")
+    {
+        adj_ipv6bfd_retry_exp = value;
+        adj_ipv6bfd_retry_exp.value_namespace = name_space;
+        adj_ipv6bfd_retry_exp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adj-ipv4bfd-retry-count")
+    {
+        adj_ipv4bfd_retry_count = value;
+        adj_ipv4bfd_retry_count.value_namespace = name_space;
+        adj_ipv4bfd_retry_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adj-ipv6bfd-retry-count")
+    {
+        adj_ipv6bfd_retry_count = value;
+        adj_ipv6bfd_retry_count.value_namespace = name_space;
+        adj_ipv6bfd_retry_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-uptime-valid-flag")
+    {
+        adjacency_uptime_valid_flag = value;
+        adjacency_uptime_valid_flag.value_namespace = name_space;
+        adjacency_uptime_valid_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-uptime")
+    {
+        adjacency_uptime = value;
+        adjacency_uptime.value_namespace = name_space;
+        adjacency_uptime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-holdtime")
+    {
+        adjacency_holdtime = value;
+        adjacency_holdtime.value_namespace = name_space;
+        adjacency_holdtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-checkpoint-object-id")
+    {
+        adjacency_checkpoint_object_id = value;
+        adjacency_checkpoint_object_id.value_namespace = name_space;
+        adjacency_checkpoint_object_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-ietf-nsf-capable-flag")
+    {
+        adjacency_ietf_nsf_capable_flag = value;
+        adjacency_ietf_nsf_capable_flag.value_namespace = name_space;
+        adjacency_ietf_nsf_capable_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-dispriority")
+    {
+        adjacency_dispriority = value;
+        adjacency_dispriority.value_namespace = name_space;
+        adjacency_dispriority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-neighbor-priority")
+    {
+        adjacency_neighbor_priority = value;
+        adjacency_neighbor_priority.value_namespace = name_space;
+        adjacency_neighbor_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-local-priority")
+    {
+        adjacency_local_priority = value;
+        adjacency_local_priority.value_namespace = name_space;
+        adjacency_local_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-dis-flag")
+    {
+        local_dis_flag = value;
+        local_dis_flag.value_namespace = name_space;
+        local_dis_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-dis-flag")
+    {
+        neighbor_dis_flag = value;
+        neighbor_dis_flag.value_namespace = name_space;
+        neighbor_dis_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nsr-standby")
+    {
+        nsr_standby = value;
+        nsr_standby.value_namespace = name_space;
+        nsr_standby.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-id")
+    {
+        system_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-system-id")
+    {
+        adjacency_system_id.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-snpa")
+    {
+        adjacency_snpa.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-interface")
+    {
+        adjacency_interface.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-media-type")
+    {
+        adjacency_media_type.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-state")
+    {
+        adjacency_state.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-bfd-state")
+    {
+        adjacency_bfd_state.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-ipv6bfd-state")
+    {
+        adjacency_ipv6bfd_state.yfilter = yfilter;
+    }
+    if(value_path == "adj-ipv4bfd-retry-running")
+    {
+        adj_ipv4bfd_retry_running.yfilter = yfilter;
+    }
+    if(value_path == "adj-ipv6bfd-retry-running")
+    {
+        adj_ipv6bfd_retry_running.yfilter = yfilter;
+    }
+    if(value_path == "adj-ipv4bfd-retry-exp")
+    {
+        adj_ipv4bfd_retry_exp.yfilter = yfilter;
+    }
+    if(value_path == "adj-ipv6bfd-retry-exp")
+    {
+        adj_ipv6bfd_retry_exp.yfilter = yfilter;
+    }
+    if(value_path == "adj-ipv4bfd-retry-count")
+    {
+        adj_ipv4bfd_retry_count.yfilter = yfilter;
+    }
+    if(value_path == "adj-ipv6bfd-retry-count")
+    {
+        adj_ipv6bfd_retry_count.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-uptime-valid-flag")
+    {
+        adjacency_uptime_valid_flag.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-uptime")
+    {
+        adjacency_uptime.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-holdtime")
+    {
+        adjacency_holdtime.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-checkpoint-object-id")
+    {
+        adjacency_checkpoint_object_id.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-ietf-nsf-capable-flag")
+    {
+        adjacency_ietf_nsf_capable_flag.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-dispriority")
+    {
+        adjacency_dispriority.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-neighbor-priority")
+    {
+        adjacency_neighbor_priority.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-local-priority")
+    {
+        adjacency_local_priority.yfilter = yfilter;
+    }
+    if(value_path == "local-dis-flag")
+    {
+        local_dis_flag.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-dis-flag")
+    {
+        neighbor_dis_flag.yfilter = yfilter;
+    }
+    if(value_path == "nsr-standby")
+    {
+        nsr_standby.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjacency-area-address" || name == "adjacency-topology" || name == "adjacency-per-address-family-data" || name == "system-id" || name == "interface-name" || name == "adjacency-system-id" || name == "adjacency-snpa" || name == "adjacency-interface" || name == "adjacency-media-type" || name == "adjacency-state" || name == "adjacency-bfd-state" || name == "adjacency-ipv6bfd-state" || name == "adj-ipv4bfd-retry-running" || name == "adj-ipv6bfd-retry-running" || name == "adj-ipv4bfd-retry-exp" || name == "adj-ipv6bfd-retry-exp" || name == "adj-ipv4bfd-retry-count" || name == "adj-ipv6bfd-retry-count" || name == "adjacency-uptime-valid-flag" || name == "adjacency-uptime" || name == "adjacency-holdtime" || name == "adjacency-checkpoint-object-id" || name == "adjacency-ietf-nsf-capable-flag" || name == "adjacency-dispriority" || name == "adjacency-neighbor-priority" || name == "adjacency-local-priority" || name == "local-dis-flag" || name == "neighbor-dis-flag" || name == "nsr-standby")
         return true;
     return false;
 }

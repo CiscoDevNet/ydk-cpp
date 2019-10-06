@@ -65,7 +65,7 @@ class Rsvp::RequestDetails::RequestDetail::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
+        ydk::YLeaf neighbor_logical_interface_name; //type: string
 
 }; // Rsvp::RequestDetails::RequestDetail::Hop
 

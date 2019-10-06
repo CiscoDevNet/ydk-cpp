@@ -496,135 +496,12 @@ class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting : public ydk::E
         ydk::YLeaf bundle_member_adj_sid; //type: empty
         ydk::YLeaf labeled_only; //type: empty
         ydk::YLeaf mpls; //type: IsisLabelPreference
-        class Srv6; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6
-        class ConnectedPrefixSids; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids
+        ydk::YLeaf srv6; //type: empty
         class PrefixSidMap; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6> srv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids> connected_prefix_sids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap> prefix_sid_map;
         
 }; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting
-
-
-class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6 : public ydk::Entity
-{
-    public:
-        Srv6();
-        ~Srv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf running; //type: empty
-        class Srv6Locators; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators> srv6_locators;
-        
-}; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6
-
-
-class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators : public ydk::Entity
-{
-    public:
-        Srv6Locators();
-        ~Srv6Locators();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Srv6Locator; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator
-
-        ydk::YList srv6_locator;
-        
-}; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators
-
-
-class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator : public ydk::Entity
-{
-    public:
-        Srv6Locator();
-        ~Srv6Locator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf locator_name; //type: string
-        ydk::YLeaf running; //type: empty
-
-}; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator
-
-
-class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids : public ydk::Entity
-{
-    public:
-        ConnectedPrefixSids();
-        ~ConnectedPrefixSids();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ConnectedPrefixSid; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid
-
-        ydk::YList connected_prefix_sid;
-        
-}; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids
-
-
-class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid : public ydk::Entity
-{
-    public:
-        ConnectedPrefixSid();
-        ~ConnectedPrefixSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_prefix; //type: string
-        ydk::YLeaf algo; //type: uint32
-        ydk::YLeaf sid_type; //type: Isissid1
-        ydk::YLeaf sid; //type: uint32
-        ydk::YLeaf sid_range; //type: uint32
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf php; //type: IsisphpFlag
-        ydk::YLeaf explicit_null; //type: IsisexplicitNullFlag
-
-}; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid
 
 
 class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap : public ydk::Entity
@@ -858,10 +735,33 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prio
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
+        class FrrType; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType
+
+        ydk::YList frr_type;
+        
+}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit
+
+
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType : public ydk::Entity
+{
+    public:
+        FrrType();
+        ~FrrType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf frr_type; //type: Isisfrr
         ydk::YLeaf priority; //type: IsisPrefixPriority
 
-}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit
+}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType
 
 
 class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes : public ydk::Entity
@@ -2150,135 +2050,12 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting : public 
         ydk::YLeaf bundle_member_adj_sid; //type: empty
         ydk::YLeaf labeled_only; //type: empty
         ydk::YLeaf mpls; //type: IsisLabelPreference
-        class Srv6; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6
-        class ConnectedPrefixSids; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids
+        ydk::YLeaf srv6; //type: empty
         class PrefixSidMap; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6> srv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids> connected_prefix_sids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap> prefix_sid_map;
         
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting
-
-
-class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6 : public ydk::Entity
-{
-    public:
-        Srv6();
-        ~Srv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf running; //type: empty
-        class Srv6Locators; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators> srv6_locators;
-        
-}; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6
-
-
-class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators : public ydk::Entity
-{
-    public:
-        Srv6Locators();
-        ~Srv6Locators();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Srv6Locator; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator
-
-        ydk::YList srv6_locator;
-        
-}; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators
-
-
-class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator : public ydk::Entity
-{
-    public:
-        Srv6Locator();
-        ~Srv6Locator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf locator_name; //type: string
-        ydk::YLeaf running; //type: empty
-
-}; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator
-
-
-class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids : public ydk::Entity
-{
-    public:
-        ConnectedPrefixSids();
-        ~ConnectedPrefixSids();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ConnectedPrefixSid; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid
-
-        ydk::YList connected_prefix_sid;
-        
-}; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids
-
-
-class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid : public ydk::Entity
-{
-    public:
-        ConnectedPrefixSid();
-        ~ConnectedPrefixSid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_prefix; //type: string
-        ydk::YLeaf algo; //type: uint32
-        ydk::YLeaf sid_type; //type: Isissid1
-        ydk::YLeaf sid; //type: uint32
-        ydk::YLeaf sid_range; //type: uint32
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf php; //type: IsisphpFlag
-        ydk::YLeaf explicit_null; //type: IsisexplicitNullFlag
-
-}; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid
 
 
 class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap : public ydk::Entity
@@ -2512,10 +2289,33 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
+        class FrrType; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType
+
+        ydk::YList frr_type;
+        
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit
+
+
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType : public ydk::Entity
+{
+    public:
+        FrrType();
+        ~FrrType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf frr_type; //type: Isisfrr
         ydk::YLeaf priority; //type: IsisPrefixPriority
 
-}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType
 
 
 class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes : public ydk::Entity
@@ -3815,7 +3615,6 @@ class Isis::Instances::Instance::FlexAlgos::FlexAlgo : public ydk::Entity
         ydk::YLeaf running; //type: empty
         ydk::YLeaf metric_type; //type: uint32
         ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf frr_disable; //type: boolean
         ydk::YLeaf advertise_definition; //type: boolean
         class AffinityExcludeAnies; //type: Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies
 
@@ -6766,27 +6565,167 @@ class Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterva
 
 }; // Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
 
-class NflagClear : public ydk::Enum
+class IsisSnpAuth : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf send_only;
+        static const ydk::Enum::YLeaf full;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "send-only") return 0;
+            if (name == "full") return 1;
+            return -1;
+        }
+};
+
+class IsisMibMaxAreaAddressMismatchBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 6;
+            return -1;
+        }
+};
+
+class IsisMibLspTooLargeToPropagateBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 14;
+            return -1;
+        }
+};
+
+class IsisMibSequenceNumberSkipBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 8;
+            return -1;
+        }
+};
+
+class IsisInterfaceFrrTiebreaker : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf node_protecting;
+        static const ydk::Enum::YLeaf srlg_disjoint;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "node-protecting") return 3;
+            if (name == "srlg-disjoint") return 6;
+            return -1;
+        }
+};
+
+class IsisAuthenticationAlgorithm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cleartext;
+        static const ydk::Enum::YLeaf hmac_md5;
+        static const ydk::Enum::YLeaf keychain;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "cleartext") return 1;
+            if (name == "hmac-md5") return 2;
+            if (name == "keychain") return 3;
+            return -1;
+        }
+};
+
+class IsisAdvTypeExternal : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf external;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 1;
+            return -1;
+        }
+};
+
+class IsisMibRejectedAdjacencyBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 13;
+            return -1;
+        }
+};
+
+class IsisMibCorruptedLspDetectedBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 3;
+            return -1;
+        }
+};
+
+class IsisAdjCheck : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            return -1;
+        }
+};
+
+class IsisispfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "enabled") return 1;
+            return -1;
+        }
+};
+
+class IsisfrrLoadSharing : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 1;
+            return -1;
+        }
 };
 
-class IsisAdvTypeInterLevel : public ydk::Enum
+class IsisMibAuthenticationFailureBoolean : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inter_level;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
-};
-
-class IsisEnablePoi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable_poi_off;
-        static const ydk::Enum::YLeaf enable_poi_on;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 10;
+            return -1;
+        }
 };
 
 class IsisInterfaceState : public ydk::Enum
@@ -6797,29 +6736,95 @@ class IsisInterfaceState : public ydk::Enum
         static const ydk::Enum::YLeaf passive;
         static const ydk::Enum::YLeaf enabled_active;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "shutdown") return 0;
+            if (name == "suppressed") return 1;
+            if (name == "passive") return 2;
+            if (name == "enabled-active") return 3;
+            return -1;
+        }
 };
 
-class Isisfrr : public ydk::Enum
+class IsisTracingMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf per_link;
-        static const ydk::Enum::YLeaf per_prefix;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf basic;
+        static const ydk::Enum::YLeaf enhanced;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 0;
+            if (name == "basic") return 1;
+            if (name == "enhanced") return 2;
+            return -1;
+        }
 };
 
-class IsisfrrLoadSharing : public ydk::Enum
+class IsisAdvTypeInterLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inter_level;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "inter-level") return 1;
+            return -1;
+        }
+};
+
+class IsisNsfFlavor : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cisco_proprietary_nsf;
+        static const ydk::Enum::YLeaf ietf_standard_nsf;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "cisco-proprietary-nsf") return 1;
+            if (name == "ietf-standard-nsf") return 2;
+            return -1;
+        }
+};
+
+class IsisInterfaceAfState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            return -1;
+        }
 };
 
-class IsisAuthenticationFailureMode : public ydk::Enum
+class IsissidProtected : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf send_only;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
+};
+
+class IsisMetricStyle : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf old_metric_style;
+        static const ydk::Enum::YLeaf new_metric_style;
+        static const ydk::Enum::YLeaf both_metric_style;
+        static const ydk::Enum::YLeaf old_metric_style_transition;
+        static const ydk::Enum::YLeaf new_metric_style_transition;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "old-metric-style") return 0;
+            if (name == "new-metric-style") return 1;
+            if (name == "both-metric-style") return 2;
+            if (name == "old-metric-style-transition") return 3;
+            if (name == "new-metric-style-transition") return 4;
+            return -1;
+        }
 };
 
 class IsisApplyWeight : public ydk::Enum
@@ -6829,22 +6834,212 @@ class IsisApplyWeight : public ydk::Enum
         static const ydk::Enum::YLeaf ucmp_only;
         static const ydk::Enum::YLeaf ecmp_only_bandwidth;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ecmp-only") return 1;
+            if (name == "ucmp-only") return 2;
+            if (name == "ecmp-only-bandwidth") return 3;
+            return -1;
+        }
 };
 
-class IsisLabelPreference : public ydk::Enum
+class IsisfrrSrlgProtection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ldp;
-        static const ydk::Enum::YLeaf segment_routing;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf weighted_global;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local") return 0;
+            if (name == "weighted-global") return 1;
+            return -1;
+        }
 };
 
-class Isissid1 : public ydk::Enum
+class IsisOverloadBitMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf index_;
-        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf permanently_set;
+        static const ydk::Enum::YLeaf startup_period;
+        static const ydk::Enum::YLeaf wait_for_bgp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "permanently-set") return 1;
+            if (name == "startup-period") return 2;
+            if (name == "wait-for-bgp") return 3;
+            return -1;
+        }
+};
+
+class IsisMibAuthenticationTypeFailureBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 9;
+            return -1;
+        }
+};
+
+class IsisMicroLoopAvoidance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf micro_loop_avoidance_all;
+        static const ydk::Enum::YLeaf micro_loop_avoidance_protected;
+        static const ydk::Enum::YLeaf micro_loop_avoidance_segement_routing;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-set") return 0;
+            if (name == "micro-loop-avoidance-all") return 1;
+            if (name == "micro-loop-avoidance-protected") return 2;
+            if (name == "micro-loop-avoidance-segement-routing") return 3;
+            return -1;
+        }
+};
+
+class IsisApplication : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lfa;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "lfa") return 0;
+            return -1;
+        }
+};
+
+class IsisRemoteLfa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf remote_lfa_none;
+        static const ydk::Enum::YLeaf remote_lfa_tunnel_ldp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "remote-lfa-none") return 0;
+            if (name == "remote-lfa-tunnel-ldp") return 1;
+            return -1;
+        }
+};
+
+class IsisMibAreaMismatchBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 12;
+            return -1;
+        }
+};
+
+class IsisMibAttemptToExceedMaxSequenceBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 4;
+            return -1;
+        }
+};
+
+class IsisPrefixPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical_priority;
+        static const ydk::Enum::YLeaf high_priority;
+        static const ydk::Enum::YLeaf medium_priority;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical-priority") return 0;
+            if (name == "high-priority") return 1;
+            if (name == "medium-priority") return 2;
+            return -1;
+        }
+};
+
+class IsisConfigurableLevels : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level1_and2;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "level1") return 1;
+            if (name == "level2") return 2;
+            if (name == "level1-and2") return 3;
+            return -1;
+        }
+};
+
+class IsisfrrTiebreaker : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf lc_disjoint;
+        static const ydk::Enum::YLeaf lowest_backup_metric;
+        static const ydk::Enum::YLeaf node_protecting;
+        static const ydk::Enum::YLeaf primary_path;
+        static const ydk::Enum::YLeaf secondary_path;
+        static const ydk::Enum::YLeaf srlg_disjoint;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "downstream") return 0;
+            if (name == "lc-disjoint") return 1;
+            if (name == "lowest-backup-metric") return 2;
+            if (name == "node-protecting") return 3;
+            if (name == "primary-path") return 4;
+            if (name == "secondary-path") return 5;
+            if (name == "srlg-disjoint") return 6;
+            return -1;
+        }
+};
+
+class IsisMibManualAddressDropsBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 2;
+            return -1;
+        }
+};
+
+class IsisexplicitNullFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
+};
+
+class IsisEnablePoi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable_poi_off;
+        static const ydk::Enum::YLeaf enable_poi_on;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable-poi-off") return 0;
+            if (name == "enable-poi-on") return 1;
+            return -1;
+        }
 };
 
 class IsisMetric : public ydk::Enum
@@ -6855,24 +7050,39 @@ class IsisMetric : public ydk::Enum
         static const ydk::Enum::YLeaf rib_internal;
         static const ydk::Enum::YLeaf rib_external;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "internal") return 0;
+            if (name == "external") return 1;
+            if (name == "rib-internal") return 2;
+            if (name == "rib-external") return 3;
+            return -1;
+        }
 };
 
-class IsisAttachedBit : public ydk::Enum
+class IsisHelloPadding : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf area;
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf never;
+        static const ydk::Enum::YLeaf sometimes;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            if (name == "sometimes") return 1;
+            return -1;
+        }
 };
 
-class IsisConfigurableLevels : public ydk::Enum
+class IsisMibDatabaseOverFlowBoolean : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level1_and2;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 1;
+            return -1;
+        }
 };
 
 class IsisConfigurableLevel : public ydk::Enum
@@ -6882,37 +7092,12 @@ class IsisConfigurableLevel : public ydk::Enum
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
-};
-
-class IsisHelloPadding : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-        static const ydk::Enum::YLeaf sometimes;
-
-};
-
-class IsisSnpAuth : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf send_only;
-        static const ydk::Enum::YLeaf full;
-
-};
-
-class IsisInterfaceAfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class IsisexplicitNullFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-12") return 0;
+            if (name == "level-1") return 1;
+            if (name == "level-2") return 2;
+            return -1;
+        }
 };
 
 class IsisApplicationAttribute : public ydk::Enum
@@ -6920,14 +7105,36 @@ class IsisApplicationAttribute : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf srlg;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "srlg") return 0;
+            return -1;
+        }
 };
 
-class IsisfrrSrlgProtection : public ydk::Enum
+class IsisAuthenticationFailureMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf weighted_global;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf send_only;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "drop") return 0;
+            if (name == "send-only") return 1;
+            return -1;
+        }
+};
+
+class IsisMibProtocolsSupportedMismatchBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 16;
+            return -1;
+        }
 };
 
 class IsisRedistProto : public ydk::Enum
@@ -6945,62 +7152,33 @@ class IsisRedistProto : public ydk::Enum
         static const ydk::Enum::YLeaf application;
         static const ydk::Enum::YLeaf mobile;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "connected") return 0;
+            if (name == "static") return 1;
+            if (name == "ospf") return 2;
+            if (name == "bgp") return 3;
+            if (name == "isis") return 4;
+            if (name == "ospfv3") return 5;
+            if (name == "rip") return 6;
+            if (name == "eigrp") return 7;
+            if (name == "subscriber") return 8;
+            if (name == "application") return 9;
+            if (name == "mobile") return 10;
+            return -1;
+        }
 };
 
-class IsisTracingMode : public ydk::Enum
+class Isissid1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf basic;
-        static const ydk::Enum::YLeaf enhanced;
+        static const ydk::Enum::YLeaf index_;
+        static const ydk::Enum::YLeaf absolute;
 
-};
-
-class IsisPrefixPriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical_priority;
-        static const ydk::Enum::YLeaf high_priority;
-        static const ydk::Enum::YLeaf medium_priority;
-
-};
-
-class IsisAuthenticationAlgorithm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cleartext;
-        static const ydk::Enum::YLeaf hmac_md5;
-        static const ydk::Enum::YLeaf keychain;
-
-};
-
-class IsisispfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-
-};
-
-class IsisApplication : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lfa;
-
-};
-
-class IsissidProtected : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
-class IsisAdvTypeExternal : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf external;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "index") return 1;
+            if (name == "absolute") return 2;
+            return -1;
+        }
 };
 
 class IsisphpFlag : public ydk::Enum
@@ -7009,168 +7187,11 @@ class IsisphpFlag : public ydk::Enum
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
-};
-
-class IsisMetricStyle : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf old_metric_style;
-        static const ydk::Enum::YLeaf new_metric_style;
-        static const ydk::Enum::YLeaf both_metric_style;
-        static const ydk::Enum::YLeaf old_metric_style_transition;
-        static const ydk::Enum::YLeaf new_metric_style_transition;
-
-};
-
-class IsisRemoteLfa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf remote_lfa_none;
-        static const ydk::Enum::YLeaf remote_lfa_tunnel_ldp;
-
-};
-
-class IsisMicroLoopAvoidance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf micro_loop_avoidance_all;
-        static const ydk::Enum::YLeaf micro_loop_avoidance_protected;
-        static const ydk::Enum::YLeaf micro_loop_avoidance_segement_routing;
-
-};
-
-class IsisAdjCheck : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
-class IsisInterfaceFrrTiebreaker : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf node_protecting;
-        static const ydk::Enum::YLeaf srlg_disjoint;
-
-};
-
-class IsisOverloadBitMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf permanently_set;
-        static const ydk::Enum::YLeaf startup_period;
-        static const ydk::Enum::YLeaf wait_for_bgp;
-
-};
-
-class IsisNsfFlavor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cisco_proprietary_nsf;
-        static const ydk::Enum::YLeaf ietf_standard_nsf;
-
-};
-
-class IsisfrrTiebreaker : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf downstream;
-        static const ydk::Enum::YLeaf lc_disjoint;
-        static const ydk::Enum::YLeaf lowest_backup_metric;
-        static const ydk::Enum::YLeaf node_protecting;
-        static const ydk::Enum::YLeaf primary_path;
-        static const ydk::Enum::YLeaf secondary_path;
-        static const ydk::Enum::YLeaf srlg_disjoint;
-
-};
-
-class IsisMibManualAddressDropsBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibAuthenticationTypeFailureBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibMaxAreaAddressMismatchBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibSequenceNumberSkipBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibDatabaseOverFlowBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibAllBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibLspTooLargeToPropagateBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibOwnLspPurgeBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibAdjacencyChangeBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibProtocolsSupportedMismatchBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisMibAttemptToExceedMaxSequenceBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            if (name == "disable") return 1;
+            return -1;
+        }
 };
 
 class IsisMibIdLengthMismatchBoolean : public ydk::Enum
@@ -7179,6 +7200,24 @@ class IsisMibIdLengthMismatchBoolean : public ydk::Enum
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 5;
+            return -1;
+        }
+};
+
+class IsisMibAllBoolean : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 19;
+            return -1;
+        }
 };
 
 class IsisMibOriginatedLspBufferSizeMismatchBoolean : public ydk::Enum
@@ -7187,22 +7226,78 @@ class IsisMibOriginatedLspBufferSizeMismatchBoolean : public ydk::Enum
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 15;
+            return -1;
+        }
 };
 
-class IsisMibAreaMismatchBoolean : public ydk::Enum
+class Isisfrr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf per_link;
+        static const ydk::Enum::YLeaf per_prefix;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "per-link") return 1;
+            if (name == "per-prefix") return 2;
+            return -1;
+        }
+};
+
+class IsisAttachedBit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf area;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "area") return 0;
+            if (name == "on") return 1;
+            if (name == "off") return 2;
+            return -1;
+        }
+};
+
+class NflagClear : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
+};
+
+class IsisLabelPreference : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ldp;
+        static const ydk::Enum::YLeaf segment_routing;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp") return 0;
+            if (name == "segment-routing") return 1;
+            return -1;
+        }
+};
+
+class IsisMibAdjacencyChangeBoolean : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
-};
-
-class IsisMibCorruptedLspDetectedBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 17;
+            return -1;
+        }
 };
 
 class IsisMibLspErrorDetectedBoolean : public ydk::Enum
@@ -7211,14 +7306,24 @@ class IsisMibLspErrorDetectedBoolean : public ydk::Enum
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 18;
+            return -1;
+        }
 };
 
-class IsisMibRejectedAdjacencyBoolean : public ydk::Enum
+class IsisMibOwnLspPurgeBoolean : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 7;
+            return -1;
+        }
 };
 
 class IsisMibVersionSkewBoolean : public ydk::Enum
@@ -7227,14 +7332,11 @@ class IsisMibVersionSkewBoolean : public ydk::Enum
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
-};
-
-class IsisMibAuthenticationFailureBoolean : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 0;
+            if (name == "true") return 11;
+            return -1;
+        }
 };
 
 class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_ : public ydk::Enum
@@ -7242,6 +7344,10 @@ class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_ : pub
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 16777215;
+            return -1;
+        }
 };
 
 class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric_ : public ydk::Enum
@@ -7249,6 +7355,10 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric_
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 16777215;
+            return -1;
+        }
 };
 
 class Isis::Instances::Instance::Interfaces::Interface::MeshGroup : public ydk::Enum
@@ -7256,6 +7366,10 @@ class Isis::Instances::Instance::Interfaces::Interface::MeshGroup : public ydk::
     public:
         static const ydk::Enum::YLeaf blocked;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "blocked") return 0;
+            return -1;
+        }
 };
 
 class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::Metric_ : public ydk::Enum
@@ -7263,6 +7377,10 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 16777215;
+            return -1;
+        }
 };
 
 class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::Metric_ : public ydk::Enum
@@ -7270,6 +7388,10 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
     public:
         static const ydk::Enum::YLeaf maximum;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "maximum") return 16777215;
+            return -1;
+        }
 };
 
 

@@ -17,6 +17,12 @@ class AclUsageAppIdEnum : public ydk::Enum
         static const ydk::Enum::YLeaf bgp;
         static const ydk::Enum::YLeaf ospf;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pfilter") return 1;
+            if (name == "bgp") return 2;
+            if (name == "ospf") return 3;
+            return -1;
+        }
 };
 
 

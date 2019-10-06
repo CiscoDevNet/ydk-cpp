@@ -2369,6 +2369,17 @@ class VsNshStats : public ydk::Enum
         static const ydk::Enum::YLeaf vs_nsh_stats_sfp_detail;
         static const ydk::Enum::YLeaf vs_nsh_stats_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vs-nsh-stats-spi-si") return 0;
+            if (name == "vs-nsh-stats-ter-min-ate") return 1;
+            if (name == "vs-nsh-stats-sf") return 2;
+            if (name == "vs-nsh-stats-sff") return 3;
+            if (name == "vs-nsh-stats-sff-local") return 4;
+            if (name == "vs-nsh-stats-sfp") return 5;
+            if (name == "vs-nsh-stats-sfp-detail") return 6;
+            if (name == "vs-nsh-stats-max") return 7;
+            return -1;
+        }
 };
 
 

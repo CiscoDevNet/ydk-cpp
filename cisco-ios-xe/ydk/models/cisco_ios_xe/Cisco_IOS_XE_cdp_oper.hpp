@@ -185,6 +185,32 @@ class CdpNeighborDetails::CdpNeighborDetail::SparePair : public ydk::Entity
 
 }; // CdpNeighborDetails::CdpNeighborDetail::SparePair
 
+class CdpEnableDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_disable;
+        static const ydk::Enum::YLeaf cdp_enable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdp-disable") return 0;
+            if (name == "cdp-enable") return 1;
+            return -1;
+        }
+};
+
+class CdpYesNo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_no;
+        static const ydk::Enum::YLeaf cdp_yes;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdp-no") return 0;
+            if (name == "cdp-yes") return 1;
+            return -1;
+        }
+};
+
 class CdpDuplex : public ydk::Enum
 {
     public:
@@ -194,15 +220,14 @@ class CdpDuplex : public ydk::Enum
         static const ydk::Enum::YLeaf cdp_half_duplex_mismatch;
         static const ydk::Enum::YLeaf cdp_full_duplex_mismatch;
 
-};
-
-class CdpAdvVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_advertised_none;
-        static const ydk::Enum::YLeaf cdp_advertised_v1;
-        static const ydk::Enum::YLeaf cdp_advertised_v2;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdp-duplex-unknown") return 0;
+            if (name == "cdp-half-duplex") return 1;
+            if (name == "cdp-full-duplex") return 2;
+            if (name == "cdp-half-duplex-mismatch") return 3;
+            if (name == "cdp-full-duplex-mismatch") return 4;
+            return -1;
+        }
 };
 
 class CdpUnidirectionalMode : public ydk::Enum
@@ -213,22 +238,28 @@ class CdpUnidirectionalMode : public ydk::Enum
         static const ydk::Enum::YLeaf cdp_uni_mode_recv_only;
         static const ydk::Enum::YLeaf cdp_uni_mode_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdp-uni-mode-off") return 0;
+            if (name == "cdp-uni-mode-send-only") return 1;
+            if (name == "cdp-uni-mode-recv-only") return 2;
+            if (name == "cdp-uni-mode-unknown") return 3;
+            return -1;
+        }
 };
 
-class CdpYesNo : public ydk::Enum
+class CdpAdvVersion : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdp_no;
-        static const ydk::Enum::YLeaf cdp_yes;
+        static const ydk::Enum::YLeaf cdp_advertised_none;
+        static const ydk::Enum::YLeaf cdp_advertised_v1;
+        static const ydk::Enum::YLeaf cdp_advertised_v2;
 
-};
-
-class CdpEnableDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_disable;
-        static const ydk::Enum::YLeaf cdp_enable;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "cdp-advertised-none") return 0;
+            if (name == "cdp-advertised-v1") return 1;
+            if (name == "cdp-advertised-v2") return 2;
+            return -1;
+        }
 };
 
 

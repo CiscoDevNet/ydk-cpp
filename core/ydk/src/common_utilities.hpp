@@ -36,7 +36,7 @@ namespace ydk
     bool replace(std::string& subject, const std::string& search, const std::string& replace);
     std::string entity_vector_to_string(std::vector<Entity*>& v);
 
-    bool has_xml_escape_sequences(const std::string& xml);
+    size_t has_xml_escape_sequences(const std::string& xml);
     std::string replace_xml_escape_sequences(const std::string& xml);
 
     Entity * get_top_entity(Entity * entity);

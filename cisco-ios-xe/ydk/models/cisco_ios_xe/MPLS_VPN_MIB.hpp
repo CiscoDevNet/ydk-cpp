@@ -443,6 +443,11 @@ class MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::MplsVpnI
         static const ydk::Enum::YLeaf providerEdge;
         static const ydk::Enum::YLeaf customerEdge;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "providerEdge") return 1;
+            if (name == "customerEdge") return 2;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::MplsVpnInterfaceVpnClassification : public ydk::Enum
@@ -452,6 +457,12 @@ class MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::MplsVpnI
         static const ydk::Enum::YLeaf enterprise;
         static const ydk::Enum::YLeaf interProvider;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "carrierOfCarrier") return 1;
+            if (name == "enterprise") return 2;
+            if (name == "interProvider") return 3;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::MplsVpnVrfOperStatus : public ydk::Enum
@@ -460,6 +471,11 @@ class MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::MplsVpnVrfOperStatus : publi
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::MplsVpnVrfRouteTargetType : public ydk::Enum
@@ -469,6 +485,12 @@ class MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::MplsVp
         static const ydk::Enum::YLeaf export_;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "import") return 1;
+            if (name == "export") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::MplsVpnVrfBgpNbrRole : public ydk::Enum
@@ -477,6 +499,11 @@ class MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::MplsVpnV
         static const ydk::Enum::YLeaf ce;
         static const ydk::Enum::YLeaf pe;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ce") return 1;
+            if (name == "pe") return 2;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::MplsVpnVrfBgpPathAttrOrigin : public ydk::Enum
@@ -486,6 +513,12 @@ class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::Mpls
         static const ydk::Enum::YLeaf egp;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 1;
+            if (name == "egp") return 2;
+            if (name == "incomplete") return 3;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::MplsVpnVrfBgpPathAttrAtomicAggregate : public ydk::Enum
@@ -494,6 +527,11 @@ class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::Mpls
         static const ydk::Enum::YLeaf lessSpecificRrouteNotSelected;
         static const ydk::Enum::YLeaf lessSpecificRouteSelected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "lessSpecificRrouteNotSelected") return 1;
+            if (name == "lessSpecificRouteSelected") return 2;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::MplsVpnVrfBgpPathAttrBest : public ydk::Enum
@@ -502,6 +540,11 @@ class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::Mpls
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "false") return 1;
+            if (name == "true") return 2;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::MplsVpnVrfRouteType : public ydk::Enum
@@ -512,6 +555,13 @@ class MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::MplsVpnVrfRouteTyp
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf remote;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "reject") return 2;
+            if (name == "local") return 3;
+            if (name == "remote") return 4;
+            return -1;
+        }
 };
 
 class MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::MplsVpnVrfRouteProto : public ydk::Enum
@@ -534,6 +584,25 @@ class MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::MplsVpnVrfRoutePro
         static const ydk::Enum::YLeaf idpr;
         static const ydk::Enum::YLeaf ciscoEigrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "other") return 1;
+            if (name == "local") return 2;
+            if (name == "netmgmt") return 3;
+            if (name == "icmp") return 4;
+            if (name == "egp") return 5;
+            if (name == "ggp") return 6;
+            if (name == "hello") return 7;
+            if (name == "rip") return 8;
+            if (name == "isIs") return 9;
+            if (name == "esIs") return 10;
+            if (name == "ciscoIgrp") return 11;
+            if (name == "bbnSpfIgp") return 12;
+            if (name == "ospf") return 13;
+            if (name == "bgp") return 14;
+            if (name == "idpr") return 15;
+            if (name == "ciscoEigrp") return 16;
+            return -1;
+        }
 };
 
 

@@ -32,7 +32,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Bgp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of string, uint32
+        ydk::YLeaf as_number; //type: one of uint32, string
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Bgp::RedistOptions> redist_options;
@@ -133,7 +133,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of string, uint32
+        ydk::YLeaf as_number; //type: one of uint32, string
         class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp::RedistOptions> redist_options;
@@ -1148,7 +1148,7 @@ class Native::Router::Ospf::FastReroute::PerPrefix::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of string, uint32
+        ydk::YLeaf area; //type: one of uint32, string
         ydk::YLeaf prefix_priority; //type: PrefixPriority
         class PrefixPriority;
 
@@ -1199,7 +1199,7 @@ class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaCost : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of string, uint32
+        ydk::YLeaf area; //type: one of uint32, string
         ydk::YLeaf maximum_cost; //type: uint32
 
 }; // Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaCost
@@ -1221,7 +1221,7 @@ class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaTunnel : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of string, uint32
+        ydk::YLeaf area; //type: one of uint32, string
         ydk::YLeaf tunnel; //type: Tunnel
         class Tunnel;
 
@@ -1571,8 +1571,8 @@ class Native::Router::Ospf::Limit::Retransmissions : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf non_dc; //type: one of enumeration, uint32
-        ydk::YLeaf dc; //type: one of enumeration, uint32
+        ydk::YLeaf non_dc; //type: one of uint32, enumeration
+        ydk::YLeaf dc; //type: one of uint32, enumeration
 
 }; // Native::Router::Ospf::Limit::Retransmissions
 
@@ -1712,7 +1712,7 @@ class Native::Router::Ospf::Mpls::Ldp::Autoconfig : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area; //type: one of string, uint32
+        ydk::YLeaf area; //type: one of uint32, string
 
 }; // Native::Router::Ospf::Mpls::Ldp::Autoconfig
 
@@ -1785,7 +1785,7 @@ class Native::Router::Ospf::Mpls::TrafficEng::Area : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
 
 }; // Native::Router::Ospf::Mpls::TrafficEng::Area
 
@@ -1850,7 +1850,7 @@ class Native::Router::Ospf::Mpls::TrafficEng::MeshGroup : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint32
-        ydk::YLeaf area; //type: one of string, uint32
+        ydk::YLeaf area; //type: one of uint32, string
         ydk::YLeaf interface; //type: string
 
 }; // Native::Router::Ospf::Mpls::TrafficEng::MeshGroup
@@ -2091,7 +2091,7 @@ class Native::Router::Ospf::Network : public ydk::Entity
 
         ydk::YLeaf ip; //type: string
         ydk::YLeaf mask; //type: string
-        ydk::YLeaf area; //type: one of string, uint32
+        ydk::YLeaf area; //type: one of uint32, string
 
 }; // Native::Router::Ospf::Network
 
@@ -2574,7 +2574,7 @@ class Native::Router::Ospfv3::Area : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf default_cost; //type: uint32
         class Authentication; //type: Native::Router::Ospfv3::Area::Authentication
         class Capability; //type: Native::Router::Ospfv3::Area::Capability
@@ -3727,6 +3727,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Bgp::RedistOptions::Metri
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Connected::RedistOptions::MetricType : public ydk::Enum
@@ -3735,6 +3740,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Connected::RedistOptions:
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp::RedistOptions::MetricType : public ydk::Enum
@@ -3743,6 +3753,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Eigrp::RedistOptions::Met
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::IsisLevelRoutes : public ydk::Enum
@@ -3752,6 +3767,12 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::IsisLevelRoutes : p
         static const ydk::Enum::YLeaf level_2;
         static const ydk::Enum::YLeaf level_1_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            if (name == "level-1-2") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::IsisArea::IsisLevelRoutes : public ydk::Enum
@@ -3761,6 +3782,12 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::IsisArea::IsisLevel
         static const ydk::Enum::YLeaf level_2;
         static const ydk::Enum::YLeaf level_1_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "level-1") return 0;
+            if (name == "level-2") return 1;
+            if (name == "level-1-2") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::IsisArea::RedistOptions::MetricType : public ydk::Enum
@@ -3769,6 +3796,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::IsisArea::RedistOpt
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::RedistOptions::MetricType : public ydk::Enum
@@ -3777,6 +3809,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Isis::RedistOptions::Metr
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::IsoIgrp::IsoIgrpContainer::MetricType : public ydk::Enum
@@ -3785,6 +3822,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::IsoIgrp::IsoIgrpContainer
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Lisp::RedistOptions::MetricType : public ydk::Enum
@@ -3793,6 +3835,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Lisp::RedistOptions::Metr
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Mobile::RedistOptions::MetricType : public ydk::Enum
@@ -3801,6 +3848,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Mobile::RedistOptions::Me
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Odr::RedistOptions::MetricType : public ydk::Enum
@@ -3809,6 +3861,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Odr::RedistOptions::Metri
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::MetricType : public ydk::Enum
@@ -3817,6 +3874,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::MetricType : publi
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::Match::Internal::MetricType : public ydk::Enum
@@ -3825,6 +3887,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::Match::Internal::M
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::Match::External::MetricType : public ydk::Enum
@@ -3833,6 +3900,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::Match::External::M
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::Match::NssaExternal::MetricType : public ydk::Enum
@@ -3841,6 +3913,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_::Match::NssaExterna
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::MetricType : public ydk::Enum
@@ -3849,6 +3926,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::MetricType : publ
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::Match::Internal::MetricType : public ydk::Enum
@@ -3857,6 +3939,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::Match::Internal::
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::Match::External::MetricType : public ydk::Enum
@@ -3865,6 +3952,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::Match::External::
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::Match::NssaExternal::MetricType : public ydk::Enum
@@ -3873,6 +3965,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3::Match::NssaExtern
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Rip::RedistOptions::MetricType : public ydk::Enum
@@ -3881,6 +3978,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Rip::RedistOptions::Metri
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::Redistribute::Vrf::Global::Static::RedistOptions::MetricType : public ydk::Enum
@@ -3889,6 +3991,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Static::RedistOptions::Me
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1") return 0;
+            if (name == "2") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::DistributeList::AccesslistPrefixGateway::PrefixGateway : public ydk::Enum
@@ -3898,6 +4005,12 @@ class Native::Router::Ospf::DistributeList::AccesslistPrefixGateway::PrefixGatew
         static const ydk::Enum::YLeaf gateway;
         static const ydk::Enum::YLeaf route_map;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix") return 0;
+            if (name == "gateway") return 1;
+            if (name == "route-map") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway : public ydk::Enum
@@ -3907,6 +4020,12 @@ class Native::Router::Ospf::DistributeList::AccesslistPrefixGatewayIfname::Prefi
         static const ydk::Enum::YLeaf gateway;
         static const ydk::Enum::YLeaf route_map;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prefix") return 0;
+            if (name == "gateway") return 1;
+            if (name == "route-map") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::DomainId::Type::TypeLeaf : public ydk::Enum
@@ -3917,6 +4036,13 @@ class Native::Router::Ospf::DomainId::Type::TypeLeaf : public ydk::Enum
         static const ydk::Enum::YLeaf Y_0205;
         static const ydk::Enum::YLeaf Y_8005;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0005") return 0;
+            if (name == "0105") return 1;
+            if (name == "0205") return 2;
+            if (name == "8005") return 3;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::FastReroute::PerPrefix::Enable::PrefixPriority : public ydk::Enum
@@ -3925,6 +4051,11 @@ class Native::Router::Ospf::FastReroute::PerPrefix::Enable::PrefixPriority : pub
         static const ydk::Enum::YLeaf high;
         static const ydk::Enum::YLeaf low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "high") return 0;
+            if (name == "low") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::Tunnel : public ydk::Enum
@@ -3932,6 +4063,10 @@ class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::Tunnel : public y
     public:
         static const ydk::Enum::YLeaf mpls_ldp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls-ldp") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaTunnel::Tunnel : public ydk::Enum
@@ -3939,6 +4074,10 @@ class Native::Router::Ospf::FastReroute::PerPrefix::RemoteLfa::AreaTunnel::Tunne
     public:
         static const ydk::Enum::YLeaf mpls_ldp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls-ldp") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Ospfv3::Area::FilterList::InOut : public ydk::Enum
@@ -3947,6 +4086,11 @@ class Native::Router::Ospfv3::Area::FilterList::InOut : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 

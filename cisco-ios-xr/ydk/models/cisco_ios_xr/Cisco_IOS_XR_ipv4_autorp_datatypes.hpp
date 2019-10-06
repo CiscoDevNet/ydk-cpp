@@ -16,6 +16,11 @@ class AutoRpProtocolMode : public ydk::Enum
         static const ydk::Enum::YLeaf sparse;
         static const ydk::Enum::YLeaf bidirectional;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sparse") return 0;
+            if (name == "bidirectional") return 1;
+            return -1;
+        }
 };
 
 

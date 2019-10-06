@@ -16,6 +16,11 @@ class IsisMetricFlags : public ydk::Enum
         static const ydk::Enum::YLeaf INTERNAL;
         static const ydk::Enum::YLeaf UNSUPPORTED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INTERNAL") return 0;
+            if (name == "UNSUPPORTED") return 1;
+            return -1;
+        }
 };
 
 

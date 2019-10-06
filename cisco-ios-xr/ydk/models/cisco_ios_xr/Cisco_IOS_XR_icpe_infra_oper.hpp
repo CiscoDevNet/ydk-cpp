@@ -2169,54 +2169,19 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp :
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp
 
-class IcpeOperMultichassisRedundancy : public ydk::Enum
+class IcpeOpmSyncFsmState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_not_redundant;
-        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_active;
-        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_standby;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_split_brain;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_whole_brain;
 
-};
-
-class IcpeOperDiscdLinkState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_stopped;
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_probing;
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_configuring;
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_ready;
-
-};
-
-class IcpeOperPort : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_oper_port_unknown;
-        static const ydk::Enum::YLeaf icpe_oper_port_gigabit_ethernet;
-        static const ydk::Enum::YLeaf icpe_oper_port_ten_gig_e;
-
-};
-
-class IcpeOperInstallState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_oper_install_state_stable;
-        static const ydk::Enum::YLeaf icpe_oper_install_state_transferring;
-        static const ydk::Enum::YLeaf icpe_oper_install_state_transferred;
-        static const ydk::Enum::YLeaf icpe_oper_install_state_installing;
-        static const ydk::Enum::YLeaf icpe_oper_install_state_in_progress;
-
-};
-
-class IcpeGcoOperControlReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_unknown_error;
-        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_type;
-        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_serial;
-        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_needs_to_upgrade;
-        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_none;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-sync-fsm-state-split-brain") return 0;
+            if (name == "icpe-opm-sync-fsm-state-waiting") return 1;
+            if (name == "icpe-opm-sync-fsm-state-whole-brain") return 2;
+            return -1;
+        }
 };
 
 class IcpeOperSdacpSessState : public ydk::Enum
@@ -2230,6 +2195,298 @@ class IcpeOperSdacpSessState : public ydk::Enum
         static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_up;
         static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_issu;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-sdacp-sess-state-not-created") return 0;
+            if (name == "icpe-oper-sdacp-sess-state-created") return 1;
+            if (name == "icpe-oper-sdacp-sess-state-authentication-not-ok") return 2;
+            if (name == "icpe-oper-sdacp-sess-state-authentication-ok") return 3;
+            if (name == "icpe-oper-sdacp-sess-state-version-not-ok") return 4;
+            if (name == "icpe-oper-sdacp-sess-state-up") return 5;
+            if (name == "icpe-oper-sdacp-sess-state-issu") return 6;
+            return -1;
+        }
+};
+
+class IcpeOpmTransportState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_iccp_unavailable;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_no_member_present;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_down;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_not_reachable;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect_response;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_connected;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-transport-state-disconnected") return 0;
+            if (name == "icpe-opm-transport-state-iccp-unavailable") return 1;
+            if (name == "icpe-opm-transport-state-no-member-present") return 2;
+            if (name == "icpe-opm-transport-state-member-down") return 3;
+            if (name == "icpe-opm-transport-state-member-not-reachable") return 4;
+            if (name == "icpe-opm-transport-state-waiting-for-app-connect") return 5;
+            if (name == "icpe-opm-transport-state-waiting-for-app-connect-response") return 6;
+            if (name == "icpe-opm-transport-state-connected") return 7;
+            return -1;
+        }
+};
+
+class IcpeOperRefType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_oper_ref_type_invalid;
+        static const ydk::Enum::YLeaf icpe_oper_ref_type_smu;
+        static const ydk::Enum::YLeaf icpe_oper_ref_type_base_image;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-ref-type-invalid") return 0;
+            if (name == "icpe-oper-ref-type-smu") return 1;
+            if (name == "icpe-oper-ref-type-base-image") return 2;
+            return -1;
+        }
+};
+
+class IcpeOpmAuthFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_unauth;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_auth;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_reply;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_authed;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-auth-fsm-state-unauth") return 0;
+            if (name == "icpe-opm-auth-fsm-state-waiting") return 1;
+            if (name == "icpe-opm-auth-fsm-state-waiting-for-auth") return 2;
+            if (name == "icpe-opm-auth-fsm-state-waiting-for-reply") return 3;
+            if (name == "icpe-opm-auth-fsm-state-authed") return 4;
+            return -1;
+        }
+};
+
+class IcpeOpmController : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_controller_unknown;
+        static const ydk::Enum::YLeaf icpe_opm_controller_primary;
+        static const ydk::Enum::YLeaf icpe_opm_controller_secondary;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-controller-unknown") return 0;
+            if (name == "icpe-opm-controller-primary") return 1;
+            if (name == "icpe-opm-controller-secondary") return 2;
+            return -1;
+        }
+};
+
+class IcpeOpmResyncFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_not_open;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_stable;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_in_resync;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_queued;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_resync_req;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-resync-fsm-state-not-open") return 0;
+            if (name == "icpe-opm-resync-fsm-state-stable") return 1;
+            if (name == "icpe-opm-resync-fsm-state-in-resync") return 2;
+            if (name == "icpe-opm-resync-fsm-state-queued") return 3;
+            if (name == "icpe-opm-resync-fsm-state-resync-req") return 4;
+            return -1;
+        }
+};
+
+class IcpeOpmChanFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_down;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_closed;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opening;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opened;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_open;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-chan-fsm-state-down") return 0;
+            if (name == "icpe-opm-chan-fsm-state-closed") return 1;
+            if (name == "icpe-opm-chan-fsm-state-opening") return 2;
+            if (name == "icpe-opm-chan-fsm-state-opened") return 3;
+            if (name == "icpe-opm-chan-fsm-state-open") return 4;
+            return -1;
+        }
+};
+
+class IcpeOpmSessState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_connecting;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_authenticating;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_arbitrating;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_waiting_for_resyncs;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_connected;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-sess-state-disconnected") return 0;
+            if (name == "icpe-opm-sess-state-connecting") return 1;
+            if (name == "icpe-opm-sess-state-authenticating") return 2;
+            if (name == "icpe-opm-sess-state-arbitrating") return 3;
+            if (name == "icpe-opm-sess-state-waiting-for-resyncs") return 4;
+            if (name == "icpe-opm-sess-state-connected") return 5;
+            return -1;
+        }
+};
+
+class IcpeOperInstallState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_oper_install_state_stable;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_transferring;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_transferred;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_installing;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_in_progress;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-install-state-stable") return 0;
+            if (name == "icpe-oper-install-state-transferring") return 1;
+            if (name == "icpe-oper-install-state-transferred") return 2;
+            if (name == "icpe-oper-install-state-installing") return 3;
+            if (name == "icpe-oper-install-state-in-progress") return 4;
+            return -1;
+        }
+};
+
+class IcpeOperPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_oper_port_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_port_gigabit_ethernet;
+        static const ydk::Enum::YLeaf icpe_oper_port_ten_gig_e;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-port-unknown") return 0;
+            if (name == "icpe-oper-port-gigabit-ethernet") return 1;
+            if (name == "icpe-oper-port-ten-gig-e") return 2;
+            return -1;
+        }
+};
+
+class IcpeOperFabricPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_ten_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_forty_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_hundred_gig_e;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-fabric-port-unknown") return 0;
+            if (name == "icpe-oper-fabric-port-n-v-fabric-gig-e") return 1;
+            if (name == "icpe-oper-fabric-port-n-v-fabric-ten-gig-e") return 2;
+            if (name == "icpe-oper-fabric-port-n-v-fabric-forty-gig-e") return 3;
+            if (name == "icpe-oper-fabric-port-n-v-fabric-hundred-gig-e") return 4;
+            return -1;
+        }
+};
+
+class IcpeInstallPkgSupp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_unknown;
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_not_supported;
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_supported;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-install-pkg-supp-unknown") return 0;
+            if (name == "icpe-install-pkg-supp-not-supported") return 1;
+            if (name == "icpe-install-pkg-supp-supported") return 2;
+            return -1;
+        }
+};
+
+class IcpeGcoOperControlReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_unknown_error;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_type;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_serial;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_needs_to_upgrade;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_none;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-gco-oper-control-reason-unknown-error") return 0;
+            if (name == "icpe-gco-oper-control-reason-wrong-chassis-type") return 1;
+            if (name == "icpe-gco-oper-control-reason-wrong-chassis-serial") return 2;
+            if (name == "icpe-gco-oper-control-reason-needs-to-upgrade") return 3;
+            if (name == "icpe-gco-oper-control-reason-none") return 4;
+            return -1;
+        }
+};
+
+class IcpeInstallSatState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_install_sat_state_unknown;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_not_initiat_ed;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_transferring;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_activating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_updating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_replacing;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_deactivating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_removing;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_success;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_failure;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_multiple_ops;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_aborted;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_protocol_version;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_pkg_not_present;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_no_image;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_no_such_file;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_sat_uncfgd;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_processing;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-install-sat-state-unknown") return 0;
+            if (name == "icpe-install-sat-state-not-initiat-ed") return 1;
+            if (name == "icpe-install-sat-state-transferring") return 2;
+            if (name == "icpe-install-sat-state-activating") return 3;
+            if (name == "icpe-install-sat-state-updating") return 4;
+            if (name == "icpe-install-sat-state-replacing") return 5;
+            if (name == "icpe-install-sat-state-deactivating") return 6;
+            if (name == "icpe-install-sat-state-removing") return 7;
+            if (name == "icpe-install-sat-state-success") return 8;
+            if (name == "icpe-install-sat-state-failure") return 9;
+            if (name == "icpe-install-sat-state-multiple-ops") return 10;
+            if (name == "icpe-install-sat-state-aborted") return 11;
+            if (name == "icpe-install-sat-state-protocol-version") return 12;
+            if (name == "icpe-install-sat-state-pkg-not-present") return 13;
+            if (name == "icpe-install-sat-state-no-image") return 14;
+            if (name == "icpe-install-sat-state-no-such-file") return 15;
+            if (name == "icpe-install-sat-state-sat-uncfgd") return 16;
+            if (name == "icpe-install-sat-state-processing") return 17;
+            return -1;
+        }
+};
+
+class IcpeOpmArbitrationFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_unarbitrated;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrating;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrated;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-opm-arbitration-fsm-state-unarbitrated") return 0;
+            if (name == "icpe-opm-arbitration-fsm-state-waiting") return 1;
+            if (name == "icpe-opm-arbitration-fsm-state-arbitrating") return 2;
+            if (name == "icpe-opm-arbitration-fsm-state-arbitrated") return 3;
+            return -1;
+        }
 };
 
 class IcpeOperConflict : public ydk::Enum
@@ -2274,25 +2531,47 @@ class IcpeOperConflict : public ydk::Enum
         static const ydk::Enum::YLeaf icpe_oper_conflict_multiple_serial_number;
         static const ydk::Enum::YLeaf icpe_oper_conflict_multiple_mac_address;
 
-};
-
-class IcpeOperReloadLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_oper_reload_level_unknown;
-        static const ydk::Enum::YLeaf icpe_oper_reload_level_system;
-        static const ydk::Enum::YLeaf icpe_oper_reload_level_container;
-
-};
-
-class IcpeOpticalSyncState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_unknown;
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_syncing;
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_synced;
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_not_connected;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-conflict-not-calculated") return 0;
+            if (name == "icpe-oper-conflict-no-conflict") return 1;
+            if (name == "icpe-oper-conflict-satellite-not-configured") return 2;
+            if (name == "icpe-oper-conflict-satellite-no-type") return 3;
+            if (name == "icpe-oper-conflict-satellite-id-invalid") return 4;
+            if (name == "icpe-oper-conflict-satellite-no-ipv4-addr") return 5;
+            if (name == "icpe-oper-conflict-satellite-conflicting-ipv4-addr") return 6;
+            if (name == "icpe-oper-conflict-no-configured-links") return 7;
+            if (name == "icpe-oper-conflict-no-discovered-links") return 8;
+            if (name == "icpe-oper-conflict-invalid-ports") return 9;
+            if (name == "icpe-oper-conflict-ports-overlap") return 10;
+            if (name == "icpe-oper-conflict-waiting-for-ipv4-addr") return 11;
+            if (name == "icpe-oper-conflict-waiting-for-vrf") return 12;
+            if (name == "icpe-oper-conflict-different-ipv4-addr") return 13;
+            if (name == "icpe-oper-conflict-different-vrf") return 14;
+            if (name == "icpe-oper-conflict-satellite-link-ipv4-overlap") return 15;
+            if (name == "icpe-oper-conflict-waiting-for-ident") return 16;
+            if (name == "icpe-oper-conflict-multiple-ids") return 17;
+            if (name == "icpe-oper-conflict-multiple-satellites") return 18;
+            if (name == "icpe-oper-conflict-ident-rejected") return 19;
+            if (name == "icpe-oper-conflict-interface-down") return 20;
+            if (name == "icpe-oper-conflict-auto-ip-unavailable") return 21;
+            if (name == "icpe-oper-conflict-satellite-auto-ip-link-manual-ip") return 22;
+            if (name == "icpe-oper-conflict-link-auto-ip-satellite-manual-ip") return 23;
+            if (name == "icpe-oper-conflict-serial-num-mismatch") return 24;
+            if (name == "icpe-oper-conflict-satellite-not-identified") return 25;
+            if (name == "icpe-oper-conflict-satellite-unsupported-type") return 26;
+            if (name == "icpe-oper-conflict-satellite-partition-unsupported") return 27;
+            if (name == "icpe-oper-conflict-satellite-no-serial-number") return 28;
+            if (name == "icpe-oper-conflict-satellite-conflicting-serial-number") return 29;
+            if (name == "icpe-oper-conflict-satellite-link-waiting-for-arp") return 30;
+            if (name == "icpe-oper-conflict-host-pe-isolated-split-brain") return 31;
+            if (name == "icpe-oper-conflict-fabric-iccp-group-inconsistent") return 32;
+            if (name == "icpe-oper-conflict-invalid-iccp-group") return 33;
+            if (name == "icpe-oper-conflict-port-rejected") return 34;
+            if (name == "icpe-oper-conflict-satellite-icl-not-supported") return 35;
+            if (name == "icpe-oper-conflict-multiple-serial-number") return 36;
+            if (name == "icpe-oper-conflict-multiple-mac-address") return 37;
+            return -1;
+        }
 };
 
 class IcpeOperVerCheckState : public ydk::Enum
@@ -2304,137 +2583,61 @@ class IcpeOperVerCheckState : public ydk::Enum
         static const ydk::Enum::YLeaf icpe_oper_ver_check_state_compatible_older;
         static const ydk::Enum::YLeaf icpe_oper_ver_check_state_compatible_newer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-ver-check-state-unknown") return 0;
+            if (name == "icpe-oper-ver-check-state-not-compatible") return 1;
+            if (name == "icpe-oper-ver-check-state-current-version") return 2;
+            if (name == "icpe-oper-ver-check-state-compatible-older") return 3;
+            if (name == "icpe-oper-ver-check-state-compatible-newer") return 4;
+            return -1;
+        }
 };
 
-class IcpeOperFabricPort : public ydk::Enum
+class IcpeOperReloadLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_unknown;
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_gig_e;
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_ten_gig_e;
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_forty_gig_e;
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_hundred_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_reload_level_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_reload_level_system;
+        static const ydk::Enum::YLeaf icpe_oper_reload_level_container;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-reload-level-unknown") return 0;
+            if (name == "icpe-oper-reload-level-system") return 1;
+            if (name == "icpe-oper-reload-level-container") return 2;
+            return -1;
+        }
 };
 
-class IcpeOperRefType : public ydk::Enum
+class IcpeOperMultichassisRedundancy : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_ref_type_invalid;
-        static const ydk::Enum::YLeaf icpe_oper_ref_type_smu;
-        static const ydk::Enum::YLeaf icpe_oper_ref_type_base_image;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_not_redundant;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_active;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_standby;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-multi-chassis-redundancy-not-redundant") return 0;
+            if (name == "icpe-oper-multi-chassis-redundancy-active") return 1;
+            if (name == "icpe-oper-multi-chassis-redundancy-standby") return 2;
+            return -1;
+        }
 };
 
-class IcpeOpmResyncFsmState : public ydk::Enum
+class IcpeOperDiscdLinkState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_not_open;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_stable;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_in_resync;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_queued;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_resync_req;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_stopped;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_probing;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_configuring;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_ready;
 
-};
-
-class IcpeOpmChanFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_down;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_closed;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opening;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opened;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_open;
-
-};
-
-class IcpeOpmController : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_controller_unknown;
-        static const ydk::Enum::YLeaf icpe_opm_controller_primary;
-        static const ydk::Enum::YLeaf icpe_opm_controller_secondary;
-
-};
-
-class IcpeOpmSyncFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_split_brain;
-        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_waiting;
-        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_whole_brain;
-
-};
-
-class IcpeOpmArbitrationFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_unarbitrated;
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_waiting;
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrating;
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrated;
-
-};
-
-class IcpeOpmAuthFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_unauth;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_auth;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_reply;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_authed;
-
-};
-
-class IcpeOpmTransportState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_disconnected;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_iccp_unavailable;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_no_member_present;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_down;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_not_reachable;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect_response;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_connected;
-
-};
-
-class IcpeOpmSessState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_disconnected;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_connecting;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_authenticating;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_arbitrating;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_waiting_for_resyncs;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_connected;
-
-};
-
-class IcpeInstallSatState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_install_sat_state_unknown;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_not_initiat_ed;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_transferring;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_activating;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_updating;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_replacing;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_deactivating;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_removing;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_success;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_failure;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_multiple_ops;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_aborted;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_protocol_version;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_pkg_not_present;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_no_image;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_no_such_file;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_sat_uncfgd;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_processing;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-discd-link-state-stopped") return 0;
+            if (name == "icpe-oper-discd-link-state-probing") return 1;
+            if (name == "icpe-oper-discd-link-state-configuring") return 2;
+            if (name == "icpe-oper-discd-link-state-ready") return 3;
+            return -1;
+        }
 };
 
 class IcpeOperTopoRemoteSource : public ydk::Enum
@@ -2447,15 +2650,32 @@ class IcpeOperTopoRemoteSource : public ydk::Enum
         static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_direct_satellite;
         static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_direct_host;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-oper-topo-remote-source-unknown") return 0;
+            if (name == "icpe-oper-topo-remote-source-remote-icl-id") return 1;
+            if (name == "icpe-oper-topo-remote-source-remote-satellite-mac") return 2;
+            if (name == "icpe-oper-topo-remote-source-remote-host-mac") return 3;
+            if (name == "icpe-oper-topo-remote-source-direct-satellite") return 4;
+            if (name == "icpe-oper-topo-remote-source-direct-host") return 5;
+            return -1;
+        }
 };
 
-class IcpeInstallPkgSupp : public ydk::Enum
+class IcpeOpticalSyncState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_install_pkg_supp_unknown;
-        static const ydk::Enum::YLeaf icpe_install_pkg_supp_not_supported;
-        static const ydk::Enum::YLeaf icpe_install_pkg_supp_supported;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_unknown;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_syncing;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_synced;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_not_connected;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "icpe-optical-sync-state-unknown") return 0;
+            if (name == "icpe-optical-sync-state-syncing") return 1;
+            if (name == "icpe-optical-sync-state-synced") return 2;
+            if (name == "icpe-optical-sync-state-not-connected") return 3;
+            return -1;
+        }
 };
 
 

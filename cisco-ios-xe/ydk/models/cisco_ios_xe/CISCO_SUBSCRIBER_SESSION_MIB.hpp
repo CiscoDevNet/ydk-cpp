@@ -723,6 +723,18 @@ class CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSession
         static const ydk::Enum::YLeaf userProfileIpSubnet;
         static const ydk::Enum::YLeaf userProfileNamedPool;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "other") return 2;
+            if (name == "static") return 3;
+            if (name == "localPool") return 4;
+            if (name == "dhcpv4") return 5;
+            if (name == "dhcpv6") return 6;
+            if (name == "userProfileIpAddr") return 7;
+            if (name == "userProfileIpSubnet") return 8;
+            if (name == "userProfileNamedPool") return 9;
+            return -1;
+        }
 };
 
 class CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::CsubAggStatsPointType : public ydk::Enum
@@ -731,6 +743,11 @@ class CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::CsubAggSt
         static const ydk::Enum::YLeaf physical;
         static const ydk::Enum::YLeaf interface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "physical") return 1;
+            if (name == "interface") return 2;
+            return -1;
+        }
 };
 
 class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobType : public ydk::Enum
@@ -740,6 +757,12 @@ class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobType : publi
         static const ydk::Enum::YLeaf query;
         static const ydk::Enum::YLeaf clear;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noop") return 1;
+            if (name == "query") return 2;
+            if (name == "clear") return 3;
+            return -1;
+        }
 };
 
 class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobControl : public ydk::Enum
@@ -750,6 +773,13 @@ class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobControl : pu
         static const ydk::Enum::YLeaf abort;
         static const ydk::Enum::YLeaf release;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noop") return 1;
+            if (name == "start") return 2;
+            if (name == "abort") return 3;
+            if (name == "release") return 4;
+            return -1;
+        }
 };
 
 class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobState : public ydk::Enum
@@ -760,6 +790,13 @@ class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobState : publ
         static const ydk::Enum::YLeaf inProgress;
         static const ydk::Enum::YLeaf finished;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 1;
+            if (name == "pending") return 2;
+            if (name == "inProgress") return 3;
+            if (name == "finished") return 4;
+            return -1;
+        }
 };
 
 class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReason : public ydk::Enum
@@ -772,6 +809,15 @@ class CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReas
         static const ydk::Enum::YLeaf insufficientResources;
         static const ydk::Enum::YLeaf error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "invalid") return 1;
+            if (name == "other") return 2;
+            if (name == "normal") return 3;
+            if (name == "aborted") return 4;
+            if (name == "insufficientResources") return 5;
+            if (name == "error") return 6;
+            return -1;
+        }
 };
 
 

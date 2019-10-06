@@ -1335,14 +1335,14 @@ bool Watchdog::Nodes::Node::OverloadState::LastThrottle::has_leaf_or_child_of_na
     return false;
 }
 
-const Enum::YLeaf OverloadCtrlNotif::disabled {0, "disabled"};
-const Enum::YLeaf OverloadCtrlNotif::enabled {1, "enabled"};
-
 const Enum::YLeaf MemoryState::unknown {0, "unknown"};
 const Enum::YLeaf MemoryState::normal {1, "normal"};
 const Enum::YLeaf MemoryState::minor {2, "minor"};
 const Enum::YLeaf MemoryState::severe {3, "severe"};
 const Enum::YLeaf MemoryState::critical {4, "critical"};
+
+const Enum::YLeaf OverloadCtrlNotif::disabled {0, "disabled"};
+const Enum::YLeaf OverloadCtrlNotif::enabled {1, "enabled"};
 
 
 }

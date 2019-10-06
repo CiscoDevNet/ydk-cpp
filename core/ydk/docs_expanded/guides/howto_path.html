@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using YDK Path API &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../index.html"/>
+        <link rel="up" title="Developer Guides" href="guides.html"/>
+        <link rel="next" title="RPC" href="howto_rpc.html"/>
+        <link rel="prev" title="Using OpenDaylight with YDK" href="howto_opendaylight.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="guides.html">Developer Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_opendaylight.html">Using OpenDaylight with YDK</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Using YDK Path API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_rpc.html">RPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="presence_class.html">Presence Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_gnmi.html">Using gNMI with YDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_validation.html">How to Disable Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="guides.html">Developer Guides</a> &raquo;</li>
+      
+    <li>Using YDK Path API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-ydk-path-api">
+<span id="ref-howtopath"></span><h1>Using YDK Path API<a class="headerlink" href="#using-ydk-path-api" title="Permalink to this headline">¶</a></h1>
+<p>Full XPath notation is supported for find operations on <a class="reference internal" href="../api/path/nodes/data_node.html#_CPPv2N3ydk4path8DataNodeE" title="ydk::path::DataNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">DataNode</span></code></a>(s). This XPath conforms to the YANG specification (<a class="reference external" href="https://tools.ietf.org/html/rfc6020#section-6.4">RFC 6020 section 6.4</a>). Some useful examples:</p>
+<ul class="simple">
+<li>Get <code class="docutils literal"><span class="pre">list</span></code> instance with <code class="docutils literal"><span class="pre">key1</span></code> of value <code class="docutils literal"><span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">key2</span></code> of value <code class="docutils literal"><span class="pre">2</span></code> (this can return more <code class="docutils literal"><span class="pre">list</span></code> instances if there are more keys than <code class="docutils literal"><span class="pre">key1</span></code> and <code class="docutils literal"><span class="pre">key2</span></code>)</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>/module-name:container/list<span class="o">[</span><span class="nv">key1</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="o">][</span><span class="nv">key2</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Get <code class="docutils literal"><span class="pre">leaf-list</span></code> instance with the value <code class="docutils literal"><span class="pre">val</span></code></li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>/module-name:container/leaf-list<span class="o">[</span>.<span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Get <code class="docutils literal"><span class="pre">aug-leaf</span></code>, which was added to <code class="docutils literal"><span class="pre">module-name</span></code> from an augment module <code class="docutils literal"><span class="pre">augment-module</span></code></li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>/module-name:container/container2/augment-module:aug-cont/aug-leaf
+</pre></div>
+</div>
+<p>A very small subset of this full XPath is recognized by <code class="xref cpp cpp-func docutils literal"><span class="pre">DataNode::create</span></code>. Basically, only a relative or absolute path can be specified to identify a new data node. However, lists must be identified by all their keys and created with all of them, so for those cases predicates are allowed. Predicates must be ordered the way the keys are ordered and all the keys must be specified. Every predicate includes a single key with its value. Optionally, leaves and leaf-lists can have predicates specifying their value in the path itself. All these paths are valid XPath expressions. Example: (Relative to Root Data or <a class="reference internal" href="../api/path/nodes/root_schema_node.html#_CPPv2N3ydk4path14RootSchemaNodeE" title="ydk::path::RootSchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">RootSchemaNode</span></code></a>)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ietf-yang-library:modules-state/module<span class="o">[</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ietf-yang-library&#39;</span><span class="o">][</span><span class="nv">revision</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">]</span>/conformance<span class="o">[</span>.<span class="o">=</span><span class="s1">&#39;implement&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Almost the same XPath is accepted by <a class="reference internal" href="../api/path/nodes/schema_node.html#_CPPv2N3ydk4path10SchemaNodeE" title="ydk::path::SchemaNode"><code class="xref cpp cpp-class docutils literal"><span class="pre">SchemaNode</span></code></a> methods. The difference is that it is not used on data, but schema, which means there are no key values and only one node matches one path. In effect, lists do not have to have any predicates. If they do, they do not need to have all the keys specified and if values are included, they are ignored. Nevertheless, any such expression is still a valid XPath, but can return more nodes if executed on a data tree. Examples (all returning the same node):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ietf-yang-library:modules-state/module/submodules
+ietf-yang-library:modules-state/module<span class="o">[</span>name<span class="o">]</span>/submodules
+ietf-yang-library:modules-state/module<span class="o">[</span>name<span class="o">][</span>revision<span class="o">]</span>/submodules
+ietf-yang-library:modules-state/module<span class="o">[</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ietf-yang-library&#39;</span><span class="o">][</span>revision<span class="o">]</span>/submodules
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In all cases the node&#8217;s prefix is specified as the name of the appropriate YANG schema. Any node can be prefixed by the module name. However, if the prefix is omitted, the module name is inherited from the previous (parent) node. It means, that the first node in the path is always supposed to have a prefix.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="howto_rpc.html" class="btn btn-neutral float-right" title="RPC" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="howto_opendaylight.html" class="btn btn-neutral" title="Using OpenDaylight with YDK" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

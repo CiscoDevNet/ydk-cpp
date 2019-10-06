@@ -5640,11 +5640,11 @@ Native::Interface::ATM::ATM()
     , rcv_queue(std::make_shared<Native::Interface::ATM::RcvQueue>())
     , peer(std::make_shared<Native::Interface::ATM::Peer>())
     , pm_path(std::make_shared<Native::Interface::ATM::PmPath>())
+    , service_policy(std::make_shared<Native::Interface::ATM::ServicePolicy>())
     , cisco_ios_xe_atm_ip(std::make_shared<Native::Interface::ATM::CiscoIOSXEAtmIp>())
     , atm(std::make_shared<Native::Interface::ATM::Atm>())
     , cem(this, {"number"})
     , pvc(this, {"local_vpi_vci"})
-    , service_policy(std::make_shared<Native::Interface::ATM::ServicePolicy>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -5681,9 +5681,9 @@ Native::Interface::ATM::ATM()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
+    service_policy->parent = this;
     cisco_ios_xe_atm_ip->parent = this;
     atm->parent = this;
-    service_policy->parent = this;
 
     yang_name = "ATM"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -5759,9 +5759,9 @@ bool Native::Interface::ATM::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (cisco_ios_xe_atm_ip !=  nullptr && cisco_ios_xe_atm_ip->has_data())
-	|| (atm !=  nullptr && atm->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data());
+	|| (atm !=  nullptr && atm->has_data());
 }
 
 bool Native::Interface::ATM::has_operation() const
@@ -5831,9 +5831,9 @@ bool Native::Interface::ATM::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (cisco_ios_xe_atm_ip !=  nullptr && cisco_ios_xe_atm_ip->has_operation())
-	|| (atm !=  nullptr && atm->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation());
+	|| (atm !=  nullptr && atm->has_operation());
 }
 
 std::string Native::Interface::ATM::get_absolute_path() const
@@ -6207,6 +6207,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::ATM::get_child_by_name(const std
         return pm_path;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::ATM::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-atm:ip")
     {
         if(cisco_ios_xe_atm_ip == nullptr)
@@ -6239,15 +6248,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::ATM::get_child_by_name(const std
         ent_->parent = this;
         pvc.append(ent_);
         return ent_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::ATM::ServicePolicy>();
-        }
-        return service_policy;
     }
 
     return nullptr;
@@ -6446,6 +6446,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::ATM::get_
         _children["pm-path"] = pm_path;
     }
 
+    if(service_policy != nullptr)
+    {
+        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
     if(cisco_ios_xe_atm_ip != nullptr)
     {
         _children["Cisco-IOS-XE-atm:ip"] = cisco_ios_xe_atm_ip;
@@ -6472,11 +6477,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::ATM::get_
             _children[ent_->get_segment_path()] = ent_;
         else
             _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    if(service_policy != nullptr)
-    {
-        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
     return _children;
@@ -6622,7 +6622,7 @@ void Native::Interface::ATM::set_filter(const std::string & value_path, YFilter 
 
 bool Native::Interface::ATM::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "ip" || name == "atm" || name == "cem" || name == "pvc" || name == "service-policy" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "load-interval" || name == "cdp")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "service-policy" || name == "ip" || name == "atm" || name == "cem" || name == "pvc" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "load-interval" || name == "cdp")
         return true;
     return false;
 }

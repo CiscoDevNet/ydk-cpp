@@ -1024,6 +1024,11 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     , helper_address(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress>())
     , rpf(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>())
     , bgp_pa(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>())
+    , pub_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime>())
+    , idb_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>())
     , multicast_group(this, {})
     , secondary_address(this, {})
 {
@@ -1032,6 +1037,11 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     helper_address->parent = this;
     rpf->parent = this;
     bgp_pa->parent = this;
+    pub_utime->parent = this;
+    idb_utime->parent = this;
+    caps_utime->parent = this;
+    fwd_en_utime->parent = this;
+    fwd_dis_utime->parent = this;
 
     yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1084,7 +1094,12 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_da
 	|| (multi_acl !=  nullptr && multi_acl->has_data())
 	|| (helper_address !=  nullptr && helper_address->has_data())
 	|| (rpf !=  nullptr && rpf->has_data())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_data());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_data())
+	|| (pub_utime !=  nullptr && pub_utime->has_data())
+	|| (idb_utime !=  nullptr && idb_utime->has_data())
+	|| (caps_utime !=  nullptr && caps_utime->has_data())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_data())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_data());
 }
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_operation() const
@@ -1131,7 +1146,12 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
 	|| (multi_acl !=  nullptr && multi_acl->has_operation())
 	|| (helper_address !=  nullptr && helper_address->has_operation())
 	|| (rpf !=  nullptr && rpf->has_operation())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_operation());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
+	|| (pub_utime !=  nullptr && pub_utime->has_operation())
+	|| (idb_utime !=  nullptr && idb_utime->has_operation())
+	|| (caps_utime !=  nullptr && caps_utime->has_operation())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_operation())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_operation());
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_segment_path() const
@@ -1225,6 +1245,51 @@ std::shared_ptr<ydk::Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf:
         return bgp_pa;
     }
 
+    if(child_yang_name == "pub-utime")
+    {
+        if(pub_utime == nullptr)
+        {
+            pub_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime>();
+        }
+        return pub_utime;
+    }
+
+    if(child_yang_name == "idb-utime")
+    {
+        if(idb_utime == nullptr)
+        {
+            idb_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>();
+        }
+        return idb_utime;
+    }
+
+    if(child_yang_name == "caps-utime")
+    {
+        if(caps_utime == nullptr)
+        {
+            caps_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>();
+        }
+        return caps_utime;
+    }
+
+    if(child_yang_name == "fwd-en-utime")
+    {
+        if(fwd_en_utime == nullptr)
+        {
+            fwd_en_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>();
+        }
+        return fwd_en_utime;
+    }
+
+    if(child_yang_name == "fwd-dis-utime")
+    {
+        if(fwd_dis_utime == nullptr)
+        {
+            fwd_dis_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>();
+        }
+        return fwd_dis_utime;
+    }
+
     if(child_yang_name == "multicast-group")
     {
         auto ent_ = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup>();
@@ -1271,6 +1336,31 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Nodes::Node::In
     if(bgp_pa != nullptr)
     {
         _children["bgp-pa"] = bgp_pa;
+    }
+
+    if(pub_utime != nullptr)
+    {
+        _children["pub-utime"] = pub_utime;
+    }
+
+    if(idb_utime != nullptr)
+    {
+        _children["idb-utime"] = idb_utime;
+    }
+
+    if(caps_utime != nullptr)
+    {
+        _children["caps-utime"] = caps_utime;
+    }
+
+    if(fwd_en_utime != nullptr)
+    {
+        _children["fwd-en-utime"] = fwd_en_utime;
+    }
+
+    if(fwd_dis_utime != nullptr)
+    {
+        _children["fwd-dis-utime"] = fwd_dis_utime;
     }
 
     count_ = 0;
@@ -1574,7 +1664,7 @@ void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_fi
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "multicast-group" || name == "secondary-address" || name == "interface-name" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "next-unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "config-flags" || name == "oper-flags" || name == "arm-flags" || name == "state-recvd-frm-im" || name == "cflct-address" || name == "client-type" || name == "is-or-event" || name == "or-im-state" || name == "idb-pointer")
+    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "pub-utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "secondary-address" || name == "interface-name" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "next-unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "config-flags" || name == "oper-flags" || name == "arm-flags" || name == "state-recvd-frm-im" || name == "cflct-address" || name == "client-type" || name == "is-or-event" || name == "or-im-state" || name == "idb-pointer")
         return true;
     return false;
 }
@@ -2686,6 +2776,316 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 {
     if(name == "enable" || name == "source" || name == "destination")
         return true;
+    return false;
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::PubUtime()
+{
+
+    yang_name = "pub-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::~PubUtime()
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pub-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::IdbUtime()
+{
+
+    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::~IdbUtime()
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idb-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::CapsUtime()
+{
+
+    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::~CapsUtime()
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "caps-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::FwdEnUtime()
+{
+
+    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::~FwdEnUtime()
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-en-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::FwdDisUtime()
+{
+
+    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::~FwdDisUtime()
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-dis-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -5356,6 +5756,11 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Detail()
     , helper_address(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress>())
     , rpf(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf>())
     , bgp_pa(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa>())
+    , pub_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime>())
+    , idb_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime>())
     , multicast_group(this, {})
     , secondary_address(this, {})
 {
@@ -5364,6 +5769,11 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Detail()
     helper_address->parent = this;
     rpf->parent = this;
     bgp_pa->parent = this;
+    pub_utime->parent = this;
+    idb_utime->parent = this;
+    caps_utime->parent = this;
+    fwd_en_utime->parent = this;
+    fwd_dis_utime->parent = this;
 
     yang_name = "detail"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -5415,7 +5825,12 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_data() const
 	|| (multi_acl !=  nullptr && multi_acl->has_data())
 	|| (helper_address !=  nullptr && helper_address->has_data())
 	|| (rpf !=  nullptr && rpf->has_data())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_data());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_data())
+	|| (pub_utime !=  nullptr && pub_utime->has_data())
+	|| (idb_utime !=  nullptr && idb_utime->has_data())
+	|| (caps_utime !=  nullptr && caps_utime->has_data())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_data())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_data());
 }
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_operation() const
@@ -5461,7 +5876,12 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_operation() cons
 	|| (multi_acl !=  nullptr && multi_acl->has_operation())
 	|| (helper_address !=  nullptr && helper_address->has_operation())
 	|| (rpf !=  nullptr && rpf->has_operation())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_operation());
+	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
+	|| (pub_utime !=  nullptr && pub_utime->has_operation())
+	|| (idb_utime !=  nullptr && idb_utime->has_operation())
+	|| (caps_utime !=  nullptr && caps_utime->has_operation())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_operation())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_operation());
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_segment_path() const
@@ -5553,6 +5973,51 @@ std::shared_ptr<ydk::Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Deta
         return bgp_pa;
     }
 
+    if(child_yang_name == "pub-utime")
+    {
+        if(pub_utime == nullptr)
+        {
+            pub_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime>();
+        }
+        return pub_utime;
+    }
+
+    if(child_yang_name == "idb-utime")
+    {
+        if(idb_utime == nullptr)
+        {
+            idb_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime>();
+        }
+        return idb_utime;
+    }
+
+    if(child_yang_name == "caps-utime")
+    {
+        if(caps_utime == nullptr)
+        {
+            caps_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime>();
+        }
+        return caps_utime;
+    }
+
+    if(child_yang_name == "fwd-en-utime")
+    {
+        if(fwd_en_utime == nullptr)
+        {
+            fwd_en_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime>();
+        }
+        return fwd_en_utime;
+    }
+
+    if(child_yang_name == "fwd-dis-utime")
+    {
+        if(fwd_dis_utime == nullptr)
+        {
+            fwd_dis_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime>();
+        }
+        return fwd_dis_utime;
+    }
+
     if(child_yang_name == "multicast-group")
     {
         auto ent_ = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup>();
@@ -5599,6 +6064,31 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Interfaces::Int
     if(bgp_pa != nullptr)
     {
         _children["bgp-pa"] = bgp_pa;
+    }
+
+    if(pub_utime != nullptr)
+    {
+        _children["pub-utime"] = pub_utime;
+    }
+
+    if(idb_utime != nullptr)
+    {
+        _children["idb-utime"] = idb_utime;
+    }
+
+    if(caps_utime != nullptr)
+    {
+        _children["caps-utime"] = caps_utime;
+    }
+
+    if(fwd_en_utime != nullptr)
+    {
+        _children["fwd-en-utime"] = fwd_en_utime;
+    }
+
+    if(fwd_dis_utime != nullptr)
+    {
+        _children["fwd-dis-utime"] = fwd_dis_utime;
     }
 
     count_ = 0;
@@ -5892,7 +6382,7 @@ void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_filter(const std
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "multicast-group" || name == "secondary-address" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "next-unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "config-flags" || name == "oper-flags" || name == "arm-flags" || name == "state-recvd-frm-im" || name == "cflct-address" || name == "client-type" || name == "is-or-event" || name == "or-im-state" || name == "idb-pointer")
+    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "pub-utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "secondary-address" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "next-unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "config-flags" || name == "oper-flags" || name == "arm-flags" || name == "state-recvd-frm-im" || name == "cflct-address" || name == "client-type" || name == "is-or-event" || name == "or-im-state" || name == "idb-pointer")
         return true;
     return false;
 }
@@ -7004,6 +7494,316 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::has_l
 {
     if(name == "enable" || name == "source" || name == "destination")
         return true;
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::PubUtime()
+{
+
+    yang_name = "pub-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::~PubUtime()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pub-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::IdbUtime()
+{
+
+    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::~IdbUtime()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idb-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::CapsUtime()
+{
+
+    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::~CapsUtime()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "caps-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::FwdEnUtime()
+{
+
+    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::~FwdEnUtime()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-en-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::FwdDisUtime()
+{
+
+    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::~FwdDisUtime()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fwd-dis-utime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 

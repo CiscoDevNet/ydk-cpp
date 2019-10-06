@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ValidationService &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../../index.html"/>
+        <link rel="up" title="Service" href="services.html"/>
+        <link rel="next" title="gNMI Service" href="gnmi_service.html"/>
+        <link rel="prev" title="Netconf Service" href="netconf_service.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ydk.html">YDK API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="services.html">Service</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html">Codec Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html#xmlsubtreecodec">XmlSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec_service.html#jsonsubtreecodec">JsonSubtreeCodec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="crud_service.html">CRUD Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="executor_service.html">Executor Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netconf_service.html">Netconf Service</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">ValidationService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gnmi_service.html">gNMI Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../providers/providers.html">ServiceProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/errors.html">Errors Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filters.html">YDK Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../types.html">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../path/path.html">YDK Path API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="../ydk.html">YDK API</a> &raquo;</li>
+      
+          <li><a href="services.html">Service</a> &raquo;</li>
+      
+    <li>ValidationService</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="validationservice">
+<span id="ref-validationservice"></span><h1>ValidationService<a class="headerlink" href="#validationservice" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk17ValidationServiceE">
+<span id="ydk::ValidationService"></span><em class="property">class </em><code class="descclassname">ydk::</code><code class="descname">ValidationService</code><a class="headerlink" href="#_CPPv2N3ydk17ValidationServiceE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation Service class for validating C++ model API objects of type <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a>.</p>
+<dl class="enum-class">
+<dt id="_CPPv2N3ydk17ValidationService6OptionE">
+<em class="property">enum class </em><code class="descclassname"></code><code class="descname">Option</code><a class="headerlink" href="#_CPPv2N3ydk17ValidationService6OptionE" title="Permalink to this definition">¶</a></dt>
+<dd><p>All validation is performed in the context of some operation. These options capture the context of use.</p>
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk17ValidationService6Option9DATASTOREE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">DATASTORE</code><a class="headerlink" href="#_CPPv2N3ydk17ValidationService6Option9DATASTOREE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Datastore validation.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk17ValidationService6Option10GET_CONFIGE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">GET_CONFIG</code><a class="headerlink" href="#_CPPv2N3ydk17ValidationService6Option10GET_CONFIGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get config validation. Checks to see if only config nodes are references.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk17ValidationService6Option3GETE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">GET</code><a class="headerlink" href="#_CPPv2N3ydk17ValidationService6Option3GETE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get validation.</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk17ValidationService6Option11EDIT_CONFIGE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">EDIT_CONFIG</code><a class="headerlink" href="#_CPPv2N3ydk17ValidationService6Option11EDIT_CONFIGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edit validation. Checks on the values of leafs etc.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk17ValidationService8validateERKN3ydk4path15ServiceProviderER6EntityN17ValidationService6OptionE">
+<span id="ydk::ValidationService::validate__ydk::path::ServiceProviderCR.EntityR.ValidationService::Option"></span>void <code class="descclassname"></code><code class="descname">validate</code><span class="sig-paren">(</span><em class="property">const</em> ydk::path::ServiceProvider &amp;<em>provider</em>, <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity">Entity</a> &amp;<em>entity</em>, <a class="reference internal" href="#_CPPv2N3ydk17ValidationServiceE" title="ydk::ValidationService">ValidationService</a>::<a class="reference internal" href="#_CPPv2N3ydk17ValidationService6OptionE" title="ydk::ValidationService::Option">Option</a> <em>option</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk17ValidationService8validateERKN3ydk4path15ServiceProviderER6EntityN17ValidationService6OptionE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates an entity based on the option.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>provider</strong> &#8211; An instance of <code class="xref cpp cpp-class docutils literal"><span class="pre">ServiceProvider</span></code></li>
+<li><strong>entity</strong> &#8211; An instance of <a class="reference internal" href="../types.html#_CPPv2N3ydk6EntityE" title="ydk::Entity"><code class="xref cpp cpp-class docutils literal"><span class="pre">Entity</span></code></a> class defined under a bundle</li>
+<li><strong>option</strong> &#8211; An instance of type <a class="reference internal" href="#_CPPv2N3ydk17ValidationService6OptionE" title="ydk::ValidationService::Option"><code class="xref cpp cpp-class docutils literal"><span class="pre">Option</span></code></a></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises YError:</th><td class="field-body"><p class="first last">If validation errors were detected</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk17ValidationServiceD0Ev">
+<span id="ydk::ValidationService::~ValidationService"></span><em class="property">virtual</em> <code class="descclassname"></code><code class="descname">~ValidationService</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv2N3ydk17ValidationServiceD0Ev" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gnmi_service.html" class="btn btn-neutral float-right" title="gNMI Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="netconf_service.html" class="btn btn-neutral" title="Netconf Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

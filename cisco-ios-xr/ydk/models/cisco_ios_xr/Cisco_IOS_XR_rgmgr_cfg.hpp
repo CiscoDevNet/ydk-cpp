@@ -255,13 +255,13 @@ class RedundancyGroupManager::Iccp::IccpGroups::IccpGroup : public ydk::Entity
         ydk::YLeaf mode; //type: IccpMode
         class Backbones; //type: RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones
         class Members; //type: RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members
-        class Mlacp; //type: RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp
         class NvSatellite; //type: RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite
+        class Mlacp; //type: RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones> backbones;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members> members;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp> mlacp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite> nv_satellite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp> mlacp;
         
 }; // RedundancyGroupManager::Iccp::IccpGroups::IccpGroup
 
@@ -354,6 +354,27 @@ class RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member : pub
 }; // RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member
 
 
+class RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite : public ydk::Entity
+{
+    public:
+        NvSatellite();
+        ~NvSatellite();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf system_mac; //type: string
+
+}; // RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite
+
+
 class RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp : public ydk::Entity
 {
     public:
@@ -377,32 +398,15 @@ class RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp : public ydk::E
 
 }; // RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp
 
-
-class RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite : public ydk::Entity
-{
-    public:
-        NvSatellite();
-        ~NvSatellite();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf system_mac; //type: string
-
-}; // RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite
-
 class IccpMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf singleton;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "singleton") return 1;
+            return -1;
+        }
 };
 
 

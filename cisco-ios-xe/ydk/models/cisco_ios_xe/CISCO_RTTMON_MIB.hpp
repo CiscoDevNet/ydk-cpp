@@ -1642,6 +1642,11 @@ class CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry::Rt
         static const ydk::Enum::YLeaf filePath;
         static const ydk::Enum::YLeaf scriptName;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "filePath") return 1;
+            if (name == "scriptName") return 2;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonReactAdminThresholdType : public ydk::Enum
@@ -1653,6 +1658,14 @@ class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonReactAdm
         static const ydk::Enum::YLeaf xOfy;
         static const ydk::Enum::YLeaf average;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 1;
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            if (name == "xOfy") return 4;
+            if (name == "average") return 5;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonReactAdminActionType : public ydk::Enum
@@ -1667,6 +1680,17 @@ class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonReactAdm
         static const ydk::Enum::YLeaf nmvtAndTrigger;
         static const ydk::Enum::YLeaf trapNmvtAndTrigger;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "trapOnly") return 2;
+            if (name == "nmvtOnly") return 3;
+            if (name == "triggerOnly") return 4;
+            if (name == "trapAndNmvt") return 5;
+            if (name == "trapAndTrigger") return 6;
+            if (name == "nmvtAndTrigger") return 7;
+            if (name == "trapNmvtAndTrigger") return 8;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonHistoryAdminFilter : public ydk::Enum
@@ -1677,6 +1701,13 @@ class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonHistoryA
         static const ydk::Enum::YLeaf overThreshold;
         static const ydk::Enum::YLeaf failures;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "all") return 2;
+            if (name == "overThreshold") return 3;
+            if (name == "failures") return 4;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonCtrlOperState : public ydk::Enum
@@ -1690,6 +1721,16 @@ class CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::RttMonCtrlOper
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf restart;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "reset") return 1;
+            if (name == "orderlyStop") return 2;
+            if (name == "immediateStop") return 3;
+            if (name == "pending") return 4;
+            if (name == "inactive") return 5;
+            if (name == "active") return 6;
+            if (name == "restart") return 7;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdminLSPFECType : public ydk::Enum
@@ -1697,6 +1738,10 @@ class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdmi
     public:
         static const ydk::Enum::YLeaf ldpIpv4Prefix;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldpIpv4Prefix") return 1;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdminPrecision : public ydk::Enum
@@ -1705,6 +1750,11 @@ class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdmi
         static const ydk::Enum::YLeaf milliseconds;
         static const ydk::Enum::YLeaf microseconds;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "milliseconds") return 1;
+            if (name == "microseconds") return 2;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdminProbePakPriority : public ydk::Enum
@@ -1713,6 +1763,11 @@ class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdmi
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf high;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 1;
+            if (name == "high") return 2;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdminOWNTPSyncTolType : public ydk::Enum
@@ -1721,6 +1776,11 @@ class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdmi
         static const ydk::Enum::YLeaf percent;
         static const ydk::Enum::YLeaf absolute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "percent") return 1;
+            if (name == "absolute") return 2;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdminReserveDsp : public ydk::Enum
@@ -1730,6 +1790,12 @@ class CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::RttMonEchoAdmi
         static const ydk::Enum::YLeaf gs;
         static const ydk::Enum::YLeaf na;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "be") return 1;
+            if (name == "gs") return 2;
+            if (name == "na") return 3;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::RttMonFileIOAdminSize : public ydk::Enum
@@ -1741,6 +1807,14 @@ class CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::RttMonFile
         static const ydk::Enum::YLeaf n128k;
         static const ydk::Enum::YLeaf n256k;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "n256") return 1;
+            if (name == "n1k") return 2;
+            if (name == "n64k") return 3;
+            if (name == "n128k") return 4;
+            if (name == "n256k") return 5;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::RttMonFileIOAdminAction : public ydk::Enum
@@ -1750,6 +1824,12 @@ class CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::RttMonFile
         static const ydk::Enum::YLeaf read;
         static const ydk::Enum::YLeaf writeRead;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "write") return 1;
+            if (name == "read") return 2;
+            if (name == "writeRead") return 3;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry::RttMonReactTriggerOperState : public ydk::Enum
@@ -1758,6 +1838,11 @@ class CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf pending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "active") return 1;
+            if (name == "pending") return 2;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpnMonTypeSecFreqType : public ydk::Enum
@@ -1768,6 +1853,13 @@ class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpn
         static const ydk::Enum::YLeaf connectionLoss;
         static const ydk::Enum::YLeaf both;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "timeout") return 2;
+            if (name == "connectionLoss") return 3;
+            if (name == "both") return 4;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpnMonReactThresholdType : public ydk::Enum
@@ -1777,6 +1869,12 @@ class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpn
         static const ydk::Enum::YLeaf immediate;
         static const ydk::Enum::YLeaf consecutive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 1;
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpnMonReactActionType : public ydk::Enum
@@ -1785,6 +1883,11 @@ class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpn
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf trapOnly;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "trapOnly") return 2;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpnMonReactLpdNotifyType : public ydk::Enum
@@ -1795,6 +1898,13 @@ class CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::RttMplsVpn
         static const ydk::Enum::YLeaf lpdGroupStatus;
         static const ydk::Enum::YLeaf lpdAll;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "lpdPathDiscovery") return 2;
+            if (name == "lpdGroupStatus") return 3;
+            if (name == "lpdAll") return 4;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::RttMonReactThresholdType : public ydk::Enum
@@ -1806,6 +1916,14 @@ class CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::RttMonReactThresholdTy
         static const ydk::Enum::YLeaf xOfy;
         static const ydk::Enum::YLeaf average;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 1;
+            if (name == "immediate") return 2;
+            if (name == "consecutive") return 3;
+            if (name == "xOfy") return 4;
+            if (name == "average") return 5;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::RttMonReactActionType : public ydk::Enum
@@ -1816,6 +1934,13 @@ class CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::RttMonReactActionType 
         static const ydk::Enum::YLeaf triggerOnly;
         static const ydk::Enum::YLeaf trapAndTrigger;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "trapOnly") return 2;
+            if (name == "triggerOnly") return 3;
+            if (name == "trapAndTrigger") return 4;
+            return -1;
+        }
 };
 
 class CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry::RttMonLatestJitterOperNTPState : public ydk::Enum
@@ -1824,6 +1949,11 @@ class CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry::
         static const ydk::Enum::YLeaf sync;
         static const ydk::Enum::YLeaf outOfSync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sync") return 1;
+            if (name == "outOfSync") return 2;
+            return -1;
+        }
 };
 
 

@@ -5178,19 +5178,19 @@ const Enum::YLeaf LispAddressFamilyType::ipv4_afi {0, "ipv4-afi"};
 const Enum::YLeaf LispAddressFamilyType::ipv6_afi {1, "ipv6-afi"};
 const Enum::YLeaf LispAddressFamilyType::mac_afi {2, "mac-afi"};
 
-const Enum::YLeaf LispIaftypeType::iaf_ipv4 {0, "iaf-ipv4"};
-const Enum::YLeaf LispIaftypeType::iaf_ipv6 {1, "iaf-ipv6"};
-const Enum::YLeaf LispIaftypeType::iaf_mac {2, "iaf-mac"};
-const Enum::YLeaf LispIaftypeType::iaf_ar {3, "iaf-ar"};
-const Enum::YLeaf LispIaftypeType::iaf_rar {4, "iaf-rar"};
+const Enum::YLeaf LispRlocStateType::lisp_rloc_state_down {0, "lisp-rloc-state-down"};
+const Enum::YLeaf LispRlocStateType::lisp_rloc_state_up {1, "lisp-rloc-state-up"};
 
 const Enum::YLeaf LispMapReplyActionType::no_action {0, "no-action"};
 const Enum::YLeaf LispMapReplyActionType::natively_forward {1, "natively-forward"};
 const Enum::YLeaf LispMapReplyActionType::send_map_request {2, "send-map-request"};
 const Enum::YLeaf LispMapReplyActionType::drop {3, "drop"};
 
-const Enum::YLeaf LispRlocStateType::lisp_rloc_state_down {0, "lisp-rloc-state-down"};
-const Enum::YLeaf LispRlocStateType::lisp_rloc_state_up {1, "lisp-rloc-state-up"};
+const Enum::YLeaf LispIaftypeType::iaf_ipv4 {0, "iaf-ipv4"};
+const Enum::YLeaf LispIaftypeType::iaf_ipv6 {1, "iaf-ipv6"};
+const Enum::YLeaf LispIaftypeType::iaf_mac {2, "iaf-mac"};
+const Enum::YLeaf LispIaftypeType::iaf_ar {3, "iaf-ar"};
+const Enum::YLeaf LispIaftypeType::iaf_rar {4, "iaf-rar"};
 
 const Enum::YLeaf LispSessionStateType::lisp_session_state_incomplete {0, "lisp-session-state-incomplete"};
 const Enum::YLeaf LispSessionStateType::lisp_session_state_listening {1, "lisp-session-state-listening"};

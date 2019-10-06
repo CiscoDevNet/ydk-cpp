@@ -239,6 +239,15 @@ class PppIosAuthType : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_ios_auth_mschap_v2;
         static const ydk::Enum::YLeaf ppp_ios_auth_eap;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ppp-ios-auth-none") return 0;
+            if (name == "ppp-ios-auth-chap") return 1;
+            if (name == "ppp-ios-auth-pap") return 2;
+            if (name == "ppp-ios-auth-mschap") return 3;
+            if (name == "ppp-ios-auth-mschap-v2") return 4;
+            if (name == "ppp-ios-auth-eap") return 5;
+            return -1;
+        }
 };
 
 class PppoeOperationalRole : public ydk::Enum
@@ -247,6 +256,11 @@ class PppoeOperationalRole : public ydk::Enum
         static const ydk::Enum::YLeaf pppoe_client;
         static const ydk::Enum::YLeaf pppoe_server;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pppoe-client") return 0;
+            if (name == "pppoe-server") return 1;
+            return -1;
+        }
 };
 
 

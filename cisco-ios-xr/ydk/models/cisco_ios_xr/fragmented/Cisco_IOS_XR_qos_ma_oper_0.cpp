@@ -5,11 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_0.hpp"
-#include "Cisco_IOS_XR_qos_ma_oper_3.hpp"
-#include "Cisco_IOS_XR_qos_ma_oper_2.hpp"
-#include "Cisco_IOS_XR_qos_ma_oper_6.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_7.hpp"
+#include "Cisco_IOS_XR_qos_ma_oper_2.hpp"
+#include "Cisco_IOS_XR_qos_ma_oper_3.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_1.hpp"
+#include "Cisco_IOS_XR_qos_ma_oper_6.hpp"
 
 using namespace ydk;
 
@@ -27543,23 +27543,23 @@ const Enum::YLeaf PolicyParamUnit::policy_param_unit_mhz {21, "policy-param-unit
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
 const Enum::YLeaf PolicyParamUnit::policy_param_unit_max {23, "policy-param-unit-max"};
 
-const Enum::YLeaf CacState::unknown {0, "unknown"};
-const Enum::YLeaf CacState::admit {1, "admit"};
-const Enum::YLeaf CacState::redirect {2, "redirect"};
-const Enum::YLeaf CacState::ubrl {3, "ubrl"};
-
-const Enum::YLeaf PolicyState::active {0, "active"};
-const Enum::YLeaf PolicyState::suspended {1, "suspended"};
-
 const Enum::YLeaf QosCapsOperationEnum::add {0, "add"};
 const Enum::YLeaf QosCapsOperationEnum::remove {1, "remove"};
 const Enum::YLeaf QosCapsOperationEnum::replace {2, "replace"};
 const Enum::YLeaf QosCapsOperationEnum::modify {3, "modify"};
 const Enum::YLeaf QosCapsOperationEnum::unknown {4, "unknown"};
 
+const Enum::YLeaf CacState::unknown {0, "unknown"};
+const Enum::YLeaf CacState::admit {1, "admit"};
+const Enum::YLeaf CacState::redirect {2, "redirect"};
+const Enum::YLeaf CacState::ubrl {3, "ubrl"};
+
 const Enum::YLeaf QosMaSatCapsTypeEnum::input {0, "input"};
 const Enum::YLeaf QosMaSatCapsTypeEnum::output {1, "output"};
 const Enum::YLeaf QosMaSatCapsTypeEnum::unknown {2, "unknown"};
+
+const Enum::YLeaf PolicyState::active {0, "active"};
+const Enum::YLeaf PolicyState::suspended {1, "suspended"};
 
 
 }

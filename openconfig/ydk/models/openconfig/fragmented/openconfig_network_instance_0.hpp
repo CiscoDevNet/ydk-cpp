@@ -3763,6 +3763,11 @@ class NetworkInstances::NetworkInstance::Fdb::MacTable::Entries::Entry::State::E
         static const ydk::Enum::YLeaf STATIC;
         static const ydk::Enum::YLeaf DYNAMIC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "STATIC") return 0;
+            if (name == "DYNAMIC") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::Config::UpdateTrigger_ : public ydk::Enum
@@ -3771,6 +3776,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeas
         static const ydk::Enum::YLeaf ADJUSTED_MAX_RESERVABLE_PCT;
         static const ydk::Enum::YLeaf SR_TRAFFIC_PCT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJUSTED_MAX_RESERVABLE_PCT") return 0;
+            if (name == "SR_TRAFFIC_PCT") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::State::UpdateTrigger_ : public ydk::Enum
@@ -3779,6 +3789,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeas
         static const ydk::Enum::YLeaf ADJUSTED_MAX_RESERVABLE_PCT;
         static const ydk::Enum::YLeaf SR_TRAFFIC_PCT;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ADJUSTED_MAX_RESERVABLE_PCT") return 0;
+            if (name == "SR_TRAFFIC_PCT") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType : public ydk::Enum
@@ -3787,6 +3802,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf DELTA;
         static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DELTA") return 0;
+            if (name == "THRESHOLD_CROSSED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecification : public ydk::Enum
@@ -3795,6 +3815,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
         static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "MIRRORED_UP_DOWN") return 0;
+            if (name == "SEPARATE_UP_DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdType : public ydk::Enum
@@ -3803,6 +3828,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf DELTA;
         static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "DELTA") return 0;
+            if (name == "THRESHOLD_CROSSED") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecification : public ydk::Enum
@@ -3811,6 +3841,11 @@ class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface:
         static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
         static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "MIRRORED_UP_DOWN") return 0;
+            if (name == "SEPARATE_UP_DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::Status : public ydk::Enum
@@ -3819,6 +3854,11 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessi
         static const ydk::Enum::YLeaf UP;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::PeakDataRate : public ydk::Enum
@@ -3826,6 +3866,10 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessi
     public:
         static const ydk::Enum::YLeaf INFINITY_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "INFINITY") return 0;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::NeighborStatus : public ydk::Enum
@@ -3834,6 +3878,11 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neigh
         static const ydk::Enum::YLeaf UP;
         static const ydk::Enum::YLeaf DOWN;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "UP") return 0;
+            if (name == "DOWN") return 1;
+            return -1;
+        }
 };
 
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::Priority : public ydk::Enum
@@ -3841,6 +3890,10 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Inter
     public:
         static const ydk::Enum::YLeaf ALL;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ALL") return 0;
+            return -1;
+        }
 };
 
 

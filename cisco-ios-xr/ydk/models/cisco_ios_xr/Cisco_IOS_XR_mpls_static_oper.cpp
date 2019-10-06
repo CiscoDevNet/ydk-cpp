@@ -5572,20 +5572,17 @@ const Enum::YLeaf MgmtMplsStaticPathStatus::resolve_failed {3, "resolve-failed"}
 const Enum::YLeaf MgmtMplsStaticPathStatus::frr_backup {4, "frr-backup"};
 const Enum::YLeaf MgmtMplsStaticPathStatus::backup {5, "backup"};
 
-const Enum::YLeaf MgmtStaticLspAfi::not_applicable {0, "not-applicable"};
-const Enum::YLeaf MgmtStaticLspAfi::ipv4 {1, "ipv4"};
-const Enum::YLeaf MgmtStaticLspAfi::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf MplsStaticPathRole::primary {0, "primary"};
-const Enum::YLeaf MplsStaticPathRole::backup {1, "backup"};
-const Enum::YLeaf MplsStaticPathRole::primary_and_backup {2, "primary-and-backup"};
-
 const Enum::YLeaf MgmtStaticPath::cross_connect_path {0, "cross-connect-path"};
 const Enum::YLeaf MgmtStaticPath::pop_lookup_path {1, "pop-lookup-path"};
 
-const Enum::YLeaf MgmtStaticAddr::not_applicable {0, "not-applicable"};
-const Enum::YLeaf MgmtStaticAddr::ipv4 {1, "ipv4"};
-const Enum::YLeaf MgmtStaticAddr::ipv6 {2, "ipv6"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::none {0, "none"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::per_prefix {1, "per-prefix"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::per_vrf {2, "per-vrf"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::cross_connect {3, "cross-connect"};
+
+const Enum::YLeaf MgmtStaticLspAfi::not_applicable {0, "not-applicable"};
+const Enum::YLeaf MgmtStaticLspAfi::ipv4 {1, "ipv4"};
+const Enum::YLeaf MgmtStaticLspAfi::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf MgmtMplsStaticLabelStatus::not_created {0, "not-created"};
 const Enum::YLeaf MgmtMplsStaticLabelStatus::vrf_down {1, "vrf-down"};
@@ -5602,10 +5599,13 @@ const Enum::YLeaf MgmtMplsStaticLabelStatus::rewrite_discrepancy {11, "rewrite-d
 const Enum::YLeaf MgmtMplsStaticLabelStatus::rewrite_nexthop_unresolved {12, "rewrite-nexthop-unresolved"};
 const Enum::YLeaf MgmtMplsStaticLabelStatus::label_status_unknown {13, "label-status-unknown"};
 
-const Enum::YLeaf MgmtMplsStaticLabelMode::none {0, "none"};
-const Enum::YLeaf MgmtMplsStaticLabelMode::per_prefix {1, "per-prefix"};
-const Enum::YLeaf MgmtMplsStaticLabelMode::per_vrf {2, "per-vrf"};
-const Enum::YLeaf MgmtMplsStaticLabelMode::cross_connect {3, "cross-connect"};
+const Enum::YLeaf MgmtStaticAddr::not_applicable {0, "not-applicable"};
+const Enum::YLeaf MgmtStaticAddr::ipv4 {1, "ipv4"};
+const Enum::YLeaf MgmtStaticAddr::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf MplsStaticPathRole::primary {0, "primary"};
+const Enum::YLeaf MplsStaticPathRole::backup {1, "backup"};
+const Enum::YLeaf MplsStaticPathRole::primary_and_backup {2, "primary-and-backup"};
 
 
 }

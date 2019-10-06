@@ -635,6 +635,11 @@ class NextHopType : public ydk::Enum
         static const ydk::Enum::YLeaf regular_next_hop;
         static const ydk::Enum::YLeaf default_next_hop;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "regular-next-hop") return 1;
+            if (name == "default-next-hop") return 2;
+            return -1;
+        }
 };
 
 

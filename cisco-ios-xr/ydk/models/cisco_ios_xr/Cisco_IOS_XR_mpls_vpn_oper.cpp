@@ -1438,12 +1438,12 @@ const Enum::YLeaf MplsVpnRt::import {1, "import"};
 const Enum::YLeaf MplsVpnRt::export_ {2, "export"};
 const Enum::YLeaf MplsVpnRt::both {3, "both"};
 
+const Enum::YLeaf MplsVpnAfi::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsVpnAfi::ipv6 {2, "ipv6"};
+
 const Enum::YLeaf MplsVpnSafi::unicast {1, "unicast"};
 const Enum::YLeaf MplsVpnSafi::multicast {2, "multicast"};
 const Enum::YLeaf MplsVpnSafi::flowspec {133, "flowspec"};
-
-const Enum::YLeaf MplsVpnAfi::ipv4 {1, "ipv4"};
-const Enum::YLeaf MplsVpnAfi::ipv6 {2, "ipv6"};
 
 
 }

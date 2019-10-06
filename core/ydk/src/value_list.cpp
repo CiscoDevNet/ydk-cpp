@@ -293,9 +293,9 @@ YList::build_key(shared_ptr<Entity> ep)
     ostringstream value_buffer;
     string key;
     vector< pair<string, LeafData> > name_leaf_data_vector = ep->get_name_leaf_data();
-    for (auto key : ylist_key_names) {
+    for (auto ylist_key : ylist_key_names) {
         for (auto name_leaf_data : name_leaf_data_vector) {
-            if (key == name_leaf_data.first) {
+            if (ylist_key == name_leaf_data.first) {
                 key = value_buffer.str();
                 if (key.length() > 0) {
                     value_buffer << ",";
@@ -326,6 +326,21 @@ YList::append(shared_ptr<Entity> ep)
     }
     entity_map[key] = ep;
     ep->ylist_key = key;
+    ep->ylist = this;
+}
+
+void
+YList::review(shared_ptr<Entity> ep)
+{
+    string key = build_key(ep);
+    if (key != ep->ylist_key) {
+        pop(ep->ylist_key);
+        if (!entity_map[key]) {
+            key_vector.push_back(key);
+        }
+        entity_map[key] = ep;
+        ep->ylist_key = key;
+    }
 }
 
 void

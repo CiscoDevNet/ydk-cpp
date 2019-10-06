@@ -95,7 +95,6 @@ class Traceroute::Input::Destination : public ydk::Entity
         ydk::YLeaf max_ttl; //type: uint16
         ydk::YLeaf port; //type: uint32
         ydk::YLeaf verbose; //type: boolean
-        ydk::YLeaf srv6_header; //type: empty
         ydk::YLeaf priority; //type: uint16
         ydk::YLeaf outgoing_interface; //type: string
 
@@ -129,7 +128,6 @@ class Traceroute::Input::Ipv4 : public ydk::Entity
         ydk::YLeaf max_ttl; //type: uint16
         ydk::YLeaf port; //type: uint32
         ydk::YLeaf verbose; //type: boolean
-        ydk::YLeaf srv6_header; //type: empty
 
 }; // Traceroute::Input::Ipv4
 
@@ -161,7 +159,6 @@ class Traceroute::Input::Ipv6 : public ydk::Entity
         ydk::YLeaf max_ttl; //type: uint16
         ydk::YLeaf port; //type: uint32
         ydk::YLeaf verbose; //type: boolean
-        ydk::YLeaf srv6_header; //type: empty
         ydk::YLeaf priority; //type: uint16
         ydk::YLeaf outgoing_interface; //type: string
 
@@ -339,57 +336,8 @@ class Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe : p
         ydk::YLeaf delta_time; //type: uint32
         ydk::YLeaf hop_address; //type: string
         ydk::YLeaf hop_hostname; //type: string
-        class Srv6Header; //type: Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header> srv6_header;
-        
 }; // Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe
-
-
-class Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header : public ydk::Entity
-{
-    public:
-        Srv6Header();
-        ~Srv6Header();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf destination_address; //type: uint32
-        ydk::YLeaf segments_left; //type: uint32
-        class Segments; //type: Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments> segments;
-        
-}; // Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header
-
-
-class Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments : public ydk::Entity
-{
-    public:
-        Segments();
-        ~Segments();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList segment; //type: list of  string
-
-}; // Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Srv6Header::Segments
 
 
 class Traceroute::Output::TracerouteResponse::Ipv6 : public ydk::Entity
@@ -513,57 +461,8 @@ class Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe : p
         ydk::YLeaf delta_time; //type: uint32
         ydk::YLeaf hop_address; //type: string
         ydk::YLeaf hop_hostname; //type: string
-        class Srv6Header; //type: Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header> srv6_header;
-        
 }; // Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe
-
-
-class Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header : public ydk::Entity
-{
-    public:
-        Srv6Header();
-        ~Srv6Header();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf destination_address; //type: uint32
-        ydk::YLeaf segments_left; //type: uint32
-        class Segments; //type: Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments> segments;
-        
-}; // Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header
-
-
-class Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments : public ydk::Entity
-{
-    public:
-        Segments();
-        ~Segments();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList segment; //type: list of  string
-
-}; // Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Srv6Header::Segments
 
 
 }

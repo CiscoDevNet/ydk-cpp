@@ -17772,20 +17772,20 @@ bool Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecon
     return false;
 }
 
-const Enum::YLeaf TeBandwidthType::SPECIFIED {0, "SPECIFIED"};
-const Enum::YLeaf TeBandwidthType::AUTO {1, "AUTO"};
-
 const Enum::YLeaf MplsSrlgFloodingType::FLOODED_SRLG {0, "FLOODED_SRLG"};
 const Enum::YLeaf MplsSrlgFloodingType::STATIC_SRLG {1, "STATIC_SRLG"};
 
 const Enum::YLeaf MplsHopType::LOOSE {0, "LOOSE"};
 const Enum::YLeaf MplsHopType::STRICT {1, "STRICT"};
 
-const Enum::YLeaf TeMetricType::IGP {0, "IGP"};
-
 const Enum::YLeaf CspfTieBreaking::RANDOM {0, "RANDOM"};
 const Enum::YLeaf CspfTieBreaking::LEAST_FILL {1, "LEAST_FILL"};
 const Enum::YLeaf CspfTieBreaking::MOST_FILL {2, "MOST_FILL"};
+
+const Enum::YLeaf TeMetricType::IGP {0, "IGP"};
+
+const Enum::YLeaf TeBandwidthType::SPECIFIED {0, "SPECIFIED"};
+const Enum::YLeaf TeBandwidthType::AUTO {1, "AUTO"};
 
 const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType::DELTA {0, "DELTA"};
 const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType::THRESHOLD_CROSSED {1, "THRESHOLD_CROSSED"};

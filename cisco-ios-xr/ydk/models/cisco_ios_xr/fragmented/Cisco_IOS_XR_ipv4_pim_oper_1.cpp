@@ -12,106 +12,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_oper {
 
-Pim::Standby::DefaultContext::Gre::GreHashes::GreHashes()
-    :
-    gre_hash(this, {"source_address", "destination_address", "ifname"})
-{
-
-    yang_name = "gre-hashes"; yang_parent_name = "gre"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pim::Standby::DefaultContext::Gre::GreHashes::~GreHashes()
-{
-}
-
-bool Pim::Standby::DefaultContext::Gre::GreHashes::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<gre_hash.len(); index++)
-    {
-        if(gre_hash[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Pim::Standby::DefaultContext::Gre::GreHashes::has_operation() const
-{
-    for (std::size_t index=0; index<gre_hash.len(); index++)
-    {
-        if(gre_hash[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Pim::Standby::DefaultContext::Gre::GreHashes::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:pim/standby/default-context/gre/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pim::Standby::DefaultContext::Gre::GreHashes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gre-hashes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Standby::DefaultContext::Gre::GreHashes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Standby::DefaultContext::Gre::GreHashes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "gre-hash")
-    {
-        auto ent_ = std::make_shared<Pim::Standby::DefaultContext::Gre::GreHashes::GreHash>();
-        ent_->parent = this;
-        gre_hash.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::DefaultContext::Gre::GreHashes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : gre_hash.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Pim::Standby::DefaultContext::Gre::GreHashes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pim::Standby::DefaultContext::Gre::GreHashes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pim::Standby::DefaultContext::Gre::GreHashes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gre-hash")
-        return true;
-    return false;
-}
-
 Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::GreHash()
     :
     source_address{YType::str, "source-address"},
@@ -18711,10 +18611,8 @@ Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::
     candidate_rp_expires{YType::uint16, "candidate-rp-expires"},
     protocol{YType::enumeration, "protocol"}
         ,
-    next_candidate_rp(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>())
-    , candidate_rp_address(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
+    candidate_rp_address(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
 {
-    next_candidate_rp->parent = this;
     candidate_rp_address->parent = this;
 
     yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list"; is_top_level_class = false; has_list_ancestor = true; 
@@ -18732,7 +18630,6 @@ bool Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrp
 	|| candidate_rp_up_time.is_set
 	|| candidate_rp_expires.is_set
 	|| protocol.is_set
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_data())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_data());
 }
 
@@ -18744,7 +18641,6 @@ bool Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrp
 	|| ydk::is_set(candidate_rp_up_time.yfilter)
 	|| ydk::is_set(candidate_rp_expires.yfilter)
 	|| ydk::is_set(protocol.yfilter)
-	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_operation())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_operation());
 }
 
@@ -18772,15 +18668,6 @@ std::vector<std::pair<std::string, LeafData> > Pim::Standby::Vrfs::Vrf::Bsr::RpC
 
 std::shared_ptr<ydk::Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "next-candidate-rp")
-    {
-        if(next_candidate_rp == nullptr)
-        {
-            next_candidate_rp = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>();
-        }
-        return next_candidate_rp;
-    }
-
     if(child_yang_name == "candidate-rp-address")
     {
         if(candidate_rp_address == nullptr)
@@ -18797,11 +18684,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::Vrfs::Vrf::Bsr
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(next_candidate_rp != nullptr)
-    {
-        _children["next-candidate-rp"] = next_candidate_rp;
-    }
-
     if(candidate_rp_address != nullptr)
     {
         _children["candidate-rp-address"] = candidate_rp_address;
@@ -18870,70 +18752,8 @@ void Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrp
 
 bool Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "next-candidate-rp" || name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
+    if(name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
         return true;
-    return false;
-}
-
-Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::NextCandidateRp()
-{
-
-    yang_name = "next-candidate-rp"; yang_parent_name = "pim-bsr-crp-bag"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::~NextCandidateRp()
-{
-}
-
-bool Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-candidate-rp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_leaf_or_child_of_name(const std::string & name) const
-{
     return false;
 }
 
@@ -26041,6 +25861,218 @@ void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::set_filter(const std::string & valu
 bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source" || name == "group" || name == "next-hop" || name == "source-address" || name == "group-address" || name == "route-distinguisher" || name == "extranet-path-count" || name == "is-bgp-added")
+        return true;
+    return false;
+}
+
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::Source()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "source"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::~Source()
+{
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::Group()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "group"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::~Group()
+{
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
         return true;
     return false;
 }

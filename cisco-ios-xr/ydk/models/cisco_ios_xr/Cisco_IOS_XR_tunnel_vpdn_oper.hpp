@@ -31,71 +31,22 @@ class Vpdn : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Nodes; //type: Vpdn::Nodes
+        class Sessions; //type: Vpdn::Sessions
+        class TunnelDestinations; //type: Vpdn::TunnelDestinations
+        class VpdnMirroring; //type: Vpdn::VpdnMirroring
+        class VpdnRedundancy; //type: Vpdn::VpdnRedundancy
+        class HistoryFailures; //type: Vpdn::HistoryFailures
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions> sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::TunnelDestinations> tunnel_destinations;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring> vpdn_mirroring;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnRedundancy> vpdn_redundancy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::HistoryFailures> history_failures;
         
 }; // Vpdn
 
 
-class Vpdn::Nodes : public ydk::Entity
-{
-    public:
-        Nodes();
-        ~Nodes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Node; //type: Vpdn::Nodes::Node
-
-        ydk::YList node;
-        
-}; // Vpdn::Nodes
-
-
-class Vpdn::Nodes::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf node_name; //type: string
-        class Sessions; //type: Vpdn::Nodes::Node::Sessions
-        class TunnelDestinations; //type: Vpdn::Nodes::Node::TunnelDestinations
-        class VpdnMirroring; //type: Vpdn::Nodes::Node::VpdnMirroring
-        class VpdnRedundancy; //type: Vpdn::Nodes::Node::VpdnRedundancy
-        class HistoryFailures; //type: Vpdn::Nodes::Node::HistoryFailures
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::Sessions> sessions;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::TunnelDestinations> tunnel_destinations;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::VpdnMirroring> vpdn_mirroring;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::VpdnRedundancy> vpdn_redundancy;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::HistoryFailures> history_failures;
-        
-}; // Vpdn::Nodes::Node
-
-
-class Vpdn::Nodes::Node::Sessions : public ydk::Entity
+class Vpdn::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -110,15 +61,16 @@ class Vpdn::Nodes::Node::Sessions : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Session; //type: Vpdn::Nodes::Node::Sessions::Session
+        class Session; //type: Vpdn::Sessions::Session
 
         ydk::YList session;
         
-}; // Vpdn::Nodes::Node::Sessions
+}; // Vpdn::Sessions
 
 
-class Vpdn::Nodes::Node::Sessions::Session : public ydk::Entity
+class Vpdn::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -133,24 +85,25 @@ class Vpdn::Nodes::Node::Sessions::Session : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf session_label; //type: string
         ydk::YLeaf setup_time; //type: uint32
         ydk::YLeaf parent_interface_name; //type: string
-        class Session_; //type: Vpdn::Nodes::Node::Sessions::Session::Session_
-        class L2tp; //type: Vpdn::Nodes::Node::Sessions::Session::L2tp
-        class Subscriber; //type: Vpdn::Nodes::Node::Sessions::Session::Subscriber
-        class Configuration; //type: Vpdn::Nodes::Node::Sessions::Session::Configuration
+        class Session_; //type: Vpdn::Sessions::Session::Session_
+        class L2tp; //type: Vpdn::Sessions::Session::L2tp
+        class Subscriber; //type: Vpdn::Sessions::Session::Subscriber
+        class Configuration; //type: Vpdn::Sessions::Session::Configuration
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::Sessions::Session::Session_> session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::Sessions::Session::L2tp> l2tp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::Sessions::Session::Subscriber> subscriber;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::Sessions::Session::Configuration> configuration;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Session_> session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::L2tp> l2tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Subscriber> subscriber;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Configuration> configuration;
         
-}; // Vpdn::Nodes::Node::Sessions::Session
+}; // Vpdn::Sessions::Session
 
 
-class Vpdn::Nodes::Node::Sessions::Session::Session_ : public ydk::Entity
+class Vpdn::Sessions::Session::Session_ : public ydk::Entity
 {
     public:
         Session_();
@@ -175,10 +128,10 @@ class Vpdn::Nodes::Node::Sessions::Session::Session_ : public ydk::Entity
         ydk::YLeaf l2tp_tunnel_id; //type: uint16
         ydk::YLeaf srg_slave; //type: boolean
 
-}; // Vpdn::Nodes::Node::Sessions::Session::Session_
+}; // Vpdn::Sessions::Session::Session_
 
 
-class Vpdn::Nodes::Node::Sessions::Session::L2tp : public ydk::Entity
+class Vpdn::Sessions::Session::L2tp : public ydk::Entity
 {
     public:
         L2tp();
@@ -208,10 +161,10 @@ class Vpdn::Nodes::Node::Sessions::Session::L2tp : public ydk::Entity
         ydk::YLeaf tunnel_assignment_id; //type: string
         ydk::YLeaf is_tunnel_authentication_enabled; //type: boolean
 
-}; // Vpdn::Nodes::Node::Sessions::Session::L2tp
+}; // Vpdn::Sessions::Session::L2tp
 
 
-class Vpdn::Nodes::Node::Sessions::Session::Subscriber : public ydk::Entity
+class Vpdn::Sessions::Session::Subscriber : public ydk::Entity
 {
     public:
         Subscriber();
@@ -233,10 +186,10 @@ class Vpdn::Nodes::Node::Sessions::Session::Subscriber : public ydk::Entity
         ydk::YLeaf receive_connect_speed; //type: uint64
         ydk::YLeaf transmit_connect_speed; //type: uint64
 
-}; // Vpdn::Nodes::Node::Sessions::Session::Subscriber
+}; // Vpdn::Sessions::Session::Subscriber
 
 
-class Vpdn::Nodes::Node::Sessions::Session::Configuration : public ydk::Entity
+class Vpdn::Sessions::Session::Configuration : public ydk::Entity
 {
     public:
         Configuration();
@@ -258,14 +211,14 @@ class Vpdn::Nodes::Node::Sessions::Session::Configuration : public ydk::Entity
         ydk::YLeaf tos_mode; //type: TosMode
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf dsl_line_forwarding; //type: boolean
-        class VpnId; //type: Vpdn::Nodes::Node::Sessions::Session::Configuration::VpnId
+        class VpnId; //type: Vpdn::Sessions::Session::Configuration::VpnId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::Sessions::Session::Configuration::VpnId> vpn_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Configuration::VpnId> vpn_id;
         
-}; // Vpdn::Nodes::Node::Sessions::Session::Configuration
+}; // Vpdn::Sessions::Session::Configuration
 
 
-class Vpdn::Nodes::Node::Sessions::Session::Configuration::VpnId : public ydk::Entity
+class Vpdn::Sessions::Session::Configuration::VpnId : public ydk::Entity
 {
     public:
         VpnId();
@@ -284,10 +237,10 @@ class Vpdn::Nodes::Node::Sessions::Session::Configuration::VpnId : public ydk::E
         ydk::YLeaf oui; //type: uint32
         ydk::YLeaf index_; //type: uint32
 
-}; // Vpdn::Nodes::Node::Sessions::Session::Configuration::VpnId
+}; // Vpdn::Sessions::Session::Configuration::VpnId
 
 
-class Vpdn::Nodes::Node::TunnelDestinations : public ydk::Entity
+class Vpdn::TunnelDestinations : public ydk::Entity
 {
     public:
         TunnelDestinations();
@@ -302,15 +255,16 @@ class Vpdn::Nodes::Node::TunnelDestinations : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class TunnelDestination; //type: Vpdn::Nodes::Node::TunnelDestinations::TunnelDestination
+        class TunnelDestination; //type: Vpdn::TunnelDestinations::TunnelDestination
 
         ydk::YList tunnel_destination;
         
-}; // Vpdn::Nodes::Node::TunnelDestinations
+}; // Vpdn::TunnelDestinations
 
 
-class Vpdn::Nodes::Node::TunnelDestinations::TunnelDestination : public ydk::Entity
+class Vpdn::TunnelDestinations::TunnelDestination : public ydk::Entity
 {
     public:
         TunnelDestination();
@@ -325,6 +279,7 @@ class Vpdn::Nodes::Node::TunnelDestinations::TunnelDestination : public ydk::Ent
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf address; //type: string
@@ -336,10 +291,10 @@ class Vpdn::Nodes::Node::TunnelDestinations::TunnelDestination : public ydk::Ent
         ydk::YLeaf retry; //type: uint32
         ydk::YLeaf status_change_time; //type: uint32
 
-}; // Vpdn::Nodes::Node::TunnelDestinations::TunnelDestination
+}; // Vpdn::TunnelDestinations::TunnelDestination
 
 
-class Vpdn::Nodes::Node::VpdnMirroring : public ydk::Entity
+class Vpdn::VpdnMirroring : public ydk::Entity
 {
     public:
         VpdnMirroring();
@@ -354,26 +309,27 @@ class Vpdn::Nodes::Node::VpdnMirroring : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf sync_not_conn_cnt; //type: uint32
         ydk::YLeaf sso_err_cnt; //type: uint32
         ydk::YLeaf sso_batch_err_cnt; //type: uint32
         ydk::YLeaf alloc_err_cnt; //type: uint32
         ydk::YLeaf alloc_cnt; //type: uint32
-        class QadSendStats; //type: Vpdn::Nodes::Node::VpdnMirroring::QadSendStats
-        class QadRecvStats; //type: Vpdn::Nodes::Node::VpdnMirroring::QadRecvStats
-        class QadSendStatsLastClear; //type: Vpdn::Nodes::Node::VpdnMirroring::QadSendStatsLastClear
-        class QadRecvStatsLastClear; //type: Vpdn::Nodes::Node::VpdnMirroring::QadRecvStatsLastClear
+        class QadSendStats; //type: Vpdn::VpdnMirroring::QadSendStats
+        class QadRecvStats; //type: Vpdn::VpdnMirroring::QadRecvStats
+        class QadSendStatsLastClear; //type: Vpdn::VpdnMirroring::QadSendStatsLastClear
+        class QadRecvStatsLastClear; //type: Vpdn::VpdnMirroring::QadRecvStatsLastClear
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::VpdnMirroring::QadSendStats> qad_send_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::VpdnMirroring::QadRecvStats> qad_recv_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::VpdnMirroring::QadSendStatsLastClear> qad_send_stats_last_clear;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Nodes::Node::VpdnMirroring::QadRecvStatsLastClear> qad_recv_stats_last_clear;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring::QadSendStats> qad_send_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring::QadRecvStats> qad_recv_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring::QadSendStatsLastClear> qad_send_stats_last_clear;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring::QadRecvStatsLastClear> qad_recv_stats_last_clear;
         
-}; // Vpdn::Nodes::Node::VpdnMirroring
+}; // Vpdn::VpdnMirroring
 
 
-class Vpdn::Nodes::Node::VpdnMirroring::QadSendStats : public ydk::Entity
+class Vpdn::VpdnMirroring::QadSendStats : public ydk::Entity
 {
     public:
         QadSendStats();
@@ -388,6 +344,7 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadSendStats : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf msgs_sent; //type: uint32
         ydk::YLeaf acks_sent; //type: uint32
@@ -409,10 +366,10 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadSendStats : public ydk::Entity
         ydk::YLeaf qad_rx_list_q_size; //type: uint32
         ydk::YLeaf qad_rx_first_seq_number; //type: uint32
 
-}; // Vpdn::Nodes::Node::VpdnMirroring::QadSendStats
+}; // Vpdn::VpdnMirroring::QadSendStats
 
 
-class Vpdn::Nodes::Node::VpdnMirroring::QadRecvStats : public ydk::Entity
+class Vpdn::VpdnMirroring::QadRecvStats : public ydk::Entity
 {
     public:
         QadRecvStats();
@@ -427,6 +384,7 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadRecvStats : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf msgs_recvd; //type: uint32
         ydk::YLeaf acks_recvd; //type: uint32
@@ -436,10 +394,10 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadRecvStats : public ydk::Entity
         ydk::YLeaf ooo_drops; //type: uint32
         ydk::YLeaf stale_msgs; //type: uint32
 
-}; // Vpdn::Nodes::Node::VpdnMirroring::QadRecvStats
+}; // Vpdn::VpdnMirroring::QadRecvStats
 
 
-class Vpdn::Nodes::Node::VpdnMirroring::QadSendStatsLastClear : public ydk::Entity
+class Vpdn::VpdnMirroring::QadSendStatsLastClear : public ydk::Entity
 {
     public:
         QadSendStatsLastClear();
@@ -454,6 +412,7 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadSendStatsLastClear : public ydk::Enti
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf msgs_sent; //type: uint32
         ydk::YLeaf acks_sent; //type: uint32
@@ -475,10 +434,10 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadSendStatsLastClear : public ydk::Enti
         ydk::YLeaf qad_rx_list_q_size; //type: uint32
         ydk::YLeaf qad_rx_first_seq_number; //type: uint32
 
-}; // Vpdn::Nodes::Node::VpdnMirroring::QadSendStatsLastClear
+}; // Vpdn::VpdnMirroring::QadSendStatsLastClear
 
 
-class Vpdn::Nodes::Node::VpdnMirroring::QadRecvStatsLastClear : public ydk::Entity
+class Vpdn::VpdnMirroring::QadRecvStatsLastClear : public ydk::Entity
 {
     public:
         QadRecvStatsLastClear();
@@ -493,6 +452,7 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadRecvStatsLastClear : public ydk::Enti
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf msgs_recvd; //type: uint32
         ydk::YLeaf acks_recvd; //type: uint32
@@ -502,10 +462,10 @@ class Vpdn::Nodes::Node::VpdnMirroring::QadRecvStatsLastClear : public ydk::Enti
         ydk::YLeaf ooo_drops; //type: uint32
         ydk::YLeaf stale_msgs; //type: uint32
 
-}; // Vpdn::Nodes::Node::VpdnMirroring::QadRecvStatsLastClear
+}; // Vpdn::VpdnMirroring::QadRecvStatsLastClear
 
 
-class Vpdn::Nodes::Node::VpdnRedundancy : public ydk::Entity
+class Vpdn::VpdnRedundancy : public ydk::Entity
 {
     public:
         VpdnRedundancy();
@@ -520,6 +480,7 @@ class Vpdn::Nodes::Node::VpdnRedundancy : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf session_total; //type: uint32
         ydk::YLeaf session_synced; //type: uint32
@@ -528,10 +489,10 @@ class Vpdn::Nodes::Node::VpdnRedundancy : public ydk::Entity
         ydk::YLeaf finish_time; //type: uint64
         ydk::YLeaf abort_time; //type: uint64
 
-}; // Vpdn::Nodes::Node::VpdnRedundancy
+}; // Vpdn::VpdnRedundancy
 
 
-class Vpdn::Nodes::Node::HistoryFailures : public ydk::Entity
+class Vpdn::HistoryFailures : public ydk::Entity
 {
     public:
         HistoryFailures();
@@ -546,15 +507,16 @@ class Vpdn::Nodes::Node::HistoryFailures : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class HistoryFailure; //type: Vpdn::Nodes::Node::HistoryFailures::HistoryFailure
+        class HistoryFailure; //type: Vpdn::HistoryFailures::HistoryFailure
 
         ydk::YList history_failure;
         
-}; // Vpdn::Nodes::Node::HistoryFailures
+}; // Vpdn::HistoryFailures
 
 
-class Vpdn::Nodes::Node::HistoryFailures::HistoryFailure : public ydk::Entity
+class Vpdn::HistoryFailures::HistoryFailure : public ydk::Entity
 {
     public:
         HistoryFailure();
@@ -569,6 +531,7 @@ class Vpdn::Nodes::Node::HistoryFailures::HistoryFailure : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf username; //type: string
         ydk::YLeaf remote_name; //type: string
@@ -585,7 +548,37 @@ class Vpdn::Nodes::Node::HistoryFailures::HistoryFailure : public ydk::Entity
         ydk::YLeaf error_repeat_count; //type: uint16
         ydk::YLeaf failure_type; //type: VpdnFailcode
 
-}; // Vpdn::Nodes::Node::HistoryFailures::HistoryFailure
+}; // Vpdn::HistoryFailures::HistoryFailure
+
+class SessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf established;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "idle") return 0;
+            if (name == "connected") return 1;
+            if (name == "established") return 2;
+            return -1;
+        }
+};
+
+class VpdnState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initial_state;
+        static const ydk::Enum::YLeaf init_sync_in_progress;
+        static const ydk::Enum::YLeaf steady_state;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "initial-state") return 0;
+            if (name == "init-sync-in-progress") return 1;
+            if (name == "steady-state") return 2;
+            return -1;
+        }
+};
 
 class VpdnFailcode : public ydk::Enum
 {
@@ -610,15 +603,28 @@ class VpdnFailcode : public ydk::Enum
         static const ydk::Enum::YLeaf tunnel_in_resync;
         static const ydk::Enum::YLeaf call_prarmeters;
 
-};
-
-class VpdnState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initial_state;
-        static const ydk::Enum::YLeaf init_sync_in_progress;
-        static const ydk::Enum::YLeaf steady_state;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "peer-action") return 1;
+            if (name == "authentication") return 2;
+            if (name == "authentication-error") return 3;
+            if (name == "authentication-failed") return 4;
+            if (name == "authorization") return 5;
+            if (name == "authorization-failed") return 6;
+            if (name == "home-gatewayfailure") return 7;
+            if (name == "connection-termination") return 8;
+            if (name == "no-resources-available") return 9;
+            if (name == "timer-expiry") return 10;
+            if (name == "session-mid-exceeded") return 11;
+            if (name == "soft-shut") return 12;
+            if (name == "session-limit-exceeded") return 13;
+            if (name == "administrative") return 14;
+            if (name == "link-failure") return 15;
+            if (name == "security") return 16;
+            if (name == "tunnel-in-resync") return 17;
+            if (name == "call-prarmeters") return 18;
+            return -1;
+        }
 };
 
 class LsgStatus : public ydk::Enum
@@ -630,6 +636,14 @@ class LsgStatus : public ydk::Enum
         static const ydk::Enum::YLeaf testable;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "active") return 1;
+            if (name == "down") return 2;
+            if (name == "testable") return 3;
+            if (name == "testing") return 4;
+            return -1;
+        }
 };
 
 class TosMode : public ydk::Enum
@@ -639,15 +653,12 @@ class TosMode : public ydk::Enum
         static const ydk::Enum::YLeaf set;
         static const ydk::Enum::YLeaf reflect;
 
-};
-
-class SessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf established;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "default") return 0;
+            if (name == "set") return 1;
+            if (name == "reflect") return 2;
+            return -1;
+        }
 };
 
 

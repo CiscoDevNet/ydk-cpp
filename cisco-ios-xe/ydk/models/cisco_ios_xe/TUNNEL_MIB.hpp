@@ -212,6 +212,12 @@ class TUNNELMIB::TunnelIfTable::TunnelIfEntry::TunnelIfSecurity : public ydk::En
         static const ydk::Enum::YLeaf ipsec;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "ipsec") return 2;
+            if (name == "other") return 3;
+            return -1;
+        }
 };
 
 

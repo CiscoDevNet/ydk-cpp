@@ -17811,15 +17811,15 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
     return false;
 }
 
+const Enum::YLeaf BgpOcOriginAttr::igp {0, "igp"};
+const Enum::YLeaf BgpOcOriginAttr::egp {1, "egp"};
+const Enum::YLeaf BgpOcOriginAttr::incomplete {2, "incomplete"};
+
 const Enum::YLeaf BgpOcInvalidRouteReason::valid_route {1, "valid-route"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_clsuter_loop {2, "invalid-clsuter-loop"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_as_path_loop {3, "invalid-as-path-loop"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_origin_at_or_id {4, "invalid-origin-at-or-id"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_as_confed_loop {5, "invalid-as-confed-loop"};
-
-const Enum::YLeaf BgpOcOriginAttr::igp {0, "igp"};
-const Enum::YLeaf BgpOcOriginAttr::egp {1, "egp"};
-const Enum::YLeaf BgpOcOriginAttr::incomplete {2, "incomplete"};
 
 const Enum::YLeaf BgpOcAfi::ipv4 {0, "ipv4"};
 const Enum::YLeaf BgpOcAfi::ipv6 {5, "ipv6"};

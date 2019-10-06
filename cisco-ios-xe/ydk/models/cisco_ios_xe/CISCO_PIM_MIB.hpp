@@ -101,6 +101,12 @@ class CISCOPIMMIB::Cpim::CpimLastErrorType : public ydk::Enum
         static const ydk::Enum::YLeaf invalidRegister;
         static const ydk::Enum::YLeaf invalidJoinPrune;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "invalidRegister") return 2;
+            if (name == "invalidJoinPrune") return 3;
+            return -1;
+        }
 };
 
 class CISCOPIMMIB::CiscoPimMIBNotificationObjects::CpimRPMappingChangeType : public ydk::Enum
@@ -111,6 +117,13 @@ class CISCOPIMMIB::CiscoPimMIBNotificationObjects::CpimRPMappingChangeType : pub
         static const ydk::Enum::YLeaf modifiedOldMapping;
         static const ydk::Enum::YLeaf modifiedNewMapping;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "newMapping") return 1;
+            if (name == "deletedMapping") return 2;
+            if (name == "modifiedOldMapping") return 3;
+            if (name == "modifiedNewMapping") return 4;
+            return -1;
+        }
 };
 
 

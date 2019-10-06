@@ -881,6 +881,11 @@ class IpProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf tcp;
         static const ydk::Enum::YLeaf udp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tcp") return 6;
+            if (name == "udp") return 17;
+            return -1;
+        }
 };
 
 

@@ -67,7 +67,7 @@ static void parse_entity(Entity & entity, vector<PathElem> & path_container)
                 PathKey key{name_value.first, leaf_data.value};
                 keys.push_back(key);
             }
-         }
+        }
     }
 
     path_container.push_back({s, keys});

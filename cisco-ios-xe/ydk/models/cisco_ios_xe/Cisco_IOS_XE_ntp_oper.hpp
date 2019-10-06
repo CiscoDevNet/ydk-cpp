@@ -274,31 +274,6 @@ class NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress : public ydk::Enti
 
 }; // NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress
 
-class RefClockSourceType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_ref_goes;
-        static const ydk::Enum::YLeaf ntp_ref_gps;
-        static const ydk::Enum::YLeaf ntp_ref_gal;
-        static const ydk::Enum::YLeaf ntp_ref_pps;
-        static const ydk::Enum::YLeaf ntp_ref_irig;
-        static const ydk::Enum::YLeaf ntp_ref_wwvb;
-        static const ydk::Enum::YLeaf ntp_ref_dcf;
-        static const ydk::Enum::YLeaf ntp_ref_hbg;
-        static const ydk::Enum::YLeaf ntp_ref_msf;
-        static const ydk::Enum::YLeaf ntp_ref_jjy;
-        static const ydk::Enum::YLeaf ntp_ref_lorc;
-        static const ydk::Enum::YLeaf ntp_ref_tdf;
-        static const ydk::Enum::YLeaf ntp_ref_chu;
-        static const ydk::Enum::YLeaf ntp_ref_wwv;
-        static const ydk::Enum::YLeaf ntp_ref_wwvh;
-        static const ydk::Enum::YLeaf ntp_ref_nist;
-        static const ydk::Enum::YLeaf ntp_ref_acts;
-        static const ydk::Enum::YLeaf ntp_ref_usno;
-        static const ydk::Enum::YLeaf ntp_ref_ptb;
-
-};
-
 class KissCodeType : public ydk::Enum
 {
     public:
@@ -317,54 +292,23 @@ class KissCodeType : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_ref_rmot;
         static const ydk::Enum::YLeaf ntp_ref_step;
 
-};
-
-class RefidPktTypeInfo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_ref_state_kod;
-        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_clk_source;
-        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_ip_addr;
-        static const ydk::Enum::YLeaf ntp_ref_state_bad_state;
-
-};
-
-class PeerSelectStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_peer_as_backup;
-        static const ydk::Enum::YLeaf ntp_peer_rejected;
-        static const ydk::Enum::YLeaf ntp_peer_false_ticker;
-        static const ydk::Enum::YLeaf ntp_peer_excess;
-        static const ydk::Enum::YLeaf ntp_peer_outlier;
-        static const ydk::Enum::YLeaf ntp_peer_candidate;
-        static const ydk::Enum::YLeaf ntp_peer_sys_peer;
-        static const ydk::Enum::YLeaf ntp_peer_pps_peer;
-
-};
-
-class PeerAuthStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_auth_ok;
-        static const ydk::Enum::YLeaf ntp_auth_bad_auth;
-        static const ydk::Enum::YLeaf ntp_auth_auth_not_configured;
-        static const ydk::Enum::YLeaf ntp_auth_status_not_available;
-        static const ydk::Enum::YLeaf ntp_auth_none;
-        static const ydk::Enum::YLeaf ntp_auth_crypto;
-
-};
-
-class PeerStatusWord : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf crypto_flag_sig;
-        static const ydk::Enum::YLeaf crypto_flag_leap;
-        static const ydk::Enum::YLeaf crypto_flag_vrfy;
-        static const ydk::Enum::YLeaf crypto_flag_cook;
-        static const ydk::Enum::YLeaf crypto_flag_auto;
-        static const ydk::Enum::YLeaf crypto_flag_cert;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-ref-acst") return 0;
+            if (name == "ntp-ref-auth") return 1;
+            if (name == "ntp-ref-auto") return 2;
+            if (name == "ntp-ref-bcst") return 3;
+            if (name == "ntp-ref-cryp") return 4;
+            if (name == "ntp-ref-deny") return 5;
+            if (name == "ntp-ref-drop") return 6;
+            if (name == "ntp-ref-rstr") return 7;
+            if (name == "ntp-ref-init") return 8;
+            if (name == "ntp-ref-mcst") return 9;
+            if (name == "ntp-ref-nkey") return 10;
+            if (name == "ntp-ref-rate") return 11;
+            if (name == "ntp-ref-rmot") return 12;
+            if (name == "ntp-ref-step") return 13;
+            return -1;
+        }
 };
 
 class PeerEvent : public ydk::Enum
@@ -388,6 +332,26 @@ class PeerEvent : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_peer_event_xerr;
         static const ydk::Enum::YLeaf ntp_peer_event_tai;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-peer-event-mobilize") return 0;
+            if (name == "ntp-peer-event-demobilize") return 1;
+            if (name == "ntp-peer-event-unreachable") return 2;
+            if (name == "ntp-peer-event-reachable") return 3;
+            if (name == "ntp-peer-event-restart") return 4;
+            if (name == "ntp-peer-event-reply") return 5;
+            if (name == "ntp-peer-event-rate") return 6;
+            if (name == "ntp-peer-event-deny") return 7;
+            if (name == "ntp-peer-disarmed") return 8;
+            if (name == "ntp-peer-armed") return 9;
+            if (name == "ntp-peer-event-newpeer") return 10;
+            if (name == "ntp-peer-event-clock") return 11;
+            if (name == "ntp-peer-event-auth") return 12;
+            if (name == "ntp-peer-event-popcorn") return 13;
+            if (name == "ntp-peer-event-xleave") return 14;
+            if (name == "ntp-peer-event-xerr") return 15;
+            if (name == "ntp-peer-event-tai") return 16;
+            return -1;
+        }
 };
 
 class ServerType : public ydk::Enum
@@ -397,6 +361,143 @@ class ServerType : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_server;
         static const ydk::Enum::YLeaf ntp_unknown_type;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-peer") return 0;
+            if (name == "ntp-server") return 1;
+            if (name == "ntp-unknown-type") return 2;
+            return -1;
+        }
+};
+
+class RefidPktTypeInfo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_ref_state_kod;
+        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_clk_source;
+        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_ip_addr;
+        static const ydk::Enum::YLeaf ntp_ref_state_bad_state;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-ref-state-kod") return 0;
+            if (name == "ntp-ref-state-resolved-with-clk-source") return 1;
+            if (name == "ntp-ref-state-resolved-with-ip-addr") return 2;
+            if (name == "ntp-ref-state-bad-state") return 3;
+            return -1;
+        }
+};
+
+class PeerStatusWord : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf crypto_flag_sig;
+        static const ydk::Enum::YLeaf crypto_flag_leap;
+        static const ydk::Enum::YLeaf crypto_flag_vrfy;
+        static const ydk::Enum::YLeaf crypto_flag_cook;
+        static const ydk::Enum::YLeaf crypto_flag_auto;
+        static const ydk::Enum::YLeaf crypto_flag_cert;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "crypto-flag-sig") return 0;
+            if (name == "crypto-flag-leap") return 1;
+            if (name == "crypto-flag-vrfy") return 2;
+            if (name == "crypto-flag-cook") return 3;
+            if (name == "crypto-flag-auto") return 4;
+            if (name == "crypto-flag-cert") return 5;
+            return -1;
+        }
+};
+
+class PeerSelectStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_peer_as_backup;
+        static const ydk::Enum::YLeaf ntp_peer_rejected;
+        static const ydk::Enum::YLeaf ntp_peer_false_ticker;
+        static const ydk::Enum::YLeaf ntp_peer_excess;
+        static const ydk::Enum::YLeaf ntp_peer_outlier;
+        static const ydk::Enum::YLeaf ntp_peer_candidate;
+        static const ydk::Enum::YLeaf ntp_peer_sys_peer;
+        static const ydk::Enum::YLeaf ntp_peer_pps_peer;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-peer-as-backup") return 0;
+            if (name == "ntp-peer-rejected") return 1;
+            if (name == "ntp-peer-false-ticker") return 2;
+            if (name == "ntp-peer-excess") return 3;
+            if (name == "ntp-peer-outlier") return 4;
+            if (name == "ntp-peer-candidate") return 5;
+            if (name == "ntp-peer-sys-peer") return 6;
+            if (name == "ntp-peer-pps-peer") return 7;
+            return -1;
+        }
+};
+
+class RefClockSourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_ref_goes;
+        static const ydk::Enum::YLeaf ntp_ref_gps;
+        static const ydk::Enum::YLeaf ntp_ref_gal;
+        static const ydk::Enum::YLeaf ntp_ref_pps;
+        static const ydk::Enum::YLeaf ntp_ref_irig;
+        static const ydk::Enum::YLeaf ntp_ref_wwvb;
+        static const ydk::Enum::YLeaf ntp_ref_dcf;
+        static const ydk::Enum::YLeaf ntp_ref_hbg;
+        static const ydk::Enum::YLeaf ntp_ref_msf;
+        static const ydk::Enum::YLeaf ntp_ref_jjy;
+        static const ydk::Enum::YLeaf ntp_ref_lorc;
+        static const ydk::Enum::YLeaf ntp_ref_tdf;
+        static const ydk::Enum::YLeaf ntp_ref_chu;
+        static const ydk::Enum::YLeaf ntp_ref_wwv;
+        static const ydk::Enum::YLeaf ntp_ref_wwvh;
+        static const ydk::Enum::YLeaf ntp_ref_nist;
+        static const ydk::Enum::YLeaf ntp_ref_acts;
+        static const ydk::Enum::YLeaf ntp_ref_usno;
+        static const ydk::Enum::YLeaf ntp_ref_ptb;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-ref-goes") return 0;
+            if (name == "ntp-ref-gps") return 1;
+            if (name == "ntp-ref-gal") return 2;
+            if (name == "ntp-ref-pps") return 3;
+            if (name == "ntp-ref-irig") return 4;
+            if (name == "ntp-ref-wwvb") return 5;
+            if (name == "ntp-ref-dcf") return 6;
+            if (name == "ntp-ref-hbg") return 7;
+            if (name == "ntp-ref-msf") return 8;
+            if (name == "ntp-ref-jjy") return 9;
+            if (name == "ntp-ref-lorc") return 10;
+            if (name == "ntp-ref-tdf") return 11;
+            if (name == "ntp-ref-chu") return 12;
+            if (name == "ntp-ref-wwv") return 13;
+            if (name == "ntp-ref-wwvh") return 14;
+            if (name == "ntp-ref-nist") return 15;
+            if (name == "ntp-ref-acts") return 16;
+            if (name == "ntp-ref-usno") return 17;
+            if (name == "ntp-ref-ptb") return 18;
+            return -1;
+        }
+};
+
+class PeerAuthStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_auth_ok;
+        static const ydk::Enum::YLeaf ntp_auth_bad_auth;
+        static const ydk::Enum::YLeaf ntp_auth_auth_not_configured;
+        static const ydk::Enum::YLeaf ntp_auth_status_not_available;
+        static const ydk::Enum::YLeaf ntp_auth_none;
+        static const ydk::Enum::YLeaf ntp_auth_crypto;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-auth-ok") return 0;
+            if (name == "ntp-auth-bad-auth") return 1;
+            if (name == "ntp-auth-auth-not-configured") return 2;
+            if (name == "ntp-auth-status-not-available") return 3;
+            if (name == "ntp-auth-none") return 4;
+            if (name == "ntp-auth-crypto") return 5;
+            return -1;
+        }
 };
 
 

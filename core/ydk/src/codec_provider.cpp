@@ -103,7 +103,7 @@ void CodecServiceProvider::initialize_root_schema(const std::string & bundle_nam
 
     auto root_schema = repo.create_root_schema(get_global_capabilities_lookup_tables(), yang_caps);
 
-    std::string s{bundle_name};
+    std::string s = (user_provided_repo) ? USER_PROVIDED_REPO : bundle_name;
     std::pair<std::string, std::shared_ptr<path::RootSchemaNode>> entry {s, root_schema};
     m_root_schema_table.insert(entry);
     ly_verb(LY_LLVRB); // enable libyang logging after payload has been created

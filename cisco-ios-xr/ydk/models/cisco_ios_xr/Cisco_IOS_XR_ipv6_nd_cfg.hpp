@@ -32,7 +32,6 @@ class Ipv6Neighbor : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf scavenge_timeout; //type: uint32
-        ydk::YLeaf cos; //type: uint32
         class Neighbors; //type: Ipv6Neighbor::Neighbors
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_cfg::Ipv6Neighbor::Neighbors> neighbors;
@@ -89,14 +88,6 @@ class Ipv6Neighbor::Neighbors::Neighbor : public ydk::Entity
 
 }; // Ipv6Neighbor::Neighbors::Neighbor
 
-class Ipv6srpEncapsulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf srpa;
-        static const ydk::Enum::YLeaf srpb;
-
-};
-
 class Ipv6ndMonth : public ydk::Enum
 {
     public:
@@ -113,6 +104,21 @@ class Ipv6ndMonth : public ydk::Enum
         static const ydk::Enum::YLeaf november;
         static const ydk::Enum::YLeaf december;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "january") return 0;
+            if (name == "february") return 1;
+            if (name == "march") return 2;
+            if (name == "april") return 3;
+            if (name == "may") return 4;
+            if (name == "june") return 5;
+            if (name == "july") return 6;
+            if (name == "august") return 7;
+            if (name == "september") return 8;
+            if (name == "october") return 9;
+            if (name == "november") return 10;
+            if (name == "december") return 11;
+            return -1;
+        }
 };
 
 class Ipv6NdRouterPref : public ydk::Enum
@@ -122,6 +128,25 @@ class Ipv6NdRouterPref : public ydk::Enum
         static const ydk::Enum::YLeaf medium;
         static const ydk::Enum::YLeaf low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "high") return 1;
+            if (name == "medium") return 2;
+            if (name == "low") return 3;
+            return -1;
+        }
+};
+
+class Ipv6srpEncapsulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf srpa;
+        static const ydk::Enum::YLeaf srpb;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "srpa") return 5;
+            if (name == "srpb") return 6;
+            return -1;
+        }
 };
 
 

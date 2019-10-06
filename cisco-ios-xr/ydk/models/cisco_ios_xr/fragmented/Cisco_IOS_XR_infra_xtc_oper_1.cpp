@@ -12,143 +12,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_xtc_oper {
 
-Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::Hops()
-    :
-    sid_type{YType::enumeration, "sid-type"},
-    mpls_label{YType::uint32, "mpls-label"}
-        ,
-    local_addr(std::make_shared<Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::LocalAddr>())
-    , remote_addr(std::make_shared<Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::RemoteAddr>())
-{
-    local_addr->parent = this;
-    remote_addr->parent = this;
-
-    yang_name = "hops"; yang_parent_name = "output-path"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::~Hops()
-{
-}
-
-bool Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::has_data() const
-{
-    if (is_presence_container) return true;
-    return sid_type.is_set
-	|| mpls_label.is_set
-	|| (local_addr !=  nullptr && local_addr->has_data())
-	|| (remote_addr !=  nullptr && remote_addr->has_data());
-}
-
-bool Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sid_type.yfilter)
-	|| ydk::is_set(mpls_label.yfilter)
-	|| (local_addr !=  nullptr && local_addr->has_operation())
-	|| (remote_addr !=  nullptr && remote_addr->has_operation());
-}
-
-std::string Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/cspf-sr-mpls/cspf-sr-mpls-paths/cspf-sr-mpls-path/output-path/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hops";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "local-addr")
-    {
-        if(local_addr == nullptr)
-        {
-            local_addr = std::make_shared<Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::LocalAddr>();
-        }
-        return local_addr;
-    }
-
-    if(child_yang_name == "remote-addr")
-    {
-        if(remote_addr == nullptr)
-        {
-            remote_addr = std::make_shared<Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::RemoteAddr>();
-        }
-        return remote_addr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(local_addr != nullptr)
-    {
-        _children["local-addr"] = local_addr;
-    }
-
-    if(remote_addr != nullptr)
-    {
-        _children["remote-addr"] = remote_addr;
-    }
-
-    return _children;
-}
-
-void Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sid-type")
-    {
-        sid_type = value;
-        sid_type.value_namespace = name_space;
-        sid_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mpls-label")
-    {
-        mpls_label = value;
-        mpls_label.value_namespace = name_space;
-        mpls_label.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sid-type")
-    {
-        sid_type.yfilter = yfilter;
-    }
-    if(value_path == "mpls-label")
-    {
-        mpls_label.yfilter = yfilter;
-    }
-}
-
-bool Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-addr" || name == "remote-addr" || name == "sid-type" || name == "mpls-label")
-        return true;
-    return false;
-}
-
 Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::LocalAddr::LocalAddr()
     :
     af_name{YType::enumeration, "af-name"},
@@ -599,317 +462,6 @@ void Pce::VerificationEvents::VerificationEvent::set_filter(const std::string & 
 bool Pce::VerificationEvents::VerificationEvent::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "event-idx" || name == "event-id" || name == "event-message" || name == "time-stamp")
-        return true;
-    return false;
-}
-
-Pce::PeerSummaries::PeerSummaries()
-    :
-    peer_summary(this, {"af"})
-{
-
-    yang_name = "peer-summaries"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::PeerSummaries::~PeerSummaries()
-{
-}
-
-bool Pce::PeerSummaries::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<peer_summary.len(); index++)
-    {
-        if(peer_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Pce::PeerSummaries::has_operation() const
-{
-    for (std::size_t index=0; index<peer_summary.len(); index++)
-    {
-        if(peer_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Pce::PeerSummaries::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::PeerSummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peer-summaries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::PeerSummaries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::PeerSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "peer-summary")
-    {
-        auto ent_ = std::make_shared<Pce::PeerSummaries::PeerSummary>();
-        ent_->parent = this;
-        peer_summary.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::PeerSummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : peer_summary.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Pce::PeerSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pce::PeerSummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pce::PeerSummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-summary")
-        return true;
-    return false;
-}
-
-Pce::PeerSummaries::PeerSummary::PeerSummary()
-    :
-    af{YType::enumeration, "af"}
-        ,
-    pcep_peers(std::make_shared<Pce::PeerSummaries::PeerSummary::PcepPeers>())
-{
-    pcep_peers->parent = this;
-
-    yang_name = "peer-summary"; yang_parent_name = "peer-summaries"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::PeerSummaries::PeerSummary::~PeerSummary()
-{
-}
-
-bool Pce::PeerSummaries::PeerSummary::has_data() const
-{
-    if (is_presence_container) return true;
-    return af.is_set
-	|| (pcep_peers !=  nullptr && pcep_peers->has_data());
-}
-
-bool Pce::PeerSummaries::PeerSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af.yfilter)
-	|| (pcep_peers !=  nullptr && pcep_peers->has_operation());
-}
-
-std::string Pce::PeerSummaries::PeerSummary::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/peer-summaries/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::PeerSummaries::PeerSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peer-summary";
-    ADD_KEY_TOKEN(af, "af");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::PeerSummaries::PeerSummary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::PeerSummaries::PeerSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pcep-peers")
-    {
-        if(pcep_peers == nullptr)
-        {
-            pcep_peers = std::make_shared<Pce::PeerSummaries::PeerSummary::PcepPeers>();
-        }
-        return pcep_peers;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::PeerSummaries::PeerSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(pcep_peers != nullptr)
-    {
-        _children["pcep-peers"] = pcep_peers;
-    }
-
-    return _children;
-}
-
-void Pce::PeerSummaries::PeerSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af")
-    {
-        af = value;
-        af.value_namespace = name_space;
-        af.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::PeerSummaries::PeerSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af")
-    {
-        af.yfilter = yfilter;
-    }
-}
-
-bool Pce::PeerSummaries::PeerSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pcep-peers" || name == "af")
-        return true;
-    return false;
-}
-
-Pce::PeerSummaries::PeerSummary::PcepPeers::PcepPeers()
-    :
-    peer_count_up{YType::uint32, "peer-count-up"},
-    peer_count_down{YType::uint32, "peer-count-down"},
-    peer_count_all{YType::uint32, "peer-count-all"}
-{
-
-    yang_name = "pcep-peers"; yang_parent_name = "peer-summary"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pce::PeerSummaries::PeerSummary::PcepPeers::~PcepPeers()
-{
-}
-
-bool Pce::PeerSummaries::PeerSummary::PcepPeers::has_data() const
-{
-    if (is_presence_container) return true;
-    return peer_count_up.is_set
-	|| peer_count_down.is_set
-	|| peer_count_all.is_set;
-}
-
-bool Pce::PeerSummaries::PeerSummary::PcepPeers::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(peer_count_up.yfilter)
-	|| ydk::is_set(peer_count_down.yfilter)
-	|| ydk::is_set(peer_count_all.yfilter);
-}
-
-std::string Pce::PeerSummaries::PeerSummary::PcepPeers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pcep-peers";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::PeerSummaries::PeerSummary::PcepPeers::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (peer_count_up.is_set || is_set(peer_count_up.yfilter)) leaf_name_data.push_back(peer_count_up.get_name_leafdata());
-    if (peer_count_down.is_set || is_set(peer_count_down.yfilter)) leaf_name_data.push_back(peer_count_down.get_name_leafdata());
-    if (peer_count_all.is_set || is_set(peer_count_all.yfilter)) leaf_name_data.push_back(peer_count_all.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::PeerSummaries::PeerSummary::PcepPeers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::PeerSummaries::PeerSummary::PcepPeers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pce::PeerSummaries::PeerSummary::PcepPeers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "peer-count-up")
-    {
-        peer_count_up = value;
-        peer_count_up.value_namespace = name_space;
-        peer_count_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peer-count-down")
-    {
-        peer_count_down = value;
-        peer_count_down.value_namespace = name_space;
-        peer_count_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peer-count-all")
-    {
-        peer_count_all = value;
-        peer_count_all.value_namespace = name_space;
-        peer_count_all.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::PeerSummaries::PeerSummary::PcepPeers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "peer-count-up")
-    {
-        peer_count_up.yfilter = yfilter;
-    }
-    if(value_path == "peer-count-down")
-    {
-        peer_count_down.yfilter = yfilter;
-    }
-    if(value_path == "peer-count-all")
-    {
-        peer_count_all.yfilter = yfilter;
-    }
-}
-
-bool Pce::PeerSummaries::PeerSummary::PcepPeers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-count-up" || name == "peer-count-down" || name == "peer-count-all")
         return true;
     return false;
 }
@@ -1611,620 +1163,6 @@ bool Pce::AssociationInfos::AssociationInfo::AssociationLsp::PccAddress::has_lea
     return false;
 }
 
-Pce::Paths::Paths()
-    :
-    path(this, {"af", "source", "destination"})
-{
-
-    yang_name = "paths"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::Paths::~Paths()
-{
-}
-
-bool Pce::Paths::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<path.len(); index++)
-    {
-        if(path[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Pce::Paths::has_operation() const
-{
-    for (std::size_t index=0; index<path.len(); index++)
-    {
-        if(path[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Pce::Paths::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::Paths::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "paths";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::Paths::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "path")
-    {
-        auto ent_ = std::make_shared<Pce::Paths::Path>();
-        ent_->parent = this;
-        path.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Paths::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : path.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Pce::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pce::Paths::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pce::Paths::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path")
-        return true;
-    return false;
-}
-
-Pce::Paths::Path::Path()
-    :
-    af{YType::uint32, "af"},
-    source{YType::str, "source"},
-    destination{YType::str, "destination"},
-    cost{YType::uint64, "cost"}
-        ,
-    source_xr(std::make_shared<Pce::Paths::Path::SourceXr>())
-    , destination_xr(std::make_shared<Pce::Paths::Path::DestinationXr>())
-    , hops(this, {})
-{
-    source_xr->parent = this;
-    destination_xr->parent = this;
-
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::Paths::Path::~Path()
-{
-}
-
-bool Pce::Paths::Path::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<hops.len(); index++)
-    {
-        if(hops[index]->has_data())
-            return true;
-    }
-    return af.is_set
-	|| source.is_set
-	|| destination.is_set
-	|| cost.is_set
-	|| (source_xr !=  nullptr && source_xr->has_data())
-	|| (destination_xr !=  nullptr && destination_xr->has_data());
-}
-
-bool Pce::Paths::Path::has_operation() const
-{
-    for (std::size_t index=0; index<hops.len(); index++)
-    {
-        if(hops[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(af.yfilter)
-	|| ydk::is_set(source.yfilter)
-	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(cost.yfilter)
-	|| (source_xr !=  nullptr && source_xr->has_operation())
-	|| (destination_xr !=  nullptr && destination_xr->has_operation());
-}
-
-std::string Pce::Paths::Path::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/paths/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::Paths::Path::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path";
-    ADD_KEY_TOKEN(af, "af");
-    ADD_KEY_TOKEN(source, "source");
-    ADD_KEY_TOKEN(destination, "destination");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::Paths::Path::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "source-xr")
-    {
-        if(source_xr == nullptr)
-        {
-            source_xr = std::make_shared<Pce::Paths::Path::SourceXr>();
-        }
-        return source_xr;
-    }
-
-    if(child_yang_name == "destination-xr")
-    {
-        if(destination_xr == nullptr)
-        {
-            destination_xr = std::make_shared<Pce::Paths::Path::DestinationXr>();
-        }
-        return destination_xr;
-    }
-
-    if(child_yang_name == "hops")
-    {
-        auto ent_ = std::make_shared<Pce::Paths::Path::Hops>();
-        ent_->parent = this;
-        hops.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Paths::Path::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(source_xr != nullptr)
-    {
-        _children["source-xr"] = source_xr;
-    }
-
-    if(destination_xr != nullptr)
-    {
-        _children["destination-xr"] = destination_xr;
-    }
-
-    count_ = 0;
-    for (auto ent_ : hops.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Pce::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af")
-    {
-        af = value;
-        af.value_namespace = name_space;
-        af.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-        source.value_namespace = name_space;
-        source.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination")
-    {
-        destination = value;
-        destination.value_namespace = name_space;
-        destination.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cost")
-    {
-        cost = value;
-        cost.value_namespace = name_space;
-        cost.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af")
-    {
-        af.yfilter = yfilter;
-    }
-    if(value_path == "source")
-    {
-        source.yfilter = yfilter;
-    }
-    if(value_path == "destination")
-    {
-        destination.yfilter = yfilter;
-    }
-    if(value_path == "cost")
-    {
-        cost.yfilter = yfilter;
-    }
-}
-
-bool Pce::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "source-xr" || name == "destination-xr" || name == "hops" || name == "af" || name == "source" || name == "destination" || name == "cost")
-        return true;
-    return false;
-}
-
-Pce::Paths::Path::SourceXr::SourceXr()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
-{
-
-    yang_name = "source-xr"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pce::Paths::Path::SourceXr::~SourceXr()
-{
-}
-
-bool Pce::Paths::Path::SourceXr::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
-}
-
-bool Pce::Paths::Path::SourceXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
-}
-
-std::string Pce::Paths::Path::SourceXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "source-xr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::Paths::Path::SourceXr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::Paths::Path::SourceXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Paths::Path::SourceXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pce::Paths::Path::SourceXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6 = value;
-        ipv6.value_namespace = name_space;
-        ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::Paths::Path::SourceXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6.yfilter = yfilter;
-    }
-}
-
-bool Pce::Paths::Path::SourceXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-Pce::Paths::Path::DestinationXr::DestinationXr()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
-{
-
-    yang_name = "destination-xr"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pce::Paths::Path::DestinationXr::~DestinationXr()
-{
-}
-
-bool Pce::Paths::Path::DestinationXr::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
-}
-
-bool Pce::Paths::Path::DestinationXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
-}
-
-std::string Pce::Paths::Path::DestinationXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-xr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::Paths::Path::DestinationXr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::Paths::Path::DestinationXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Paths::Path::DestinationXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pce::Paths::Path::DestinationXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6 = value;
-        ipv6.value_namespace = name_space;
-        ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::Paths::Path::DestinationXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6.yfilter = yfilter;
-    }
-}
-
-bool Pce::Paths::Path::DestinationXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-Pce::Paths::Path::Hops::Hops()
-    :
-    address_family{YType::uint8, "address-family"},
-    ipv4_prefix{YType::str, "ipv4-prefix"},
-    ipv6_prefix{YType::str, "ipv6-prefix"}
-{
-
-    yang_name = "hops"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pce::Paths::Path::Hops::~Hops()
-{
-}
-
-bool Pce::Paths::Path::Hops::has_data() const
-{
-    if (is_presence_container) return true;
-    return address_family.is_set
-	|| ipv4_prefix.is_set
-	|| ipv6_prefix.is_set;
-}
-
-bool Pce::Paths::Path::Hops::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ipv4_prefix.yfilter)
-	|| ydk::is_set(ipv6_prefix.yfilter);
-}
-
-std::string Pce::Paths::Path::Hops::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hops";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::Paths::Path::Hops::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.yfilter)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
-    if (ipv6_prefix.is_set || is_set(ipv6_prefix.yfilter)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::Paths::Path::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Paths::Path::Hops::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pce::Paths::Path::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-        ipv4_prefix.value_namespace = name_space;
-        ipv4_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-prefix")
-    {
-        ipv6_prefix = value;
-        ipv6_prefix.value_namespace = name_space;
-        ipv6_prefix.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::Paths::Path::Hops::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-prefix")
-    {
-        ipv6_prefix.yfilter = yfilter;
-    }
-}
-
-bool Pce::Paths::Path::Hops::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "ipv4-prefix" || name == "ipv6-prefix")
-        return true;
-    return false;
-}
-
 Pce::Cspf::Cspf()
     :
     cspf_paths(std::make_shared<Pce::Cspf::CspfPaths>())
@@ -2316,7 +1254,7 @@ bool Pce::Cspf::has_leaf_or_child_of_name(const std::string & name) const
 
 Pce::Cspf::CspfPaths::CspfPaths()
     :
-    cspf_path(this, {})
+    cspf_path(this, {"af", "source1", "destination1", "metric_type", "source2", "destination2", "disjoint_level", "disjoint_strict", "shortest_path"})
 {
 
     yang_name = "cspf-paths"; yang_parent_name = "cspf"; is_top_level_class = false; has_list_ancestor = false; 
@@ -2494,7 +1432,15 @@ std::string Pce::Cspf::CspfPaths::CspfPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cspf-path";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(af, "af");
+    ADD_KEY_TOKEN(source1, "source1");
+    ADD_KEY_TOKEN(destination1, "destination1");
+    ADD_KEY_TOKEN(metric_type, "metric-type");
+    ADD_KEY_TOKEN(source2, "source2");
+    ADD_KEY_TOKEN(destination2, "destination2");
+    ADD_KEY_TOKEN(disjoint_level, "disjoint-level");
+    ADD_KEY_TOKEN(disjoint_strict, "disjoint-strict");
+    ADD_KEY_TOKEN(shortest_path, "shortest-path");
     return path_buffer.str();
 }
 
@@ -2687,14 +1633,14 @@ Pce::Cspf::CspfPaths::CspfPath::OutputPath::OutputPath()
     :
     cost{YType::uint64, "cost"}
         ,
-    source_xr(std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr>())
-    , destination_xr(std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr>())
+    source(std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source>())
+    , destination(std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination>())
     , hops(this, {})
 {
-    source_xr->parent = this;
-    destination_xr->parent = this;
+    source->parent = this;
+    destination->parent = this;
 
-    yang_name = "output-path"; yang_parent_name = "cspf-path"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "output-path"; yang_parent_name = "cspf-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::Cspf::CspfPaths::CspfPath::OutputPath::~OutputPath()
@@ -2710,8 +1656,8 @@ bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::has_data() const
             return true;
     }
     return cost.is_set
-	|| (source_xr !=  nullptr && source_xr->has_data())
-	|| (destination_xr !=  nullptr && destination_xr->has_data());
+	|| (source !=  nullptr && source->has_data())
+	|| (destination !=  nullptr && destination->has_data());
 }
 
 bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::has_operation() const
@@ -2723,15 +1669,8 @@ bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::has_operation() const
     }
     return is_set(yfilter)
 	|| ydk::is_set(cost.yfilter)
-	|| (source_xr !=  nullptr && source_xr->has_operation())
-	|| (destination_xr !=  nullptr && destination_xr->has_operation());
-}
-
-std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/cspf/cspf-paths/cspf-path/" << get_segment_path();
-    return path_buffer.str();
+	|| (source !=  nullptr && source->has_operation())
+	|| (destination !=  nullptr && destination->has_operation());
 }
 
 std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::get_segment_path() const
@@ -2754,22 +1693,22 @@ std::vector<std::pair<std::string, LeafData> > Pce::Cspf::CspfPaths::CspfPath::O
 
 std::shared_ptr<ydk::Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "source-xr")
+    if(child_yang_name == "source")
     {
-        if(source_xr == nullptr)
+        if(source == nullptr)
         {
-            source_xr = std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr>();
+            source = std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source>();
         }
-        return source_xr;
+        return source;
     }
 
-    if(child_yang_name == "destination-xr")
+    if(child_yang_name == "destination")
     {
-        if(destination_xr == nullptr)
+        if(destination == nullptr)
         {
-            destination_xr = std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr>();
+            destination = std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination>();
         }
-        return destination_xr;
+        return destination;
     }
 
     if(child_yang_name == "hops")
@@ -2787,14 +1726,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Cspf::CspfPaths::CspfPa
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(source_xr != nullptr)
+    if(source != nullptr)
     {
-        _children["source-xr"] = source_xr;
+        _children["source"] = source;
     }
 
-    if(destination_xr != nullptr)
+    if(destination != nullptr)
     {
-        _children["destination-xr"] = destination_xr;
+        _children["destination"] = destination;
     }
 
     count_ = 0;
@@ -2829,26 +1768,26 @@ void Pce::Cspf::CspfPaths::CspfPath::OutputPath::set_filter(const std::string & 
 
 bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source-xr" || name == "destination-xr" || name == "hops" || name == "cost")
+    if(name == "source" || name == "destination" || name == "hops" || name == "cost")
         return true;
     return false;
 }
 
-Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::SourceXr()
+Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::Source()
     :
     af_name{YType::enumeration, "af-name"},
     ipv4{YType::str, "ipv4"},
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "source-xr"; yang_parent_name = "output-path"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "source"; yang_parent_name = "output-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::~SourceXr()
+Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::~Source()
 {
 }
 
-bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::has_data() const
+bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::has_data() const
 {
     if (is_presence_container) return true;
     return af_name.is_set
@@ -2856,7 +1795,7 @@ bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::has_data() const
 	|| ipv6.is_set;
 }
 
-bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::has_operation() const
+bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(af_name.yfilter)
@@ -2864,21 +1803,14 @@ bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::has_operation() const
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::get_absolute_path() const
+std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/cspf/cspf-paths/cspf-path/output-path/" << get_segment_path();
+    path_buffer << "source";
     return path_buffer.str();
 }
 
-std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "source-xr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2890,19 +1822,19 @@ std::vector<std::pair<std::string, LeafData> > Pce::Cspf::CspfPaths::CspfPath::O
 
 }
 
-std::shared_ptr<ydk::Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -2924,7 +1856,7 @@ void Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::set_value(const std::
     }
 }
 
-void Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::set_filter(const std::string & value_path, YFilter yfilter)
+void Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -2940,28 +1872,28 @@ void Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::set_filter(const std:
     }
 }
 
-bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::SourceXr::has_leaf_or_child_of_name(const std::string & name) const
+bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::DestinationXr()
+Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::Destination()
     :
     af_name{YType::enumeration, "af-name"},
     ipv4{YType::str, "ipv4"},
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-xr"; yang_parent_name = "output-path"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "destination"; yang_parent_name = "output-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::~DestinationXr()
+Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::~Destination()
 {
 }
 
-bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::has_data() const
+bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::has_data() const
 {
     if (is_presence_container) return true;
     return af_name.is_set
@@ -2969,7 +1901,7 @@ bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::has_data() const
 	|| ipv6.is_set;
 }
 
-bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::has_operation() const
+bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(af_name.yfilter)
@@ -2977,21 +1909,14 @@ bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::has_operation() 
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::get_absolute_path() const
+std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/cspf/cspf-paths/cspf-path/output-path/" << get_segment_path();
+    path_buffer << "destination";
     return path_buffer.str();
 }
 
-std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-xr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3003,19 +1928,19 @@ std::vector<std::pair<std::string, LeafData> > Pce::Cspf::CspfPaths::CspfPath::O
 
 }
 
-std::shared_ptr<ydk::Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -3037,7 +1962,7 @@ void Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::set_value(const 
     }
 }
 
-void Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::set_filter(const std::string & value_path, YFilter yfilter)
+void Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -3053,7 +1978,7 @@ void Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::set_filter(const
     }
 }
 
-bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::DestinationXr::has_leaf_or_child_of_name(const std::string & name) const
+bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
@@ -3067,7 +1992,7 @@ Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::Hops()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "hops"; yang_parent_name = "output-path"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "hops"; yang_parent_name = "output-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::~Hops()
@@ -3088,13 +2013,6 @@ bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::has_operation() const
 	|| ydk::is_set(address_family.yfilter)
 	|| ydk::is_set(ipv4_prefix.yfilter)
 	|| ydk::is_set(ipv6_prefix.yfilter);
-}
-
-std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/cspf/cspf-paths/cspf-path/output-path/" << get_segment_path();
-    return path_buffer.str();
 }
 
 std::string Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::get_segment_path() const
@@ -3170,6 +2088,433 @@ void Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::set_filter(const std::str
 bool Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ipv4-prefix" || name == "ipv6-prefix")
+        return true;
+    return false;
+}
+
+Pce::TopologySummary::TopologySummary()
+    :
+    nodes{YType::uint32, "nodes"},
+    lookup_nodes{YType::uint32, "lookup-nodes"},
+    prefixes{YType::uint32, "prefixes"},
+    prefix_sids{YType::uint32, "prefix-sids"},
+    regular_prefix_sids{YType::uint32, "regular-prefix-sids"},
+    strict_prefix_sids{YType::uint32, "strict-prefix-sids"},
+    links{YType::uint32, "links"},
+    epe_links{YType::uint32, "epe-links"},
+    adjacency_sids{YType::uint32, "adjacency-sids"},
+    epesids{YType::uint32, "epesids"},
+    protected_adjacency_sids{YType::uint32, "protected-adjacency-sids"},
+    un_protected_adjacency_sids{YType::uint32, "un-protected-adjacency-sids"},
+    topology_consistent{YType::boolean, "topology-consistent"}
+        ,
+    stats_topology_update(std::make_shared<Pce::TopologySummary::StatsTopologyUpdate>())
+{
+    stats_topology_update->parent = this;
+
+    yang_name = "topology-summary"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::TopologySummary::~TopologySummary()
+{
+}
+
+bool Pce::TopologySummary::has_data() const
+{
+    if (is_presence_container) return true;
+    return nodes.is_set
+	|| lookup_nodes.is_set
+	|| prefixes.is_set
+	|| prefix_sids.is_set
+	|| regular_prefix_sids.is_set
+	|| strict_prefix_sids.is_set
+	|| links.is_set
+	|| epe_links.is_set
+	|| adjacency_sids.is_set
+	|| epesids.is_set
+	|| protected_adjacency_sids.is_set
+	|| un_protected_adjacency_sids.is_set
+	|| topology_consistent.is_set
+	|| (stats_topology_update !=  nullptr && stats_topology_update->has_data());
+}
+
+bool Pce::TopologySummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nodes.yfilter)
+	|| ydk::is_set(lookup_nodes.yfilter)
+	|| ydk::is_set(prefixes.yfilter)
+	|| ydk::is_set(prefix_sids.yfilter)
+	|| ydk::is_set(regular_prefix_sids.yfilter)
+	|| ydk::is_set(strict_prefix_sids.yfilter)
+	|| ydk::is_set(links.yfilter)
+	|| ydk::is_set(epe_links.yfilter)
+	|| ydk::is_set(adjacency_sids.yfilter)
+	|| ydk::is_set(epesids.yfilter)
+	|| ydk::is_set(protected_adjacency_sids.yfilter)
+	|| ydk::is_set(un_protected_adjacency_sids.yfilter)
+	|| ydk::is_set(topology_consistent.yfilter)
+	|| (stats_topology_update !=  nullptr && stats_topology_update->has_operation());
+}
+
+std::string Pce::TopologySummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::TopologySummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "topology-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TopologySummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nodes.is_set || is_set(nodes.yfilter)) leaf_name_data.push_back(nodes.get_name_leafdata());
+    if (lookup_nodes.is_set || is_set(lookup_nodes.yfilter)) leaf_name_data.push_back(lookup_nodes.get_name_leafdata());
+    if (prefixes.is_set || is_set(prefixes.yfilter)) leaf_name_data.push_back(prefixes.get_name_leafdata());
+    if (prefix_sids.is_set || is_set(prefix_sids.yfilter)) leaf_name_data.push_back(prefix_sids.get_name_leafdata());
+    if (regular_prefix_sids.is_set || is_set(regular_prefix_sids.yfilter)) leaf_name_data.push_back(regular_prefix_sids.get_name_leafdata());
+    if (strict_prefix_sids.is_set || is_set(strict_prefix_sids.yfilter)) leaf_name_data.push_back(strict_prefix_sids.get_name_leafdata());
+    if (links.is_set || is_set(links.yfilter)) leaf_name_data.push_back(links.get_name_leafdata());
+    if (epe_links.is_set || is_set(epe_links.yfilter)) leaf_name_data.push_back(epe_links.get_name_leafdata());
+    if (adjacency_sids.is_set || is_set(adjacency_sids.yfilter)) leaf_name_data.push_back(adjacency_sids.get_name_leafdata());
+    if (epesids.is_set || is_set(epesids.yfilter)) leaf_name_data.push_back(epesids.get_name_leafdata());
+    if (protected_adjacency_sids.is_set || is_set(protected_adjacency_sids.yfilter)) leaf_name_data.push_back(protected_adjacency_sids.get_name_leafdata());
+    if (un_protected_adjacency_sids.is_set || is_set(un_protected_adjacency_sids.yfilter)) leaf_name_data.push_back(un_protected_adjacency_sids.get_name_leafdata());
+    if (topology_consistent.is_set || is_set(topology_consistent.yfilter)) leaf_name_data.push_back(topology_consistent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TopologySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "stats-topology-update")
+    {
+        if(stats_topology_update == nullptr)
+        {
+            stats_topology_update = std::make_shared<Pce::TopologySummary::StatsTopologyUpdate>();
+        }
+        return stats_topology_update;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TopologySummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(stats_topology_update != nullptr)
+    {
+        _children["stats-topology-update"] = stats_topology_update;
+    }
+
+    return _children;
+}
+
+void Pce::TopologySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nodes")
+    {
+        nodes = value;
+        nodes.value_namespace = name_space;
+        nodes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lookup-nodes")
+    {
+        lookup_nodes = value;
+        lookup_nodes.value_namespace = name_space;
+        lookup_nodes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefixes")
+    {
+        prefixes = value;
+        prefixes.value_namespace = name_space;
+        prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-sids")
+    {
+        prefix_sids = value;
+        prefix_sids.value_namespace = name_space;
+        prefix_sids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "regular-prefix-sids")
+    {
+        regular_prefix_sids = value;
+        regular_prefix_sids.value_namespace = name_space;
+        regular_prefix_sids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "strict-prefix-sids")
+    {
+        strict_prefix_sids = value;
+        strict_prefix_sids.value_namespace = name_space;
+        strict_prefix_sids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "links")
+    {
+        links = value;
+        links.value_namespace = name_space;
+        links.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epe-links")
+    {
+        epe_links = value;
+        epe_links.value_namespace = name_space;
+        epe_links.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-sids")
+    {
+        adjacency_sids = value;
+        adjacency_sids.value_namespace = name_space;
+        adjacency_sids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epesids")
+    {
+        epesids = value;
+        epesids.value_namespace = name_space;
+        epesids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protected-adjacency-sids")
+    {
+        protected_adjacency_sids = value;
+        protected_adjacency_sids.value_namespace = name_space;
+        protected_adjacency_sids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "un-protected-adjacency-sids")
+    {
+        un_protected_adjacency_sids = value;
+        un_protected_adjacency_sids.value_namespace = name_space;
+        un_protected_adjacency_sids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "topology-consistent")
+    {
+        topology_consistent = value;
+        topology_consistent.value_namespace = name_space;
+        topology_consistent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TopologySummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nodes")
+    {
+        nodes.yfilter = yfilter;
+    }
+    if(value_path == "lookup-nodes")
+    {
+        lookup_nodes.yfilter = yfilter;
+    }
+    if(value_path == "prefixes")
+    {
+        prefixes.yfilter = yfilter;
+    }
+    if(value_path == "prefix-sids")
+    {
+        prefix_sids.yfilter = yfilter;
+    }
+    if(value_path == "regular-prefix-sids")
+    {
+        regular_prefix_sids.yfilter = yfilter;
+    }
+    if(value_path == "strict-prefix-sids")
+    {
+        strict_prefix_sids.yfilter = yfilter;
+    }
+    if(value_path == "links")
+    {
+        links.yfilter = yfilter;
+    }
+    if(value_path == "epe-links")
+    {
+        epe_links.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-sids")
+    {
+        adjacency_sids.yfilter = yfilter;
+    }
+    if(value_path == "epesids")
+    {
+        epesids.yfilter = yfilter;
+    }
+    if(value_path == "protected-adjacency-sids")
+    {
+        protected_adjacency_sids.yfilter = yfilter;
+    }
+    if(value_path == "un-protected-adjacency-sids")
+    {
+        un_protected_adjacency_sids.yfilter = yfilter;
+    }
+    if(value_path == "topology-consistent")
+    {
+        topology_consistent.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologySummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "stats-topology-update" || name == "nodes" || name == "lookup-nodes" || name == "prefixes" || name == "prefix-sids" || name == "regular-prefix-sids" || name == "strict-prefix-sids" || name == "links" || name == "epe-links" || name == "adjacency-sids" || name == "epesids" || name == "protected-adjacency-sids" || name == "un-protected-adjacency-sids" || name == "topology-consistent")
+        return true;
+    return false;
+}
+
+Pce::TopologySummary::StatsTopologyUpdate::StatsTopologyUpdate()
+    :
+    num_nodes_added{YType::uint32, "num-nodes-added"},
+    num_nodes_deleted{YType::uint32, "num-nodes-deleted"},
+    num_links_added{YType::uint32, "num-links-added"},
+    num_links_deleted{YType::uint32, "num-links-deleted"},
+    num_prefixes_added{YType::uint32, "num-prefixes-added"},
+    num_prefixes_deleted{YType::uint32, "num-prefixes-deleted"}
+{
+
+    yang_name = "stats-topology-update"; yang_parent_name = "topology-summary"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::TopologySummary::StatsTopologyUpdate::~StatsTopologyUpdate()
+{
+}
+
+bool Pce::TopologySummary::StatsTopologyUpdate::has_data() const
+{
+    if (is_presence_container) return true;
+    return num_nodes_added.is_set
+	|| num_nodes_deleted.is_set
+	|| num_links_added.is_set
+	|| num_links_deleted.is_set
+	|| num_prefixes_added.is_set
+	|| num_prefixes_deleted.is_set;
+}
+
+bool Pce::TopologySummary::StatsTopologyUpdate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_nodes_added.yfilter)
+	|| ydk::is_set(num_nodes_deleted.yfilter)
+	|| ydk::is_set(num_links_added.yfilter)
+	|| ydk::is_set(num_links_deleted.yfilter)
+	|| ydk::is_set(num_prefixes_added.yfilter)
+	|| ydk::is_set(num_prefixes_deleted.yfilter);
+}
+
+std::string Pce::TopologySummary::StatsTopologyUpdate::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/topology-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::TopologySummary::StatsTopologyUpdate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stats-topology-update";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TopologySummary::StatsTopologyUpdate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_nodes_added.is_set || is_set(num_nodes_added.yfilter)) leaf_name_data.push_back(num_nodes_added.get_name_leafdata());
+    if (num_nodes_deleted.is_set || is_set(num_nodes_deleted.yfilter)) leaf_name_data.push_back(num_nodes_deleted.get_name_leafdata());
+    if (num_links_added.is_set || is_set(num_links_added.yfilter)) leaf_name_data.push_back(num_links_added.get_name_leafdata());
+    if (num_links_deleted.is_set || is_set(num_links_deleted.yfilter)) leaf_name_data.push_back(num_links_deleted.get_name_leafdata());
+    if (num_prefixes_added.is_set || is_set(num_prefixes_added.yfilter)) leaf_name_data.push_back(num_prefixes_added.get_name_leafdata());
+    if (num_prefixes_deleted.is_set || is_set(num_prefixes_deleted.yfilter)) leaf_name_data.push_back(num_prefixes_deleted.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TopologySummary::StatsTopologyUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TopologySummary::StatsTopologyUpdate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TopologySummary::StatsTopologyUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-nodes-added")
+    {
+        num_nodes_added = value;
+        num_nodes_added.value_namespace = name_space;
+        num_nodes_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-nodes-deleted")
+    {
+        num_nodes_deleted = value;
+        num_nodes_deleted.value_namespace = name_space;
+        num_nodes_deleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-links-added")
+    {
+        num_links_added = value;
+        num_links_added.value_namespace = name_space;
+        num_links_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-links-deleted")
+    {
+        num_links_deleted = value;
+        num_links_deleted.value_namespace = name_space;
+        num_links_deleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-prefixes-added")
+    {
+        num_prefixes_added = value;
+        num_prefixes_added.value_namespace = name_space;
+        num_prefixes_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-prefixes-deleted")
+    {
+        num_prefixes_deleted = value;
+        num_prefixes_deleted.value_namespace = name_space;
+        num_prefixes_deleted.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TopologySummary::StatsTopologyUpdate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-nodes-added")
+    {
+        num_nodes_added.yfilter = yfilter;
+    }
+    if(value_path == "num-nodes-deleted")
+    {
+        num_nodes_deleted.yfilter = yfilter;
+    }
+    if(value_path == "num-links-added")
+    {
+        num_links_added.yfilter = yfilter;
+    }
+    if(value_path == "num-links-deleted")
+    {
+        num_links_deleted.yfilter = yfilter;
+    }
+    if(value_path == "num-prefixes-added")
+    {
+        num_prefixes_added.yfilter = yfilter;
+    }
+    if(value_path == "num-prefixes-deleted")
+    {
+        num_prefixes_deleted.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologySummary::StatsTopologyUpdate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-nodes-added" || name == "num-nodes-deleted" || name == "num-links-added" || name == "num-links-deleted" || name == "num-prefixes-added" || name == "num-prefixes-deleted")
         return true;
     return false;
 }
@@ -10304,7 +9649,7 @@ bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::S
 
 Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::PerformanceMetrics()
     :
-    unidirectional_minimum_delay_microseconds{YType::uint32, "unidirectional-minimum-delay-microseconds"}
+    unidirectional_min_delay{YType::uint32, "unidirectional-min-delay"}
 {
 
     yang_name = "performance-metrics"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true; 
@@ -10317,13 +9662,13 @@ Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::~PerformanceMetr
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::has_data() const
 {
     if (is_presence_container) return true;
-    return unidirectional_minimum_delay_microseconds.is_set;
+    return unidirectional_min_delay.is_set;
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unidirectional_minimum_delay_microseconds.yfilter);
+	|| ydk::is_set(unidirectional_min_delay.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::get_segment_path() const
@@ -10337,7 +9682,7 @@ std::vector<std::pair<std::string, LeafData> > Pce::TopologyNodes::TopologyNode:
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unidirectional_minimum_delay_microseconds.is_set || is_set(unidirectional_minimum_delay_microseconds.yfilter)) leaf_name_data.push_back(unidirectional_minimum_delay_microseconds.get_name_leafdata());
+    if (unidirectional_min_delay.is_set || is_set(unidirectional_min_delay.yfilter)) leaf_name_data.push_back(unidirectional_min_delay.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10357,25 +9702,25 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TopologyNodes::Topology
 
 void Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unidirectional-minimum-delay-microseconds")
+    if(value_path == "unidirectional-min-delay")
     {
-        unidirectional_minimum_delay_microseconds = value;
-        unidirectional_minimum_delay_microseconds.value_namespace = name_space;
-        unidirectional_minimum_delay_microseconds.value_namespace_prefix = name_space_prefix;
+        unidirectional_min_delay = value;
+        unidirectional_min_delay.value_namespace = name_space;
+        unidirectional_min_delay.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "unidirectional-minimum-delay-microseconds")
+    if(value_path == "unidirectional-min-delay")
     {
-        unidirectional_minimum_delay_microseconds.yfilter = yfilter;
+        unidirectional_min_delay.yfilter = yfilter;
     }
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unidirectional-minimum-delay-microseconds")
+    if(name == "unidirectional-min-delay")
         return true;
     return false;
 }
@@ -13266,562 +12611,6 @@ void Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::set_fi
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-Pce::TopologySummaries::TopologySummaries()
-    :
-    topology_summary(this, {})
-{
-
-    yang_name = "topology-summaries"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::TopologySummaries::~TopologySummaries()
-{
-}
-
-bool Pce::TopologySummaries::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<topology_summary.len(); index++)
-    {
-        if(topology_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Pce::TopologySummaries::has_operation() const
-{
-    for (std::size_t index=0; index<topology_summary.len(); index++)
-    {
-        if(topology_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Pce::TopologySummaries::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::TopologySummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "topology-summaries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::TopologySummaries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::TopologySummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "topology-summary")
-    {
-        auto ent_ = std::make_shared<Pce::TopologySummaries::TopologySummary>();
-        ent_->parent = this;
-        topology_summary.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TopologySummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : topology_summary.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Pce::TopologySummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pce::TopologySummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pce::TopologySummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "topology-summary")
-        return true;
-    return false;
-}
-
-Pce::TopologySummaries::TopologySummary::TopologySummary()
-    :
-    af{YType::enumeration, "af"},
-    protocol{YType::enumeration, "protocol"},
-    nodes{YType::uint32, "nodes"},
-    lookup_nodes{YType::uint32, "lookup-nodes"},
-    prefixes{YType::uint32, "prefixes"},
-    prefix_sids{YType::uint32, "prefix-sids"},
-    regular_prefix_sids{YType::uint32, "regular-prefix-sids"},
-    strict_prefix_sids{YType::uint32, "strict-prefix-sids"},
-    links{YType::uint32, "links"},
-    epe_links{YType::uint32, "epe-links"},
-    adjacency_sids{YType::uint32, "adjacency-sids"},
-    epesids{YType::uint32, "epesids"},
-    protected_adjacency_sids{YType::uint32, "protected-adjacency-sids"},
-    un_protected_adjacency_sids{YType::uint32, "un-protected-adjacency-sids"},
-    topology_consistent{YType::boolean, "topology-consistent"}
-        ,
-    stats_topology_update(std::make_shared<Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate>())
-{
-    stats_topology_update->parent = this;
-
-    yang_name = "topology-summary"; yang_parent_name = "topology-summaries"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::TopologySummaries::TopologySummary::~TopologySummary()
-{
-}
-
-bool Pce::TopologySummaries::TopologySummary::has_data() const
-{
-    if (is_presence_container) return true;
-    return af.is_set
-	|| protocol.is_set
-	|| nodes.is_set
-	|| lookup_nodes.is_set
-	|| prefixes.is_set
-	|| prefix_sids.is_set
-	|| regular_prefix_sids.is_set
-	|| strict_prefix_sids.is_set
-	|| links.is_set
-	|| epe_links.is_set
-	|| adjacency_sids.is_set
-	|| epesids.is_set
-	|| protected_adjacency_sids.is_set
-	|| un_protected_adjacency_sids.is_set
-	|| topology_consistent.is_set
-	|| (stats_topology_update !=  nullptr && stats_topology_update->has_data());
-}
-
-bool Pce::TopologySummaries::TopologySummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af.yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| ydk::is_set(nodes.yfilter)
-	|| ydk::is_set(lookup_nodes.yfilter)
-	|| ydk::is_set(prefixes.yfilter)
-	|| ydk::is_set(prefix_sids.yfilter)
-	|| ydk::is_set(regular_prefix_sids.yfilter)
-	|| ydk::is_set(strict_prefix_sids.yfilter)
-	|| ydk::is_set(links.yfilter)
-	|| ydk::is_set(epe_links.yfilter)
-	|| ydk::is_set(adjacency_sids.yfilter)
-	|| ydk::is_set(epesids.yfilter)
-	|| ydk::is_set(protected_adjacency_sids.yfilter)
-	|| ydk::is_set(un_protected_adjacency_sids.yfilter)
-	|| ydk::is_set(topology_consistent.yfilter)
-	|| (stats_topology_update !=  nullptr && stats_topology_update->has_operation());
-}
-
-std::string Pce::TopologySummaries::TopologySummary::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/topology-summaries/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::TopologySummaries::TopologySummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "topology-summary";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::TopologySummaries::TopologySummary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (nodes.is_set || is_set(nodes.yfilter)) leaf_name_data.push_back(nodes.get_name_leafdata());
-    if (lookup_nodes.is_set || is_set(lookup_nodes.yfilter)) leaf_name_data.push_back(lookup_nodes.get_name_leafdata());
-    if (prefixes.is_set || is_set(prefixes.yfilter)) leaf_name_data.push_back(prefixes.get_name_leafdata());
-    if (prefix_sids.is_set || is_set(prefix_sids.yfilter)) leaf_name_data.push_back(prefix_sids.get_name_leafdata());
-    if (regular_prefix_sids.is_set || is_set(regular_prefix_sids.yfilter)) leaf_name_data.push_back(regular_prefix_sids.get_name_leafdata());
-    if (strict_prefix_sids.is_set || is_set(strict_prefix_sids.yfilter)) leaf_name_data.push_back(strict_prefix_sids.get_name_leafdata());
-    if (links.is_set || is_set(links.yfilter)) leaf_name_data.push_back(links.get_name_leafdata());
-    if (epe_links.is_set || is_set(epe_links.yfilter)) leaf_name_data.push_back(epe_links.get_name_leafdata());
-    if (adjacency_sids.is_set || is_set(adjacency_sids.yfilter)) leaf_name_data.push_back(adjacency_sids.get_name_leafdata());
-    if (epesids.is_set || is_set(epesids.yfilter)) leaf_name_data.push_back(epesids.get_name_leafdata());
-    if (protected_adjacency_sids.is_set || is_set(protected_adjacency_sids.yfilter)) leaf_name_data.push_back(protected_adjacency_sids.get_name_leafdata());
-    if (un_protected_adjacency_sids.is_set || is_set(un_protected_adjacency_sids.yfilter)) leaf_name_data.push_back(un_protected_adjacency_sids.get_name_leafdata());
-    if (topology_consistent.is_set || is_set(topology_consistent.yfilter)) leaf_name_data.push_back(topology_consistent.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::TopologySummaries::TopologySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stats-topology-update")
-    {
-        if(stats_topology_update == nullptr)
-        {
-            stats_topology_update = std::make_shared<Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate>();
-        }
-        return stats_topology_update;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TopologySummaries::TopologySummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(stats_topology_update != nullptr)
-    {
-        _children["stats-topology-update"] = stats_topology_update;
-    }
-
-    return _children;
-}
-
-void Pce::TopologySummaries::TopologySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af")
-    {
-        af = value;
-        af.value_namespace = name_space;
-        af.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nodes")
-    {
-        nodes = value;
-        nodes.value_namespace = name_space;
-        nodes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lookup-nodes")
-    {
-        lookup_nodes = value;
-        lookup_nodes.value_namespace = name_space;
-        lookup_nodes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefixes")
-    {
-        prefixes = value;
-        prefixes.value_namespace = name_space;
-        prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-sids")
-    {
-        prefix_sids = value;
-        prefix_sids.value_namespace = name_space;
-        prefix_sids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "regular-prefix-sids")
-    {
-        regular_prefix_sids = value;
-        regular_prefix_sids.value_namespace = name_space;
-        regular_prefix_sids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "strict-prefix-sids")
-    {
-        strict_prefix_sids = value;
-        strict_prefix_sids.value_namespace = name_space;
-        strict_prefix_sids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "links")
-    {
-        links = value;
-        links.value_namespace = name_space;
-        links.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "epe-links")
-    {
-        epe_links = value;
-        epe_links.value_namespace = name_space;
-        epe_links.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adjacency-sids")
-    {
-        adjacency_sids = value;
-        adjacency_sids.value_namespace = name_space;
-        adjacency_sids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "epesids")
-    {
-        epesids = value;
-        epesids.value_namespace = name_space;
-        epesids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protected-adjacency-sids")
-    {
-        protected_adjacency_sids = value;
-        protected_adjacency_sids.value_namespace = name_space;
-        protected_adjacency_sids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "un-protected-adjacency-sids")
-    {
-        un_protected_adjacency_sids = value;
-        un_protected_adjacency_sids.value_namespace = name_space;
-        un_protected_adjacency_sids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "topology-consistent")
-    {
-        topology_consistent = value;
-        topology_consistent.value_namespace = name_space;
-        topology_consistent.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::TopologySummaries::TopologySummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af")
-    {
-        af.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-    if(value_path == "nodes")
-    {
-        nodes.yfilter = yfilter;
-    }
-    if(value_path == "lookup-nodes")
-    {
-        lookup_nodes.yfilter = yfilter;
-    }
-    if(value_path == "prefixes")
-    {
-        prefixes.yfilter = yfilter;
-    }
-    if(value_path == "prefix-sids")
-    {
-        prefix_sids.yfilter = yfilter;
-    }
-    if(value_path == "regular-prefix-sids")
-    {
-        regular_prefix_sids.yfilter = yfilter;
-    }
-    if(value_path == "strict-prefix-sids")
-    {
-        strict_prefix_sids.yfilter = yfilter;
-    }
-    if(value_path == "links")
-    {
-        links.yfilter = yfilter;
-    }
-    if(value_path == "epe-links")
-    {
-        epe_links.yfilter = yfilter;
-    }
-    if(value_path == "adjacency-sids")
-    {
-        adjacency_sids.yfilter = yfilter;
-    }
-    if(value_path == "epesids")
-    {
-        epesids.yfilter = yfilter;
-    }
-    if(value_path == "protected-adjacency-sids")
-    {
-        protected_adjacency_sids.yfilter = yfilter;
-    }
-    if(value_path == "un-protected-adjacency-sids")
-    {
-        un_protected_adjacency_sids.yfilter = yfilter;
-    }
-    if(value_path == "topology-consistent")
-    {
-        topology_consistent.yfilter = yfilter;
-    }
-}
-
-bool Pce::TopologySummaries::TopologySummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "stats-topology-update" || name == "af" || name == "protocol" || name == "nodes" || name == "lookup-nodes" || name == "prefixes" || name == "prefix-sids" || name == "regular-prefix-sids" || name == "strict-prefix-sids" || name == "links" || name == "epe-links" || name == "adjacency-sids" || name == "epesids" || name == "protected-adjacency-sids" || name == "un-protected-adjacency-sids" || name == "topology-consistent")
-        return true;
-    return false;
-}
-
-Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::StatsTopologyUpdate()
-    :
-    num_nodes_added{YType::uint32, "num-nodes-added"},
-    num_nodes_deleted{YType::uint32, "num-nodes-deleted"},
-    num_links_added{YType::uint32, "num-links-added"},
-    num_links_deleted{YType::uint32, "num-links-deleted"},
-    num_prefixes_added{YType::uint32, "num-prefixes-added"},
-    num_prefixes_deleted{YType::uint32, "num-prefixes-deleted"}
-{
-
-    yang_name = "stats-topology-update"; yang_parent_name = "topology-summary"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::~StatsTopologyUpdate()
-{
-}
-
-bool Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::has_data() const
-{
-    if (is_presence_container) return true;
-    return num_nodes_added.is_set
-	|| num_nodes_deleted.is_set
-	|| num_links_added.is_set
-	|| num_links_deleted.is_set
-	|| num_prefixes_added.is_set
-	|| num_prefixes_deleted.is_set;
-}
-
-bool Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_nodes_added.yfilter)
-	|| ydk::is_set(num_nodes_deleted.yfilter)
-	|| ydk::is_set(num_links_added.yfilter)
-	|| ydk::is_set(num_links_deleted.yfilter)
-	|| ydk::is_set(num_prefixes_added.yfilter)
-	|| ydk::is_set(num_prefixes_deleted.yfilter);
-}
-
-std::string Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-oper:pce/topology-summaries/topology-summary/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stats-topology-update";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_nodes_added.is_set || is_set(num_nodes_added.yfilter)) leaf_name_data.push_back(num_nodes_added.get_name_leafdata());
-    if (num_nodes_deleted.is_set || is_set(num_nodes_deleted.yfilter)) leaf_name_data.push_back(num_nodes_deleted.get_name_leafdata());
-    if (num_links_added.is_set || is_set(num_links_added.yfilter)) leaf_name_data.push_back(num_links_added.get_name_leafdata());
-    if (num_links_deleted.is_set || is_set(num_links_deleted.yfilter)) leaf_name_data.push_back(num_links_deleted.get_name_leafdata());
-    if (num_prefixes_added.is_set || is_set(num_prefixes_added.yfilter)) leaf_name_data.push_back(num_prefixes_added.get_name_leafdata());
-    if (num_prefixes_deleted.is_set || is_set(num_prefixes_deleted.yfilter)) leaf_name_data.push_back(num_prefixes_deleted.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-nodes-added")
-    {
-        num_nodes_added = value;
-        num_nodes_added.value_namespace = name_space;
-        num_nodes_added.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-nodes-deleted")
-    {
-        num_nodes_deleted = value;
-        num_nodes_deleted.value_namespace = name_space;
-        num_nodes_deleted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-links-added")
-    {
-        num_links_added = value;
-        num_links_added.value_namespace = name_space;
-        num_links_added.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-links-deleted")
-    {
-        num_links_deleted = value;
-        num_links_deleted.value_namespace = name_space;
-        num_links_deleted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-prefixes-added")
-    {
-        num_prefixes_added = value;
-        num_prefixes_added.value_namespace = name_space;
-        num_prefixes_added.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-prefixes-deleted")
-    {
-        num_prefixes_deleted = value;
-        num_prefixes_deleted.value_namespace = name_space;
-        num_prefixes_deleted.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-nodes-added")
-    {
-        num_nodes_added.yfilter = yfilter;
-    }
-    if(value_path == "num-nodes-deleted")
-    {
-        num_nodes_deleted.yfilter = yfilter;
-    }
-    if(value_path == "num-links-added")
-    {
-        num_links_added.yfilter = yfilter;
-    }
-    if(value_path == "num-links-deleted")
-    {
-        num_links_deleted.yfilter = yfilter;
-    }
-    if(value_path == "num-prefixes-added")
-    {
-        num_prefixes_added.yfilter = yfilter;
-    }
-    if(value_path == "num-prefixes-deleted")
-    {
-        num_prefixes_deleted.yfilter = yfilter;
-    }
-}
-
-bool Pce::TopologySummaries::TopologySummary::StatsTopologyUpdate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-nodes-added" || name == "num-nodes-deleted" || name == "num-links-added" || name == "num-links-deleted" || name == "num-prefixes-added" || name == "num-prefixes-deleted")
         return true;
     return false;
 }
@@ -19011,6 +17800,1226 @@ void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::Compu
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hop-address")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::ComputedSrPath()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    mpls_label{YType::uint32, "mpls-label"}
+        ,
+    local_addr(std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr>())
+    , remote_addr(std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr>())
+{
+    local_addr->parent = this;
+    remote_addr->parent = this;
+
+    yang_name = "computed-sr-path"; yang_parent_name = "er-os"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::~ComputedSrPath()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| mpls_label.is_set
+	|| (local_addr !=  nullptr && local_addr->has_data())
+	|| (remote_addr !=  nullptr && remote_addr->has_data());
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| (local_addr !=  nullptr && local_addr->has_operation())
+	|| (remote_addr !=  nullptr && remote_addr->has_operation());
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "computed-sr-path";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-addr")
+    {
+        if(local_addr == nullptr)
+        {
+            local_addr = std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr>();
+        }
+        return local_addr;
+    }
+
+    if(child_yang_name == "remote-addr")
+    {
+        if(remote_addr == nullptr)
+        {
+            remote_addr = std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr>();
+        }
+        return remote_addr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(local_addr != nullptr)
+    {
+        _children["local-addr"] = local_addr;
+    }
+
+    if(remote_addr != nullptr)
+    {
+        _children["remote-addr"] = remote_addr;
+    }
+
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-addr" || name == "remote-addr" || name == "sid-type" || name == "mpls-label")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::LocalAddr()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "local-addr"; yang_parent_name = "computed-sr-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::~LocalAddr()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-addr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::LocalAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::RemoteAddr()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "remote-addr"; yang_parent_name = "computed-sr-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::~RemoteAddr()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-addr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::RemoteAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::LsppcepInformation()
+    :
+    pcepid{YType::uint32, "pcepid"},
+    pcep_flag_d{YType::boolean, "pcep-flag-d"},
+    pcep_flag_s{YType::boolean, "pcep-flag-s"},
+    pcep_flag_r{YType::boolean, "pcep-flag-r"},
+    pcep_flag_a{YType::boolean, "pcep-flag-a"},
+    pcep_flag_o{YType::uint8, "pcep-flag-o"},
+    pcep_flag_c{YType::uint8, "pcep-flag-c"}
+        ,
+    rsvp_error(std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError>())
+{
+    rsvp_error->parent = this;
+
+    yang_name = "lsppcep-information"; yang_parent_name = "detail-lsp-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::~LsppcepInformation()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::has_data() const
+{
+    if (is_presence_container) return true;
+    return pcepid.is_set
+	|| pcep_flag_d.is_set
+	|| pcep_flag_s.is_set
+	|| pcep_flag_r.is_set
+	|| pcep_flag_a.is_set
+	|| pcep_flag_o.is_set
+	|| pcep_flag_c.is_set
+	|| (rsvp_error !=  nullptr && rsvp_error->has_data());
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pcepid.yfilter)
+	|| ydk::is_set(pcep_flag_d.yfilter)
+	|| ydk::is_set(pcep_flag_s.yfilter)
+	|| ydk::is_set(pcep_flag_r.yfilter)
+	|| ydk::is_set(pcep_flag_a.yfilter)
+	|| ydk::is_set(pcep_flag_o.yfilter)
+	|| ydk::is_set(pcep_flag_c.yfilter)
+	|| (rsvp_error !=  nullptr && rsvp_error->has_operation());
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lsppcep-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pcepid.is_set || is_set(pcepid.yfilter)) leaf_name_data.push_back(pcepid.get_name_leafdata());
+    if (pcep_flag_d.is_set || is_set(pcep_flag_d.yfilter)) leaf_name_data.push_back(pcep_flag_d.get_name_leafdata());
+    if (pcep_flag_s.is_set || is_set(pcep_flag_s.yfilter)) leaf_name_data.push_back(pcep_flag_s.get_name_leafdata());
+    if (pcep_flag_r.is_set || is_set(pcep_flag_r.yfilter)) leaf_name_data.push_back(pcep_flag_r.get_name_leafdata());
+    if (pcep_flag_a.is_set || is_set(pcep_flag_a.yfilter)) leaf_name_data.push_back(pcep_flag_a.get_name_leafdata());
+    if (pcep_flag_o.is_set || is_set(pcep_flag_o.yfilter)) leaf_name_data.push_back(pcep_flag_o.get_name_leafdata());
+    if (pcep_flag_c.is_set || is_set(pcep_flag_c.yfilter)) leaf_name_data.push_back(pcep_flag_c.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rsvp-error")
+    {
+        if(rsvp_error == nullptr)
+        {
+            rsvp_error = std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError>();
+        }
+        return rsvp_error;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(rsvp_error != nullptr)
+    {
+        _children["rsvp-error"] = rsvp_error;
+    }
+
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pcepid")
+    {
+        pcepid = value;
+        pcepid.value_namespace = name_space;
+        pcepid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pcep-flag-d")
+    {
+        pcep_flag_d = value;
+        pcep_flag_d.value_namespace = name_space;
+        pcep_flag_d.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pcep-flag-s")
+    {
+        pcep_flag_s = value;
+        pcep_flag_s.value_namespace = name_space;
+        pcep_flag_s.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pcep-flag-r")
+    {
+        pcep_flag_r = value;
+        pcep_flag_r.value_namespace = name_space;
+        pcep_flag_r.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pcep-flag-a")
+    {
+        pcep_flag_a = value;
+        pcep_flag_a.value_namespace = name_space;
+        pcep_flag_a.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pcep-flag-o")
+    {
+        pcep_flag_o = value;
+        pcep_flag_o.value_namespace = name_space;
+        pcep_flag_o.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pcep-flag-c")
+    {
+        pcep_flag_c = value;
+        pcep_flag_c.value_namespace = name_space;
+        pcep_flag_c.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pcepid")
+    {
+        pcepid.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-d")
+    {
+        pcep_flag_d.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-s")
+    {
+        pcep_flag_s.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-r")
+    {
+        pcep_flag_r.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-a")
+    {
+        pcep_flag_a.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-o")
+    {
+        pcep_flag_o.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-c")
+    {
+        pcep_flag_c.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvp-error" || name == "pcepid" || name == "pcep-flag-d" || name == "pcep-flag-s" || name == "pcep-flag-r" || name == "pcep-flag-a" || name == "pcep-flag-o" || name == "pcep-flag-c")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::RsvpError()
+    :
+    node_address{YType::str, "node-address"},
+    error_flags{YType::uint8, "error-flags"},
+    error_code{YType::uint8, "error-code"},
+    error_value{YType::uint16, "error-value"}
+{
+
+    yang_name = "rsvp-error"; yang_parent_name = "lsppcep-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::~RsvpError()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::has_data() const
+{
+    if (is_presence_container) return true;
+    return node_address.is_set
+	|| error_flags.is_set
+	|| error_code.is_set
+	|| error_value.is_set;
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_address.yfilter)
+	|| ydk::is_set(error_flags.yfilter)
+	|| ydk::is_set(error_code.yfilter)
+	|| ydk::is_set(error_value.yfilter);
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvp-error";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_address.is_set || is_set(node_address.yfilter)) leaf_name_data.push_back(node_address.get_name_leafdata());
+    if (error_flags.is_set || is_set(error_flags.yfilter)) leaf_name_data.push_back(error_flags.get_name_leafdata());
+    if (error_code.is_set || is_set(error_code.yfilter)) leaf_name_data.push_back(error_code.get_name_leafdata());
+    if (error_value.is_set || is_set(error_value.yfilter)) leaf_name_data.push_back(error_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-address")
+    {
+        node_address = value;
+        node_address.value_namespace = name_space;
+        node_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-flags")
+    {
+        error_flags = value;
+        error_flags.value_namespace = name_space;
+        error_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-code")
+    {
+        error_code = value;
+        error_code.value_namespace = name_space;
+        error_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-value")
+    {
+        error_value = value;
+        error_value.value_namespace = name_space;
+        error_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-address")
+    {
+        node_address.yfilter = yfilter;
+    }
+    if(value_path == "error-flags")
+    {
+        error_flags.yfilter = yfilter;
+    }
+    if(value_path == "error-code")
+    {
+        error_code.yfilter = yfilter;
+    }
+    if(value_path == "error-value")
+    {
+        error_value.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-address" || name == "error-flags" || name == "error-code" || name == "error-value")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::LspAssociationInfo()
+    :
+    association_type{YType::uint32, "association-type"},
+    association_id{YType::uint32, "association-id"}
+        ,
+    association_source(std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource>())
+{
+    association_source->parent = this;
+
+    yang_name = "lsp-association-info"; yang_parent_name = "detail-lsp-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::~LspAssociationInfo()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return association_type.is_set
+	|| association_id.is_set
+	|| (association_source !=  nullptr && association_source->has_data());
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(association_type.yfilter)
+	|| ydk::is_set(association_id.yfilter)
+	|| (association_source !=  nullptr && association_source->has_operation());
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lsp-association-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (association_type.is_set || is_set(association_type.yfilter)) leaf_name_data.push_back(association_type.get_name_leafdata());
+    if (association_id.is_set || is_set(association_id.yfilter)) leaf_name_data.push_back(association_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "association-source")
+    {
+        if(association_source == nullptr)
+        {
+            association_source = std::make_shared<Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource>();
+        }
+        return association_source;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(association_source != nullptr)
+    {
+        _children["association-source"] = association_source;
+    }
+
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "association-type")
+    {
+        association_type = value;
+        association_type.value_namespace = name_space;
+        association_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "association-id")
+    {
+        association_id = value;
+        association_id.value_namespace = name_space;
+        association_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "association-type")
+    {
+        association_type.yfilter = yfilter;
+    }
+    if(value_path == "association-id")
+    {
+        association_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-source" || name == "association-type" || name == "association-id")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::AssociationSource()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "association-source"; yang_parent_name = "lsp-association-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::~AssociationSource()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "association-source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::AssociationSource::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::LspAttributes()
+    :
+    affinity_exclude_any{YType::uint32, "affinity-exclude-any"},
+    affinity_include_any{YType::uint32, "affinity-include-any"},
+    affinity_include_all{YType::uint32, "affinity-include-all"},
+    setup_priority{YType::uint8, "setup-priority"},
+    hold_priority{YType::uint8, "hold-priority"},
+    local_protection{YType::boolean, "local-protection"}
+{
+
+    yang_name = "lsp-attributes"; yang_parent_name = "detail-lsp-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::~LspAttributes()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return affinity_exclude_any.is_set
+	|| affinity_include_any.is_set
+	|| affinity_include_all.is_set
+	|| setup_priority.is_set
+	|| hold_priority.is_set
+	|| local_protection.is_set;
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(affinity_exclude_any.yfilter)
+	|| ydk::is_set(affinity_include_any.yfilter)
+	|| ydk::is_set(affinity_include_all.yfilter)
+	|| ydk::is_set(setup_priority.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(local_protection.yfilter);
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lsp-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_exclude_any.is_set || is_set(affinity_exclude_any.yfilter)) leaf_name_data.push_back(affinity_exclude_any.get_name_leafdata());
+    if (affinity_include_any.is_set || is_set(affinity_include_any.yfilter)) leaf_name_data.push_back(affinity_include_any.get_name_leafdata());
+    if (affinity_include_all.is_set || is_set(affinity_include_all.yfilter)) leaf_name_data.push_back(affinity_include_all.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (local_protection.is_set || is_set(local_protection.yfilter)) leaf_name_data.push_back(local_protection.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "affinity-exclude-any")
+    {
+        affinity_exclude_any = value;
+        affinity_exclude_any.value_namespace = name_space;
+        affinity_exclude_any.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "affinity-include-any")
+    {
+        affinity_include_any = value;
+        affinity_include_any.value_namespace = name_space;
+        affinity_include_any.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "affinity-include-all")
+    {
+        affinity_include_all = value;
+        affinity_include_all.value_namespace = name_space;
+        affinity_include_all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-protection")
+    {
+        local_protection = value;
+        local_protection.value_namespace = name_space;
+        local_protection.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "affinity-exclude-any")
+    {
+        affinity_exclude_any.yfilter = yfilter;
+    }
+    if(value_path == "affinity-include-any")
+    {
+        affinity_include_any.yfilter = yfilter;
+    }
+    if(value_path == "affinity-include-all")
+    {
+        affinity_include_all.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "local-protection")
+    {
+        local_protection.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-exclude-any" || name == "affinity-include-any" || name == "affinity-include-all" || name == "setup-priority" || name == "hold-priority" || name == "local-protection")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::SubDelegatedPce()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "sub-delegated-pce"; yang_parent_name = "detail-lsp-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::~SubDelegatedPce()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sub-delegated-pce";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::SubDelegatedPce::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::StateSyncPce()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "state-sync-pce"; yang_parent_name = "detail-lsp-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::~StateSyncPce()
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-sync-pce";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::StateSyncPce::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }

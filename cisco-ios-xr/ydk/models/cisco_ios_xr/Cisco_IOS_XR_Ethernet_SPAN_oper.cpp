@@ -5014,32 +5014,6 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Traffic
     return false;
 }
 
-const Enum::YLeaf MirrorInterval::mirror_interval_all {0, "mirror-interval-all"};
-const Enum::YLeaf MirrorInterval::mirror_interval512 {1, "mirror-interval512"};
-const Enum::YLeaf MirrorInterval::mirror_interval1k {2, "mirror-interval1k"};
-const Enum::YLeaf MirrorInterval::mirror_interval2k {3, "mirror-interval2k"};
-const Enum::YLeaf MirrorInterval::mirror_interval4k {4, "mirror-interval4k"};
-const Enum::YLeaf MirrorInterval::mirror_interval8k {5, "mirror-interval8k"};
-const Enum::YLeaf MirrorInterval::mirror_interval16k {6, "mirror-interval16k"};
-
-const Enum::YLeaf TrafficDirection::invalid {0, "invalid"};
-const Enum::YLeaf TrafficDirection::rx_only {1, "rx-only"};
-const Enum::YLeaf TrafficDirection::tx_only {2, "tx-only"};
-const Enum::YLeaf TrafficDirection::both {3, "both"};
-
-const Enum::YLeaf DestinationClass::interface_class {0, "interface-class"};
-const Enum::YLeaf DestinationClass::pseudowire_class {1, "pseudowire-class"};
-const Enum::YLeaf DestinationClass::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
-const Enum::YLeaf DestinationClass::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
-const Enum::YLeaf DestinationClass::invalid_class {255, "invalid-class"};
-
-const Enum::YLeaf SessionClass::ethernet_class {0, "ethernet-class"};
-const Enum::YLeaf SessionClass::ipv4_class {1, "ipv4-class"};
-const Enum::YLeaf SessionClass::ipv6_class {2, "ipv6-class"};
-const Enum::YLeaf SessionClass::mplsipv4_class {3, "mplsipv4-class"};
-const Enum::YLeaf SessionClass::mplsipv6_class {4, "mplsipv6-class"};
-const Enum::YLeaf SessionClass::invalid_class {65535, "invalid-class"};
-
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
 const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
@@ -5059,6 +5033,32 @@ const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"}
 const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
 const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
 const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+
+const Enum::YLeaf DestinationClass::interface_class {0, "interface-class"};
+const Enum::YLeaf DestinationClass::pseudowire_class {1, "pseudowire-class"};
+const Enum::YLeaf DestinationClass::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
+const Enum::YLeaf DestinationClass::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
+const Enum::YLeaf DestinationClass::invalid_class {255, "invalid-class"};
+
+const Enum::YLeaf SessionClass::ethernet_class {0, "ethernet-class"};
+const Enum::YLeaf SessionClass::ipv4_class {1, "ipv4-class"};
+const Enum::YLeaf SessionClass::ipv6_class {2, "ipv6-class"};
+const Enum::YLeaf SessionClass::mplsipv4_class {3, "mplsipv4-class"};
+const Enum::YLeaf SessionClass::mplsipv6_class {4, "mplsipv6-class"};
+const Enum::YLeaf SessionClass::invalid_class {65535, "invalid-class"};
+
+const Enum::YLeaf MirrorInterval::mirror_interval_all {0, "mirror-interval-all"};
+const Enum::YLeaf MirrorInterval::mirror_interval512 {1, "mirror-interval512"};
+const Enum::YLeaf MirrorInterval::mirror_interval1k {2, "mirror-interval1k"};
+const Enum::YLeaf MirrorInterval::mirror_interval2k {3, "mirror-interval2k"};
+const Enum::YLeaf MirrorInterval::mirror_interval4k {4, "mirror-interval4k"};
+const Enum::YLeaf MirrorInterval::mirror_interval8k {5, "mirror-interval8k"};
+const Enum::YLeaf MirrorInterval::mirror_interval16k {6, "mirror-interval16k"};
+
+const Enum::YLeaf TrafficDirection::invalid {0, "invalid"};
+const Enum::YLeaf TrafficDirection::rx_only {1, "rx-only"};
+const Enum::YLeaf TrafficDirection::tx_only {2, "tx-only"};
+const Enum::YLeaf TrafficDirection::both {3, "both"};
 
 
 }

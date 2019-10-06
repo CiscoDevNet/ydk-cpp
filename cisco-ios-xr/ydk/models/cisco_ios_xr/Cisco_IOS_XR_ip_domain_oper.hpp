@@ -265,6 +265,11 @@ class ServerDomainLkup : public ydk::Enum
         static const ydk::Enum::YLeaf static_mapping;
         static const ydk::Enum::YLeaf domain_service;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "static-mapping") return 0;
+            if (name == "domain-service") return 1;
+            return -1;
+        }
 };
 
 

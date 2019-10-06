@@ -979,145 +979,6 @@ class EthernetInterface::Berts::Bert::BertStatus : public ydk::Entity
 
 }; // EthernetInterface::Berts::Bert::BertStatus
 
-class EthernetDevIf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_interface;
-        static const ydk::Enum::YLeaf xgmii;
-        static const ydk::Enum::YLeaf xaui;
-        static const ydk::Enum::YLeaf ethernet_num_dev_if;
-
-};
-
-class EthernetDev : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_device;
-        static const ydk::Enum::YLeaf pma_pmd;
-        static const ydk::Enum::YLeaf wis;
-        static const ydk::Enum::YLeaf pcs;
-        static const ydk::Enum::YLeaf phy_xs;
-        static const ydk::Enum::YLeaf dte_xs;
-        static const ydk::Enum::YLeaf ethernet_num_dev;
-
-};
-
-class EthernetBertPattern : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_test_pattern;
-        static const ydk::Enum::YLeaf high_frequency;
-        static const ydk::Enum::YLeaf low_frequency;
-        static const ydk::Enum::YLeaf mixed_frequency;
-        static const ydk::Enum::YLeaf continuous_random;
-        static const ydk::Enum::YLeaf continuous_jitter;
-        static const ydk::Enum::YLeaf long_continuous_random;
-        static const ydk::Enum::YLeaf short_continuous_random;
-        static const ydk::Enum::YLeaf pseudorandom_seed_a;
-        static const ydk::Enum::YLeaf pseudorandom_seed_b;
-        static const ydk::Enum::YLeaf prbs31;
-        static const ydk::Enum::YLeaf square_wave;
-        static const ydk::Enum::YLeaf pseudorandom;
-        static const ydk::Enum::YLeaf ethernet_bert_pattern_types;
-
-};
-
-class EthernetBertErrCnt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_count_type;
-        static const ydk::Enum::YLeaf bit_error_count;
-        static const ydk::Enum::YLeaf frame_error_count;
-        static const ydk::Enum::YLeaf block_error_count;
-        static const ydk::Enum::YLeaf ethernet_bert_err_cnt_types;
-
-};
-
-class EtherAinsStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ains_soak_status_none;
-        static const ydk::Enum::YLeaf ains_soak_status_pending;
-        static const ydk::Enum::YLeaf ains_soak_status_running;
-
-};
-
-class EtherPfc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_pfc;
-        static const ydk::Enum::YLeaf on;
-
-};
-
-class EthCtrlrAlarmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf alarm_not_supported;
-        static const ydk::Enum::YLeaf alarm_set;
-        static const ydk::Enum::YLeaf alarm_not_set;
-
-};
-
-class EthernetIpg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf non_standard;
-
-};
-
-class EtherFlowcontrol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_flowcontrol;
-        static const ydk::Enum::YLeaf egress;
-        static const ydk::Enum::YLeaf ingress;
-        static const ydk::Enum::YLeaf bidirectional;
-
-};
-
-class EthernetDuplex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet_duplex_invalid;
-        static const ydk::Enum::YLeaf half_duplex;
-        static const ydk::Enum::YLeaf full_duplex;
-
-};
-
-class EthernetSpeed : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet_speed_invalid;
-        static const ydk::Enum::YLeaf ten_mbps;
-        static const ydk::Enum::YLeaf hundred_mbps;
-        static const ydk::Enum::YLeaf one_gbps;
-        static const ydk::Enum::YLeaf ten_gbps;
-        static const ydk::Enum::YLeaf twenty_five_gbps;
-        static const ydk::Enum::YLeaf forty_gbps;
-        static const ydk::Enum::YLeaf fifty_gbps;
-        static const ydk::Enum::YLeaf hundred_gbps;
-        static const ydk::Enum::YLeaf two_hundred_gbps;
-        static const ydk::Enum::YLeaf four_hundred_gbps;
-        static const ydk::Enum::YLeaf ethernet_speed_types_count;
-
-};
-
-class EtherLedState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf led_state_unknown;
-        static const ydk::Enum::YLeaf led_off;
-        static const ydk::Enum::YLeaf green_on;
-        static const ydk::Enum::YLeaf green_flashing;
-        static const ydk::Enum::YLeaf yellow_on;
-        static const ydk::Enum::YLeaf yellow_flashing;
-        static const ydk::Enum::YLeaf red_on;
-        static const ydk::Enum::YLeaf red_flashing;
-
-};
-
 class EtherLinkState : public ydk::Enum
 {
     public:
@@ -1151,26 +1012,179 @@ class EtherLinkState : public ydk::Enum
         static const ydk::Enum::YLeaf otn_framing_error;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-undefined") return 0;
+            if (name == "unknown-state") return 1;
+            if (name == "available") return 2;
+            if (name == "not-available") return 3;
+            if (name == "remote-fault") return 4;
+            if (name == "invalid-signal") return 5;
+            if (name == "remote-jabber") return 6;
+            if (name == "link-loss") return 7;
+            if (name == "remote-test") return 8;
+            if (name == "offline") return 9;
+            if (name == "auto-neg-error") return 10;
+            if (name == "pmd-link-fault") return 11;
+            if (name == "frame-loss") return 12;
+            if (name == "signal-loss") return 13;
+            if (name == "link-fault") return 14;
+            if (name == "excessive-ber") return 15;
+            if (name == "dxs-link-fault") return 16;
+            if (name == "pxs-link-fault") return 17;
+            if (name == "security") return 18;
+            if (name == "phy-not-present") return 19;
+            if (name == "no-optic-license") return 20;
+            if (name == "unsupported-module") return 21;
+            if (name == "dwdm-laser-shut") return 22;
+            if (name == "wanphy-laser-shut") return 23;
+            if (name == "incompatible-config") return 24;
+            if (name == "system-error") return 25;
+            if (name == "wan-framing-error") return 26;
+            if (name == "otn-framing-error") return 27;
+            if (name == "shutdown") return 28;
+            return -1;
+        }
 };
 
-class EthernetFec : public ydk::Enum
+class EthernetBertPattern : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_configured;
-        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf no_test_pattern;
+        static const ydk::Enum::YLeaf high_frequency;
+        static const ydk::Enum::YLeaf low_frequency;
+        static const ydk::Enum::YLeaf mixed_frequency;
+        static const ydk::Enum::YLeaf continuous_random;
+        static const ydk::Enum::YLeaf continuous_jitter;
+        static const ydk::Enum::YLeaf long_continuous_random;
+        static const ydk::Enum::YLeaf short_continuous_random;
+        static const ydk::Enum::YLeaf pseudorandom_seed_a;
+        static const ydk::Enum::YLeaf pseudorandom_seed_b;
+        static const ydk::Enum::YLeaf prbs31;
+        static const ydk::Enum::YLeaf square_wave;
+        static const ydk::Enum::YLeaf pseudorandom;
+        static const ydk::Enum::YLeaf ethernet_bert_pattern_types;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-test-pattern") return 0;
+            if (name == "high-frequency") return 1;
+            if (name == "low-frequency") return 2;
+            if (name == "mixed-frequency") return 3;
+            if (name == "continuous-random") return 4;
+            if (name == "continuous-jitter") return 5;
+            if (name == "long-continuous-random") return 6;
+            if (name == "short-continuous-random") return 7;
+            if (name == "pseudorandom-seed-a") return 8;
+            if (name == "pseudorandom-seed-b") return 9;
+            if (name == "prbs31") return 10;
+            if (name == "square-wave") return 11;
+            if (name == "pseudorandom") return 12;
+            if (name == "ethernet-bert-pattern-types") return 13;
+            return -1;
+        }
+};
+
+class EthernetPortEnable : public ydk::Enum
+{
+    public:
         static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf base_r;
+        static const ydk::Enum::YLeaf rx_enabled;
+        static const ydk::Enum::YLeaf tx_enabled;
+        static const ydk::Enum::YLeaf enabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disabled") return 0;
+            if (name == "rx-enabled") return 1;
+            if (name == "tx-enabled") return 2;
+            if (name == "enabled") return 3;
+            return -1;
+        }
 };
 
-class EthernetLoopback : public ydk::Enum
+class EthCtrlrAlarmState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_loopback;
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf alarm_not_supported;
+        static const ydk::Enum::YLeaf alarm_set;
+        static const ydk::Enum::YLeaf alarm_not_set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "alarm-not-supported") return 0;
+            if (name == "alarm-set") return 1;
+            if (name == "alarm-not-set") return 2;
+            return -1;
+        }
+};
+
+class EthernetDev : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_device;
+        static const ydk::Enum::YLeaf pma_pmd;
+        static const ydk::Enum::YLeaf wis;
+        static const ydk::Enum::YLeaf pcs;
+        static const ydk::Enum::YLeaf phy_xs;
+        static const ydk::Enum::YLeaf dte_xs;
+        static const ydk::Enum::YLeaf ethernet_num_dev;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-device") return 0;
+            if (name == "pma-pmd") return 1;
+            if (name == "wis") return 2;
+            if (name == "pcs") return 3;
+            if (name == "phy-xs") return 4;
+            if (name == "dte-xs") return 5;
+            if (name == "ethernet-num-dev") return 6;
+            return -1;
+        }
+};
+
+class EtherPhyPresent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf phy_not_present;
+        static const ydk::Enum::YLeaf phy_present;
+        static const ydk::Enum::YLeaf no_information;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "phy-not-present") return 0;
+            if (name == "phy-present") return 1;
+            if (name == "no-information") return 2;
+            return -1;
+        }
+};
+
+class EthernetDevIf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_interface;
+        static const ydk::Enum::YLeaf xgmii;
+        static const ydk::Enum::YLeaf xaui;
+        static const ydk::Enum::YLeaf ethernet_num_dev_if;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-interface") return 0;
+            if (name == "xgmii") return 1;
+            if (name == "xaui") return 2;
+            if (name == "ethernet-num-dev-if") return 3;
+            return -1;
+        }
+};
+
+class EtherFlowcontrol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_flowcontrol;
+        static const ydk::Enum::YLeaf egress;
+        static const ydk::Enum::YLeaf ingress;
+        static const ydk::Enum::YLeaf bidirectional;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-flowcontrol") return 0;
+            if (name == "egress") return 1;
+            if (name == "ingress") return 2;
+            if (name == "bidirectional") return 3;
+            return -1;
+        }
 };
 
 class EtherDomAlarm : public ydk::Enum
@@ -1183,15 +1197,150 @@ class EtherDomAlarm : public ydk::Enum
         static const ydk::Enum::YLeaf warning_low;
         static const ydk::Enum::YLeaf alarm_low;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-information") return 0;
+            if (name == "alarm-high") return 1;
+            if (name == "warning-high") return 2;
+            if (name == "normal") return 3;
+            if (name == "warning-low") return 4;
+            if (name == "alarm-low") return 5;
+            return -1;
+        }
 };
 
-class EtherPhyPresent : public ydk::Enum
+class EtherPfc : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf phy_not_present;
-        static const ydk::Enum::YLeaf phy_present;
-        static const ydk::Enum::YLeaf no_information;
+        static const ydk::Enum::YLeaf no_pfc;
+        static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-pfc") return 0;
+            if (name == "on") return 1;
+            return -1;
+        }
+};
+
+class EthernetBertErrCnt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_count_type;
+        static const ydk::Enum::YLeaf bit_error_count;
+        static const ydk::Enum::YLeaf frame_error_count;
+        static const ydk::Enum::YLeaf block_error_count;
+        static const ydk::Enum::YLeaf ethernet_bert_err_cnt_types;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-count-type") return 0;
+            if (name == "bit-error-count") return 1;
+            if (name == "frame-error-count") return 2;
+            if (name == "block-error-count") return 3;
+            if (name == "ethernet-bert-err-cnt-types") return 4;
+            return -1;
+        }
+};
+
+class EthernetDuplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet_duplex_invalid;
+        static const ydk::Enum::YLeaf half_duplex;
+        static const ydk::Enum::YLeaf full_duplex;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet-duplex-invalid") return 0;
+            if (name == "half-duplex") return 1;
+            if (name == "full-duplex") return 2;
+            return -1;
+        }
+};
+
+class EthernetIpg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf non_standard;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "standard") return 0;
+            if (name == "non-standard") return 1;
+            return -1;
+        }
+};
+
+class EthernetSpeed : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet_speed_invalid;
+        static const ydk::Enum::YLeaf ten_mbps;
+        static const ydk::Enum::YLeaf hundred_mbps;
+        static const ydk::Enum::YLeaf one_gbps;
+        static const ydk::Enum::YLeaf ten_gbps;
+        static const ydk::Enum::YLeaf twenty_five_gbps;
+        static const ydk::Enum::YLeaf forty_gbps;
+        static const ydk::Enum::YLeaf fifty_gbps;
+        static const ydk::Enum::YLeaf hundred_gbps;
+        static const ydk::Enum::YLeaf two_hundred_gbps;
+        static const ydk::Enum::YLeaf four_hundred_gbps;
+        static const ydk::Enum::YLeaf ethernet_speed_types_count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet-speed-invalid") return 0;
+            if (name == "ten-mbps") return 1;
+            if (name == "hundred-mbps") return 2;
+            if (name == "one-gbps") return 3;
+            if (name == "ten-gbps") return 4;
+            if (name == "twenty-five-gbps") return 5;
+            if (name == "forty-gbps") return 6;
+            if (name == "fifty-gbps") return 7;
+            if (name == "hundred-gbps") return 8;
+            if (name == "two-hundred-gbps") return 9;
+            if (name == "four-hundred-gbps") return 10;
+            if (name == "ethernet-speed-types-count") return 11;
+            return -1;
+        }
+};
+
+class EtherLedState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf led_state_unknown;
+        static const ydk::Enum::YLeaf led_off;
+        static const ydk::Enum::YLeaf green_on;
+        static const ydk::Enum::YLeaf green_flashing;
+        static const ydk::Enum::YLeaf yellow_on;
+        static const ydk::Enum::YLeaf yellow_flashing;
+        static const ydk::Enum::YLeaf red_on;
+        static const ydk::Enum::YLeaf red_flashing;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "led-state-unknown") return 0;
+            if (name == "led-off") return 1;
+            if (name == "green-on") return 2;
+            if (name == "green-flashing") return 3;
+            if (name == "yellow-on") return 4;
+            if (name == "yellow-flashing") return 5;
+            if (name == "red-on") return 6;
+            if (name == "red-flashing") return 7;
+            return -1;
+        }
+};
+
+class EthernetFec : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_configured;
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf base_r;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-configured") return 0;
+            if (name == "standard") return 1;
+            if (name == "disabled") return 2;
+            if (name == "base-r") return 3;
+            return -1;
+        }
 };
 
 class EthernetMedia : public ydk::Enum
@@ -1574,22 +1723,423 @@ class EthernetMedia : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet_25gbase_cu5m;
         static const ydk::Enum::YLeaf ethernet_100gbase_sm_sr;
         static const ydk::Enum::YLeaf ethernet_100gbase_sr_bd;
-        static const ydk::Enum::YLeaf ethernet_1000base_2bx_d;
-        static const ydk::Enum::YLeaf ethernet_1000base_2bx_d_i;
-        static const ydk::Enum::YLeaf ethernet_1000base_2bx_u;
-        static const ydk::Enum::YLeaf ethernet_1000base_2bx_u_i;
+        static const ydk::Enum::YLeaf ethernet_100gbase_fr;
         static const ydk::Enum::YLeaf ethernet_base_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet-other") return 0;
+            if (name == "ethernet-unknown") return 1;
+            if (name == "ethernet-aui") return 2;
+            if (name == "ethernet-10base5") return 3;
+            if (name == "ethernet-foirl") return 4;
+            if (name == "ethernet-10base2") return 5;
+            if (name == "ethernet-10broad36") return 6;
+            if (name == "ethernet-10base") return 7;
+            if (name == "ethernet-10base-thd") return 8;
+            if (name == "ethernet-10base-tfd") return 9;
+            if (name == "ethernet-10base-fp") return 10;
+            if (name == "ethernet-10base-fb") return 11;
+            if (name == "ethernet-10base-fl") return 12;
+            if (name == "ethernet-10base-flhd") return 13;
+            if (name == "ethernet-10base-flfd") return 14;
+            if (name == "ethernet-100base-t4") return 15;
+            if (name == "ethernet-100base-tx") return 16;
+            if (name == "ethernet-100base-txhd") return 17;
+            if (name == "ethernet-100base-txfd") return 18;
+            if (name == "ethernet-100base-fx") return 19;
+            if (name == "ethernet-100base-fxhd") return 20;
+            if (name == "ethernet-100base-fxfd") return 21;
+            if (name == "ethernet-100base-ex") return 22;
+            if (name == "ethernet-100base-exhd") return 23;
+            if (name == "ethernet-100base-exfd") return 24;
+            if (name == "ethernet-100base-t2") return 25;
+            if (name == "ethernet-100base-t2hd") return 26;
+            if (name == "ethernet-100base-t2fd") return 27;
+            if (name == "ethernet-1000base-x") return 28;
+            if (name == "ethernet-1000base-xhd") return 29;
+            if (name == "ethernet-1000base-xfd") return 30;
+            if (name == "ethernet-1000base-lx") return 31;
+            if (name == "ethernet-1000base-lxhd") return 32;
+            if (name == "ethernet-1000base-lxfd") return 33;
+            if (name == "ethernet-1000base-sx") return 34;
+            if (name == "ethernet-1000base-sxhd") return 35;
+            if (name == "ethernet-1000base-sxfd") return 36;
+            if (name == "ethernet-1000base-cx") return 37;
+            if (name == "ethernet-1000base-cxhd") return 38;
+            if (name == "ethernet-1000base-cxfd") return 39;
+            if (name == "ethernet-1000base") return 40;
+            if (name == "ethernet-1000base-thd") return 41;
+            if (name == "ethernet-1000base-tfd") return 42;
+            if (name == "ethernet-10gbase-x") return 43;
+            if (name == "ethernet-10gbase-lx4") return 44;
+            if (name == "ethernet-10gbase-r") return 45;
+            if (name == "ethernet-10gbase-er") return 46;
+            if (name == "ethernet-10gbase-lr") return 47;
+            if (name == "ethernet-10gbase-sr") return 48;
+            if (name == "ethernet-10gbase-w") return 49;
+            if (name == "ethernet-10gbase-ew") return 50;
+            if (name == "ethernet-10gbase-lw") return 51;
+            if (name == "ethernet-10gbase-sw") return 52;
+            if (name == "ethernet-1000base-zx") return 53;
+            if (name == "ethernet-1000base-cwdm") return 54;
+            if (name == "ethernet-1000base-cwdm-1470") return 55;
+            if (name == "ethernet-1000base-cwdm-1490") return 56;
+            if (name == "ethernet-1000base-cwdm-1510") return 57;
+            if (name == "ethernet-1000base-cwdm-1530") return 58;
+            if (name == "ethernet-1000base-cwdm-1550") return 59;
+            if (name == "ethernet-1000base-cwdm-1570") return 60;
+            if (name == "ethernet-1000base-cwdm-1590") return 61;
+            if (name == "ethernet-1000base-cwdm-1610") return 62;
+            if (name == "ethernet-10gbase-zr") return 63;
+            if (name == "ethernet-10gbase-dwdm") return 64;
+            if (name == "ethernet-100gbase-lr4") return 65;
+            if (name == "ethernet-1000base-dwdm") return 66;
+            if (name == "ethernet-1000base-dwdm-1533") return 67;
+            if (name == "ethernet-1000base-dwdm-1537") return 68;
+            if (name == "ethernet-1000base-dwdm-1541") return 69;
+            if (name == "ethernet-1000base-dwdm-1545") return 70;
+            if (name == "ethernet-1000base-dwdm-1549") return 71;
+            if (name == "ethernet-1000base-dwdm-1553") return 72;
+            if (name == "ethernet-1000base-dwdm-1557") return 73;
+            if (name == "ethernet-1000base-dwdm-1561") return 74;
+            if (name == "ethernet-40gbase-lr4") return 75;
+            if (name == "ethernet-40gbase-er4") return 76;
+            if (name == "ethernet-100gbase-er4") return 77;
+            if (name == "ethernet-1000base-ex") return 78;
+            if (name == "ethernet-1000base-bx10-d") return 79;
+            if (name == "ethernet-1000base-bx10-u") return 80;
+            if (name == "ethernet-1000base-dwdm-1561-42") return 81;
+            if (name == "ethernet-1000base-dwdm-1560-61") return 82;
+            if (name == "ethernet-1000base-dwdm-1559-79") return 83;
+            if (name == "ethernet-1000base-dwdm-1558-98") return 84;
+            if (name == "ethernet-1000base-dwdm-1558-17") return 85;
+            if (name == "ethernet-1000base-dwdm-1557-36") return 86;
+            if (name == "ethernet-1000base-dwdm-1556-55") return 87;
+            if (name == "ethernet-1000base-dwdm-1555-75") return 88;
+            if (name == "ethernet-1000base-dwdm-1554-94") return 89;
+            if (name == "ethernet-1000base-dwdm-1554-13") return 90;
+            if (name == "ethernet-1000base-dwdm-1553-33") return 91;
+            if (name == "ethernet-1000base-dwdm-1552-52") return 92;
+            if (name == "ethernet-1000base-dwdm-1551-72") return 93;
+            if (name == "ethernet-1000base-dwdm-1550-92") return 94;
+            if (name == "ethernet-1000base-dwdm-1550-12") return 95;
+            if (name == "ethernet-1000base-dwdm-1549-32") return 96;
+            if (name == "ethernet-1000base-dwdm-1548-51") return 97;
+            if (name == "ethernet-1000base-dwdm-1547-72") return 98;
+            if (name == "ethernet-1000base-dwdm-1546-92") return 99;
+            if (name == "ethernet-1000base-dwdm-1546-12") return 100;
+            if (name == "ethernet-1000base-dwdm-1545-32") return 101;
+            if (name == "ethernet-1000base-dwdm-1544-53") return 102;
+            if (name == "ethernet-1000base-dwdm-1543-73") return 103;
+            if (name == "ethernet-1000base-dwdm-1542-94") return 104;
+            if (name == "ethernet-1000base-dwdm-1542-14") return 105;
+            if (name == "ethernet-1000base-dwdm-1541-35") return 106;
+            if (name == "ethernet-1000base-dwdm-1540-56") return 107;
+            if (name == "ethernet-1000base-dwdm-1539-77") return 108;
+            if (name == "ethernet-1000base-dwdm-1538-98") return 109;
+            if (name == "ethernet-1000base-dwdm-1538-19") return 110;
+            if (name == "ethernet-1000base-dwdm-1537-40") return 111;
+            if (name == "ethernet-1000base-dwdm-1536-61") return 112;
+            if (name == "ethernet-1000base-dwdm-1535-82") return 113;
+            if (name == "ethernet-1000base-dwdm-1535-04") return 114;
+            if (name == "ethernet-1000base-dwdm-1534-25") return 115;
+            if (name == "ethernet-1000base-dwdm-1533-47") return 116;
+            if (name == "ethernet-1000base-dwdm-1532-68") return 117;
+            if (name == "ethernet-1000base-dwdm-1531-90") return 118;
+            if (name == "ethernet-1000base-dwdm-1531-12") return 119;
+            if (name == "ethernet-1000base-dwdm-1530-33") return 120;
+            if (name == "ethernet-1000base-dwdm-tunable") return 121;
+            if (name == "ethernet-10gbase-dwdm-1561-42") return 122;
+            if (name == "ethernet-10gbase-dwdm-1560-61") return 123;
+            if (name == "ethernet-10gbase-dwdm-1559-79") return 124;
+            if (name == "ethernet-10gbase-dwdm-1558-98") return 125;
+            if (name == "ethernet-10gbase-dwdm-1558-17") return 126;
+            if (name == "ethernet-10gbase-dwdm-1557-36") return 127;
+            if (name == "ethernet-10gbase-dwdm-1556-55") return 128;
+            if (name == "ethernet-10gbase-dwdm-1555-75") return 129;
+            if (name == "ethernet-10gbase-dwdm-1554-94") return 130;
+            if (name == "ethernet-10gbase-dwdm-1554-13") return 131;
+            if (name == "ethernet-10gbase-dwdm-1553-33") return 132;
+            if (name == "ethernet-10gbase-dwdm-1552-52") return 133;
+            if (name == "ethernet-10gbase-dwdm-1551-72") return 134;
+            if (name == "ethernet-10gbase-dwdm-1550-92") return 135;
+            if (name == "ethernet-10gbase-dwdm-1550-12") return 136;
+            if (name == "ethernet-10gbase-dwdm-1549-32") return 137;
+            if (name == "ethernet-10gbase-dwdm-1548-51") return 138;
+            if (name == "ethernet-10gbase-dwdm-1547-72") return 139;
+            if (name == "ethernet-10gbase-dwdm-1546-92") return 140;
+            if (name == "ethernet-10gbase-dwdm-1546-12") return 141;
+            if (name == "ethernet-10gbase-dwdm-1545-32") return 142;
+            if (name == "ethernet-10gbase-dwdm-1544-53") return 143;
+            if (name == "ethernet-10gbase-dwdm-1543-73") return 144;
+            if (name == "ethernet-10gbase-dwdm-1542-94") return 145;
+            if (name == "ethernet-10gbase-dwdm-1542-14") return 146;
+            if (name == "ethernet-10gbase-dwdm-1541-35") return 147;
+            if (name == "ethernet-10gbase-dwdm-1540-56") return 148;
+            if (name == "ethernet-10gbase-dwdm-1539-77") return 149;
+            if (name == "ethernet-10gbase-dwdm-1538-98") return 150;
+            if (name == "ethernet-10gbase-dwdm-1538-19") return 151;
+            if (name == "ethernet-10gbase-dwdm-1537-40") return 152;
+            if (name == "ethernet-10gbase-dwdm-1536-61") return 153;
+            if (name == "ethernet-10gbase-dwdm-1535-82") return 154;
+            if (name == "ethernet-10gbase-dwdm-1535-04") return 155;
+            if (name == "ethernet-10gbase-dwdm-1534-25") return 156;
+            if (name == "ethernet-10gbase-dwdm-1533-47") return 157;
+            if (name == "ethernet-10gbase-dwdm-1532-68") return 158;
+            if (name == "ethernet-10gbase-dwdm-1531-90") return 159;
+            if (name == "ethernet-10gbase-dwdm-1531-12") return 160;
+            if (name == "ethernet-10gbase-dwdm-1530-33") return 161;
+            if (name == "ethernet-10gbase-dwdm-tunable") return 162;
+            if (name == "ethernet-40gbase-dwdm-1561-42") return 163;
+            if (name == "ethernet-40gbase-dwdm-1560-61") return 164;
+            if (name == "ethernet-40gbase-dwdm-1559-79") return 165;
+            if (name == "ethernet-40gbase-dwdm-1558-98") return 166;
+            if (name == "ethernet-40gbase-dwdm-1558-17") return 167;
+            if (name == "ethernet-40gbase-dwdm-1557-36") return 168;
+            if (name == "ethernet-40gbase-dwdm-1556-55") return 169;
+            if (name == "ethernet-40gbase-dwdm-1555-75") return 170;
+            if (name == "ethernet-40gbase-dwdm-1554-94") return 171;
+            if (name == "ethernet-40gbase-dwdm-1554-13") return 172;
+            if (name == "ethernet-40gbase-dwdm-1553-33") return 173;
+            if (name == "ethernet-40gbase-dwdm-1552-52") return 174;
+            if (name == "ethernet-40gbase-dwdm-1551-72") return 175;
+            if (name == "ethernet-40gbase-dwdm-1550-92") return 176;
+            if (name == "ethernet-40gbase-dwdm-1550-12") return 177;
+            if (name == "ethernet-40gbase-dwdm-1549-32") return 178;
+            if (name == "ethernet-40gbase-dwdm-1548-51") return 179;
+            if (name == "ethernet-40gbase-dwdm-1547-72") return 180;
+            if (name == "ethernet-40gbase-dwdm-1546-92") return 181;
+            if (name == "ethernet-40gbase-dwdm-1546-12") return 182;
+            if (name == "ethernet-40gbase-dwdm-1545-32") return 183;
+            if (name == "ethernet-40gbase-dwdm-1544-53") return 184;
+            if (name == "ethernet-40gbase-dwdm-1543-73") return 185;
+            if (name == "ethernet-40gbase-dwdm-1542-94") return 186;
+            if (name == "ethernet-40gbase-dwdm-1542-14") return 187;
+            if (name == "ethernet-40gbase-dwdm-1541-35") return 188;
+            if (name == "ethernet-40gbase-dwdm-1540-56") return 189;
+            if (name == "ethernet-40gbase-dwdm-1539-77") return 190;
+            if (name == "ethernet-40gbase-dwdm-1538-98") return 191;
+            if (name == "ethernet-40gbase-dwdm-1538-19") return 192;
+            if (name == "ethernet-40gbase-dwdm-1537-40") return 193;
+            if (name == "ethernet-40gbase-dwdm-1536-61") return 194;
+            if (name == "ethernet-40gbase-dwdm-1535-82") return 195;
+            if (name == "ethernet-40gbase-dwdm-1535-04") return 196;
+            if (name == "ethernet-40gbase-dwdm-1534-25") return 197;
+            if (name == "ethernet-40gbase-dwdm-1533-47") return 198;
+            if (name == "ethernet-40gbase-dwdm-1532-68") return 199;
+            if (name == "ethernet-40gbase-dwdm-1531-90") return 200;
+            if (name == "ethernet-40gbase-dwdm-1531-12") return 201;
+            if (name == "ethernet-40gbase-dwdm-1530-33") return 202;
+            if (name == "ethernet-40gbase-dwdm-tunable") return 203;
+            if (name == "ethernet-100gbase-dwdm-1561-42") return 204;
+            if (name == "ethernet-100gbase-dwdm-1560-61") return 205;
+            if (name == "ethernet-100gbase-dwdm-1559-79") return 206;
+            if (name == "ethernet-100gbase-dwdm-1558-98") return 207;
+            if (name == "ethernet-100gbase-dwdm-1558-17") return 208;
+            if (name == "ethernet-100gbase-dwdm-1557-36") return 209;
+            if (name == "ethernet-100gbase-dwdm-1556-55") return 210;
+            if (name == "ethernet-100gbase-dwdm-1555-75") return 211;
+            if (name == "ethernet-100gbase-dwdm-1554-94") return 212;
+            if (name == "ethernet-100gbase-dwdm-1554-13") return 213;
+            if (name == "ethernet-100gbase-dwdm-1553-33") return 214;
+            if (name == "ethernet-100gbase-dwdm-1552-52") return 215;
+            if (name == "ethernet-100gbase-dwdm-1551-72") return 216;
+            if (name == "ethernet-100gbase-dwdm-1550-92") return 217;
+            if (name == "ethernet-100gbase-dwdm-1550-12") return 218;
+            if (name == "ethernet-100gbase-dwdm-1549-32") return 219;
+            if (name == "ethernet-100gbase-dwdm-1548-51") return 220;
+            if (name == "ethernet-100gbase-dwdm-1547-72") return 221;
+            if (name == "ethernet-100gbase-dwdm-1546-92") return 222;
+            if (name == "ethernet-100gbase-dwdm-1546-12") return 223;
+            if (name == "ethernet-100gbase-dwdm-1545-32") return 224;
+            if (name == "ethernet-100gbase-dwdm-1544-53") return 225;
+            if (name == "ethernet-100gbase-dwdm-1543-73") return 226;
+            if (name == "ethernet-100gbase-dwdm-1542-94") return 227;
+            if (name == "ethernet-100gbase-dwdm-1542-14") return 228;
+            if (name == "ethernet-100gbase-dwdm-1541-35") return 229;
+            if (name == "ethernet-100gbase-dwdm-1540-56") return 230;
+            if (name == "ethernet-100gbase-dwdm-1539-77") return 231;
+            if (name == "ethernet-100gbase-dwdm-1538-98") return 232;
+            if (name == "ethernet-100gbase-dwdm-1538-19") return 233;
+            if (name == "ethernet-100gbase-dwdm-1537-40") return 234;
+            if (name == "ethernet-100gbase-dwdm-1536-61") return 235;
+            if (name == "ethernet-100gbase-dwdm-1535-82") return 236;
+            if (name == "ethernet-100gbase-dwdm-1535-04") return 237;
+            if (name == "ethernet-100gbase-dwdm-1534-25") return 238;
+            if (name == "ethernet-100gbase-dwdm-1533-47") return 239;
+            if (name == "ethernet-100gbase-dwdm-1532-68") return 240;
+            if (name == "ethernet-100gbase-dwdm-1531-90") return 241;
+            if (name == "ethernet-100gbase-dwdm-1531-12") return 242;
+            if (name == "ethernet-100gbase-dwdm-1530-33") return 243;
+            if (name == "ethernet-100gbase-dwdm-tunable") return 244;
+            if (name == "ethernet-40gbase-kr4") return 245;
+            if (name == "ethernet-40gbase-cr4") return 246;
+            if (name == "ethernet-40gbase-sr4") return 247;
+            if (name == "ethernet-40gbase-fr") return 248;
+            if (name == "ethernet-100gbase-cr10") return 249;
+            if (name == "ethernet-100gbase-sr10") return 250;
+            if (name == "ethernet-40gbase-csr4") return 251;
+            if (name == "ethernet-10gbase-cwdm") return 252;
+            if (name == "ethernet-10gbase-cwdm-tunable") return 253;
+            if (name == "ethernet-10gbase-cwdm-1470") return 254;
+            if (name == "ethernet-10gbase-cwdm-1490") return 255;
+            if (name == "ethernet-10gbase-cwdm-1510") return 256;
+            if (name == "ethernet-10gbase-cwdm-1530") return 257;
+            if (name == "ethernet-10gbase-cwdm-1550") return 258;
+            if (name == "ethernet-10gbase-cwdm-1570") return 259;
+            if (name == "ethernet-10gbase-cwdm-1590") return 260;
+            if (name == "ethernet-10gbase-cwdm-1610") return 261;
+            if (name == "ethernet-40gbase-cwdm") return 262;
+            if (name == "ethernet-40gbase-cwdm-tunable") return 263;
+            if (name == "ethernet-40gbase-cwdm-1470") return 264;
+            if (name == "ethernet-40gbase-cwdm-1490") return 265;
+            if (name == "ethernet-40gbase-cwdm-1510") return 266;
+            if (name == "ethernet-40gbase-cwdm-1530") return 267;
+            if (name == "ethernet-40gbase-cwdm-1550") return 268;
+            if (name == "ethernet-40gbase-cwdm-1570") return 269;
+            if (name == "ethernet-40gbase-cwdm-1590") return 270;
+            if (name == "ethernet-40gbase-cwdm-1610") return 271;
+            if (name == "ethernet-100gbase-cwdm") return 272;
+            if (name == "ethernet-100gbase-cwdm-tunable") return 273;
+            if (name == "ethernet-100gbase-cwdm-1470") return 274;
+            if (name == "ethernet-100gbase-cwdm-1490") return 275;
+            if (name == "ethernet-100gbase-cwdm-1510") return 276;
+            if (name == "ethernet-100gbase-cwdm-1530") return 277;
+            if (name == "ethernet-100gbase-cwdm-1550") return 278;
+            if (name == "ethernet-100gbase-cwdm-1570") return 279;
+            if (name == "ethernet-100gbase-cwdm-1590") return 280;
+            if (name == "ethernet-100gbase-cwdm-1610") return 281;
+            if (name == "ethernet-40gbase-elpb") return 282;
+            if (name == "ethernet-100gbase-elpb") return 283;
+            if (name == "ethernet-100gbase-lr10") return 284;
+            if (name == "ethernet-40gbase") return 285;
+            if (name == "ethernet-100gbase-kp4") return 286;
+            if (name == "ethernet-100gbase-kr4") return 287;
+            if (name == "ethernet-10gbase-lrm") return 288;
+            if (name == "ethernet-10gbase-cx4") return 289;
+            if (name == "ethernet-10gbase") return 290;
+            if (name == "ethernet-10gbase-kx4") return 291;
+            if (name == "ethernet-10gbase-kr") return 292;
+            if (name == "ethernet-10gbase-pr") return 293;
+            if (name == "ethernet-100base-lx") return 294;
+            if (name == "ethernet-100base-zx") return 295;
+            if (name == "ethernet-1000base-bx-d") return 296;
+            if (name == "ethernet-1000base-bx-u") return 297;
+            if (name == "ethernet-1000base-bx20-d") return 298;
+            if (name == "ethernet-1000base-bx20-u") return 299;
+            if (name == "ethernet-1000base-bx40-d") return 300;
+            if (name == "ethernet-1000base-bx40-da") return 301;
+            if (name == "ethernet-1000base-bx40-u") return 302;
+            if (name == "ethernet-1000base-bx80-d") return 303;
+            if (name == "ethernet-1000base-bx80-u") return 304;
+            if (name == "ethernet-1000base-bx120-d") return 305;
+            if (name == "ethernet-1000base-bx120-u") return 306;
+            if (name == "ethernet-10gbase-bx-d") return 307;
+            if (name == "ethernet-10gbase-bx-u") return 308;
+            if (name == "ethernet-10gbase-bx10-d") return 309;
+            if (name == "ethernet-10gbase-bx10-u") return 310;
+            if (name == "ethernet-10gbase-bx20-d") return 311;
+            if (name == "ethernet-10gbase-bx20-u") return 312;
+            if (name == "ethernet-10gbase-bx40-d") return 313;
+            if (name == "ethernet-10gbase-bx40-u") return 314;
+            if (name == "ethernet-10gbase-bx80-d") return 315;
+            if (name == "ethernet-10gbase-bx80-u") return 316;
+            if (name == "ethernet-10gbase-bx120-d") return 317;
+            if (name == "ethernet-10gbase-bx120-u") return 318;
+            if (name == "ethernet-1000base-dr-lx") return 319;
+            if (name == "ethernet-100gbase-er4l") return 320;
+            if (name == "ethernet-100gbase-sr4") return 321;
+            if (name == "ethernet-40gbase-sr-bd") return 322;
+            if (name == "ethernet-25gbase-cr") return 323;
+            if (name == "ethernet-25gbase-cr-s") return 324;
+            if (name == "ethernet-25gbase-kr") return 325;
+            if (name == "ethernet-25gbase-kr-s") return 326;
+            if (name == "ethernet-25gbase-r") return 327;
+            if (name == "ethernet-25gbase-sr") return 328;
+            if (name == "ethernet-25gbase-dwdm") return 329;
+            if (name == "ethernet-25gbase-dwdm-tunable") return 330;
+            if (name == "ethernet-25gbase-cwdm") return 331;
+            if (name == "ethernet-25gbase-cwdm-tunable") return 332;
+            if (name == "ethernet-100gbase-psm4") return 333;
+            if (name == "ethernet-100gbase-er10") return 334;
+            if (name == "ethernet-100gbase-er10l") return 335;
+            if (name == "ethernet-100gbase-acc") return 336;
+            if (name == "ethernet-100gbase-aoc") return 337;
+            if (name == "ethernet-100gbase-cwdm4") return 338;
+            if (name == "ethernet-40gbase-psm4") return 339;
+            if (name == "ethernet-100gbase-cr4") return 340;
+            if (name == "ethernet-100gbase-act-loop") return 341;
+            if (name == "ethernet-100gbase-pas-loop") return 342;
+            if (name == "ethernet-50gbase-cr2") return 343;
+            if (name == "ethernet-50gbase-sr2") return 344;
+            if (name == "ethernet-50gbase-psm2") return 345;
+            if (name == "ethernet-200gbase-cr4") return 346;
+            if (name == "ethernet-400gbase-fr4") return 347;
+            if (name == "ethernet-400gbase-dr4") return 348;
+            if (name == "ethernet-400gbase-cr4") return 349;
+            if (name == "ethernet-10gbase-cu1m") return 350;
+            if (name == "ethernet-10gbase-cu1-5m") return 351;
+            if (name == "ethernet-10gbase-cu2m") return 352;
+            if (name == "ethernet-10gbase-cu2-5m") return 353;
+            if (name == "ethernet-10gbase-cu3m") return 354;
+            if (name == "ethernet-10gbase-cu5m") return 355;
+            if (name == "ethernet-10gbase-acu7m") return 356;
+            if (name == "ethernet-10gbase-acu10m") return 357;
+            if (name == "ethernet-10gbase-aoc1m") return 358;
+            if (name == "ethernet-10gbase-aoc2m") return 359;
+            if (name == "ethernet-10gbase-aoc3m") return 360;
+            if (name == "ethernet-10gbase-aoc5m") return 361;
+            if (name == "ethernet-10gbase-aoc7m") return 362;
+            if (name == "ethernet-10gbase-aoc10m") return 363;
+            if (name == "ethernet-40gbase-aoc") return 364;
+            if (name == "ethernet-4x10g-base-lr") return 365;
+            if (name == "ethernet-40gbase-acu1m") return 366;
+            if (name == "ethernet-40gbase-acu3m") return 367;
+            if (name == "ethernet-40gbase-acu5m") return 368;
+            if (name == "ethernet-40gbase-acu7m") return 369;
+            if (name == "ethernet-40gbase-acu10m") return 370;
+            if (name == "ethernet-25gbase-cu1m") return 371;
+            if (name == "ethernet-25gbase-cu2m") return 372;
+            if (name == "ethernet-25gbase-cu3m") return 373;
+            if (name == "ethernet-25gbase-cu5m") return 374;
+            if (name == "ethernet-100gbase-sm-sr") return 375;
+            if (name == "ethernet-100gbase-sr-bd") return 376;
+            if (name == "ethernet-100gbase-fr") return 377;
+            if (name == "ethernet-base-max") return 378;
+            return -1;
+        }
 };
 
-class EthernetPortEnable : public ydk::Enum
+class EtherAinsStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf rx_enabled;
-        static const ydk::Enum::YLeaf tx_enabled;
-        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf ains_soak_status_none;
+        static const ydk::Enum::YLeaf ains_soak_status_pending;
+        static const ydk::Enum::YLeaf ains_soak_status_running;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ains-soak-status-none") return 0;
+            if (name == "ains-soak-status-pending") return 1;
+            if (name == "ains-soak-status-running") return 2;
+            return -1;
+        }
+};
+
+class EthernetLoopback : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_loopback;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf external;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-loopback") return 0;
+            if (name == "internal") return 1;
+            if (name == "line") return 2;
+            if (name == "external") return 3;
+            return -1;
+        }
 };
 
 

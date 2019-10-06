@@ -37,7 +37,8 @@ ydk::path::Rpc::~Rpc()
 ////////////////////////////////////////////////////////////////////////////////
 
 
-ydk::path::RpcImpl::RpcImpl(SchemaNodeImpl& sn, struct ly_ctx* ctx, const std::shared_ptr<RepositoryPtr> & repo) : schema_node{sn}, m_priv_repo{repo}
+ydk::path::RpcImpl::RpcImpl(SchemaNodeImpl& sn, struct ly_ctx* ctx, const std::shared_ptr<RepositoryPtr> & repo) :
+ schema_node(sn), m_priv_repo(repo)
 {
 
     struct lyd_node* dnode = lyd_new_path(nullptr, ctx, sn.get_path().c_str(), (void*)"", LYD_ANYDATA_SXML, 0);

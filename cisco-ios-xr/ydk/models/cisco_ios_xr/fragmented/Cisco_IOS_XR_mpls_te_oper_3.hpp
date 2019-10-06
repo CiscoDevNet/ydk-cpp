@@ -3071,7 +3071,6 @@ class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::ReoptimizedP2mpLsp : public 
         ydk::YLeaf last_path_change; //type: uint32
         ydk::YLeaf persistent_bytes; //type: uint64
         ydk::YLeaf persistent_packets; //type: uint64
-        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
         class LspFec; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::ReoptimizedP2mpLsp::LspFec
         class S2l; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::ReoptimizedP2mpLsp::S2l
 

@@ -368,6 +368,11 @@ class CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::CEigrpAuthMode 
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf md5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "md5") return 2;
+            return -1;
+        }
 };
 
 

@@ -423,6 +423,12 @@ class MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::MplsXCAdminStatus : public ydk::E
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf testing;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            return -1;
+        }
 };
 
 class MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::MplsXCOperStatus : public ydk::Enum
@@ -436,6 +442,16 @@ class MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::MplsXCOperStatus : public ydk::En
         static const ydk::Enum::YLeaf notPresent;
         static const ydk::Enum::YLeaf lowerLayerDown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "down") return 2;
+            if (name == "testing") return 3;
+            if (name == "unknown") return 4;
+            if (name == "dormant") return 5;
+            if (name == "notPresent") return 6;
+            if (name == "lowerLayerDown") return 7;
+            return -1;
+        }
 };
 
 

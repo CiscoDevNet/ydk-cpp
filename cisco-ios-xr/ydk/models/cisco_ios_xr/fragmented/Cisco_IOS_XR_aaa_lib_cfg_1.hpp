@@ -13,11 +13,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_lib_cfg {
 
 
-class Aaa::Tacacs::Ipv4 : public ydk::Entity
+class Aaa::Diameter::DiameterTimer : public ydk::Entity
 {
     public:
-        Ipv4();
-        ~Ipv4();
+        DiameterTimer();
+        ~DiameterTimer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -30,16 +30,18 @@ class Aaa::Tacacs::Ipv4 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dscp; //type: one of uint32, enumeration
+        ydk::YLeaf transaction; //type: uint32
+        ydk::YLeaf connection; //type: uint32
+        ydk::YLeaf watchdog; //type: uint32
 
-}; // Aaa::Tacacs::Ipv4
+}; // Aaa::Diameter::DiameterTimer
 
 
-class Aaa::Tacacs::Vrfs : public ydk::Entity
+class Aaa::Diameter::Vendor : public ydk::Entity
 {
     public:
-        Vrfs();
-        ~Vrfs();
+        Vendor();
+        ~Vendor();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -52,18 +54,18 @@ class Aaa::Tacacs::Vrfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vrf; //type: Aaa::Tacacs::Vrfs::Vrf
+        class Supported; //type: Aaa::Diameter::Vendor::Supported
 
-        ydk::YList vrf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::Diameter::Vendor::Supported> supported;
         
-}; // Aaa::Tacacs::Vrfs
+}; // Aaa::Diameter::Vendor
 
 
-class Aaa::Tacacs::Vrfs::Vrf : public ydk::Entity
+class Aaa::Diameter::Vendor::Supported : public ydk::Entity
 {
     public:
-        Vrf();
-        ~Vrf();
+        Supported();
+        ~Supported();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -76,10 +78,12 @@ class Aaa::Tacacs::Vrfs::Vrf : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf source_interface; //type: string
+        ydk::YLeaf cisco; //type: boolean
+        ydk::YLeaf threegpp; //type: boolean
+        ydk::YLeaf etsi; //type: boolean
+        ydk::YLeaf vodafone; //type: boolean
 
-}; // Aaa::Tacacs::Vrfs::Vrf
+}; // Aaa::Diameter::Vendor::Supported
 
 
 }

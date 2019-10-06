@@ -610,19 +610,6 @@ class LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry : public ydk::Enti
 
 }; // LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry
 
-class LldpChassisIdSubtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf chassisComponent;
-        static const ydk::Enum::YLeaf interfaceAlias;
-        static const ydk::Enum::YLeaf portComponent;
-        static const ydk::Enum::YLeaf macAddress;
-        static const ydk::Enum::YLeaf networkAddress;
-        static const ydk::Enum::YLeaf interfaceName;
-        static const ydk::Enum::YLeaf local;
-
-};
-
 class LldpPortIdSubtype : public ydk::Enum
 {
     public:
@@ -634,6 +621,39 @@ class LldpPortIdSubtype : public ydk::Enum
         static const ydk::Enum::YLeaf agentCircuitId;
         static const ydk::Enum::YLeaf local;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "interfaceAlias") return 1;
+            if (name == "portComponent") return 2;
+            if (name == "macAddress") return 3;
+            if (name == "networkAddress") return 4;
+            if (name == "interfaceName") return 5;
+            if (name == "agentCircuitId") return 6;
+            if (name == "local") return 7;
+            return -1;
+        }
+};
+
+class LldpChassisIdSubtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf chassisComponent;
+        static const ydk::Enum::YLeaf interfaceAlias;
+        static const ydk::Enum::YLeaf portComponent;
+        static const ydk::Enum::YLeaf macAddress;
+        static const ydk::Enum::YLeaf networkAddress;
+        static const ydk::Enum::YLeaf interfaceName;
+        static const ydk::Enum::YLeaf local;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "chassisComponent") return 1;
+            if (name == "interfaceAlias") return 2;
+            if (name == "portComponent") return 3;
+            if (name == "macAddress") return 4;
+            if (name == "networkAddress") return 5;
+            if (name == "interfaceName") return 6;
+            if (name == "local") return 7;
+            return -1;
+        }
 };
 
 class LldpManAddrIfSubtype : public ydk::Enum
@@ -643,6 +663,12 @@ class LldpManAddrIfSubtype : public ydk::Enum
         static const ydk::Enum::YLeaf ifIndex;
         static const ydk::Enum::YLeaf systemPortNumber;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "ifIndex") return 2;
+            if (name == "systemPortNumber") return 3;
+            return -1;
+        }
 };
 
 class LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigAdminStatus : public ydk::Enum
@@ -653,6 +679,13 @@ class LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigAdminStat
         static const ydk::Enum::YLeaf txAndRx;
         static const ydk::Enum::YLeaf disabled;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "txOnly") return 1;
+            if (name == "rxOnly") return 2;
+            if (name == "txAndRx") return 3;
+            if (name == "disabled") return 4;
+            return -1;
+        }
 };
 
 

@@ -483,6 +483,13 @@ class BFru : public ydk::Enum
         static const ydk::Enum::YLeaf platform_fru_cc;
         static const ydk::Enum::YLeaf platform_fru_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "platform-fru-rp") return 0;
+            if (name == "platform-fru-fp") return 1;
+            if (name == "platform-fru-cc") return 2;
+            if (name == "platform-fru-max") return 3;
+            return -1;
+        }
 };
 
 

@@ -104,6 +104,18 @@ class IosArpMode : public ydk::Enum
         static const ydk::Enum::YLeaf ios_arp_mode_app_alias;
         static const ydk::Enum::YLeaf ios_arp_mode_app_timer;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ios-arp-mode-null") return 0;
+            if (name == "ios-arp-mode-dynamic") return 1;
+            if (name == "ios-arp-mode-incomplete") return 2;
+            if (name == "ios-arp-mode-interface") return 3;
+            if (name == "ios-arp-mode-static") return 4;
+            if (name == "ios-arp-mode-alias") return 5;
+            if (name == "ios-arp-mode-app-simple") return 6;
+            if (name == "ios-arp-mode-app-alias") return 7;
+            if (name == "ios-arp-mode-app-timer") return 8;
+            return -1;
+        }
 };
 
 

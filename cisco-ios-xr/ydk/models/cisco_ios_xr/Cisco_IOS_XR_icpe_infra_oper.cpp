@@ -12626,30 +12626,9 @@ bool NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::h
     return false;
 }
 
-const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_not_redundant {0, "icpe-oper-multi-chassis-redundancy-not-redundant"};
-const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_active {1, "icpe-oper-multi-chassis-redundancy-active"};
-const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_standby {2, "icpe-oper-multi-chassis-redundancy-standby"};
-
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_stopped {0, "icpe-oper-discd-link-state-stopped"};
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_probing {1, "icpe-oper-discd-link-state-probing"};
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_configuring {2, "icpe-oper-discd-link-state-configuring"};
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_ready {3, "icpe-oper-discd-link-state-ready"};
-
-const Enum::YLeaf IcpeOperPort::icpe_oper_port_unknown {0, "icpe-oper-port-unknown"};
-const Enum::YLeaf IcpeOperPort::icpe_oper_port_gigabit_ethernet {1, "icpe-oper-port-gigabit-ethernet"};
-const Enum::YLeaf IcpeOperPort::icpe_oper_port_ten_gig_e {2, "icpe-oper-port-ten-gig-e"};
-
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_stable {0, "icpe-oper-install-state-stable"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferring {1, "icpe-oper-install-state-transferring"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferred {2, "icpe-oper-install-state-transferred"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_installing {3, "icpe-oper-install-state-installing"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_in_progress {4, "icpe-oper-install-state-in-progress"};
-
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_unknown_error {0, "icpe-gco-oper-control-reason-unknown-error"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_type {1, "icpe-gco-oper-control-reason-wrong-chassis-type"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_serial {2, "icpe-gco-oper-control-reason-wrong-chassis-serial"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_needs_to_upgrade {3, "icpe-gco-oper-control-reason-needs-to-upgrade"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_none {4, "icpe-gco-oper-control-reason-none"};
+const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_split_brain {0, "icpe-opm-sync-fsm-state-split-brain"};
+const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_waiting {1, "icpe-opm-sync-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_whole_brain {2, "icpe-opm-sync-fsm-state-whole-brain"};
 
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_not_created {0, "icpe-oper-sdacp-sess-state-not-created"};
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_created {1, "icpe-oper-sdacp-sess-state-created"};
@@ -12658,6 +12637,98 @@ const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_authenticat
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_version_not_ok {4, "icpe-oper-sdacp-sess-state-version-not-ok"};
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_up {5, "icpe-oper-sdacp-sess-state-up"};
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_issu {6, "icpe-oper-sdacp-sess-state-issu"};
+
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_disconnected {0, "icpe-opm-transport-state-disconnected"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_iccp_unavailable {1, "icpe-opm-transport-state-iccp-unavailable"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_no_member_present {2, "icpe-opm-transport-state-no-member-present"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_down {3, "icpe-opm-transport-state-member-down"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_not_reachable {4, "icpe-opm-transport-state-member-not-reachable"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect {5, "icpe-opm-transport-state-waiting-for-app-connect"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect_response {6, "icpe-opm-transport-state-waiting-for-app-connect-response"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_connected {7, "icpe-opm-transport-state-connected"};
+
+const Enum::YLeaf IcpeOperRefType::icpe_oper_ref_type_invalid {0, "icpe-oper-ref-type-invalid"};
+const Enum::YLeaf IcpeOperRefType::icpe_oper_ref_type_smu {1, "icpe-oper-ref-type-smu"};
+const Enum::YLeaf IcpeOperRefType::icpe_oper_ref_type_base_image {2, "icpe-oper-ref-type-base-image"};
+
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_unauth {0, "icpe-opm-auth-fsm-state-unauth"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting {1, "icpe-opm-auth-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_auth {2, "icpe-opm-auth-fsm-state-waiting-for-auth"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_reply {3, "icpe-opm-auth-fsm-state-waiting-for-reply"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_authed {4, "icpe-opm-auth-fsm-state-authed"};
+
+const Enum::YLeaf IcpeOpmController::icpe_opm_controller_unknown {0, "icpe-opm-controller-unknown"};
+const Enum::YLeaf IcpeOpmController::icpe_opm_controller_primary {1, "icpe-opm-controller-primary"};
+const Enum::YLeaf IcpeOpmController::icpe_opm_controller_secondary {2, "icpe-opm-controller-secondary"};
+
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_not_open {0, "icpe-opm-resync-fsm-state-not-open"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_stable {1, "icpe-opm-resync-fsm-state-stable"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_in_resync {2, "icpe-opm-resync-fsm-state-in-resync"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_queued {3, "icpe-opm-resync-fsm-state-queued"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_resync_req {4, "icpe-opm-resync-fsm-state-resync-req"};
+
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_down {0, "icpe-opm-chan-fsm-state-down"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_closed {1, "icpe-opm-chan-fsm-state-closed"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opening {2, "icpe-opm-chan-fsm-state-opening"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opened {3, "icpe-opm-chan-fsm-state-opened"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_open {4, "icpe-opm-chan-fsm-state-open"};
+
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_disconnected {0, "icpe-opm-sess-state-disconnected"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connecting {1, "icpe-opm-sess-state-connecting"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_authenticating {2, "icpe-opm-sess-state-authenticating"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_arbitrating {3, "icpe-opm-sess-state-arbitrating"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_waiting_for_resyncs {4, "icpe-opm-sess-state-waiting-for-resyncs"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connected {5, "icpe-opm-sess-state-connected"};
+
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_stable {0, "icpe-oper-install-state-stable"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferring {1, "icpe-oper-install-state-transferring"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferred {2, "icpe-oper-install-state-transferred"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_installing {3, "icpe-oper-install-state-installing"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_in_progress {4, "icpe-oper-install-state-in-progress"};
+
+const Enum::YLeaf IcpeOperPort::icpe_oper_port_unknown {0, "icpe-oper-port-unknown"};
+const Enum::YLeaf IcpeOperPort::icpe_oper_port_gigabit_ethernet {1, "icpe-oper-port-gigabit-ethernet"};
+const Enum::YLeaf IcpeOperPort::icpe_oper_port_ten_gig_e {2, "icpe-oper-port-ten-gig-e"};
+
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_unknown {0, "icpe-oper-fabric-port-unknown"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_gig_e {1, "icpe-oper-fabric-port-n-v-fabric-gig-e"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_ten_gig_e {2, "icpe-oper-fabric-port-n-v-fabric-ten-gig-e"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_forty_gig_e {3, "icpe-oper-fabric-port-n-v-fabric-forty-gig-e"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_hundred_gig_e {4, "icpe-oper-fabric-port-n-v-fabric-hundred-gig-e"};
+
+const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_unknown {0, "icpe-install-pkg-supp-unknown"};
+const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_not_supported {1, "icpe-install-pkg-supp-not-supported"};
+const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_supported {2, "icpe-install-pkg-supp-supported"};
+
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_unknown_error {0, "icpe-gco-oper-control-reason-unknown-error"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_type {1, "icpe-gco-oper-control-reason-wrong-chassis-type"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_serial {2, "icpe-gco-oper-control-reason-wrong-chassis-serial"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_needs_to_upgrade {3, "icpe-gco-oper-control-reason-needs-to-upgrade"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_none {4, "icpe-gco-oper-control-reason-none"};
+
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_unknown {0, "icpe-install-sat-state-unknown"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_not_initiat_ed {1, "icpe-install-sat-state-not-initiat-ed"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_transferring {2, "icpe-install-sat-state-transferring"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_activating {3, "icpe-install-sat-state-activating"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_updating {4, "icpe-install-sat-state-updating"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_replacing {5, "icpe-install-sat-state-replacing"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_deactivating {6, "icpe-install-sat-state-deactivating"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_removing {7, "icpe-install-sat-state-removing"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_success {8, "icpe-install-sat-state-success"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_failure {9, "icpe-install-sat-state-failure"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_multiple_ops {10, "icpe-install-sat-state-multiple-ops"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_aborted {11, "icpe-install-sat-state-aborted"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_protocol_version {12, "icpe-install-sat-state-protocol-version"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_pkg_not_present {13, "icpe-install-sat-state-pkg-not-present"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_image {14, "icpe-install-sat-state-no-image"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_such_file {15, "icpe-install-sat-state-no-such-file"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_sat_uncfgd {16, "icpe-install-sat-state-sat-uncfgd"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_processing {17, "icpe-install-sat-state-processing"};
+
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_unarbitrated {0, "icpe-opm-arbitration-fsm-state-unarbitrated"};
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_waiting {1, "icpe-opm-arbitration-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrating {2, "icpe-opm-arbitration-fsm-state-arbitrating"};
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrated {3, "icpe-opm-arbitration-fsm-state-arbitrated"};
 
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_not_calculated {0, "icpe-oper-conflict-not-calculated"};
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_no_conflict {1, "icpe-oper-conflict-no-conflict"};
@@ -12698,96 +12769,24 @@ const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_satellite_icl_not_support
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_multiple_serial_number {36, "icpe-oper-conflict-multiple-serial-number"};
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_multiple_mac_address {37, "icpe-oper-conflict-multiple-mac-address"};
 
-const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_unknown {0, "icpe-oper-reload-level-unknown"};
-const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_system {1, "icpe-oper-reload-level-system"};
-const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_container {2, "icpe-oper-reload-level-container"};
-
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_unknown {0, "icpe-optical-sync-state-unknown"};
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_syncing {1, "icpe-optical-sync-state-syncing"};
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_synced {2, "icpe-optical-sync-state-synced"};
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_not_connected {3, "icpe-optical-sync-state-not-connected"};
-
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_unknown {0, "icpe-oper-ver-check-state-unknown"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_not_compatible {1, "icpe-oper-ver-check-state-not-compatible"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_current_version {2, "icpe-oper-ver-check-state-current-version"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_compatible_older {3, "icpe-oper-ver-check-state-compatible-older"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_compatible_newer {4, "icpe-oper-ver-check-state-compatible-newer"};
 
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_unknown {0, "icpe-oper-fabric-port-unknown"};
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_gig_e {1, "icpe-oper-fabric-port-n-v-fabric-gig-e"};
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_ten_gig_e {2, "icpe-oper-fabric-port-n-v-fabric-ten-gig-e"};
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_forty_gig_e {3, "icpe-oper-fabric-port-n-v-fabric-forty-gig-e"};
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_hundred_gig_e {4, "icpe-oper-fabric-port-n-v-fabric-hundred-gig-e"};
+const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_unknown {0, "icpe-oper-reload-level-unknown"};
+const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_system {1, "icpe-oper-reload-level-system"};
+const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_container {2, "icpe-oper-reload-level-container"};
 
-const Enum::YLeaf IcpeOperRefType::icpe_oper_ref_type_invalid {0, "icpe-oper-ref-type-invalid"};
-const Enum::YLeaf IcpeOperRefType::icpe_oper_ref_type_smu {1, "icpe-oper-ref-type-smu"};
-const Enum::YLeaf IcpeOperRefType::icpe_oper_ref_type_base_image {2, "icpe-oper-ref-type-base-image"};
+const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_not_redundant {0, "icpe-oper-multi-chassis-redundancy-not-redundant"};
+const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_active {1, "icpe-oper-multi-chassis-redundancy-active"};
+const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_standby {2, "icpe-oper-multi-chassis-redundancy-standby"};
 
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_not_open {0, "icpe-opm-resync-fsm-state-not-open"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_stable {1, "icpe-opm-resync-fsm-state-stable"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_in_resync {2, "icpe-opm-resync-fsm-state-in-resync"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_queued {3, "icpe-opm-resync-fsm-state-queued"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_resync_req {4, "icpe-opm-resync-fsm-state-resync-req"};
-
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_down {0, "icpe-opm-chan-fsm-state-down"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_closed {1, "icpe-opm-chan-fsm-state-closed"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opening {2, "icpe-opm-chan-fsm-state-opening"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opened {3, "icpe-opm-chan-fsm-state-opened"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_open {4, "icpe-opm-chan-fsm-state-open"};
-
-const Enum::YLeaf IcpeOpmController::icpe_opm_controller_unknown {0, "icpe-opm-controller-unknown"};
-const Enum::YLeaf IcpeOpmController::icpe_opm_controller_primary {1, "icpe-opm-controller-primary"};
-const Enum::YLeaf IcpeOpmController::icpe_opm_controller_secondary {2, "icpe-opm-controller-secondary"};
-
-const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_split_brain {0, "icpe-opm-sync-fsm-state-split-brain"};
-const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_waiting {1, "icpe-opm-sync-fsm-state-waiting"};
-const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_whole_brain {2, "icpe-opm-sync-fsm-state-whole-brain"};
-
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_unarbitrated {0, "icpe-opm-arbitration-fsm-state-unarbitrated"};
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_waiting {1, "icpe-opm-arbitration-fsm-state-waiting"};
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrating {2, "icpe-opm-arbitration-fsm-state-arbitrating"};
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrated {3, "icpe-opm-arbitration-fsm-state-arbitrated"};
-
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_unauth {0, "icpe-opm-auth-fsm-state-unauth"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting {1, "icpe-opm-auth-fsm-state-waiting"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_auth {2, "icpe-opm-auth-fsm-state-waiting-for-auth"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_reply {3, "icpe-opm-auth-fsm-state-waiting-for-reply"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_authed {4, "icpe-opm-auth-fsm-state-authed"};
-
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_disconnected {0, "icpe-opm-transport-state-disconnected"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_iccp_unavailable {1, "icpe-opm-transport-state-iccp-unavailable"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_no_member_present {2, "icpe-opm-transport-state-no-member-present"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_down {3, "icpe-opm-transport-state-member-down"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_not_reachable {4, "icpe-opm-transport-state-member-not-reachable"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect {5, "icpe-opm-transport-state-waiting-for-app-connect"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect_response {6, "icpe-opm-transport-state-waiting-for-app-connect-response"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_connected {7, "icpe-opm-transport-state-connected"};
-
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_disconnected {0, "icpe-opm-sess-state-disconnected"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connecting {1, "icpe-opm-sess-state-connecting"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_authenticating {2, "icpe-opm-sess-state-authenticating"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_arbitrating {3, "icpe-opm-sess-state-arbitrating"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_waiting_for_resyncs {4, "icpe-opm-sess-state-waiting-for-resyncs"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connected {5, "icpe-opm-sess-state-connected"};
-
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_unknown {0, "icpe-install-sat-state-unknown"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_not_initiat_ed {1, "icpe-install-sat-state-not-initiat-ed"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_transferring {2, "icpe-install-sat-state-transferring"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_activating {3, "icpe-install-sat-state-activating"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_updating {4, "icpe-install-sat-state-updating"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_replacing {5, "icpe-install-sat-state-replacing"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_deactivating {6, "icpe-install-sat-state-deactivating"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_removing {7, "icpe-install-sat-state-removing"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_success {8, "icpe-install-sat-state-success"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_failure {9, "icpe-install-sat-state-failure"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_multiple_ops {10, "icpe-install-sat-state-multiple-ops"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_aborted {11, "icpe-install-sat-state-aborted"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_protocol_version {12, "icpe-install-sat-state-protocol-version"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_pkg_not_present {13, "icpe-install-sat-state-pkg-not-present"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_image {14, "icpe-install-sat-state-no-image"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_such_file {15, "icpe-install-sat-state-no-such-file"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_sat_uncfgd {16, "icpe-install-sat-state-sat-uncfgd"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_processing {17, "icpe-install-sat-state-processing"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_stopped {0, "icpe-oper-discd-link-state-stopped"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_probing {1, "icpe-oper-discd-link-state-probing"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_configuring {2, "icpe-oper-discd-link-state-configuring"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_ready {3, "icpe-oper-discd-link-state-ready"};
 
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_unknown {0, "icpe-oper-topo-remote-source-unknown"};
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_remote_icl_id {1, "icpe-oper-topo-remote-source-remote-icl-id"};
@@ -12796,9 +12795,10 @@ const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_remote_
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_direct_satellite {4, "icpe-oper-topo-remote-source-direct-satellite"};
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_direct_host {5, "icpe-oper-topo-remote-source-direct-host"};
 
-const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_unknown {0, "icpe-install-pkg-supp-unknown"};
-const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_not_supported {1, "icpe-install-pkg-supp-not-supported"};
-const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_supported {2, "icpe-install-pkg-supp-supported"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_unknown {0, "icpe-optical-sync-state-unknown"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_syncing {1, "icpe-optical-sync-state-syncing"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_synced {2, "icpe-optical-sync-state-synced"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_not_connected {3, "icpe-optical-sync-state-not-connected"};
 
 
 }

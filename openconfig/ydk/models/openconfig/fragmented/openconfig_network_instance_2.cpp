@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "openconfig_network_instance_2.hpp"
-#include "openconfig_network_instance_4.hpp"
 #include "openconfig_network_instance_3.hpp"
+#include "openconfig_network_instance_4.hpp"
 
 using namespace ydk;
 

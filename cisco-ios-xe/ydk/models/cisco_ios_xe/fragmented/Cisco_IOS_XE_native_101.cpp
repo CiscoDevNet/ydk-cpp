@@ -10375,8 +10375,8 @@ Native::Interface::Serial::Serial()
     , rcv_queue(std::make_shared<Native::Interface::Serial::RcvQueue>())
     , peer(std::make_shared<Native::Interface::Serial::Peer>())
     , pm_path(std::make_shared<Native::Interface::Serial::PmPath>())
-    , analysis_module(std::make_shared<Native::Interface::Serial::AnalysisModule>())
     , ppp(std::make_shared<Native::Interface::Serial::Ppp>())
+    , analysis_module(std::make_shared<Native::Interface::Serial::AnalysisModule>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -10413,8 +10413,8 @@ Native::Interface::Serial::Serial()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
-    analysis_module->parent = this;
     ppp->parent = this;
+    analysis_module->parent = this;
 
     yang_name = "Serial"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -10478,8 +10478,8 @@ bool Native::Interface::Serial::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
-	|| (analysis_module !=  nullptr && analysis_module->has_data())
-	|| (ppp !=  nullptr && ppp->has_data());
+	|| (ppp !=  nullptr && ppp->has_data())
+	|| (analysis_module !=  nullptr && analysis_module->has_data());
 }
 
 bool Native::Interface::Serial::has_operation() const
@@ -10537,8 +10537,8 @@ bool Native::Interface::Serial::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
-	|| (analysis_module !=  nullptr && analysis_module->has_operation())
-	|| (ppp !=  nullptr && ppp->has_operation());
+	|| (ppp !=  nullptr && ppp->has_operation())
+	|| (analysis_module !=  nullptr && analysis_module->has_operation());
 }
 
 std::string Native::Interface::Serial::get_absolute_path() const
@@ -10910,15 +10910,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Serial::get_child_by_name(const 
         return pm_path;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
-    {
-        if(analysis_module == nullptr)
-        {
-            analysis_module = std::make_shared<Native::Interface::Serial::AnalysisModule>();
-        }
-        return analysis_module;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-ppp:ppp")
     {
         if(ppp == nullptr)
@@ -10926,6 +10917,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::Serial::get_child_by_name(const 
             ppp = std::make_shared<Native::Interface::Serial::Ppp>();
         }
         return ppp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
+    {
+        if(analysis_module == nullptr)
+        {
+            analysis_module = std::make_shared<Native::Interface::Serial::AnalysisModule>();
+        }
+        return analysis_module;
     }
 
     return nullptr;
@@ -11124,14 +11124,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Serial::g
         _children["pm-path"] = pm_path;
     }
 
-    if(analysis_module != nullptr)
-    {
-        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
-    }
-
     if(ppp != nullptr)
     {
         _children["Cisco-IOS-XE-ppp:ppp"] = ppp;
+    }
+
+    if(analysis_module != nullptr)
+    {
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
     }
 
     return _children;
@@ -11257,7 +11257,7 @@ void Native::Interface::Serial::set_filter(const std::string & value_path, YFilt
 
 bool Native::Interface::Serial::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "analysis-module" || name == "ppp" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "ppp" || name == "analysis-module" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
         return true;
     return false;
 }

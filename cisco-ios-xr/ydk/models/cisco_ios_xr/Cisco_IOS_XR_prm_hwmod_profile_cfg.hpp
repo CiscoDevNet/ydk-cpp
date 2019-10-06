@@ -41,6 +41,11 @@ class ProfileTypeData : public ydk::Enum
         static const ydk::Enum::YLeaf sp;
         static const ydk::Enum::YLeaf dc;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sp") return 1;
+            if (name == "dc") return 2;
+            return -1;
+        }
 };
 
 

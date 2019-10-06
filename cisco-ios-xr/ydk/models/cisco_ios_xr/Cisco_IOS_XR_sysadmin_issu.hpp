@@ -10,30 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_issu {
 
-class IssuAction : public ydk::Entity
-{
-    public:
-        IssuAction();
-        ~IssuAction();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-
-}; // IssuAction
-
 class Issu : public ydk::Entity
 {
     public:
@@ -288,9 +264,9 @@ class Issu::Internals : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Orchestrator> orchestrator;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Agents> agents;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::InventoryMonitor> inventory_monitor;
-                class OpRequestType;
+                class PhaseType;
+        class OpRequestType;
         class StageType;
-        class PhaseType;
 
 }; // Issu::Internals
 
@@ -901,40 +877,6 @@ class Issu::Internals::InventoryMonitor::Inventory::Node : public ydk::Entity
 
 }; // Issu::Internals::InventoryMonitor::Inventory::Node
 
-class OpStartResult : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf start_success;
-        static const ydk::Enum::YLeaf error_operation_in_progress;
-        static const ydk::Enum::YLeaf activate_error_no_prepare;
-        static const ydk::Enum::YLeaf prepare_error_previous_prepare;
-        static const ydk::Enum::YLeaf recover_error_unrecoverable;
-        static const ydk::Enum::YLeaf start_error_internal;
-        static const ydk::Enum::YLeaf prepare_error_previous_operation_not_committed;
-        static const ydk::Enum::YLeaf prepare_error_already_in_progress;
-
-};
-
-class OpResult : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf success;
-        static const ydk::Enum::YLeaf error_input;
-        static const ydk::Enum::YLeaf error_orchestration;
-        static const ydk::Enum::YLeaf error_install;
-        static const ydk::Enum::YLeaf error_node_redundancy;
-
-};
-
-class IssuNotif : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf notif_sysadmin_op_start;
-        static const ydk::Enum::YLeaf notif_sysadmin_phase_start;
-        static const ydk::Enum::YLeaf notif_sysadmin_op_end;
-
-};
-
 class OpStage : public ydk::Enum
 {
     public:
@@ -953,6 +895,82 @@ class OpStage : public ydk::Enum
         static const ydk::Enum::YLeaf activate_postamble;
         static const ydk::Enum::YLeaf activate_complete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "prepare-preamble") return 0;
+            if (name == "prepare-host") return 1;
+            if (name == "prepare-sysadmin") return 2;
+            if (name == "prepare-aborting") return 3;
+            if (name == "prepare-postamble") return 4;
+            if (name == "prepare-complete") return 5;
+            if (name == "activate-preamble") return 6;
+            if (name == "activate-sysadmin-phase-one") return 7;
+            if (name == "activate-sysadmin-phase-two") return 8;
+            if (name == "activate-host") return 9;
+            if (name == "activate-aborting") return 10;
+            if (name == "activate-paused") return 11;
+            if (name == "activate-postamble") return 12;
+            if (name == "activate-complete") return 13;
+            return -1;
+        }
+};
+
+class IssuNotif : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf notif_sysadmin_op_start;
+        static const ydk::Enum::YLeaf notif_sysadmin_phase_start;
+        static const ydk::Enum::YLeaf notif_sysadmin_op_end;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "notif-sysadmin-op-start") return 0;
+            if (name == "notif-sysadmin-phase-start") return 1;
+            if (name == "notif-sysadmin-op-end") return 2;
+            return -1;
+        }
+};
+
+class OpResult : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf success;
+        static const ydk::Enum::YLeaf error_input;
+        static const ydk::Enum::YLeaf error_orchestration;
+        static const ydk::Enum::YLeaf error_install;
+        static const ydk::Enum::YLeaf error_node_redundancy;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "success") return 0;
+            if (name == "error-input") return 1;
+            if (name == "error-orchestration") return 2;
+            if (name == "error-install") return 3;
+            if (name == "error-node-redundancy") return 4;
+            return -1;
+        }
+};
+
+class OpStartResult : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf start_success;
+        static const ydk::Enum::YLeaf error_operation_in_progress;
+        static const ydk::Enum::YLeaf activate_error_no_prepare;
+        static const ydk::Enum::YLeaf prepare_error_previous_prepare;
+        static const ydk::Enum::YLeaf recover_error_unrecoverable;
+        static const ydk::Enum::YLeaf start_error_internal;
+        static const ydk::Enum::YLeaf prepare_error_previous_operation_not_committed;
+        static const ydk::Enum::YLeaf prepare_error_already_in_progress;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "start-success") return 0;
+            if (name == "error-operation-in-progress") return 1;
+            if (name == "activate-error-no-prepare") return 2;
+            if (name == "prepare-error-previous-prepare") return 3;
+            if (name == "recover-error-unrecoverable") return 4;
+            if (name == "start-error-internal") return 5;
+            if (name == "prepare-error-previous-operation-not-committed") return 6;
+            if (name == "prepare-error-already-in-progress") return 7;
+            return -1;
+        }
 };
 
 class Issu::Status::OperationType : public ydk::Enum
@@ -962,6 +980,12 @@ class Issu::Status::OperationType : public ydk::Enum
         static const ydk::Enum::YLeaf activate_operation;
         static const ydk::Enum::YLeaf deactivate_operation;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-operation") return 0;
+            if (name == "activate-operation") return 1;
+            if (name == "deactivate-operation") return 2;
+            return -1;
+        }
 };
 
 class Issu::Clients::AnnouncementStatus : public ydk::Enum
@@ -976,6 +1000,17 @@ class Issu::Clients::AnnouncementStatus : public ydk::Enum
         static const ydk::Enum::YLeaf announce_send_error;
         static const ydk::Enum::YLeaf announce_client_error;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "announce-no-notif") return 0;
+            if (name == "announce-in-progress") return 1;
+            if (name == "announce-success") return 2;
+            if (name == "announce-veto") return 3;
+            if (name == "announce-disconnect") return 4;
+            if (name == "announce-timeout") return 5;
+            if (name == "announce-send-error") return 6;
+            if (name == "announce-client-error") return 7;
+            return -1;
+        }
 };
 
 class Issu::Clients::Client::Response : public ydk::Enum
@@ -991,6 +1026,31 @@ class Issu::Clients::Client::Response : public ydk::Enum
         static const ydk::Enum::YLeaf notif_resp_client_error;
         static const ydk::Enum::YLeaf notif_resp_client_abort;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notif-resp-no-notif") return 0;
+            if (name == "notif-resp-pending") return 1;
+            if (name == "notif-resp-ack") return 2;
+            if (name == "notif-resp-veto") return 3;
+            if (name == "notif-resp-disconnect") return 4;
+            if (name == "notif-resp-timeout") return 5;
+            if (name == "notif-resp-send-error") return 6;
+            if (name == "notif-resp-client-error") return 7;
+            if (name == "notif-resp-client-abort") return 8;
+            return -1;
+        }
+};
+
+class Issu::Internals::PhaseType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf calvados_activate_phase_one;
+        static const ydk::Enum::YLeaf calvados_activate_phase_two;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "calvados-activate-phase-one") return 0;
+            if (name == "calvados-activate-phase-two") return 1;
+            return -1;
+        }
 };
 
 class Issu::Internals::OpRequestType : public ydk::Enum
@@ -1001,6 +1061,13 @@ class Issu::Internals::OpRequestType : public ydk::Enum
         static const ydk::Enum::YLeaf operation_request_deactivate;
         static const ydk::Enum::YLeaf operation_request_recover;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "operation-request-prepare") return 0;
+            if (name == "operation-request-activate") return 1;
+            if (name == "operation-request-deactivate") return 2;
+            if (name == "operation-request-recover") return 3;
+            return -1;
+        }
 };
 
 class Issu::Internals::StageType : public ydk::Enum
@@ -1035,14 +1102,37 @@ class Issu::Internals::StageType : public ydk::Enum
         static const ydk::Enum::YLeaf activate_calvados_recovery;
         static const ydk::Enum::YLeaf activate_recovery_postamble;
 
-};
-
-class Issu::Internals::PhaseType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf calvados_activate_phase_one;
-        static const ydk::Enum::YLeaf calvados_activate_phase_two;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "start") return 0;
+            if (name == "end") return 1;
+            if (name == "prepare-inventory-precheck") return 2;
+            if (name == "prepare-expand-operation-ids") return 3;
+            if (name == "prepare-get-metadata") return 4;
+            if (name == "prepare-extract-composite") return 5;
+            if (name == "prepare-verify-packages") return 6;
+            if (name == "prepare-host") return 7;
+            if (name == "prepare-calvados") return 8;
+            if (name == "prepare-deactivate-verify-packages") return 9;
+            if (name == "prepare-deactivate-calvados") return 10;
+            if (name == "prepare-abort") return 11;
+            if (name == "prepare-clean") return 12;
+            if (name == "activate-preamble") return 13;
+            if (name == "deactivate-preamble") return 14;
+            if (name == "activate-calvados-preamble") return 15;
+            if (name == "activate-calvados-phase") return 16;
+            if (name == "activate-calvados-phase-reload") return 17;
+            if (name == "activate-calvados-phase-postamble") return 18;
+            if (name == "activate-calvados-postamble") return 19;
+            if (name == "activate-host") return 20;
+            if (name == "activate-postamble") return 21;
+            if (name == "deactivate-calvados") return 22;
+            if (name == "activate-abort-no-recovery") return 23;
+            if (name == "activate-abort-unrecoverable") return 24;
+            if (name == "activate-error-pause") return 25;
+            if (name == "activate-calvados-recovery") return 26;
+            if (name == "activate-recovery-postamble") return 27;
+            return -1;
+        }
 };
 
 class Issu::Internals::Agents::Requests::Request::RequestType : public ydk::Enum
@@ -1052,6 +1142,12 @@ class Issu::Internals::Agents::Requests::Request::RequestType : public ydk::Enum
         static const ydk::Enum::YLeaf requests_checkpoint;
         static const ydk::Enum::YLeaf requests_post_upgrade_cleanup;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "requests-node-ready") return 0;
+            if (name == "requests-checkpoint") return 1;
+            if (name == "requests-post-upgrade-cleanup") return 2;
+            return -1;
+        }
 };
 
 class Issu::Internals::Agents::Requests::Request::Checkpoint::MessageType : public ydk::Enum
@@ -1061,6 +1157,12 @@ class Issu::Internals::Agents::Requests::Request::Checkpoint::MessageType : publ
         static const ydk::Enum::YLeaf requests_checkpoint_end;
         static const ydk::Enum::YLeaf requests_checkpoint_update;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "requests-checkpoint-start") return 0;
+            if (name == "requests-checkpoint-end") return 1;
+            if (name == "requests-checkpoint-update") return 2;
+            return -1;
+        }
 };
 
 class Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::AgentStatus : public ydk::Enum
@@ -1071,6 +1173,13 @@ class Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseConten
         static const ydk::Enum::YLeaf agent_response_timeout;
         static const ydk::Enum::YLeaf agent_response_send_failure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "agent-response-ok") return 0;
+            if (name == "agent-response-error") return 1;
+            if (name == "agent-response-timeout") return 2;
+            if (name == "agent-response-send-failure") return 3;
+            return -1;
+        }
 };
 
 

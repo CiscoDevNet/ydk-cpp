@@ -184,6 +184,11 @@ class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::C
         static const ydk::Enum::YLeaf milliseconds;
         static const ydk::Enum::YLeaf microseconds;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "milliseconds") return 1;
+            if (name == "microseconds") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::CipslaUdpJitterTmplPktPriority : public ydk::Enum
@@ -192,6 +197,11 @@ class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::C
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf high;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 1;
+            if (name == "high") return 2;
+            return -1;
+        }
 };
 
 class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::CipslaUdpJitterTmplNTPTolType : public ydk::Enum
@@ -200,6 +210,11 @@ class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::C
         static const ydk::Enum::YLeaf percent;
         static const ydk::Enum::YLeaf absolute;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "percent") return 1;
+            if (name == "absolute") return 2;
+            return -1;
+        }
 };
 
 

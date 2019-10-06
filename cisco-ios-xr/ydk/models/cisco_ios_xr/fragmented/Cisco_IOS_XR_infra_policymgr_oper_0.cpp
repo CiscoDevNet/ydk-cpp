@@ -5,12 +5,12 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_0.hpp"
-#include "Cisco_IOS_XR_infra_policymgr_oper_5.hpp"
-#include "Cisco_IOS_XR_infra_policymgr_oper_22.hpp"
-#include "Cisco_IOS_XR_infra_policymgr_oper_45.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_11.hpp"
+#include "Cisco_IOS_XR_infra_policymgr_oper_22.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_1.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_23.hpp"
+#include "Cisco_IOS_XR_infra_policymgr_oper_45.hpp"
+#include "Cisco_IOS_XR_infra_policymgr_oper_5.hpp"
 
 using namespace ydk;
 
@@ -17514,286 +17514,6 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
     return false;
 }
 
-const Enum::YLeaf PolicymgrPolicyMap::qos {1, "qos"};
-const Enum::YLeaf PolicymgrPolicyMap::pbr {2, "pbr"};
-const Enum::YLeaf PolicymgrPolicyMap::traffic {3, "traffic"};
-const Enum::YLeaf PolicymgrPolicyMap::subscriber_control {4, "subscriber-control"};
-const Enum::YLeaf PolicymgrPolicyMap::accounting {5, "accounting"};
-const Enum::YLeaf PolicymgrPolicyMap::redirect {6, "redirect"};
-const Enum::YLeaf PolicymgrPolicyMap::flow_monitor {7, "flow-monitor"};
-
-const Enum::YLeaf PolicymgrClassMap::qos {1, "qos"};
-const Enum::YLeaf PolicymgrClassMap::pbr {2, "pbr"};
-const Enum::YLeaf PolicymgrClassMap::traffic {3, "traffic"};
-const Enum::YLeaf PolicymgrClassMap::subscriber_control {4, "subscriber-control"};
-
-const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_unspecified {0, "pclass-exe-strat-unspecified"};
-const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_do_all {1, "pclass-exe-strat-do-all"};
-const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_do_until_success {2, "pclass-exe-strat-do-until-success"};
-const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_do_until_failure {3, "pclass-exe-strat-do-until-failure"};
-const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_max {4, "pclass-exe-strat-max"};
-
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_unspecified {0, "match-avail-ident-unspecified"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_dnis {1, "match-avail-ident-dnis"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_domain {2, "match-avail-ident-domain"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_circuit_id {3, "match-avail-ident-circuit-id"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_remote_id {4, "match-avail-ident-remote-id"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_media {5, "match-avail-ident-media"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_nas_port {6, "match-avail-ident-nas-port"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_protocol {7, "match-avail-ident-protocol"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_source_address_ipv4 {8, "match-avail-ident-source-address-ipv4"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_source_address_ipv6 {9, "match-avail-ident-source-address-ipv6"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_source_address_mac {10, "match-avail-ident-source-address-mac"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_tunnel_name {11, "match-avail-ident-tunnel-name"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_user_name {12, "match-avail-ident-user-name"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_vendor_id {13, "match-avail-ident-vendor-id"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_dhcp_client_id {14, "match-avail-ident-dhcp-client-id"};
-const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_max {15, "match-avail-ident-max"};
-
-const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_type_invalid {0, "afmon-alm-type-invalid"};
-const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_discrete {1, "afmon-alm-discrete"};
-const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_grp_cnt {2, "afmon-alm-grp-cnt"};
-const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_grp_pct {3, "afmon-alm-grp-pct"};
-const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_type_max {4, "afmon-alm-type-max"};
-
-const Enum::YLeaf DecodeIdentifierEn::policy_decid_unspecified {0, "policy-decid-unspecified"};
-const Enum::YLeaf DecodeIdentifierEn::policy_decid_remote_id {1, "policy-decid-remote-id"};
-const Enum::YLeaf DecodeIdentifierEn::policy_decid_circuit_id {2, "policy-decid-circuit-id"};
-const Enum::YLeaf DecodeIdentifierEn::policy_decid_user_name {3, "policy-decid-user-name"};
-const Enum::YLeaf DecodeIdentifierEn::policy_decid_max {4, "policy-decid-max"};
-
-const Enum::YLeaf PolicyActionEn::policy_action_none {0, "policy-action-none"};
-const Enum::YLeaf PolicyActionEn::policy_action_unspecified {1, "policy-action-unspecified"};
-const Enum::YLeaf PolicyActionEn::policy_action_mark {2, "policy-action-mark"};
-const Enum::YLeaf PolicyActionEn::policy_action_mark2 {3, "policy-action-mark2"};
-const Enum::YLeaf PolicyActionEn::policy_action_wred {4, "policy-action-wred"};
-const Enum::YLeaf PolicyActionEn::policy_action_encap_seq {5, "policy-action-encap-seq"};
-const Enum::YLeaf PolicyActionEn::policy_action_priority {6, "policy-action-priority"};
-const Enum::YLeaf PolicyActionEn::policy_action_iphc {7, "policy-action-iphc"};
-const Enum::YLeaf PolicyActionEn::policy_action_bw_remaining {8, "policy-action-bw-remaining"};
-const Enum::YLeaf PolicyActionEn::policy_action_min_bw {9, "policy-action-min-bw"};
-const Enum::YLeaf PolicyActionEn::policy_action_authenticate_aaa {10, "policy-action-authenticate-aaa"};
-const Enum::YLeaf PolicyActionEn::policy_action_collect_id {11, "policy-action-collect-id"};
-const Enum::YLeaf PolicyActionEn::policy_action_disconnect {12, "policy-action-disconnect"};
-const Enum::YLeaf PolicyActionEn::policy_action_set_timer {13, "policy-action-set-timer"};
-const Enum::YLeaf PolicyActionEn::policy_action_stop_timer {14, "policy-action-stop-timer"};
-const Enum::YLeaf PolicyActionEn::policy_action_query_ancp {15, "policy-action-query-ancp"};
-const Enum::YLeaf PolicyActionEn::policy_action_accounting_aaa_list {16, "policy-action-accounting-aaa-list"};
-const Enum::YLeaf PolicyActionEn::policy_action_prepaid_config {17, "policy-action-prepaid-config"};
-const Enum::YLeaf PolicyActionEn::policy_action_timeout_idle {18, "policy-action-timeout-idle"};
-const Enum::YLeaf PolicyActionEn::policy_action_proxy_aaa {19, "policy-action-proxy-aaa"};
-const Enum::YLeaf PolicyActionEn::policy_action_template_activate {20, "policy-action-template-activate"};
-const Enum::YLeaf PolicyActionEn::policy_action_template_deactivate {21, "policy-action-template-deactivate"};
-const Enum::YLeaf PolicyActionEn::policy_action_decode_identifier {22, "policy-action-decode-identifier"};
-const Enum::YLeaf PolicyActionEn::policy_action_q_limit {23, "policy-action-q-limit"};
-const Enum::YLeaf PolicyActionEn::policy_action_authorize_id {24, "policy-action-authorize-id"};
-const Enum::YLeaf PolicyActionEn::policy_action_accounting_event_aaa_list {25, "policy-action-accounting-event-aaa-list"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_react {26, "policy-action-afmon-react"};
-const Enum::YLeaf PolicyActionEn::policy_action_httpr {27, "policy-action-httpr"};
-const Enum::YLeaf PolicyActionEn::policy_action_pbr_transmit {28, "policy-action-pbr-transmit"};
-const Enum::YLeaf PolicyActionEn::policy_action_pbr_drop {29, "policy-action-pbr-drop"};
-const Enum::YLeaf PolicyActionEn::policy_action_punt {30, "policy-action-punt"};
-const Enum::YLeaf PolicyActionEn::policy_action_copy {31, "policy-action-copy"};
-const Enum::YLeaf PolicyActionEn::policy_action_sfrag {32, "policy-action-sfrag"};
-const Enum::YLeaf PolicyActionEn::policy_action_monitor {33, "policy-action-monitor"};
-const Enum::YLeaf PolicyActionEn::policy_action_redirect {34, "policy-action-redirect"};
-const Enum::YLeaf PolicyActionEn::policy_action_ipv4_nh {35, "policy-action-ipv4-nh"};
-const Enum::YLeaf PolicyActionEn::policy_action_ipv6_nh {36, "policy-action-ipv6-nh"};
-const Enum::YLeaf PolicyActionEn::policy_action_vlan_pop {37, "policy-action-vlan-pop"};
-const Enum::YLeaf PolicyActionEn::policy_action_pbr_next_hop {38, "policy-action-pbr-next-hop"};
-const Enum::YLeaf PolicyActionEn::policy_action_decap_gre {39, "policy-action-decap-gre"};
-const Enum::YLeaf PolicyActionEn::policy_action_output_interface {40, "policy-action-output-interface"};
-const Enum::YLeaf PolicyActionEn::policy_action_service_function_path {41, "policy-action-service-function-path"};
-const Enum::YLeaf PolicyActionEn::policy_action_ptrs {42, "policy-action-ptrs"};
-const Enum::YLeaf PolicyActionEn::policy_action_police {43, "policy-action-police"};
-const Enum::YLeaf PolicyActionEn::policy_action_shape {44, "policy-action-shape"};
-const Enum::YLeaf PolicyActionEn::policy_action_serv_pol {45, "policy-action-serv-pol"};
-const Enum::YLeaf PolicyActionEn::policy_action_cac {46, "policy-action-cac"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_flow_parm {47, "policy-action-afmon-flow-parm"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_ipcbr_metric {48, "policy-action-afmon-ipcbr-metric"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_metric {49, "policy-action-afmon-rtp-metric"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_mmr_metric {50, "policy-action-afmon-rtp-mmr-metric"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_j2k_metric {51, "policy-action-afmon-rtp-j2k-metric"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_voice_metric {52, "policy-action-afmon-rtp-voice-metric"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_mdi_metric {53, "policy-action-afmon-mdi-metric"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_mdi_rtp_metric {54, "policy-action-afmon-mdi-rtp-metric"};
-const Enum::YLeaf PolicyActionEn::policy_action_afmon_fmm {55, "policy-action-afmon-fmm"};
-const Enum::YLeaf PolicyActionEn::policy_action_pfc {56, "policy-action-pfc"};
-const Enum::YLeaf PolicyActionEn::policy_action_max {57, "policy-action-max"};
-
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_unspecified {0, "policy-authorize-ident-unspecified"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_dnis {1, "policy-authorize-ident-dnis"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_domain {2, "policy-authorize-ident-domain"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_user_name {3, "policy-authorize-ident-user-name"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_nas_port {4, "policy-authorize-ident-nas-port"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_source_address_ipv4 {5, "policy-authorize-ident-source-address-ipv4"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_source_address_ipv6 {6, "policy-authorize-ident-source-address-ipv6"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_source_address_mac {7, "policy-authorize-ident-source-address-mac"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_auto_detect {8, "policy-authorize-ident-auto-detect"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_tunnel_name {9, "policy-authorize-ident-tunnel-name"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_dhcp_client_id {10, "policy-authorize-ident-dhcp-client-id"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_circuit_id {11, "policy-authorize-ident-circuit-id"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_remote_id {12, "policy-authorize-ident-remote-id"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_vendor_id {13, "policy-authorize-ident-vendor-id"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_service_name {14, "policy-authorize-ident-service-name"};
-const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_max {15, "policy-authorize-ident-max"};
-
-const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_invalid {0, "afmon-ipcbr-parm-invalid"};
-const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_ip_pkt_rate {1, "afmon-ipcbr-parm-ip-pkt-rate"};
-const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_ip_bit_rate {2, "afmon-ipcbr-parm-ip-bit-rate"};
-const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_media_bit_rate {3, "afmon-ipcbr-parm-media-bit-rate"};
-const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_media_pkt_size {4, "afmon-ipcbr-parm-media-pkt-size"};
-const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_media_pkts_per_ip {5, "afmon-ipcbr-parm-media-pkts-per-ip"};
-const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_max {6, "afmon-ipcbr-parm-max"};
-
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_unspecified {0, "match-media-type-unspecified"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_async {1, "match-media-type-async"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_atm {2, "match-media-type-atm"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_ether {3, "match-media-type-ether"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_ip {4, "match-media-type-ip"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_isdn {5, "match-media-type-isdn"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_mpls {6, "match-media-type-mpls"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_sync {7, "match-media-type-sync"};
-const Enum::YLeaf MatchMediaTypeEn::match_media_type_max {8, "match-media-type-max"};
-
-const Enum::YLeaf PlmgrApplnTypeEn::qos {1, "qos"};
-const Enum::YLeaf PlmgrApplnTypeEn::pbr {2, "pbr"};
-const Enum::YLeaf PlmgrApplnTypeEn::subscriber_control {3, "subscriber-control"};
-const Enum::YLeaf PlmgrApplnTypeEn::accounting {4, "accounting"};
-const Enum::YLeaf PlmgrApplnTypeEn::traffic {5, "traffic"};
-const Enum::YLeaf PlmgrApplnTypeEn::performance_traffic {6, "performance-traffic"};
-
-const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_none {0, "policy-rt-type-none"};
-const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_asn2 {1, "policy-rt-type-asn2"};
-const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_ipv4 {2, "policy-rt-type-ipv4"};
-const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_asn4 {3, "policy-rt-type-asn4"};
-const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_max {4, "policy-rt-type-max"};
-
-const Enum::YLeaf IdentifierEn::policy_ident_unspecified {0, "policy-ident-unspecified"};
-const Enum::YLeaf IdentifierEn::policy_ident_authen_status {1, "policy-ident-authen-status"};
-const Enum::YLeaf IdentifierEn::policy_ident_dnis {2, "policy-ident-dnis"};
-const Enum::YLeaf IdentifierEn::policy_ident_media {3, "policy-ident-media"};
-const Enum::YLeaf IdentifierEn::policy_ident_mlp_negotiated {4, "policy-ident-mlp-negotiated"};
-const Enum::YLeaf IdentifierEn::policy_ident_nas_port {5, "policy-ident-nas-port"};
-const Enum::YLeaf IdentifierEn::policy_ident_no_user_name {6, "policy-ident-no-user-name"};
-const Enum::YLeaf IdentifierEn::policy_ident_protocol {7, "policy-ident-protocol"};
-const Enum::YLeaf IdentifierEn::policy_ident_service_name {8, "policy-ident-service-name"};
-const Enum::YLeaf IdentifierEn::policy_ident_source_address_ipv4 {9, "policy-ident-source-address-ipv4"};
-const Enum::YLeaf IdentifierEn::policy_ident_source_address_ipv6 {10, "policy-ident-source-address-ipv6"};
-const Enum::YLeaf IdentifierEn::policy_ident_source_address_mac {11, "policy-ident-source-address-mac"};
-const Enum::YLeaf IdentifierEn::policy_ident_timer {12, "policy-ident-timer"};
-const Enum::YLeaf IdentifierEn::policy_ident_tunnel_name {13, "policy-ident-tunnel-name"};
-const Enum::YLeaf IdentifierEn::policy_ident_auth_domain {14, "policy-ident-auth-domain"};
-const Enum::YLeaf IdentifierEn::policy_ident_auth_user_name {15, "policy-ident-auth-user-name"};
-const Enum::YLeaf IdentifierEn::policy_ident_unauth_domain {16, "policy-ident-unauth-domain"};
-const Enum::YLeaf IdentifierEn::policy_ident_unauth_user_name {17, "policy-ident-unauth-user-name"};
-const Enum::YLeaf IdentifierEn::policy_ident_max {18, "policy-ident-max"};
-
-const Enum::YLeaf MarkTypeEn::mark_type_none {0, "mark-type-none"};
-const Enum::YLeaf MarkTypeEn::mark_type_dscp {1, "mark-type-dscp"};
-const Enum::YLeaf MarkTypeEn::mark_type_prec {2, "mark-type-prec"};
-const Enum::YLeaf MarkTypeEn::mark_type_mpls_exp_topmost {3, "mark-type-mpls-exp-topmost"};
-const Enum::YLeaf MarkTypeEn::mark_type_mpls_exp_imposition {4, "mark-type-mpls-exp-imposition"};
-const Enum::YLeaf MarkTypeEn::mark_type_qos_group {5, "mark-type-qos-group"};
-const Enum::YLeaf MarkTypeEn::mark_type_discard_class {6, "mark-type-discard-class"};
-const Enum::YLeaf MarkTypeEn::mark_type_cos {7, "mark-type-cos"};
-const Enum::YLeaf MarkTypeEn::mark_type_cos_inner {8, "mark-type-cos-inner"};
-const Enum::YLeaf MarkTypeEn::mark_type_srp_priority {9, "mark-type-srp-priority"};
-const Enum::YLeaf MarkTypeEn::mark_type_atm_clp {10, "mark-type-atm-clp"};
-const Enum::YLeaf MarkTypeEn::mark_type_fr_de {11, "mark-type-fr-de"};
-const Enum::YLeaf MarkTypeEn::mark_type_dscp_tunnel {12, "mark-type-dscp-tunnel"};
-const Enum::YLeaf MarkTypeEn::mark_type_prec_tunnel {13, "mark-type-prec-tunnel"};
-const Enum::YLeaf MarkTypeEn::mark_type_dei {14, "mark-type-dei"};
-const Enum::YLeaf MarkTypeEn::mark_type_dei_imposition {15, "mark-type-dei-imposition"};
-const Enum::YLeaf MarkTypeEn::mark_type_forward_class {16, "mark-type-forward-class"};
-const Enum::YLeaf MarkTypeEn::mark_type_df {17, "mark-type-df"};
-const Enum::YLeaf MarkTypeEn::mark_type_traffic_class {18, "mark-type-traffic-class"};
-const Enum::YLeaf MarkTypeEn::mark_type_src_mac {19, "mark-type-src-mac"};
-const Enum::YLeaf MarkTypeEn::mark_type_dst_mac {20, "mark-type-dst-mac"};
-const Enum::YLeaf MarkTypeEn::mark_type_ipv4_src_addr {21, "mark-type-ipv4-src-addr"};
-const Enum::YLeaf MarkTypeEn::mark_type_ipv4_dst_addr {22, "mark-type-ipv4-dst-addr"};
-const Enum::YLeaf MarkTypeEn::mark_type_vlan_id {23, "mark-type-vlan-id"};
-const Enum::YLeaf MarkTypeEn::mark_type_udp_src_port {24, "mark-type-udp-src-port"};
-const Enum::YLeaf MarkTypeEn::mark_type_udp_dst_port {25, "mark-type-udp-dst-port"};
-const Enum::YLeaf MarkTypeEn::mark_type_tcp_src_port {26, "mark-type-tcp-src-port"};
-const Enum::YLeaf MarkTypeEn::mark_type_tcp_dst_port {27, "mark-type-tcp-dst-port"};
-const Enum::YLeaf MarkTypeEn::mark_type_sctp_src_port {28, "mark-type-sctp-src-port"};
-const Enum::YLeaf MarkTypeEn::mark_type_sctp_dst_port {29, "mark-type-sctp-dst-port"};
-const Enum::YLeaf MarkTypeEn::mark_type_max {30, "mark-type-max"};
-
-const Enum::YLeaf QlimitTypeEn::qlimit_cmd {0, "qlimit-cmd"};
-const Enum::YLeaf QlimitTypeEn::qlimit_discard_class {1, "qlimit-discard-class"};
-const Enum::YLeaf QlimitTypeEn::qlimit_qos_group {2, "qlimit-qos-group"};
-const Enum::YLeaf QlimitTypeEn::qlimit_precedence {3, "qlimit-precedence"};
-const Enum::YLeaf QlimitTypeEn::qlimit_mpls_exp {4, "qlimit-mpls-exp"};
-const Enum::YLeaf QlimitTypeEn::qlimit_dscp {5, "qlimit-dscp"};
-const Enum::YLeaf QlimitTypeEn::qlimit_max {6, "qlimit-max"};
-
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_crit_invalid {0, "afmon-react-crit-invalid"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mrv {1, "afmon-react-mrv"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_df {2, "afmon-react-df"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mse {3, "afmon-react-mse"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_pkt_rate {4, "afmon-react-pkt-rate"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_flow_cnt {5, "afmon-react-flow-cnt"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_loss_fraction {6, "afmon-react-rtp-loss-fraction"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_jitter {7, "afmon-react-rtp-jitter"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_max_jitter {8, "afmon-react-rtp-max-jitter"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_out_of_order {9, "afmon-react-rtp-out-of-order"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_loss_pkts {10, "afmon-react-rtp-loss-pkts"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_ta {11, "afmon-react-rtp-ta"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_es {12, "afmon-react-rtp-es"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_mlr {13, "afmon-react-mdi-mlr"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_mdc {14, "afmon-react-mdi-mdc"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_jitter {15, "afmon-react-mdi-jitter"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_loss_pkts {16, "afmon-react-mdi-loss-pkts"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_ta {17, "afmon-react-mdi-ta"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_es {18, "afmon-react-mdi-es"};
-const Enum::YLeaf AfmonReactCriterionEn::afmon_react_crit_max {19, "afmon-react-crit-max"};
-
-const Enum::YLeaf PfcPauseType::pfc_buffer_size_defined {0, "pfc-buffer-size-defined"};
-const Enum::YLeaf PfcPauseType::pfc_pause_threshold_defined {1, "pfc-pause-threshold-defined"};
-const Enum::YLeaf PfcPauseType::pfc_resume_threshold_defined {2, "pfc-resume-threshold-defined"};
-const Enum::YLeaf PfcPauseType::pfc_buffer_size_value {3, "pfc-buffer-size-value"};
-const Enum::YLeaf PfcPauseType::pfc_pause_threshold_value {4, "pfc-pause-threshold-value"};
-const Enum::YLeaf PfcPauseType::pfc_resume_threshold_value {5, "pfc-resume-threshold-value"};
-
-const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_conform {0, "police-actn-category-conform"};
-const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_exceed {1, "police-actn-category-exceed"};
-const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_violate {2, "police-actn-category-violate"};
-const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_max {3, "police-actn-category-max"};
-
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_unspecified {0, "match-nas-port-sub-id-unspecified"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_adapter {1, "match-nas-port-sub-id-adapter"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_channel {2, "match-nas-port-sub-id-channel"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_ip_addr {3, "match-nas-port-sub-id-ip-addr"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_port {4, "match-nas-port-sub-id-port"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_shelf {5, "match-nas-port-sub-id-shelf"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_slot {6, "match-nas-port-sub-id-slot"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_sub_interface {7, "match-nas-port-sub-id-sub-interface"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_type {8, "match-nas-port-sub-id-type"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_vci {9, "match-nas-port-sub-id-vci"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_vlan {10, "match-nas-port-sub-id-vlan"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_vpi {11, "match-nas-port-sub-id-vpi"};
-const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_max {12, "match-nas-port-sub-id-max"};
-
-const Enum::YLeaf CacFlowActnTypeEn::cac_flow_actn_type_local {0, "cac-flow-actn-type-local"};
-const Enum::YLeaf CacFlowActnTypeEn::cac_flow_actn_type_max {1, "cac-flow-actn-type-max"};
-
-const Enum::YLeaf AfmonReactActnEn::afmon_react_actn_none {0, "afmon-react-actn-none"};
-const Enum::YLeaf AfmonReactActnEn::afmon_react_syslog {1, "afmon-react-syslog"};
-const Enum::YLeaf AfmonReactActnEn::afmon_react_snmp {2, "afmon-react-snmp"};
-const Enum::YLeaf AfmonReactActnEn::afmon_react_clone {3, "afmon-react-clone"};
-
-const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_unspecified {0, "pevent-cond-eval-unspecified"};
-const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_match_first {1, "pevent-cond-eval-match-first"};
-const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_match_all {2, "pevent-cond-eval-match-all"};
-const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_max {3, "pevent-cond-eval-max"};
-
-const Enum::YLeaf DpssSnidTypeEn::dpss_snid_invalid {0, "dpss-snid-invalid"};
-const Enum::YLeaf DpssSnidTypeEn::dpss_snid_index {1, "dpss-snid-index"};
-const Enum::YLeaf DpssSnidTypeEn::dpss_snid_name {2, "dpss-snid-name"};
-const Enum::YLeaf DpssSnidTypeEn::dpss_snid_type_max {3, "dpss-snid-type-max"};
-
 const Enum::YLeaf MatchTypeEn::match_type_none {0, "match-type-none"};
 const Enum::YLeaf MatchTypeEn::match_type_ipv4_dscp {1, "match-type-ipv4-dscp"};
 const Enum::YLeaf MatchTypeEn::match_type_ipv4_prec {2, "match-type-ipv4-prec"};
@@ -17896,15 +17616,466 @@ const Enum::YLeaf MatchTypeEn::match_type_ethernet_service_s_acl {98, "match-typ
 const Enum::YLeaf MatchTypeEn::match_type_ptrs {99, "match-type-ptrs"};
 const Enum::YLeaf MatchTypeEn::match_type_max {100, "match-type-max"};
 
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_class_name {0, "plmgr-var-type-class-name"};
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_uint8 {1, "plmgr-var-type-uint8"};
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_uint16 {2, "plmgr-var-type-uint16"};
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_uint32 {3, "plmgr-var-type-uint32"};
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_param_uint32 {4, "plmgr-var-type-param-uint32"};
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_dscp {5, "plmgr-var-type-dscp"};
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_prec {6, "plmgr-var-type-prec"};
+const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_max {7, "plmgr-var-type-max"};
+
+const Enum::YLeaf CacFlowActnTypeEn::cac_flow_actn_type_local {0, "cac-flow-actn-type-local"};
+const Enum::YLeaf CacFlowActnTypeEn::cac_flow_actn_type_max {1, "cac-flow-actn-type-max"};
+
+const Enum::YLeaf PolicyActionEn::policy_action_none {0, "policy-action-none"};
+const Enum::YLeaf PolicyActionEn::policy_action_unspecified {1, "policy-action-unspecified"};
+const Enum::YLeaf PolicyActionEn::policy_action_mark {2, "policy-action-mark"};
+const Enum::YLeaf PolicyActionEn::policy_action_mark2 {3, "policy-action-mark2"};
+const Enum::YLeaf PolicyActionEn::policy_action_wred {4, "policy-action-wred"};
+const Enum::YLeaf PolicyActionEn::policy_action_encap_seq {5, "policy-action-encap-seq"};
+const Enum::YLeaf PolicyActionEn::policy_action_priority {6, "policy-action-priority"};
+const Enum::YLeaf PolicyActionEn::policy_action_iphc {7, "policy-action-iphc"};
+const Enum::YLeaf PolicyActionEn::policy_action_bw_remaining {8, "policy-action-bw-remaining"};
+const Enum::YLeaf PolicyActionEn::policy_action_min_bw {9, "policy-action-min-bw"};
+const Enum::YLeaf PolicyActionEn::policy_action_authenticate_aaa {10, "policy-action-authenticate-aaa"};
+const Enum::YLeaf PolicyActionEn::policy_action_collect_id {11, "policy-action-collect-id"};
+const Enum::YLeaf PolicyActionEn::policy_action_disconnect {12, "policy-action-disconnect"};
+const Enum::YLeaf PolicyActionEn::policy_action_set_timer {13, "policy-action-set-timer"};
+const Enum::YLeaf PolicyActionEn::policy_action_stop_timer {14, "policy-action-stop-timer"};
+const Enum::YLeaf PolicyActionEn::policy_action_query_ancp {15, "policy-action-query-ancp"};
+const Enum::YLeaf PolicyActionEn::policy_action_accounting_aaa_list {16, "policy-action-accounting-aaa-list"};
+const Enum::YLeaf PolicyActionEn::policy_action_prepaid_config {17, "policy-action-prepaid-config"};
+const Enum::YLeaf PolicyActionEn::policy_action_timeout_idle {18, "policy-action-timeout-idle"};
+const Enum::YLeaf PolicyActionEn::policy_action_proxy_aaa {19, "policy-action-proxy-aaa"};
+const Enum::YLeaf PolicyActionEn::policy_action_template_activate {20, "policy-action-template-activate"};
+const Enum::YLeaf PolicyActionEn::policy_action_template_deactivate {21, "policy-action-template-deactivate"};
+const Enum::YLeaf PolicyActionEn::policy_action_decode_identifier {22, "policy-action-decode-identifier"};
+const Enum::YLeaf PolicyActionEn::policy_action_q_limit {23, "policy-action-q-limit"};
+const Enum::YLeaf PolicyActionEn::policy_action_authorize_id {24, "policy-action-authorize-id"};
+const Enum::YLeaf PolicyActionEn::policy_action_accounting_event_aaa_list {25, "policy-action-accounting-event-aaa-list"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_react {26, "policy-action-afmon-react"};
+const Enum::YLeaf PolicyActionEn::policy_action_httpr {27, "policy-action-httpr"};
+const Enum::YLeaf PolicyActionEn::policy_action_pbr_transmit {28, "policy-action-pbr-transmit"};
+const Enum::YLeaf PolicyActionEn::policy_action_pbr_drop {29, "policy-action-pbr-drop"};
+const Enum::YLeaf PolicyActionEn::policy_action_punt {30, "policy-action-punt"};
+const Enum::YLeaf PolicyActionEn::policy_action_copy {31, "policy-action-copy"};
+const Enum::YLeaf PolicyActionEn::policy_action_sfrag {32, "policy-action-sfrag"};
+const Enum::YLeaf PolicyActionEn::policy_action_monitor {33, "policy-action-monitor"};
+const Enum::YLeaf PolicyActionEn::policy_action_redirect {34, "policy-action-redirect"};
+const Enum::YLeaf PolicyActionEn::policy_action_ipv4_nh {35, "policy-action-ipv4-nh"};
+const Enum::YLeaf PolicyActionEn::policy_action_ipv6_nh {36, "policy-action-ipv6-nh"};
+const Enum::YLeaf PolicyActionEn::policy_action_vlan_pop {37, "policy-action-vlan-pop"};
+const Enum::YLeaf PolicyActionEn::policy_action_pbr_next_hop {38, "policy-action-pbr-next-hop"};
+const Enum::YLeaf PolicyActionEn::policy_action_decap_gre {39, "policy-action-decap-gre"};
+const Enum::YLeaf PolicyActionEn::policy_action_output_interface {40, "policy-action-output-interface"};
+const Enum::YLeaf PolicyActionEn::policy_action_service_function_path {41, "policy-action-service-function-path"};
+const Enum::YLeaf PolicyActionEn::policy_action_ptrs {42, "policy-action-ptrs"};
+const Enum::YLeaf PolicyActionEn::policy_action_police {43, "policy-action-police"};
+const Enum::YLeaf PolicyActionEn::policy_action_shape {44, "policy-action-shape"};
+const Enum::YLeaf PolicyActionEn::policy_action_serv_pol {45, "policy-action-serv-pol"};
+const Enum::YLeaf PolicyActionEn::policy_action_cac {46, "policy-action-cac"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_flow_parm {47, "policy-action-afmon-flow-parm"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_ipcbr_metric {48, "policy-action-afmon-ipcbr-metric"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_metric {49, "policy-action-afmon-rtp-metric"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_mmr_metric {50, "policy-action-afmon-rtp-mmr-metric"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_j2k_metric {51, "policy-action-afmon-rtp-j2k-metric"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_rtp_voice_metric {52, "policy-action-afmon-rtp-voice-metric"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_mdi_metric {53, "policy-action-afmon-mdi-metric"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_mdi_rtp_metric {54, "policy-action-afmon-mdi-rtp-metric"};
+const Enum::YLeaf PolicyActionEn::policy_action_afmon_fmm {55, "policy-action-afmon-fmm"};
+const Enum::YLeaf PolicyActionEn::policy_action_pfc {56, "policy-action-pfc"};
+const Enum::YLeaf PolicyActionEn::policy_action_max {57, "policy-action-max"};
+
+const Enum::YLeaf PlmgrApplnTypeEn::qos {1, "qos"};
+const Enum::YLeaf PlmgrApplnTypeEn::pbr {2, "pbr"};
+const Enum::YLeaf PlmgrApplnTypeEn::subscriber_control {3, "subscriber-control"};
+const Enum::YLeaf PlmgrApplnTypeEn::accounting {4, "accounting"};
+const Enum::YLeaf PlmgrApplnTypeEn::traffic {5, "traffic"};
+const Enum::YLeaf PlmgrApplnTypeEn::performance_traffic {6, "performance-traffic"};
+
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_invalid {0, "afmon-rtp-cr-invalid"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_8k {1, "afmon-rtp-cr-8k"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_16k {2, "afmon-rtp-cr-16k"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_11025 {3, "afmon-rtp-cr-11025"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_22050 {4, "afmon-rtp-cr-22050"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_44100 {5, "afmon-rtp-cr-44100"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_48k {6, "afmon-rtp-cr-48k"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_90k {7, "afmon-rtp-cr-90k"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_27m {8, "afmon-rtp-cr-27m"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_148500k {9, "afmon-rtp-cr-148500k"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_148351k {10, "afmon-rtp-cr-148351k"};
+const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_max {11, "afmon-rtp-cr-max"};
+
+const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_invalid {0, "afmon-flow-parm-invalid"};
+const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_max_mon_flow_s {1, "afmon-flow-parm-max-mon-flow-s"};
+const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_mon_interval {2, "afmon-flow-parm-mon-interval"};
+const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_intvl_hist {3, "afmon-flow-parm-intvl-hist"};
+const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_flow_timeout {4, "afmon-flow-parm-flow-timeout"};
+const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_max {5, "afmon-flow-parm-max"};
+
+const Enum::YLeaf MatchNoUsernameEn::match_no_user_name_unspecified {0, "match-no-user-name-unspecified"};
+const Enum::YLeaf MatchNoUsernameEn::match_no_user_name {1, "match-no-user-name"};
+const Enum::YLeaf MatchNoUsernameEn::match_user_name {2, "match-user-name"};
+const Enum::YLeaf MatchNoUsernameEn::match_no_user_name_max {3, "match-no-user-name-max"};
+
+const Enum::YLeaf DpssSnidTypeEn::dpss_snid_invalid {0, "dpss-snid-invalid"};
+const Enum::YLeaf DpssSnidTypeEn::dpss_snid_index {1, "dpss-snid-index"};
+const Enum::YLeaf DpssSnidTypeEn::dpss_snid_name {2, "dpss-snid-name"};
+const Enum::YLeaf DpssSnidTypeEn::dpss_snid_type_max {3, "dpss-snid-type-max"};
+
+const Enum::YLeaf MarkTypeEn::mark_type_none {0, "mark-type-none"};
+const Enum::YLeaf MarkTypeEn::mark_type_dscp {1, "mark-type-dscp"};
+const Enum::YLeaf MarkTypeEn::mark_type_prec {2, "mark-type-prec"};
+const Enum::YLeaf MarkTypeEn::mark_type_mpls_exp_topmost {3, "mark-type-mpls-exp-topmost"};
+const Enum::YLeaf MarkTypeEn::mark_type_mpls_exp_imposition {4, "mark-type-mpls-exp-imposition"};
+const Enum::YLeaf MarkTypeEn::mark_type_qos_group {5, "mark-type-qos-group"};
+const Enum::YLeaf MarkTypeEn::mark_type_discard_class {6, "mark-type-discard-class"};
+const Enum::YLeaf MarkTypeEn::mark_type_cos {7, "mark-type-cos"};
+const Enum::YLeaf MarkTypeEn::mark_type_cos_inner {8, "mark-type-cos-inner"};
+const Enum::YLeaf MarkTypeEn::mark_type_srp_priority {9, "mark-type-srp-priority"};
+const Enum::YLeaf MarkTypeEn::mark_type_atm_clp {10, "mark-type-atm-clp"};
+const Enum::YLeaf MarkTypeEn::mark_type_fr_de {11, "mark-type-fr-de"};
+const Enum::YLeaf MarkTypeEn::mark_type_dscp_tunnel {12, "mark-type-dscp-tunnel"};
+const Enum::YLeaf MarkTypeEn::mark_type_prec_tunnel {13, "mark-type-prec-tunnel"};
+const Enum::YLeaf MarkTypeEn::mark_type_dei {14, "mark-type-dei"};
+const Enum::YLeaf MarkTypeEn::mark_type_dei_imposition {15, "mark-type-dei-imposition"};
+const Enum::YLeaf MarkTypeEn::mark_type_forward_class {16, "mark-type-forward-class"};
+const Enum::YLeaf MarkTypeEn::mark_type_df {17, "mark-type-df"};
+const Enum::YLeaf MarkTypeEn::mark_type_traffic_class {18, "mark-type-traffic-class"};
+const Enum::YLeaf MarkTypeEn::mark_type_src_mac {19, "mark-type-src-mac"};
+const Enum::YLeaf MarkTypeEn::mark_type_dst_mac {20, "mark-type-dst-mac"};
+const Enum::YLeaf MarkTypeEn::mark_type_ipv4_src_addr {21, "mark-type-ipv4-src-addr"};
+const Enum::YLeaf MarkTypeEn::mark_type_ipv4_dst_addr {22, "mark-type-ipv4-dst-addr"};
+const Enum::YLeaf MarkTypeEn::mark_type_vlan_id {23, "mark-type-vlan-id"};
+const Enum::YLeaf MarkTypeEn::mark_type_udp_src_port {24, "mark-type-udp-src-port"};
+const Enum::YLeaf MarkTypeEn::mark_type_udp_dst_port {25, "mark-type-udp-dst-port"};
+const Enum::YLeaf MarkTypeEn::mark_type_tcp_src_port {26, "mark-type-tcp-src-port"};
+const Enum::YLeaf MarkTypeEn::mark_type_tcp_dst_port {27, "mark-type-tcp-dst-port"};
+const Enum::YLeaf MarkTypeEn::mark_type_sctp_src_port {28, "mark-type-sctp-src-port"};
+const Enum::YLeaf MarkTypeEn::mark_type_sctp_dst_port {29, "mark-type-sctp-dst-port"};
+const Enum::YLeaf MarkTypeEn::mark_type_max {30, "mark-type-max"};
+
+const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_unspecified {0, "pclass-exe-strat-unspecified"};
+const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_do_all {1, "pclass-exe-strat-do-all"};
+const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_do_until_success {2, "pclass-exe-strat-do-until-success"};
+const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_do_until_failure {3, "pclass-exe-strat-do-until-failure"};
+const Enum::YLeaf PclassExecStratEn::pclass_exe_strat_max {4, "pclass-exe-strat-max"};
+
+const Enum::YLeaf DecodeIdentifierEn::policy_decid_unspecified {0, "policy-decid-unspecified"};
+const Enum::YLeaf DecodeIdentifierEn::policy_decid_remote_id {1, "policy-decid-remote-id"};
+const Enum::YLeaf DecodeIdentifierEn::policy_decid_circuit_id {2, "policy-decid-circuit-id"};
+const Enum::YLeaf DecodeIdentifierEn::policy_decid_user_name {3, "policy-decid-user-name"};
+const Enum::YLeaf DecodeIdentifierEn::policy_decid_max {4, "policy-decid-max"};
+
+const Enum::YLeaf PfcPauseType::pfc_buffer_size_defined {0, "pfc-buffer-size-defined"};
+const Enum::YLeaf PfcPauseType::pfc_pause_threshold_defined {1, "pfc-pause-threshold-defined"};
+const Enum::YLeaf PfcPauseType::pfc_resume_threshold_defined {2, "pfc-resume-threshold-defined"};
+const Enum::YLeaf PfcPauseType::pfc_buffer_size_value {3, "pfc-buffer-size-value"};
+const Enum::YLeaf PfcPauseType::pfc_pause_threshold_value {4, "pfc-pause-threshold-value"};
+const Enum::YLeaf PfcPauseType::pfc_resume_threshold_value {5, "pfc-resume-threshold-value"};
+
+const Enum::YLeaf SharedBucketType::shared_bucket_type_not_specified {0, "shared-bucket-type-not-specified"};
+const Enum::YLeaf SharedBucketType::shared_bucket_referred {1, "shared-bucket-referred"};
+const Enum::YLeaf SharedBucketType::shared_bucket_defined {2, "shared-bucket-defined"};
+
+const Enum::YLeaf PoliceActionTypeEn::police_action_none {0, "police-action-none"};
+const Enum::YLeaf PoliceActionTypeEn::police_action_transmit {1, "police-action-transmit"};
+const Enum::YLeaf PoliceActionTypeEn::police_action_drop {2, "police-action-drop"};
+const Enum::YLeaf PoliceActionTypeEn::police_action_mark {3, "police-action-mark"};
+const Enum::YLeaf PoliceActionTypeEn::police_action_max {4, "police-action-max"};
+
+const Enum::YLeaf PolicyActionAttrEn::action_attribute {1, "action-attribute"};
+const Enum::YLeaf PolicyActionAttrEn::sub_action_attribute {2, "sub-action-attribute"};
+
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_unspecified {0, "match-nas-port-sub-id-unspecified"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_adapter {1, "match-nas-port-sub-id-adapter"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_channel {2, "match-nas-port-sub-id-channel"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_ip_addr {3, "match-nas-port-sub-id-ip-addr"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_port {4, "match-nas-port-sub-id-port"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_shelf {5, "match-nas-port-sub-id-shelf"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_slot {6, "match-nas-port-sub-id-slot"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_sub_interface {7, "match-nas-port-sub-id-sub-interface"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_type {8, "match-nas-port-sub-id-type"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_vci {9, "match-nas-port-sub-id-vci"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_vlan {10, "match-nas-port-sub-id-vlan"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_vpi {11, "match-nas-port-sub-id-vpi"};
+const Enum::YLeaf MatchNasPortSubIdEn::match_nas_port_sub_id_max {12, "match-nas-port-sub-id-max"};
+
+const Enum::YLeaf IdentifierEn::policy_ident_unspecified {0, "policy-ident-unspecified"};
+const Enum::YLeaf IdentifierEn::policy_ident_authen_status {1, "policy-ident-authen-status"};
+const Enum::YLeaf IdentifierEn::policy_ident_dnis {2, "policy-ident-dnis"};
+const Enum::YLeaf IdentifierEn::policy_ident_media {3, "policy-ident-media"};
+const Enum::YLeaf IdentifierEn::policy_ident_mlp_negotiated {4, "policy-ident-mlp-negotiated"};
+const Enum::YLeaf IdentifierEn::policy_ident_nas_port {5, "policy-ident-nas-port"};
+const Enum::YLeaf IdentifierEn::policy_ident_no_user_name {6, "policy-ident-no-user-name"};
+const Enum::YLeaf IdentifierEn::policy_ident_protocol {7, "policy-ident-protocol"};
+const Enum::YLeaf IdentifierEn::policy_ident_service_name {8, "policy-ident-service-name"};
+const Enum::YLeaf IdentifierEn::policy_ident_source_address_ipv4 {9, "policy-ident-source-address-ipv4"};
+const Enum::YLeaf IdentifierEn::policy_ident_source_address_ipv6 {10, "policy-ident-source-address-ipv6"};
+const Enum::YLeaf IdentifierEn::policy_ident_source_address_mac {11, "policy-ident-source-address-mac"};
+const Enum::YLeaf IdentifierEn::policy_ident_timer {12, "policy-ident-timer"};
+const Enum::YLeaf IdentifierEn::policy_ident_tunnel_name {13, "policy-ident-tunnel-name"};
+const Enum::YLeaf IdentifierEn::policy_ident_auth_domain {14, "policy-ident-auth-domain"};
+const Enum::YLeaf IdentifierEn::policy_ident_auth_user_name {15, "policy-ident-auth-user-name"};
+const Enum::YLeaf IdentifierEn::policy_ident_unauth_domain {16, "policy-ident-unauth-domain"};
+const Enum::YLeaf IdentifierEn::policy_ident_unauth_user_name {17, "policy-ident-unauth-user-name"};
+const Enum::YLeaf IdentifierEn::policy_ident_max {18, "policy-ident-max"};
+
+const Enum::YLeaf MatchLogicalOperatorEn::match_operator_unspecified {0, "match-operator-unspecified"};
+const Enum::YLeaf MatchLogicalOperatorEn::match_equal_to {1, "match-equal-to"};
+const Enum::YLeaf MatchLogicalOperatorEn::match_greater_than {2, "match-greater-than"};
+const Enum::YLeaf MatchLogicalOperatorEn::match_greater_than_or_equal {3, "match-greater-than-or-equal"};
+const Enum::YLeaf MatchLogicalOperatorEn::match_less_than {4, "match-less-than"};
+const Enum::YLeaf MatchLogicalOperatorEn::match_less_than_or_equal {5, "match-less-than-or-equal"};
+const Enum::YLeaf MatchLogicalOperatorEn::match_operator_max {6, "match-operator-max"};
+
+const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_negotiated_unspecified {0, "match-mlp-negotiated-unspecified"};
+const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_negotiated {1, "match-mlp-negotiated"};
+const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_not_negotiated {2, "match-mlp-not-negotiated"};
+const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_max {3, "match-mlp-max"};
+
+const Enum::YLeaf AcctEn::policy_acct_evt_unspecified {0, "policy-acct-evt-unspecified"};
+const Enum::YLeaf AcctEn::policy_acct_evt_start {1, "policy-acct-evt-start"};
+const Enum::YLeaf AcctEn::policy_acct_evt_stop {2, "policy-acct-evt-stop"};
+const Enum::YLeaf AcctEn::policy_acct_evt_update {3, "policy-acct-evt-update"};
+
+const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_invalid {0, "afmon-mdi-parm-invalid"};
+const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_pids {1, "afmon-mdi-parm-pids"};
+const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_pkt_rate {2, "afmon-mdi-parm-pkt-rate"};
+const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_ip_pkt_rate {3, "afmon-mdi-parm-ip-pkt-rate"};
+const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_ip_bit_rate {4, "afmon-mdi-parm-ip-bit-rate"};
+const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_max {5, "afmon-mdi-parm-max"};
+
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_unspecified {0, "match-media-type-unspecified"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_async {1, "match-media-type-async"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_atm {2, "match-media-type-atm"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_ether {3, "match-media-type-ether"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_ip {4, "match-media-type-ip"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_isdn {5, "match-media-type-isdn"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_mpls {6, "match-media-type-mpls"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_sync {7, "match-media-type-sync"};
+const Enum::YLeaf MatchMediaTypeEn::match_media_type_max {8, "match-media-type-max"};
+
+const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_unspecified {0, "pevent-cond-eval-unspecified"};
+const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_match_first {1, "pevent-cond-eval-match-first"};
+const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_match_all {2, "pevent-cond-eval-match-all"};
+const Enum::YLeaf PeventCondEvalEn::pevent_cond_eval_max {3, "pevent-cond-eval-max"};
+
+const Enum::YLeaf ClassMapModeEn::class_map_mode_match_any {0, "class-map-mode-match-any"};
+const Enum::YLeaf ClassMapModeEn::class_map_mode_match_all {1, "class-map-mode-match-all"};
+const Enum::YLeaf ClassMapModeEn::class_map_mode_max {2, "class-map-mode-max"};
+const Enum::YLeaf ClassMapModeEn::class_map_mode_usr_def {1073741824, "class-map-mode-usr-def"};
+
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_none {0, "policy-map-type-none"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_qos {1, "policy-map-type-qos"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_pbr {2, "policy-map-type-pbr"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_traffic {3, "policy-map-type-traffic"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_subs_control {4, "policy-map-type-subs-control"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_accounting {5, "policy-map-type-accounting"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_redirect {6, "policy-map-type-redirect"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_afmon {7, "policy-map-type-afmon"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_merge {8, "policy-map-type-merge"};
+const Enum::YLeaf PolicyMapTypeEn::policy_map_type_max {9, "policy-map-type-max"};
+
+const Enum::YLeaf WredTypeEn::wred_cos_cmd {0, "wred-cos-cmd"};
+const Enum::YLeaf WredTypeEn::wred_dscp_cmd {1, "wred-dscp-cmd"};
+const Enum::YLeaf WredTypeEn::wred_precedence_cmd {2, "wred-precedence-cmd"};
+const Enum::YLeaf WredTypeEn::wred_discard_class_cmd {3, "wred-discard-class-cmd"};
+const Enum::YLeaf WredTypeEn::wred_mpls_exp_cmd {4, "wred-mpls-exp-cmd"};
+const Enum::YLeaf WredTypeEn::red_with_user_min_max {5, "red-with-user-min-max"};
+const Enum::YLeaf WredTypeEn::red_with_default_min_max {6, "red-with-default-min-max"};
+const Enum::YLeaf WredTypeEn::wred_dei_cmd {7, "wred-dei-cmd"};
+const Enum::YLeaf WredTypeEn::wred_ecn_cmd {8, "wred-ecn-cmd"};
+const Enum::YLeaf WredTypeEn::wred_invalid_cmd {9, "wred-invalid-cmd"};
+
+const Enum::YLeaf PolicyActionExecTypeE::execution_immediate {1, "execution-immediate"};
+const Enum::YLeaf PolicyActionExecTypeE::execution_deferred {2, "execution-deferred"};
+
+const Enum::YLeaf PolicymgrClassMap::qos {1, "qos"};
+const Enum::YLeaf PolicymgrClassMap::pbr {2, "pbr"};
+const Enum::YLeaf PolicymgrClassMap::traffic {3, "traffic"};
+const Enum::YLeaf PolicymgrClassMap::subscriber_control {4, "subscriber-control"};
+
+const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_none {0, "policy-rt-type-none"};
+const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_asn2 {1, "policy-rt-type-asn2"};
+const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_ipv4 {2, "policy-rt-type-ipv4"};
+const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_asn4 {3, "policy-rt-type-asn4"};
+const Enum::YLeaf PolicyRouteTargetEn::policy_rt_type_max {4, "policy-rt-type-max"};
+
+const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_name {0, "policy-obj-enc-name"};
+const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_hdl {1, "policy-obj-enc-hdl"};
+const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_var_idx {2, "policy-obj-enc-var-idx"};
+const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_in_line {3, "policy-obj-enc-in-line"};
+
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_crit_invalid {0, "afmon-react-crit-invalid"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mrv {1, "afmon-react-mrv"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_df {2, "afmon-react-df"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mse {3, "afmon-react-mse"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_pkt_rate {4, "afmon-react-pkt-rate"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_flow_cnt {5, "afmon-react-flow-cnt"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_loss_fraction {6, "afmon-react-rtp-loss-fraction"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_jitter {7, "afmon-react-rtp-jitter"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_max_jitter {8, "afmon-react-rtp-max-jitter"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_out_of_order {9, "afmon-react-rtp-out-of-order"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_loss_pkts {10, "afmon-react-rtp-loss-pkts"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_ta {11, "afmon-react-rtp-ta"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_rtp_es {12, "afmon-react-rtp-es"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_mlr {13, "afmon-react-mdi-mlr"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_mdc {14, "afmon-react-mdi-mdc"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_jitter {15, "afmon-react-mdi-jitter"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_loss_pkts {16, "afmon-react-mdi-loss-pkts"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_ta {17, "afmon-react-mdi-ta"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_mdi_es {18, "afmon-react-mdi-es"};
+const Enum::YLeaf AfmonReactCriterionEn::afmon_react_crit_max {19, "afmon-react-crit-max"};
+
+const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_invalid {0, "afmon-rtp-parm-invalid"};
+const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_min_seq {1, "afmon-rtp-parm-min-seq"};
+const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_max_drop {2, "afmon-rtp-parm-max-drop"};
+const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_max_mis_order {3, "afmon-rtp-parm-max-mis-order"};
+const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_seq_ext_cop4 {4, "afmon-rtp-parm-seq-ext-cop4"};
+const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_clock_rate {5, "afmon-rtp-parm-clock-rate"};
+const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_max {6, "afmon-rtp-parm-max"};
+
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_none {0, "policy-map-table-type-none"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l2_any {1, "policy-map-table-type-l2-any"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l2_l3 {2, "policy-map-table-type-l2-l3"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l3_ipv4 {3, "policy-map-table-type-l3-ipv4"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l3_ds {4, "policy-map-table-type-l3-ds"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_traffic_ingress {5, "policy-map-table-type-traffic-ingress"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_qos_ingress {6, "policy-map-table-type-qos-ingress"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_qos_egress {7, "policy-map-table-type-qos-egress"};
+const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_max {8, "policy-map-table-type-max"};
+
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_unspecified {0, "policy-authorize-ident-unspecified"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_dnis {1, "policy-authorize-ident-dnis"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_domain {2, "policy-authorize-ident-domain"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_user_name {3, "policy-authorize-ident-user-name"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_nas_port {4, "policy-authorize-ident-nas-port"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_source_address_ipv4 {5, "policy-authorize-ident-source-address-ipv4"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_source_address_ipv6 {6, "policy-authorize-ident-source-address-ipv6"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_source_address_mac {7, "policy-authorize-ident-source-address-mac"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_auto_detect {8, "policy-authorize-ident-auto-detect"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_tunnel_name {9, "policy-authorize-ident-tunnel-name"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_dhcp_client_id {10, "policy-authorize-ident-dhcp-client-id"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_circuit_id {11, "policy-authorize-ident-circuit-id"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_remote_id {12, "policy-authorize-ident-remote-id"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_vendor_id {13, "policy-authorize-ident-vendor-id"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_service_name {14, "policy-authorize-ident-service-name"};
+const Enum::YLeaf AuthorizeIdEn::policy_authorize_ident_max {15, "policy-authorize-ident-max"};
+
+const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_unspecified {0, "match-subs-protocol-unspecified"};
+const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_ipv4 {1, "match-subs-protocol-ipv4"};
+const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_ppp {2, "match-subs-protocol-ppp"};
+const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_dhcpv4 {3, "match-subs-protocol-dhcpv4"};
+const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_dhcpv6 {4, "match-subs-protocol-dhcpv6"};
+const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_max {5, "match-subs-protocol-max"};
+
+const Enum::YLeaf PlmgrAppFwdingTypeE::layer2 {0, "layer2"};
+const Enum::YLeaf PlmgrAppFwdingTypeE::layer3 {1, "layer3"};
+const Enum::YLeaf PlmgrAppFwdingTypeE::any {2, "any"};
+
+const Enum::YLeaf ClassMapTypeEn::class_map_type_none {0, "class-map-type-none"};
+const Enum::YLeaf ClassMapTypeEn::class_map_type_qos {1, "class-map-type-qos"};
+const Enum::YLeaf ClassMapTypeEn::class_map_type_pbr {2, "class-map-type-pbr"};
+const Enum::YLeaf ClassMapTypeEn::class_map_type_traffic {3, "class-map-type-traffic"};
+const Enum::YLeaf ClassMapTypeEn::class_map_type_subs_control {4, "class-map-type-subs-control"};
+const Enum::YLeaf ClassMapTypeEn::class_map_type_max {5, "class-map-type-max"};
+
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_invalid {0, "afmon-react-parm-invalid"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_oper_id {1, "afmon-react-parm-oper-id"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_crit_erion {2, "afmon-react-parm-crit-erion"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_desc {3, "afmon-react-parm-desc"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_trig_value {4, "afmon-react-parm-trig-value"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_trig_type {5, "afmon-react-parm-trig-type"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_action {6, "afmon-react-parm-action"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_alm_type {7, "afmon-react-parm-alm-type"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_alm_severity {8, "afmon-react-parm-alm-severity"};
+const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_max {9, "afmon-react-parm-max"};
+
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_unspecified {0, "match-avail-ident-unspecified"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_dnis {1, "match-avail-ident-dnis"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_domain {2, "match-avail-ident-domain"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_circuit_id {3, "match-avail-ident-circuit-id"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_remote_id {4, "match-avail-ident-remote-id"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_media {5, "match-avail-ident-media"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_nas_port {6, "match-avail-ident-nas-port"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_protocol {7, "match-avail-ident-protocol"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_source_address_ipv4 {8, "match-avail-ident-source-address-ipv4"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_source_address_ipv6 {9, "match-avail-ident-source-address-ipv6"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_source_address_mac {10, "match-avail-ident-source-address-mac"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_tunnel_name {11, "match-avail-ident-tunnel-name"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_user_name {12, "match-avail-ident-user-name"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_vendor_id {13, "match-avail-ident-vendor-id"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_dhcp_client_id {14, "match-avail-ident-dhcp-client-id"};
+const Enum::YLeaf MatchAvailableIdEn::match_avail_ident_max {15, "match-avail-ident-max"};
+
 const Enum::YLeaf FlowKeyEn::flow_key_invalid {0, "flow-key-invalid"};
 const Enum::YLeaf FlowKeyEn::flow_key_src_ip {1, "flow-key-src-ip"};
 const Enum::YLeaf FlowKeyEn::flow_key_dst_ip {2, "flow-key-dst-ip"};
 const Enum::YLeaf FlowKeyEn::flow_key_five_tuple {3, "flow-key-five-tuple"};
 const Enum::YLeaf FlowKeyEn::flow_key_max {4, "flow-key-max"};
 
-const Enum::YLeaf MatchAttrE::value_ {0, "value"};
-const Enum::YLeaf MatchAttrE::range {1, "range"};
-const Enum::YLeaf MatchAttrE::mask {2, "mask"};
+const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_unspecified {0, "match-authen-status-unspecified"};
+const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_authenticated {1, "match-authen-status-authenticated"};
+const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_unauthenticated {2, "match-authen-status-unauthenticated"};
+const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_max {3, "match-authen-status-max"};
+
+const Enum::YLeaf PolicymgrPolicyMap::qos {1, "qos"};
+const Enum::YLeaf PolicymgrPolicyMap::pbr {2, "pbr"};
+const Enum::YLeaf PolicymgrPolicyMap::traffic {3, "traffic"};
+const Enum::YLeaf PolicymgrPolicyMap::subscriber_control {4, "subscriber-control"};
+const Enum::YLeaf PolicymgrPolicyMap::accounting {5, "accounting"};
+const Enum::YLeaf PolicymgrPolicyMap::redirect {6, "redirect"};
+const Enum::YLeaf PolicymgrPolicyMap::flow_monitor {7, "flow-monitor"};
+
+const Enum::YLeaf AfmonReactActnEn::afmon_react_actn_none {0, "afmon-react-actn-none"};
+const Enum::YLeaf AfmonReactActnEn::afmon_react_syslog {1, "afmon-react-syslog"};
+const Enum::YLeaf AfmonReactActnEn::afmon_react_snmp {2, "afmon-react-snmp"};
+const Enum::YLeaf AfmonReactActnEn::afmon_react_clone {3, "afmon-react-clone"};
+
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_unspecified {0, "match-nas-port-intf-type-unspecified"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_async {1, "match-nas-port-intf-type-async"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_atm {2, "match-nas-port-intf-type-atm"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_bri {3, "match-nas-port-intf-type-bri"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_ether {4, "match-nas-port-intf-type-ether"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_ipsec {5, "match-nas-port-intf-type-ipsec"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_none {6, "match-nas-port-intf-type-none"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_piafs {7, "match-nas-port-intf-type-piafs"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppatm {8, "match-nas-port-intf-type-pppatm"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_ppp_ether {9, "match-nas-port-intf-type-ppp-ether"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppoeatm {10, "match-nas-port-intf-type-pppoeatm"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppqinq {11, "match-nas-port-intf-type-pppqinq"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppvlan {12, "match-nas-port-intf-type-pppvlan"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pri {13, "match-nas-port-intf-type-pri"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_sync {14, "match-nas-port-intf-type-sync"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_v110 {15, "match-nas-port-intf-type-v110"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_v120 {16, "match-nas-port-intf-type-v120"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_vty {17, "match-nas-port-intf-type-vty"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_x75 {18, "match-nas-port-intf-type-x75"};
+const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_max {19, "match-nas-port-intf-type-max"};
+
+const Enum::YLeaf QlimitTypeEn::qlimit_cmd {0, "qlimit-cmd"};
+const Enum::YLeaf QlimitTypeEn::qlimit_discard_class {1, "qlimit-discard-class"};
+const Enum::YLeaf QlimitTypeEn::qlimit_qos_group {2, "qlimit-qos-group"};
+const Enum::YLeaf QlimitTypeEn::qlimit_precedence {3, "qlimit-precedence"};
+const Enum::YLeaf QlimitTypeEn::qlimit_mpls_exp {4, "qlimit-mpls-exp"};
+const Enum::YLeaf QlimitTypeEn::qlimit_dscp {5, "qlimit-dscp"};
+const Enum::YLeaf QlimitTypeEn::qlimit_max {6, "qlimit-max"};
+
+const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_type_invalid {0, "afmon-alm-type-invalid"};
+const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_discrete {1, "afmon-alm-discrete"};
+const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_grp_cnt {2, "afmon-alm-grp-cnt"};
+const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_grp_pct {3, "afmon-alm-grp-pct"};
+const Enum::YLeaf AfmonAlarmTypeEn::afmon_alm_type_max {4, "afmon-alm-type-max"};
+
+const Enum::YLeaf PolicyClassInfoEn::policy_class_info_key_type {0, "policy-class-info-key-type"};
+const Enum::YLeaf PolicyClassInfoEn::policy_class_info_mod_type {1, "policy-class-info-mod-type"};
+
+const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_conform {0, "police-actn-category-conform"};
+const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_exceed {1, "police-actn-category-exceed"};
+const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_violate {2, "police-actn-category-violate"};
+const Enum::YLeaf PoliceActnCategoryEn::police_actn_category_max {3, "police-actn-category-max"};
 
 const Enum::YLeaf AfmonAlarmSevEn::afmon_alm_none {0, "afmon-alm-none"};
 const Enum::YLeaf AfmonAlarmSevEn::afmon_alm_info {1, "afmon-alm-info"};
@@ -17916,43 +18087,14 @@ const Enum::YLeaf AfmonAlarmSevEn::afmon_alm_alert {6, "afmon-alm-alert"};
 const Enum::YLeaf AfmonAlarmSevEn::afmon_alm_emerg {7, "afmon-alm-emerg"};
 const Enum::YLeaf AfmonAlarmSevEn::afmon_alm_sev_max {8, "afmon-alm-sev-max"};
 
-const Enum::YLeaf AcctEn::policy_acct_evt_unspecified {0, "policy-acct-evt-unspecified"};
-const Enum::YLeaf AcctEn::policy_acct_evt_start {1, "policy-acct-evt-start"};
-const Enum::YLeaf AcctEn::policy_acct_evt_stop {2, "policy-acct-evt-stop"};
-const Enum::YLeaf AcctEn::policy_acct_evt_update {3, "policy-acct-evt-update"};
+const Enum::YLeaf RedirectTypeEn::redirect_type_none {0, "redirect-type-none"};
+const Enum::YLeaf RedirectTypeEn::redirect_type_output_interface {1, "redirect-type-output-interface"};
+const Enum::YLeaf RedirectTypeEn::redirect_type_max {2, "redirect-type-max"};
 
-const Enum::YLeaf MatchLogicalOperatorEn::match_operator_unspecified {0, "match-operator-unspecified"};
-const Enum::YLeaf MatchLogicalOperatorEn::match_equal_to {1, "match-equal-to"};
-const Enum::YLeaf MatchLogicalOperatorEn::match_greater_than {2, "match-greater-than"};
-const Enum::YLeaf MatchLogicalOperatorEn::match_greater_than_or_equal {3, "match-greater-than-or-equal"};
-const Enum::YLeaf MatchLogicalOperatorEn::match_less_than {4, "match-less-than"};
-const Enum::YLeaf MatchLogicalOperatorEn::match_less_than_or_equal {5, "match-less-than-or-equal"};
-const Enum::YLeaf MatchLogicalOperatorEn::match_operator_max {6, "match-operator-max"};
-
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_kbytes {2, "policy-param-unit-kbytes"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_mbytes {3, "policy-param-unit-mbytes"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_gbytes {4, "policy-param-unit-gbytes"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_bitsps {5, "policy-param-unit-bitsps"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_kbitsps {6, "policy-param-unit-kbitsps"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_mbitsps {7, "policy-param-unit-mbitsps"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_gbitsps {8, "policy-param-unit-gbitsps"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_cells_ps {9, "policy-param-unit-cells-ps"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_packets_ps {10, "policy-param-unit-packets-ps"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_us {11, "policy-param-unit-us"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_ms {12, "policy-param-unit-ms"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_seconds {13, "policy-param-unit-seconds"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_packets {14, "policy-param-unit-packets"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_cells {15, "policy-param-unit-cells"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_percent {16, "policy-param-unit-percent"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_per_thousand {17, "policy-param-unit-per-thousand"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_per_million {18, "policy-param-unit-per-million"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_hz {19, "policy-param-unit-hz"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_khz {20, "policy-param-unit-khz"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_mhz {21, "policy-param-unit-mhz"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
-const Enum::YLeaf PolicyParamUnitType::policy_param_unit_max {23, "policy-param-unit-max"};
+const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_type_invalid {0, "afmon-trig-type-invalid"};
+const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_immed {1, "afmon-trig-immed"};
+const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_avg {2, "afmon-trig-avg"};
+const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_type_max {3, "afmon-trig-type-max"};
 
 const Enum::YLeaf PeventTypeEn::pevent_type_unspecified {0, "pevent-type-unspecified"};
 const Enum::YLeaf PeventTypeEn::pevent_type_acct_logon {1, "pevent-type-acct-logon"};
@@ -17988,134 +18130,6 @@ const Enum::YLeaf PeventTypeEn::pevent_type_exception {30, "pevent-type-exceptio
 const Enum::YLeaf PeventTypeEn::pevent_type_session_ident_chg {31, "pevent-type-session-ident-chg"};
 const Enum::YLeaf PeventTypeEn::pevent_type_max {32, "pevent-type-max"};
 
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_invalid {0, "afmon-react-parm-invalid"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_oper_id {1, "afmon-react-parm-oper-id"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_crit_erion {2, "afmon-react-parm-crit-erion"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_desc {3, "afmon-react-parm-desc"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_trig_value {4, "afmon-react-parm-trig-value"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_trig_type {5, "afmon-react-parm-trig-type"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_action {6, "afmon-react-parm-action"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_alm_type {7, "afmon-react-parm-alm-type"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_alm_severity {8, "afmon-react-parm-alm-severity"};
-const Enum::YLeaf AfmonReactParmTypeEn::afmon_react_parm_max {9, "afmon-react-parm-max"};
-
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_class_name {0, "plmgr-var-type-class-name"};
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_uint8 {1, "plmgr-var-type-uint8"};
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_uint16 {2, "plmgr-var-type-uint16"};
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_uint32 {3, "plmgr-var-type-uint32"};
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_param_uint32 {4, "plmgr-var-type-param-uint32"};
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_dscp {5, "plmgr-var-type-dscp"};
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_prec {6, "plmgr-var-type-prec"};
-const Enum::YLeaf PlmgrVarTypeEn::plmgr_var_type_max {7, "plmgr-var-type-max"};
-
-const Enum::YLeaf PolicyActionAttrEn::action_attribute {1, "action-attribute"};
-const Enum::YLeaf PolicyActionAttrEn::sub_action_attribute {2, "sub-action-attribute"};
-
-const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_name {0, "policy-obj-enc-name"};
-const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_hdl {1, "policy-obj-enc-hdl"};
-const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_var_idx {2, "policy-obj-enc-var-idx"};
-const Enum::YLeaf PolicyObjEncEn::policy_obj_enc_in_line {3, "policy-obj-enc-in-line"};
-
-const Enum::YLeaf PlmgrAppFwdingTypeE::layer2 {0, "layer2"};
-const Enum::YLeaf PlmgrAppFwdingTypeE::layer3 {1, "layer3"};
-const Enum::YLeaf PlmgrAppFwdingTypeE::any {2, "any"};
-
-const Enum::YLeaf ClassMapTypeEn::class_map_type_none {0, "class-map-type-none"};
-const Enum::YLeaf ClassMapTypeEn::class_map_type_qos {1, "class-map-type-qos"};
-const Enum::YLeaf ClassMapTypeEn::class_map_type_pbr {2, "class-map-type-pbr"};
-const Enum::YLeaf ClassMapTypeEn::class_map_type_traffic {3, "class-map-type-traffic"};
-const Enum::YLeaf ClassMapTypeEn::class_map_type_subs_control {4, "class-map-type-subs-control"};
-const Enum::YLeaf ClassMapTypeEn::class_map_type_max {5, "class-map-type-max"};
-
-const Enum::YLeaf WredTypeEn::wred_cos_cmd {0, "wred-cos-cmd"};
-const Enum::YLeaf WredTypeEn::wred_dscp_cmd {1, "wred-dscp-cmd"};
-const Enum::YLeaf WredTypeEn::wred_precedence_cmd {2, "wred-precedence-cmd"};
-const Enum::YLeaf WredTypeEn::wred_discard_class_cmd {3, "wred-discard-class-cmd"};
-const Enum::YLeaf WredTypeEn::wred_mpls_exp_cmd {4, "wred-mpls-exp-cmd"};
-const Enum::YLeaf WredTypeEn::red_with_user_min_max {5, "red-with-user-min-max"};
-const Enum::YLeaf WredTypeEn::red_with_default_min_max {6, "red-with-default-min-max"};
-const Enum::YLeaf WredTypeEn::wred_dei_cmd {7, "wred-dei-cmd"};
-const Enum::YLeaf WredTypeEn::wred_ecn_cmd {8, "wred-ecn-cmd"};
-const Enum::YLeaf WredTypeEn::wred_invalid_cmd {9, "wred-invalid-cmd"};
-
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_none {0, "policy-map-table-type-none"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l2_any {1, "policy-map-table-type-l2-any"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l2_l3 {2, "policy-map-table-type-l2-l3"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l3_ipv4 {3, "policy-map-table-type-l3-ipv4"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_l3_ds {4, "policy-map-table-type-l3-ds"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_traffic_ingress {5, "policy-map-table-type-traffic-ingress"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_qos_ingress {6, "policy-map-table-type-qos-ingress"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_qos_egress {7, "policy-map-table-type-qos-egress"};
-const Enum::YLeaf PolicyMapTableTypeEn::policy_map_table_type_max {8, "policy-map-table-type-max"};
-
-const Enum::YLeaf SharedBucketType::shared_bucket_type_not_specified {0, "shared-bucket-type-not-specified"};
-const Enum::YLeaf SharedBucketType::shared_bucket_referred {1, "shared-bucket-referred"};
-const Enum::YLeaf SharedBucketType::shared_bucket_defined {2, "shared-bucket-defined"};
-
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_invalid {0, "afmon-rtp-cr-invalid"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_8k {1, "afmon-rtp-cr-8k"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_16k {2, "afmon-rtp-cr-16k"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_11025 {3, "afmon-rtp-cr-11025"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_22050 {4, "afmon-rtp-cr-22050"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_44100 {5, "afmon-rtp-cr-44100"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_48k {6, "afmon-rtp-cr-48k"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_90k {7, "afmon-rtp-cr-90k"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_27m {8, "afmon-rtp-cr-27m"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_148500k {9, "afmon-rtp-cr-148500k"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_148351k {10, "afmon-rtp-cr-148351k"};
-const Enum::YLeaf AfmonRtpClockRateTypeEn::afmon_rtp_cr_max {11, "afmon-rtp-cr-max"};
-
-const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_relop_invalid {0, "afmon-trig-relop-invalid"};
-const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_lt {1, "afmon-trig-lt"};
-const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_le {2, "afmon-trig-le"};
-const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_gt {3, "afmon-trig-gt"};
-const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_ge {4, "afmon-trig-ge"};
-const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_range {5, "afmon-trig-range"};
-const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_relop_max {6, "afmon-trig-relop-max"};
-
-const Enum::YLeaf MatchNoUsernameEn::match_no_user_name_unspecified {0, "match-no-user-name-unspecified"};
-const Enum::YLeaf MatchNoUsernameEn::match_no_user_name {1, "match-no-user-name"};
-const Enum::YLeaf MatchNoUsernameEn::match_user_name {2, "match-user-name"};
-const Enum::YLeaf MatchNoUsernameEn::match_no_user_name_max {3, "match-no-user-name-max"};
-
-const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_invalid {0, "afmon-rtp-parm-invalid"};
-const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_min_seq {1, "afmon-rtp-parm-min-seq"};
-const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_max_drop {2, "afmon-rtp-parm-max-drop"};
-const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_max_mis_order {3, "afmon-rtp-parm-max-mis-order"};
-const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_seq_ext_cop4 {4, "afmon-rtp-parm-seq-ext-cop4"};
-const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_clock_rate {5, "afmon-rtp-parm-clock-rate"};
-const Enum::YLeaf AfmonRtpParmTypeEn::afmon_rtp_parm_max {6, "afmon-rtp-parm-max"};
-
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_none {0, "policy-map-type-none"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_qos {1, "policy-map-type-qos"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_pbr {2, "policy-map-type-pbr"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_traffic {3, "policy-map-type-traffic"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_subs_control {4, "policy-map-type-subs-control"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_accounting {5, "policy-map-type-accounting"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_redirect {6, "policy-map-type-redirect"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_afmon {7, "policy-map-type-afmon"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_merge {8, "policy-map-type-merge"};
-const Enum::YLeaf PolicyMapTypeEn::policy_map_type_max {9, "policy-map-type-max"};
-
-const Enum::YLeaf RedirectTypeEn::redirect_type_none {0, "redirect-type-none"};
-const Enum::YLeaf RedirectTypeEn::redirect_type_output_interface {1, "redirect-type-output-interface"};
-const Enum::YLeaf RedirectTypeEn::redirect_type_max {2, "redirect-type-max"};
-
-const Enum::YLeaf PolicyActionExecTypeE::execution_immediate {1, "execution-immediate"};
-const Enum::YLeaf PolicyActionExecTypeE::execution_deferred {2, "execution-deferred"};
-
-const Enum::YLeaf ClassMapModeEn::class_map_mode_match_any {0, "class-map-mode-match-any"};
-const Enum::YLeaf ClassMapModeEn::class_map_mode_match_all {1, "class-map-mode-match-all"};
-const Enum::YLeaf ClassMapModeEn::class_map_mode_max {2, "class-map-mode-max"};
-const Enum::YLeaf ClassMapModeEn::class_map_mode_usr_def {1073741824, "class-map-mode-usr-def"};
-
-const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_unspecified {0, "match-subs-protocol-unspecified"};
-const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_ipv4 {1, "match-subs-protocol-ipv4"};
-const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_ppp {2, "match-subs-protocol-ppp"};
-const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_dhcpv4 {3, "match-subs-protocol-dhcpv4"};
-const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_dhcpv6 {4, "match-subs-protocol-dhcpv6"};
-const Enum::YLeaf MatchSubsProtocolEn::match_subs_protocol_max {5, "match-subs-protocol-max"};
-
 const Enum::YLeaf VsvcServiceTypeT::vsvc_service_invalid {0, "vsvc-service-invalid"};
 const Enum::YLeaf VsvcServiceTypeT::vsvc_service_v_path {1, "vsvc-service-v-path"};
 const Enum::YLeaf VsvcServiceTypeT::vsvc_service_ipsec {2, "vsvc-service-ipsec"};
@@ -18128,64 +18142,50 @@ const Enum::YLeaf VsvcServiceTypeT::vsvc_service_sfl {8, "vsvc-service-sfl"};
 const Enum::YLeaf VsvcServiceTypeT::vsvc_service_sffl {9, "vsvc-service-sffl"};
 const Enum::YLeaf VsvcServiceTypeT::vsvc_service_max {10, "vsvc-service-max"};
 
-const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_invalid {0, "afmon-flow-parm-invalid"};
-const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_max_mon_flow_s {1, "afmon-flow-parm-max-mon-flow-s"};
-const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_mon_interval {2, "afmon-flow-parm-mon-interval"};
-const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_intvl_hist {3, "afmon-flow-parm-intvl-hist"};
-const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_flow_timeout {4, "afmon-flow-parm-flow-timeout"};
-const Enum::YLeaf AfmonFlowParmTypeEn::afmon_flow_parm_max {5, "afmon-flow-parm-max"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_kbytes {2, "policy-param-unit-kbytes"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_mbytes {3, "policy-param-unit-mbytes"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_gbytes {4, "policy-param-unit-gbytes"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_bitsps {5, "policy-param-unit-bitsps"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_kbitsps {6, "policy-param-unit-kbitsps"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_mbitsps {7, "policy-param-unit-mbitsps"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_gbitsps {8, "policy-param-unit-gbitsps"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_cells_ps {9, "policy-param-unit-cells-ps"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_packets_ps {10, "policy-param-unit-packets-ps"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_us {11, "policy-param-unit-us"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_ms {12, "policy-param-unit-ms"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_seconds {13, "policy-param-unit-seconds"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_packets {14, "policy-param-unit-packets"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_cells {15, "policy-param-unit-cells"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_percent {16, "policy-param-unit-percent"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_per_thousand {17, "policy-param-unit-per-thousand"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_per_million {18, "policy-param-unit-per-million"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_hz {19, "policy-param-unit-hz"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_khz {20, "policy-param-unit-khz"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_mhz {21, "policy-param-unit-mhz"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
+const Enum::YLeaf PolicyParamUnitType::policy_param_unit_max {23, "policy-param-unit-max"};
 
-const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_type_invalid {0, "afmon-trig-type-invalid"};
-const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_immed {1, "afmon-trig-immed"};
-const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_avg {2, "afmon-trig-avg"};
-const Enum::YLeaf AfmonTrigTypeEn::afmon_trig_type_max {3, "afmon-trig-type-max"};
+const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_relop_invalid {0, "afmon-trig-relop-invalid"};
+const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_lt {1, "afmon-trig-lt"};
+const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_le {2, "afmon-trig-le"};
+const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_gt {3, "afmon-trig-gt"};
+const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_ge {4, "afmon-trig-ge"};
+const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_range {5, "afmon-trig-range"};
+const Enum::YLeaf AfmonTrigRelopEn::afmon_trig_relop_max {6, "afmon-trig-relop-max"};
 
-const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_unspecified {0, "match-authen-status-unspecified"};
-const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_authenticated {1, "match-authen-status-authenticated"};
-const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_unauthenticated {2, "match-authen-status-unauthenticated"};
-const Enum::YLeaf MatchAuthenStatusEn::match_authen_status_max {3, "match-authen-status-max"};
+const Enum::YLeaf MatchAttrE::value_ {0, "value"};
+const Enum::YLeaf MatchAttrE::range {1, "range"};
+const Enum::YLeaf MatchAttrE::mask {2, "mask"};
 
-const Enum::YLeaf PolicyClassInfoEn::policy_class_info_key_type {0, "policy-class-info-key-type"};
-const Enum::YLeaf PolicyClassInfoEn::policy_class_info_mod_type {1, "policy-class-info-mod-type"};
-
-const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_invalid {0, "afmon-mdi-parm-invalid"};
-const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_pids {1, "afmon-mdi-parm-pids"};
-const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_pkt_rate {2, "afmon-mdi-parm-pkt-rate"};
-const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_ip_pkt_rate {3, "afmon-mdi-parm-ip-pkt-rate"};
-const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_ip_bit_rate {4, "afmon-mdi-parm-ip-bit-rate"};
-const Enum::YLeaf AfmonMdiParmTypeEn::afmon_mdi_parm_max {5, "afmon-mdi-parm-max"};
-
-const Enum::YLeaf PoliceActionTypeEn::police_action_none {0, "police-action-none"};
-const Enum::YLeaf PoliceActionTypeEn::police_action_transmit {1, "police-action-transmit"};
-const Enum::YLeaf PoliceActionTypeEn::police_action_drop {2, "police-action-drop"};
-const Enum::YLeaf PoliceActionTypeEn::police_action_mark {3, "police-action-mark"};
-const Enum::YLeaf PoliceActionTypeEn::police_action_max {4, "police-action-max"};
-
-const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_negotiated_unspecified {0, "match-mlp-negotiated-unspecified"};
-const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_negotiated {1, "match-mlp-negotiated"};
-const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_not_negotiated {2, "match-mlp-not-negotiated"};
-const Enum::YLeaf MatchMlpNegotiatedEn::match_mlp_max {3, "match-mlp-max"};
-
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_unspecified {0, "match-nas-port-intf-type-unspecified"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_async {1, "match-nas-port-intf-type-async"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_atm {2, "match-nas-port-intf-type-atm"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_bri {3, "match-nas-port-intf-type-bri"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_ether {4, "match-nas-port-intf-type-ether"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_ipsec {5, "match-nas-port-intf-type-ipsec"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_none {6, "match-nas-port-intf-type-none"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_piafs {7, "match-nas-port-intf-type-piafs"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppatm {8, "match-nas-port-intf-type-pppatm"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_ppp_ether {9, "match-nas-port-intf-type-ppp-ether"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppoeatm {10, "match-nas-port-intf-type-pppoeatm"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppqinq {11, "match-nas-port-intf-type-pppqinq"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pppvlan {12, "match-nas-port-intf-type-pppvlan"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_pri {13, "match-nas-port-intf-type-pri"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_sync {14, "match-nas-port-intf-type-sync"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_v110 {15, "match-nas-port-intf-type-v110"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_v120 {16, "match-nas-port-intf-type-v120"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_vty {17, "match-nas-port-intf-type-vty"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_x75 {18, "match-nas-port-intf-type-x75"};
-const Enum::YLeaf MatchNasPortIntfTypeEn::match_nas_port_intf_type_max {19, "match-nas-port-intf-type-max"};
+const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_invalid {0, "afmon-ipcbr-parm-invalid"};
+const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_ip_pkt_rate {1, "afmon-ipcbr-parm-ip-pkt-rate"};
+const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_ip_bit_rate {2, "afmon-ipcbr-parm-ip-bit-rate"};
+const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_media_bit_rate {3, "afmon-ipcbr-parm-media-bit-rate"};
+const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_media_pkt_size {4, "afmon-ipcbr-parm-media-pkt-size"};
+const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_media_pkts_per_ip {5, "afmon-ipcbr-parm-media-pkts-per-ip"};
+const Enum::YLeaf AfmonIpcbrParmTypeEn::afmon_ipcbr_parm_max {6, "afmon-ipcbr-parm-max"};
 
 
 }

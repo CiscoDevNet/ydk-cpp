@@ -3573,6 +3573,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Ne
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Neighbor::FilterList::Inout : public ydk::Enum
@@ -3581,6 +3586,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Ne
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Neighbor::PrefixList::Inout : public ydk::Enum
@@ -3589,6 +3599,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Ne
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3597,6 +3612,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Ne
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3606,6 +3626,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::PeerGroup::Ne
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3613,6 +3639,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::Sof
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::DistributeList::Inout : public ydk::Enum
@@ -3621,6 +3651,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::Dis
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::FilterList::Inout : public ydk::Enum
@@ -3629,6 +3664,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::Fil
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::PrefixList::Inout : public ydk::Enum
@@ -3637,6 +3677,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::Pre
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3645,6 +3690,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::Rou
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3654,6 +3704,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Neighbor::Sen
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Capability::Orf::PrefixList : public ydk::Enum
@@ -3663,6 +3719,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::Capability::O
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::RouteMap::Inout : public ydk::Enum
@@ -3671,6 +3733,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::RouteMap::Ino
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3680,6 +3747,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnEvpn::SendCommunity
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Bgp_::Default::RouteTarget : public ydk::Enum
@@ -3687,6 +3760,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Bgp_::Default
     public:
         static const ydk::Enum::YLeaf filter;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "filter") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3694,6 +3771,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Ne
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3703,6 +3784,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Ne
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3711,6 +3798,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Ne
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3720,6 +3812,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::PeerGroup::Ne
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3727,6 +3825,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::Sof
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3736,6 +3838,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::Cap
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3744,6 +3852,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::Rou
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3753,6 +3866,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2vpn::L2vpnVpls::Neighbor::Sen
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::AfName : public ydk::Enum
@@ -3760,6 +3879,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::AfName : public ydk::
     public:
         static const ydk::Enum::YLeaf unicast;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3767,6 +3890,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup:
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3776,6 +3903,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup:
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3784,6 +3917,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup:
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3793,6 +3931,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::PeerGroup:
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3800,6 +3944,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::Neighbor::
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3809,6 +3957,12 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Rtfilter_::Neighbor::
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 

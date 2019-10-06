@@ -67,6 +67,11 @@ class BcChannelSpeed : public ydk::Enum
         static const ydk::Enum::YLeaf Y_10gb;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "10gb") return 0;
+            if (name == "unknown") return 1;
+            return -1;
+        }
 };
 
 

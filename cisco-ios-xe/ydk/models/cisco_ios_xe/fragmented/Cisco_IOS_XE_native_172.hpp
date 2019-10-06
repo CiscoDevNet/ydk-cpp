@@ -3610,6 +3610,12 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::AfName : pub
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf flowspec;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            if (name == "multicast") return 1;
+            if (name == "flowspec") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Bgp_::AggregateTimer::DisableTimer : public ydk::Enum
@@ -3617,6 +3623,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
     public:
         static const ydk::Enum::YLeaf Y_0;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Bgp_::Default::RouteTarget : public ydk::Enum
@@ -3624,6 +3634,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
     public:
         static const ydk::Enum::YLeaf filter;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "filter") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3631,6 +3645,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3640,6 +3658,12 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::DistributeList::Inout : public ydk::Enum
@@ -3648,6 +3672,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::FilterList::Inout : public ydk::Enum
@@ -3656,6 +3685,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::PrefixList::Inout : public ydk::Enum
@@ -3664,6 +3698,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3672,6 +3711,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3681,6 +3725,12 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::PeerGroup::Neighbor::SendLabel::SendLabelExplicit : public ydk::Enum
@@ -3688,6 +3738,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
     public:
         static const ydk::Enum::YLeaf explicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "explicit-null") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::SoftReconfiguration : public ydk::Enum
@@ -3695,6 +3749,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
     public:
         static const ydk::Enum::YLeaf inbound;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "inbound") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
@@ -3704,6 +3762,12 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf send;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "send") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::DistributeList::Inout : public ydk::Enum
@@ -3712,6 +3776,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::FilterList::Inout : public ydk::Enum
@@ -3720,6 +3789,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::PrefixList::Inout : public ydk::Enum
@@ -3728,6 +3802,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::RouteMap::Inout : public ydk::Enum
@@ -3736,6 +3815,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
@@ -3745,6 +3829,12 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
         static const ydk::Enum::YLeaf extended;
         static const ydk::Enum::YLeaf standard;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "extended") return 1;
+            if (name == "standard") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast::Neighbor::SendLabel::SendLabelExplicit : public ydk::Enum
@@ -3752,6 +3842,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv4::Vpnv4Unicast
     public:
         static const ydk::Enum::YLeaf explicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "explicit-null") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv6::AfName : public ydk::Enum
@@ -3761,6 +3855,12 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv6::AfName : pub
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf flowspec;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 0;
+            if (name == "multicast") return 1;
+            if (name == "flowspec") return 2;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Bgp_::AggregateTimer::DisableTimer : public ydk::Enum
@@ -3768,6 +3868,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast
     public:
         static const ydk::Enum::YLeaf Y_0;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "0") return 0;
+            return -1;
+        }
 };
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Bgp_::Default::RouteTarget : public ydk::Enum
@@ -3775,6 +3879,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast
     public:
         static const ydk::Enum::YLeaf filter;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "filter") return 0;
+            return -1;
+        }
 };
 
 

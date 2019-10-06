@@ -2794,15 +2794,6 @@ bool CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportAct
     return false;
 }
 
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::none {1, "none"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::local {2, "local"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::tftp {3, "tftp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::ftp {4, "ftp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::rcp {5, "rcp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::http {6, "http"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::scp {7, "scp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::sftp {8, "sftp"};
-
 const Enum::YLeaf ClmgmtLicenseActionState::none {1, "none"};
 const Enum::YLeaf ClmgmtLicenseActionState::pending {2, "pending"};
 const Enum::YLeaf ClmgmtLicenseActionState::inProgress {3, "inProgress"};
@@ -2832,6 +2823,15 @@ const Enum::YLeaf ClmgmtLicenseActionFailCause::invalidRehostTicket {19, "invali
 const Enum::YLeaf ClmgmtLicenseActionFailCause::invalidLicenseBackupFile {20, "invalidLicenseBackupFile"};
 const Enum::YLeaf ClmgmtLicenseActionFailCause::licenseClearInProgress {21, "licenseClearInProgress"};
 const Enum::YLeaf ClmgmtLicenseActionFailCause::invalidLicenseEULAFile {22, "invalidLicenseEULAFile"};
+
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::none {1, "none"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::local {2, "local"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::tftp {3, "tftp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::ftp {4, "ftp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::rcp {5, "rcp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::http {6, "http"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::scp {7, "scp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::sftp {8, "sftp"};
 
 const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEnable::other {0, "other"};
 const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEnable::true_ {1, "true"};

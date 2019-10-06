@@ -69,6 +69,12 @@ class SnmpSecurityLevel : public ydk::Enum
         static const ydk::Enum::YLeaf authNoPriv;
         static const ydk::Enum::YLeaf authPriv;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "noAuthNoPriv") return 1;
+            if (name == "authNoPriv") return 2;
+            if (name == "authPriv") return 3;
+            return -1;
+        }
 };
 
 

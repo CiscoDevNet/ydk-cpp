@@ -6,10 +6,10 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_39.hpp"
 #include "Cisco_IOS_XE_native_42.hpp"
-#include "Cisco_IOS_XE_native_44.hpp"
-#include "Cisco_IOS_XE_native_43.hpp"
 #include "Cisco_IOS_XE_native_41.hpp"
 #include "Cisco_IOS_XE_native_40.hpp"
+#include "Cisco_IOS_XE_native_44.hpp"
+#include "Cisco_IOS_XE_native_43.hpp"
 
 using namespace ydk;
 
@@ -8753,8 +8753,8 @@ Native::Interface::GigabitEthernet::GigabitEthernet()
     channel_protocol{YType::enumeration, "Cisco-IOS-XE-ethernet:channel-protocol"},
     duplex{YType::enumeration, "Cisco-IOS-XE-ethernet:duplex"},
     cisco_ios_xe_ethernet_macsec{YType::empty, "Cisco-IOS-XE-ethernet:macsec"},
-    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"},
-    cisco_ios_xe_switch_macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"}
+    cisco_ios_xe_switch_macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"},
+    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"}
         ,
     switchport_conf(std::make_shared<Native::Interface::GigabitEthernet::SwitchportConf>())
     , switchport(std::make_shared<Native::Interface::GigabitEthernet::Switchport>())
@@ -8794,6 +8794,7 @@ Native::Interface::GigabitEthernet::GigabitEthernet()
     , peer(std::make_shared<Native::Interface::GigabitEthernet::Peer>())
     , pm_path(std::make_shared<Native::Interface::GigabitEthernet::PmPath>())
     , switchport_wrapper(std::make_shared<Native::Interface::GigabitEthernet::SwitchportWrapper>())
+    , power(std::make_shared<Native::Interface::GigabitEthernet::Power>())
     , carrier_delay(std::make_shared<Native::Interface::GigabitEthernet::CarrierDelay>())
     , channel_group(std::make_shared<Native::Interface::GigabitEthernet::ChannelGroup>())
     , ethernet(std::make_shared<Native::Interface::GigabitEthernet::Ethernet>())
@@ -8806,28 +8807,11 @@ Native::Interface::GigabitEthernet::GigabitEthernet()
     , service(std::make_shared<Native::Interface::GigabitEthernet::Service>())
     , lacp(std::make_shared<Native::Interface::GigabitEthernet::Lacp>())
     , cisco_ios_xe_ethernet_macsec_option(std::make_shared<Native::Interface::GigabitEthernet::CiscoIOSXEEthernetMacsecOption>())
-    , xconnect(std::make_shared<Native::Interface::GigabitEthernet::Xconnect>())
-    , evpn(std::make_shared<Native::Interface::GigabitEthernet::Evpn>())
     , snmp(std::make_shared<Native::Interface::GigabitEthernet::Snmp>())
-    , ospfv3(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3>())
-    , cdp(std::make_shared<Native::Interface::GigabitEthernet::Cdp>())
-    , crypto(std::make_shared<Native::Interface::GigabitEthernet::Crypto>())
-    , cts(std::make_shared<Native::Interface::GigabitEthernet::Cts>())
-    , dot1x(std::make_shared<Native::Interface::GigabitEthernet::Dot1x>())
-    , et_analytics(std::make_shared<Native::Interface::GigabitEthernet::EtAnalytics>())
-    , performance(std::make_shared<Native::Interface::GigabitEthernet::Performance>())
-    , service_policy(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy>())
-    , fabric_domain(std::make_shared<Native::Interface::GigabitEthernet::FabricDomain>())
-    , lisp(std::make_shared<Native::Interface::GigabitEthernet::Lisp>())
-    , lldp(std::make_shared<Native::Interface::GigabitEthernet::Lldp>())
-    , mka(std::make_shared<Native::Interface::GigabitEthernet::Mka>())
-    , mvrp(nullptr) // presence node
-    , analysis_module(std::make_shared<Native::Interface::GigabitEthernet::AnalysisModule>())
-    , ntp(std::make_shared<Native::Interface::GigabitEthernet::Ntp>())
-    , power(std::make_shared<Native::Interface::GigabitEthernet::Power>())
     , authentication(std::make_shared<Native::Interface::GigabitEthernet::Authentication>())
     , mab(nullptr) // presence node
-    , spanning_tree(std::make_shared<Native::Interface::GigabitEthernet::SpanningTree>())
+    , et_analytics(std::make_shared<Native::Interface::GigabitEthernet::EtAnalytics>())
+    , service_policy(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy>())
     , auto_(std::make_shared<Native::Interface::GigabitEthernet::Auto>())
     , datalink(std::make_shared<Native::Interface::GigabitEthernet::Datalink>())
     , energywise(nullptr) // presence node
@@ -8841,11 +8825,27 @@ Native::Interface::GigabitEthernet::GigabitEthernet()
     , srr_queue(std::make_shared<Native::Interface::GigabitEthernet::SrrQueue>())
     , cisco_ios_xe_switch_macsec_option(std::make_shared<Native::Interface::GigabitEthernet::CiscoIOSXESwitchMacsecOption>())
     , device_tracking(std::make_shared<Native::Interface::GigabitEthernet::DeviceTracking>())
-    , udld(std::make_shared<Native::Interface::GigabitEthernet::Udld>())
+    , ospfv3(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3>())
+    , performance(std::make_shared<Native::Interface::GigabitEthernet::Performance>())
+    , lisp(std::make_shared<Native::Interface::GigabitEthernet::Lisp>())
+    , spanning_tree(std::make_shared<Native::Interface::GigabitEthernet::SpanningTree>())
+    , mka(std::make_shared<Native::Interface::GigabitEthernet::Mka>())
     , umbrella(std::make_shared<Native::Interface::GigabitEthernet::Umbrella>())
-    , utd(std::make_shared<Native::Interface::GigabitEthernet::Utd>())
-    , vrrp(std::make_shared<Native::Interface::GigabitEthernet::Vrrp>())
+    , xconnect(std::make_shared<Native::Interface::GigabitEthernet::Xconnect>())
+    , evpn(std::make_shared<Native::Interface::GigabitEthernet::Evpn>())
+    , dot1x(std::make_shared<Native::Interface::GigabitEthernet::Dot1x>())
+    , crypto(std::make_shared<Native::Interface::GigabitEthernet::Crypto>())
+    , lldp(std::make_shared<Native::Interface::GigabitEthernet::Lldp>())
     , zone_member(std::make_shared<Native::Interface::GigabitEthernet::ZoneMember>())
+    , vrrp(std::make_shared<Native::Interface::GigabitEthernet::Vrrp>())
+    , fabric_domain(std::make_shared<Native::Interface::GigabitEthernet::FabricDomain>())
+    , analysis_module(std::make_shared<Native::Interface::GigabitEthernet::AnalysisModule>())
+    , cts(std::make_shared<Native::Interface::GigabitEthernet::Cts>())
+    , udld(std::make_shared<Native::Interface::GigabitEthernet::Udld>())
+    , cdp(std::make_shared<Native::Interface::GigabitEthernet::Cdp>())
+    , mvrp(nullptr) // presence node
+    , ntp(std::make_shared<Native::Interface::GigabitEthernet::Ntp>())
+    , utd(std::make_shared<Native::Interface::GigabitEthernet::Utd>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -8883,6 +8883,7 @@ Native::Interface::GigabitEthernet::GigabitEthernet()
     peer->parent = this;
     pm_path->parent = this;
     switchport_wrapper->parent = this;
+    power->parent = this;
     carrier_delay->parent = this;
     channel_group->parent = this;
     ethernet->parent = this;
@@ -8895,26 +8896,10 @@ Native::Interface::GigabitEthernet::GigabitEthernet()
     service->parent = this;
     lacp->parent = this;
     cisco_ios_xe_ethernet_macsec_option->parent = this;
-    xconnect->parent = this;
-    evpn->parent = this;
     snmp->parent = this;
-    ospfv3->parent = this;
-    cdp->parent = this;
-    crypto->parent = this;
-    cts->parent = this;
-    dot1x->parent = this;
-    et_analytics->parent = this;
-    performance->parent = this;
-    service_policy->parent = this;
-    fabric_domain->parent = this;
-    lisp->parent = this;
-    lldp->parent = this;
-    mka->parent = this;
-    analysis_module->parent = this;
-    ntp->parent = this;
-    power->parent = this;
     authentication->parent = this;
-    spanning_tree->parent = this;
+    et_analytics->parent = this;
+    service_policy->parent = this;
     auto_->parent = this;
     datalink->parent = this;
     location->parent = this;
@@ -8926,11 +8911,26 @@ Native::Interface::GigabitEthernet::GigabitEthernet()
     srr_queue->parent = this;
     cisco_ios_xe_switch_macsec_option->parent = this;
     device_tracking->parent = this;
-    udld->parent = this;
+    ospfv3->parent = this;
+    performance->parent = this;
+    lisp->parent = this;
+    spanning_tree->parent = this;
+    mka->parent = this;
     umbrella->parent = this;
-    utd->parent = this;
-    vrrp->parent = this;
+    xconnect->parent = this;
+    evpn->parent = this;
+    dot1x->parent = this;
+    crypto->parent = this;
+    lldp->parent = this;
     zone_member->parent = this;
+    vrrp->parent = this;
+    fabric_domain->parent = this;
+    analysis_module->parent = this;
+    cts->parent = this;
+    udld->parent = this;
+    cdp->parent = this;
+    ntp->parent = this;
+    utd->parent = this;
 
     yang_name = "GigabitEthernet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -8968,8 +8968,8 @@ bool Native::Interface::GigabitEthernet::has_data() const
 	|| channel_protocol.is_set
 	|| duplex.is_set
 	|| cisco_ios_xe_ethernet_macsec.is_set
-	|| nat66.is_set
 	|| cisco_ios_xe_switch_macsec.is_set
+	|| nat66.is_set
 	|| (switchport_conf !=  nullptr && switchport_conf->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
 	|| (stackwise_virtual !=  nullptr && stackwise_virtual->has_data())
@@ -9007,6 +9007,7 @@ bool Native::Interface::GigabitEthernet::has_data() const
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
 	|| (switchport_wrapper !=  nullptr && switchport_wrapper->has_data())
+	|| (power !=  nullptr && power->has_data())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_data())
 	|| (channel_group !=  nullptr && channel_group->has_data())
 	|| (ethernet !=  nullptr && ethernet->has_data())
@@ -9019,28 +9020,11 @@ bool Native::Interface::GigabitEthernet::has_data() const
 	|| (service !=  nullptr && service->has_data())
 	|| (lacp !=  nullptr && lacp->has_data())
 	|| (cisco_ios_xe_ethernet_macsec_option !=  nullptr && cisco_ios_xe_ethernet_macsec_option->has_data())
-	|| (xconnect !=  nullptr && xconnect->has_data())
-	|| (evpn !=  nullptr && evpn->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
-	|| (cdp !=  nullptr && cdp->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (dot1x !=  nullptr && dot1x->has_data())
-	|| (et_analytics !=  nullptr && et_analytics->has_data())
-	|| (performance !=  nullptr && performance->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
-	|| (fabric_domain !=  nullptr && fabric_domain->has_data())
-	|| (lisp !=  nullptr && lisp->has_data())
-	|| (lldp !=  nullptr && lldp->has_data())
-	|| (mka !=  nullptr && mka->has_data())
-	|| (mvrp !=  nullptr && mvrp->has_data())
-	|| (analysis_module !=  nullptr && analysis_module->has_data())
-	|| (ntp !=  nullptr && ntp->has_data())
-	|| (power !=  nullptr && power->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (mab !=  nullptr && mab->has_data())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
+	|| (et_analytics !=  nullptr && et_analytics->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (auto_ !=  nullptr && auto_->has_data())
 	|| (datalink !=  nullptr && datalink->has_data())
 	|| (energywise !=  nullptr && energywise->has_data())
@@ -9053,11 +9037,27 @@ bool Native::Interface::GigabitEthernet::has_data() const
 	|| (srr_queue !=  nullptr && srr_queue->has_data())
 	|| (cisco_ios_xe_switch_macsec_option !=  nullptr && cisco_ios_xe_switch_macsec_option->has_data())
 	|| (device_tracking !=  nullptr && device_tracking->has_data())
-	|| (udld !=  nullptr && udld->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (performance !=  nullptr && performance->has_data())
+	|| (lisp !=  nullptr && lisp->has_data())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
+	|| (mka !=  nullptr && mka->has_data())
 	|| (umbrella !=  nullptr && umbrella->has_data())
-	|| (utd !=  nullptr && utd->has_data())
+	|| (xconnect !=  nullptr && xconnect->has_data())
+	|| (evpn !=  nullptr && evpn->has_data())
+	|| (dot1x !=  nullptr && dot1x->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (lldp !=  nullptr && lldp->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data())
 	|| (vrrp !=  nullptr && vrrp->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data());
+	|| (fabric_domain !=  nullptr && fabric_domain->has_data())
+	|| (analysis_module !=  nullptr && analysis_module->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (udld !=  nullptr && udld->has_data())
+	|| (cdp !=  nullptr && cdp->has_data())
+	|| (mvrp !=  nullptr && mvrp->has_data())
+	|| (ntp !=  nullptr && ntp->has_data())
+	|| (utd !=  nullptr && utd->has_data());
 }
 
 bool Native::Interface::GigabitEthernet::has_operation() const
@@ -9089,8 +9089,8 @@ bool Native::Interface::GigabitEthernet::has_operation() const
 	|| ydk::is_set(channel_protocol.yfilter)
 	|| ydk::is_set(duplex.yfilter)
 	|| ydk::is_set(cisco_ios_xe_ethernet_macsec.yfilter)
-	|| ydk::is_set(nat66.yfilter)
 	|| ydk::is_set(cisco_ios_xe_switch_macsec.yfilter)
+	|| ydk::is_set(nat66.yfilter)
 	|| (switchport_conf !=  nullptr && switchport_conf->has_operation())
 	|| (switchport !=  nullptr && switchport->has_operation())
 	|| (stackwise_virtual !=  nullptr && stackwise_virtual->has_operation())
@@ -9128,6 +9128,7 @@ bool Native::Interface::GigabitEthernet::has_operation() const
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
 	|| (switchport_wrapper !=  nullptr && switchport_wrapper->has_operation())
+	|| (power !=  nullptr && power->has_operation())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_operation())
 	|| (channel_group !=  nullptr && channel_group->has_operation())
 	|| (ethernet !=  nullptr && ethernet->has_operation())
@@ -9140,28 +9141,11 @@ bool Native::Interface::GigabitEthernet::has_operation() const
 	|| (service !=  nullptr && service->has_operation())
 	|| (lacp !=  nullptr && lacp->has_operation())
 	|| (cisco_ios_xe_ethernet_macsec_option !=  nullptr && cisco_ios_xe_ethernet_macsec_option->has_operation())
-	|| (xconnect !=  nullptr && xconnect->has_operation())
-	|| (evpn !=  nullptr && evpn->has_operation())
 	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
-	|| (cdp !=  nullptr && cdp->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (dot1x !=  nullptr && dot1x->has_operation())
-	|| (et_analytics !=  nullptr && et_analytics->has_operation())
-	|| (performance !=  nullptr && performance->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
-	|| (fabric_domain !=  nullptr && fabric_domain->has_operation())
-	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (lldp !=  nullptr && lldp->has_operation())
-	|| (mka !=  nullptr && mka->has_operation())
-	|| (mvrp !=  nullptr && mvrp->has_operation())
-	|| (analysis_module !=  nullptr && analysis_module->has_operation())
-	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (power !=  nullptr && power->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (mab !=  nullptr && mab->has_operation())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
+	|| (et_analytics !=  nullptr && et_analytics->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (auto_ !=  nullptr && auto_->has_operation())
 	|| (datalink !=  nullptr && datalink->has_operation())
 	|| (energywise !=  nullptr && energywise->has_operation())
@@ -9174,11 +9158,27 @@ bool Native::Interface::GigabitEthernet::has_operation() const
 	|| (srr_queue !=  nullptr && srr_queue->has_operation())
 	|| (cisco_ios_xe_switch_macsec_option !=  nullptr && cisco_ios_xe_switch_macsec_option->has_operation())
 	|| (device_tracking !=  nullptr && device_tracking->has_operation())
-	|| (udld !=  nullptr && udld->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (performance !=  nullptr && performance->has_operation())
+	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
+	|| (mka !=  nullptr && mka->has_operation())
 	|| (umbrella !=  nullptr && umbrella->has_operation())
-	|| (utd !=  nullptr && utd->has_operation())
+	|| (xconnect !=  nullptr && xconnect->has_operation())
+	|| (evpn !=  nullptr && evpn->has_operation())
+	|| (dot1x !=  nullptr && dot1x->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (lldp !=  nullptr && lldp->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation())
 	|| (vrrp !=  nullptr && vrrp->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation());
+	|| (fabric_domain !=  nullptr && fabric_domain->has_operation())
+	|| (analysis_module !=  nullptr && analysis_module->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (udld !=  nullptr && udld->has_operation())
+	|| (cdp !=  nullptr && cdp->has_operation())
+	|| (mvrp !=  nullptr && mvrp->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (utd !=  nullptr && utd->has_operation());
 }
 
 std::string Native::Interface::GigabitEthernet::get_absolute_path() const
@@ -9216,8 +9216,8 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
     if (channel_protocol.is_set || is_set(channel_protocol.yfilter)) leaf_name_data.push_back(channel_protocol.get_name_leafdata());
     if (duplex.is_set || is_set(duplex.yfilter)) leaf_name_data.push_back(duplex.get_name_leafdata());
     if (cisco_ios_xe_ethernet_macsec.is_set || is_set(cisco_ios_xe_ethernet_macsec.yfilter)) leaf_name_data.push_back(cisco_ios_xe_ethernet_macsec.get_name_leafdata());
-    if (nat66.is_set || is_set(nat66.yfilter)) leaf_name_data.push_back(nat66.get_name_leafdata());
     if (cisco_ios_xe_switch_macsec.is_set || is_set(cisco_ios_xe_switch_macsec.yfilter)) leaf_name_data.push_back(cisco_ios_xe_switch_macsec.get_name_leafdata());
+    if (nat66.is_set || is_set(nat66.yfilter)) leaf_name_data.push_back(nat66.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9566,6 +9566,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::get_child_by_na
         return switchport_wrapper;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-power:power")
+    {
+        if(power == nullptr)
+        {
+            power = std::make_shared<Native::Interface::GigabitEthernet::Power>();
+        }
+        return power;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-ethernet:carrier-delay")
     {
         if(carrier_delay == nullptr)
@@ -9674,24 +9683,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::get_child_by_na
         return cisco_ios_xe_ethernet_macsec_option;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-l2vpn:xconnect")
-    {
-        if(xconnect == nullptr)
-        {
-            xconnect = std::make_shared<Native::Interface::GigabitEthernet::Xconnect>();
-        }
-        return xconnect;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-l2vpn:evpn")
-    {
-        if(evpn == nullptr)
-        {
-            evpn = std::make_shared<Native::Interface::GigabitEthernet::Evpn>();
-        }
-        return evpn;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
     {
         if(snmp == nullptr)
@@ -9699,150 +9690,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::get_child_by_na
             snmp = std::make_shared<Native::Interface::GigabitEthernet::Snmp>();
         }
         return snmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3>();
-        }
-        return ospfv3;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
-    {
-        if(cdp == nullptr)
-        {
-            cdp = std::make_shared<Native::Interface::GigabitEthernet::Cdp>();
-        }
-        return cdp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::GigabitEthernet::Crypto>();
-        }
-        return crypto;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::GigabitEthernet::Cts>();
-        }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
-    {
-        if(dot1x == nullptr)
-        {
-            dot1x = std::make_shared<Native::Interface::GigabitEthernet::Dot1x>();
-        }
-        return dot1x;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
-    {
-        if(et_analytics == nullptr)
-        {
-            et_analytics = std::make_shared<Native::Interface::GigabitEthernet::EtAnalytics>();
-        }
-        return et_analytics;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
-    {
-        if(performance == nullptr)
-        {
-            performance = std::make_shared<Native::Interface::GigabitEthernet::Performance>();
-        }
-        return performance;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-iwanfabric:fabric-domain")
-    {
-        if(fabric_domain == nullptr)
-        {
-            fabric_domain = std::make_shared<Native::Interface::GigabitEthernet::FabricDomain>();
-        }
-        return fabric_domain;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
-    {
-        if(lisp == nullptr)
-        {
-            lisp = std::make_shared<Native::Interface::GigabitEthernet::Lisp>();
-        }
-        return lisp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-lldp:lldp")
-    {
-        if(lldp == nullptr)
-        {
-            lldp = std::make_shared<Native::Interface::GigabitEthernet::Lldp>();
-        }
-        return lldp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-mka:mka")
-    {
-        if(mka == nullptr)
-        {
-            mka = std::make_shared<Native::Interface::GigabitEthernet::Mka>();
-        }
-        return mka;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
-    {
-        if(mvrp == nullptr)
-        {
-            mvrp = std::make_shared<Native::Interface::GigabitEthernet::Mvrp>();
-        }
-        return mvrp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
-    {
-        if(analysis_module == nullptr)
-        {
-            analysis_module = std::make_shared<Native::Interface::GigabitEthernet::AnalysisModule>();
-        }
-        return analysis_module;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
-    {
-        if(ntp == nullptr)
-        {
-            ntp = std::make_shared<Native::Interface::GigabitEthernet::Ntp>();
-        }
-        return ntp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-power:power")
-    {
-        if(power == nullptr)
-        {
-            power = std::make_shared<Native::Interface::GigabitEthernet::Power>();
-        }
-        return power;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-sanet:authentication")
@@ -9863,13 +9710,22 @@ std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::get_child_by_na
         return mab;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
+    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
     {
-        if(spanning_tree == nullptr)
+        if(et_analytics == nullptr)
         {
-            spanning_tree = std::make_shared<Native::Interface::GigabitEthernet::SpanningTree>();
+            et_analytics = std::make_shared<Native::Interface::GigabitEthernet::EtAnalytics>();
         }
-        return spanning_tree;
+        return et_analytics;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy>();
+        }
+        return service_policy;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-switch:auto")
@@ -9988,13 +9844,49 @@ std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::get_child_by_na
         return device_tracking;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
     {
-        if(udld == nullptr)
+        if(ospfv3 == nullptr)
         {
-            udld = std::make_shared<Native::Interface::GigabitEthernet::Udld>();
+            ospfv3 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3>();
         }
-        return udld;
+        return ospfv3;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
+    {
+        if(performance == nullptr)
+        {
+            performance = std::make_shared<Native::Interface::GigabitEthernet::Performance>();
+        }
+        return performance;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
+    {
+        if(lisp == nullptr)
+        {
+            lisp = std::make_shared<Native::Interface::GigabitEthernet::Lisp>();
+        }
+        return lisp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
+    {
+        if(spanning_tree == nullptr)
+        {
+            spanning_tree = std::make_shared<Native::Interface::GigabitEthernet::SpanningTree>();
+        }
+        return spanning_tree;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-mka:mka")
+    {
+        if(mka == nullptr)
+        {
+            mka = std::make_shared<Native::Interface::GigabitEthernet::Mka>();
+        }
+        return mka;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
@@ -10006,13 +9898,58 @@ std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::get_child_by_na
         return umbrella;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    if(child_yang_name == "Cisco-IOS-XE-l2vpn:xconnect")
     {
-        if(utd == nullptr)
+        if(xconnect == nullptr)
         {
-            utd = std::make_shared<Native::Interface::GigabitEthernet::Utd>();
+            xconnect = std::make_shared<Native::Interface::GigabitEthernet::Xconnect>();
         }
-        return utd;
+        return xconnect;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-l2vpn:evpn")
+    {
+        if(evpn == nullptr)
+        {
+            evpn = std::make_shared<Native::Interface::GigabitEthernet::Evpn>();
+        }
+        return evpn;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
+    {
+        if(dot1x == nullptr)
+        {
+            dot1x = std::make_shared<Native::Interface::GigabitEthernet::Dot1x>();
+        }
+        return dot1x;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
+    {
+        if(crypto == nullptr)
+        {
+            crypto = std::make_shared<Native::Interface::GigabitEthernet::Crypto>();
+        }
+        return crypto;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lldp:lldp")
+    {
+        if(lldp == nullptr)
+        {
+            lldp = std::make_shared<Native::Interface::GigabitEthernet::Lldp>();
+        }
+        return lldp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
+    {
+        if(zone_member == nullptr)
+        {
+            zone_member = std::make_shared<Native::Interface::GigabitEthernet::ZoneMember>();
+        }
+        return zone_member;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-vrrp:vrrp")
@@ -10024,13 +9961,76 @@ std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::get_child_by_na
         return vrrp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
+    if(child_yang_name == "Cisco-IOS-XE-iwanfabric:fabric-domain")
     {
-        if(zone_member == nullptr)
+        if(fabric_domain == nullptr)
         {
-            zone_member = std::make_shared<Native::Interface::GigabitEthernet::ZoneMember>();
+            fabric_domain = std::make_shared<Native::Interface::GigabitEthernet::FabricDomain>();
         }
-        return zone_member;
+        return fabric_domain;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
+    {
+        if(analysis_module == nullptr)
+        {
+            analysis_module = std::make_shared<Native::Interface::GigabitEthernet::AnalysisModule>();
+        }
+        return analysis_module;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::GigabitEthernet::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
+    {
+        if(udld == nullptr)
+        {
+            udld = std::make_shared<Native::Interface::GigabitEthernet::Udld>();
+        }
+        return udld;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
+    {
+        if(cdp == nullptr)
+        {
+            cdp = std::make_shared<Native::Interface::GigabitEthernet::Cdp>();
+        }
+        return cdp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
+    {
+        if(mvrp == nullptr)
+        {
+            mvrp = std::make_shared<Native::Interface::GigabitEthernet::Mvrp>();
+        }
+        return mvrp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
+    {
+        if(ntp == nullptr)
+        {
+            ntp = std::make_shared<Native::Interface::GigabitEthernet::Ntp>();
+        }
+        return ntp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    {
+        if(utd == nullptr)
+        {
+            utd = std::make_shared<Native::Interface::GigabitEthernet::Utd>();
+        }
+        return utd;
     }
 
     return nullptr;
@@ -10234,6 +10234,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEt
         _children["switchport-wrapper"] = switchport_wrapper;
     }
 
+    if(power != nullptr)
+    {
+        _children["Cisco-IOS-XE-power:power"] = power;
+    }
+
     if(carrier_delay != nullptr)
     {
         _children["Cisco-IOS-XE-ethernet:carrier-delay"] = carrier_delay;
@@ -10294,99 +10299,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEt
         _children["Cisco-IOS-XE-ethernet:macsec-option"] = cisco_ios_xe_ethernet_macsec_option;
     }
 
-    if(xconnect != nullptr)
-    {
-        _children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
-    }
-
-    if(evpn != nullptr)
-    {
-        _children["Cisco-IOS-XE-l2vpn:evpn"] = evpn;
-    }
-
     if(snmp != nullptr)
     {
         _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
-    }
-
-    if(ospfv3 != nullptr)
-    {
-        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
-    }
-
-    if(cdp != nullptr)
-    {
-        _children["Cisco-IOS-XE-cdp:cdp"] = cdp;
-    }
-
-    if(crypto != nullptr)
-    {
-        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
-    if(cts != nullptr)
-    {
-        _children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(dot1x != nullptr)
-    {
-        _children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
-    }
-
-    if(et_analytics != nullptr)
-    {
-        _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
-    }
-
-    if(performance != nullptr)
-    {
-        _children["Cisco-IOS-XE-ezpm:performance"] = performance;
-    }
-
-    if(service_policy != nullptr)
-    {
-        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
-    }
-
-    if(fabric_domain != nullptr)
-    {
-        _children["Cisco-IOS-XE-iwanfabric:fabric-domain"] = fabric_domain;
-    }
-
-    if(lisp != nullptr)
-    {
-        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
-    }
-
-    if(lldp != nullptr)
-    {
-        _children["Cisco-IOS-XE-lldp:lldp"] = lldp;
-    }
-
-    if(mka != nullptr)
-    {
-        _children["Cisco-IOS-XE-mka:mka"] = mka;
-    }
-
-    if(mvrp != nullptr)
-    {
-        _children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
-    }
-
-    if(analysis_module != nullptr)
-    {
-        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
-    }
-
-    if(ntp != nullptr)
-    {
-        _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
-    }
-
-    if(power != nullptr)
-    {
-        _children["Cisco-IOS-XE-power:power"] = power;
     }
 
     if(authentication != nullptr)
@@ -10399,9 +10314,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEt
         _children["Cisco-IOS-XE-sanet:mab"] = mab;
     }
 
-    if(spanning_tree != nullptr)
+    if(et_analytics != nullptr)
     {
-        _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
+        _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
+    }
+
+    if(service_policy != nullptr)
+    {
+        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
     if(auto_ != nullptr)
@@ -10473,9 +10393,29 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEt
         _children["Cisco-IOS-XE-switch:device-tracking"] = device_tracking;
     }
 
-    if(udld != nullptr)
+    if(ospfv3 != nullptr)
     {
-        _children["Cisco-IOS-XE-udld:udld"] = udld;
+        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+    }
+
+    if(performance != nullptr)
+    {
+        _children["Cisco-IOS-XE-ezpm:performance"] = performance;
+    }
+
+    if(lisp != nullptr)
+    {
+        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+    }
+
+    if(spanning_tree != nullptr)
+    {
+        _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
+    }
+
+    if(mka != nullptr)
+    {
+        _children["Cisco-IOS-XE-mka:mka"] = mka;
     }
 
     if(umbrella != nullptr)
@@ -10483,9 +10423,34 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEt
         _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
-    if(utd != nullptr)
+    if(xconnect != nullptr)
     {
-        _children["Cisco-IOS-XE-utd:utd"] = utd;
+        _children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
+    }
+
+    if(evpn != nullptr)
+    {
+        _children["Cisco-IOS-XE-l2vpn:evpn"] = evpn;
+    }
+
+    if(dot1x != nullptr)
+    {
+        _children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
+    }
+
+    if(crypto != nullptr)
+    {
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
+    }
+
+    if(lldp != nullptr)
+    {
+        _children["Cisco-IOS-XE-lldp:lldp"] = lldp;
+    }
+
+    if(zone_member != nullptr)
+    {
+        _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
     }
 
     if(vrrp != nullptr)
@@ -10493,9 +10458,44 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEt
         _children["Cisco-IOS-XE-vrrp:vrrp"] = vrrp;
     }
 
-    if(zone_member != nullptr)
+    if(fabric_domain != nullptr)
     {
-        _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+        _children["Cisco-IOS-XE-iwanfabric:fabric-domain"] = fabric_domain;
+    }
+
+    if(analysis_module != nullptr)
+    {
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
+    }
+
+    if(cts != nullptr)
+    {
+        _children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(udld != nullptr)
+    {
+        _children["Cisco-IOS-XE-udld:udld"] = udld;
+    }
+
+    if(cdp != nullptr)
+    {
+        _children["Cisco-IOS-XE-cdp:cdp"] = cdp;
+    }
+
+    if(mvrp != nullptr)
+    {
+        _children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
+    }
+
+    if(ntp != nullptr)
+    {
+        _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
+    }
+
+    if(utd != nullptr)
+    {
+        _children["Cisco-IOS-XE-utd:utd"] = utd;
     }
 
     return _children;
@@ -10599,17 +10599,17 @@ void Native::Interface::GigabitEthernet::set_value(const std::string & value_pat
         cisco_ios_xe_ethernet_macsec.value_namespace = name_space;
         cisco_ios_xe_ethernet_macsec.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "Cisco-IOS-XE-nat:nat66")
-    {
-        nat66 = value;
-        nat66.value_namespace = name_space;
-        nat66.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "Cisco-IOS-XE-switch:macsec")
     {
         cisco_ios_xe_switch_macsec = value;
         cisco_ios_xe_switch_macsec.value_namespace = name_space;
         cisco_ios_xe_switch_macsec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-nat:nat66")
+    {
+        nat66 = value;
+        nat66.value_namespace = name_space;
+        nat66.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -10679,19 +10679,19 @@ void Native::Interface::GigabitEthernet::set_filter(const std::string & value_pa
     {
         cisco_ios_xe_ethernet_macsec.yfilter = yfilter;
     }
-    if(value_path == "nat66")
-    {
-        nat66.yfilter = yfilter;
-    }
     if(value_path == "macsec")
     {
         cisco_ios_xe_switch_macsec.yfilter = yfilter;
+    }
+    if(value_path == "nat66")
+    {
+        nat66.yfilter = yfilter;
     }
 }
 
 bool Native::Interface::GigabitEthernet::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "switchport-wrapper" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "macsec-option" || name == "xconnect" || name == "evpn" || name == "snmp" || name == "ospfv3" || name == "cdp" || name == "crypto" || name == "cts" || name == "dot1x" || name == "et-analytics" || name == "performance" || name == "service-policy" || name == "fabric-domain" || name == "lisp" || name == "lldp" || name == "mka" || name == "mvrp" || name == "analysis-module" || name == "ntp" || name == "power" || name == "authentication" || name == "mab" || name == "spanning-tree" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "device-tracking" || name == "udld" || name == "umbrella" || name == "utd" || name == "vrrp" || name == "zone-member" || name == "name" || name == "media-type" || name == "port-type" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "macsec" || name == "nat66" || name == "macsec")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "switchport-wrapper" || name == "power" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "macsec-option" || name == "snmp" || name == "authentication" || name == "mab" || name == "et-analytics" || name == "service-policy" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "device-tracking" || name == "ospfv3" || name == "performance" || name == "lisp" || name == "spanning-tree" || name == "mka" || name == "umbrella" || name == "xconnect" || name == "evpn" || name == "dot1x" || name == "crypto" || name == "lldp" || name == "zone-member" || name == "vrrp" || name == "fabric-domain" || name == "analysis-module" || name == "cts" || name == "udld" || name == "cdp" || name == "mvrp" || name == "ntp" || name == "utd" || name == "name" || name == "media-type" || name == "port-type" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "macsec" || name == "macsec" || name == "nat66")
         return true;
     return false;
 }

@@ -85,18 +85,26 @@ class Configurationvalidation::FailureTypeActions::FailureTypeAction : public yd
 
 }; // Configurationvalidation::FailureTypeActions::FailureTypeAction
 
-class FailureAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf report;
-
-};
-
 class Failure : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unsupported;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unsupported") return 0;
+            return -1;
+        }
+};
+
+class FailureAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf report;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "report") return 1;
+            return -1;
+        }
 };
 
 

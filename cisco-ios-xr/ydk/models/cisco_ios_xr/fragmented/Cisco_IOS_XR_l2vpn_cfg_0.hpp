@@ -1848,8 +1848,6 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         ydk::YLeaf coupled_mode; //type: empty
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf flooding_unknown_unicast; //type: empty
-        ydk::YLeaf efp_visibility; //type: empty
-        ydk::YLeaf l2_multicast_source; //type: L2mcSrcTrafficEnabled
         ydk::YLeaf igmp_snooping_disable; //type: empty
         ydk::YLeaf transport_mode; //type: BridgeDomainTransportMode
         ydk::YLeaf mld_snooping; //type: string
@@ -2174,10 +2172,9 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: empty
+        ydk::YLeaf action; //type: MacSecureAction
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf threshold; //type: empty
-        ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure
 
@@ -2484,11 +2481,11 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf accept_shutdown; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf accept_shutdown; //type: empty
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure
 
@@ -3168,11 +3165,10 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf shutdown_recovery_timer; //type: uint32
+        ydk::YLeaf enable; //type: empty
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure
 
@@ -3729,343 +3725,30 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::VplsId
 
-class EvpnEncapsulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn_encapsulationvxlan;
-        static const ydk::Enum::YLeaf evpn_encapsulation_mpls;
-
-};
-
-class Interworking : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf ipv4;
-
-};
-
-class L2vpnCapabilityMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf high_mode;
-        static const ydk::Enum::YLeaf single_mode;
-
-};
-
-class EvpnSide : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn_side_regular;
-        static const ydk::Enum::YLeaf evpn_side_stitching;
-
-};
-
-class BridgeDomainTransportMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlan_passthrough;
-
-};
-
-class PreferredPath : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf te_tunnel;
-        static const ydk::Enum::YLeaf ip_tunnel;
-        static const ydk::Enum::YLeaf tp_tunnel;
-        static const ydk::Enum::YLeaf sr_te_policy;
-        static const ydk::Enum::YLeaf named_te_tunnel;
-
-};
-
-class VccvVerification : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf lsp_ping;
-
-};
-
-class MacWithdrawBehavior : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf legacy;
-        static const ydk::Enum::YLeaf optimized;
-
-};
-
-class PortDownFlush : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_down_flush;
-        static const ydk::Enum::YLeaf enable_port_down_flush;
-        static const ydk::Enum::YLeaf disable_port_down_flush;
-
-};
-
-class TypeOfServiceMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf reflect;
-
-};
-
-class EthernetSegmentLoadBalance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf single_active;
-        static const ydk::Enum::YLeaf port_active;
-
-};
-
-class MplsSignalingProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ldp;
-
-};
-
-class Erpaps : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf bridge_domain;
-        static const ydk::Enum::YLeaf xconnect;
-        static const ydk::Enum::YLeaf none;
-
-};
-
-class MacSecureAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf restrict;
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf shutdown;
-
-};
-
-class ErpPort : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf virtual_;
-        static const ydk::Enum::YLeaf interface;
-
-};
-
-class BgpRouteTargetRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf both;
-        static const ydk::Enum::YLeaf import;
-        static const ydk::Enum::YLeaf export_;
-
-};
-
-class BackupDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-        static const ydk::Enum::YLeaf delay;
-
-};
-
-class TransportMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf vlan;
-        static const ydk::Enum::YLeaf vlan_passthrough;
-
-};
-
 class FlowLabelTlvCode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_17;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "17") return 4;
+            if (name == "disable") return 8;
+            return -1;
+        }
 };
 
-class BgpRouteTarget : public ydk::Enum
+class MacAging : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_stitching;
-        static const ydk::Enum::YLeaf stitching;
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf inactivity;
 
-};
-
-class InterfaceProfile : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf snoop;
-        static const ydk::Enum::YLeaf dhcp_protocol;
-
-};
-
-class EthernetSegmentIdentifier : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type0;
-        static const ydk::Enum::YLeaf legacy;
-        static const ydk::Enum::YLeaf override;
-
-};
-
-class RplRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf owner;
-        static const ydk::Enum::YLeaf neighbor;
-        static const ydk::Enum::YLeaf next_neighbor;
-
-};
-
-class PwSwitchingPointTlv : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf hide;
-
-};
-
-class StormControl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf broadcast;
-
-};
-
-class EthernetSegmentServiceCarving : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mod_n;
-        static const ydk::Enum::YLeaf manual;
-        static const ydk::Enum::YLeaf hrw;
-
-};
-
-class MacLearn : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_learning;
-        static const ydk::Enum::YLeaf enable_learning;
-        static const ydk::Enum::YLeaf disable_learning;
-
-};
-
-class L2tpv3Sequencing : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf both;
-
-};
-
-class LoadBalance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf source_dest_mac;
-        static const ydk::Enum::YLeaf source_dest_ip;
-        static const ydk::Enum::YLeaf pseudowire_label;
-
-};
-
-class L2tpSignalingProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf l2tpv3;
-
-};
-
-class BdmacLearn : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable_learning;
-
-};
-
-class L2mcSrcTrafficEnabled : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf l2mc_none;
-        static const ydk::Enum::YLeaf l2mc_ipv4;
-        static const ydk::Enum::YLeaf l2mc_ipv6;
-        static const ydk::Enum::YLeaf l2mc_ipv4_ipv6;
-
-};
-
-class L2vpnVerification : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class InterfaceTrafficFlood : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf traffic_flooding;
-        static const ydk::Enum::YLeaf enable_flooding;
-        static const ydk::Enum::YLeaf disable_flooding;
-
-};
-
-class L2Encapsulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlan;
-        static const ydk::Enum::YLeaf ethernet;
-
-};
-
-class L2vpnLogging : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class MacFlushMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mvrp;
-
-};
-
-class L2tpCookieSize : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf zero;
-        static const ydk::Enum::YLeaf four;
-        static const ydk::Enum::YLeaf eight;
-
-};
-
-class MplsSequencing : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf transmit;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf both;
-
-};
-
-class EthernetSegmentServiceCarvingMcast : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf hrw_s_g;
-        static const ydk::Enum::YLeaf hrw_g;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "absolute") return 1;
+            if (name == "inactivity") return 2;
+            return -1;
+        }
 };
 
 class MacLimitAction : public ydk::Enum
@@ -4076,6 +3759,235 @@ class MacLimitAction : public ydk::Enum
         static const ydk::Enum::YLeaf no_flood;
         static const ydk::Enum::YLeaf shutdown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "flood") return 1;
+            if (name == "no-flood") return 2;
+            if (name == "shutdown") return 3;
+            return -1;
+        }
+};
+
+class BdmacLearn : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable_learning;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable-learning") return 2;
+            return -1;
+        }
+};
+
+class Interworking : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ipv4;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 1;
+            if (name == "ipv4") return 3;
+            return -1;
+        }
+};
+
+class PwSwitchingPointTlv : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hide;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "hide") return 2;
+            return -1;
+        }
+};
+
+class L2tpv3Sequencing : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf both;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 0;
+            if (name == "both") return 4;
+            return -1;
+        }
+};
+
+class InterfaceProfile : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf snoop;
+        static const ydk::Enum::YLeaf dhcp_protocol;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "snoop") return 1;
+            if (name == "dhcp-protocol") return 2;
+            return -1;
+        }
+};
+
+class BgpRouteTargetRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf import;
+        static const ydk::Enum::YLeaf export_;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "import") return 1;
+            if (name == "export") return 2;
+            return -1;
+        }
+};
+
+class ErpPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf virtual_;
+        static const ydk::Enum::YLeaf interface;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "virtual") return 2;
+            if (name == "interface") return 3;
+            return -1;
+        }
+};
+
+class BgpRouteTarget : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_stitching;
+        static const ydk::Enum::YLeaf stitching;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-stitching") return 0;
+            if (name == "stitching") return 1;
+            return -1;
+        }
+};
+
+class FlowLabelLoadBalance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf transmit;
+        static const ydk::Enum::YLeaf both;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            if (name == "both") return 3;
+            return -1;
+        }
+};
+
+class L2vpnVerification : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
+};
+
+class MacLearn : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_learning;
+        static const ydk::Enum::YLeaf enable_learning;
+        static const ydk::Enum::YLeaf disable_learning;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "default-learning") return 0;
+            if (name == "enable-learning") return 1;
+            if (name == "disable-learning") return 2;
+            return -1;
+        }
+};
+
+class Erpaps : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf bridge_domain;
+        static const ydk::Enum::YLeaf xconnect;
+        static const ydk::Enum::YLeaf none;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "interface") return 1;
+            if (name == "bridge-domain") return 2;
+            if (name == "xconnect") return 3;
+            if (name == "none") return 4;
+            return -1;
+        }
+};
+
+class VccvVerification : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf lsp_ping;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "lsp-ping") return 2;
+            return -1;
+        }
+};
+
+class TransportMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf vlan;
+        static const ydk::Enum::YLeaf vlan_passthrough;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 1;
+            if (name == "vlan") return 2;
+            if (name == "vlan-passthrough") return 3;
+            return -1;
+        }
+};
+
+class BackupDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf never;
+        static const ydk::Enum::YLeaf delay;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            if (name == "delay") return 1;
+            return -1;
+        }
+};
+
+class LoadBalance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf source_dest_mac;
+        static const ydk::Enum::YLeaf source_dest_ip;
+        static const ydk::Enum::YLeaf pseudowire_label;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "source-dest-mac") return 1;
+            if (name == "source-dest-ip") return 2;
+            if (name == "pseudowire-label") return 4;
+            return -1;
+        }
 };
 
 class ErpPort1 : public ydk::Enum
@@ -4084,24 +3996,67 @@ class ErpPort1 : public ydk::Enum
         static const ydk::Enum::YLeaf port0;
         static const ydk::Enum::YLeaf port1;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "port0") return 0;
+            if (name == "port1") return 1;
+            return -1;
+        }
 };
 
-class MacNotification : public ydk::Enum
+class InterfaceTrafficFlood : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_notif;
-        static const ydk::Enum::YLeaf syslog;
-        static const ydk::Enum::YLeaf trap;
-        static const ydk::Enum::YLeaf syslog_snmp;
+        static const ydk::Enum::YLeaf traffic_flooding;
+        static const ydk::Enum::YLeaf enable_flooding;
+        static const ydk::Enum::YLeaf disable_flooding;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "traffic-flooding") return 0;
+            if (name == "enable-flooding") return 1;
+            if (name == "disable-flooding") return 2;
+            return -1;
+        }
 };
 
-class ControlWord : public ydk::Enum
+class MacFlushMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf mvrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mvrp") return 1;
+            return -1;
+        }
+};
+
+class L2tpCookieSize : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf zero;
+        static const ydk::Enum::YLeaf four;
+        static const ydk::Enum::YLeaf eight;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "zero") return 0;
+            if (name == "four") return 4;
+            if (name == "eight") return 8;
+            return -1;
+        }
+};
+
+class StormControl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf broadcast;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "unicast") return 1;
+            if (name == "multicast") return 2;
+            if (name == "broadcast") return 4;
+            return -1;
+        }
 };
 
 class BgpRouteDistinguisher : public ydk::Enum
@@ -4112,6 +4067,30 @@ class BgpRouteDistinguisher : public ydk::Enum
         static const ydk::Enum::YLeaf four_byte_as;
         static const ydk::Enum::YLeaf ipv4_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auto") return 1;
+            if (name == "two-byte-as") return 2;
+            if (name == "four-byte-as") return 3;
+            if (name == "ipv4-address") return 4;
+            return -1;
+        }
+};
+
+class MacNotification : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_notif;
+        static const ydk::Enum::YLeaf syslog;
+        static const ydk::Enum::YLeaf trap;
+        static const ydk::Enum::YLeaf syslog_snmp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "no-notif") return 0;
+            if (name == "syslog") return 1;
+            if (name == "trap") return 2;
+            if (name == "syslog-snmp") return 3;
+            return -1;
+        }
 };
 
 class BgpRouteTargetFormat : public ydk::Enum
@@ -4123,6 +4102,150 @@ class BgpRouteTargetFormat : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4_address;
         static const ydk::Enum::YLeaf es_import;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "two-byte-as") return 1;
+            if (name == "four-byte-as") return 2;
+            if (name == "ipv4-address") return 3;
+            if (name == "es-import") return 1538;
+            return -1;
+        }
+};
+
+class MplsSignalingProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ldp;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "ldp") return 4;
+            return -1;
+        }
+};
+
+class EvpnSide : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf evpn_side_regular;
+        static const ydk::Enum::YLeaf evpn_side_stitching;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "evpn-side-regular") return 1;
+            if (name == "evpn-side-stitching") return 2;
+            return -1;
+        }
+};
+
+class ControlWord : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
+};
+
+class PreferredPath : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf te_tunnel;
+        static const ydk::Enum::YLeaf ip_tunnel;
+        static const ydk::Enum::YLeaf tp_tunnel;
+        static const ydk::Enum::YLeaf sr_te_policy;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "te-tunnel") return 2;
+            if (name == "ip-tunnel") return 3;
+            if (name == "tp-tunnel") return 4;
+            if (name == "sr-te-policy") return 5;
+            return -1;
+        }
+};
+
+class EvpnEncapsulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf evpn_encapsulationvxlan;
+        static const ydk::Enum::YLeaf evpn_encapsulation_mpls;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "evpn-encapsulationvxlan") return 8;
+            if (name == "evpn-encapsulation-mpls") return 10;
+            return -1;
+        }
+};
+
+class MplsSequencing : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf transmit;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf both;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 0;
+            if (name == "transmit") return 1;
+            if (name == "receive") return 2;
+            if (name == "both") return 4;
+            return -1;
+        }
+};
+
+class EthernetSegmentLoadBalance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf single_active;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "single-active") return 1;
+            return -1;
+        }
+};
+
+class L2tpSignalingProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf l2tpv3;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "l2tpv3") return 2;
+            return -1;
+        }
+};
+
+class EthernetSegmentIdentifier : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type0;
+        static const ydk::Enum::YLeaf legacy;
+        static const ydk::Enum::YLeaf override;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "type0") return 0;
+            if (name == "legacy") return 128;
+            if (name == "override") return 129;
+            return -1;
+        }
+};
+
+class BridgeDomainTransportMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vlan_passthrough;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "vlan-passthrough") return 3;
+            return -1;
+        }
 };
 
 class LdpVplsId : public ydk::Enum
@@ -4131,24 +4254,132 @@ class LdpVplsId : public ydk::Enum
         static const ydk::Enum::YLeaf two_byte_as;
         static const ydk::Enum::YLeaf ipv4_address;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "two-byte-as") return 10;
+            if (name == "ipv4-address") return 266;
+            return -1;
+        }
 };
 
-class MacAging : public ydk::Enum
+class L2Encapsulation : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf inactivity;
+        static const ydk::Enum::YLeaf vlan;
+        static const ydk::Enum::YLeaf ethernet;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "vlan") return 4;
+            if (name == "ethernet") return 5;
+            return -1;
+        }
 };
 
-class FlowLabelLoadBalance : public ydk::Enum
+class EthernetSegmentServiceCarving : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf transmit;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf hrw;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hrw") return 2;
+            return -1;
+        }
+};
+
+class L2vpnLogging : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
+};
+
+class MacWithdrawBehavior : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf legacy;
+        static const ydk::Enum::YLeaf optimized;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "legacy") return 1;
+            if (name == "optimized") return 2;
+            return -1;
+        }
+};
+
+class RplRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf owner;
+        static const ydk::Enum::YLeaf neighbor;
+        static const ydk::Enum::YLeaf next_neighbor;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "owner") return 1;
+            if (name == "neighbor") return 2;
+            if (name == "next-neighbor") return 3;
+            return -1;
+        }
+};
+
+class TypeOfServiceMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf reflect;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "reflect") return 1;
+            return -1;
+        }
+};
+
+class PortDownFlush : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port_down_flush;
+        static const ydk::Enum::YLeaf enable_port_down_flush;
+        static const ydk::Enum::YLeaf disable_port_down_flush;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "port-down-flush") return 0;
+            if (name == "enable-port-down-flush") return 1;
+            if (name == "disable-port-down-flush") return 2;
+            return -1;
+        }
+};
+
+class L2vpnCapabilityMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf high_mode;
+        static const ydk::Enum::YLeaf single_mode;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "high-mode") return 1;
+            if (name == "single-mode") return 2;
+            return -1;
+        }
+};
+
+class MacSecureAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf restrict;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf shutdown;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "restrict") return 1;
+            if (name == "none") return 2;
+            if (name == "shutdown") return 3;
+            return -1;
+        }
 };
 
 

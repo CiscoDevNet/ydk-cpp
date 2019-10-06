@@ -17,6 +17,12 @@ class IetfMplsLabel : public ydk::Enum
         static const ydk::Enum::YLeaf v6_explicit_null;
         static const ydk::Enum::YLeaf implicit_null;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "v4-explicit-null") return 0;
+            if (name == "v6-explicit-null") return 2;
+            if (name == "implicit-null") return 3;
+            return -1;
+        }
 };
 
 

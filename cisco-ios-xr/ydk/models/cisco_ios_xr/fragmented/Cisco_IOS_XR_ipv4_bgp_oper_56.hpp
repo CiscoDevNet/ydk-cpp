@@ -8,15 +8,530 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_ipv4_bgp_oper_0.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_12.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_43.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_11.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_40.hpp"
 #include "Cisco_IOS_XR_ipv4_bgp_oper_55.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_oper {
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr : public ydk::Entity
+{
+    public:
+        MvpnNexthopAddr();
+        ~MvpnNexthopAddr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi; //type: BgpAfi
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv4_mcast_address; //type: string
+        ydk::YLeaf ipv4_label_address; //type: string
+        ydk::YLeaf ipv4_tunnel_address; //type: string
+        ydk::YLeaf ipv4_mdt_address; //type: string
+        ydk::YLeaf ipv4vpn_address; //type: string
+        ydk::YLeaf ipv4vpna_mcastddress; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf ipv6_mcast_address; //type: string
+        ydk::YLeaf ipv6_label_address; //type: string
+        ydk::YLeaf ipv6vpn_address; //type: string
+        ydk::YLeaf ipv6vpn_mcast_address; //type: string
+        ydk::YLeaf rt_constraint_address; //type: string
+        ydk::YLeaf ipv6mvpn_address; //type: string
+        ydk::YLeaf ipv4mvpn_address; //type: string
+        ydk::YLeaf l2vpn_evpn_address; //type: string
+        ydk::YLeaf ls_ls_address; //type: string
+        ydk::YLeaf ipv4_flowspec_address; //type: string
+        ydk::YLeaf ipv6_flowspec_address; //type: string
+        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
+        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv6SrPolicyAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnVplsAddress : public ydk::Entity
+{
+    public:
+        L2vpnVplsAddress();
+        ~L2vpnVplsAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnVplsAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnMspwAddress : public ydk::Entity
+{
+    public:
+        L2vpnMspwAddress();
+        ~L2vpnMspwAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::L2vpnMspwAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv4SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv4SrPolicyAddress();
+        ~Ipv4SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv4_srpolicy_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv4SrPolicyAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv6SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv6SrPolicyAddress();
+        ~Ipv6SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_srpolicy_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnNexthopAddr::Ipv6SrPolicyAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr : public ydk::Entity
+{
+    public:
+        VpnNexthopAddr();
+        ~VpnNexthopAddr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi; //type: BgpAfi
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv4_mcast_address; //type: string
+        ydk::YLeaf ipv4_label_address; //type: string
+        ydk::YLeaf ipv4_tunnel_address; //type: string
+        ydk::YLeaf ipv4_mdt_address; //type: string
+        ydk::YLeaf ipv4vpn_address; //type: string
+        ydk::YLeaf ipv4vpna_mcastddress; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf ipv6_mcast_address; //type: string
+        ydk::YLeaf ipv6_label_address; //type: string
+        ydk::YLeaf ipv6vpn_address; //type: string
+        ydk::YLeaf ipv6vpn_mcast_address; //type: string
+        ydk::YLeaf rt_constraint_address; //type: string
+        ydk::YLeaf ipv6mvpn_address; //type: string
+        ydk::YLeaf ipv4mvpn_address; //type: string
+        ydk::YLeaf l2vpn_evpn_address; //type: string
+        ydk::YLeaf ls_ls_address; //type: string
+        ydk::YLeaf ipv4_flowspec_address; //type: string
+        ydk::YLeaf ipv6_flowspec_address; //type: string
+        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
+        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv6SrPolicyAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnVplsAddress : public ydk::Entity
+{
+    public:
+        L2vpnVplsAddress();
+        ~L2vpnVplsAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnVplsAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnMspwAddress : public ydk::Entity
+{
+    public:
+        L2vpnMspwAddress();
+        ~L2vpnMspwAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::L2vpnMspwAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv4SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv4SrPolicyAddress();
+        ~Ipv4SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv4_srpolicy_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv4SrPolicyAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv6SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv6SrPolicyAddress();
+        ~Ipv6SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_srpolicy_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::VpnNexthopAddr::Ipv6SrPolicyAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::RcvdLabel : public ydk::Entity
+{
+    public:
+        RcvdLabel();
+        ~RcvdLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::RcvdLabel
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::L2vpnCircuitStatusValue : public ydk::Entity
+{
+    public:
+        L2vpnCircuitStatusValue();
+        ~L2vpnCircuitStatusValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::L2vpnCircuitStatusValue
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnPmsiValue : public ydk::Entity
+{
+    public:
+        MvpnPmsiValue();
+        ~MvpnPmsiValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::MvpnPmsiValue
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::ExtendedCommunity : public ydk::Entity
+{
+    public:
+        ExtendedCommunity();
+        ~ExtendedCommunity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::ExtendedCommunity
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo : public ydk::Entity
+{
+    public:
+        LocalPeersAdvertisedTo();
+        ~LocalPeersAdvertisedTo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_neighbor; //type: boolean
+        ydk::YLeaf update_group_afi; //type: uint8
+        ydk::YLeaf update_group_number; //type: uint32
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress> neighbor_address;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress : public ydk::Entity
+{
+    public:
+        NeighborAddress();
+        ~NeighborAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi; //type: BgpAfi
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv4_mcast_address; //type: string
+        ydk::YLeaf ipv4_label_address; //type: string
+        ydk::YLeaf ipv4_tunnel_address; //type: string
+        ydk::YLeaf ipv4_mdt_address; //type: string
+        ydk::YLeaf ipv4vpn_address; //type: string
+        ydk::YLeaf ipv4vpna_mcastddress; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf ipv6_mcast_address; //type: string
+        ydk::YLeaf ipv6_label_address; //type: string
+        ydk::YLeaf ipv6vpn_address; //type: string
+        ydk::YLeaf ipv6vpn_mcast_address; //type: string
+        ydk::YLeaf rt_constraint_address; //type: string
+        ydk::YLeaf ipv6mvpn_address; //type: string
+        ydk::YLeaf ipv4mvpn_address; //type: string
+        ydk::YLeaf l2vpn_evpn_address; //type: string
+        ydk::YLeaf ls_ls_address; //type: string
+        ydk::YLeaf ipv4_flowspec_address; //type: string
+        ydk::YLeaf ipv6_flowspec_address; //type: string
+        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
+        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+{
+    public:
+        L2vpnVplsAddress();
+        ~L2vpnVplsAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+{
+    public:
+        L2vpnMspwAddress();
+        ~L2vpnMspwAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv4SrPolicyAddress();
+        ~Ipv4SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv4_srpolicy_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv6SrPolicyAddress();
+        ~Ipv6SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_srpolicy_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo : public ydk::Entity
 {
     public:
         PePeersAdvertisedTo();
@@ -35,14 +550,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf is_neighbor; //type: boolean
         ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress> neighbor_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -80,20 +595,20 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -111,10 +626,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -132,10 +647,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -153,10 +668,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -174,10 +689,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield : public ydk::Entity
 {
     public:
         BestPathOrrBitfield();
@@ -196,14 +711,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf is_neighbor; //type: boolean
         ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress> neighbor_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -241,20 +756,20 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -272,10 +787,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -293,10 +808,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -314,10 +829,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -335,10 +850,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield : public ydk::Entity
 {
     public:
         AddPathOrrBitfield();
@@ -357,14 +872,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf is_neighbor; //type: boolean
         ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress> neighbor_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -402,20 +917,20 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -433,10 +948,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -454,10 +969,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -475,10 +990,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -496,10 +1011,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::PathInfoAfterPolicyOut::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn : public ydk::Entity
 {
     public:
         AttributesAfterPolicyIn();
@@ -538,20 +1053,20 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ribrnhip_table; //type: uint32
         ydk::YLeaf ribrnh_vni; //type: uint32
         ydk::YLeaf ribrnh_encap; //type: uint8
-        class CommonAttributes; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes
-        class AttrSet; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet
-        class RnhAddr; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RnhAddr
-        class RibrnhIp; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp
+        class CommonAttributes; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes
+        class AttrSet; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet
+        class RnhAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RnhAddr
+        class RibrnhIp; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes> common_attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet> attr_set;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RnhAddr> rnh_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp> ribrnh_ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes> common_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet> attr_set;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RnhAddr> rnh_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp> ribrnh_ip;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes : public ydk::Entity
 {
     public:
         CommonAttributes();
@@ -583,10 +1098,6 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf is_pe_distinguisher_label_present; //type: boolean
         ydk::YLeaf is_ls_attribute_present; //type: boolean
         ydk::YLeaf is_label_index_present; //type: boolean
-        ydk::YLeaf is_prefix_sid_label_indexpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_orig_srg_bpresent; //type: boolean
-        ydk::YLeaf is_prefix_sids_rv6vpnsi_dpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_unk_tl_vspresent; //type: boolean
         ydk::YLeaf neighbor_as; //type: uint32
         ydk::YLeaf aggregator_as; //type: uint32
         ydk::YLeaf aggregator_address; //type: string
@@ -604,27 +1115,21 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf pmsi_label; //type: uint32
         ydk::YLeaf ppm_pvalue; //type: uint32
         ydk::YLeaf is_large_community_present; //type: boolean
-        class PrefixSidLabelIndex; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex
-        class PrefixSidOrigSrgb; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb
-        class PrefixSidsRv6vpnsid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid
-        class PrefixSidUnkTlVs; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs
-        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
-        class Community; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Community
-        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
-        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
-        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Cluster
-        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
-        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
-        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
-        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LsAttr
-        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
-        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
+        class PrefixSidAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr
+        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
+        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::Community
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
+        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
+        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::Cluster
+        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
+        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
+        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
+        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::LsAttr
+        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
+        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex> prefix_sid_label_index;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb> prefix_sid_orig_srgb;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid> prefix_sids_rv6vpnsid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs> prefix_sid_unk_tl_vs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap> tunnel_encap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr> prefix_sid_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap> tunnel_encap;
         ydk::YList community;
         ydk::YList extended_community;
         ydk::YList unknown_attribute;
@@ -636,14 +1141,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YList pe_distinguisher_label;
         ydk::YList large_community;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr : public ydk::Entity
 {
     public:
-        PrefixSidLabelIndex();
-        ~PrefixSidLabelIndex();
+        PrefixSidAttr();
+        ~PrefixSidAttr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -655,43 +1160,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf label_index; //type: uint32
+        class PrefixSidTlv; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb : public ydk::Entity
-{
-    public:
-        PrefixSidOrigSrgb();
-        ~PrefixSidOrigSrgb();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf range_count; //type: uint32
-        class Range; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb::Range
-
-        ydk::YList range;
+        ydk::YList prefix_sid_tlv;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb::Range : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv : public ydk::Entity
 {
     public:
-        Range();
-        ~Range();
+        PrefixSidTlv();
+        ~PrefixSidTlv();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -703,107 +1183,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range_start; //type: uint32
-        ydk::YLeaf range_end; //type: uint32
+        ydk::YLeaf type; //type: BgpPrefixSid
+        ydk::YLeaf len; //type: uint16
+        ydk::YLeaf val; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb::Range
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid : public ydk::Entity
-{
-    public:
-        PrefixSidsRv6vpnsid();
-        ~PrefixSidsRv6vpnsid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf sid_count; //type: uint32
-        class Sid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid::Sid
-
-        ydk::YList sid;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid::Sid : public ydk::Entity
-{
-    public:
-        Sid();
-        ~Sid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_type; //type: uint8
-        ydk::YLeaf sid_flags; //type: uint8
-        ydk::YLeaf sid_value; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid::Sid
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs : public ydk::Entity
-{
-    public:
-        PrefixSidUnkTlVs();
-        ~PrefixSidUnkTlVs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tlv_count; //type: uint16
-        ydk::YLeaf received_buffer_length; //type: uint32
-        class TlVsBuffer; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer
-
-        ydk::YList tl_vs_buffer;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer : public ydk::Entity
-{
-    public:
-        TlVsBuffer();
-        ~TlVsBuffer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint8
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap : public ydk::Entity
 {
     public:
         TunnelEncap();
@@ -819,14 +1206,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
+        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy> sr_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy> sr_policy;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy : public ydk::Entity
 {
     public:
         SrPolicy();
@@ -847,18 +1234,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
         ydk::YLeaf usable; //type: boolean
-        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
-        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
-        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
+        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
+        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
+        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid> binding_sid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid> binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
         ydk::YList segment_list;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
 {
     public:
         BindingSid();
@@ -878,10 +1265,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
 {
     public:
         AllocatedBindingSid();
@@ -901,10 +1288,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
 {
     public:
         SegmentList();
@@ -921,14 +1308,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf weight; //type: uint8
-        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
+        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
 
         ydk::YList segment;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -949,10 +1336,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Community : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::Community : public ydk::Entity
 {
     public:
         Community();
@@ -970,10 +1357,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Community
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::Community
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity : public ydk::Entity
 {
     public:
         ExtendedCommunity();
@@ -991,10 +1378,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute : public ydk::Entity
 {
     public:
         UnknownAttribute();
@@ -1012,10 +1399,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Cluster : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::Cluster : public ydk::Entity
 {
     public:
         Cluster();
@@ -1033,10 +1420,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Cluster
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::Cluster
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie : public ydk::Entity
 {
     public:
         L2tpv3Cookie();
@@ -1054,10 +1441,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue : public ydk::Entity
 {
     public:
         ConnectorValue();
@@ -1075,10 +1462,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PmsiValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PmsiValue : public ydk::Entity
 {
     public:
         PmsiValue();
@@ -1096,10 +1483,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LsAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::LsAttr : public ydk::Entity
 {
     public:
         LsAttr();
@@ -1117,10 +1504,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LsAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::LsAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel : public ydk::Entity
 {
     public:
         PeDistinguisherLabel();
@@ -1139,10 +1526,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf pe_address; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity : public ydk::Entity
 {
     public:
         LargeCommunity();
@@ -1162,10 +1549,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf local_data1; //type: uint32
         ydk::YLeaf local_data2; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet : public ydk::Entity
 {
     public:
         AttrSet();
@@ -1197,10 +1584,6 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf is_pe_distinguisher_label_present; //type: boolean
         ydk::YLeaf is_ls_attribute_present; //type: boolean
         ydk::YLeaf is_label_index_present; //type: boolean
-        ydk::YLeaf is_prefix_sid_label_indexpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_orig_srg_bpresent; //type: boolean
-        ydk::YLeaf is_prefix_sids_rv6vpnsi_dpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_unk_tl_vspresent; //type: boolean
         ydk::YLeaf neighbor_as; //type: uint32
         ydk::YLeaf aggregator_as; //type: uint32
         ydk::YLeaf aggregator_address; //type: string
@@ -1218,27 +1601,21 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf pmsi_label; //type: uint32
         ydk::YLeaf ppm_pvalue; //type: uint32
         ydk::YLeaf is_large_community_present; //type: boolean
-        class PrefixSidLabelIndex; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex
-        class PrefixSidOrigSrgb; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb
-        class PrefixSidsRv6vpnsid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid
-        class PrefixSidUnkTlVs; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs
-        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap
-        class Community; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Community
-        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
-        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
-        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Cluster
-        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
-        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ConnectorValue
-        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PmsiValue
-        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LsAttr
-        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
-        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LargeCommunity
+        class PrefixSidAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr
+        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap
+        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::Community
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
+        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
+        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::Cluster
+        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
+        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::ConnectorValue
+        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PmsiValue
+        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::LsAttr
+        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
+        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::LargeCommunity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex> prefix_sid_label_index;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb> prefix_sid_orig_srgb;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid> prefix_sids_rv6vpnsid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs> prefix_sid_unk_tl_vs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap> tunnel_encap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr> prefix_sid_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap> tunnel_encap;
         ydk::YList community;
         ydk::YList extended_community;
         ydk::YList unknown_attribute;
@@ -1250,14 +1627,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YList pe_distinguisher_label;
         ydk::YList large_community;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr : public ydk::Entity
 {
     public:
-        PrefixSidLabelIndex();
-        ~PrefixSidLabelIndex();
+        PrefixSidAttr();
+        ~PrefixSidAttr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1269,43 +1646,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf label_index; //type: uint32
+        class PrefixSidTlv; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb : public ydk::Entity
-{
-    public:
-        PrefixSidOrigSrgb();
-        ~PrefixSidOrigSrgb();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf range_count; //type: uint32
-        class Range; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb::Range
-
-        ydk::YList range;
+        ydk::YList prefix_sid_tlv;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb::Range : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv : public ydk::Entity
 {
     public:
-        Range();
-        ~Range();
+        PrefixSidTlv();
+        ~PrefixSidTlv();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1317,107 +1669,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range_start; //type: uint32
-        ydk::YLeaf range_end; //type: uint32
+        ydk::YLeaf type; //type: BgpPrefixSid
+        ydk::YLeaf len; //type: uint16
+        ydk::YLeaf val; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb::Range
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid : public ydk::Entity
-{
-    public:
-        PrefixSidsRv6vpnsid();
-        ~PrefixSidsRv6vpnsid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf sid_count; //type: uint32
-        class Sid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid::Sid
-
-        ydk::YList sid;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid::Sid : public ydk::Entity
-{
-    public:
-        Sid();
-        ~Sid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_type; //type: uint8
-        ydk::YLeaf sid_flags; //type: uint8
-        ydk::YLeaf sid_value; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid::Sid
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs : public ydk::Entity
-{
-    public:
-        PrefixSidUnkTlVs();
-        ~PrefixSidUnkTlVs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tlv_count; //type: uint16
-        ydk::YLeaf received_buffer_length; //type: uint32
-        class TlVsBuffer; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs::TlVsBuffer
-
-        ydk::YList tl_vs_buffer;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs::TlVsBuffer : public ydk::Entity
-{
-    public:
-        TlVsBuffer();
-        ~TlVsBuffer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint8
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs::TlVsBuffer
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap : public ydk::Entity
 {
     public:
         TunnelEncap();
@@ -1433,14 +1692,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
+        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy> sr_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy> sr_policy;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy : public ydk::Entity
 {
     public:
         SrPolicy();
@@ -1461,18 +1720,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
         ydk::YLeaf usable; //type: boolean
-        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
-        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
-        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
+        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
+        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid> binding_sid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid> binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
         ydk::YList segment_list;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
 {
     public:
         BindingSid();
@@ -1492,10 +1751,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
 {
     public:
         AllocatedBindingSid();
@@ -1515,10 +1774,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
 {
     public:
         SegmentList();
@@ -1535,14 +1794,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf weight; //type: uint8
-        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
+        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
 
         ydk::YList segment;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -1563,10 +1822,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Community : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::Community : public ydk::Entity
 {
     public:
         Community();
@@ -1584,10 +1843,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Community
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::Community
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity : public ydk::Entity
 {
     public:
         ExtendedCommunity();
@@ -1605,10 +1864,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::UnknownAttribute : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::UnknownAttribute : public ydk::Entity
 {
     public:
         UnknownAttribute();
@@ -1626,10 +1885,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Cluster : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::Cluster : public ydk::Entity
 {
     public:
         Cluster();
@@ -1647,10 +1906,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Cluster
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::Cluster
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie : public ydk::Entity
 {
     public:
         L2tpv3Cookie();
@@ -1668,10 +1927,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ConnectorValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::ConnectorValue : public ydk::Entity
 {
     public:
         ConnectorValue();
@@ -1689,10 +1948,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ConnectorValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::ConnectorValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PmsiValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PmsiValue : public ydk::Entity
 {
     public:
         PmsiValue();
@@ -1710,10 +1969,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PmsiValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PmsiValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LsAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::LsAttr : public ydk::Entity
 {
     public:
         LsAttr();
@@ -1731,10 +1990,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LsAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::LsAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel : public ydk::Entity
 {
     public:
         PeDistinguisherLabel();
@@ -1753,10 +2012,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf pe_address; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LargeCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::LargeCommunity : public ydk::Entity
 {
     public:
         LargeCommunity();
@@ -1776,10 +2035,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf local_data1; //type: uint32
         ydk::YLeaf local_data2; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LargeCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::AttrSet::LargeCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RnhAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RnhAddr : public ydk::Entity
 {
     public:
         RnhAddr();
@@ -1800,10 +2059,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf mac_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RnhAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RnhAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp : public ydk::Entity
 {
     public:
         RibrnhIp();
@@ -1841,20 +2100,20 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -1872,10 +2131,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -1893,10 +2152,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -1914,10 +2173,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -1935,462 +2194,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut : public ydk::Entity
 {
     public:
-        PrefixFilters();
-        ~PrefixFilters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PrefixFilter; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter
-
-        ydk::YList prefix_filter;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter : public ydk::Entity
-{
-    public:
-        PrefixFilter();
-        ~PrefixFilter();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf af_name; //type: BgpAfi
-        class NeighborAddressXr; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr
-        class PrefixListInfo; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr> neighbor_address_xr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo> prefix_list_info;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr : public ydk::Entity
-{
-    public:
-        NeighborAddressXr();
-        ~NeighborAddressXr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnVplsAddress : public ydk::Entity
-{
-    public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnVplsAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnMspwAddress : public ydk::Entity
-{
-    public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2vpnMspwAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv4SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv4SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv6SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo : public ydk::Entity
-{
-    public:
-        PrefixListInfo();
-        ~PrefixListInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class BgpPfxlst; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst
-
-        ydk::YList bgp_pfxlst;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst : public ydk::Entity
-{
-    public:
-        BgpPfxlst();
-        ~BgpPfxlst();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sequence_number; //type: uint32
-        ydk::YLeaf is_prefix_grant; //type: boolean
-        ydk::YLeaf min_prefix_length; //type: uint8
-        ydk::YLeaf max_prefix_length; //type: uint8
-        class BgpPrefix; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix> bgp_prefix;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix : public ydk::Entity
-{
-    public:
-        BgpPrefix();
-        ~BgpPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_length; //type: uint16
-        class Prefix; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix> prefix;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix : public ydk::Entity
-{
-    public:
-        Prefix();
-        ~Prefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnVplsAddress : public ydk::Entity
-{
-    public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnVplsAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnMspwAddress : public ydk::Entity
-{
-    public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2vpnMspwAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv4SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv4SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv6SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes : public ydk::Entity
-{
-    public:
-        Attributes();
-        ~Attributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Attribute; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute
-
-        ydk::YList attribute;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute : public ydk::Entity
-{
-    public:
-        Attribute();
-        ~Attribute();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf attribute_iid; //type: uint32
-        ydk::YLeaf attribute_cache_bucket; //type: uint32
-        ydk::YLeaf attribute_cache_id; //type: uint32
-        ydk::YLeaf process_instance_id; //type: uint8
-        ydk::YLeaf attribute_instance_id; //type: uint8
-        ydk::YLeaf attribute_structure_id; //type: uint32
-        ydk::YLeaf attribute_structure_hash_value; //type: uint32
-        ydk::YLeaf reference_count; //type: uint32
-        class AttributeInfo; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo> attribute_info;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo : public ydk::Entity
-{
-    public:
-        AttributeInfo();
-        ~AttributeInfo();
+        AttributesAfterPolicyOut();
+        ~AttributesAfterPolicyOut();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2425,20 +2236,20 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf ribrnhip_table; //type: uint32
         ydk::YLeaf ribrnh_vni; //type: uint32
         ydk::YLeaf ribrnh_encap; //type: uint8
-        class CommonAttributes; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes
-        class AttrSet; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet
-        class RnhAddr; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RnhAddr
-        class RibrnhIp; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp
+        class CommonAttributes; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes
+        class AttrSet; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet
+        class RnhAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RnhAddr
+        class RibrnhIp; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes> common_attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet> attr_set;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RnhAddr> rnh_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp> ribrnh_ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes> common_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet> attr_set;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RnhAddr> rnh_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp> ribrnh_ip;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes : public ydk::Entity
 {
     public:
         CommonAttributes();
@@ -2470,10 +2281,6 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf is_pe_distinguisher_label_present; //type: boolean
         ydk::YLeaf is_ls_attribute_present; //type: boolean
         ydk::YLeaf is_label_index_present; //type: boolean
-        ydk::YLeaf is_prefix_sid_label_indexpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_orig_srg_bpresent; //type: boolean
-        ydk::YLeaf is_prefix_sids_rv6vpnsi_dpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_unk_tl_vspresent; //type: boolean
         ydk::YLeaf neighbor_as; //type: uint32
         ydk::YLeaf aggregator_as; //type: uint32
         ydk::YLeaf aggregator_address; //type: string
@@ -2491,27 +2298,21 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf pmsi_label; //type: uint32
         ydk::YLeaf ppm_pvalue; //type: uint32
         ydk::YLeaf is_large_community_present; //type: boolean
-        class PrefixSidLabelIndex; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidLabelIndex
-        class PrefixSidOrigSrgb; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidOrigSrgb
-        class PrefixSidsRv6vpnsid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidsRv6vpnsid
-        class PrefixSidUnkTlVs; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidUnkTlVs
-        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap
-        class Community; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::Community
-        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::ExtendedCommunity
-        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::UnknownAttribute
-        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::Cluster
-        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::L2tpv3Cookie
-        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::ConnectorValue
-        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PmsiValue
-        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::LsAttr
-        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PeDistinguisherLabel
-        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::LargeCommunity
+        class PrefixSidAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PrefixSidAttr
+        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap
+        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::Community
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::ExtendedCommunity
+        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::UnknownAttribute
+        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::Cluster
+        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::L2tpv3Cookie
+        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::ConnectorValue
+        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PmsiValue
+        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::LsAttr
+        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PeDistinguisherLabel
+        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::LargeCommunity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidLabelIndex> prefix_sid_label_index;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidOrigSrgb> prefix_sid_orig_srgb;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidsRv6vpnsid> prefix_sids_rv6vpnsid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidUnkTlVs> prefix_sid_unk_tl_vs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap> tunnel_encap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PrefixSidAttr> prefix_sid_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap> tunnel_encap;
         ydk::YList community;
         ydk::YList extended_community;
         ydk::YList unknown_attribute;
@@ -2523,14 +2324,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YList pe_distinguisher_label;
         ydk::YList large_community;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidLabelIndex : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PrefixSidAttr : public ydk::Entity
 {
     public:
-        PrefixSidLabelIndex();
-        ~PrefixSidLabelIndex();
+        PrefixSidAttr();
+        ~PrefixSidAttr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2542,43 +2343,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf label_index; //type: uint32
+        class PrefixSidTlv; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PrefixSidAttr::PrefixSidTlv
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidLabelIndex
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidOrigSrgb : public ydk::Entity
-{
-    public:
-        PrefixSidOrigSrgb();
-        ~PrefixSidOrigSrgb();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf range_count; //type: uint32
-        class Range; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidOrigSrgb::Range
-
-        ydk::YList range;
+        ydk::YList prefix_sid_tlv;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidOrigSrgb
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PrefixSidAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidOrigSrgb::Range : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PrefixSidAttr::PrefixSidTlv : public ydk::Entity
 {
     public:
-        Range();
-        ~Range();
+        PrefixSidTlv();
+        ~PrefixSidTlv();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2590,107 +2366,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range_start; //type: uint32
-        ydk::YLeaf range_end; //type: uint32
+        ydk::YLeaf type; //type: BgpPrefixSid
+        ydk::YLeaf len; //type: uint16
+        ydk::YLeaf val; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidOrigSrgb::Range
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidsRv6vpnsid : public ydk::Entity
-{
-    public:
-        PrefixSidsRv6vpnsid();
-        ~PrefixSidsRv6vpnsid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf sid_count; //type: uint32
-        class Sid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidsRv6vpnsid::Sid
-
-        ydk::YList sid;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidsRv6vpnsid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PrefixSidAttr::PrefixSidTlv
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidsRv6vpnsid::Sid : public ydk::Entity
-{
-    public:
-        Sid();
-        ~Sid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_type; //type: uint8
-        ydk::YLeaf sid_flags; //type: uint8
-        ydk::YLeaf sid_value; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidsRv6vpnsid::Sid
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidUnkTlVs : public ydk::Entity
-{
-    public:
-        PrefixSidUnkTlVs();
-        ~PrefixSidUnkTlVs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tlv_count; //type: uint16
-        ydk::YLeaf received_buffer_length; //type: uint32
-        class TlVsBuffer; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer
-
-        ydk::YList tl_vs_buffer;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidUnkTlVs
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer : public ydk::Entity
-{
-    public:
-        TlVsBuffer();
-        ~TlVsBuffer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint8
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap : public ydk::Entity
 {
     public:
         TunnelEncap();
@@ -2706,14 +2389,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy
+        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy> sr_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy> sr_policy;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy : public ydk::Entity
 {
     public:
         SrPolicy();
@@ -2734,18 +2417,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
         ydk::YLeaf usable; //type: boolean
-        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
-        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
-        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
+        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
+        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
+        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::BindingSid> binding_sid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::BindingSid> binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
         ydk::YList segment_list;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
 {
     public:
         BindingSid();
@@ -2765,10 +2448,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
 {
     public:
         AllocatedBindingSid();
@@ -2788,10 +2471,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
 {
     public:
         SegmentList();
@@ -2808,14 +2491,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf weight; //type: uint8
-        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
+        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
 
         ydk::YList segment;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -2836,10 +2519,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::Community : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::Community : public ydk::Entity
 {
     public:
         Community();
@@ -2857,10 +2540,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::Community
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::Community
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::ExtendedCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::ExtendedCommunity : public ydk::Entity
 {
     public:
         ExtendedCommunity();
@@ -2878,10 +2561,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::ExtendedCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::ExtendedCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::UnknownAttribute : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::UnknownAttribute : public ydk::Entity
 {
     public:
         UnknownAttribute();
@@ -2899,10 +2582,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::UnknownAttribute
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::UnknownAttribute
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::Cluster : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::Cluster : public ydk::Entity
 {
     public:
         Cluster();
@@ -2920,10 +2603,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::Cluster
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::Cluster
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::L2tpv3Cookie : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::L2tpv3Cookie : public ydk::Entity
 {
     public:
         L2tpv3Cookie();
@@ -2941,10 +2624,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::L2tpv3Cookie
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::L2tpv3Cookie
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::ConnectorValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::ConnectorValue : public ydk::Entity
 {
     public:
         ConnectorValue();
@@ -2962,10 +2645,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::ConnectorValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::ConnectorValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PmsiValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PmsiValue : public ydk::Entity
 {
     public:
         PmsiValue();
@@ -2983,10 +2666,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PmsiValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PmsiValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::LsAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::LsAttr : public ydk::Entity
 {
     public:
         LsAttr();
@@ -3004,10 +2687,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::LsAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::LsAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PeDistinguisherLabel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PeDistinguisherLabel : public ydk::Entity
 {
     public:
         PeDistinguisherLabel();
@@ -3026,10 +2709,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf pe_address; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::PeDistinguisherLabel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::PeDistinguisherLabel
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::LargeCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::LargeCommunity : public ydk::Entity
 {
     public:
         LargeCommunity();
@@ -3049,10 +2732,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf local_data1; //type: uint32
         ydk::YLeaf local_data2; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::CommonAttributes::LargeCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::CommonAttributes::LargeCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet : public ydk::Entity
 {
     public:
         AttrSet();
@@ -3084,10 +2767,6 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf is_pe_distinguisher_label_present; //type: boolean
         ydk::YLeaf is_ls_attribute_present; //type: boolean
         ydk::YLeaf is_label_index_present; //type: boolean
-        ydk::YLeaf is_prefix_sid_label_indexpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_orig_srg_bpresent; //type: boolean
-        ydk::YLeaf is_prefix_sids_rv6vpnsi_dpresent; //type: boolean
-        ydk::YLeaf is_prefix_sid_unk_tl_vspresent; //type: boolean
         ydk::YLeaf neighbor_as; //type: uint32
         ydk::YLeaf aggregator_as; //type: uint32
         ydk::YLeaf aggregator_address; //type: string
@@ -3105,27 +2784,21 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf pmsi_label; //type: uint32
         ydk::YLeaf ppm_pvalue; //type: uint32
         ydk::YLeaf is_large_community_present; //type: boolean
-        class PrefixSidLabelIndex; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidLabelIndex
-        class PrefixSidOrigSrgb; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidOrigSrgb
-        class PrefixSidsRv6vpnsid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidsRv6vpnsid
-        class PrefixSidUnkTlVs; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidUnkTlVs
-        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap
-        class Community; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::Community
-        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::ExtendedCommunity
-        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::UnknownAttribute
-        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::Cluster
-        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::L2tpv3Cookie
-        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::ConnectorValue
-        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PmsiValue
-        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::LsAttr
-        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PeDistinguisherLabel
-        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::LargeCommunity
+        class PrefixSidAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PrefixSidAttr
+        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap
+        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::Community
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::ExtendedCommunity
+        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::UnknownAttribute
+        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::Cluster
+        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::L2tpv3Cookie
+        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::ConnectorValue
+        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PmsiValue
+        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::LsAttr
+        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PeDistinguisherLabel
+        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::LargeCommunity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidLabelIndex> prefix_sid_label_index;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidOrigSrgb> prefix_sid_orig_srgb;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidsRv6vpnsid> prefix_sids_rv6vpnsid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidUnkTlVs> prefix_sid_unk_tl_vs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap> tunnel_encap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PrefixSidAttr> prefix_sid_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap> tunnel_encap;
         ydk::YList community;
         ydk::YList extended_community;
         ydk::YList unknown_attribute;
@@ -3137,14 +2810,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YList pe_distinguisher_label;
         ydk::YList large_community;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidLabelIndex : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PrefixSidAttr : public ydk::Entity
 {
     public:
-        PrefixSidLabelIndex();
-        ~PrefixSidLabelIndex();
+        PrefixSidAttr();
+        ~PrefixSidAttr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3156,43 +2829,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf label_index; //type: uint32
+        class PrefixSidTlv; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PrefixSidAttr::PrefixSidTlv
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidLabelIndex
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidOrigSrgb : public ydk::Entity
-{
-    public:
-        PrefixSidOrigSrgb();
-        ~PrefixSidOrigSrgb();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flags; //type: uint16
-        ydk::YLeaf range_count; //type: uint32
-        class Range; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidOrigSrgb::Range
-
-        ydk::YList range;
+        ydk::YList prefix_sid_tlv;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidOrigSrgb
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PrefixSidAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidOrigSrgb::Range : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PrefixSidAttr::PrefixSidTlv : public ydk::Entity
 {
     public:
-        Range();
-        ~Range();
+        PrefixSidTlv();
+        ~PrefixSidTlv();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3204,107 +2852,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range_start; //type: uint32
-        ydk::YLeaf range_end; //type: uint32
+        ydk::YLeaf type; //type: BgpPrefixSid
+        ydk::YLeaf len; //type: uint16
+        ydk::YLeaf val; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidOrigSrgb::Range
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidsRv6vpnsid : public ydk::Entity
-{
-    public:
-        PrefixSidsRv6vpnsid();
-        ~PrefixSidsRv6vpnsid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf reserved; //type: uint8
-        ydk::YLeaf sid_count; //type: uint32
-        class Sid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidsRv6vpnsid::Sid
-
-        ydk::YList sid;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidsRv6vpnsid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PrefixSidAttr::PrefixSidTlv
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidsRv6vpnsid::Sid : public ydk::Entity
-{
-    public:
-        Sid();
-        ~Sid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sid_type; //type: uint8
-        ydk::YLeaf sid_flags; //type: uint8
-        ydk::YLeaf sid_value; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidsRv6vpnsid::Sid
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidUnkTlVs : public ydk::Entity
-{
-    public:
-        PrefixSidUnkTlVs();
-        ~PrefixSidUnkTlVs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tlv_count; //type: uint16
-        ydk::YLeaf received_buffer_length; //type: uint32
-        class TlVsBuffer; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidUnkTlVs::TlVsBuffer
-
-        ydk::YList tl_vs_buffer;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidUnkTlVs
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidUnkTlVs::TlVsBuffer : public ydk::Entity
-{
-    public:
-        TlVsBuffer();
-        ~TlVsBuffer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint8
-
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PrefixSidUnkTlVs::TlVsBuffer
-
-
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap : public ydk::Entity
 {
     public:
         TunnelEncap();
@@ -3320,14 +2875,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy
+        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy> sr_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy> sr_policy;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy : public ydk::Entity
 {
     public:
         SrPolicy();
@@ -3348,18 +2903,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
         ydk::YLeaf usable; //type: boolean
-        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::BindingSid
-        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
-        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList
+        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::BindingSid
+        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::SegmentList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::BindingSid> binding_sid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::BindingSid> binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
         ydk::YList segment_list;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
 {
     public:
         BindingSid();
@@ -3379,10 +2934,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::BindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::BindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
 {
     public:
         AllocatedBindingSid();
@@ -3402,10 +2957,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
 {
     public:
         SegmentList();
@@ -3422,14 +2977,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf weight; //type: uint8
-        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
+        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
 
         ydk::YList segment;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::SegmentList
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -3450,10 +3005,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::Community : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::Community : public ydk::Entity
 {
     public:
         Community();
@@ -3471,10 +3026,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::Community
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::Community
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::ExtendedCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::ExtendedCommunity : public ydk::Entity
 {
     public:
         ExtendedCommunity();
@@ -3492,10 +3047,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::ExtendedCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::ExtendedCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::UnknownAttribute : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::UnknownAttribute : public ydk::Entity
 {
     public:
         UnknownAttribute();
@@ -3513,10 +3068,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::UnknownAttribute
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::UnknownAttribute
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::Cluster : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::Cluster : public ydk::Entity
 {
     public:
         Cluster();
@@ -3534,10 +3089,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::Cluster
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::Cluster
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::L2tpv3Cookie : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::L2tpv3Cookie : public ydk::Entity
 {
     public:
         L2tpv3Cookie();
@@ -3555,10 +3110,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::L2tpv3Cookie
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::L2tpv3Cookie
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::ConnectorValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::ConnectorValue : public ydk::Entity
 {
     public:
         ConnectorValue();
@@ -3576,10 +3131,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::ConnectorValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::ConnectorValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PmsiValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PmsiValue : public ydk::Entity
 {
     public:
         PmsiValue();
@@ -3597,10 +3152,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PmsiValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PmsiValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::LsAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::LsAttr : public ydk::Entity
 {
     public:
         LsAttr();
@@ -3618,10 +3173,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::LsAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::LsAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PeDistinguisherLabel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PeDistinguisherLabel : public ydk::Entity
 {
     public:
         PeDistinguisherLabel();
@@ -3640,10 +3195,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf pe_address; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::PeDistinguisherLabel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::PeDistinguisherLabel
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::LargeCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::LargeCommunity : public ydk::Entity
 {
     public:
         LargeCommunity();
@@ -3663,10 +3218,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf local_data1; //type: uint32
         ydk::YLeaf local_data2; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::AttrSet::LargeCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::AttrSet::LargeCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RnhAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RnhAddr : public ydk::Entity
 {
     public:
         RnhAddr();
@@ -3687,10 +3242,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf mac_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RnhAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RnhAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp : public ydk::Entity
 {
     public:
         RibrnhIp();
@@ -3728,20 +3283,20 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -3759,10 +3314,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -3780,10 +3335,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -3801,10 +3356,10 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -3822,14 +3377,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Policies::Policy::AttributesAfterPolicyOut::RibrnhIp::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Information : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Convergence : public ydk::Entity
 {
     public:
-        Information();
-        ~Information();
+        Convergence();
+        ~Convergence();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3841,16 +3396,18 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Information : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf route_distinguisher; //type: string
+        ydk::YLeaf af_name; //type: BgpAfi
+        ydk::YLeaf has_converged; //type: boolean
+        ydk::YLeaf are_write_queues_empty; //type: boolean
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Information
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Convergence
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterVrf : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo : public ydk::Entity
 {
     public:
-        UpdateInboundFilterVrf();
-        ~UpdateInboundFilterVrf();
+        AfProcessInfo();
+        ~AfProcessInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3862,22 +3419,131 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterV
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf update_vrf_name; //type: string
-        ydk::YLeaf update_filtered_message_count; //type: uint32
-        ydk::YLeaf update_filtered_neighbor_count; //type: uint32
-        ydk::YLeaf last_update_filtered_age; //type: uint32
-        class LastUpdateFilteredTimestamp; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterVrf::LastUpdateFilteredTimestamp
+        ydk::YLeaf af_name; //type: BgpAfi
+        ydk::YLeaf process_instance; //type: uint8
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_totals; //type: boolean
+        class Global; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global
+        class Vrf; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Vrf
+        class PerformanceStatistics; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterVrf::LastUpdateFilteredTimestamp> last_update_filtered_timestamp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global> global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Vrf> vrf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics> performance_statistics;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterVrf
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterVrf::LastUpdateFilteredTimestamp : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global : public ydk::Entity
 {
     public:
-        LastUpdateFilteredTimestamp();
-        ~LastUpdateFilteredTimestamp();
+        Global();
+        ~Global();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf router_state; //type: BgpRtrState
+        ydk::YLeaf table_version; //type: uint32
+        ydk::YLeaf version_wrapped; //type: uint32
+        ydk::YLeaf version_wrapped_tid; //type: uint32
+        ydk::YLeaf max_active_pelem_version; //type: uint32
+        ydk::YLeaf merged_table_version; //type: uint32
+        ydk::YLeaf route_download_go_active_done_pending; //type: uint32
+        ydk::YLeaf rib_brib_received_version; //type: uint32
+        ydk::YLeaf table_brib_version; //type: uint32
+        ydk::YLeaf label_version; //type: uint32
+        ydk::YLeaf import_version; //type: uint32
+        ydk::YLeaf standby_version; //type: uint32
+        ydk::YLeaf send_version; //type: uint32
+        ydk::YLeaf num_init_sync_pfx; //type: uint32
+        ydk::YLeaf max_label_stack_depth_v4_next_hop; //type: uint32
+        ydk::YLeaf max_label_stack_depth_v6_next_hop; //type: uint32
+        ydk::YLeaf local_networks_num; //type: uint32
+        ydk::YLeaf local_networks_memory; //type: uint32
+        ydk::YLeaf local_networks_malloced_num; //type: uint32
+        ydk::YLeaf local_networks_freed_num; //type: uint32
+        ydk::YLeaf local_paths_num; //type: uint32
+        ydk::YLeaf local_paths_memory; //type: uint32
+        ydk::YLeaf local_paths_malloced_num; //type: uint32
+        ydk::YLeaf local_paths_freed_num; //type: uint32
+        ydk::YLeaf imported_paths_num; //type: uint32
+        ydk::YLeaf imported_paths_memory; //type: uint32
+        ydk::YLeaf networks_num; //type: uint32
+        ydk::YLeaf networks_memory; //type: uint32
+        ydk::YLeaf networks_malloced_num; //type: uint32
+        ydk::YLeaf networks_freed_num; //type: uint32
+        ydk::YLeaf paths_num; //type: uint32
+        ydk::YLeaf paths_memory; //type: uint32
+        ydk::YLeaf paths_malloced_num; //type: uint32
+        ydk::YLeaf paths_freed_num; //type: uint32
+        ydk::YLeaf path_elems_num; //type: uint32
+        ydk::YLeaf path_elems_memory; //type: uint32
+        ydk::YLeaf path_elems_malloced_num; //type: uint32
+        ydk::YLeaf path_elems_freed_num; //type: uint32
+        ydk::YLeaf label_last_trigger; //type: uint64
+        ydk::YLeaf last_label_version; //type: uint32
+        ydk::YLeaf label_bgp_version; //type: uint32
+        ydk::YLeaf label_triggers; //type: uint32
+        ydk::YLeaf rib_last_trigger; //type: uint64
+        ydk::YLeaf last_rib_version; //type: uint32
+        ydk::YLeaf rib_bgp_version; //type: uint32
+        ydk::YLeaf rib_triggers; //type: uint32
+        ydk::YLeaf import_last_trigger; //type: uint64
+        ydk::YLeaf last_import_version; //type: uint32
+        ydk::YLeaf import_bgp_version; //type: uint32
+        ydk::YLeaf import_triggers; //type: uint32
+        ydk::YLeaf update_gen_last_trigger; //type: uint64
+        ydk::YLeaf update_gen_bgp_version; //type: uint32
+        ydk::YLeaf update_triggers; //type: uint32
+        ydk::YLeaf total_r_ds_num; //type: uint32
+        ydk::YLeaf total_remote_r_ds_num; //type: uint32
+        ydk::YLeaf total_same_r_ds_num; //type: uint32
+        ydk::YLeaf malloced_rd_count; //type: uint32
+        ydk::YLeaf freed_rd_count; //type: uint32
+        ydk::YLeaf rd_memory; //type: uint32
+        ydk::YLeaf multipath_network_entry_count; //type: uint32
+        ydk::YLeaf multipath_network_entry_memory; //type: uint32
+        ydk::YLeaf multipath_paths_count; //type: uint32
+        ydk::YLeaf multipath_paths_memory; //type: uint32
+        ydk::YLeaf update_wait_install_enabled; //type: uint32
+        ydk::YLeaf rib_acked_table_version; //type: uint32
+        ydk::YLeaf rib_ack_requests; //type: uint32
+        ydk::YLeaf rib_acks_received; //type: uint32
+        ydk::YLeaf rib_slow_acks; //type: uint32
+        class VersionWrapTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapTimeSpec
+        class VersionWrapStartTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapStartTimeSpec
+        class VersionWrapDoneTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapDoneTimeSpec
+        class TriggerRib; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib
+        class TriggerImport; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport
+        class TriggerUpdate; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate
+        class TriggerLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel
+        class RibInstall; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapTimeSpec> version_wrap_time_spec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapStartTimeSpec> version_wrap_start_time_spec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapDoneTimeSpec> version_wrap_done_time_spec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib> trigger_rib;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport> trigger_import;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate> trigger_update;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel> trigger_label;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall> rib_install;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapTimeSpec : public ydk::Entity
+{
+    public:
+        VersionWrapTimeSpec();
+        ~VersionWrapTimeSpec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3892,14 +3558,14 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterV
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::UpdateInboundFilterVrf::LastUpdateFilteredTimestamp
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapTimeSpec
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapStartTimeSpec : public ydk::Entity
 {
     public:
-        Postits();
-        ~Postits();
+        VersionWrapStartTimeSpec();
+        ~VersionWrapStartTimeSpec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3911,18 +3577,17 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Postit; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
-        ydk::YList postit;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapStartTimeSpec
 
 
-class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapDoneTimeSpec : public ydk::Entity
 {
     public:
-        Postit();
-        ~Postit();
+        VersionWrapDoneTimeSpec();
+        ~VersionWrapDoneTimeSpec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3934,20 +3599,429 @@ class Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf connect_state; //type: uint32
-        ydk::YLeaf start_time; //type: uint32
-        ydk::YLeaf nsr_state; //type: BgpSyncNbrNsrState
-        class NeighborsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit::NeighborsAddress
-        class NeighborAf; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit::NeighborAf
-        class PostitInfo; //type: Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit::PostitInfo
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit::NeighborsAddress> neighbors_address;
-        ydk::YList neighbor_af;
-        ydk::YList postit_info;
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::VersionWrapDoneTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib : public ydk::Entity
+{
+    public:
+        TriggerRib();
+        ~TriggerRib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf triggers; //type: uint32
+        class Statistic; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib::Statistic
+
+        ydk::YList statistic;
         
-}; // Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Postits::Postit
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib::Statistic : public ydk::Entity
+{
+    public:
+        Statistic();
+        ~Statistic();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf trigger_version; //type: uint32
+        ydk::YLeaf trigger_table_version; //type: uint32
+        class TriggerTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib::Statistic::TriggerTimeSpec
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib::Statistic::TriggerTimeSpec> trigger_time_spec;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib::Statistic
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib::Statistic::TriggerTimeSpec : public ydk::Entity
+{
+    public:
+        TriggerTimeSpec();
+        ~TriggerTimeSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerRib::Statistic::TriggerTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport : public ydk::Entity
+{
+    public:
+        TriggerImport();
+        ~TriggerImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf triggers; //type: uint32
+        class Statistic; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport::Statistic
+
+        ydk::YList statistic;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport::Statistic : public ydk::Entity
+{
+    public:
+        Statistic();
+        ~Statistic();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf trigger_version; //type: uint32
+        ydk::YLeaf trigger_table_version; //type: uint32
+        class TriggerTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport::Statistic::TriggerTimeSpec
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport::Statistic::TriggerTimeSpec> trigger_time_spec;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport::Statistic
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport::Statistic::TriggerTimeSpec : public ydk::Entity
+{
+    public:
+        TriggerTimeSpec();
+        ~TriggerTimeSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerImport::Statistic::TriggerTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate : public ydk::Entity
+{
+    public:
+        TriggerUpdate();
+        ~TriggerUpdate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf triggers; //type: uint32
+        class Statistic; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate::Statistic
+
+        ydk::YList statistic;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate::Statistic : public ydk::Entity
+{
+    public:
+        Statistic();
+        ~Statistic();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf trigger_version; //type: uint32
+        ydk::YLeaf trigger_table_version; //type: uint32
+        class TriggerTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate::Statistic::TriggerTimeSpec
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate::Statistic::TriggerTimeSpec> trigger_time_spec;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate::Statistic
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate::Statistic::TriggerTimeSpec : public ydk::Entity
+{
+    public:
+        TriggerTimeSpec();
+        ~TriggerTimeSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerUpdate::Statistic::TriggerTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel : public ydk::Entity
+{
+    public:
+        TriggerLabel();
+        ~TriggerLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf triggers; //type: uint32
+        class Statistic; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel::Statistic
+
+        ydk::YList statistic;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel::Statistic : public ydk::Entity
+{
+    public:
+        Statistic();
+        ~Statistic();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf trigger_version; //type: uint32
+        ydk::YLeaf trigger_table_version; //type: uint32
+        class TriggerTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel::Statistic::TriggerTimeSpec
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel::Statistic::TriggerTimeSpec> trigger_time_spec;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel::Statistic
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel::Statistic::TriggerTimeSpec : public ydk::Entity
+{
+    public:
+        TriggerTimeSpec();
+        ~TriggerTimeSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::TriggerLabel::Statistic::TriggerTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall : public ydk::Entity
+{
+    public:
+        RibInstall();
+        ~RibInstall();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf installed_count; //type: uint32
+        ydk::YLeaf modified_count; //type: uint32
+        ydk::YLeaf skipped_count; //type: uint32
+        ydk::YLeaf withdrawn_count; //type: uint32
+        ydk::YLeaf start_version; //type: uint32
+        ydk::YLeaf target_version; //type: uint32
+        class UpdateTime; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::UpdateTime
+        class InstallTime; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::InstallTime
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::UpdateTime> update_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::InstallTime> install_time;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::UpdateTime : public ydk::Entity
+{
+    public:
+        UpdateTime();
+        ~UpdateTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::UpdateTime
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::InstallTime : public ydk::Entity
+{
+    public:
+        InstallTime();
+        ~InstallTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Global::RibInstall::InstallTime
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Vrf : public ydk::Entity
+{
+    public:
+        Vrf();
+        ~Vrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf network_entry_count; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf imported_paths; //type: uint32
+        ydk::YLeaf local_paths; //type: uint32
+        ydk::YLeaf path_elems_count; //type: uint32
+        ydk::YLeaf path_memory; //type: uint32
+        ydk::YLeaf imported_path_memory; //type: uint32
+        ydk::YLeaf local_path_memory; //type: uint32
+        ydk::YLeaf prefix_memory; //type: uint32
+        ydk::YLeaf path_elem_memory; //type: uint32
+        ydk::YLeaf received_path_count; //type: uint32
+        ydk::YLeaf history_path_count; //type: uint32
+        ydk::YLeaf damped_path_count; //type: uint32
+        ydk::YLeaf malloced_prefix_count; //type: uint32
+        ydk::YLeaf freed_prefix_count; //type: uint32
+        ydk::YLeaf malloced_path_count; //type: uint32
+        ydk::YLeaf freed_path_count; //type: uint32
+        ydk::YLeaf malloced_path_elem_count; //type: uint32
+        ydk::YLeaf freed_path_elem_count; //type: uint32
+        ydk::YLeaf any_ebgp_neighbor_missing_policy; //type: boolean
+        ydk::YLeaf attribute_download; //type: boolean
+        ydk::YLeaf route_target_download; //type: boolean
+        ydk::YLeaf srms_prefix_sid; //type: boolean
+        ydk::YLeaf add_path_install_enable; //type: boolean
+        ydk::YLeaf add_path_install_disable; //type: boolean
+        ydk::YLeaf best_external; //type: boolean
+        ydk::YLeaf best_external_disable; //type: boolean
+        ydk::YLeaf label_retain; //type: boolean
+        ydk::YLeaf label_retainvalue; //type: uint32
+        ydk::YLeaf tbl_bitf_size; //type: uint16
+        ydk::YLeaf tbl_chunk_bitf_size; //type: uint16
+        ydk::YLeaf is_route_reflector; //type: boolean
+        ydk::YLeaf asbr; //type: boolean
+        ydk::YLeaf retain_rt_all; //type: boolean
+        ydk::YLeaf ibgp_nexthop_self_count; //type: uint32
+        ydk::YLeaf use_igpsr_label; //type: boolean
+        ydk::YLeaf bmp_network_entry_count; //type: uint32
+        ydk::YLeaf bmp_paths_count; //type: uint32
+        ydk::YLeaf bmp_prefix_memory; //type: uint32
+        ydk::YLeaf bmp_path_memory; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::Vrf
 
 
 }

@@ -3763,10 +3763,6 @@ bool CallHome::Authorization::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-const Enum::YLeaf CallHomeMailSendInterval::daily {0, "daily"};
-const Enum::YLeaf CallHomeMailSendInterval::weekly {1, "weekly"};
-const Enum::YLeaf CallHomeMailSendInterval::monthly {2, "monthly"};
-
 const Enum::YLeaf CallHomeDayOfWeek::sunday {0, "sunday"};
 const Enum::YLeaf CallHomeDayOfWeek::monday {1, "monday"};
 const Enum::YLeaf CallHomeDayOfWeek::tuesday {2, "tuesday"};
@@ -3774,6 +3770,14 @@ const Enum::YLeaf CallHomeDayOfWeek::wednesday {3, "wednesday"};
 const Enum::YLeaf CallHomeDayOfWeek::thursday {4, "thursday"};
 const Enum::YLeaf CallHomeDayOfWeek::friday {5, "friday"};
 const Enum::YLeaf CallHomeDayOfWeek::saturday {6, "saturday"};
+
+const Enum::YLeaf DataPrivacyLevel::normal {0, "normal"};
+const Enum::YLeaf DataPrivacyLevel::high {1, "high"};
+const Enum::YLeaf DataPrivacyLevel::host_name {2, "host-name"};
+
+const Enum::YLeaf CallHomeMailSendInterval::daily {0, "daily"};
+const Enum::YLeaf CallHomeMailSendInterval::weekly {1, "weekly"};
+const Enum::YLeaf CallHomeMailSendInterval::monthly {2, "monthly"};
 
 const Enum::YLeaf CallHomeEventSeverity::debugging {0, "debugging"};
 const Enum::YLeaf CallHomeEventSeverity::normal {1, "normal"};
@@ -3792,10 +3796,6 @@ const Enum::YLeaf SnapshotInterval::monthly {2, "monthly"};
 
 const Enum::YLeaf CallHomeTransMethod::email {1, "email"};
 const Enum::YLeaf CallHomeTransMethod::http {2, "http"};
-
-const Enum::YLeaf DataPrivacyLevel::normal {0, "normal"};
-const Enum::YLeaf DataPrivacyLevel::high {1, "high"};
-const Enum::YLeaf DataPrivacyLevel::host_name {2, "host-name"};
 
 
 }

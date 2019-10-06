@@ -360,6 +360,37 @@ class FlowExporterIpwriteStatsType : public ydk::Enum
         static const ydk::Enum::YLeaf flow_exporter_ipwrite_stats_rate_limit;
         static const ydk::Enum::YLeaf flow_exporter_ipwrite_stats_no_destination;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "flow-exporter-ipwrite-stats-ok") return 0;
+            if (name == "flow-exporter-ipwrite-stats-no-fib") return 1;
+            if (name == "flow-exporter-ipwrite-stats-fail-event") return 2;
+            if (name == "flow-exporter-ipwrite-stats-process") return 3;
+            if (name == "flow-exporter-ipwrite-stats-enqueue-failed") return 4;
+            if (name == "flow-exporter-ipwrite-stats-ipc-failed") return 5;
+            if (name == "flow-exporter-ipwrite-stats-output-failed") return 6;
+            if (name == "flow-exporter-ipwrite-stats-mtu-failed") return 7;
+            if (name == "flow-exporter-ipwrite-stats-encapfix-failed") return 8;
+            if (name == "flow-exporter-ipwrite-stats-cef-off") return 9;
+            if (name == "flow-exporter-ipwrite-stats-other") return 10;
+            if (name == "flow-exporter-ipwrite-stats-rate-limit") return 11;
+            if (name == "flow-exporter-ipwrite-stats-no-destination") return 12;
+            return -1;
+        }
+};
+
+class FlowMonitorCacheState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_deleted;
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_allocated;
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_not_allocated;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "flow-monitor-cache-state-being-deleted") return 0;
+            if (name == "flow-monitor-cache-state-being-allocated") return 1;
+            if (name == "flow-monitor-cache-state-not-allocated") return 2;
+            return -1;
+        }
 };
 
 class FlowMonitorCacheType : public ydk::Enum
@@ -370,15 +401,13 @@ class FlowMonitorCacheType : public ydk::Enum
         static const ydk::Enum::YLeaf flow_monitor_cache_type_synchronized;
         static const ydk::Enum::YLeaf flow_monitor_cache_type_immediate;
 
-};
-
-class FlowMonitorCacheState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_deleted;
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_allocated;
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_not_allocated;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "flow-monitor-cache-type-normal") return 0;
+            if (name == "flow-monitor-cache-type-permanent") return 1;
+            if (name == "flow-monitor-cache-type-synchronized") return 2;
+            if (name == "flow-monitor-cache-type-immediate") return 3;
+            return -1;
+        }
 };
 
 

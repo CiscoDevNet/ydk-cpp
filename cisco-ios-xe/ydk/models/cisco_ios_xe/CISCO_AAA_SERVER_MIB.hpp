@@ -156,6 +156,16 @@ class CiscoAAAProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf sdi;
         static const ydk::Enum::YLeaf other;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tacacsplus") return 1;
+            if (name == "radius") return 2;
+            if (name == "ldap") return 3;
+            if (name == "kerberos") return 4;
+            if (name == "ntlm") return 5;
+            if (name == "sdi") return 6;
+            if (name == "other") return 7;
+            return -1;
+        }
 };
 
 class CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::CasState : public ydk::Enum
@@ -164,6 +174,11 @@ class CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::CasState : public ydk::
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf dead;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "up") return 1;
+            if (name == "dead") return 2;
+            return -1;
+        }
 };
 
 

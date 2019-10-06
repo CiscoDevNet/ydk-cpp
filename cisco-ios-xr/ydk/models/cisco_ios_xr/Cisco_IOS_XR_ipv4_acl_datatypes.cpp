@@ -11,28 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_acl_datatypes {
 
-const Enum::YLeaf Ipv4AclProtocolNumber::ip {0, "ip"};
-const Enum::YLeaf Ipv4AclProtocolNumber::icmp {1, "icmp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::igmp {2, "igmp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::ip_in_ip {4, "ip-in-ip"};
-const Enum::YLeaf Ipv4AclProtocolNumber::tcp {6, "tcp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::igrp {9, "igrp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::udp {17, "udp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::gre {47, "gre"};
-const Enum::YLeaf Ipv4AclProtocolNumber::esp {50, "esp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::ahp {51, "ahp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::eigrp {88, "eigrp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::ospf {89, "ospf"};
-const Enum::YLeaf Ipv4AclProtocolNumber::nos {94, "nos"};
-const Enum::YLeaf Ipv4AclProtocolNumber::pim {103, "pim"};
-const Enum::YLeaf Ipv4AclProtocolNumber::pcp {108, "pcp"};
-const Enum::YLeaf Ipv4AclProtocolNumber::sctp {132, "sctp"};
+const Enum::YLeaf Ipv4AclLoggingEnum::log {1, "log"};
+const Enum::YLeaf Ipv4AclLoggingEnum::log_input {2, "log-input"};
 
-const Enum::YLeaf Ipv4AclTcpMatchOperatorEnum::match_all {1, "match-all"};
-const Enum::YLeaf Ipv4AclTcpMatchOperatorEnum::match_any {3, "match-any"};
-
-const Enum::YLeaf Ipv4AclGrantEnum::deny {0, "deny"};
-const Enum::YLeaf Ipv4AclGrantEnum::permit {1, "permit"};
+const Enum::YLeaf Ipv4AclDscpNumber::default_ {0, "default"};
+const Enum::YLeaf Ipv4AclDscpNumber::af11 {10, "af11"};
+const Enum::YLeaf Ipv4AclDscpNumber::af12 {12, "af12"};
+const Enum::YLeaf Ipv4AclDscpNumber::af13 {14, "af13"};
+const Enum::YLeaf Ipv4AclDscpNumber::af21 {18, "af21"};
+const Enum::YLeaf Ipv4AclDscpNumber::af22 {20, "af22"};
+const Enum::YLeaf Ipv4AclDscpNumber::af23 {22, "af23"};
+const Enum::YLeaf Ipv4AclDscpNumber::af31 {26, "af31"};
+const Enum::YLeaf Ipv4AclDscpNumber::af32 {28, "af32"};
+const Enum::YLeaf Ipv4AclDscpNumber::af33 {30, "af33"};
+const Enum::YLeaf Ipv4AclDscpNumber::af41 {34, "af41"};
+const Enum::YLeaf Ipv4AclDscpNumber::af42 {36, "af42"};
+const Enum::YLeaf Ipv4AclDscpNumber::af43 {38, "af43"};
+const Enum::YLeaf Ipv4AclDscpNumber::cs1 {8, "cs1"};
+const Enum::YLeaf Ipv4AclDscpNumber::cs2 {16, "cs2"};
+const Enum::YLeaf Ipv4AclDscpNumber::cs3 {24, "cs3"};
+const Enum::YLeaf Ipv4AclDscpNumber::cs4 {32, "cs4"};
+const Enum::YLeaf Ipv4AclDscpNumber::cs5 {40, "cs5"};
+const Enum::YLeaf Ipv4AclDscpNumber::cs6 {48, "cs6"};
+const Enum::YLeaf Ipv4AclDscpNumber::cs7 {56, "cs7"};
+const Enum::YLeaf Ipv4AclDscpNumber::ef {46, "ef"};
 
 const Enum::YLeaf Ipv4AclOperatorEnum::equal {1, "equal"};
 const Enum::YLeaf Ipv4AclOperatorEnum::greater_than {2, "greater-than"};
@@ -40,14 +42,8 @@ const Enum::YLeaf Ipv4AclOperatorEnum::less_than {3, "less-than"};
 const Enum::YLeaf Ipv4AclOperatorEnum::not_equal {4, "not-equal"};
 const Enum::YLeaf Ipv4AclOperatorEnum::range {5, "range"};
 
-const Enum::YLeaf Ipv4AclPrecedenceNumber::critical {5, "critical"};
-const Enum::YLeaf Ipv4AclPrecedenceNumber::flash {3, "flash"};
-const Enum::YLeaf Ipv4AclPrecedenceNumber::flash_override {4, "flash-override"};
-const Enum::YLeaf Ipv4AclPrecedenceNumber::immediate {2, "immediate"};
-const Enum::YLeaf Ipv4AclPrecedenceNumber::internet {6, "internet"};
-const Enum::YLeaf Ipv4AclPrecedenceNumber::network {7, "network"};
-const Enum::YLeaf Ipv4AclPrecedenceNumber::priority {1, "priority"};
-const Enum::YLeaf Ipv4AclPrecedenceNumber::routine {0, "routine"};
+const Enum::YLeaf Ipv4AclStatusEnum::disabled {0, "disabled"};
+const Enum::YLeaf Ipv4AclStatusEnum::enabled {1, "enabled"};
 
 const Enum::YLeaf Ipv4AclPortNumber::echo {7, "echo"};
 const Enum::YLeaf Ipv4AclPortNumber::discard {9, "discard"};
@@ -98,6 +94,15 @@ const Enum::YLeaf Ipv4AclPortNumber::klogin {543, "klogin"};
 const Enum::YLeaf Ipv4AclPortNumber::kshell {544, "kshell"};
 const Enum::YLeaf Ipv4AclPortNumber::ldp {646, "ldp"};
 
+const Enum::YLeaf Ipv4AclPrecedenceNumber::critical {5, "critical"};
+const Enum::YLeaf Ipv4AclPrecedenceNumber::flash {3, "flash"};
+const Enum::YLeaf Ipv4AclPrecedenceNumber::flash_override {4, "flash-override"};
+const Enum::YLeaf Ipv4AclPrecedenceNumber::immediate {2, "immediate"};
+const Enum::YLeaf Ipv4AclPrecedenceNumber::internet {6, "internet"};
+const Enum::YLeaf Ipv4AclPrecedenceNumber::network {7, "network"};
+const Enum::YLeaf Ipv4AclPrecedenceNumber::priority {1, "priority"};
+const Enum::YLeaf Ipv4AclPrecedenceNumber::routine {0, "routine"};
+
 const Enum::YLeaf Ipv4AclIgmpNumber::host_query {17, "host-query"};
 const Enum::YLeaf Ipv4AclIgmpNumber::host_report {18, "host-report"};
 const Enum::YLeaf Ipv4AclIgmpNumber::dvmrp {19, "dvmrp"};
@@ -109,30 +114,36 @@ const Enum::YLeaf Ipv4AclIgmpNumber::mtrace_response {30, "mtrace-response"};
 const Enum::YLeaf Ipv4AclIgmpNumber::mtrace {31, "mtrace"};
 const Enum::YLeaf Ipv4AclIgmpNumber::v3_report {34, "v3-report"};
 
-const Enum::YLeaf Ipv4AclDscpNumber::default_ {0, "default"};
-const Enum::YLeaf Ipv4AclDscpNumber::af11 {10, "af11"};
-const Enum::YLeaf Ipv4AclDscpNumber::af12 {12, "af12"};
-const Enum::YLeaf Ipv4AclDscpNumber::af13 {14, "af13"};
-const Enum::YLeaf Ipv4AclDscpNumber::af21 {18, "af21"};
-const Enum::YLeaf Ipv4AclDscpNumber::af22 {20, "af22"};
-const Enum::YLeaf Ipv4AclDscpNumber::af23 {22, "af23"};
-const Enum::YLeaf Ipv4AclDscpNumber::af31 {26, "af31"};
-const Enum::YLeaf Ipv4AclDscpNumber::af32 {28, "af32"};
-const Enum::YLeaf Ipv4AclDscpNumber::af33 {30, "af33"};
-const Enum::YLeaf Ipv4AclDscpNumber::af41 {34, "af41"};
-const Enum::YLeaf Ipv4AclDscpNumber::af42 {36, "af42"};
-const Enum::YLeaf Ipv4AclDscpNumber::af43 {38, "af43"};
-const Enum::YLeaf Ipv4AclDscpNumber::cs1 {8, "cs1"};
-const Enum::YLeaf Ipv4AclDscpNumber::cs2 {16, "cs2"};
-const Enum::YLeaf Ipv4AclDscpNumber::cs3 {24, "cs3"};
-const Enum::YLeaf Ipv4AclDscpNumber::cs4 {32, "cs4"};
-const Enum::YLeaf Ipv4AclDscpNumber::cs5 {40, "cs5"};
-const Enum::YLeaf Ipv4AclDscpNumber::cs6 {48, "cs6"};
-const Enum::YLeaf Ipv4AclDscpNumber::cs7 {56, "cs7"};
-const Enum::YLeaf Ipv4AclDscpNumber::ef {46, "ef"};
+const Enum::YLeaf Ipv4AclGrantEnum::deny {0, "deny"};
+const Enum::YLeaf Ipv4AclGrantEnum::permit {1, "permit"};
 
-const Enum::YLeaf Ipv4AclStatusEnum::disabled {0, "disabled"};
-const Enum::YLeaf Ipv4AclStatusEnum::enabled {1, "enabled"};
+const Enum::YLeaf Ipv4AclTcpMatchOperatorEnum::match_all {1, "match-all"};
+const Enum::YLeaf Ipv4AclTcpMatchOperatorEnum::match_any {3, "match-any"};
+
+const Enum::YLeaf Ipv4AclProtocolNumber::ip {0, "ip"};
+const Enum::YLeaf Ipv4AclProtocolNumber::icmp {1, "icmp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::igmp {2, "igmp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::ip_in_ip {4, "ip-in-ip"};
+const Enum::YLeaf Ipv4AclProtocolNumber::tcp {6, "tcp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::igrp {9, "igrp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::udp {17, "udp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::gre {47, "gre"};
+const Enum::YLeaf Ipv4AclProtocolNumber::esp {50, "esp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::ahp {51, "ahp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::eigrp {88, "eigrp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::ospf {89, "ospf"};
+const Enum::YLeaf Ipv4AclProtocolNumber::nos {94, "nos"};
+const Enum::YLeaf Ipv4AclProtocolNumber::pim {103, "pim"};
+const Enum::YLeaf Ipv4AclProtocolNumber::pcp {108, "pcp"};
+const Enum::YLeaf Ipv4AclProtocolNumber::sctp {132, "sctp"};
+
+const Enum::YLeaf Ipv4AclFragFlags::dont_fragment {1, "dont-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::is_fragment {2, "is-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::first_fragment {4, "first-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::last_fragment {8, "last-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_is_fragment {3, "dont-fragment-is-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_first_fragment {5, "dont-fragment-first-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_last_fragment {9, "dont-fragment-last-fragment"};
 
 const Enum::YLeaf Ipv4AclIcmpTypeCodeEnum::echo_reply {65535, "echo-reply"};
 const Enum::YLeaf Ipv4AclIcmpTypeCodeEnum::network_unreachable {196608, "network-unreachable"};
@@ -178,17 +189,6 @@ const Enum::YLeaf Ipv4AclIcmpTypeCodeEnum::mask_reply {1245183, "mask-reply"};
 const Enum::YLeaf Ipv4AclIcmpTypeCodeEnum::traceroute {2031615, "traceroute"};
 const Enum::YLeaf Ipv4AclIcmpTypeCodeEnum::conversion_error {2097151, "conversion-error"};
 const Enum::YLeaf Ipv4AclIcmpTypeCodeEnum::mobile_redirect {2162687, "mobile-redirect"};
-
-const Enum::YLeaf Ipv4AclFragFlags::dont_fragment {1, "dont-fragment"};
-const Enum::YLeaf Ipv4AclFragFlags::is_fragment {2, "is-fragment"};
-const Enum::YLeaf Ipv4AclFragFlags::first_fragment {4, "first-fragment"};
-const Enum::YLeaf Ipv4AclFragFlags::last_fragment {8, "last-fragment"};
-const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_is_fragment {3, "dont-fragment-is-fragment"};
-const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_first_fragment {5, "dont-fragment-first-fragment"};
-const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_last_fragment {9, "dont-fragment-last-fragment"};
-
-const Enum::YLeaf Ipv4AclLoggingEnum::log {1, "log"};
-const Enum::YLeaf Ipv4AclLoggingEnum::log_input {2, "log-input"};
 
 
 }

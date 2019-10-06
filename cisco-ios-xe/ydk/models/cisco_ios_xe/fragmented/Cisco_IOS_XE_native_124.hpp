@@ -2964,7 +2964,7 @@ class Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf days; //type: uint8
-        ydk::YLeaf kilobytes; //type: one of enumeration, uint64
+        ydk::YLeaf kilobytes; //type: one of uint64, enumeration
         ydk::YLeaf seconds; //type: uint64
         class Kilobytes;
 
@@ -3738,6 +3738,11 @@ class Native::Crypto::DynamicMap::Default::Set::Ip::Direction : public ydk::Enum
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::DynamicMap::Set::Pfs::Group : public ydk::Enum
@@ -3754,6 +3759,19 @@ class Native::Crypto::DynamicMap::Set::Pfs::Group : public ydk::Enum
         static const ydk::Enum::YLeaf group24;
         static const ydk::Enum::YLeaf group5;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "group1") return 0;
+            if (name == "group14") return 1;
+            if (name == "group15") return 2;
+            if (name == "group16") return 3;
+            if (name == "group19") return 4;
+            if (name == "group2") return 5;
+            if (name == "group20") return 6;
+            if (name == "group21") return 7;
+            if (name == "group24") return 8;
+            if (name == "group5") return 9;
+            return -1;
+        }
 };
 
 class Native::Crypto::DynamicMap::Set::SecurityAssociation::Dfbit : public ydk::Enum
@@ -3763,6 +3781,12 @@ class Native::Crypto::DynamicMap::Set::SecurityAssociation::Dfbit : public ydk::
         static const ydk::Enum::YLeaf copy;
         static const ydk::Enum::YLeaf set;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clear") return 0;
+            if (name == "copy") return 1;
+            if (name == "set") return 2;
+            return -1;
+        }
 };
 
 class Native::Crypto::DynamicMap::Set::SecurityAssociation::Ecn : public ydk::Enum
@@ -3771,6 +3795,11 @@ class Native::Crypto::DynamicMap::Set::SecurityAssociation::Ecn : public ydk::En
         static const ydk::Enum::YLeaf discard;
         static const ydk::Enum::YLeaf propagate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "discard") return 0;
+            if (name == "propagate") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime::Kilobytes : public ydk::Enum
@@ -3778,6 +3807,10 @@ class Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime::Kilobytes 
     public:
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            return -1;
+        }
 };
 
 class Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay::WindowSize : public ydk::Enum
@@ -3789,6 +3822,14 @@ class Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay::WindowSize :
         static const ydk::Enum::YLeaf Y_512;
         static const ydk::Enum::YLeaf Y_64;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "1024") return 0;
+            if (name == "128") return 1;
+            if (name == "256") return 2;
+            if (name == "512") return 3;
+            if (name == "64") return 4;
+            return -1;
+        }
 };
 
 class Native::Crypto::Engine::Software : public ydk::Enum
@@ -3797,6 +3838,11 @@ class Native::Crypto::Engine::Software : public ydk::Enum
         static const ydk::Enum::YLeaf ipsec;
         static const ydk::Enum::YLeaf isakmp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipsec") return 0;
+            if (name == "isakmp") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Gdoi::Group::Client::TransportEncryptKey : public ydk::Enum
@@ -3805,6 +3851,11 @@ class Native::Crypto::Gdoi::Group::Client::TransportEncryptKey : public ydk::Enu
         static const ydk::Enum::YLeaf group_key;
         static const ydk::Enum::YLeaf pair_wise_key;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "group-key") return 0;
+            if (name == "pair-wise-key") return 1;
+            return -1;
+        }
 };
 
 class Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::Small : public ydk::Enum
@@ -3814,6 +3865,12 @@ class Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::Small : public y
         static const ydk::Enum::YLeaf Y_16;
         static const ydk::Enum::YLeaf Y_8;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "12") return 0;
+            if (name == "16") return 1;
+            if (name == "8") return 2;
+            return -1;
+        }
 };
 
 

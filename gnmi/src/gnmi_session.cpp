@@ -53,7 +53,7 @@ gNMISession::gNMISession(Repository & repo,
                    const std::string & server_certificate, const std::string & private_key)
 {
     // Correct default settings
-	if (port == 0)
+    if (port == 0)
         port = 57400;
 
     client = make_unique<gNMIClient>(address, port, username, password, server_certificate, private_key);
@@ -166,7 +166,7 @@ static void populate_path_from_payload(gnmi::Path* path, const string & payload,
 
 static GnmiClientRequest build_set_request(RootSchemaNode & root_schema, DataNode* request, const string & operation)
 {
-    GnmiClientRequest one_request{};
+    GnmiClientRequest one_request;
     one_request.type = "set";
     one_request.operation = operation;
     auto entity = request->find("entity");
@@ -194,7 +194,7 @@ static GnmiClientRequest build_set_request(RootSchemaNode & root_schema, DataNod
 
 bool gNMISession::handle_set(Rpc& ydk_rpc) const
 {
-	vector<GnmiClientRequest> setRequest{};
+    vector<GnmiClientRequest> setRequest;
 
     auto delete_list = ydk_rpc.get_input_node().find("delete");
     if (!delete_list.empty()) {
@@ -229,7 +229,7 @@ bool gNMISession::handle_set(Rpc& ydk_rpc) const
 shared_ptr<DataNode>
 gNMISession::handle_get(Rpc& rpc) const
 {
-	vector<GnmiClientRequest> getRequest{};
+    vector<GnmiClientRequest> getRequest;
 
     auto request_list = rpc.get_input_node().find("request");
     if (request_list.empty()) {
@@ -245,7 +245,7 @@ gNMISession::handle_get(Rpc& rpc) const
     }
 
     for (auto request : request_list) {
-        GnmiClientRequest one_request{};
+        GnmiClientRequest one_request;
         one_request.type = "get";
         one_request.operation = operation;
 
@@ -327,7 +327,7 @@ gNMISession::handle_subscribe(Rpc& rpc,
 		std::function<void(const char * response)> out_func,
 		std::function<bool(const char * response)> poll_func) const
 {
-    vector<GnmiClientSubscription> sub_list{};
+    vector<GnmiClientSubscription> sub_list;
 
     auto subscription = rpc.get_input_node().find("subscription");
     if (subscription.empty()) {
@@ -360,7 +360,7 @@ gNMISession::handle_subscribe(Rpc& rpc,
     }
 
     for (auto one_subscription : subscription_list) {
-        GnmiClientSubscription sub{};
+        GnmiClientSubscription sub;
 
         auto entity_vector = one_subscription->find("entity");
         if (entity_vector.empty()) {

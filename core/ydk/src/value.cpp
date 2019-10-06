@@ -66,6 +66,7 @@ YLeaf::YLeaf(YType type, std::string name):
         yfilter(YFilter::not_set),
         name(name),
         value(""),
+        enum_value(0),
         type(type)
 {
 }
@@ -75,6 +76,7 @@ YLeaf::YLeaf(const YLeaf& val):
     yfilter(YFilter::not_set),
     name{val.name},
     value{val.value},
+    enum_value{val.enum_value},
     type{val.type},
     bits_value{val.bits_value}
 {
@@ -87,6 +89,7 @@ YLeaf::YLeaf(YLeaf&& val):
     yfilter(YFilter::not_set),
     name{std::move(val.name)},
     value{std::move(val.value)},
+    enum_value{std::move(val.enum_value)},
     type{val.type},
     bits_value{val.bits_value}
 {
@@ -165,6 +168,7 @@ void YLeaf::operator = (Enum::YLeaf val)
 
     value_buffer << val.name;
     store_value(value_buffer.str());
+    enum_value = val.value;
 }
 
 void YLeaf::operator = (Bits val)

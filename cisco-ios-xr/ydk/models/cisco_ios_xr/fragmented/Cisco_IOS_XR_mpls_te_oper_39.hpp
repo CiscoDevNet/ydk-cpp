@@ -14,6 +14,317 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_oper {
 
 
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro : public ydk::Entity
+{
+    public:
+        Xro();
+        ~Xro();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mutual_diversity_flag; //type: boolean
+        class XroSubobject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject
+
+        ydk::YList xro_subobject;
+        
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject : public ydk::Entity
+{
+    public:
+        XroSubobject();
+        ~XroSubobject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: TeXroSubobj
+        class Ipv4Subobject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject
+        class Ipv6Subobject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject
+        class UnnumberedSubobject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject
+        class AsSubobject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject
+        class SrlgSubobject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject
+        class LspSubobject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject> ipv4_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject> ipv6_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject> unnumbered_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject> as_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject> srlg_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject> lsp_subobject;
+        
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject : public ydk::Entity
+{
+    public:
+        Ipv4Subobject();
+        ~Ipv4Subobject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_len; //type: uint8
+        ydk::YLeaf attribute; //type: TeXroAttribute
+        ydk::YLeaf exclusion_type; //type: TeXroExclusion
+
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject : public ydk::Entity
+{
+    public:
+        Ipv6Subobject();
+        ~Ipv6Subobject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_len; //type: uint8
+        ydk::YLeaf attribute; //type: TeXroAttribute
+        ydk::YLeaf exclusion_type; //type: TeXroExclusion
+
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject : public ydk::Entity
+{
+    public:
+        UnnumberedSubobject();
+        ~UnnumberedSubobject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf te_router_id; //type: string
+        ydk::YLeaf interface_id; //type: uint32
+        ydk::YLeaf attribute; //type: TeXroAttribute
+        ydk::YLeaf exclusion_type; //type: TeXroExclusion
+
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject : public ydk::Entity
+{
+    public:
+        AsSubobject();
+        ~AsSubobject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf as_number; //type: uint16
+
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject : public ydk::Entity
+{
+    public:
+        SrlgSubobject();
+        ~SrlgSubobject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf srlg_id; //type: uint32
+        ydk::YLeaf exclusion_type; //type: TeXroExclusion
+
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject : public ydk::Entity
+{
+    public:
+        LspSubobject();
+        ~LspSubobject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ignore_lsp_id; //type: boolean
+        ydk::YLeaf processing_node_exception; //type: boolean
+        ydk::YLeaf penultimate_node_exception; //type: boolean
+        ydk::YLeaf destination_node_exception; //type: boolean
+        ydk::YLeaf exclusion_type; //type: TeXroExclusion
+        class Fec; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec> fec;
+        
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec : public ydk::Entity
+{
+    public:
+        Fec();
+        ~Fec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fec_lsp_id; //type: uint16
+        ydk::YLeaf fec_tunnel_id; //type: uint16
+        ydk::YLeaf fec_extended_tunnel_id; //type: string
+        ydk::YLeaf fec_source; //type: string
+        ydk::YLeaf fec_vrf; //type: string
+        class FecDestinationInfo; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo> fec_destination_info;
+        
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo : public ydk::Entity
+{
+    public:
+        FecDestinationInfo();
+        ~FecDestinationInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fec_ctype; //type: MplsLibC
+        ydk::YLeaf p2p_lsp_destination; //type: string
+        ydk::YLeaf fec_destination_p2mp_id; //type: uint32
+
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte : public ydk::Entity
+{
+    public:
+        AttributeSetP2mpte();
+        ~AttributeSetP2mpte();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fast_reroute; //type: boolean
+        ydk::YLeaf frr_bandwidth_protection; //type: boolean
+        ydk::YLeaf setup_priority; //type: uint8
+        ydk::YLeaf hold_priority; //type: uint8
+        ydk::YLeaf is_priority_configured; //type: boolean
+        ydk::YLeaf configured_bandwidth; //type: uint32
+        ydk::YLeaf dste_class_type; //type: uint8
+        ydk::YLeaf is_bandwidth_configured; //type: boolean
+        ydk::YLeaf is_affinity_configured; //type: boolean
+        class Affinity; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity
+        class TunnelId; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::TunnelId
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity> affinity;
+        ydk::YList tunnel_id;
+        
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte
+
+
+class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity : public ydk::Entity
+{
+    public:
+        Affinity();
+        ~Affinity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf affinity_bits; //type: uint32
+        ydk::YLeaf affinity_mask; //type: uint32
+        class NamedAffinity; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity
+
+        ydk::YList named_affinity;
+        
+}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity
+
+
 class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ActivePathOption::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
@@ -3465,288 +3776,6 @@ class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l
         ydk::YLeaf is_node_id; //type: boolean
 
 }; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::Ipv4rroSubObject::Flags
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject : public ydk::Entity
-{
-    public:
-        LabelRroSubObject();
-        ~LabelRroSubObject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf label; //type: uint32
-        ydk::YLeaf is_label_variable_length; //type: boolean
-        class Flags; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject::Flags
-        class VariableLengthLabel; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject::VariableLengthLabel
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject::Flags> flags;
-        ydk::YList variable_length_label;
-        
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject::Flags : public ydk::Entity
-{
-    public:
-        Flags();
-        ~Flags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_global_label; //type: boolean
-
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject::Flags
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject::VariableLengthLabel : public ydk::Entity
-{
-    public:
-        VariableLengthLabel();
-        ~VariableLengthLabel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::LabelRroSubObject::VariableLengthLabel
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::UnnumberedRroSubObject : public ydk::Entity
-{
-    public:
-        UnnumberedRroSubObject();
-        ~UnnumberedRroSubObject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_address; //type: string
-        ydk::YLeaf interface_id; //type: uint32
-        class Flags; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::UnnumberedRroSubObject::Flags
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::UnnumberedRroSubObject::Flags> flags;
-        
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::UnnumberedRroSubObject
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::UnnumberedRroSubObject::Flags : public ydk::Entity
-{
-    public:
-        Flags();
-        ~Flags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_protection_available; //type: boolean
-        ydk::YLeaf is_protection_in_use; //type: boolean
-        ydk::YLeaf is_bandwidth_protected; //type: boolean
-        ydk::YLeaf is_node_protection_available; //type: boolean
-        ydk::YLeaf is_node_id; //type: boolean
-
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::UnnumberedRroSubObject::Flags
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::SrlgRroSubObject : public ydk::Entity
-{
-    public:
-        SrlgRroSubObject();
-        ~SrlgRroSubObject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SrlGs; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::SrlgRroSubObject::SrlGs
-
-        ydk::YList srl_gs;
-        
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::SrlgRroSubObject
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::SrlgRroSubObject::SrlGs : public ydk::Entity
-{
-    public:
-        SrlGs();
-        ~SrlGs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ResvRro::SrlgRroSubObject::SrlGs
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::PathAffinityArray : public ydk::Entity
-{
-    public:
-        PathAffinityArray();
-        ~PathAffinityArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hop_address; //type: string
-        ydk::YLeaf hop_affinity; //type: uint32
-        class HopExtendedAffinity; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::PathAffinityArray::HopExtendedAffinity
-
-        ydk::YList hop_extended_affinity;
-        
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::PathAffinityArray
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::PathAffinityArray::HopExtendedAffinity : public ydk::Entity
-{
-    public:
-        HopExtendedAffinity();
-        ~HopExtendedAffinity();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::PathAffinityArray::HopExtendedAffinity
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn : public ydk::Entity
-{
-    public:
-        ReverseEroIn();
-        ~ReverseEroIn();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ero_type; //type: RsvpMgmtEroSubobj
-        class Ipv4eroSubObject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::Ipv4eroSubObject
-        class UnnumberedEroSubObject; //type: MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::UnnumberedEroSubObject
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::Ipv4eroSubObject> ipv4ero_sub_object;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::UnnumberedEroSubObject> unnumbered_ero_sub_object;
-        
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::Ipv4eroSubObject : public ydk::Entity
-{
-    public:
-        Ipv4eroSubObject();
-        ~Ipv4eroSubObject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_strict_route; //type: boolean
-        ydk::YLeaf ero_address; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::Ipv4eroSubObject
-
-
-class MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::UnnumberedEroSubObject : public ydk::Entity
-{
-    public:
-        UnnumberedEroSubObject();
-        ~UnnumberedEroSubObject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_strict_route; //type: boolean
-        ydk::YLeaf ero_interface_id; //type: uint32
-        ydk::YLeaf ero_router_id; //type: string
-        ydk::YLeaf status; //type: RsvpMgmtEroSubobjStatus
-
-}; // MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::TunnelCurrentLsp::S2l::ReverseEroIn::UnnumberedEroSubObject
 
 
 }

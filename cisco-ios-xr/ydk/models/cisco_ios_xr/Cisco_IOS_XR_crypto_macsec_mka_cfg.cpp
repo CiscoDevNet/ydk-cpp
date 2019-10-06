@@ -473,6 +473,10 @@ bool Macsec::PolicyNames::PolicyName::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
+const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_0 {0, "conf-off-set-0"};
+const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_30 {30, "conf-off-set-30"};
+const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_50 {50, "conf-off-set-50"};
+
 const Enum::YLeaf MacsecMkaSecurityPolicy::should_secure {0, "should-secure"};
 const Enum::YLeaf MacsecMkaSecurityPolicy::must_secure {1, "must-secure"};
 
@@ -482,10 +486,6 @@ const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_128 {1, "gcm-aes-128"};
 const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_256 {2, "gcm-aes-256"};
 const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_xpn_128 {3, "gcm-aes-xpn-128"};
 const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_xpn_256 {4, "gcm-aes-xpn-256"};
-
-const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_0 {0, "conf-off-set-0"};
-const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_30 {30, "conf-off-set-30"};
-const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_50 {50, "conf-off-set-50"};
 
 
 }

@@ -76,6 +76,19 @@ class IlpowerPdClass : public ydk::Enum
         static const ydk::Enum::YLeaf poe_ieee5;
         static const ydk::Enum::YLeaf poe_ieee_unknown_class;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "poe-null") return 0;
+            if (name == "poe-unknown") return 1;
+            if (name == "poe-cisco") return 2;
+            if (name == "poe-ieee0") return 3;
+            if (name == "poe-ieee1") return 4;
+            if (name == "poe-ieee2") return 5;
+            if (name == "poe-ieee3") return 6;
+            if (name == "poe-ieee4") return 7;
+            if (name == "poe-ieee5") return 8;
+            if (name == "poe-ieee-unknown-class") return 9;
+            return -1;
+        }
 };
 
 

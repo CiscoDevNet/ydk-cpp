@@ -271,6 +271,11 @@ class NacmAction : public ydk::Enum
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "permit") return 0;
+            if (name == "deny") return 1;
+            return -1;
+        }
 };
 
 class NacmRule : public ydk::Enum
@@ -280,6 +285,12 @@ class NacmRule : public ydk::Enum
         static const ydk::Enum::YLeaf data_node;
         static const ydk::Enum::YLeaf notification;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "protocol-operation") return 0;
+            if (name == "data-node") return 1;
+            if (name == "notification") return 2;
+            return -1;
+        }
 };
 
 

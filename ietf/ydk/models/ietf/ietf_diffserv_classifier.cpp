@@ -1089,46 +1089,6 @@ bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_leaf_or_child_o
     return false;
 }
 
-Dscp::Dscp()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:dscp")
-{
-
-}
-
-Dscp::~Dscp()
-{
-}
-
-SourceIpAddress::SourceIpAddress()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-ip-address")
-{
-
-}
-
-SourceIpAddress::~SourceIpAddress()
-{
-}
-
-DestinationIpAddress::DestinationIpAddress()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-ip-address")
-{
-
-}
-
-DestinationIpAddress::~DestinationIpAddress()
-{
-}
-
-SourcePort::SourcePort()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-port")
-{
-
-}
-
-SourcePort::~SourcePort()
-{
-}
-
 DestinationPort::DestinationPort()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-port")
 {
@@ -1149,13 +1109,23 @@ Protocol::~Protocol()
 {
 }
 
-MatchAnyFilter::MatchAnyFilter()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-any-filter")
+DestinationIpAddress::DestinationIpAddress()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-ip-address")
 {
 
 }
 
-MatchAnyFilter::~MatchAnyFilter()
+DestinationIpAddress::~DestinationIpAddress()
+{
+}
+
+Dscp::Dscp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:dscp")
+{
+
+}
+
+Dscp::~Dscp()
 {
 }
 
@@ -1166,6 +1136,36 @@ MatchAllFilter::MatchAllFilter()
 }
 
 MatchAllFilter::~MatchAllFilter()
+{
+}
+
+SourceIpAddress::SourceIpAddress()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-ip-address")
+{
+
+}
+
+SourceIpAddress::~SourceIpAddress()
+{
+}
+
+MatchAnyFilter::MatchAnyFilter()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-any-filter")
+{
+
+}
+
+MatchAnyFilter::~MatchAnyFilter()
+{
+}
+
+SourcePort::SourcePort()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-port")
+{
+
+}
+
+SourcePort::~SourcePort()
 {
 }
 

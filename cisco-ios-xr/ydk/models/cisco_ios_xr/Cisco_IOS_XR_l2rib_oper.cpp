@@ -1085,14 +1085,8 @@ L2rib::Summary::Summary()
     converged_tables_count{YType::uint32, "converged-tables-count"},
     total_memory{YType::uint32, "total-memory"}
         ,
-    mac_dd_params(std::make_shared<L2rib::Summary::MacDdParams>())
-    , ipv4_dd_params(std::make_shared<L2rib::Summary::Ipv4DdParams>())
-    , ipv6_dd_params(std::make_shared<L2rib::Summary::Ipv6DdParams>())
-    , table_summary(this, {})
+    table_summary(this, {})
 {
-    mac_dd_params->parent = this;
-    ipv4_dd_params->parent = this;
-    ipv6_dd_params->parent = this;
 
     yang_name = "summary"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1110,10 +1104,7 @@ bool L2rib::Summary::has_data() const
             return true;
     }
     return converged_tables_count.is_set
-	|| total_memory.is_set
-	|| (mac_dd_params !=  nullptr && mac_dd_params->has_data())
-	|| (ipv4_dd_params !=  nullptr && ipv4_dd_params->has_data())
-	|| (ipv6_dd_params !=  nullptr && ipv6_dd_params->has_data());
+	|| total_memory.is_set;
 }
 
 bool L2rib::Summary::has_operation() const
@@ -1125,10 +1116,7 @@ bool L2rib::Summary::has_operation() const
     }
     return is_set(yfilter)
 	|| ydk::is_set(converged_tables_count.yfilter)
-	|| ydk::is_set(total_memory.yfilter)
-	|| (mac_dd_params !=  nullptr && mac_dd_params->has_operation())
-	|| (ipv4_dd_params !=  nullptr && ipv4_dd_params->has_operation())
-	|| (ipv6_dd_params !=  nullptr && ipv6_dd_params->has_operation());
+	|| ydk::is_set(total_memory.yfilter);
 }
 
 std::string L2rib::Summary::get_absolute_path() const
@@ -1158,33 +1146,6 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Summary::get_name_leaf_dat
 
 std::shared_ptr<ydk::Entity> L2rib::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mac-dd-params")
-    {
-        if(mac_dd_params == nullptr)
-        {
-            mac_dd_params = std::make_shared<L2rib::Summary::MacDdParams>();
-        }
-        return mac_dd_params;
-    }
-
-    if(child_yang_name == "ipv4-dd-params")
-    {
-        if(ipv4_dd_params == nullptr)
-        {
-            ipv4_dd_params = std::make_shared<L2rib::Summary::Ipv4DdParams>();
-        }
-        return ipv4_dd_params;
-    }
-
-    if(child_yang_name == "ipv6-dd-params")
-    {
-        if(ipv6_dd_params == nullptr)
-        {
-            ipv6_dd_params = std::make_shared<L2rib::Summary::Ipv6DdParams>();
-        }
-        return ipv6_dd_params;
-    }
-
     if(child_yang_name == "table-summary")
     {
         auto ent_ = std::make_shared<L2rib::Summary::TableSummary>();
@@ -1200,21 +1161,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::get_children
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(mac_dd_params != nullptr)
-    {
-        _children["mac-dd-params"] = mac_dd_params;
-    }
-
-    if(ipv4_dd_params != nullptr)
-    {
-        _children["ipv4-dd-params"] = ipv4_dd_params;
-    }
-
-    if(ipv6_dd_params != nullptr)
-    {
-        _children["ipv6-dd-params"] = ipv6_dd_params;
-    }
-
     count_ = 0;
     for (auto ent_ : table_summary.entities())
     {
@@ -1257,430 +1203,7 @@ void L2rib::Summary::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool L2rib::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mac-dd-params" || name == "ipv4-dd-params" || name == "ipv6-dd-params" || name == "table-summary" || name == "converged-tables-count" || name == "total-memory")
-        return true;
-    return false;
-}
-
-L2rib::Summary::MacDdParams::MacDdParams()
-    :
-    dd_params_disable{YType::boolean, "dd-params-disable"},
-    dd_params_freeze_time{YType::uint16, "dd-params-freeze-time"},
-    dd_params_retry_count{YType::uint16, "dd-params-retry-count"},
-    dd_params_move_count{YType::uint32, "dd-params-move-count"},
-    dd_params_move_interval{YType::uint32, "dd-params-move-interval"}
-{
-
-    yang_name = "mac-dd-params"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2rib::Summary::MacDdParams::~MacDdParams()
-{
-}
-
-bool L2rib::Summary::MacDdParams::has_data() const
-{
-    if (is_presence_container) return true;
-    return dd_params_disable.is_set
-	|| dd_params_freeze_time.is_set
-	|| dd_params_retry_count.is_set
-	|| dd_params_move_count.is_set
-	|| dd_params_move_interval.is_set;
-}
-
-bool L2rib::Summary::MacDdParams::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dd_params_disable.yfilter)
-	|| ydk::is_set(dd_params_freeze_time.yfilter)
-	|| ydk::is_set(dd_params_retry_count.yfilter)
-	|| ydk::is_set(dd_params_move_count.yfilter)
-	|| ydk::is_set(dd_params_move_interval.yfilter);
-}
-
-std::string L2rib::Summary::MacDdParams::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/summary/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2rib::Summary::MacDdParams::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mac-dd-params";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2rib::Summary::MacDdParams::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dd_params_disable.is_set || is_set(dd_params_disable.yfilter)) leaf_name_data.push_back(dd_params_disable.get_name_leafdata());
-    if (dd_params_freeze_time.is_set || is_set(dd_params_freeze_time.yfilter)) leaf_name_data.push_back(dd_params_freeze_time.get_name_leafdata());
-    if (dd_params_retry_count.is_set || is_set(dd_params_retry_count.yfilter)) leaf_name_data.push_back(dd_params_retry_count.get_name_leafdata());
-    if (dd_params_move_count.is_set || is_set(dd_params_move_count.yfilter)) leaf_name_data.push_back(dd_params_move_count.get_name_leafdata());
-    if (dd_params_move_interval.is_set || is_set(dd_params_move_interval.yfilter)) leaf_name_data.push_back(dd_params_move_interval.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2rib::Summary::MacDdParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::MacDdParams::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void L2rib::Summary::MacDdParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dd-params-disable")
-    {
-        dd_params_disable = value;
-        dd_params_disable.value_namespace = name_space;
-        dd_params_disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-freeze-time")
-    {
-        dd_params_freeze_time = value;
-        dd_params_freeze_time.value_namespace = name_space;
-        dd_params_freeze_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-retry-count")
-    {
-        dd_params_retry_count = value;
-        dd_params_retry_count.value_namespace = name_space;
-        dd_params_retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-move-count")
-    {
-        dd_params_move_count = value;
-        dd_params_move_count.value_namespace = name_space;
-        dd_params_move_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-move-interval")
-    {
-        dd_params_move_interval = value;
-        dd_params_move_interval.value_namespace = name_space;
-        dd_params_move_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2rib::Summary::MacDdParams::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dd-params-disable")
-    {
-        dd_params_disable.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-freeze-time")
-    {
-        dd_params_freeze_time.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-retry-count")
-    {
-        dd_params_retry_count.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-move-count")
-    {
-        dd_params_move_count.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-move-interval")
-    {
-        dd_params_move_interval.yfilter = yfilter;
-    }
-}
-
-bool L2rib::Summary::MacDdParams::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dd-params-disable" || name == "dd-params-freeze-time" || name == "dd-params-retry-count" || name == "dd-params-move-count" || name == "dd-params-move-interval")
-        return true;
-    return false;
-}
-
-L2rib::Summary::Ipv4DdParams::Ipv4DdParams()
-    :
-    dd_params_disable{YType::boolean, "dd-params-disable"},
-    dd_params_freeze_time{YType::uint16, "dd-params-freeze-time"},
-    dd_params_retry_count{YType::uint16, "dd-params-retry-count"},
-    dd_params_move_count{YType::uint32, "dd-params-move-count"},
-    dd_params_move_interval{YType::uint32, "dd-params-move-interval"}
-{
-
-    yang_name = "ipv4-dd-params"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2rib::Summary::Ipv4DdParams::~Ipv4DdParams()
-{
-}
-
-bool L2rib::Summary::Ipv4DdParams::has_data() const
-{
-    if (is_presence_container) return true;
-    return dd_params_disable.is_set
-	|| dd_params_freeze_time.is_set
-	|| dd_params_retry_count.is_set
-	|| dd_params_move_count.is_set
-	|| dd_params_move_interval.is_set;
-}
-
-bool L2rib::Summary::Ipv4DdParams::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dd_params_disable.yfilter)
-	|| ydk::is_set(dd_params_freeze_time.yfilter)
-	|| ydk::is_set(dd_params_retry_count.yfilter)
-	|| ydk::is_set(dd_params_move_count.yfilter)
-	|| ydk::is_set(dd_params_move_interval.yfilter);
-}
-
-std::string L2rib::Summary::Ipv4DdParams::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/summary/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2rib::Summary::Ipv4DdParams::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-dd-params";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2rib::Summary::Ipv4DdParams::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dd_params_disable.is_set || is_set(dd_params_disable.yfilter)) leaf_name_data.push_back(dd_params_disable.get_name_leafdata());
-    if (dd_params_freeze_time.is_set || is_set(dd_params_freeze_time.yfilter)) leaf_name_data.push_back(dd_params_freeze_time.get_name_leafdata());
-    if (dd_params_retry_count.is_set || is_set(dd_params_retry_count.yfilter)) leaf_name_data.push_back(dd_params_retry_count.get_name_leafdata());
-    if (dd_params_move_count.is_set || is_set(dd_params_move_count.yfilter)) leaf_name_data.push_back(dd_params_move_count.get_name_leafdata());
-    if (dd_params_move_interval.is_set || is_set(dd_params_move_interval.yfilter)) leaf_name_data.push_back(dd_params_move_interval.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2rib::Summary::Ipv4DdParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::Ipv4DdParams::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void L2rib::Summary::Ipv4DdParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dd-params-disable")
-    {
-        dd_params_disable = value;
-        dd_params_disable.value_namespace = name_space;
-        dd_params_disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-freeze-time")
-    {
-        dd_params_freeze_time = value;
-        dd_params_freeze_time.value_namespace = name_space;
-        dd_params_freeze_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-retry-count")
-    {
-        dd_params_retry_count = value;
-        dd_params_retry_count.value_namespace = name_space;
-        dd_params_retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-move-count")
-    {
-        dd_params_move_count = value;
-        dd_params_move_count.value_namespace = name_space;
-        dd_params_move_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-move-interval")
-    {
-        dd_params_move_interval = value;
-        dd_params_move_interval.value_namespace = name_space;
-        dd_params_move_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2rib::Summary::Ipv4DdParams::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dd-params-disable")
-    {
-        dd_params_disable.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-freeze-time")
-    {
-        dd_params_freeze_time.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-retry-count")
-    {
-        dd_params_retry_count.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-move-count")
-    {
-        dd_params_move_count.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-move-interval")
-    {
-        dd_params_move_interval.yfilter = yfilter;
-    }
-}
-
-bool L2rib::Summary::Ipv4DdParams::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dd-params-disable" || name == "dd-params-freeze-time" || name == "dd-params-retry-count" || name == "dd-params-move-count" || name == "dd-params-move-interval")
-        return true;
-    return false;
-}
-
-L2rib::Summary::Ipv6DdParams::Ipv6DdParams()
-    :
-    dd_params_disable{YType::boolean, "dd-params-disable"},
-    dd_params_freeze_time{YType::uint16, "dd-params-freeze-time"},
-    dd_params_retry_count{YType::uint16, "dd-params-retry-count"},
-    dd_params_move_count{YType::uint32, "dd-params-move-count"},
-    dd_params_move_interval{YType::uint32, "dd-params-move-interval"}
-{
-
-    yang_name = "ipv6-dd-params"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2rib::Summary::Ipv6DdParams::~Ipv6DdParams()
-{
-}
-
-bool L2rib::Summary::Ipv6DdParams::has_data() const
-{
-    if (is_presence_container) return true;
-    return dd_params_disable.is_set
-	|| dd_params_freeze_time.is_set
-	|| dd_params_retry_count.is_set
-	|| dd_params_move_count.is_set
-	|| dd_params_move_interval.is_set;
-}
-
-bool L2rib::Summary::Ipv6DdParams::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dd_params_disable.yfilter)
-	|| ydk::is_set(dd_params_freeze_time.yfilter)
-	|| ydk::is_set(dd_params_retry_count.yfilter)
-	|| ydk::is_set(dd_params_move_count.yfilter)
-	|| ydk::is_set(dd_params_move_interval.yfilter);
-}
-
-std::string L2rib::Summary::Ipv6DdParams::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/summary/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2rib::Summary::Ipv6DdParams::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-dd-params";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2rib::Summary::Ipv6DdParams::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dd_params_disable.is_set || is_set(dd_params_disable.yfilter)) leaf_name_data.push_back(dd_params_disable.get_name_leafdata());
-    if (dd_params_freeze_time.is_set || is_set(dd_params_freeze_time.yfilter)) leaf_name_data.push_back(dd_params_freeze_time.get_name_leafdata());
-    if (dd_params_retry_count.is_set || is_set(dd_params_retry_count.yfilter)) leaf_name_data.push_back(dd_params_retry_count.get_name_leafdata());
-    if (dd_params_move_count.is_set || is_set(dd_params_move_count.yfilter)) leaf_name_data.push_back(dd_params_move_count.get_name_leafdata());
-    if (dd_params_move_interval.is_set || is_set(dd_params_move_interval.yfilter)) leaf_name_data.push_back(dd_params_move_interval.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2rib::Summary::Ipv6DdParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::Ipv6DdParams::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void L2rib::Summary::Ipv6DdParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dd-params-disable")
-    {
-        dd_params_disable = value;
-        dd_params_disable.value_namespace = name_space;
-        dd_params_disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-freeze-time")
-    {
-        dd_params_freeze_time = value;
-        dd_params_freeze_time.value_namespace = name_space;
-        dd_params_freeze_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-retry-count")
-    {
-        dd_params_retry_count = value;
-        dd_params_retry_count.value_namespace = name_space;
-        dd_params_retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-move-count")
-    {
-        dd_params_move_count = value;
-        dd_params_move_count.value_namespace = name_space;
-        dd_params_move_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dd-params-move-interval")
-    {
-        dd_params_move_interval = value;
-        dd_params_move_interval.value_namespace = name_space;
-        dd_params_move_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2rib::Summary::Ipv6DdParams::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dd-params-disable")
-    {
-        dd_params_disable.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-freeze-time")
-    {
-        dd_params_freeze_time.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-retry-count")
-    {
-        dd_params_retry_count.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-move-count")
-    {
-        dd_params_move_count.yfilter = yfilter;
-    }
-    if(value_path == "dd-params-move-interval")
-    {
-        dd_params_move_interval.yfilter = yfilter;
-    }
-}
-
-bool L2rib::Summary::Ipv6DdParams::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dd-params-disable" || name == "dd-params-freeze-time" || name == "dd-params-retry-count" || name == "dd-params-move-count" || name == "dd-params-move-interval")
+    if(name == "table-summary" || name == "converged-tables-count" || name == "total-memory")
         return true;
     return false;
 }
@@ -10725,8 +10248,10 @@ L2rib::EviChildTables::Imets::Imet::Imet()
     evi{YType::uint32, "evi"},
     tag_id{YType::uint32, "tag-id"},
     ip_addr{YType::str, "ip-addr"},
+    admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     vtepi_paddr{YType::str, "vtepi-paddr"},
+    admin_distance{YType::uint8, "admin-distance"},
     producer_id{YType::uint8, "producer-id"},
     topo_id{YType::uint32, "topo-id"},
     ethernet_tag_id{YType::uint32, "ethernet-tag-id"}
@@ -10745,8 +10270,10 @@ bool L2rib::EviChildTables::Imets::Imet::has_data() const
     return evi.is_set
 	|| tag_id.is_set
 	|| ip_addr.is_set
+	|| admin_dist.is_set
 	|| prod_id.is_set
 	|| vtepi_paddr.is_set
+	|| admin_distance.is_set
 	|| producer_id.is_set
 	|| topo_id.is_set
 	|| ethernet_tag_id.is_set;
@@ -10758,8 +10285,10 @@ bool L2rib::EviChildTables::Imets::Imet::has_operation() const
 	|| ydk::is_set(evi.yfilter)
 	|| ydk::is_set(tag_id.yfilter)
 	|| ydk::is_set(ip_addr.yfilter)
+	|| ydk::is_set(admin_dist.yfilter)
 	|| ydk::is_set(prod_id.yfilter)
 	|| ydk::is_set(vtepi_paddr.yfilter)
+	|| ydk::is_set(admin_distance.yfilter)
 	|| ydk::is_set(producer_id.yfilter)
 	|| ydk::is_set(topo_id.yfilter)
 	|| ydk::is_set(ethernet_tag_id.yfilter);
@@ -10787,8 +10316,10 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Imets::Ime
     if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
     if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
     if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
     if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
     if (vtepi_paddr.is_set || is_set(vtepi_paddr.yfilter)) leaf_name_data.push_back(vtepi_paddr.get_name_leafdata());
+    if (admin_distance.is_set || is_set(admin_distance.yfilter)) leaf_name_data.push_back(admin_distance.get_name_leafdata());
     if (producer_id.is_set || is_set(producer_id.yfilter)) leaf_name_data.push_back(producer_id.get_name_leafdata());
     if (topo_id.is_set || is_set(topo_id.yfilter)) leaf_name_data.push_back(topo_id.get_name_leafdata());
     if (ethernet_tag_id.is_set || is_set(ethernet_tag_id.yfilter)) leaf_name_data.push_back(ethernet_tag_id.get_name_leafdata());
@@ -10829,6 +10360,12 @@ void L2rib::EviChildTables::Imets::Imet::set_value(const std::string & value_pat
         ip_addr.value_namespace = name_space;
         ip_addr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "admin-dist")
+    {
+        admin_dist = value;
+        admin_dist.value_namespace = name_space;
+        admin_dist.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "prod-id")
     {
         prod_id = value;
@@ -10840,6 +10377,12 @@ void L2rib::EviChildTables::Imets::Imet::set_value(const std::string & value_pat
         vtepi_paddr = value;
         vtepi_paddr.value_namespace = name_space;
         vtepi_paddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-distance")
+    {
+        admin_distance = value;
+        admin_distance.value_namespace = name_space;
+        admin_distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "producer-id")
     {
@@ -10875,6 +10418,10 @@ void L2rib::EviChildTables::Imets::Imet::set_filter(const std::string & value_pa
     {
         ip_addr.yfilter = yfilter;
     }
+    if(value_path == "admin-dist")
+    {
+        admin_dist.yfilter = yfilter;
+    }
     if(value_path == "prod-id")
     {
         prod_id.yfilter = yfilter;
@@ -10882,6 +10429,10 @@ void L2rib::EviChildTables::Imets::Imet::set_filter(const std::string & value_pa
     if(value_path == "vtepi-paddr")
     {
         vtepi_paddr.yfilter = yfilter;
+    }
+    if(value_path == "admin-distance")
+    {
+        admin_distance.yfilter = yfilter;
     }
     if(value_path == "producer-id")
     {
@@ -10899,7 +10450,7 @@ void L2rib::EviChildTables::Imets::Imet::set_filter(const std::string & value_pa
 
 bool L2rib::EviChildTables::Imets::Imet::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evi" || name == "tag-id" || name == "ip-addr" || name == "prod-id" || name == "vtepi-paddr" || name == "producer-id" || name == "topo-id" || name == "ethernet-tag-id")
+    if(name == "evi" || name == "tag-id" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "vtepi-paddr" || name == "admin-distance" || name == "producer-id" || name == "topo-id" || name == "ethernet-tag-id")
         return true;
     return false;
 }
@@ -15637,6 +15188,7 @@ L2rib::EviChildTables::ImetDetails::ImetDetail::ImetDetail()
     evi{YType::uint32, "evi"},
     tag_id{YType::uint32, "tag-id"},
     ip_addr{YType::str, "ip-addr"},
+    admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     tunnel_id{YType::str, "tunnel-id"},
     flags{YType::uint32, "flags"},
@@ -15662,6 +15214,7 @@ bool L2rib::EviChildTables::ImetDetails::ImetDetail::has_data() const
     return evi.is_set
 	|| tag_id.is_set
 	|| ip_addr.is_set
+	|| admin_dist.is_set
 	|| prod_id.is_set
 	|| tunnel_id.is_set
 	|| flags.is_set
@@ -15678,6 +15231,7 @@ bool L2rib::EviChildTables::ImetDetails::ImetDetail::has_operation() const
 	|| ydk::is_set(evi.yfilter)
 	|| ydk::is_set(tag_id.yfilter)
 	|| ydk::is_set(ip_addr.yfilter)
+	|| ydk::is_set(admin_dist.yfilter)
 	|| ydk::is_set(prod_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter)
 	|| ydk::is_set(flags.yfilter)
@@ -15710,6 +15264,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetail
     if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
     if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
     if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
     if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
     if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
@@ -15767,6 +15322,12 @@ void L2rib::EviChildTables::ImetDetails::ImetDetail::set_value(const std::string
         ip_addr = value;
         ip_addr.value_namespace = name_space;
         ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-dist")
+    {
+        admin_dist = value;
+        admin_dist.value_namespace = name_space;
+        admin_dist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prod-id")
     {
@@ -15826,6 +15387,10 @@ void L2rib::EviChildTables::ImetDetails::ImetDetail::set_filter(const std::strin
     {
         ip_addr.yfilter = yfilter;
     }
+    if(value_path == "admin-dist")
+    {
+        admin_dist.yfilter = yfilter;
+    }
     if(value_path == "prod-id")
     {
         prod_id.yfilter = yfilter;
@@ -15858,7 +15423,7 @@ void L2rib::EviChildTables::ImetDetails::ImetDetail::set_filter(const std::strin
 
 bool L2rib::EviChildTables::ImetDetails::ImetDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "imet-route-base" || name == "evi" || name == "tag-id" || name == "ip-addr" || name == "prod-id" || name == "tunnel-id" || name == "flags" || name == "tunnel-type" || name == "l2r-label" || name == "encap-type" || name == "last-update-timestamp")
+    if(name == "imet-route-base" || name == "evi" || name == "tag-id" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "tunnel-id" || name == "flags" || name == "tunnel-type" || name == "l2r-label" || name == "encap-type" || name == "last-update-timestamp")
         return true;
     return false;
 }
@@ -15866,6 +15431,7 @@ bool L2rib::EviChildTables::ImetDetails::ImetDetail::has_leaf_or_child_of_name(c
 L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::ImetRouteBase()
     :
     vtepi_paddr{YType::str, "vtepi-paddr"},
+    admin_distance{YType::uint8, "admin-distance"},
     producer_id{YType::uint8, "producer-id"},
     topo_id{YType::uint32, "topo-id"},
     ethernet_tag_id{YType::uint32, "ethernet-tag-id"}
@@ -15882,6 +15448,7 @@ bool L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::has_data() c
 {
     if (is_presence_container) return true;
     return vtepi_paddr.is_set
+	|| admin_distance.is_set
 	|| producer_id.is_set
 	|| topo_id.is_set
 	|| ethernet_tag_id.is_set;
@@ -15891,6 +15458,7 @@ bool L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::has_operatio
 {
     return is_set(yfilter)
 	|| ydk::is_set(vtepi_paddr.yfilter)
+	|| ydk::is_set(admin_distance.yfilter)
 	|| ydk::is_set(producer_id.yfilter)
 	|| ydk::is_set(topo_id.yfilter)
 	|| ydk::is_set(ethernet_tag_id.yfilter);
@@ -15915,6 +15483,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetail
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vtepi_paddr.is_set || is_set(vtepi_paddr.yfilter)) leaf_name_data.push_back(vtepi_paddr.get_name_leafdata());
+    if (admin_distance.is_set || is_set(admin_distance.yfilter)) leaf_name_data.push_back(admin_distance.get_name_leafdata());
     if (producer_id.is_set || is_set(producer_id.yfilter)) leaf_name_data.push_back(producer_id.get_name_leafdata());
     if (topo_id.is_set || is_set(topo_id.yfilter)) leaf_name_data.push_back(topo_id.get_name_leafdata());
     if (ethernet_tag_id.is_set || is_set(ethernet_tag_id.yfilter)) leaf_name_data.push_back(ethernet_tag_id.get_name_leafdata());
@@ -15943,6 +15512,12 @@ void L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::set_value(co
         vtepi_paddr.value_namespace = name_space;
         vtepi_paddr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "admin-distance")
+    {
+        admin_distance = value;
+        admin_distance.value_namespace = name_space;
+        admin_distance.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "producer-id")
     {
         producer_id = value;
@@ -15969,6 +15544,10 @@ void L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::set_filter(c
     {
         vtepi_paddr.yfilter = yfilter;
     }
+    if(value_path == "admin-distance")
+    {
+        admin_distance.yfilter = yfilter;
+    }
     if(value_path == "producer-id")
     {
         producer_id.yfilter = yfilter;
@@ -15985,7 +15564,7 @@ void L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::set_filter(c
 
 bool L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vtepi-paddr" || name == "producer-id" || name == "topo-id" || name == "ethernet-tag-id")
+    if(name == "vtepi-paddr" || name == "admin-distance" || name == "producer-id" || name == "topo-id" || name == "ethernet-tag-id")
         return true;
     return false;
 }
@@ -16223,27 +15802,6 @@ const Enum::YLeaf L2ribMacRoute::l2rib_mac_route_type_regular {1, "l2rib-mac-rou
 const Enum::YLeaf L2ribMacRoute::l2rib_mac_route_type_evpn_esi {2, "l2rib-mac-route-type-evpn-esi"};
 const Enum::YLeaf L2ribMacRoute::l2rib_mac_route_type_bmac {3, "l2rib-mac-route-type-bmac"};
 
-const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv4 {0, "l2rib-address-family-ipv4"};
-const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv6 {1, "l2rib-address-family-ipv6"};
-const Enum::YLeaf L2ribAfi::l2rib_address_family_invalid {2, "l2rib-address-family-invalid"};
-
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_invalid {0, "l2rib-next-hop-invalid"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_ordinal {1, "l2rib-next-hop-interface-ordinal"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_index {2, "l2rib-next-hop-interface-index"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_mac {3, "l2rib-next-hop-mac"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv4 {4, "l2rib-next-hop-ipv4"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv6 {5, "l2rib-next-hop-ipv6"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_overlay {6, "l2rib-next-hop-overlay"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_site_index {7, "l2rib-next-hop-site-index"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_label_ed {8, "l2rib-next-hop-label-ed"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_xid {9, "l2rib-next-hop-xid"};
-
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_initial {0, "l2rib-bag-prod-state-initial"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_staled {1, "l2rib-bag-prod-state-staled"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_re_connected {2, "l2rib-bag-prod-state-re-connected"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_converged {3, "l2rib-bag-prod-state-converged"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_delete_p_end {4, "l2rib-bag-prod-state-delete-p-end"};
-
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_none {0, "l2rib-bag-prod-none"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_best_route {1, "l2rib-bag-prod-best-route"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_static {2, "l2rib-bag-prod-static"};
@@ -16260,6 +15818,27 @@ const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_hmm {12, "l2rib-bag-pr
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_arp {13, "l2rib-bag-prod-prod-arp"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_local_proxy {14, "l2rib-bag-prod-prod-local-proxy"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_all {255, "l2rib-bag-prod-prod-all"};
+
+const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv4 {0, "l2rib-address-family-ipv4"};
+const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv6 {1, "l2rib-address-family-ipv6"};
+const Enum::YLeaf L2ribAfi::l2rib_address_family_invalid {2, "l2rib-address-family-invalid"};
+
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_initial {0, "l2rib-bag-prod-state-initial"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_staled {1, "l2rib-bag-prod-state-staled"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_re_connected {2, "l2rib-bag-prod-state-re-connected"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_converged {3, "l2rib-bag-prod-state-converged"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_delete_p_end {4, "l2rib-bag-prod-state-delete-p-end"};
+
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_invalid {0, "l2rib-next-hop-invalid"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_ordinal {1, "l2rib-next-hop-interface-ordinal"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_index {2, "l2rib-next-hop-interface-index"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_mac {3, "l2rib-next-hop-mac"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv4 {4, "l2rib-next-hop-ipv4"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv6 {5, "l2rib-next-hop-ipv6"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_overlay {6, "l2rib-next-hop-overlay"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_site_index {7, "l2rib-next-hop-site-index"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_label_ed {8, "l2rib-next-hop-label-ed"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_xid {9, "l2rib-next-hop-xid"};
 
 const Enum::YLeaf L2ribBagObj::l2rib_bag_obj_type_min {0, "l2rib-bag-obj-type-min"};
 const Enum::YLeaf L2ribBagObj::l2rib_bag_obj_type_all {1, "l2rib-bag-obj-type-all"};

@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ModelProvider &mdash; YANG Development Kit 0.8.4 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/icon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/width.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="YANG Development Kit 0.8.4 documentation" href="../../index.html"/>
+        <link rel="up" title="YDK Path API" href="path.html"/>
+        <link rel="next" title="Repository" href="repository.html"/>
+        <link rel="prev" title="Codec" href="codec.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> YANG Development Kit
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about_ydk.html">About YDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ydk/ydk.html">YDK API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="path.html">YDK Path API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-nodes">Path API Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-sessions">Path API Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html#path-api-errors">Path API Errors</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="path.html#path-api">Path API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="capability.html">Capability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="codec.html">Codec</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">ModelProvider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="repository.html">Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc.html">Rpc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html">Path API types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_service.html">ValidationService</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../namespaces/namespaces.html">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">YANG Development Kit</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">API Guide</a> &raquo;</li>
+      
+          <li><a href="path.html">YDK Path API</a> &raquo;</li>
+      
+    <li>ModelProvider</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modelprovider">
+<h1>ModelProvider<a class="headerlink" href="#modelprovider" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv2N3ydk4path13ModelProviderE">
+<span id="ydk::path::ModelProvider"></span><em class="property">class </em><code class="descclassname">ydk::path::</code><code class="descname">ModelProvider</code><a class="headerlink" href="#_CPPv2N3ydk4path13ModelProviderE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface for a YANG model provider which can download YANG models from a server.</p>
+<blockquote>
+<div><dl class="enum-class">
+<dt id="_CPPv2N3ydk4path13ModelProvider6FormatE">
+<em class="property">enum class </em><code class="descclassname"></code><code class="descname">Format</code><a class="headerlink" href="#_CPPv2N3ydk4path13ModelProvider6FormatE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format of model to be downloaded</p>
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path13ModelProvider6Format4YANGE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">YANG</code><a class="headerlink" href="#_CPPv2N3ydk4path13ModelProvider6Format4YANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv2N3ydk4path13ModelProvider6Format3YINE">
+<em class="property">enumerator </em><code class="descclassname"></code><code class="descname">YIN</code><a class="headerlink" href="#_CPPv2N3ydk4path13ModelProvider6Format3YINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path13ModelProvider9get_modelERKNSt6stringERKNSt6stringE6Format">
+<span id="ydk::path::ModelProvider::get_model__ssCR.ssCR.Format"></span><em class="property">virtual</em> std::string <code class="descclassname"></code><code class="descname">get_model</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, <em class="property">const</em> std::string &amp;<em>version</em>, <a class="reference internal" href="#_CPPv2N3ydk4path13ModelProvider6FormatE" title="ydk::path::ModelProvider::Format">Format</a> <em>format</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv2N3ydk4path13ModelProvider9get_modelERKNSt6stringERKNSt6stringE6Format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model identified by the name and version.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> &#8211; Model name.</li>
+<li><strong>version</strong> &#8211; Model revision</li>
+<li><strong>format</strong> &#8211; Model download format.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Context of downloaded model. Empty if the model cannot be provided.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv2N3ydk4path13ModelProvider17get_hostname_portEv">
+<span id="ydk::path::ModelProvider::get_hostname_port"></span><em class="property">virtual</em> std::string <code class="descclassname"></code><code class="descname">get_hostname_port</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv2N3ydk4path13ModelProvider17get_hostname_portEv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the hostname and port of the connected server.</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="repository.html" class="btn btn-neutral float-right" title="Repository" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="codec.html" class="btn btn-neutral" title="Codec" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright 2017 Cisco Systems. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.8.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

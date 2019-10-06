@@ -1132,113 +1132,42 @@ class Otu::Controllers::Controller::Info::AinsInfo : public ydk::Entity
 
 }; // Otu::Controllers::Controller::Info::AinsInfo
 
-class OtuAinsStateEt : public ydk::Enum
+class OtuPrbsStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf active_running;
-        static const ydk::Enum::YLeaf active_pending;
+        static const ydk::Enum::YLeaf locked;
+        static const ydk::Enum::YLeaf unlocked;
+        static const ydk::Enum::YLeaf not_applicable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "locked") return 0;
+            if (name == "unlocked") return 1;
+            if (name == "not-applicable") return 2;
+            return -1;
+        }
 };
 
-class GmplsOtuTtiMode : public ydk::Enum
+class OtuPrbsPattern : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_none;
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_sm;
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_pm;
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_tcm;
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf pn31;
+        static const ydk::Enum::YLeaf pn23;
+        static const ydk::Enum::YLeaf pn11;
+        static const ydk::Enum::YLeaf inverted_pn31;
+        static const ydk::Enum::YLeaf inverted_pn11;
+        static const ydk::Enum::YLeaf pn15;
 
-};
-
-class OtuPpIntfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf otu_pp_intf_up;
-        static const ydk::Enum::YLeaf otu_pp_intf_failing;
-        static const ydk::Enum::YLeaf otu_pp_intf_down;
-
-};
-
-class OtuPpFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf otu_in_active;
-        static const ydk::Enum::YLeaf otu_disabled;
-        static const ydk::Enum::YLeaf otu_normal_state;
-        static const ydk::Enum::YLeaf otu_local_failing;
-        static const ydk::Enum::YLeaf otu_remote_failing;
-        static const ydk::Enum::YLeaf otu_main_t_failing;
-        static const ydk::Enum::YLeaf otu_regen_failing;
-        static const ydk::Enum::YLeaf otu_local_failed;
-        static const ydk::Enum::YLeaf otu_remote_failed;
-        static const ydk::Enum::YLeaf otu_main_t_failed;
-        static const ydk::Enum::YLeaf otu_regen_failed;
-
-};
-
-class OtuPerMon : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
-class OtuSecState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf maintenance;
-        static const ydk::Enum::YLeaf ains;
-
-};
-
-class OtuDerState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf out_of_service;
-        static const ydk::Enum::YLeaf in_service;
-        static const ydk::Enum::YLeaf maintenance;
-        static const ydk::Enum::YLeaf ains;
-
-};
-
-class OtuG709fecMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf otu_bag_none_fec;
-        static const ydk::Enum::YLeaf otu_bag_standard_fec;
-        static const ydk::Enum::YLeaf otu_bag_1_i_7_fec;
-        static const ydk::Enum::YLeaf otu_bag_1_i_4_fec;
-        static const ydk::Enum::YLeaf otu_bag_swizzle_fec;
-        static const ydk::Enum::YLeaf otu_bag_hg20_fec;
-        static const ydk::Enum::YLeaf otu_bag_enhanced_hg7_fec;
-        static const ydk::Enum::YLeaf otu_bag_sd20_fec;
-        static const ydk::Enum::YLeaf otu_bag_sd7_fec;
-        static const ydk::Enum::YLeaf otu_bag_sd15_fec;
-        static const ydk::Enum::YLeaf otu_bag_sd27_fec;
-        static const ydk::Enum::YLeaf otu_bag_all_fec;
-
-};
-
-class OtuLoopBackMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf internal;
-
-};
-
-class OtuTtiEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ascii;
-        static const ydk::Enum::YLeaf hex;
-        static const ydk::Enum::YLeaf full_ascii;
-        static const ydk::Enum::YLeaf full_hex;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-applicable") return 0;
+            if (name == "pn31") return 1;
+            if (name == "pn23") return 2;
+            if (name == "pn11") return 4;
+            if (name == "inverted-pn31") return 8;
+            if (name == "inverted-pn11") return 16;
+            if (name == "pn15") return 32;
+            return -1;
+        }
 };
 
 class OtuStateEt : public ydk::Enum
@@ -1264,28 +1193,120 @@ class OtuStateEt : public ydk::Enum
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-ready") return 0;
+            if (name == "admin-down") return 1;
+            if (name == "down") return 2;
+            if (name == "up") return 3;
+            if (name == "shutdown") return 4;
+            if (name == "error-disable") return 5;
+            if (name == "down-immediate") return 6;
+            if (name == "down-immediate-admin") return 7;
+            if (name == "down-graceful") return 8;
+            if (name == "begin-shutdown") return 9;
+            if (name == "end-shutdown") return 10;
+            if (name == "begin-error-disable") return 11;
+            if (name == "end-error-disable") return 12;
+            if (name == "begin-down-graceful") return 13;
+            if (name == "reset") return 14;
+            if (name == "operational") return 15;
+            if (name == "not-operational") return 16;
+            if (name == "unknown") return 17;
+            if (name == "last") return 18;
+            return -1;
+        }
 };
 
-class OtuPrbsStatus : public ydk::Enum
+class OtuPrbsTest : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf locked;
-        static const ydk::Enum::YLeaf unlocked;
-        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
 };
 
-class OtuPrbsPattern : public ydk::Enum
+class OtuAinsStateEt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf pn31;
-        static const ydk::Enum::YLeaf pn23;
-        static const ydk::Enum::YLeaf pn11;
-        static const ydk::Enum::YLeaf inverted_pn31;
-        static const ydk::Enum::YLeaf inverted_pn11;
-        static const ydk::Enum::YLeaf pn15;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active_running;
+        static const ydk::Enum::YLeaf active_pending;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "active-running") return 1;
+            if (name == "active-pending") return 2;
+            return -1;
+        }
+};
+
+class OtuPpFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf otu_in_active;
+        static const ydk::Enum::YLeaf otu_disabled;
+        static const ydk::Enum::YLeaf otu_normal_state;
+        static const ydk::Enum::YLeaf otu_local_failing;
+        static const ydk::Enum::YLeaf otu_remote_failing;
+        static const ydk::Enum::YLeaf otu_main_t_failing;
+        static const ydk::Enum::YLeaf otu_regen_failing;
+        static const ydk::Enum::YLeaf otu_local_failed;
+        static const ydk::Enum::YLeaf otu_remote_failed;
+        static const ydk::Enum::YLeaf otu_main_t_failed;
+        static const ydk::Enum::YLeaf otu_regen_failed;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "otu-in-active") return 0;
+            if (name == "otu-disabled") return 1;
+            if (name == "otu-normal-state") return 2;
+            if (name == "otu-local-failing") return 3;
+            if (name == "otu-remote-failing") return 4;
+            if (name == "otu-main-t-failing") return 5;
+            if (name == "otu-regen-failing") return 6;
+            if (name == "otu-local-failed") return 7;
+            if (name == "otu-remote-failed") return 8;
+            if (name == "otu-main-t-failed") return 9;
+            if (name == "otu-regen-failed") return 10;
+            return -1;
+        }
+};
+
+class OtuG709fecMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf otu_bag_none_fec;
+        static const ydk::Enum::YLeaf otu_bag_standard_fec;
+        static const ydk::Enum::YLeaf otu_bag_1_i_7_fec;
+        static const ydk::Enum::YLeaf otu_bag_1_i_4_fec;
+        static const ydk::Enum::YLeaf otu_bag_swizzle_fec;
+        static const ydk::Enum::YLeaf otu_bag_hg20_fec;
+        static const ydk::Enum::YLeaf otu_bag_enhanced_hg7_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd20_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd7_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd15_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd27_fec;
+        static const ydk::Enum::YLeaf otu_bag_all_fec;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "otu-bag-none-fec") return 1;
+            if (name == "otu-bag-standard-fec") return 2;
+            if (name == "otu-bag-1-i-7-fec") return 4;
+            if (name == "otu-bag-1-i-4-fec") return 8;
+            if (name == "otu-bag-swizzle-fec") return 16;
+            if (name == "otu-bag-hg20-fec") return 32;
+            if (name == "otu-bag-enhanced-hg7-fec") return 64;
+            if (name == "otu-bag-sd20-fec") return 128;
+            if (name == "otu-bag-sd7-fec") return 256;
+            if (name == "otu-bag-sd15-fec") return 512;
+            if (name == "otu-bag-sd27-fec") return 1024;
+            if (name == "otu-bag-all-fec") return 2048;
+            return -1;
+        }
 };
 
 class OtuPrbsMode : public ydk::Enum
@@ -1296,14 +1317,122 @@ class OtuPrbsMode : public ydk::Enum
         static const ydk::Enum::YLeaf sink;
         static const ydk::Enum::YLeaf source_sink;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-applicable") return 0;
+            if (name == "source") return 1;
+            if (name == "sink") return 2;
+            if (name == "source-sink") return 3;
+            return -1;
+        }
 };
 
-class OtuPrbsTest : public ydk::Enum
+class OtuPerMon : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "disable") return 0;
+            if (name == "enable") return 1;
+            return -1;
+        }
+};
+
+class OtuTtiEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ascii;
+        static const ydk::Enum::YLeaf hex;
+        static const ydk::Enum::YLeaf full_ascii;
+        static const ydk::Enum::YLeaf full_hex;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ascii") return 0;
+            if (name == "hex") return 1;
+            if (name == "full-ascii") return 2;
+            if (name == "full-hex") return 3;
+            return -1;
+        }
+};
+
+class OtuPpIntfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf otu_pp_intf_up;
+        static const ydk::Enum::YLeaf otu_pp_intf_failing;
+        static const ydk::Enum::YLeaf otu_pp_intf_down;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "otu-pp-intf-up") return 0;
+            if (name == "otu-pp-intf-failing") return 1;
+            if (name == "otu-pp-intf-down") return 2;
+            return -1;
+        }
+};
+
+class OtuSecState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ains;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "normal") return 0;
+            if (name == "maintenance") return 1;
+            if (name == "ains") return 2;
+            return -1;
+        }
+};
+
+class OtuLoopBackMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf internal;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 1;
+            if (name == "line") return 2;
+            if (name == "internal") return 4;
+            return -1;
+        }
+};
+
+class GmplsOtuTtiMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_none;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_sm;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_pm;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_tcm;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "gmpls-otu-tti-mode-none") return 0;
+            if (name == "gmpls-otu-tti-mode-sm") return 1;
+            if (name == "gmpls-otu-tti-mode-pm") return 2;
+            if (name == "gmpls-otu-tti-mode-tcm") return 3;
+            return -1;
+        }
+};
+
+class OtuDerState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf out_of_service;
+        static const ydk::Enum::YLeaf in_service;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ains;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "out-of-service") return 0;
+            if (name == "in-service") return 1;
+            if (name == "maintenance") return 2;
+            if (name == "ains") return 3;
+            return -1;
+        }
 };
 
 

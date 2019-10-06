@@ -843,6 +843,17 @@ class NtpPeerStatus : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_ctl_pst_sel_sys_peer;
         static const ydk::Enum::YLeaf ntp_ctl_pst_sel_pps;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-ctl-pst-sel-reject") return 0;
+            if (name == "ntp-ctl-pst-sel-sane") return 1;
+            if (name == "ntp-ctl-pst-sel-correct") return 2;
+            if (name == "ntp-ctl-pst-sel-selcand") return 3;
+            if (name == "ntp-ctl-pst-sel-sync-cand") return 4;
+            if (name == "ntp-ctl-pst-sel-distsys-peer") return 5;
+            if (name == "ntp-ctl-pst-sel-sys-peer") return 6;
+            if (name == "ntp-ctl-pst-sel-pps") return 7;
+            return -1;
+        }
 };
 
 class NtpMode : public ydk::Enum
@@ -858,6 +869,18 @@ class NtpMode : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_mode_private;
         static const ydk::Enum::YLeaf ntp_mode_xcast_client;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-mode-unspec") return 0;
+            if (name == "ntp-mode-symetric-active") return 1;
+            if (name == "ntp-mode-symetric-passive") return 2;
+            if (name == "ntp-mode-client") return 3;
+            if (name == "ntp-mode-server") return 4;
+            if (name == "ntp-mode-xcast-server") return 5;
+            if (name == "ntp-mode-control") return 6;
+            if (name == "ntp-mode-private") return 7;
+            if (name == "ntp-mode-xcast-client") return 8;
+            return -1;
+        }
 };
 
 class ClockUpdateNode : public ydk::Enum
@@ -867,6 +890,12 @@ class ClockUpdateNode : public ydk::Enum
         static const ydk::Enum::YLeaf clk_updated;
         static const ydk::Enum::YLeaf clk_no_update_info;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "clk-never-updated") return 0;
+            if (name == "clk-updated") return 1;
+            if (name == "clk-no-update-info") return 2;
+            return -1;
+        }
 };
 
 class NtpLoopFilterState : public ydk::Enum
@@ -879,6 +908,15 @@ class NtpLoopFilterState : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_loop_flt_sync;
         static const ydk::Enum::YLeaf ntp_loop_flt_unkn;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-loop-flt-n-set") return 1;
+            if (name == "ntp-loop-flt-f-set") return 2;
+            if (name == "ntp-loop-flt-spik") return 3;
+            if (name == "ntp-loop-flt-freq") return 4;
+            if (name == "ntp-loop-flt-sync") return 5;
+            if (name == "ntp-loop-flt-unkn") return 6;
+            return -1;
+        }
 };
 
 class NtpLeap : public ydk::Enum
@@ -889,6 +927,13 @@ class NtpLeap : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_leap_delse_cond;
         static const ydk::Enum::YLeaf ntp_leap_not_in_sync;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ntp-leap-no-warning") return 0;
+            if (name == "ntp-leap-addse-cond") return 1;
+            if (name == "ntp-leap-delse-cond") return 2;
+            if (name == "ntp-leap-not-in-sync") return 3;
+            return -1;
+        }
 };
 
 

@@ -16,6 +16,11 @@ class DynTmplMulticastMode : public ydk::Enum
         static const ydk::Enum::YLeaf qos_correlation;
         static const ydk::Enum::YLeaf passive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "qos-correlation") return 1;
+            if (name == "passive") return 2;
+            return -1;
+        }
 };
 
 

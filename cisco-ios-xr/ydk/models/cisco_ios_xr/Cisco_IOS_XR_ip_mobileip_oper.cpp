@@ -10565,6 +10565,13 @@ bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::has_leaf_or_child_of_n
     return false;
 }
 
+const Enum::YLeaf Pmipv6Role::wlan {0, "wlan"};
+const Enum::YLeaf Pmipv6Role::gpp {1, "gpp"};
+const Enum::YLeaf Pmipv6Role::lte {2, "lte"};
+const Enum::YLeaf Pmipv6Role::wi_max {3, "wi-max"};
+const Enum::YLeaf Pmipv6Role::gma {4, "gma"};
+const Enum::YLeaf Pmipv6Role::rmax {5, "rmax"};
+
 const Enum::YLeaf Pmipv6Encap::none {0, "none"};
 const Enum::YLeaf Pmipv6Encap::ipv6 {1, "ipv6"};
 const Enum::YLeaf Pmipv6Encap::ipv6_ipv4 {2, "ipv6-ipv4"};
@@ -10582,13 +10589,6 @@ const Enum::YLeaf Pmipv6Addr::none {0, "none"};
 const Enum::YLeaf Pmipv6Addr::ipv4 {1, "ipv4"};
 const Enum::YLeaf Pmipv6Addr::ipv6 {2, "ipv6"};
 const Enum::YLeaf Pmipv6Addr::pmipv6_addr_ipv4_ipv6 {3, "pmipv6-addr-ipv4-ipv6"};
-
-const Enum::YLeaf Pmipv6Role::wlan {0, "wlan"};
-const Enum::YLeaf Pmipv6Role::gpp {1, "gpp"};
-const Enum::YLeaf Pmipv6Role::lte {2, "lte"};
-const Enum::YLeaf Pmipv6Role::wi_max {3, "wi-max"};
-const Enum::YLeaf Pmipv6Role::gma {4, "gma"};
-const Enum::YLeaf Pmipv6Role::rmax {5, "rmax"};
 
 
 }

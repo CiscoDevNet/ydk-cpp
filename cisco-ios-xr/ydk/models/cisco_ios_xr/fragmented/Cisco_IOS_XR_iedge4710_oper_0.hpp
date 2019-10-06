@@ -4089,30 +4089,34 @@ class SubscriberAuthorStateFilterFlag : public ydk::Enum
         static const ydk::Enum::YLeaf un_authorized;
         static const ydk::Enum::YLeaf authorized;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "un-authorized") return 0;
+            if (name == "authorized") return 1;
+            return -1;
+        }
 };
 
-class SubscriberSrgOperFilterFlag : public ydk::Enum
+class IedgeOperSessionState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf srg_none;
-        static const ydk::Enum::YLeaf srg_master;
-        static const ydk::Enum::YLeaf srg_slave;
-        static const ydk::Enum::YLeaf srg_both;
+        static const ydk::Enum::YLeaf initialize;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf disconnecting;
+        static const ydk::Enum::YLeaf end;
 
-};
-
-class SubscriberAddressFamilyFilterFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4_only;
-        static const ydk::Enum::YLeaf ipv6_only;
-        static const ydk::Enum::YLeaf ipv4_all;
-        static const ydk::Enum::YLeaf ipv6_all;
-        static const ydk::Enum::YLeaf dual_all;
-        static const ydk::Enum::YLeaf dual_part_up;
-        static const ydk::Enum::YLeaf dual_up;
-        static const ydk::Enum::YLeaf lac;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "initialize") return 0;
+            if (name == "connecting") return 1;
+            if (name == "connected") return 2;
+            if (name == "activated") return 3;
+            if (name == "idle") return 4;
+            if (name == "disconnecting") return 5;
+            if (name == "end") return 6;
+            return -1;
+        }
 };
 
 class SubscriberStateFilterFlag : public ydk::Enum
@@ -4126,14 +4130,29 @@ class SubscriberStateFilterFlag : public ydk::Enum
         static const ydk::Enum::YLeaf disconnecting;
         static const ydk::Enum::YLeaf end;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "initializing") return 0;
+            if (name == "connecting") return 1;
+            if (name == "connected") return 2;
+            if (name == "activated") return 3;
+            if (name == "idle") return 4;
+            if (name == "disconnecting") return 5;
+            if (name == "end") return 6;
+            return -1;
+        }
 };
 
-class SubscriberAuthenStateFilterFlag : public ydk::Enum
+class IedgePppSub : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf un_authenticated;
-        static const ydk::Enum::YLeaf authenticated;
+        static const ydk::Enum::YLeaf pta;
+        static const ydk::Enum::YLeaf lac;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "pta") return 0;
+            if (name == "lac") return 1;
+            return -1;
+        }
 };
 
 class IedgeOperServiceStatus : public ydk::Enum
@@ -4152,6 +4171,34 @@ class IedgeOperServiceStatus : public ydk::Enum
         static const ydk::Enum::YLeaf unapplied;
         static const ydk::Enum::YLeaf max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "error") return 1;
+            if (name == "new") return 2;
+            if (name == "loading") return 3;
+            if (name == "req-association") return 4;
+            if (name == "associated") return 5;
+            if (name == "req-pd-association") return 6;
+            if (name == "applied") return 7;
+            if (name == "req-unassociation") return 8;
+            if (name == "req-pd-unassociation") return 9;
+            if (name == "unapplied") return 10;
+            if (name == "max") return 11;
+            return -1;
+        }
+};
+
+class SubscriberAuthenStateFilterFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf un_authenticated;
+        static const ydk::Enum::YLeaf authenticated;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "un-authenticated") return 0;
+            if (name == "authenticated") return 1;
+            return -1;
+        }
 };
 
 class IedgeOperService : public ydk::Enum
@@ -4167,27 +4214,18 @@ class IedgeOperService : public ydk::Enum
         static const ydk::Enum::YLeaf multi_template;
         static const ydk::Enum::YLeaf max_templae;
 
-};
-
-class IedgeOperSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initialize;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf disconnecting;
-        static const ydk::Enum::YLeaf end;
-
-};
-
-class IedgePppSub : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pta;
-        static const ydk::Enum::YLeaf lac;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "profile") return 1;
+            if (name == "template") return 2;
+            if (name == "grp-template") return 3;
+            if (name == "ppp-template") return 4;
+            if (name == "eth-template") return 5;
+            if (name == "ip-sub-template") return 6;
+            if (name == "multi-template") return 7;
+            if (name == "max-templae") return 8;
+            return -1;
+        }
 };
 
 class IedgeOperSession : public ydk::Enum
@@ -4199,6 +4237,56 @@ class IedgeOperSession : public ydk::Enum
         static const ydk::Enum::YLeaf ip_packet_trigger;
         static const ydk::Enum::YLeaf ip_packet_dhcp_trigger;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 0;
+            if (name == "pppoe") return 1;
+            if (name == "ppp") return 2;
+            if (name == "ip-packet-trigger") return 3;
+            if (name == "ip-packet-dhcp-trigger") return 4;
+            return -1;
+        }
+};
+
+class SubscriberSrgOperFilterFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf srg_none;
+        static const ydk::Enum::YLeaf srg_master;
+        static const ydk::Enum::YLeaf srg_slave;
+        static const ydk::Enum::YLeaf srg_both;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "srg-none") return 0;
+            if (name == "srg-master") return 16384;
+            if (name == "srg-slave") return 65536;
+            if (name == "srg-both") return 81920;
+            return -1;
+        }
+};
+
+class SubscriberAddressFamilyFilterFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_only;
+        static const ydk::Enum::YLeaf ipv6_only;
+        static const ydk::Enum::YLeaf ipv4_all;
+        static const ydk::Enum::YLeaf ipv6_all;
+        static const ydk::Enum::YLeaf dual_all;
+        static const ydk::Enum::YLeaf dual_part_up;
+        static const ydk::Enum::YLeaf dual_up;
+        static const ydk::Enum::YLeaf lac;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4-only") return 0;
+            if (name == "ipv6-only") return 1;
+            if (name == "ipv4-all") return 2;
+            if (name == "ipv6-all") return 3;
+            if (name == "dual-all") return 4;
+            if (name == "dual-part-up") return 5;
+            if (name == "dual-up") return 6;
+            if (name == "lac") return 7;
+            return -1;
+        }
 };
 
 

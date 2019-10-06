@@ -11,13 +11,13 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace tailf_netconf_monitoring {
 
-CliConsole::CliConsole()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-console")
+RestHttps::RestHttps()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-https")
 {
 
 }
 
-CliConsole::~CliConsole()
+RestHttps::~RestHttps()
 {
 }
 
@@ -31,23 +31,13 @@ CliSsh::~CliSsh()
 {
 }
 
-CliTcp::CliTcp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-tcp")
+CliConsole::CliConsole()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-console")
 {
 
 }
 
-CliTcp::~CliTcp()
-{
-}
-
-WebuiHttp::WebuiHttp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-http")
-{
-
-}
-
-WebuiHttp::~WebuiHttp()
+CliConsole::~CliConsole()
 {
 }
 
@@ -61,16 +51,6 @@ WebuiHttps::~WebuiHttps()
 {
 }
 
-NetconfTcp::NetconfTcp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:netconf-tcp")
-{
-
-}
-
-NetconfTcp::~NetconfTcp()
-{
-}
-
 SnmpUdp::SnmpUdp()
      : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:snmp-udp")
 {
@@ -78,6 +58,16 @@ SnmpUdp::SnmpUdp()
 }
 
 SnmpUdp::~SnmpUdp()
+{
+}
+
+WebuiHttp::WebuiHttp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-http")
+{
+
+}
+
+WebuiHttp::~WebuiHttp()
 {
 }
 
@@ -91,13 +81,23 @@ RestHttp::~RestHttp()
 {
 }
 
-RestHttps::RestHttps()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-https")
+NetconfTcp::NetconfTcp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:netconf-tcp")
 {
 
 }
 
-RestHttps::~RestHttps()
+NetconfTcp::~NetconfTcp()
+{
+}
+
+CliTcp::CliTcp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-tcp")
+{
+
+}
+
+CliTcp::~CliTcp()
 {
 }
 

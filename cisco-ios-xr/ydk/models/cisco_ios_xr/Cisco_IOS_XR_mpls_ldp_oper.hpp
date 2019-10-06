@@ -31743,40 +31743,6 @@ class MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf : public ydk::Entity
 
 }; // MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf
 
-class MplsLdpOperAfName : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class L2vpnLdpPwAii : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local_id;
-        static const ydk::Enum::YLeaf type2;
-
-};
-
-class L2vpnLdpPwAgi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rd;
-
-};
-
-class L2vpnLdpPwFec : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fec128;
-        static const ydk::Enum::YLeaf fec129;
-        static const ydk::Enum::YLeaf fec130;
-        static const ydk::Enum::YLeaf invalid;
-
-};
-
 class MgmtLdpNbrBgpAdvtState : public ydk::Enum
 {
     public:
@@ -31784,6 +31750,122 @@ class MgmtLdpNbrBgpAdvtState : public ydk::Enum
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "not-applicable") return 0;
+            if (name == "permit") return 1;
+            if (name == "deny") return 2;
+            return -1;
+        }
+};
+
+class MgmtLdpNsrPeerSyncState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_none;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_wait;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_ready;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_prep;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_app_wait;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_oper;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase1;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase2;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ldp-nsr-peer-sync-st-none") return 0;
+            if (name == "mgmt-ldp-nsr-peer-sync-st-wait") return 1;
+            if (name == "mgmt-ldp-nsr-peer-sync-st-ready") return 2;
+            if (name == "mgmt-ldp-nsr-peer-sync-st-prep") return 3;
+            if (name == "mgmt-ldp-nsr-peer-sync-st-app-wait") return 4;
+            if (name == "mgmt-ldp-nsr-peer-sync-st-oper") return 5;
+            if (name == "mgmt-ldp-nsr-peer-sync-st-tcp-phase1") return 6;
+            if (name == "mgmt-ldp-nsr-peer-sync-st-tcp-phase2") return 7;
+            return -1;
+        }
+};
+
+class LdpRoutePathFlags : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ip_path_no_flag;
+        static const ydk::Enum::YLeaf ip_path_protected;
+        static const ydk::Enum::YLeaf ip_path_backup;
+        static const ydk::Enum::YLeaf ip_path_backup_remote;
+        static const ydk::Enum::YLeaf ip_path_bgp_backup;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip-path-no-flag") return 0;
+            if (name == "ip-path-protected") return 1;
+            if (name == "ip-path-backup") return 2;
+            if (name == "ip-path-backup-remote") return 3;
+            if (name == "ip-path-bgp-backup") return 4;
+            return -1;
+        }
+};
+
+class LdpAfId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ldp_af_id_none;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp-af-id-none") return 0;
+            if (name == "ldp-af-id-ipv4") return 2;
+            if (name == "ldp-af-id-ipv6") return 10;
+            return -1;
+        }
+};
+
+class LdpIgpSyncState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isync_ready;
+        static const ydk::Enum::YLeaf isync_not_ready;
+        static const ydk::Enum::YLeaf isync_deferred;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "isync-ready") return 0;
+            if (name == "isync-not-ready") return 1;
+            if (name == "isync-deferred") return 2;
+            return -1;
+        }
+};
+
+class LdpIgpSyncDownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf igp_sync_down_reason_not_applicable;
+        static const ydk::Enum::YLeaf no_hello_adjacency;
+        static const ydk::Enum::YLeaf no_peer_session;
+        static const ydk::Enum::YLeaf initial_update_to_peer_not_done;
+        static const ydk::Enum::YLeaf initial_update_from_peer_not_received;
+        static const ydk::Enum::YLeaf internal_reason;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp-sync-down-reason-not-applicable") return 0;
+            if (name == "no-hello-adjacency") return 1;
+            if (name == "no-peer-session") return 2;
+            if (name == "initial-update-to-peer-not-done") return 3;
+            if (name == "initial-update-from-peer-not-received") return 4;
+            if (name == "internal-reason") return 5;
+            return -1;
+        }
+};
+
+class LocalLabelState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf local_label_state_none;
+        static const ydk::Enum::YLeaf local_label_state_assigned;
+        static const ydk::Enum::YLeaf local_label_state_withdrawn;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "local-label-state-none") return 1;
+            if (name == "local-label-state-assigned") return 2;
+            if (name == "local-label-state-withdrawn") return 3;
+            return -1;
+        }
 };
 
 class MgmtLdpNsrPeerLdpSyncNackRsn : public ydk::Enum
@@ -31817,6 +31899,36 @@ class MgmtLdpNsrPeerLdpSyncNackRsn : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_ldp_sync_nack_rsn_err_tcp_struct_create;
         static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_ldp_sync_nack_rsn_no_ctx;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-none") return 0;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-tbl-id-mismatch") return 1;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-pp-exists") return 2;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-missing-elem") return 3;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-no-p-end-sock") return 4;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-p-end-sock-not-synced") return 5;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-adj-add") return 6;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-dhcb-add") return 7;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-enomem") return 8;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-tp-create") return 9;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-pp-create") return 10;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-addr-bind") return 11;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-rx-bad-pie") return 12;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-rx-notif") return 13;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-rx-unexp-open") return 14;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-unexp-peer-down") return 15;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-app-not-found") return 16;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-app-invalid") return 17;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-adj-grp-not-found") return 18;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-invalid-elem") return 19;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-app-data-invalid") return 20;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-invalid-per-idx") return 21;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-pfx-not-found") return 22;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-bm-size-invalid") return 23;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-adv-bm-clear") return 24;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-err-tcp-struct-create") return 25;
+            if (name == "mgmt-ldp-nsr-peer-ldp-sync-nack-rsn-no-ctx") return 26;
+            return -1;
+        }
 };
 
 class MgmtLdpNsrPeerSyncErr : public ydk::Enum
@@ -31833,46 +31945,30 @@ class MgmtLdpNsrPeerSyncErr : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_err_sync_tcp_phase1;
         static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_err_sync_tcp_phase2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mgmt-ldp-nsr-peer-sync-err-none") return 0;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-ldp-sync-nack") return 1;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-sync-prep") return 2;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-tcp-peer") return 3;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-tcp-gbl") return 4;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-ldp-peer") return 5;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-ldp-gbl") return 6;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-app-fail") return 7;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-sync-tcp-phase1") return 8;
+            if (name == "mgmt-ldp-nsr-peer-sync-err-sync-tcp-phase2") return 9;
+            return -1;
+        }
 };
 
-class MgmtLdpNsrPeerSyncState : public ydk::Enum
+class L2vpnLdpPwAgi : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_none;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_wait;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_ready;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_prep;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_app_wait;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_oper;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase1;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase2;
+        static const ydk::Enum::YLeaf rd;
 
-};
-
-class LdpAdjUnionDiscrim : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link_hello;
-        static const ydk::Enum::YLeaf targeted_hello;
-
-};
-
-class ShowNsrState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf nsr_ready;
-        static const ydk::Enum::YLeaf nsr_not_ready;
-        static const ydk::Enum::YLeaf nsr_na;
-
-};
-
-class LdpRoutePathLblOwner : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ip_path_lbl_owner_none;
-        static const ydk::Enum::YLeaf ip_path_lbl_owner_ldp;
-        static const ydk::Enum::YLeaf ip_path_lbl_owner_bgp;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "rd") return 0;
+            return -1;
+        }
 };
 
 class LabelValue : public ydk::Enum
@@ -31882,6 +31978,12 @@ class LabelValue : public ydk::Enum
         static const ydk::Enum::YLeaf un_labelled;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls-label") return 0;
+            if (name == "un-labelled") return 1;
+            if (name == "unknown") return 2;
+            return -1;
+        }
 };
 
 class LdpFwdUnlblRsn : public ydk::Enum
@@ -31897,57 +31999,78 @@ class LdpFwdUnlblRsn : public ydk::Enum
         static const ydk::Enum::YLeaf ldp_fwd_un_labelled_no_session;
         static const ydk::Enum::YLeaf ldp_fwd_un_labelled_unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp-fwd-labelled") return 0;
+            if (name == "ldp-fwd-un-labelled-vrf-down") return 1;
+            if (name == "ldp-fwd-un-labelled-no-nh") return 2;
+            if (name == "ldp-fwd-un-labelled-recursive-path") return 3;
+            if (name == "ldp-fwd-un-labelled-intf-not-ldp") return 4;
+            if (name == "ldp-fwd-un-labelled-no-rmt") return 5;
+            if (name == "ldp-fwd-un-labelled-no-ldp-adj") return 6;
+            if (name == "ldp-fwd-un-labelled-no-session") return 7;
+            if (name == "ldp-fwd-un-labelled-unknown") return 8;
+            return -1;
+        }
 };
 
-class LdpRoutePathFlags : public ydk::Enum
+class LdpAdjUnionDiscrim : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ip_path_no_flag;
-        static const ydk::Enum::YLeaf ip_path_protected;
-        static const ydk::Enum::YLeaf ip_path_backup;
-        static const ydk::Enum::YLeaf ip_path_backup_remote;
-        static const ydk::Enum::YLeaf ip_path_bgp_backup;
+        static const ydk::Enum::YLeaf link_hello;
+        static const ydk::Enum::YLeaf targeted_hello;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "link-hello") return 0;
+            if (name == "targeted-hello") return 1;
+            return -1;
+        }
 };
 
-class DhcbState : public ydk::Enum
+class LdpRoutePathLblOwner : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf dhcb_active;
-        static const ydk::Enum::YLeaf dhcb_passive;
-        static const ydk::Enum::YLeaf dhcb_active_passive;
+        static const ydk::Enum::YLeaf ip_path_lbl_owner_none;
+        static const ydk::Enum::YLeaf ip_path_lbl_owner_ldp;
+        static const ydk::Enum::YLeaf ip_path_lbl_owner_bgp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip-path-lbl-owner-none") return 0;
+            if (name == "ip-path-lbl-owner-ldp") return 1;
+            if (name == "ip-path-lbl-owner-bgp") return 2;
+            return -1;
+        }
 };
 
-class LdpIgpSyncDownReason : public ydk::Enum
+class L2vpnLdpPwFec : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf igp_sync_down_reason_not_applicable;
-        static const ydk::Enum::YLeaf no_hello_adjacency;
-        static const ydk::Enum::YLeaf no_peer_session;
-        static const ydk::Enum::YLeaf initial_update_to_peer_not_done;
-        static const ydk::Enum::YLeaf initial_update_from_peer_not_received;
-        static const ydk::Enum::YLeaf internal_reason;
+        static const ydk::Enum::YLeaf fec128;
+        static const ydk::Enum::YLeaf fec129;
+        static const ydk::Enum::YLeaf fec130;
+        static const ydk::Enum::YLeaf invalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "fec128") return 0;
+            if (name == "fec129") return 1;
+            if (name == "fec130") return 2;
+            if (name == "invalid") return 3;
+            return -1;
+        }
 };
 
-class LdpIgpSyncState : public ydk::Enum
+class MplsLdpOperAfName : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isync_ready;
-        static const ydk::Enum::YLeaf isync_not_ready;
-        static const ydk::Enum::YLeaf isync_deferred;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf all;
 
-};
-
-class LocalLabelState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local_label_state_none;
-        static const ydk::Enum::YLeaf local_label_state_assigned;
-        static const ydk::Enum::YLeaf local_label_state_withdrawn;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 1;
+            if (name == "ipv6") return 2;
+            if (name == "all") return 65535;
+            return -1;
+        }
 };
 
 class LdpAf : public ydk::Enum
@@ -31958,15 +32081,58 @@ class LdpAf : public ydk::Enum
         static const ydk::Enum::YLeaf ldp_show_af_ipv6;
         static const ydk::Enum::YLeaf ldp_show_af_ipv4_ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp-show-af-none") return 0;
+            if (name == "ldp-show-af-ipv4") return 1;
+            if (name == "ldp-show-af-ipv6") return 2;
+            if (name == "ldp-show-af-ipv4-ipv6") return 3;
+            return -1;
+        }
 };
 
-class LdpAfId : public ydk::Enum
+class L2vpnLdpPwAii : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ldp_af_id_none;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
+        static const ydk::Enum::YLeaf local_id;
+        static const ydk::Enum::YLeaf type2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "local-id") return 0;
+            if (name == "type2") return 1;
+            return -1;
+        }
+};
+
+class DhcbState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf dhcb_active;
+        static const ydk::Enum::YLeaf dhcb_passive;
+        static const ydk::Enum::YLeaf dhcb_active_passive;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "dhcb-active") return 1;
+            if (name == "dhcb-passive") return 2;
+            if (name == "dhcb-active-passive") return 3;
+            return -1;
+        }
+};
+
+class ShowNsrState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nsr_ready;
+        static const ydk::Enum::YLeaf nsr_not_ready;
+        static const ydk::Enum::YLeaf nsr_na;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "nsr-ready") return 0;
+            if (name == "nsr-not-ready") return 1;
+            if (name == "nsr-na") return 2;
+            return -1;
+        }
 };
 
 

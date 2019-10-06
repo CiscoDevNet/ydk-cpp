@@ -536,7 +536,7 @@ class Native::RouteMap::RouteMapSeq::Match::SourceProtocol : public ydk::Entity
         ydk::YLeaf mobile; //type: empty
         ydk::YLeaf rip; //type: empty
         ydk::YLeaf static_; //type: empty
-        ydk::YLeafList bgp; //type: list of  one of string, uint32
+        ydk::YLeafList bgp; //type: list of  one of uint32, string
         ydk::YLeafList eigrp; //type: list of  string
         ydk::YLeafList ospf; //type: list of  string
         ydk::YLeafList ospfv3; //type: list of  string
@@ -904,7 +904,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKn
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList community_list; //type: list of  one of enumeration, union
+        ydk::YLeafList community_list; //type: list of  one of union, enumeration
 
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKnown
 
@@ -1402,7 +1402,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList asn_nn; //type: list of  one of enumeration, string
+        ydk::YLeafList asn_nn; //type: list of  one of string, enumeration
         class Range; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range> range;
@@ -3646,6 +3646,11 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Operation_ : public ydk::Enum
         static const ydk::Enum::YLeaf deny;
         static const ydk::Enum::YLeaf permit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deny") return 0;
+            if (name == "permit") return 1;
+            return -1;
+        }
 };
 
 class Native::RouteMap::RouteMapWithoutOrderSeq::Set::MetricType : public ydk::Enum
@@ -3656,6 +3661,13 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::MetricType : public ydk::E
         static const ydk::Enum::YLeaf type_1;
         static const ydk::Enum::YLeaf type_2;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "external") return 0;
+            if (name == "internal") return 1;
+            if (name == "type-1") return 2;
+            if (name == "type-2") return 3;
+            return -1;
+        }
 };
 
 class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::AsnNn : public ydk::Enum
@@ -3663,6 +3675,10 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::AsnNn : 
     public:
         static const ydk::Enum::YLeaf additive;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "additive") return 0;
+            return -1;
+        }
 };
 
 class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::PrecedenceFields : public ydk::Enum
@@ -3677,6 +3693,17 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::Precedence
         static const ydk::Enum::YLeaf priority;
         static const ydk::Enum::YLeaf routine;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "flash") return 1;
+            if (name == "flash-override") return 2;
+            if (name == "immediate") return 3;
+            if (name == "internet") return 4;
+            if (name == "network") return 5;
+            if (name == "priority") return 6;
+            if (name == "routine") return 7;
+            return -1;
+        }
 };
 
 class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::TosFields : public ydk::Enum
@@ -3688,6 +3715,14 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::TosFields : publi
         static const ydk::Enum::YLeaf min_monetary_cost;
         static const ydk::Enum::YLeaf normal;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "max-reliability") return 0;
+            if (name == "max-throughput") return 1;
+            if (name == "min-delay") return 2;
+            if (name == "min-monetary-cost") return 3;
+            if (name == "normal") return 4;
+            return -1;
+        }
 };
 
 class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::OriginValue : public ydk::Enum
@@ -3696,6 +3731,11 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::OriginValue : publ
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf incomplete;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "igp") return 0;
+            if (name == "incomplete") return 1;
+            return -1;
+        }
 };
 
 

@@ -2154,8 +2154,8 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Delay : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -2324,8 +2324,8 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Load : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -3785,6 +3785,10 @@ class Native::Interface::CEM::Cdp : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Atm::Bandwidth : public ydk::Enum
@@ -3792,6 +3796,10 @@ class Native::Interface::CEM::Atm::Bandwidth : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Atm::RouteBridged : public ydk::Enum
@@ -3800,6 +3808,11 @@ class Native::Interface::CEM::Atm::RouteBridged : public ydk::Enum
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Atm::Pvp::Xconnect::Encapsulation : public ydk::Enum
@@ -3808,6 +3821,11 @@ class Native::Interface::CEM::Atm::Pvp::Xconnect::Encapsulation : public ydk::En
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Atm::Pvp::Xconnect::Sequencing : public ydk::Enum
@@ -3817,6 +3835,12 @@ class Native::Interface::CEM::Atm::Pvp::Xconnect::Sequencing : public ydk::Enum
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Cem::Xconnect::Encapsulation : public ydk::Enum
@@ -3825,6 +3849,11 @@ class Native::Interface::CEM::Cem::Xconnect::Encapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Cem::Xconnect::Sequencing : public ydk::Enum
@@ -3834,6 +3863,12 @@ class Native::Interface::CEM::Cem::Xconnect::Sequencing : public ydk::Enum
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Pvc::Xconnect::Encapsulation : public ydk::Enum
@@ -3842,6 +3877,11 @@ class Native::Interface::CEM::Pvc::Xconnect::Encapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEM::Pvc::Xconnect::Sequencing : public ydk::Enum
@@ -3851,6 +3891,12 @@ class Native::Interface::CEM::Pvc::Xconnect::Sequencing : public ydk::Enum
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Cdp : public ydk::Enum
@@ -3858,6 +3904,10 @@ class Native::Interface::CEMACR::Cdp : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Atm::Bandwidth : public ydk::Enum
@@ -3865,6 +3915,10 @@ class Native::Interface::CEMACR::Atm::Bandwidth : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf dynamic;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dynamic") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Atm::RouteBridged : public ydk::Enum
@@ -3873,6 +3927,11 @@ class Native::Interface::CEMACR::Atm::RouteBridged : public ydk::Enum
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ip") return 0;
+            if (name == "ipv6") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Atm::Pvp::Xconnect::Encapsulation : public ydk::Enum
@@ -3881,6 +3940,11 @@ class Native::Interface::CEMACR::Atm::Pvp::Xconnect::Encapsulation : public ydk:
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Atm::Pvp::Xconnect::Sequencing : public ydk::Enum
@@ -3890,6 +3954,12 @@ class Native::Interface::CEMACR::Atm::Pvp::Xconnect::Sequencing : public ydk::En
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Cem::Xconnect::Encapsulation : public ydk::Enum
@@ -3898,6 +3968,11 @@ class Native::Interface::CEMACR::Cem::Xconnect::Encapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Cem::Xconnect::Sequencing : public ydk::Enum
@@ -3907,6 +3982,12 @@ class Native::Interface::CEMACR::Cem::Xconnect::Sequencing : public ydk::Enum
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Pvc::Xconnect::Encapsulation : public ydk::Enum
@@ -3915,6 +3996,11 @@ class Native::Interface::CEMACR::Pvc::Xconnect::Encapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf l2tpv3;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "mpls") return 0;
+            if (name == "l2tpv3") return 1;
+            return -1;
+        }
 };
 
 class Native::Interface::CEMACR::Pvc::Xconnect::Sequencing : public ydk::Enum
@@ -3924,6 +4010,12 @@ class Native::Interface::CEMACR::Pvc::Xconnect::Sequencing : public ydk::Enum
         static const ydk::Enum::YLeaf receive;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "transmit") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::IfState : public ydk::Enum
@@ -3931,6 +4023,10 @@ class Native::Interface::EmbeddedServiceEngine::IfState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf nhrp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "nhrp") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::ServiceInsertion : public ydk::Enum
@@ -3938,6 +4034,10 @@ class Native::Interface::EmbeddedServiceEngine::ServiceInsertion : public ydk::E
     public:
         static const ydk::Enum::YLeaf waas;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "waas") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::Backup::Delay::Failure : public ydk::Enum
@@ -3945,6 +4045,10 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Delay::Failure : public 
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::Backup::Delay::SecondaryDisable : public ydk::Enum
@@ -3952,6 +4056,10 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Delay::SecondaryDisable 
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::Backup::Load::Kickin : public ydk::Enum
@@ -3959,6 +4067,10 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Load::Kickin : public yd
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::Backup::Load::Kickout : public ydk::Enum
@@ -3966,6 +4078,10 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Load::Kickout : public y
     public:
         static const ydk::Enum::YLeaf never;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "never") return 0;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::Flowcontrol::Receive : public ydk::Enum
@@ -3975,6 +4091,12 @@ class Native::Interface::EmbeddedServiceEngine::Flowcontrol::Receive : public yd
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::Flowcontrol::Send : public ydk::Enum
@@ -3984,6 +4106,12 @@ class Native::Interface::EmbeddedServiceEngine::Flowcontrol::Send : public ydk::
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf on;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "desired") return 0;
+            if (name == "off") return 1;
+            if (name == "on") return 2;
+            return -1;
+        }
 };
 
 class Native::Interface::EmbeddedServiceEngine::HoldQueue::Direction : public ydk::Enum
@@ -3992,6 +4120,11 @@ class Native::Interface::EmbeddedServiceEngine::HoldQueue::Direction : public yd
         static const ydk::Enum::YLeaf in;
         static const ydk::Enum::YLeaf out;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "in") return 0;
+            if (name == "out") return 1;
+            return -1;
+        }
 };
 
 

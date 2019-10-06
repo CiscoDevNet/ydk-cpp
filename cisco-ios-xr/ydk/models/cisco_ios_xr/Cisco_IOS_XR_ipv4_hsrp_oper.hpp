@@ -1248,6 +1248,34 @@ class HsrpVmacState : public ydk::Enum
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf reserving;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "stored") return 0;
+            if (name == "reserved") return 1;
+            if (name == "active") return 2;
+            if (name == "reserving") return 3;
+            return -1;
+        }
+};
+
+class StandbyGrpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_initial;
+        static const ydk::Enum::YLeaf state_learn;
+        static const ydk::Enum::YLeaf state_listen;
+        static const ydk::Enum::YLeaf state_speak;
+        static const ydk::Enum::YLeaf state_standby;
+        static const ydk::Enum::YLeaf state_active;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-initial") return 1;
+            if (name == "state-learn") return 2;
+            if (name == "state-listen") return 3;
+            if (name == "state-speak") return 4;
+            if (name == "state-standby") return 5;
+            if (name == "state-active") return 6;
+            return -1;
+        }
 };
 
 class HsrpStateChangeReason : public ydk::Enum
@@ -1281,6 +1309,51 @@ class HsrpStateChangeReason : public ydk::Enum
         static const ydk::Enum::YLeaf state_change_reset_to_learn;
         static const ydk::Enum::YLeaf state_change_max;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "state-change-bfd-down") return 0;
+            if (name == "state-change-vip-learnt") return 1;
+            if (name == "state-change-interface-ip") return 2;
+            if (name == "state-change-delay-timer") return 3;
+            if (name == "state-change-startup") return 4;
+            if (name == "state-change-shutdown") return 5;
+            if (name == "state-change-interface-up") return 6;
+            if (name == "state-change-interface-down") return 7;
+            if (name == "state-change-active-timer") return 8;
+            if (name == "state-change-standby-timer") return 9;
+            if (name == "state-change-resign") return 10;
+            if (name == "state-change-coup") return 11;
+            if (name == "state-change-higher-priority-speak") return 12;
+            if (name == "state-change-higher-priority-standby") return 13;
+            if (name == "state-change-lower-priority-standby") return 14;
+            if (name == "state-change-higher-priority-active") return 15;
+            if (name == "state-change-lower-priority-active") return 16;
+            if (name == "state-change-virtual-ip-configured") return 17;
+            if (name == "state-change-virtual-ip-lost") return 18;
+            if (name == "state-change-recovered-from-checkpoint") return 19;
+            if (name == "state-change-mac-update") return 20;
+            if (name == "state-change-admin") return 21;
+            if (name == "state-change-parent") return 22;
+            if (name == "state-change-chkpt-update") return 23;
+            if (name == "state-change-issu-resync") return 24;
+            if (name == "state-change-reset-to-learn") return 25;
+            if (name == "state-change-max") return 26;
+            return -1;
+        }
+};
+
+class HsrpBAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf count;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "ipv4") return 0;
+            if (name == "ipv6") return 1;
+            if (name == "count") return 2;
+            return -1;
+        }
 };
 
 class HsrpBfdSessionState : public ydk::Enum
@@ -1291,27 +1364,13 @@ class HsrpBfdSessionState : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_state_up;
         static const ydk::Enum::YLeaf bfd_state_down;
 
-};
-
-class StandbyGrpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_initial;
-        static const ydk::Enum::YLeaf state_learn;
-        static const ydk::Enum::YLeaf state_listen;
-        static const ydk::Enum::YLeaf state_speak;
-        static const ydk::Enum::YLeaf state_standby;
-        static const ydk::Enum::YLeaf state_active;
-
-};
-
-class HsrpBAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf count;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "bfd-state-none") return 0;
+            if (name == "bfd-state-inactive") return 1;
+            if (name == "bfd-state-up") return 2;
+            if (name == "bfd-state-down") return 3;
+            return -1;
+        }
 };
 
 

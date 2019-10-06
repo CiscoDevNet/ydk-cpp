@@ -17,20 +17,7 @@ const Enum::YLeaf SlaBurstIntervalUnitsEnum::seconds {3, "seconds"};
 const Enum::YLeaf SlaBurstIntervalUnitsEnum::minutes {4, "minutes"};
 const Enum::YLeaf SlaBurstIntervalUnitsEnum::hours {5, "hours"};
 
-const Enum::YLeaf SlaThresholdTypeEnum::stateless {1, "stateless"};
-
-const Enum::YLeaf SlaSend::packet {0, "packet"};
-const Enum::YLeaf SlaSend::burst {1, "burst"};
-
 const Enum::YLeaf SlaActionTypeEnum::log {0, "log"};
-
-const Enum::YLeaf SlaProbeIntervalDayEnum::monday {1, "monday"};
-const Enum::YLeaf SlaProbeIntervalDayEnum::tuesday {2, "tuesday"};
-const Enum::YLeaf SlaProbeIntervalDayEnum::wednesday {3, "wednesday"};
-const Enum::YLeaf SlaProbeIntervalDayEnum::thursday {4, "thursday"};
-const Enum::YLeaf SlaProbeIntervalDayEnum::friday {5, "friday"};
-const Enum::YLeaf SlaProbeIntervalDayEnum::saturday {6, "saturday"};
-const Enum::YLeaf SlaProbeIntervalDayEnum::sunday {7, "sunday"};
 
 const Enum::YLeaf SlaPacketIntervalUnitsEnum::once {1, "once"};
 const Enum::YLeaf SlaPacketIntervalUnitsEnum::milliseconds {2, "milliseconds"};
@@ -38,36 +25,18 @@ const Enum::YLeaf SlaPacketIntervalUnitsEnum::seconds {3, "seconds"};
 const Enum::YLeaf SlaPacketIntervalUnitsEnum::minutes {4, "minutes"};
 const Enum::YLeaf SlaPacketIntervalUnitsEnum::hours {5, "hours"};
 
-const Enum::YLeaf SlaOnDemandRepeatIntervalUnitsEnum::seconds {3, "seconds"};
-const Enum::YLeaf SlaOnDemandRepeatIntervalUnitsEnum::minutes {4, "minutes"};
-const Enum::YLeaf SlaOnDemandRepeatIntervalUnitsEnum::hours {5, "hours"};
-
-const Enum::YLeaf SlaProbeDurationUnitsEnum::seconds {3, "seconds"};
-const Enum::YLeaf SlaProbeDurationUnitsEnum::minutes {4, "minutes"};
-const Enum::YLeaf SlaProbeDurationUnitsEnum::hours {5, "hours"};
-const Enum::YLeaf SlaProbeDurationUnitsEnum::day {6, "day"};
-const Enum::YLeaf SlaProbeDurationUnitsEnum::week {7, "week"};
-
-const Enum::YLeaf SlaStatisticTypeEnum::round_trip_delay {1, "round-trip-delay"};
-const Enum::YLeaf SlaStatisticTypeEnum::one_way_delay_sd {2, "one-way-delay-sd"};
-const Enum::YLeaf SlaStatisticTypeEnum::one_way_delay_ds {3, "one-way-delay-ds"};
-const Enum::YLeaf SlaStatisticTypeEnum::round_trip_jitter {4, "round-trip-jitter"};
-const Enum::YLeaf SlaStatisticTypeEnum::one_way_jitter_sd {5, "one-way-jitter-sd"};
-const Enum::YLeaf SlaStatisticTypeEnum::one_way_jitter_ds {6, "one-way-jitter-ds"};
-const Enum::YLeaf SlaStatisticTypeEnum::one_way_loss_sd {7, "one-way-loss-sd"};
-const Enum::YLeaf SlaStatisticTypeEnum::one_way_loss_ds {8, "one-way-loss-ds"};
-
-const Enum::YLeaf SlaBucketsSizeUnitsEnum::buckets_per_probe {0, "buckets-per-probe"};
-const Enum::YLeaf SlaBucketsSizeUnitsEnum::probes_per_bucket {1, "probes-per-bucket"};
-
-const Enum::YLeaf SlaThresholdConditionEnum::max {0, "max"};
-const Enum::YLeaf SlaThresholdConditionEnum::mean {1, "mean"};
-const Enum::YLeaf SlaThresholdConditionEnum::sample_count {2, "sample-count"};
-
 const Enum::YLeaf SlaProbeIntervalUnitsEnum::minutes {4, "minutes"};
 const Enum::YLeaf SlaProbeIntervalUnitsEnum::hours {5, "hours"};
 const Enum::YLeaf SlaProbeIntervalUnitsEnum::day {6, "day"};
 const Enum::YLeaf SlaProbeIntervalUnitsEnum::week {7, "week"};
+
+const Enum::YLeaf SlaOnDemandProbeDurationUnitsEnum::seconds {3, "seconds"};
+const Enum::YLeaf SlaOnDemandProbeDurationUnitsEnum::minutes {4, "minutes"};
+const Enum::YLeaf SlaOnDemandProbeDurationUnitsEnum::hours {5, "hours"};
+
+const Enum::YLeaf SlaOnDemandStartTimeTypesEnum::now {0, "now"};
+const Enum::YLeaf SlaOnDemandStartTimeTypesEnum::absolute {1, "absolute"};
+const Enum::YLeaf SlaOnDemandStartTimeTypesEnum::relative {2, "relative"};
 
 const Enum::YLeaf SlaOnDemandStartMonthEnum::january {0, "january"};
 const Enum::YLeaf SlaOnDemandStartMonthEnum::february {1, "february"};
@@ -82,20 +51,51 @@ const Enum::YLeaf SlaOnDemandStartMonthEnum::october {9, "october"};
 const Enum::YLeaf SlaOnDemandStartMonthEnum::november {10, "november"};
 const Enum::YLeaf SlaOnDemandStartMonthEnum::december {11, "december"};
 
-const Enum::YLeaf SlaPaddingPattern::hex {0, "hex"};
-const Enum::YLeaf SlaPaddingPattern::pseudo_random {1, "pseudo-random"};
+const Enum::YLeaf SlaOnDemandRepeatIntervalUnitsEnum::seconds {3, "seconds"};
+const Enum::YLeaf SlaOnDemandRepeatIntervalUnitsEnum::minutes {4, "minutes"};
+const Enum::YLeaf SlaOnDemandRepeatIntervalUnitsEnum::hours {5, "hours"};
 
-const Enum::YLeaf SlaOnDemandStartTimeTypesEnum::now {0, "now"};
-const Enum::YLeaf SlaOnDemandStartTimeTypesEnum::absolute {1, "absolute"};
-const Enum::YLeaf SlaOnDemandStartTimeTypesEnum::relative {2, "relative"};
+const Enum::YLeaf SlaBucketsSizeUnitsEnum::buckets_per_probe {0, "buckets-per-probe"};
+const Enum::YLeaf SlaBucketsSizeUnitsEnum::probes_per_bucket {1, "probes-per-bucket"};
 
-const Enum::YLeaf SlaOnDemandProbeDurationUnitsEnum::seconds {3, "seconds"};
-const Enum::YLeaf SlaOnDemandProbeDurationUnitsEnum::minutes {4, "minutes"};
-const Enum::YLeaf SlaOnDemandProbeDurationUnitsEnum::hours {5, "hours"};
+const Enum::YLeaf SlaThresholdConditionEnum::max {0, "max"};
+const Enum::YLeaf SlaThresholdConditionEnum::mean {1, "mean"};
+const Enum::YLeaf SlaThresholdConditionEnum::sample_count {2, "sample-count"};
+
+const Enum::YLeaf SlaProbeDurationUnitsEnum::seconds {3, "seconds"};
+const Enum::YLeaf SlaProbeDurationUnitsEnum::minutes {4, "minutes"};
+const Enum::YLeaf SlaProbeDurationUnitsEnum::hours {5, "hours"};
+const Enum::YLeaf SlaProbeDurationUnitsEnum::day {6, "day"};
+const Enum::YLeaf SlaProbeDurationUnitsEnum::week {7, "week"};
+
+const Enum::YLeaf SlaThresholdTypeEnum::stateless {1, "stateless"};
+
+const Enum::YLeaf SlaProbeIntervalDayEnum::monday {1, "monday"};
+const Enum::YLeaf SlaProbeIntervalDayEnum::tuesday {2, "tuesday"};
+const Enum::YLeaf SlaProbeIntervalDayEnum::wednesday {3, "wednesday"};
+const Enum::YLeaf SlaProbeIntervalDayEnum::thursday {4, "thursday"};
+const Enum::YLeaf SlaProbeIntervalDayEnum::friday {5, "friday"};
+const Enum::YLeaf SlaProbeIntervalDayEnum::saturday {6, "saturday"};
+const Enum::YLeaf SlaProbeIntervalDayEnum::sunday {7, "sunday"};
 
 const Enum::YLeaf SlaOnDemandStartTimeRelativeUnitsEnum::seconds {3, "seconds"};
 const Enum::YLeaf SlaOnDemandStartTimeRelativeUnitsEnum::minutes {4, "minutes"};
 const Enum::YLeaf SlaOnDemandStartTimeRelativeUnitsEnum::hours {5, "hours"};
+
+const Enum::YLeaf SlaStatisticTypeEnum::round_trip_delay {1, "round-trip-delay"};
+const Enum::YLeaf SlaStatisticTypeEnum::one_way_delay_sd {2, "one-way-delay-sd"};
+const Enum::YLeaf SlaStatisticTypeEnum::one_way_delay_ds {3, "one-way-delay-ds"};
+const Enum::YLeaf SlaStatisticTypeEnum::round_trip_jitter {4, "round-trip-jitter"};
+const Enum::YLeaf SlaStatisticTypeEnum::one_way_jitter_sd {5, "one-way-jitter-sd"};
+const Enum::YLeaf SlaStatisticTypeEnum::one_way_jitter_ds {6, "one-way-jitter-ds"};
+const Enum::YLeaf SlaStatisticTypeEnum::one_way_loss_sd {7, "one-way-loss-sd"};
+const Enum::YLeaf SlaStatisticTypeEnum::one_way_loss_ds {8, "one-way-loss-ds"};
+
+const Enum::YLeaf SlaPaddingPattern::hex {0, "hex"};
+const Enum::YLeaf SlaPaddingPattern::pseudo_random {1, "pseudo-random"};
+
+const Enum::YLeaf SlaSend::packet {0, "packet"};
+const Enum::YLeaf SlaSend::burst {1, "burst"};
 
 
 }

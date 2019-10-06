@@ -2700,8 +2700,7 @@ TcpConnection::Nodes::Node::Statistics::Summary::Summary()
     iq_ingress_drops{YType::uint32, "iq-ingress-drops"},
     total_i_qs{YType::uint32, "total-i-qs"},
     sockbuf_pak_res_cur{YType::uint32, "sockbuf-pak-res-cur"},
-    sockbuf_pak_res_max{YType::uint32, "sockbuf-pak-res-max"},
-    sock_async_double_free_prevent_count{YType::uint32, "sock-async-double-free-prevent-count"}
+    sockbuf_pak_res_max{YType::uint32, "sockbuf-pak-res-max"}
         ,
     iqs_total_ingpacket(this, {})
     , iqs_total_egpacket(this, {})
@@ -2816,8 +2815,7 @@ bool TcpConnection::Nodes::Node::Statistics::Summary::has_data() const
 	|| iq_ingress_drops.is_set
 	|| total_i_qs.is_set
 	|| sockbuf_pak_res_cur.is_set
-	|| sockbuf_pak_res_max.is_set
-	|| sock_async_double_free_prevent_count.is_set;
+	|| sockbuf_pak_res_max.is_set;
 }
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_operation() const
@@ -2922,8 +2920,7 @@ bool TcpConnection::Nodes::Node::Statistics::Summary::has_operation() const
 	|| ydk::is_set(iq_ingress_drops.yfilter)
 	|| ydk::is_set(total_i_qs.yfilter)
 	|| ydk::is_set(sockbuf_pak_res_cur.yfilter)
-	|| ydk::is_set(sockbuf_pak_res_max.yfilter)
-	|| ydk::is_set(sock_async_double_free_prevent_count.yfilter);
+	|| ydk::is_set(sockbuf_pak_res_max.yfilter);
 }
 
 std::string TcpConnection::Nodes::Node::Statistics::Summary::get_segment_path() const
@@ -3027,7 +3024,6 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
     if (total_i_qs.is_set || is_set(total_i_qs.yfilter)) leaf_name_data.push_back(total_i_qs.get_name_leafdata());
     if (sockbuf_pak_res_cur.is_set || is_set(sockbuf_pak_res_cur.yfilter)) leaf_name_data.push_back(sockbuf_pak_res_cur.get_name_leafdata());
     if (sockbuf_pak_res_max.is_set || is_set(sockbuf_pak_res_max.yfilter)) leaf_name_data.push_back(sockbuf_pak_res_max.get_name_leafdata());
-    if (sock_async_double_free_prevent_count.is_set || is_set(sock_async_double_free_prevent_count.yfilter)) leaf_name_data.push_back(sock_async_double_free_prevent_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3621,12 +3617,6 @@ void TcpConnection::Nodes::Node::Statistics::Summary::set_value(const std::strin
         sockbuf_pak_res_max.value_namespace = name_space;
         sockbuf_pak_res_max.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sock-async-double-free-prevent-count")
-    {
-        sock_async_double_free_prevent_count = value;
-        sock_async_double_free_prevent_count.value_namespace = name_space;
-        sock_async_double_free_prevent_count.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void TcpConnection::Nodes::Node::Statistics::Summary::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3991,15 +3981,11 @@ void TcpConnection::Nodes::Node::Statistics::Summary::set_filter(const std::stri
     {
         sockbuf_pak_res_max.yfilter = yfilter;
     }
-    if(value_path == "sock-async-double-free-prevent-count")
-    {
-        sock_async_double_free_prevent_count.yfilter = yfilter;
-    }
 }
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "iqs-total-ingpacket" || name == "iqs-total-egpacket" || name == "syn-cache-count" || name == "num-open-sockets" || name == "total-pakets-sent" || name == "send-packets-dropped" || name == "send-auth-packets-dropped" || name == "data-pakets-sent" || name == "data-bytes-sent" || name == "packets-retransmitted" || name == "bytes-retransmitted" || name == "ack-only-packets-sent" || name == "delay-ack-packets-sent" || name == "urgent-only-packets-sent" || name == "window-probe-packets-sent" || name == "window-update-packets-sent" || name == "control-packets-sent" || name == "rst-packets-sent" || name == "total-packets-received" || name == "received-packets-dropped" || name == "synacl-match-pkts-dropped" || name == "received-packets-dropped-stale-c-hdr" || name == "received-auth-packets-dropped" || name == "ack-packets-received" || name == "ackbytes-received" || name == "duplicated-ack-packets-received" || name == "ack-packets-for-unsent-received" || name == "data-packets-received-in-sequence" || name == "data-bytes-received-in-sequence" || name == "duplicate-packets-received" || name == "duplicate-bytes-received" || name == "partial-duplicate-ack-received" || name == "partial-duplicate-bytes-received" || name == "out-of-order-packets-received" || name == "out-of-order-bytes-received" || name == "after-window-packets-received" || name == "after-window-bytes-received" || name == "window-probe-packets-received" || name == "window-update-packets-received" || name == "packets-received-after-close-packet" || name == "bad-checksum-packets-received" || name == "too-short-packets-received" || name == "malformed-packets-received" || name == "no-port-packets-received" || name == "connections-requested" || name == "connections-accepted" || name == "connections-established" || name == "connections-forcibly-closed" || name == "connections-closed" || name == "connections-dropped" || name == "embryonic-connection-dropped" || name == "connections-failed" || name == "established-connections-reset" || name == "retransmit-timeouts" || name == "retransmit-dropped" || name == "keep-alive-timeouts" || name == "keep-alive-dropped" || name == "keep-alive-probes" || name == "paws-dropped" || name == "persist-dropped" || name == "try-lock-dropped" || name == "connection-rate-limited" || name == "syn-cache-added" || name == "syn-cache-completed" || name == "syn-cache-timed-out" || name == "syn-cache-overflow" || name == "syn-cache-reset" || name == "syn-cache-unreach" || name == "syn-cache-bucket-oflow" || name == "syn-cache-aborted" || name == "syn-cache-duplicate-sy-ns" || name == "syn-cache-dropped" || name == "pulse-errors" || name == "socket-layer-packets" || name == "reassembly-packets" || name == "recovered-packets" || name == "packet-failures" || name == "mss-up" || name == "mss-down" || name == "truncated-write-iov" || name == "no-throttle" || name == "low-water-mark-throttle" || name == "high-water-mark-throttle" || name == "stalled-timer-tickle-count" || name == "stalled-timer-tickle-time" || name == "iq-sock-writes" || name == "iq-sock-retries" || name == "iq-sock-aborts" || name == "iq-ingress-drops" || name == "total-i-qs" || name == "sockbuf-pak-res-cur" || name == "sockbuf-pak-res-max" || name == "sock-async-double-free-prevent-count")
+    if(name == "iqs-total-ingpacket" || name == "iqs-total-egpacket" || name == "syn-cache-count" || name == "num-open-sockets" || name == "total-pakets-sent" || name == "send-packets-dropped" || name == "send-auth-packets-dropped" || name == "data-pakets-sent" || name == "data-bytes-sent" || name == "packets-retransmitted" || name == "bytes-retransmitted" || name == "ack-only-packets-sent" || name == "delay-ack-packets-sent" || name == "urgent-only-packets-sent" || name == "window-probe-packets-sent" || name == "window-update-packets-sent" || name == "control-packets-sent" || name == "rst-packets-sent" || name == "total-packets-received" || name == "received-packets-dropped" || name == "synacl-match-pkts-dropped" || name == "received-packets-dropped-stale-c-hdr" || name == "received-auth-packets-dropped" || name == "ack-packets-received" || name == "ackbytes-received" || name == "duplicated-ack-packets-received" || name == "ack-packets-for-unsent-received" || name == "data-packets-received-in-sequence" || name == "data-bytes-received-in-sequence" || name == "duplicate-packets-received" || name == "duplicate-bytes-received" || name == "partial-duplicate-ack-received" || name == "partial-duplicate-bytes-received" || name == "out-of-order-packets-received" || name == "out-of-order-bytes-received" || name == "after-window-packets-received" || name == "after-window-bytes-received" || name == "window-probe-packets-received" || name == "window-update-packets-received" || name == "packets-received-after-close-packet" || name == "bad-checksum-packets-received" || name == "too-short-packets-received" || name == "malformed-packets-received" || name == "no-port-packets-received" || name == "connections-requested" || name == "connections-accepted" || name == "connections-established" || name == "connections-forcibly-closed" || name == "connections-closed" || name == "connections-dropped" || name == "embryonic-connection-dropped" || name == "connections-failed" || name == "established-connections-reset" || name == "retransmit-timeouts" || name == "retransmit-dropped" || name == "keep-alive-timeouts" || name == "keep-alive-dropped" || name == "keep-alive-probes" || name == "paws-dropped" || name == "persist-dropped" || name == "try-lock-dropped" || name == "connection-rate-limited" || name == "syn-cache-added" || name == "syn-cache-completed" || name == "syn-cache-timed-out" || name == "syn-cache-overflow" || name == "syn-cache-reset" || name == "syn-cache-unreach" || name == "syn-cache-bucket-oflow" || name == "syn-cache-aborted" || name == "syn-cache-duplicate-sy-ns" || name == "syn-cache-dropped" || name == "pulse-errors" || name == "socket-layer-packets" || name == "reassembly-packets" || name == "recovered-packets" || name == "packet-failures" || name == "mss-up" || name == "mss-down" || name == "truncated-write-iov" || name == "no-throttle" || name == "low-water-mark-throttle" || name == "high-water-mark-throttle" || name == "stalled-timer-tickle-count" || name == "stalled-timer-tickle-time" || name == "iq-sock-writes" || name == "iq-sock-retries" || name == "iq-sock-aborts" || name == "iq-ingress-drops" || name == "total-i-qs" || name == "sockbuf-pak-res-cur" || name == "sockbuf-pak-res-max")
         return true;
     return false;
 }
@@ -20292,39 +20278,6 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCo
     return false;
 }
 
-const Enum::YLeaf Show::all {0, "all"};
-const Enum::YLeaf Show::static_policy {1, "static-policy"};
-const Enum::YLeaf Show::interface_filter {2, "interface-filter"};
-const Enum::YLeaf Show::packet_filter {3, "packet-filter"};
-
-const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
-
-const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
-
 const Enum::YLeaf MessageTypeIcmpv6::destination_unreachable {1, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmpv6::packet_too_big {2, "packet-too-big"};
 const Enum::YLeaf MessageTypeIcmpv6::time_exceeded {3, "time-exceeded"};
@@ -20356,6 +20309,140 @@ const Enum::YLeaf MessageTypeIcmpv6::multicast_router_advertisement {151, "multi
 const Enum::YLeaf MessageTypeIcmpv6::multicast_router_solicitation {152, "multicast-router-solicitation"};
 const Enum::YLeaf MessageTypeIcmpv6::multicast_router_termination {153, "multicast-router-termination"};
 const Enum::YLeaf MessageTypeIcmpv6::fmipv6_messages {154, "fmipv6-messages"};
+
+const Enum::YLeaf Show::all {0, "all"};
+const Enum::YLeaf Show::static_policy {1, "static-policy"};
+const Enum::YLeaf Show::interface_filter {2, "interface-filter"};
+const Enum::YLeaf Show::packet_filter {3, "packet-filter"};
+
+const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf TcpConnState::closed {0, "closed"};
+const Enum::YLeaf TcpConnState::listen {1, "listen"};
+const Enum::YLeaf TcpConnState::syn_sent {2, "syn-sent"};
+const Enum::YLeaf TcpConnState::syn_received {3, "syn-received"};
+const Enum::YLeaf TcpConnState::established {4, "established"};
+const Enum::YLeaf TcpConnState::close_wait {5, "close-wait"};
+const Enum::YLeaf TcpConnState::fin_wait1 {6, "fin-wait1"};
+const Enum::YLeaf TcpConnState::closing {7, "closing"};
+const Enum::YLeaf TcpConnState::last_ack {8, "last-ack"};
+const Enum::YLeaf TcpConnState::fin_wait2 {9, "fin-wait2"};
+const Enum::YLeaf TcpConnState::time_wait {10, "time-wait"};
+
+const Enum::YLeaf PakPrio::unspecified_packet {0, "unspecified-packet"};
+const Enum::YLeaf PakPrio::normal_packet {1, "normal-packet"};
+const Enum::YLeaf PakPrio::medium_packet {2, "medium-packet"};
+const Enum::YLeaf PakPrio::high_packet {3, "high-packet"};
+const Enum::YLeaf PakPrio::crucial_packet {4, "crucial-packet"};
+
+const Enum::YLeaf MessageTypeIcmp::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmp::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmp::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmp::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmp::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmp::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmp::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmp::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmp::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmp::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmp::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmp::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmp::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmp::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmp::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmp::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmp::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmp::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmp::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmp::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmp::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmp::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmp::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmp::domain_name_request {37, "domain-name-request"};
+
+const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf Packet::icmp {0, "icmp"};
+const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
+const Enum::YLeaf Packet::igmp {2, "igmp"};
+const Enum::YLeaf Packet::unknown {3, "unknown"};
+
+const Enum::YLeaf MessageTypeIcmp_::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmp_::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmp_::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmp_::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmp_::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmp_::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmp_::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmp_::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmp_::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmp_::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmp_::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmp_::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmp_::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmp_::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmp_::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmp_::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmp_::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmp_::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmp_::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmp_::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmp_::domain_name_request {37, "domain-name-request"};
+
+const Enum::YLeaf TcpKeyInvalidReason::none {0, "none"};
+const Enum::YLeaf TcpKeyInvalidReason::incomplete {1, "incomplete"};
+const Enum::YLeaf TcpKeyInvalidReason::lifetime_not_same {2, "lifetime-not-same"};
+const Enum::YLeaf TcpKeyInvalidReason::send_id_invalid {3, "send-id-invalid"};
+const Enum::YLeaf TcpKeyInvalidReason::recv_id_invalid {4, "recv-id-invalid"};
+
+const Enum::YLeaf AddrFamily::internetwork {2, "internetwork"};
+const Enum::YLeaf AddrFamily::ip_version6 {10, "ip-version6"};
+
+const Enum::YLeaf NsrStatus::down {0, "down"};
+const Enum::YLeaf NsrStatus::up {1, "up"};
+const Enum::YLeaf NsrStatus::na {2, "na"};
+
+const Enum::YLeaf TcpMacAlgo::not_configured {0, "not-configured"};
+const Enum::YLeaf TcpMacAlgo::aes_128_cmac_96 {1, "aes-128-cmac-96"};
+const Enum::YLeaf TcpMacAlgo::hmac_sha1_12 {2, "hmac-sha1-12"};
+const Enum::YLeaf TcpMacAlgo::md5_16 {3, "md5-16"};
+const Enum::YLeaf TcpMacAlgo::sha1_20 {4, "sha1-20"};
+const Enum::YLeaf TcpMacAlgo::hmac_md5_16 {5, "hmac-md5-16"};
+const Enum::YLeaf TcpMacAlgo::hmac_sha1_20 {6, "hmac-sha1-20"};
+const Enum::YLeaf TcpMacAlgo::aes_128_cmac {7, "aes-128-cmac"};
+const Enum::YLeaf TcpMacAlgo::aes_256_cmac {8, "aes-256-cmac"};
+const Enum::YLeaf TcpMacAlgo::hmac_sha1_96 {9, "hmac-sha1-96"};
+const Enum::YLeaf TcpMacAlgo::hmac_sha_256 {10, "hmac-sha-256"};
+
+const Enum::YLeaf TcpAddressFamily::ipv4 {2, "ipv4"};
+const Enum::YLeaf TcpAddressFamily::ipv6 {10, "ipv6"};
 
 const Enum::YLeaf MessageTypeIcmpv6_::destination_unreachable {1, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmpv6_::packet_too_big {2, "packet-too-big"};
@@ -20389,61 +20476,6 @@ const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_solicitation {152, "multi
 const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_termination {153, "multicast-router-termination"};
 const Enum::YLeaf MessageTypeIcmpv6_::fmipv6_messages {154, "fmipv6-messages"};
 
-const Enum::YLeaf MessageTypeIcmp::echo_reply {0, "echo-reply"};
-const Enum::YLeaf MessageTypeIcmp::destination_unreachable {3, "destination-unreachable"};
-const Enum::YLeaf MessageTypeIcmp::source_quench {4, "source-quench"};
-const Enum::YLeaf MessageTypeIcmp::redirect {5, "redirect"};
-const Enum::YLeaf MessageTypeIcmp::alternate_host_address {6, "alternate-host-address"};
-const Enum::YLeaf MessageTypeIcmp::echo {8, "echo"};
-const Enum::YLeaf MessageTypeIcmp::router_advertisement {9, "router-advertisement"};
-const Enum::YLeaf MessageTypeIcmp::router_selection {10, "router-selection"};
-const Enum::YLeaf MessageTypeIcmp::time_exceeded {11, "time-exceeded"};
-const Enum::YLeaf MessageTypeIcmp::parameter_problem {12, "parameter-problem"};
-const Enum::YLeaf MessageTypeIcmp::time_stamp {13, "time-stamp"};
-const Enum::YLeaf MessageTypeIcmp::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::YLeaf MessageTypeIcmp::information_request {15, "information-request"};
-const Enum::YLeaf MessageTypeIcmp::information_reply {16, "information-reply"};
-const Enum::YLeaf MessageTypeIcmp::address_mask_request {17, "address-mask-request"};
-const Enum::YLeaf MessageTypeIcmp::address_mask_reply {18, "address-mask-reply"};
-const Enum::YLeaf MessageTypeIcmp::trace_route {30, "trace-route"};
-const Enum::YLeaf MessageTypeIcmp::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::YLeaf MessageTypeIcmp::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::YLeaf MessageTypeIcmp::where_are_you {33, "where-are-you"};
-const Enum::YLeaf MessageTypeIcmp::iam_here {34, "iam-here"};
-const Enum::YLeaf MessageTypeIcmp::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::YLeaf MessageTypeIcmp::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::YLeaf MessageTypeIcmp::domain_name_request {37, "domain-name-request"};
-
-const Enum::YLeaf MessageTypeIcmp_::echo_reply {0, "echo-reply"};
-const Enum::YLeaf MessageTypeIcmp_::destination_unreachable {3, "destination-unreachable"};
-const Enum::YLeaf MessageTypeIcmp_::source_quench {4, "source-quench"};
-const Enum::YLeaf MessageTypeIcmp_::redirect {5, "redirect"};
-const Enum::YLeaf MessageTypeIcmp_::alternate_host_address {6, "alternate-host-address"};
-const Enum::YLeaf MessageTypeIcmp_::echo {8, "echo"};
-const Enum::YLeaf MessageTypeIcmp_::router_advertisement {9, "router-advertisement"};
-const Enum::YLeaf MessageTypeIcmp_::router_selection {10, "router-selection"};
-const Enum::YLeaf MessageTypeIcmp_::time_exceeded {11, "time-exceeded"};
-const Enum::YLeaf MessageTypeIcmp_::parameter_problem {12, "parameter-problem"};
-const Enum::YLeaf MessageTypeIcmp_::time_stamp {13, "time-stamp"};
-const Enum::YLeaf MessageTypeIcmp_::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::YLeaf MessageTypeIcmp_::information_request {15, "information-request"};
-const Enum::YLeaf MessageTypeIcmp_::information_reply {16, "information-reply"};
-const Enum::YLeaf MessageTypeIcmp_::address_mask_request {17, "address-mask-request"};
-const Enum::YLeaf MessageTypeIcmp_::address_mask_reply {18, "address-mask-reply"};
-const Enum::YLeaf MessageTypeIcmp_::trace_route {30, "trace-route"};
-const Enum::YLeaf MessageTypeIcmp_::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::YLeaf MessageTypeIcmp_::where_are_you {33, "where-are-you"};
-const Enum::YLeaf MessageTypeIcmp_::iam_here {34, "iam-here"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::YLeaf MessageTypeIcmp_::domain_name_request {37, "domain-name-request"};
-
-const Enum::YLeaf Packet::icmp {0, "icmp"};
-const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
-const Enum::YLeaf Packet::igmp {2, "igmp"};
-const Enum::YLeaf Packet::unknown {3, "unknown"};
-
 const Enum::YLeaf NsrDownReason::none {0, "none"};
 const Enum::YLeaf NsrDownReason::init_sync_aborted {1, "init-sync-aborted"};
 const Enum::YLeaf NsrDownReason::client_disabled {2, "client-disabled"};
@@ -20461,31 +20493,6 @@ const Enum::YLeaf NsrDownReason::standby_session_close {13, "standby-session-clo
 const Enum::YLeaf NsrDownReason::standby_rxpath_frozen {14, "standby-rxpath-frozen"};
 const Enum::YLeaf NsrDownReason::partner_deleted {15, "partner-deleted"};
 
-const Enum::YLeaf NsrStatus::down {0, "down"};
-const Enum::YLeaf NsrStatus::up {1, "up"};
-const Enum::YLeaf NsrStatus::na {2, "na"};
-
-const Enum::YLeaf AddrFamily::internetwork {2, "internetwork"};
-const Enum::YLeaf AddrFamily::ip_version6 {10, "ip-version6"};
-
-const Enum::YLeaf TcpMacAlgo::not_configured {0, "not-configured"};
-const Enum::YLeaf TcpMacAlgo::aes_128_cmac_96 {1, "aes-128-cmac-96"};
-const Enum::YLeaf TcpMacAlgo::hmac_sha1_12 {2, "hmac-sha1-12"};
-const Enum::YLeaf TcpMacAlgo::md5_16 {3, "md5-16"};
-const Enum::YLeaf TcpMacAlgo::sha1_20 {4, "sha1-20"};
-const Enum::YLeaf TcpMacAlgo::hmac_md5_16 {5, "hmac-md5-16"};
-const Enum::YLeaf TcpMacAlgo::hmac_sha1_20 {6, "hmac-sha1-20"};
-const Enum::YLeaf TcpMacAlgo::aes_128_cmac {7, "aes-128-cmac"};
-const Enum::YLeaf TcpMacAlgo::aes_256_cmac {8, "aes-256-cmac"};
-const Enum::YLeaf TcpMacAlgo::hmac_sha1_96 {9, "hmac-sha1-96"};
-const Enum::YLeaf TcpMacAlgo::hmac_sha_256 {10, "hmac-sha-256"};
-
-const Enum::YLeaf TcpKeyInvalidReason::none {0, "none"};
-const Enum::YLeaf TcpKeyInvalidReason::incomplete {1, "incomplete"};
-const Enum::YLeaf TcpKeyInvalidReason::lifetime_not_same {2, "lifetime-not-same"};
-const Enum::YLeaf TcpKeyInvalidReason::send_id_invalid {3, "send-id-invalid"};
-const Enum::YLeaf TcpKeyInvalidReason::recv_id_invalid {4, "recv-id-invalid"};
-
 const Enum::YLeaf TcpTimer::retransmission_timer {0, "retransmission-timer"};
 const Enum::YLeaf TcpTimer::window_probe_timer {1, "window-probe-timer"};
 const Enum::YLeaf TcpTimer::timewait_state_timer {2, "timewait-state-timer"};
@@ -20494,27 +20501,6 @@ const Enum::YLeaf TcpTimer::keep_alive_timer {4, "keep-alive-timer"};
 const Enum::YLeaf TcpTimer::pmtu_ager_timer {5, "pmtu-ager-timer"};
 const Enum::YLeaf TcpTimer::retransmission_giveup_timer {6, "retransmission-giveup-timer"};
 const Enum::YLeaf TcpTimer::throttle_timer {7, "throttle-timer"};
-
-const Enum::YLeaf PakPrio::unspecified_packet {0, "unspecified-packet"};
-const Enum::YLeaf PakPrio::normal_packet {1, "normal-packet"};
-const Enum::YLeaf PakPrio::medium_packet {2, "medium-packet"};
-const Enum::YLeaf PakPrio::high_packet {3, "high-packet"};
-const Enum::YLeaf PakPrio::crucial_packet {4, "crucial-packet"};
-
-const Enum::YLeaf TcpConnState::closed {0, "closed"};
-const Enum::YLeaf TcpConnState::listen {1, "listen"};
-const Enum::YLeaf TcpConnState::syn_sent {2, "syn-sent"};
-const Enum::YLeaf TcpConnState::syn_received {3, "syn-received"};
-const Enum::YLeaf TcpConnState::established {4, "established"};
-const Enum::YLeaf TcpConnState::close_wait {5, "close-wait"};
-const Enum::YLeaf TcpConnState::fin_wait1 {6, "fin-wait1"};
-const Enum::YLeaf TcpConnState::closing {7, "closing"};
-const Enum::YLeaf TcpConnState::last_ack {8, "last-ack"};
-const Enum::YLeaf TcpConnState::fin_wait2 {9, "fin-wait2"};
-const Enum::YLeaf TcpConnState::time_wait {10, "time-wait"};
-
-const Enum::YLeaf TcpAddressFamily::ipv4 {2, "ipv4"};
-const Enum::YLeaf TcpAddressFamily::ipv6 {10, "ipv6"};
 
 
 }

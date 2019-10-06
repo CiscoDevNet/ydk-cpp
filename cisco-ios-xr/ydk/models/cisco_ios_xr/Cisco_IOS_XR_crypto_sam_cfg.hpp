@@ -66,6 +66,11 @@ class CryptoSamAction : public ydk::Enum
         static const ydk::Enum::YLeaf proceed;
         static const ydk::Enum::YLeaf terminate;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "proceed") return 1;
+            if (name == "terminate") return 2;
+            return -1;
+        }
 };
 
 

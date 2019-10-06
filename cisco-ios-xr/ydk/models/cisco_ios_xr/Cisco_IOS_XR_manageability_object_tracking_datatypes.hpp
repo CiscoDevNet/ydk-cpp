@@ -16,6 +16,11 @@ class ObjectTrackingBooleanSign : public ydk::Enum
         static const ydk::Enum::YLeaf without_not;
         static const ydk::Enum::YLeaf with_not;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "without-not") return 0;
+            if (name == "with-not") return 1;
+            return -1;
+        }
 };
 
 

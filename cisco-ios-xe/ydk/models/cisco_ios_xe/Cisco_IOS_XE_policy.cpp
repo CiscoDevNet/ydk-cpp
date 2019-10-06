@@ -13,6 +13,14 @@ namespace Cisco_IOS_XE_policy {
 
 const Enum::YLeaf PrecedenceType2::rsvp {0, "rsvp"};
 
+const Enum::YLeaf ClassNameType::class_default {0, "class-default"};
+
+const Enum::YLeaf PolicePpsBpsType::pps {0, "pps"};
+const Enum::YLeaf PolicePpsBpsType::bps {1, "bps"};
+
+const Enum::YLeaf PolicePacketsBytesType::packets {0, "packets"};
+const Enum::YLeaf PolicePacketsBytesType::bytes {1, "bytes"};
+
 const Enum::YLeaf PolicyActionType::bandwidth {0, "bandwidth"};
 const Enum::YLeaf PolicyActionType::compression {1, "compression"};
 const Enum::YLeaf PolicyActionType::drop {2, "drop"};
@@ -31,17 +39,9 @@ const Enum::YLeaf PolicyActionType::trust {14, "trust"};
 const Enum::YLeaf PolicyActionType::dbl {15, "dbl"};
 const Enum::YLeaf PolicyActionType::queue_buffers {16, "queue-buffers"};
 
-const Enum::YLeaf ClassNameType::class_default {0, "class-default"};
-
-const Enum::YLeaf PolicePacketsBytesType::packets {0, "packets"};
-const Enum::YLeaf PolicePacketsBytesType::bytes {1, "bytes"};
-
 const Enum::YLeaf BytesMsUsType::bytes {0, "bytes"};
 const Enum::YLeaf BytesMsUsType::ms {1, "ms"};
 const Enum::YLeaf BytesMsUsType::us {2, "us"};
-
-const Enum::YLeaf PolicePpsBpsType::pps {0, "pps"};
-const Enum::YLeaf PolicePpsBpsType::bps {1, "bps"};
 
 
 }

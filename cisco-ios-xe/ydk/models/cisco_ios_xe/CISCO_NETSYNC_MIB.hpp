@@ -364,41 +364,23 @@ class CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry : public ydk
 
 }; // CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry
 
-class CiscoNetsyncIfType : public ydk::Enum
+class CiscoNetsyncESMCCap : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf netsyncIfTypeUnknown;
-        static const ydk::Enum::YLeaf netsyncIfTypeInternal;
-        static const ydk::Enum::YLeaf netsyncIfTypeEthernet;
-        static const ydk::Enum::YLeaf netsyncIfTypeSonet;
-        static const ydk::Enum::YLeaf netsyncIfTypeTop;
-        static const ydk::Enum::YLeaf netsyncIfTypeExt;
-        static const ydk::Enum::YLeaf netsyncIfTypeController;
-        static const ydk::Enum::YLeaf netsyncIfTypeGps;
-        static const ydk::Enum::YLeaf netsyncIfTypeAtm;
+        static const ydk::Enum::YLeaf netsyncESMCCapNone;
+        static const ydk::Enum::YLeaf netsyncESMCCapTxRx;
+        static const ydk::Enum::YLeaf netsyncESMCCapTx;
+        static const ydk::Enum::YLeaf netsyncESMCCapRx;
+        static const ydk::Enum::YLeaf netsyncESMCCapInvalid;
 
-};
-
-class CiscoNetsyncNetworkOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncNetworkOptionUnknown;
-        static const ydk::Enum::YLeaf netsyncNetworkOption1;
-        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen1;
-        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen2;
-        static const ydk::Enum::YLeaf netsyncNetworkOption3;
-        static const ydk::Enum::YLeaf netsyncNetworkOptionInvalid;
-
-};
-
-class CiscoNetsyncEECOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncEECOptionUnknown;
-        static const ydk::Enum::YLeaf netsyncEECOption1;
-        static const ydk::Enum::YLeaf netsyncEECOption2;
-        static const ydk::Enum::YLeaf netsyncEECOptionInvalid;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncESMCCapNone") return 1;
+            if (name == "netsyncESMCCapTxRx") return 2;
+            if (name == "netsyncESMCCapTx") return 3;
+            if (name == "netsyncESMCCapRx") return 4;
+            if (name == "netsyncESMCCapInvalid") return 5;
+            return -1;
+        }
 };
 
 class CiscoNetsyncQLMode : public ydk::Enum
@@ -408,16 +390,12 @@ class CiscoNetsyncQLMode : public ydk::Enum
         static const ydk::Enum::YLeaf netsyncQLModeQlDisabled;
         static const ydk::Enum::YLeaf netsyncQLModeQlEnabled;
 
-};
-
-class CiscoNetsyncClockMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncClockModeUnknown;
-        static const ydk::Enum::YLeaf netsyncClockModeFreerun;
-        static const ydk::Enum::YLeaf netsyncClockModeHoldover;
-        static const ydk::Enum::YLeaf netsyncClockModeLocked;
-
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncQLModeUnknown") return 1;
+            if (name == "netsyncQLModeQlDisabled") return 2;
+            if (name == "netsyncQLModeQlEnabled") return 3;
+            return -1;
+        }
 };
 
 class CiscoNetsyncQualityLevel : public ydk::Enum
@@ -460,6 +438,62 @@ class CiscoNetsyncQualityLevel : public ydk::Enum
         static const ydk::Enum::YLeaf netsyncQualityLevelUNC;
         static const ydk::Enum::YLeaf netsyncQualityLevelUNK;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncQualityLevelNULL") return 1;
+            if (name == "netsyncQualityLevelDNU") return 2;
+            if (name == "netsyncQualityLevelDUS") return 3;
+            if (name == "netsyncQualityLevelFAILED") return 4;
+            if (name == "netsyncQualityLevelINV0") return 5;
+            if (name == "netsyncQualityLevelINV1") return 6;
+            if (name == "netsyncQualityLevelINV2") return 7;
+            if (name == "netsyncQualityLevelINV3") return 8;
+            if (name == "netsyncQualityLevelINV4") return 9;
+            if (name == "netsyncQualityLevelINV5") return 10;
+            if (name == "netsyncQualityLevelINV6") return 11;
+            if (name == "netsyncQualityLevelINV7") return 12;
+            if (name == "netsyncQualityLevelINV8") return 13;
+            if (name == "netsyncQualityLevelINV9") return 14;
+            if (name == "netsyncQualityLevelINV10") return 15;
+            if (name == "netsyncQualityLevelINV11") return 16;
+            if (name == "netsyncQualityLevelINV12") return 17;
+            if (name == "netsyncQualityLevelINV13") return 18;
+            if (name == "netsyncQualityLevelINV14") return 19;
+            if (name == "netsyncQualityLevelINV15") return 20;
+            if (name == "netsyncQualityLevelNSUPP") return 21;
+            if (name == "netsyncQualityLevelPRC") return 22;
+            if (name == "netsyncQualityLevelPROV") return 23;
+            if (name == "netsyncQualityLevelPRS") return 24;
+            if (name == "netsyncQualityLevelSEC") return 25;
+            if (name == "netsyncQualityLevelSMC") return 26;
+            if (name == "netsyncQualityLevelSSUA") return 27;
+            if (name == "netsyncQualityLevelSSUB") return 28;
+            if (name == "netsyncQualityLevelST2") return 29;
+            if (name == "netsyncQualityLevelST3") return 30;
+            if (name == "netsyncQualityLevelST3E") return 31;
+            if (name == "netsyncQualityLevelST4") return 32;
+            if (name == "netsyncQualityLevelSTU") return 33;
+            if (name == "netsyncQualityLevelTNC") return 34;
+            if (name == "netsyncQualityLevelUNC") return 35;
+            if (name == "netsyncQualityLevelUNK") return 36;
+            return -1;
+        }
+};
+
+class CiscoNetsyncClockMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncClockModeUnknown;
+        static const ydk::Enum::YLeaf netsyncClockModeFreerun;
+        static const ydk::Enum::YLeaf netsyncClockModeHoldover;
+        static const ydk::Enum::YLeaf netsyncClockModeLocked;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncClockModeUnknown") return 1;
+            if (name == "netsyncClockModeFreerun") return 2;
+            if (name == "netsyncClockModeHoldover") return 3;
+            if (name == "netsyncClockModeLocked") return 4;
+            return -1;
+        }
 };
 
 class CiscoNetsyncSSMCap : public ydk::Enum
@@ -471,17 +505,79 @@ class CiscoNetsyncSSMCap : public ydk::Enum
         static const ydk::Enum::YLeaf netsyncSSMCapRx;
         static const ydk::Enum::YLeaf netsyncSSMCapInvalid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncSSMCapNone") return 1;
+            if (name == "netsyncSSMCapTxRx") return 2;
+            if (name == "netsyncSSMCapTx") return 3;
+            if (name == "netsyncSSMCapRx") return 4;
+            if (name == "netsyncSSMCapInvalid") return 5;
+            return -1;
+        }
 };
 
-class CiscoNetsyncESMCCap : public ydk::Enum
+class CiscoNetsyncIfType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf netsyncESMCCapNone;
-        static const ydk::Enum::YLeaf netsyncESMCCapTxRx;
-        static const ydk::Enum::YLeaf netsyncESMCCapTx;
-        static const ydk::Enum::YLeaf netsyncESMCCapRx;
-        static const ydk::Enum::YLeaf netsyncESMCCapInvalid;
+        static const ydk::Enum::YLeaf netsyncIfTypeUnknown;
+        static const ydk::Enum::YLeaf netsyncIfTypeInternal;
+        static const ydk::Enum::YLeaf netsyncIfTypeEthernet;
+        static const ydk::Enum::YLeaf netsyncIfTypeSonet;
+        static const ydk::Enum::YLeaf netsyncIfTypeTop;
+        static const ydk::Enum::YLeaf netsyncIfTypeExt;
+        static const ydk::Enum::YLeaf netsyncIfTypeController;
+        static const ydk::Enum::YLeaf netsyncIfTypeGps;
+        static const ydk::Enum::YLeaf netsyncIfTypeAtm;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncIfTypeUnknown") return 1;
+            if (name == "netsyncIfTypeInternal") return 2;
+            if (name == "netsyncIfTypeEthernet") return 3;
+            if (name == "netsyncIfTypeSonet") return 4;
+            if (name == "netsyncIfTypeTop") return 5;
+            if (name == "netsyncIfTypeExt") return 6;
+            if (name == "netsyncIfTypeController") return 7;
+            if (name == "netsyncIfTypeGps") return 8;
+            if (name == "netsyncIfTypeAtm") return 9;
+            return -1;
+        }
+};
+
+class CiscoNetsyncNetworkOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncNetworkOptionUnknown;
+        static const ydk::Enum::YLeaf netsyncNetworkOption1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen2;
+        static const ydk::Enum::YLeaf netsyncNetworkOption3;
+        static const ydk::Enum::YLeaf netsyncNetworkOptionInvalid;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncNetworkOptionUnknown") return 1;
+            if (name == "netsyncNetworkOption1") return 2;
+            if (name == "netsyncNetworkOption2Gen1") return 3;
+            if (name == "netsyncNetworkOption2Gen2") return 4;
+            if (name == "netsyncNetworkOption3") return 5;
+            if (name == "netsyncNetworkOptionInvalid") return 6;
+            return -1;
+        }
+};
+
+class CiscoNetsyncEECOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncEECOptionUnknown;
+        static const ydk::Enum::YLeaf netsyncEECOption1;
+        static const ydk::Enum::YLeaf netsyncEECOption2;
+        static const ydk::Enum::YLeaf netsyncEECOptionInvalid;
+
+        static int get_enum_value(const std::string & name) {
+            if (name == "netsyncEECOptionUnknown") return 1;
+            if (name == "netsyncEECOption1") return 2;
+            if (name == "netsyncEECOption2") return 3;
+            if (name == "netsyncEECOptionInvalid") return 4;
+            return -1;
+        }
 };
 
 

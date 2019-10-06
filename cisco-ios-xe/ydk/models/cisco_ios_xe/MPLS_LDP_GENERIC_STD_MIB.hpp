@@ -100,6 +100,11 @@ class MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLRE
         static const ydk::Enum::YLeaf perPlatform;
         static const ydk::Enum::YLeaf perInterface;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "perPlatform") return 1;
+            if (name == "perInterface") return 2;
+            return -1;
+        }
 };
 
 

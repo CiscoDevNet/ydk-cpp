@@ -21,6 +21,24 @@ class Marking : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Iden
 
 }; // Marking
 
+class DropType : public virtual ydk::Identity
+{
+    public:
+        DropType();
+        ~DropType();
+
+
+}; // DropType
+
+class MinRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
+{
+    public:
+        MinRate();
+        ~MinRate();
+
+
+}; // MinRate
+
 class Meter : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
@@ -39,15 +57,6 @@ class Priority : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Ide
 
 }; // Priority
 
-class MinRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
-{
-    public:
-        MinRate();
-        ~MinRate();
-
-
-}; // MinRate
-
 class MaxRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
@@ -57,24 +66,6 @@ class MaxRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Iden
 
 }; // MaxRate
 
-class AlgorithmicDrop : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
-{
-    public:
-        AlgorithmicDrop();
-        ~AlgorithmicDrop();
-
-
-}; // AlgorithmicDrop
-
-class DropType : public virtual ydk::Identity
-{
-    public:
-        DropType();
-        ~DropType();
-
-
-}; // DropType
-
 class MeterActionType : public virtual ydk::Identity
 {
     public:
@@ -83,6 +74,15 @@ class MeterActionType : public virtual ydk::Identity
 
 
 }; // MeterActionType
+
+class AlgorithmicDrop : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
+{
+    public:
+        AlgorithmicDrop();
+        ~AlgorithmicDrop();
+
+
+}; // AlgorithmicDrop
 
 class AlwaysDrop : public ietf::ietf_diffserv_action::DropType, virtual ydk::Identity
 {
@@ -102,15 +102,6 @@ class TailDrop : public ietf::ietf_diffserv_action::DropType, virtual ydk::Ident
 
 }; // TailDrop
 
-class RandomDetect : public ietf::ietf_diffserv_action::DropType, virtual ydk::Identity
-{
-    public:
-        RandomDetect();
-        ~RandomDetect();
-
-
-}; // RandomDetect
-
 class MeterActionDrop : public ietf::ietf_diffserv_action::MeterActionType, virtual ydk::Identity
 {
     public:
@@ -128,6 +119,15 @@ class MeterActionSet : public ietf::ietf_diffserv_action::MeterActionType, virtu
 
 
 }; // MeterActionSet
+
+class RandomDetect : public ietf::ietf_diffserv_action::DropType, virtual ydk::Identity
+{
+    public:
+        RandomDetect();
+        ~RandomDetect();
+
+
+}; // RandomDetect
 
 
 }

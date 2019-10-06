@@ -375,6 +375,11 @@ class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgPayloadSupp
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "enable") return 1;
+            if (name == "disable") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgPktReplacePolicy : public ydk::Enum
@@ -383,6 +388,11 @@ class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgPktReplaceP
         static const ydk::Enum::YLeaf ais;
         static const ydk::Enum::YLeaf implementationSpecific;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ais") return 1;
+            if (name == "implementationSpecific") return 2;
+            return -1;
+        }
 };
 
 class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgTimestampMode : public ydk::Enum
@@ -392,6 +402,12 @@ class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgTimestampMo
         static const ydk::Enum::YLeaf absolute;
         static const ydk::Enum::YLeaf differential;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "notApplicable") return 1;
+            if (name == "absolute") return 2;
+            if (name == "differential") return 3;
+            return -1;
+        }
 };
 
 

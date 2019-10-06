@@ -21,13 +21,13 @@ TPIDTYPES::~TPIDTYPES()
 {
 }
 
-TPID0x8100::TPID0x8100()
-     : Identity("http://openconfig.net/yang/vlan-types", "openconfig-vlan-types", "openconfig-vlan-types:TPID_0x8100")
+TPID0X9200::TPID0X9200()
+     : Identity("http://openconfig.net/yang/vlan-types", "openconfig-vlan-types", "openconfig-vlan-types:TPID_0X9200")
 {
 
 }
 
-TPID0x8100::~TPID0x8100()
+TPID0X9200::~TPID0X9200()
 {
 }
 
@@ -41,6 +41,16 @@ TPID0x8A88::~TPID0x8A88()
 {
 }
 
+TPID0x8100::TPID0x8100()
+     : Identity("http://openconfig.net/yang/vlan-types", "openconfig-vlan-types", "openconfig-vlan-types:TPID_0x8100")
+{
+
+}
+
+TPID0x8100::~TPID0x8100()
+{
+}
+
 TPID0x9100::TPID0x9100()
      : Identity("http://openconfig.net/yang/vlan-types", "openconfig-vlan-types", "openconfig-vlan-types:TPID_0x9100")
 {
@@ -48,16 +58,6 @@ TPID0x9100::TPID0x9100()
 }
 
 TPID0x9100::~TPID0x9100()
-{
-}
-
-TPID0X9200::TPID0X9200()
-     : Identity("http://openconfig.net/yang/vlan-types", "openconfig-vlan-types", "openconfig-vlan-types:TPID_0X9200")
-{
-
-}
-
-TPID0X9200::~TPID0X9200()
 {
 }
 

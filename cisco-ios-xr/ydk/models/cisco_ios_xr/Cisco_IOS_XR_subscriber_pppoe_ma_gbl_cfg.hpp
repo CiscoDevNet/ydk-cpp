@@ -1083,6 +1083,11 @@ class PppoeInvalidSessionIdBehavior : public ydk::Enum
         static const ydk::Enum::YLeaf drop;
         static const ydk::Enum::YLeaf log;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "drop") return 0;
+            if (name == "log") return 1;
+            return -1;
+        }
 };
 
 

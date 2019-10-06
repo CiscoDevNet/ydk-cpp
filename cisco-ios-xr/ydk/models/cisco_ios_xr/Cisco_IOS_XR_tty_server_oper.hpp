@@ -1137,6 +1137,12 @@ class LineState : public ydk::Enum
         static const ydk::Enum::YLeaf registered;
         static const ydk::Enum::YLeaf in_use;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "registered") return 1;
+            if (name == "in-use") return 2;
+            return -1;
+        }
 };
 
 class SessionOperation : public ydk::Enum
@@ -1148,6 +1154,14 @@ class SessionOperation : public ydk::Enum
         static const ydk::Enum::YLeaf transitioning;
         static const ydk::Enum::YLeaf packet;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "none") return 0;
+            if (name == "setup") return 1;
+            if (name == "shell") return 2;
+            if (name == "transitioning") return 3;
+            if (name == "packet") return 4;
+            return -1;
+        }
 };
 
 

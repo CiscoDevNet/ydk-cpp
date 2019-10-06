@@ -218,7 +218,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol : public 
         ydk::YLeaf mobile; //type: empty
         ydk::YLeaf rip; //type: empty
         ydk::YLeaf static_; //type: empty
-        ydk::YLeafList bgp; //type: list of  one of string, uint32
+        ydk::YLeafList bgp; //type: list of  one of uint32, string
         ydk::YLeafList eigrp; //type: list of  string
         ydk::YLeafList ospf; //type: list of  string
         ydk::YLeafList ospfv3; //type: list of  string
@@ -574,7 +574,7 @@ class Native::TableMap : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf default_; //type: one of enumeration, uint8
+        ydk::YLeaf default_; //type: one of uint8, enumeration
         class Map; //type: Native::TableMap::Map
 
         ydk::YList map;
@@ -1015,9 +1015,9 @@ class Native::ObjectGroup::Service::Tcp::TcpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tcp_port; //type: one of enumeration, uint16
+        ydk::YLeaf tcp_port; //type: one of uint16, enumeration
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_tcp_port; //type: one of enumeration, uint16
+        ydk::YLeaf max_tcp_port; //type: one of uint16, enumeration
         class Operator_;
 
 }; // Native::ObjectGroup::Service::Tcp::TcpPortList
@@ -1062,9 +1062,9 @@ class Native::ObjectGroup::Service::TcpUdp::UdpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf udp_port; //type: one of enumeration, uint16
+        ydk::YLeaf udp_port; //type: one of uint16, enumeration
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_udp_port; //type: one of enumeration, uint16
+        ydk::YLeaf max_udp_port; //type: one of uint16, enumeration
         class Operator_;
 
 }; // Native::ObjectGroup::Service::TcpUdp::UdpPortList
@@ -1109,9 +1109,9 @@ class Native::ObjectGroup::Service::Udp::UdpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf udp_port; //type: one of enumeration, uint16
+        ydk::YLeaf udp_port; //type: one of uint16, enumeration
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_udp_port; //type: one of enumeration, uint16
+        ydk::YLeaf max_udp_port; //type: one of uint16, enumeration
         class Operator_;
 
 }; // Native::ObjectGroup::Service::Udp::UdpPortList
@@ -2258,11 +2258,11 @@ class Native::Clock::SummerTime : public ydk::Entity
         ydk::YLeaf date_end_time; //type: string
         ydk::YLeaf offset; //type: uint16
         ydk::YLeaf recurring; //type: empty
-        ydk::YLeaf recurring_start; //type: one of enumeration, uint8
+        ydk::YLeaf recurring_start; //type: one of uint8, enumeration
         ydk::YLeaf recurring_start_day; //type: WeekdayType
         ydk::YLeaf recurring_start_month; //type: MonthType
         ydk::YLeaf recurring_start_time; //type: string
-        ydk::YLeaf recurring_end; //type: one of enumeration, uint8
+        ydk::YLeaf recurring_end; //type: one of uint8, enumeration
         ydk::YLeaf recurring_end_day; //type: WeekdayType
         ydk::YLeaf recurring_end_month; //type: MonthType
         ydk::YLeaf recurring_end_time; //type: string
@@ -2316,7 +2316,7 @@ class Native::Logging : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm; //type: one of enumeration, uint8
+        ydk::YLeaf alarm; //type: one of uint8, enumeration
         ydk::YLeaf facility; //type: Facility
         ydk::YLeaf hostip; //type: one of union, string
         ydk::YLeaf snmp_authfail; //type: empty
@@ -2553,7 +2553,7 @@ class Native::Logging::Monitor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf severity; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of uint16, enumeration
         class Discriminator; //type: Native::Logging::Monitor::Discriminator
 
         ydk::YList discriminator;
@@ -2579,7 +2579,7 @@ class Native::Logging::Monitor::Discriminator : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf severity; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of uint16, enumeration
 
 }; // Native::Logging::Monitor::Discriminator
 
@@ -2601,7 +2601,7 @@ class Native::Logging::Buffered : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf severity; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of uint16, enumeration
         ydk::YLeaf xxml; //type: uint32
         class Discriminator; //type: Native::Logging::Buffered::Discriminator
         class Size; //type: Native::Logging::Buffered::Size
@@ -2631,7 +2631,7 @@ class Native::Logging::Buffered::Discriminator : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf size_value; //type: uint32
-        ydk::YLeaf severity; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of uint16, enumeration
 
 }; // Native::Logging::Buffered::Discriminator
 
@@ -2654,7 +2654,7 @@ class Native::Logging::Buffered::Size : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf size_value; //type: uint32
-        ydk::YLeaf severity; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of uint16, enumeration
 
 }; // Native::Logging::Buffered::Size
 
@@ -2700,8 +2700,8 @@ class Native::Logging::Console : public ydk::Entity
 
         ydk::YLeaf filtered; //type: empty
         ydk::YLeaf guaranteed; //type: empty
-        ydk::YLeaf xxml; //type: one of enumeration, uint16
-        ydk::YLeaf severity; //type: one of enumeration, uint16
+        ydk::YLeaf xxml; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of uint16, enumeration
         class Discriminator; //type: Native::Logging::Console::Discriminator
 
         ydk::YList discriminator;
@@ -2727,7 +2727,7 @@ class Native::Logging::Console::Discriminator : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf severity; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of uint16, enumeration
 
 }; // Native::Logging::Console::Discriminator
 
@@ -2820,7 +2820,7 @@ class Native::Logging::History : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf size; //type: uint16
-        ydk::YLeaf severity_level; //type: one of enumeration, uint8
+        ydk::YLeaf severity_level; //type: one of uint8, enumeration
         class SeverityLevel;
 
 }; // Native::Logging::History
@@ -3469,7 +3469,7 @@ class Native::Logging::RateLimit::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of enumeration, uint16
+        ydk::YLeaf range; //type: one of uint16, enumeration
 
 }; // Native::Logging::RateLimit::Ranges::Except
 
@@ -3541,7 +3541,7 @@ class Native::Logging::RateLimit::Console::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of enumeration, uint16
+        ydk::YLeaf range; //type: one of uint16, enumeration
 
 }; // Native::Logging::RateLimit::Console::Ranges::Except
 
@@ -3611,7 +3611,7 @@ class Native::Logging::RateLimit::Console::All::Ranges::Except : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of enumeration, uint16
+        ydk::YLeaf range; //type: one of uint16, enumeration
 
 }; // Native::Logging::RateLimit::Console::All::Ranges::Except
 
@@ -3681,7 +3681,7 @@ class Native::Logging::RateLimit::All::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of enumeration, uint16
+        ydk::YLeaf range; //type: one of uint16, enumeration
 
 }; // Native::Logging::RateLimit::All::Ranges::Except
 
@@ -3756,7 +3756,7 @@ class Native::Logging::Trap : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf trap_default; //type: empty
-        ydk::YLeaf severity; //type: one of enumeration, uint8
+        ydk::YLeaf severity; //type: one of uint8, enumeration
         class Severity;
 
 }; // Native::Logging::Trap
@@ -3767,6 +3767,11 @@ class Native::TableMap::Default_ : public ydk::Enum
         static const ydk::Enum::YLeaf copy;
         static const ydk::Enum::YLeaf ignore;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "copy") return 0;
+            if (name == "ignore") return 1;
+            return -1;
+        }
 };
 
 class Native::ObjectGroup::Service::Tcp::TcpPortList::Operator_ : public ydk::Enum
@@ -3777,6 +3782,13 @@ class Native::ObjectGroup::Service::Tcp::TcpPortList::Operator_ : public ydk::En
         static const ydk::Enum::YLeaf lt;
         static const ydk::Enum::YLeaf range;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "eq") return 0;
+            if (name == "gt") return 1;
+            if (name == "lt") return 2;
+            if (name == "range") return 3;
+            return -1;
+        }
 };
 
 class Native::ObjectGroup::Service::TcpUdp::UdpPortList::Operator_ : public ydk::Enum
@@ -3787,6 +3799,13 @@ class Native::ObjectGroup::Service::TcpUdp::UdpPortList::Operator_ : public ydk:
         static const ydk::Enum::YLeaf lt;
         static const ydk::Enum::YLeaf range;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "eq") return 0;
+            if (name == "gt") return 1;
+            if (name == "lt") return 2;
+            if (name == "range") return 3;
+            return -1;
+        }
 };
 
 class Native::ObjectGroup::Service::Udp::UdpPortList::Operator_ : public ydk::Enum
@@ -3797,6 +3816,13 @@ class Native::ObjectGroup::Service::Udp::UdpPortList::Operator_ : public ydk::En
         static const ydk::Enum::YLeaf lt;
         static const ydk::Enum::YLeaf range;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "eq") return 0;
+            if (name == "gt") return 1;
+            if (name == "lt") return 2;
+            if (name == "range") return 3;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::Encapsulation : public ydk::Enum
@@ -3807,6 +3833,13 @@ class Native::PseudowireClass::Encapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf udp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tpv2") return 0;
+            if (name == "l2tpv3") return 1;
+            if (name == "mpls") return 2;
+            if (name == "udp") return 3;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::Interworking : public ydk::Enum
@@ -3816,6 +3849,12 @@ class Native::PseudowireClass::Interworking : public ydk::Enum
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf vlan;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ethernet") return 0;
+            if (name == "ip") return 1;
+            if (name == "vlan") return 2;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::Sequencing : public ydk::Enum
@@ -3826,6 +3865,13 @@ class Native::PseudowireClass::Sequencing : public ydk::Enum
         static const ydk::Enum::YLeaf resync;
         static const ydk::Enum::YLeaf transmit;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "both") return 0;
+            if (name == "receive") return 1;
+            if (name == "resync") return 2;
+            if (name == "transmit") return 3;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::Ip::Protocol : public ydk::Enum
@@ -3834,6 +3880,11 @@ class Native::PseudowireClass::Ip::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf l2tp;
         static const ydk::Enum::YLeaf uti;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tp") return 0;
+            if (name == "uti") return 1;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::LoadBalance::Flow::Ethernet : public ydk::Enum
@@ -3843,6 +3894,12 @@ class Native::PseudowireClass::LoadBalance::Flow::Ethernet : public ydk::Enum
         static const ydk::Enum::YLeaf src_dst_mac;
         static const ydk::Enum::YLeaf src_mac;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "dst-mac") return 0;
+            if (name == "src-dst-mac") return 1;
+            if (name == "src-mac") return 2;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::ProtocolMpls::Protocol : public ydk::Enum
@@ -3851,6 +3908,11 @@ class Native::PseudowireClass::ProtocolMpls::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf ldp;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "ldp") return 0;
+            if (name == "none") return 1;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::ProtocolL2tpv2::Protocol : public ydk::Enum
@@ -3859,6 +3921,11 @@ class Native::PseudowireClass::ProtocolL2tpv2::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf l2tpv2;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tpv2") return 0;
+            if (name == "none") return 1;
+            return -1;
+        }
 };
 
 class Native::PseudowireClass::ProtocolL2tpv3::Protocol : public ydk::Enum
@@ -3868,6 +3935,12 @@ class Native::PseudowireClass::ProtocolL2tpv3::Protocol : public ydk::Enum
         static const ydk::Enum::YLeaf l2tpv3ietf;
         static const ydk::Enum::YLeaf none;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "l2tpv3") return 0;
+            if (name == "l2tpv3ietf") return 1;
+            if (name == "none") return 2;
+            return -1;
+        }
 };
 
 class Native::Clock::SummerTime::RecurringStart : public ydk::Enum
@@ -3876,6 +3949,11 @@ class Native::Clock::SummerTime::RecurringStart : public ydk::Enum
         static const ydk::Enum::YLeaf first;
         static const ydk::Enum::YLeaf last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "first") return 0;
+            if (name == "last") return 1;
+            return -1;
+        }
 };
 
 class Native::Clock::SummerTime::RecurringEnd : public ydk::Enum
@@ -3884,6 +3962,11 @@ class Native::Clock::SummerTime::RecurringEnd : public ydk::Enum
         static const ydk::Enum::YLeaf first;
         static const ydk::Enum::YLeaf last;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "first") return 0;
+            if (name == "last") return 1;
+            return -1;
+        }
 };
 
 class Native::Clock::Timezone::Offset : public ydk::Enum
@@ -3892,6 +3975,11 @@ class Native::Clock::Timezone::Offset : public ydk::Enum
         static const ydk::Enum::YLeaf Y__PLUS__;
         static const ydk::Enum::YLeaf Y_;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "+") return 0;
+            if (name == "-") return 1;
+            return -1;
+        }
 };
 
 class Native::Logging::Alarm : public ydk::Enum
@@ -3902,6 +3990,13 @@ class Native::Logging::Alarm : public ydk::Enum
         static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "critical") return 0;
+            if (name == "informational") return 1;
+            if (name == "major") return 2;
+            if (name == "minor") return 3;
+            return -1;
+        }
 };
 
 class Native::Logging::Facility : public ydk::Enum
@@ -3932,6 +4027,33 @@ class Native::Logging::Facility : public ydk::Enum
         static const ydk::Enum::YLeaf user;
         static const ydk::Enum::YLeaf uucp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "auth") return 0;
+            if (name == "cron") return 1;
+            if (name == "daemon") return 2;
+            if (name == "kern") return 3;
+            if (name == "local0") return 4;
+            if (name == "local1") return 5;
+            if (name == "local2") return 6;
+            if (name == "local3") return 7;
+            if (name == "local4") return 8;
+            if (name == "local5") return 9;
+            if (name == "local6") return 10;
+            if (name == "local7") return 11;
+            if (name == "lpr") return 12;
+            if (name == "mail") return 13;
+            if (name == "news") return 14;
+            if (name == "sys10") return 15;
+            if (name == "sys11") return 16;
+            if (name == "sys12") return 17;
+            if (name == "sys13") return 18;
+            if (name == "sys14") return 19;
+            if (name == "sys9") return 20;
+            if (name == "syslog") return 21;
+            if (name == "user") return 22;
+            if (name == "uucp") return 23;
+            return -1;
+        }
 };
 
 class Native::Logging::History::SeverityLevel : public ydk::Enum
@@ -3946,6 +4068,17 @@ class Native::Logging::History::SeverityLevel : public ydk::Enum
         static const ydk::Enum::YLeaf informational;
         static const ydk::Enum::YLeaf debugging;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "emergencies") return 0;
+            if (name == "alerts") return 1;
+            if (name == "critical") return 2;
+            if (name == "errors") return 3;
+            if (name == "warnings") return 4;
+            if (name == "notifications") return 5;
+            if (name == "informational") return 6;
+            if (name == "debugging") return 7;
+            return -1;
+        }
 };
 
 class Native::Logging::OriginId::TypeValue : public ydk::Enum
@@ -3955,6 +4088,12 @@ class Native::Logging::OriginId::TypeValue : public ydk::Enum
         static const ydk::Enum::YLeaf ip;
         static const ydk::Enum::YLeaf ipv6;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "hostname") return 0;
+            if (name == "ip") return 1;
+            if (name == "ipv6") return 2;
+            return -1;
+        }
 };
 
 class Native::Logging::Trap::Severity : public ydk::Enum
@@ -3969,6 +4108,17 @@ class Native::Logging::Trap::Severity : public ydk::Enum
         static const ydk::Enum::YLeaf notifications;
         static const ydk::Enum::YLeaf warnings;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "alerts") return 0;
+            if (name == "critical") return 1;
+            if (name == "debugging") return 2;
+            if (name == "emergencies") return 3;
+            if (name == "errors") return 4;
+            if (name == "informational") return 5;
+            if (name == "notifications") return 6;
+            if (name == "warnings") return 7;
+            return -1;
+        }
 };
 
 

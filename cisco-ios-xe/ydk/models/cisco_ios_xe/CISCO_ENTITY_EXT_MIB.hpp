@@ -204,6 +204,14 @@ class CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::CeExtEntityLE
         static const ydk::Enum::YLeaf power;
         static const ydk::Enum::YLeaf battery;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "status") return 1;
+            if (name == "system") return 2;
+            if (name == "active") return 3;
+            if (name == "power") return 4;
+            if (name == "battery") return 5;
+            return -1;
+        }
 };
 
 class CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::CeExtEntityLEDColor : public ydk::Enum
@@ -214,6 +222,13 @@ class CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::CeExtEntityLE
         static const ydk::Enum::YLeaf amber;
         static const ydk::Enum::YLeaf red;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "off") return 1;
+            if (name == "green") return 2;
+            if (name == "amber") return 3;
+            if (name == "red") return 4;
+            return -1;
+        }
 };
 
 

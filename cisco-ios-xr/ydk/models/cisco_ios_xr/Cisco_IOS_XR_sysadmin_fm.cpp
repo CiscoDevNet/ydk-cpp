@@ -4445,6 +4445,29 @@ bool Fm::Agents::FmStatistics::Detail::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
+const Enum::YLeaf FmActionT::ISOLATION {0, "ISOLATION"};
+const Enum::YLeaf FmActionT::MITIGATION {1, "MITIGATION"};
+const Enum::YLeaf FmActionT::RECOVERY {2, "RECOVERY"};
+const Enum::YLeaf FmActionT::CORRELATION {3, "CORRELATION"};
+const Enum::YLeaf FmActionT::ALARM {4, "ALARM"};
+const Enum::YLeaf FmActionT::REPORT {5, "REPORT"};
+
+const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_ACTIVE {0, "FM_HISTORY_STATE_ACTIVE"};
+const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_CLEARED {1, "FM_HISTORY_STATE_CLEARED"};
+const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_INVALID {2, "FM_HISTORY_STATE_INVALID"};
+
+const Enum::YLeaf FmServiceScopeT::FM_SERVICE_NODE_SCOPE {0, "FM_SERVICE_NODE_SCOPE"};
+const Enum::YLeaf FmServiceScopeT::FM_SERVICE_RACK_SCOPE {1, "FM_SERVICE_RACK_SCOPE"};
+const Enum::YLeaf FmServiceScopeT::FM_SERVICE_SYSTEM_SCOPE {2, "FM_SERVICE_SYSTEM_SCOPE"};
+
+const Enum::YLeaf FmActionResultT::SUCCESS {0, "SUCCESS"};
+const Enum::YLeaf FmActionResultT::FAILURE {1, "FAILURE"};
+const Enum::YLeaf FmActionResultT::NO_OP {2, "NO-OP"};
+
+const Enum::YLeaf GenericHaRole::no_ha_role {0, "no-ha-role"};
+const Enum::YLeaf GenericHaRole::Active {1, "Active"};
+const Enum::YLeaf GenericHaRole::Standby {2, "Standby"};
+
 const Enum::YLeaf FmFaultStateT::SET {0, "SET"};
 const Enum::YLeaf FmFaultStateT::CLEAR {1, "CLEAR"};
 const Enum::YLeaf FmFaultStateT::INFO {2, "INFO"};
@@ -4460,36 +4483,13 @@ const Enum::YLeaf FmFaultSeverityT::MAJOR {1, "MAJOR"};
 const Enum::YLeaf FmFaultSeverityT::MINOR {2, "MINOR"};
 const Enum::YLeaf FmFaultSeverityT::NR {3, "NR"};
 
-const Enum::YLeaf FmActionT::ISOLATION {0, "ISOLATION"};
-const Enum::YLeaf FmActionT::MITIGATION {1, "MITIGATION"};
-const Enum::YLeaf FmActionT::RECOVERY {2, "RECOVERY"};
-const Enum::YLeaf FmActionT::CORRELATION {3, "CORRELATION"};
-const Enum::YLeaf FmActionT::ALARM {4, "ALARM"};
-const Enum::YLeaf FmActionT::REPORT {5, "REPORT"};
-
-const Enum::YLeaf FmActionResultT::SUCCESS {0, "SUCCESS"};
-const Enum::YLeaf FmActionResultT::FAILURE {1, "FAILURE"};
-const Enum::YLeaf FmActionResultT::NO_OP {2, "NO-OP"};
-
 const Enum::YLeaf FmRuleEvalResultT::SUCCESS {0, "SUCCESS"};
 const Enum::YLeaf FmRuleEvalResultT::FAILURE {1, "FAILURE"};
-
-const Enum::YLeaf GenericHaRole::no_ha_role {0, "no-ha-role"};
-const Enum::YLeaf GenericHaRole::Active {1, "Active"};
-const Enum::YLeaf GenericHaRole::Standby {2, "Standby"};
 
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_IGNORED {0, "QUALIFIER_IGNORED"};
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_RACK {1, "QUALIFIER_RACK"};
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_SLOT {2, "QUALIFIER_SLOT"};
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_OBJECT {3, "QUALIFIER_OBJECT"};
-
-const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_ACTIVE {0, "FM_HISTORY_STATE_ACTIVE"};
-const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_CLEARED {1, "FM_HISTORY_STATE_CLEARED"};
-const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_INVALID {2, "FM_HISTORY_STATE_INVALID"};
-
-const Enum::YLeaf FmServiceScopeT::FM_SERVICE_NODE_SCOPE {0, "FM_SERVICE_NODE_SCOPE"};
-const Enum::YLeaf FmServiceScopeT::FM_SERVICE_RACK_SCOPE {1, "FM_SERVICE_RACK_SCOPE"};
-const Enum::YLeaf FmServiceScopeT::FM_SERVICE_SYSTEM_SCOPE {2, "FM_SERVICE_SYSTEM_SCOPE"};
 
 
 }

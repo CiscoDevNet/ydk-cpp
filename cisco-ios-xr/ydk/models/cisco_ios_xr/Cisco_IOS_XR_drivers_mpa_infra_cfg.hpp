@@ -89,6 +89,10 @@ class HwModuleShutdownPowerMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf powered;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "powered") return 2;
+            return -1;
+        }
 };
 
 

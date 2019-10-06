@@ -581,6 +581,14 @@ class FlashFileType : public ydk::Enum
         static const ydk::Enum::YLeaf directory;
         static const ydk::Enum::YLeaf crashinfo;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "config") return 2;
+            if (name == "image") return 3;
+            if (name == "directory") return 4;
+            if (name == "crashinfo") return 5;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::CiscoFlashDeviceProgrammingJumper : public ydk::Enum
@@ -590,6 +598,12 @@ class CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::CiscoFlashDev
         static const ydk::Enum::YLeaf notInstalled;
         static const ydk::Enum::YLeaf unknown;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "installed") return 1;
+            if (name == "notInstalled") return 2;
+            if (name == "unknown") return 3;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFlashPartitionChecksumAlgorithm : public ydk::Enum
@@ -599,6 +613,12 @@ class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFl
         static const ydk::Enum::YLeaf undefined;
         static const ydk::Enum::YLeaf simpleCRC;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "simpleChecksum") return 1;
+            if (name == "undefined") return 2;
+            if (name == "simpleCRC") return 3;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFlashPartitionStatus : public ydk::Enum
@@ -608,6 +628,12 @@ class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFl
         static const ydk::Enum::YLeaf runFromFlash;
         static const ydk::Enum::YLeaf readWrite;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "readOnly") return 1;
+            if (name == "runFromFlash") return 2;
+            if (name == "readWrite") return 3;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFlashPartitionUpgradeMethod : public ydk::Enum
@@ -617,6 +643,12 @@ class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFl
         static const ydk::Enum::YLeaf rxbootFLH;
         static const ydk::Enum::YLeaf direct;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "unknown") return 1;
+            if (name == "rxbootFLH") return 2;
+            if (name == "direct") return 3;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::CiscoFlashFileStatus : public ydk::Enum
@@ -626,6 +658,12 @@ class CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::CiscoFlashFileSta
         static const ydk::Enum::YLeaf invalidChecksum;
         static const ydk::Enum::YLeaf valid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deleted") return 1;
+            if (name == "invalidChecksum") return 2;
+            if (name == "valid") return 3;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::CiscoFlashFileByTypeStatus : public ydk::Enum
@@ -635,6 +673,12 @@ class CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::Cisco
         static const ydk::Enum::YLeaf invalidChecksum;
         static const ydk::Enum::YLeaf valid;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "deleted") return 1;
+            if (name == "invalidChecksum") return 2;
+            if (name == "valid") return 3;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyCommand : public ydk::Enum
@@ -645,6 +689,13 @@ class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyCom
         static const ydk::Enum::YLeaf copyFromFlash;
         static const ydk::Enum::YLeaf copyFromFlhLog;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "copyToFlashWithErase") return 1;
+            if (name == "copyToFlashWithoutErase") return 2;
+            if (name == "copyFromFlash") return 3;
+            if (name == "copyFromFlhLog") return 4;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyProtocol : public ydk::Enum
@@ -657,6 +708,15 @@ class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyPro
         static const ydk::Enum::YLeaf scp;
         static const ydk::Enum::YLeaf sftp;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "tftp") return 1;
+            if (name == "rcp") return 2;
+            if (name == "lex") return 3;
+            if (name == "ftp") return 4;
+            if (name == "scp") return 5;
+            if (name == "sftp") return 6;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyStatus : public ydk::Enum
@@ -683,6 +743,29 @@ class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopySta
         static const ydk::Enum::YLeaf copyInvalidSignature;
         static const ydk::Enum::YLeaf copyProhibited;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "copyOperationPending") return 0;
+            if (name == "copyInProgress") return 1;
+            if (name == "copyOperationSuccess") return 2;
+            if (name == "copyInvalidOperation") return 3;
+            if (name == "copyInvalidProtocol") return 4;
+            if (name == "copyInvalidSourceName") return 5;
+            if (name == "copyInvalidDestName") return 6;
+            if (name == "copyInvalidServerAddress") return 7;
+            if (name == "copyDeviceBusy") return 8;
+            if (name == "copyDeviceOpenError") return 9;
+            if (name == "copyDeviceError") return 10;
+            if (name == "copyDeviceNotProgrammable") return 11;
+            if (name == "copyDeviceFull") return 12;
+            if (name == "copyFileOpenError") return 13;
+            if (name == "copyFileTransferError") return 14;
+            if (name == "copyFileChecksumError") return 15;
+            if (name == "copyNoMemory") return 16;
+            if (name == "copyUnknownFailure") return 17;
+            if (name == "copyInvalidSignature") return 18;
+            if (name == "copyProhibited") return 19;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::CiscoFlashPartitioningCommand : public ydk::Enum
@@ -690,6 +773,10 @@ class CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::C
     public:
         static const ydk::Enum::YLeaf partition;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "partition") return 1;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::CiscoFlashPartitioningStatus : public ydk::Enum
@@ -707,6 +794,20 @@ class CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::C
         static const ydk::Enum::YLeaf partitioningNoMemory;
         static const ydk::Enum::YLeaf partitioningUnknownFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "partitioningInProgress") return 1;
+            if (name == "partitioningOperationSuccess") return 2;
+            if (name == "partitioningInvalidOperation") return 3;
+            if (name == "partitioningInvalidDestName") return 4;
+            if (name == "partitioningInvalidPartitionCount") return 5;
+            if (name == "partitioningInvalidPartitionSizes") return 6;
+            if (name == "partitioningDeviceBusy") return 7;
+            if (name == "partitioningDeviceOpenError") return 8;
+            if (name == "partitioningDeviceError") return 9;
+            if (name == "partitioningNoMemory") return 10;
+            if (name == "partitioningUnknownFailure") return 11;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::CiscoFlashMiscOpCommand : public ydk::Enum
@@ -719,6 +820,15 @@ class CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::CiscoFlashMis
         static const ydk::Enum::YLeaf squeeze;
         static const ydk::Enum::YLeaf format;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "erase") return 1;
+            if (name == "verify") return 2;
+            if (name == "delete") return 3;
+            if (name == "undelete") return 4;
+            if (name == "squeeze") return 5;
+            if (name == "format") return 6;
+            return -1;
+        }
 };
 
 class CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::CiscoFlashMiscOpStatus : public ydk::Enum
@@ -742,6 +852,26 @@ class CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::CiscoFlashMis
         static const ydk::Enum::YLeaf miscOpNoSuchFile;
         static const ydk::Enum::YLeaf miscOpFormatFailure;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "miscOpInProgress") return 1;
+            if (name == "miscOpOperationSuccess") return 2;
+            if (name == "miscOpInvalidOperation") return 3;
+            if (name == "miscOpInvalidDestName") return 4;
+            if (name == "miscOpDeviceBusy") return 5;
+            if (name == "miscOpDeviceOpenError") return 6;
+            if (name == "miscOpDeviceError") return 7;
+            if (name == "miscOpDeviceNotProgrammable") return 8;
+            if (name == "miscOpFileOpenError") return 9;
+            if (name == "miscOpFileDeleteFailure") return 10;
+            if (name == "miscOpFileUndeleteFailure") return 11;
+            if (name == "miscOpFileChecksumError") return 12;
+            if (name == "miscOpNoMemory") return 13;
+            if (name == "miscOpUnknownFailure") return 14;
+            if (name == "miscOpSqueezeFailure") return 18;
+            if (name == "miscOpNoSuchFile") return 19;
+            if (name == "miscOpFormatFailure") return 20;
+            return -1;
+        }
 };
 
 

@@ -18,6 +18,13 @@ class MdtSubFilterType : public ydk::Enum
         static const ydk::Enum::YLeaf sub_filter_type_tdl_uri;
         static const ydk::Enum::YLeaf sub_filter_type_tdl_transform;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sub-filter-type-none") return 0;
+            if (name == "sub-filter-type-xpath") return 1;
+            if (name == "sub-filter-type-tdl-uri") return 2;
+            if (name == "sub-filter-type-tdl-transform") return 3;
+            return -1;
+        }
 };
 
 class MdtSubUpdateTrigger : public ydk::Enum
@@ -27,6 +34,12 @@ class MdtSubUpdateTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf sub_upd_trig_periodic;
         static const ydk::Enum::YLeaf sub_upd_trig_on_change;
 
+        static int get_enum_value(const std::string & name) {
+            if (name == "sub-upd-trig-none") return 0;
+            if (name == "sub-upd-trig-periodic") return 1;
+            if (name == "sub-upd-trig-on-change") return 2;
+            return -1;
+        }
 };
 
 

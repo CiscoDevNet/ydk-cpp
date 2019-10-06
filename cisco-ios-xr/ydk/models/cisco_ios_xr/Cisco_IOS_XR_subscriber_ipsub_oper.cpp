@@ -4929,13 +4929,6 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit:
     return false;
 }
 
-const Enum::YLeaf IpsubMaParentIntfVlan::plain {0, "plain"};
-const Enum::YLeaf IpsubMaParentIntfVlan::ambiguous {1, "ambiguous"};
-
-const Enum::YLeaf IpsubMaParentIntfStateData::deleted {0, "deleted"};
-const Enum::YLeaf IpsubMaParentIntfStateData::down {1, "down"};
-const Enum::YLeaf IpsubMaParentIntfStateData::up {2, "up"};
-
 const Enum::YLeaf IpsubMaIntfStateData::invalid {0, "invalid"};
 const Enum::YLeaf IpsubMaIntfStateData::initialized {1, "initialized"};
 const Enum::YLeaf IpsubMaIntfStateData::session_creation_started {2, "session-creation-started"};
@@ -4952,6 +4945,13 @@ const Enum::YLeaf IpsubMaIntfStateData::address_family_down_complete {12, "addre
 const Enum::YLeaf IpsubMaIntfStateData::disconnecting {13, "disconnecting"};
 const Enum::YLeaf IpsubMaIntfStateData::disconnected {14, "disconnected"};
 const Enum::YLeaf IpsubMaIntfStateData::error {15, "error"};
+
+const Enum::YLeaf IpsubMaParentIntfVlan::plain {0, "plain"};
+const Enum::YLeaf IpsubMaParentIntfVlan::ambiguous {1, "ambiguous"};
+
+const Enum::YLeaf IpsubMaParentIntfStateData::deleted {0, "deleted"};
+const Enum::YLeaf IpsubMaParentIntfStateData::down {1, "down"};
+const Enum::YLeaf IpsubMaParentIntfStateData::up {2, "up"};
 
 const Enum::YLeaf IpsubMaIntfInitiatorData::dhcp {0, "dhcp"};
 const Enum::YLeaf IpsubMaIntfInitiatorData::packet_trigger {1, "packet-trigger"};
