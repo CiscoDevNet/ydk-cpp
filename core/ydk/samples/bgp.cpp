@@ -44,7 +44,6 @@ bool test_bgp_create()
     neighbor.create_datanode("config/neighbor-address", "172.16.255.2");
     neighbor.create_datanode("config/peer-as","65172");
 
-
     // bgp/neighbors/neighbor/afi-safis/afi-safi
     auto & neighbor_af = neighbor.create_datanode("afi-safis/afi-safi[afi-safi-name='openconfig-bgp-types:L3VPN_IPV4_UNICAST']", "");
     neighbor_af.create_datanode("config/afi-safi-name" , "openconfig-bgp-types:L3VPN_IPV4_UNICAST");

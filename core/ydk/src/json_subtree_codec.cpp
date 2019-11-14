@@ -224,7 +224,7 @@ static json get_json_leaf_value(string & leaf_value)
     else {
         bool is_number = all_of(leaf_value.begin(), leaf_value.end(), ::isdigit);
         if (is_number) {
-            int jint = stoi(leaf_value);
+            long long jint = stoll(leaf_value);
             return json(jint);
         }
         else {

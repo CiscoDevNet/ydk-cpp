@@ -132,6 +132,7 @@ class Entity {
     virtual std::vector<std::string> get_order_of_children() const ;
 
     virtual std::shared_ptr<Entity> clone_ptr() const;
+    std::shared_ptr<Entity> clone() const;
 
     virtual void set_parent(Entity* p);
     virtual Entity* get_parent() const;

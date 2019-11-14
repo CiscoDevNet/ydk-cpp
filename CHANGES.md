@@ -1,11 +1,47 @@
+### 2019-11-14 version 0.8.4.post1
+
+#### New features and enhancements
+  * Added Entity class member function to clone entity object
+
+#### Resolved GitHub issues
+  * Fix jsonSubtreeCodec only serializing up to 4B numbers
+  * Fixed bug in extracting module name from namespace
+
+
+### 2019-10-15 version 0.8.4
+
+#### New features and enhancements
+  * Added utility function to compare two entities and build diff ([#925](https://github.com/CiscoDevNet/ydk-gen/issues/925))
+  * Adjusted C++ code to work with gcc compiler version 4.8.5 (default for CentOS-7.x)
+  
+#### Resolved GitHub issues
+  * 'ietf-netconf-monitoring:get-schema' returns schema with escape sequences ([#614](https://github.com/CiscoDevNet/ydk-gen/issues/614))
+  * NETCONF provider should raise more appropriate exceptions ([#774](https://github.com/CiscoDevNet/ydk-gen/issues/774))
+  * YList test fails when list entity added before keys are initialized ([#800](https://github.com/CiscoDevNet/ydk-gen/issues/800))
+  * Delete operation fails on container ([#931](https://github.com/CiscoDevNet/ydk-gen/issues/931))
+  * Absolute path for generated entity of second level list child is incorrect ([#933](https://github.com/CiscoDevNet/ydk-gen/issues/933))
+  * gNMI Provider does not preserve original strings ([#940](https://github.com/CiscoDevNet/ydk-gen/issues/940))
+  * gNMISession fails to decode GetRequest response when returned values is empty string ([#943](https://github.com/CiscoDevNet/ydk-gen/issues/943))
+  * No way to retrieve numeric value of enums in cpp generated code ([#944](https://github.com/CiscoDevNet/ydk-gen/issues/944))
+  * XmlSubtreeCodec fails decode payload with augmented component ([#956](https://github.com/CiscoDevNet/ydk-gen/issues/956))
+  * Debian package for C++ bundles getting installed to wrong location ([#962](https://github.com/CiscoDevNet/ydk-gen/issues/962))
+  
+#### Documentation improvements
+  * Added documentation for XmlSubtreeCodec and JsonSubtreeCodec.
+  * Improved documentation for System Requirements and Python Requirements
+
+#### Bundle improvements
+  * Updated cisco-ios-xr bundle to support Cisco IOS XR 5.2.3
+  * Released cisco-nx-os bundle to support Cisco NX OS 9.3.1
+
+
 ### 2019-05-15 version 0.8.3
 
 #### Bundle improvements
   * Updated cisco-ios-xr bundle to support Cisco IOS XR 6.6.2
-  * Updated openconfig bundle to introduce support for additional models.
+  * Updated openconfig bundle to introduce support for additional models.  
   
 #### Resolved GitHub issues
-  * cgo compile error ([#781](https://github.com/CiscoDevNet/ydk-gen/issues/781))
   * YDK netconf read fails when <data> tag has namespace prefix ([#799](https://github.com/CiscoDevNet/ydk-gen/issues/799))
   * YDK return value of YANG action missing some attributes ([#871](https://github.com/CiscoDevNet/ydk-gen/issues/871))
   * Duplicate code in generated cisco-ios-xe Go bundle ([#891](https://github.com/CiscoDevNet/ydk-gen/issues/891))
@@ -13,19 +49,54 @@
   * Memory leaks in YDK C++ gNMI Service component ([#902](https://github.com/CiscoDevNet/ydk-gen/issues/902))
   * RPC execution stuck when NETCONF server closes session unexpectedly ([#914](https://github.com/CiscoDevNet/ydk-gen/issues/914))
   * YDK attempting to send Commit command when 'writable-running' in capabilities ([#915](https://github.com/CiscoDevNet/ydk-gen/issues/915))
-  * Max value of range is set to None when not specified in the Yang model ([#916](https://github.com/CiscoDevNet/ydk-gen/issues/916))
-  * YDK MetaInfo should have a field for mandatory leaf ([#918](https://github.com/CiscoDevNet/ydk-gen/issues/918))
 
 ##### Note
   The solution for GitHub issue ([#891](https://github.com/CiscoDevNet/ydk-gen/issues/891)) changed model API. However all model bundles generated with YDK-Gen version 0.7.3 and later are still compatible with core YDK components.
 
+
+### 2019-03-15 version 0.8.2
+
+#### New features and enhancements
+  * Expanded disabling of data validation to read operations with NetconfServiceProvider. 
+  * Expanded disabling of data validation to gNMIServiceProvider.
+
+#### Resolved GitHub issues
+  * Libyang error: Reached limit (65535) for storing typedefs ([#874](https://github.com/CiscoDevNet/ydk-gen/issues/874))
+  * Segmentation Fault in API when connection to Netconf fails ([#879](https://github.com/CiscoDevNet/ydk-gen/issues/879))
+  * 'delete' and 'replace' filters do not work properly with gNMI and CRUD service ([#881](https://github.com/CiscoDevNet/ydk-gen/issues/881))
+
+#### Model bundle additions
+  * Released cisco-ios-xr bundle to support Cisco IOS XR 6.5.2
+  * Released cisco-ios-xe bundle to support Cisco IOS XE 16.9.3
+  * Released cisco-nx-os bundle to support Cisco NX OS 9.2.3
+
+
+### 2019-02-11 version 0.8.1
+
+#### CRUD / Netconf / gNMI/ Codec / Path API
+  * Introduced support for non-top level objects/entities for CRUD, Netconf, and gNMI services.
+  * Introduced a feature, which allows to disable validation of entity data processed by NetconfServiceProvider.
+
+#### ydk-gen
+  * Use CMake build number for release numbers with suffix ([#864](https://github.com/CiscoDevNet/ydk-gen/issues/864))
+  * Added `generate.py` script options '-i --install' and '-s --sudo' to generate and install packages in one step.
+
+#### Resolved GitHub issues
+  * YFilter dropped when used with NetconfService and EntityCollection ([#803](https://github.com/CiscoDevNet/ydk-gen/issues/803))
+  * YDK fails process RPC payload, which contain 'data' tag ([#851](https://github.com/CiscoDevNet/ydk-gen/issues/851))
+  * gNMI script results in a segmentation fault if repository is missing a required model ([#852](https://github.com/CiscoDevNet/ydk-gen/issues/852))
+  * CodecService fails correctly encode multiple entries in keyless list ([#854](https://github.com/CiscoDevNet/ydk-gen/issues/854))
+  * Segmentation fault when decoding gNMI config payload ([#856](https://github.com/CiscoDevNet/ydk-gen/issues/856))
+  * Decoding gNMI payload fails with ValueError exception ([#858](https://github.com/CiscoDevNet/ydk-gen/issues/858))
+
 #### Documentation improvements
-  Addressed multiple documentation issues:
-  * Installation documentation for YDK-Py needs an update ([#906](https://github.com/CiscoDevNet/ydk-gen/issues/906))
-  * README file for YDK-Py repo is not rendering correctly ([#907](https://github.com/CiscoDevNet/ydk-gen/issues/907))
+  Addressed multiple documentation issues: [#848](https://github.com/CiscoDevNet/ydk-gen/issues/848), 
+  [#850](https://github.com/CiscoDevNet/ydk-gen/issues/850), [#861](https://github.com/CiscoDevNet/ydk-gen/issues/861),
+  [#862](https://github.com/CiscoDevNet/ydk-gen/issues/862)
 
-### 2018-12-17 version 0.8.0
 
+### 2018-11-27 version 0.8.0
+ 
 #### CRUD / Netconf / gNMI/ Codec / Path API
   * Introduced YDK support for gNMI protocol (protobuf version 0.4.0) including CRUD service with gNMI Service Provider.
   * Added Netconf support for certificate-based authentication for multiple servers
@@ -34,6 +105,9 @@
   * Updated cisco-ios-xr bundle to include previously missing action models in Cisco IOS XR 6.5.1 release
   * Released cisco-nx-os bundle to support Cisco NX OS 9.2.2 release
 
+#### ydk-gen
+  * Added capability to generate YDK service packages from `generate.py` script.
+  
 ### 2018-10-02 version 0.7.3
 
 #### Resolved issues
@@ -50,10 +124,11 @@
   * Updated openconfig to to make it compatible with ydk core version 0.7.3.
   * Also updated ietf bundle to make it compatible with ydk core version 0.7.3.
 
-**Note**
 
-    The cisco-ios-xr 6.5.1 bundle excludes the following files due to duplicate namespaces:
+#### Note about `cisco-ios-xr` 6.5.1 bundle
+  Bundle excludes the following files due to duplicate namespaces:
 
+```
     Cisco-IOS-XR-sysadmin-clear-ncs5500.yang
     Cisco-IOS-XR-sysadmin-clear-ncs5502.yang
     Cisco-IOS-XR-sysadmin-clear-ncs55A1.yang
@@ -174,7 +249,7 @@
 
 ### 2017-09-25 version 0.6.1
 
-#### Python & C++
+#### Python and C++
   * Updated [`cisco-ios-xr`](https://github.com/CiscoDevNet/ydk-gen/blob/master/profiles/bundles/cisco-ios-xr_6_3_1.json) bundle to support Cisco IOS XR 6.3.1 release
  * Also updated [`openconfig`](https://github.com/CiscoDevNet/ydk-gen/blob/master/profiles/bundles/openconfig_0_1_4.json) bundle version 0.1.4 with additional support for optical transport (channel monitor, optical amplifier, terminal device and transport line)
  * Improved Service Providers
