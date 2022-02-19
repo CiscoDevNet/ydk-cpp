@@ -6,6 +6,7 @@
 #### Resolved GitHub issues
   * Fix jsonSubtreeCodec only serializing up to 4B numbers
   * Fixed bug in extracting module name from namespace
+  * Patched catch.hpp for Linux distributions that do not define SIGSTKSZ
 
 
 ### 2019-10-15 version 0.8.4

@@ -6229,6 +6229,11 @@ namespace Catch {
 
 #include <signal.h>
 
+#ifndef SIGSTKSZ
+  // Patch for Linux distributions that do not define SIGSTKSZ constant
+  #define SIGSTKSZ 32768
+#endif
+
 namespace Catch {
 
     struct SignalDefs {

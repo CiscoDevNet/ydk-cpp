@@ -18,6 +18,7 @@ py3env
 v/
 gittmp*/
 .DS_Store
+.idea
 
 *.sublime-project
 *.sublime-workspace
